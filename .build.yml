@@ -40,6 +40,7 @@ before_scripts:
 
 build_scripts:
   - ./before-build
+  - gio mount sftp://localhost/
   - ./make-scanbuild '--enable-compile-warnings=maximum'
   - ./after-build
 
