@@ -43,7 +43,7 @@ before_scripts:
 
 build_scripts:
   - ./before-build
-  - dbus-run-session bash &
+  - dbus-launch bash &
   - gio mount sftp://localhost/ &
   - ./make-scanbuild '--enable-compile-warnings=maximum'
   - ./after-build
