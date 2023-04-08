@@ -17,6 +17,7 @@ requires:
     - gla11y
     - gobject-introspection
     - gtk-doc-tools
+    - gvfs
     - iso-codes
     - libenchant-2-dev
     - libgirepository1.0-dev
