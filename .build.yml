@@ -48,7 +48,7 @@ build_scripts:
 #  - dbus-run-session gio mount sftp://localhost/ &
 #  - dbus-launch bash &
 #  - gio mount sftp://localhost/ &
-  - dbus-run-session ./make-scanbuild '--enable-compile-warnings=maximum' &
+  - dbus-launch ./make-scanbuild '--enable-compile-warnings=maximum' &
   - ./after-build
 
 after_scripts:
