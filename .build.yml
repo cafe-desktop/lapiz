@@ -45,10 +45,10 @@ before_scripts:
 build_scripts:
   - ./before-build
 #  - dbus-launch gio mount sftp://localhost/ &
-  - dbus-run-session gio mount sftp://localhost/ &
+#  - dbus-run-session gio mount sftp://localhost/ &
 #  - dbus-launch bash &
 #  - gio mount sftp://localhost/ &
-  - ./make-scanbuild '--enable-compile-warnings=maximum'
+  - dbus-run-session ./make-scanbuild '--enable-compile-warnings=maximum' &
   - ./after-build
 
 after_scripts:
