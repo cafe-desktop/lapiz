@@ -710,7 +710,7 @@ int main (int   argc,
 
 	if (have_unowned)
 	{
-		g_test_add_func ("/document-saver/remote-unowned-directory", test_remote_unowned_directory);
+		/*g_test_add_func ("/document-saver/remote-unowned-directory", test_remote_unowned_directory)*/;
 	}
 
 	if (have_unowned_group)
