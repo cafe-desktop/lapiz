@@ -29,6 +29,7 @@ requires:
     - libxml2-dev
     - make
     - mate-common
+    - mate-desktop
     - python3-dev
     - python3-lxml
     - yelp-tools
