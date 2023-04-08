@@ -34,6 +34,9 @@ requires:
     - python3-dev
     - python3-lxml
     - yelp-tools
+    - gvfs-fuse
+    - gvfs-backends
+    - libglib2.0-bin
 
 before_scripts:
   - ./html-cppcheck
