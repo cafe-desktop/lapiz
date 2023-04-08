@@ -41,16 +41,3 @@ build_scripts:
 
 after_scripts:
   - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/mate-icon-theme/raw/master/mate/16x16/apps/accessories-text-editor.png; fi
-
-releases:
-  draft: false
-  prerelease: false
-  checksum: true
-  file_glob: true
-  files: pluma-*.tar.xz
-  github_release:
-    tags: true
-    overwrite: true
-    base_version: 1.20.0
-    notify_servers:
-      - https://release.mate-desktop.org/release
