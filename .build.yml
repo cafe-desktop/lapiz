@@ -11,6 +11,7 @@ requires:
     - clang
     - clang-tools
     - cppcheck
+    - dbus-x11
     - expect #requiered for unbuffer
     - gcc
     - git
