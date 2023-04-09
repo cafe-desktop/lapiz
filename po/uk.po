@@ -87,9 +87,9 @@ msgid "Style Scheme"
 msgstr "Схеми стилю"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgid "The ID of a CtkSourceView Style Scheme used to color the text."
 msgstr ""
-"Ідентифікатор схеми стилів GtkSourceView, що використовується для кольору "
+"Ідентифікатор схеми стилів CtkSourceView, що використовується для кольору "
 "тексту."
 
 #: data/org.cafe.lapiz.gschema.xml.in:36

@@ -47,7 +47,7 @@ typedef struct _LapizCloseConfirmationDialogPrivate 	LapizCloseConfirmationDialo
 
 struct _LapizCloseConfirmationDialog
 {
-	GtkDialog parent;
+	CtkDialog parent;
 
 	/*< private > */
 	LapizCloseConfirmationDialogPrivate *priv;
@@ -55,15 +55,15 @@ struct _LapizCloseConfirmationDialog
 
 struct _LapizCloseConfirmationDialogClass
 {
-	GtkDialogClass parent_class;
+	CtkDialogClass parent_class;
 };
 
 GType 		 lapiz_close_confirmation_dialog_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_close_confirmation_dialog_new			(GtkWindow     *parent,
+CtkWidget	*lapiz_close_confirmation_dialog_new			(CtkWindow     *parent,
 									 GList         *unsaved_documents,
 									 gboolean       logout_mode);
-GtkWidget 	*lapiz_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
+CtkWidget 	*lapiz_close_confirmation_dialog_new_single 		(CtkWindow     *parent,
 									 LapizDocument *doc,
  									 gboolean       logout_mode);
 

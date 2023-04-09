@@ -19,7 +19,7 @@ import os
 import tempfile
 import shutil
 
-from gi.repository import GObject, Gio, Gdk, Gtk, GtkSource, Lapiz
+from gi.repository import GObject, Gio, Gdk, Ctk, CtkSource, Lapiz
 
 from .Snippet import Snippet
 from .Helper import *
@@ -40,7 +40,7 @@ class Manager:
     drag_icons = ('cafe-mime-application-x-tarz', 'cafe-package', 'package')
     default_export_name = _('Snippets archive') + '.tar.gz'
     dragging = False
-    dnd_target_list = [Gtk.TargetEntry.new('text/uri-list', 0, TARGET_URI)]
+    dnd_target_list = [Ctk.TargetEntry.new('text/uri-list', 0, TARGET_URI)]
 
     def __init__(self, datadir, window=None):
         self.datadir = datadir
@@ -108,8 +108,8 @@ class Manager:
         expand = None
 
         if not self.model or force_reload:
-            self.model = Gtk.TreeStore(str, str, GObject.Object, object)
-            self.model.set_sort_column_id(self.SORT_COLUMN, Gtk.SortType.ASCENDING)
+            self.model = Ctk.TreeStore(str, str, GObject.Object, object)
+            self.model.set_sort_column_id(self.SORT_COLUMN, Ctk.SortType.ASCENDING)
             manager = get_language_manager()
             langs = [manager.get_language(x) for x in manager.get_language_ids()]
             langs.sort(key=lambda x: x.get_name())
@@ -183,7 +183,7 @@ class Manager:
               self._temp_export = None
 
         if self.dnd_name:
-            Gtk.drag_set_icon_name(context, self.dnd_name, 0, 0)
+            Ctk.drag_set_icon_name(context, self.dnd_name, 0, 0)
 
         dirname = tempfile.mkdtemp()
         filename = os.path.join(dirname, self.default_export_name)
@@ -206,7 +206,7 @@ class Manager:
             return False
 
         # Check uri target
-        if not Gtk.targets_include_uri(context.targets):
+        if not Ctk.targets_include_uri(context.targets):
             return False
 
         # Check action
@@ -232,7 +232,7 @@ class Manager:
         tv.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, self.dnd_target_list, Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY)
 
         # Set it as a drag destination for importing snippets
-        tv.drag_dest_set(Gtk.DestDefaults.HIGHLIGHT | Gtk.DestDefaults.DROP,
+        tv.drag_dest_set(Ctk.DestDefaults.HIGHLIGHT | Ctk.DestDefaults.DROP,
                  self.dnd_target_list, Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY)
 
         tv.connect('drag_data_get', self.on_tree_view_drag_data_get)
@@ -241,11 +241,11 @@ class Manager:
         tv.connect('drag_data_received', self.on_tree_view_drag_data_received)
         tv.connect('drag_motion', self.on_tree_view_drag_motion)
 
-        theme = Gtk.IconTheme.get_for_screen(tv.get_screen())
+        theme = Ctk.IconTheme.get_for_screen(tv.get_screen())
 
         self.dnd_name = None
         for name in self.drag_icons:
-            icon = theme.lookup_icon(name, Gtk.IconSize.DND, 0)
+            icon = theme.lookup_icon(name, Ctk.IconSize.DND, 0)
 
             if icon:
                 self.dnd_name = name
@@ -254,13 +254,13 @@ class Manager:
     def build_tree_view(self):
         self.tree_view = self['tree_view_snippets']
 
-        self.column = Gtk.TreeViewColumn(None)
+        self.column = Ctk.TreeViewColumn(None)
 
-        self.renderer = Gtk.CellRendererText()
+        self.renderer = Ctk.CellRendererText()
         self.column.pack_start(self.renderer, False)
         self.column.set_cell_data_func(self.renderer, self.get_cell_data_cb, None)
 
-        renderer = Gtk.CellRendererPixbuf()
+        renderer = Ctk.CellRendererPixbuf()
         self.column.pack_start(renderer, True)
         self.column.set_cell_data_func(renderer, self.get_cell_data_pixbuf_cb, None)
 
@@ -270,13 +270,13 @@ class Manager:
         self.renderer.connect('editing-started', self.on_cell_editing_started)
 
         selection = self.tree_view.get_selection()
-        selection.set_mode(Gtk.SelectionMode.MULTIPLE)
+        selection.set_mode(Ctk.SelectionMode.MULTIPLE)
         selection.connect('changed', self.on_tree_view_selection_changed)
 
         self.build_dnd()
 
     def build(self):
-        self.builder = Gtk.Builder()
+        self.builder = Ctk.Builder()
         self.builder.add_from_file(os.path.join(self.datadir, 'ui', 'snippets.ui'))
 
         handlers_dic = {
@@ -388,15 +388,15 @@ class Manager:
 
         if not (override ^ remove) or system:
             button_remove.set_sensitive(False)
-            image_remove.set_from_icon_name("edit-delete", Gtk.IconSize.BUTTON)
+            image_remove.set_from_icon_name("edit-delete", Ctk.IconSize.BUTTON)
         else:
             button_remove.set_sensitive(True)
 
             if override:
-                image_remove.set_from_icon_name("edit-undo", Gtk.IconSize.BUTTON)
+                image_remove.set_from_icon_name("edit-undo", Ctk.IconSize.BUTTON)
                 tooltip = _('Revert selected snippet')
             else:
-                image_remove.set_from_icon_name("edit-delete", Gtk.IconSize.BUTTON)
+                image_remove.set_from_icon_name("edit-delete", Ctk.IconSize.BUTTON)
                 tooltip = _('Delete selected snippet')
 
             button_remove.set_tooltip_text(tooltip)
@@ -609,7 +609,7 @@ class Manager:
         alloc = dlg.get_allocation()
         self.default_size = [alloc.width, alloc.height]
 
-        if resp == Gtk.ResponseType.HELP:
+        if resp == Ctk.ResponseType.HELP:
             Lapiz.help_display(self.dlg, 'lapiz', 'lapiz-snippets-plugin')
             return
 
@@ -621,7 +621,7 @@ class Manager:
         if not self.model.iter_parent(piter):
             renderer.stop_editing(True)
             editable.remove_widget()
-        elif isinstance(editable, Gtk.Entry):
+        elif isinstance(editable, Ctk.Entry):
             if self.snippet:
                 editable.set_text(self.snippet['description'])
             else:
@@ -667,7 +667,7 @@ class Manager:
 
         if text and not Library().valid_tab_trigger(text):
             img = self['image_tab_trigger']
-            img.set_from_icon_name("dialog-error", Gtk.IconSize.BUTTON)
+            img.set_from_icon_name("dialog-error", Ctk.IconSize.BUTTON)
             img.show()
 
             #self['hbox_tab_trigger'].set_spacing(3)
@@ -745,7 +745,7 @@ class Manager:
         self.tree_view.set_cursor(path, self.column, True)
 
     def file_filter(self, name, pattern):
-        fil = Gtk.FileFilter()
+        fil = Ctk.FileFilter()
         fil.set_name(name)
 
         for p in pattern:
@@ -770,16 +770,16 @@ class Manager:
             if error:
                 message = _('The following error occurred while importing: %s') % error
                 success = False
-                message_dialog(self.dlg, Gtk.MessageType.ERROR, message)
+                message_dialog(self.dlg, Ctk.MessageType.ERROR, message)
 
         self.build_model(True)
 
         if success:
             message = _('Import successfully completed')
-            message_dialog(self.dlg, Gtk.MessageType.INFO, message)
+            message_dialog(self.dlg, Ctk.MessageType.INFO, message)
 
     def on_import_response(self, dialog, response):
-        if response == Gtk.ResponseType.CANCEL or response == Gtk.ResponseType.CLOSE:
+        if response == Ctk.ResponseType.CANCEL or response == Ctk.ResponseType.CLOSE:
             dialog.destroy()
             return
 
@@ -789,11 +789,11 @@ class Manager:
         self.import_snippets(f)
 
     def on_button_import_snippets_clicked(self, button):
-        dlg = Gtk.FileChooserDialog(title=_("Import snippets"),
+        dlg = Ctk.FileChooserDialog(title=_("Import snippets"),
                                     parent=self.dlg,
-                                    action=Gtk.FileChooserAction.OPEN)
-        self._add_button(dlg, _('_Cancel'), Gtk.ResponseType.CANCEL, "process-stop")
-        self._add_button(dlg, _("_Open"), Gtk.ResponseType.OK, "document-open")
+                                    action=Ctk.FileChooserAction.OPEN)
+        self._add_button(dlg, _('_Cancel'), Ctk.ResponseType.CANCEL, "process-stop")
+        self._add_button(dlg, _("_Open"), Ctk.ResponseType.OK, "document-open")
 
         dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar', '*.xml')))
         dlg.add_filter(self.file_filter(_('Gzip compressed archive'), ('*.tar.gz',)))
@@ -812,11 +812,11 @@ class Manager:
 
         if error:
             message = _('The following error occurred while exporting: %s') % error
-            msgtype = Gtk.MessageType.ERROR
+            msgtype = Ctk.MessageType.ERROR
             retval = False
         else:
             message = _('Export successfully completed')
-            msgtype = Gtk.MessageType.INFO
+            msgtype = Ctk.MessageType.INFO
             retval = True
 
         if show_dialogs:
@@ -830,7 +830,7 @@ class Manager:
 
         dialog.destroy()
 
-        if response != Gtk.ResponseType.OK:
+        if response != Ctk.ResponseType.OK:
             return
 
         self.export_snippets_real(filename, snippets);
@@ -856,30 +856,30 @@ class Manager:
         if len(systemsnippets) != 0 and show_dialogs:
             # Ask if system snippets should also be exported
             message = _('Do you want to include selected <b>system</b> snippets in your export?')
-            mes = Gtk.MessageDialog(flags=Gtk.DialogFlags.MODAL,
-                    type=Gtk.MessageType.QUESTION,
-                    buttons=Gtk.ButtonsType.YES_NO,
+            mes = Ctk.MessageDialog(flags=Ctk.DialogFlags.MODAL,
+                    type=Ctk.MessageType.QUESTION,
+                    buttons=Ctk.ButtonsType.YES_NO,
                     message_format=message)
             mes.set_property('use-markup', True)
             resp = mes.run()
             mes.destroy()
 
-            if resp == Gtk.ResponseType.NO:
+            if resp == Ctk.ResponseType.NO:
                 export_snippets = usersnippets
-            elif resp != Gtk.ResponseType.YES:
+            elif resp != Ctk.ResponseType.YES:
                 return False
 
         if len(export_snippets) == 0 and show_dialogs:
             message = _('There are no snippets selected to be exported')
-            message_dialog(self.dlg, Gtk.MessageType.INFO, message)
+            message_dialog(self.dlg, Ctk.MessageType.INFO, message)
             return False
 
         if not filename:
-            dlg = Gtk.FileChooserDialog(title=_('Export snippets'),
+            dlg = Ctk.FileChooserDialog(title=_('Export snippets'),
                                         parent=self.dlg,
-                                        action=Gtk.FileChooserAction.SAVE)
-            self._add_button(dlg, _('_Cancel'), Gtk.ResponseType.CANCEL, "process-stop")
-            self._add_button(dlg, _("_Save"), Gtk.ResponseType.OK, "document-save")
+                                        action=Ctk.FileChooserAction.SAVE)
+            self._add_button(dlg, _('_Cancel'), Ctk.ResponseType.CANCEL, "process-stop")
+            self._add_button(dlg, _("_Save"), Ctk.ResponseType.OK, "document-save")
 
             dlg._export_snippets = export_snippets
             dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar')))
@@ -914,28 +914,28 @@ class Manager:
             else:
                 systemsnippets.append(snippet)
 
-        dlg = Gtk.FileChooserDialog(title=_('Export snippets'),
+        dlg = Ctk.FileChooserDialog(title=_('Export snippets'),
                                     parent=self.dlg,
-                                    action=Gtk.FileChooserAction.SAVE)
-        self._add_button(dlg, _('_Cancel'), Gtk.ResponseType.CANCEL, "process-stop")
-        self._add_button(dlg, _("_Save"), Gtk.ResponseType.OK, "document-save")
+                                    action=Ctk.FileChooserAction.SAVE)
+        self._add_button(dlg, _('_Cancel'), Ctk.ResponseType.CANCEL, "process-stop")
+        self._add_button(dlg, _("_Save"), Ctk.ResponseType.OK, "document-save")
 
         dlg._export_snippets = snippets
 
         if len(systemsnippets) != 0:
             # Ask if system snippets should also be exported
             message = _('Do you want to include selected <b>system</b> snippets in your export?')
-            mes = Gtk.MessageDialog(flags=Gtk.DialogFlags.MODAL,
-                    type=Gtk.MessageType.QUESTION,
-                    buttons=Gtk.ButtonsType.YES_NO,
+            mes = Ctk.MessageDialog(flags=Ctk.DialogFlags.MODAL,
+                    type=Ctk.MessageType.QUESTION,
+                    buttons=Ctk.ButtonsType.YES_NO,
                     message_format=message)
             mes.set_property('use-markup', True)
             resp = mes.run()
             mes.destroy()
 
-            if resp == Gtk.ResponseType.NO:
+            if resp == Ctk.ResponseType.NO:
                 dlg._export_snippets = usersnippets
-            elif resp != Gtk.ResponseType.YES:
+            elif resp != Ctk.ResponseType.YES:
                 dlg.destroy()
                 return
 
@@ -943,7 +943,7 @@ class Manager:
             dlg.destroy()
 
             message = _('There are no snippets selected to be exported')
-            message_dialog(self.dlg, Gtk.MessageType.INFO, message)
+            message_dialog(self.dlg, Ctk.MessageType.INFO, message)
             return
 
         dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar')))
@@ -1000,7 +1000,7 @@ class Manager:
         # Create tree row references
         references = []
         for path in paths:
-            references.append(Gtk.TreeRowReference(self.model, path))
+            references.append(Ctk.TreeRowReference(self.model, path))
 
         # Remove/revert snippets
         select = None
@@ -1019,7 +1019,7 @@ class Manager:
         self.selection_changed()
 
     def set_accelerator(self, keyval, mod):
-        accelerator = Gtk.accelerator_name(keyval, mod)
+        accelerator = Ctk.accelerator_name(keyval, mod)
         self.snippet['accelerator'] = accelerator
 
         return True
@@ -1045,7 +1045,7 @@ class Manager:
         elif Library().valid_accelerator(event.keyval, event.state):
             # New accelerator
             self.set_accelerator(event.keyval, \
-                    event.state & Gtk.accelerator_get_default_mod_mask())
+                    event.state & Ctk.accelerator_get_default_mod_mask())
             entry.set_text(self.snippet.accelerator_display())
             self.snippet_changed()
             self.tree_view.grab_focus()
@@ -1152,7 +1152,7 @@ class Manager:
     def _add_button(dialog, label, response, icon=None):
         button = dialog.add_button(label, response)
         if icon:
-            image = Gtk.Image.new_from_icon_name(icon, Gtk.IconSize.BUTTON)
+            image = Ctk.Image.new_from_icon_name(icon, Ctk.IconSize.BUTTON)
             button.set_image(image)
             button.set_property("always-show-image", True)
         return button

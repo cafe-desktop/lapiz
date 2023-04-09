@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 gboolean lapiz_spell_utils_is_digit (const char *text, gssize length);
 
-gboolean lapiz_spell_utils_skip_no_spell_check (GtkTextIter *start, GtkTextIter *end);
+gboolean lapiz_spell_utils_skip_no_spell_check (CtkTextIter *start, CtkTextIter *end);
 
 G_END_DECLS
 

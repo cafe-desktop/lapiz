@@ -48,14 +48,14 @@ static const gchar ui_str =
 	"</ui>";
 
 /* UI actions */
-static const GtkActionEntry action_entries[] =
+static const CtkActionEntry action_entries[] =
 	{
 		/* Put your actions here */
 	};
 
 typedef struct
 {
-	GtkActionGroup *action_group;
+	CtkActionGroup *action_group;
 	guint           ui_id;
 } WindowData;
 ##endif
@@ -94,7 +94,7 @@ impl_activate (LapizPlugin *plugin,
 	       LapizWindow *window)
 {
 ##ifdef WITH_MENU
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	WindowData *data;
 ##endif
 
@@ -129,7 +129,7 @@ impl_deactivate (LapizPlugin *plugin,
 		 LapizWindow *window)
 {
 ##ifdef WITH_MENU
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	WindowData *data;
 ##endif
 
@@ -157,7 +157,7 @@ impl_update_ui (LapizPlugin *plugin,
 }
 
 ##ifdef WITH_CONFIGURE_DIALOG
-static GtkWidget *
+static CtkWidget *
 impl_create_configure_dialog (LapizPlugin *plugin)
 {
 	lapiz_debug (DEBUG_PLUGINS);

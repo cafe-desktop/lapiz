@@ -43,26 +43,26 @@ static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
 typedef struct
 {
-	GtkWidget *dialog;
-	GtkWidget *file_name_label;
-	GtkWidget *lines_label;
-	GtkWidget *words_label;
-	GtkWidget *chars_label;
-	GtkWidget *chars_ns_label;
-	GtkWidget *bytes_label;
-	GtkWidget *selection_vbox;
-	GtkWidget *selected_lines_label;
-	GtkWidget *selected_words_label;
-	GtkWidget *selected_chars_label;
-	GtkWidget *selected_chars_ns_label;
-	GtkWidget *selected_bytes_label;
+	CtkWidget *dialog;
+	CtkWidget *file_name_label;
+	CtkWidget *lines_label;
+	CtkWidget *words_label;
+	CtkWidget *chars_label;
+	CtkWidget *chars_ns_label;
+	CtkWidget *bytes_label;
+	CtkWidget *selection_vbox;
+	CtkWidget *selected_lines_label;
+	CtkWidget *selected_words_label;
+	CtkWidget *selected_chars_label;
+	CtkWidget *selected_chars_ns_label;
+	CtkWidget *selected_bytes_label;
 } DocInfoDialog;
 
 struct _LapizDocInfoPluginPrivate
 {
-	GtkWidget *window;
+	CtkWidget *window;
 
-	GtkActionGroup *ui_action_group;
+	CtkActionGroup *ui_action_group;
 	guint ui_id;
 
 	DocInfoDialog *dialog;
@@ -81,7 +81,7 @@ enum {
 	PROP_OBJECT
 };
 
-static void docinfo_dialog_response_cb (GtkDialog   *widget,
+static void docinfo_dialog_response_cb (CtkDialog   *widget,
 					gint	    res_id,
 					LapizDocInfoPluginPrivate *data);
 
@@ -106,8 +106,8 @@ get_docinfo_dialog (LapizDocInfoPlugin *plugin)
 	DocInfoDialog *dialog;
 	gchar *data_dir;
 	gchar *ui_file;
-	GtkWidget *content;
-	GtkWidget *error_widget;
+	CtkWidget *content;
+	CtkWidget *error_widget;
 	gboolean ret;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -174,8 +174,8 @@ get_docinfo_dialog (LapizDocInfoPlugin *plugin)
 
 static void
 calculate_info (LapizDocument *doc,
-		GtkTextIter   *start,
-		GtkTextIter   *end,
+		CtkTextIter   *start,
+		CtkTextIter   *end,
 		gint          *chars,
 		gint          *words,
 		gint          *white_chars,
@@ -231,7 +231,7 @@ static void
 docinfo_real (LapizDocument *doc,
 	      DocInfoDialog *dialog)
 {
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 	gint words = 0;
 	gint chars = 0;
 	gint white_chars = 0;
@@ -293,7 +293,7 @@ selectioninfo_real (LapizDocument *doc,
 		    DocInfoDialog *dialog)
 {
 	gboolean sel;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 	gint words = 0;
 	gint chars = 0;
 	gint white_chars = 0;
@@ -355,7 +355,7 @@ selectioninfo_real (LapizDocument *doc,
 }
 
 static void
-docinfo_cb (GtkAction	*action,
+docinfo_cb (CtkAction	*action,
 	    LapizDocInfoPlugin *plugin)
 {
 	LapizDocInfoPluginPrivate *data;
@@ -393,7 +393,7 @@ docinfo_cb (GtkAction	*action,
 }
 
 static void
-docinfo_dialog_response_cb (GtkDialog	*widget,
+docinfo_dialog_response_cb (CtkDialog	*widget,
 			    gint	res_id,
 			    LapizDocInfoPluginPrivate *data)
 {
@@ -433,7 +433,7 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 	}
 }
 
-static const GtkActionEntry action_entries[] =
+static const CtkActionEntry action_entries[] =
 {
 	{ "DocumentStatistics",
 	  NULL,
@@ -541,7 +541,7 @@ lapiz_docinfo_plugin_activate (PeasActivatable *activatable)
 	LapizDocInfoPlugin *plugin;
 	LapizDocInfoPluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -582,7 +582,7 @@ lapiz_docinfo_plugin_deactivate (PeasActivatable *activatable)
 {
 	LapizDocInfoPluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 

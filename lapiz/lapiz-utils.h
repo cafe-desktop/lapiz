@@ -51,19 +51,19 @@ enum { LAPIZ_ALL_WORKSPACES = 0xffffffff };
 gboolean	 lapiz_utils_uri_has_writable_scheme	(const gchar *uri);
 gboolean	 lapiz_utils_uri_has_file_scheme	(const gchar *uri);
 
-void		 lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
+void		 lapiz_utils_menu_position_under_widget (CtkMenu  *menu,
 							 gint     *x,
 							 gint     *y,
 							 gboolean *push_in,
 							 gpointer  user_data);
 
-void		 menu_popup_at_treeview_selection	(GtkWidget *menu,
-							 GtkWidget *treeview);
+void		 menu_popup_at_treeview_selection	(CtkWidget *menu,
+							 CtkWidget *treeview);
 
-GtkWidget	*lapiz_ctk_button_new_with_icon		(const gchar *label,
+CtkWidget	*lapiz_ctk_button_new_with_icon		(const gchar *label,
 							 const gchar *icon_name);
 
-GtkWidget	*lapiz_dialog_add_button		(GtkDialog   *dialog,
+CtkWidget	*lapiz_dialog_add_button		(CtkDialog   *dialog,
 							 const gchar *text,
 							 const gchar *icon_name,
 							 gint         response_id);
@@ -82,12 +82,12 @@ gboolean	 g_utf8_caselessnmatch			(const char *s1,
 							 gssize n1,
 							 gssize n2);
 
-void		 lapiz_utils_set_atk_name_description	(GtkWidget  *widget,
+void		 lapiz_utils_set_atk_name_description	(CtkWidget  *widget,
 							 const gchar *name,
 							 const gchar *description);
 
-void		 lapiz_utils_set_atk_relation		(GtkWidget       *obj1,
-							 GtkWidget       *obj2,
+void		 lapiz_utils_set_atk_relation		(CtkWidget       *obj1,
+							 CtkWidget       *obj2,
 							 AtkRelationType  rel_type);
 
 gboolean	 lapiz_utils_uri_exists			(const gchar* text_uri);
@@ -96,7 +96,7 @@ gchar		*lapiz_utils_escape_search_text		(const gchar *text);
 
 gchar		*lapiz_utils_unescape_search_text	(const gchar *text);
 
-void		 lapiz_warning				(GtkWindow  *parent,
+void		 lapiz_warning				(CtkWindow  *parent,
 							 const gchar *format,
 							 ...) G_GNUC_PRINTF(2, 3);
 
@@ -112,7 +112,7 @@ gchar		*lapiz_utils_replace_home_dir_with_tilde (const gchar *uri);
 
 guint		 lapiz_utils_get_current_workspace	(GdkScreen *screen);
 
-guint		 lapiz_utils_get_window_workspace	(GtkWindow *ctkwindow);
+guint		 lapiz_utils_get_window_workspace	(CtkWindow *ctkwindow);
 
 void		 lapiz_utils_get_current_viewport	(GdkScreen    *screen,
 							 gint         *x,
@@ -122,7 +122,7 @@ gboolean	 lapiz_utils_is_valid_uri		(const gchar *uri);
 
 gboolean	 lapiz_utils_get_ui_objects		(const gchar  *filename,
                                                          gchar       **root_objects,
-							 GtkWidget   **error_widget,
+							 CtkWidget   **error_widget,
 							 const gchar  *object_name,
 							 ...) G_GNUC_NULL_TERMINATED;
 
@@ -143,20 +143,20 @@ gboolean	 lapiz_utils_decode_uri 		(const gchar *uri,
 
 
 /* Turns data from a drop into a list of well formatted uris */
-gchar 	       **lapiz_utils_drop_get_uris		(GtkSelectionData *selection_data);
+gchar 	       **lapiz_utils_drop_get_uris		(CtkSelectionData *selection_data);
 
 /* Provides regexp forward search */
 gboolean
-lapiz_ctk_text_iter_regex_search (const GtkTextIter *iter,
+lapiz_ctk_text_iter_regex_search (const CtkTextIter *iter,
 				  const gchar       *str,
-				  GtkTextSearchFlags flags,
-				  GtkTextIter       *match_start,
-				  GtkTextIter       *match_end,
-				  const GtkTextIter *limit,
+				  CtkTextSearchFlags flags,
+				  CtkTextIter       *match_start,
+				  CtkTextIter       *match_end,
+				  const CtkTextIter *limit,
 				  gboolean forward_search,
 				  gchar            **replace_text);
 
-GtkWidget *
+CtkWidget *
 lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 				       const gchar *label_name);
 

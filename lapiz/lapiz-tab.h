@@ -77,7 +77,7 @@ typedef struct _LapizTab LapizTab;
 
 struct _LapizTab
 {
-	GtkBox vbox;
+	CtkBox vbox;
 
 	/*< private > */
 	LapizTabPrivate *priv;
@@ -90,7 +90,7 @@ typedef struct _LapizTabClass LapizTabClass;
 
 struct _LapizTabClass
 {
-	GtkBoxClass parent_class;
+	CtkBoxClass parent_class;
 };
 
 /*
@@ -122,15 +122,15 @@ void		 lapiz_tab_set_auto_save_interval
 						 gint                interval);
 
 void		 lapiz_tab_set_info_bar		(LapizTab            *tab,
-						 GtkWidget           *info_bar);
+						 CtkWidget           *info_bar);
 /*
  * Non exported methods
  */
-GtkWidget 	*_lapiz_tab_new 		(void);
+CtkWidget 	*_lapiz_tab_new 		(void);
 
 /* Whether create is TRUE, creates a new empty document if location does
    not refer to an existing file */
-GtkWidget	*_lapiz_tab_new_from_uri	(const gchar         *uri,
+CtkWidget	*_lapiz_tab_new_from_uri	(const gchar         *uri,
 						 const LapizEncoding *encoding,
 						 gint                 line_pos,
 						 gboolean             create);

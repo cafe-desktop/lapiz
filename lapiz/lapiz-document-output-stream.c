@@ -29,8 +29,8 @@
 #include "lapiz-document-output-stream.h"
 
 /* NOTE: never use async methods on this stream, the stream is just
- * a wrapper around GtkTextBuffer api so that we can use GIO Stream
- * methods, but the undelying code operates on a GtkTextBuffer, so
+ * a wrapper around CtkTextBuffer api so that we can use GIO Stream
+ * methods, but the undelying code operates on a CtkTextBuffer, so
  * there is no I/O involved and should be accessed only by the main
  * thread */
 
@@ -39,7 +39,7 @@
 struct _LapizDocumentOutputStreamPrivate
 {
 	LapizDocument *doc;
-	GtkTextIter    pos;
+	CtkTextIter    pos;
 
 	gchar *buffer;
 	gsize buflen;
@@ -180,10 +180,10 @@ lapiz_document_output_stream_init (LapizDocumentOutputStream *stream)
 }
 
 static LapizDocumentNewlineType
-get_newline_type (GtkTextIter *end)
+get_newline_type (CtkTextIter *end)
 {
 	LapizDocumentNewlineType res;
-	GtkTextIter copy;
+	CtkTextIter copy;
 	gunichar c;
 
 	copy = *end;
@@ -220,7 +220,7 @@ LapizDocumentNewlineType
 lapiz_document_output_stream_detect_newline_type (LapizDocumentOutputStream *stream)
 {
 	LapizDocumentNewlineType type;
-	GtkTextIter iter;
+	CtkTextIter iter;
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_OUTPUT_STREAM (stream),
 			      LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
@@ -239,12 +239,12 @@ lapiz_document_output_stream_detect_newline_type (LapizDocumentOutputStream *str
 }
 
 /* If the last char is a newline, remove it from the buffer (otherwise
-   GtkTextView shows it as an empty line). See bug #324942. */
+   CtkTextView shows it as an empty line). See bug #324942. */
 static void
 remove_ending_newline (LapizDocumentOutputStream *stream)
 {
-	GtkTextIter end;
-	GtkTextIter start;
+	CtkTextIter end;
+	CtkTextIter start;
 
 	ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (stream->priv->doc), &end);
 	start = end;

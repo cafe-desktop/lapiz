@@ -19,7 +19,7 @@ import re
 import os
 import gettext
 
-from gi.repository import GObject, Gtk, Lapiz
+from gi.repository import GObject, Ctk, Lapiz
 
 from .Document import Document
 from .Library import Library
@@ -66,7 +66,7 @@ class WindowHelper:
     def insert_menu(self):
         manager = self.window.get_ui_manager()
 
-        self.action_group = Gtk.ActionGroup("LapizSnippetPluginActions")
+        self.action_group = Ctk.ActionGroup("LapizSnippetPluginActions")
         self.action_group.set_translation_domain('lapiz')
         self.action_group.add_actions([('ManageSnippets', None,
                 _('Manage _Snippets...'), \
@@ -76,7 +76,7 @@ class WindowHelper:
         self.merge_id = manager.new_merge_id()
         manager.insert_action_group(self.action_group, -1)
         manager.add_ui(self.merge_id, '/MenuBar/ToolsMenu/ToolsOps_5', \
-                'ManageSnippets', 'ManageSnippets', Gtk.UIManagerItemType.MENUITEM, False)
+                'ManageSnippets', 'ManageSnippets', Ctk.UIManagerItemType.MENUITEM, False)
 
     def remove_menu(self):
         manager = self.window.get_ui_manager()

@@ -57,7 +57,7 @@ typedef struct _LapizEncodingsDialog LapizEncodingsDialog;
 
 struct _LapizEncodingsDialog
 {
-	GtkDialog dialog;
+	CtkDialog dialog;
 
 	/*< private > */
 	LapizEncodingsDialogPrivate *priv;
@@ -70,7 +70,7 @@ typedef struct _LapizEncodingsDialogClass LapizEncodingsDialogClass;
 
 struct _LapizEncodingsDialogClass
 {
-	GtkDialogClass parent_class;
+	CtkDialogClass parent_class;
 };
 
 /*
@@ -78,7 +78,7 @@ struct _LapizEncodingsDialogClass
  */
 GType		 lapiz_encodings_dialog_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_encodings_dialog_new		(void);
+CtkWidget	*lapiz_encodings_dialog_new		(void);
 
 G_END_DECLS
 

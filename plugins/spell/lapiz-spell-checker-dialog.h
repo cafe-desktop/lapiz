@@ -49,7 +49,7 @@ typedef struct _LapizSpellCheckerDialogClass LapizSpellCheckerDialogClass;
 
 struct _LapizSpellCheckerDialogClass
 {
-	GtkWindowClass parent_class;
+	CtkWindowClass parent_class;
 
 	/* Signals */
 	void		(*ignore)		(LapizSpellCheckerDialog *dlg,
@@ -70,8 +70,8 @@ struct _LapizSpellCheckerDialogClass
 GType        		 lapiz_spell_checker_dialog_get_type	(void) G_GNUC_CONST;
 
 /* Constructors */
-GtkWidget		*lapiz_spell_checker_dialog_new		(const gchar *data_dir);
-GtkWidget		*lapiz_spell_checker_dialog_new_from_spell_checker
+CtkWidget		*lapiz_spell_checker_dialog_new		(const gchar *data_dir);
+CtkWidget		*lapiz_spell_checker_dialog_new_from_spell_checker
 								(LapizSpellChecker *spell,
 								 const gchar *data_dir);
 

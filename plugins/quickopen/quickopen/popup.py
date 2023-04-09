@@ -21,21 +21,21 @@ import os
 import sys
 import fnmatch
 import xml.sax.saxutils
-from gi.repository import GObject, Gio, GLib, Gdk, Gtk, Pango, Lapiz
+from gi.repository import GObject, Gio, GLib, Gdk, Ctk, Pango, Lapiz
 from .virtualdirs import VirtualDirectory
 
-class Popup(Gtk.Dialog):
+class Popup(Ctk.Dialog):
     __gtype_name__ = "QuickOpenPopup"
 
     def __init__(self, window, paths, handler):
-        Gtk.Dialog.__init__(self,
+        Ctk.Dialog.__init__(self,
                             title=_('Quick Open'),
                             parent=window,
-                            flags=Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL)
+                            flags=Ctk.DialogFlags.DESTROY_WITH_PARENT | Ctk.DialogFlags.MODAL)
 
-        self._add_button(_("_Cancel"), Gtk.ResponseType.CANCEL, "process-stop")
+        self._add_button(_("_Cancel"), Ctk.ResponseType.CANCEL, "process-stop")
         self._open_button = self._add_button(_("_Open"),
-                                             Gtk.ResponseType.ACCEPT,
+                                             Ctk.ResponseType.ACCEPT,
                                              "document-open")
         self._handler = handler
         self._build_ui()
@@ -49,7 +49,7 @@ class Popup(Gtk.Dialog):
 
         self._busy_cursor = Gdk.Cursor(Gdk.CursorType.WATCH)
 
-        accel_group = Gtk.AccelGroup()
+        accel_group = Ctk.AccelGroup()
         accel_group.connect(Gdk.keyval_from_name('l'),
                             Gdk.ModifierType.CONTROL_MASK,
                             0,
@@ -72,19 +72,19 @@ class Popup(Gtk.Dialog):
         vbox = self.get_content_area()
         vbox.set_spacing(3)
 
-        self._entry = Gtk.SearchEntry()
+        self._entry = Ctk.SearchEntry()
 
         self._entry.connect('changed', self.on_changed)
         self._entry.connect('key-press-event', self.on_key_press_event)
 
-        sw = Gtk.ScrolledWindow()
-        sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        sw.set_shadow_type(Gtk.ShadowType.OUT)
+        sw = Ctk.ScrolledWindow()
+        sw.set_policy(Ctk.PolicyType.AUTOMATIC, Ctk.PolicyType.AUTOMATIC)
+        sw.set_shadow_type(Ctk.ShadowType.OUT)
 
-        tv = Gtk.TreeView()
+        tv = Ctk.TreeView()
         tv.set_headers_visible(False)
 
-        self._store = Gtk.ListStore(Gio.Icon,
+        self._store = Ctk.ListStore(Gio.Icon,
                                     str,
                                     GObject.Object,
                                     Gio.FileType)
@@ -93,12 +93,12 @@ class Popup(Gtk.Dialog):
         self._treeview = tv
         tv.connect('row-activated', self.on_row_activated)
 
-        renderer = Gtk.CellRendererPixbuf()
-        column = Gtk.TreeViewColumn()
+        renderer = Ctk.CellRendererPixbuf()
+        column = Ctk.TreeViewColumn()
         column.pack_start(renderer, False)
         column.add_attribute(renderer, "gicon", 0)
 
-        renderer = Gtk.CellRendererText()
+        renderer = Ctk.CellRendererText()
         column.pack_start(renderer, True)
         column.add_attribute(renderer, "markup", 1)
 
@@ -109,13 +109,13 @@ class Popup(Gtk.Dialog):
 
         selection = tv.get_selection()
         selection.connect('changed', self.on_selection_changed)
-        selection.set_mode(Gtk.SelectionMode.MULTIPLE)
+        selection.set_mode(Ctk.SelectionMode.MULTIPLE)
 
         vbox.pack_start(self._entry, False, False, 0)
         vbox.pack_start(sw, True, True, 0)
 
-        lbl = Gtk.Label()
-        lbl.set_halign(Gtk.Align.START)
+        lbl = Ctk.Label()
+        lbl.set_halign(Ctk.Align.START)
         lbl.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
         self._info_label = lbl
 
@@ -130,7 +130,7 @@ class Popup(Gtk.Dialog):
 
         if self._cursor and path == self._cursor.get_path():
             style = self._treeview.get_style()
-            bg = style.bg[Gtk.StateType.PRELIGHT]
+            bg = style.bg[Ctk.StateType.PRELIGHT]
 
             cell.set_property('cell-background-gdk', bg)
             cell.set_property('style', Pango.Style.ITALIC)
@@ -141,7 +141,7 @@ class Popup(Gtk.Dialog):
     def _add_button(self, label, response, icon=None):
         button = self.add_button(label, response)
         if icon:
-            image = Gtk.Image.new_from_icon_name(icon, Gtk.IconSize.BUTTON)
+            image = Ctk.Image.new_from_icon_name(icon, Ctk.IconSize.BUTTON)
             button.set_image(image)
             button.set_property("always-show-image", True)
         return button
@@ -363,7 +363,7 @@ class Popup(Gtk.Dialog):
         self._set_busy(False)
 
     def do_show(self):
-        Gtk.Window.do_show(self)
+        Ctk.Window.do_show(self)
 
         self._entry.grab_focus()
         self._entry.set_text("")
@@ -381,7 +381,7 @@ class Popup(Gtk.Dialog):
             model, rows = selection.get_selected_rows()
             start = rows[0]
 
-            self._shift_start = Gtk.TreeRowReference.new(self._store, start)
+            self._shift_start = Ctk.TreeRowReference.new(self._store, start)
         else:
             start = self._shift_start.get_path()
 
@@ -406,7 +406,7 @@ class Popup(Gtk.Dialog):
         self._remove_cursor()
 
         if hasctrl or hasshift:
-            self._cursor = Gtk.TreeRowReference(self._store, path)
+            self._cursor = Ctk.TreeRowReference(self._store, path)
 
             piter = self._store.get_iter(path)
             self._store.row_changed(path, piter)
@@ -539,7 +539,7 @@ class Popup(Gtk.Dialog):
         self._activate()
 
     def do_response(self, response):
-        if response != Gtk.ResponseType.ACCEPT or not self._activate():
+        if response != Ctk.ResponseType.ACCEPT or not self._activate():
             self.destroy()
 
     def do_configure_event(self, event):
@@ -547,7 +547,7 @@ class Popup(Gtk.Dialog):
             alloc = self.get_allocation()
             self._size = (alloc.width, alloc.height)
 
-        return Gtk.Dialog.do_configure_event(self, event)
+        return Ctk.Dialog.do_configure_event(self, event)
 
     def on_selection_changed(self, selection):
         model, rows = selection.get_selected_rows()

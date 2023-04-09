@@ -60,7 +60,7 @@
  * and shown.
  */
 
-static GtkWidget *preferences_dialog = NULL;
+static CtkWidget *preferences_dialog = NULL;
 
 
 enum
@@ -80,62 +80,62 @@ typedef enum
 
 struct _LapizPreferencesDialogPrivate
 {
-	GtkWidget	*notebook;
+	CtkWidget	*notebook;
 
 	/* Font */
-	GtkWidget	*default_font_checkbutton;
-	GtkWidget	*font_button;
-	GtkWidget	*font_hbox;
+	CtkWidget	*default_font_checkbutton;
+	CtkWidget	*font_button;
+	CtkWidget	*font_hbox;
 
 	/* Style Scheme */
-	GtkListStore	*schemes_treeview_model;
-	GtkWidget	*schemes_treeview;
-	GtkWidget	*install_scheme_button;
-	GtkWidget	*uninstall_scheme_button;
+	CtkListStore	*schemes_treeview_model;
+	CtkWidget	*schemes_treeview;
+	CtkWidget	*install_scheme_button;
+	CtkWidget	*uninstall_scheme_button;
 
-	GtkWidget	*install_scheme_file_schooser;
+	CtkWidget	*install_scheme_file_schooser;
 
 	/* Tabs */
-	GtkWidget	*tabs_width_spinbutton;
-	GtkWidget	*insert_spaces_checkbutton;
-	GtkWidget	*tabs_width_hbox;
+	CtkWidget	*tabs_width_spinbutton;
+	CtkWidget	*insert_spaces_checkbutton;
+	CtkWidget	*tabs_width_hbox;
 
 	/* Auto indentation */
-	GtkWidget	*auto_indent_checkbutton;
+	CtkWidget	*auto_indent_checkbutton;
 
 	/* Draw spaces... */
-	GtkWidget       *draw_spaces_checkbutton;
-	GtkWidget       *draw_trailing_spaces_checkbutton;
-	GtkWidget       *draw_tabs_checkbutton;
-	GtkWidget       *draw_trailing_tabs_checkbutton;
-	GtkWidget       *draw_newlines_checkbutton;
+	CtkWidget       *draw_spaces_checkbutton;
+	CtkWidget       *draw_trailing_spaces_checkbutton;
+	CtkWidget       *draw_tabs_checkbutton;
+	CtkWidget       *draw_trailing_tabs_checkbutton;
+	CtkWidget       *draw_newlines_checkbutton;
 
 	/* Text Wrapping */
-	GtkWidget	*wrap_text_checkbutton;
-	GtkWidget	*split_checkbutton;
+	CtkWidget	*wrap_text_checkbutton;
+	CtkWidget	*split_checkbutton;
 
 	/* File Saving */
-	GtkWidget	*backup_copy_checkbutton;
-	GtkWidget	*auto_save_checkbutton;
-	GtkWidget	*auto_save_spinbutton;
-	GtkWidget	*autosave_hbox;
+	CtkWidget	*backup_copy_checkbutton;
+	CtkWidget	*auto_save_checkbutton;
+	CtkWidget	*auto_save_spinbutton;
+	CtkWidget	*autosave_hbox;
 
 	/* Line numbers */
-	GtkWidget	*display_line_numbers_checkbutton;
+	CtkWidget	*display_line_numbers_checkbutton;
 
 	/* Highlight current line */
-	GtkWidget	*highlight_current_line_checkbutton;
+	CtkWidget	*highlight_current_line_checkbutton;
 
 	/* Highlight matching bracket */
-	GtkWidget	*bracket_matching_checkbutton;
+	CtkWidget	*bracket_matching_checkbutton;
 
 	/* Right margin */
-	GtkWidget	*right_margin_checkbutton;
-	GtkWidget	*right_margin_position_spinbutton;
-	GtkWidget	*right_margin_position_hbox;
+	CtkWidget	*right_margin_checkbutton;
+	CtkWidget	*right_margin_position_spinbutton;
+	CtkWidget	*right_margin_position_hbox;
 
 	/* Plugins manager */
-	GtkWidget	*plugin_manager_place_holder;
+	CtkWidget	*plugin_manager_place_holder;
 };
 
 
@@ -148,7 +148,7 @@ lapiz_preferences_dialog_class_init (LapizPreferencesDialogClass *klass)
 }
 
 static void
-dialog_response_handler (GtkDialog *dlg,
+dialog_response_handler (CtkDialog *dlg,
 			 gint       res_id)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -170,7 +170,7 @@ dialog_response_handler (GtkDialog *dlg,
 }
 
 static void
-tabs_width_spinbutton_value_changed (GtkSpinButton          *spin_button,
+tabs_width_spinbutton_value_changed (CtkSpinButton          *spin_button,
 				     LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -181,7 +181,7 @@ tabs_width_spinbutton_value_changed (GtkSpinButton          *spin_button,
 }
 
 static void
-insert_spaces_checkbutton_toggled (GtkToggleButton        *button,
+insert_spaces_checkbutton_toggled (CtkToggleButton        *button,
 				   LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -192,7 +192,7 @@ insert_spaces_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-auto_indent_checkbutton_toggled (GtkToggleButton        *button,
+auto_indent_checkbutton_toggled (CtkToggleButton        *button,
 				 LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -203,7 +203,7 @@ auto_indent_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
+draw_spaces_checkbutton_toggled (CtkToggleButton        *button,
                                  LapizPreferencesDialog *dlg)
 {
 	DrawSpacesSettings setting;
@@ -226,7 +226,7 @@ draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-draw_trailing_spaces_checkbutton_toggled (GtkToggleButton        *button,
+draw_trailing_spaces_checkbutton_toggled (CtkToggleButton        *button,
                                           LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -245,7 +245,7 @@ draw_trailing_spaces_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
+draw_tabs_checkbutton_toggled (CtkToggleButton        *button,
                                LapizPreferencesDialog *dlg)
 {
 	DrawSpacesSettings setting;
@@ -268,7 +268,7 @@ draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-draw_trailing_tabs_checkbutton_toggled (GtkToggleButton        *button,
+draw_trailing_tabs_checkbutton_toggled (CtkToggleButton        *button,
                                         LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -287,7 +287,7 @@ draw_trailing_tabs_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-draw_newlines_checkbutton_toggled (GtkToggleButton        *button,
+draw_newlines_checkbutton_toggled (CtkToggleButton        *button,
                                    LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -298,7 +298,7 @@ draw_newlines_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-auto_save_checkbutton_toggled (GtkToggleButton        *button,
+auto_save_checkbutton_toggled (CtkToggleButton        *button,
 			       LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -320,7 +320,7 @@ auto_save_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-backup_copy_checkbutton_toggled (GtkToggleButton        *button,
+backup_copy_checkbutton_toggled (CtkToggleButton        *button,
 				 LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -331,7 +331,7 @@ backup_copy_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-auto_save_spinbutton_value_changed (GtkSpinButton          *spin_button,
+auto_save_spinbutton_value_changed (CtkSpinButton          *spin_button,
 				    LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (spin_button == CTK_SPIN_BUTTON (dlg->priv->auto_save_spinbutton));
@@ -468,7 +468,7 @@ setup_editor_page (LapizPreferencesDialog *dlg)
 }
 
 static void
-display_line_numbers_checkbutton_toggled (GtkToggleButton        *button,
+display_line_numbers_checkbutton_toggled (CtkToggleButton        *button,
 					  LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
@@ -478,7 +478,7 @@ display_line_numbers_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-highlight_current_line_checkbutton_toggled (GtkToggleButton        *button,
+highlight_current_line_checkbutton_toggled (CtkToggleButton        *button,
 					    LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
@@ -488,7 +488,7 @@ highlight_current_line_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-bracket_matching_checkbutton_toggled (GtkToggleButton        *button,
+bracket_matching_checkbutton_toggled (CtkToggleButton        *button,
 				      LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
@@ -501,7 +501,7 @@ bracket_matching_checkbutton_toggled (GtkToggleButton        *button,
 static gboolean split_button_state = TRUE;
 
 static void
-wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
+wrap_mode_checkbutton_toggled (CtkToggleButton        *button,
 			       LapizPreferencesDialog *dlg)
 {
 	if (!ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton)))
@@ -538,7 +538,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-right_margin_checkbutton_toggled (GtkToggleButton        *button,
+right_margin_checkbutton_toggled (CtkToggleButton        *button,
 				  LapizPreferencesDialog *dlg)
 {
 	gboolean active;
@@ -555,7 +555,7 @@ right_margin_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-right_margin_position_spinbutton_value_changed (GtkSpinButton          *spin_button,
+right_margin_position_spinbutton_value_changed (CtkSpinButton          *spin_button,
 						LapizPreferencesDialog *dlg)
 {
 	gint value;
@@ -570,7 +570,7 @@ right_margin_position_spinbutton_value_changed (GtkSpinButton          *spin_but
 static void
 setup_view_page (LapizPreferencesDialog *dlg)
 {
-	GtkWrapMode wrap_mode;
+	CtkWrapMode wrap_mode;
 	gboolean display_right_margin;
 	gboolean wrap_mode_can_set;
 
@@ -672,7 +672,7 @@ setup_view_page (LapizPreferencesDialog *dlg)
 }
 
 static void
-default_font_font_checkbutton_toggled (GtkToggleButton        *button,
+default_font_font_checkbutton_toggled (CtkToggleButton        *button,
 				       LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
@@ -693,7 +693,7 @@ default_font_font_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-editor_font_button_font_set (GtkFontChooser         *font_button,
+editor_font_button_font_set (CtkFontChooser         *font_button,
 			     LapizPreferencesDialog *dlg)
 {
 	const gchar *font_name;
@@ -702,7 +702,7 @@ editor_font_button_font_set (GtkFontChooser         *font_button,
 
 	g_return_if_fail (font_button == CTK_FONT_CHOOSER (dlg->priv->font_button));
 
-	/* FIXME: Can this fail? Gtk docs are a bit terse... 21-02-2004 pbor */
+	/* FIXME: Can this fail? Ctk docs are a bit terse... 21-02-2004 pbor */
 	font_name = ctk_font_chooser_get_font (font_button);
 	if (!font_name)
 	{
@@ -790,11 +790,11 @@ set_buttons_sensisitivity_according_to_scheme (LapizPreferencesDialog *dlg,
 }
 
 static void
-style_scheme_changed (GtkWidget              *treeview,
+style_scheme_changed (CtkWidget              *treeview,
 		      LapizPreferencesDialog *dlg)
 {
-	GtkTreePath *path;
-	GtkTreeIter iter;
+	CtkTreePath *path;
+	CtkTreeIter iter;
 	gchar *id;
 
 	ctk_tree_view_get_cursor (CTK_TREE_VIEW (dlg->priv->schemes_treeview), &path, NULL);
@@ -814,8 +814,8 @@ style_scheme_changed (GtkWidget              *treeview,
 static const gchar *
 ensure_color_scheme_id (const gchar *id)
 {
-	GtkSourceStyleScheme *scheme = NULL;
-	GtkSourceStyleSchemeManager *manager = lapiz_get_style_scheme_manager ();
+	CtkSourceStyleScheme *scheme = NULL;
+	CtkSourceStyleSchemeManager *manager = lapiz_get_style_scheme_manager ();
 
 	if (id == NULL)
 	{
@@ -841,7 +841,7 @@ ensure_color_scheme_id (const gchar *id)
 
 	if (scheme == NULL)
 	{
-		/* Cannot determine default style scheme -> broken GtkSourceView installation */
+		/* Cannot determine default style scheme -> broken CtkSourceView installation */
 		return NULL;
 	}
 
@@ -863,7 +863,7 @@ populate_color_scheme_list (LapizPreferencesDialog *dlg, const gchar *def_id)
 	if (def_id == NULL)
 	{
 		g_warning ("Cannot build the list of available color schemes.\n"
-		           "Please check your GtkSourceView installation.");
+		           "Please check your CtkSourceView installation.");
 		return NULL;
 	}
 
@@ -871,11 +871,11 @@ populate_color_scheme_list (LapizPreferencesDialog *dlg, const gchar *def_id)
 	l = schemes;
 	while (l != NULL)
 	{
-		GtkSourceStyleScheme *scheme;
+		CtkSourceStyleScheme *scheme;
 		const gchar *id;
 		const gchar *name;
 		const gchar *description;
-		GtkTreeIter iter;
+		CtkTreeIter iter;
 
 		scheme = CTK_SOURCE_STYLE_SCHEME (l->data);
 
@@ -894,7 +894,7 @@ populate_color_scheme_list (LapizPreferencesDialog *dlg, const gchar *def_id)
 		g_return_val_if_fail (def_id != NULL, NULL);
 		if (strcmp (id, def_id) == 0)
 		{
-			GtkTreeSelection *selection;
+			CtkTreeSelection *selection;
 
 			selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->priv->schemes_treeview));
 			ctk_tree_selection_select_iter (selection, &iter);
@@ -909,7 +909,7 @@ populate_color_scheme_list (LapizPreferencesDialog *dlg, const gchar *def_id)
 }
 
 static void
-add_scheme_chooser_response_cb (GtkDialog              *chooser,
+add_scheme_chooser_response_cb (CtkDialog              *chooser,
 				gint                    res_id,
 				LapizPreferencesDialog *dlg)
 {
@@ -948,14 +948,14 @@ add_scheme_chooser_response_cb (GtkDialog              *chooser,
 	set_buttons_sensisitivity_according_to_scheme (dlg, scheme_id);
 }
 
-static GtkWidget *
+static CtkWidget *
 scheme_file_chooser_dialog_new_valist (const gchar          *title,
-				       GtkWindow            *parent,
-				       GtkFileChooserAction  action,
+				       CtkWindow            *parent,
+				       CtkFileChooserAction  action,
 				       const gchar          *first_button_text,
 				       va_list               varargs)
 {
-	GtkWidget *result;
+	CtkWidget *result;
 	const char *button_text = first_button_text;
 	gint response_id;
 
@@ -982,14 +982,14 @@ scheme_file_chooser_dialog_new_valist (const gchar          *title,
 	return result;
 }
 
-static GtkWidget *
+static CtkWidget *
 scheme_file_chooser_dialog_new (const gchar          *title,
-				GtkWindow            *parent,
-				GtkFileChooserAction  action,
+				CtkWindow            *parent,
+				CtkFileChooserAction  action,
 				const gchar          *first_button_text,
 				...)
 {
-	GtkWidget *result;
+	CtkWidget *result;
 	va_list varargs;
 
 	va_start (varargs, first_button_text);
@@ -1002,11 +1002,11 @@ scheme_file_chooser_dialog_new (const gchar          *title,
 }
 
 static void
-install_scheme_clicked (GtkButton              *button,
+install_scheme_clicked (CtkButton              *button,
 			LapizPreferencesDialog *dlg)
 {
-	GtkWidget      *chooser;
-	GtkFileFilter  *filter;
+	CtkWidget      *chooser;
+	CtkFileFilter  *filter;
 
 	if (dlg->priv->install_scheme_file_schooser != NULL) {
 		ctk_window_present (CTK_WINDOW (dlg->priv->install_scheme_file_schooser));
@@ -1056,12 +1056,12 @@ install_scheme_clicked (GtkButton              *button,
 }
 
 static void
-uninstall_scheme_clicked (GtkButton              *button,
+uninstall_scheme_clicked (CtkButton              *button,
 			  LapizPreferencesDialog *dlg)
 {
-	GtkTreeSelection *selection;
-	GtkTreeModel *model;
-	GtkTreeIter iter;
+	CtkTreeSelection *selection;
+	CtkTreeModel *model;
+	CtkTreeIter iter;
 
 	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->priv->schemes_treeview));
 	model = CTK_TREE_MODEL (dlg->priv->schemes_treeview_model);
@@ -1088,8 +1088,8 @@ uninstall_scheme_clicked (GtkButton              *button,
 		{
 			const gchar *real_new_id;
 			gchar *new_id = NULL;
-			GtkTreePath *path;
-			GtkTreeIter new_iter;
+			CtkTreePath *path;
+			CtkTreeIter new_iter;
 			gboolean new_iter_set = FALSE;
 
 			/* If the removed style scheme is the last of the list,
@@ -1142,10 +1142,10 @@ uninstall_scheme_clicked (GtkButton              *button,
 }
 
 static void
-scheme_description_cell_data_func (GtkTreeViewColumn *column,
-				   GtkCellRenderer   *renderer,
-				   GtkTreeModel      *model,
-				   GtkTreeIter       *iter,
+scheme_description_cell_data_func (CtkTreeViewColumn *column,
+				   CtkCellRenderer   *renderer,
+				   CtkTreeModel      *model,
+				   CtkTreeIter       *iter,
 				   gpointer           data)
 {
 	gchar *name;
@@ -1183,14 +1183,14 @@ scheme_description_cell_data_func (GtkTreeViewColumn *column,
 static void
 setup_font_colors_page_style_scheme_section (LapizPreferencesDialog *dlg)
 {
-	GtkCellRenderer *renderer;
-	GtkTreeViewColumn *column;
-	GtkTreeSelection *selection;
+	CtkCellRenderer *renderer;
+	CtkTreeViewColumn *column;
+	CtkTreeSelection *selection;
 	const gchar *def_id;
 
 	lapiz_debug (DEBUG_PREFS);
 
-	/* Create GtkListStore for styles & setup treeview. */
+	/* Create CtkListStore for styles & setup treeview. */
 	dlg->priv->schemes_treeview_model = ctk_list_store_new (NUM_COLUMNS,
 								G_TYPE_STRING,
 								G_TYPE_STRING,
@@ -1253,7 +1253,7 @@ setup_font_colors_page (LapizPreferencesDialog *dlg)
 static void
 setup_plugins_page (LapizPreferencesDialog *dlg)
 {
-	GtkWidget *page_content;
+	CtkWidget *page_content;
 
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1272,7 +1272,7 @@ setup_plugins_page (LapizPreferencesDialog *dlg)
 static void
 lapiz_preferences_dialog_init (LapizPreferencesDialog *dlg)
 {
-	GtkWidget *error_widget;
+	CtkWidget *error_widget;
 	gboolean ret;
 	gchar *file;
 	gchar *root_objects[] = {

@@ -18,7 +18,7 @@
 
 __all__ = ('ExternalToolsPlugin', )
 
-from gi.repository import GObject, Gtk, Peas, Lapiz
+from gi.repository import GObject, Ctk, Peas, Lapiz
 from .manager import Manager
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
@@ -34,7 +34,7 @@ class ToolMenu(object):
         self._menupath = menupath
 
         self._merge_id = 0
-        self._action_group = Gtk.ActionGroup("ExternalToolsPluginToolActions")
+        self._action_group = Ctk.ActionGroup("ExternalToolsPluginToolActions")
         self._signals = []
 
         self.update()
@@ -57,7 +57,7 @@ class ToolMenu(object):
 
             self._action_group.remove_action(action)
 
-        accelmap = Gtk.AccelMap.get()
+        accelmap = Ctk.AccelMap.get()
 
         for s in self._signals:
             accelmap.disconnect(s)
@@ -69,18 +69,18 @@ class ToolMenu(object):
 
         for item in directory.subdirs:
             action_name = 'ExternalToolDirectory%X' % id(item)
-            action = Gtk.Action(action_name, item.name.replace('_', '__'), None, None)
+            action = Ctk.Action(action_name, item.name.replace('_', '__'), None, None)
             self._action_group.add_action(action)
 
             manager.add_ui(self._merge_id, path,
                            action_name, action_name,
-                           Gtk.UIManagerItemType.MENU, False)
+                           Ctk.UIManagerItemType.MENU, False)
 
             self._insert_directory(item, path + '/' + action_name)
 
         for item in directory.tools:
             action_name = 'ExternalToolTool%X' % id(item)
-            action = Gtk.Action(action_name, item.name.replace('_', '__'), item.comment, None)
+            action = Ctk.Action(action_name, item.name.replace('_', '__'), item.comment, None)
             handler = action.connect("activate", capture_menu_action, self._window, self._panel, item)
 
             # Attach the item and the handler to the action object
@@ -91,19 +91,19 @@ class ToolMenu(object):
             accelpath = '<Actions>/ExternalToolsPluginToolActions/%s' % (action_name, )
 
             if item.shortcut:
-                key, mod = Gtk.accelerator_parse(item.shortcut)
-                Gtk.AccelMap.change_entry(accelpath, key, mod, True)
+                key, mod = Ctk.accelerator_parse(item.shortcut)
+                Ctk.AccelMap.change_entry(accelpath, key, mod, True)
 
-                self._signals.append(Gtk.AccelMap.get().connect('changed::%s' % (accelpath,), self.on_accelmap_changed, item))
+                self._signals.append(Ctk.AccelMap.get().connect('changed::%s' % (accelpath,), self.on_accelmap_changed, item))
 
             self._action_group.add_action_with_accel(action, item.shortcut)
 
             manager.add_ui(self._merge_id, path,
                            action_name, action_name,
-                           Gtk.UIManagerItemType.MENUITEM, False)
+                           Ctk.UIManagerItemType.MENUITEM, False)
 
     def on_accelmap_changed(self, accelmap, path, key, mod, tool):
-        tool.shortcut = Gtk.accelerator_name(key, mod)
+        tool.shortcut = Ctk.accelerator_name(key, mod)
         tool.save()
 
         self._plugin.update_manager(tool)
@@ -167,7 +167,7 @@ class ExternalToolsPlugin(GObject.Object, Peas.Activatable):
         window = self.object
         manager = window.get_ui_manager()
 
-        self._action_group = Gtk.ActionGroup('ExternalToolsPluginActions')
+        self._action_group = Ctk.ActionGroup('ExternalToolsPluginActions')
         self._action_group.set_translation_domain('lapiz')
         self._action_group.add_actions([('ExternalToolManager',
                                          None,

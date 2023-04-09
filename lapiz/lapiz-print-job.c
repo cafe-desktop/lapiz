@@ -50,12 +50,12 @@ struct _LapizPrintJobPrivate
 	LapizView                *view;
 	LapizDocument            *doc;
 
-	GtkPrintOperation        *operation;
-	GtkSourcePrintCompositor *compositor;
+	CtkPrintOperation        *operation;
+	CtkSourcePrintCompositor *compositor;
 
-	GtkPrintSettings         *settings;
+	CtkPrintSettings         *settings;
 
-	GtkWidget                *preview;
+	CtkWidget                *preview;
 
 	LapizPrintJobStatus       status;
 
@@ -67,21 +67,21 @@ struct _LapizPrintJobPrivate
 
 	/* widgets part of the custom print preferences widget.
 	 * These pointers are valid just when the dialog is displayed */
-	GtkWidget *syntax_checkbutton;
-	GtkWidget *page_header_checkbutton;
-	GtkWidget *line_numbers_checkbutton;
-	GtkWidget *line_numbers_hbox;
-	GtkWidget *line_numbers_spinbutton;
-	GtkWidget *text_wrapping_checkbutton;
-	GtkWidget *do_not_split_checkbutton;
-	GtkWidget *fonts_table;
-	GtkWidget *body_font_label;
-	GtkWidget *headers_font_label;
-	GtkWidget *numbers_font_label;
-	GtkWidget *body_fontbutton;
-	GtkWidget *headers_fontbutton;
-	GtkWidget *numbers_fontbutton;
-	GtkWidget *restore_button;
+	CtkWidget *syntax_checkbutton;
+	CtkWidget *page_header_checkbutton;
+	CtkWidget *line_numbers_checkbutton;
+	CtkWidget *line_numbers_hbox;
+	CtkWidget *line_numbers_spinbutton;
+	CtkWidget *text_wrapping_checkbutton;
+	CtkWidget *do_not_split_checkbutton;
+	CtkWidget *fonts_table;
+	CtkWidget *body_font_label;
+	CtkWidget *headers_font_label;
+	CtkWidget *numbers_font_label;
+	CtkWidget *body_fontbutton;
+	CtkWidget *headers_fontbutton;
+	CtkWidget *numbers_fontbutton;
+	CtkWidget *restore_button;
 };
 
 enum
@@ -220,7 +220,7 @@ lapiz_print_job_class_init (LapizPrintJobClass *klass)
 }
 
 static void
-line_numbers_checkbutton_toggled (GtkToggleButton *button,
+line_numbers_checkbutton_toggled (CtkToggleButton *button,
 				  LapizPrintJob   *job)
 {
 	if (ctk_toggle_button_get_active (button))
@@ -235,7 +235,7 @@ line_numbers_checkbutton_toggled (GtkToggleButton *button,
 }
 
 static void
-wrap_mode_checkbutton_toggled (GtkToggleButton *button,
+wrap_mode_checkbutton_toggled (CtkToggleButton *button,
 			       LapizPrintJob   *job)
 {
 	if (!ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
@@ -257,7 +257,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton *button,
 }
 
 static void
-restore_button_clicked (GtkButton     *button,
+restore_button_clicked (CtkButton     *button,
 			LapizPrintJob *job)
 
 {
@@ -299,16 +299,16 @@ restore_button_clicked (GtkButton     *button,
 }
 
 static GObject *
-create_custom_widget_cb (GtkPrintOperation *operation,
+create_custom_widget_cb (CtkPrintOperation *operation,
 			 LapizPrintJob     *job)
 {
 	gboolean ret;
-	GtkWidget *widget;
-	GtkWidget *error_widget;
+	CtkWidget *widget;
+	CtkWidget *error_widget;
 	gchar *font;
 	gint line_numbers;
 	gboolean can_set;
-	GtkWrapMode wrap_mode;
+	CtkWrapMode wrap_mode;
 	gchar *file;
 	gchar *root_objects[] = {
 		"adjustment1",
@@ -456,8 +456,8 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 }
 
 static void
-custom_widget_apply_cb (GtkPrintOperation *operation,
-			GtkWidget         *widget,
+custom_widget_apply_cb (CtkPrintOperation *operation,
+			CtkWidget         *widget,
 			LapizPrintJob     *job)
 {
 	lapiz_prefs_manager_set_print_syntax_hl (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton)));
@@ -553,8 +553,8 @@ create_compositor (LapizPrintJob *job)
 }
 
 static void
-begin_print_cb (GtkPrintOperation *operation,
-	        GtkPrintContext   *context,
+begin_print_cb (CtkPrintOperation *operation,
+	        CtkPrintContext   *context,
 	        LapizPrintJob     *job)
 {
 	create_compositor (job);
@@ -567,8 +567,8 @@ begin_print_cb (GtkPrintOperation *operation,
 }
 
 static void
-preview_ready (GtkPrintOperationPreview *ctk_preview,
-	       GtkPrintContext          *context,
+preview_ready (CtkPrintOperationPreview *ctk_preview,
+	       CtkPrintContext          *context,
 	       LapizPrintJob            *job)
 {
 	job->priv->is_preview = TRUE;
@@ -577,17 +577,17 @@ preview_ready (GtkPrintOperationPreview *ctk_preview,
 }
 
 static void
-preview_destroyed (GtkWidget                *preview,
-		   GtkPrintOperationPreview *ctk_preview)
+preview_destroyed (CtkWidget                *preview,
+		   CtkPrintOperationPreview *ctk_preview)
 {
 	ctk_print_operation_preview_end_preview (ctk_preview);
 }
 
 static gboolean
-preview_cb (GtkPrintOperation        *op,
-	    GtkPrintOperationPreview *ctk_preview,
-	    GtkPrintContext          *context,
-	    GtkWindow                *parent,
+preview_cb (CtkPrintOperation        *op,
+	    CtkPrintOperationPreview *ctk_preview,
+	    CtkPrintContext          *context,
+	    CtkWindow                *parent,
 	    LapizPrintJob            *job)
 {
 	job->priv->preview = lapiz_print_preview_new (op, ctk_preview, context);
@@ -607,8 +607,8 @@ preview_cb (GtkPrintOperation        *op,
 }
 
 static gboolean
-paginate_cb (GtkPrintOperation *operation,
-	     GtkPrintContext   *context,
+paginate_cb (CtkPrintOperation *operation,
+	     CtkPrintContext   *context,
 	     LapizPrintJob     *job)
 {
 	gboolean res;
@@ -638,8 +638,8 @@ paginate_cb (GtkPrintOperation *operation,
 }
 
 static void
-draw_page_cb (GtkPrintOperation *operation,
-	      GtkPrintContext   *context,
+draw_page_cb (CtkPrintOperation *operation,
+	      CtkPrintContext   *context,
 	      gint               page_nr,
 	      LapizPrintJob     *job)
 {
@@ -668,8 +668,8 @@ draw_page_cb (GtkPrintOperation *operation,
 }
 
 static void
-end_print_cb (GtkPrintOperation *operation,
-	      GtkPrintContext   *context,
+end_print_cb (CtkPrintOperation *operation,
+	      CtkPrintContext   *context,
 	      LapizPrintJob     *job)
 {
 	g_object_unref (job->priv->compositor);
@@ -677,8 +677,8 @@ end_print_cb (GtkPrintOperation *operation,
 }
 
 static void
-done_cb (GtkPrintOperation       *operation,
-	 GtkPrintOperationResult  result,
+done_cb (CtkPrintOperation       *operation,
+	 CtkPrintOperationResult  result,
 	 LapizPrintJob           *job)
 {
 	GError *error = NULL;
@@ -715,12 +715,12 @@ done_cb (GtkPrintOperation       *operation,
 }
 
 /* Note that lapiz_print_job_print can can only be called once on a given LapizPrintJob */
-GtkPrintOperationResult
+CtkPrintOperationResult
 lapiz_print_job_print (LapizPrintJob            *job,
-		       GtkPrintOperationAction   action,
-		       GtkPageSetup             *page_setup,
-		       GtkPrintSettings         *settings,
-		       GtkWindow                *parent,
+		       CtkPrintOperationAction   action,
+		       CtkPageSetup             *page_setup,
+		       CtkPrintSettings         *settings,
+		       CtkWindow                *parent,
 		       GError                  **error)
 {
 	LapizPrintJobPrivate *priv;
@@ -843,7 +843,7 @@ lapiz_print_job_get_progress (LapizPrintJob *job)
 	return job->priv->progress;
 }
 
-GtkPrintSettings *
+CtkPrintSettings *
 lapiz_print_job_get_print_settings (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
@@ -851,7 +851,7 @@ lapiz_print_job_get_print_settings (LapizPrintJob *job)
 	return ctk_print_operation_get_print_settings (job->priv->operation);
 }
 
-GtkPageSetup *
+CtkPageSetup *
 lapiz_print_job_get_page_setup (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);

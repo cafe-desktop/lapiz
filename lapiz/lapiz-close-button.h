@@ -40,16 +40,16 @@ typedef struct _LapizCloseButtonClass	LapizCloseButtonClass;
 typedef struct _LapizCloseButtonPrivate	LapizCloseButtonPrivate;
 
 struct _LapizCloseButton {
-	GtkButton parent;
+	CtkButton parent;
 };
 
 struct _LapizCloseButtonClass {
-	GtkButtonClass parent_class;
+	CtkButtonClass parent_class;
 };
 
 GType		  lapiz_close_button_get_type (void) G_GNUC_CONST;
 
-GtkWidget	 *lapiz_close_button_new (void);
+CtkWidget	 *lapiz_close_button_new (void);
 
 G_END_DECLS
 

@@ -55,7 +55,7 @@ You can download the latest lapiz tarball from:
 Installation
 ============
 
-lapiz requires CTK+-3.14.x and GtkSourceView 3.0.x.
+lapiz requires CTK+-3.14.x and CtkSourceView 3.0.x.
 
 Simple install procedure:
 

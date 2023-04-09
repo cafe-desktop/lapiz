@@ -17,7 +17,7 @@
 
 import os
 import six
-from gi.repository import Gio, Gtk
+from gi.repository import Gio, Ctk
 
 from .Placeholder import *
 from .Parser import Parser, Token
@@ -113,8 +113,8 @@ class Snippet:
         accel = self['accelerator']
 
         if accel:
-            keyval, mod = Gtk.accelerator_parse(accel)
-            accel = Gtk.accelerator_get_label(keyval, mod)
+            keyval, mod = Ctk.accelerator_parse(accel)
+            accel = Ctk.accelerator_get_label(keyval, mod)
 
         return accel or ''
 

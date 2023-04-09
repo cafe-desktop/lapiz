@@ -29,7 +29,7 @@
     <key name="color-scheme" type="s">
       <default>'tango'</default>
       <summary>Style Scheme</summary>
-      <description>The ID of a GtkSourceView Style Scheme used to color the text.</description>
+      <description>The ID of a CtkSourceView Style Scheme used to color the text.</description>
     </key>
     <key name="create-backup-copy" type="b">
       <default>false</default>

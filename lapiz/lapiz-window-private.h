@@ -43,27 +43,27 @@ G_BEGIN_DECLS
 
 struct _LapizWindowPrivate
 {
-	GtkWidget      *notebook;
+	CtkWidget      *notebook;
 
-	GtkWidget      *side_panel;
-	GtkWidget      *bottom_panel;
+	CtkWidget      *side_panel;
+	CtkWidget      *bottom_panel;
 
-	GtkWidget      *hpaned;
-	GtkWidget      *vpaned;
+	CtkWidget      *hpaned;
+	CtkWidget      *vpaned;
 
-	GtkWidget      *tab_width_combo;
-	GtkWidget      *language_combo;
+	CtkWidget      *tab_width_combo;
+	CtkWidget      *language_combo;
 
 	LapizMessageBus *message_bus;
 	PeasExtensionSet *extensions;
 
 	/* Widgets for fullscreen mode */
-	GtkWidget      *fullscreen_controls;
+	CtkWidget      *fullscreen_controls;
 	guint           fullscreen_animation_timeout_id;
 	gboolean        fullscreen_animation_enter;
 
 	/* statusbar and context ids for statusbar messages */
-	GtkWidget      *statusbar;
+	CtkWidget      *statusbar;
 	guint           generic_message_cid;
 	guint           tip_message_cid;
 	guint 		tab_width_id;
@@ -71,22 +71,22 @@ struct _LapizWindowPrivate
 	guint 		language_changed_id;
 
 	/* Menus & Toolbars */
-	GtkUIManager   *manager;
-	GtkActionGroup *action_group;
-	GtkActionGroup *always_sensitive_action_group;
-	GtkActionGroup *close_action_group;
-	GtkActionGroup *quit_action_group;
-	GtkActionGroup *panes_action_group;
-	GtkActionGroup *languages_action_group;
-	GtkActionGroup *documents_list_action_group;
+	CtkUIManager   *manager;
+	CtkActionGroup *action_group;
+	CtkActionGroup *always_sensitive_action_group;
+	CtkActionGroup *close_action_group;
+	CtkActionGroup *quit_action_group;
+	CtkActionGroup *panes_action_group;
+	CtkActionGroup *languages_action_group;
+	CtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
-	GtkWidget      *toolbar;
-	GtkWidget      *toolbar_recent_menu;
-	GtkWidget      *menubar;
+	CtkWidget      *toolbar;
+	CtkWidget      *toolbar_recent_menu;
+	CtkWidget      *menubar;
 	LapizToolbarSetting toolbar_style;
 
 	/* recent files */
-	GtkActionGroup *recents_action_group;
+	CtkActionGroup *recents_action_group;
 	guint           recents_menu_ui_id;
 	gulong          recents_handler_id;
 
@@ -106,7 +106,7 @@ struct _LapizWindowPrivate
 
 	gint            bottom_panel_item_removed_handler_id;
 
-	GtkWindowGroup *window_group;
+	CtkWindowGroup *window_group;
 
 	GFile          *default_location;
 

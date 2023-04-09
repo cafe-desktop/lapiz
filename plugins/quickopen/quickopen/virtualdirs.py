@@ -17,7 +17,7 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor,
 #  Boston, MA 02110-1301, USA.
 
-from gi.repository import Gio, Gtk
+from gi.repository import Gio, Ctk
 
 class VirtualDirectory(object):
     def __init__(self, name):
@@ -55,7 +55,7 @@ class RecentDocumentsDirectory(VirtualDirectory):
         self.fill()
 
     def fill(self):
-        manager = Gtk.RecentManager.get_default()
+        manager = Ctk.RecentManager.get_default()
 
         items = manager.get_items()
         items.sort(key=lambda a: a.get_visited(), reverse=True)

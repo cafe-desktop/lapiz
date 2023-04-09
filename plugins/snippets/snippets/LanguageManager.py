@@ -1,5 +1,5 @@
 import os
-from gi.repository import GtkSource
+from gi.repository import CtkSource
 
 from .Library import Library
 
@@ -15,7 +15,7 @@ def get_language_manager():
         for d in Library().systemdirs:
             dirs.append(os.path.join(d, 'lang'))
 
-        manager = GtkSource.LanguageManager()
+        manager = CtkSource.LanguageManager()
         manager.set_search_path(dirs + manager.get_search_path())
 
     return manager

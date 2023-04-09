@@ -36,9 +36,9 @@
 #include "lapiz-utils.h"
 #include "lapiz-debug.h"
 
-static GtkSourceLanguageManager *language_manager = NULL;
+static CtkSourceLanguageManager *language_manager = NULL;
 
-GtkSourceLanguageManager *
+CtkSourceLanguageManager *
 lapiz_get_language_manager (void)
 {
 	if (language_manager == NULL)
@@ -52,8 +52,8 @@ lapiz_get_language_manager (void)
 static gint
 language_compare (gconstpointer a, gconstpointer b)
 {
-	GtkSourceLanguage *lang_a = (GtkSourceLanguage *)a;
-	GtkSourceLanguage *lang_b = (GtkSourceLanguage *)b;
+	CtkSourceLanguage *lang_a = (CtkSourceLanguage *)a;
+	CtkSourceLanguage *lang_b = (CtkSourceLanguage *)b;
 	const gchar *name_a = ctk_source_language_get_name (lang_a);
 	const gchar *name_b = ctk_source_language_get_name (lang_b);
 
@@ -61,7 +61,7 @@ language_compare (gconstpointer a, gconstpointer b)
 }
 
 GSList *
-lapiz_language_manager_list_languages_sorted (GtkSourceLanguageManager *lm,
+lapiz_language_manager_list_languages_sorted (CtkSourceLanguageManager *lm,
 					      gboolean                  include_hidden)
 {
 	GSList *languages = NULL;
@@ -73,7 +73,7 @@ lapiz_language_manager_list_languages_sorted (GtkSourceLanguageManager *lm,
 
 	while (*ids != NULL)
 	{
-		GtkSourceLanguage *lang;
+		CtkSourceLanguage *lang;
 
 		lang = ctk_source_language_manager_get_language (lm, *ids);
 		g_return_val_if_fail (CTK_SOURCE_IS_LANGUAGE (lang), NULL);

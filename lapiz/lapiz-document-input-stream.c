@@ -29,16 +29,16 @@
 #include "lapiz-enum-types.h"
 
 /* NOTE: never use async methods on this stream, the stream is just
- * a wrapper around GtkTextBuffer api so that we can use GIO Stream
- * methods, but the undelying code operates on a GtkTextBuffer, so
+ * a wrapper around CtkTextBuffer api so that we can use GIO Stream
+ * methods, but the undelying code operates on a CtkTextBuffer, so
  * there is no I/O involved and should be accessed only by the main
  * thread */
 
 
 struct _LapizDocumentInputStreamPrivate
 {
-	GtkTextBuffer *buffer;
-	GtkTextMark   *pos;
+	CtkTextBuffer *buffer;
+	CtkTextMark   *pos;
 	gint           bytes_partial;
 
 	LapizDocumentNewlineType newline_type;
@@ -186,14 +186,14 @@ get_new_line_size (LapizDocumentInputStream *stream)
 
 /**
  * lapiz_document_input_stream_new:
- * @buffer: a #GtkTextBuffer
+ * @buffer: a #CtkTextBuffer
  *
  * Reads the data from @buffer.
  *
  * Returns: a new #GInputStream to read @buffer
  */
 GInputStream *
-lapiz_document_input_stream_new (GtkTextBuffer           *buffer,
+lapiz_document_input_stream_new (CtkTextBuffer           *buffer,
 				 LapizDocumentNewlineType type)
 {
 	LapizDocumentInputStream *stream;
@@ -230,7 +230,7 @@ lapiz_document_input_stream_tell (LapizDocumentInputStream *stream)
 	}
 	else
 	{
-		GtkTextIter iter;
+		CtkTextIter iter;
 
 		ctk_text_buffer_get_iter_at_mark (stream->priv->buffer,
 						  &iter,
@@ -272,7 +272,7 @@ read_line (LapizDocumentInputStream *stream,
 	   gchar                    *outbuf,
 	   gsize                     space_left)
 {
-	GtkTextIter start, next, end;
+	CtkTextIter start, next, end;
 	gchar *buf;
 	gint bytes; /* int since it's what iter_get_offset returns */
 	gsize bytes_to_write, newline_size, read;
@@ -390,7 +390,7 @@ lapiz_document_input_stream_read (GInputStream  *stream,
 				  GError       **error)
 {
 	LapizDocumentInputStream *dstream;
-	GtkTextIter iter;
+	CtkTextIter iter;
 	gssize space_left, read, n;
 
 	dstream = LAPIZ_DOCUMENT_INPUT_STREAM (stream);

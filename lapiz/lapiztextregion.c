@@ -1,8 +1,8 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
- * lapiztextregion.h - GtkTextMark based region utility functions
+ * lapiztextregion.h - CtkTextMark based region utility functions
  *
- * This file is part of the GtkSourceView widget
+ * This file is part of the CtkSourceView widget
  *
  * Copyright (C) 2002 Gustavo Giráldez <gustavo.giraldez@gmx.net>
  *
@@ -43,12 +43,12 @@
 #endif
 
 typedef struct _Subregion {
-	GtkTextMark *start;
-	GtkTextMark *end;
+	CtkTextMark *start;
+	CtkTextMark *end;
 } Subregion;
 
 struct _LapizTextRegion {
-	GtkTextBuffer *buffer;
+	CtkTextBuffer *buffer;
 	GList         *subregions;
 	guint32        time_stamp;
 };
@@ -73,7 +73,7 @@ struct _LapizTextRegionIteratorReal {
    subregion */
 static GList *
 find_nearest_subregion (LapizTextRegion     *region,
-			const GtkTextIter *iter,
+			const CtkTextIter *iter,
 			GList             *begin,
 			gboolean           leftmost,
 			gboolean           include_edges)
@@ -91,7 +91,7 @@ find_nearest_subregion (LapizTextRegion     *region,
 		retval = NULL;
 
 	for (l = begin; l; l = l->next) {
-		GtkTextIter sr_iter;
+		CtkTextIter sr_iter;
 		Subregion *sr = l->data;
 		gint cmp;
 
@@ -120,7 +120,7 @@ find_nearest_subregion (LapizTextRegion     *region,
    ---------------------------------------------------------------------- */
 
 LapizTextRegion *
-lapiz_text_region_new (GtkTextBuffer *buffer)
+lapiz_text_region_new (CtkTextBuffer *buffer)
 {
 	LapizTextRegion *region;
 
@@ -155,7 +155,7 @@ lapiz_text_region_destroy (LapizTextRegion *region, gboolean delete_marks)
 	g_free (region);
 }
 
-GtkTextBuffer *
+CtkTextBuffer *
 lapiz_text_region_get_buffer (LapizTextRegion *region)
 {
 	g_return_val_if_fail (region != NULL, NULL);
@@ -166,7 +166,7 @@ lapiz_text_region_get_buffer (LapizTextRegion *region)
 static void
 lapiz_text_region_clear_zero_length_subregions (LapizTextRegion *region)
 {
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 	GList *node;
 
 	g_return_if_fail (region != NULL);
@@ -194,11 +194,11 @@ lapiz_text_region_clear_zero_length_subregions (LapizTextRegion *region)
 
 void
 lapiz_text_region_add (LapizTextRegion     *region,
-		     const GtkTextIter *_start,
-		     const GtkTextIter *_end)
+		     const CtkTextIter *_start,
+		     const CtkTextIter *_end)
 {
 	GList *start_node, *end_node;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	g_return_if_fail (region != NULL && _start != NULL && _end != NULL);
 
@@ -242,7 +242,7 @@ lapiz_text_region_add (LapizTextRegion     *region,
 		}
 	}
 	else {
-		GtkTextIter iter;
+		CtkTextIter iter;
 		Subregion *sr = start_node->data;
 		if (start_node != end_node) {
 			/* we need to merge some subregions */
@@ -279,15 +279,15 @@ lapiz_text_region_add (LapizTextRegion     *region,
 
 void
 lapiz_text_region_subtract (LapizTextRegion     *region,
-			  const GtkTextIter *_start,
-			  const GtkTextIter *_end)
+			  const CtkTextIter *_start,
+			  const CtkTextIter *_end)
 {
 	GList *start_node, *end_node, *node;
-	GtkTextIter sr_start_iter, sr_end_iter;
+	CtkTextIter sr_start_iter, sr_end_iter;
 	gboolean done;
 	gboolean start_is_outside, end_is_outside;
 	Subregion *sr;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	g_return_if_fail (region != NULL && _start != NULL && _end != NULL);
 
@@ -413,8 +413,8 @@ lapiz_text_region_subregions (LapizTextRegion *region)
 gboolean
 lapiz_text_region_nth_subregion (LapizTextRegion *region,
 			       guint          subregion,
-			       GtkTextIter   *start,
-			       GtkTextIter   *end)
+			       CtkTextIter   *start,
+			       CtkTextIter   *end)
 {
 	Subregion *sr;
 
@@ -434,15 +434,15 @@ lapiz_text_region_nth_subregion (LapizTextRegion *region,
 
 LapizTextRegion *
 lapiz_text_region_intersect (LapizTextRegion     *region,
-			   const GtkTextIter *_start,
-			   const GtkTextIter *_end)
+			   const CtkTextIter *_start,
+			   const CtkTextIter *_end)
 {
 	GList *start_node, *end_node, *node;
-	GtkTextIter sr_start_iter, sr_end_iter;
+	CtkTextIter sr_start_iter, sr_end_iter;
 	Subregion *sr, *new_sr;
 	gboolean done;
 	LapizTextRegion *new_region;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	g_return_val_if_fail (region != NULL && _start != NULL && _end != NULL, NULL);
 
@@ -603,8 +603,8 @@ lapiz_text_region_iterator_next (LapizTextRegionIterator *iter)
 
 void
 lapiz_text_region_iterator_get_subregion (LapizTextRegionIterator *iter,
-					GtkTextIter           *start,
-					GtkTextIter           *end)
+					CtkTextIter           *start,
+					CtkTextIter           *end)
 {
 	LapizTextRegionIteratorReal *real;
 	Subregion *sr;
@@ -635,7 +635,7 @@ lapiz_text_region_debug_print (LapizTextRegion *region)
 	l = region->subregions;
 	while (l) {
 		Subregion *sr = l->data;
-		GtkTextIter iter1, iter2;
+		CtkTextIter iter1, iter2;
 		ctk_text_buffer_get_iter_at_mark (region->buffer, &iter1, sr->start);
 		ctk_text_buffer_get_iter_at_mark (region->buffer, &iter2, sr->end);
 		g_print ("%d-%d ", ctk_text_iter_get_offset (&iter1),

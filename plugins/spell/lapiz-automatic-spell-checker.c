@@ -47,12 +47,12 @@ struct _LapizAutomaticSpellChecker {
 	LapizDocument		*doc;
 	GSList 			*views;
 
-	GtkTextMark 		*mark_insert_start;
-	GtkTextMark		*mark_insert_end;
+	CtkTextMark 		*mark_insert_start;
+	CtkTextMark		*mark_insert_end;
 	gboolean 		 deferred_check;
 
-	GtkTextTag 		*tag_highlight;
-	GtkTextMark		*mark_click;
+	CtkTextTag 		*tag_highlight;
+	CtkTextMark		*mark_click;
 
        	LapizSpellChecker	*spell_checker;
 };
@@ -69,7 +69,7 @@ view_destroy (LapizView *view, LapizAutomaticSpellChecker *spell)
 }
 
 static void
-check_word (LapizAutomaticSpellChecker *spell, GtkTextIter *start, GtkTextIter *end)
+check_word (LapizAutomaticSpellChecker *spell, CtkTextIter *start, CtkTextIter *end)
 {
 	gchar *word;
 
@@ -97,18 +97,18 @@ check_word (LapizAutomaticSpellChecker *spell, GtkTextIter *start, GtkTextIter *
 
 static void
 check_range (LapizAutomaticSpellChecker *spell,
-	     GtkTextIter                 start,
-	     GtkTextIter                 end,
+	     CtkTextIter                 start,
+	     CtkTextIter                 end,
 	     gboolean                    force_all)
 {
 	/* we need to "split" on word boundaries.
 	 * luckily, Pango knows what "words" are
 	 * so we don't have to figure it out. */
 
-	GtkTextIter wstart;
-	GtkTextIter wend;
-	GtkTextIter cursor;
-	GtkTextIter precursor;
+	CtkTextIter wstart;
+	CtkTextIter wend;
+	CtkTextIter cursor;
+	CtkTextIter precursor;
   	gboolean    highlight;
 
 	/*
@@ -211,7 +211,7 @@ static void
 check_deferred_range (LapizAutomaticSpellChecker *spell,
 		      gboolean                    force_all)
 {
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	ctk_text_buffer_get_iter_at_mark (CTK_TEXT_BUFFER (spell->doc),
 					  &start,
@@ -231,17 +231,17 @@ check_deferred_range (LapizAutomaticSpellChecker *spell,
  * this may be overkill for the common case (inserting one character). */
 
 static void
-insert_text_before (GtkTextBuffer *buffer, GtkTextIter *iter,
+insert_text_before (CtkTextBuffer *buffer, CtkTextIter *iter,
 		gchar *text, gint len, LapizAutomaticSpellChecker *spell)
 {
 	ctk_text_buffer_move_mark (buffer, spell->mark_insert_start, iter);
 }
 
 static void
-insert_text_after (GtkTextBuffer *buffer, GtkTextIter *iter,
+insert_text_after (CtkTextBuffer *buffer, CtkTextIter *iter,
                   gchar *text, gint len, LapizAutomaticSpellChecker *spell)
 {
-	GtkTextIter start;
+	CtkTextIter start;
 
 	/* we need to check a range of text. */
 	ctk_text_buffer_get_iter_at_mark (buffer, &start, spell->mark_insert_start);
@@ -259,16 +259,16 @@ insert_text_after (GtkTextBuffer *buffer, GtkTextIter *iter,
  */
 
 static void
-delete_range_after (GtkTextBuffer *buffer, GtkTextIter *start, GtkTextIter *end,
+delete_range_after (CtkTextBuffer *buffer, CtkTextIter *start, CtkTextIter *end,
 		LapizAutomaticSpellChecker *spell)
 {
 	check_range (spell, *start, *end, FALSE);
 }
 
 static void
-mark_set (GtkTextBuffer              *buffer,
-	  GtkTextIter                *iter,
-	  GtkTextMark                *mark,
+mark_set (CtkTextBuffer              *buffer,
+	  CtkTextIter                *iter,
+	  CtkTextMark                *mark,
 	  LapizAutomaticSpellChecker *spell)
 {
 	/* if the cursor has moved and there is a deferred check so handle it now */
@@ -277,10 +277,10 @@ mark_set (GtkTextBuffer              *buffer,
 }
 
 static void
-get_word_extents_from_mark (GtkTextBuffer *buffer,
-			    GtkTextIter   *start,
-			    GtkTextIter   *end,
-			    GtkTextMark   *mark)
+get_word_extents_from_mark (CtkTextBuffer *buffer,
+			    CtkTextIter   *start,
+			    CtkTextIter   *end,
+			    CtkTextMark   *mark)
 {
 	ctk_text_buffer_get_iter_at_mark(buffer, start, mark);
 
@@ -296,8 +296,8 @@ get_word_extents_from_mark (GtkTextBuffer *buffer,
 static void
 remove_tag_to_word (LapizAutomaticSpellChecker *spell, const gchar *word)
 {
-	GtkTextIter iter;
-	GtkTextIter match_start, match_end;
+	CtkTextIter iter;
+	CtkTextIter match_start, match_end;
 
 	gboolean found;
 
@@ -331,11 +331,11 @@ remove_tag_to_word (LapizAutomaticSpellChecker *spell, const gchar *word)
 }
 
 static void
-add_to_dictionary (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
+add_to_dictionary (CtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 {
 	gchar *word;
 
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	get_word_extents_from_mark (CTK_TEXT_BUFFER (spell->doc), &start, &end, spell->mark_click);
 
@@ -350,11 +350,11 @@ add_to_dictionary (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 }
 
 static void
-ignore_all (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
+ignore_all (CtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 {
 	gchar *word;
 
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	get_word_extents_from_mark (CTK_TEXT_BUFFER (spell->doc), &start, &end, spell->mark_click);
 
@@ -369,12 +369,12 @@ ignore_all (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 }
 
 static void
-replace_word (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
+replace_word (CtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 {
 	gchar *oldword;
 	const gchar *newword;
 
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	get_word_extents_from_mark (CTK_TEXT_BUFFER (spell->doc), &start, &end, spell->mark_click);
 
@@ -397,11 +397,11 @@ replace_word (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 	g_free (oldword);
 }
 
-static GtkWidget *
+static CtkWidget *
 build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 {
-	GtkWidget *topmenu, *menu;
-	GtkWidget *mi;
+	CtkWidget *topmenu, *menu;
+	CtkWidget *mi;
 	GSList *suggestions;
 	GSList *list;
 	gchar *label_text;
@@ -415,7 +415,7 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 	if (suggestions == NULL)
 	{
 		/* no suggestions.  put something in the menu anyway... */
-		GtkWidget *label;
+		CtkWidget *label;
 		/* Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word */
 		label = ctk_label_new (_("(no suggested words)"));
 
@@ -432,7 +432,7 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 		/* build a set of menus with suggestions. */
 		while (suggestions != NULL)
 		{
-			GtkWidget *label;
+			CtkWidget *label;
 
 			if (count == 10)
 			{
@@ -529,10 +529,10 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 }
 
 static void
-populate_popup (GtkTextView *textview, GtkMenu *menu, LapizAutomaticSpellChecker *spell)
+populate_popup (CtkTextView *textview, CtkMenu *menu, LapizAutomaticSpellChecker *spell)
 {
-	GtkWidget *img, *mi;
-	GtkTextIter start, end;
+	CtkWidget *img, *mi;
+	CtkTextIter start, end;
 	char *word;
 
 	/* we need to figure out if they picked a misspelled word. */
@@ -565,7 +565,7 @@ populate_popup (GtkTextView *textview, GtkMenu *menu, LapizAutomaticSpellChecker
 void
 lapiz_automatic_spell_checker_recheck_all (LapizAutomaticSpellChecker *spell)
 {
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	g_return_if_fail (spell != NULL);
 
@@ -612,16 +612,16 @@ clear_session_cb (LapizSpellChecker          *checker,
  * since that prevents the use of edit functions on the context menu.
  */
 static gboolean
-button_press_event (GtkTextView *view,
+button_press_event (CtkTextView *view,
 		    GdkEventButton *event,
 		    LapizAutomaticSpellChecker *spell)
 {
 	if (event->button == 3)
 	{
 		gint x, y;
-		GtkTextIter iter;
+		CtkTextIter iter;
 
-		GtkTextBuffer *buffer = ctk_text_view_get_buffer (view);
+		CtkTextBuffer *buffer = ctk_text_view_get_buffer (view);
 
 		/* handle deferred check if it exists */
   	        if (spell->deferred_check)
@@ -645,10 +645,10 @@ button_press_event (GtkTextView *view,
  * will contain the wrong set of suggestions.
  */
 static gboolean
-popup_menu_event (GtkTextView *view, LapizAutomaticSpellChecker *spell)
+popup_menu_event (CtkTextView *view, LapizAutomaticSpellChecker *spell)
 {
-	GtkTextIter iter;
-	GtkTextBuffer *buffer;
+	CtkTextIter iter;
+	CtkTextBuffer *buffer;
 
 	buffer = ctk_text_view_get_buffer (view);
 
@@ -664,7 +664,7 @@ popup_menu_event (GtkTextView *view, LapizAutomaticSpellChecker *spell)
 }
 
 static void
-tag_table_changed (GtkTextTagTable            *table,
+tag_table_changed (CtkTextTagTable            *table,
 		   LapizAutomaticSpellChecker *spell)
 {
 	g_return_if_fail (spell->tag_highlight !=  NULL);
@@ -674,16 +674,16 @@ tag_table_changed (GtkTextTagTable            *table,
 }
 
 static void
-tag_added_or_removed (GtkTextTagTable            *table,
-		      GtkTextTag                 *tag,
+tag_added_or_removed (CtkTextTagTable            *table,
+		      CtkTextTag                 *tag,
 		      LapizAutomaticSpellChecker *spell)
 {
 	tag_table_changed (table, spell);
 }
 
 static void
-tag_changed (GtkTextTagTable            *table,
-	     GtkTextTag                 *tag,
+tag_changed (CtkTextTagTable            *table,
+	     CtkTextTag                 *tag,
 	     gboolean                    size_changed,
 	     LapizAutomaticSpellChecker *spell)
 {
@@ -691,9 +691,9 @@ tag_changed (GtkTextTagTable            *table,
 }
 
 static void
-highlight_updated (GtkSourceBuffer            *buffer,
-                   GtkTextIter                *start,
-                   GtkTextIter                *end,
+highlight_updated (CtkSourceBuffer            *buffer,
+                   CtkTextIter                *start,
+                   CtkTextIter                *end,
                    LapizAutomaticSpellChecker *spell)
 {
 	check_range (spell, *start, *end, FALSE);
@@ -711,8 +711,8 @@ lapiz_automatic_spell_checker_new (LapizDocument     *doc,
 				   LapizSpellChecker *checker)
 {
 	LapizAutomaticSpellChecker *spell;
-	GtkTextTagTable *tag_table;
-	GtkTextIter start, end;
+	CtkTextTagTable *tag_table;
+	CtkTextIter start, end;
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (checker), NULL);
@@ -896,8 +896,8 @@ lapiz_automatic_spell_checker_free (LapizAutomaticSpellChecker *spell)
 static void
 lapiz_automatic_spell_checker_free_internal (LapizAutomaticSpellChecker *spell)
 {
-	GtkTextTagTable *table;
-	GtkTextIter start, end;
+	CtkTextTagTable *table;
+	CtkTextIter start, end;
 	GSList *list;
 
 	g_return_if_fail (spell != NULL);

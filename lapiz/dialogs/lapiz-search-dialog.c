@@ -56,22 +56,22 @@ struct _LapizSearchDialogPrivate
 {
 	gboolean   show_replace;
 
-	GtkWidget *grid;
-	GtkWidget *search_label;
-	GtkWidget *search_entry;
-	GtkWidget *search_text_entry;
-	GtkWidget *replace_label;
-	GtkWidget *replace_entry;
-	GtkWidget *replace_text_entry;
-	GtkWidget *match_case_checkbutton;
-	GtkWidget *match_regex_checkbutton;
-	GtkWidget *entire_word_checkbutton;
-	GtkWidget *backwards_checkbutton;
-	GtkWidget *wrap_around_checkbutton;
-	GtkWidget *parse_escapes_checkbutton;
-	GtkWidget *find_button;
-	GtkWidget *replace_button;
-	GtkWidget *replace_all_button;
+	CtkWidget *grid;
+	CtkWidget *search_label;
+	CtkWidget *search_entry;
+	CtkWidget *search_text_entry;
+	CtkWidget *replace_label;
+	CtkWidget *replace_entry;
+	CtkWidget *replace_text_entry;
+	CtkWidget *match_case_checkbutton;
+	CtkWidget *match_regex_checkbutton;
+	CtkWidget *entire_word_checkbutton;
+	CtkWidget *backwards_checkbutton;
+	CtkWidget *wrap_around_checkbutton;
+	CtkWidget *parse_escapes_checkbutton;
+	CtkWidget *find_button;
+	CtkWidget *replace_button;
+	CtkWidget *replace_all_button;
 
 	gboolean   ui_error;
 };
@@ -146,7 +146,7 @@ static void
 lapiz_search_dialog_class_init (LapizSearchDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkBindingSet *binding_set;
+	CtkBindingSet *binding_set;
 
 	object_class->set_property = lapiz_search_dialog_set_property;
 	object_class->get_property = lapiz_search_dialog_get_property;
@@ -179,7 +179,7 @@ lapiz_search_dialog_class_init (LapizSearchDialogClass *klass)
 }
 
 static void
-insert_text_handler (GtkEditable *editable,
+insert_text_handler (CtkEditable *editable,
 		     const gchar *text,
 		     gint         length,
 		     gint        *position,
@@ -215,7 +215,7 @@ insert_text_handler (GtkEditable *editable,
 }
 
 static void
-search_text_entry_changed (GtkEditable       *editable,
+search_text_entry_changed (CtkEditable       *editable,
 			   LapizSearchDialog *dialog)
 {
 	const gchar *search_string;
@@ -310,8 +310,8 @@ show_replace_widgets (LapizSearchDialog *dlg,
 static void
 lapiz_search_dialog_init (LapizSearchDialog *dlg)
 {
-	GtkWidget *content;
-	GtkWidget *error_widget;
+	CtkWidget *content;
+	CtkWidget *error_widget;
 	gboolean ret;
 	gchar *file;
 	gchar *root_objects[] = {
@@ -462,8 +462,8 @@ lapiz_search_dialog_init (LapizSearchDialog *dlg)
 			  NULL);
 }
 
-GtkWidget *
-lapiz_search_dialog_new (GtkWindow *parent,
+CtkWidget *
+lapiz_search_dialog_new (CtkWindow *parent,
 			 gboolean   show_replace)
 {
 	LapizSearchDialog *dlg;

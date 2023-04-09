@@ -35,32 +35,32 @@
 
 G_BEGIN_DECLS
 
-GtkWidget	*lapiz_io_loading_error_message_area_new		 (const gchar         *uri,
+CtkWidget	*lapiz_io_loading_error_message_area_new		 (const gchar         *uri,
 									  const LapizEncoding *encoding,
 									  const GError        *error);
 
-GtkWidget	*lapiz_unrecoverable_reverting_error_message_area_new	 (const gchar         *uri,
+CtkWidget	*lapiz_unrecoverable_reverting_error_message_area_new	 (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*lapiz_conversion_error_while_saving_message_area_new	 (const gchar         *uri,
+CtkWidget	*lapiz_conversion_error_while_saving_message_area_new	 (const gchar         *uri,
 									  const LapizEncoding *encoding,
 									  const GError        *error);
 
 const LapizEncoding
-		*lapiz_conversion_error_message_area_get_encoding	 (GtkWidget           *message_area);
+		*lapiz_conversion_error_message_area_get_encoding	 (CtkWidget           *message_area);
 
-GtkWidget	*lapiz_file_already_open_warning_message_area_new	 (const gchar         *uri);
+CtkWidget	*lapiz_file_already_open_warning_message_area_new	 (const gchar         *uri);
 
-GtkWidget	*lapiz_externally_modified_saving_error_message_area_new (const gchar         *uri,
+CtkWidget	*lapiz_externally_modified_saving_error_message_area_new (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*lapiz_no_backup_saving_error_message_area_new		 (const gchar         *uri,
+CtkWidget	*lapiz_no_backup_saving_error_message_area_new		 (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*lapiz_unrecoverable_saving_error_message_area_new	 (const gchar         *uri,
+CtkWidget	*lapiz_unrecoverable_saving_error_message_area_new	 (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*lapiz_externally_modified_message_area_new		 (const gchar         *uri,
+CtkWidget	*lapiz_externally_modified_message_area_new		 (const gchar         *uri,
 									  gboolean             document_modified);
 
 G_END_DECLS

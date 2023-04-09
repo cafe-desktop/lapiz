@@ -72,7 +72,7 @@ msgid "Style Scheme"
 msgstr "Uslub Sxemasi"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgid "The ID of a CtkSourceView Style Scheme used to color the text."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:36

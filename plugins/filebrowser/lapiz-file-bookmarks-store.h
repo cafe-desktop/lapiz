@@ -66,14 +66,14 @@ enum
 
 struct _LapizFileBookmarksStore
 {
-	GtkTreeStore parent;
+	CtkTreeStore parent;
 
 	LapizFileBookmarksStorePrivate *priv;
 };
 
 struct _LapizFileBookmarksStoreClass
 {
-	GtkTreeStoreClass parent_class;
+	CtkTreeStoreClass parent_class;
 };
 
 GType lapiz_file_bookmarks_store_get_type               (void) G_GNUC_CONST;
@@ -81,7 +81,7 @@ void _lapiz_file_bookmarks_store_register_type          (GTypeModule * module);
 
 LapizFileBookmarksStore *lapiz_file_bookmarks_store_new (void);
 gchar *lapiz_file_bookmarks_store_get_uri               (LapizFileBookmarksStore * model,
-					                 GtkTreeIter * iter);
+					                 CtkTreeIter * iter);
 void lapiz_file_bookmarks_store_refresh                 (LapizFileBookmarksStore * model);
 
 G_END_DECLS

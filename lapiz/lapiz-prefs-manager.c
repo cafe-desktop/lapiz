@@ -152,7 +152,7 @@ lapiz_prefs_manager_ ## name ## _can_set (void)				\
 LapizPrefsManager *lapiz_prefs_manager = NULL;
 
 
-static GtkWrapMode 	 get_wrap_mode_from_string 		(const gchar* str);
+static CtkWrapMode 	 get_wrap_mode_from_string 		(const gchar* str);
 
 static gboolean		 lapiz_prefs_manager_get_bool		(const gchar* key);
 
@@ -318,10 +318,10 @@ DEFINE_INT_PREF (auto_save_interval,
 DEFINE_INT_PREF (undo_actions_limit,
 		 GPM_UNDO_ACTIONS_LIMIT)
 
-static GtkWrapMode
+static CtkWrapMode
 get_wrap_mode_from_string (const gchar* str)
 {
-	GtkWrapMode res;
+	CtkWrapMode res;
 
 	g_return_val_if_fail (str != NULL, CTK_WRAP_WORD);
 
@@ -339,11 +339,11 @@ get_wrap_mode_from_string (const gchar* str)
 }
 
 /* Wrap mode */
-GtkWrapMode
+CtkWrapMode
 lapiz_prefs_manager_get_wrap_mode (void)
 {
 	gchar *str;
-	GtkWrapMode res;
+	CtkWrapMode res;
 
 	lapiz_debug (DEBUG_PREFS);
 
@@ -357,7 +357,7 @@ lapiz_prefs_manager_get_wrap_mode (void)
 }
 
 void
-lapiz_prefs_manager_set_wrap_mode (GtkWrapMode wp)
+lapiz_prefs_manager_set_wrap_mode (CtkWrapMode wp)
 {
 	const gchar * str;
 
@@ -502,11 +502,11 @@ DEFINE_BOOL_PREF (print_header,
 
 
 /* Print Wrap mode */
-GtkWrapMode
+CtkWrapMode
 lapiz_prefs_manager_get_print_wrap_mode (void)
 {
 	gchar *str;
-	GtkWrapMode res;
+	CtkWrapMode res;
 
 	lapiz_debug (DEBUG_PREFS);
 
@@ -528,7 +528,7 @@ lapiz_prefs_manager_get_print_wrap_mode (void)
 }
 
 void
-lapiz_prefs_manager_set_print_wrap_mode (GtkWrapMode pwp)
+lapiz_prefs_manager_set_print_wrap_mode (CtkWrapMode pwp)
 {
 	const gchar *str;
 
@@ -818,10 +818,10 @@ DEFINE_BOOL_PREF (display_right_margin,
 DEFINE_INT_PREF (right_margin_position,
 		 GPM_RIGHT_MARGIN_POSITION)
 
-static GtkSourceSmartHomeEndType
+static CtkSourceSmartHomeEndType
 get_smart_home_end_from_string (const gchar *str)
 {
-	GtkSourceSmartHomeEndType res;
+	CtkSourceSmartHomeEndType res;
 
 	g_return_val_if_fail (str != NULL, CTK_SOURCE_SMART_HOME_END_AFTER);
 
@@ -837,11 +837,11 @@ get_smart_home_end_from_string (const gchar *str)
 	return res;
 }
 
-GtkSourceSmartHomeEndType
+CtkSourceSmartHomeEndType
 lapiz_prefs_manager_get_smart_home_end (void)
 {
 	gchar *str;
-	GtkSourceSmartHomeEndType res;
+	CtkSourceSmartHomeEndType res;
 
 	lapiz_debug (DEBUG_PREFS);
 
@@ -855,7 +855,7 @@ lapiz_prefs_manager_get_smart_home_end (void)
 }
 
 void
-lapiz_prefs_manager_set_smart_home_end (GtkSourceSmartHomeEndType smart_he)
+lapiz_prefs_manager_set_smart_home_end (CtkSourceSmartHomeEndType smart_he)
 {
 	const gchar *str;
 

@@ -55,9 +55,9 @@ struct _LapizTaglistPluginPanelPrivate
 {
 	LapizWindow  *window;
 
-	GtkWidget *tag_groups_combo;
-	GtkWidget *tags_list;
-	GtkWidget *preview;
+	CtkWidget *tag_groups_combo;
+	CtkWidget *tags_list;
+	CtkWidget *preview;
 
 	TagGroup *selected_tag_group;
 
@@ -169,9 +169,9 @@ insert_tag (LapizTaglistPluginPanel *panel,
 	    gboolean                 grab_focus)
 {
 	LapizView *view;
-	GtkTextBuffer *buffer;
-	GtkTextIter start, end;
-	GtkTextIter cursor;
+	CtkTextBuffer *buffer;
+	CtkTextIter start, end;
+	CtkTextIter cursor;
 	gboolean sel = FALSE;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -243,13 +243,13 @@ insert_tag (LapizTaglistPluginPanel *panel,
 }
 
 static void
-tag_list_row_activated_cb (GtkTreeView             *tag_list,
-			   GtkTreePath             *path,
-			   GtkTreeViewColumn       *column,
+tag_list_row_activated_cb (CtkTreeView             *tag_list,
+			   CtkTreePath             *path,
+			   CtkTreeViewColumn       *column,
 			   LapizTaglistPluginPanel *panel)
 {
-	GtkTreeIter iter;
-	GtkTreeModel *model;
+	CtkTreeIter iter;
+	CtkTreeModel *model;
 	gint index;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -269,7 +269,7 @@ tag_list_row_activated_cb (GtkTreeView             *tag_list,
 }
 
 static gboolean
-tag_list_key_press_event_cb (GtkTreeView             *tag_list,
+tag_list_key_press_event_cb (CtkTreeView             *tag_list,
 			     GdkEventKey             *event,
 			     LapizTaglistPluginPanel *panel)
 {
@@ -279,9 +279,9 @@ tag_list_key_press_event_cb (GtkTreeView             *tag_list,
 
 	if (event->keyval == GDK_KEY_Return)
 	{
-		GtkTreeModel *model;
-		GtkTreeSelection *selection;
-		GtkTreeIter iter;
+		CtkTreeModel *model;
+		CtkTreeSelection *selection;
+		CtkTreeIter iter;
 		gint index;
 
 		lapiz_debug_message (DEBUG_PLUGINS, "RETURN Pressed");
@@ -307,12 +307,12 @@ tag_list_key_press_event_cb (GtkTreeView             *tag_list,
 	return FALSE;
 }
 
-static GtkTreeModel*
+static CtkTreeModel*
 create_model (LapizTaglistPluginPanel *panel)
 {
 	gint i = 0;
-	GtkListStore *store;
-	GtkTreeIter iter;
+	CtkListStore *store;
+	CtkTreeIter iter;
 	GList *list;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -350,7 +350,7 @@ create_model (LapizTaglistPluginPanel *panel)
 static void
 populate_tags_list (LapizTaglistPluginPanel *panel)
 {
-	GtkTreeModel* model;
+	CtkTreeModel* model;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -384,8 +384,8 @@ static void
 populate_tag_groups_combo (LapizTaglistPluginPanel *panel)
 {
 	GList *l;
-	GtkComboBox *combo;
-	GtkComboBoxText *combotext;
+	CtkComboBox *combo;
+	CtkComboBoxText *combotext;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -407,7 +407,7 @@ populate_tag_groups_combo (LapizTaglistPluginPanel *panel)
 }
 
 static void
-selected_group_changed (GtkComboBox             *combo,
+selected_group_changed (CtkComboBox             *combo,
 			LapizTaglistPluginPanel *panel)
 {
 	gchar* group_name;
@@ -487,12 +487,12 @@ update_preview (LapizTaglistPluginPanel *panel,
 }
 
 static void
-tag_list_cursor_changed_cb (GtkTreeView *tag_list,
+tag_list_cursor_changed_cb (CtkTreeView *tag_list,
 			    gpointer     data)
 {
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeSelection *selection;
+	CtkTreeIter iter;
 	gint index;
 
 	LapizTaglistPluginPanel *panel = (LapizTaglistPluginPanel *)data;
@@ -513,16 +513,16 @@ tag_list_cursor_changed_cb (GtkTreeView *tag_list,
 }
 
 static gboolean
-tags_list_query_tooltip_cb (GtkWidget               *widget,
+tags_list_query_tooltip_cb (CtkWidget               *widget,
 			    gint                     x,
 			    gint                     y,
 			    gboolean                 keyboard_tip,
-			    GtkTooltip              *tooltip,
+			    CtkTooltip              *tooltip,
 			    LapizTaglistPluginPanel *panel)
 {
-	GtkTreeIter iter;
-	GtkTreeModel *model;
-	GtkTreePath *path = NULL;
+	CtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreePath *path = NULL;
 	gint index;
 	Tag *tag;
 
@@ -580,7 +580,7 @@ tags_list_query_tooltip_cb (GtkWidget               *widget,
 }
 
 static gboolean
-draw_event_cb (GtkWidget      *panel,
+draw_event_cb (CtkWidget      *panel,
                cairo_t        *cr,
                gpointer        user_data)
 {
@@ -602,7 +602,7 @@ draw_event_cb (GtkWidget      *panel,
 }
 
 static void
-set_combo_tooltip (GtkWidget *widget,
+set_combo_tooltip (CtkWidget *widget,
 		   gpointer   data)
 {
 	if (CTK_IS_BUTTON (widget))
@@ -613,7 +613,7 @@ set_combo_tooltip (GtkWidget *widget,
 }
 
 static void
-realize_tag_groups_combo (GtkWidget *combo,
+realize_tag_groups_combo (CtkWidget *combo,
 			  gpointer   data)
 {
 	ctk_container_forall (CTK_CONTAINER (combo),
@@ -624,8 +624,8 @@ realize_tag_groups_combo (GtkWidget *combo,
 static void
 add_preview_widget (LapizTaglistPluginPanel *panel)
 {
-	GtkWidget *expander;
-	GtkWidget *frame;
+	CtkWidget *expander;
+	CtkWidget *frame;
 
 	expander = ctk_expander_new_with_mnemonic (_("_Preview"));
 
@@ -662,9 +662,9 @@ add_preview_widget (LapizTaglistPluginPanel *panel)
 static void
 lapiz_taglist_plugin_panel_init (LapizTaglistPluginPanel *panel)
 {
-	GtkWidget *sw;
-	GtkTreeViewColumn *column;
-	GtkCellRenderer *cell;
+	CtkWidget *sw;
+	CtkTreeViewColumn *column;
+	CtkCellRenderer *cell;
 	GList *focus_chain = NULL;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -770,7 +770,7 @@ lapiz_taglist_plugin_panel_init (LapizTaglistPluginPanel *panel)
 			  NULL);
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_taglist_plugin_panel_new (LapizWindow *window,
 				const gchar *data_dir)
 {

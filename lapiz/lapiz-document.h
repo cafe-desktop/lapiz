@@ -97,7 +97,7 @@ typedef struct _LapizDocument           LapizDocument;
 
 struct _LapizDocument
 {
-	GtkSourceBuffer buffer;
+	CtkSourceBuffer buffer;
 
 	/*< private > */
 	LapizDocumentPrivate *priv;
@@ -110,7 +110,7 @@ typedef struct _LapizDocumentClass 	LapizDocumentClass;
 
 struct _LapizDocumentClass
 {
-	GtkSourceBufferClass parent_class;
+	CtkSourceBufferClass parent_class;
 
 	/* Signals */ // CHECK: ancora da rivedere
 
@@ -145,8 +145,8 @@ struct _LapizDocumentClass
 
 	void (* search_highlight_updated)
 					(LapizDocument    *document,
-					 GtkTextIter      *start,
-					 GtkTextIter      *end);
+					 CtkTextIter      *start,
+					 CtkTextIter      *end);
 };
 
 
@@ -201,7 +201,7 @@ void		 lapiz_document_load 		(LapizDocument       *doc,
 						 gboolean             create);
 
 gboolean	 lapiz_document_insert_file	(LapizDocument       *doc,
-						 GtkTextIter         *iter,
+						 CtkTextIter         *iter,
 						 const gchar         *uri,
 						 const LapizEncoding *encoding);
 
@@ -247,16 +247,16 @@ gboolean	 lapiz_document_get_can_search_again
 						(LapizDocument       *doc);
 
 gboolean	 lapiz_document_search_forward	(LapizDocument       *doc,
-						 const GtkTextIter   *start,
-						 const GtkTextIter   *end,
-						 GtkTextIter         *match_start,
-						 GtkTextIter         *match_end);
+						 const CtkTextIter   *start,
+						 const CtkTextIter   *end,
+						 CtkTextIter         *match_start,
+						 CtkTextIter         *match_end);
 
 gboolean	 lapiz_document_search_backward	(LapizDocument       *doc,
-						 const GtkTextIter   *start,
-						 const GtkTextIter   *end,
-						 GtkTextIter         *match_start,
-						 GtkTextIter         *match_end);
+						 const CtkTextIter   *start,
+						 const CtkTextIter   *end,
+						 CtkTextIter         *match_start,
+						 CtkTextIter         *match_end);
 
 gint		 lapiz_document_replace_all 	(LapizDocument       *doc,
 				            	 const gchar         *find,
@@ -264,8 +264,8 @@ gint		 lapiz_document_replace_all 	(LapizDocument       *doc,
 					    	 guint                flags);
 
 void 		 lapiz_document_set_language 	(LapizDocument       *doc,
-						 GtkSourceLanguage   *lang);
-GtkSourceLanguage
+						 CtkSourceLanguage   *lang);
+CtkSourceLanguage
 		*lapiz_document_get_language 	(LapizDocument       *doc);
 
 const LapizEncoding
@@ -305,8 +305,8 @@ gboolean	_lapiz_document_check_externally_modified
 						(LapizDocument       *doc);
 
 void		_lapiz_document_search_region   (LapizDocument       *doc,
-						 const GtkTextIter   *start,
-						 const GtkTextIter   *end);
+						 const CtkTextIter   *start,
+						 const CtkTextIter   *end);
 
 /* Search macros */
 #define LAPIZ_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & LAPIZ_SEARCH_DONT_SET_FLAGS) != 0)

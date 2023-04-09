@@ -58,7 +58,7 @@ typedef struct _LapizPreferencesDialog LapizPreferencesDialog;
 
 struct _LapizPreferencesDialog
 {
-	GtkDialog dialog;
+	CtkDialog dialog;
 
 	/*< private > */
 	LapizPreferencesDialogPrivate *priv;
@@ -71,7 +71,7 @@ typedef struct _LapizPreferencesDialogClass LapizPreferencesDialogClass;
 
 struct _LapizPreferencesDialogClass
 {
-	GtkDialogClass parent_class;
+	CtkDialogClass parent_class;
 };
 
 /*

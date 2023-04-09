@@ -54,7 +54,7 @@ process_icon_pixbuf (GdkPixbuf * pixbuf,
 
 GdkPixbuf *
 lapiz_file_browser_utils_pixbuf_from_theme (gchar const * name,
-                                            GtkIconSize size)
+                                            CtkIconSize size)
 {
 	gint width;
 	GError *error = NULL;
@@ -75,11 +75,11 @@ lapiz_file_browser_utils_pixbuf_from_theme (gchar const * name,
 
 GdkPixbuf *
 lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
-                                           GtkIconSize size)
+                                           CtkIconSize size)
 {
 	GdkPixbuf * ret = NULL;
-	GtkIconTheme *theme;
-	GtkIconInfo *info;
+	CtkIconTheme *theme;
+	CtkIconInfo *info;
 	gint width;
 
 	if (!icon)
@@ -104,7 +104,7 @@ lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
 
 GdkPixbuf *
 lapiz_file_browser_utils_pixbuf_from_file (GFile * file,
-                                           GtkIconSize size)
+                                           CtkIconSize size)
 {
 	GIcon * icon;
 	GFileInfo * info;
@@ -149,13 +149,13 @@ lapiz_file_browser_utils_uri_basename (gchar const * uri)
 
 gboolean
 lapiz_file_browser_utils_confirmation_dialog (LapizWindow * window,
-                                              GtkMessageType type,
+                                              CtkMessageType type,
                                               gchar const *message,
                                               gchar const *secondary)
 {
-	GtkWidget *dlg;
+	CtkWidget *dlg;
 	gint ret;
-	GtkWidget *button;
+	CtkWidget *button;
 
 	dlg = ctk_message_dialog_new (CTK_WINDOW (window),
 				      CTK_DIALOG_MODAL |

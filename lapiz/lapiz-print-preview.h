@@ -48,14 +48,14 @@ typedef struct _LapizPrintPreviewClass   LapizPrintPreviewClass;
 
 struct _LapizPrintPreview
 {
-	GtkBox parent;
+	CtkBox parent;
 
 	LapizPrintPreviewPrivate *priv;
 };
 
 struct _LapizPrintPreviewClass
 {
-	GtkBoxClass parent_class;
+	CtkBoxClass parent_class;
 
 	void (* close)		(LapizPrintPreview          *preview);
 };
@@ -63,9 +63,9 @@ struct _LapizPrintPreviewClass
 
 GType		 lapiz_print_preview_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_print_preview_new	(GtkPrintOperation		*op,
-						 GtkPrintOperationPreview	*ctk_preview,
-						 GtkPrintContext		*context);
+CtkWidget	*lapiz_print_preview_new	(CtkPrintOperation		*op,
+						 CtkPrintOperationPreview	*ctk_preview,
+						 CtkPrintContext		*context);
 
 G_END_DECLS
 

@@ -48,12 +48,12 @@
 
 struct _LapizEncodingsDialogPrivate
 {
-	GtkListStore	*available_liststore;
-	GtkListStore	*displayed_liststore;
-	GtkWidget	*available_treeview;
-	GtkWidget	*displayed_treeview;
-	GtkWidget	*add_button;
-	GtkWidget	*remove_button;
+	CtkListStore	*available_liststore;
+	CtkListStore	*displayed_liststore;
+	CtkWidget	*available_treeview;
+	CtkWidget	*displayed_treeview;
+	CtkWidget	*add_button;
+	CtkWidget	*remove_button;
 
 	GSList		*show_in_menu_list;
 };
@@ -85,9 +85,9 @@ enum {
 };
 
 static void
-count_selected_items_func (GtkTreeModel *model,
-			   GtkTreePath  *path,
-			   GtkTreeIter  *iter,
+count_selected_items_func (CtkTreeModel *model,
+			   CtkTreePath  *path,
+			   CtkTreeIter  *iter,
 			   gpointer      data)
 {
 	int *count = data;
@@ -96,7 +96,7 @@ count_selected_items_func (GtkTreeModel *model,
 }
 
 static void
-available_selection_changed_callback (GtkTreeSelection     *selection,
+available_selection_changed_callback (CtkTreeSelection     *selection,
 				      LapizEncodingsDialog *dialogs)
 {
 	int count;
@@ -110,7 +110,7 @@ available_selection_changed_callback (GtkTreeSelection     *selection,
 }
 
 static void
-displayed_selection_changed_callback (GtkTreeSelection     *selection,
+displayed_selection_changed_callback (CtkTreeSelection     *selection,
 				      LapizEncodingsDialog *dialogs)
 {
 	int count;
@@ -124,9 +124,9 @@ displayed_selection_changed_callback (GtkTreeSelection     *selection,
 }
 
 static void
-get_selected_encodings_func (GtkTreeModel *model,
-			     GtkTreePath  *path,
-			     GtkTreeIter  *iter,
+get_selected_encodings_func (CtkTreeModel *model,
+			     CtkTreePath  *path,
+			     CtkTreeIter  *iter,
 			     gpointer      data)
 {
 	GSList **list = data;
@@ -143,10 +143,10 @@ get_selected_encodings_func (GtkTreeModel *model,
 }
 
 static void
-update_shown_in_menu_tree_model (GtkListStore *store,
+update_shown_in_menu_tree_model (CtkListStore *store,
 				 GSList       *list)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	ctk_list_store_clear (store);
 
@@ -168,10 +168,10 @@ update_shown_in_menu_tree_model (GtkListStore *store,
 }
 
 static void
-add_button_clicked_callback (GtkWidget            *button,
+add_button_clicked_callback (CtkWidget            *button,
 			     LapizEncodingsDialog *dialog)
 {
-	GtkTreeSelection *selection;
+	CtkTreeSelection *selection;
 	GSList *encodings;
 	GSList *tmp;
 
@@ -199,10 +199,10 @@ add_button_clicked_callback (GtkWidget            *button,
 }
 
 static void
-remove_button_clicked_callback (GtkWidget            *button,
+remove_button_clicked_callback (CtkWidget            *button,
 				LapizEncodingsDialog *dialog)
 {
-	GtkTreeSelection *selection;
+	CtkTreeSelection *selection;
 	GSList *encodings;
 	GSList *tmp;
 
@@ -231,7 +231,7 @@ remove_button_clicked_callback (GtkWidget            *button,
 static void
 init_shown_in_menu_tree_model (LapizEncodingsDialog *dialog)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	GSList *list, *tmp;
 
 	/* add data to the list store */
@@ -264,7 +264,7 @@ init_shown_in_menu_tree_model (LapizEncodingsDialog *dialog)
 }
 
 static void
-response_handler (GtkDialog            *dialog,
+response_handler (CtkDialog            *dialog,
 		  gint                  response_id,
                   LapizEncodingsDialog *dlg)
 {
@@ -285,14 +285,14 @@ response_handler (GtkDialog            *dialog,
 static void
 lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 {
-	GtkWidget *content;
-	GtkCellRenderer *cell_renderer;
-	GtkTreeModel *sort_model;
-	GtkTreeViewColumn *column;
-	GtkTreeIter parent_iter;
-	GtkTreeSelection *selection;
+	CtkWidget *content;
+	CtkCellRenderer *cell_renderer;
+	CtkTreeModel *sort_model;
+	CtkTreeViewColumn *column;
+	CtkTreeIter parent_iter;
+	CtkTreeSelection *selection;
 	const LapizEncoding *enc;
-	GtkWidget *error_widget;
+	CtkWidget *error_widget;
 	int i;
 	gboolean ret;
 	gchar *file;
@@ -475,10 +475,10 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 			  dlg);
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_encodings_dialog_new (void)
 {
-	GtkWidget *dlg;
+	CtkWidget *dlg;
 
 	dlg = CTK_WIDGET (g_object_new (LAPIZ_TYPE_ENCODINGS_DIALOG, NULL));
 

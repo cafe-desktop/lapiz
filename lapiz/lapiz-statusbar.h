@@ -47,7 +47,7 @@ typedef struct _LapizStatusbarClass	LapizStatusbarClass;
 
 struct _LapizStatusbar
 {
-        GtkStatusbar parent;
+        CtkStatusbar parent;
 
 	/* <private/> */
         LapizStatusbarPrivate *priv;
@@ -55,12 +55,12 @@ struct _LapizStatusbar
 
 struct _LapizStatusbarClass
 {
-        GtkStatusbarClass parent_class;
+        CtkStatusbarClass parent_class;
 };
 
 GType		 lapiz_statusbar_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_statusbar_new			(void);
+CtkWidget	*lapiz_statusbar_new			(void);
 
 void		 lapiz_statusbar_set_window_state	(LapizStatusbar   *statusbar,
 							 LapizWindowState  state,

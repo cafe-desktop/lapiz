@@ -2,37 +2,37 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="ctk+" version="3.14"/>
-  <object class="GtkAdjustment" id="adjustment1">
+  <object class="CtkAdjustment" id="adjustment1">
     <property name="lower">1</property>
     <property name="upper">100</property>
     <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="CtkWindow" id="window1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">window1</property>
     <child>
-      <object class="GtkBox" id="contents">
+      <object class="CtkBox" id="contents">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="border_width">12</property>
         <property name="spacing">18</property>
         <child>
-          <object class="GtkBox" id="vbox20">
+          <object class="CtkBox" id="vbox20">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <property name="spacing">18</property>
             <child>
-              <object class="GtkBox" id="vbox26">
+              <object class="CtkBox" id="vbox26">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="label33">
+                  <object class="CtkLabel" id="label33">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -48,7 +48,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="syntax_checkbutton">
+                  <object class="CtkCheckButton" id="syntax_checkbutton">
                     <property name="label" translatable="yes">Print synta_x highlighting</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -72,13 +72,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="vbox22">
+              <object class="CtkBox" id="vbox22">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="label27">
+                  <object class="CtkLabel" id="label27">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -94,14 +94,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="vbox2">
+                  <object class="CtkBox" id="vbox2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_left">12</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkCheckButton" id="line_numbers_checkbutton">
+                      <object class="CtkCheckButton" id="line_numbers_checkbutton">
                         <property name="label" translatable="yes">Print line nu_mbers</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -117,12 +117,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="line_numbers_hbox">
+                      <object class="CtkBox" id="line_numbers_hbox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkLabel" id="label3">
+                          <object class="CtkLabel" id="label3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes" comments="'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.">_Number every</property>
@@ -136,7 +136,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton" id="line_numbers_spinbutton">
+                          <object class="CtkSpinButton" id="line_numbers_spinbutton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="adjustment">adjustment1</property>
@@ -149,7 +149,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="label4">
+                          <object class="CtkLabel" id="label4">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes" comments="'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.">lines</property>
@@ -182,13 +182,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="vbox24">
+              <object class="CtkBox" id="vbox24">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="label31">
+                  <object class="CtkLabel" id="label31">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -204,14 +204,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="vbox25">
+                  <object class="CtkBox" id="vbox25">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_left">12</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkCheckButton" id="text_wrapping_checkbutton">
+                      <object class="CtkCheckButton" id="text_wrapping_checkbutton">
                         <property name="label" translatable="yes">Enable text _wrapping</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -227,11 +227,11 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="hbox20">
+                      <object class="CtkBox" id="hbox20">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkCheckButton" id="do_not_split_checkbutton">
+                          <object class="CtkCheckButton" id="do_not_split_checkbutton">
                             <property name="label" translatable="yes">Do not _split words over two lines</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -268,13 +268,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="vbox39">
+              <object class="CtkBox" id="vbox39">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="label45">
+                  <object class="CtkLabel" id="label45">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -290,7 +290,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="page_header_checkbutton">
+                  <object class="CtkCheckButton" id="page_header_checkbutton">
                     <property name="label" translatable="yes">Print page _headers</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -321,19 +321,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="vbox36">
+          <object class="CtkBox" id="vbox36">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <property name="spacing">18</property>
             <child>
-              <object class="GtkBox" id="vbox37">
+              <object class="CtkBox" id="vbox37">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="label43">
+                  <object class="CtkLabel" id="label43">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -349,20 +349,20 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="vbox4">
+                  <object class="CtkBox" id="vbox4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_left">12</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">12</property>
                     <child>
-                      <object class="GtkGrid" id="fonts_table">
+                      <object class="CtkGrid" id="fonts_table">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="row_spacing">12</property>
                         <property name="column_spacing">12</property>
                         <child>
-                          <object class="GtkLabel" id="body_font_label">
+                          <object class="CtkLabel" id="body_font_label">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
@@ -376,7 +376,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFontButton" id="body_fontbutton">
+                          <object class="CtkFontButton" id="body_fontbutton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -390,7 +390,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFontButton" id="numbers_fontbutton">
+                          <object class="CtkFontButton" id="numbers_fontbutton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -404,7 +404,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFontButton" id="headers_fontbutton">
+                          <object class="CtkFontButton" id="headers_fontbutton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -418,7 +418,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="headers_font_label">
+                          <object class="CtkLabel" id="headers_font_label">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
@@ -432,7 +432,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="numbers_font_label">
+                          <object class="CtkLabel" id="numbers_font_label">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
@@ -453,13 +453,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButtonBox" id="hbuttonbox1">
+                      <object class="CtkButtonBox" id="hbuttonbox1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                         <property name="layout_style">end</property>
                         <child>
-                          <object class="GtkButton" id="restore_button">
+                          <object class="CtkButton" id="restore_button">
                             <property name="label" translatable="yes">_Restore Default Fonts</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>

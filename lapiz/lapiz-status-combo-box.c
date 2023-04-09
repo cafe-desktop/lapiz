@@ -26,15 +26,15 @@
 
 struct _LapizStatusComboBoxPrivate
 {
-	GtkWidget *frame;
-	GtkWidget *button;
-	GtkWidget *hbox;
-	GtkWidget *label;
-	GtkWidget *item;
-	GtkWidget *arrow;
+	CtkWidget *frame;
+	CtkWidget *button;
+	CtkWidget *hbox;
+	CtkWidget *label;
+	CtkWidget *item;
+	CtkWidget *arrow;
 
-	GtkWidget *menu;
-	GtkWidget *current_item;
+	CtkWidget *menu;
+	CtkWidget *current_item;
 };
 
 /* Signals */
@@ -104,8 +104,8 @@ static void
 lapiz_status_combo_box_constructed (GObject *object)
 {
 	LapizStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (object);
-	GtkStyleContext *context;
-	GtkCssProvider *css;
+	CtkStyleContext *context;
+	CtkCssProvider *css;
 	GError *error = NULL;
 	const gchar style[] =
 		"* {\n"
@@ -129,7 +129,7 @@ lapiz_status_combo_box_constructed (GObject *object)
 
 static void
 lapiz_status_combo_box_changed (LapizStatusComboBox *combo,
-				GtkMenuItem         *item)
+				CtkMenuItem         *item)
 {
 	const gchar *text;
 
@@ -172,19 +172,19 @@ lapiz_status_combo_box_class_init (LapizStatusComboBoxClass *klass)
 }
 
 static void
-menu_deactivate (GtkMenu             *menu,
+menu_deactivate (CtkMenu             *menu,
 		 LapizStatusComboBox *combo)
 {
 	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (combo->priv->button), FALSE);
 }
 
 static void
-button_press_event (GtkWidget           *widget,
+button_press_event (CtkWidget           *widget,
 		    GdkEventButton      *event,
 		    LapizStatusComboBox *combo)
 {
-	GtkRequisition request;
-	GtkAllocation allocation;
+	CtkRequisition request;
+	CtkAllocation allocation;
 	gint max_height;
 
 	ctk_widget_get_preferred_size (combo->priv->menu, NULL, &request);
@@ -217,9 +217,9 @@ button_press_event (GtkWidget           *widget,
 static void
 set_shadow_type (LapizStatusComboBox *combo)
 {
-	GtkStyleContext *context;
-	GtkShadowType shadow_type;
-	GtkWidget *statusbar;
+	CtkStyleContext *context;
+	CtkShadowType shadow_type;
+	CtkWidget *statusbar;
 
 	/* This is a hack needed to use the shadow type of a statusbar */
 	statusbar = ctk_statusbar_new ();
@@ -297,7 +297,7 @@ lapiz_status_combo_box_init (LapizStatusComboBox *self)
  * lapiz_status_combo_box_new:
  * @label: (allow-none):
  */
-GtkWidget *
+CtkWidget *
 lapiz_status_combo_box_new (const gchar *label)
 {
 	return g_object_new (LAPIZ_TYPE_STATUS_COMBO_BOX, "label", label, NULL);
@@ -330,7 +330,7 @@ lapiz_status_combo_box_get_label (LapizStatusComboBox *combo)
 }
 
 static void
-item_activated (GtkMenuItem         *item,
+item_activated (CtkMenuItem         *item,
 		LapizStatusComboBox *combo)
 {
 	lapiz_status_combo_box_set_item (combo, item);
@@ -344,7 +344,7 @@ item_activated (GtkMenuItem         *item,
  */
 void
 lapiz_status_combo_box_add_item (LapizStatusComboBox *combo,
-				 GtkMenuItem         *item,
+				 CtkMenuItem         *item,
 				 const gchar         *text)
 {
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
@@ -358,7 +358,7 @@ lapiz_status_combo_box_add_item (LapizStatusComboBox *combo,
 
 void
 lapiz_status_combo_box_remove_item (LapizStatusComboBox *combo,
-				    GtkMenuItem         *item)
+				    CtkMenuItem         *item)
 {
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
 	g_return_if_fail (CTK_IS_MENU_ITEM (item));
@@ -371,7 +371,7 @@ lapiz_status_combo_box_remove_item (LapizStatusComboBox *combo,
  * lapiz_status_combo_box_get_items:
  * @combo:
  *
- * Returns: (element-type Gtk.Widget) (transfer container):
+ * Returns: (element-type Ctk.Widget) (transfer container):
  */
 GList *
 lapiz_status_combo_box_get_items (LapizStatusComboBox *combo)
@@ -383,7 +383,7 @@ lapiz_status_combo_box_get_items (LapizStatusComboBox *combo)
 
 const gchar *
 lapiz_status_combo_box_get_item_text (LapizStatusComboBox *combo,
-				      GtkMenuItem	  *item)
+				      CtkMenuItem	  *item)
 {
 	const gchar *ret = NULL;
 
@@ -403,7 +403,7 @@ lapiz_status_combo_box_get_item_text (LapizStatusComboBox *combo,
  */
 void
 lapiz_status_combo_box_set_item_text (LapizStatusComboBox *combo,
-				      GtkMenuItem	  *item,
+				      CtkMenuItem	  *item,
 				      const gchar         *text)
 {
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
@@ -417,7 +417,7 @@ lapiz_status_combo_box_set_item_text (LapizStatusComboBox *combo,
 
 void
 lapiz_status_combo_box_set_item (LapizStatusComboBox *combo,
-				 GtkMenuItem         *item)
+				 CtkMenuItem         *item)
 {
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
 	g_return_if_fail (CTK_IS_MENU_ITEM (item));
@@ -425,7 +425,7 @@ lapiz_status_combo_box_set_item (LapizStatusComboBox *combo,
 	g_signal_emit (combo, signals[CHANGED], 0, item, NULL);
 }
 
-GtkLabel *
+CtkLabel *
 lapiz_status_combo_box_get_item_label (LapizStatusComboBox *combo)
 {
 	g_return_val_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo), NULL);

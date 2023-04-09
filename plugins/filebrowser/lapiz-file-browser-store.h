@@ -83,7 +83,7 @@ typedef struct _LapizFileBrowserStorePrivate LapizFileBrowserStorePrivate;
 
 typedef gboolean (*LapizFileBrowserStoreFilterFunc) (LapizFileBrowserStore
 						     * model,
-						     GtkTreeIter * iter,
+						     CtkTreeIter * iter,
 						     gpointer user_data);
 
 struct _LapizFileBrowserStore
@@ -98,9 +98,9 @@ struct _LapizFileBrowserStoreClass {
 
 	/* Signals */
 	void (*begin_loading)        (LapizFileBrowserStore * model,
-			              GtkTreeIter * iter);
+			              CtkTreeIter * iter);
 	void (*end_loading)          (LapizFileBrowserStore * model,
-			              GtkTreeIter * iter);
+			              CtkTreeIter * iter);
 	void (*error)                (LapizFileBrowserStore * model,
 	                              guint code,
 		                      gchar * message);
@@ -129,7 +129,7 @@ lapiz_file_browser_store_set_root                     (LapizFileBrowserStore * m
 				                       gchar const *root);
 LapizFileBrowserStoreResult
 lapiz_file_browser_store_set_virtual_root             (LapizFileBrowserStore * model,
-					               GtkTreeIter * iter);
+					               CtkTreeIter * iter);
 LapizFileBrowserStoreResult
 lapiz_file_browser_store_set_virtual_root_from_string (LapizFileBrowserStore * model,
                                                        gchar const *root);
@@ -140,25 +140,25 @@ lapiz_file_browser_store_set_virtual_root_top         (LapizFileBrowserStore * m
 
 gboolean
 lapiz_file_browser_store_get_iter_virtual_root        (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * iter);
+                                                       CtkTreeIter * iter);
 gboolean lapiz_file_browser_store_get_iter_root       (LapizFileBrowserStore * model,
-						       GtkTreeIter * iter);
+						       CtkTreeIter * iter);
 gchar * lapiz_file_browser_store_get_root             (LapizFileBrowserStore * model);
 gchar * lapiz_file_browser_store_get_virtual_root     (LapizFileBrowserStore * model);
 
 gboolean lapiz_file_browser_store_iter_equal          (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * iter1,
-					               GtkTreeIter * iter2);
+                                                       CtkTreeIter * iter1,
+					               CtkTreeIter * iter2);
 
 void lapiz_file_browser_store_set_value               (LapizFileBrowserStore * tree_model,
-                                                       GtkTreeIter * iter,
+                                                       CtkTreeIter * iter,
                                                        gint column,
                                                        GValue * value);
 
 void _lapiz_file_browser_store_iter_expanded          (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * iter);
+                                                       CtkTreeIter * iter);
 void _lapiz_file_browser_store_iter_collapsed         (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * iter);
+                                                       CtkTreeIter * iter);
 
 LapizFileBrowserStoreFilterMode
 lapiz_file_browser_store_get_filter_mode              (LapizFileBrowserStore * model);
@@ -173,12 +173,12 @@ lapiz_file_browser_store_filter_mode_get_default      (void);
 
 void lapiz_file_browser_store_refresh                 (LapizFileBrowserStore * model);
 gboolean lapiz_file_browser_store_rename              (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * iter,
+                                                       CtkTreeIter * iter,
                                                        gchar const *new_name,
                                                        GError ** error);
 LapizFileBrowserStoreResult
 lapiz_file_browser_store_delete                       (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * iter,
+                                                       CtkTreeIter * iter,
                                                        gboolean trash);
 LapizFileBrowserStoreResult
 lapiz_file_browser_store_delete_all                   (LapizFileBrowserStore * model,
@@ -186,11 +186,11 @@ lapiz_file_browser_store_delete_all                   (LapizFileBrowserStore * m
                                                        gboolean trash);
 
 gboolean lapiz_file_browser_store_new_file            (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * parent,
-                                                       GtkTreeIter * iter);
+                                                       CtkTreeIter * parent,
+                                                       CtkTreeIter * iter);
 gboolean lapiz_file_browser_store_new_directory       (LapizFileBrowserStore * model,
-                                                       GtkTreeIter * parent,
-                                                       GtkTreeIter * iter);
+                                                       CtkTreeIter * parent,
+                                                       CtkTreeIter * iter);
 
 void lapiz_file_browser_store_cancel_mount_operation  (LapizFileBrowserStore *store);
 

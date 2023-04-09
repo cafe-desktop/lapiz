@@ -44,7 +44,7 @@
 #include "lapiz-prefs-manager.h"
 #include "lapiz-dirs.h"
 
-static GtkSourceStyleSchemeManager *style_scheme_manager = NULL;
+static CtkSourceStyleSchemeManager *style_scheme_manager = NULL;
 
 static gchar *
 get_lapiz_styles_path (void)
@@ -66,7 +66,7 @@ get_lapiz_styles_path (void)
 }
 
 static void
-add_lapiz_styles_path (GtkSourceStyleSchemeManager *mgr)
+add_lapiz_styles_path (CtkSourceStyleSchemeManager *mgr)
 {
 	gchar *dir;
 
@@ -79,7 +79,7 @@ add_lapiz_styles_path (GtkSourceStyleSchemeManager *mgr)
 	}
 }
 
-GtkSourceStyleSchemeManager *
+CtkSourceStyleSchemeManager *
 lapiz_get_style_scheme_manager (void)
 {
 	if (style_scheme_manager == NULL)
@@ -94,8 +94,8 @@ lapiz_get_style_scheme_manager (void)
 static gint
 schemes_compare (gconstpointer a, gconstpointer b)
 {
-	GtkSourceStyleScheme *scheme_a = (GtkSourceStyleScheme *)a;
-	GtkSourceStyleScheme *scheme_b = (GtkSourceStyleScheme *)b;
+	CtkSourceStyleScheme *scheme_a = (CtkSourceStyleScheme *)a;
+	CtkSourceStyleScheme *scheme_b = (CtkSourceStyleScheme *)b;
 
 	const gchar *name_a = ctk_source_style_scheme_get_name (scheme_a);
 	const gchar *name_b = ctk_source_style_scheme_get_name (scheme_b);
@@ -104,7 +104,7 @@ schemes_compare (gconstpointer a, gconstpointer b)
 }
 
 GSList *
-lapiz_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *manager)
+lapiz_style_scheme_manager_list_schemes_sorted (CtkSourceStyleSchemeManager *manager)
 {
 	const gchar * const * scheme_ids;
 	GSList *schemes = NULL;
@@ -115,7 +115,7 @@ lapiz_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *man
 
 	while (*scheme_ids != NULL)
 	{
-		GtkSourceStyleScheme *scheme;
+		CtkSourceStyleScheme *scheme;
 
 		scheme = ctk_source_style_scheme_manager_get_scheme (manager,
 								     *scheme_ids);
@@ -132,10 +132,10 @@ lapiz_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *man
 }
 
 gboolean
-_lapiz_style_scheme_manager_scheme_is_lapiz_user_scheme (GtkSourceStyleSchemeManager *manager,
+_lapiz_style_scheme_manager_scheme_is_lapiz_user_scheme (CtkSourceStyleSchemeManager *manager,
 							 const gchar                 *scheme_id)
 {
-	GtkSourceStyleScheme *scheme;
+	CtkSourceStyleScheme *scheme;
 	const gchar *filename;
 	gchar *dir;
 	gboolean res = FALSE;
@@ -235,7 +235,7 @@ file_copy (const gchar  *name,
 
 /**
  * _lapiz_style_scheme_manager_install_scheme:
- * @manager: a #GtkSourceStyleSchemeManager
+ * @manager: a #CtkSourceStyleSchemeManager
  * @fname: the file name of the style scheme to be installed
  *
  * Install a new user scheme.
@@ -249,7 +249,7 @@ file_copy (const gchar  *name,
  * Return value: the id of the installed scheme, %NULL otherwise.
  */
 const gchar *
-_lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager,
+_lapiz_style_scheme_manager_install_scheme (CtkSourceStyleSchemeManager *manager,
 					    const gchar                 *fname)
 {
 	gchar *new_file_name = NULL;
@@ -305,7 +305,7 @@ _lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 
 	while (*ids != NULL)
 	{
-		GtkSourceStyleScheme *scheme;
+		CtkSourceStyleScheme *scheme;
 		const gchar *filename;
 
 		scheme = ctk_source_style_scheme_manager_get_scheme (
@@ -334,7 +334,7 @@ _lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 
 /**
  * _lapiz_style_scheme_manager_uninstall_scheme:
- * @manager: a #GtkSourceStyleSchemeManager
+ * @manager: a #CtkSourceStyleSchemeManager
  * @id: the id of the style scheme to be uninstalled
  *
  * Uninstall a user scheme.
@@ -345,10 +345,10 @@ _lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
  * Return value: %TRUE on success, %FALSE otherwise.
  */
 gboolean
-_lapiz_style_scheme_manager_uninstall_scheme (GtkSourceStyleSchemeManager *manager,
+_lapiz_style_scheme_manager_uninstall_scheme (CtkSourceStyleSchemeManager *manager,
 					      const gchar                 *id)
 {
-	GtkSourceStyleScheme *scheme;
+	CtkSourceStyleScheme *scheme;
 	const gchar *filename;
 
 	g_return_val_if_fail (CTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), FALSE);

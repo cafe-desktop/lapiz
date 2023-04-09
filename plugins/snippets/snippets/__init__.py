@@ -16,7 +16,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-from gi.repository import GObject, GLib, Gtk, Peas, Lapiz
+from gi.repository import GObject, GLib, Ctk, Peas, Lapiz
 
 from .WindowHelper import WindowHelper
 from .Library import Library

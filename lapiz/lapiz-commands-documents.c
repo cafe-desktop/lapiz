@@ -42,10 +42,10 @@
 #include "lapiz-debug.h"
 
 void
-_lapiz_cmd_documents_previous_document (GtkAction   *action,
+_lapiz_cmd_documents_previous_document (CtkAction   *action,
 				       LapizWindow *window)
 {
-	GtkNotebook *notebook;
+	CtkNotebook *notebook;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -54,10 +54,10 @@ _lapiz_cmd_documents_previous_document (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_documents_next_document (GtkAction   *action,
+_lapiz_cmd_documents_next_document (CtkAction   *action,
 				   LapizWindow *window)
 {
-	GtkNotebook *notebook;
+	CtkNotebook *notebook;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -66,7 +66,7 @@ _lapiz_cmd_documents_next_document (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_documents_move_to_new_window (GtkAction   *action,
+_lapiz_cmd_documents_move_to_new_window (CtkAction   *action,
 					LapizWindow *window)
 {
 	LapizNotebook *old_notebook;

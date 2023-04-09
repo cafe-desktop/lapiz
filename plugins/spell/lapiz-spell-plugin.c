@@ -55,7 +55,7 @@
 #define AUTOCHECK_TYPE_KEY	"autocheck-type"
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
-static void peas_ctk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
+static void peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface);
 
 enum {
 	PROP_0,
@@ -64,9 +64,9 @@ enum {
 
 struct _LapizSpellPluginPrivate
 {
-	GtkWidget *window;
+	CtkWidget *window;
 
-	GtkActionGroup *action_group;
+	CtkActionGroup *action_group;
 	guint           ui_id;
 	guint           message_cid;
 	gulong          tab_added_id;
@@ -85,12 +85,12 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSpellPlugin,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_CTK_TYPE_CONFIGURABLE,
                                                                peas_ctk_configurable_iface_init))
 
-static void	spell_cb	(GtkAction *action, LapizSpellPlugin *plugin);
-static void	set_language_cb	(GtkAction *action, LapizSpellPlugin *plugin);
-static void	auto_spell_cb	(GtkAction *action, LapizSpellPlugin *plugin);
+static void	spell_cb	(CtkAction *action, LapizSpellPlugin *plugin);
+static void	set_language_cb	(CtkAction *action, LapizSpellPlugin *plugin);
+static void	auto_spell_cb	(CtkAction *action, LapizSpellPlugin *plugin);
 
 /* UI actions. */
-static const GtkActionEntry action_entries[] =
+static const CtkActionEntry action_entries[] =
 {
 	{ "CheckSpell",
 	  "tools-check-spelling",
@@ -109,7 +109,7 @@ static const GtkActionEntry action_entries[] =
 	}
 };
 
-static const GtkToggleActionEntry toggle_action_entries[] =
+static const CtkToggleActionEntry toggle_action_entries[] =
 {
 	{ "AutoSpell",
 	  NULL,
@@ -125,11 +125,11 @@ typedef struct _SpellConfigureDialog SpellConfigureDialog;
 
 struct _SpellConfigureDialog
 {
-	GtkWidget *content;
+	CtkWidget *content;
 
-	GtkWidget *never;
-	GtkWidget *always;
-	GtkWidget *document;
+	CtkWidget *never;
+	CtkWidget *always;
+	CtkWidget *document;
 
 	GSettings *settings;
 };
@@ -145,13 +145,13 @@ typedef struct _CheckRange CheckRange;
 
 struct _CheckRange
 {
-	GtkTextMark *start_mark;
-	GtkTextMark *end_mark;
+	CtkTextMark *start_mark;
+	CtkTextMark *end_mark;
 
 	gint mw_start; /* misspelled word start */
 	gint mw_end;   /* end */
 
-	GtkTextMark *current_mark;
+	CtkTextMark *current_mark;
 };
 
 static GQuark spell_checker_id = 0;
@@ -313,8 +313,8 @@ update_current (LapizDocument *doc,
 		gint           current)
 {
 	CheckRange *range;
-	GtkTextIter iter;
-	GtkTextIter end_iter;
+	CtkTextIter iter;
+	CtkTextIter end_iter;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -364,11 +364,11 @@ update_current (LapizDocument *doc,
 
 static void
 set_check_range (LapizDocument *doc,
-		 GtkTextIter   *start,
-		 GtkTextIter   *end)
+		 CtkTextIter   *start,
+		 CtkTextIter   *end)
 {
 	CheckRange *range;
-	GtkTextIter iter;
+	CtkTextIter iter;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -439,8 +439,8 @@ static gchar *
 get_current_word (LapizDocument *doc, gint *start, gint *end)
 {
 	const CheckRange *range;
-	GtkTextIter end_iter;
-	GtkTextIter current_iter;
+	CtkTextIter end_iter;
+	CtkTextIter current_iter;
 	gint range_end;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -487,9 +487,9 @@ static gboolean
 goto_next_word (LapizDocument *doc)
 {
 	CheckRange *range;
-	GtkTextIter current_iter;
-	GtkTextIter old_current_iter;
-	GtkTextIter end_iter;
+	CtkTextIter current_iter;
+	CtkTextIter old_current_iter;
+	CtkTextIter end_iter;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -565,7 +565,7 @@ get_next_misspelled_word (LapizView *view)
 
 	if (word != NULL)
 	{
-		GtkTextIter s, e;
+		CtkTextIter s, e;
 
 		range->mw_start = start;
 		range->mw_end = end;
@@ -624,7 +624,7 @@ change_cb (LapizSpellCheckerDialog *dlg,
 	LapizDocument *doc;
 	CheckRange *range;
 	gchar *w = NULL;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -677,7 +677,7 @@ change_all_cb (LapizSpellCheckerDialog *dlg,
 	LapizDocument *doc;
 	CheckRange *range;
 	gchar *w = NULL;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 	gint flags = 0;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -734,7 +734,7 @@ add_word_cb (LapizSpellCheckerDialog *dlg,
 }
 
 static void
-language_dialog_response (GtkDialog         *dlg,
+language_dialog_response (CtkDialog         *dlg,
 			  gint               res_id,
 			  LapizSpellChecker *spell)
 {
@@ -757,7 +757,7 @@ get_configure_dialog (LapizSpellPlugin *plugin)
 	gchar *data_dir;
 	gchar *ui_file;
 	LapizSpellPluginAutocheckType autocheck_type;
-	GtkWidget *error_widget;
+	CtkWidget *error_widget;
 	gboolean ret;
 	gchar *root_objects[] = {
 		"spell_dialog_content",
@@ -807,7 +807,7 @@ get_configure_dialog (LapizSpellPlugin *plugin)
 }
 
 static void
-configure_dialog_button_toggled (GtkToggleButton      *button,
+configure_dialog_button_toggled (CtkToggleButton      *button,
                                  SpellConfigureDialog *dialog)
 {
 	lapiz_debug (DEBUG_PLUGINS);
@@ -827,7 +827,7 @@ configure_dialog_button_toggled (GtkToggleButton      *button,
 }
 
 static void
-configure_dialog_destroyed (GtkWidget *widget,
+configure_dialog_destroyed (CtkWidget *widget,
                             gpointer   data)
 {
 	SpellConfigureDialog *dialog = (SpellConfigureDialog *) data;
@@ -839,15 +839,15 @@ configure_dialog_destroyed (GtkWidget *widget,
 }
 
 static void
-set_language_cb (GtkAction   *action,
+set_language_cb (CtkAction   *action,
 		 LapizSpellPlugin *plugin)
 {
 	LapizWindow *window;
 	LapizDocument *doc;
 	LapizSpellChecker *spell;
 	const LapizSpellCheckerLanguage *lang;
-	GtkWidget *dlg;
-	GtkWindowGroup *wg;
+	CtkWidget *dlg;
+	CtkWindowGroup *wg;
 	gchar *data_dir;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -882,7 +882,7 @@ set_language_cb (GtkAction   *action,
 }
 
 static void
-spell_cb (GtkAction   *action,
+spell_cb (CtkAction   *action,
 	  LapizSpellPlugin *plugin)
 {
 	LapizSpellPluginPrivate *data;
@@ -890,8 +890,8 @@ spell_cb (GtkAction   *action,
 	LapizView *view;
 	LapizDocument *doc;
 	LapizSpellChecker *spell;
-	GtkWidget *dlg;
-	GtkTextIter start, end;
+	CtkWidget *dlg;
+	CtkTextIter start, end;
 	gchar *word;
 	gchar *data_dir;
 
@@ -910,7 +910,7 @@ spell_cb (GtkAction   *action,
 
 	if (ctk_text_buffer_get_char_count (CTK_TEXT_BUFFER (doc)) <= 0)
 	{
-		GtkWidget *statusbar;
+		CtkWidget *statusbar;
 
 		statusbar = lapiz_window_get_statusbar (window);
 		lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (statusbar),
@@ -935,7 +935,7 @@ spell_cb (GtkAction   *action,
 	word = get_next_misspelled_word (view);
 	if (word == NULL)
 	{
-		GtkWidget *statusbar;
+		CtkWidget *statusbar;
 
 		statusbar = lapiz_window_get_statusbar (window);
 		lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (statusbar),
@@ -1010,7 +1010,7 @@ set_auto_spell (LapizWindow   *window,
 }
 
 static void
-auto_spell_cb (GtkAction   *action,
+auto_spell_cb (CtkAction   *action,
 	       LapizSpellPlugin *plugin)
 {
 	LapizWindow *window;
@@ -1047,7 +1047,7 @@ update_ui (LapizSpellPlugin *plugin)
 	LapizDocument *doc;
 	LapizView *view;
 	gboolean autospell;
-	GtkAction *action;
+	CtkAction *action;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -1092,7 +1092,7 @@ update_ui (LapizSpellPlugin *plugin)
 static void
 set_auto_spell_from_metadata (LapizSpellPlugin *plugin,
 			      LapizDocument  *doc,
-			      GtkActionGroup *action_group)
+			      CtkActionGroup *action_group)
 {
 	gboolean active = FALSE;
 	gchar *active_str = NULL;
@@ -1137,7 +1137,7 @@ set_auto_spell_from_metadata (LapizSpellPlugin *plugin,
 
 	if (active_doc == doc && action_group != NULL)
 	{
-		GtkAction *action;
+		CtkAction *action;
 
 		action = ctk_action_group_get_action (action_group,
 						      "AutoSpell");
@@ -1264,7 +1264,7 @@ lapiz_spell_plugin_activate (PeasActivatable *activatable)
 	LapizSpellPlugin *plugin;
 	LapizSpellPluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	GList *docs, *l;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -1351,7 +1351,7 @@ lapiz_spell_plugin_deactivate (PeasActivatable *activatable)
 {
 	LapizSpellPluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -1415,8 +1415,8 @@ lapiz_spell_plugin_get_property (GObject    *object,
 	}
 }
 
-static GtkWidget *
-lapiz_spell_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
+static CtkWidget *
+lapiz_spell_plugin_create_configure_widget (PeasCtkConfigurable *configurable)
 {
 	SpellConfigureDialog *dialog;
 
@@ -1476,7 +1476,7 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 static void
-peas_ctk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
+peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface)
 {
 	iface->create_configure_widget = lapiz_spell_plugin_create_configure_widget;
 }

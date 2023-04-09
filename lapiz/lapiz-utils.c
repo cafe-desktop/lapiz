@@ -111,7 +111,7 @@ lapiz_utils_uri_has_writable_scheme (const gchar *uri)
 }
 
 static void
-widget_get_origin (GtkWidget *widget, gint *x, gint *y)
+widget_get_origin (CtkWidget *widget, gint *x, gint *y)
 
 {
 	GdkWindow *window;
@@ -121,15 +121,15 @@ widget_get_origin (GtkWidget *widget, gint *x, gint *y)
 }
 
 void
-lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
+lapiz_utils_menu_position_under_widget (CtkMenu  *menu,
 					gint     *x,
 					gint     *y,
 					gboolean *push_in,
 					gpointer  user_data)
 {
-	GtkWidget *widget;
-	GtkRequisition requisition;
-	GtkAllocation allocation;
+	CtkWidget *widget;
+	CtkRequisition requisition;
+	CtkAllocation allocation;
 
 	widget = CTK_WIDGET (user_data);
 	widget_get_origin (widget, x, y);
@@ -153,11 +153,11 @@ lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
 }
 
 void
-menu_popup_at_treeview_selection (GtkWidget *menu,
-				  GtkWidget *treeview)
+menu_popup_at_treeview_selection (CtkWidget *menu,
+				  CtkWidget *treeview)
 {
-	GtkTreePath *path;
-	GtkTreeViewColumn *column;
+	CtkTreePath *path;
+	CtkTreeViewColumn *column;
 	GdkWindow *bin_window;
 	GdkRectangle rect;
 
@@ -185,11 +185,11 @@ menu_popup_at_treeview_selection (GtkWidget *menu,
  * Returns: (transfer full):
  */
 
-GtkWidget *
+CtkWidget *
 lapiz_ctk_button_new_with_icon (const gchar *label,
 				const gchar *icon_name)
 {
-	GtkWidget *button;
+	CtkWidget *button;
 
 	button = ctk_button_new_with_mnemonic (label);
 	ctk_button_set_image (CTK_BUTTON (button),
@@ -208,13 +208,13 @@ lapiz_ctk_button_new_with_icon (const gchar *label,
  *
  * Returns: (transfer none):
  */
-GtkWidget *
-lapiz_dialog_add_button (GtkDialog   *dialog,
+CtkWidget *
+lapiz_dialog_add_button (CtkDialog   *dialog,
 			 const gchar *text,
 			 const gchar *icon_name,
 			 gint         response_id)
 {
-	GtkWidget *button;
+	CtkWidget *button;
 
 	g_return_val_if_fail (CTK_IS_DIALOG (dialog), NULL);
 	g_return_val_if_fail (text != NULL, NULL);
@@ -275,7 +275,7 @@ finally_2:
 
 /**
  * lapiz_utils_set_atk_name_description:
- * @widget: The Gtk widget for which name/description to be set
+ * @widget: The Ctk widget for which name/description to be set
  * @name: Atk name string
  * @description: Atk description string
  *
@@ -283,7 +283,7 @@ finally_2:
  * for a specified ctk widget.
  */
 void
-lapiz_utils_set_atk_name_description (GtkWidget *widget,
+lapiz_utils_set_atk_name_description (CtkWidget *widget,
 				      const gchar *name,
 				      const gchar *description)
 {
@@ -311,8 +311,8 @@ lapiz_utils_set_atk_name_description (GtkWidget *widget,
  * between 2 specified widgets.
  */
 void
-lapiz_utils_set_atk_relation (GtkWidget *obj1,
-			      GtkWidget *obj2,
+lapiz_utils_set_atk_relation (CtkWidget *obj1,
+			      CtkWidget *obj2,
 			      AtkRelationType rel_type )
 {
 	AtkObject *atk_obj1, *atk_obj2;
@@ -486,12 +486,12 @@ lapiz_utils_unescape_search_text (const gchar *text)
 }
 
 void
-lapiz_warning (GtkWindow *parent, const gchar *format, ...)
+lapiz_warning (CtkWindow *parent, const gchar *format, ...)
 {
 	va_list         args;
 	gchar          *str;
-	GtkWidget      *dialog;
-	GtkWindowGroup *wg = NULL;
+	CtkWidget      *dialog;
+	CtkWindowGroup *wg = NULL;
 
 	g_return_if_fail (format != NULL);
 
@@ -890,12 +890,12 @@ lapiz_utils_get_current_workspace (GdkScreen *screen)
  *
  * Get the workspace the window is on
  *
- * This function gets the workspace that the #GtkWindow is visible on,
+ * This function gets the workspace that the #CtkWindow is visible on,
  * it returns LAPIZ_ALL_WORKSPACES if the window is sticky, or if
  * the window manager doesn support this function
  */
 guint
-lapiz_utils_get_window_workspace (GtkWindow *ctkwindow)
+lapiz_utils_get_window_workspace (CtkWindow *ctkwindow)
 {
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *window;
@@ -1054,10 +1054,10 @@ lapiz_utils_is_valid_uri (const gchar *uri)
 	return TRUE;
 }
 
-static GtkWidget *
+static CtkWidget *
 handle_builder_error (const gchar *message, ...)
 {
-	GtkWidget *label;
+	CtkWidget *label;
 	gchar *msg;
 	gchar *msg_plain;
 	va_list args;
@@ -1093,13 +1093,13 @@ handle_builder_error (const gchar *message, ...)
  * @filename: the path to the ctk builder file
  * @root_objects: a %NULL terminated list of root objects to load or NULL to
  *                load all objects
- * @error_widget: a pointer were a #GtkLabel
+ * @error_widget: a pointer were a #CtkLabel
  * @object_name: the name of the first object
  * @...: a pointer were the first object is returned, followed by more
  *       name / object pairs and terminated by %NULL.
  *
- * This function gets the requested objects from a GtkBuilder ui file. In case
- * of error it returns %FALSE and sets error_widget to a GtkLabel containing
+ * This function gets the requested objects from a CtkBuilder ui file. In case
+ * of error it returns %FALSE and sets error_widget to a CtkLabel containing
  * the error message to display.
  *
  * Returns: %FALSE if an error occurs, %TRUE on success.
@@ -1107,12 +1107,12 @@ handle_builder_error (const gchar *message, ...)
 gboolean
 lapiz_utils_get_ui_objects (const gchar  *filename,
 			    gchar       **root_objects,
-			    GtkWidget   **error_widget,
+			    CtkWidget   **error_widget,
 			    const gchar  *object_name,
 			    ...)
 {
 
-	GtkBuilder *builder;
+	CtkBuilder *builder;
 	va_list args;
 	const gchar *name;
 	GError *error = NULL;
@@ -1361,7 +1361,7 @@ lapiz_utils_uri_for_display (const gchar *uri)
 
 /**
  * lapiz_utils_drop_get_uris:
- * @selection_data: the #GtkSelectionData from drag_data_received
+ * @selection_data: the #CtkSelectionData from drag_data_received
  *
  * Create a list of valid uri's from a uri-list drop.
  *
@@ -1370,7 +1370,7 @@ lapiz_utils_uri_for_display (const gchar *uri)
  *		 string array is no longer used
  */
 gchar **
-lapiz_utils_drop_get_uris (GtkSelectionData *selection_data)
+lapiz_utils_drop_get_uris (CtkSelectionData *selection_data)
 {
 	gchar **uris;
 	gint i;
@@ -1555,12 +1555,12 @@ lapiz_utils_decode_uri (const gchar  *uri,
 }
 
 gboolean
-lapiz_ctk_text_iter_regex_search (const GtkTextIter *iter,
+lapiz_ctk_text_iter_regex_search (const CtkTextIter *iter,
 				  const gchar       *str,
-				  GtkTextSearchFlags flags,
-				  GtkTextIter       *match_start,
-				  GtkTextIter       *match_end,
-				  const GtkTextIter *limit,
+				  CtkTextSearchFlags flags,
+				  CtkTextIter       *match_start,
+				  CtkTextIter       *match_end,
+				  const CtkTextIter *limit,
 				  gboolean forward_search,
 				  gchar            **replace_text)
 {
@@ -1568,8 +1568,8 @@ lapiz_ctk_text_iter_regex_search (const GtkTextIter *iter,
 	GRegexCompileFlags compile_flags;
 	GMatchInfo *match_info;
 	gchar *text;
-	GtkTextIter *begin_iter;
-	GtkTextIter *end_iter;
+	CtkTextIter *begin_iter;
+	CtkTextIter *end_iter;
 	gchar *match_string;
 	gboolean found;
 
@@ -1665,13 +1665,13 @@ free_resources:
 	return found;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 				       const gchar *label_name)
 {
 	gchar *concat;
-	GtkWidget *icon;
-	GtkWidget *box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+	CtkWidget *icon;
+	CtkWidget *box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
 
 	if (icon_pixbuf)
 		icon = ctk_image_new_from_pixbuf (icon_pixbuf);
@@ -1680,8 +1680,8 @@ lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 
 	concat = g_strconcat (label_name, "     ", NULL);
 
-	GtkWidget *label_menu = ctk_label_new (concat);
-	GtkWidget *menuitem = ctk_menu_item_new ();
+	CtkWidget *label_menu = ctk_label_new (concat);
+	CtkWidget *menuitem = ctk_menu_item_new ();
 
 	ctk_container_add (CTK_CONTAINER (box), icon);
 	ctk_container_add (CTK_CONTAINER (box), label_menu);

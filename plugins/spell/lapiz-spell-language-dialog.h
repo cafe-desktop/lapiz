@@ -49,12 +49,12 @@ typedef struct _LapizSpellLanguageDialogClass LapizSpellLanguageDialogClass;
 
 struct _LapizSpellLanguageDialogClass
 {
-	GtkDialogClass parent_class;
+	CtkDialogClass parent_class;
 };
 
 GType		 lapiz_spell_language_dialog_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_spell_language_dialog_new		(GtkWindow			 *parent,
+CtkWidget	*lapiz_spell_language_dialog_new		(CtkWindow			 *parent,
 								 const LapizSpellCheckerLanguage *cur_lang,
 								 const gchar *data_dir);
 

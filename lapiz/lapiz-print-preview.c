@@ -44,22 +44,22 @@
 
 struct _LapizPrintPreviewPrivate
 {
-	GtkPrintOperation *operation;
-	GtkPrintContext *context;
-	GtkPrintOperationPreview *ctk_preview;
+	CtkPrintOperation *operation;
+	CtkPrintContext *context;
+	CtkPrintOperationPreview *ctk_preview;
 
-	GtkWidget *layout;
-	GtkWidget *scrolled_window;
+	CtkWidget *layout;
+	CtkWidget *scrolled_window;
 
-	GtkToolItem *next;
-	GtkToolItem *prev;
-	GtkWidget   *page_entry;
-	GtkWidget   *last;
-	GtkToolItem *multi;
-	GtkToolItem *zoom_one;
-	GtkToolItem *zoom_fit;
-	GtkToolItem *zoom_in;
-	GtkToolItem *zoom_out;
+	CtkToolItem *next;
+	CtkToolItem *prev;
+	CtkWidget   *page_entry;
+	CtkWidget   *last;
+	CtkToolItem *multi;
+	CtkToolItem *zoom_one;
+	CtkToolItem *zoom_fit;
+	CtkToolItem *zoom_in;
+	CtkToolItem *zoom_out;
 
 	/* real size of the page in inches */
 	double paper_w;
@@ -73,7 +73,7 @@ struct _LapizPrintPreviewPrivate
 	gint tile_w;
 	gint tile_h;
 
-	GtkPageOrientation orientation;
+	CtkPageOrientation orientation;
 
 	/* multipage support */
 	gint rows;
@@ -126,7 +126,7 @@ lapiz_print_preview_finalize (GObject *object)
 }
 
 static void
-lapiz_print_preview_grab_focus (GtkWidget *widget)
+lapiz_print_preview_grab_focus (CtkWidget *widget)
 {
 	LapizPrintPreview *preview;
 
@@ -139,7 +139,7 @@ static void
 lapiz_print_preview_class_init (LapizPrintPreviewClass *klass)
 {
 	GObjectClass *object_class;
-	GtkWidgetClass *widget_class;
+	CtkWidgetClass *widget_class;
 
 	object_class = G_OBJECT_CLASS (klass);
 	widget_class = CTK_WIDGET_CLASS (klass);
@@ -333,7 +333,7 @@ goto_page (LapizPrintPreview *preview, gint page)
 }
 
 static void
-prev_button_clicked (GtkWidget         *button,
+prev_button_clicked (CtkWidget         *button,
 		     LapizPrintPreview *preview)
 {
 	GdkEvent *event;
@@ -352,7 +352,7 @@ prev_button_clicked (GtkWidget         *button,
 }
 
 static void
-next_button_clicked (GtkWidget         *button,
+next_button_clicked (CtkWidget         *button,
 		     LapizPrintPreview *preview)
 {
 	GdkEvent *event;
@@ -371,7 +371,7 @@ next_button_clicked (GtkWidget         *button,
 }
 
 static void
-page_entry_activated (GtkEntry          *entry,
+page_entry_activated (CtkEntry          *entry,
 		      LapizPrintPreview *preview)
 {
 	const gchar *text;
@@ -386,7 +386,7 @@ page_entry_activated (GtkEntry          *entry,
 }
 
 static void
-page_entry_insert_text (GtkEditable *editable,
+page_entry_insert_text (CtkEditable *editable,
 			const gchar *text,
 			gint         length,
 			gint        *position)
@@ -416,7 +416,7 @@ page_entry_insert_text (GtkEditable *editable,
 }
 
 static gboolean
-page_entry_focus_out (GtkWidget         *widget,
+page_entry_focus_out (CtkWidget         *widget,
 		      GdkEventFocus     *event,
 		      LapizPrintPreview *preview)
 {
@@ -440,34 +440,34 @@ page_entry_focus_out (GtkWidget         *widget,
 }
 
 static void
-on_1x1_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
+on_1x1_clicked (CtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 1, 1);
 }
 
 static void
-on_1x2_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
+on_1x2_clicked (CtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 1, 2);
 }
 
 static void
-on_2x1_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
+on_2x1_clicked (CtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 2, 1);
 }
 
 static void
-on_2x2_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
+on_2x2_clicked (CtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 2, 2);
 }
 
 static void
-multi_button_clicked (GtkWidget	 *button,
+multi_button_clicked (CtkWidget	 *button,
 		      LapizPrintPreview *preview)
 {
-	GtkWidget *m, *i;
+	CtkWidget *m, *i;
 
 	m = ctk_menu_new ();
 	ctk_widget_show (m);
@@ -500,42 +500,42 @@ multi_button_clicked (GtkWidget	 *button,
 }
 
 static void
-zoom_one_button_clicked (GtkWidget         *button,
+zoom_one_button_clicked (CtkWidget         *button,
 			 LapizPrintPreview *preview)
 {
 	set_zoom_factor (preview, 1);
 }
 
 static void
-zoom_fit_button_clicked (GtkWidget         *button,
+zoom_fit_button_clicked (CtkWidget         *button,
 			 LapizPrintPreview *preview)
 {
 	set_zoom_fit_to_size (preview);
 }
 
 static void
-zoom_in_button_clicked (GtkWidget         *button,
+zoom_in_button_clicked (CtkWidget         *button,
 			LapizPrintPreview *preview)
 {
 	zoom_in (preview);
 }
 
 static void
-zoom_out_button_clicked (GtkWidget         *button,
+zoom_out_button_clicked (CtkWidget         *button,
 			 LapizPrintPreview *preview)
 {
 	zoom_out (preview);
 }
 
 static void
-close_button_clicked (GtkWidget         *button,
+close_button_clicked (CtkWidget         *button,
 		      LapizPrintPreview *preview)
 {
 	ctk_widget_destroy (CTK_WIDGET (preview));
 }
 
 static gboolean
-ignore_mouse_buttons (GtkWidget         *widget,
+ignore_mouse_buttons (CtkWidget         *widget,
 		      GdkEventKey       *event,
 		      LapizPrintPreview *preview)
 {
@@ -546,10 +546,10 @@ static void
 create_bar (LapizPrintPreview *preview)
 {
 	LapizPrintPreviewPrivate *priv;
-	GtkWidget *toolbar;
-	GtkToolItem *i;
+	CtkWidget *toolbar;
+	CtkToolItem *i;
 	AtkObject *atko;
-	GtkWidget *status;
+	CtkWidget *status;
 
 	priv = preview->priv;
 
@@ -613,7 +613,7 @@ create_bar (LapizPrintPreview *preview)
 	ctk_box_pack_start (CTK_BOX (status),
 			    priv->page_entry,
 			    FALSE, FALSE, 0);
-	/* ctk_label_set_mnemonic_widget ((GtkLabel *) l, mp->priv->page_entry); */
+	/* ctk_label_set_mnemonic_widget ((CtkLabel *) l, mp->priv->page_entry); */
 
 	/* We are displaying 'XXX of XXX'. */
 	ctk_box_pack_start (CTK_BOX (status),
@@ -733,7 +733,7 @@ get_page_at_coords (LapizPrintPreview *preview,
 		    gint               y)
 {
 	LapizPrintPreviewPrivate *priv;
-	GtkAdjustment *hadj, *vadj;
+	CtkAdjustment *hadj, *vadj;
 	gint r, c, pg;
 
 	priv = preview->priv;
@@ -765,11 +765,11 @@ get_page_at_coords (LapizPrintPreview *preview,
 }
 
 static gboolean
-preview_layout_query_tooltip (GtkWidget         *widget,
+preview_layout_query_tooltip (CtkWidget         *widget,
 			      gint               x,
 			      gint               y,
 			      gboolean           keyboard_tip,
-			      GtkTooltip        *tooltip,
+			      CtkTooltip        *tooltip,
 			      LapizPrintPreview *preview)
 {
 	gint pg;
@@ -787,12 +787,12 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 }
 
 static gint
-preview_layout_key_press (GtkWidget         *widget,
+preview_layout_key_press (CtkWidget         *widget,
 			  GdkEventKey       *event,
 			  LapizPrintPreview *preview)
 {
 	LapizPrintPreviewPrivate *priv;
-	GtkAdjustment *hadj, *vadj;
+	CtkAdjustment *hadj, *vadj;
 	double x, y;
 	guint h, w;
 	double hlower, hupper, vlower, vupper;
@@ -1013,7 +1013,7 @@ lapiz_print_preview_init (LapizPrintPreview *preview)
 	priv->context = NULL;
 	priv->ctk_preview = NULL;
 
-	GtkStyleContext *context;
+	CtkStyleContext *context;
 
 	context = ctk_widget_get_style_context (CTK_WIDGET (preview));
 	ctk_style_context_add_class (context, "lapiz-print-preview");
@@ -1126,7 +1126,7 @@ draw_page (cairo_t           *cr,
 }
 
 static gboolean
-preview_draw (GtkWidget         *widget,
+preview_draw (CtkWidget         *widget,
 		cairo_t *cr,
 		LapizPrintPreview *preview)
 {
@@ -1211,8 +1211,8 @@ set_n_pages (LapizPrintPreview *preview,
 }
 
 static void
-preview_ready (GtkPrintOperationPreview *ctk_preview,
-	       GtkPrintContext          *context,
+preview_ready (CtkPrintOperationPreview *ctk_preview,
+	       CtkPrintContext          *context,
 	       LapizPrintPreview        *preview)
 {
 	gint n_pages;
@@ -1237,9 +1237,9 @@ preview_ready (GtkPrintOperationPreview *ctk_preview,
 
 static void
 update_paper_size (LapizPrintPreview *preview,
-		   GtkPageSetup      *page_setup)
+		   CtkPageSetup      *page_setup)
 {
-	GtkPaperSize *paper_size;
+	CtkPaperSize *paper_size;
 
 	paper_size = ctk_page_setup_get_paper_size (page_setup);
 
@@ -1250,9 +1250,9 @@ update_paper_size (LapizPrintPreview *preview,
 }
 
 static void
-preview_got_page_size (GtkPrintOperationPreview *ctk_preview,
-		       GtkPrintContext          *context,
-		       GtkPageSetup             *page_setup,
+preview_got_page_size (CtkPrintOperationPreview *ctk_preview,
+		       CtkPrintContext          *context,
+		       CtkPageSetup             *page_setup,
 		       LapizPrintPreview        *preview)
 {
 	update_paper_size (preview, page_setup);
@@ -1271,7 +1271,7 @@ dummy_write_func (G_GNUC_UNUSED gpointer      closure,
 #define PRINTER_DPI (72.)
 
 static cairo_surface_t *
-create_preview_surface_platform (GtkPaperSize *paper_size,
+create_preview_surface_platform (CtkPaperSize *paper_size,
 				 double       *dpi_x,
 				 double       *dpi_y)
 {
@@ -1293,8 +1293,8 @@ create_preview_surface (LapizPrintPreview *preview,
 			double	  *dpi_x,
 			double	  *dpi_y)
 {
-    GtkPageSetup *page_setup;
-    GtkPaperSize *paper_size;
+    CtkPageSetup *page_setup;
+    CtkPaperSize *paper_size;
 
     page_setup = ctk_print_context_get_page_setup (preview->priv->context);
     /* ctk_page_setup_get_paper_size swaps width and height for landscape */
@@ -1303,13 +1303,13 @@ create_preview_surface (LapizPrintPreview *preview,
     return create_preview_surface_platform (paper_size, dpi_x, dpi_y);
 }
 
-GtkWidget *
-lapiz_print_preview_new (GtkPrintOperation        *op,
-			 GtkPrintOperationPreview *ctk_preview,
-			 GtkPrintContext          *context)
+CtkWidget *
+lapiz_print_preview_new (CtkPrintOperation        *op,
+			 CtkPrintOperationPreview *ctk_preview,
+			 CtkPrintContext          *context)
 {
 	LapizPrintPreview *preview;
-	GtkPageSetup *page_setup;
+	CtkPageSetup *page_setup;
 	cairo_surface_t *surface;
 	cairo_t *cr;
 	double dpi_x, dpi_y;

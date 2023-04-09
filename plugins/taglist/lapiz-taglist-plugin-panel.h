@@ -58,7 +58,7 @@ typedef struct _LapizTaglistPluginPanel LapizTaglistPluginPanel;
 
 struct _LapizTaglistPluginPanel
 {
-	GtkBox vbox;
+	CtkBox vbox;
 
 	/*< private > */
 	LapizTaglistPluginPanelPrivate *priv;
@@ -71,7 +71,7 @@ typedef struct _LapizTaglistPluginPanelClass LapizTaglistPluginPanelClass;
 
 struct _LapizTaglistPluginPanelClass
 {
-	GtkBoxClass parent_class;
+	CtkBoxClass parent_class;
 };
 
 /*
@@ -81,7 +81,7 @@ void		 _lapiz_taglist_plugin_panel_register_type	(GTypeModule *module);
 
 GType 		 lapiz_taglist_plugin_panel_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_taglist_plugin_panel_new 		(LapizWindow *window,
+CtkWidget	*lapiz_taglist_plugin_panel_new 		(LapizWindow *window,
 								 const gchar *data_dir);
 
 G_END_DECLS

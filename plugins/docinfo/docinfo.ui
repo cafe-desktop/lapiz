@@ -3,17 +3,17 @@
 <!--*- mode: xml -*-->
 <interface>
   <requires lib="ctk+" version="3.22"/>
-  <object class="GtkImage" id="image1">
+  <object class="CtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">window-close</property>
   </object>
-  <object class="GtkImage" id="update_image">
+  <object class="CtkImage" id="update_image">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">view-refresh</property>
   </object>
-  <object class="GtkDialog" id="dialog">
+  <object class="CtkDialog" id="dialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Document Statistics</property>
@@ -21,17 +21,17 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="CtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">8</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
+          <object class="CtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="close_button">
+              <object class="CtkButton" id="close_button">
                 <property name="label" translatable="yes">_Close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -47,7 +47,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="update_button">
+              <object class="CtkButton" id="update_button">
                 <property name="label" translatable="yes">_Update</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -71,14 +71,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="docinfo_dialog_content">
+          <object class="CtkBox" id="docinfo_dialog_content">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">5</property>
             <property name="orientation">vertical</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkLabel" id="file_name_label">
+              <object class="CtkLabel" id="file_name_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">File Name</property>
@@ -96,11 +96,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="hbox1">
+              <object class="CtkBox" id="hbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkLabel" id="label28">
+                  <object class="CtkLabel" id="label28">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">    </property>
@@ -114,14 +114,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="table1">
+                  <object class="CtkGrid" id="table1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="border_width">6</property>
                     <property name="row_spacing">6</property>
                     <property name="column_spacing">18</property>
                     <child>
-                      <object class="GtkLabel" id="label26">
+                      <object class="CtkLabel" id="label26">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Bytes</property>
@@ -134,7 +134,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="bytes_label">
+                      <object class="CtkLabel" id="bytes_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -147,7 +147,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label5">
+                      <object class="CtkLabel" id="label5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Characters (no spaces)</property>
@@ -160,7 +160,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="chars_ns_label">
+                      <object class="CtkLabel" id="chars_ns_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -173,7 +173,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label4">
+                      <object class="CtkLabel" id="label4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Characters (with spaces)</property>
@@ -186,7 +186,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="chars_label">
+                      <object class="CtkLabel" id="chars_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -199,7 +199,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="words_label">
+                      <object class="CtkLabel" id="words_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -212,7 +212,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label2">
+                      <object class="CtkLabel" id="label2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Words</property>
@@ -225,7 +225,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label6">
+                      <object class="CtkLabel" id="label6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Lines</property>
@@ -238,7 +238,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="lines_label">
+                      <object class="CtkLabel" id="lines_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -251,7 +251,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label30">
+                      <object class="CtkLabel" id="label30">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Document</property>
@@ -277,14 +277,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="selection_vbox">
+                  <object class="CtkBox" id="selection_vbox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="border_width">6</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkLabel" id="selection_label">
+                      <object class="CtkLabel" id="selection_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Selection</property>
@@ -298,7 +298,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="selected_lines_label">
+                      <object class="CtkLabel" id="selected_lines_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -312,7 +312,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="selected_words_label">
+                      <object class="CtkLabel" id="selected_words_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -326,7 +326,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="selected_chars_label">
+                      <object class="CtkLabel" id="selected_chars_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -340,7 +340,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="selected_chars_ns_label">
+                      <object class="CtkLabel" id="selected_chars_ns_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>
@@ -354,7 +354,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="selected_bytes_label">
+                      <object class="CtkLabel" id="selected_bytes_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">0</property>

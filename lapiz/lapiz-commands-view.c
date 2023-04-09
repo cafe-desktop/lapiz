@@ -43,7 +43,7 @@
 
 
 void
-_lapiz_cmd_view_show_toolbar (GtkAction   *action,
+_lapiz_cmd_view_show_toolbar (CtkAction   *action,
 			     LapizWindow *window)
 {
 	gboolean visible;
@@ -59,7 +59,7 @@ _lapiz_cmd_view_show_toolbar (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_view_show_statusbar (GtkAction   *action,
+_lapiz_cmd_view_show_statusbar (CtkAction   *action,
 			       LapizWindow *window)
 {
 	gboolean visible;
@@ -75,7 +75,7 @@ _lapiz_cmd_view_show_statusbar (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_view_show_side_pane (GtkAction   *action,
+_lapiz_cmd_view_show_side_pane (CtkAction   *action,
 			       LapizWindow *window)
 {
 	gboolean visible;
@@ -99,7 +99,7 @@ _lapiz_cmd_view_show_side_pane (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_view_show_bottom_pane (GtkAction   *action,
+_lapiz_cmd_view_show_bottom_pane (CtkAction   *action,
 				 LapizWindow *window)
 {
 	gboolean visible;
@@ -123,7 +123,7 @@ _lapiz_cmd_view_show_bottom_pane (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_view_toggle_fullscreen_mode (GtkAction *action,
+_lapiz_cmd_view_toggle_fullscreen_mode (CtkAction *action,
 					LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -135,10 +135,10 @@ _lapiz_cmd_view_toggle_fullscreen_mode (GtkAction *action,
 }
 
 void
-_lapiz_cmd_view_leave_fullscreen_mode (GtkAction *action,
+_lapiz_cmd_view_leave_fullscreen_mode (CtkAction *action,
 				       LapizWindow *window)
 {
-	GtkAction *view_action;
+	CtkAction *view_action;
 
 	view_action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 						   "ViewFullscreen");

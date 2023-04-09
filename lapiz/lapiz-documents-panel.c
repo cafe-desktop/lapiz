@@ -42,8 +42,8 @@ struct _LapizDocumentsPanelPrivate
 {
 	LapizWindow  *window;
 
-	GtkWidget    *treeview;
-	GtkTreeModel *model;
+	CtkWidget    *treeview;
+	CtkTreeModel *model;
 
 	guint         adding_tab : 1;
 	guint         is_reodering : 1;
@@ -119,11 +119,11 @@ tab_get_name (LapizTab *tab)
 }
 
 static void
-get_iter_from_tab (LapizDocumentsPanel *panel, LapizTab *tab, GtkTreeIter *iter)
+get_iter_from_tab (LapizDocumentsPanel *panel, LapizTab *tab, CtkTreeIter *iter)
 {
 	gint num;
-	GtkWidget *nb;
-	GtkTreePath *path;
+	CtkWidget *nb;
+	CtkTreePath *path;
 
 	nb = _lapiz_window_get_notebook (panel->priv->window);
 	num = ctk_notebook_page_num (CTK_NOTEBOOK (nb),
@@ -145,8 +145,8 @@ window_active_tab_changed (LapizWindow         *window,
 
 	if (!_lapiz_window_is_removing_tabs (window))
 	{
-		GtkTreeIter iter;
-		GtkTreeSelection *selection;
+		CtkTreeIter iter;
+		CtkTreeSelection *selection;
 
 		get_iter_from_tab (panel, tab, &iter);
 
@@ -168,8 +168,8 @@ refresh_list (LapizDocumentsPanel *panel)
 
 	GList *tabs;
 	GList *l;
-	GtkWidget *nb;
-	GtkListStore *list_store;
+	CtkWidget *nb;
+	CtkListStore *list_store;
 	LapizTab *active_tab;
 
 	/* g_debug ("refresh_list"); */
@@ -191,7 +191,7 @@ refresh_list (LapizDocumentsPanel *panel)
 	{
 		GdkPixbuf *pixbuf;
 		gchar *name;
-		GtkTreeIter iter;
+		CtkTreeIter iter;
 
 		name = tab_get_name (LAPIZ_TAB (l->data));
 		pixbuf = _lapiz_tab_get_icon (LAPIZ_TAB (l->data));
@@ -211,7 +211,7 @@ refresh_list (LapizDocumentsPanel *panel)
 
 		if (l->data == active_tab)
 		{
-			GtkTreeSelection *selection;
+			CtkTreeSelection *selection;
 
 			selection = ctk_tree_view_get_selection (
 					CTK_TREE_VIEW (panel->priv->treeview));
@@ -234,7 +234,7 @@ sync_name_and_icon (LapizTab            *tab,
 {
 	GdkPixbuf *pixbuf;
 	gchar *name;
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	get_iter_from_tab (panel, tab, &iter);
 
@@ -273,8 +273,8 @@ window_tab_added (LapizWindow         *window,
 		  LapizTab            *tab,
 		  LapizDocumentsPanel *panel)
 {
-	GtkTreeIter iter;
-	GtkTreeIter sibling;
+	CtkTreeIter iter;
+	CtkTreeIter sibling;
 	GdkPixbuf *pixbuf;
 	gchar *name;
 
@@ -310,7 +310,7 @@ window_tab_added (LapizWindow         *window,
 
 		if (tab == active_tab)
 		{
-			GtkTreeSelection *selection;
+			CtkTreeSelection *selection;
 
 			selection = ctk_tree_view_get_selection (
 						CTK_TREE_VIEW (panel->priv->treeview));
@@ -374,11 +374,11 @@ set_window (LapizDocumentsPanel *panel,
 }
 
 static void
-treeview_cursor_changed (GtkTreeView         *view,
+treeview_cursor_changed (CtkTreeView         *view,
 			 LapizDocumentsPanel *panel)
 {
-	GtkTreeIter iter;
-	GtkTreeSelection *selection;
+	CtkTreeIter iter;
+	CtkTreeSelection *selection;
 	gpointer tab;
 
 	selection = ctk_tree_view_get_selection (
@@ -489,7 +489,7 @@ static gboolean
 show_popup_menu (LapizDocumentsPanel *panel,
 		 GdkEventButton      *event)
 {
-	GtkWidget *menu;
+	CtkWidget *menu;
 
 	menu = ctk_ui_manager_get_widget (lapiz_window_get_ui_manager (panel->priv->window),
 					 "/NotebookPopup");
@@ -509,13 +509,13 @@ show_popup_menu (LapizDocumentsPanel *panel,
 }
 
 static gboolean
-panel_button_press_event (GtkTreeView         *treeview,
+panel_button_press_event (CtkTreeView         *treeview,
 			  GdkEventButton      *event,
 			  LapizDocumentsPanel *panel)
 {
 	if ((GDK_BUTTON_PRESS == event->type) && (3 == event->button))
 	{
-		GtkTreePath* path = NULL;
+		CtkTreePath* path = NULL;
 
 		if (event->window == ctk_tree_view_get_bin_window (treeview))
 		{
@@ -546,7 +546,7 @@ panel_button_press_event (GtkTreeView         *treeview,
 }
 
 static gboolean
-panel_popup_menu (GtkWidget           *treeview,
+panel_popup_menu (CtkWidget           *treeview,
 		  LapizDocumentsPanel *panel)
 {
 	/* Only respond if the treeview is the actual focus */
@@ -559,17 +559,17 @@ panel_popup_menu (GtkWidget           *treeview,
 }
 
 static gboolean
-treeview_query_tooltip (GtkWidget  *widget,
+treeview_query_tooltip (CtkWidget  *widget,
 			gint        x,
 			gint        y,
 			gboolean    keyboard_tip,
-			GtkTooltip *tooltip,
+			CtkTooltip *tooltip,
 			gpointer    data)
 {
-	GtkTreeIter iter;
-	GtkTreeView *tree_view = CTK_TREE_VIEW (widget);
-	GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
-	GtkTreePath *path = NULL;
+	CtkTreeIter iter;
+	CtkTreeView *tree_view = CTK_TREE_VIEW (widget);
+	CtkTreeModel *model = ctk_tree_view_get_model (tree_view);
+	CtkTreePath *path = NULL;
 	gpointer *tab;
 	gchar *tip;
 
@@ -616,14 +616,14 @@ treeview_query_tooltip (GtkWidget  *widget,
 }
 
 static void
-treeview_row_inserted (GtkTreeModel        *tree_model,
-		       GtkTreePath         *path,
-		       GtkTreeIter         *iter,
+treeview_row_inserted (CtkTreeModel        *tree_model,
+		       CtkTreePath         *path,
+		       CtkTreeIter         *iter,
 		       LapizDocumentsPanel *panel)
 {
 	LapizTab *tab;
 	gint *indeces;
-	GtkWidget *nb;
+	CtkWidget *nb;
 	gint old_position;
 	gint new_position;
 
@@ -657,10 +657,10 @@ treeview_row_inserted (GtkTreeModel        *tree_model,
 static void
 lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 {
-	GtkWidget 		*sw;
-	GtkTreeViewColumn	*column;
-	GtkCellRenderer 	*cell;
-	GtkTreeSelection 	*selection;
+	CtkWidget 		*sw;
+	CtkTreeViewColumn	*column;
+	CtkCellRenderer 	*cell;
+	CtkTreeSelection 	*selection;
 
 	panel->priv = lapiz_documents_panel_get_instance_private (panel);
 
@@ -740,7 +740,7 @@ lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 			  panel);
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_documents_panel_new (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);

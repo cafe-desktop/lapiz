@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="ctk+" version="3.0"/>
-  <object class="GtkGrid" id="widget-config">
+  <object class="CtkGrid" id="widget-config">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_left">6</property>
@@ -14,7 +14,7 @@
     <property name="column_spacing">6</property>
     <signal name="parent-set" handler="on_widget_config_parent_set" swapped="no"/>
     <child>
-      <object class="GtkLabel" id="label-error">
+      <object class="CtkLabel" id="label-error">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">_Error color:</property>
@@ -27,7 +27,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkColorButton" id="colorbutton-error">
+      <object class="CtkColorButton" id="colorbutton-error">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -40,7 +40,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkColorButton" id="colorbutton-command">
+      <object class="CtkColorButton" id="colorbutton-command">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -53,7 +53,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label-command">
+      <object class="CtkLabel" id="label-command">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">C_ommand color:</property>
@@ -66,7 +66,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel">
+      <object class="CtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="vexpand">True</property>
@@ -78,7 +78,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkCheckButton" id="checkbox-system-font">
+      <object class="CtkCheckButton" id="checkbox-system-font">
         <property name="label" translatable="yes">Use system fixed width font</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
@@ -95,7 +95,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel">
+      <object class="CtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">start</property>
@@ -107,7 +107,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkFontButton" id="fontbutton-font">
+      <object class="CtkFontButton" id="fontbutton-font">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>

@@ -76,9 +76,9 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 	}
 
 	if (!g_irepository_require (g_irepository_get_default (),
-	                            "PeasGtk", "1.0", 0, &error))
+	                            "PeasCtk", "1.0", 0, &error))
 	{
-		g_warning ("Could not load PeasGtk repository: %s", error->message);
+		g_warning ("Could not load PeasCtk repository: %s", error->message);
 		g_error_free (error);
 		error = NULL;
 	}

@@ -57,7 +57,7 @@ typedef struct _LapizDocumentsPanel LapizDocumentsPanel;
 
 struct _LapizDocumentsPanel
 {
-	GtkBox vbox;
+	CtkBox vbox;
 
 	/*< private > */
 	LapizDocumentsPanelPrivate *priv;
@@ -70,7 +70,7 @@ typedef struct _LapizDocumentsPanelClass LapizDocumentsPanelClass;
 
 struct _LapizDocumentsPanelClass
 {
-	GtkBoxClass parent_class;
+	CtkBoxClass parent_class;
 };
 
 /*
@@ -78,7 +78,7 @@ struct _LapizDocumentsPanelClass
  */
 GType 		 lapiz_documents_panel_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_documents_panel_new 	(LapizWindow *window);
+CtkWidget	*lapiz_documents_panel_new 	(LapizWindow *window);
 
 G_END_DECLS
 

@@ -1,6 +1,6 @@
-lapiz-spell-setup-dialog.ui://GtkLabel[@id='label1'] orphan-label
-spell-checker.ui://GtkLabel[@id='label1'] orphan-label
-spell-checker.ui://GtkLabel[@id='misspelled_word_label'] orphan-label
-spell-checker.ui://GtkLabel[@id='label6'] orphan-label
-spell-checker.ui://GtkLabel[@id='label44'] orphan-label
-spell-checker.ui://GtkLabel[@id='language_label'] orphan-label
+lapiz-spell-setup-dialog.ui://CtkLabel[@id='label1'] orphan-label
+spell-checker.ui://CtkLabel[@id='label1'] orphan-label
+spell-checker.ui://CtkLabel[@id='misspelled_word_label'] orphan-label
+spell-checker.ui://CtkLabel[@id='label6'] orphan-label
+spell-checker.ui://CtkLabel[@id='label44'] orphan-label
+spell-checker.ui://CtkLabel[@id='language_label'] orphan-label

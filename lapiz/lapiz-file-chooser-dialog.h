@@ -53,21 +53,21 @@ typedef struct _LapizFileChooserDialogPrivate LapizFileChooserDialogPrivate;
 
 struct _LapizFileChooserDialogClass
 {
-	GtkFileChooserDialogClass parent_class;
+	CtkFileChooserDialogClass parent_class;
 };
 
 struct _LapizFileChooserDialog
 {
-	GtkFileChooserDialog parent_instance;
+	CtkFileChooserDialog parent_instance;
 
 	LapizFileChooserDialogPrivate *priv;
 };
 
 GType		 lapiz_file_chooser_dialog_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_file_chooser_dialog_new		(const gchar            *title,
-							 GtkWindow              *parent,
-							 GtkFileChooserAction    action,
+CtkWidget	*lapiz_file_chooser_dialog_new		(const gchar            *title,
+							 CtkWindow              *parent,
+							 CtkFileChooserAction    action,
 							 const LapizEncoding    *encoding,
 							 const gchar            *first_button_text,
 							 ...);

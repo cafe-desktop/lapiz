@@ -56,7 +56,7 @@ typedef struct _LapizSearchDialog LapizSearchDialog;
 
 struct _LapizSearchDialog
 {
-	GtkDialog dialog;
+	CtkDialog dialog;
 
 	/*< private > */
 	LapizSearchDialogPrivate *priv;
@@ -69,7 +69,7 @@ typedef struct _LapizSearchDialogClass LapizSearchDialogClass;
 
 struct _LapizSearchDialogClass
 {
-	GtkDialogClass parent_class;
+	CtkDialogClass parent_class;
 
 	/* Key bindings */
 	gboolean (* show_replace) (LapizSearchDialog *dlg);
@@ -87,7 +87,7 @@ enum
  */
 GType 		 lapiz_search_dialog_get_type 		(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_search_dialog_new		(GtkWindow         *parent,
+CtkWidget	*lapiz_search_dialog_new		(CtkWindow         *parent,
 							 gboolean           show_replace);
 
 void		 lapiz_search_dialog_present_with_time	(LapizSearchDialog *dialog,

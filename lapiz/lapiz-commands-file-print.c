@@ -43,7 +43,7 @@
 #include "lapiz-debug.h"
 
 void
-_lapiz_cmd_file_print_preview (GtkAction   *action,
+_lapiz_cmd_file_print_preview (CtkAction   *action,
 			       LapizWindow *window)
 {
 	LapizTab *tab;
@@ -58,7 +58,7 @@ _lapiz_cmd_file_print_preview (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_file_print (GtkAction   *action,
+_lapiz_cmd_file_print (CtkAction   *action,
 		       LapizWindow *window)
 {
 	LapizTab *tab;

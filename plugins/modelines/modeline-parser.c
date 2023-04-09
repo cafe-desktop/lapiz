@@ -54,13 +54,13 @@ typedef struct _ModelineOptions
 {
 	gchar		*language_id;
 
-	/* these options are similar to the GtkSourceView properties of the
+	/* these options are similar to the CtkSourceView properties of the
 	 * same names.
 	 */
 	gboolean	insert_spaces;
 	guint		tab_width;
 	guint		indent_width;
-	GtkWrapMode	wrap_mode;
+	CtkWrapMode	wrap_mode;
 	gboolean	display_right_margin;
 	guint		right_margin_position;
 
@@ -607,11 +607,11 @@ parse_modeline (gchar           *s,
 }
 
 static gboolean
-check_previous (GtkSourceView   *view,
+check_previous (CtkSourceView   *view,
                 ModelineOptions *previous,
                 ModelineSet      set)
 {
-	GtkSourceBuffer *buffer = CTK_SOURCE_BUFFER (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
+	CtkSourceBuffer *buffer = CTK_SOURCE_BUFFER (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 
 	/* Do not restore default when this is the first time */
 	if (!previous)
@@ -648,7 +648,7 @@ check_previous (GtkSourceView   *view,
 		break;
 		case MODELINE_SET_LANGUAGE:
 		{
-			GtkSourceLanguage *language = ctk_source_buffer_get_language (buffer);
+			CtkSourceLanguage *language = ctk_source_buffer_get_language (buffer);
 
 			return (language == NULL && previous->language_id == NULL) ||
 			       (language != NULL && g_strcmp0 (ctk_source_language_get_id (language),
@@ -669,11 +669,11 @@ free_modeline_options (ModelineOptions *options)
 }
 
 void
-modeline_parser_apply_modeline (GtkSourceView *view)
+modeline_parser_apply_modeline (CtkSourceView *view)
 {
 	ModelineOptions options;
-	GtkTextBuffer *buffer;
-	GtkTextIter iter, liter;
+	CtkTextBuffer *buffer;
+	CtkTextIter iter, liter;
 	gint line_count;
 
 	options.language_id = NULL;
@@ -744,8 +744,8 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 	/* Try to set language */
 	if (has_option (&options, MODELINE_SET_LANGUAGE) && options.language_id)
 	{
-		GtkSourceLanguageManager *manager;
-		GtkSourceLanguage *language;
+		CtkSourceLanguageManager *manager;
+		CtkSourceLanguage *language;
 
 		manager = lapiz_get_language_manager ();
 		language = ctk_source_language_manager_get_language
@@ -845,7 +845,7 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 }
 
 void
-modeline_parser_deactivate (GtkSourceView *view)
+modeline_parser_deactivate (CtkSourceView *view)
 {
 	g_object_set_data (G_OBJECT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view))),
 	                   MODELINE_OPTIONS_DATA_KEY,

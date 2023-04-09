@@ -40,42 +40,42 @@ typedef struct _LapizStatusComboBoxClass	LapizStatusComboBoxClass;
 typedef struct _LapizStatusComboBoxPrivate	LapizStatusComboBoxPrivate;
 
 struct _LapizStatusComboBox {
-	GtkEventBox parent;
+	CtkEventBox parent;
 
 	LapizStatusComboBoxPrivate *priv;
 };
 
 struct _LapizStatusComboBoxClass {
-	GtkEventBoxClass parent_class;
+	CtkEventBoxClass parent_class;
 
 	void (*changed) (LapizStatusComboBox *combo,
-			 GtkMenuItem         *item);
+			 CtkMenuItem         *item);
 };
 
 GType lapiz_status_combo_box_get_type 			(void) G_GNUC_CONST;
-GtkWidget *lapiz_status_combo_box_new			(const gchar 		*label);
+CtkWidget *lapiz_status_combo_box_new			(const gchar 		*label);
 
 const gchar *lapiz_status_combo_box_get_label 		(LapizStatusComboBox 	*combo);
 void lapiz_status_combo_box_set_label 			(LapizStatusComboBox 	*combo,
 							 const gchar         	*label);
 
 void lapiz_status_combo_box_add_item 			(LapizStatusComboBox 	*combo,
-							 GtkMenuItem         	*item,
+							 CtkMenuItem         	*item,
 							 const gchar         	*text);
 void lapiz_status_combo_box_remove_item			(LapizStatusComboBox    *combo,
-							 GtkMenuItem            *item);
+							 CtkMenuItem            *item);
 
 GList *lapiz_status_combo_box_get_items			(LapizStatusComboBox    *combo);
 const gchar *lapiz_status_combo_box_get_item_text 	(LapizStatusComboBox	*combo,
-							 GtkMenuItem		*item);
+							 CtkMenuItem		*item);
 void lapiz_status_combo_box_set_item_text 		(LapizStatusComboBox	*combo,
-							 GtkMenuItem		*item,
+							 CtkMenuItem		*item,
 							 const gchar            *text);
 
 void lapiz_status_combo_box_set_item			(LapizStatusComboBox	*combo,
-							 GtkMenuItem		*item);
+							 CtkMenuItem		*item);
 
-GtkLabel *lapiz_status_combo_box_get_item_label		(LapizStatusComboBox	*combo);
+CtkLabel *lapiz_status_combo_box_get_item_label		(LapizStatusComboBox	*combo);
 
 G_END_DECLS
 

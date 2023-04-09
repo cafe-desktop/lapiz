@@ -44,35 +44,35 @@ typedef enum {
 
 struct _LapizFileBrowserView
 {
-	GtkTreeView parent;
+	CtkTreeView parent;
 
 	LapizFileBrowserViewPrivate *priv;
 };
 
 struct _LapizFileBrowserViewClass
 {
-	GtkTreeViewClass parent_class;
+	CtkTreeViewClass parent_class;
 
 	/* Signals */
 	void (*error) (LapizFileBrowserView * filetree,
 	               guint code,
 		       gchar const *message);
 	void (*file_activated) (LapizFileBrowserView * filetree,
-				    GtkTreeIter *iter);
+				    CtkTreeIter *iter);
 	void (*directory_activated) (LapizFileBrowserView * filetree,
-				    GtkTreeIter *iter);
+				    CtkTreeIter *iter);
 	void (*bookmark_activated) (LapizFileBrowserView * filetree,
-				    GtkTreeIter *iter);
+				    CtkTreeIter *iter);
 };
 
 GType lapiz_file_browser_view_get_type			(void) G_GNUC_CONST;
 void _lapiz_file_browser_view_register_type		(GTypeModule 			* module);
 
-GtkWidget *lapiz_file_browser_view_new			(void);
+CtkWidget *lapiz_file_browser_view_new			(void);
 void lapiz_file_browser_view_set_model			(LapizFileBrowserView 		* tree_view,
-							 GtkTreeModel 			* model);
+							 CtkTreeModel 			* model);
 void lapiz_file_browser_view_start_rename		(LapizFileBrowserView 		* tree_view,
-							 GtkTreeIter 			* iter);
+							 CtkTreeIter 			* iter);
 void lapiz_file_browser_view_set_click_policy		(LapizFileBrowserView 		* tree_view,
 							 LapizFileBrowserViewClickPolicy  policy);
 void lapiz_file_browser_view_set_restore_expand_state	(LapizFileBrowserView 		* tree_view,
