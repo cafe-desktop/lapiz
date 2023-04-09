@@ -1,7 +1,7 @@
-AM_CPPFLAGS = -g -I$(top_srcdir) -I$(top_srcdir)/pluma $(PLUMA_DEBUG_FLAGS) $(PLUMA_CFLAGS)
+AM_CPPFLAGS = -g -I$(top_srcdir) -I$(top_srcdir)/lapiz $(PLUMA_DEBUG_FLAGS) $(PLUMA_CFLAGS)
 
 noinst_PROGRAMS = $(TEST_PROGS)
-progs_ldadd     = $(top_builddir)/pluma/libpluma.la
+progs_ldadd     = $(top_builddir)/lapiz/liblapiz.la
 
 TEST_PROGS			= smart-converter
 smart_converter_SOURCES		= smart-converter.c

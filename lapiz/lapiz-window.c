@@ -1,6 +1,6 @@
 /*
- * pluma-window.c
- * This file is part of pluma
+ * lapiz-window.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -44,27 +44,27 @@
 #include <libpeas/peas-activatable.h>
 #include <libpeas/peas-extension-set.h>
 
-#include "pluma-ui.h"
-#include "pluma-window.h"
-#include "pluma-window-private.h"
-#include "pluma-app.h"
-#include "pluma-notebook.h"
-#include "pluma-statusbar.h"
-#include "pluma-utils.h"
-#include "pluma-commands.h"
-#include "pluma-debug.h"
-#include "pluma-language-manager.h"
-#include "pluma-prefs-manager-app.h"
-#include "pluma-prefs-manager-private.h"
-#include "pluma-panel.h"
-#include "pluma-documents-panel.h"
-#include "pluma-plugins-engine.h"
-#include "pluma-enum-types.h"
-#include "pluma-dirs.h"
-#include "pluma-status-combo-box.h"
+#include "lapiz-ui.h"
+#include "lapiz-window.h"
+#include "lapiz-window-private.h"
+#include "lapiz-app.h"
+#include "lapiz-notebook.h"
+#include "lapiz-statusbar.h"
+#include "lapiz-utils.h"
+#include "lapiz-commands.h"
+#include "lapiz-debug.h"
+#include "lapiz-language-manager.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-prefs-manager-private.h"
+#include "lapiz-panel.h"
+#include "lapiz-documents-panel.h"
+#include "lapiz-plugins-engine.h"
+#include "lapiz-enum-types.h"
+#include "lapiz-dirs.h"
+#include "lapiz-status-combo-box.h"
 
 #define LANGUAGE_NONE (const gchar *)"LangNone"
-#define PLUMA_UIFILE "pluma-ui.xml"
+#define PLUMA_UIFILE "lapiz-ui.xml"
 #define TAB_WIDTH_DATA "PlumaWindowTabWidthData"
 #define LANGUAGE_DATA "PlumaWindowLanguageData"
 #define FULLSCREEN_ANIMATION_SPEED 4
@@ -96,13 +96,13 @@ enum
 	TARGET_URI_LIST = 100
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaWindow, pluma_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaWindow, lapiz_window, GTK_TYPE_WINDOW)
 
 static void	recent_manager_changed	(GtkRecentManager *manager,
 					 PlumaWindow *window);
 
 static void
-pluma_window_get_property (GObject    *object,
+lapiz_window_get_property (GObject    *object,
 			   guint       prop_id,
 			   GValue     *value,
 			   GParamSpec *pspec)
@@ -113,7 +113,7 @@ pluma_window_get_property (GObject    *object,
 	{
 		case PROP_STATE:
 			g_value_set_enum (value,
-					  pluma_window_get_state (window));
+					  lapiz_window_get_state (window));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -126,42 +126,42 @@ save_panes_state (PlumaWindow *window)
 {
 	gint pane_page;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	if (pluma_prefs_manager_window_size_can_set ())
-		pluma_prefs_manager_set_window_size (window->priv->width,
+	if (lapiz_prefs_manager_window_size_can_set ())
+		lapiz_prefs_manager_set_window_size (window->priv->width,
 						     window->priv->height);
 
-	if (pluma_prefs_manager_window_state_can_set ())
-		pluma_prefs_manager_set_window_state (window->priv->window_state);
+	if (lapiz_prefs_manager_window_state_can_set ())
+		lapiz_prefs_manager_set_window_state (window->priv->window_state);
 
 	if ((window->priv->side_panel_size > 0) &&
-	    pluma_prefs_manager_side_panel_size_can_set ())
-		pluma_prefs_manager_set_side_panel_size	(
+	    lapiz_prefs_manager_side_panel_size_can_set ())
+		lapiz_prefs_manager_set_side_panel_size	(
 					window->priv->side_panel_size);
 
-	pane_page = _pluma_panel_get_active_item_id (PLUMA_PANEL (window->priv->side_panel));
+	pane_page = _lapiz_panel_get_active_item_id (PLUMA_PANEL (window->priv->side_panel));
 	if (pane_page != 0 &&
-	    pluma_prefs_manager_side_panel_active_page_can_set ())
-		pluma_prefs_manager_set_side_panel_active_page (pane_page);
+	    lapiz_prefs_manager_side_panel_active_page_can_set ())
+		lapiz_prefs_manager_set_side_panel_active_page (pane_page);
 
 	if ((window->priv->bottom_panel_size > 0) &&
-	    pluma_prefs_manager_bottom_panel_size_can_set ())
-		pluma_prefs_manager_set_bottom_panel_size (
+	    lapiz_prefs_manager_bottom_panel_size_can_set ())
+		lapiz_prefs_manager_set_bottom_panel_size (
 					window->priv->bottom_panel_size);
 
-	pane_page = _pluma_panel_get_active_item_id (PLUMA_PANEL (window->priv->bottom_panel));
+	pane_page = _lapiz_panel_get_active_item_id (PLUMA_PANEL (window->priv->bottom_panel));
 	if (pane_page != 0 &&
-	    pluma_prefs_manager_bottom_panel_active_page_can_set ())
-		pluma_prefs_manager_set_bottom_panel_active_page (pane_page);
+	    lapiz_prefs_manager_bottom_panel_active_page_can_set ())
+		lapiz_prefs_manager_set_bottom_panel_active_page (pane_page);
 }
 
 static void
-pluma_window_dispose (GObject *object)
+lapiz_window_dispose (GObject *object)
 {
 	PlumaWindow *window;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	window = PLUMA_WINDOW (object);
 
@@ -178,7 +178,7 @@ pluma_window_dispose (GObject *object)
 	/* First of all, force collection so that plugins
 	 * really drop some of the references.
 	 */
-	peas_engine_garbage_collect (PEAS_ENGINE (pluma_plugins_engine_get_default ()));
+	peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 
 	/* save the panes position and make sure to deactivate plugins
 	 * for this window, but only once */
@@ -190,7 +190,7 @@ pluma_window_dispose (GObject *object)
 		   all extensions which in turn will deactivate the extension */
 		g_object_unref (window->priv->extensions);
 
-		peas_engine_garbage_collect (PEAS_ENGINE (pluma_plugins_engine_get_default ()));
+		peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 
 		window->priv->dispose_has_run = TRUE;
 	}
@@ -239,39 +239,39 @@ pluma_window_dispose (GObject *object)
 	/* Now that there have broken some reference loops,
 	 * force collection again.
 	 */
-	peas_engine_garbage_collect (PEAS_ENGINE (pluma_plugins_engine_get_default ()));
+	peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 
-	G_OBJECT_CLASS (pluma_window_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_window_parent_class)->dispose (object);
 }
 
 static void
-pluma_window_finalize (GObject *object)
+lapiz_window_finalize (GObject *object)
 {
 	PlumaWindow *window;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	window = PLUMA_WINDOW (object);
 
 	if (window->priv->default_location != NULL)
 		g_object_unref (window->priv->default_location);
 
-	G_OBJECT_CLASS (pluma_window_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_window_parent_class)->finalize (object);
 }
 
 static gboolean
-pluma_window_window_state_event (GtkWidget           *widget,
+lapiz_window_window_state_event (GtkWidget           *widget,
 				 GdkEventWindowState *event)
 {
 	PlumaWindow *window = PLUMA_WINDOW (widget);
 
 	window->priv->window_state = event->new_window_state;
 
-	return GTK_WIDGET_CLASS (pluma_window_parent_class)->window_state_event (widget, event);
+	return GTK_WIDGET_CLASS (lapiz_window_parent_class)->window_state_event (widget, event);
 }
 
 static gboolean
-pluma_window_configure_event (GtkWidget         *widget,
+lapiz_window_configure_event (GtkWidget         *widget,
 			      GdkEventConfigure *event)
 {
 	PlumaWindow *window = PLUMA_WINDOW (widget);
@@ -279,7 +279,7 @@ pluma_window_configure_event (GtkWidget         *widget,
 	window->priv->width = event->width;
 	window->priv->height = event->height;
 
-	return GTK_WIDGET_CLASS (pluma_window_parent_class)->configure_event (widget, event);
+	return GTK_WIDGET_CLASS (lapiz_window_parent_class)->configure_event (widget, event);
 }
 
 /*
@@ -291,7 +291,7 @@ pluma_window_configure_event (GtkWidget         *widget,
  * parent handler, skipping gtk_window_key_press_event.
  */
 static gboolean
-pluma_window_key_press_event (GtkWidget   *widget,
+lapiz_window_key_press_event (GtkWidget   *widget,
 			      GdkEventKey *event)
 {
 	static gpointer grand_parent_class = NULL;
@@ -304,7 +304,7 @@ pluma_window_key_press_event (GtkWidget   *widget,
 		gchar     *tempsize;
 		gint       nsize;
 
-		font = g_settings_get_string (pluma_prefs_manager->settings, "editor-font");
+		font = g_settings_get_string (lapiz_prefs_manager->settings, "editor-font");
 		tempsize = g_strdup (font);
 
 		g_strreverse (tempsize);
@@ -322,10 +322,10 @@ pluma_window_key_press_event (GtkWidget   *widget,
 			nsize = nsize + 1;
 			sprintf (tempsize, "%d", nsize);
 
-			if (!g_settings_get_boolean (pluma_prefs_manager->settings, "use-default-font") && (nsize < 73))
+			if (!g_settings_get_boolean (lapiz_prefs_manager->settings, "use-default-font") && (nsize < 73))
 			{
 				gchar *tmp = g_strconcat (tempfont, tempsize, NULL);
-				g_settings_set_string (pluma_prefs_manager->settings, "editor-font", tmp);
+				g_settings_set_string (lapiz_prefs_manager->settings, "editor-font", tmp);
 				g_free (tmp);
 			}
 		}
@@ -334,17 +334,17 @@ pluma_window_key_press_event (GtkWidget   *widget,
 			nsize = nsize - 1;
 			sprintf (tempsize, "%d", nsize);
 
-			if (!g_settings_get_boolean (pluma_prefs_manager->settings, "use-default-font") && (nsize > 5))
+			if (!g_settings_get_boolean (lapiz_prefs_manager->settings, "use-default-font") && (nsize > 5))
 			{
 				gchar *tmp = g_strconcat (tempfont, tempsize, NULL);
-				g_settings_set_string (pluma_prefs_manager->settings, "editor-font", tmp);
+				g_settings_set_string (lapiz_prefs_manager->settings, "editor-font", tmp);
 				g_free (tmp);
 			}
 		}
 
-		if (g_settings_get_boolean (pluma_prefs_manager->settings, "ctrl-tab-switch-tabs"))
+		if (g_settings_get_boolean (lapiz_prefs_manager->settings, "ctrl-tab-switch-tabs"))
 		{
-			GtkNotebook *notebook = GTK_NOTEBOOK (_pluma_window_get_notebook (PLUMA_WINDOW (window)));
+			GtkNotebook *notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (PLUMA_WINDOW (window)));
 
 			int pages = gtk_notebook_get_n_pages (notebook);
 			int page_num = gtk_notebook_get_current_page (notebook);
@@ -372,7 +372,7 @@ pluma_window_key_press_event (GtkWidget   *widget,
 	}
 
 	if (grand_parent_class == NULL)
-		grand_parent_class = g_type_class_peek_parent (pluma_window_parent_class);
+		grand_parent_class = g_type_class_peek_parent (lapiz_window_parent_class);
 
 	/* handle focus widget key events */
 	if (!handled)
@@ -390,27 +390,27 @@ pluma_window_key_press_event (GtkWidget   *widget,
 }
 
 static void
-pluma_window_tab_removed (PlumaWindow *window,
+lapiz_window_tab_removed (PlumaWindow *window,
 			  PlumaTab    *tab)
 {
-	peas_engine_garbage_collect (PEAS_ENGINE (pluma_plugins_engine_get_default ()));
+	peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 }
 
 static void
-pluma_window_class_init (PlumaWindowClass *klass)
+lapiz_window_class_init (PlumaWindowClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	klass->tab_removed = pluma_window_tab_removed;
+	klass->tab_removed = lapiz_window_tab_removed;
 
-	object_class->dispose = pluma_window_dispose;
-	object_class->finalize = pluma_window_finalize;
-	object_class->get_property = pluma_window_get_property;
+	object_class->dispose = lapiz_window_dispose;
+	object_class->finalize = lapiz_window_finalize;
+	object_class->get_property = lapiz_window_get_property;
 
-	widget_class->window_state_event = pluma_window_window_state_event;
-	widget_class->configure_event = pluma_window_configure_event;
-	widget_class->key_press_event = pluma_window_key_press_event;
+	widget_class->window_state_event = lapiz_window_window_state_event;
+	widget_class->configure_event = lapiz_window_configure_event;
+	widget_class->key_press_event = lapiz_window_key_press_event;
 
 	signals[TAB_ADDED] =
 		g_signal_new ("tab_added",
@@ -536,27 +536,27 @@ apply_toolbar_style (PlumaWindow *window,
 	switch (window->priv->toolbar_style)
 	{
 		case PLUMA_TOOLBAR_SYSTEM:
-			pluma_debug_message (DEBUG_WINDOW, "PLUMA: SYSTEM");
+			lapiz_debug_message (DEBUG_WINDOW, "PLUMA: SYSTEM");
 			gtk_toolbar_unset_style (
 					GTK_TOOLBAR (toolbar));
 			break;
 
 		case PLUMA_TOOLBAR_ICONS:
-			pluma_debug_message (DEBUG_WINDOW, "PLUMA: ICONS");
+			lapiz_debug_message (DEBUG_WINDOW, "PLUMA: ICONS");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (toolbar),
 					GTK_TOOLBAR_ICONS);
 			break;
 
 		case PLUMA_TOOLBAR_ICONS_AND_TEXT:
-			pluma_debug_message (DEBUG_WINDOW, "PLUMA: ICONS_AND_TEXT");
+			lapiz_debug_message (DEBUG_WINDOW, "PLUMA: ICONS_AND_TEXT");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (toolbar),
 					GTK_TOOLBAR_BOTH);
 			break;
 
 		case PLUMA_TOOLBAR_ICONS_BOTH_HORIZ:
-			pluma_debug_message (DEBUG_WINDOW, "PLUMA: ICONS_BOTH_HORIZ");
+			lapiz_debug_message (DEBUG_WINDOW, "PLUMA: ICONS_BOTH_HORIZ");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (toolbar),
 					GTK_TOOLBAR_BOTH_HORIZ);
@@ -574,7 +574,7 @@ set_toolbar_style (PlumaWindow *window,
 	GtkAction *action;
 
 	if (origin == NULL)
-		visible = pluma_prefs_manager_get_toolbar_visible ();
+		visible = lapiz_prefs_manager_get_toolbar_visible ();
 	else
 		visible = gtk_widget_get_visible (origin->priv->toolbar);
 
@@ -592,7 +592,7 @@ set_toolbar_style (PlumaWindow *window,
 
 	/* Set style */
 	if (origin == NULL)
-		style = pluma_prefs_manager_get_toolbar_buttons_style ();
+		style = lapiz_prefs_manager_get_toolbar_buttons_style ();
 	else
 		style = origin->priv->toolbar_style;
 
@@ -611,9 +611,9 @@ update_next_prev_doc_sensitivity (PlumaWindow *window,
 	GtkNotebook *notebook;
 	GtkAction   *action;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	notebook = GTK_NOTEBOOK (_pluma_window_get_notebook (window));
+	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
 
 	tab_number = gtk_notebook_page_num (notebook, GTK_WIDGET (tab));
 	g_return_if_fail (tab_number >= 0);
@@ -634,9 +634,9 @@ update_next_prev_doc_sensitivity_per_window (PlumaWindow *window)
 	PlumaTab  *tab;
 	GtkAction *action;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	if (tab != NULL)
 	{
 		update_next_prev_doc_sensitivity (window, tab);
@@ -670,7 +670,7 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 		PlumaTabState state;
 		gboolean state_normal;
 
-		state = pluma_tab_get_state (window->priv->active_tab);
+		state = lapiz_tab_get_state (window->priv->active_tab);
 		state_normal = (state == PLUMA_TAB_STATE_NORMAL);
 
 		sens = state_normal &&
@@ -733,14 +733,14 @@ set_sensitivity_according_to_tab (PlumaWindow *window,
 
 	g_return_if_fail (PLUMA_TAB (tab));
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	lockdown = pluma_app_get_lockdown (pluma_app_get_default ());
+	lockdown = lapiz_app_get_lockdown (lapiz_app_get_default ());
 
-	state = pluma_tab_get_state (tab);
+	state = lapiz_tab_get_state (tab);
 	state_normal = (state == PLUMA_TAB_STATE_NORMAL);
 
-	view = pluma_tab_get_view (tab);
+	view = lapiz_tab_get_view (tab);
 	editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
 
 	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
@@ -759,7 +759,7 @@ set_sensitivity_according_to_tab (PlumaWindow *window,
 				  (state_normal ||
 				   (state == PLUMA_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
 				   (state == PLUMA_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-				  !pluma_document_get_readonly (doc) &&
+				  !lapiz_document_get_readonly (doc) &&
 				  !(lockdown & PLUMA_LOCKDOWN_SAVE_TO_DISK) &&
 				   (cansave) &&
 				   (editable));
@@ -778,7 +778,7 @@ set_sensitivity_according_to_tab (PlumaWindow *window,
 	gtk_action_set_sensitive (action,
 				  (state_normal ||
 				   (state == PLUMA_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-				  !pluma_document_is_untitled (doc));
+				  !lapiz_document_is_untitled (doc));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "FilePrintPreview");
@@ -867,7 +867,7 @@ set_sensitivity_according_to_tab (PlumaWindow *window,
 				  state_normal &&
 				  editable);
 
-	b = pluma_document_get_can_search_again (doc);
+	b = lapiz_document_get_can_search_again (doc);
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
 	gtk_action_set_sensitive (action,
@@ -896,7 +896,7 @@ set_sensitivity_according_to_tab (PlumaWindow *window,
 					      "ViewHighlightMode");
 	gtk_action_set_sensitive (action,
 				  (state != PLUMA_TAB_STATE_CLOSING) &&
-				  pluma_prefs_manager_get_enable_syntax_highlighting ());
+				  lapiz_prefs_manager_get_enable_syntax_highlighting ());
 
 	update_next_prev_doc_sensitivity (window, tab);
 
@@ -914,7 +914,7 @@ language_toggled (GtkToggleAction *action,
 	if (gtk_toggle_action_get_active (action) == FALSE)
 		return;
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	if (doc == NULL)
 		return;
 
@@ -928,7 +928,7 @@ language_toggled (GtkToggleAction *action,
 	else
 	{
 		lang = gtk_source_language_manager_get_language (
-				pluma_get_language_manager (),
+				lapiz_get_language_manager (),
 				lang_id);
 		if (lang == NULL)
 		{
@@ -936,7 +936,7 @@ language_toggled (GtkToggleAction *action,
 		}
 	}
 
-	pluma_document_set_language (doc, lang);
+	lapiz_document_set_language (doc, lang);
 }
 
 static gchar *
@@ -981,7 +981,7 @@ create_language_menu_item (GtkSourceLanguage *lang,
 	{
 		gchar *section_name;
 
-		section_name = pluma_utils_escape_underscores (section, -1);
+		section_name = lapiz_utils_escape_underscores (section, -1);
 
 		section_action = gtk_action_new (escaped_section,
 						 section_name,
@@ -1007,7 +1007,7 @@ create_language_menu_item (GtkSourceLanguage *lang,
 	lang_name = gtk_source_language_get_name (lang);
 	lang_id = gtk_source_language_get_id (lang);
 
-	escaped_lang_name = pluma_utils_escape_underscores (lang_name, -1);
+	escaped_lang_name = lapiz_utils_escape_underscores (lang_name, -1);
 
 	tip = g_strdup_printf (_("Use %s highlight mode"), lang_name);
 	path = g_strdup_printf ("/MenuBar/ViewMenu/ViewHighlightModeMenu/LanguagesMenuPlaceholder/%s",
@@ -1060,7 +1060,7 @@ create_languages_menu (PlumaWindow *window)
 	guint id;
 	gint i;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	/* add the "Plain Text" item before all the others */
 
@@ -1093,8 +1093,8 @@ create_languages_menu (PlumaWindow *window)
 	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action_none), TRUE);
 
 	/* now add all the known languages */
-	languages = pluma_language_manager_list_languages_sorted (
-						pluma_get_language_manager (),
+	languages = lapiz_language_manager_list_languages_sorted (
+						lapiz_get_language_manager (),
 						FALSE);
 
 	for (l = languages, i = 0; l != NULL; l = l->next, ++i)
@@ -1118,11 +1118,11 @@ update_languages_menu (PlumaWindow *window)
 	GtkSourceLanguage *lang;
 	const gchar *lang_id;
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	if (doc == NULL)
 		return;
 
-	lang = pluma_document_get_language (doc);
+	lang = lapiz_document_get_language (doc);
 	if (lang != NULL)
 		lang_id = gtk_source_language_get_id (lang);
 	else
@@ -1154,7 +1154,7 @@ update_languages_menu (PlumaWindow *window)
 }
 
 void
-_pluma_recent_add (PlumaWindow *window,
+_lapiz_recent_add (PlumaWindow *window,
 		   const gchar *uri,
 		   const gchar *mime)
 {
@@ -1162,7 +1162,7 @@ _pluma_recent_add (PlumaWindow *window,
 	GtkRecentData recent_data;
 
 	static gchar *groups[2] = {
-		"pluma",
+		"lapiz",
 		NULL
 	};
 
@@ -1184,7 +1184,7 @@ _pluma_recent_add (PlumaWindow *window,
 }
 
 void
-_pluma_recent_remove (PlumaWindow *window,
+_lapiz_recent_remove (PlumaWindow *window,
 		      const gchar *uri)
 {
 	GtkRecentManager *recent_manager;
@@ -1202,9 +1202,9 @@ open_recent_file (const gchar *uri,
 
 	uris = g_slist_prepend (uris, (gpointer) uri);
 
-	if (pluma_commands_load_uris (window, uris, NULL, 0) != 1)
+	if (lapiz_commands_load_uris (window, uris, NULL, 0) != 1)
 	{
-		_pluma_recent_remove (window, uri);
+		_lapiz_recent_remove (window, uri);
 	}
 
 	g_slist_free (uris);
@@ -1268,9 +1268,9 @@ update_recent_files_menu (PlumaWindow *window)
 	GList *filtered_items = NULL;
 	gint i;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	max_recents = pluma_prefs_manager_get_max_recents ();
+	max_recents = lapiz_prefs_manager_get_max_recents ();
 
 	g_return_if_fail (p->recents_action_group != NULL);
 
@@ -1299,7 +1299,7 @@ update_recent_files_menu (PlumaWindow *window)
 	{
 		GtkRecentInfo *info = l->data;
 
-		if (!gtk_recent_info_has_group (info, "pluma"))
+		if (!gtk_recent_info_has_group (info, "lapiz"))
 			continue;
 
 		filtered_items = g_list_prepend (filtered_items, info);
@@ -1331,7 +1331,7 @@ update_recent_files_menu (PlumaWindow *window)
 		action_name = g_strdup_printf ("recent-info-%d", i);
 
 		display_name = gtk_recent_info_get_display_name (info);
-		escaped = pluma_utils_escape_underscores (display_name, -1);
+		escaped = lapiz_utils_escape_underscores (display_name, -1);
 		if (i >= 10)
 			label = g_strdup_printf ("%d.  %s",
 						 i,
@@ -1344,8 +1344,8 @@ update_recent_files_menu (PlumaWindow *window)
 
 		/* gtk_recent_info_get_uri_display (info) is buggy and
 		 * works only for local files */
-		uri = pluma_utils_uri_for_display (gtk_recent_info_get_uri (info));
-		ruri = pluma_utils_replace_home_dir_with_tilde (uri);
+		uri = lapiz_utils_uri_for_display (gtk_recent_info_get_uri (info));
+		ruri = lapiz_utils_replace_home_dir_with_tilde (uri);
 		g_free (uri);
 
 		/* Translators: %s is a URI */
@@ -1405,8 +1405,8 @@ toolbar_visibility_changed (GtkWidget   *toolbar,
 
 	visible = gtk_widget_get_visible (toolbar);
 
-	if (pluma_prefs_manager_toolbar_visible_can_set ())
-		pluma_prefs_manager_set_toolbar_visible (visible);
+	if (lapiz_prefs_manager_toolbar_visible_can_set ())
+		lapiz_prefs_manager_set_toolbar_visible (visible);
 
 	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewToolbar");
@@ -1435,10 +1435,10 @@ setup_toolbar_open_button (PlumaWindow *window,
 	gtk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER (toolbar_recent_menu),
 					  GTK_RECENT_SORT_MRU);
 	gtk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (toolbar_recent_menu),
-				      pluma_prefs_manager_get_max_recents ());
+				      lapiz_prefs_manager_get_max_recents ());
 
 	filter = gtk_recent_filter_new ();
-	gtk_recent_filter_add_group (filter, "pluma");
+	gtk_recent_filter_add_group (filter, "lapiz");
 	gtk_recent_chooser_set_filter (GTK_RECENT_CHOOSER (toolbar_recent_menu),
 				       filter);
 
@@ -1485,7 +1485,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	GError *error = NULL;
 	gchar *ui_file;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	manager = gtk_ui_manager_new ();
 	window->priv->manager = manager;
@@ -1496,12 +1496,12 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	action_group = gtk_action_group_new ("PlumaWindowAlwaysSensitiveActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
-				      pluma_always_sensitive_menu_entries,
-				      G_N_ELEMENTS (pluma_always_sensitive_menu_entries),
+				      lapiz_always_sensitive_menu_entries,
+				      G_N_ELEMENTS (lapiz_always_sensitive_menu_entries),
 				      window);
 	gtk_action_group_add_toggle_actions (action_group,
-					     pluma_always_sensitive_toggle_menu_entries,
-					     G_N_ELEMENTS (pluma_always_sensitive_toggle_menu_entries),
+					     lapiz_always_sensitive_toggle_menu_entries,
+					     G_N_ELEMENTS (lapiz_always_sensitive_toggle_menu_entries),
 					     window);
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
@@ -1511,8 +1511,8 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	action_group = gtk_action_group_new ("PlumaWindowActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
-				      pluma_menu_entries,
-				      G_N_ELEMENTS (pluma_menu_entries),
+				      lapiz_menu_entries,
+				      G_N_ELEMENTS (lapiz_menu_entries),
 				      window);
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
@@ -1537,8 +1537,8 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	action_group = gtk_action_group_new ("PlumaQuitWindowActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
-				      pluma_quit_menu_entries,
-				      G_N_ELEMENTS (pluma_quit_menu_entries),
+				      lapiz_quit_menu_entries,
+				      G_N_ELEMENTS (lapiz_quit_menu_entries),
 				      window);
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
@@ -1548,8 +1548,8 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	action_group = gtk_action_group_new ("PlumaCloseWindowActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
-	                              pluma_close_menu_entries,
-	                              G_N_ELEMENTS (pluma_close_menu_entries),
+	                              lapiz_close_menu_entries,
+	                              G_N_ELEMENTS (lapiz_close_menu_entries),
 	                              window);
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
@@ -1559,8 +1559,8 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	action_group = gtk_action_group_new ("PlumaWindowPanesActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_toggle_actions (action_group,
-					     pluma_panes_toggle_menu_entries,
-					     G_N_ELEMENTS (pluma_panes_toggle_menu_entries),
+					     lapiz_panes_toggle_menu_entries,
+					     G_N_ELEMENTS (lapiz_panes_toggle_menu_entries),
 					     window);
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
@@ -1568,7 +1568,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	window->priv->panes_action_group = action_group;
 
 	/* now load the UI definition */
-	ui_file = pluma_dirs_get_ui_file (PLUMA_UIFILE);
+	ui_file = lapiz_dirs_get_ui_file (PLUMA_UIFILE);
 	gtk_ui_manager_add_ui_from_file (manager, ui_file, &error);
 	if (error != NULL)
 	{
@@ -1672,10 +1672,10 @@ get_menu_tip_for_tab (PlumaTab *tab)
 	gchar *ruri;
 	gchar *tip;
 
-	doc = pluma_tab_get_document (tab);
+	doc = lapiz_tab_get_document (tab);
 
-	uri = pluma_document_get_uri_for_display (doc);
-	ruri = pluma_utils_replace_home_dir_with_tilde (uri);
+	uri = lapiz_document_get_uri_for_display (doc);
+	ruri = lapiz_utils_replace_home_dir_with_tilde (uri);
 	g_free (uri);
 
 	/* Translators: %s is a URI */
@@ -1694,7 +1694,7 @@ update_documents_list_menu (PlumaWindow *window)
 	guint id;
 	GSList *group = NULL;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	g_return_if_fail (p->documents_list_action_group != NULL);
 
@@ -1737,8 +1737,8 @@ update_documents_list_menu (PlumaWindow *window)
 		 * get the same accel.
 		 */
 		action_name = g_strdup_printf ("Tab_%d", i);
-		tab_name = _pluma_tab_get_name (PLUMA_TAB (tab));
-		name = pluma_utils_escape_underscores (tab_name, -1);
+		tab_name = _lapiz_tab_get_name (PLUMA_TAB (tab));
+		name = lapiz_utils_escape_underscores (tab_name, -1);
 		tip =  get_menu_tip_for_tab (PLUMA_TAB (tab));
 
 		/* alt + 1, 2, 3... 0 to switch to the first ten tabs */
@@ -1797,7 +1797,7 @@ set_statusbar_style (PlumaWindow *window,
 	gboolean visible;
 
 	if (origin == NULL)
-		visible = pluma_prefs_manager_get_statusbar_visible ();
+		visible = lapiz_prefs_manager_get_statusbar_visible ();
 	else
 		visible = gtk_widget_get_visible (origin->priv->statusbar);
 
@@ -1824,8 +1824,8 @@ statusbar_visibility_changed (GtkWidget   *statusbar,
 
 	visible = gtk_widget_get_visible (statusbar);
 
-	if (pluma_prefs_manager_statusbar_visible_can_set ())
-		pluma_prefs_manager_set_statusbar_visible (visible);
+	if (lapiz_prefs_manager_statusbar_visible_can_set ())
+		lapiz_prefs_manager_set_statusbar_visible (visible);
 
 	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewStatusbar");
@@ -1842,7 +1842,7 @@ tab_width_combo_changed (PlumaStatusComboBox *combo,
 	PlumaView *view;
 	guint width_data = 0;
 
-	view = pluma_window_get_active_view (window);
+	view = lapiz_window_get_active_view (window);
 
 	if (!view)
 		return;
@@ -1863,7 +1863,7 @@ use_spaces_toggled (GtkCheckMenuItem *item,
 {
 	PlumaView *view;
 
-	view = pluma_window_get_active_view (window);
+	view = lapiz_window_get_active_view (window);
 
 	g_signal_handler_block (view, window->priv->spaces_instead_of_tabs_id);
 	gtk_source_view_set_insert_spaces_instead_of_tabs (
@@ -1880,7 +1880,7 @@ language_combo_changed (PlumaStatusComboBox *combo,
 	PlumaDocument *doc;
 	GtkSourceLanguage *language;
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 
 	if (!doc)
 		return;
@@ -1888,7 +1888,7 @@ language_combo_changed (PlumaStatusComboBox *combo,
 	language = GTK_SOURCE_LANGUAGE (g_object_get_data (G_OBJECT (item), LANGUAGE_DATA));
 
 	g_signal_handler_block (doc, window->priv->language_changed_id);
-	pluma_document_set_language (doc, language);
+	lapiz_document_set_language (doc, language);
 	g_signal_handler_unblock (doc, window->priv->language_changed_id);
 }
 
@@ -1918,7 +1918,7 @@ fill_tab_width_combo (PlumaWindow *window)
 		item = gtk_menu_item_new_with_label (defs[i].label);
 		g_object_set_data (G_OBJECT (item), TAB_WIDTH_DATA, GINT_TO_POINTER (defs[i].width));
 
-		pluma_status_combo_box_add_item (combo,
+		lapiz_status_combo_box_add_item (combo,
 						 GTK_MENU_ITEM (item),
 						 defs[i].label);
 
@@ -1929,11 +1929,11 @@ fill_tab_width_combo (PlumaWindow *window)
 	}
 
 	item = gtk_separator_menu_item_new ();
-	pluma_status_combo_box_add_item (combo, GTK_MENU_ITEM (item), NULL);
+	lapiz_status_combo_box_add_item (combo, GTK_MENU_ITEM (item), NULL);
 	gtk_widget_show (item);
 
 	item = gtk_check_menu_item_new_with_label (_("Use Spaces"));
-	pluma_status_combo_box_add_item (combo, GTK_MENU_ITEM (item), NULL);
+	lapiz_status_combo_box_add_item (combo, GTK_MENU_ITEM (item), NULL);
 	gtk_widget_show (item);
 
 	g_signal_connect (item,
@@ -1951,15 +1951,15 @@ fill_language_combo (PlumaWindow *window)
 	GtkWidget *menu_item;
 	const gchar *name;
 
-	manager = pluma_get_language_manager ();
-	languages = pluma_language_manager_list_languages_sorted (manager, FALSE);
+	manager = lapiz_get_language_manager ();
+	languages = lapiz_language_manager_list_languages_sorted (manager, FALSE);
 
 	name = _("Plain Text");
 	menu_item = gtk_menu_item_new_with_label (name);
 	gtk_widget_show (menu_item);
 
 	g_object_set_data (G_OBJECT (menu_item), LANGUAGE_DATA, NULL);
-	pluma_status_combo_box_add_item (PLUMA_STATUS_COMBO_BOX (window->priv->language_combo),
+	lapiz_status_combo_box_add_item (PLUMA_STATUS_COMBO_BOX (window->priv->language_combo),
 					 GTK_MENU_ITEM (menu_item),
 					 name);
 
@@ -1976,7 +1976,7 @@ fill_language_combo (PlumaWindow *window)
 					g_object_ref (lang),
 					(GDestroyNotify)g_object_unref);
 
-		pluma_status_combo_box_add_item (PLUMA_STATUS_COMBO_BOX (window->priv->language_combo),
+		lapiz_status_combo_box_add_item (PLUMA_STATUS_COMBO_BOX (window->priv->language_combo),
 						 GTK_MENU_ITEM (menu_item),
 						 name);
 	}
@@ -1988,9 +1988,9 @@ static void
 create_statusbar (PlumaWindow *window,
 		  GtkWidget   *main_box)
 {
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	window->priv->statusbar = pluma_statusbar_new ();
+	window->priv->statusbar = lapiz_statusbar_new ();
 
 	window->priv->generic_message_cid = gtk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "generic_message");
@@ -2003,7 +2003,7 @@ create_statusbar (PlumaWindow *window,
 			  TRUE,
 			  0);
 
-	window->priv->tab_width_combo = pluma_status_combo_box_new (_("Tab Width"));
+	window->priv->tab_width_combo = lapiz_status_combo_box_new (_("Tab Width"));
 	gtk_widget_show (window->priv->tab_width_combo);
 	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
 			  window->priv->tab_width_combo,
@@ -2018,7 +2018,7 @@ create_statusbar (PlumaWindow *window,
 			  G_CALLBACK (tab_width_combo_changed),
 			  window);
 
-	window->priv->language_combo = pluma_status_combo_box_new (NULL);
+	window->priv->language_combo = lapiz_status_combo_box_new (NULL);
 	gtk_widget_show (window->priv->language_combo);
 	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
 			  window->priv->language_combo,
@@ -2053,18 +2053,18 @@ clone_window (PlumaWindow *origin)
 	PlumaApp  *app;
 	gint panel_page;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	app = pluma_app_get_default ();
+	app = lapiz_app_get_default ();
 
 	screen = gtk_window_get_screen (GTK_WINDOW (origin));
-	window = pluma_app_create_window (app, screen);
+	window = lapiz_app_create_window (app, screen);
 
 	if ((origin->priv->window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
 	{
 		gint w, h;
 
-		pluma_prefs_manager_get_default_window_size (&w, &h);
+		lapiz_prefs_manager_get_default_window_size (&w, &h);
 		gtk_window_set_default_size (GTK_WINDOW (window), w, h);
 		gtk_window_maximize (GTK_WINDOW (window));
 	}
@@ -2087,12 +2087,12 @@ clone_window (PlumaWindow *origin)
 	window->priv->side_panel_size = origin->priv->side_panel_size;
 	window->priv->bottom_panel_size = origin->priv->bottom_panel_size;
 
-	panel_page = _pluma_panel_get_active_item_id (PLUMA_PANEL (origin->priv->side_panel));
-	_pluma_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->side_panel),
+	panel_page = _lapiz_panel_get_active_item_id (PLUMA_PANEL (origin->priv->side_panel));
+	_lapiz_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->side_panel),
 					    panel_page);
 
-	panel_page = _pluma_panel_get_active_item_id (PLUMA_PANEL (origin->priv->bottom_panel));
-	_pluma_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->bottom_panel),
+	panel_page = _lapiz_panel_get_active_item_id (PLUMA_PANEL (origin->priv->bottom_panel));
+	_lapiz_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->bottom_panel),
 					    panel_page);
 
 	if (gtk_widget_get_visible (origin->priv->side_panel))
@@ -2121,12 +2121,12 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 	guint tab_size;
 	PlumaView *view;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
- 	if (buffer != GTK_TEXT_BUFFER (pluma_window_get_active_document (window)))
+ 	if (buffer != GTK_TEXT_BUFFER (lapiz_window_get_active_document (window)))
  		return;
 
- 	view = pluma_window_get_active_view (window);
+ 	view = lapiz_window_get_active_view (window);
 
 	gtk_text_buffer_get_iter_at_mark (buffer,
 					  &iter,
@@ -2152,7 +2152,7 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 		gtk_text_iter_forward_char (&start);
 	}
 
-	pluma_statusbar_set_cursor_position (
+	lapiz_statusbar_set_cursor_position (
 				PLUMA_STATUSBAR (window->priv->statusbar),
 				row + 1,
 				col + 1);
@@ -2162,14 +2162,14 @@ static void
 update_overwrite_mode_statusbar (GtkTextView *view,
 				 PlumaWindow *window)
 {
-	if (view != GTK_TEXT_VIEW (pluma_window_get_active_view (window)))
+	if (view != GTK_TEXT_VIEW (lapiz_window_get_active_view (window)))
 		return;
 
 	/* Note that we have to use !gtk_text_view_get_overwrite since we
 	   are in the in the signal handler of "toggle overwrite" that is
 	   G_SIGNAL_RUN_LAST
 	*/
-	pluma_statusbar_set_overwrite (
+	lapiz_statusbar_set_overwrite (
 			PLUMA_STATUSBAR (window->priv->statusbar),
 			!gtk_text_view_get_overwrite (view));
 }
@@ -2192,10 +2192,10 @@ set_title (PlumaWindow *window)
 		return;
 	}
 
-	doc = pluma_tab_get_document (window->priv->active_tab);
+	doc = lapiz_tab_get_document (window->priv->active_tab);
 	g_return_if_fail (doc != NULL);
 
-	name = pluma_document_get_short_name_for_display (doc);
+	name = lapiz_document_get_short_name_for_display (doc);
 
 	len = g_utf8_strlen (name, -1);
 
@@ -2206,7 +2206,7 @@ set_title (PlumaWindow *window)
 	{
 		gchar *tmp;
 
-		tmp = pluma_utils_str_middle_truncate (name,
+		tmp = lapiz_utils_str_middle_truncate (name,
 						       MAX_TITLE_LENGTH);
 		g_free (name);
 		name = tmp;
@@ -2215,12 +2215,12 @@ set_title (PlumaWindow *window)
 	{
 		GFile *file;
 
-		file = pluma_document_get_location (doc);
+		file = lapiz_document_get_location (doc);
 		if (file != NULL)
 		{
 			gchar *str;
 
-			str = pluma_utils_location_get_dirname_for_display (file);
+			str = lapiz_utils_location_get_dirname_for_display (file);
 			g_object_unref (file);
 
 			/* use the remaining space for the dir, but use a min of 20 chars
@@ -2229,7 +2229,7 @@ set_title (PlumaWindow *window)
 			 * we have a title long 99 + 20, but I think it's a rare enough
 			 * case to be acceptable. It's justa darn title afterall :)
 			 */
-			dirname = pluma_utils_str_middle_truncate (str,
+			dirname = lapiz_utils_str_middle_truncate (str,
 								   MAX (20, MAX_TITLE_LENGTH - len));
 			g_free (str);
 		}
@@ -2248,7 +2248,7 @@ set_title (PlumaWindow *window)
 	else
 		cansave = FALSE;
 
-	if (pluma_document_get_readonly (doc))
+	if (lapiz_document_get_readonly (doc))
 	{
 		if (dirname != NULL)
 			title = g_strdup_printf ("%s [%s] (%s) - Pluma",
@@ -2292,7 +2292,7 @@ set_tab_width_item_blocked (PlumaWindow *window,
 					 tab_width_combo_changed,
 					 window);
 
-	pluma_status_combo_box_set_item (PLUMA_STATUS_COMBO_BOX (window->priv->tab_width_combo),
+	lapiz_status_combo_box_set_item (PLUMA_STATUS_COMBO_BOX (window->priv->tab_width_combo),
 					 item);
 
 	g_signal_handlers_unblock_by_func (window->priv->tab_width_combo,
@@ -2308,7 +2308,7 @@ spaces_instead_of_tabs_changed (GObject     *object,
 	PlumaView *view = PLUMA_VIEW (object);
 	gboolean active = gtk_source_view_get_insert_spaces_instead_of_tabs (
 			GTK_SOURCE_VIEW (view));
-	GList *children = pluma_status_combo_box_get_items (
+	GList *children = lapiz_status_combo_box_get_items (
 			PLUMA_STATUS_COMBO_BOX (window->priv->tab_width_combo));
 	GtkCheckMenuItem *item;
 
@@ -2330,7 +2330,7 @@ tab_width_changed (GObject     *object,
 	guint new_tab_width;
 	gboolean found = FALSE;
 
-	items = pluma_status_combo_box_get_items (combo);
+	items = lapiz_status_combo_box_get_items (combo);
 
 	new_tab_width = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (object));
 
@@ -2352,7 +2352,7 @@ tab_width_changed (GObject     *object,
 				gchar *text;
 
 				text = g_strdup_printf ("%u", new_tab_width);
-				pluma_status_combo_box_set_item_text (combo,
+				lapiz_status_combo_box_set_item_text (combo,
 								      GTK_MENU_ITEM (item->data),
 								      text);
 
@@ -2385,7 +2385,7 @@ language_changed (GObject     *object,
 	GtkSourceLanguage *new_language;
 	const gchar *new_id;
 
-	items = pluma_status_combo_box_get_items (combo);
+	items = lapiz_status_combo_box_get_items (combo);
 
 	new_language = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (object));
 
@@ -2406,7 +2406,7 @@ language_changed (GObject     *object,
 							 language_combo_changed,
 					 		 window);
 
-			pluma_status_combo_box_set_item (PLUMA_STATUS_COMBO_BOX (window->priv->language_combo),
+			lapiz_status_combo_box_set_item (PLUMA_STATUS_COMBO_BOX (window->priv->language_combo),
 					 		 GTK_MENU_ITEM (item->data));
 
 			g_signal_handlers_unblock_by_func (window->priv->language_combo,
@@ -2440,7 +2440,7 @@ notebook_switch_page (GtkNotebook     *book,
 	{
 		if (window->priv->tab_width_id)
 		{
-			g_signal_handler_disconnect (pluma_tab_get_view (window->priv->active_tab),
+			g_signal_handler_disconnect (lapiz_tab_get_view (window->priv->active_tab),
 						     window->priv->tab_width_id);
 
 			window->priv->tab_width_id = 0;
@@ -2448,7 +2448,7 @@ notebook_switch_page (GtkNotebook     *book,
 
 		if (window->priv->spaces_instead_of_tabs_id)
 		{
-			g_signal_handler_disconnect (pluma_tab_get_view (window->priv->active_tab),
+			g_signal_handler_disconnect (lapiz_tab_get_view (window->priv->active_tab),
 						     window->priv->spaces_instead_of_tabs_id);
 
 			window->priv->spaces_instead_of_tabs_id = 0;
@@ -2478,12 +2478,12 @@ notebook_switch_page (GtkNotebook     *book,
 	/* update the syntax menu */
 	update_languages_menu (window);
 
-	view = pluma_tab_get_view (tab);
+	view = lapiz_tab_get_view (tab);
 
 	/* sync the statusbar */
-	update_cursor_position_statusbar (GTK_TEXT_BUFFER (pluma_tab_get_document (tab)),
+	update_cursor_position_statusbar (GTK_TEXT_BUFFER (lapiz_tab_get_document (tab)),
 					  window);
-	pluma_statusbar_set_overwrite (PLUMA_STATUSBAR (window->priv->statusbar),
+	lapiz_statusbar_set_overwrite (PLUMA_STATUSBAR (window->priv->statusbar),
 				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
 
 	gtk_widget_show (window->priv->tab_width_combo);
@@ -2498,7 +2498,7 @@ notebook_switch_page (GtkNotebook     *book,
 								    G_CALLBACK (spaces_instead_of_tabs_changed),
 								    window);
 
-	window->priv->language_changed_id = g_signal_connect (pluma_tab_get_document (tab),
+	window->priv->language_changed_id = g_signal_connect (lapiz_tab_get_document (tab),
 							      "notify::language",
 							      G_CALLBACK (language_changed),
 							      window);
@@ -2506,7 +2506,7 @@ notebook_switch_page (GtkNotebook     *book,
 	/* call it for the first time */
 	tab_width_changed (G_OBJECT (view), NULL, window);
 	spaces_instead_of_tabs_changed (G_OBJECT (view), NULL, window);
-	language_changed (G_OBJECT (pluma_tab_get_document (tab)), NULL, window);
+	language_changed (G_OBJECT (lapiz_tab_get_document (tab)), NULL, window);
 
 	g_signal_emit (G_OBJECT (window),
 		       signals[ACTIVE_TAB_CHANGED],
@@ -2520,7 +2520,7 @@ set_sensitivity_according_to_window_state (PlumaWindow *window)
 	GtkAction *action;
 	PlumaLockdownMask lockdown;
 
-	lockdown = pluma_app_get_lockdown (pluma_app_get_default ());
+	lockdown = lapiz_app_get_lockdown (lapiz_app_get_default ());
 
 	/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
 	   operations (save and print/print preview) that uses the message area at
@@ -2556,10 +2556,10 @@ set_sensitivity_according_to_window_state (PlumaWindow *window)
 	gtk_action_group_set_sensitive (window->priv->recents_action_group,
 					!(window->priv->state & PLUMA_WINDOW_STATE_SAVING_SESSION));
 
-	pluma_notebook_set_close_buttons_sensitive (PLUMA_NOTEBOOK (window->priv->notebook),
+	lapiz_notebook_set_close_buttons_sensitive (PLUMA_NOTEBOOK (window->priv->notebook),
 						    !(window->priv->state & PLUMA_WINDOW_STATE_SAVING_SESSION));
 
-	pluma_notebook_set_tab_drag_and_drop_enabled (PLUMA_NOTEBOOK (window->priv->notebook),
+	lapiz_notebook_set_tab_drag_and_drop_enabled (PLUMA_NOTEBOOK (window->priv->notebook),
 						      !(window->priv->state & PLUMA_WINDOW_STATE_SAVING_SESSION));
 
 	if ((window->priv->state & PLUMA_WINDOW_STATE_SAVING_SESSION) != 0)
@@ -2600,11 +2600,11 @@ update_tab_autosave (GtkWidget *widget,
 	PlumaTab *tab = PLUMA_TAB (widget);
 	gboolean *enabled = (gboolean *) data;
 
-	pluma_tab_set_auto_save_enabled (tab, *enabled);
+	lapiz_tab_set_auto_save_enabled (tab, *enabled);
 }
 
 void
-_pluma_window_set_lockdown (PlumaWindow       *window,
+_lapiz_window_set_lockdown (PlumaWindow       *window,
 			    PlumaLockdownMask  lockdown)
 {
 	PlumaTab *tab;
@@ -2612,13 +2612,13 @@ _pluma_window_set_lockdown (PlumaWindow       *window,
 	gboolean autosave;
 
 	/* start/stop autosave in each existing tab */
-	autosave = pluma_prefs_manager_get_auto_save ();
+	autosave = lapiz_prefs_manager_get_auto_save ();
 	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
 			       update_tab_autosave,
 			       &autosave);
 
 	/* update menues wrt the current active tab */
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 
 	set_sensitivity_according_to_tab (window, tab);
 
@@ -2636,7 +2636,7 @@ analyze_tab_state (PlumaTab    *tab,
 {
 	PlumaTabState ts;
 
-	ts = pluma_tab_get_state (tab);
+	ts = lapiz_tab_get_state (tab);
 
 	switch (ts)
 	{
@@ -2672,7 +2672,7 @@ update_window_state (PlumaWindow *window)
 	PlumaWindowState old_ws;
 	gint old_num_of_errors;
 
-	pluma_debug_message (DEBUG_WINDOW, "Old state: %x", window->priv->state);
+	lapiz_debug_message (DEBUG_WINDOW, "Old state: %x", window->priv->state);
 
 	old_ws = window->priv->state;
 	old_num_of_errors = window->priv->num_tabs_with_error;
@@ -2685,13 +2685,13 @@ update_window_state (PlumaWindow *window)
 	       		       (GtkCallback)analyze_tab_state,
 	       		       window);
 
-	pluma_debug_message (DEBUG_WINDOW, "New state: %x", window->priv->state);
+	lapiz_debug_message (DEBUG_WINDOW, "New state: %x", window->priv->state);
 
 	if (old_ws != window->priv->state)
 	{
 		set_sensitivity_according_to_window_state (window);
 
-		pluma_statusbar_set_window_state (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_set_window_state (PLUMA_STATUSBAR (window->priv->statusbar),
 						  window->priv->state,
 						  window->priv->num_tabs_with_error);
 
@@ -2699,7 +2699,7 @@ update_window_state (PlumaWindow *window)
 	}
 	else if (old_num_of_errors != window->priv->num_tabs_with_error)
 	{
-		pluma_statusbar_set_window_state (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_set_window_state (PLUMA_STATUSBAR (window->priv->statusbar),
 						  window->priv->state,
 						  window->priv->num_tabs_with_error);
 	}
@@ -2710,7 +2710,7 @@ sync_state (PlumaTab    *tab,
 	    GParamSpec  *pspec,
 	    PlumaWindow *window)
 {
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	update_window_state (window);
 
@@ -2739,11 +2739,11 @@ sync_name (PlumaTab    *tab,
 	{
 		set_title (window);
 
-		doc = pluma_tab_get_document (tab);
+		doc = lapiz_tab_get_document (tab);
 		action = gtk_action_group_get_action (window->priv->action_group,
 						      "FileRevert");
 		gtk_action_set_sensitive (action,
-					  !pluma_document_is_untitled (doc));
+					  !lapiz_document_is_untitled (doc));
 	}
 
 	/* sync the item in the documents list menu */
@@ -2755,8 +2755,8 @@ sync_name (PlumaTab    *tab,
 	g_free (action_name);
 	g_return_if_fail (action != NULL);
 
-	tab_name = _pluma_tab_get_name (tab);
-	escaped_name = pluma_utils_escape_underscores (tab_name, -1);
+	tab_name = _lapiz_tab_get_name (tab);
+	escaped_name = lapiz_utils_escape_underscores (tab_name, -1);
 	tip =  get_menu_tip_for_tab (tab);
 
 	g_object_set (action, "label", escaped_name, NULL);
@@ -2799,7 +2799,7 @@ load_uris_from_drop (PlumaWindow  *window,
 	}
 
 	uris = g_slist_reverse (uris);
-	pluma_commands_load_uris (window,
+	lapiz_commands_load_uris (window,
 				  uris,
 				  NULL,
 				  0);
@@ -2828,7 +2828,7 @@ drag_data_received_cb (GtkWidget        *widget,
 
 	if (info == TARGET_URI_LIST)
 	{
-		uri_list = pluma_utils_drop_get_uris(selection_data);
+		uri_list = lapiz_utils_drop_get_uris(selection_data);
 		load_uris_from_drop (window, uri_list);
 		g_strfreev (uri_list);
 	}
@@ -3063,10 +3063,10 @@ can_search_again (PlumaDocument *doc,
 	gboolean sensitive;
 	GtkAction *action;
 
-	if (doc != pluma_window_get_active_document (window))
+	if (doc != lapiz_window_get_active_document (window))
 		return;
 
-	sensitive = pluma_document_get_can_search_again (doc);
+	sensitive = lapiz_document_get_can_search_again (doc);
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
@@ -3091,7 +3091,7 @@ can_undo (PlumaDocument *doc,
 
 	sensitive = gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc));
 
-	if (doc != pluma_window_get_active_document (window))
+	if (doc != lapiz_window_get_active_document (window))
 		return;
 
 	action = gtk_action_group_get_action (window->priv->action_group,
@@ -3109,7 +3109,7 @@ can_redo (PlumaDocument *doc,
 
 	sensitive = gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc));
 
-	if (doc != pluma_window_get_active_document (window))
+	if (doc != lapiz_window_get_active_document (window))
 		return;
 
 	action = gtk_action_group_get_action (window->priv->action_group,
@@ -3129,16 +3129,16 @@ selection_changed (PlumaDocument *doc,
 	gboolean state_normal;
 	gboolean editable;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	if (doc != pluma_window_get_active_document (window))
+	if (doc != lapiz_window_get_active_document (window))
 		return;
 
-	tab = pluma_tab_get_from_document (doc);
-	state = pluma_tab_get_state (tab);
+	tab = lapiz_tab_get_from_document (doc);
+	state = lapiz_tab_get_state (tab);
 	state_normal = (state == PLUMA_TAB_STATE_NORMAL);
 
-	view = pluma_tab_get_view (tab);
+	view = lapiz_tab_get_view (tab);
 	editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
@@ -3220,7 +3220,7 @@ notebook_tab_added (PlumaNotebook *notebook,
 	PlumaView *view;
 	PlumaDocument *doc;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	g_return_if_fail ((window->priv->state & PLUMA_WINDOW_STATE_SAVING_SESSION) == 0);
 
@@ -3228,8 +3228,8 @@ notebook_tab_added (PlumaNotebook *notebook,
 
 	update_sensitivity_according_to_open_tabs (window);
 
-	view = pluma_tab_get_view (tab);
-	doc = pluma_tab_get_document (tab);
+	view = lapiz_tab_get_view (tab);
+	doc = lapiz_tab_get_document (tab);
 
 	/* IMPORTANT: remember to disconnect the signal in notebook_tab_removed
 	 * if a new signal is connected here */
@@ -3300,14 +3300,14 @@ notebook_tab_removed (PlumaNotebook *notebook,
 	PlumaView     *view;
 	PlumaDocument *doc;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	g_return_if_fail ((window->priv->state & PLUMA_WINDOW_STATE_SAVING_SESSION) == 0);
 
 	--window->priv->num_tabs;
 
-	view = pluma_tab_get_view (tab);
-	doc = pluma_tab_get_document (tab);
+	view = lapiz_tab_get_view (tab);
+	doc = lapiz_tab_get_document (tab);
 
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_name),
@@ -3346,19 +3346,19 @@ notebook_tab_removed (PlumaNotebook *notebook,
 					      G_CALLBACK (drop_uris_cb),
 					      NULL);
 
-	if (window->priv->tab_width_id && tab == pluma_window_get_active_tab (window))
+	if (window->priv->tab_width_id && tab == lapiz_window_get_active_tab (window))
 	{
 		g_signal_handler_disconnect (view, window->priv->tab_width_id);
 		window->priv->tab_width_id = 0;
 	}
 
-	if (window->priv->spaces_instead_of_tabs_id && tab == pluma_window_get_active_tab (window))
+	if (window->priv->spaces_instead_of_tabs_id && tab == lapiz_window_get_active_tab (window))
 	{
 		g_signal_handler_disconnect (view, window->priv->spaces_instead_of_tabs_id);
 		window->priv->spaces_instead_of_tabs_id = 0;
 	}
 
-	if (window->priv->language_changed_id && tab == pluma_window_get_active_tab (window))
+	if (window->priv->language_changed_id && tab == lapiz_window_get_active_tab (window))
 	{
 		g_signal_handler_disconnect (doc, window->priv->language_changed_id);
 		window->priv->language_changed_id = 0;
@@ -3372,12 +3372,12 @@ notebook_tab_removed (PlumaNotebook *notebook,
 		set_title (window);
 
 		/* Remove line and col info */
-		pluma_statusbar_set_cursor_position (
+		lapiz_statusbar_set_cursor_position (
 				PLUMA_STATUSBAR (window->priv->statusbar),
 				-1,
 				-1);
 
-		pluma_statusbar_clear_overwrite (
+		lapiz_statusbar_clear_overwrite (
 				PLUMA_STATUSBAR (window->priv->statusbar));
 
 		/* hide the combos */
@@ -3430,8 +3430,8 @@ notebook_tab_detached (PlumaNotebook *notebook,
 
 	new_window = clone_window (window);
 
-	pluma_notebook_move_tab (notebook,
-				 PLUMA_NOTEBOOK (_pluma_window_get_notebook (new_window)),
+	lapiz_notebook_move_tab (notebook,
+				 PLUMA_NOTEBOOK (_lapiz_window_get_notebook (new_window)),
 				 tab, 0);
 
 	gtk_window_set_position (GTK_WINDOW (new_window),
@@ -3447,7 +3447,7 @@ notebook_tab_close_request (PlumaNotebook *notebook,
 {
 	/* Note: we are destroying the tab before the default handler
 	 * seems to be ok, but we need to keep an eye on this. */
-	_pluma_cmd_file_close_tab (tab, PLUMA_WINDOW (window));
+	_lapiz_cmd_file_close_tab (tab, PLUMA_WINDOW (window));
 }
 
 static gboolean
@@ -3473,7 +3473,7 @@ show_notebook_popup_menu (GtkNotebook    *notebook,
 	GtkWidget *tab;
 	GtkWidget *tab_label;
 
-	tab = GTK_WIDGET (pluma_window_get_active_tab (window));
+	tab = GTK_WIDGET (lapiz_window_get_active_tab (window));
 	g_return_val_if_fail (tab != NULL, FALSE);
 
 	tab_label = gtk_notebook_get_tab_label (notebook, tab);
@@ -3502,13 +3502,13 @@ notebook_button_press_event (GtkNotebook    *notebook,
 		else if (event->button == 2)
 		{
 			PlumaTab *tab;
-			tab = pluma_window_get_active_tab (window);
+			tab = lapiz_window_get_active_tab (window);
 			notebook_tab_close_request (PLUMA_NOTEBOOK (notebook), tab, GTK_WINDOW (window));
 		}
 	}
 	else if ((event->type == GDK_2BUTTON_PRESS) && (event->button == 1))
 	{
-		pluma_window_create_tab (window, TRUE);
+		lapiz_window_create_tab (window, TRUE);
 	}
 
 	return FALSE;
@@ -3566,7 +3566,7 @@ hpaned_restore_position (GtkWidget   *widget,
 {
 	gint pos;
 
-	pluma_debug_message (DEBUG_WINDOW,
+	lapiz_debug_message (DEBUG_WINDOW,
 			     "Restoring hpaned position: side panel size %d",
 			     window->priv->side_panel_size);
 
@@ -3592,7 +3592,7 @@ vpaned_restore_position (GtkWidget   *widget,
 
 	gtk_widget_get_allocation (widget, &allocation);
 
-	pluma_debug_message (DEBUG_WINDOW,
+	lapiz_debug_message (DEBUG_WINDOW,
 			     "Restoring vpaned position: bottom panel size %d",
 			     window->priv->bottom_panel_size);
 
@@ -3619,22 +3619,22 @@ side_panel_visibility_changed (GtkWidget   *side_panel,
 
 	visible = gtk_widget_get_visible (side_panel);
 
-	if (!g_settings_get_boolean (pluma_prefs_manager->settings, "show-tabs-with-side-pane"))
+	if (!g_settings_get_boolean (lapiz_prefs_manager->settings, "show-tabs-with-side-pane"))
 	{
 		if (visible)
 			gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), FALSE);
 		else
 			gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook),
-						    g_settings_get_boolean (pluma_prefs_manager->settings, "show-single-tab") ||
+						    g_settings_get_boolean (lapiz_prefs_manager->settings, "show-single-tab") ||
 						    (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 1));
 	}
 	else
 		gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook),
-					    g_settings_get_boolean (pluma_prefs_manager->settings, "show-single-tab") ||
+					    g_settings_get_boolean (lapiz_prefs_manager->settings, "show-single-tab") ||
 					    (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 1));
 
-	if (pluma_prefs_manager_side_pane_visible_can_set ())
-		pluma_prefs_manager_set_side_pane_visible (visible);
+	if (lapiz_prefs_manager_side_pane_visible_can_set ())
+		lapiz_prefs_manager_set_side_pane_visible (visible);
 
 	action = gtk_action_group_get_action (window->priv->panes_action_group,
 	                                      "ViewSidePane");
@@ -3645,7 +3645,7 @@ side_panel_visibility_changed (GtkWidget   *side_panel,
 	/* focus the document */
 	if (!visible && window->priv->active_tab != NULL)
 		gtk_widget_grab_focus (GTK_WIDGET (
-				pluma_tab_get_view (PLUMA_TAB (window->priv->active_tab))));
+				lapiz_tab_get_view (PLUMA_TAB (window->priv->active_tab))));
 }
 
 static void
@@ -3653,9 +3653,9 @@ create_side_panel (PlumaWindow *window)
 {
 	GtkWidget *documents_panel;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	window->priv->side_panel = pluma_panel_new (GTK_ORIENTATION_VERTICAL);
+	window->priv->side_panel = lapiz_panel_new (GTK_ORIENTATION_VERTICAL);
 
 	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned),
 			 window->priv->side_panel,
@@ -3671,8 +3671,8 @@ create_side_panel (PlumaWindow *window)
 				G_CALLBACK (side_panel_visibility_changed),
 				window);
 
-	documents_panel = pluma_documents_panel_new (window);
-	pluma_panel_add_item_with_icon (PLUMA_PANEL (window->priv->side_panel),
+	documents_panel = lapiz_documents_panel_new (window);
+	lapiz_panel_add_item_with_icon (PLUMA_PANEL (window->priv->side_panel),
 					documents_panel,
 					_("Documents"),
 					"text-x-generic");
@@ -3687,8 +3687,8 @@ bottom_panel_visibility_changed (PlumaPanel  *bottom_panel,
 
 	visible = gtk_widget_get_visible (GTK_WIDGET (bottom_panel));
 
-	if (pluma_prefs_manager_bottom_panel_visible_can_set ())
-		pluma_prefs_manager_set_bottom_panel_visible (visible);
+	if (lapiz_prefs_manager_bottom_panel_visible_can_set ())
+		lapiz_prefs_manager_set_bottom_panel_visible (visible);
 
 	action = gtk_action_group_get_action (window->priv->panes_action_group,
 					      "ViewBottomPane");
@@ -3699,7 +3699,7 @@ bottom_panel_visibility_changed (PlumaPanel  *bottom_panel,
 	/* focus the document */
 	if (!visible && window->priv->active_tab != NULL)
 		gtk_widget_grab_focus (GTK_WIDGET (
-				pluma_tab_get_view (PLUMA_TAB (window->priv->active_tab))));
+				lapiz_tab_get_view (PLUMA_TAB (window->priv->active_tab))));
 }
 
 static void
@@ -3707,7 +3707,7 @@ bottom_panel_item_removed (PlumaPanel  *panel,
 			   GtkWidget   *item,
 			   PlumaWindow *window)
 {
-	if (pluma_panel_get_n_items (panel) == 0)
+	if (lapiz_panel_get_n_items (panel) == 0)
 	{
 		GtkAction *action;
 
@@ -3726,7 +3726,7 @@ bottom_panel_item_added (PlumaPanel  *panel,
 {
 	/* if it's the first item added, set the menu item
 	 * sensitive and if needed show the panel */
-	if (pluma_panel_get_n_items (panel) == 1)
+	if (lapiz_panel_get_n_items (panel) == 1)
 	{
 		GtkAction *action;
 		gboolean show;
@@ -3744,9 +3744,9 @@ bottom_panel_item_added (PlumaPanel  *panel,
 static void
 create_bottom_panel (PlumaWindow *window)
 {
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	window->priv->bottom_panel = pluma_panel_new (GTK_ORIENTATION_HORIZONTAL);
+	window->priv->bottom_panel = lapiz_panel_new (GTK_ORIENTATION_HORIZONTAL);
 
 	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned),
 			 window->priv->bottom_panel,
@@ -3768,26 +3768,26 @@ init_panels_visibility (PlumaWindow *window)
 {
 	gint active_page;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
 	/* side pane */
-	active_page = pluma_prefs_manager_get_side_panel_active_page ();
-	_pluma_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->side_panel),
+	active_page = lapiz_prefs_manager_get_side_panel_active_page ();
+	_lapiz_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->side_panel),
 					    active_page);
 
-	if (pluma_prefs_manager_get_side_pane_visible ())
+	if (lapiz_prefs_manager_get_side_pane_visible ())
 	{
 		gtk_widget_show (window->priv->side_panel);
 	}
 
 	/* bottom pane, it can be empty */
-	if (pluma_panel_get_n_items (PLUMA_PANEL (window->priv->bottom_panel)) > 0)
+	if (lapiz_panel_get_n_items (PLUMA_PANEL (window->priv->bottom_panel)) > 0)
 	{
-		active_page = pluma_prefs_manager_get_bottom_panel_active_page ();
-		_pluma_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->bottom_panel),
+		active_page = lapiz_prefs_manager_get_bottom_panel_active_page ();
+		_lapiz_panel_set_active_item_by_id (PLUMA_PANEL (window->priv->bottom_panel),
 						    active_page);
 
-		if (pluma_prefs_manager_get_bottom_panel_visible ())
+		if (lapiz_prefs_manager_get_bottom_panel_visible ())
 		{
 			gtk_widget_show (window->priv->bottom_panel);
 		}
@@ -3951,14 +3951,14 @@ on_extension_removed (PeasExtensionSet *extensions,
 }
 
 static void
-pluma_window_init (PlumaWindow *window)
+lapiz_window_init (PlumaWindow *window)
 {
 	GtkWidget *main_box;
 	GtkTargetList *tl;
 
-	pluma_debug (DEBUG_WINDOW);
+	lapiz_debug (DEBUG_WINDOW);
 
-	window->priv = pluma_window_get_instance_private (window);
+	window->priv = lapiz_window_get_instance_private (window);
 	window->priv->active_tab = NULL;
 	window->priv->num_tabs = 0;
 	window->priv->removing_tabs = FALSE;
@@ -3967,7 +3967,7 @@ pluma_window_init (PlumaWindow *window)
 	window->priv->fullscreen_controls = NULL;
 	window->priv->fullscreen_animation_timeout_id = 0;
 
-	window->priv->message_bus = pluma_message_bus_new ();
+	window->priv->message_bus = lapiz_message_bus_new ();
 
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
@@ -3975,7 +3975,7 @@ pluma_window_init (PlumaWindow *window)
 	GtkStyleContext *context;
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (window));
-	gtk_style_context_add_class (context, "pluma-window");
+	gtk_style_context_add_class (context, "lapiz-window");
 
 	main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_container_add (GTK_CONTAINER (window), main_box);
@@ -3988,7 +3988,7 @@ pluma_window_init (PlumaWindow *window)
 	create_statusbar (window, main_box);
 
 	/* Add the main area */
-	pluma_debug_message (DEBUG_WINDOW, "Add main area");
+	lapiz_debug_message (DEBUG_WINDOW, "Add main area");
 	window->priv->hpaned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
   	gtk_box_pack_start (GTK_BOX (main_box),
   			    window->priv->hpaned,
@@ -4002,8 +4002,8 @@ pluma_window_init (PlumaWindow *window)
   			 TRUE,
   			 FALSE);
 
-	pluma_debug_message (DEBUG_WINDOW, "Create pluma notebook");
-	window->priv->notebook = pluma_notebook_new ();
+	lapiz_debug_message (DEBUG_WINDOW, "Create lapiz notebook");
+	window->priv->notebook = lapiz_notebook_new ();
 	add_notebook (window, window->priv->notebook);
 
 	/* side and bottom panels */
@@ -4012,8 +4012,8 @@ pluma_window_init (PlumaWindow *window)
 
 	/* panes' state must be restored after panels have been mapped,
 	 * since the bottom pane position depends on the size of the vpaned. */
-	window->priv->side_panel_size = pluma_prefs_manager_get_side_panel_size ();
-	window->priv->bottom_panel_size = pluma_prefs_manager_get_bottom_panel_size ();
+	window->priv->side_panel_size = lapiz_prefs_manager_get_side_panel_size ();
+	window->priv->bottom_panel_size = lapiz_prefs_manager_get_bottom_panel_size ();
 
 	g_signal_connect_after (window->priv->hpaned,
 				"map",
@@ -4073,9 +4073,9 @@ pluma_window_init (PlumaWindow *window)
 			  G_CALLBACK (check_window_is_active),
 			  NULL);
 
-	pluma_debug_message (DEBUG_WINDOW, "Update plugins ui");
+	lapiz_debug_message (DEBUG_WINDOW, "Update plugins ui");
 
-	window->priv->extensions = peas_extension_set_new (PEAS_ENGINE (pluma_plugins_engine_get_default ()),
+	window->priv->extensions = peas_extension_set_new (PEAS_ENGINE (lapiz_plugins_engine_get_default ()),
 	                                                   PEAS_TYPE_ACTIVATABLE, "object", window, NULL);
 
 	peas_extension_set_call (window->priv->extensions, "activate");
@@ -4095,11 +4095,11 @@ pluma_window_init (PlumaWindow *window)
 
 	update_sensitivity_according_to_open_tabs (window);
 
-	pluma_debug_message (DEBUG_WINDOW, "END");
+	lapiz_debug_message (DEBUG_WINDOW, "END");
 }
 
 /**
- * pluma_window_get_active_view:
+ * lapiz_window_get_active_view:
  * @window: a #PlumaWindow
  *
  * Gets the active #PlumaView.
@@ -4107,7 +4107,7 @@ pluma_window_init (PlumaWindow *window)
  * Returns: (transfer none): the active #PlumaView
  */
 PlumaView *
-pluma_window_get_active_view (PlumaWindow *window)
+lapiz_window_get_active_view (PlumaWindow *window)
 {
 	PlumaView *view;
 
@@ -4116,13 +4116,13 @@ pluma_window_get_active_view (PlumaWindow *window)
 	if (window->priv->active_tab == NULL)
 		return NULL;
 
-	view = pluma_tab_get_view (PLUMA_TAB (window->priv->active_tab));
+	view = lapiz_tab_get_view (PLUMA_TAB (window->priv->active_tab));
 
 	return view;
 }
 
 /**
- * pluma_window_get_active_document:
+ * lapiz_window_get_active_document:
  * @window: a #PlumaWindow
  *
  * Gets the active #PlumaDocument.
@@ -4130,13 +4130,13 @@ pluma_window_get_active_view (PlumaWindow *window)
  * Returns: (transfer none): the active #PlumaDocument
  */
 PlumaDocument *
-pluma_window_get_active_document (PlumaWindow *window)
+lapiz_window_get_active_document (PlumaWindow *window)
 {
 	PlumaView *view;
 
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
-	view = pluma_window_get_active_view (window);
+	view = lapiz_window_get_active_view (window);
 	if (view == NULL)
 		return NULL;
 
@@ -4144,7 +4144,7 @@ pluma_window_get_active_document (PlumaWindow *window)
 }
 
 GtkWidget *
-_pluma_window_get_notebook (PlumaWindow *window)
+_lapiz_window_get_notebook (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
@@ -4152,7 +4152,7 @@ _pluma_window_get_notebook (PlumaWindow *window)
 }
 
 /**
- * pluma_window_create_tab:
+ * lapiz_window_create_tab:
  * @window: a #PlumaWindow
  * @jump_to: %TRUE to set the new #PlumaTab as active
  *
@@ -4162,17 +4162,17 @@ _pluma_window_get_notebook (PlumaWindow *window)
  * Returns: (transfer none): a new #PlumaTab
  */
 PlumaTab *
-pluma_window_create_tab (PlumaWindow *window,
+lapiz_window_create_tab (PlumaWindow *window,
 			 gboolean     jump_to)
 {
 	PlumaTab *tab;
 
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
-	tab = PLUMA_TAB (_pluma_tab_new ());
+	tab = PLUMA_TAB (_lapiz_tab_new ());
 	gtk_widget_show (GTK_WIDGET (tab));
 
-	pluma_notebook_add_tab (PLUMA_NOTEBOOK (window->priv->notebook),
+	lapiz_notebook_add_tab (PLUMA_NOTEBOOK (window->priv->notebook),
 				tab,
 				-1,
 				jump_to);
@@ -4186,7 +4186,7 @@ pluma_window_create_tab (PlumaWindow *window,
 }
 
 /**
- * pluma_window_create_tab_from_uri:
+ * lapiz_window_create_tab_from_uri:
  * @window: a #PlumaWindow
  * @uri: the uri of the document
  * @encoding: a #PlumaEncoding
@@ -4202,7 +4202,7 @@ pluma_window_create_tab (PlumaWindow *window,
  * Returns: (transfer none): a new #PlumaTab
  */
 PlumaTab *
-pluma_window_create_tab_from_uri (PlumaWindow         *window,
+lapiz_window_create_tab_from_uri (PlumaWindow         *window,
 				  const gchar         *uri,
 				  const PlumaEncoding *encoding,
 				  gint                 line_pos,
@@ -4214,7 +4214,7 @@ pluma_window_create_tab_from_uri (PlumaWindow         *window,
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (uri != NULL, NULL);
 
-	tab = _pluma_tab_new_from_uri (uri,
+	tab = _lapiz_tab_new_from_uri (uri,
 				       encoding,
 				       line_pos,
 				       create);
@@ -4223,7 +4223,7 @@ pluma_window_create_tab_from_uri (PlumaWindow         *window,
 
 	gtk_widget_show (tab);
 
-	pluma_notebook_add_tab (PLUMA_NOTEBOOK (window->priv->notebook),
+	lapiz_notebook_add_tab (PLUMA_NOTEBOOK (window->priv->notebook),
 				PLUMA_TAB (tab),
 				-1,
 				jump_to);
@@ -4238,7 +4238,7 @@ pluma_window_create_tab_from_uri (PlumaWindow         *window,
 }
 
 /**
- * pluma_window_get_active_tab:
+ * lapiz_window_get_active_tab:
  * @window: a PlumaWindow
  *
  * Gets the active #PlumaTab in the @window.
@@ -4246,7 +4246,7 @@ pluma_window_create_tab_from_uri (PlumaWindow         *window,
  * Returns: (transfer none): the active #PlumaTab in the @window.
  */
 PlumaTab *
-pluma_window_get_active_tab (PlumaWindow *window)
+lapiz_window_get_active_tab (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
@@ -4259,13 +4259,13 @@ add_document (PlumaTab *tab, GList **res)
 {
 	PlumaDocument *doc;
 
-	doc = pluma_tab_get_document (tab);
+	doc = lapiz_tab_get_document (tab);
 
 	*res = g_list_prepend (*res, doc);
 }
 
 /**
- * pluma_window_get_documents:
+ * lapiz_window_get_documents:
  * @window: a #PlumaWindow
  *
  * Gets a newly allocated list with all the documents in the window.
@@ -4275,7 +4275,7 @@ add_document (PlumaTab *tab, GList **res)
  * allocated list with all the documents in the window
  */
 GList *
-pluma_window_get_documents (PlumaWindow *window)
+lapiz_window_get_documents (PlumaWindow *window)
 {
 	GList *res = NULL;
 
@@ -4295,13 +4295,13 @@ add_view (PlumaTab *tab, GList **res)
 {
 	PlumaView *view;
 
-	view = pluma_tab_get_view (tab);
+	view = lapiz_tab_get_view (tab);
 
 	*res = g_list_prepend (*res, view);
 }
 
 /**
- * pluma_window_get_views:
+ * lapiz_window_get_views:
  * @window: a #PlumaWindow
  *
  * Gets a list with all the views in the window. This list must be freed.
@@ -4310,7 +4310,7 @@ add_view (PlumaTab *tab, GList **res)
  * list with all the views in the window
  */
 GList *
-pluma_window_get_views (PlumaWindow *window)
+lapiz_window_get_views (PlumaWindow *window)
 {
 	GList *res = NULL;
 
@@ -4326,33 +4326,33 @@ pluma_window_get_views (PlumaWindow *window)
 }
 
 /**
- * pluma_window_close_tab:
+ * lapiz_window_close_tab:
  * @window: a #PlumaWindow
  * @tab: the #PlumaTab to close
  *
  * Closes the @tab.
  */
 void
-pluma_window_close_tab (PlumaWindow *window,
+lapiz_window_close_tab (PlumaWindow *window,
 			PlumaTab    *tab)
 {
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 	g_return_if_fail (PLUMA_IS_TAB (tab));
-	g_return_if_fail ((pluma_tab_get_state (tab) != PLUMA_TAB_STATE_SAVING) &&
-			  (pluma_tab_get_state (tab) != PLUMA_TAB_STATE_SHOWING_PRINT_PREVIEW));
+	g_return_if_fail ((lapiz_tab_get_state (tab) != PLUMA_TAB_STATE_SAVING) &&
+			  (lapiz_tab_get_state (tab) != PLUMA_TAB_STATE_SHOWING_PRINT_PREVIEW));
 
-	pluma_notebook_remove_tab (PLUMA_NOTEBOOK (window->priv->notebook),
+	lapiz_notebook_remove_tab (PLUMA_NOTEBOOK (window->priv->notebook),
 				   tab);
 }
 
 /**
- * pluma_window_close_all_tabs:
+ * lapiz_window_close_all_tabs:
  * @window: a #PlumaWindow
  *
  * Closes all opened tabs.
  */
 void
-pluma_window_close_all_tabs (PlumaWindow *window)
+lapiz_window_close_all_tabs (PlumaWindow *window)
 {
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 	g_return_if_fail (!(window->priv->state & PLUMA_WINDOW_STATE_SAVING) &&
@@ -4360,20 +4360,20 @@ pluma_window_close_all_tabs (PlumaWindow *window)
 
 	window->priv->removing_tabs = TRUE;
 
-	pluma_notebook_remove_all_tabs (PLUMA_NOTEBOOK (window->priv->notebook));
+	lapiz_notebook_remove_all_tabs (PLUMA_NOTEBOOK (window->priv->notebook));
 
 	window->priv->removing_tabs = FALSE;
 }
 
 /**
- * pluma_window_close_tabs:
+ * lapiz_window_close_tabs:
  * @window: a #PlumaWindow
  * @tabs: (element-type Pluma.Tab): a list of #PlumaTab
  *
  * Closes all tabs specified by @tabs.
  */
 void
-pluma_window_close_tabs (PlumaWindow *window,
+lapiz_window_close_tabs (PlumaWindow *window,
 			 const GList *tabs)
 {
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
@@ -4390,7 +4390,7 @@ pluma_window_close_tabs (PlumaWindow *window,
 		if (tabs->next == NULL)
 			window->priv->removing_tabs = FALSE;
 
-		pluma_notebook_remove_tab (PLUMA_NOTEBOOK (window->priv->notebook),
+		lapiz_notebook_remove_tab (PLUMA_NOTEBOOK (window->priv->notebook),
 				   	   PLUMA_TAB (tabs->data));
 
 		tabs = g_list_next (tabs);
@@ -4400,7 +4400,7 @@ pluma_window_close_tabs (PlumaWindow *window,
 }
 
 PlumaWindow *
-_pluma_window_move_tab_to_new_window (PlumaWindow *window,
+_lapiz_window_move_tab_to_new_window (PlumaWindow *window,
 				      PlumaTab    *tab)
 {
 	PlumaWindow *new_window;
@@ -4413,7 +4413,7 @@ _pluma_window_move_tab_to_new_window (PlumaWindow *window,
 
 	new_window = clone_window (window);
 
-	pluma_notebook_move_tab (PLUMA_NOTEBOOK (window->priv->notebook),
+	lapiz_notebook_move_tab (PLUMA_NOTEBOOK (window->priv->notebook),
 				 PLUMA_NOTEBOOK (new_window->priv->notebook),
 				 tab,
 				 -1);
@@ -4424,14 +4424,14 @@ _pluma_window_move_tab_to_new_window (PlumaWindow *window,
 }
 
 /**
- * pluma_window_set_active_tab:
+ * lapiz_window_set_active_tab:
  * @window: a #PlumaWindow
  * @tab: a #PlumaTab
  *
  * Switches to the tab that matches with @tab.
  */
 void
-pluma_window_set_active_tab (PlumaWindow *window,
+lapiz_window_set_active_tab (PlumaWindow *window,
 			     PlumaTab    *tab)
 {
 	gint page_num;
@@ -4448,7 +4448,7 @@ pluma_window_set_active_tab (PlumaWindow *window,
 }
 
 /**
- * pluma_window_get_group:
+ * lapiz_window_get_group:
  * @window: a #PlumaWindow
  *
  * Gets the #GtkWindowGroup in which @window resides.
@@ -4456,7 +4456,7 @@ pluma_window_set_active_tab (PlumaWindow *window,
  * Returns: (transfer none): the #GtkWindowGroup
  */
 GtkWindowGroup *
-pluma_window_get_group (PlumaWindow *window)
+lapiz_window_get_group (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
@@ -4464,7 +4464,7 @@ pluma_window_get_group (PlumaWindow *window)
 }
 
 gboolean
-_pluma_window_is_removing_tabs (PlumaWindow *window)
+_lapiz_window_is_removing_tabs (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), FALSE);
 
@@ -4472,7 +4472,7 @@ _pluma_window_is_removing_tabs (PlumaWindow *window)
 }
 
 /**
- * pluma_window_get_ui_manager:
+ * lapiz_window_get_ui_manager:
  * @window: a #PlumaWindow
  *
  * Gets the #GtkUIManager associated with the @window.
@@ -4480,7 +4480,7 @@ _pluma_window_is_removing_tabs (PlumaWindow *window)
  * Returns: (transfer none): the #GtkUIManager of the @window.
  */
 GtkUIManager *
-pluma_window_get_ui_manager (PlumaWindow *window)
+lapiz_window_get_ui_manager (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
@@ -4488,7 +4488,7 @@ pluma_window_get_ui_manager (PlumaWindow *window)
 }
 
 /**
- * pluma_window_get_side_panel:
+ * lapiz_window_get_side_panel:
  * @window: a #PlumaWindow
  *
  * Gets the side #PlumaPanel of the @window.
@@ -4496,7 +4496,7 @@ pluma_window_get_ui_manager (PlumaWindow *window)
  * Returns: (transfer none): the side #PlumaPanel.
  */
 PlumaPanel *
-pluma_window_get_side_panel (PlumaWindow *window)
+lapiz_window_get_side_panel (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
@@ -4504,7 +4504,7 @@ pluma_window_get_side_panel (PlumaWindow *window)
 }
 
 /**
- * pluma_window_get_bottom_panel:
+ * lapiz_window_get_bottom_panel:
  * @window: a #PlumaWindow
  *
  * Gets the bottom #PlumaPanel of the @window.
@@ -4512,7 +4512,7 @@ pluma_window_get_side_panel (PlumaWindow *window)
  * Returns: (transfer none): the bottom #PlumaPanel.
  */
 PlumaPanel *
-pluma_window_get_bottom_panel (PlumaWindow *window)
+lapiz_window_get_bottom_panel (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
@@ -4520,7 +4520,7 @@ pluma_window_get_bottom_panel (PlumaWindow *window)
 }
 
 /**
- * pluma_window_get_statusbar:
+ * lapiz_window_get_statusbar:
  * @window: a #PlumaWindow
  *
  * Gets the #PlumaStatusbar of the @window.
@@ -4528,7 +4528,7 @@ pluma_window_get_bottom_panel (PlumaWindow *window)
  * Returns: (transfer none): the #PlumaStatusbar of the @window.
  */
 GtkWidget *
-pluma_window_get_statusbar (PlumaWindow *window)
+lapiz_window_get_statusbar (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), 0);
 
@@ -4536,7 +4536,7 @@ pluma_window_get_statusbar (PlumaWindow *window)
 }
 
 /**
- * pluma_window_get_state:
+ * lapiz_window_get_state:
  * @window: a #PlumaWindow
  *
  * Retrieves the state of the @window.
@@ -4544,7 +4544,7 @@ pluma_window_get_statusbar (PlumaWindow *window)
  * Returns: the current #PlumaWindowState of the @window.
  */
 PlumaWindowState
-pluma_window_get_state (PlumaWindow *window)
+lapiz_window_get_state (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), PLUMA_WINDOW_STATE_NORMAL);
 
@@ -4552,7 +4552,7 @@ pluma_window_get_state (PlumaWindow *window)
 }
 
 GFile *
-_pluma_window_get_default_location (PlumaWindow *window)
+_lapiz_window_get_default_location (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 
@@ -4561,7 +4561,7 @@ _pluma_window_get_default_location (PlumaWindow *window)
 }
 
 void
-_pluma_window_set_default_location (PlumaWindow *window,
+_lapiz_window_set_default_location (PlumaWindow *window,
 				    GFile       *location)
 {
 	GFile *dir;
@@ -4579,7 +4579,7 @@ _pluma_window_set_default_location (PlumaWindow *window,
 }
 
 /**
- * pluma_window_get_unsaved_documents:
+ * lapiz_window_get_unsaved_documents:
  * @window: a #PlumaWindow
  *
  * Gets the list of documents that need to be saved before closing the window.
@@ -4588,7 +4588,7 @@ _pluma_window_set_default_location (PlumaWindow *window,
  * #PlumaDocument that need to be saved before closing the window
  */
 GList *
-pluma_window_get_unsaved_documents (PlumaWindow *window)
+lapiz_window_get_unsaved_documents (PlumaWindow *window)
 {
 	GList *unsaved_docs = NULL;
 	GList *tabs;
@@ -4605,11 +4605,11 @@ pluma_window_get_unsaved_documents (PlumaWindow *window)
 
 		tab = PLUMA_TAB (l->data);
 
-		if (!_pluma_tab_can_close (tab))
+		if (!_lapiz_tab_can_close (tab))
 		{
 			PlumaDocument *doc;
 
-			doc = pluma_tab_get_document (tab);
+			doc = lapiz_tab_get_document (tab);
 			unsaved_docs = g_list_prepend (unsaved_docs, doc);
 		}
 
@@ -4622,7 +4622,7 @@ pluma_window_get_unsaved_documents (PlumaWindow *window)
 }
 
 void
-_pluma_window_set_saving_session_state (PlumaWindow *window,
+_lapiz_window_set_saving_session_state (PlumaWindow *window,
 					gboolean     saving_session)
 {
 	PlumaWindowState old_state;
@@ -4653,11 +4653,11 @@ hide_notebook_tabs_on_fullscreen (GtkNotebook	*notebook,
 }
 
 void
-_pluma_window_fullscreen (PlumaWindow *window)
+_lapiz_window_fullscreen (PlumaWindow *window)
 {
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 
-	if (_pluma_window_is_fullscreen (window))
+	if (_lapiz_window_is_fullscreen (window))
 		return;
 
 	/* Go to fullscreen mode and hide bars */
@@ -4683,14 +4683,14 @@ _pluma_window_fullscreen (PlumaWindow *window)
 }
 
 void
-_pluma_window_unfullscreen (PlumaWindow *window)
+_lapiz_window_unfullscreen (PlumaWindow *window)
 {
 	gboolean visible;
 	GtkAction *action;
 
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 
-	if (!_pluma_window_is_fullscreen (window))
+	if (!_lapiz_window_is_fullscreen (window))
 		return;
 
 	/* Unfullscreen and show bars */
@@ -4723,7 +4723,7 @@ _pluma_window_unfullscreen (PlumaWindow *window)
 }
 
 gboolean
-_pluma_window_is_fullscreen (PlumaWindow *window)
+_lapiz_window_is_fullscreen (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), FALSE);
 
@@ -4731,7 +4731,7 @@ _pluma_window_is_fullscreen (PlumaWindow *window)
 }
 
 /**
- * pluma_window_get_tab_from_location:
+ * lapiz_window_get_tab_from_location:
  * @window: a #PlumaWindow
  * @location: a #GFile
  *
@@ -4740,7 +4740,7 @@ _pluma_window_is_fullscreen (PlumaWindow *window)
  * Returns: (transfer none): the #PlumaTab that matches with the given @location.
  */
 PlumaTab *
-pluma_window_get_tab_from_location (PlumaWindow *window,
+lapiz_window_get_tab_from_location (PlumaWindow *window,
 				    GFile       *location)
 {
 	GList *tabs;
@@ -4759,9 +4759,9 @@ pluma_window_get_tab_from_location (PlumaWindow *window,
 		GFile *f;
 
 		t = PLUMA_TAB (l->data);
-		d = pluma_tab_get_document (t);
+		d = lapiz_tab_get_document (t);
 
-		f = pluma_document_get_location (d);
+		f = lapiz_document_get_location (d);
 
 		if ((f != NULL))
 		{
@@ -4783,7 +4783,7 @@ pluma_window_get_tab_from_location (PlumaWindow *window,
 }
 
 /**
- * pluma_window_get_message_bus:
+ * lapiz_window_get_message_bus:
  * @window: a #PlumaWindow
  *
  * Gets the #PlumaMessageBus associated with @window. The returned reference
@@ -4792,7 +4792,7 @@ pluma_window_get_tab_from_location (PlumaWindow *window,
  * Return value: (transfer none): the #PlumaMessageBus associated with @window
  */
 PlumaMessageBus	*
-pluma_window_get_message_bus (PlumaWindow *window)
+lapiz_window_get_message_bus (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 

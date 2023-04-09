@@ -1,28 +1,28 @@
 /*
  * smart-converter.c
- * This file is part of pluma
+ * This file is part of lapiz
  *
  * Copyright (C) 2009 - Ignacio Casal Quinteiro
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
 
-#include "pluma-smart-charset-converter.h"
-#include "pluma-encodings.h"
+#include "lapiz-smart-charset-converter.h"
+#include "lapiz-encodings.h"
 #include <gio/gio.h>
 #include <glib.h>
 #include <glib/gprintf.h>
@@ -59,8 +59,8 @@ get_encoded_text (const gchar         *text,
 	GConverterResult res;
 	GError *err;
 
-	converter = g_charset_converter_new (pluma_encoding_get_charset (to),
-					     pluma_encoding_get_charset (from),
+	converter = g_charset_converter_new (lapiz_encoding_get_charset (to),
+					     lapiz_encoding_get_charset (from),
 					     NULL);
 
 	out = g_malloc (200);
@@ -130,7 +130,7 @@ get_all_encodings ()
 	{
 		const PlumaEncoding *enc;
 
-		enc = pluma_encoding_get_from_index (i);
+		enc = lapiz_encoding_get_from_index (i);
 
 		if (enc == NULL)
 			break;
@@ -159,10 +159,10 @@ do_test (const gchar *test_in,
 	if (enc != NULL)
 	{
 		encodings = NULL;
-		encodings = g_slist_prepend (encodings, (gpointer)pluma_encoding_get_from_charset (enc));
+		encodings = g_slist_prepend (encodings, (gpointer)lapiz_encoding_get_from_charset (enc));
 	}
 
-	converter = pluma_smart_charset_converter_new (encodings);
+	converter = lapiz_smart_charset_converter_new (encodings);
 
 	out = g_malloc (200);
 	out_aux = g_malloc (200);
@@ -191,7 +191,7 @@ do_test (const gchar *test_in,
 	out[bytes_written_aux] = '\0';
 
 	if (guessed != NULL)
-		*guessed = pluma_smart_charset_converter_get_guessed (converter);
+		*guessed = lapiz_smart_charset_converter_get_guessed (converter);
 
 	return out;
 }
@@ -220,8 +220,8 @@ do_test_roundtrip (const char *str, const char *charset)
 	g_object_unref (tmp);
 	g_object_unref (c1);
 
-	enc = g_slist_prepend (enc, (gpointer)pluma_encoding_get_from_charset (charset));
-	c2 = pluma_smart_charset_converter_new (enc);
+	enc = g_slist_prepend (enc, (gpointer)lapiz_encoding_get_from_charset (charset));
+	c2 = lapiz_smart_charset_converter_new (enc);
 	g_slist_free (enc);
 
 	tmp = in;
@@ -283,7 +283,7 @@ test_xxx_xxx ()
 	   are done ok */
 	for (l = encs; l != NULL; l = g_slist_next (l))
 	{
-		do_test_roundtrip (TEXT_TO_CONVERT, pluma_encoding_get_charset ((const PlumaEncoding *)l->data));
+		do_test_roundtrip (TEXT_TO_CONVERT, lapiz_encoding_get_charset ((const PlumaEncoding *)l->data));
 	}
 
 	g_slist_free (encs);
@@ -300,14 +300,14 @@ test_empty ()
 	   utf-8. In this case, the smart converter cannot determine the right
 	   encoding (because there is no input), but should still default to
 	   utf-8 for the detection */
-	encodings = g_slist_prepend (encodings, (gpointer)pluma_encoding_get_from_charset ("UTF-16"));
-	encodings = g_slist_prepend (encodings, (gpointer)pluma_encoding_get_from_charset ("ISO-8859-15"));
+	encodings = g_slist_prepend (encodings, (gpointer)lapiz_encoding_get_from_charset ("UTF-16"));
+	encodings = g_slist_prepend (encodings, (gpointer)lapiz_encoding_get_from_charset ("ISO-8859-15"));
 
 	out = do_test ("", NULL, encodings, 0, &guessed);
 
 	g_assert_cmpstr (out, ==, "");
 
-	g_assert (guessed == pluma_encoding_get_utf8 ());
+	g_assert (guessed == lapiz_encoding_get_utf8 ());
 }
 
 static void
@@ -319,26 +319,26 @@ test_guessed ()
 	const PlumaEncoding *guessed;
 
 	aux = get_encoded_text (TEXT_TO_GUESS, -1,
-	                        pluma_encoding_get_from_charset ("UTF-16"),
-	                        pluma_encoding_get_from_charset ("UTF-8"),
+	                        lapiz_encoding_get_from_charset ("UTF-16"),
+	                        lapiz_encoding_get_from_charset ("UTF-8"),
 	                        &aux_len,
 	                        TRUE);
 
 	fail = get_encoded_text (aux, aux_len,
-	                         pluma_encoding_get_from_charset ("UTF-8"),
-	                         pluma_encoding_get_from_charset ("ISO-8859-15"),
+	                         lapiz_encoding_get_from_charset ("UTF-8"),
+	                         lapiz_encoding_get_from_charset ("ISO-8859-15"),
 	                         &fail_len,
 	                         FALSE);
 
 	g_assert (fail == NULL);
 
 	/* ISO-8859-15 should fail */
-	encs = g_slist_append (encs, (gpointer)pluma_encoding_get_from_charset ("ISO-8859-15"));
-	encs = g_slist_append (encs, (gpointer)pluma_encoding_get_from_charset ("UTF-16"));
+	encs = g_slist_append (encs, (gpointer)lapiz_encoding_get_from_charset ("ISO-8859-15"));
+	encs = g_slist_append (encs, (gpointer)lapiz_encoding_get_from_charset ("UTF-16"));
 
 	aux2 = do_test (aux, NULL, encs, aux_len, &guessed);
 
-	g_assert (guessed == pluma_encoding_get_from_charset ("UTF-16"));
+	g_assert (guessed == lapiz_encoding_get_from_charset ("UTF-16"));
 
 	g_free (aux);
 	g_free (aux2);

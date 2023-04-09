@@ -1,6 +1,6 @@
 /*
- * pluma-document.c
- * This file is part of pluma
+ * lapiz-document.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -40,20 +40,20 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "pluma-prefs-manager-app.h"
-#include "pluma-document.h"
-#include "pluma-debug.h"
-#include "pluma-utils.h"
-#include "pluma-language-manager.h"
-#include "pluma-style-scheme-manager.h"
-#include "pluma-document-loader.h"
-#include "pluma-document-saver.h"
-#include "pluma-marshal.h"
-#include "pluma-enum-types.h"
-#include "plumatextregion.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-document.h"
+#include "lapiz-debug.h"
+#include "lapiz-utils.h"
+#include "lapiz-language-manager.h"
+#include "lapiz-style-scheme-manager.h"
+#include "lapiz-document-loader.h"
+#include "lapiz-document-saver.h"
+#include "lapiz-marshal.h"
+#include "lapiz-enum-types.h"
+#include "lapiztextregion.h"
 
 #ifndef ENABLE_GVFS_METADATA
-#include "pluma-metadata-manager.h"
+#include "lapiz-metadata-manager.h"
 #else
 #define METADATA_QUERY "metadata::*"
 #endif
@@ -76,12 +76,12 @@ PROFILE (static GTimer *timer = NULL)
 #define PLUMA_MAX_PATH_LEN  2048
 #endif
 
-static void	pluma_document_load_real	(PlumaDocument          *doc,
+static void	lapiz_document_load_real	(PlumaDocument          *doc,
 						 const gchar            *uri,
 						 const PlumaEncoding    *encoding,
 						 gint                    line_pos,
 						 gboolean                create);
-static void	pluma_document_save_real	(PlumaDocument          *doc,
+static void	lapiz_document_save_real	(PlumaDocument          *doc,
 						 const gchar            *uri,
 						 const PlumaEncoding    *encoding,
 						 PlumaDocumentSaveFlags  flags);
@@ -172,15 +172,15 @@ enum {
 
 static guint document_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocument, pluma_document, GTK_SOURCE_TYPE_BUFFER)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocument, lapiz_document, GTK_SOURCE_TYPE_BUFFER)
 
 GQuark
-pluma_document_error_quark (void)
+lapiz_document_error_quark (void)
 {
 	static GQuark quark = 0;
 
 	if (G_UNLIKELY (quark == 0))
-		quark = g_quark_from_static_string ("pluma_io_load_error");
+		quark = g_quark_from_static_string ("lapiz_io_load_error");
 
 	return quark;
 }
@@ -221,11 +221,11 @@ release_untitled_number (gint n)
 }
 
 static void
-pluma_document_dispose (GObject *object)
+lapiz_document_dispose (GObject *object)
 {
 	PlumaDocument *doc = PLUMA_DOCUMENT (object);
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	/* Metadata must be saved here and not in finalize
 	 * because the language is gone by the time finalize runs.
@@ -241,7 +241,7 @@ pluma_document_dispose (GObject *object)
 		{
 			GtkSourceLanguage *lang;
 
-			lang = pluma_document_get_language (doc);
+			lang = lapiz_document_get_language (doc);
 
 			if (lang == NULL)
 				language = "_NORMAL_";
@@ -258,10 +258,10 @@ pluma_document_dispose (GObject *object)
 					    gtk_text_iter_get_offset (&iter));
 
 		if (language == NULL)
-			pluma_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_POSITION,
+			lapiz_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_POSITION,
 						     position, NULL);
 		else
-			pluma_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_POSITION,
+			lapiz_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_POSITION,
 						     position, PLUMA_METADATA_ATTRIBUTE_LANGUAGE,
 						     language, NULL);
 		g_free (position);
@@ -281,15 +281,15 @@ pluma_document_dispose (GObject *object)
 
 	doc->priv->dispose_has_run = TRUE;
 
-	G_OBJECT_CLASS (pluma_document_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_document_parent_class)->dispose (object);
 }
 
 static void
-pluma_document_finalize (GObject *object)
+lapiz_document_finalize (GObject *object)
 {
 	PlumaDocument *doc = PLUMA_DOCUMENT (object);
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->untitled_number > 0)
 	{
@@ -305,14 +305,14 @@ pluma_document_finalize (GObject *object)
 	if (doc->priv->to_search_region != NULL)
 	{
 		/* we can't delete marks if we're finalizing the buffer */
-		pluma_text_region_destroy (doc->priv->to_search_region, FALSE);
+		lapiz_text_region_destroy (doc->priv->to_search_region, FALSE);
 	}
 
-	G_OBJECT_CLASS (pluma_document_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_document_parent_class)->finalize (object);
 }
 
 static void
-pluma_document_get_property (GObject    *object,
+lapiz_document_get_property (GObject    *object,
 			     guint       prop_id,
 			     GValue     *value,
 			     GParamSpec *pspec)
@@ -325,13 +325,13 @@ pluma_document_get_property (GObject    *object,
 			g_value_set_string (value, doc->priv->uri);
 			break;
 		case PROP_SHORTNAME:
-			g_value_take_string (value, pluma_document_get_short_name_for_display (doc));
+			g_value_take_string (value, lapiz_document_get_short_name_for_display (doc));
 			break;
 		case PROP_CONTENT_TYPE:
-			g_value_take_string (value, pluma_document_get_content_type (doc));
+			g_value_take_string (value, lapiz_document_get_content_type (doc));
 			break;
 		case PROP_MIME_TYPE:
-			g_value_take_string (value, pluma_document_get_mime_type (doc));
+			g_value_take_string (value, lapiz_document_get_mime_type (doc));
 			break;
 		case PROP_READ_ONLY:
 			g_value_set_boolean (value, doc->priv->readonly);
@@ -340,10 +340,10 @@ pluma_document_get_property (GObject    *object,
 			g_value_set_boxed (value, doc->priv->encoding);
 			break;
 		case PROP_CAN_SEARCH_AGAIN:
-			g_value_set_boolean (value, pluma_document_get_can_search_again (doc));
+			g_value_set_boolean (value, lapiz_document_get_can_search_again (doc));
 			break;
 		case PROP_ENABLE_SEARCH_HIGHLIGHTING:
-			g_value_set_boolean (value, pluma_document_get_enable_search_highlighting (doc));
+			g_value_set_boolean (value, lapiz_document_get_enable_search_highlighting (doc));
 			break;
 		case PROP_NEWLINE_TYPE:
 			g_value_set_enum (value, doc->priv->newline_type);
@@ -355,7 +355,7 @@ pluma_document_get_property (GObject    *object,
 }
 
 static void
-pluma_document_set_property (GObject      *object,
+lapiz_document_set_property (GObject      *object,
 			     guint         prop_id,
 			     const GValue *value,
 			     GParamSpec   *pspec)
@@ -365,19 +365,19 @@ pluma_document_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_ENABLE_SEARCH_HIGHLIGHTING:
-			pluma_document_set_enable_search_highlighting (doc,
+			lapiz_document_set_enable_search_highlighting (doc,
 								       g_value_get_boolean (value));
 			break;
 		case PROP_NEWLINE_TYPE:
-			pluma_document_set_newline_type (doc,
+			lapiz_document_set_newline_type (doc,
 							 g_value_get_enum (value));
 			break;
 		case PROP_SHORTNAME:
-			pluma_document_set_short_name_for_display (doc,
+			lapiz_document_set_short_name_for_display (doc,
 			                                           g_value_get_string (value));
 			break;
 		case PROP_CONTENT_TYPE:
-			pluma_document_set_content_type (doc,
+			lapiz_document_set_content_type (doc,
 			                                 g_value_get_string (value));
 			break;
 		default:
@@ -398,14 +398,14 @@ emit_cursor_moved (PlumaDocument *doc)
 }
 
 static void
-pluma_document_mark_set (GtkTextBuffer     *buffer,
+lapiz_document_mark_set (GtkTextBuffer     *buffer,
                          const GtkTextIter *iter,
                          GtkTextMark       *mark)
 {
 	PlumaDocument *doc = PLUMA_DOCUMENT (buffer);
 
-	if (GTK_TEXT_BUFFER_CLASS (pluma_document_parent_class)->mark_set)
-		GTK_TEXT_BUFFER_CLASS (pluma_document_parent_class)->mark_set (buffer,
+	if (GTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->mark_set)
+		GTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->mark_set (buffer,
 									       iter,
 									       mark);
 
@@ -416,29 +416,29 @@ pluma_document_mark_set (GtkTextBuffer     *buffer,
 }
 
 static void
-pluma_document_changed (GtkTextBuffer *buffer)
+lapiz_document_changed (GtkTextBuffer *buffer)
 {
 	emit_cursor_moved (PLUMA_DOCUMENT (buffer));
 
-	GTK_TEXT_BUFFER_CLASS (pluma_document_parent_class)->changed (buffer);
+	GTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->changed (buffer);
 }
 
 static void
-pluma_document_class_init (PlumaDocumentClass *klass)
+lapiz_document_class_init (PlumaDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkTextBufferClass *buf_class = GTK_TEXT_BUFFER_CLASS (klass);
 
-	object_class->dispose = pluma_document_dispose;
-	object_class->finalize = pluma_document_finalize;
-	object_class->get_property = pluma_document_get_property;
-	object_class->set_property = pluma_document_set_property;
+	object_class->dispose = lapiz_document_dispose;
+	object_class->finalize = lapiz_document_finalize;
+	object_class->get_property = lapiz_document_get_property;
+	object_class->set_property = lapiz_document_set_property;
 
-	buf_class->mark_set = pluma_document_mark_set;
-	buf_class->changed = pluma_document_changed;
+	buf_class->mark_set = lapiz_document_mark_set;
+	buf_class->changed = lapiz_document_changed;
 
-	klass->load = pluma_document_load_real;
-	klass->save = pluma_document_save_real;
+	klass->load = lapiz_document_load_real;
+	klass->save = lapiz_document_save_real;
 
 	g_object_class_install_property (object_class, PROP_URI,
 					 g_param_spec_string ("uri",
@@ -552,7 +552,7 @@ pluma_document_class_init (PlumaDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaDocumentClass, load),
 			      NULL, NULL,
-			      pluma_marshal_VOID__STRING_BOXED_INT_BOOLEAN,
+			      lapiz_marshal_VOID__STRING_BOXED_INT_BOOLEAN,
 			      G_TYPE_NONE,
 			      4,
 			      G_TYPE_STRING,
@@ -569,7 +569,7 @@ pluma_document_class_init (PlumaDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaDocumentClass, loading),
 			      NULL, NULL,
-			      pluma_marshal_VOID__UINT64_UINT64,
+			      lapiz_marshal_VOID__UINT64_UINT64,
 			      G_TYPE_NONE,
 			      2,
 			      G_TYPE_UINT64,
@@ -601,7 +601,7 @@ pluma_document_class_init (PlumaDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaDocumentClass, save),
 			      NULL, NULL,
-			      pluma_marshal_VOID__STRING_BOXED_FLAGS,
+			      lapiz_marshal_VOID__STRING_BOXED_FLAGS,
 			      G_TYPE_NONE,
 			      3,
 			      G_TYPE_STRING,
@@ -616,7 +616,7 @@ pluma_document_class_init (PlumaDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaDocumentClass, saving),
 			      NULL, NULL,
-			      pluma_marshal_VOID__UINT64_UINT64,
+			      lapiz_marshal_VOID__UINT64_UINT64,
 			      G_TYPE_NONE,
 			      2,
 			      G_TYPE_UINT64,
@@ -639,7 +639,7 @@ pluma_document_class_init (PlumaDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaDocumentClass, search_highlight_updated),
 			      NULL, NULL,
-			      pluma_marshal_VOID__BOXED_BOXED,
+			      lapiz_marshal_VOID__BOXED_BOXED,
 			      G_TYPE_NONE,
 			      2,
 			      GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -697,7 +697,7 @@ set_language (PlumaDocument     *doc,
 	GtkSourceLanguage *old_lang;
 	const gchar       *bom_langs;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	old_lang = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
 
@@ -709,7 +709,7 @@ set_language (PlumaDocument     *doc,
 	if (g_strrstr (bom_langs, gtk_source_language_get_id (lang)))
 	{
 		GFile *file;
-		file = pluma_document_get_location (doc);
+		file = lapiz_document_get_location (doc);
 
 		if (!file_with_bom (file))
 			gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (doc), lang);
@@ -721,14 +721,14 @@ set_language (PlumaDocument     *doc,
 
 	if (lang != NULL)
 		gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (doc),
-				 pluma_prefs_manager_get_enable_syntax_highlighting ());
+				 lapiz_prefs_manager_get_enable_syntax_highlighting ());
 	else
 		gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (doc),
 				 FALSE);
 
 	if (set_by_user && (doc->priv->uri != NULL))
 	{
-		pluma_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_LANGUAGE,
+		lapiz_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_LANGUAGE,
 			(lang == NULL) ? "_NORMAL_" : gtk_source_language_get_id (lang),
 			NULL);
 	}
@@ -743,7 +743,7 @@ set_encoding (PlumaDocument       *doc,
 {
 	g_return_if_fail (encoding != NULL);
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->encoding == encoding)
 		return;
@@ -754,9 +754,9 @@ set_encoding (PlumaDocument       *doc,
 	{
 		const gchar *charset;
 
-		charset = pluma_encoding_get_charset (encoding);
+		charset = lapiz_encoding_get_charset (encoding);
 
-		pluma_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_ENCODING,
+		lapiz_document_set_metadata (doc, PLUMA_METADATA_ATTRIBUTE_ENCODING,
 					     charset, NULL);
 	}
 
@@ -770,8 +770,8 @@ get_default_style_scheme (void)
 	GtkSourceStyleScheme *def_style;
 	GtkSourceStyleSchemeManager *manager;
 
-	manager = pluma_get_style_scheme_manager ();
-	scheme_id = pluma_prefs_manager_get_source_style_scheme ();
+	manager = lapiz_get_style_scheme_manager ();
+	scheme_id = lapiz_prefs_manager_get_source_style_scheme ();
 	def_style = gtk_source_style_scheme_manager_get_scheme (manager,
 								scheme_id);
 
@@ -799,7 +799,7 @@ on_uri_changed (PlumaDocument *doc,
 #ifdef ENABLE_GVFS_METADATA
 	GFile *location;
 
-	location = pluma_document_get_location (doc);
+	location = lapiz_document_get_location (doc);
 
 	/* load metadata for this uri: we load sync since metadata is
 	 * always local so it should be fast and we need the information
@@ -842,16 +842,16 @@ guess_language (PlumaDocument *doc,
 	gchar *data;
 	GtkSourceLanguage *language = NULL;
 
-	data = pluma_document_get_metadata (doc, PLUMA_METADATA_ATTRIBUTE_LANGUAGE);
+	data = lapiz_document_get_metadata (doc, PLUMA_METADATA_ATTRIBUTE_LANGUAGE);
 
 	if (data != NULL)
 	{
-		pluma_debug_message (DEBUG_DOCUMENT, "Language from metadata: %s", data);
+		lapiz_debug_message (DEBUG_DOCUMENT, "Language from metadata: %s", data);
 
 		if (strcmp (data, "_NORMAL_") != 0)
 		{
 			language = gtk_source_language_manager_get_language (
-						pluma_get_language_manager (),
+						lapiz_get_language_manager (),
 						data);
 		}
 
@@ -862,8 +862,8 @@ guess_language (PlumaDocument *doc,
 		GFile *file;
 		gchar *basename = NULL;
 
-		file = pluma_document_get_location (doc);
-		pluma_debug_message (DEBUG_DOCUMENT, "Sniffing Language");
+		file = lapiz_document_get_location (doc);
+		lapiz_debug_message (DEBUG_DOCUMENT, "Sniffing Language");
 
 		if (file)
 		{
@@ -875,7 +875,7 @@ guess_language (PlumaDocument *doc,
 		}
 
 		language = gtk_source_language_manager_guess_language (
-					pluma_get_language_manager (),
+					lapiz_get_language_manager (),
 					basename,
 					content_type);
 
@@ -901,7 +901,7 @@ on_content_type_changed (PlumaDocument *doc,
 
 		language = guess_language (doc, doc->priv->content_type);
 
-		pluma_debug_message (DEBUG_DOCUMENT, "Language: %s",
+		lapiz_debug_message (DEBUG_DOCUMENT, "Language: %s",
 				     language != NULL ? gtk_source_language_get_name (language) : "None");
 
 		set_language (doc, language, FALSE);
@@ -915,13 +915,13 @@ get_default_content_type (void)
 }
 
 static void
-pluma_document_init (PlumaDocument *doc)
+lapiz_document_init (PlumaDocument *doc)
 {
 	GtkSourceStyleScheme *style_scheme;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
-	doc->priv = pluma_document_get_instance_private (doc);
+	doc->priv = lapiz_document_get_instance_private (doc);
 
 	doc->priv->uri = NULL;
 	doc->priv->untitled_number = get_untitled_number ();
@@ -944,18 +944,18 @@ pluma_document_init (PlumaDocument *doc)
 
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-	doc->priv->encoding = pluma_encoding_get_utf8 ();
+	doc->priv->encoding = lapiz_encoding_get_utf8 ();
 
 	doc->priv->newline_type = PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 
 	gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (doc),
-					       pluma_prefs_manager_get_undo_actions_limit ());
+					       lapiz_prefs_manager_get_undo_actions_limit ());
 
 	gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (doc),
-							   pluma_prefs_manager_get_bracket_matching ());
+							   lapiz_prefs_manager_get_bracket_matching ());
 
-	pluma_document_set_enable_search_highlighting (doc,
-						       pluma_prefs_manager_get_enable_search_highlighting ());
+	lapiz_document_set_enable_search_highlighting (doc,
+						       lapiz_prefs_manager_get_enable_search_highlighting ());
 
 	style_scheme = get_default_style_scheme ();
 	if (style_scheme != NULL)
@@ -984,9 +984,9 @@ pluma_document_init (PlumaDocument *doc)
 }
 
 PlumaDocument *
-pluma_document_new (void)
+lapiz_document_new (void)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	return PLUMA_DOCUMENT (g_object_new (PLUMA_TYPE_DOCUMENT, NULL));
 }
@@ -995,7 +995,7 @@ static void
 set_content_type_no_guess (PlumaDocument *doc,
 			   const gchar   *content_type)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->content_type != NULL && content_type != NULL &&
 	    (0 == strcmp (doc->priv->content_type, content_type)))
@@ -1015,7 +1015,7 @@ static void
 set_content_type (PlumaDocument *doc,
 		  const gchar   *content_type)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	if (content_type == NULL)
 	{
@@ -1023,7 +1023,7 @@ set_content_type (PlumaDocument *doc,
 		gchar *guessed_type = NULL;
 
 		/* If content type is null, we guess from the filename */
-		file = pluma_document_get_location (doc);
+		file = lapiz_document_get_location (doc);
 		if (file != NULL)
 		{
 			gchar *basename;
@@ -1046,12 +1046,12 @@ set_content_type (PlumaDocument *doc,
 }
 
 /**
- * pluma_document_set_content_type:
+ * lapiz_document_set_content_type:
  * @doc:
  * @content_type: (allow-none):
  */
 void
-pluma_document_set_content_type (PlumaDocument *doc,
+lapiz_document_set_content_type (PlumaDocument *doc,
                                  const gchar   *content_type)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
@@ -1063,9 +1063,9 @@ static void
 set_uri (PlumaDocument *doc,
 	 const gchar   *uri)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
-	g_return_if_fail ((uri == NULL) || pluma_utils_is_valid_uri (uri));
+	g_return_if_fail ((uri == NULL) || lapiz_utils_is_valid_uri (uri));
 
 	if (uri != NULL)
 	{
@@ -1092,13 +1092,13 @@ set_uri (PlumaDocument *doc,
 
 
 /**
- * pluma_document_get_location:
+ * lapiz_document_get_location:
  * @doc: a #PlumaDocument
  *
  * Returns: (allow-none) (transfer full): a new #GFile
  */
 GFile *
-pluma_document_get_location (PlumaDocument *doc)
+lapiz_document_get_location (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -1106,7 +1106,7 @@ pluma_document_get_location (PlumaDocument *doc)
 }
 
 gchar *
-pluma_document_get_uri (PlumaDocument *doc)
+lapiz_document_get_uri (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -1114,7 +1114,7 @@ pluma_document_get_uri (PlumaDocument *doc)
 }
 
 void
-pluma_document_set_uri (PlumaDocument *doc,
+lapiz_document_set_uri (PlumaDocument *doc,
 			const gchar   *uri)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
@@ -1125,13 +1125,13 @@ pluma_document_set_uri (PlumaDocument *doc,
 }
 
 /**
- * pluma_document_get_uri_for_display:
+ * lapiz_document_get_uri_for_display:
  * @doc:
  *
  * Note: this never returns %NULL.
  **/
 gchar *
-pluma_document_get_uri_for_display (PlumaDocument *doc)
+lapiz_document_get_uri_for_display (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), g_strdup (""));
 
@@ -1139,17 +1139,17 @@ pluma_document_get_uri_for_display (PlumaDocument *doc)
 		return g_strdup_printf (_("Unsaved Document %d"),
 					doc->priv->untitled_number);
 	else
-		return pluma_utils_uri_for_display (doc->priv->uri);
+		return lapiz_utils_uri_for_display (doc->priv->uri);
 }
 
 /**
- * pluma_document_get_short_name_for_display:
+ * lapiz_document_get_short_name_for_display:
  * @doc:
  *
  * Note: this never returns %NULL.
  **/
 gchar *
-pluma_document_get_short_name_for_display (PlumaDocument *doc)
+lapiz_document_get_short_name_for_display (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), g_strdup (""));
 
@@ -1159,16 +1159,16 @@ pluma_document_get_short_name_for_display (PlumaDocument *doc)
 		return g_strdup_printf (_("Unsaved Document %d"),
 					doc->priv->untitled_number);
 	else
-		return pluma_utils_basename_for_display (doc->priv->uri);
+		return lapiz_utils_basename_for_display (doc->priv->uri);
 }
 
 /**
- * pluma_document_set_short_name_for_display:
+ * lapiz_document_set_short_name_for_display:
  * @doc:
  * @name: (allow-none):
  */
 void
-pluma_document_set_short_name_for_display (PlumaDocument *doc,
+lapiz_document_set_short_name_for_display (PlumaDocument *doc,
                                            const gchar   *short_name)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
@@ -1180,7 +1180,7 @@ pluma_document_set_short_name_for_display (PlumaDocument *doc,
 }
 
 gchar *
-pluma_document_get_content_type (PlumaDocument *doc)
+lapiz_document_get_content_type (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -1188,13 +1188,13 @@ pluma_document_get_content_type (PlumaDocument *doc)
 }
 
 /**
- * pluma_document_get_mime_type:
+ * lapiz_document_get_mime_type:
  * @doc:
  *
  * Note: this never returns %NULL.
  **/
 gchar *
-pluma_document_get_mime_type (PlumaDocument *doc)
+lapiz_document_get_mime_type (PlumaDocument *doc)
 {
 	gchar *mime_type = NULL;
 
@@ -1214,7 +1214,7 @@ static gboolean
 set_readonly (PlumaDocument *doc,
 	      gboolean       readonly)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	readonly = (readonly != FALSE);
 
@@ -1227,17 +1227,17 @@ set_readonly (PlumaDocument *doc,
 }
 
 /**
- * pluma_document_set_readonly:
+ * lapiz_document_set_readonly:
  * @doc: a #PlumaDocument
  * @readonly: %TRUE to se the document as read-only
  *
  * If @readonly is %TRUE sets @doc as read-only.
  */
 void
-_pluma_document_set_readonly (PlumaDocument *doc,
+_lapiz_document_set_readonly (PlumaDocument *doc,
 			      gboolean       readonly)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
 
@@ -1248,7 +1248,7 @@ _pluma_document_set_readonly (PlumaDocument *doc,
 }
 
 gboolean
-pluma_document_get_readonly (PlumaDocument *doc)
+lapiz_document_get_readonly (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), TRUE);
 
@@ -1256,7 +1256,7 @@ pluma_document_get_readonly (PlumaDocument *doc)
 }
 
 gboolean
-_pluma_document_check_externally_modified (PlumaDocument *doc)
+_lapiz_document_check_externally_modified (PlumaDocument *doc)
 {
 	GFile *gfile;
 	GFileInfo *info;
@@ -1286,7 +1286,7 @@ _pluma_document_check_externally_modified (PlumaDocument *doc)
 			read_only = !g_file_info_get_attribute_boolean (info,
 									G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
 
-			_pluma_document_set_readonly (doc, read_only);
+			_lapiz_document_set_readonly (doc, read_only);
 		}
 
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
@@ -1332,7 +1332,7 @@ document_loader_loaded (PlumaDocumentLoader *loader,
 		gboolean read_only = FALSE;
 		GTimeVal mtime = {0, 0};
 
-		info = pluma_document_loader_get_info (loader);
+		info = lapiz_document_loader_get_info (loader);
 
 		if (info)
 		{
@@ -1355,13 +1355,13 @@ document_loader_loaded (PlumaDocumentLoader *loader,
 		g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 		set_encoding (doc,
-			      pluma_document_loader_get_encoding (loader),
+			      lapiz_document_loader_get_encoding (loader),
 			      (doc->priv->requested_encoding != NULL));
 
 		set_content_type (doc, content_type);
 
-		pluma_document_set_newline_type (doc,
-		                                 pluma_document_loader_get_newline_type (loader));
+		lapiz_document_set_newline_type (doc,
+		                                 lapiz_document_loader_get_newline_type (loader));
 
 		/* move the cursor at the requested line if any */
 		if (doc->priv->requested_line_pos > 0)
@@ -1372,12 +1372,12 @@ document_loader_loaded (PlumaDocumentLoader *loader,
 							  doc->priv->requested_line_pos - 1);
 		}
 		/* else, if enabled, to the position stored in the metadata */
-		else if (pluma_prefs_manager_get_restore_cursor_position ())
+		else if (lapiz_prefs_manager_get_restore_cursor_position ())
 		{
 			gchar *pos;
 			gint offset;
 
-			pos = pluma_document_get_metadata (doc, PLUMA_METADATA_ATTRIBUTE_POSITION);
+			pos = lapiz_document_get_metadata (doc, PLUMA_METADATA_ATTRIBUTE_POSITION);
 
 			offset = pos ? atoi (pos) : 0;
 			g_free (pos);
@@ -1408,7 +1408,7 @@ document_loader_loaded (PlumaDocumentLoader *loader,
 	/* special case creating a named new doc */
 	else if (doc->priv->create &&
 	         (error->domain == G_IO_ERROR && error->code == G_IO_ERROR_NOT_FOUND) &&
-	         (pluma_utils_uri_has_file_scheme (doc->priv->uri)))
+	         (lapiz_utils_uri_has_file_scheme (doc->priv->uri)))
 	{
 		reset_temp_loading_data (doc);
 
@@ -1444,13 +1444,13 @@ document_loader_loading (PlumaDocumentLoader *loader,
 		goffset read;
 		GFileInfo *info;
 
-		info = pluma_document_loader_get_info (loader);
+		info = lapiz_document_loader_get_info (loader);
 
 		if (info && g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_SIZE))
 			size = g_file_info_get_attribute_uint64 (info,
 								 G_FILE_ATTRIBUTE_STANDARD_SIZE);
 
-		read = pluma_document_loader_get_bytes_read (loader);
+		read = lapiz_document_loader_get_bytes_read (loader);
 
 		g_signal_emit (doc,
 			       document_signals[LOADING],
@@ -1461,7 +1461,7 @@ document_loader_loading (PlumaDocumentLoader *loader,
 }
 
 static void
-pluma_document_load_real (PlumaDocument       *doc,
+lapiz_document_load_real (PlumaDocument       *doc,
 			  const gchar         *uri,
 			  const PlumaEncoding *encoding,
 			  gint                 line_pos,
@@ -1469,10 +1469,10 @@ pluma_document_load_real (PlumaDocument       *doc,
 {
 	g_return_if_fail (doc->priv->loader == NULL);
 
-	pluma_debug_message (DEBUG_DOCUMENT, "load_real: uri = %s", uri);
+	lapiz_debug_message (DEBUG_DOCUMENT, "load_real: uri = %s", uri);
 
 	/* create a loader. It will be destroyed when loading is completed */
-	doc->priv->loader = pluma_document_loader_new (doc, uri, encoding);
+	doc->priv->loader = lapiz_document_loader_new (doc, uri, encoding);
 
 	g_signal_connect (doc->priv->loader,
 			  "loading",
@@ -1486,11 +1486,11 @@ pluma_document_load_real (PlumaDocument       *doc,
 	set_uri (doc, uri);
 	set_content_type (doc, NULL);
 
-	pluma_document_loader_load (doc->priv->loader);
+	lapiz_document_loader_load (doc->priv->loader);
 }
 
 /**
- * pluma_document_load:
+ * lapiz_document_load:
  * @doc: the #PlumaDocument.
  * @uri: the uri where to load the document from.
  * @encoding: the #PlumaEncoding to encode the document.
@@ -1500,7 +1500,7 @@ pluma_document_load_real (PlumaDocument       *doc,
  * Load a document. This results in the "load" signal to be emitted.
  */
 void
-pluma_document_load (PlumaDocument       *doc,
+lapiz_document_load (PlumaDocument       *doc,
 		     const gchar         *uri,
 		     const PlumaEncoding *encoding,
 		     gint                 line_pos,
@@ -1508,26 +1508,26 @@ pluma_document_load (PlumaDocument       *doc,
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
 	g_return_if_fail (uri != NULL);
-	g_return_if_fail (pluma_utils_is_valid_uri (uri));
+	g_return_if_fail (lapiz_utils_is_valid_uri (uri));
 
 	g_signal_emit (doc, document_signals[LOAD], 0, uri, encoding, line_pos, create);
 }
 
 /**
- * pluma_document_load_cancel:
+ * lapiz_document_load_cancel:
  * @doc: the #PlumaDocument.
  *
  * Cancel load of a document.
  */
 gboolean
-pluma_document_load_cancel (PlumaDocument *doc)
+lapiz_document_load_cancel (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), FALSE);
 
 	if (doc->priv->loader == NULL)
 		return FALSE;
 
-	return pluma_document_loader_cancel (doc->priv->loader);
+	return lapiz_document_loader_cancel (doc->priv->loader);
 }
 
 static void
@@ -1536,7 +1536,7 @@ document_saver_saving (PlumaDocumentSaver *saver,
 		       const GError       *error,
 		       PlumaDocument      *doc)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	if (completed)
 	{
@@ -1548,10 +1548,10 @@ document_saver_saving (PlumaDocumentSaver *saver,
 			GTimeVal mtime = {0, 0};
 			GFileInfo *info;
 
-			uri = pluma_document_saver_get_uri (saver);
+			uri = lapiz_document_saver_get_uri (saver);
 			set_uri (doc, uri);
 
-			info = pluma_document_saver_get_info (saver);
+			info = lapiz_document_saver_get_info (saver);
 
 			if (info != NULL)
 			{
@@ -1568,7 +1568,7 @@ document_saver_saving (PlumaDocumentSaver *saver,
 
 			g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-			_pluma_document_set_readonly (doc, FALSE);
+			_lapiz_document_set_readonly (doc, FALSE);
 
 			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
 						      FALSE);
@@ -1592,10 +1592,10 @@ document_saver_saving (PlumaDocumentSaver *saver,
 		goffset size = 0;
 		goffset written = 0;
 
-		size = pluma_document_saver_get_file_size (saver);
-		written = pluma_document_saver_get_bytes_written (saver);
+		size = lapiz_document_saver_get_file_size (saver);
+		written = lapiz_document_saver_get_bytes_written (saver);
 
-		pluma_debug_message (DEBUG_DOCUMENT, "save progress: %" G_GINT64_FORMAT " of %" G_GINT64_FORMAT, written, size);
+		lapiz_debug_message (DEBUG_DOCUMENT, "save progress: %" G_GINT64_FORMAT " of %" G_GINT64_FORMAT, written, size);
 
 		g_signal_emit (doc,
 			       document_signals[SAVING],
@@ -1606,7 +1606,7 @@ document_saver_saving (PlumaDocumentSaver *saver,
 }
 
 static void
-pluma_document_save_real (PlumaDocument          *doc,
+lapiz_document_save_real (PlumaDocument          *doc,
 			  const gchar            *uri,
 			  const PlumaEncoding    *encoding,
 			  PlumaDocumentSaveFlags  flags)
@@ -1614,7 +1614,7 @@ pluma_document_save_real (PlumaDocument          *doc,
 	g_return_if_fail (doc->priv->saver == NULL);
 
 	/* create a saver, it will be destroyed once saving is complete */
-	doc->priv->saver = pluma_document_saver_new (doc, uri, encoding,
+	doc->priv->saver = lapiz_document_saver_new (doc, uri, encoding,
 						     doc->priv->newline_type,
 						     flags);
 
@@ -1625,12 +1625,12 @@ pluma_document_save_real (PlumaDocument          *doc,
 
 	doc->priv->requested_encoding = encoding;
 
-	pluma_document_saver_save (doc->priv->saver,
+	lapiz_document_saver_save (doc->priv->saver,
 				   &doc->priv->mtime);
 }
 
 /**
- * pluma_document_save:
+ * lapiz_document_save:
  * @doc: the #PlumaDocument.
  * @flags: optionnal #PlumaDocumentSaveFlags.
  *
@@ -1638,7 +1638,7 @@ pluma_document_save_real (PlumaDocument          *doc,
  * signal to be emitted.
  */
 void
-pluma_document_save (PlumaDocument          *doc,
+lapiz_document_save (PlumaDocument          *doc,
 		     PlumaDocumentSaveFlags  flags)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
@@ -1653,7 +1653,7 @@ pluma_document_save (PlumaDocument          *doc,
 }
 
 /**
- * pluma_document_save_as:
+ * lapiz_document_save_as:
  * @doc: the #PlumaDocument.
  * @uri: the uri where to save the document.
  * @encoding: the #PlumaEncoding to encode the document.
@@ -1663,7 +1663,7 @@ pluma_document_save (PlumaDocument          *doc,
  * to be emitted.
  */
 void
-pluma_document_save_as (PlumaDocument          *doc,
+lapiz_document_save_as (PlumaDocument          *doc,
 			const gchar            *uri,
 			const PlumaEncoding    *encoding,
 			PlumaDocumentSaveFlags  flags)
@@ -1683,7 +1683,7 @@ pluma_document_save_as (PlumaDocument          *doc,
 }
 
 gboolean
-pluma_document_insert_file (PlumaDocument       *doc,
+lapiz_document_insert_file (PlumaDocument       *doc,
 			    GtkTextIter         *iter,
 			    const gchar         *uri,
 			    const PlumaEncoding *encoding)
@@ -1699,7 +1699,7 @@ pluma_document_insert_file (PlumaDocument       *doc,
 }
 
 gboolean
-pluma_document_is_untouched (PlumaDocument *doc)
+lapiz_document_is_untouched (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), TRUE);
 
@@ -1708,7 +1708,7 @@ pluma_document_is_untouched (PlumaDocument *doc)
 }
 
 gboolean
-pluma_document_is_untitled (PlumaDocument *doc)
+lapiz_document_is_untitled (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), TRUE);
 
@@ -1716,7 +1716,7 @@ pluma_document_is_untitled (PlumaDocument *doc)
 }
 
 gboolean
-pluma_document_is_local (PlumaDocument *doc)
+lapiz_document_is_local (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), FALSE);
 
@@ -1725,15 +1725,15 @@ pluma_document_is_local (PlumaDocument *doc)
 		return FALSE;
 	}
 
-	return pluma_utils_uri_has_file_scheme (doc->priv->uri);
+	return lapiz_utils_uri_has_file_scheme (doc->priv->uri);
 }
 
 gboolean
-pluma_document_get_deleted (PlumaDocument *doc)
+lapiz_document_get_deleted (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), FALSE);
 
-	return doc->priv->uri && !pluma_utils_uri_exists (doc->priv->uri);
+	return doc->priv->uri && !lapiz_utils_uri_exists (doc->priv->uri);
 }
 
 /*
@@ -1741,14 +1741,14 @@ pluma_document_get_deleted (PlumaDocument *doc)
  * to the last line and FALSE is returned.
  */
 gboolean
-pluma_document_goto_line (PlumaDocument *doc,
+lapiz_document_goto_line (PlumaDocument *doc,
 			  gint           line)
 {
 	gboolean ret = TRUE;
 	guint line_count;
 	GtkTextIter iter;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (line >= -1, FALSE);
@@ -1774,7 +1774,7 @@ pluma_document_goto_line (PlumaDocument *doc,
 }
 
 gboolean
-pluma_document_goto_line_offset (PlumaDocument *doc,
+lapiz_document_goto_line_offset (PlumaDocument *doc,
 				 gint           line,
 				 gint           line_offset)
 {
@@ -1835,13 +1835,13 @@ compute_num_of_lines (const gchar *text)
 }
 
 /**
- * pluma_document_set_search_text:
+ * lapiz_document_set_search_text:
  * @doc:
  * @text: (allow-none):
  * @flags:
  **/
 void
-pluma_document_set_search_text (PlumaDocument *doc,
+lapiz_document_set_search_text (PlumaDocument *doc,
 				const gchar   *text,
 				guint          flags)
 {
@@ -1853,19 +1853,19 @@ pluma_document_set_search_text (PlumaDocument *doc,
 	g_return_if_fail ((text == NULL) || (doc->priv->search_text != text));
 	g_return_if_fail ((text == NULL) || g_utf8_validate (text, -1, NULL));
 
-	pluma_debug_message (DEBUG_DOCUMENT, "text = %s", text);
+	lapiz_debug_message (DEBUG_DOCUMENT, "text = %s", text);
 
 	if (text != NULL)
 	{
 		if (*text != '\0')
 		{
-			converted_text = pluma_utils_unescape_search_text (text);
-			notify = !pluma_document_get_can_search_again (doc);
+			converted_text = lapiz_utils_unescape_search_text (text);
+			notify = !lapiz_document_get_can_search_again (doc);
 		}
 		else
 		{
 			converted_text = g_strdup("");
-			notify = pluma_document_get_can_search_again (doc);
+			notify = lapiz_document_get_can_search_again (doc);
 		}
 
 		g_free (doc->priv->search_text);
@@ -1903,12 +1903,12 @@ pluma_document_set_search_text (PlumaDocument *doc,
 }
 
 /**
- * pluma_document_get_search_text:
+ * lapiz_document_get_search_text:
  * @doc:
  * @flags: (allow-none):
  */
 gchar *
-pluma_document_get_search_text (PlumaDocument *doc,
+lapiz_document_get_search_text (PlumaDocument *doc,
 				guint         *flags)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
@@ -1916,32 +1916,32 @@ pluma_document_get_search_text (PlumaDocument *doc,
 	if (flags != NULL)
 		*flags = doc->priv->search_flags;
 
-	return pluma_utils_escape_search_text (doc->priv->search_text);
+	return lapiz_utils_escape_search_text (doc->priv->search_text);
 }
 
 /**
- * pluma_document_set_last_replace_text:
+ * lapiz_document_set_last_replace_text:
  * @doc:
  * @text: (allow-none):
  **/
 void
-pluma_document_set_last_replace_text (PlumaDocument *doc,
+lapiz_document_set_last_replace_text (PlumaDocument *doc,
 				      const gchar   *text)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
 
 	g_free(doc->priv->last_replace_text);
 
-	pluma_debug_message (DEBUG_SEARCH, "last_replace_text = %s", text == NULL ? "NULL" : text);
+	lapiz_debug_message (DEBUG_SEARCH, "last_replace_text = %s", text == NULL ? "NULL" : text);
 	doc->priv->last_replace_text = g_strdup(text);
 }
 
 /**
- * pluma_document_get_last_replace_text:
+ * lapiz_document_get_last_replace_text:
  * @doc:
  */
 gchar *
-pluma_document_get_last_replace_text (PlumaDocument *doc)
+lapiz_document_get_last_replace_text (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -1949,7 +1949,7 @@ pluma_document_get_last_replace_text (PlumaDocument *doc)
 }
 
 gboolean
-pluma_document_get_can_search_again (PlumaDocument *doc)
+lapiz_document_get_can_search_again (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), FALSE);
 
@@ -1958,7 +1958,7 @@ pluma_document_get_can_search_again (PlumaDocument *doc)
 }
 
 /**
- * pluma_document_search_forward:
+ * lapiz_document_search_forward:
  * @doc:
  * @start: (allow-none):
  * @end: (allow-none):
@@ -1966,7 +1966,7 @@ pluma_document_get_can_search_again (PlumaDocument *doc)
  * @match_end: (allow-none):
  **/
 gboolean
-pluma_document_search_forward (PlumaDocument     *doc,
+lapiz_document_search_forward (PlumaDocument     *doc,
 			       const GtkTextIter *start,
 			       const GtkTextIter *end,
 			       GtkTextIter       *match_start,
@@ -1986,11 +1986,11 @@ pluma_document_search_forward (PlumaDocument     *doc,
 
 	if (doc->priv->search_text == NULL)
 	{
-		pluma_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == NULL\n");
+		lapiz_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == NULL\n");
 		return FALSE;
 	}
 	else
-		pluma_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == \"%s\"\n", doc->priv->search_text);
+		lapiz_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == \"%s\"\n", doc->priv->search_text);
 
 	if (start == NULL)
 		gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
@@ -2015,7 +2015,7 @@ pluma_document_search_forward (PlumaDocument     *doc,
 							      &m_end,
 							      end);
 		} else {
-			found = pluma_gtk_text_iter_regex_search (&iter,
+			found = lapiz_gtk_text_iter_regex_search (&iter,
 								  doc->priv->search_text,
 								  search_flags,
 								  &m_start,
@@ -2047,7 +2047,7 @@ pluma_document_search_forward (PlumaDocument     *doc,
 }
 
 /**
- * pluma_document_search_backward:
+ * lapiz_document_search_backward:
  * @doc:
  * @start: (allow-none):
  * @end: (allow-none):
@@ -2055,7 +2055,7 @@ pluma_document_search_forward (PlumaDocument     *doc,
  * @match_end: (allow-none):
  **/
 gboolean
-pluma_document_search_backward (PlumaDocument     *doc,
+lapiz_document_search_backward (PlumaDocument     *doc,
 		const GtkTextIter *start,
 		const GtkTextIter *end,
 		GtkTextIter       *match_start,
@@ -2075,11 +2075,11 @@ pluma_document_search_backward (PlumaDocument     *doc,
 
 	if (doc->priv->search_text == NULL)
 	{
-		pluma_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == NULL\n");
+		lapiz_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == NULL\n");
 		return FALSE;
 	}
 	else
-		pluma_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == \"%s\"\n", doc->priv->search_text);
+		lapiz_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == \"%s\"\n", doc->priv->search_text);
 
 	if (end == NULL)
 		gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &iter);
@@ -2106,7 +2106,7 @@ pluma_document_search_backward (PlumaDocument     *doc,
 		}
 		else
 		{
-			found = pluma_gtk_text_iter_regex_search (&iter,
+			found = lapiz_gtk_text_iter_regex_search (&iter,
 								  doc->priv->search_text,
 								  search_flags,
 								  &m_start,
@@ -2139,7 +2139,7 @@ pluma_document_search_backward (PlumaDocument     *doc,
 
 /* FIXME this is an issue for introspection regardning @find */
 gint
-pluma_document_replace_all (PlumaDocument       *doc,
+lapiz_document_replace_all (PlumaDocument       *doc,
 			    const gchar         *find,
 			    const gchar         *replace,
 			    guint                flags)
@@ -2166,11 +2166,11 @@ pluma_document_replace_all (PlumaDocument       *doc,
 	if (find == NULL)
 		search_text = g_strdup (doc->priv->search_text);
 	else
-		search_text = pluma_utils_unescape_search_text (find);
+		search_text = lapiz_utils_unescape_search_text (find);
 
 	if(!PLUMA_SEARCH_IS_MATCH_REGEX(flags))
 	{
-		replace_text = pluma_utils_unescape_search_text (replace);
+		replace_text = lapiz_utils_unescape_search_text (replace);
 		replace_text_len = strlen (replace_text);
 	}
 
@@ -2195,8 +2195,8 @@ pluma_document_replace_all (PlumaDocument       *doc,
 	gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer), FALSE);
 
 	/* and do search highliting later */
-	search_highliting = pluma_document_get_enable_search_highlighting (doc);
-	pluma_document_set_enable_search_highlighting (doc, FALSE);
+	search_highliting = lapiz_document_get_enable_search_highlighting (doc);
+	lapiz_document_set_enable_search_highlighting (doc, FALSE);
 
 	gtk_text_buffer_begin_user_action (buffer);
 
@@ -2214,7 +2214,7 @@ pluma_document_replace_all (PlumaDocument       *doc,
 			if(replace_text != NULL)
 				g_free (replace_text);
 			replace_text = g_strdup (replace);
-			found = pluma_gtk_text_iter_regex_search (&iter,
+			found = lapiz_gtk_text_iter_regex_search (&iter,
 							          search_text,
 							          search_flags,
 							          &m_start,
@@ -2266,7 +2266,7 @@ pluma_document_replace_all (PlumaDocument       *doc,
 
 	gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer),
 							   brackets_highlighting);
-	pluma_document_set_enable_search_highlighting (doc, search_highliting);
+	lapiz_document_set_enable_search_highlighting (doc, search_highliting);
 
 	g_free (search_text);
 	if(replace_text != NULL)
@@ -2276,12 +2276,12 @@ pluma_document_replace_all (PlumaDocument       *doc,
 }
 
 /**
- * pluma_document_set_language:
+ * lapiz_document_set_language:
  * @doc:
  * @lang: (allow-none):
  **/
 void
-pluma_document_set_language (PlumaDocument     *doc,
+lapiz_document_set_language (PlumaDocument     *doc,
 			     GtkSourceLanguage *lang)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
@@ -2290,13 +2290,13 @@ pluma_document_set_language (PlumaDocument     *doc,
 }
 
 /**
- * pluma_document_get_language:
+ * lapiz_document_get_language:
  * @doc:
  *
  * Return value: (transfer none):
  */
 GtkSourceLanguage *
-pluma_document_get_language (PlumaDocument *doc)
+lapiz_document_get_language (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -2304,7 +2304,7 @@ pluma_document_get_language (PlumaDocument *doc)
 }
 
 const PlumaEncoding *
-pluma_document_get_encoding (PlumaDocument *doc)
+lapiz_document_get_encoding (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -2312,11 +2312,11 @@ pluma_document_get_encoding (PlumaDocument *doc)
 }
 
 glong
-_pluma_document_get_seconds_since_last_save_or_load (PlumaDocument *doc)
+_lapiz_document_get_seconds_since_last_save_or_load (PlumaDocument *doc)
 {
 	GTimeVal current_time;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), -1);
 
@@ -2377,7 +2377,7 @@ get_search_match_colors (PlumaDocument *doc,
 	return;
 
  fallback:
-	pluma_debug_message (DEBUG_DOCUMENT,
+	lapiz_debug_message (DEBUG_DOCUMENT,
 			     "Falling back to hard-coded colors "
 			     "for the \"found\" text tag.");
 
@@ -2398,7 +2398,7 @@ sync_found_tag (PlumaDocument *doc,
 	gboolean fg_set;
 	gboolean bg_set;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GTK_TEXT_TAG (doc->priv->found_tag));
 
@@ -2439,7 +2439,7 @@ search_region (PlumaDocument *doc,
 
 	GtkTextBuffer *buffer;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	buffer = GTK_TEXT_BUFFER (doc);
 
@@ -2542,7 +2542,7 @@ to_search_region_range (PlumaDocument *doc,
 			GtkTextIter   *start,
 			GtkTextIter   *end)
 {
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->to_search_region == NULL)
 		return;
@@ -2556,7 +2556,7 @@ to_search_region_range (PlumaDocument *doc,
 	*/
 
 	/* Add the region to the refresh region */
-	pluma_text_region_add (doc->priv->to_search_region, start, end);
+	lapiz_text_region_add (doc->priv->to_search_region, start, end);
 
 	/* Notify views of the updated highlight region */
 	gtk_text_iter_backward_lines (start, doc->priv->num_of_lines_search_text);
@@ -2566,13 +2566,13 @@ to_search_region_range (PlumaDocument *doc,
 }
 
 void
-_pluma_document_search_region (PlumaDocument     *doc,
+_lapiz_document_search_region (PlumaDocument     *doc,
 			       const GtkTextIter *start,
 			       const GtkTextIter *end)
 {
 	PlumaTextRegion *region;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
 	g_return_if_fail (start != NULL);
@@ -2587,7 +2587,7 @@ _pluma_document_search_region (PlumaDocument     *doc,
 	*/
 
 	/* get the subregions not yet highlighted */
-	region = pluma_text_region_intersect (doc->priv->to_search_region,
+	region = lapiz_text_region_intersect (doc->priv->to_search_region,
 					      start,
 					      end);
 	if (region)
@@ -2596,25 +2596,25 @@ _pluma_document_search_region (PlumaDocument     *doc,
 		GtkTextIter start_search;
 		GtkTextIter end_search;
 
-		i = pluma_text_region_subregions (region);
-		pluma_text_region_nth_subregion (region,
+		i = lapiz_text_region_subregions (region);
+		lapiz_text_region_nth_subregion (region,
 						 0,
 						 &start_search,
 						 NULL);
 
-		pluma_text_region_nth_subregion (region,
+		lapiz_text_region_nth_subregion (region,
 						 i - 1,
 						 NULL,
 						 &end_search);
 
-		pluma_text_region_destroy (region, TRUE);
+		lapiz_text_region_destroy (region, TRUE);
 
 		gtk_text_iter_order (&start_search, &end_search);
 
 		search_region (doc, &start_search, &end_search);
 
 		/* remove the just highlighted region */
-		pluma_text_region_subtract (doc->priv->to_search_region,
+		lapiz_text_region_subtract (doc->priv->to_search_region,
 					    start,
 					    end);
 	}
@@ -2629,7 +2629,7 @@ insert_text_cb (PlumaDocument *doc,
 	GtkTextIter start;
 	GtkTextIter end;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	start = end = *pos;
 
@@ -2653,7 +2653,7 @@ delete_range_cb (PlumaDocument *doc,
 	GtkTextIter d_start;
 	GtkTextIter d_end;
 
-	pluma_debug (DEBUG_DOCUMENT);
+	lapiz_debug (DEBUG_DOCUMENT);
 
 	d_start = *start;
 	d_end = *end;
@@ -2662,7 +2662,7 @@ delete_range_cb (PlumaDocument *doc,
 }
 
 void
-pluma_document_set_enable_search_highlighting (PlumaDocument *doc,
+lapiz_document_set_enable_search_highlighting (PlumaDocument *doc,
 					       gboolean       enable)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
@@ -2691,14 +2691,14 @@ pluma_document_set_enable_search_highlighting (PlumaDocument *doc,
 				    		    &end);
 		}
 
-		pluma_text_region_destroy (doc->priv->to_search_region,
+		lapiz_text_region_destroy (doc->priv->to_search_region,
 					   TRUE);
 		doc->priv->to_search_region = NULL;
 	}
 	else
 	{
-		doc->priv->to_search_region = pluma_text_region_new (GTK_TEXT_BUFFER (doc));
-		if (pluma_document_get_can_search_again (doc))
+		doc->priv->to_search_region = lapiz_text_region_new (GTK_TEXT_BUFFER (doc));
+		if (lapiz_document_get_can_search_again (doc))
 		{
 			/* If search_text is not empty, highligth all its occurrences */
 			GtkTextIter begin;
@@ -2716,7 +2716,7 @@ pluma_document_set_enable_search_highlighting (PlumaDocument *doc,
 }
 
 gboolean
-pluma_document_get_enable_search_highlighting (PlumaDocument *doc)
+lapiz_document_get_enable_search_highlighting (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), FALSE);
 
@@ -2724,7 +2724,7 @@ pluma_document_get_enable_search_highlighting (PlumaDocument *doc)
 }
 
 void
-pluma_document_set_newline_type (PlumaDocument           *doc,
+lapiz_document_set_newline_type (PlumaDocument           *doc,
 				 PlumaDocumentNewlineType newline_type)
 {
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
@@ -2738,7 +2738,7 @@ pluma_document_set_newline_type (PlumaDocument           *doc,
 }
 
 PlumaDocumentNewlineType
-pluma_document_get_newline_type (PlumaDocument *doc)
+lapiz_document_get_newline_type (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), 0);
 
@@ -2746,7 +2746,7 @@ pluma_document_get_newline_type (PlumaDocument *doc)
 }
 
 void
-_pluma_document_set_mount_operation_factory (PlumaDocument 	       *doc,
+_lapiz_document_set_mount_operation_factory (PlumaDocument 	       *doc,
 					    PlumaMountOperationFactory	callback,
 					    gpointer	                userdata)
 {
@@ -2757,7 +2757,7 @@ _pluma_document_set_mount_operation_factory (PlumaDocument 	       *doc,
 }
 
 GMountOperation *
-_pluma_document_create_mount_operation (PlumaDocument *doc)
+_lapiz_document_create_mount_operation (PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -2770,7 +2770,7 @@ _pluma_document_create_mount_operation (PlumaDocument *doc)
 
 #ifndef ENABLE_GVFS_METADATA
 gchar *
-pluma_document_get_metadata (PlumaDocument *doc,
+lapiz_document_get_metadata (PlumaDocument *doc,
 			     const gchar   *key)
 {
 	gchar *value = NULL;
@@ -2778,16 +2778,16 @@ pluma_document_get_metadata (PlumaDocument *doc,
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (key != NULL, NULL);
 
-	if (!pluma_document_is_untitled (doc))
+	if (!lapiz_document_is_untitled (doc))
 	{
-		value = pluma_metadata_manager_get (doc->priv->uri, key);
+		value = lapiz_metadata_manager_get (doc->priv->uri, key);
 	}
 
 	return value;
 }
 
 void
-pluma_document_set_metadata (PlumaDocument *doc,
+lapiz_document_set_metadata (PlumaDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
@@ -2798,7 +2798,7 @@ pluma_document_set_metadata (PlumaDocument *doc,
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
 	g_return_if_fail (first_key != NULL);
 
-	if (pluma_document_is_untitled (doc))
+	if (lapiz_document_is_untitled (doc))
 	{
 		/* Can't set metadata for untitled documents */
 		return;
@@ -2810,7 +2810,7 @@ pluma_document_set_metadata (PlumaDocument *doc,
 	{
 		value = va_arg (var_args, const gchar *);
 
-		pluma_metadata_manager_set (doc->priv->uri,
+		lapiz_metadata_manager_set (doc->priv->uri,
 					    key,
 					    value);
 	}
@@ -2821,7 +2821,7 @@ pluma_document_set_metadata (PlumaDocument *doc,
 #else
 
 /**
- * pluma_document_get_metadata:
+ * lapiz_document_get_metadata:
  * @doc: a #PlumaDocument
  * @key: name of the key
  *
@@ -2830,7 +2830,7 @@ pluma_document_set_metadata (PlumaDocument *doc,
  * Returns: the value assigned to @key.
  */
 gchar *
-pluma_document_get_metadata (PlumaDocument *doc,
+lapiz_document_get_metadata (PlumaDocument *doc,
 			     const gchar   *key)
 {
 	gchar *value = NULL;
@@ -2860,7 +2860,7 @@ set_attributes_cb (GObject      *source,
 }
 
 /**
- * pluma_document_set_metadata:
+ * lapiz_document_set_metadata:
  * @doc: a #PlumaDocument
  * @first_key: name of the first key to set
  * @...: value for the first key, followed optionally by more key/value pairs,
@@ -2869,7 +2869,7 @@ set_attributes_cb (GObject      *source,
  * Sets metadata on a document.
  */
 void
-pluma_document_set_metadata (PlumaDocument *doc,
+lapiz_document_set_metadata (PlumaDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
@@ -2909,7 +2909,7 @@ pluma_document_set_metadata (PlumaDocument *doc,
 	if (doc->priv->metadata_info != NULL)
 		g_file_info_copy_into (info, doc->priv->metadata_info);
 
-	location = pluma_document_get_location (doc);
+	location = lapiz_document_get_location (doc);
 
 	if (location != NULL)
 	{

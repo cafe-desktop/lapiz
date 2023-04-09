@@ -1,5 +1,5 @@
 /*
- * pluma-file-bookmarks-store.c - Pluma plugin providing easy file access
+ * lapiz-file-bookmarks-store.c - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -22,10 +22,10 @@
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include <pluma/pluma-utils.h>
+#include <lapiz/lapiz-utils.h>
 
-#include "pluma-file-bookmarks-store.h"
-#include "pluma-file-browser-utils.h"
+#include "lapiz-file-bookmarks-store.h"
+#include "lapiz-file-browser-utils.h"
 
 struct _PlumaFileBookmarksStorePrivate
 {
@@ -52,13 +52,13 @@ static gboolean find_with_flags       (GtkTreeModel * model,
                                        guint notflags);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBookmarksStore,
-                                pluma_file_bookmarks_store,
+                                lapiz_file_bookmarks_store,
                                 GTK_TYPE_TREE_STORE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaFileBookmarksStore))
 
 static void
-pluma_file_bookmarks_store_dispose (GObject * object)
+lapiz_file_bookmarks_store_dispose (GObject * object)
 {
 	PlumaFileBookmarksStore *obj = PLUMA_FILE_BOOKMARKS_STORE (object);
 
@@ -76,34 +76,34 @@ pluma_file_bookmarks_store_dispose (GObject * object)
 		obj->priv->bookmarks_monitor = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_file_bookmarks_store_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_file_bookmarks_store_parent_class)->dispose (object);
 }
 
 static void
-pluma_file_bookmarks_store_finalize (GObject * object)
+lapiz_file_bookmarks_store_finalize (GObject * object)
 {
-	G_OBJECT_CLASS (pluma_file_bookmarks_store_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_file_bookmarks_store_parent_class)->finalize (object);
 }
 
 static void
-pluma_file_bookmarks_store_class_init (PlumaFileBookmarksStoreClass *klass)
+lapiz_file_bookmarks_store_class_init (PlumaFileBookmarksStoreClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = pluma_file_bookmarks_store_dispose;
-	object_class->finalize = pluma_file_bookmarks_store_finalize;
+	object_class->dispose = lapiz_file_bookmarks_store_dispose;
+	object_class->finalize = lapiz_file_bookmarks_store_finalize;
 }
 
 static void
-pluma_file_bookmarks_store_class_finalize (PlumaFileBookmarksStoreClass *klass)
+lapiz_file_bookmarks_store_class_finalize (PlumaFileBookmarksStoreClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
 
 static void
-pluma_file_bookmarks_store_init (PlumaFileBookmarksStore * obj)
+lapiz_file_bookmarks_store_init (PlumaFileBookmarksStore * obj)
 {
-	obj->priv = pluma_file_bookmarks_store_get_instance_private (obj);
+	obj->priv = lapiz_file_bookmarks_store_get_instance_private (obj);
 }
 
 /* Private */
@@ -148,23 +148,23 @@ add_file (PlumaFileBookmarksStore *model,
 	}
 
 	if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_HOME)
-		pixbuf = pluma_file_browser_utils_pixbuf_from_theme ("user-home", GTK_ICON_SIZE_MENU);
+		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-home", GTK_ICON_SIZE_MENU);
 	else if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_DESKTOP)
-		pixbuf = pluma_file_browser_utils_pixbuf_from_theme ("user-desktop", GTK_ICON_SIZE_MENU);
+		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-desktop", GTK_ICON_SIZE_MENU);
 	else if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_ROOT)
-		pixbuf = pluma_file_browser_utils_pixbuf_from_theme ("drive-harddisk", GTK_ICON_SIZE_MENU);
+		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("drive-harddisk", GTK_ICON_SIZE_MENU);
 
 	if (pixbuf == NULL) {
 		/* getting the icon is a sync get_info call, so we just do it for local files */
 		if (native) {
-			pixbuf = pluma_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
+			pixbuf = lapiz_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
 		} else {
-			pixbuf = pluma_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
+			pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
 		}
 	}
 
 	if (name == NULL) {
-		newname = pluma_file_browser_utils_file_basename (file);
+		newname = lapiz_file_browser_utils_file_basename (file);
 	} else {
 		newname = g_strdup (name);
 	}
@@ -277,7 +277,7 @@ get_fs_properties (gpointer    fs,
 
 	if (icon)
 	{
-		*pixbuf = pluma_file_browser_utils_pixbuf_from_icon (icon, GTK_ICON_SIZE_MENU);
+		*pixbuf = lapiz_file_browser_utils_pixbuf_from_icon (icon, GTK_ICON_SIZE_MENU);
 		g_object_unref (icon);
 	}
 }
@@ -546,7 +546,7 @@ parse_bookmarks_file (PlumaFileBookmarksStore *model,
 
 			/* the bookmarks file should contain valid
 			 * URIs, but paranoia is good */
-			if (pluma_utils_is_valid_uri (*line))
+			if (lapiz_utils_is_valid_uri (*line))
 			{
 				*added |= add_bookmark (model, name, *line);
 			}
@@ -794,7 +794,7 @@ initialize_fill (PlumaFileBookmarksStore * model)
 
 /* Public */
 PlumaFileBookmarksStore *
-pluma_file_bookmarks_store_new (void)
+lapiz_file_bookmarks_store_new (void)
 {
 	PlumaFileBookmarksStore *model;
 	GType column_types[] = {
@@ -822,7 +822,7 @@ pluma_file_bookmarks_store_new (void)
 }
 
 gchar *
-pluma_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
+lapiz_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
 				    GtkTreeIter * iter)
 {
 	GObject * obj;
@@ -867,7 +867,7 @@ pluma_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
 }
 
 void
-pluma_file_bookmarks_store_refresh (PlumaFileBookmarksStore * model)
+lapiz_file_bookmarks_store_refresh (PlumaFileBookmarksStore * model)
 {
 	gtk_tree_store_clear (GTK_TREE_STORE (model));
 	initialize_fill (model);
@@ -917,9 +917,9 @@ on_bookmarks_file_changed (GFileMonitor * monitor,
 }
 
 void
-_pluma_file_bookmarks_store_register_type (GTypeModule *type_module)
+_lapiz_file_bookmarks_store_register_type (GTypeModule *type_module)
 {
-	pluma_file_bookmarks_store_register_type (type_module);
+	lapiz_file_bookmarks_store_register_type (type_module);
 }
 
 // ex:ts=8:noet:

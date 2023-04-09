@@ -718,7 +718,7 @@ class Manager(GObject.Object):
 
     def on_tool_manager_dialog_response(self, dialog, response):
         if response == Gtk.ResponseType.HELP:
-            Pluma.help_display(self.dialog, 'pluma', 'pluma-external-tools-plugin')
+            Pluma.help_display(self.dialog, 'lapiz', 'lapiz-external-tools-plugin')
             return
 
         self.on_tool_manager_dialog_focus_out(dialog, None)

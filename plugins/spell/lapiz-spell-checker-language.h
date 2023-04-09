@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-checker-language.h
- * This file is part of pluma
+ * lapiz-spell-checker-language.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2006 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -36,14 +36,14 @@ G_BEGIN_DECLS
 
 typedef struct _PlumaSpellCheckerLanguage PlumaSpellCheckerLanguage;
 
-const gchar			*pluma_spell_checker_language_to_string	(const PlumaSpellCheckerLanguage *lang);
+const gchar			*lapiz_spell_checker_language_to_string	(const PlumaSpellCheckerLanguage *lang);
 
-const gchar			*pluma_spell_checker_language_to_key	(const PlumaSpellCheckerLanguage *lang);
+const gchar			*lapiz_spell_checker_language_to_key	(const PlumaSpellCheckerLanguage *lang);
 
-const PlumaSpellCheckerLanguage	*pluma_spell_checker_language_from_key	(const gchar *key);
+const PlumaSpellCheckerLanguage	*lapiz_spell_checker_language_from_key	(const gchar *key);
 
 /* GSList contains "PlumaSpellCheckerLanguage*" items */
-const GSList 			*pluma_spell_checker_get_available_languages
+const GSList 			*lapiz_spell_checker_get_available_languages
 									(void);
 
 G_END_DECLS

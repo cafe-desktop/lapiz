@@ -23,7 +23,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include <pluma/pluma-plugin.h>
+#include <lapiz/lapiz-plugin.h>
 
 G_BEGIN_DECLS
 
@@ -69,7 +69,7 @@ struct _##(PLUGIN_ID.camel)PluginClass
 GType	##(PLUGIN_ID.lower)_plugin_get_type	(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT GType register_pluma_plugin (GTypeModule *module);
+G_MODULE_EXPORT GType register_lapiz_plugin (GTypeModule *module);
 
 G_END_DECLS
 

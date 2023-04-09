@@ -1,27 +1,27 @@
 /*
  * document-input-stream.c
- * This file is part of pluma
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Ignacio Casal Quinteiro
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
 
-#include "pluma-document-input-stream.h"
+#include "lapiz-document-input-stream.h"
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <glib.h>
@@ -45,7 +45,7 @@ test_consecutive_read (const gchar *inbuf,
 	gtk_text_buffer_set_text (buf, inbuf, -1);
 
 	b = g_malloc (200);
-	in = pluma_document_input_stream_new (buf, type);
+	in = lapiz_document_input_stream_new (buf, type);
 
 	outlen = strlen (outbuf);
 	n = 0;

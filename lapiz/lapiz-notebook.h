@@ -1,6 +1,6 @@
 /*
- * pluma-notebook.h
- * This file is part of pluma
+ * lapiz-notebook.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -38,7 +38,7 @@
 #ifndef PLUMA_NOTEBOOK_H
 #define PLUMA_NOTEBOOK_H
 
-#include <pluma/pluma-tab.h>
+#include <lapiz/lapiz-tab.h>
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -48,7 +48,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_NOTEBOOK		(pluma_notebook_get_type ())
+#define PLUMA_TYPE_NOTEBOOK		(lapiz_notebook_get_type ())
 #define PLUMA_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_NOTEBOOK, PlumaNotebook))
 #define PLUMA_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_NOTEBOOK, PlumaNotebookClass))
 #define PLUMA_IS_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_NOTEBOOK))
@@ -96,41 +96,41 @@ struct _PlumaNotebookClass
 /*
  * Public methods
  */
-GType		pluma_notebook_get_type		(void) G_GNUC_CONST;
+GType		lapiz_notebook_get_type		(void) G_GNUC_CONST;
 
-GtkWidget      *pluma_notebook_new		(void);
+GtkWidget      *lapiz_notebook_new		(void);
 
-void		pluma_notebook_add_tab		(PlumaNotebook *nb,
+void		lapiz_notebook_add_tab		(PlumaNotebook *nb,
 						 PlumaTab      *tab,
 						 gint           position,
 						 gboolean       jump_to);
 
-void		pluma_notebook_remove_tab	(PlumaNotebook *nb,
+void		lapiz_notebook_remove_tab	(PlumaNotebook *nb,
 						 PlumaTab      *tab);
 
-void		pluma_notebook_remove_all_tabs 	(PlumaNotebook *nb);
+void		lapiz_notebook_remove_all_tabs 	(PlumaNotebook *nb);
 
-void		pluma_notebook_reorder_tab	(PlumaNotebook *src,
+void		lapiz_notebook_reorder_tab	(PlumaNotebook *src,
 			    			 PlumaTab      *tab,
 			    			 gint           dest_position);
 
-void            pluma_notebook_move_tab		(PlumaNotebook *src,
+void            lapiz_notebook_move_tab		(PlumaNotebook *src,
 						 PlumaNotebook *dest,
 						 PlumaTab      *tab,
 						 gint           dest_position);
 
-void		pluma_notebook_set_close_buttons_sensitive
+void		lapiz_notebook_set_close_buttons_sensitive
 						(PlumaNotebook *nb,
 						 gboolean       sensitive);
 
-gboolean	pluma_notebook_get_close_buttons_sensitive
+gboolean	lapiz_notebook_get_close_buttons_sensitive
 						(PlumaNotebook *nb);
 
-void		pluma_notebook_set_tab_drag_and_drop_enabled
+void		lapiz_notebook_set_tab_drag_and_drop_enabled
 						(PlumaNotebook *nb,
 						 gboolean       enable);
 
-gboolean	pluma_notebook_get_tab_drag_and_drop_enabled
+gboolean	lapiz_notebook_get_tab_drag_and_drop_enabled
 						(PlumaNotebook *nb);
 
 G_END_DECLS

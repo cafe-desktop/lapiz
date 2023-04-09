@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-checker-dialog.h
- * This file is part of pluma
+ * lapiz-spell-checker-dialog.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -31,11 +31,11 @@
 #define __PLUMA_SPELL_CHECKER_DIALOG_H__
 
 #include <gtk/gtk.h>
-#include "pluma-spell-checker.h"
+#include "lapiz-spell-checker.h"
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_SPELL_CHECKER_DIALOG            (pluma_spell_checker_dialog_get_type ())
+#define PLUMA_TYPE_SPELL_CHECKER_DIALOG            (lapiz_spell_checker_dialog_get_type ())
 #define PLUMA_SPELL_CHECKER_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
 #define PLUMA_SPELL_CHECKER_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
 #define PLUMA_IS_SPELL_CHECKER_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_SPELL_CHECKER_DIALOG))
@@ -67,23 +67,23 @@ struct _PlumaSpellCheckerDialogClass
 
 };
 
-GType        		 pluma_spell_checker_dialog_get_type	(void) G_GNUC_CONST;
+GType        		 lapiz_spell_checker_dialog_get_type	(void) G_GNUC_CONST;
 
 /* Constructors */
-GtkWidget		*pluma_spell_checker_dialog_new		(const gchar *data_dir);
-GtkWidget		*pluma_spell_checker_dialog_new_from_spell_checker
+GtkWidget		*lapiz_spell_checker_dialog_new		(const gchar *data_dir);
+GtkWidget		*lapiz_spell_checker_dialog_new_from_spell_checker
 								(PlumaSpellChecker *spell,
 								 const gchar *data_dir);
 
-void 			 pluma_spell_checker_dialog_set_spell_checker
+void 			 lapiz_spell_checker_dialog_set_spell_checker
 								(PlumaSpellCheckerDialog *dlg,
 								 PlumaSpellChecker *spell);
-void			 pluma_spell_checker_dialog_set_misspelled_word
+void			 lapiz_spell_checker_dialog_set_misspelled_word
 								(PlumaSpellCheckerDialog *dlg,
 								 const gchar* word,
 								 gint len);
 
-void 			 pluma_spell_checker_dialog_set_completed
+void 			 lapiz_spell_checker_dialog_set_completed
 								(PlumaSpellCheckerDialog *dlg);
 
 G_END_DECLS

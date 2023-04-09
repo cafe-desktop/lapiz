@@ -9,8 +9,8 @@ AM_CPPFLAGS = \
 plugin_LTLIBRARIES = libsort.la
 
 libsort_la_SOURCES = \
-	pluma-sort-plugin.h	\
-	pluma-sort-plugin.c
+	lapiz-sort-plugin.h	\
+	lapiz-sort-plugin.c
 
 libsort_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 libsort_la_LIBADD  = $(PLUMA_LIBS)

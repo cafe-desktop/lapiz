@@ -1,5 +1,5 @@
 /*
- * pluma-changecase-plugin.h
+ * lapiz-changecase-plugin.h
  *
  * Copyright (C) 2004-2005 - Paolo Borelli
  *
@@ -33,7 +33,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_CHANGECASE_PLUGIN		(pluma_changecase_plugin_get_type ())
+#define PLUMA_TYPE_CHANGECASE_PLUGIN		(lapiz_changecase_plugin_get_type ())
 #define PLUMA_CHANGECASE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_CHANGECASE_PLUGIN, PlumaChangecasePlugin))
 #define PLUMA_CHANGECASE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_CHANGECASE_PLUGIN, PlumaChangecasePluginClass))
 #define PLUMA_IS_CHANGECASE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_CHANGECASE_PLUGIN))
@@ -69,7 +69,7 @@ struct _PlumaChangecasePluginClass
 /*
  * Public methods
  */
-GType	pluma_changecase_plugin_get_type		(void) G_GNUC_CONST;
+GType	lapiz_changecase_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);

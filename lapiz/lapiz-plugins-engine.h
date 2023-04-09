@@ -1,6 +1,6 @@
 /*
- * pluma-plugins-engine.h
- * This file is part of pluma
+ * lapiz-plugins-engine.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -36,7 +36,7 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_PLUGINS_ENGINE              (pluma_plugins_engine_get_type ())
+#define PLUMA_TYPE_PLUGINS_ENGINE              (lapiz_plugins_engine_get_type ())
 #define PLUMA_PLUGINS_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PLUGINS_ENGINE, PlumaPluginsEngine))
 #define PLUMA_PLUGINS_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PLUGINS_ENGINE, PlumaPluginsEngineClass))
 #define PLUMA_IS_PLUGINS_ENGINE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PLUGINS_ENGINE))
@@ -59,9 +59,9 @@ struct _PlumaPluginsEngineClass
 	PeasEngineClass parent_class;
 };
 
-GType			 pluma_plugins_engine_get_type		(void) G_GNUC_CONST;
+GType			 lapiz_plugins_engine_get_type		(void) G_GNUC_CONST;
 
-PlumaPluginsEngine	*pluma_plugins_engine_get_default	(void);
+PlumaPluginsEngine	*lapiz_plugins_engine_get_default	(void);
 
 G_END_DECLS
 

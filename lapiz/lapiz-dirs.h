@@ -1,6 +1,6 @@
 /*
- * pluma-dirs.h
- * This file is part of pluma
+ * lapiz-dirs.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2008 Ignacio Casal Quinteiro
  *
@@ -28,25 +28,25 @@
 
 G_BEGIN_DECLS
 
-gchar		*pluma_dirs_get_user_config_dir		(void);
+gchar		*lapiz_dirs_get_user_config_dir		(void);
 
-gchar		*pluma_dirs_get_user_cache_dir		(void);
+gchar		*lapiz_dirs_get_user_cache_dir		(void);
 
-gchar		*pluma_dirs_get_user_plugins_dir	(void);
+gchar		*lapiz_dirs_get_user_plugins_dir	(void);
 
-gchar		*pluma_dirs_get_user_accels_file	(void);
+gchar		*lapiz_dirs_get_user_accels_file	(void);
 
-gchar		*pluma_dirs_get_pluma_data_dir		(void);
+gchar		*lapiz_dirs_get_lapiz_data_dir		(void);
 
-gchar		*pluma_dirs_get_pluma_locale_dir	(void);
+gchar		*lapiz_dirs_get_lapiz_locale_dir	(void);
 
-gchar		*pluma_dirs_get_pluma_lib_dir		(void);
+gchar		*lapiz_dirs_get_lapiz_lib_dir		(void);
 
-gchar		*pluma_dirs_get_pluma_plugins_dir	(void);
+gchar		*lapiz_dirs_get_lapiz_plugins_dir	(void);
 
-gchar		*pluma_dirs_get_pluma_plugins_data_dir	(void);
+gchar		*lapiz_dirs_get_lapiz_plugins_data_dir	(void);
 
-gchar		*pluma_dirs_get_ui_file			(const gchar *file);
+gchar		*lapiz_dirs_get_ui_file			(const gchar *file);
 
 G_END_DECLS
 

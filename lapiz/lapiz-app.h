@@ -1,6 +1,6 @@
 /*
- * pluma-app.h
- * This file is part of pluma
+ * lapiz-app.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,14 +33,14 @@
 
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-window.h>
+#include <lapiz/lapiz-window.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_APP              (pluma_app_get_type())
+#define PLUMA_TYPE_APP              (lapiz_app_get_type())
 #define PLUMA_APP(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_APP, PlumaApp))
 #define PLUMA_APP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_APP, PlumaAppClass))
 #define PLUMA_IS_APP(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_APP))
@@ -88,53 +88,53 @@ typedef enum
 /*
  * Public methods
  */
-GType 		 pluma_app_get_type 			(void) G_GNUC_CONST;
+GType 		 lapiz_app_get_type 			(void) G_GNUC_CONST;
 
-PlumaApp 	*pluma_app_get_default			(void);
+PlumaApp 	*lapiz_app_get_default			(void);
 
-PlumaWindow	*pluma_app_create_window		(PlumaApp  *app,
+PlumaWindow	*lapiz_app_create_window		(PlumaApp  *app,
 							 GdkScreen *screen);
 
-const GList	*pluma_app_get_windows			(PlumaApp *app);
-PlumaWindow	*pluma_app_get_active_window		(PlumaApp *app);
+const GList	*lapiz_app_get_windows			(PlumaApp *app);
+PlumaWindow	*lapiz_app_get_active_window		(PlumaApp *app);
 
 /* Returns a newly allocated list with all the documents */
-GList		*pluma_app_get_documents		(PlumaApp *app);
+GList		*lapiz_app_get_documents		(PlumaApp *app);
 
 /* Returns a newly allocated list with all the views */
-GList		*pluma_app_get_views			(PlumaApp *app);
+GList		*lapiz_app_get_views			(PlumaApp *app);
 
 /* Lockdown state */
-PlumaLockdownMask pluma_app_get_lockdown		(PlumaApp *app);
+PlumaLockdownMask lapiz_app_get_lockdown		(PlumaApp *app);
 
 /*
  * Non exported functions
  */
-PlumaWindow	*_pluma_app_restore_window		(PlumaApp    *app,
+PlumaWindow	*_lapiz_app_restore_window		(PlumaApp    *app,
 							 const gchar *role);
-PlumaWindow	*_pluma_app_get_window_in_viewport	(PlumaApp     *app,
+PlumaWindow	*_lapiz_app_get_window_in_viewport	(PlumaApp     *app,
 							 GdkScreen    *screen,
 							 gint          workspace,
 							 gint          viewport_x,
 							 gint          viewport_y);
-void		 _pluma_app_set_lockdown		(PlumaApp          *app,
+void		 _lapiz_app_set_lockdown		(PlumaApp          *app,
 							 PlumaLockdownMask  lockdown);
-void		 _pluma_app_set_lockdown_bit		(PlumaApp          *app,
+void		 _lapiz_app_set_lockdown_bit		(PlumaApp          *app,
 							 PlumaLockdownMask  bit,
 							 gboolean           value);
 /*
- * This one is a pluma-window function, but we declare it here to avoid
+ * This one is a lapiz-window function, but we declare it here to avoid
  * #include headaches since it needs the PlumaLockdownMask declaration.
  */
-void		 _pluma_window_set_lockdown		(PlumaWindow         *window,
+void		 _lapiz_window_set_lockdown		(PlumaWindow         *window,
 							 PlumaLockdownMask    lockdown);
 
 /* global print config */
-GtkPageSetup		*_pluma_app_get_default_page_setup	(PlumaApp         *app);
-void			 _pluma_app_set_default_page_setup	(PlumaApp         *app,
+GtkPageSetup		*_lapiz_app_get_default_page_setup	(PlumaApp         *app);
+void			 _lapiz_app_set_default_page_setup	(PlumaApp         *app,
 								 GtkPageSetup     *page_setup);
-GtkPrintSettings	*_pluma_app_get_default_print_settings	(PlumaApp         *app);
-void			 _pluma_app_set_default_print_settings	(PlumaApp         *app,
+GtkPrintSettings	*_lapiz_app_get_default_print_settings	(PlumaApp         *app);
+void			 _lapiz_app_set_default_print_settings	(PlumaApp         *app,
 								 GtkPrintSettings *settings);
 
 G_END_DECLS

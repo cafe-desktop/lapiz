@@ -1,6 +1,6 @@
 /*
- * pluma-gio-document-saver.c
- * This file is part of pluma
+ * lapiz-gio-document-saver.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005-2006 - Paolo Borelli and Paolo Maggi
  * Copyright (C) 2007 - Paolo Borelli, Paolo Maggi, Steve Frécinaux
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005-2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005-2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -37,9 +37,9 @@
 #include <gio/gio.h>
 #include <string.h>
 
-#include "pluma-gio-document-saver.h"
-#include "pluma-document-input-stream.h"
-#include "pluma-debug.h"
+#include "lapiz-gio-document-saver.h"
+#include "lapiz-document-input-stream.h"
+#include "lapiz-debug.h"
 
 #define WRITE_CHUNK_SIZE 8192
 
@@ -57,10 +57,10 @@ typedef struct
 #define REMOTE_QUERY_ATTRIBUTES G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE "," \
 				G_FILE_ATTRIBUTE_TIME_MODIFIED
 
-static void	     pluma_gio_document_saver_save		    (PlumaDocumentSaver *saver,
+static void	     lapiz_gio_document_saver_save		    (PlumaDocumentSaver *saver,
 								     GTimeVal           *old_mtime);
-static goffset	     pluma_gio_document_saver_get_file_size	    (PlumaDocumentSaver *saver);
-static goffset	     pluma_gio_document_saver_get_bytes_written	    (PlumaDocumentSaver *saver);
+static goffset	     lapiz_gio_document_saver_get_file_size	    (PlumaDocumentSaver *saver);
+static goffset	     lapiz_gio_document_saver_get_bytes_written	    (PlumaDocumentSaver *saver);
 
 
 static void 	    check_modified_async 			    (AsyncData          *async);
@@ -80,10 +80,10 @@ struct _PlumaGioDocumentSaverPrivate
 	GError                   *error;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentSaver, pluma_gio_document_saver, PLUMA_TYPE_DOCUMENT_SAVER)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentSaver, lapiz_gio_document_saver, PLUMA_TYPE_DOCUMENT_SAVER)
 
 static void
-pluma_gio_document_saver_dispose (GObject *object)
+lapiz_gio_document_saver_dispose (GObject *object)
 {
 	PlumaGioDocumentSaverPrivate *priv = PLUMA_GIO_DOCUMENT_SAVER (object)->priv;
 
@@ -118,7 +118,7 @@ pluma_gio_document_saver_dispose (GObject *object)
 		priv->input = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_gio_document_saver_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_gio_document_saver_parent_class)->dispose (object);
 }
 
 static AsyncData *
@@ -153,22 +153,22 @@ async_data_free (AsyncData *async)
 }
 
 static void
-pluma_gio_document_saver_class_init (PlumaGioDocumentSaverClass *klass)
+lapiz_gio_document_saver_class_init (PlumaGioDocumentSaverClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	PlumaDocumentSaverClass *saver_class = PLUMA_DOCUMENT_SAVER_CLASS (klass);
 
-	object_class->dispose = pluma_gio_document_saver_dispose;
+	object_class->dispose = lapiz_gio_document_saver_dispose;
 
-	saver_class->save = pluma_gio_document_saver_save;
-	saver_class->get_file_size = pluma_gio_document_saver_get_file_size;
-	saver_class->get_bytes_written = pluma_gio_document_saver_get_bytes_written;
+	saver_class->save = lapiz_gio_document_saver_save;
+	saver_class->get_file_size = lapiz_gio_document_saver_get_file_size;
+	saver_class->get_bytes_written = lapiz_gio_document_saver_get_bytes_written;
 }
 
 static void
-pluma_gio_document_saver_init (PlumaGioDocumentSaver *gvsaver)
+lapiz_gio_document_saver_init (PlumaGioDocumentSaver *gvsaver)
 {
-	gvsaver->priv = pluma_gio_document_saver_get_instance_private (gvsaver);
+	gvsaver->priv = lapiz_gio_document_saver_get_instance_private (gvsaver);
 
 	gvsaver->priv->cancellable = g_cancellable_new ();
 	gvsaver->priv->error = NULL;
@@ -178,7 +178,7 @@ static void
 remote_save_completed_or_failed (PlumaGioDocumentSaver *gvsaver,
 				 AsyncData 	       *async)
 {
-	pluma_document_saver_saving (PLUMA_DOCUMENT_SAVER (gvsaver),
+	lapiz_document_saver_saving (PLUMA_DOCUMENT_SAVER (gvsaver),
 				     TRUE,
 				     gvsaver->priv->error);
 
@@ -209,7 +209,7 @@ async_failed (AsyncData *async,
  *
  * Relevant bug reports:
  *
- * Bug 615110 - write file ignore encoding errors (pluma)
+ * Bug 615110 - write file ignore encoding errors (lapiz)
  * https://bugzilla.gnome.org/show_bug.cgi?id=615110
  *
  * Bug 602412 - g_file_replace does not restore original file when there is
@@ -243,7 +243,7 @@ cancel_output_stream (AsyncData *async)
 {
 	GCancellable *cancellable;
 
-	pluma_debug_message (DEBUG_SAVER, "Cancel output stream");
+	lapiz_debug_message (DEBUG_SAVER, "Cancel output stream");
 
 	cancellable = g_cancellable_new ();
 	g_cancellable_cancel (cancellable);
@@ -262,7 +262,7 @@ cancel_output_stream_and_fail (AsyncData *async,
                                GError    *error)
 {
 
-	pluma_debug_message (DEBUG_SAVER, "Cancel output stream and fail");
+	lapiz_debug_message (DEBUG_SAVER, "Cancel output stream and fail");
 
 	g_propagate_error (&async->error, error);
 	cancel_output_stream (async);
@@ -281,7 +281,7 @@ remote_get_info_cb (GFile        *source,
 	GFileInfo *info;
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	/* check cancelled state manually */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -292,7 +292,7 @@ remote_get_info_cb (GFile        *source,
 
 	saver = async->saver;
 
-	pluma_debug_message (DEBUG_SAVER, "Finished query info on file");
+	lapiz_debug_message (DEBUG_SAVER, "Finished query info on file");
 	info = g_file_query_info_finish (source, res, &error);
 
 	if (info != NULL)
@@ -304,7 +304,7 @@ remote_get_info_cb (GFile        *source,
 	}
 	else
 	{
-		pluma_debug_message (DEBUG_SAVER, "Query info failed: %s", error->message);
+		lapiz_debug_message (DEBUG_SAVER, "Query info failed: %s", error->message);
 		g_propagate_error (&saver->priv->error, error);
 	}
 
@@ -318,7 +318,7 @@ close_async_ready_get_info_cb (GOutputStream *stream,
 {
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	/* check cancelled state manually */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -327,11 +327,11 @@ close_async_ready_get_info_cb (GOutputStream *stream,
 		return;
 	}
 
-	pluma_debug_message (DEBUG_SAVER, "Finished closing stream");
+	lapiz_debug_message (DEBUG_SAVER, "Finished closing stream");
 
 	if (!g_output_stream_close_finish (stream, res, &error))
 	{
-		pluma_debug_message (DEBUG_SAVER, "Closing stream error: %s", error->message);
+		lapiz_debug_message (DEBUG_SAVER, "Closing stream error: %s", error->message);
 
 		async_failed (async, error);
 		return;
@@ -343,7 +343,7 @@ close_async_ready_get_info_cb (GOutputStream *stream,
 	 * I'm not sure this is actually necessary, can't we just use
 	 * g_content_type_guess (since we have the file name and the data)
 	 */
-	pluma_debug_message (DEBUG_SAVER, "Query info on file");
+	lapiz_debug_message (DEBUG_SAVER, "Query info on file");
 	g_file_query_info_async (async->saver->priv->gfile,
 			         REMOTE_QUERY_ATTRIBUTES,
 			         G_FILE_QUERY_INFO_NONE,
@@ -359,17 +359,17 @@ write_complete (AsyncData *async)
 	GError *error = NULL;
 
 	/* first we close the input stream */
-	pluma_debug_message (DEBUG_SAVER, "Close input stream");
+	lapiz_debug_message (DEBUG_SAVER, "Close input stream");
 	if (!g_input_stream_close (async->saver->priv->input,
 				   async->cancellable, &error))
 	{
-		pluma_debug_message (DEBUG_SAVER, "Closing input stream error: %s", error->message);
+		lapiz_debug_message (DEBUG_SAVER, "Closing input stream error: %s", error->message);
 		cancel_output_stream_and_fail (async, error);
 		return;
 	}
 
 	/* now we close the output stream */
-	pluma_debug_message (DEBUG_SAVER, "Close output stream");
+	lapiz_debug_message (DEBUG_SAVER, "Close output stream");
 	g_output_stream_close_async (async->saver->priv->stream,
 				     G_PRIORITY_HIGH,
 				     async->cancellable,
@@ -390,7 +390,7 @@ async_write_cb (GOutputStream *stream,
 	gssize bytes_written;
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	/* Check cancelled state manually */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -401,11 +401,11 @@ async_write_cb (GOutputStream *stream,
 
 	bytes_written = g_output_stream_write_finish (stream, res, &error);
 
-	pluma_debug_message (DEBUG_SAVER, "Written: %" G_GSSIZE_FORMAT, bytes_written);
+	lapiz_debug_message (DEBUG_SAVER, "Written: %" G_GSSIZE_FORMAT, bytes_written);
 
 	if (bytes_written == -1)
 	{
-		pluma_debug_message (DEBUG_SAVER, "Write error: %s", error->message);
+		lapiz_debug_message (DEBUG_SAVER, "Write error: %s", error->message);
 		cancel_output_stream_and_fail (async, error);
 		return;
 	}
@@ -423,7 +423,7 @@ async_write_cb (GOutputStream *stream,
 	/* note that this signal blocks the write... check if it isn't
 	 * a performance problem
 	 */
-	pluma_document_saver_saving (PLUMA_DOCUMENT_SAVER (gvsaver),
+	lapiz_document_saver_saving (PLUMA_DOCUMENT_SAVER (gvsaver),
 				     FALSE,
 				     NULL);
 
@@ -435,7 +435,7 @@ write_file_chunk (AsyncData *async)
 {
 	PlumaGioDocumentSaver *gvsaver;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	gvsaver = async->saver;
 
@@ -455,7 +455,7 @@ read_file_chunk (AsyncData *async)
 	PlumaDocumentInputStream *dstream;
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	gvsaver = async->saver;
 	async->written = 0;
@@ -483,7 +483,7 @@ read_file_chunk (AsyncData *async)
 
 	/* Get how many chars have been read */
 	dstream = PLUMA_DOCUMENT_INPUT_STREAM (gvsaver->priv->input);
-	gvsaver->priv->bytes_written = pluma_document_input_stream_tell (dstream);
+	gvsaver->priv->bytes_written = lapiz_document_input_stream_tell (dstream);
 
 	write_file_chunk (async);
 }
@@ -499,7 +499,7 @@ async_replace_ready_callback (GFile        *source,
 	GFileOutputStream *file_stream;
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	/* Check cancelled state manually */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -515,18 +515,18 @@ async_replace_ready_callback (GFile        *source,
 	/* handle any error that might occur */
 	if (!file_stream)
 	{
-		pluma_debug_message (DEBUG_SAVER, "Opening file failed: %s", error->message);
+		lapiz_debug_message (DEBUG_SAVER, "Opening file failed: %s", error->message);
 		async_failed (async, error);
 		return;
 	}
 
 	/* FIXME: manage converter error? */
-	pluma_debug_message (DEBUG_SAVER, "Encoding charset: %s",
-			     pluma_encoding_get_charset (saver->encoding));
+	lapiz_debug_message (DEBUG_SAVER, "Encoding charset: %s",
+			     lapiz_encoding_get_charset (saver->encoding));
 
-	if (saver->encoding != pluma_encoding_get_utf8 ())
+	if (saver->encoding != lapiz_encoding_get_utf8 ())
 	{
-		converter = g_charset_converter_new (pluma_encoding_get_charset (saver->encoding),
+		converter = g_charset_converter_new (lapiz_encoding_get_charset (saver->encoding),
 						     "UTF-8",
 						     NULL);
 		gvsaver->priv->stream = g_converter_output_stream_new (G_OUTPUT_STREAM (file_stream),
@@ -540,10 +540,10 @@ async_replace_ready_callback (GFile        *source,
 		gvsaver->priv->stream = G_OUTPUT_STREAM (file_stream);
 	}
 
-	gvsaver->priv->input = pluma_document_input_stream_new (GTK_TEXT_BUFFER (saver->document),
+	gvsaver->priv->input = lapiz_document_input_stream_new (GTK_TEXT_BUFFER (saver->document),
 								saver->newline_type);
 
-	gvsaver->priv->size = pluma_document_input_stream_get_total_size (PLUMA_DOCUMENT_INPUT_STREAM (gvsaver->priv->input));
+	gvsaver->priv->size = lapiz_document_input_stream_get_total_size (PLUMA_DOCUMENT_INPUT_STREAM (gvsaver->priv->input));
 
 	read_file_chunk (async);
 }
@@ -555,7 +555,7 @@ begin_write (AsyncData *async)
 	PlumaDocumentSaver *saver;
 	gboolean backup;
 
-	pluma_debug_message (DEBUG_SAVER, "Start replacing file contents");
+	lapiz_debug_message (DEBUG_SAVER, "Start replacing file contents");
 
 	/* For remote files we simply use g_file_replace_async. There is no
 	 * backup as of yet
@@ -564,11 +564,11 @@ begin_write (AsyncData *async)
 	saver = PLUMA_DOCUMENT_SAVER (gvsaver);
 
 	/* Do not make backups for remote files so they do not clutter remote systems */
-	backup = (saver->keep_backup && pluma_document_is_local (saver->document));
+	backup = (saver->keep_backup && lapiz_document_is_local (saver->document));
 
-	pluma_debug_message (DEBUG_SAVER, "File contents size: %" G_GINT64_FORMAT, gvsaver->priv->size);
-	pluma_debug_message (DEBUG_SAVER, "Calling replace_async");
-	pluma_debug_message (DEBUG_SAVER, backup ? "Keep backup" : "Discard backup");
+	lapiz_debug_message (DEBUG_SAVER, "File contents size: %" G_GINT64_FORMAT, gvsaver->priv->size);
+	lapiz_debug_message (DEBUG_SAVER, "Calling replace_async");
+	lapiz_debug_message (DEBUG_SAVER, backup ? "Keep backup" : "Discard backup");
 
 	g_file_replace_async (gvsaver->priv->gfile,
 			      NULL,
@@ -588,7 +588,7 @@ mount_ready_callback (GFile        *file,
 	GError *error = NULL;
 	gboolean mounted;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	/* manual check for cancelled state */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -616,10 +616,10 @@ recover_not_mounted (AsyncData *async)
 	PlumaDocument *doc;
 	GMountOperation *mount_operation;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
-	doc = pluma_document_saver_get_document (PLUMA_DOCUMENT_SAVER (async->saver));
-	mount_operation = _pluma_document_create_mount_operation (doc);
+	doc = lapiz_document_saver_get_document (PLUMA_DOCUMENT_SAVER (async->saver));
+	mount_operation = _lapiz_document_create_mount_operation (doc);
 
 	async->tried_mount = TRUE;
 	g_file_mount_enclosing_volume (async->saver->priv->gfile,
@@ -641,7 +641,7 @@ check_modification_callback (GFile        *source,
 	GError *error = NULL;
 	GFileInfo *info;
 
-	pluma_debug (DEBUG_SAVER);
+	lapiz_debug (DEBUG_SAVER);
 
 	/* manually check cancelled state */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -664,7 +664,7 @@ check_modification_callback (GFile        *source,
 		/* it's perfectly fine if the file doesn't exist yet */
 		if (error->code != G_IO_ERROR_NOT_FOUND)
 		{
-			pluma_debug_message (DEBUG_SAVER, "Error getting modification: %s", error->message);
+			lapiz_debug_message (DEBUG_SAVER, "Error getting modification: %s", error->message);
 
 			async_failed (async, error);
 			return;
@@ -685,7 +685,7 @@ check_modification_callback (GFile        *source,
 		    (mtime.tv_sec != old_mtime.tv_sec || mtime.tv_usec != old_mtime.tv_usec) &&
 		    (PLUMA_DOCUMENT_SAVER (gvsaver)->flags & PLUMA_DOCUMENT_SAVE_IGNORE_MTIME) == 0)
 		{
-			pluma_debug_message (DEBUG_SAVER, "File is externally modified");
+			lapiz_debug_message (DEBUG_SAVER, "File is externally modified");
 			g_set_error (&gvsaver->priv->error,
 				     PLUMA_DOCUMENT_ERROR,
 				     PLUMA_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
@@ -708,7 +708,7 @@ check_modification_callback (GFile        *source,
 static void
 check_modified_async (AsyncData *async)
 {
-	pluma_debug_message (DEBUG_SAVER, "Check externally modified");
+	lapiz_debug_message (DEBUG_SAVER, "Check externally modified");
 
 	g_file_query_info_async (async->saver->priv->gfile,
 				 G_FILE_ATTRIBUTE_TIME_MODIFIED,
@@ -724,7 +724,7 @@ save_remote_file_real (PlumaGioDocumentSaver *gvsaver)
 {
 	AsyncData *async;
 
-	pluma_debug_message (DEBUG_SAVER, "Starting gio save");
+	lapiz_debug_message (DEBUG_SAVER, "Starting gio save");
 
 	/* First find out if the file is modified externally. This requires
 	 * a stat, but I don't think we can do this any other way
@@ -738,7 +738,7 @@ save_remote_file_real (PlumaGioDocumentSaver *gvsaver)
 }
 
 static void
-pluma_gio_document_saver_save (PlumaDocumentSaver *saver,
+lapiz_gio_document_saver_save (PlumaDocumentSaver *saver,
 			       GTimeVal           *old_mtime)
 {
 	PlumaGioDocumentSaver *gvsaver = PLUMA_GIO_DOCUMENT_SAVER (saver);
@@ -747,7 +747,7 @@ pluma_gio_document_saver_save (PlumaDocumentSaver *saver,
 	gvsaver->priv->gfile = g_file_new_for_uri (saver->uri);
 
 	/* saving start */
-	pluma_document_saver_saving (saver, FALSE, NULL);
+	lapiz_document_saver_saving (saver, FALSE, NULL);
 
 	g_timeout_add_full (G_PRIORITY_HIGH,
 			    0,
@@ -757,13 +757,13 @@ pluma_gio_document_saver_save (PlumaDocumentSaver *saver,
 }
 
 static goffset
-pluma_gio_document_saver_get_file_size (PlumaDocumentSaver *saver)
+lapiz_gio_document_saver_get_file_size (PlumaDocumentSaver *saver)
 {
 	return PLUMA_GIO_DOCUMENT_SAVER (saver)->priv->size;
 }
 
 static goffset
-pluma_gio_document_saver_get_bytes_written (PlumaDocumentSaver *saver)
+lapiz_gio_document_saver_get_bytes_written (PlumaDocumentSaver *saver)
 {
 	return PLUMA_GIO_DOCUMENT_SAVER (saver)->priv->bytes_written;
 }

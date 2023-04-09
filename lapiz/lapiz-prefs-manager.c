@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-prefs-manager.c
- * This file is part of pluma
+ * lapiz-prefs-manager.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002  Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -36,251 +36,251 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
-#include "pluma-prefs-manager.h"
-#include "pluma-prefs-manager-private.h"
-#include "pluma-debug.h"
-#include "pluma-encodings.h"
-#include "pluma-utils.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-prefs-manager-private.h"
+#include "lapiz-debug.h"
+#include "lapiz-encodings.h"
+#include "lapiz-utils.h"
 
 #define DEFINE_BOOL_PREF(name, key) gboolean 				\
-pluma_prefs_manager_get_ ## name (void)					\
+lapiz_prefs_manager_get_ ## name (void)					\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_get_bool (key);			\
+	return lapiz_prefs_manager_get_bool (key);			\
 }									\
 									\
 void 									\
-pluma_prefs_manager_set_ ## name (gboolean v)				\
+lapiz_prefs_manager_set_ ## name (gboolean v)				\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	pluma_prefs_manager_set_bool (key,				\
+	lapiz_prefs_manager_set_bool (key,				\
 				      v);				\
 }									\
 				      					\
 gboolean								\
-pluma_prefs_manager_ ## name ## _can_set (void)				\
+lapiz_prefs_manager_ ## name ## _can_set (void)				\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_key_is_writable (key);		\
+	return lapiz_prefs_manager_key_is_writable (key);		\
 }
 
 
 
 #define DEFINE_INT_PREF(name, key) gint					\
-pluma_prefs_manager_get_ ## name (void)			 		\
+lapiz_prefs_manager_get_ ## name (void)			 		\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_get_int (key);			\
+	return lapiz_prefs_manager_get_int (key);			\
 }									\
 									\
 void 									\
-pluma_prefs_manager_set_ ## name (gint v)				\
+lapiz_prefs_manager_set_ ## name (gint v)				\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	pluma_prefs_manager_set_int (key,				\
+	lapiz_prefs_manager_set_int (key,				\
 				     v);				\
 }									\
 				      					\
 gboolean								\
-pluma_prefs_manager_ ## name ## _can_set (void)				\
+lapiz_prefs_manager_ ## name ## _can_set (void)				\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_key_is_writable (key);		\
+	return lapiz_prefs_manager_key_is_writable (key);		\
 }
 
 
 
 #define DEFINE_STRING_PREF(name, key) gchar*				\
-pluma_prefs_manager_get_ ## name (void)			 		\
+lapiz_prefs_manager_get_ ## name (void)			 		\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_get_string (key);			\
+	return lapiz_prefs_manager_get_string (key);			\
 }									\
 									\
 void 									\
-pluma_prefs_manager_set_ ## name (const gchar* v)			\
+lapiz_prefs_manager_set_ ## name (const gchar* v)			\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	pluma_prefs_manager_set_string (key,				\
+	lapiz_prefs_manager_set_string (key,				\
 				        v);				\
 }									\
 				      					\
 gboolean								\
-pluma_prefs_manager_ ## name ## _can_set (void)				\
+lapiz_prefs_manager_ ## name ## _can_set (void)				\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_key_is_writable (key);		\
+	return lapiz_prefs_manager_key_is_writable (key);		\
 }
 
 
 
 #define DEFINE_ENUM_PREF(name, key) gint				\
-pluma_prefs_manager_get_ ## name (void)			 		\
+lapiz_prefs_manager_get_ ## name (void)			 		\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_get_enum (key);			\
+	return lapiz_prefs_manager_get_enum (key);			\
 }									\
 									\
 void 									\
-pluma_prefs_manager_set_ ## name (gint v)				\
+lapiz_prefs_manager_set_ ## name (gint v)				\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	pluma_prefs_manager_set_enum (key,				\
+	lapiz_prefs_manager_set_enum (key,				\
 				      v);				\
 }									\
 									\
 gboolean								\
-pluma_prefs_manager_ ## name ## _can_set (void)				\
+lapiz_prefs_manager_ ## name ## _can_set (void)				\
 {									\
-	pluma_debug (DEBUG_PREFS);					\
+	lapiz_debug (DEBUG_PREFS);					\
 									\
-	return pluma_prefs_manager_key_is_writable (key);		\
+	return lapiz_prefs_manager_key_is_writable (key);		\
 }
 
 
-PlumaPrefsManager *pluma_prefs_manager = NULL;
+PlumaPrefsManager *lapiz_prefs_manager = NULL;
 
 
 static GtkWrapMode 	 get_wrap_mode_from_string 		(const gchar* str);
 
-static gboolean		 pluma_prefs_manager_get_bool		(const gchar* key);
+static gboolean		 lapiz_prefs_manager_get_bool		(const gchar* key);
 
-static gint		 pluma_prefs_manager_get_int		(const gchar* key);
+static gint		 lapiz_prefs_manager_get_int		(const gchar* key);
 
-static gchar		*pluma_prefs_manager_get_string		(const gchar* key);
+static gchar		*lapiz_prefs_manager_get_string		(const gchar* key);
 
-static gint		 pluma_prefs_manager_get_enum		(const gchar* key);
+static gint		 lapiz_prefs_manager_get_enum		(const gchar* key);
 
 
 gboolean
-pluma_prefs_manager_init (void)
+lapiz_prefs_manager_init (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	if (pluma_prefs_manager == NULL)
+	if (lapiz_prefs_manager == NULL)
 	{
-		pluma_prefs_manager = g_new0 (PlumaPrefsManager, 1);
-		pluma_prefs_manager->settings = g_settings_new (PLUMA_SCHEMA);
-		pluma_prefs_manager->lockdown_settings = g_settings_new (GPM_LOCKDOWN_SCHEMA);
-		pluma_prefs_manager->interface_settings = g_settings_new (GPM_INTERFACE_SCHEMA);
+		lapiz_prefs_manager = g_new0 (PlumaPrefsManager, 1);
+		lapiz_prefs_manager->settings = g_settings_new (PLUMA_SCHEMA);
+		lapiz_prefs_manager->lockdown_settings = g_settings_new (GPM_LOCKDOWN_SCHEMA);
+		lapiz_prefs_manager->interface_settings = g_settings_new (GPM_INTERFACE_SCHEMA);
 	}
 
-	return pluma_prefs_manager != NULL;
+	return lapiz_prefs_manager != NULL;
 }
 
 void
-pluma_prefs_manager_shutdown (void)
+lapiz_prefs_manager_shutdown (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (pluma_prefs_manager != NULL);
+	g_return_if_fail (lapiz_prefs_manager != NULL);
 
-	g_object_unref (pluma_prefs_manager->settings);
-	pluma_prefs_manager->settings = NULL;
-	g_object_unref (pluma_prefs_manager->lockdown_settings);
-	pluma_prefs_manager->lockdown_settings = NULL;
-	g_object_unref (pluma_prefs_manager->interface_settings);
-	pluma_prefs_manager->interface_settings = NULL;
+	g_object_unref (lapiz_prefs_manager->settings);
+	lapiz_prefs_manager->settings = NULL;
+	g_object_unref (lapiz_prefs_manager->lockdown_settings);
+	lapiz_prefs_manager->lockdown_settings = NULL;
+	g_object_unref (lapiz_prefs_manager->interface_settings);
+	lapiz_prefs_manager->interface_settings = NULL;
 }
 
 static gboolean
-pluma_prefs_manager_get_bool (const gchar* key)
+lapiz_prefs_manager_get_bool (const gchar* key)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return g_settings_get_boolean (pluma_prefs_manager->settings, key);
+	return g_settings_get_boolean (lapiz_prefs_manager->settings, key);
 }
 
 static gint
-pluma_prefs_manager_get_int (const gchar* key)
+lapiz_prefs_manager_get_int (const gchar* key)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return g_settings_get_int (pluma_prefs_manager->settings, key);
+	return g_settings_get_int (lapiz_prefs_manager->settings, key);
 }
 
 static gchar *
-pluma_prefs_manager_get_string (const gchar* key)
+lapiz_prefs_manager_get_string (const gchar* key)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return g_settings_get_string (pluma_prefs_manager->settings, key);
+	return g_settings_get_string (lapiz_prefs_manager->settings, key);
 }
 
 static gint
-pluma_prefs_manager_get_enum (const gchar* key)
+lapiz_prefs_manager_get_enum (const gchar* key)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return g_settings_get_enum (pluma_prefs_manager->settings, key);
+	return g_settings_get_enum (lapiz_prefs_manager->settings, key);
 }
 
 static void
-pluma_prefs_manager_set_bool (const gchar* key, gboolean value)
+lapiz_prefs_manager_set_bool (const gchar* key, gboolean value)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (g_settings_is_writable (
-				pluma_prefs_manager->settings, key));
+				lapiz_prefs_manager->settings, key));
 
-	g_settings_set_boolean (pluma_prefs_manager->settings, key, value);
+	g_settings_set_boolean (lapiz_prefs_manager->settings, key, value);
 }
 
 static void
-pluma_prefs_manager_set_int (const gchar* key, gint value)
+lapiz_prefs_manager_set_int (const gchar* key, gint value)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (g_settings_is_writable (
-				pluma_prefs_manager->settings, key));
+				lapiz_prefs_manager->settings, key));
 
-	g_settings_set_int (pluma_prefs_manager->settings, key, value);
+	g_settings_set_int (lapiz_prefs_manager->settings, key, value);
 }
 
 static void
-pluma_prefs_manager_set_string (const gchar* key, const gchar* value)
+lapiz_prefs_manager_set_string (const gchar* key, const gchar* value)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (value != NULL);
 
 	g_return_if_fail (g_settings_is_writable (
-				pluma_prefs_manager->settings, key));
+				lapiz_prefs_manager->settings, key));
 
-	g_settings_set_string (pluma_prefs_manager->settings, key, value);
+	g_settings_set_string (lapiz_prefs_manager->settings, key, value);
 }
 
 static void
-pluma_prefs_manager_set_enum (const gchar* key, gint value)
+lapiz_prefs_manager_set_enum (const gchar* key, gint value)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (g_settings_is_writable (
-				pluma_prefs_manager->settings, key));
+				lapiz_prefs_manager->settings, key));
 
-	g_settings_set_enum (pluma_prefs_manager->settings, key, value);
+	g_settings_set_enum (lapiz_prefs_manager->settings, key, value);
 }
 
 static gboolean
-pluma_prefs_manager_key_is_writable (const gchar* key)
+lapiz_prefs_manager_key_is_writable (const gchar* key)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	g_return_val_if_fail (pluma_prefs_manager != NULL, FALSE);
-	g_return_val_if_fail (pluma_prefs_manager->settings != NULL, FALSE);
+	g_return_val_if_fail (lapiz_prefs_manager != NULL, FALSE);
+	g_return_val_if_fail (lapiz_prefs_manager->settings != NULL, FALSE);
 
-	return g_settings_is_writable (pluma_prefs_manager->settings, key);
+	return g_settings_is_writable (lapiz_prefs_manager->settings, key);
 }
 
 /* Use default font */
@@ -293,11 +293,11 @@ DEFINE_STRING_PREF (editor_font,
 
 /* System font */
 gchar *
-pluma_prefs_manager_get_system_font (void)
+lapiz_prefs_manager_get_system_font (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return g_settings_get_string (pluma_prefs_manager->interface_settings,
+	return g_settings_get_string (lapiz_prefs_manager->interface_settings,
 				      GPM_SYSTEM_FONT);
 }
 
@@ -340,14 +340,14 @@ get_wrap_mode_from_string (const gchar* str)
 
 /* Wrap mode */
 GtkWrapMode
-pluma_prefs_manager_get_wrap_mode (void)
+lapiz_prefs_manager_get_wrap_mode (void)
 {
 	gchar *str;
 	GtkWrapMode res;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	str = pluma_prefs_manager_get_string (GPM_WRAP_MODE);
+	str = lapiz_prefs_manager_get_string (GPM_WRAP_MODE);
 
 	res = get_wrap_mode_from_string (str);
 
@@ -357,11 +357,11 @@ pluma_prefs_manager_get_wrap_mode (void)
 }
 
 void
-pluma_prefs_manager_set_wrap_mode (GtkWrapMode wp)
+lapiz_prefs_manager_set_wrap_mode (GtkWrapMode wp)
 {
 	const gchar * str;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	switch (wp)
 	{
@@ -377,16 +377,16 @@ pluma_prefs_manager_set_wrap_mode (GtkWrapMode wp)
 			str = "GTK_WRAP_WORD";
 	}
 
-	pluma_prefs_manager_set_string (GPM_WRAP_MODE,
+	lapiz_prefs_manager_set_string (GPM_WRAP_MODE,
 					str);
 }
 
 gboolean
-pluma_prefs_manager_wrap_mode_can_set (void)
+lapiz_prefs_manager_wrap_mode_can_set (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_key_is_writable (GPM_WRAP_MODE);
+	return lapiz_prefs_manager_key_is_writable (GPM_WRAP_MODE);
 }
 
 
@@ -413,14 +413,14 @@ DEFINE_BOOL_PREF (toolbar_visible,
 
 /* Toolbar suttons style */
 PlumaToolbarSetting
-pluma_prefs_manager_get_toolbar_buttons_style (void)
+lapiz_prefs_manager_get_toolbar_buttons_style (void)
 {
 	gchar *str;
 	PlumaToolbarSetting res;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	str = pluma_prefs_manager_get_string (GPM_TOOLBAR_BUTTONS_STYLE);
+	str = lapiz_prefs_manager_get_string (GPM_TOOLBAR_BUTTONS_STYLE);
 
 	if (strcmp (str, "PLUMA_TOOLBAR_ICONS") == 0)
 		res = PLUMA_TOOLBAR_ICONS;
@@ -443,11 +443,11 @@ pluma_prefs_manager_get_toolbar_buttons_style (void)
 }
 
 void
-pluma_prefs_manager_set_toolbar_buttons_style (PlumaToolbarSetting tbs)
+lapiz_prefs_manager_set_toolbar_buttons_style (PlumaToolbarSetting tbs)
 {
 	const gchar * str;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	switch (tbs)
 	{
@@ -466,17 +466,17 @@ pluma_prefs_manager_set_toolbar_buttons_style (PlumaToolbarSetting tbs)
 			str = "PLUMA_TOOLBAR_SYSTEM";
 	}
 
-	pluma_prefs_manager_set_string (GPM_TOOLBAR_BUTTONS_STYLE,
+	lapiz_prefs_manager_set_string (GPM_TOOLBAR_BUTTONS_STYLE,
 					str);
 
 }
 
 gboolean
-pluma_prefs_manager_toolbar_buttons_style_can_set (void)
+lapiz_prefs_manager_toolbar_buttons_style_can_set (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_key_is_writable (GPM_TOOLBAR_BUTTONS_STYLE);
+	return lapiz_prefs_manager_key_is_writable (GPM_TOOLBAR_BUTTONS_STYLE);
 
 }
 
@@ -503,14 +503,14 @@ DEFINE_BOOL_PREF (print_header,
 
 /* Print Wrap mode */
 GtkWrapMode
-pluma_prefs_manager_get_print_wrap_mode (void)
+lapiz_prefs_manager_get_print_wrap_mode (void)
 {
 	gchar *str;
 	GtkWrapMode res;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	str = pluma_prefs_manager_get_string (GPM_PRINT_WRAP_MODE);
+	str = lapiz_prefs_manager_get_string (GPM_PRINT_WRAP_MODE);
 
 	if (strcmp (str, "GTK_WRAP_NONE") == 0)
 		res = GTK_WRAP_NONE;
@@ -528,11 +528,11 @@ pluma_prefs_manager_get_print_wrap_mode (void)
 }
 
 void
-pluma_prefs_manager_set_print_wrap_mode (GtkWrapMode pwp)
+lapiz_prefs_manager_set_print_wrap_mode (GtkWrapMode pwp)
 {
 	const gchar *str;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	switch (pwp)
 	{
@@ -548,15 +548,15 @@ pluma_prefs_manager_set_print_wrap_mode (GtkWrapMode pwp)
 			str = "GTK_WRAP_CHAR";
 	}
 
-	pluma_prefs_manager_set_string (GPM_PRINT_WRAP_MODE, str);
+	lapiz_prefs_manager_set_string (GPM_PRINT_WRAP_MODE, str);
 }
 
 gboolean
-pluma_prefs_manager_print_wrap_mode_can_set (void)
+lapiz_prefs_manager_print_wrap_mode_can_set (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_key_is_writable (GPM_PRINT_WRAP_MODE);
+	return lapiz_prefs_manager_key_is_writable (GPM_PRINT_WRAP_MODE);
 }
 
 /* Print line numbers */
@@ -568,56 +568,56 @@ DEFINE_STRING_PREF (print_font_body,
 		    GPM_PRINT_FONT_BODY)
 
 static gchar *
-pluma_prefs_manager_get_default_string_value (const gchar *key)
+lapiz_prefs_manager_get_default_string_value (const gchar *key)
 {
 	gchar *font = NULL;
-	g_settings_delay (pluma_prefs_manager->settings);
-	g_settings_reset (pluma_prefs_manager->settings, key);
-	font = g_settings_get_string (pluma_prefs_manager->settings, key);
-	g_settings_revert (pluma_prefs_manager->settings);
+	g_settings_delay (lapiz_prefs_manager->settings);
+	g_settings_reset (lapiz_prefs_manager->settings, key);
+	font = g_settings_get_string (lapiz_prefs_manager->settings, key);
+	g_settings_revert (lapiz_prefs_manager->settings);
 	return font;
 }
 
 gchar *
-pluma_prefs_manager_get_default_print_font_body (void)
+lapiz_prefs_manager_get_default_print_font_body (void)
 {
-	return pluma_prefs_manager_get_default_string_value (GPM_PRINT_FONT_BODY);
+	return lapiz_prefs_manager_get_default_string_value (GPM_PRINT_FONT_BODY);
 }
 
 DEFINE_STRING_PREF (print_font_header,
 		    GPM_PRINT_FONT_HEADER)
 
 gchar *
-pluma_prefs_manager_get_default_print_font_header (void)
+lapiz_prefs_manager_get_default_print_font_header (void)
 {
-	return pluma_prefs_manager_get_default_string_value (GPM_PRINT_FONT_HEADER);
+	return lapiz_prefs_manager_get_default_string_value (GPM_PRINT_FONT_HEADER);
 }
 
 DEFINE_STRING_PREF (print_font_numbers,
 		    GPM_PRINT_FONT_NUMBERS)
 
 gchar *
-pluma_prefs_manager_get_default_print_font_numbers (void)
+lapiz_prefs_manager_get_default_print_font_numbers (void)
 {
-	return pluma_prefs_manager_get_default_string_value (GPM_PRINT_FONT_NUMBERS);
+	return lapiz_prefs_manager_get_default_string_value (GPM_PRINT_FONT_NUMBERS);
 }
 
 /* Max number of files in "Recent Files" menu.
  * This is configurable only using gsettings, dconf or dconf-editor
  */
 gint
-pluma_prefs_manager_get_max_recents (void)
+lapiz_prefs_manager_get_max_recents (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_get_int (GPM_MAX_RECENTS);
+	return lapiz_prefs_manager_get_int (GPM_MAX_RECENTS);
 
 }
 
 /* GSettings/GSList utility functions from mate-panel */
 
 GSList*
-pluma_prefs_manager_get_gslist (GSettings *settings, const gchar *key)
+lapiz_prefs_manager_get_gslist (GSettings *settings, const gchar *key)
 {
     gchar **array;
     GSList *list = NULL;
@@ -633,7 +633,7 @@ pluma_prefs_manager_get_gslist (GSettings *settings, const gchar *key)
 }
 
 void
-pluma_prefs_manager_set_gslist (GSettings *settings, const gchar *key, GSList *list)
+lapiz_prefs_manager_set_gslist (GSettings *settings, const gchar *key, GSList *list)
 {
     GArray *array;
     GSList *l;
@@ -664,17 +664,17 @@ data_exists (GSList         *list,
 }
 
 GSList *
-pluma_prefs_manager_get_auto_detected_encodings (void)
+lapiz_prefs_manager_get_auto_detected_encodings (void)
 {
 	GSList *strings;
 	GSList *res = NULL;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	g_return_val_if_fail (pluma_prefs_manager != NULL, NULL);
-	g_return_val_if_fail (pluma_prefs_manager->settings != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager->settings != NULL, NULL);
 
-	strings = pluma_prefs_manager_get_gslist (pluma_prefs_manager->settings, GPM_AUTO_DETECTED_ENCODINGS);
+	strings = lapiz_prefs_manager_get_gslist (lapiz_prefs_manager->settings, GPM_AUTO_DETECTED_ENCODINGS);
 
 	if (strings != NULL)
 	{
@@ -691,7 +691,7 @@ pluma_prefs_manager_get_auto_detected_encodings (void)
 			      g_get_charset (&charset);
 
 		      g_return_val_if_fail (charset != NULL, NULL);
-		      enc = pluma_encoding_get_from_charset (charset);
+		      enc = lapiz_encoding_get_from_charset (charset);
 
 		      if (enc != NULL)
 		      {
@@ -709,23 +709,23 @@ pluma_prefs_manager_get_auto_detected_encodings (void)
 	 	res = g_slist_reverse (res);
 	}
 
-	pluma_debug_message (DEBUG_PREFS, "Done");
+	lapiz_debug_message (DEBUG_PREFS, "Done");
 
 	return res;
 }
 
 GSList *
-pluma_prefs_manager_get_shown_in_menu_encodings (void)
+lapiz_prefs_manager_get_shown_in_menu_encodings (void)
 {
 	GSList *strings;
 	GSList *res = NULL;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	g_return_val_if_fail (pluma_prefs_manager != NULL, NULL);
-	g_return_val_if_fail (pluma_prefs_manager->settings != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager->settings != NULL, NULL);
 
-	strings = pluma_prefs_manager_get_gslist (pluma_prefs_manager->settings, GPM_SHOWN_IN_MENU_ENCODINGS);
+	strings = lapiz_prefs_manager_get_gslist (lapiz_prefs_manager->settings, GPM_SHOWN_IN_MENU_ENCODINGS);
 
 	if (strings != NULL)
 	{
@@ -742,7 +742,7 @@ pluma_prefs_manager_get_shown_in_menu_encodings (void)
 			      g_get_charset (&charset);
 
 		      g_return_val_if_fail (charset != NULL, NULL);
-		      enc = pluma_encoding_get_from_charset (charset);
+		      enc = lapiz_encoding_get_from_charset (charset);
 
 		      if (enc != NULL)
 		      {
@@ -763,13 +763,13 @@ pluma_prefs_manager_get_shown_in_menu_encodings (void)
 }
 
 void
-pluma_prefs_manager_set_shown_in_menu_encodings (const GSList *encs)
+lapiz_prefs_manager_set_shown_in_menu_encodings (const GSList *encs)
 {
 	GSList *list = NULL;
 
-	g_return_if_fail (pluma_prefs_manager != NULL);
-	g_return_if_fail (pluma_prefs_manager->settings != NULL);
-	g_return_if_fail (pluma_prefs_manager_shown_in_menu_encodings_can_set ());
+	g_return_if_fail (lapiz_prefs_manager != NULL);
+	g_return_if_fail (lapiz_prefs_manager->settings != NULL);
+	g_return_if_fail (lapiz_prefs_manager_shown_in_menu_encodings_can_set ());
 
 	while (encs != NULL)
 	{
@@ -778,7 +778,7 @@ pluma_prefs_manager_set_shown_in_menu_encodings (const GSList *encs)
 
 		enc = (const PlumaEncoding *)encs->data;
 
-		charset = pluma_encoding_get_charset (enc);
+		charset = lapiz_encoding_get_charset (enc);
 		g_return_if_fail (charset != NULL);
 
 		list = g_slist_prepend (list, (gpointer)charset);
@@ -788,17 +788,17 @@ pluma_prefs_manager_set_shown_in_menu_encodings (const GSList *encs)
 
 	list = g_slist_reverse (list);
 
-	pluma_prefs_manager_set_gslist (pluma_prefs_manager->settings, GPM_SHOWN_IN_MENU_ENCODINGS, list);
+	lapiz_prefs_manager_set_gslist (lapiz_prefs_manager->settings, GPM_SHOWN_IN_MENU_ENCODINGS, list);
 
 	g_slist_free (list);
 }
 
 gboolean
-pluma_prefs_manager_shown_in_menu_encodings_can_set (void)
+lapiz_prefs_manager_shown_in_menu_encodings_can_set (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_key_is_writable (GPM_SHOWN_IN_MENU_ENCODINGS);
+	return lapiz_prefs_manager_key_is_writable (GPM_SHOWN_IN_MENU_ENCODINGS);
 
 }
 
@@ -838,14 +838,14 @@ get_smart_home_end_from_string (const gchar *str)
 }
 
 GtkSourceSmartHomeEndType
-pluma_prefs_manager_get_smart_home_end (void)
+lapiz_prefs_manager_get_smart_home_end (void)
 {
 	gchar *str;
 	GtkSourceSmartHomeEndType res;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	str = pluma_prefs_manager_get_string (GPM_SMART_HOME_END);
+	str = lapiz_prefs_manager_get_string (GPM_SMART_HOME_END);
 
 	res = get_smart_home_end_from_string (str);
 
@@ -855,11 +855,11 @@ pluma_prefs_manager_get_smart_home_end (void)
 }
 
 void
-pluma_prefs_manager_set_smart_home_end (GtkSourceSmartHomeEndType smart_he)
+lapiz_prefs_manager_set_smart_home_end (GtkSourceSmartHomeEndType smart_he)
 {
 	const gchar *str;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	switch (smart_he)
 	{
@@ -879,15 +879,15 @@ pluma_prefs_manager_set_smart_home_end (GtkSourceSmartHomeEndType smart_he)
 			str = "AFTER";
 	}
 
-	pluma_prefs_manager_set_string (GPM_WRAP_MODE, str);
+	lapiz_prefs_manager_set_string (GPM_WRAP_MODE, str);
 }
 
 gboolean
-pluma_prefs_manager_smart_home_end_can_set (void)
+lapiz_prefs_manager_smart_home_end_can_set (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_key_is_writable (GPM_SMART_HOME_END);
+	return lapiz_prefs_manager_key_is_writable (GPM_SMART_HOME_END);
 }
 
 /* Enable syntax highlighting */
@@ -903,86 +903,86 @@ DEFINE_STRING_PREF (source_style_scheme,
 		    GPM_SOURCE_STYLE_SCHEME)
 
 GSList *
-pluma_prefs_manager_get_writable_vfs_schemes (void)
+lapiz_prefs_manager_get_writable_vfs_schemes (void)
 {
 	GSList *strings;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	g_return_val_if_fail (pluma_prefs_manager != NULL, NULL);
-	g_return_val_if_fail (pluma_prefs_manager->settings != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager->settings != NULL, NULL);
 
-	strings = pluma_prefs_manager_get_gslist (pluma_prefs_manager->settings, GPM_WRITABLE_VFS_SCHEMES);
+	strings = lapiz_prefs_manager_get_gslist (lapiz_prefs_manager->settings, GPM_WRITABLE_VFS_SCHEMES);
 
 	/* The 'file' scheme is writable by default. */
 	strings = g_slist_prepend (strings, g_strdup ("file"));
 
-	pluma_debug_message (DEBUG_PREFS, "Done");
+	lapiz_debug_message (DEBUG_PREFS, "Done");
 
 	return strings;
 }
 
 gboolean
-pluma_prefs_manager_get_restore_cursor_position (void)
+lapiz_prefs_manager_get_restore_cursor_position (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_get_bool (GPM_RESTORE_CURSOR_POSITION);
+	return lapiz_prefs_manager_get_bool (GPM_RESTORE_CURSOR_POSITION);
 }
 
 /* Plugins: we just store/return a list of strings, all the magic has to
  * happen in the plugin engine */
 
 GSList *
-pluma_prefs_manager_get_active_plugins (void)
+lapiz_prefs_manager_get_active_plugins (void)
 {
 	GSList *plugins;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	g_return_val_if_fail (pluma_prefs_manager != NULL, NULL);
-	g_return_val_if_fail (pluma_prefs_manager->settings != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager != NULL, NULL);
+	g_return_val_if_fail (lapiz_prefs_manager->settings != NULL, NULL);
 
-	plugins = pluma_prefs_manager_get_gslist (pluma_prefs_manager->settings, GPM_ACTIVE_PLUGINS);
+	plugins = lapiz_prefs_manager_get_gslist (lapiz_prefs_manager->settings, GPM_ACTIVE_PLUGINS);
 
 	return plugins;
 }
 
 void
-pluma_prefs_manager_set_active_plugins (const GSList *plugins)
+lapiz_prefs_manager_set_active_plugins (const GSList *plugins)
 {
-	g_return_if_fail (pluma_prefs_manager != NULL);
-	g_return_if_fail (pluma_prefs_manager->settings != NULL);
-	g_return_if_fail (pluma_prefs_manager_active_plugins_can_set ());
+	g_return_if_fail (lapiz_prefs_manager != NULL);
+	g_return_if_fail (lapiz_prefs_manager->settings != NULL);
+	g_return_if_fail (lapiz_prefs_manager_active_plugins_can_set ());
 
-	pluma_prefs_manager_set_gslist (pluma_prefs_manager->settings, GPM_ACTIVE_PLUGINS, (GSList *) plugins);
+	lapiz_prefs_manager_set_gslist (lapiz_prefs_manager->settings, GPM_ACTIVE_PLUGINS, (GSList *) plugins);
 }
 
 gboolean
-pluma_prefs_manager_active_plugins_can_set (void)
+lapiz_prefs_manager_active_plugins_can_set (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	return pluma_prefs_manager_key_is_writable (GPM_ACTIVE_PLUGINS);
+	return lapiz_prefs_manager_key_is_writable (GPM_ACTIVE_PLUGINS);
 }
 
 /* Global Lockdown */
 
 PlumaLockdownMask
-pluma_prefs_manager_get_lockdown (void)
+lapiz_prefs_manager_get_lockdown (void)
 {
 	guint lockdown = 0;
 
-	if (g_settings_get_boolean (pluma_prefs_manager->lockdown_settings, GPM_LOCKDOWN_COMMAND_LINE))
+	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_COMMAND_LINE))
 		lockdown |= PLUMA_LOCKDOWN_COMMAND_LINE;
 
-	if (g_settings_get_boolean (pluma_prefs_manager->lockdown_settings, GPM_LOCKDOWN_PRINTING))
+	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_PRINTING))
 		lockdown |= PLUMA_LOCKDOWN_PRINTING;
 
-	if (g_settings_get_boolean (pluma_prefs_manager->lockdown_settings, GPM_LOCKDOWN_PRINT_SETUP))
+	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_PRINT_SETUP))
 		lockdown |= PLUMA_LOCKDOWN_PRINT_SETUP;
 
-	if (g_settings_get_boolean (pluma_prefs_manager->lockdown_settings, GPM_LOCKDOWN_SAVE_TO_DISK))
+	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_SAVE_TO_DISK))
 		lockdown |= PLUMA_LOCKDOWN_SAVE_TO_DISK;
 
 	return lockdown;

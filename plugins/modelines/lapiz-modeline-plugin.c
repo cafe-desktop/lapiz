@@ -1,6 +1,6 @@
 /*
- * pluma-modeline-plugin.c
- * Emacs, Kate and Vim-style modelines support for pluma.
+ * lapiz-modeline-plugin.c
+ * Emacs, Kate and Vim-style modelines support for lapiz.
  *
  * Copyright (C) 2005-2007 - Steve Frécinaux <code@istique.net>
  *
@@ -26,11 +26,11 @@
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
 #include <libpeas/peas-activatable.h>
-#include "pluma-modeline-plugin.h"
+#include "lapiz-modeline-plugin.h"
 #include "modeline-parser.h"
 
-#include <pluma/pluma-window.h>
-#include <pluma/pluma-debug.h>
+#include <lapiz/lapiz-window.h>
+#include <lapiz/lapiz-debug.h>
 
 #define DOCUMENT_DATA_KEY "PlumaModelinePluginDocumentData"
 
@@ -56,7 +56,7 @@ enum {
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaModelinePlugin,
-                                pluma_modeline_plugin,
+                                lapiz_modeline_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaModelinePlugin)
@@ -70,7 +70,7 @@ document_data_free (DocumentData *ddata)
 }
 
 static void
-pluma_modeline_plugin_constructed (GObject *object)
+lapiz_modeline_plugin_constructed (GObject *object)
 {
 	gchar *data_dir;
 
@@ -80,33 +80,33 @@ pluma_modeline_plugin_constructed (GObject *object)
 
 	g_free (data_dir);
 
-	G_OBJECT_CLASS (pluma_modeline_plugin_parent_class)->constructed (object);
+	G_OBJECT_CLASS (lapiz_modeline_plugin_parent_class)->constructed (object);
 }
 
 static void
-pluma_modeline_plugin_init (PlumaModelinePlugin *plugin)
+lapiz_modeline_plugin_init (PlumaModelinePlugin *plugin)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin initializing");
 
-	plugin->priv = pluma_modeline_plugin_get_instance_private (plugin);
+	plugin->priv = lapiz_modeline_plugin_get_instance_private (plugin);
 }
 
 static void
-pluma_modeline_plugin_finalize (GObject *object)
+lapiz_modeline_plugin_finalize (GObject *object)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin finalizing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin finalizing");
 
 	modeline_parser_shutdown ();
 
-	G_OBJECT_CLASS (pluma_modeline_plugin_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_modeline_plugin_parent_class)->finalize (object);
 }
 
 static void
-pluma_modeline_plugin_dispose (GObject *object)
+lapiz_modeline_plugin_dispose (GObject *object)
 {
 	PlumaModelinePlugin *plugin = PLUMA_MODELINE_PLUGIN (object);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -114,11 +114,11 @@ pluma_modeline_plugin_dispose (GObject *object)
 		plugin->priv->window = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_modeline_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_modeline_plugin_parent_class)->dispose (object);
 }
 
 static void
-pluma_modeline_plugin_set_property (GObject      *object,
+lapiz_modeline_plugin_set_property (GObject      *object,
                                     guint         prop_id,
                                     const GValue *value,
                                     GParamSpec   *pspec)
@@ -138,7 +138,7 @@ pluma_modeline_plugin_set_property (GObject      *object,
 }
 
 static void
-pluma_modeline_plugin_get_property (GObject    *object,
+lapiz_modeline_plugin_get_property (GObject    *object,
                                     guint       prop_id,
                                     GValue     *value,
                                     GParamSpec *pspec)
@@ -216,7 +216,7 @@ on_window_tab_added (PlumaWindow *window,
 		     PlumaTab *tab,
 		     gpointer user_data)
 {
-	connect_handlers (pluma_tab_get_view (tab));
+	connect_handlers (lapiz_tab_get_view (tab));
 }
 
 static void
@@ -224,23 +224,23 @@ on_window_tab_removed (PlumaWindow *window,
 		       PlumaTab *tab,
 		       gpointer user_data)
 {
-	disconnect_handlers (pluma_tab_get_view (tab));
+	disconnect_handlers (lapiz_tab_get_view (tab));
 }
 
 static void
-pluma_modeline_plugin_activate (PeasActivatable *activatable)
+lapiz_modeline_plugin_activate (PeasActivatable *activatable)
 {
 	PlumaModelinePluginPrivate *data;
 	PlumaWindow *window;
 	GList *views;
 	GList *l;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	data = PLUMA_MODELINE_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (data->window);
 
-	views = pluma_window_get_views (window);
+	views = lapiz_window_get_views (window);
 	for (l = views; l != NULL; l = l->next)
 	{
 		connect_handlers (PLUMA_VIEW (l->data));
@@ -258,14 +258,14 @@ pluma_modeline_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-pluma_modeline_plugin_deactivate (PeasActivatable *activatable)
+lapiz_modeline_plugin_deactivate (PeasActivatable *activatable)
 {
 	PlumaModelinePluginPrivate *data;
 	PlumaWindow *window;
 	GList *views;
 	GList *l;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	data = PLUMA_MODELINE_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (data->window);
@@ -273,7 +273,7 @@ pluma_modeline_plugin_deactivate (PeasActivatable *activatable)
 	g_signal_handler_disconnect (window, data->tab_added_handler_id);
 	g_signal_handler_disconnect (window, data->tab_removed_handler_id);
 
-	views = pluma_window_get_views (window);
+	views = lapiz_window_get_views (window);
 
 	for (l = views; l != NULL; l = l->next)
 	{
@@ -286,21 +286,21 @@ pluma_modeline_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-pluma_modeline_plugin_class_init (PlumaModelinePluginClass *klass)
+lapiz_modeline_plugin_class_init (PlumaModelinePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->constructed = pluma_modeline_plugin_constructed;
-	object_class->finalize = pluma_modeline_plugin_finalize;
-	object_class->dispose = pluma_modeline_plugin_dispose;
-	object_class->set_property = pluma_modeline_plugin_set_property;
-	object_class->get_property = pluma_modeline_plugin_get_property;
+	object_class->constructed = lapiz_modeline_plugin_constructed;
+	object_class->finalize = lapiz_modeline_plugin_finalize;
+	object_class->dispose = lapiz_modeline_plugin_dispose;
+	object_class->set_property = lapiz_modeline_plugin_set_property;
+	object_class->get_property = lapiz_modeline_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_OBJECT, "object");
 }
 
 static void
-pluma_modeline_plugin_class_finalize (PlumaModelinePluginClass *klass)
+lapiz_modeline_plugin_class_finalize (PlumaModelinePluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -308,14 +308,14 @@ pluma_modeline_plugin_class_finalize (PlumaModelinePluginClass *klass)
 static void
 peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-	iface->activate = pluma_modeline_plugin_activate;
-	iface->deactivate = pluma_modeline_plugin_deactivate;
+	iface->activate = lapiz_modeline_plugin_activate;
+	iface->deactivate = lapiz_modeline_plugin_deactivate;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	pluma_modeline_plugin_register_type (G_TYPE_MODULE (module));
+	lapiz_modeline_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,

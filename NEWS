@@ -1,4 +1,4 @@
-### pluma 1.24.1
+### lapiz 1.24.1
 
   * Translations update
   * build: silent build warnings for distcheck
@@ -7,86 +7,86 @@
   * Use user page on github when user email is private
   * Update authors
 
-### pluma 1.24.0
+### lapiz 1.24.0
 
   * Translations update
   * add gbk encoding
   * build: show compiler flags on configuration summary
 
-### pluma 1.23.3
+### lapiz 1.23.3
 
   * Translations update
   * Update copyright to 2020
   * avoid to make new Gsettings variables
-  * use Gsettings 'pluma_prefs_manager' instead
+  * use Gsettings 'lapiz_prefs_manager' instead
   * Taglist: Load the local translation string from lang.mo file
   * ignore comment element in xml file
   * add translator hints
   * migrate from intltool to gettext
   * sync with fixed uk translations uk from transifex
   * window: Do not override GdkWindowState
-  * pluma-document: avoid garbarge value in 'file_with_bom' function
+  * lapiz-document: avoid garbarge value in 'file_with_bom' function
   * preferences: Change Draw to Show
   * document-loader: remove unused variables
   * smart-converter: Fix memory leaks
 
-### pluma 1.23.2
+### lapiz 1.23.2
 
   * Translations update
   * tx: update resource for transifex
-  * pluma-view: avoid static gboolean variable
-  * pluma-taglist-plugin-panel: avoid 'g_type_class_add_private'
-  * pluma-taglist-plugin: avoid 'g_type_class_add_private'
-  * pluma-time-plugin: avoid 'g_type_class_add_private'
-  * pluma-spell-plugin: avoid 'g_type_class_add_private'
-  * pluma-trail-save-plugin: avoid 'g_type_class_add_private'
-  * pluma-modeline-plugin: avoid 'g_type_class_add_private'
-  * pluma-file-browser-store: avoid 'g_type_class_add_private'
-  * pluma-sort-plugin: avoid 'g_type_class_add_private'
-  * pluma-file-browser-plugin: avoid 'g_type_class_add_private'
-  * pluma-file-browser-widget: avoid 'g_type_class_add_private'
-  * pluma-smart-charset-converter: avoid 'g_type_class_add_private'
-  * pluma-file-browser-view: avoid 'g_type_class_add_private'
-  * pluma-file-bookmarks-store: avoid 'g_type_class_add_private'
-  * pluma-docinfo-plugin: avoid 'g_type_class_add_private'
-  * pluma-changecase-plugin: avoid 'g_type_class_add_private'
-  * pluma-window: avoid 'g_type_class_add_private'
+  * lapiz-view: avoid static gboolean variable
+  * lapiz-taglist-plugin-panel: avoid 'g_type_class_add_private'
+  * lapiz-taglist-plugin: avoid 'g_type_class_add_private'
+  * lapiz-time-plugin: avoid 'g_type_class_add_private'
+  * lapiz-spell-plugin: avoid 'g_type_class_add_private'
+  * lapiz-trail-save-plugin: avoid 'g_type_class_add_private'
+  * lapiz-modeline-plugin: avoid 'g_type_class_add_private'
+  * lapiz-file-browser-store: avoid 'g_type_class_add_private'
+  * lapiz-sort-plugin: avoid 'g_type_class_add_private'
+  * lapiz-file-browser-plugin: avoid 'g_type_class_add_private'
+  * lapiz-file-browser-widget: avoid 'g_type_class_add_private'
+  * lapiz-smart-charset-converter: avoid 'g_type_class_add_private'
+  * lapiz-file-browser-view: avoid 'g_type_class_add_private'
+  * lapiz-file-bookmarks-store: avoid 'g_type_class_add_private'
+  * lapiz-docinfo-plugin: avoid 'g_type_class_add_private'
+  * lapiz-changecase-plugin: avoid 'g_type_class_add_private'
+  * lapiz-window: avoid 'g_type_class_add_private'
   * fix build with GtkSourceView 3.22
-  * pluma-view: avoid 'g_type_class_add_private'
-  * pluma-tab-label: avoid 'g_type_class_add_private'
+  * lapiz-view: avoid 'g_type_class_add_private'
+  * lapiz-tab-label: avoid 'g_type_class_add_private'
   * spell-checker plugin: add missing translation (i18n)
   * gla11y: use version 0.3 which already defaults to using python3
-  * pluma-tab: avoid 'g_type_class_add_private'
-  * pluma-status-combo-box: avoid 'g_type_class_add_private'
-  * pluma-statusbar: avoid 'g_type_class_add_private'
-  * pluma-progress-message-area: avoid 'g_type_class_add_private'
-  * pluma-print-preview: avoid 'g_type_class_add_private'
-  * pluma-print-job: avoid 'g_type_class_add_private'
-  * pluma-plugins-engine: avoid 'g_type_class_add_private'
-  * pluma-notebook: avoid 'g_type_class_add_private'
-  * pluma-message-bus: avoid 'g_type_class_add_private'
-  * pluma-message: avoid 'g_type_class_add_private'
-  * pluma-panel: avoid 'g_type_class_add_private'
-  * pluma-file-chooser-dialog: avoid 'g_type_class_add_private'
-  * pluma-documents-panel: avoid 'g_type_class_add_private'
-  * pluma-history-entry: avoid 'g_type_class_add_private'
-  * pluma-encodings-combo-box: avoid 'g_type_class_add_private'
+  * lapiz-tab: avoid 'g_type_class_add_private'
+  * lapiz-status-combo-box: avoid 'g_type_class_add_private'
+  * lapiz-statusbar: avoid 'g_type_class_add_private'
+  * lapiz-progress-message-area: avoid 'g_type_class_add_private'
+  * lapiz-print-preview: avoid 'g_type_class_add_private'
+  * lapiz-print-job: avoid 'g_type_class_add_private'
+  * lapiz-plugins-engine: avoid 'g_type_class_add_private'
+  * lapiz-notebook: avoid 'g_type_class_add_private'
+  * lapiz-message-bus: avoid 'g_type_class_add_private'
+  * lapiz-message: avoid 'g_type_class_add_private'
+  * lapiz-panel: avoid 'g_type_class_add_private'
+  * lapiz-file-chooser-dialog: avoid 'g_type_class_add_private'
+  * lapiz-documents-panel: avoid 'g_type_class_add_private'
+  * lapiz-history-entry: avoid 'g_type_class_add_private'
+  * lapiz-encodings-combo-box: avoid 'g_type_class_add_private'
 
-### pluma 1.23.1
+### lapiz 1.23.1
 
   * Translations update
   * fix build error when gla11y is not installed
-  * pluma-gio-document-loader: avoid 'g_type_class_add_private'
-  * pluma-document-output-stream: avoid 'g_type_class_add_private'
-  * pluma-gio-document-saver: avoid 'g_type_class_add_private'
-  * pluma-preferences-dialog: remove unused struct member
-  * pluma-preferences-dialog: avoid 'g_type_class_add_private'
-  * pluma-document-input-stream: avoid 'g_type_class_add_private'
-  * pluma-document: avoid 'g_type_class_add_private'
-  * pluma-encodings-dialog: avoid 'g_type_class_add_private'
-  * pluma-close-confirmation-dialog: avoid 'g_type_class_add_private'
-  * pluma-search-dialog: avoid 'g_type_class_add_private'
-  * pluma-app: avoid 'g_type_class_add_private'
+  * lapiz-gio-document-loader: avoid 'g_type_class_add_private'
+  * lapiz-document-output-stream: avoid 'g_type_class_add_private'
+  * lapiz-gio-document-saver: avoid 'g_type_class_add_private'
+  * lapiz-preferences-dialog: remove unused struct member
+  * lapiz-preferences-dialog: avoid 'g_type_class_add_private'
+  * lapiz-document-input-stream: avoid 'g_type_class_add_private'
+  * lapiz-document: avoid 'g_type_class_add_private'
+  * lapiz-encodings-dialog: avoid 'g_type_class_add_private'
+  * lapiz-close-confirmation-dialog: avoid 'g_type_class_add_private'
+  * lapiz-search-dialog: avoid 'g_type_class_add_private'
+  * lapiz-app: avoid 'g_type_class_add_private'
   * Add support for checking .ui accessibility with gla11y
   * Remove trailing whitespaces
   * Use smart tabs to fix indentation and alignment
@@ -95,7 +95,7 @@
   * Draw spaces, tabs, newlines and nbsp.
   * Fix use of deprecated glib-genmarshal types
   * add snippet to toggle comment/uncomment
-  * pluma-print-preview: Fix warning: identical expressions
+  * lapiz-print-preview: Fix warning: identical expressions
   * Change url projet's website
   * Switch to Python 3
   * snippets plugin: change code for Python 2 & 3 compatibility
@@ -103,7 +103,7 @@
   * pythonconsole plugin: change source code for Python 2 & 3 compatibility.
   * quickopen plugin: change code for Python 2 & 3 compatibility.
 
-### pluma 1.23.0
+### lapiz 1.23.0
 
   * Translations update
   * Create FUNDING.yml
@@ -111,7 +111,7 @@
   * remove live.gnome from plugins section
   * add quick open to readme
   * add readmes and update plugins section of manual
-  * update how pluma can be opened from menu
+  * update how lapiz can be opened from menu
   * [ci] Add cppcheck html report
   * [ci] Enable Clang Static Analyzer
   * Help: replace link linkend with xref linkend
@@ -122,11 +122,11 @@
   * Use ITS in docbook article info, validate with dbits schemas
   * Upgrade the manual to docbook 5.0
 
-### pluma 1.22.0
+### lapiz 1.22.0
 
   * Translations update
-  * Add update-authors.pl script which helps to update pluma.about
-  * Read authors (updated) from pluma.about file
+  * Add update-authors.pl script which helps to update lapiz.about
+  * Read authors (updated) from lapiz.about file
   * show enchant version when configure
   * Replace the deprecated enchant_dict_add_to_pwl with enchant_dict_add.
   * Make translatable the documenters in the about dialog
@@ -142,10 +142,10 @@
   * simple bug fix of misplaced underscore
   * disable deprecation warnings for distcheck
   * move appdata to metainfo directory
-  * pluma-utils: Fix memory leak
-  * pluma-window: Fix memory leaks
+  * lapiz-utils: Fix memory leak
+  * lapiz-window: Fix memory leaks
 
-### pluma 1.21.2
+### lapiz 1.21.2
 
   * Translations update
   * tx: update translation sources
@@ -154,88 +154,88 @@
   * tx: update help source for transifex
   * tx: improve makepot
   * Refer to the strftime(3) man page for more information...
-  * Refer to the pluma(1) man page for more information...
+  * Refer to the lapiz(1) man page for more information...
   * Remove unused screenshots
   * tx: update transifex source
   * Fix spelling and grammar mistakes
   * help: fix help links
-  * Use actual pluma screenshot for Catalan
-  * Use actual pluma screenshot
+  * Use actual lapiz screenshot for Catalan
+  * Use actual lapiz screenshot
   * tx: generate userguide source
-  * tx: add pluma-user-guide to transifex config
+  * tx: add lapiz-user-guide to transifex config
   * Fix spelling and grammar mistakes
   * prefs-manager: silent some build warnings
   * fix a few introspection and doc warnings
   * Fix search backwards with regex
-  * pluma-document: fix possible memory leak
-  * pluma-view: Fix: Don't loss the PRIMARY clipboard
-  * pluma-document: Fix: don't crash using files with 'bom'
+  * lapiz-document: fix possible memory leak
+  * lapiz-view: Fix: Don't loss the PRIMARY clipboard
+  * lapiz-document: Fix: don't crash using files with 'bom'
   * make the 'close confirmation dialog' bigger with multiple files
-  * pluma-view: Fix: unexpectedly switch between tabs
+  * lapiz-view: Fix: unexpectedly switch between tabs
   * close-confirmation-dialog: Fix: don't resize the dialog unexpectedly
-  * pluma-sort-plugin: avoid extra empty line
-  * pluma-view: Fix bold and italic fonts in menus
+  * lapiz-sort-plugin: avoid extra empty line
+  * lapiz-view: Fix bold and italic fonts in menus
   * spell plugin: Autocheck spelling with [control + F7]
   * add the option to hide the frist tab if there is only one tab
-  * notebook: drop unused 'pluma_notebook_set_always_show_tabs'
-  * pluma-view: Fix possible memory leak
-  * pluma-view: use static variables for cssprovider and settings
-  * pluma-view: sync the font in context-menu with gsettings key
-  * pluma-window: make sure some resources are freed
+  * notebook: drop unused 'lapiz_notebook_set_always_show_tabs'
+  * lapiz-view: Fix possible memory leak
+  * lapiz-view: use static variables for cssprovider and settings
+  * lapiz-view: sync the font in context-menu with gsettings key
+  * lapiz-window: make sure some resources are freed
   * add the abbility to switch tabs using [ctrl+tab] and [ctrl+shift+tab]
-  * pluma-view: Fix font in context menu
-  * pluma-view: pluma_override_font: add the provider only one time
-  * pluma-view: Fix: Bold and Italic fonts don't work
+  * lapiz-view: Fix font in context menu
+  * lapiz-view: lapiz_override_font: add the provider only one time
+  * lapiz-view: Fix: Bold and Italic fonts don't work
 
-### pluma 1.21.1
+### lapiz 1.21.1
 
   * Translations update
-  * pluma-utils.c: avoid deprecated 'gdk_error_trap_push/pop'
-  * pluma-notebook: avoid new file with double click in vertical scrollbar
-  * pluma-notebook: avoid new file with double click in forward arrow button
-  * pluma-notebook: Fix: unexpected behavior with dnd selected text
-  * pluma-view: Fix: unexpected behavior with dnd under line numbers
-  * pluma-notebook: pass event to gdk_seat_grab
-  * pluma-window: use gtk_menu_popup_at_widget for GtkNotebook
-  * pluma-utils: remove unused 'pluma_utils_menu_position_under_tree_view'
+  * lapiz-utils.c: avoid deprecated 'gdk_error_trap_push/pop'
+  * lapiz-notebook: avoid new file with double click in vertical scrollbar
+  * lapiz-notebook: avoid new file with double click in forward arrow button
+  * lapiz-notebook: Fix: unexpected behavior with dnd selected text
+  * lapiz-view: Fix: unexpected behavior with dnd under line numbers
+  * lapiz-notebook: pass event to gdk_seat_grab
+  * lapiz-window: use gtk_menu_popup_at_widget for GtkNotebook
+  * lapiz-utils: remove unused 'lapiz_utils_menu_position_under_tree_view'
   * avoid deprecated 'gtk_menu_popup'
-  * pluma-print-preview: Fix weird behavior with mouse buttons
+  * lapiz-print-preview: Fix weird behavior with mouse buttons
   * Fix: Pluma crashes with mouse wheel over a tab
-  * pluma-notebook.c: avoid deprecated 'gdk_pointer_ ...' functions
-  * pluma-notebook.c: avoid deprecated 'gdk_window_at_pointer'
+  * lapiz-notebook.c: avoid deprecated 'gdk_pointer_ ...' functions
+  * lapiz-notebook.c: avoid deprecated 'gdk_window_at_pointer'
   * avoid deprecated 'gtk_dialog_get_action_area'
-  * pluma-view.c: avoid deprecated 'gtk_widget_override_font'
+  * lapiz-view.c: avoid deprecated 'gtk_widget_override_font'
   * avoid deprecated 'gtk_font_button_set/get_font_name'
-  * pluma-view.c: Fix: GtkCheckMenuItem "Display line numbers" improved
-  * pluma-file-browser-widget.c: avoid deprecated GtkImageMenuItem
+  * lapiz-view.c: Fix: GtkCheckMenuItem "Display line numbers" improved
+  * lapiz-file-browser-widget.c: avoid deprecated GtkImageMenuItem
   * error-message-area: avoid 'gtk_info_bar_new_with_buttons' with stock id
   * avoid 'gtk_info_bar_add_button' with stock ids
-  * avoid 'pluma_file_chooser_dialog_new' with stock ids
+  * avoid 'lapiz_file_chooser_dialog_new' with stock ids
   * avoid 'gtk_file_chooser_dialog_new' with stock id
-  * pluma-time-plugin.c: avoid 'gtk_dialog_new_with_buttons' with stock id
+  * lapiz-time-plugin.c: avoid 'gtk_dialog_new_with_buttons' with stock id
   * avoid 'gtk_dialog_add_buttons' with stock ids
 
-### pluma 1.21.0
+### lapiz 1.21.0
 
   * spell-checker.ui plugin: avoid deprecations
   * sort.ui plugin: avoid deprecations
-  * pluma-time-setup-dialog.ui plugin: avoid deprecations
-  * pluma-time-dialog.ui plugin: deprecations
-  * pluma-spell-setup-dialog.ui plugin: avoid GtkRadioButton:xalign
-  * pluma-preferences-dialog.ui: avoid GtkButton:use-stock and GtkImage:stock
-  * pluma-encodings-dialog.ui: avoid GtkButton:use-stock
+  * lapiz-time-setup-dialog.ui plugin: avoid deprecations
+  * lapiz-time-dialog.ui plugin: deprecations
+  * lapiz-spell-setup-dialog.ui plugin: avoid GtkRadioButton:xalign
+  * lapiz-preferences-dialog.ui: avoid GtkButton:use-stock and GtkImage:stock
+  * lapiz-encodings-dialog.ui: avoid GtkButton:use-stock
   * externaltools plugin: outputpanel.ui: avoid GtkHBox and GtkVButtonBox
   * spell plugin: languages-dialog.ui: avoid deprecations
   * docinfo.ui plugin: avoid GtkVBox, GtkHBox, GtkLabel:xpad/ypad and GtkTable
   * plugins: docinfo.ui: avoid GtkButton:use-stock and GtkImage:stock
-  * spell plugin: pluma-spell-setup-dialog.ui: avoid deprecations
+  * spell plugin: lapiz-spell-setup-dialog.ui: avoid deprecations
   * python console: config.ui: avoid GtkButton:use-stock
   * Make notebook tabs scrollable
   * avoid deprecated GtkButton:use-stock
   * Fix warning with external tools plugin
   * avoid deprecated GtkStock
 
-### pluma 1.20.0
+### lapiz 1.20.0
 
   * Translations update
   * require GTK+ 3.22 and GLib 2.50
@@ -243,25 +243,25 @@
   * update copyright year to 2018
   * Fix: make the list of recently used files working again
   * drop unused variables
-  * pluma-spell-checker-language.c: Fix build warning:
-  * pluma.c: Fix build warning:
-  * pluma-document.c: Fix build warning:
+  * lapiz-spell-checker-language.c: Fix build warning:
+  * lapiz.c: Fix build warning:
+  * lapiz-document.c: Fix build warning:
 
-### pluma 1.19.3
+### lapiz 1.19.3
 
   * Translations update
-  * pluma-window: have GtkRecentData on stack instead of allocating it
+  * lapiz-window: have GtkRecentData on stack instead of allocating it
   * WidthOfScreen and HeightOfScreen implementation
   * Fixes for regexp replacement with backreferences (e.g. "\0") (#259)
-  * pluma-view.c: use one static variable instead two to do the same job
-  * make sure pluma open in the same window of the workspace
-    Fix: pluma closes tabs unexpectedly with [right+middle] click
+  * lapiz-view.c: use one static variable instead two to do the same job
+  * make sure lapiz open in the same window of the workspace
+    Fix: lapiz closes tabs unexpectedly with [right+middle] click
     [ctrl] + [+] / [ctrl] + [-] using the numeric keypad
   * add gsettings key: Show save confirmation if the files have changes
   * Fix: wrong behavior holding down [middle + right] click
     [ctrl] + [+] / [ctrl] + [-] to increase/decrease font size
 
-### pluma 1.19.2
+### lapiz 1.19.2
 
   * Translations update
   * don't request to save documents with no changes
@@ -270,35 +270,35 @@
   * gtk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
   * avoid deprecated gdk_screen_get_width/height
   * avoid deprecated gdk_screen_make_display_name
-  * pluma-help: don't use deprecated gtk_show_uri
+  * lapiz-help: don't use deprecated gtk_show_uri
   * filebrowser: don't use deprecated gtk_show_uri
   * avoid deprecated gdk_display_get_screen and gdk_screen_get_number
   * enable the abbility to save the document if it was changed externally
   * disable the abbility to save the document if it has no changes
 
-### pluma 1.19.1
+### lapiz 1.19.1
 
   * print-preferences UI: fix some basic deprecations
   * encoding-dialog UI: fix some basic deprecations
   * preferences-dialog UI: fix some basic deprecations
-  * pluma-panel: remove  deprecated GtkImage types
-  * plumal-panel: remove some GtkStock deprecations
+  * lapiz-panel: remove  deprecated GtkImage types
+  * lapizl-panel: remove some GtkStock deprecations
   * search-dialogs: fix a -Wpointer-compare warning
   * tag-list-plugin: avoid deprecated GtkStock
   * file-browser-widget: fix one stock deprecation
   * configure: drop GLIB_VERSION_MAX_ALLOWED
   * File browser: don't use GIOScheduler (deprecated)
   * file-browser-view: silent some build warnings
-  * pluma-view: avoid GtkStock deprecations
-  * pluma-tab: replace some GtkStock icons
-  * pluma-notebook: don't use deprecated gdk_cursor_new
+  * lapiz-view: avoid GtkStock deprecations
+  * lapiz-tab: replace some GtkStock icons
+  * lapiz-notebook: don't use deprecated gdk_cursor_new
   * progress-message-area: fix one GtkStock deprecation
   * io-error-message-dialog: fix some GtkStock deprecation warnings
   * Restore Polish translation credits from GNOME
-  * Fix: pluma closes tabs unexpectedly with middle click
-  * pluma-notebook.c: fix a build warning
+  * Fix: lapiz closes tabs unexpectedly with middle click
+  * lapiz-notebook.c: fix a build warning
 
-### pluma 1.19.0
+### lapiz 1.19.0
 
   * Translations update
   * double click to the right of the last open tab to open a new tab
@@ -314,7 +314,7 @@
   * fix running under wayland
   * modelines: fix random crash on closing one of several Pluma windows
 
-### pluma 1.18.0
+### lapiz 1.18.0
 
   * NEWS: use consistent, project wide, markdown-like formatting
     to make generating release announcements easier
@@ -335,7 +335,7 @@
   * Some more fixes and cleanups in code and docs
   * Translations update
 
-### pluma 1.16.0
+### lapiz 1.16.0
 
   * Use GtkAboutDialog instead of MateAboutDialog
   * Drop dependency on libmate-desktop and --without-matedesktop
@@ -344,7 +344,7 @@
   * Some more fixes and cleanups
   * Translations update
 
-### pluma 1.14.1
+### lapiz 1.14.1
 
   * Enable spell checking for new documents when Always Autocheck
     option is selected in Spell Check plugin
@@ -353,30 +353,30 @@
   * Translations update
   * Make distcheck use currently selected GTK+ version
 
-### pluma 1.14.0
+### lapiz 1.14.0
 
   * Drop MateConf migration script
   * Implement middle-click tab closing
   * Add a new Configure dialog for the Spell Check plugin
   * Make switch-c tool in external tools work, fix security issue
-  * GTK+3: add style classes pluma-window and pluma-print-preview
+  * GTK+3: add style classes lapiz-window and lapiz-print-preview
   * GTK+3: fix several deprecations
   * Some more fixes and cleanups
   * Translations update
   * Add Changelog generation
 
-### pluma 1.12.2
+### lapiz 1.12.2
 
   * Python console plugin: fix missing icon in plugin list
   * Fix possible use-after-free during incremental search
   * GTK+3: fix incremental search entry color when text isn't found
 
-### pluma 1.12.1
+### lapiz 1.12.1
 
   * Add --without-matedesktop option to enable build without
     dependency on libmate-desktop
 
-### pluma 1.12.0
+### lapiz 1.12.0
 
   * Add --enable-tests option to enable/disable running tests
     during the build
@@ -389,7 +389,7 @@
   * Some annotation fixes
   * Some minor fixes and cleanups
 
-### pluma 1.10.2
+### lapiz 1.10.2
 
   * Window title: display full path to files on mounted drives
   * Close confirmation dialog: make text unfocusable
@@ -397,32 +397,32 @@
   * Time plugin: GTK+3 fix
   * Multiple help fixes
 
-### pluma 1.10.1
+### lapiz 1.10.1
 
   * Fix gschema translations
   * GTK3 fixes
   * Fix man page formatting
   * Build system fixes
 
-### pluma 1.10.0
+### lapiz 1.10.0
 
   * Use MateAboutDialog from libmate-desktop
 
-### pluma 1.8.1
+### lapiz 1.8.1
 
   * Fix go to line crash
   * Translations updates
 
-### pluma 1.8.0
+### lapiz 1.8.0
 
   * Add GTK3 support
   * Use yelp-tools instead of mate-doc-utils
   * Move user plugin dir from config_dir to data_dir. Plugins should have
     never been installed in the config dir as they are not part of the
     configuration. This means user will need to move the plugins directory
-    from: $HOME/.config/pluma/ to $HOME/.local/share/pluma/.
+    from: $HOME/.config/lapiz/ to $HOME/.local/share/lapiz/.
 
-### pluma 1.5.0
+### lapiz 1.5.0
 
   * Migration to GSettings and drop mateconf
     (All code is migrated, except pythonconsole plugin. The plugin works,

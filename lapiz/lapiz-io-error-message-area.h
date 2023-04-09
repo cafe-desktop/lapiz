@@ -1,6 +1,6 @@
 /*
- * pluma-io-error-message-area.h
- * This file is part of pluma
+ * lapiz-io-error-message-area.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -35,32 +35,32 @@
 
 G_BEGIN_DECLS
 
-GtkWidget	*pluma_io_loading_error_message_area_new		 (const gchar         *uri,
+GtkWidget	*lapiz_io_loading_error_message_area_new		 (const gchar         *uri,
 									  const PlumaEncoding *encoding,
 									  const GError        *error);
 
-GtkWidget	*pluma_unrecoverable_reverting_error_message_area_new	 (const gchar         *uri,
+GtkWidget	*lapiz_unrecoverable_reverting_error_message_area_new	 (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*pluma_conversion_error_while_saving_message_area_new	 (const gchar         *uri,
+GtkWidget	*lapiz_conversion_error_while_saving_message_area_new	 (const gchar         *uri,
 									  const PlumaEncoding *encoding,
 									  const GError        *error);
 
 const PlumaEncoding
-		*pluma_conversion_error_message_area_get_encoding	 (GtkWidget           *message_area);
+		*lapiz_conversion_error_message_area_get_encoding	 (GtkWidget           *message_area);
 
-GtkWidget	*pluma_file_already_open_warning_message_area_new	 (const gchar         *uri);
+GtkWidget	*lapiz_file_already_open_warning_message_area_new	 (const gchar         *uri);
 
-GtkWidget	*pluma_externally_modified_saving_error_message_area_new (const gchar         *uri,
+GtkWidget	*lapiz_externally_modified_saving_error_message_area_new (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*pluma_no_backup_saving_error_message_area_new		 (const gchar         *uri,
+GtkWidget	*lapiz_no_backup_saving_error_message_area_new		 (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*pluma_unrecoverable_saving_error_message_area_new	 (const gchar         *uri,
+GtkWidget	*lapiz_unrecoverable_saving_error_message_area_new	 (const gchar         *uri,
 									  const GError        *error);
 
-GtkWidget	*pluma_externally_modified_message_area_new		 (const gchar         *uri,
+GtkWidget	*lapiz_externally_modified_message_area_new		 (const gchar         *uri,
 									  gboolean             document_modified);
 
 G_END_DECLS

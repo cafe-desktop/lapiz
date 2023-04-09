@@ -1,6 +1,6 @@
 /*
- * pluma-spell-utils.h
- * This file is part of pluma
+ * lapiz-spell-utils.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Jesse van den Kieboom
  *
@@ -27,9 +27,9 @@
 
 G_BEGIN_DECLS
 
-gboolean pluma_spell_utils_is_digit (const char *text, gssize length);
+gboolean lapiz_spell_utils_is_digit (const char *text, gssize length);
 
-gboolean pluma_spell_utils_skip_no_spell_check (GtkTextIter *start, GtkTextIter *end);
+gboolean lapiz_spell_utils_skip_no_spell_check (GtkTextIter *start, GtkTextIter *end);
 
 G_END_DECLS
 

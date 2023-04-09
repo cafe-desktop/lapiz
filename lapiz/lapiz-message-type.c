@@ -1,9 +1,9 @@
-#include "pluma-message-type.h"
+#include "lapiz-message-type.h"
 
 /**
- * SECTION:pluma-message-type
+ * SECTION:lapiz-message-type
  * @short_description: message type description
- * @include: pluma/pluma-message-type.h
+ * @include: lapiz/lapiz-message-type.h
  *
  * A message type is a prototype description for a #PlumaMessage used to
  * transmit messages on a #PlumaMessageBus. The message type describes
@@ -11,24 +11,24 @@
  *
  * A message type can contain any number of required and optional arguments.
  * To instantiate a #PlumaMessage from a #PlumaMessageType, use
- * pluma_message_type_instantiate().
+ * lapiz_message_type_instantiate().
  *
  * Registering a new message type on a #PlumaMessageBus with
- * pluma_message_bus_register() internally creates a new #PlumaMessageType. When
- * then using pluma_message_bus_send(), an actual instantiation of the
+ * lapiz_message_bus_register() internally creates a new #PlumaMessageType. When
+ * then using lapiz_message_bus_send(), an actual instantiation of the
  * registered type is internally created and send over the bus.
  *
  * <example>
  * <programlisting>
  * // Defining a new message type
- * PlumaMessageType *message_type = pluma_message_type_new ("/plugins/example",
+ * PlumaMessageType *message_type = lapiz_message_type_new ("/plugins/example",
  *                                                          "method",
  *                                                          0,
  *                                                          "arg1", G_TYPE_STRING,
  *                                                          NULL);
  *
  * // Instantiating an actual message from the type
- * PlumaMessage *message = pluma_message_type_instantiate (message_type,
+ * PlumaMessage *message = lapiz_message_type_instantiate (message_type,
  *                                                         "arg1", "Hello World",
  *                                                         NULL);
  * </programlisting>
@@ -55,7 +55,7 @@ struct _PlumaMessageType
 };
 
 /**
- * pluma_message_type_ref:
+ * lapiz_message_type_ref:
  * @message_type: the #PlumaMessageType
  *
  * Increases the reference count on @message_type.
@@ -64,7 +64,7 @@ struct _PlumaMessageType
  *
  */
 PlumaMessageType *
-pluma_message_type_ref (PlumaMessageType *message_type)
+lapiz_message_type_ref (PlumaMessageType *message_type)
 {
 	g_return_val_if_fail (message_type != NULL, NULL);
 	g_atomic_int_inc (&message_type->ref_count);
@@ -73,7 +73,7 @@ pluma_message_type_ref (PlumaMessageType *message_type)
 }
 
 /**
- * pluma_message_type_unref:
+ * lapiz_message_type_unref:
  * @message_type: the #PlumaMessageType
  *
  * Decreases the reference count on @message_type. When the reference count
@@ -81,7 +81,7 @@ pluma_message_type_ref (PlumaMessageType *message_type)
  *
  */
 void
-pluma_message_type_unref (PlumaMessageType *message_type)
+lapiz_message_type_unref (PlumaMessageType *message_type)
 {
 	g_return_if_fail (message_type != NULL);
 
@@ -96,7 +96,7 @@ pluma_message_type_unref (PlumaMessageType *message_type)
 }
 
 /**
- * pluma_message_type_get_type:
+ * lapiz_message_type_get_type:
  *
  * Retrieves the GType object which is associated with the
  * #PlumaMessageType class.
@@ -104,21 +104,21 @@ pluma_message_type_unref (PlumaMessageType *message_type)
  * Return value: the GType associated with #PlumaMessageType.
  **/
 GType
-pluma_message_type_get_type (void)
+lapiz_message_type_get_type (void)
 {
 	static GType our_type = 0;
 
 	if (!our_type)
 		our_type = g_boxed_type_register_static (
 			"PlumaMessageType",
-			(GBoxedCopyFunc) pluma_message_type_ref,
-			(GBoxedFreeFunc) pluma_message_type_unref);
+			(GBoxedCopyFunc) lapiz_message_type_ref,
+			(GBoxedFreeFunc) lapiz_message_type_unref);
 
 	return our_type;
 }
 
 /**
- * pluma_message_type_identifier:
+ * lapiz_message_type_identifier:
  * @object_path: (allow-none): the object path
  * @method: (allow-none): the method
  *
@@ -128,14 +128,14 @@ pluma_message_type_get_type (void)
  *
  */
 gchar *
-pluma_message_type_identifier (const gchar *object_path,
+lapiz_message_type_identifier (const gchar *object_path,
 			       const gchar *method)
 {
 	return g_strconcat (object_path, ".", method, NULL);
 }
 
 /**
- * pluma_message_type_is_valid_object_path:
+ * lapiz_message_type_is_valid_object_path:
  * @object_path: (allow-none): the object path
  *
  * Returns whether @object_path is a valid object path
@@ -144,7 +144,7 @@ pluma_message_type_identifier (const gchar *object_path,
  *
  */
 gboolean
-pluma_message_type_is_valid_object_path (const gchar *object_path)
+lapiz_message_type_is_valid_object_path (const gchar *object_path)
 {
 	if (!object_path)
 		return FALSE;
@@ -174,7 +174,7 @@ pluma_message_type_is_valid_object_path (const gchar *object_path)
 }
 
 /**
- * pluma_message_type_is_supported:
+ * lapiz_message_type_is_supported:
  * @type: the #GType
  *
  * Returns if @type is #GType supported by the message system.
@@ -183,7 +183,7 @@ pluma_message_type_is_valid_object_path (const gchar *object_path)
  *
  */
 gboolean
-pluma_message_type_is_supported (GType type)
+lapiz_message_type_is_supported (GType type)
 {
 	gint i = 0;
 
@@ -223,7 +223,7 @@ pluma_message_type_is_supported (GType type)
 }
 
 /**
- * pluma_message_type_new_valist:
+ * lapiz_message_type_new_valist:
  * @object_path: (allow-none): the object path
  * @method: (allow-none): the method
  * @num_optional: number of optional arguments
@@ -237,7 +237,7 @@ pluma_message_type_is_supported (GType type)
  *
  */
 PlumaMessageType *
-pluma_message_type_new_valist (const gchar *object_path,
+lapiz_message_type_new_valist (const gchar *object_path,
 			       const gchar *method,
 			       guint        num_optional,
 			       va_list      var_args)
@@ -246,7 +246,7 @@ pluma_message_type_new_valist (const gchar *object_path,
 
 	g_return_val_if_fail (object_path != NULL, NULL);
 	g_return_val_if_fail (method != NULL, NULL);
-	g_return_val_if_fail (pluma_message_type_is_valid_object_path (object_path), NULL);
+	g_return_val_if_fail (lapiz_message_type_is_valid_object_path (object_path), NULL);
 
 	message_type = g_new0(PlumaMessageType, 1);
 
@@ -259,12 +259,12 @@ pluma_message_type_new_valist (const gchar *object_path,
 							 (GDestroyNotify)g_free,
 							 (GDestroyNotify)g_free);
 
-	pluma_message_type_set_valist (message_type, num_optional, var_args);
+	lapiz_message_type_set_valist (message_type, num_optional, var_args);
 	return message_type;
 }
 
 /**
- * pluma_message_type_new:
+ * lapiz_message_type_new:
  * @object_path: (allow-none): the object path
  * @method: (allow-none): the method
  * @num_optional: number of optional arguments
@@ -278,7 +278,7 @@ pluma_message_type_new_valist (const gchar *object_path,
  *
  */
 PlumaMessageType *
-pluma_message_type_new (const gchar *object_path,
+lapiz_message_type_new (const gchar *object_path,
 			const gchar *method,
 			guint        num_optional,
 			...)
@@ -287,14 +287,14 @@ pluma_message_type_new (const gchar *object_path,
 	va_list var_args;
 
 	va_start(var_args, num_optional);
-	message_type = pluma_message_type_new_valist (object_path, method, num_optional, var_args);
+	message_type = lapiz_message_type_new_valist (object_path, method, num_optional, var_args);
 	va_end(var_args);
 
 	return message_type;
 }
 
 /**
- * pluma_message_type_set:
+ * lapiz_message_type_set:
  * @message_type: the #PlumaMessageType
  * @num_optional: number of optional arguments
  * @...: key/gtype pair variable argument list
@@ -305,19 +305,19 @@ pluma_message_type_new (const gchar *object_path,
  *
  */
 void
-pluma_message_type_set (PlumaMessageType *message_type,
+lapiz_message_type_set (PlumaMessageType *message_type,
 			guint		  num_optional,
 			...)
 {
 	va_list va_args;
 
 	va_start (va_args, num_optional);
-	pluma_message_type_set_valist (message_type, num_optional, va_args);
+	lapiz_message_type_set_valist (message_type, num_optional, va_args);
 	va_end (va_args);
 }
 
 /**
- * pluma_message_type_set_valist:
+ * lapiz_message_type_set_valist:
  * @message_type: the #PlumaMessageType
  * @num_optional: number of optional arguments
  * @va_args: key/gtype pair variable argument list
@@ -328,7 +328,7 @@ pluma_message_type_set (PlumaMessageType *message_type,
  *
  */
 void
-pluma_message_type_set_valist (PlumaMessageType *message_type,
+lapiz_message_type_set_valist (PlumaMessageType *message_type,
 			       guint             num_optional,
 			       va_list	         var_args)
 {
@@ -344,11 +344,11 @@ pluma_message_type_set_valist (PlumaMessageType *message_type,
 		GType gtype = va_arg (var_args, GType);
 		ArgumentInfo *info;
 
-		if (!pluma_message_type_is_supported (gtype))
+		if (!lapiz_message_type_is_supported (gtype))
 		{
 			g_error ("Message type '%s' is not supported", g_type_name (gtype));
 
-			pluma_message_type_unref (message_type);
+			lapiz_message_type_unref (message_type);
 			g_free (optional);
 
 			return;
@@ -388,7 +388,7 @@ pluma_message_type_set_valist (PlumaMessageType *message_type,
 }
 
 /**
- * pluma_message_type_instantiate_valist:
+ * lapiz_message_type_instantiate_valist:
  * @message_type: the #PlumaMessageType
  * @va_args: NULL terminated variable list of key/value pairs
  *
@@ -399,7 +399,7 @@ pluma_message_type_set_valist (PlumaMessageType *message_type,
  *
  */
 PlumaMessage *
-pluma_message_type_instantiate_valist (PlumaMessageType *message_type,
+lapiz_message_type_instantiate_valist (PlumaMessageType *message_type,
 				       va_list		 va_args)
 {
 	PlumaMessage *message;
@@ -407,13 +407,13 @@ pluma_message_type_instantiate_valist (PlumaMessageType *message_type,
 	g_return_val_if_fail (message_type != NULL, NULL);
 
 	message = PLUMA_MESSAGE (g_object_new (PLUMA_TYPE_MESSAGE, "type", message_type, NULL));
-	pluma_message_set_valist (message, va_args);
+	lapiz_message_set_valist (message, va_args);
 
 	return message;
 }
 
 /**
- * pluma_message_type_instantiate:
+ * lapiz_message_type_instantiate:
  * @message_type: the #PlumaMessageType
  * @...: NULL terminated variable list of key/value pairs
  *
@@ -424,21 +424,21 @@ pluma_message_type_instantiate_valist (PlumaMessageType *message_type,
  *
  */
 PlumaMessage *
-pluma_message_type_instantiate (PlumaMessageType *message_type,
+lapiz_message_type_instantiate (PlumaMessageType *message_type,
 				...)
 {
 	PlumaMessage *message;
 	va_list va_args;
 
 	va_start (va_args, message_type);
-	message = pluma_message_type_instantiate_valist (message_type, va_args);
+	message = lapiz_message_type_instantiate_valist (message_type, va_args);
 	va_end (va_args);
 
 	return message;
 }
 
 /**
- * pluma_message_type_get_object_path:
+ * lapiz_message_type_get_object_path:
  * @message_type: the #PlumaMessageType
  *
  * Get the message type object path.
@@ -447,13 +447,13 @@ pluma_message_type_instantiate (PlumaMessageType *message_type,
  *
  */
 const gchar *
-pluma_message_type_get_object_path (PlumaMessageType *message_type)
+lapiz_message_type_get_object_path (PlumaMessageType *message_type)
 {
 	return message_type->object_path;
 }
 
 /**
- * pluma_message_type_get_method:
+ * lapiz_message_type_get_method:
  * @message_type: the #PlumaMessageType
  *
  * Get the message type method.
@@ -462,13 +462,13 @@ pluma_message_type_get_object_path (PlumaMessageType *message_type)
  *
  */
 const gchar *
-pluma_message_type_get_method (PlumaMessageType *message_type)
+lapiz_message_type_get_method (PlumaMessageType *message_type)
 {
 	return message_type->method;
 }
 
 /**
- * pluma_message_type_lookup:
+ * lapiz_message_type_lookup:
  * @message_type: the #PlumaMessageType
  * @key: the argument key
  *
@@ -478,7 +478,7 @@ pluma_message_type_get_method (PlumaMessageType *message_type)
  *
  */
 GType
-pluma_message_type_lookup (PlumaMessageType *message_type,
+lapiz_message_type_lookup (PlumaMessageType *message_type,
 			   const gchar      *key)
 {
 	ArgumentInfo *info = g_hash_table_lookup (message_type->arguments, key);
@@ -504,7 +504,7 @@ foreach_gtype (const gchar  *key,
 }
 
 /**
- * pluma_message_type_foreach:
+ * lapiz_message_type_foreach:
  * @message_type: the #PlumaMessageType
  * @func: (scope call): the callback function
  * @user_data: user data supplied to the callback function
@@ -513,7 +513,7 @@ foreach_gtype (const gchar  *key,
  *
  */
 void
-pluma_message_type_foreach (PlumaMessageType 	    *message_type,
+lapiz_message_type_foreach (PlumaMessageType 	    *message_type,
 			    PlumaMessageTypeForeach  func,
 			    gpointer		     user_data)
 {

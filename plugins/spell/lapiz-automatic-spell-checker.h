@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-automatic-spell-checker.h
- * This file is part of pluma
+ * lapiz-automatic-spell-checker.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -35,32 +35,32 @@
 #ifndef __PLUMA_AUTOMATIC_SPELL_CHECKER_H__
 #define __PLUMA_AUTOMATIC_SPELL_CHECKER_H__
 
-#include <pluma/pluma-document.h>
-#include <pluma/pluma-view.h>
+#include <lapiz/lapiz-document.h>
+#include <lapiz/lapiz-view.h>
 
-#include "pluma-spell-checker.h"
+#include "lapiz-spell-checker.h"
 
 typedef struct _PlumaAutomaticSpellChecker PlumaAutomaticSpellChecker;
 
-PlumaAutomaticSpellChecker	*pluma_automatic_spell_checker_new (
+PlumaAutomaticSpellChecker	*lapiz_automatic_spell_checker_new (
 							PlumaDocument 			*doc,
 							PlumaSpellChecker		*checker);
 
-PlumaAutomaticSpellChecker	*pluma_automatic_spell_checker_get_from_document (
+PlumaAutomaticSpellChecker	*lapiz_automatic_spell_checker_get_from_document (
 							const PlumaDocument 		*doc);
 
-void				 pluma_automatic_spell_checker_free (
+void				 lapiz_automatic_spell_checker_free (
 							PlumaAutomaticSpellChecker 	*spell);
 
-void 				 pluma_automatic_spell_checker_attach_view (
+void 				 lapiz_automatic_spell_checker_attach_view (
 							PlumaAutomaticSpellChecker 	*spell,
 							PlumaView 			*view);
 
-void 				 pluma_automatic_spell_checker_detach_view (
+void 				 lapiz_automatic_spell_checker_detach_view (
 							PlumaAutomaticSpellChecker 	*spell,
 							PlumaView 			*view);
 
-void				 pluma_automatic_spell_checker_recheck_all (
+void				 lapiz_automatic_spell_checker_recheck_all (
 							PlumaAutomaticSpellChecker 	*spell);
 
 #endif  /* __PLUMA_AUTOMATIC_SPELL_CHECKER_H__ */

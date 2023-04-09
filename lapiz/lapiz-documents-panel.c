@@ -1,6 +1,6 @@
 /*
- * pluma-documents-panel.c
- * This file is part of pluma
+ * lapiz-documents-panel.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -32,9 +32,9 @@
 #include <config.h>
 #endif
 
-#include "pluma-documents-panel.h"
-#include "pluma-utils.h"
-#include "pluma-notebook.h"
+#include "lapiz-documents-panel.h"
+#include "lapiz-utils.h"
+#include "lapiz-notebook.h"
 
 #include <glib/gi18n.h>
 
@@ -49,7 +49,7 @@ struct _PlumaDocumentsPanelPrivate
 	guint         is_reodering : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentsPanel, pluma_documents_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentsPanel, lapiz_documents_panel, GTK_TYPE_BOX)
 
 enum
 {
@@ -77,16 +77,16 @@ tab_get_name (PlumaTab *tab)
 
 	g_return_val_if_fail (PLUMA_IS_TAB (tab), NULL);
 
-	doc = pluma_tab_get_document (tab);
+	doc = lapiz_tab_get_document (tab);
 
-	name = pluma_document_get_short_name_for_display (doc);
+	name = lapiz_document_get_short_name_for_display (doc);
 
 	/* Truncate the name so it doesn't get insanely wide. */
-	docname = pluma_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
+	docname = lapiz_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
 
 	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
-		if (pluma_document_get_readonly (doc))
+		if (lapiz_document_get_readonly (doc))
 		{
 			tab_name = g_markup_printf_escaped ("<i>%s</i> [<i>%s</i>]",
 							    docname,
@@ -100,7 +100,7 @@ tab_get_name (PlumaTab *tab)
 	}
 	else
 	{
-		if (pluma_document_get_readonly (doc))
+		if (lapiz_document_get_readonly (doc))
 		{
 			tab_name = g_markup_printf_escaped ("%s [<i>%s</i>]",
 							    docname,
@@ -125,7 +125,7 @@ get_iter_from_tab (PlumaDocumentsPanel *panel, PlumaTab *tab, GtkTreeIter *iter)
 	GtkWidget *nb;
 	GtkTreePath *path;
 
-	nb = _pluma_window_get_notebook (panel->priv->window);
+	nb = _lapiz_window_get_notebook (panel->priv->window);
 	num = gtk_notebook_page_num (GTK_NOTEBOOK (nb),
 				     GTK_WIDGET (tab));
 
@@ -143,7 +143,7 @@ window_active_tab_changed (PlumaWindow         *window,
 {
 	g_return_if_fail (tab != NULL);
 
-	if (!_pluma_window_is_removing_tabs (window))
+	if (!_lapiz_window_is_removing_tabs (window))
 	{
 		GtkTreeIter iter;
 		GtkTreeSelection *selection;
@@ -178,9 +178,9 @@ refresh_list (PlumaDocumentsPanel *panel)
 
 	gtk_list_store_clear (list_store);
 
-	active_tab = pluma_window_get_active_tab (panel->priv->window);
+	active_tab = lapiz_window_get_active_tab (panel->priv->window);
 
-	nb = _pluma_window_get_notebook (panel->priv->window);
+	nb = _lapiz_window_get_notebook (panel->priv->window);
 
 	tabs = gtk_container_get_children (GTK_CONTAINER (nb));
 	l = tabs;
@@ -194,7 +194,7 @@ refresh_list (PlumaDocumentsPanel *panel)
 		GtkTreeIter iter;
 
 		name = tab_get_name (PLUMA_TAB (l->data));
-		pixbuf = _pluma_tab_get_icon (PLUMA_TAB (l->data));
+		pixbuf = _lapiz_tab_get_icon (PLUMA_TAB (l->data));
 
 		/* Add a new row to the model */
 		gtk_list_store_append (list_store, &iter);
@@ -239,7 +239,7 @@ sync_name_and_icon (PlumaTab            *tab,
 	get_iter_from_tab (panel, tab, &iter);
 
 	name = tab_get_name (tab);
-	pixbuf = _pluma_tab_get_icon (tab);
+	pixbuf = _lapiz_tab_get_icon (tab);
 
 	gtk_list_store_set (GTK_LIST_STORE (panel->priv->model),
 			    &iter,
@@ -262,7 +262,7 @@ window_tab_removed (PlumaWindow         *window,
 					      G_CALLBACK (sync_name_and_icon),
 					      panel);
 
-	if (_pluma_window_is_removing_tabs (window))
+	if (_lapiz_window_is_removing_tabs (window))
 		gtk_list_store_clear (GTK_LIST_STORE (panel->priv->model));
 	else
 		refresh_list (panel);
@@ -306,7 +306,7 @@ window_tab_added (PlumaWindow         *window,
 		gtk_list_store_append (GTK_LIST_STORE (panel->priv->model),
 				       &iter);
 
-		active_tab = pluma_window_get_active_tab (panel->priv->window);
+		active_tab = lapiz_window_get_active_tab (panel->priv->window);
 
 		if (tab == active_tab)
 		{
@@ -320,7 +320,7 @@ window_tab_added (PlumaWindow         *window,
 	}
 
 	name = tab_get_name (tab);
-	pixbuf = _pluma_tab_get_icon (tab);
+	pixbuf = _lapiz_tab_get_icon (tab);
 
 	gtk_list_store_set (GTK_LIST_STORE (panel->priv->model),
 			    &iter,
@@ -392,16 +392,16 @@ treeview_cursor_changed (GtkTreeView         *view,
 				    &tab,
 				    -1);
 
-		if (pluma_window_get_active_tab (panel->priv->window) != tab)
+		if (lapiz_window_get_active_tab (panel->priv->window) != tab)
 		{
-			pluma_window_set_active_tab (panel->priv->window,
+			lapiz_window_set_active_tab (panel->priv->window,
 						     PLUMA_TAB (tab));
 		}
 	}
 }
 
 static void
-pluma_documents_panel_set_property (GObject      *object,
+lapiz_documents_panel_set_property (GObject      *object,
 				    guint         prop_id,
 				    const GValue *value,
 				    GParamSpec   *pspec)
@@ -421,7 +421,7 @@ pluma_documents_panel_set_property (GObject      *object,
 }
 
 static void
-pluma_documents_panel_get_property (GObject    *object,
+lapiz_documents_panel_get_property (GObject    *object,
 				    guint       prop_id,
 				    GValue     *value,
 				    GParamSpec *pspec)
@@ -431,7 +431,7 @@ pluma_documents_panel_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_WINDOW:
-			panel->priv = pluma_documents_panel_get_instance_private (panel);
+			panel->priv = lapiz_documents_panel_get_instance_private (panel);
 			g_value_set_object (value, panel->priv->window);
 			break;
 		default:
@@ -441,17 +441,17 @@ pluma_documents_panel_get_property (GObject    *object,
 }
 
 static void
-pluma_documents_panel_finalize (GObject *object)
+lapiz_documents_panel_finalize (GObject *object)
 {
 	/* PlumaDocumentsPanel *tab = PLUMA_DOCUMENTS_PANEL (object); */
 
 	/* TODO: disconnect signal with window */
 
-	G_OBJECT_CLASS (pluma_documents_panel_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_documents_panel_parent_class)->finalize (object);
 }
 
 static void
-pluma_documents_panel_dispose (GObject *object)
+lapiz_documents_panel_dispose (GObject *object)
 {
 	PlumaDocumentsPanel *panel = PLUMA_DOCUMENTS_PANEL (object);
 
@@ -461,18 +461,18 @@ pluma_documents_panel_dispose (GObject *object)
 		panel->priv->window = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_documents_panel_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_documents_panel_parent_class)->dispose (object);
 }
 
 static void
-pluma_documents_panel_class_init (PlumaDocumentsPanelClass *klass)
+lapiz_documents_panel_class_init (PlumaDocumentsPanelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_documents_panel_finalize;
-	object_class->dispose = pluma_documents_panel_dispose;
-	object_class->get_property = pluma_documents_panel_get_property;
-	object_class->set_property = pluma_documents_panel_set_property;
+	object_class->finalize = lapiz_documents_panel_finalize;
+	object_class->dispose = lapiz_documents_panel_dispose;
+	object_class->get_property = lapiz_documents_panel_get_property;
+	object_class->set_property = lapiz_documents_panel_set_property;
 
 	g_object_class_install_property (object_class,
 					 PROP_WINDOW,
@@ -491,7 +491,7 @@ show_popup_menu (PlumaDocumentsPanel *panel,
 {
 	GtkWidget *menu;
 
-	menu = gtk_ui_manager_get_widget (pluma_window_get_ui_manager (panel->priv->window),
+	menu = gtk_ui_manager_get_widget (lapiz_window_get_ui_manager (panel->priv->window),
 					 "/NotebookPopup");
 	g_return_val_if_fail (menu != NULL, FALSE);
 
@@ -606,7 +606,7 @@ treeview_query_tooltip (GtkWidget  *widget,
 			    &tab,
 			    -1);
 
-	tip = _pluma_tab_get_tooltips (PLUMA_TAB (tab));
+	tip = _lapiz_tab_get_tooltips (PLUMA_TAB (tab));
 	gtk_tooltip_set_markup (tooltip, tip);
 
 	g_free (tip);
@@ -630,7 +630,7 @@ treeview_row_inserted (GtkTreeModel        *tree_model,
 	if (panel->priv->adding_tab)
 		return;
 
-	tab = pluma_window_get_active_tab (panel->priv->window);
+	tab = lapiz_window_get_active_tab (panel->priv->window);
 	g_return_if_fail (tab != NULL);
 
 	panel->priv->is_reodering = TRUE;
@@ -639,7 +639,7 @@ treeview_row_inserted (GtkTreeModel        *tree_model,
 
 	/* g_debug ("New Index: %d (path: %s)", indeces[0], gtk_tree_path_to_string (path));*/
 
-	nb = _pluma_window_get_notebook (panel->priv->window);
+	nb = _lapiz_window_get_notebook (panel->priv->window);
 
 	new_position = indeces[0];
 	old_position = gtk_notebook_page_num (GTK_NOTEBOOK (nb),
@@ -647,7 +647,7 @@ treeview_row_inserted (GtkTreeModel        *tree_model,
 	if (new_position > old_position)
 		new_position = MAX (0, new_position - 1);
 
-	pluma_notebook_reorder_tab (PLUMA_NOTEBOOK (nb),
+	lapiz_notebook_reorder_tab (PLUMA_NOTEBOOK (nb),
 				    tab,
 				    new_position);
 
@@ -655,14 +655,14 @@ treeview_row_inserted (GtkTreeModel        *tree_model,
 }
 
 static void
-pluma_documents_panel_init (PlumaDocumentsPanel *panel)
+lapiz_documents_panel_init (PlumaDocumentsPanel *panel)
 {
 	GtkWidget 		*sw;
 	GtkTreeViewColumn	*column;
 	GtkCellRenderer 	*cell;
 	GtkTreeSelection 	*selection;
 
-	panel->priv = pluma_documents_panel_get_instance_private (panel);
+	panel->priv = lapiz_documents_panel_get_instance_private (panel);
 
 	panel->priv->adding_tab = FALSE;
 	panel->priv->is_reodering = FALSE;
@@ -741,7 +741,7 @@ pluma_documents_panel_init (PlumaDocumentsPanel *panel)
 }
 
 GtkWidget *
-pluma_documents_panel_new (PlumaWindow *window)
+lapiz_documents_panel_new (PlumaWindow *window)
 {
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
 

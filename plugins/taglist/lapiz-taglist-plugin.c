@@ -1,5 +1,5 @@
 /*
- * pluma-taglist-plugin.h
+ * lapiz-taglist-plugin.h
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -20,8 +20,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -31,16 +31,16 @@
 #include <config.h>
 #endif
 
-#include "pluma-taglist-plugin.h"
-#include "pluma-taglist-plugin-panel.h"
-#include "pluma-taglist-plugin-parser.h"
+#include "lapiz-taglist-plugin.h"
+#include "lapiz-taglist-plugin-panel.h"
+#include "lapiz-taglist-plugin-parser.h"
 
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
 #include <libpeas/peas-activatable.h>
 
-#include <pluma/pluma-window.h>
-#include <pluma/pluma-debug.h>
+#include <lapiz/lapiz-window.h>
+#include <lapiz/lapiz-debug.h>
 
 struct _PlumaTaglistPluginPrivate
 {
@@ -52,14 +52,14 @@ struct _PlumaTaglistPluginPrivate
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaTaglistPlugin,
-                                pluma_taglist_plugin,
+                                lapiz_taglist_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaTaglistPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init) \
                                                                                             \
-                                _pluma_taglist_plugin_panel_register_type (type_module);    \
+                                _lapiz_taglist_plugin_panel_register_type (type_module);    \
 )
 
 enum {
@@ -68,19 +68,19 @@ enum {
 };
 
 static void
-pluma_taglist_plugin_init (PlumaTaglistPlugin *plugin)
+lapiz_taglist_plugin_init (PlumaTaglistPlugin *plugin)
 {
-	plugin->priv = pluma_taglist_plugin_get_instance_private (plugin);
+	plugin->priv = lapiz_taglist_plugin_get_instance_private (plugin);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin initializing");
 }
 
 static void
-pluma_taglist_plugin_dispose (GObject *object)
+lapiz_taglist_plugin_dispose (GObject *object)
 {
 	PlumaTaglistPlugin *plugin = PLUMA_TAGLIST_PLUGIN (object);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -88,72 +88,72 @@ pluma_taglist_plugin_dispose (GObject *object)
 		plugin->priv->window = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_taglist_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_taglist_plugin_parent_class)->dispose (object);
 }
 
 static void
-pluma_taglist_plugin_finalize (GObject *object)
+lapiz_taglist_plugin_finalize (GObject *object)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin finalizing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin finalizing");
 
 	free_taglist ();
 
-	G_OBJECT_CLASS (pluma_taglist_plugin_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_taglist_plugin_parent_class)->finalize (object);
 }
 
 static void
-pluma_taglist_plugin_activate (PeasActivatable *activatable)
+lapiz_taglist_plugin_activate (PeasActivatable *activatable)
 {
 	PlumaTaglistPluginPrivate *priv;
 	PlumaWindow *window;
 	PlumaPanel *side_panel;
 	gchar *data_dir;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	priv = PLUMA_TAGLIST_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (priv->window);
-	side_panel = pluma_window_get_side_panel (window);
+	side_panel = lapiz_window_get_side_panel (window);
 
 	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
-	priv->taglist_panel = pluma_taglist_plugin_panel_new (window, data_dir);
+	priv->taglist_panel = lapiz_taglist_plugin_panel_new (window, data_dir);
 	g_free (data_dir);
 
-	pluma_panel_add_item_with_icon (side_panel,
+	lapiz_panel_add_item_with_icon (side_panel,
 					priv->taglist_panel,
 					_("Tags"),
 					"list-add");
 }
 
 static void
-pluma_taglist_plugin_deactivate (PeasActivatable *activatable)
+lapiz_taglist_plugin_deactivate (PeasActivatable *activatable)
 {
 	PlumaTaglistPluginPrivate *priv;
 	PlumaWindow *window;
 	PlumaPanel *side_panel;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	priv = PLUMA_TAGLIST_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (priv->window);
-	side_panel = pluma_window_get_side_panel (window);
+	side_panel = lapiz_window_get_side_panel (window);
 
-	pluma_panel_remove_item (side_panel,
+	lapiz_panel_remove_item (side_panel,
 				 priv->taglist_panel);
 }
 
 static void
-pluma_taglist_plugin_update_state (PeasActivatable *activatable)
+lapiz_taglist_plugin_update_state (PeasActivatable *activatable)
 {
 	PlumaTaglistPluginPrivate *priv;
 	PlumaWindow *window;
 	PlumaView *view;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	priv = PLUMA_TAGLIST_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (priv->window);
-	view = pluma_window_get_active_view (window);
+	view = lapiz_window_get_active_view (window);
 
 	gtk_widget_set_sensitive (priv->taglist_panel,
 				  (view != NULL) &&
@@ -161,7 +161,7 @@ pluma_taglist_plugin_update_state (PeasActivatable *activatable)
 }
 
 static void
-pluma_taglist_plugin_set_property (GObject      *object,
+lapiz_taglist_plugin_set_property (GObject      *object,
                                    guint         prop_id,
                                    const GValue *value,
                                    GParamSpec   *pspec)
@@ -181,7 +181,7 @@ pluma_taglist_plugin_set_property (GObject      *object,
 }
 
 static void
-pluma_taglist_plugin_get_property (GObject    *object,
+lapiz_taglist_plugin_get_property (GObject    *object,
                                    guint       prop_id,
                                    GValue     *value,
                                    GParamSpec *pspec)
@@ -201,20 +201,20 @@ pluma_taglist_plugin_get_property (GObject    *object,
 }
 
 static void
-pluma_taglist_plugin_class_init (PlumaTaglistPluginClass *klass)
+lapiz_taglist_plugin_class_init (PlumaTaglistPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_taglist_plugin_finalize;
-	object_class->dispose = pluma_taglist_plugin_dispose;
-	object_class->set_property = pluma_taglist_plugin_set_property;
-	object_class->get_property = pluma_taglist_plugin_get_property;
+	object_class->finalize = lapiz_taglist_plugin_finalize;
+	object_class->dispose = lapiz_taglist_plugin_dispose;
+	object_class->set_property = lapiz_taglist_plugin_set_property;
+	object_class->get_property = lapiz_taglist_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_OBJECT, "object");
 }
 
 static void
-pluma_taglist_plugin_class_finalize (PlumaTaglistPluginClass *klass)
+lapiz_taglist_plugin_class_finalize (PlumaTaglistPluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -222,15 +222,15 @@ pluma_taglist_plugin_class_finalize (PlumaTaglistPluginClass *klass)
 static void
 peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-	iface->activate = pluma_taglist_plugin_activate;
-	iface->deactivate = pluma_taglist_plugin_deactivate;
-	iface->update_state = pluma_taglist_plugin_update_state;
+	iface->activate = lapiz_taglist_plugin_activate;
+	iface->deactivate = lapiz_taglist_plugin_deactivate;
+	iface->update_state = lapiz_taglist_plugin_update_state;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	pluma_taglist_plugin_register_type (G_TYPE_MODULE (module));
+	lapiz_taglist_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,

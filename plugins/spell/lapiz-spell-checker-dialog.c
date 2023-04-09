@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-checker-dialog.c
- * This file is part of pluma
+ * lapiz-spell-checker-dialog.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -34,9 +34,9 @@
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <pluma/pluma-utils.h>
-#include "pluma-spell-checker-dialog.h"
-#include "pluma-spell-marshal.h"
+#include <lapiz/lapiz-utils.h>
+#include "lapiz-spell-checker-dialog.h"
+#include "lapiz-spell-marshal.h"
 
 struct _PlumaSpellCheckerDialog
 {
@@ -106,10 +106,10 @@ static void	suggestions_list_row_activated_handler		(GtkTreeView *view,
 
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(PlumaSpellCheckerDialog, pluma_spell_checker_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE(PlumaSpellCheckerDialog, lapiz_spell_checker_dialog, GTK_TYPE_WINDOW)
 
 static void
-pluma_spell_checker_dialog_dispose (GObject *object)
+lapiz_spell_checker_dialog_dispose (GObject *object)
 {
 	PlumaSpellCheckerDialog *dlg = PLUMA_SPELL_CHECKER_DIALOG (object);
 
@@ -125,17 +125,17 @@ pluma_spell_checker_dialog_dispose (GObject *object)
 		dlg->misspelled_word = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_spell_checker_dialog_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_spell_checker_dialog_parent_class)->dispose (object);
 }
 
 static void
-pluma_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
+lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 {
 	GObjectClass *object_class;
 
 	object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = pluma_spell_checker_dialog_dispose;
+	object_class->dispose = lapiz_spell_checker_dialog_dispose;
 
 	signals[IGNORE] =
 		g_signal_new ("ignore",
@@ -143,7 +143,7 @@ pluma_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, ignore),
 			      NULL, NULL,
-			      pluma_marshal_VOID__STRING,
+			      lapiz_marshal_VOID__STRING,
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRING);
@@ -154,7 +154,7 @@ pluma_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, ignore_all),
 			      NULL, NULL,
-			      pluma_marshal_VOID__STRING,
+			      lapiz_marshal_VOID__STRING,
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRING);
@@ -165,7 +165,7 @@ pluma_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, change),
 			      NULL, NULL,
-			      pluma_marshal_VOID__STRING_STRING,
+			      lapiz_marshal_VOID__STRING_STRING,
 			      G_TYPE_NONE,
 			      2,
 			      G_TYPE_STRING,
@@ -177,7 +177,7 @@ pluma_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, change_all),
 			      NULL, NULL,
-			      pluma_marshal_VOID__STRING_STRING,
+			      lapiz_marshal_VOID__STRING_STRING,
 			      G_TYPE_NONE,
 			      2,
 			      G_TYPE_STRING,
@@ -189,7 +189,7 @@ pluma_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, add_word_to_personal),
 			      NULL, NULL,
-			      pluma_marshal_VOID__STRING,
+			      lapiz_marshal_VOID__STRING,
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRING);
@@ -223,7 +223,7 @@ create_dialog (PlumaSpellCheckerDialog *dlg,
 	dlg->misspelled_word = NULL;
 
 	ui_file = g_build_filename (data_dir, "spell-checker.ui", NULL);
-	ret = pluma_utils_get_ui_objects (ui_file,
+	ret = lapiz_utils_get_ui_objects (ui_file,
 		root_objects,
 		&error_widget,
 
@@ -324,12 +324,12 @@ create_dialog (PlumaSpellCheckerDialog *dlg,
 }
 
 static void
-pluma_spell_checker_dialog_init (PlumaSpellCheckerDialog *dlg)
+lapiz_spell_checker_dialog_init (PlumaSpellCheckerDialog *dlg)
 {
 }
 
 GtkWidget *
-pluma_spell_checker_dialog_new (const gchar *data_dir)
+lapiz_spell_checker_dialog_new (const gchar *data_dir)
 {
 	PlumaSpellCheckerDialog *dlg;
 
@@ -344,7 +344,7 @@ pluma_spell_checker_dialog_new (const gchar *data_dir)
 }
 
 GtkWidget *
-pluma_spell_checker_dialog_new_from_spell_checker (PlumaSpellChecker *spell,
+lapiz_spell_checker_dialog_new_from_spell_checker (PlumaSpellChecker *spell,
 						   const gchar *data_dir)
 {
 	PlumaSpellCheckerDialog *dlg;
@@ -358,13 +358,13 @@ pluma_spell_checker_dialog_new_from_spell_checker (PlumaSpellChecker *spell,
 
 	create_dialog (dlg, data_dir);
 
-	pluma_spell_checker_dialog_set_spell_checker (dlg, spell);
+	lapiz_spell_checker_dialog_set_spell_checker (dlg, spell);
 
 	return GTK_WIDGET (dlg);
 }
 
 void
-pluma_spell_checker_dialog_set_spell_checker (PlumaSpellCheckerDialog *dlg, PlumaSpellChecker *spell)
+lapiz_spell_checker_dialog_set_spell_checker (PlumaSpellCheckerDialog *dlg, PlumaSpellChecker *spell)
 {
 	const PlumaSpellCheckerLanguage* language;
 	const gchar *lang;
@@ -379,16 +379,16 @@ pluma_spell_checker_dialog_set_spell_checker (PlumaSpellCheckerDialog *dlg, Plum
 	dlg->spell_checker = spell;
 	g_object_ref (dlg->spell_checker);
 
-	language = pluma_spell_checker_get_language (dlg->spell_checker);
+	language = lapiz_spell_checker_get_language (dlg->spell_checker);
 
-	lang = pluma_spell_checker_language_to_string (language);
+	lang = lapiz_spell_checker_language_to_string (language);
 	tmp = g_strdup_printf("<b>%s</b>", lang);
 
 	gtk_label_set_label (GTK_LABEL (dlg->language_label), tmp);
 	g_free (tmp);
 
 	if (dlg->misspelled_word != NULL)
-		pluma_spell_checker_dialog_set_misspelled_word (dlg, dlg->misspelled_word, -1);
+		lapiz_spell_checker_dialog_set_misspelled_word (dlg, dlg->misspelled_word, -1);
 	else
 		gtk_list_store_clear (GTK_LIST_STORE (dlg->suggestions_list_model));
 
@@ -396,7 +396,7 @@ pluma_spell_checker_dialog_set_spell_checker (PlumaSpellCheckerDialog *dlg, Plum
 }
 
 void
-pluma_spell_checker_dialog_set_misspelled_word (PlumaSpellCheckerDialog *dlg,
+lapiz_spell_checker_dialog_set_misspelled_word (PlumaSpellCheckerDialog *dlg,
 						const gchar             *word,
 						gint                     len)
 {
@@ -407,7 +407,7 @@ pluma_spell_checker_dialog_set_misspelled_word (PlumaSpellCheckerDialog *dlg,
 	g_return_if_fail (word != NULL);
 
 	g_return_if_fail (dlg->spell_checker != NULL);
-	g_return_if_fail (!pluma_spell_checker_check_word (dlg->spell_checker, word, -1));
+	g_return_if_fail (!lapiz_spell_checker_check_word (dlg->spell_checker, word, -1));
 
 	/* build_suggestions_list */
 	if (dlg->misspelled_word != NULL)
@@ -419,7 +419,7 @@ pluma_spell_checker_dialog_set_misspelled_word (PlumaSpellCheckerDialog *dlg,
 	gtk_label_set_label (GTK_LABEL (dlg->misspelled_word_label), tmp);
 	g_free (tmp);
 
-	sug = pluma_spell_checker_get_suggestions (dlg->spell_checker,
+	sug = lapiz_spell_checker_get_suggestions (dlg->spell_checker,
 		       				   dlg->misspelled_word,
 		       				   -1);
 
@@ -551,7 +551,7 @@ check_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 	len = strlen (word);
 	g_return_if_fail (len > 0);
 
-	if (pluma_spell_checker_check_word (dlg->spell_checker, word, len))
+	if (lapiz_spell_checker_check_word (dlg->spell_checker, word, len))
 	{
 		GtkListStore *store;
 		GtkTreeIter iter;
@@ -571,7 +571,7 @@ check_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 	{
 		GSList *sug;
 
-		sug = pluma_spell_checker_get_suggestions (dlg->spell_checker,
+		sug = lapiz_spell_checker_get_suggestions (dlg->spell_checker,
 							   word,
 							   len);
 
@@ -591,7 +591,7 @@ add_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg
 	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
-	pluma_spell_checker_add_word_to_personal (dlg->spell_checker,
+	lapiz_spell_checker_add_word_to_personal (dlg->spell_checker,
 						  dlg->misspelled_word,
 						  -1);
 
@@ -625,7 +625,7 @@ ignore_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
-	pluma_spell_checker_add_word_to_session (dlg->spell_checker,
+	lapiz_spell_checker_add_word_to_session (dlg->spell_checker,
 						 dlg->misspelled_word,
 						 -1);
 
@@ -651,7 +651,7 @@ change_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
 	g_return_if_fail (*entry_text != '\0');
 	change = g_strdup (entry_text);
 
-	pluma_spell_checker_set_correction (dlg->spell_checker,
+	lapiz_spell_checker_set_correction (dlg->spell_checker,
 					    dlg->misspelled_word, -1,
 					    change, -1);
 
@@ -690,7 +690,7 @@ change_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 	g_return_if_fail (*entry_text != '\0');
 	change = g_strdup (entry_text);
 
-	pluma_spell_checker_set_correction (dlg->spell_checker,
+	lapiz_spell_checker_set_correction (dlg->spell_checker,
 					    dlg->misspelled_word, -1,
 					    change, -1);
 
@@ -703,7 +703,7 @@ change_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 }
 
 void
-pluma_spell_checker_dialog_set_completed (PlumaSpellCheckerDialog *dlg)
+lapiz_spell_checker_dialog_set_completed (PlumaSpellCheckerDialog *dlg)
 {
 	gchar *tmp;
 

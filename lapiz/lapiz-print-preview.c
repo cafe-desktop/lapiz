@@ -1,5 +1,5 @@
 /*
- * pluma-print-preview.c
+ * lapiz-print-preview.c
  *
  * Copyright (C) 2008 Paolo Borelli
  *
@@ -20,11 +20,11 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
- * $Id: pluma-commands-search.c 5931 2007-09-25 20:05:40Z pborelli $
+ * $Id: lapiz-commands-search.c 5931 2007-09-25 20:05:40Z pborelli $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -38,7 +38,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <cairo-pdf.h>
 
-#include "pluma-print-preview.h"
+#include "lapiz-print-preview.h"
 
 #define PRINTER_DPI (72.)
 
@@ -83,10 +83,10 @@ struct _PlumaPrintPreviewPrivate
 	guint cur_page;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPrintPreview, pluma_print_preview, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaPrintPreview, lapiz_print_preview, GTK_TYPE_BOX)
 
 static void
-pluma_print_preview_get_property (GObject    *object,
+lapiz_print_preview_get_property (GObject    *object,
 				  guint       prop_id,
 				  GValue     *value,
 				  GParamSpec *pspec)
@@ -102,7 +102,7 @@ pluma_print_preview_get_property (GObject    *object,
 }
 
 static void
-pluma_print_preview_set_property (GObject      *object,
+lapiz_print_preview_set_property (GObject      *object,
 				  guint	        prop_id,
 				  const GValue *value,
 				  GParamSpec   *pspec)
@@ -118,15 +118,15 @@ pluma_print_preview_set_property (GObject      *object,
 }
 
 static void
-pluma_print_preview_finalize (GObject *object)
+lapiz_print_preview_finalize (GObject *object)
 {
 	//PlumaPrintPreview *preview = PLUMA_PRINT_PREVIEW (object);
 
-	G_OBJECT_CLASS (pluma_print_preview_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_print_preview_parent_class)->finalize (object);
 }
 
 static void
-pluma_print_preview_grab_focus (GtkWidget *widget)
+lapiz_print_preview_grab_focus (GtkWidget *widget)
 {
 	PlumaPrintPreview *preview;
 
@@ -136,7 +136,7 @@ pluma_print_preview_grab_focus (GtkWidget *widget)
 }
 
 static void
-pluma_print_preview_class_init (PlumaPrintPreviewClass *klass)
+lapiz_print_preview_class_init (PlumaPrintPreviewClass *klass)
 {
 	GObjectClass *object_class;
 	GtkWidgetClass *widget_class;
@@ -144,11 +144,11 @@ pluma_print_preview_class_init (PlumaPrintPreviewClass *klass)
 	object_class = G_OBJECT_CLASS (klass);
 	widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->get_property = pluma_print_preview_get_property;
-	object_class->set_property = pluma_print_preview_set_property;
-	object_class->finalize = pluma_print_preview_finalize;
+	object_class->get_property = lapiz_print_preview_get_property;
+	object_class->set_property = lapiz_print_preview_set_property;
+	object_class->finalize = lapiz_print_preview_finalize;
 
-	widget_class->grab_focus = pluma_print_preview_grab_focus;
+	widget_class->grab_focus = lapiz_print_preview_grab_focus;
 }
 
 static void
@@ -1001,11 +1001,11 @@ create_preview_layout (PlumaPrintPreview *preview)
 }
 
 static void
-pluma_print_preview_init (PlumaPrintPreview *preview)
+lapiz_print_preview_init (PlumaPrintPreview *preview)
 {
 	PlumaPrintPreviewPrivate *priv;
 
-	priv = pluma_print_preview_get_instance_private (preview);
+	priv = lapiz_print_preview_get_instance_private (preview);
 
 	preview->priv = priv;
 
@@ -1016,7 +1016,7 @@ pluma_print_preview_init (PlumaPrintPreview *preview)
 	GtkStyleContext *context;
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (preview));
-	gtk_style_context_add_class (context, "pluma-print-preview");
+	gtk_style_context_add_class (context, "lapiz-print-preview");
 	gtk_orientable_set_orientation (GTK_ORIENTABLE (preview),
 	                                GTK_ORIENTATION_VERTICAL);
 
@@ -1304,7 +1304,7 @@ create_preview_surface (PlumaPrintPreview *preview,
 }
 
 GtkWidget *
-pluma_print_preview_new (GtkPrintOperation        *op,
+lapiz_print_preview_new (GtkPrintOperation        *op,
 			 GtkPrintOperationPreview *gtk_preview,
 			 GtkPrintContext          *context)
 {

@@ -8,32 +8,32 @@ AM_CPPFLAGS = \
 	$(WARN_CFLAGS)
 
 BUILT_SOURCES = \
-	pluma-file-browser-enum-types.h		\
-	pluma-file-browser-enum-types.c		\
-	pluma-file-browser-marshal.h 		\
-	pluma-file-browser-marshal.c
+	lapiz-file-browser-enum-types.h		\
+	lapiz-file-browser-enum-types.c		\
+	lapiz-file-browser-marshal.h 		\
+	lapiz-file-browser-marshal.c
 
 plugin_LTLIBRARIES = libfilebrowser.la
 
 NOINST_H_FILES = \
-	pluma-file-bookmarks-store.h 		\
-	pluma-file-browser-store.h 		\
-	pluma-file-browser-view.h 		\
-	pluma-file-browser-widget.h 		\
-	pluma-file-browser-error.h		\
-	pluma-file-browser-utils.h		\
-	pluma-file-browser-plugin.h		\
-	pluma-file-browser-messages.h
+	lapiz-file-bookmarks-store.h 		\
+	lapiz-file-browser-store.h 		\
+	lapiz-file-browser-view.h 		\
+	lapiz-file-browser-widget.h 		\
+	lapiz-file-browser-error.h		\
+	lapiz-file-browser-utils.h		\
+	lapiz-file-browser-plugin.h		\
+	lapiz-file-browser-messages.h
 
 libfilebrowser_la_SOURCES = \
 	$(BUILT_SOURCES) 			\
-	pluma-file-bookmarks-store.c 		\
-	pluma-file-browser-store.c 		\
-	pluma-file-browser-view.c 		\
-	pluma-file-browser-widget.c 		\
-	pluma-file-browser-utils.c 		\
-	pluma-file-browser-plugin.c		\
-	pluma-file-browser-messages.c		\
+	lapiz-file-bookmarks-store.c 		\
+	lapiz-file-browser-store.c 		\
+	lapiz-file-browser-view.c 		\
+	lapiz-file-browser-widget.c 		\
+	lapiz-file-browser-utils.c 		\
+	lapiz-file-browser-plugin.c		\
+	lapiz-file-browser-messages.c		\
 	$(NOINST_H_FILES)
 
 libfilebrowser_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
@@ -41,7 +41,7 @@ libfilebrowser_la_LIBADD = $(PLUMA_LIBS)
 
 # UI files (if you use ui for your plugin, list those files here)
 uidir = $(PLUMA_PLUGINS_DATA_DIR)/filebrowser
-ui_DATA = pluma-file-browser-widget-ui.xml
+ui_DATA = lapiz-file-browser-widget-ui.xml
 
 plugin_in_files = filebrowser.plugin.desktop.in
 plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
@@ -49,22 +49,22 @@ plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
 $(plugin_DATA): $(plugin_in_files)
 	$(AM_V_GEN) $(MSGFMT) --keyword=Name --keyword=Description --desktop --template $< -d $(top_srcdir)/po -o $@
 
-pluma-file-browser-enum-types.h: pluma-file-browser-enum-types.h.template $(NOINST_H_FILES) $(GLIB_MKENUMS)
-	(cd $(srcdir) && $(GLIB_MKENUMS) --template pluma-file-browser-enum-types.h.template $(NOINST_H_FILES)) > $@
+lapiz-file-browser-enum-types.h: lapiz-file-browser-enum-types.h.template $(NOINST_H_FILES) $(GLIB_MKENUMS)
+	(cd $(srcdir) && $(GLIB_MKENUMS) --template lapiz-file-browser-enum-types.h.template $(NOINST_H_FILES)) > $@
 
-pluma-file-browser-enum-types.c: pluma-file-browser-enum-types.c.template pluma-file-browser-enum-register.c.template $(NOINST_H_FILES) $(GLIB_MKENUMS)
+lapiz-file-browser-enum-types.c: lapiz-file-browser-enum-types.c.template lapiz-file-browser-enum-register.c.template $(NOINST_H_FILES) $(GLIB_MKENUMS)
 	$(AM_V_GEN) (cd $(srcdir) && \
-	$(GLIB_MKENUMS) --template pluma-file-browser-enum-types.c.template $(NOINST_H_FILES) && \
-	$(GLIB_MKENUMS) --template pluma-file-browser-enum-register.c.template $(NOINST_H_FILES)) > $@
+	$(GLIB_MKENUMS) --template lapiz-file-browser-enum-types.c.template $(NOINST_H_FILES) && \
+	$(GLIB_MKENUMS) --template lapiz-file-browser-enum-register.c.template $(NOINST_H_FILES)) > $@
 
-pluma-file-browser-marshal.h: pluma-file-browser-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=pluma_file_browser_marshal > $@
+lapiz-file-browser-marshal.h: lapiz-file-browser-marshal.list $(GLIB_GENMARSHAL)
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=lapiz_file_browser_marshal > $@
 
-pluma-file-browser-marshal.c: pluma-file-browser-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) echo "#include \"pluma-file-browser-marshal.h\"" > $@ && \
-	$(GLIB_GENMARSHAL) $< --body --prefix=pluma_file_browser_marshal >> $@
+lapiz-file-browser-marshal.c: lapiz-file-browser-marshal.list $(GLIB_GENMARSHAL)
+	$(AM_V_GEN) echo "#include \"lapiz-file-browser-marshal.h\"" > $@ && \
+	$(GLIB_GENMARSHAL) $< --body --prefix=lapiz_file_browser_marshal >> $@
 
-filebrowser_gschema_in = org.mate.pluma.plugins.filebrowser.gschema.xml.in
+filebrowser_gschema_in = org.mate.lapiz.plugins.filebrowser.gschema.xml.in
 gsettings_SCHEMAS = $(filebrowser_gschema_in:.xml.in=.xml)
 @GSETTINGS_RULES@
 
@@ -72,10 +72,10 @@ EXTRA_DIST = \
 	$(ui_DATA)					\
 	$(plugin_in_files)				\
 	$(filebrowser_gschema_in)			\
-	pluma-file-browser-enum-types.h.template	\
-	pluma-file-browser-enum-types.c.template	\
-	pluma-file-browser-enum-register.c.template	\
-	pluma-file-browser-marshal.list
+	lapiz-file-browser-enum-types.h.template	\
+	lapiz-file-browser-enum-types.c.template	\
+	lapiz-file-browser-enum-register.c.template	\
+	lapiz-file-browser-marshal.list
 
 CLEANFILES = \
 	$(plugin_DATA)		\

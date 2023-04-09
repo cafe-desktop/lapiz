@@ -1,6 +1,6 @@
 /*
- * pluma-progress-message-area.h
- * This file is part of pluma
+ * lapiz-progress-message-area.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,7 +38,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PROGRESS_MESSAGE_AREA              (pluma_progress_message_area_get_type())
+#define PLUMA_TYPE_PROGRESS_MESSAGE_AREA              (lapiz_progress_message_area_get_type())
 #define PLUMA_PROGRESS_MESSAGE_AREA(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageArea))
 #define PLUMA_PROGRESS_MESSAGE_AREA_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageAreaClass))
 #define PLUMA_IS_PROGRESS_MESSAGE_AREA(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PROGRESS_MESSAGE_AREA))
@@ -74,25 +74,25 @@ struct _PlumaProgressMessageAreaClass
 /*
  * Public methods
  */
-GType 		 pluma_progress_message_area_get_type 		(void) G_GNUC_CONST;
+GType 		 lapiz_progress_message_area_get_type 		(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_progress_message_area_new      		(const gchar              *image_id,
+GtkWidget	*lapiz_progress_message_area_new      		(const gchar              *image_id,
 								 const gchar              *markup,
 								 gboolean                  has_cancel);
 
-void		 pluma_progress_message_area_set_image		(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_image		(PlumaProgressMessageArea *area,
 								 const gchar              *image_id);
 
-void		 pluma_progress_message_area_set_markup		(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_markup		(PlumaProgressMessageArea *area,
 								 const gchar              *markup);
 
-void		 pluma_progress_message_area_set_text		(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_text		(PlumaProgressMessageArea *area,
 								 const gchar              *text);
 
-void		 pluma_progress_message_area_set_fraction	(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_fraction	(PlumaProgressMessageArea *area,
 								 gdouble                   fraction);
 
-void		 pluma_progress_message_area_pulse		(PlumaProgressMessageArea *area);
+void		 lapiz_progress_message_area_pulse		(PlumaProgressMessageArea *area);
 
 
 G_END_DECLS

@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-source-style-manager.c
+ * lapiz-source-style-manager.c
  *
  * Copyright (C) 2007 - Paolo Borelli and Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2007. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2007. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -40,19 +40,19 @@
 
 #include <gtk/gtk.h>
 
-#include "pluma-style-scheme-manager.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-dirs.h"
+#include "lapiz-style-scheme-manager.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-dirs.h"
 
 static GtkSourceStyleSchemeManager *style_scheme_manager = NULL;
 
 static gchar *
-get_pluma_styles_path (void)
+get_lapiz_styles_path (void)
 {
 	gchar *config_dir;
 	gchar *dir = NULL;
 
-	config_dir = pluma_dirs_get_user_config_dir ();
+	config_dir = lapiz_dirs_get_user_config_dir ();
 
 	if (config_dir != NULL)
 	{
@@ -66,11 +66,11 @@ get_pluma_styles_path (void)
 }
 
 static void
-add_pluma_styles_path (GtkSourceStyleSchemeManager *mgr)
+add_lapiz_styles_path (GtkSourceStyleSchemeManager *mgr)
 {
 	gchar *dir;
 
-	dir = get_pluma_styles_path();
+	dir = get_lapiz_styles_path();
 
 	if (dir != NULL)
 	{
@@ -80,12 +80,12 @@ add_pluma_styles_path (GtkSourceStyleSchemeManager *mgr)
 }
 
 GtkSourceStyleSchemeManager *
-pluma_get_style_scheme_manager (void)
+lapiz_get_style_scheme_manager (void)
 {
 	if (style_scheme_manager == NULL)
 	{
 		style_scheme_manager = gtk_source_style_scheme_manager_new ();
-		add_pluma_styles_path (style_scheme_manager);
+		add_lapiz_styles_path (style_scheme_manager);
 	}
 
 	return style_scheme_manager;
@@ -104,7 +104,7 @@ schemes_compare (gconstpointer a, gconstpointer b)
 }
 
 GSList *
-pluma_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *manager)
+lapiz_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *manager)
 {
 	const gchar * const * scheme_ids;
 	GSList *schemes = NULL;
@@ -132,7 +132,7 @@ pluma_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *man
 }
 
 gboolean
-_pluma_style_scheme_manager_scheme_is_pluma_user_scheme (GtkSourceStyleSchemeManager *manager,
+_lapiz_style_scheme_manager_scheme_is_lapiz_user_scheme (GtkSourceStyleSchemeManager *manager,
 							 const gchar                 *scheme_id)
 {
 	GtkSourceStyleScheme *scheme;
@@ -148,7 +148,7 @@ _pluma_style_scheme_manager_scheme_is_pluma_user_scheme (GtkSourceStyleSchemeMan
 	if (filename == NULL)
 		return FALSE;
 
-	dir = get_pluma_styles_path ();
+	dir = get_lapiz_styles_path ();
 
 	res = g_str_has_prefix (filename, dir);
 
@@ -234,7 +234,7 @@ file_copy (const gchar  *name,
 }
 
 /**
- * _pluma_style_scheme_manager_install_scheme:
+ * _lapiz_style_scheme_manager_install_scheme:
  * @manager: a #GtkSourceStyleSchemeManager
  * @fname: the file name of the style scheme to be installed
  *
@@ -249,7 +249,7 @@ file_copy (const gchar  *name,
  * Return value: the id of the installed scheme, %NULL otherwise.
  */
 const gchar *
-_pluma_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager,
+_lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager,
 					    const gchar                 *fname)
 {
 	gchar *new_file_name = NULL;
@@ -264,7 +264,7 @@ _pluma_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 	g_return_val_if_fail (fname != NULL, NULL);
 
 	dirname = g_path_get_dirname (fname);
-	styles_dir = get_pluma_styles_path();
+	styles_dir = get_lapiz_styles_path();
 
 	if (strcmp (dirname, styles_dir) != 0)
 	{
@@ -309,7 +309,7 @@ _pluma_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 		const gchar *filename;
 
 		scheme = gtk_source_style_scheme_manager_get_scheme (
-				pluma_get_style_scheme_manager (), *ids);
+				lapiz_get_style_scheme_manager (), *ids);
 
 		filename = gtk_source_style_scheme_get_filename (scheme);
 
@@ -333,7 +333,7 @@ _pluma_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 }
 
 /**
- * _pluma_style_scheme_manager_uninstall_scheme:
+ * _lapiz_style_scheme_manager_uninstall_scheme:
  * @manager: a #GtkSourceStyleSchemeManager
  * @id: the id of the style scheme to be uninstalled
  *
@@ -345,7 +345,7 @@ _pluma_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
  * Return value: %TRUE on success, %FALSE otherwise.
  */
 gboolean
-_pluma_style_scheme_manager_uninstall_scheme (GtkSourceStyleSchemeManager *manager,
+_lapiz_style_scheme_manager_uninstall_scheme (GtkSourceStyleSchemeManager *manager,
 					      const gchar                 *id)
 {
 	GtkSourceStyleScheme *scheme;

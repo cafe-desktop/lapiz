@@ -1,6 +1,6 @@
 /*
- * pluma-status-combo-box.c
- * This file is part of pluma
+ * lapiz-status-combo-box.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2008 - Jesse van den Kieboom
  *
@@ -20,7 +20,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "pluma-status-combo-box.h"
+#include "lapiz-status-combo-box.h"
 
 #define COMBO_BOX_TEXT_DATA "PlumaStatusComboBoxTextData"
 
@@ -54,16 +54,16 @@ enum
 
 static guint signals[NUM_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaStatusComboBox, pluma_status_combo_box, GTK_TYPE_EVENT_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaStatusComboBox, lapiz_status_combo_box, GTK_TYPE_EVENT_BOX)
 
 static void
-pluma_status_combo_box_finalize (GObject *object)
+lapiz_status_combo_box_finalize (GObject *object)
 {
-	G_OBJECT_CLASS (pluma_status_combo_box_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_status_combo_box_parent_class)->finalize (object);
 }
 
 static void
-pluma_status_combo_box_get_property (GObject    *object,
+lapiz_status_combo_box_get_property (GObject    *object,
 			             guint       prop_id,
 			             GValue     *value,
 			             GParamSpec *pspec)
@@ -73,7 +73,7 @@ pluma_status_combo_box_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_LABEL:
-			g_value_set_string (value, pluma_status_combo_box_get_label (obj));
+			g_value_set_string (value, lapiz_status_combo_box_get_label (obj));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -82,7 +82,7 @@ pluma_status_combo_box_get_property (GObject    *object,
 }
 
 static void
-pluma_status_combo_box_set_property (GObject      *object,
+lapiz_status_combo_box_set_property (GObject      *object,
 			             guint         prop_id,
 			             const GValue *value,
 			             GParamSpec   *pspec)
@@ -92,7 +92,7 @@ pluma_status_combo_box_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_LABEL:
-			pluma_status_combo_box_set_label (obj, g_value_get_string (value));
+			lapiz_status_combo_box_set_label (obj, g_value_get_string (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -101,7 +101,7 @@ pluma_status_combo_box_set_property (GObject      *object,
 }
 
 static void
-pluma_status_combo_box_constructed (GObject *object)
+lapiz_status_combo_box_constructed (GObject *object)
 {
 	PlumaStatusComboBox *combo = PLUMA_STATUS_COMBO_BOX (object);
 	GtkStyleContext *context;
@@ -128,7 +128,7 @@ pluma_status_combo_box_constructed (GObject *object)
 }
 
 static void
-pluma_status_combo_box_changed (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_changed (PlumaStatusComboBox *combo,
 				GtkMenuItem         *item)
 {
 	const gchar *text;
@@ -143,16 +143,16 @@ pluma_status_combo_box_changed (PlumaStatusComboBox *combo,
 }
 
 static void
-pluma_status_combo_box_class_init (PlumaStatusComboBoxClass *klass)
+lapiz_status_combo_box_class_init (PlumaStatusComboBoxClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_status_combo_box_finalize;
-	object_class->get_property = pluma_status_combo_box_get_property;
-	object_class->set_property = pluma_status_combo_box_set_property;
-	object_class->constructed = pluma_status_combo_box_constructed;
+	object_class->finalize = lapiz_status_combo_box_finalize;
+	object_class->get_property = lapiz_status_combo_box_get_property;
+	object_class->set_property = lapiz_status_combo_box_set_property;
+	object_class->constructed = lapiz_status_combo_box_constructed;
 
-	klass->changed = pluma_status_combo_box_changed;
+	klass->changed = lapiz_status_combo_box_changed;
 
 	signals[CHANGED] =
 	    g_signal_new ("changed",
@@ -232,9 +232,9 @@ set_shadow_type (PlumaStatusComboBox *combo)
 }
 
 static void
-pluma_status_combo_box_init (PlumaStatusComboBox *self)
+lapiz_status_combo_box_init (PlumaStatusComboBox *self)
 {
-	self->priv = pluma_status_combo_box_get_instance_private (self);
+	self->priv = lapiz_status_combo_box_get_instance_private (self);
 
 	gtk_event_box_set_visible_window (GTK_EVENT_BOX (self), TRUE);
 
@@ -242,7 +242,7 @@ pluma_status_combo_box_init (PlumaStatusComboBox *self)
 	gtk_widget_show (self->priv->frame);
 
 	self->priv->button = gtk_toggle_button_new ();
-	gtk_widget_set_name (self->priv->button, "pluma-status-combo-button");
+	gtk_widget_set_name (self->priv->button, "lapiz-status-combo-button");
 	gtk_button_set_relief (GTK_BUTTON (self->priv->button), GTK_RELIEF_NONE);
 	gtk_widget_show (self->priv->button);
 
@@ -294,22 +294,22 @@ pluma_status_combo_box_init (PlumaStatusComboBox *self)
 /* public functions */
 
 /**
- * pluma_status_combo_box_new:
+ * lapiz_status_combo_box_new:
  * @label: (allow-none):
  */
 GtkWidget *
-pluma_status_combo_box_new (const gchar *label)
+lapiz_status_combo_box_new (const gchar *label)
 {
 	return g_object_new (PLUMA_TYPE_STATUS_COMBO_BOX, "label", label, NULL);
 }
 
 /**
- * pluma_status_combo_box_set_label:
+ * lapiz_status_combo_box_set_label:
  * @combo:
  * @label: (allow-none):
  */
 void
-pluma_status_combo_box_set_label (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_set_label (PlumaStatusComboBox *combo,
 				  const gchar         *label)
 {
 	gchar *text;
@@ -322,7 +322,7 @@ pluma_status_combo_box_set_label (PlumaStatusComboBox *combo,
 }
 
 const gchar *
-pluma_status_combo_box_get_label (PlumaStatusComboBox *combo)
+lapiz_status_combo_box_get_label (PlumaStatusComboBox *combo)
 {
 	g_return_val_if_fail (PLUMA_IS_STATUS_COMBO_BOX (combo), NULL);
 
@@ -333,17 +333,17 @@ static void
 item_activated (GtkMenuItem         *item,
 		PlumaStatusComboBox *combo)
 {
-	pluma_status_combo_box_set_item (combo, item);
+	lapiz_status_combo_box_set_item (combo, item);
 }
 
 /**
- * pluma_status_combo_box_add_item:
+ * lapiz_status_combo_box_add_item:
  * @combo:
  * @item:
  * @text: (allow-none):
  */
 void
-pluma_status_combo_box_add_item (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_add_item (PlumaStatusComboBox *combo,
 				 GtkMenuItem         *item,
 				 const gchar         *text)
 {
@@ -352,12 +352,12 @@ pluma_status_combo_box_add_item (PlumaStatusComboBox *combo,
 
 	gtk_menu_shell_append (GTK_MENU_SHELL (combo->priv->menu), GTK_WIDGET (item));
 
-	pluma_status_combo_box_set_item_text (combo, item, text);
+	lapiz_status_combo_box_set_item_text (combo, item, text);
 	g_signal_connect (item, "activate", G_CALLBACK (item_activated), combo);
 }
 
 void
-pluma_status_combo_box_remove_item (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_remove_item (PlumaStatusComboBox *combo,
 				    GtkMenuItem         *item)
 {
 	g_return_if_fail (PLUMA_IS_STATUS_COMBO_BOX (combo));
@@ -368,13 +368,13 @@ pluma_status_combo_box_remove_item (PlumaStatusComboBox *combo,
 }
 
 /**
- * pluma_status_combo_box_get_items:
+ * lapiz_status_combo_box_get_items:
  * @combo:
  *
  * Returns: (element-type Gtk.Widget) (transfer container):
  */
 GList *
-pluma_status_combo_box_get_items (PlumaStatusComboBox *combo)
+lapiz_status_combo_box_get_items (PlumaStatusComboBox *combo)
 {
 	g_return_val_if_fail (PLUMA_IS_STATUS_COMBO_BOX (combo), NULL);
 
@@ -382,7 +382,7 @@ pluma_status_combo_box_get_items (PlumaStatusComboBox *combo)
 }
 
 const gchar *
-pluma_status_combo_box_get_item_text (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_get_item_text (PlumaStatusComboBox *combo,
 				      GtkMenuItem	  *item)
 {
 	const gchar *ret = NULL;
@@ -396,13 +396,13 @@ pluma_status_combo_box_get_item_text (PlumaStatusComboBox *combo,
 }
 
 /**
- * pluma_status_combo_box_set_item_text:
+ * lapiz_status_combo_box_set_item_text:
  * @combo:
  * @item:
  * @text: (allow-none):
  */
 void
-pluma_status_combo_box_set_item_text (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_set_item_text (PlumaStatusComboBox *combo,
 				      GtkMenuItem	  *item,
 				      const gchar         *text)
 {
@@ -416,7 +416,7 @@ pluma_status_combo_box_set_item_text (PlumaStatusComboBox *combo,
 }
 
 void
-pluma_status_combo_box_set_item (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_set_item (PlumaStatusComboBox *combo,
 				 GtkMenuItem         *item)
 {
 	g_return_if_fail (PLUMA_IS_STATUS_COMBO_BOX (combo));
@@ -426,7 +426,7 @@ pluma_status_combo_box_set_item (PlumaStatusComboBox *combo,
 }
 
 GtkLabel *
-pluma_status_combo_box_get_item_label (PlumaStatusComboBox *combo)
+lapiz_status_combo_box_get_item_label (PlumaStatusComboBox *combo)
 {
 	g_return_val_if_fail (PLUMA_IS_STATUS_COMBO_BOX (combo), NULL);
 

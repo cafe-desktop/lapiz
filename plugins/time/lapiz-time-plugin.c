@@ -1,5 +1,5 @@
 /*
- * pluma-time-plugin.c
+ * lapiz-time-plugin.c
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -33,8 +33,8 @@
 #include <string.h>
 #include <time.h>
 
-#include "pluma-time-plugin.h"
-#include <pluma/pluma-help.h>
+#include "lapiz-time-plugin.h"
+#include <lapiz/lapiz-help.h>
 
 #include <glib/gi18n-lib.h>
 #include <glib.h>
@@ -43,14 +43,14 @@
 #include <libpeas/peas-activatable.h>
 #include <libpeas-gtk/peas-gtk-configurable.h>
 
-#include <pluma/pluma-window.h>
-#include <pluma/pluma-debug.h>
-#include <pluma/pluma-utils.h>
+#include <lapiz/lapiz-window.h>
+#include <lapiz/lapiz-debug.h>
+#include <lapiz/lapiz-utils.h>
 
 #define MENU_PATH "/MenuBar/EditMenu/EditOps_4"
 
 /* GSettings keys */
-#define TIME_SCHEMA			"org.mate.pluma.plugins.time"
+#define TIME_SCHEMA			"org.mate.lapiz.plugins.time"
 #define PROMPT_TYPE_KEY		"prompt-type"
 #define SELECTED_FORMAT_KEY	"selected-format"
 #define CUSTOM_FORMAT_KEY	"custom-format"
@@ -167,7 +167,7 @@ static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 static void peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaTimePlugin,
-                                pluma_time_plugin,
+                                lapiz_time_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaTimePlugin)
@@ -191,33 +191,33 @@ static const GtkActionEntry action_entries[] =
 };
 
 static void
-pluma_time_plugin_init (PlumaTimePlugin *plugin)
+lapiz_time_plugin_init (PlumaTimePlugin *plugin)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin initializing");
 
-	plugin->priv = pluma_time_plugin_get_instance_private (plugin);
+	plugin->priv = lapiz_time_plugin_get_instance_private (plugin);
 
 	plugin->priv->settings = g_settings_new (TIME_SCHEMA);
 }
 
 static void
-pluma_time_plugin_finalize (GObject *object)
+lapiz_time_plugin_finalize (GObject *object)
 {
 	PlumaTimePlugin *plugin = PLUMA_TIME_PLUGIN (object);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin finalizing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin finalizing");
 
 	g_object_unref (G_OBJECT (plugin->priv->settings));
 
-	G_OBJECT_CLASS (pluma_time_plugin_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_time_plugin_parent_class)->finalize (object);
 }
 
 static void
-pluma_time_plugin_dispose (GObject *object)
+lapiz_time_plugin_dispose (GObject *object)
 {
 	PlumaTimePlugin *plugin = PLUMA_TIME_PLUGIN (object);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -231,7 +231,7 @@ pluma_time_plugin_dispose (GObject *object)
 		plugin->priv->action_group = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_time_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_time_plugin_parent_class)->dispose (object);
 }
 
 static void
@@ -241,12 +241,12 @@ update_ui (PlumaTimePluginPrivate *data)
 	PlumaView *view;
 	GtkAction *action;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	window = PLUMA_WINDOW (data->window);
-	view = pluma_window_get_active_view (window);
+	view = lapiz_window_get_active_view (window);
 
-	pluma_debug_message (DEBUG_PLUGINS, "View: %p", view);
+	lapiz_debug_message (DEBUG_PLUGINS, "View: %p", view);
 
 	action = gtk_action_group_get_action (data->action_group,
 					      "InsertDateAndTime");
@@ -256,20 +256,20 @@ update_ui (PlumaTimePluginPrivate *data)
 }
 
 static void
-pluma_time_plugin_activate (PeasActivatable *activatable)
+lapiz_time_plugin_activate (PeasActivatable *activatable)
 {
 	PlumaTimePlugin *plugin;
 	PlumaTimePluginPrivate *data;
 	PlumaWindow *window;
 	GtkUIManager *manager;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	plugin = PLUMA_TIME_PLUGIN (activatable);
 	data = plugin->priv;
 	window = PLUMA_WINDOW (data->window);
 
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 
 	data->action_group = gtk_action_group_new ("PlumaTimePluginActions");
 	gtk_action_group_set_translation_domain (data->action_group,
@@ -295,27 +295,27 @@ pluma_time_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-pluma_time_plugin_deactivate (PeasActivatable *activatable)
+lapiz_time_plugin_deactivate (PeasActivatable *activatable)
 {
 	PlumaTimePluginPrivate *data;
 	PlumaWindow *window;
 	GtkUIManager *manager;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	data = PLUMA_TIME_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (data->window);
 
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 
 	gtk_ui_manager_remove_ui (manager, data->ui_id);
 	gtk_ui_manager_remove_action_group (manager, data->action_group);
 }
 
 static void
-pluma_time_plugin_update_state (PeasActivatable *activatable)
+lapiz_time_plugin_update_state (PeasActivatable *activatable)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	update_ui (PLUMA_TIME_PLUGIN (activatable)->priv);
 }
@@ -413,7 +413,7 @@ get_time (const gchar* format)
   	size_t out_length = 0;
 	gchar *locale_format;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (format != NULL, NULL);
 
@@ -458,7 +458,7 @@ configure_dialog_destroyed (GtkWidget *widget,
 {
 	TimeConfigureDialog *dialog = (TimeConfigureDialog *) data;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	g_object_unref (dialog->settings);
 	g_slice_free (TimeConfigureDialog, data);
@@ -468,7 +468,7 @@ static void
 choose_format_dialog_destroyed (GtkWidget *widget,
                                 gpointer   data)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	g_slice_free (ChooseFormatDialog, data);
 }
@@ -483,7 +483,7 @@ create_model (GtkWidget       *listview,
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	/* create list store */
 	store = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
@@ -506,7 +506,7 @@ create_model (GtkWidget       *listview,
 
 		str = get_time (formats[i]);
 
-		pluma_debug_message (DEBUG_PLUGINS, "%d : %s", i, str);
+		lapiz_debug_message (DEBUG_PLUGINS, "%d : %s", i, str);
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
 				    COLUMN_FORMATS, str,
@@ -537,7 +537,7 @@ scroll_to_selected (GtkTreeView *tree_view)
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (tree_view);
 	g_return_if_fail (model != NULL);
@@ -567,7 +567,7 @@ create_formats_list (GtkWidget       *listview,
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (listview != NULL);
 	g_return_if_fail (sel_format != NULL);
@@ -601,7 +601,7 @@ updated_custom_format_example (GtkEntry *format_entry,
 	gchar *str;
 	gchar *escaped_time;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (GTK_IS_ENTRY (format_entry));
 	g_return_if_fail (GTK_IS_LABEL (format_example));
@@ -624,7 +624,7 @@ static void
 choose_format_dialog_button_toggled (GtkToggleButton *button,
 				     ChooseFormatDialog *dialog)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
 	{
@@ -648,7 +648,7 @@ choose_format_dialog_button_toggled (GtkToggleButton *button,
 static void
 configure_dialog_button_toggled (GtkToggleButton *button, TimeConfigureDialog *dialog)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
 	{
@@ -688,7 +688,7 @@ get_format_from_list (GtkWidget *listview)
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (listview));
 	g_return_val_if_fail (model != NULL, 0);
@@ -702,7 +702,7 @@ get_format_from_list (GtkWidget *listview)
 
 		gtk_tree_model_get (model, &iter, COLUMN_INDEX, &selected_value, -1);
 
-		pluma_debug_message (DEBUG_PLUGINS, "Sel value: %d", selected_value);
+		lapiz_debug_message (DEBUG_PLUGINS, "Sel value: %d", selected_value);
 
 	        return selected_value;
 	}
@@ -737,14 +737,14 @@ get_configure_dialog (PlumaTimePlugin *plugin)
 		NULL
 	};
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	dialog = g_slice_new (TimeConfigureDialog);
 	dialog->settings = g_object_ref (plugin->priv->settings);
 
 	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
-	ui_file = g_build_filename (data_dir, "pluma-time-setup-dialog.ui", NULL);
-	ret = pluma_utils_get_ui_objects (ui_file,
+	ui_file = g_build_filename (data_dir, "lapiz-time-setup-dialog.ui", NULL);
+	ret = lapiz_utils_get_ui_objects (ui_file,
 					  root_objects,
 					  &error_widget,
 					  "time_dialog_content", &dialog->content,
@@ -842,7 +842,7 @@ static void
 real_insert_time (GtkTextBuffer *buffer,
 		  const gchar   *the_time)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
+	lapiz_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
 
 	gtk_text_buffer_begin_user_action (buffer);
 
@@ -894,8 +894,8 @@ get_choose_format_dialog (GtkWindow                 *parent,
 	dialog->settings = plugin->priv->settings;
 
 	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
-	ui_file = g_build_filename (data_dir, "pluma-time-dialog.ui", NULL);
-	ret = pluma_utils_get_ui_objects (ui_file,
+	ui_file = g_build_filename (data_dir, "lapiz-time-dialog.ui", NULL);
+	ret = lapiz_utils_get_ui_objects (ui_file,
 					  NULL,
 					  &error_widget,
 					  "choose_format_dialog", &dialog->dialog,
@@ -917,7 +917,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 		gtk_window_set_transient_for (GTK_WINDOW (err_dialog), parent);
 		gtk_window_set_modal (GTK_WINDOW (err_dialog), TRUE);
 		gtk_window_set_destroy_with_parent (GTK_WINDOW (err_dialog), TRUE);
-		pluma_dialog_add_button (GTK_DIALOG (err_dialog), _("_OK"), "gtk-ok", GTK_RESPONSE_ACCEPT);
+		lapiz_dialog_add_button (GTK_DIALOG (err_dialog), _("_OK"), "gtk-ok", GTK_RESPONSE_ACCEPT);
 
 		if (wg != NULL)
 			gtk_window_group_add_window (wg, GTK_WINDOW (err_dialog));
@@ -1016,17 +1016,17 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 	{
 		case GTK_RESPONSE_HELP:
 		{
-			pluma_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");
-			pluma_help_display (GTK_WINDOW (widget),
+			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");
+			lapiz_help_display (GTK_WINDOW (widget),
 					    NULL,
-					    "pluma-insert-date-time-plugin");
+					    "lapiz-insert-date-time-plugin");
 			break;
 		}
 		case GTK_RESPONSE_OK:
 		{
 			gchar *the_time;
 
-			pluma_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
+			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
 
 			/* Get the user's chosen format */
 			if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
@@ -1059,7 +1059,7 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 			break;
 		}
 		case GTK_RESPONSE_CANCEL:
-			pluma_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CANCEL");
+			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CANCEL");
 			gtk_widget_destroy (dialog->dialog);
 	}
 }
@@ -1073,10 +1073,10 @@ time_cb (GtkAction  *action,
 	gchar *the_time = NULL;
 	PlumaTimePluginPromptType prompt_type;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	window = PLUMA_WINDOW (plugin->priv->window);
-	buffer = GTK_TEXT_BUFFER (pluma_window_get_active_document (window));
+	buffer = GTK_TEXT_BUFFER (lapiz_window_get_active_document (window));
 	g_return_if_fail (buffer != NULL);
 
 	prompt_type = get_prompt_type (plugin);
@@ -1124,7 +1124,7 @@ time_cb (GtkAction  *action,
 }
 
 static GtkWidget *
-pluma_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
+lapiz_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
 {
 	TimeConfigureDialog *dialog;
 
@@ -1134,7 +1134,7 @@ pluma_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
 }
 
 static void
-pluma_time_plugin_set_property (GObject      *object,
+lapiz_time_plugin_set_property (GObject      *object,
                                 guint         prop_id,
                                 const GValue *value,
                                 GParamSpec   *pspec)
@@ -1154,7 +1154,7 @@ pluma_time_plugin_set_property (GObject      *object,
 }
 
 static void
-pluma_time_plugin_get_property (GObject    *object,
+lapiz_time_plugin_get_property (GObject    *object,
                                 guint       prop_id,
                                 GValue     *value,
                                 GParamSpec *pspec)
@@ -1174,20 +1174,20 @@ pluma_time_plugin_get_property (GObject    *object,
 }
 
 static void
-pluma_time_plugin_class_init (PlumaTimePluginClass *klass)
+lapiz_time_plugin_class_init (PlumaTimePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_time_plugin_finalize;
-	object_class->dispose = pluma_time_plugin_dispose;
-	object_class->set_property = pluma_time_plugin_set_property;
-	object_class->get_property = pluma_time_plugin_get_property;
+	object_class->finalize = lapiz_time_plugin_finalize;
+	object_class->dispose = lapiz_time_plugin_dispose;
+	object_class->set_property = lapiz_time_plugin_set_property;
+	object_class->get_property = lapiz_time_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_OBJECT, "object");
 }
 
 static void
-pluma_time_plugin_class_finalize (PlumaTimePluginClass *klass)
+lapiz_time_plugin_class_finalize (PlumaTimePluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -1195,21 +1195,21 @@ pluma_time_plugin_class_finalize (PlumaTimePluginClass *klass)
 static void
 peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-	iface->activate = pluma_time_plugin_activate;
-	iface->deactivate = pluma_time_plugin_deactivate;
-	iface->update_state = pluma_time_plugin_update_state;
+	iface->activate = lapiz_time_plugin_activate;
+	iface->deactivate = lapiz_time_plugin_deactivate;
+	iface->update_state = lapiz_time_plugin_update_state;
 }
 
 static void
 peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
 {
-	iface->create_configure_widget = pluma_time_plugin_create_configure_widget;
+	iface->create_configure_widget = lapiz_time_plugin_create_configure_widget;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	pluma_time_plugin_register_type (G_TYPE_MODULE (module));
+	lapiz_time_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,

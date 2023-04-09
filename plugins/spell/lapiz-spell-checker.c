@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-checker.c
- * This file is part of pluma
+ * lapiz-spell-checker.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2006 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -38,9 +38,9 @@
 #include <glib/gi18n.h>
 #include <glib.h>
 
-#include "pluma-spell-checker.h"
-#include "pluma-spell-utils.h"
-#include "pluma-spell-marshal.h"
+#include "lapiz-spell-checker.h"
+#include "lapiz-spell-utils.h"
+#include "lapiz-spell-marshal.h"
 
 struct _PlumaSpellChecker
 {
@@ -69,10 +69,10 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(PlumaSpellChecker, pluma_spell_checker, G_TYPE_OBJECT)
+G_DEFINE_TYPE(PlumaSpellChecker, lapiz_spell_checker, G_TYPE_OBJECT)
 
 static void
-pluma_spell_checker_set_property (GObject *object,
+lapiz_spell_checker_set_property (GObject *object,
 			   guint prop_id,
 			   const GValue *value,
 			   GParamSpec *pspec)
@@ -92,7 +92,7 @@ pluma_spell_checker_set_property (GObject *object,
 }
 
 static void
-pluma_spell_checker_get_property (GObject *object,
+lapiz_spell_checker_get_property (GObject *object,
 			   guint prop_id,
 			   GValue *value,
 			   GParamSpec *pspec)
@@ -111,7 +111,7 @@ pluma_spell_checker_get_property (GObject *object,
 }
 
 static void
-pluma_spell_checker_finalize (GObject *object)
+lapiz_spell_checker_finalize (GObject *object)
 {
 	PlumaSpellChecker *spell_checker;
 
@@ -125,20 +125,20 @@ pluma_spell_checker_finalize (GObject *object)
 	if (spell_checker->broker != NULL)
 		enchant_broker_free (spell_checker->broker);
 
-	G_OBJECT_CLASS (pluma_spell_checker_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_spell_checker_parent_class)->finalize (object);
 }
 
 static void
-pluma_spell_checker_class_init (PlumaSpellCheckerClass * klass)
+lapiz_spell_checker_class_init (PlumaSpellCheckerClass * klass)
 {
 	GObjectClass *object_class;
 
 	object_class = G_OBJECT_CLASS (klass);
 
-	object_class->set_property = pluma_spell_checker_set_property;
-	object_class->get_property = pluma_spell_checker_get_property;
+	object_class->set_property = lapiz_spell_checker_set_property;
+	object_class->get_property = lapiz_spell_checker_get_property;
 
-	object_class->finalize = pluma_spell_checker_finalize;
+	object_class->finalize = lapiz_spell_checker_finalize;
 
 	g_object_class_install_property (object_class,
 					 PROP_LANGUAGE,
@@ -153,7 +153,7 @@ pluma_spell_checker_class_init (PlumaSpellCheckerClass * klass)
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaSpellCheckerClass, add_word_to_personal),
 			  NULL, NULL,
-			  pluma_marshal_VOID__STRING_INT,
+			  lapiz_marshal_VOID__STRING_INT,
 			  G_TYPE_NONE,
 			  2,
 			  G_TYPE_STRING,
@@ -165,7 +165,7 @@ pluma_spell_checker_class_init (PlumaSpellCheckerClass * klass)
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaSpellCheckerClass, add_word_to_session),
 			  NULL, NULL,
-			  pluma_marshal_VOID__STRING_INT,
+			  lapiz_marshal_VOID__STRING_INT,
 			  G_TYPE_NONE,
 			  2,
 			  G_TYPE_STRING,
@@ -177,7 +177,7 @@ pluma_spell_checker_class_init (PlumaSpellCheckerClass * klass)
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaSpellCheckerClass, set_language),
 			  NULL, NULL,
-			  pluma_marshal_VOID__POINTER,
+			  lapiz_marshal_VOID__POINTER,
 			  G_TYPE_NONE,
 			  1,
 			  G_TYPE_POINTER);
@@ -188,13 +188,13 @@ pluma_spell_checker_class_init (PlumaSpellCheckerClass * klass)
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaSpellCheckerClass, clear_session),
 			  NULL, NULL,
-			  pluma_marshal_VOID__VOID,
+			  lapiz_marshal_VOID__VOID,
 			  G_TYPE_NONE,
 			  0);
 }
 
 static void
-pluma_spell_checker_init (PlumaSpellChecker *spell_checker)
+lapiz_spell_checker_init (PlumaSpellChecker *spell_checker)
 {
 	spell_checker->broker = enchant_broker_init ();
 	spell_checker->dict = NULL;
@@ -202,7 +202,7 @@ pluma_spell_checker_init (PlumaSpellChecker *spell_checker)
 }
 
 PlumaSpellChecker *
-pluma_spell_checker_new	(void)
+lapiz_spell_checker_new	(void)
 {
 	PlumaSpellChecker *spell;
 
@@ -238,7 +238,7 @@ lazy_init (PlumaSpellChecker               *spell,
 
 		while (lang_tags [i])
 		{
-			l = pluma_spell_checker_language_from_key (lang_tags [i]);
+			l = lapiz_spell_checker_language_from_key (lang_tags [i]);
 
 			if (l != NULL)
 			{
@@ -252,13 +252,13 @@ lazy_init (PlumaSpellChecker               *spell,
 
 	/* Second try to get a default language */
 	if (spell->active_lang == NULL)
-		spell->active_lang = pluma_spell_checker_language_from_key ("en_US");
+		spell->active_lang = lapiz_spell_checker_language_from_key ("en_US");
 
 	/* Last try to get a default language */
 	if (spell->active_lang == NULL)
 	{
 		const GSList *langs;
-		langs = pluma_spell_checker_get_available_languages ();
+		langs = lapiz_spell_checker_get_available_languages ();
 		if (langs != NULL)
 			spell->active_lang = (const PlumaSpellCheckerLanguage *)langs->data;
 	}
@@ -267,7 +267,7 @@ lazy_init (PlumaSpellChecker               *spell,
 	{
 		const gchar *key;
 
-		key = pluma_spell_checker_language_to_key (spell->active_lang);
+		key = lapiz_spell_checker_language_to_key (spell->active_lang);
 
 		spell->dict = enchant_broker_request_dict (spell->broker,
 							   key);
@@ -287,7 +287,7 @@ lazy_init (PlumaSpellChecker               *spell,
 }
 
 gboolean
-pluma_spell_checker_set_language (PlumaSpellChecker               *spell,
+lapiz_spell_checker_set_language (PlumaSpellChecker               *spell,
 				  const PlumaSpellCheckerLanguage *language)
 {
 	gboolean ret;
@@ -306,13 +306,13 @@ pluma_spell_checker_set_language (PlumaSpellChecker               *spell,
 		g_signal_emit (G_OBJECT (spell), signals[SET_LANGUAGE], 0, language);
 	else
 		g_warning ("Spell checker plugin: cannot use language %s.",
-		           pluma_spell_checker_language_to_string (language));
+		           lapiz_spell_checker_language_to_string (language));
 
 	return ret;
 }
 
 const PlumaSpellCheckerLanguage *
-pluma_spell_checker_get_language (PlumaSpellChecker *spell)
+lapiz_spell_checker_get_language (PlumaSpellChecker *spell)
 {
 	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), NULL);
 
@@ -323,7 +323,7 @@ pluma_spell_checker_get_language (PlumaSpellChecker *spell)
 }
 
 gboolean
-pluma_spell_checker_check_word (PlumaSpellChecker *spell,
+lapiz_spell_checker_check_word (PlumaSpellChecker *spell,
 				const gchar       *word,
 				gssize             len)
 {
@@ -339,10 +339,10 @@ pluma_spell_checker_check_word (PlumaSpellChecker *spell,
 	if (len < 0)
 		len = strlen (word);
 
-	if (strcmp (word, "pluma") == 0)
+	if (strcmp (word, "lapiz") == 0)
 		return TRUE;
 
-	if (pluma_spell_utils_is_digit (word, len))
+	if (lapiz_spell_utils_is_digit (word, len))
 		return TRUE;
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
@@ -376,7 +376,7 @@ pluma_spell_checker_check_word (PlumaSpellChecker *spell,
 
 /* return NULL on error or if no suggestions are found */
 GSList *
-pluma_spell_checker_get_suggestions (PlumaSpellChecker *spell,
+lapiz_spell_checker_get_suggestions (PlumaSpellChecker *spell,
 				     const gchar       *word,
 				     gssize             len)
 {
@@ -418,7 +418,7 @@ pluma_spell_checker_get_suggestions (PlumaSpellChecker *spell,
 }
 
 gboolean
-pluma_spell_checker_add_word_to_personal (PlumaSpellChecker *spell,
+lapiz_spell_checker_add_word_to_personal (PlumaSpellChecker *spell,
 					  const gchar       *word,
 					  gssize             len)
 {
@@ -442,7 +442,7 @@ pluma_spell_checker_add_word_to_personal (PlumaSpellChecker *spell,
 }
 
 gboolean
-pluma_spell_checker_add_word_to_session (PlumaSpellChecker *spell,
+lapiz_spell_checker_add_word_to_session (PlumaSpellChecker *spell,
 					 const gchar       *word,
 					 gssize             len)
 {
@@ -465,7 +465,7 @@ pluma_spell_checker_add_word_to_session (PlumaSpellChecker *spell,
 }
 
 gboolean
-pluma_spell_checker_clear_session (PlumaSpellChecker *spell)
+lapiz_spell_checker_clear_session (PlumaSpellChecker *spell)
 {
 	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), FALSE);
 
@@ -489,7 +489,7 @@ pluma_spell_checker_clear_session (PlumaSpellChecker *spell)
  * 'replacement'
  */
 gboolean
-pluma_spell_checker_set_correction (PlumaSpellChecker *spell,
+lapiz_spell_checker_set_correction (PlumaSpellChecker *spell,
 				    const gchar       *word,
 				    gssize             w_len,
 				    const gchar       *replacement,

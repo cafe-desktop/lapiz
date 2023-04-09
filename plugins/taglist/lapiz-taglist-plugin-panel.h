@@ -1,6 +1,6 @@
 /*
- * pluma-taglist-plugin-panel.h
- * This file is part of pluma
+ * lapiz-taglist-plugin-panel.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,14 +33,14 @@
 
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-window.h>
+#include <lapiz/lapiz-window.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_TAGLIST_PLUGIN_PANEL              (pluma_taglist_plugin_panel_get_type())
+#define PLUMA_TYPE_TAGLIST_PLUGIN_PANEL              (lapiz_taglist_plugin_panel_get_type())
 #define PLUMA_TAGLIST_PLUGIN_PANEL(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_TAGLIST_PLUGIN_PANEL, PlumaTaglistPluginPanel))
 #define PLUMA_TAGLIST_PLUGIN_PANEL_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_TAGLIST_PLUGIN_PANEL, PlumaTaglistPluginPanel const))
 #define PLUMA_TAGLIST_PLUGIN_PANEL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_TAGLIST_PLUGIN_PANEL, PlumaTaglistPluginPanelClass))
@@ -77,11 +77,11 @@ struct _PlumaTaglistPluginPanelClass
 /*
  * Public methods
  */
-void		 _pluma_taglist_plugin_panel_register_type	(GTypeModule *module);
+void		 _lapiz_taglist_plugin_panel_register_type	(GTypeModule *module);
 
-GType 		 pluma_taglist_plugin_panel_get_type		(void) G_GNUC_CONST;
+GType 		 lapiz_taglist_plugin_panel_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_taglist_plugin_panel_new 		(PlumaWindow *window,
+GtkWidget	*lapiz_taglist_plugin_panel_new 		(PlumaWindow *window,
 								 const gchar *data_dir);
 
 G_END_DECLS

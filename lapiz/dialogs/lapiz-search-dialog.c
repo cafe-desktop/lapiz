@@ -1,6 +1,6 @@
 /*
- * pluma-search-dialog.c
- * This file is part of pluma
+ * lapiz-search-dialog.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -37,11 +37,11 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "pluma-search-dialog.h"
-#include "pluma-history-entry.h"
-#include "pluma-utils.h"
-#include "pluma-marshal.h"
-#include "pluma-dirs.h"
+#include "lapiz-search-dialog.h"
+#include "lapiz-history-entry.h"
+#include "lapiz-utils.h"
+#include "lapiz-marshal.h"
+#include "lapiz-dirs.h"
 
 /* Signals */
 enum
@@ -76,7 +76,7 @@ struct _PlumaSearchDialogPrivate
 	gboolean   ui_error;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaSearchDialog, pluma_search_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaSearchDialog, lapiz_search_dialog, GTK_TYPE_DIALOG)
 
 enum
 {
@@ -85,7 +85,7 @@ enum
 };
 
 static void
-pluma_search_dialog_set_property (GObject      *object,
+lapiz_search_dialog_set_property (GObject      *object,
 				  guint         prop_id,
 				  const GValue *value,
 				  GParamSpec   *pspec)
@@ -95,7 +95,7 @@ pluma_search_dialog_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_SHOW_REPLACE:
-			pluma_search_dialog_set_show_replace (dlg,
+			lapiz_search_dialog_set_show_replace (dlg,
 							      g_value_get_boolean (value));
 			break;
 		default:
@@ -105,7 +105,7 @@ pluma_search_dialog_set_property (GObject      *object,
 }
 
 static void
-pluma_search_dialog_get_property (GObject    *object,
+lapiz_search_dialog_get_property (GObject    *object,
 				  guint       prop_id,
 				  GValue     *value,
 				  GParamSpec *pspec)
@@ -124,7 +124,7 @@ pluma_search_dialog_get_property (GObject    *object,
 }
 
 void
-pluma_search_dialog_present_with_time (PlumaSearchDialog *dialog,
+lapiz_search_dialog_present_with_time (PlumaSearchDialog *dialog,
 				       guint32            timestamp)
 {
 	g_return_if_fail (PLUMA_SEARCH_DIALOG (dialog));
@@ -137,19 +137,19 @@ pluma_search_dialog_present_with_time (PlumaSearchDialog *dialog,
 static gboolean
 show_replace (PlumaSearchDialog *dlg)
 {
-	pluma_search_dialog_set_show_replace (dlg, TRUE);
+	lapiz_search_dialog_set_show_replace (dlg, TRUE);
 
 	return TRUE;
 }
 
 static void
-pluma_search_dialog_class_init (PlumaSearchDialogClass *klass)
+lapiz_search_dialog_class_init (PlumaSearchDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkBindingSet *binding_set;
 
-	object_class->set_property = pluma_search_dialog_set_property;
-	object_class->get_property = pluma_search_dialog_get_property;
+	object_class->set_property = lapiz_search_dialog_set_property;
+	object_class->get_property = lapiz_search_dialog_get_property;
 
 	klass->show_replace = show_replace;
 
@@ -159,7 +159,7 @@ pluma_search_dialog_class_init (PlumaSearchDialogClass *klass)
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  	      G_STRUCT_OFFSET (PlumaSearchDialogClass, show_replace),
 			      NULL, NULL,
-			      pluma_marshal_BOOLEAN__VOID,
+			      lapiz_marshal_BOOLEAN__VOID,
 			      G_TYPE_BOOLEAN, 0);
 
 	g_object_class_install_property (object_class, PROP_SHOW_REPLACE,
@@ -193,7 +193,7 @@ insert_text_handler (GtkEditable *editable,
 	if (insert_text)
 		return;
 
-	escaped_text = pluma_utils_escape_search_text (text);
+	escaped_text = lapiz_utils_escape_search_text (text);
 
 	new_len = strlen (escaped_text);
 
@@ -257,8 +257,8 @@ response_handler (PlumaSearchDialog *dialog,
 			{
 				gchar *text;
 
-				text = pluma_utils_unescape_search_text (str);
-				pluma_history_entry_prepend_text
+				text = lapiz_utils_unescape_search_text (str);
+				lapiz_history_entry_prepend_text
 						(PLUMA_HISTORY_ENTRY (dialog->priv->replace_entry),
 						 text);
 
@@ -271,8 +271,8 @@ response_handler (PlumaSearchDialog *dialog,
 			{
 				gchar *text;
 
-				text = pluma_utils_unescape_search_text (str);
-				pluma_history_entry_prepend_text
+				text = lapiz_utils_unescape_search_text (str);
+				lapiz_history_entry_prepend_text
 						(PLUMA_HISTORY_ENTRY (dialog->priv->search_entry),
 						 text);
 
@@ -308,7 +308,7 @@ show_replace_widgets (PlumaSearchDialog *dlg,
 }
 
 static void
-pluma_search_dialog_init (PlumaSearchDialog *dlg)
+lapiz_search_dialog_init (PlumaSearchDialog *dlg)
 {
 	GtkWidget *content;
 	GtkWidget *error_widget;
@@ -319,21 +319,21 @@ pluma_search_dialog_init (PlumaSearchDialog *dlg)
 		NULL
 	};
 
-	dlg->priv = pluma_search_dialog_get_instance_private (dlg);
+	dlg->priv = lapiz_search_dialog_get_instance_private (dlg);
 
 	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
 
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_Close"), "window-close", GTK_RESPONSE_CANCEL);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Close"), "window-close", GTK_RESPONSE_CANCEL);
 
 	/* HIG defaults */
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
 	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			     2); /* 2 * 5 + 2 = 12 */
 
-	file = pluma_dirs_get_ui_file ("pluma-search-dialog.ui");
+	file = lapiz_dirs_get_ui_file ("lapiz-search-dialog.ui");
 
-	ret = pluma_utils_get_ui_objects (file,
+	ret = lapiz_utils_get_ui_objects (file,
 					  root_objects,
 					  &error_widget,
 					  "search_dialog_content", &content,
@@ -364,15 +364,15 @@ pluma_search_dialog_init (PlumaSearchDialog *dlg)
 		return;
 	}
 
-	dlg->priv->search_entry = pluma_history_entry_new ("history-search-for",
+	dlg->priv->search_entry = lapiz_history_entry_new ("history-search-for",
 							   TRUE);
 	gtk_widget_set_size_request (dlg->priv->search_entry, 300, -1);
-	pluma_history_entry_set_escape_func
+	lapiz_history_entry_set_escape_func
 			(PLUMA_HISTORY_ENTRY (dlg->priv->search_entry),
-			 (PlumaHistoryEntryEscapeFunc) pluma_utils_escape_search_text);
+			 (PlumaHistoryEntryEscapeFunc) lapiz_utils_escape_search_text);
 
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->search_entry), TRUE);
-	dlg->priv->search_text_entry = pluma_history_entry_get_entry
+	dlg->priv->search_text_entry = lapiz_history_entry_get_entry
 			(PLUMA_HISTORY_ENTRY (dlg->priv->search_entry));
 	gtk_entry_set_activates_default (GTK_ENTRY (dlg->priv->search_text_entry),
 					 TRUE);
@@ -382,14 +382,14 @@ pluma_search_dialog_init (PlumaSearchDialog *dlg)
 				 dlg->priv->search_label,
 				 GTK_POS_RIGHT, 1, 1);
 
-	dlg->priv->replace_entry = pluma_history_entry_new ("history-replace-with",
+	dlg->priv->replace_entry = lapiz_history_entry_new ("history-replace-with",
 							    TRUE);
-	pluma_history_entry_set_escape_func
+	lapiz_history_entry_set_escape_func
 			(PLUMA_HISTORY_ENTRY (dlg->priv->replace_entry),
-			 (PlumaHistoryEntryEscapeFunc) pluma_utils_escape_search_text);
+			 (PlumaHistoryEntryEscapeFunc) lapiz_utils_escape_search_text);
 
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->replace_entry), TRUE);
-	dlg->priv->replace_text_entry = pluma_history_entry_get_entry
+	dlg->priv->replace_text_entry = lapiz_history_entry_get_entry
 			(PLUMA_HISTORY_ENTRY (dlg->priv->replace_entry));
 	gtk_entry_set_activates_default (GTK_ENTRY (dlg->priv->replace_text_entry),
 					 TRUE);
@@ -408,7 +408,7 @@ pluma_search_dialog_init (PlumaSearchDialog *dlg)
 	gtk_button_set_image (GTK_BUTTON (dlg->priv->find_button), gtk_image_new_from_icon_name ("edit-find", GTK_ICON_SIZE_BUTTON));
 
 	dlg->priv->replace_all_button = gtk_button_new_with_mnemonic (_("Replace _All"));
-	dlg->priv->replace_button = pluma_gtk_button_new_with_icon (_("_Replace"),
+	dlg->priv->replace_button = lapiz_gtk_button_new_with_icon (_("_Replace"),
 								    "edit-find-replace");
 
 	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
@@ -463,7 +463,7 @@ pluma_search_dialog_init (PlumaSearchDialog *dlg)
 }
 
 GtkWidget *
-pluma_search_dialog_new (GtkWindow *parent,
+lapiz_search_dialog_new (GtkWindow *parent,
 			 gboolean   show_replace)
 {
 	PlumaSearchDialog *dlg;
@@ -485,7 +485,7 @@ pluma_search_dialog_new (GtkWindow *parent,
 }
 
 gboolean
-pluma_search_dialog_get_show_replace (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_show_replace (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), FALSE);
 
@@ -493,7 +493,7 @@ pluma_search_dialog_get_show_replace (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_show_replace (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_show_replace (PlumaSearchDialog *dialog,
 				      gboolean           show_replace)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -508,7 +508,7 @@ pluma_search_dialog_set_show_replace (PlumaSearchDialog *dialog,
 }
 
 void
-pluma_search_dialog_set_search_text (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_search_text (PlumaSearchDialog *dialog,
 				     const gchar       *text)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -530,7 +530,7 @@ pluma_search_dialog_set_search_text (PlumaSearchDialog *dialog,
  * The text must be unescaped before searching.
  */
 const gchar *
-pluma_search_dialog_get_search_text (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_search_text (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), NULL);
 
@@ -538,7 +538,7 @@ pluma_search_dialog_get_search_text (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_replace_text (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_replace_text (PlumaSearchDialog *dialog,
 				      const gchar       *text)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -549,7 +549,7 @@ pluma_search_dialog_set_replace_text (PlumaSearchDialog *dialog,
 }
 
 const gchar *
-pluma_search_dialog_get_replace_text (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_replace_text (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), NULL);
 
@@ -557,7 +557,7 @@ pluma_search_dialog_get_replace_text (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_match_case (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_match_case (PlumaSearchDialog *dialog,
 				    gboolean           match_case)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -567,7 +567,7 @@ pluma_search_dialog_set_match_case (PlumaSearchDialog *dialog,
 }
 
 gboolean
-pluma_search_dialog_get_match_case (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_match_case (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), FALSE);
 
@@ -575,7 +575,7 @@ pluma_search_dialog_get_match_case (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_match_regex (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_match_regex (PlumaSearchDialog *dialog,
                     gboolean           match_case)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -585,7 +585,7 @@ pluma_search_dialog_set_match_regex (PlumaSearchDialog *dialog,
 }
 
 gboolean
-pluma_search_dialog_get_match_regex (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_match_regex (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), FALSE);
 
@@ -593,7 +593,7 @@ pluma_search_dialog_get_match_regex (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_entire_word (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_entire_word (PlumaSearchDialog *dialog,
 				     gboolean           entire_word)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -603,7 +603,7 @@ pluma_search_dialog_set_entire_word (PlumaSearchDialog *dialog,
 }
 
 gboolean
-pluma_search_dialog_get_entire_word (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_entire_word (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), FALSE);
 
@@ -611,7 +611,7 @@ pluma_search_dialog_get_entire_word (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_backwards (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_backwards (PlumaSearchDialog *dialog,
 				  gboolean           backwards)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -621,7 +621,7 @@ pluma_search_dialog_set_backwards (PlumaSearchDialog *dialog,
 }
 
 gboolean
-pluma_search_dialog_get_backwards (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_backwards (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), FALSE);
 
@@ -629,7 +629,7 @@ pluma_search_dialog_get_backwards (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_wrap_around (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_wrap_around (PlumaSearchDialog *dialog,
 				     gboolean           wrap_around)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -639,7 +639,7 @@ pluma_search_dialog_set_wrap_around (PlumaSearchDialog *dialog,
 }
 
 gboolean
-pluma_search_dialog_get_wrap_around (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_wrap_around (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), FALSE);
 
@@ -647,7 +647,7 @@ pluma_search_dialog_get_wrap_around (PlumaSearchDialog *dialog)
 }
 
 void
-pluma_search_dialog_set_parse_escapes (PlumaSearchDialog *dialog,
+lapiz_search_dialog_set_parse_escapes (PlumaSearchDialog *dialog,
 				       gboolean           parse_escapes)
 {
 	g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog));
@@ -657,7 +657,7 @@ pluma_search_dialog_set_parse_escapes (PlumaSearchDialog *dialog,
 }
 
 gboolean
-pluma_search_dialog_get_parse_escapes (PlumaSearchDialog *dialog)
+lapiz_search_dialog_get_parse_escapes (PlumaSearchDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_SEARCH_DIALOG (dialog), FALSE);
 

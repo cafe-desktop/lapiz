@@ -1,6 +1,6 @@
 /*
- * pluma-utils.c
- * This file is part of pluma
+ * lapiz-utils.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2002 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -45,11 +45,11 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
-#include "pluma-utils.h"
+#include "lapiz-utils.h"
 
-#include "pluma-document.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-debug.h"
+#include "lapiz-document.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-debug.h"
 
 /* For the workspace/viewport stuff */
 #ifdef GDK_WINDOWING_X11
@@ -62,12 +62,12 @@
 #define STDIN_DELAY_MICROSECONDS 100000
 
 /**
- * pluma_utils_uris_has_file_scheme
+ * lapiz_utils_uris_has_file_scheme
  *
  * Returns: %TRUE if @uri is a file: uri and is not a chained uri
  */
 gboolean
-pluma_utils_uri_has_file_scheme (const gchar *uri)
+lapiz_utils_uri_has_file_scheme (const gchar *uri)
 {
 	GFile *gfile;
 	gboolean res;
@@ -81,7 +81,7 @@ pluma_utils_uri_has_file_scheme (const gchar *uri)
 
 /* FIXME: we should check for chained URIs */
 gboolean
-pluma_utils_uri_has_writable_scheme (const gchar *uri)
+lapiz_utils_uri_has_writable_scheme (const gchar *uri)
 {
 	GFile *gfile;
 	gchar *scheme;
@@ -95,7 +95,7 @@ pluma_utils_uri_has_writable_scheme (const gchar *uri)
 
 	g_object_unref (gfile);
 
-	writable_schemes = pluma_prefs_manager_get_writable_vfs_schemes ();
+	writable_schemes = lapiz_prefs_manager_get_writable_vfs_schemes ();
 
 	/* CHECK: should we use g_ascii_strcasecmp? - Paolo (Nov 6, 2005) */
 	res = (g_slist_find_custom (writable_schemes,
@@ -121,7 +121,7 @@ widget_get_origin (GtkWidget *widget, gint *x, gint *y)
 }
 
 void
-pluma_utils_menu_position_under_widget (GtkMenu  *menu,
+lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
 					gint     *x,
 					gint     *y,
 					gboolean *push_in,
@@ -178,7 +178,7 @@ menu_popup_at_treeview_selection (GtkWidget *menu,
 }
 
 /**
- * pluma_gtk_button_new_with_icon:
+ * lapiz_gtk_button_new_with_icon:
  * @label:
  * @icon_name:
  *
@@ -186,7 +186,7 @@ menu_popup_at_treeview_selection (GtkWidget *menu,
  */
 
 GtkWidget *
-pluma_gtk_button_new_with_icon (const gchar *label,
+lapiz_gtk_button_new_with_icon (const gchar *label,
 				const gchar *icon_name)
 {
 	GtkWidget *button;
@@ -200,7 +200,7 @@ pluma_gtk_button_new_with_icon (const gchar *label,
 }
 
 /**
- * pluma_dialog_add_button:
+ * lapiz_dialog_add_button:
  * @dialog:
  * @text:
  * @icon_name:
@@ -209,7 +209,7 @@ pluma_gtk_button_new_with_icon (const gchar *label,
  * Returns: (transfer none):
  */
 GtkWidget *
-pluma_dialog_add_button (GtkDialog   *dialog,
+lapiz_dialog_add_button (GtkDialog   *dialog,
 			 const gchar *text,
 			 const gchar *icon_name,
 			 gint         response_id)
@@ -220,7 +220,7 @@ pluma_dialog_add_button (GtkDialog   *dialog,
 	g_return_val_if_fail (text != NULL, NULL);
 	g_return_val_if_fail (icon_name != NULL, NULL);
 
-	button = pluma_gtk_button_new_with_icon (text, icon_name);
+	button = lapiz_gtk_button_new_with_icon (text, icon_name);
 	g_return_val_if_fail (button != NULL, NULL);
 
 	gtk_widget_set_can_default (button, TRUE);
@@ -274,7 +274,7 @@ finally_2:
 }
 
 /**
- * pluma_utils_set_atk_name_description:
+ * lapiz_utils_set_atk_name_description:
  * @widget: The Gtk widget for which name/description to be set
  * @name: Atk name string
  * @description: Atk description string
@@ -283,7 +283,7 @@ finally_2:
  * for a specified gtk widget.
  */
 void
-pluma_utils_set_atk_name_description (GtkWidget *widget,
+lapiz_utils_set_atk_name_description (GtkWidget *widget,
 				      const gchar *name,
 				      const gchar *description)
 {
@@ -302,7 +302,7 @@ pluma_utils_set_atk_name_description (GtkWidget *widget,
 }
 
 /**
- * pluma_set_atk_relation:
+ * lapiz_set_atk_relation:
  * @obj1: specified widget.
  * @obj2: specified widget.
  * @rel_type: the type of relation to set up.
@@ -311,7 +311,7 @@ pluma_utils_set_atk_name_description (GtkWidget *widget,
  * between 2 specified widgets.
  */
 void
-pluma_utils_set_atk_relation (GtkWidget *obj1,
+lapiz_utils_set_atk_relation (GtkWidget *obj1,
 			      GtkWidget *obj2,
 			      AtkRelationType rel_type )
 {
@@ -336,27 +336,27 @@ pluma_utils_set_atk_relation (GtkWidget *obj1,
 }
 
 gboolean
-pluma_utils_uri_exists (const gchar* text_uri)
+lapiz_utils_uri_exists (const gchar* text_uri)
 {
 	GFile *gfile;
 	gboolean res;
 
 	g_return_val_if_fail (text_uri != NULL, FALSE);
 
-	pluma_debug_message (DEBUG_UTILS, "text_uri: %s", text_uri);
+	lapiz_debug_message (DEBUG_UTILS, "text_uri: %s", text_uri);
 
 	gfile = g_file_new_for_uri (text_uri);
 	res = g_file_query_exists (gfile, NULL);
 
 	g_object_unref (gfile);
 
-	pluma_debug_message (DEBUG_UTILS, res ? "TRUE" : "FALSE");
+	lapiz_debug_message (DEBUG_UTILS, res ? "TRUE" : "FALSE");
 
 	return res;
 }
 
 gchar *
-pluma_utils_escape_search_text (const gchar* text)
+lapiz_utils_escape_search_text (const gchar* text)
 {
 	GString *str;
 	gint length;
@@ -366,7 +366,7 @@ pluma_utils_escape_search_text (const gchar* text)
 	if (text == NULL)
 		return NULL;
 
-	pluma_debug_message (DEBUG_SEARCH, "Text: %s", text);
+	lapiz_debug_message (DEBUG_SEARCH, "Text: %s", text);
 
     	length = strlen (text);
 
@@ -412,7 +412,7 @@ pluma_utils_escape_search_text (const gchar* text)
 }
 
 gchar *
-pluma_utils_unescape_search_text (const gchar *text)
+lapiz_utils_unescape_search_text (const gchar *text)
 {
 	GString *str;
 	gint length;
@@ -486,7 +486,7 @@ pluma_utils_unescape_search_text (const gchar *text)
 }
 
 void
-pluma_warning (GtkWindow *parent, const gchar *format, ...)
+lapiz_warning (GtkWindow *parent, const gchar *format, ...)
 {
 	va_list         args;
 	gchar          *str;
@@ -530,7 +530,7 @@ pluma_warning (GtkWindow *parent, const gchar *format, ...)
  * Doubles underscore to avoid spurious menu accels.
  */
 gchar *
-pluma_utils_escape_underscores (const gchar* text,
+lapiz_utils_escape_underscores (const gchar* text,
 				gssize       length)
 {
 	GString *str;
@@ -571,7 +571,7 @@ pluma_utils_escape_underscores (const gchar* text,
 /* the following functions are taken from eel */
 
 static gchar *
-pluma_utils_str_truncate (const gchar *string,
+lapiz_utils_str_truncate (const gchar *string,
 			  guint        truncate_length,
 			  gboolean middle)
 {
@@ -628,21 +628,21 @@ pluma_utils_str_truncate (const gchar *string,
 }
 
 gchar *
-pluma_utils_str_middle_truncate (const gchar *string,
+lapiz_utils_str_middle_truncate (const gchar *string,
 				 guint        truncate_length)
 {
-	return pluma_utils_str_truncate (string, truncate_length, TRUE);
+	return lapiz_utils_str_truncate (string, truncate_length, TRUE);
 }
 
 gchar *
-pluma_utils_str_end_truncate (const gchar *string,
+lapiz_utils_str_end_truncate (const gchar *string,
 			      guint        truncate_length)
 {
-	return pluma_utils_str_truncate (string, truncate_length, FALSE);
+	return lapiz_utils_str_truncate (string, truncate_length, FALSE);
 }
 
 gchar *
-pluma_utils_make_valid_utf8 (const char *name)
+lapiz_utils_make_valid_utf8 (const char *name)
 {
 	GString *string;
 	const char *remainder, *invalid;
@@ -683,12 +683,12 @@ pluma_utils_make_valid_utf8 (const char *name)
 }
 
 /**
- * pluma_utils_uri_get_dirname:
+ * lapiz_utils_uri_get_dirname:
  *
  * Note: this function replace home dir with ~
  */
 gchar *
-pluma_utils_uri_get_dirname (const gchar *uri)
+lapiz_utils_uri_get_dirname (const gchar *uri)
 {
 	gchar *res;
 	gchar *str;
@@ -706,7 +706,7 @@ pluma_utils_uri_get_dirname (const gchar *uri)
 		return NULL;
 	}
 
-	res = pluma_utils_replace_home_dir_with_tilde (str);
+	res = lapiz_utils_replace_home_dir_with_tilde (str);
 
 	g_free (str);
 
@@ -714,7 +714,7 @@ pluma_utils_uri_get_dirname (const gchar *uri)
 }
 
 /**
- * pluma_utils_location_get_dirname_for_display:
+ * lapiz_utils_location_get_dirname_for_display:
  * @location: the location
  *
  * Returns a string suitable to be displayed in the UI indicating
@@ -725,7 +725,7 @@ pluma_utils_uri_get_dirname (const gchar *uri)
  * Returns: a string to display the dirname
  */
 gchar *
-pluma_utils_location_get_dirname_for_display (GFile *location)
+lapiz_utils_location_get_dirname_for_display (GFile *location)
 {
 	gchar *uri;
 	gchar *res;
@@ -749,18 +749,18 @@ pluma_utils_location_get_dirname_for_display (GFile *location)
 		g_object_unref (mount);
 
 		/* obtain the "path" part of the uri */
-		pluma_utils_decode_uri (uri,
+		lapiz_utils_decode_uri (uri,
 					NULL, NULL,
 					NULL, NULL,
 					&path);
 
 		if (path == NULL)
 		{
-			dirname = pluma_utils_uri_get_dirname (uri);
+			dirname = lapiz_utils_uri_get_dirname (uri);
 		}
 		else
 		{
-			dirname = pluma_utils_uri_get_dirname (path);
+			dirname = lapiz_utils_uri_get_dirname (path);
 		}
 
 		if (dirname == NULL || strcmp (dirname, ".") == 0)
@@ -779,7 +779,7 @@ pluma_utils_location_get_dirname_for_display (GFile *location)
 	else
 	{
 		/* fallback for local files or uris without mounts */
-		res = pluma_utils_uri_get_dirname (uri);
+		res = lapiz_utils_uri_get_dirname (uri);
 	}
 
 	g_free (uri);
@@ -788,7 +788,7 @@ pluma_utils_location_get_dirname_for_display (GFile *location)
 }
 
 gchar *
-pluma_utils_replace_home_dir_with_tilde (const gchar *uri)
+lapiz_utils_replace_home_dir_with_tilde (const gchar *uri)
 {
 	gchar *tmp;
 	gchar *home;
@@ -835,7 +835,7 @@ pluma_utils_replace_home_dir_with_tilde (const gchar *uri)
 /* the following two functions are courtesy of galeon */
 
 /**
- * pluma_utils_get_current_workspace:
+ * lapiz_utils_get_current_workspace:
  *
  * Get the current workspace
  *
@@ -845,7 +845,7 @@ pluma_utils_replace_home_dir_with_tilde (const gchar *uri)
  * is returned.
  */
 guint
-pluma_utils_get_current_workspace (GdkScreen *screen)
+lapiz_utils_get_current_workspace (GdkScreen *screen)
 {
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *root_win;
@@ -886,7 +886,7 @@ pluma_utils_get_current_workspace (GdkScreen *screen)
 }
 
 /**
- * pluma_utils_get_window_workspace:
+ * lapiz_utils_get_window_workspace:
  *
  * Get the workspace the window is on
  *
@@ -895,7 +895,7 @@ pluma_utils_get_current_workspace (GdkScreen *screen)
  * the window manager doesn support this function
  */
 guint
-pluma_utils_get_window_workspace (GtkWindow *gtkwindow)
+lapiz_utils_get_window_workspace (GtkWindow *gtkwindow)
 {
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *window;
@@ -937,7 +937,7 @@ pluma_utils_get_window_workspace (GtkWindow *gtkwindow)
 }
 
 /**
- * pluma_utils_get_current_viewport:
+ * lapiz_utils_get_current_viewport:
  *
  * Get the current viewport origin
  *
@@ -946,7 +946,7 @@ pluma_utils_get_window_workspace (GtkWindow *gtkwindow)
  * If the X11 window property isn't found, (0, 0) is returned.
  */
 void
-pluma_utils_get_current_viewport (GdkScreen    *screen,
+lapiz_utils_get_current_viewport (GdkScreen    *screen,
 				  gint         *x,
 				  gint         *y)
 {
@@ -1022,7 +1022,7 @@ has_valid_scheme (const gchar *uri)
 }
 
 gboolean
-pluma_utils_is_valid_uri (const gchar *uri)
+lapiz_utils_is_valid_uri (const gchar *uri)
 {
 	const guchar *p;
 
@@ -1089,7 +1089,7 @@ handle_builder_error (const gchar *message, ...)
 
 /* FIXME this is an issue for introspection */
 /**
- * pluma_utils_get_ui_objects:
+ * lapiz_utils_get_ui_objects:
  * @filename: the path to the gtk builder file
  * @root_objects: a %NULL terminated list of root objects to load or NULL to
  *                load all objects
@@ -1105,7 +1105,7 @@ handle_builder_error (const gchar *message, ...)
  * Returns: %FALSE if an error occurs, %TRUE on success.
  */
 gboolean
-pluma_utils_get_ui_objects (const gchar  *filename,
+lapiz_utils_get_ui_objects (const gchar  *filename,
 			    gchar       **root_objects,
 			    GtkWidget   **error_widget,
 			    const gchar  *object_name,
@@ -1195,7 +1195,7 @@ pluma_utils_get_ui_objects (const gchar  *filename,
 }
 
 gchar *
-pluma_utils_make_canonical_uri_from_shell_arg (const gchar *str)
+lapiz_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 {
 	GFile *gfile;
 	gchar *uri;
@@ -1216,7 +1216,7 @@ pluma_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 	 * contains only ASCII chars
 	 * <federico> paolo: hmmmm, isn't there
 	 * mate_vfs_is_uri_valid() or something?
-	 * <paolo>: I will use pluma_utils_is_valid_uri ()
+	 * <paolo>: I will use lapiz_utils_is_valid_uri ()
 	 *
 	 */
 
@@ -1224,7 +1224,7 @@ pluma_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 	uri = g_file_get_uri (gfile);
 	g_object_unref (gfile);
 
-	if (pluma_utils_is_valid_uri (uri))
+	if (lapiz_utils_is_valid_uri (uri))
 		return uri;
 
 	g_free (uri);
@@ -1232,14 +1232,14 @@ pluma_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 }
 
 /**
- * pluma_utils_file_has_parent:
+ * lapiz_utils_file_has_parent:
  * @gfile: the GFile to check the parent for
  *
  * Return %TRUE if the specified gfile has a parent (is not the root), %FALSE
  * otherwise
  */
 gboolean
-pluma_utils_file_has_parent (GFile *gfile)
+lapiz_utils_file_has_parent (GFile *gfile)
 {
 	GFile *parent;
 	gboolean ret;
@@ -1254,13 +1254,13 @@ pluma_utils_file_has_parent (GFile *gfile)
 }
 
 /**
- * pluma_utils_basename_for_display:
+ * lapiz_utils_basename_for_display:
  * @uri: uri for which the basename should be displayed
  *
  * Return the basename of a file suitable for display to users.
  */
 gchar *
-pluma_utils_basename_for_display (gchar const *uri)
+lapiz_utils_basename_for_display (gchar const *uri)
 {
 	gchar *name;
 	GFile *gfile;
@@ -1297,7 +1297,7 @@ pluma_utils_basename_for_display (gchar const *uri)
 			g_free (local_path);
 		}
 	}
-	else if (pluma_utils_file_has_parent (gfile) || !pluma_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
+	else if (lapiz_utils_file_has_parent (gfile) || !lapiz_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
 	{
 		/* For remote files with a parent (so not just http://foo.com)
 		   or remote file for which the decoding of the host name fails,
@@ -1318,7 +1318,7 @@ pluma_utils_basename_for_display (gchar const *uri)
 		gchar *hn_utf8;
 
 		if  (hn != NULL)
-			hn_utf8 = pluma_utils_make_valid_utf8 (hn);
+			hn_utf8 = lapiz_utils_make_valid_utf8 (hn);
 		else
 			/* we should never get here */
 			hn_utf8 = g_strdup ("?");
@@ -1336,7 +1336,7 @@ pluma_utils_basename_for_display (gchar const *uri)
 }
 
 /**
- * pluma_utils_uri_for_display:
+ * lapiz_utils_uri_for_display:
  * @uri: uri to be displayed.
  *
  * Filter, modify, unescape and change @uri to make it appropriate
@@ -1347,7 +1347,7 @@ pluma_utils_basename_for_display (gchar const *uri)
  * Return value: a string which represents @uri and can be displayed.
  */
 gchar *
-pluma_utils_uri_for_display (const gchar *uri)
+lapiz_utils_uri_for_display (const gchar *uri)
 {
 	GFile *gfile;
 	gchar *parse_name;
@@ -1360,7 +1360,7 @@ pluma_utils_uri_for_display (const gchar *uri)
 }
 
 /**
- * pluma_utils_drop_get_uris:
+ * lapiz_utils_drop_get_uris:
  * @selection_data: the #GtkSelectionData from drag_data_received
  *
  * Create a list of valid uri's from a uri-list drop.
@@ -1370,7 +1370,7 @@ pluma_utils_uri_for_display (const gchar *uri)
  *		 string array is no longer used
  */
 gchar **
-pluma_utils_drop_get_uris (GtkSelectionData *selection_data)
+lapiz_utils_drop_get_uris (GtkSelectionData *selection_data)
 {
 	gchar **uris;
 	gint i;
@@ -1384,7 +1384,7 @@ pluma_utils_drop_get_uris (GtkSelectionData *selection_data)
 	{
 		gchar *uri;
 
-		uri = pluma_utils_make_canonical_uri_from_shell_arg (uris[i]);
+		uri = lapiz_utils_make_canonical_uri_from_shell_arg (uris[i]);
 
 		/* Silently ignore malformed URI/filename */
 		if (uri != NULL)
@@ -1410,7 +1410,7 @@ null_ptr (gchar **ptr)
 }
 
 /**
- * pluma_utils_decode_uri:
+ * lapiz_utils_decode_uri:
  * @uri: the uri to decode
  * @scheme: (allow-none): return value pointer for the uri's
  * scheme (e.g. http, sftp, ...), or %NULL
@@ -1427,7 +1427,7 @@ null_ptr (gchar **ptr)
  * Return value: %TRUE if the uri could be properly decoded, %FALSE otherwise.
  */
 gboolean
-pluma_utils_decode_uri (const gchar  *uri,
+lapiz_utils_decode_uri (const gchar  *uri,
 			gchar       **scheme,
 			gchar       **user,
 			gchar       **host,
@@ -1555,7 +1555,7 @@ pluma_utils_decode_uri (const gchar  *uri,
 }
 
 gboolean
-pluma_gtk_text_iter_regex_search (const GtkTextIter *iter,
+lapiz_gtk_text_iter_regex_search (const GtkTextIter *iter,
 				  const gchar       *str,
 				  GtkTextSearchFlags flags,
 				  GtkTextIter       *match_start,
@@ -1666,7 +1666,7 @@ free_resources:
 }
 
 GtkWidget *
-pluma_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
+lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 				       const gchar *label_name)
 {
 	gchar *concat;

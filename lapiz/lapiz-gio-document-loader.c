@@ -1,6 +1,6 @@
 /*
- * pluma-gio-document-loader.c
- * This file is part of pluma
+ * lapiz-gio-document-loader.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyright (C) 2007 - Paolo Maggi, Steve Frécinaux
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005-2008. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005-2008. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,15 +38,15 @@
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 
-#include "pluma-gio-document-loader.h"
-#include "pluma-document-output-stream.h"
-#include "pluma-smart-charset-converter.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-debug.h"
-#include "pluma-utils.h"
+#include "lapiz-gio-document-loader.h"
+#include "lapiz-document-output-stream.h"
+#include "lapiz-smart-charset-converter.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-debug.h"
+#include "lapiz-utils.h"
 
 #ifndef ENABLE_GVFS_METADATA
-#include "pluma-metadata-manager.h"
+#include "lapiz-metadata-manager.h"
 #endif
 
 typedef struct
@@ -66,9 +66,9 @@ typedef struct
 				G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE "," \
 				PLUMA_METADATA_ATTRIBUTE_ENCODING
 
-static void	    pluma_gio_document_loader_load		(PlumaDocumentLoader *loader);
-static gboolean     pluma_gio_document_loader_cancel		(PlumaDocumentLoader *loader);
-static goffset      pluma_gio_document_loader_get_bytes_read	(PlumaDocumentLoader *loader);
+static void	    lapiz_gio_document_loader_load		(PlumaDocumentLoader *loader);
+static gboolean     lapiz_gio_document_loader_cancel		(PlumaDocumentLoader *loader);
+static goffset      lapiz_gio_document_loader_get_bytes_read	(PlumaDocumentLoader *loader);
 
 static void open_async_read (AsyncData *async);
 
@@ -90,10 +90,10 @@ struct _PlumaGioDocumentLoaderPrivate
 	GError           *error;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentLoader, pluma_gio_document_loader, PLUMA_TYPE_DOCUMENT_LOADER)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentLoader, lapiz_gio_document_loader, PLUMA_TYPE_DOCUMENT_LOADER)
 
 static void
-pluma_gio_document_loader_dispose (GObject *object)
+lapiz_gio_document_loader_dispose (GObject *object)
 {
 	PlumaGioDocumentLoaderPrivate *priv;
 
@@ -136,26 +136,26 @@ pluma_gio_document_loader_dispose (GObject *object)
 		priv->error = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_gio_document_loader_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_gio_document_loader_parent_class)->dispose (object);
 }
 
 static void
-pluma_gio_document_loader_class_init (PlumaGioDocumentLoaderClass *klass)
+lapiz_gio_document_loader_class_init (PlumaGioDocumentLoaderClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	PlumaDocumentLoaderClass *loader_class = PLUMA_DOCUMENT_LOADER_CLASS (klass);
 
-	object_class->dispose = pluma_gio_document_loader_dispose;
+	object_class->dispose = lapiz_gio_document_loader_dispose;
 
-	loader_class->load = pluma_gio_document_loader_load;
-	loader_class->cancel = pluma_gio_document_loader_cancel;
-	loader_class->get_bytes_read = pluma_gio_document_loader_get_bytes_read;
+	loader_class->load = lapiz_gio_document_loader_load;
+	loader_class->cancel = lapiz_gio_document_loader_cancel;
+	loader_class->get_bytes_read = lapiz_gio_document_loader_get_bytes_read;
 }
 
 static void
-pluma_gio_document_loader_init (PlumaGioDocumentLoader *gvloader)
+lapiz_gio_document_loader_init (PlumaGioDocumentLoader *gvloader)
 {
-	gvloader->priv = pluma_gio_document_loader_get_instance_private (gvloader);
+	gvloader->priv = lapiz_gio_document_loader_get_instance_private (gvloader);
 
 	gvloader->priv->converter = NULL;
 	gvloader->priv->error = NULL;
@@ -190,20 +190,20 @@ get_metadata_encoding (PlumaDocumentLoader *loader)
 	gchar *charset;
 	const gchar *uri;
 
-	uri = pluma_document_loader_get_uri (loader);
+	uri = lapiz_document_loader_get_uri (loader);
 
-	charset = pluma_metadata_manager_get (uri, "encoding");
+	charset = lapiz_metadata_manager_get (uri, "encoding");
 
 	if (charset == NULL)
 		return NULL;
 
-	enc = pluma_encoding_get_from_charset (charset);
+	enc = lapiz_encoding_get_from_charset (charset);
 
 	g_free (charset);
 #else
 	GFileInfo *info;
 
-	info = pluma_document_loader_get_info (loader);
+	info = lapiz_document_loader_get_info (loader);
 
 	/* check if the encoding was set in the metadata */
 	if (g_file_info_has_attribute (info, PLUMA_METADATA_ATTRIBUTE_ENCODING))
@@ -216,7 +216,7 @@ get_metadata_encoding (PlumaDocumentLoader *loader)
 		if (charset == NULL)
 			return NULL;
 
-		enc = pluma_encoding_get_from_charset (charset);
+		enc = lapiz_encoding_get_from_charset (charset);
 	}
 #endif
 
@@ -226,7 +226,7 @@ get_metadata_encoding (PlumaDocumentLoader *loader)
 static void
 remote_load_completed_or_failed (PlumaGioDocumentLoader *loader, AsyncData *async)
 {
-	pluma_document_loader_loading (PLUMA_DOCUMENT_LOADER (loader),
+	lapiz_document_loader_loading (PLUMA_DOCUMENT_LOADER (loader),
 				       TRUE,
 				       loader->priv->error);
 
@@ -248,7 +248,7 @@ close_input_stream_ready_cb (GInputStream *stream,
 {
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
 	/* check cancelled state manually */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -257,17 +257,17 @@ close_input_stream_ready_cb (GInputStream *stream,
 		return;
 	}
 
-	pluma_debug_message (DEBUG_SAVER, "Finished closing input stream");
+	lapiz_debug_message (DEBUG_SAVER, "Finished closing input stream");
 
 	if (!g_input_stream_close_finish (stream, res, &error))
 	{
-		pluma_debug_message (DEBUG_SAVER, "Closing input stream error: %s", error->message);
+		lapiz_debug_message (DEBUG_SAVER, "Closing input stream error: %s", error->message);
 
 		async_failed (async, error);
 		return;
 	}
 
-	pluma_debug_message (DEBUG_SAVER, "Close output stream");
+	lapiz_debug_message (DEBUG_SAVER, "Close output stream");
 	if (!g_output_stream_close (async->loader->priv->output,
 				    async->cancellable, &error))
 	{
@@ -309,10 +309,10 @@ write_file_chunk (AsyncData *async)
 					       async->cancellable,
 					       &error);
 
-	pluma_debug_message (DEBUG_SAVER, "Written: %" G_GSSIZE_FORMAT, bytes_written);
+	lapiz_debug_message (DEBUG_SAVER, "Written: %" G_GSSIZE_FORMAT, bytes_written);
 	if (bytes_written == -1)
 	{
-		pluma_debug_message (DEBUG_SAVER, "Write error: %s", error->message);
+		lapiz_debug_message (DEBUG_SAVER, "Write error: %s", error->message);
 		async_failed (async, error);
 		return;
 	}
@@ -320,7 +320,7 @@ write_file_chunk (AsyncData *async)
 	/* note that this signal blocks the read... check if it isn't
 	 * a performance problem
 	 */
-	pluma_document_loader_loading (PLUMA_DOCUMENT_LOADER (gvloader),
+	lapiz_document_loader_loading (PLUMA_DOCUMENT_LOADER (gvloader),
 				       FALSE,
 				       NULL);
 
@@ -332,11 +332,11 @@ async_read_cb (GInputStream *stream,
 	       GAsyncResult *res,
 	       AsyncData    *async)
 {
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 	PlumaGioDocumentLoader *gvloader;
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
 	/* manually check cancelled state */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -383,15 +383,15 @@ async_read_cb (GInputStream *stream,
 				       &gvloader->priv->error);
 
 		loader->auto_detected_encoding =
-			pluma_smart_charset_converter_get_guessed (gvloader->priv->converter);
+			lapiz_smart_charset_converter_get_guessed (gvloader->priv->converter);
 
 		loader->auto_detected_newline_type =
-			pluma_document_output_stream_detect_newline_type (PLUMA_DOCUMENT_OUTPUT_STREAM (gvloader->priv->output));
+			lapiz_document_output_stream_detect_newline_type (PLUMA_DOCUMENT_OUTPUT_STREAM (gvloader->priv->output));
 
 		/* Check if we needed some fallback char, if so, check if there was
 		   a previous error and if not set a fallback used error */
 		/* FIXME Uncomment this when we want to manage conversion fallback */
-		/*if ((pluma_smart_charset_converter_get_num_fallbacks (gvloader->priv->converter) != 0) &&
+		/*if ((lapiz_smart_charset_converter_get_num_fallbacks (gvloader->priv->converter) != 0) &&
 		    gvloader->priv->error == NULL)
 		{
 			g_set_error_literal (&gvloader->priv->error,
@@ -431,7 +431,7 @@ get_candidate_encodings (PlumaGioDocumentLoader *gvloader)
 	const PlumaEncoding *metadata;
 	GSList *encodings = NULL;
 
-	encodings = pluma_prefs_manager_get_auto_detected_encodings ();
+	encodings = lapiz_prefs_manager_get_auto_detected_encodings ();
 
 	metadata = get_metadata_encoding (PLUMA_DOCUMENT_LOADER (gvloader));
 	if (metadata != NULL)
@@ -479,7 +479,7 @@ finish_query_info (AsyncData *async)
 		candidate_encodings = g_slist_prepend (NULL, (gpointer) loader->encoding);
 	}
 
-	gvloader->priv->converter = pluma_smart_charset_converter_new (candidate_encodings);
+	gvloader->priv->converter = lapiz_smart_charset_converter_new (candidate_encodings);
 	g_slist_free (candidate_encodings);
 
 	conv_stream = g_converter_input_stream_new (gvloader->priv->stream,
@@ -489,7 +489,7 @@ finish_query_info (AsyncData *async)
 	gvloader->priv->stream = conv_stream;
 
 	/* Output stream */
-	gvloader->priv->output = pluma_document_output_stream_new (loader->document);
+	gvloader->priv->output = lapiz_document_output_stream_new (loader->document);
 
 	/* start reading */
 	read_file_chunk (async);
@@ -504,7 +504,7 @@ query_info_cb (GFile        *source,
 	GFileInfo *info;
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
 	/* manually check the cancelled state */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -540,7 +540,7 @@ mount_ready_callback (GFile        *file,
 	GError *error = NULL;
 	gboolean mounted;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
 	/* manual check for cancelled state */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -568,10 +568,10 @@ recover_not_mounted (AsyncData *async)
 	PlumaDocument *doc;
 	GMountOperation *mount_operation;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
-	doc = pluma_document_loader_get_document (PLUMA_DOCUMENT_LOADER (async->loader));
-	mount_operation = _pluma_document_create_mount_operation (doc);
+	doc = lapiz_document_loader_get_document (PLUMA_DOCUMENT_LOADER (async->loader));
+	mount_operation = _lapiz_document_create_mount_operation (doc);
 
 	async->tried_mount = TRUE;
 	g_file_mount_enclosing_volume (async->loader->priv->gfile,
@@ -592,7 +592,7 @@ async_read_ready_callback (GObject      *source,
 	GError *error = NULL;
 	PlumaGioDocumentLoader *gvloader;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
 	/* manual check for cancelled state */
 	if (g_cancellable_is_cancelled (async->cancellable))
@@ -617,7 +617,7 @@ async_read_ready_callback (GObject      *source,
 
 		/* Propagate error */
 		g_propagate_error (&gvloader->priv->error, error);
-		pluma_document_loader_loading (PLUMA_DOCUMENT_LOADER (gvloader),
+		lapiz_document_loader_loading (PLUMA_DOCUMENT_LOADER (gvloader),
 					       TRUE,
 					       gvloader->priv->error);
 
@@ -651,12 +651,12 @@ open_async_read (AsyncData *async)
 }
 
 static void
-pluma_gio_document_loader_load (PlumaDocumentLoader *loader)
+lapiz_gio_document_loader_load (PlumaDocumentLoader *loader)
 {
 	PlumaGioDocumentLoader *gvloader = PLUMA_GIO_DOCUMENT_LOADER (loader);
 	AsyncData *async;
 
-	pluma_debug (DEBUG_LOADER);
+	lapiz_debug (DEBUG_LOADER);
 
 	/* make sure no load operation is currently running */
 	g_return_if_fail (gvloader->priv->cancellable == NULL);
@@ -664,7 +664,7 @@ pluma_gio_document_loader_load (PlumaDocumentLoader *loader)
 	gvloader->priv->gfile = g_file_new_for_uri (loader->uri);
 
 	/* loading start */
-	pluma_document_loader_loading (PLUMA_DOCUMENT_LOADER (gvloader),
+	lapiz_document_loader_loading (PLUMA_DOCUMENT_LOADER (gvloader),
 				       FALSE,
 				       NULL);
 
@@ -675,13 +675,13 @@ pluma_gio_document_loader_load (PlumaDocumentLoader *loader)
 }
 
 static goffset
-pluma_gio_document_loader_get_bytes_read (PlumaDocumentLoader *loader)
+lapiz_gio_document_loader_get_bytes_read (PlumaDocumentLoader *loader)
 {
 	return PLUMA_GIO_DOCUMENT_LOADER (loader)->priv->bytes_read;
 }
 
 static gboolean
-pluma_gio_document_loader_cancel (PlumaDocumentLoader *loader)
+lapiz_gio_document_loader_cancel (PlumaDocumentLoader *loader)
 {
 	PlumaGioDocumentLoader *gvloader = PLUMA_GIO_DOCUMENT_LOADER (loader);
 

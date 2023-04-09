@@ -1,5 +1,5 @@
 /*
- * pluma-sort-plugin.c
+ * lapiz-sort-plugin.c
  *
  * Original author: Carlo Borreo <borreo@softhome.net>
  * Ported to Pluma2 by Lee Mallabone <mate@fonicmonkey.net>
@@ -25,17 +25,17 @@
 #include <config.h>
 #endif
 
-#include "pluma-sort-plugin.h"
+#include "lapiz-sort-plugin.h"
 
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
 #include <libpeas/peas-activatable.h>
 
-#include <pluma/pluma-window.h>
-#include <pluma/pluma-debug.h>
-#include <pluma/pluma-utils.h>
-#include <pluma/pluma-help.h>
+#include <lapiz/lapiz-window.h>
+#include <lapiz/lapiz-debug.h>
+#include <lapiz/lapiz-utils.h>
+#include <lapiz/lapiz-help.h>
 
 #define MENU_PATH "/MenuBar/EditMenu/EditOps_6"
 
@@ -76,7 +76,7 @@ typedef struct
 } SortInfo;
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaSortPlugin,
-                                pluma_sort_plugin,
+                                lapiz_sort_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaSortPlugin)
@@ -100,7 +100,7 @@ static void
 sort_dialog_destroy (GObject *obj,
 		     gpointer  dialog_pointer)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	g_slice_free (SortDialog, dialog_pointer);
 }
@@ -110,7 +110,7 @@ sort_dialog_response_handler (GtkDialog  *widget,
 			      gint       res_id,
 			      SortDialog *dialog)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	switch (res_id)
 	{
@@ -120,9 +120,9 @@ sort_dialog_response_handler (GtkDialog  *widget,
 			break;
 
 		case GTK_RESPONSE_HELP:
-			pluma_help_display (GTK_WINDOW (widget),
+			lapiz_help_display (GTK_WINDOW (widget),
 					    NULL,
-					    "pluma-sort-plugin");
+					    "lapiz-sort-plugin");
 			break;
 
 		case GTK_RESPONSE_CANCEL:
@@ -139,9 +139,9 @@ get_current_selection (PlumaWindow *window, SortDialog *dialog)
 {
 	PlumaDocument *doc;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 
 	if (!gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
 						   &dialog->start,
@@ -164,7 +164,7 @@ get_sort_dialog (PlumaSortPlugin *plugin)
 	gchar *data_dir;
 	gchar *ui_file;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	window = PLUMA_WINDOW (plugin->priv->window);
 
@@ -173,7 +173,7 @@ get_sort_dialog (PlumaSortPlugin *plugin)
 	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "sort.ui", NULL);
 	g_free (data_dir);
-	ret = pluma_utils_get_ui_objects (ui_file,
+	ret = lapiz_utils_get_ui_objects (ui_file,
 					  NULL,
 					  &error_widget,
 					  "sort_dialog", &dialog->dialog,
@@ -189,7 +189,7 @@ get_sort_dialog (PlumaSortPlugin *plugin)
 		const gchar *err_message;
 
 		err_message = gtk_label_get_label (GTK_LABEL (error_widget));
-		pluma_warning (GTK_WINDOW (window),
+		lapiz_warning (GTK_WINDOW (window),
 			       "%s", err_message);
 
 		g_slice_free (SortDialog, dialog);
@@ -225,17 +225,17 @@ sort_cb (GtkAction  *action,
 	GtkWindowGroup *wg;
 	SortDialog *dialog;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	window = PLUMA_WINDOW (plugin->priv->window);
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
 	dialog = get_sort_dialog (plugin);
 	g_return_if_fail (dialog != NULL);
 
-	wg = pluma_window_get_group (window);
+	wg = lapiz_window_get_group (window);
 	gtk_window_group_add_window (wg,
 				     GTK_WINDOW (dialog->dialog));
 
@@ -264,7 +264,7 @@ compare_algorithm (gconstpointer s1,
 	gchar *key1, *key2;
 	SortInfo *sort_info;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	sort_info = (SortInfo *) data;
 	g_return_val_if_fail (sort_info != NULL, -1);
@@ -370,7 +370,7 @@ sort_real (SortDialog *dialog)
 	gchar **lines;
 	SortInfo *sort_info;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	doc = dialog->doc;
 	g_return_if_fail (doc != NULL);
@@ -397,7 +397,7 @@ sort_real (SortDialog *dialog)
 	num_lines = end_line - start_line + 1;
 	lines = g_new0 (gchar *, num_lines + 1);
 
-	pluma_debug_message (DEBUG_PLUGINS, "Building list...");
+	lapiz_debug_message (DEBUG_PLUGINS, "Building list...");
 
 	for (i = 0; i < num_lines; i++)
 	{
@@ -406,7 +406,7 @@ sort_real (SortDialog *dialog)
 
 	lines[num_lines] = NULL;
 
-	pluma_debug_message (DEBUG_PLUGINS, "Sort list...");
+	lapiz_debug_message (DEBUG_PLUGINS, "Sort list...");
 
 	g_qsort_with_data (lines,
 			   num_lines,
@@ -414,7 +414,7 @@ sort_real (SortDialog *dialog)
 			   compare_algorithm,
 			   sort_info);
 
-	pluma_debug_message (DEBUG_PLUGINS, "Rebuilding document...");
+	lapiz_debug_message (DEBUG_PLUGINS, "Rebuilding document...");
 
 	gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (doc));
 
@@ -448,11 +448,11 @@ sort_real (SortDialog *dialog)
 	g_strfreev (lines);
 	g_free (sort_info);
 
-	pluma_debug_message (DEBUG_PLUGINS, "Done.");
+	lapiz_debug_message (DEBUG_PLUGINS, "Done.");
 }
 
 static void
-pluma_sort_plugin_set_property (GObject      *object,
+lapiz_sort_plugin_set_property (GObject      *object,
                                 guint         prop_id,
                                 const GValue *value,
                                 GParamSpec   *pspec)
@@ -472,7 +472,7 @@ pluma_sort_plugin_set_property (GObject      *object,
 }
 
 static void
-pluma_sort_plugin_get_property (GObject    *object,
+lapiz_sort_plugin_get_property (GObject    *object,
                                 guint       prop_id,
                                 GValue     *value,
                                 GParamSpec *pspec)
@@ -497,10 +497,10 @@ update_ui (PlumaSortPluginPrivate *data)
 	PlumaWindow *window;
 	PlumaView *view;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	window = PLUMA_WINDOW (data->window);
-	view = pluma_window_get_active_view (window);
+	view = lapiz_window_get_active_view (window);
 
 	gtk_action_group_set_sensitive (data->ui_action_group,
 					(view != NULL) &&
@@ -508,20 +508,20 @@ update_ui (PlumaSortPluginPrivate *data)
 }
 
 static void
-pluma_sort_plugin_activate (PeasActivatable *activatable)
+lapiz_sort_plugin_activate (PeasActivatable *activatable)
 {
 	PlumaSortPlugin *plugin;
 	PlumaSortPluginPrivate *data;
 	PlumaWindow *window;
 	GtkUIManager *manager;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	plugin = PLUMA_SORT_PLUGIN (activatable);
 	data = plugin->priv;
 	window = PLUMA_WINDOW (data->window);
 
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 
 	data->ui_action_group = gtk_action_group_new ("PlumaSortPluginActions");
 	gtk_action_group_set_translation_domain (data->ui_action_group,
@@ -549,18 +549,18 @@ pluma_sort_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-pluma_sort_plugin_deactivate (PeasActivatable *activatable)
+lapiz_sort_plugin_deactivate (PeasActivatable *activatable)
 {
 	PlumaSortPluginPrivate *data;
 	PlumaWindow *window;
 	GtkUIManager *manager;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	data = PLUMA_SORT_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (data->window);
 
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 
 	gtk_ui_manager_remove_ui (manager,
 				  data->ui_id);
@@ -569,27 +569,27 @@ pluma_sort_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-pluma_sort_plugin_update_state (PeasActivatable *activatable)
+lapiz_sort_plugin_update_state (PeasActivatable *activatable)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	update_ui (PLUMA_SORT_PLUGIN (activatable)->priv);
 }
 
 static void
-pluma_sort_plugin_init (PlumaSortPlugin *plugin)
+lapiz_sort_plugin_init (PlumaSortPlugin *plugin)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaSortPlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaSortPlugin initializing");
 
-	plugin->priv = pluma_sort_plugin_get_instance_private (plugin);
+	plugin->priv = lapiz_sort_plugin_get_instance_private (plugin);
 }
 
 static void
-pluma_sort_plugin_dispose (GObject *object)
+lapiz_sort_plugin_dispose (GObject *object)
 {
 	PlumaSortPlugin *plugin = PLUMA_SORT_PLUGIN (object);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaSortPlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaSortPlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -603,23 +603,23 @@ pluma_sort_plugin_dispose (GObject *object)
 		plugin->priv->ui_action_group = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_sort_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_sort_plugin_parent_class)->dispose (object);
 }
 
 static void
-pluma_sort_plugin_class_init (PlumaSortPluginClass *klass)
+lapiz_sort_plugin_class_init (PlumaSortPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = pluma_sort_plugin_dispose;
-	object_class->set_property = pluma_sort_plugin_set_property;
-	object_class->get_property = pluma_sort_plugin_get_property;
+	object_class->dispose = lapiz_sort_plugin_dispose;
+	object_class->set_property = lapiz_sort_plugin_set_property;
+	object_class->get_property = lapiz_sort_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_OBJECT, "object");
 }
 
 static void
-pluma_sort_plugin_class_finalize (PlumaSortPluginClass *klass)
+lapiz_sort_plugin_class_finalize (PlumaSortPluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -627,15 +627,15 @@ pluma_sort_plugin_class_finalize (PlumaSortPluginClass *klass)
 static void
 peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-	iface->activate = pluma_sort_plugin_activate;
-	iface->deactivate = pluma_sort_plugin_deactivate;
-	iface->update_state = pluma_sort_plugin_update_state;
+	iface->activate = lapiz_sort_plugin_activate;
+	iface->deactivate = lapiz_sort_plugin_deactivate;
+	iface->update_state = lapiz_sort_plugin_update_state;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	pluma_sort_plugin_register_type (G_TYPE_MODULE (module));
+	lapiz_sort_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,

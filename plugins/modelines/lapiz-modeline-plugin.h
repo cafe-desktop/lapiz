@@ -1,6 +1,6 @@
 /*
- * pluma-modeline-plugin.h
- * Emacs, Kate and Vim-style modelines support for pluma.
+ * lapiz-modeline-plugin.h
+ * Emacs, Kate and Vim-style modelines support for lapiz.
  *
  * Copyright (C) 2005-2007 - Steve Frécinaux <code@istique.net>
  *
@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_MODELINE_PLUGIN		(pluma_modeline_plugin_get_type ())
+#define PLUMA_TYPE_MODELINE_PLUGIN		(lapiz_modeline_plugin_get_type ())
 #define PLUMA_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_MODELINE_PLUGIN, PlumaModelinePlugin))
 #define PLUMA_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_MODELINE_PLUGIN, PlumaModelinePluginClass))
 #define PLUMA_IS_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_MODELINE_PLUGIN))
@@ -54,7 +54,7 @@ struct _PlumaModelinePluginClass
 	PeasExtensionBaseClass parent_class;
 };
 
-GType	pluma_modeline_plugin_get_type		(void) G_GNUC_CONST;
+GType	lapiz_modeline_plugin_get_type		(void) G_GNUC_CONST;
 
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 

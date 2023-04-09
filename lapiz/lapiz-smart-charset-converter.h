@@ -1,21 +1,21 @@
 /*
- * pluma-smart-charset-converter.h
- * This file is part of pluma
+ * lapiz-smart-charset-converter.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2009 - Ignacio Casal Quinteiro
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -25,11 +25,11 @@
 
 #include <glib-object.h>
 
-#include "pluma-encodings.h"
+#include "lapiz-encodings.h"
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_SMART_CHARSET_CONVERTER		(pluma_smart_charset_converter_get_type ())
+#define PLUMA_TYPE_SMART_CHARSET_CONVERTER		(lapiz_smart_charset_converter_get_type ())
 #define PLUMA_SMART_CHARSET_CONVERTER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_SMART_CHARSET_CONVERTER, PlumaSmartCharsetConverter))
 #define PLUMA_SMART_CHARSET_CONVERTER_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_SMART_CHARSET_CONVERTER, PlumaSmartCharsetConverter const))
 #define PLUMA_SMART_CHARSET_CONVERTER_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_SMART_CHARSET_CONVERTER, PlumaSmartCharsetConverterClass))
@@ -53,13 +53,13 @@ struct _PlumaSmartCharsetConverterClass
 	GObjectClass parent_class;
 };
 
-GType pluma_smart_charset_converter_get_type (void) G_GNUC_CONST;
+GType lapiz_smart_charset_converter_get_type (void) G_GNUC_CONST;
 
-PlumaSmartCharsetConverter	*pluma_smart_charset_converter_new		(GSList *candidate_encodings);
+PlumaSmartCharsetConverter	*lapiz_smart_charset_converter_new		(GSList *candidate_encodings);
 
-const PlumaEncoding		*pluma_smart_charset_converter_get_guessed	(PlumaSmartCharsetConverter *smart);
+const PlumaEncoding		*lapiz_smart_charset_converter_get_guessed	(PlumaSmartCharsetConverter *smart);
 
-guint				 pluma_smart_charset_converter_get_num_fallbacks(PlumaSmartCharsetConverter *smart);
+guint				 lapiz_smart_charset_converter_get_num_fallbacks(PlumaSmartCharsetConverter *smart);
 
 G_END_DECLS
 

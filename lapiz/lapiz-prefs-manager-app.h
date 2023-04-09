@@ -1,6 +1,6 @@
 /*
- * pluma-prefs-manager-app.h
- * This file is part of pluma
+ * lapiz-prefs-manager-app.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005  Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,52 +33,52 @@
 #define __PLUMA_PREFS_MANAGER_APP_H__
 
 #include <glib.h>
-#include <pluma/pluma-prefs-manager.h>
+#include <lapiz/lapiz-prefs-manager.h>
 
 /* LIFE CYCLE MANAGEMENT FUNCTIONS */
 
-gboolean	 pluma_prefs_manager_app_init			(void);
+gboolean	 lapiz_prefs_manager_app_init			(void);
 
-/* This function must be called before exiting pluma */
-void		 pluma_prefs_manager_app_shutdown		(void);
+/* This function must be called before exiting lapiz */
+void		 lapiz_prefs_manager_app_shutdown		(void);
 
 
 /* Window state */
-gint		 pluma_prefs_manager_get_window_state		(void);
-void 		 pluma_prefs_manager_set_window_state		(gint ws);
-gboolean	 pluma_prefs_manager_window_state_can_set	(void);
+gint		 lapiz_prefs_manager_get_window_state		(void);
+void 		 lapiz_prefs_manager_set_window_state		(gint ws);
+gboolean	 lapiz_prefs_manager_window_state_can_set	(void);
 
 /* Window size */
-void		 pluma_prefs_manager_get_window_size		(gint *width,
+void		 lapiz_prefs_manager_get_window_size		(gint *width,
 								 gint *height);
-void		 pluma_prefs_manager_get_default_window_size	(gint *width,
+void		 lapiz_prefs_manager_get_default_window_size	(gint *width,
 								 gint *height);
-void 		 pluma_prefs_manager_set_window_size		(gint width,
+void 		 lapiz_prefs_manager_set_window_size		(gint width,
 								 gint height);
-gboolean	 pluma_prefs_manager_window_size_can_set	(void);
+gboolean	 lapiz_prefs_manager_window_size_can_set	(void);
 
 /* Side panel */
-gint	 	 pluma_prefs_manager_get_side_panel_size	(void);
-gint	 	 pluma_prefs_manager_get_default_side_panel_size(void);
-void 		 pluma_prefs_manager_set_side_panel_size	(gint ps);
-gboolean	 pluma_prefs_manager_side_panel_size_can_set	(void);
-gint		 pluma_prefs_manager_get_side_panel_active_page (void);
-void 		 pluma_prefs_manager_set_side_panel_active_page (gint id);
-gboolean	 pluma_prefs_manager_side_panel_active_page_can_set (void);
+gint	 	 lapiz_prefs_manager_get_side_panel_size	(void);
+gint	 	 lapiz_prefs_manager_get_default_side_panel_size(void);
+void 		 lapiz_prefs_manager_set_side_panel_size	(gint ps);
+gboolean	 lapiz_prefs_manager_side_panel_size_can_set	(void);
+gint		 lapiz_prefs_manager_get_side_panel_active_page (void);
+void 		 lapiz_prefs_manager_set_side_panel_active_page (gint id);
+gboolean	 lapiz_prefs_manager_side_panel_active_page_can_set (void);
 
 /* Bottom panel */
-gint	 	 pluma_prefs_manager_get_bottom_panel_size	(void);
-gint	 	 pluma_prefs_manager_get_default_bottom_panel_size(void);
-void 		 pluma_prefs_manager_set_bottom_panel_size	(gint ps);
-gboolean	 pluma_prefs_manager_bottom_panel_size_can_set	(void);
-gint		 pluma_prefs_manager_get_bottom_panel_active_page (void);
-void 		 pluma_prefs_manager_set_bottom_panel_active_page (gint id);
-gboolean	 pluma_prefs_manager_bottom_panel_active_page_can_set (void);
+gint	 	 lapiz_prefs_manager_get_bottom_panel_size	(void);
+gint	 	 lapiz_prefs_manager_get_default_bottom_panel_size(void);
+void 		 lapiz_prefs_manager_set_bottom_panel_size	(gint ps);
+gboolean	 lapiz_prefs_manager_bottom_panel_size_can_set	(void);
+gint		 lapiz_prefs_manager_get_bottom_panel_active_page (void);
+void 		 lapiz_prefs_manager_set_bottom_panel_active_page (gint id);
+gboolean	 lapiz_prefs_manager_bottom_panel_active_page_can_set (void);
 
 /* File filter */
-gint		 pluma_prefs_manager_get_active_file_filter	(void);
-void 		 pluma_prefs_manager_set_active_file_filter	(gint id);
-gboolean	 pluma_prefs_manager_active_file_filter_can_set	(void);
+gint		 lapiz_prefs_manager_get_active_file_filter	(void);
+void 		 lapiz_prefs_manager_set_active_file_filter	(gint id);
+gboolean	 lapiz_prefs_manager_active_file_filter_can_set	(void);
 
 
 #endif /* __PLUMA_PREFS_MANAGER_APP_H__ */

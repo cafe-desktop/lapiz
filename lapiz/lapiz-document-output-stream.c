@@ -1,21 +1,21 @@
 /*
- * pluma-document-output-stream.c
- * This file is part of pluma
+ * lapiz-document-output-stream.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Ignacio Casal Quinteiro
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,7 +26,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include "pluma-document-output-stream.h"
+#include "lapiz-document-output-stream.h"
 
 /* NOTE: never use async methods on this stream, the stream is just
  * a wrapper around GtkTextBuffer api so that we can use GIO Stream
@@ -54,24 +54,24 @@ enum
 	PROP_DOCUMENT
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentOutputStream, pluma_document_output_stream, G_TYPE_OUTPUT_STREAM)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentOutputStream, lapiz_document_output_stream, G_TYPE_OUTPUT_STREAM)
 
-static gssize	pluma_document_output_stream_write (GOutputStream            *stream,
+static gssize	lapiz_document_output_stream_write (GOutputStream            *stream,
 						    const void               *buffer,
 						    gsize                     count,
 						    GCancellable             *cancellable,
 						    GError                  **error);
 
-static gboolean pluma_document_output_stream_flush (GOutputStream *stream,
+static gboolean lapiz_document_output_stream_flush (GOutputStream *stream,
                                                     GCancellable  *cancellable,
                                                     GError        **error);
 
-static gboolean	pluma_document_output_stream_close (GOutputStream     *stream,
+static gboolean	lapiz_document_output_stream_close (GOutputStream     *stream,
 						    GCancellable      *cancellable,
 						    GError           **error);
 
 static void
-pluma_document_output_stream_set_property (GObject      *object,
+lapiz_document_output_stream_set_property (GObject      *object,
 					   guint         prop_id,
 					   const GValue *value,
 					   GParamSpec   *pspec)
@@ -91,7 +91,7 @@ pluma_document_output_stream_set_property (GObject      *object,
 }
 
 static void
-pluma_document_output_stream_get_property (GObject    *object,
+lapiz_document_output_stream_get_property (GObject    *object,
 					   guint       prop_id,
 					   GValue     *value,
 					   GParamSpec *pspec)
@@ -111,17 +111,17 @@ pluma_document_output_stream_get_property (GObject    *object,
 }
 
 static void
-pluma_document_output_stream_finalize (GObject *object)
+lapiz_document_output_stream_finalize (GObject *object)
 {
 	PlumaDocumentOutputStream *stream = PLUMA_DOCUMENT_OUTPUT_STREAM (object);
 
 	g_free (stream->priv->buffer);
 
-	G_OBJECT_CLASS (pluma_document_output_stream_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_document_output_stream_parent_class)->finalize (object);
 }
 
 static void
-pluma_document_output_stream_constructed (GObject *object)
+lapiz_document_output_stream_constructed (GObject *object)
 {
 	PlumaDocumentOutputStream *stream = PLUMA_DOCUMENT_OUTPUT_STREAM (object);
 
@@ -143,19 +143,19 @@ pluma_document_output_stream_constructed (GObject *object)
 }
 
 static void
-pluma_document_output_stream_class_init (PlumaDocumentOutputStreamClass *klass)
+lapiz_document_output_stream_class_init (PlumaDocumentOutputStreamClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GOutputStreamClass *stream_class = G_OUTPUT_STREAM_CLASS (klass);
 
-	object_class->get_property = pluma_document_output_stream_get_property;
-	object_class->set_property = pluma_document_output_stream_set_property;
-	object_class->finalize = pluma_document_output_stream_finalize;
-	object_class->constructed = pluma_document_output_stream_constructed;
+	object_class->get_property = lapiz_document_output_stream_get_property;
+	object_class->set_property = lapiz_document_output_stream_set_property;
+	object_class->finalize = lapiz_document_output_stream_finalize;
+	object_class->constructed = lapiz_document_output_stream_constructed;
 
-	stream_class->write_fn = pluma_document_output_stream_write;
-	stream_class->flush = pluma_document_output_stream_flush;
-	stream_class->close_fn = pluma_document_output_stream_close;
+	stream_class->write_fn = lapiz_document_output_stream_write;
+	stream_class->flush = lapiz_document_output_stream_flush;
+	stream_class->close_fn = lapiz_document_output_stream_close;
 
 	g_object_class_install_property (object_class,
 					 PROP_DOCUMENT,
@@ -168,9 +168,9 @@ pluma_document_output_stream_class_init (PlumaDocumentOutputStreamClass *klass)
 }
 
 static void
-pluma_document_output_stream_init (PlumaDocumentOutputStream *stream)
+lapiz_document_output_stream_init (PlumaDocumentOutputStream *stream)
 {
-	stream->priv = pluma_document_output_stream_get_instance_private (stream);
+	stream->priv = lapiz_document_output_stream_get_instance_private (stream);
 
 	stream->priv->buffer = NULL;
 	stream->priv->buflen = 0;
@@ -210,14 +210,14 @@ get_newline_type (GtkTextIter *end)
 }
 
 GOutputStream *
-pluma_document_output_stream_new (PlumaDocument *doc)
+lapiz_document_output_stream_new (PlumaDocument *doc)
 {
 	return G_OUTPUT_STREAM (g_object_new (PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM,
 					      "document", doc, NULL));
 }
 
 PlumaDocumentNewlineType
-pluma_document_output_stream_detect_newline_type (PlumaDocumentOutputStream *stream)
+lapiz_document_output_stream_detect_newline_type (PlumaDocumentOutputStream *stream)
 {
 	PlumaDocumentNewlineType type;
 	GtkTextIter iter;
@@ -278,7 +278,7 @@ end_append_text_to_document (PlumaDocumentOutputStream *stream)
 }
 
 static gssize
-pluma_document_output_stream_write (GOutputStream            *stream,
+lapiz_document_output_stream_write (GOutputStream            *stream,
 				    const void               *buffer,
 				    gsize                     count,
 				    GCancellable             *cancellable,
@@ -373,7 +373,7 @@ pluma_document_output_stream_write (GOutputStream            *stream,
 }
 
 static gboolean
-pluma_document_output_stream_flush (GOutputStream *stream,
+lapiz_document_output_stream_flush (GOutputStream *stream,
                                     GCancellable  *cancellable,
                                     GError        **error)
 {
@@ -382,7 +382,7 @@ pluma_document_output_stream_flush (GOutputStream *stream,
 	/* Flush deferred data if some. */
 	if (!ostream->priv->is_closed && ostream->priv->is_initialized &&
 	    ostream->priv->buflen > 0 &&
-	    pluma_document_output_stream_write (stream, "", 0, cancellable,
+	    lapiz_document_output_stream_write (stream, "", 0, cancellable,
 						error) == -1)
 		return FALSE;
 
@@ -390,7 +390,7 @@ pluma_document_output_stream_flush (GOutputStream *stream,
 }
 
 static gboolean
-pluma_document_output_stream_close (GOutputStream     *stream,
+lapiz_document_output_stream_close (GOutputStream     *stream,
 				    GCancellable      *cancellable,
 				    GError           **error)
 {

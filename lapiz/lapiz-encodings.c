@@ -1,6 +1,6 @@
 /*
- * pluma-encodings.c
- * This file is part of pluma
+ * lapiz-encodings.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -36,7 +36,7 @@
 
 #include <glib/gi18n.h>
 
-#include "pluma-encodings.h"
+#include "lapiz-encodings.h"
 
 
 struct _PlumaEncoding
@@ -138,7 +138,7 @@ static const PlumaEncoding utf8_encoding =  {
 	N_("Unicode")
 };
 
-/* initialized in pluma_encoding_lazy_init() */
+/* initialized in lapiz_encoding_lazy_init() */
 static PlumaEncoding unknown_encoding = {
 	PLUMA_ENCODING_UNKNOWN,
 	NULL,
@@ -281,7 +281,7 @@ static const PlumaEncoding encodings [] = {
 };
 
 static void
-pluma_encoding_lazy_init (void)
+lapiz_encoding_lazy_init (void)
 {
 	static gboolean initialized = FALSE;
 	const gchar *locale_charset;
@@ -298,19 +298,19 @@ pluma_encoding_lazy_init (void)
 }
 
 const PlumaEncoding *
-pluma_encoding_get_from_charset (const gchar *charset)
+lapiz_encoding_get_from_charset (const gchar *charset)
 {
 	gint i;
 
 	g_return_val_if_fail (charset != NULL, NULL);
 
-	pluma_encoding_lazy_init ();
+	lapiz_encoding_lazy_init ();
 
 	if (charset == NULL)
 		return NULL;
 
 	if (g_ascii_strcasecmp (charset, "UTF-8") == 0)
-		return pluma_encoding_get_utf8 ();
+		return lapiz_encoding_get_utf8 ();
 
 	i = 0;
 	while (i < PLUMA_ENCODING_LAST)
@@ -331,35 +331,35 @@ pluma_encoding_get_from_charset (const gchar *charset)
 }
 
 const PlumaEncoding *
-pluma_encoding_get_from_index (gint idx)
+lapiz_encoding_get_from_index (gint idx)
 {
 	g_return_val_if_fail (idx >= 0, NULL);
 
 	if (idx >= PLUMA_ENCODING_LAST)
 		return NULL;
 
-	pluma_encoding_lazy_init ();
+	lapiz_encoding_lazy_init ();
 
 	return &encodings[idx];
 }
 
 const PlumaEncoding *
-pluma_encoding_get_utf8 (void)
+lapiz_encoding_get_utf8 (void)
 {
-	pluma_encoding_lazy_init ();
+	lapiz_encoding_lazy_init ();
 
 	return &utf8_encoding;
 }
 
 const PlumaEncoding *
-pluma_encoding_get_current (void)
+lapiz_encoding_get_current (void)
 {
 	static gboolean initialized = FALSE;
 	static const PlumaEncoding *locale_encoding = NULL;
 
 	const gchar *locale_charset;
 
-	pluma_encoding_lazy_init ();
+	lapiz_encoding_lazy_init ();
 
 	if (initialized != FALSE)
 		return locale_encoding;
@@ -368,7 +368,7 @@ pluma_encoding_get_current (void)
 	{
 		g_return_val_if_fail (locale_charset != NULL, &utf8_encoding);
 
-		locale_encoding = pluma_encoding_get_from_charset (locale_charset);
+		locale_encoding = lapiz_encoding_get_from_charset (locale_charset);
 	}
 	else
 	{
@@ -388,11 +388,11 @@ pluma_encoding_get_current (void)
 }
 
 gchar *
-pluma_encoding_to_string (const PlumaEncoding* enc)
+lapiz_encoding_to_string (const PlumaEncoding* enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
-	pluma_encoding_lazy_init ();
+	lapiz_encoding_lazy_init ();
 
 	g_return_val_if_fail (enc->charset != NULL, NULL);
 
@@ -410,11 +410,11 @@ pluma_encoding_to_string (const PlumaEncoding* enc)
 }
 
 const gchar *
-pluma_encoding_get_charset (const PlumaEncoding* enc)
+lapiz_encoding_get_charset (const PlumaEncoding* enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
-	pluma_encoding_lazy_init ();
+	lapiz_encoding_lazy_init ();
 
 	g_return_val_if_fail (enc->charset != NULL, NULL);
 
@@ -422,11 +422,11 @@ pluma_encoding_get_charset (const PlumaEncoding* enc)
 }
 
 const gchar *
-pluma_encoding_get_name (const PlumaEncoding* enc)
+lapiz_encoding_get_name (const PlumaEncoding* enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
-	pluma_encoding_lazy_init ();
+	lapiz_encoding_lazy_init ();
 
 	return (enc->name == NULL) ? _("Unknown") : _(enc->name);
 }
@@ -436,7 +436,7 @@ pluma_encoding_get_name (const PlumaEncoding* enc)
  * do nothing */
 
 PlumaEncoding *
-pluma_encoding_copy (const PlumaEncoding *enc)
+lapiz_encoding_copy (const PlumaEncoding *enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
@@ -444,13 +444,13 @@ pluma_encoding_copy (const PlumaEncoding *enc)
 }
 
 void
-pluma_encoding_free (PlumaEncoding *enc)
+lapiz_encoding_free (PlumaEncoding *enc)
 {
 	g_return_if_fail (enc != NULL);
 }
 
 /**
- * pluma_encoding_get_type:
+ * lapiz_encoding_get_type:
  *
  * Retrieves the GType object which is associated with the
  * #PlumaEncoding class.
@@ -458,15 +458,15 @@ pluma_encoding_free (PlumaEncoding *enc)
  * Return value: the GType associated with #PlumaEncoding.
  **/
 GType
-pluma_encoding_get_type (void)
+lapiz_encoding_get_type (void)
 {
 	static GType our_type = 0;
 
 	if (!our_type)
 		our_type = g_boxed_type_register_static (
 			"PlumaEncoding",
-			(GBoxedCopyFunc) pluma_encoding_copy,
-			(GBoxedFreeFunc) pluma_encoding_free);
+			(GBoxedCopyFunc) lapiz_encoding_copy,
+			(GBoxedFreeFunc) lapiz_encoding_free);
 
 	return our_type;
 }

@@ -1,30 +1,30 @@
-#include "pluma-app.h"
-#include "pluma-document.h"
-#include "pluma-encodings.h"
-#include "pluma-encodings-combo-box.h"
-#include "pluma-file-chooser-dialog.h"
-#include "pluma-message.h"
-#include "pluma-message-bus.h"
-#include "pluma-message-type.h"
-#include "pluma-notebook.h"
-#include "pluma-panel.h"
-#include "pluma-progress-message-area.h"
-#include "pluma-statusbar.h"
-#include "pluma-tab.h"
-#include "pluma-view.h"
-#include "pluma-window.h"
-pluma_app_get_type
-pluma_document_get_type
-pluma_encoding_get_type
-pluma_encodings_combo_box_get_type
-pluma_file_chooser_dialog_get_type
-pluma_message_get_type
-pluma_message_bus_get_type
-pluma_message_type_get_type
-pluma_notebook_get_type
-pluma_panel_get_type
-pluma_progress_message_area_get_type
-pluma_statusbar_get_type
-pluma_tab_get_type
-pluma_view_get_type
-pluma_window_get_type
+#include "lapiz-app.h"
+#include "lapiz-document.h"
+#include "lapiz-encodings.h"
+#include "lapiz-encodings-combo-box.h"
+#include "lapiz-file-chooser-dialog.h"
+#include "lapiz-message.h"
+#include "lapiz-message-bus.h"
+#include "lapiz-message-type.h"
+#include "lapiz-notebook.h"
+#include "lapiz-panel.h"
+#include "lapiz-progress-message-area.h"
+#include "lapiz-statusbar.h"
+#include "lapiz-tab.h"
+#include "lapiz-view.h"
+#include "lapiz-window.h"
+lapiz_app_get_type
+lapiz_document_get_type
+lapiz_encoding_get_type
+lapiz_encodings_combo_box_get_type
+lapiz_file_chooser_dialog_get_type
+lapiz_message_get_type
+lapiz_message_bus_get_type
+lapiz_message_type_get_type
+lapiz_notebook_get_type
+lapiz_panel_get_type
+lapiz_progress_message_area_get_type
+lapiz_statusbar_get_type
+lapiz_tab_get_type
+lapiz_view_get_type
+lapiz_window_get_type

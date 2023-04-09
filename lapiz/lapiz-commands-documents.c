@@ -1,6 +1,6 @@
 /*
- * pluma-documents-commands.c
- * This file is part of pluma
+ * lapiz-documents-commands.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -36,52 +36,52 @@
 
 #include <gtk/gtk.h>
 
-#include "pluma-commands.h"
-#include "pluma-window.h"
-#include "pluma-notebook.h"
-#include "pluma-debug.h"
+#include "lapiz-commands.h"
+#include "lapiz-window.h"
+#include "lapiz-notebook.h"
+#include "lapiz-debug.h"
 
 void
-_pluma_cmd_documents_previous_document (GtkAction   *action,
+_lapiz_cmd_documents_previous_document (GtkAction   *action,
 				       PlumaWindow *window)
 {
 	GtkNotebook *notebook;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	notebook = GTK_NOTEBOOK (_pluma_window_get_notebook (window));
+	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
 	gtk_notebook_prev_page (notebook);
 }
 
 void
-_pluma_cmd_documents_next_document (GtkAction   *action,
+_lapiz_cmd_documents_next_document (GtkAction   *action,
 				   PlumaWindow *window)
 {
 	GtkNotebook *notebook;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	notebook = GTK_NOTEBOOK (_pluma_window_get_notebook (window));
+	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
 	gtk_notebook_next_page (notebook);
 }
 
 void
-_pluma_cmd_documents_move_to_new_window (GtkAction   *action,
+_lapiz_cmd_documents_move_to_new_window (GtkAction   *action,
 					PlumaWindow *window)
 {
 	PlumaNotebook *old_notebook;
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 
 	if (tab == NULL)
 		return;
 
-	old_notebook = PLUMA_NOTEBOOK (_pluma_window_get_notebook (window));
+	old_notebook = PLUMA_NOTEBOOK (_lapiz_window_get_notebook (window));
 
 	g_return_if_fail (gtk_notebook_get_n_pages (GTK_NOTEBOOK (old_notebook)) > 1);
 
-	_pluma_window_move_tab_to_new_window (window, tab);
+	_lapiz_window_move_tab_to_new_window (window, tab);
 }

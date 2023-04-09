@@ -1,6 +1,6 @@
 /*
- * pluma-encodings-dialog.c
- * This file is part of pluma
+ * lapiz-encodings-dialog.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,13 +38,13 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "pluma-encodings-dialog.h"
-#include "pluma-encodings.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-utils.h"
-#include "pluma-debug.h"
-#include "pluma-help.h"
-#include "pluma-dirs.h"
+#include "lapiz-encodings-dialog.h"
+#include "lapiz-encodings.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-utils.h"
+#include "lapiz-debug.h"
+#include "lapiz-help.h"
+#include "lapiz-dirs.h"
 
 struct _PlumaEncodingsDialogPrivate
 {
@@ -58,24 +58,24 @@ struct _PlumaEncodingsDialogPrivate
 	GSList		*show_in_menu_list;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaEncodingsDialog, pluma_encodings_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaEncodingsDialog, lapiz_encodings_dialog, GTK_TYPE_DIALOG)
 
 static void
-pluma_encodings_dialog_finalize (GObject *object)
+lapiz_encodings_dialog_finalize (GObject *object)
 {
 	PlumaEncodingsDialogPrivate *priv = PLUMA_ENCODINGS_DIALOG (object)->priv;
 
 	g_slist_free (priv->show_in_menu_list);
 
-	G_OBJECT_CLASS (pluma_encodings_dialog_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_encodings_dialog_parent_class)->finalize (object);
 }
 
 static void
-pluma_encodings_dialog_class_init (PlumaEncodingsDialogClass *klass)
+lapiz_encodings_dialog_class_init (PlumaEncodingsDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_encodings_dialog_finalize;
+	object_class->finalize = lapiz_encodings_dialog_finalize;
 }
 
 enum {
@@ -136,7 +136,7 @@ get_selected_encodings_func (GtkTreeModel *model,
 	charset = NULL;
 	gtk_tree_model_get (model, iter, COLUMN_CHARSET, &charset, -1);
 
-	enc = pluma_encoding_get_from_charset (charset);
+	enc = lapiz_encoding_get_from_charset (charset);
 	g_free (charset);
 
 	*list = g_slist_prepend (*list, (gpointer)enc);
@@ -159,9 +159,9 @@ update_shown_in_menu_tree_model (GtkListStore *store,
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
 				    COLUMN_CHARSET,
-				    pluma_encoding_get_charset (enc),
+				    lapiz_encoding_get_charset (enc),
 				    COLUMN_NAME,
-				    pluma_encoding_get_name (enc), -1);
+				    lapiz_encoding_get_name (enc), -1);
 
 		list = g_slist_next (list);
 	}
@@ -235,7 +235,7 @@ init_shown_in_menu_tree_model (PlumaEncodingsDialog *dialog)
 	GSList *list, *tmp;
 
 	/* add data to the list store */
-	list = pluma_prefs_manager_get_shown_in_menu_encodings ();
+	list = lapiz_prefs_manager_get_shown_in_menu_encodings ();
 
 	tmp = list;
 
@@ -253,9 +253,9 @@ init_shown_in_menu_tree_model (PlumaEncodingsDialog *dialog)
 		gtk_list_store_set (dialog->priv->displayed_liststore,
 				    &iter,
 				    COLUMN_CHARSET,
-				    pluma_encoding_get_charset (enc),
+				    lapiz_encoding_get_charset (enc),
 				    COLUMN_NAME,
-				    pluma_encoding_get_name (enc), -1);
+				    lapiz_encoding_get_name (enc), -1);
 
 		tmp = g_slist_next (tmp);
 	}
@@ -270,20 +270,20 @@ response_handler (GtkDialog            *dialog,
 {
 	if (response_id == GTK_RESPONSE_HELP)
 	{
-		pluma_help_display (GTK_WINDOW (dialog), "pluma", NULL);
+		lapiz_help_display (GTK_WINDOW (dialog), "lapiz", NULL);
 		g_signal_stop_emission_by_name (dialog, "response");
 		return;
 	}
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
-		g_return_if_fail (pluma_prefs_manager_shown_in_menu_encodings_can_set ());
-		pluma_prefs_manager_set_shown_in_menu_encodings (dlg->priv->show_in_menu_list);
+		g_return_if_fail (lapiz_prefs_manager_shown_in_menu_encodings_can_set ());
+		lapiz_prefs_manager_set_shown_in_menu_encodings (dlg->priv->show_in_menu_list);
 	}
 }
 
 static void
-pluma_encodings_dialog_init (PlumaEncodingsDialog *dlg)
+lapiz_encodings_dialog_init (PlumaEncodingsDialog *dlg)
 {
 	GtkWidget *content;
 	GtkCellRenderer *cell_renderer;
@@ -301,11 +301,11 @@ pluma_encodings_dialog_init (PlumaEncodingsDialog *dlg)
 		NULL
 	};
 
-	dlg->priv = pluma_encodings_dialog_get_instance_private (dlg);
+	dlg->priv = lapiz_encodings_dialog_get_instance_private (dlg);
 
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), "process-stop", GTK_RESPONSE_CANCEL);
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "gtk-ok", GTK_RESPONSE_OK);
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), "process-stop", GTK_RESPONSE_CANCEL);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "gtk-ok", GTK_RESPONSE_OK);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
 
 	gtk_window_set_title (GTK_WINDOW (dlg), _("Character Encodings"));
 	gtk_window_set_default_size (GTK_WINDOW (dlg), 650, 400);
@@ -323,8 +323,8 @@ pluma_encodings_dialog_init (PlumaEncodingsDialog *dlg)
 			  G_CALLBACK (response_handler),
 			  dlg);
 
-	file = pluma_dirs_get_ui_file ("pluma-encodings-dialog.ui");
-	ret = pluma_utils_get_ui_objects (file,
+	file = lapiz_dirs_get_ui_file ("lapiz-encodings-dialog.ui");
+	ret = lapiz_utils_get_ui_objects (file,
 					  root_objects,
 					  &error_widget,
 					  "encodings-dialog-contents", &content,
@@ -390,16 +390,16 @@ pluma_encodings_dialog_init (PlumaEncodingsDialog *dlg)
 
 	/* Add the data */
 	i = 0;
-	while ((enc = pluma_encoding_get_from_index (i)) != NULL)
+	while ((enc = lapiz_encoding_get_from_index (i)) != NULL)
 	{
 		gtk_list_store_append (dlg->priv->available_liststore,
 				       &parent_iter);
 		gtk_list_store_set (dlg->priv->available_liststore,
 				    &parent_iter,
 				    COLUMN_CHARSET,
-				    pluma_encoding_get_charset (enc),
+				    lapiz_encoding_get_charset (enc),
 				    COLUMN_NAME,
-				    pluma_encoding_get_name (enc), -1);
+				    lapiz_encoding_get_name (enc), -1);
 
 		++i;
 	}
@@ -476,7 +476,7 @@ pluma_encodings_dialog_init (PlumaEncodingsDialog *dlg)
 }
 
 GtkWidget *
-pluma_encodings_dialog_new (void)
+lapiz_encodings_dialog_new (void)
 {
 	GtkWidget *dlg;
 

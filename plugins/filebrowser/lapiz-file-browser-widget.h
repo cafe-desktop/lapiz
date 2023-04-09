@@ -1,5 +1,5 @@
 /*
- * pluma-file-browser-widget.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-widget.h - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -23,12 +23,12 @@
 #define __PLUMA_FILE_BROWSER_WIDGET_H__
 
 #include <gtk/gtk.h>
-#include "pluma-file-browser-store.h"
-#include "pluma-file-bookmarks-store.h"
-#include "pluma-file-browser-view.h"
+#include "lapiz-file-browser-store.h"
+#include "lapiz-file-bookmarks-store.h"
+#include "lapiz-file-browser-view.h"
 
 G_BEGIN_DECLS
-#define PLUMA_TYPE_FILE_BROWSER_WIDGET			(pluma_file_browser_widget_get_type ())
+#define PLUMA_TYPE_FILE_BROWSER_WIDGET			(lapiz_file_browser_widget_get_type ())
 #define PLUMA_FILE_BROWSER_WIDGET(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget))
 #define PLUMA_FILE_BROWSER_WIDGET_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget const))
 #define PLUMA_FILE_BROWSER_WIDGET_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidgetClass))
@@ -70,50 +70,50 @@ struct _PlumaFileBrowserWidgetClass
 	                              GList *list);
 };
 
-GType pluma_file_browser_widget_get_type            (void) G_GNUC_CONST;
-void _pluma_file_browser_widget_register_type       (GTypeModule * module);
+GType lapiz_file_browser_widget_get_type            (void) G_GNUC_CONST;
+void _lapiz_file_browser_widget_register_type       (GTypeModule * module);
 
-GtkWidget *pluma_file_browser_widget_new            (const gchar *data_dir);
+GtkWidget *lapiz_file_browser_widget_new            (const gchar *data_dir);
 
-void pluma_file_browser_widget_show_bookmarks       (PlumaFileBrowserWidget * obj);
-void pluma_file_browser_widget_show_files           (PlumaFileBrowserWidget * obj);
+void lapiz_file_browser_widget_show_bookmarks       (PlumaFileBrowserWidget * obj);
+void lapiz_file_browser_widget_show_files           (PlumaFileBrowserWidget * obj);
 
-void pluma_file_browser_widget_set_root             (PlumaFileBrowserWidget * obj,
+void lapiz_file_browser_widget_set_root             (PlumaFileBrowserWidget * obj,
                                                      gchar const *root,
                                                      gboolean virtual_root);
 void
-pluma_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget * obj,
 						     gchar const *root,
 						     gchar const *virtual_root);
 
 gboolean
-pluma_file_browser_widget_get_selected_directory    (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_get_selected_directory    (PlumaFileBrowserWidget * obj,
                                                      GtkTreeIter * iter);
 
 PlumaFileBrowserStore *
-pluma_file_browser_widget_get_browser_store         (PlumaFileBrowserWidget * obj);
+lapiz_file_browser_widget_get_browser_store         (PlumaFileBrowserWidget * obj);
 PlumaFileBookmarksStore *
-pluma_file_browser_widget_get_bookmarks_store       (PlumaFileBrowserWidget * obj);
+lapiz_file_browser_widget_get_bookmarks_store       (PlumaFileBrowserWidget * obj);
 PlumaFileBrowserView *
-pluma_file_browser_widget_get_browser_view          (PlumaFileBrowserWidget * obj);
+lapiz_file_browser_widget_get_browser_view          (PlumaFileBrowserWidget * obj);
 GtkWidget *
-pluma_file_browser_widget_get_filter_entry          (PlumaFileBrowserWidget * obj);
+lapiz_file_browser_widget_get_filter_entry          (PlumaFileBrowserWidget * obj);
 
 GtkUIManager *
-pluma_file_browser_widget_get_ui_manager            (PlumaFileBrowserWidget * obj);
+lapiz_file_browser_widget_get_ui_manager            (PlumaFileBrowserWidget * obj);
 
-gulong pluma_file_browser_widget_add_filter         (PlumaFileBrowserWidget * obj,
+gulong lapiz_file_browser_widget_add_filter         (PlumaFileBrowserWidget * obj,
                                                      PlumaFileBrowserWidgetFilterFunc func,
                                                      gpointer user_data,
                                                      GDestroyNotify notify);
-void pluma_file_browser_widget_remove_filter        (PlumaFileBrowserWidget * obj,
+void lapiz_file_browser_widget_remove_filter        (PlumaFileBrowserWidget * obj,
                                                      gulong id);
-void pluma_file_browser_widget_set_filter_pattern   (PlumaFileBrowserWidget * obj,
+void lapiz_file_browser_widget_set_filter_pattern   (PlumaFileBrowserWidget * obj,
                                                      gchar const *pattern);
 
-void pluma_file_browser_widget_refresh		    (PlumaFileBrowserWidget * obj);
-void pluma_file_browser_widget_history_back	    (PlumaFileBrowserWidget * obj);
-void pluma_file_browser_widget_history_forward	    (PlumaFileBrowserWidget * obj);
+void lapiz_file_browser_widget_refresh		    (PlumaFileBrowserWidget * obj);
+void lapiz_file_browser_widget_history_back	    (PlumaFileBrowserWidget * obj);
+void lapiz_file_browser_widget_history_forward	    (PlumaFileBrowserWidget * obj);
 
 G_END_DECLS
 #endif /* __PLUMA_FILE_BROWSER_WIDGET_H__ */

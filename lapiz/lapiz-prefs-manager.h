@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-prefs-manager.h
- * This file is part of pluma
+ * lapiz-prefs-manager.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002  Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -33,9 +33,9 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <gtksourceview/gtksource.h>
-#include "pluma-app.h"
+#include "lapiz-app.h"
 
-#define PLUMA_SCHEMA	"org.mate.pluma"
+#define PLUMA_SCHEMA	"org.mate.lapiz"
 
 /* Editor */
 #define GPM_USE_DEFAULT_FONT	"use-default-font"
@@ -118,7 +118,7 @@
 #define GPM_LOCKDOWN_PRINT_SETUP	"disable-print-setup"
 #define GPM_LOCKDOWN_SAVE_TO_DISK	"disable-save-to-disk"
 
-/* Fallback default values. Keep in sync with org.mate.pluma.gschema.xml */
+/* Fallback default values. Keep in sync with org.mate.lapiz.gschema.xml */
 #define GPM_DEFAULT_AUTO_SAVE_INTERVAL	10 /* minutes */
 #define GPM_DEFAULT_MAX_RECENTS			5
 
@@ -137,223 +137,223 @@ typedef enum {
 
 /* LIFE CYCLE MANAGEMENT FUNCTIONS */
 
-gboolean		 pluma_prefs_manager_init (void);
+gboolean		 lapiz_prefs_manager_init (void);
 
-/* This function must be called before exiting pluma */
-void			 pluma_prefs_manager_shutdown (void);
+/* This function must be called before exiting lapiz */
+void			 lapiz_prefs_manager_shutdown (void);
 
 
 /* PREFS MANAGEMENT FUNCTIONS */
 
 /* Use default font */
-gboolean 		 pluma_prefs_manager_get_use_default_font 	(void);
-void			 pluma_prefs_manager_set_use_default_font 	(gboolean udf);
-gboolean		 pluma_prefs_manager_use_default_font_can_set	(void);
+gboolean 		 lapiz_prefs_manager_get_use_default_font 	(void);
+void			 lapiz_prefs_manager_set_use_default_font 	(gboolean udf);
+gboolean		 lapiz_prefs_manager_use_default_font_can_set	(void);
 
 /* Editor font */
-gchar 			*pluma_prefs_manager_get_editor_font		(void);
-void			 pluma_prefs_manager_set_editor_font 		(const gchar *font);
-gboolean		 pluma_prefs_manager_editor_font_can_set	(void);
+gchar 			*lapiz_prefs_manager_get_editor_font		(void);
+void			 lapiz_prefs_manager_set_editor_font 		(const gchar *font);
+gboolean		 lapiz_prefs_manager_editor_font_can_set	(void);
 
 /* System font */
-gchar 			*pluma_prefs_manager_get_system_font		(void);
+gchar 			*lapiz_prefs_manager_get_system_font		(void);
 
 /* Create backup copy */
-gboolean		 pluma_prefs_manager_get_create_backup_copy	(void);
-void			 pluma_prefs_manager_set_create_backup_copy	(gboolean cbc);
-gboolean		 pluma_prefs_manager_create_backup_copy_can_set	(void);
+gboolean		 lapiz_prefs_manager_get_create_backup_copy	(void);
+void			 lapiz_prefs_manager_set_create_backup_copy	(gboolean cbc);
+gboolean		 lapiz_prefs_manager_create_backup_copy_can_set	(void);
 
 /* Auto save */
-gboolean		 pluma_prefs_manager_get_auto_save		(void);
-void			 pluma_prefs_manager_set_auto_save		(gboolean as);
-gboolean		 pluma_prefs_manager_auto_save_can_set		(void);
+gboolean		 lapiz_prefs_manager_get_auto_save		(void);
+void			 lapiz_prefs_manager_set_auto_save		(gboolean as);
+gboolean		 lapiz_prefs_manager_auto_save_can_set		(void);
 
 /* Auto save interval */
-gint			 pluma_prefs_manager_get_auto_save_interval	(void);
-void			 pluma_prefs_manager_set_auto_save_interval	(gint asi);
-gboolean		 pluma_prefs_manager_auto_save_interval_can_set	(void);
+gint			 lapiz_prefs_manager_get_auto_save_interval	(void);
+void			 lapiz_prefs_manager_set_auto_save_interval	(gint asi);
+gboolean		 lapiz_prefs_manager_auto_save_interval_can_set	(void);
 
 /* Undo actions limit: if < 1 then no limits */
-gint 			 pluma_prefs_manager_get_undo_actions_limit	(void);
-void			 pluma_prefs_manager_set_undo_actions_limit	(gint ual);
-gboolean		 pluma_prefs_manager_undo_actions_limit_can_set	(void);
+gint 			 lapiz_prefs_manager_get_undo_actions_limit	(void);
+void			 lapiz_prefs_manager_set_undo_actions_limit	(gint ual);
+gboolean		 lapiz_prefs_manager_undo_actions_limit_can_set	(void);
 
 /* Wrap mode */
-GtkWrapMode		 pluma_prefs_manager_get_wrap_mode		(void);
-void			 pluma_prefs_manager_set_wrap_mode		(GtkWrapMode wp);
-gboolean		 pluma_prefs_manager_wrap_mode_can_set		(void);
+GtkWrapMode		 lapiz_prefs_manager_get_wrap_mode		(void);
+void			 lapiz_prefs_manager_set_wrap_mode		(GtkWrapMode wp);
+gboolean		 lapiz_prefs_manager_wrap_mode_can_set		(void);
 
 /* Tabs size */
-gint			 pluma_prefs_manager_get_tabs_size		(void);
-void			 pluma_prefs_manager_set_tabs_size		(gint ts);
-gboolean		 pluma_prefs_manager_tabs_size_can_set		(void);
+gint			 lapiz_prefs_manager_get_tabs_size		(void);
+void			 lapiz_prefs_manager_set_tabs_size		(gint ts);
+gboolean		 lapiz_prefs_manager_tabs_size_can_set		(void);
 
 /* Insert spaces */
-gboolean		 pluma_prefs_manager_get_insert_spaces	 	(void);
-void			 pluma_prefs_manager_set_insert_spaces	 	(gboolean ai);
-gboolean		 pluma_prefs_manager_insert_spaces_can_set 	(void);
+gboolean		 lapiz_prefs_manager_get_insert_spaces	 	(void);
+void			 lapiz_prefs_manager_set_insert_spaces	 	(gboolean ai);
+gboolean		 lapiz_prefs_manager_insert_spaces_can_set 	(void);
 
 /* Auto indent */
-gboolean		 pluma_prefs_manager_get_auto_indent	 	(void);
-void			 pluma_prefs_manager_set_auto_indent	 	(gboolean ai);
-gboolean		 pluma_prefs_manager_auto_indent_can_set 	(void);
+gboolean		 lapiz_prefs_manager_get_auto_indent	 	(void);
+void			 lapiz_prefs_manager_set_auto_indent	 	(gboolean ai);
+gboolean		 lapiz_prefs_manager_auto_indent_can_set 	(void);
 
 /* Display line numbers */
-gboolean		 pluma_prefs_manager_get_display_line_numbers 	(void);
-void			 pluma_prefs_manager_set_display_line_numbers 	(gboolean dln);
-gboolean		 pluma_prefs_manager_display_line_numbers_can_set (void);
+gboolean		 lapiz_prefs_manager_get_display_line_numbers 	(void);
+void			 lapiz_prefs_manager_set_display_line_numbers 	(gboolean dln);
+gboolean		 lapiz_prefs_manager_display_line_numbers_can_set (void);
 
 /* Toolbar visible */
-gboolean		 pluma_prefs_manager_get_toolbar_visible	(void);
-void			 pluma_prefs_manager_set_toolbar_visible	(gboolean tv);
-gboolean		 pluma_prefs_manager_toolbar_visible_can_set	(void);
+gboolean		 lapiz_prefs_manager_get_toolbar_visible	(void);
+void			 lapiz_prefs_manager_set_toolbar_visible	(gboolean tv);
+gboolean		 lapiz_prefs_manager_toolbar_visible_can_set	(void);
 
 /* Toolbar buttons style */
-PlumaToolbarSetting 	 pluma_prefs_manager_get_toolbar_buttons_style	(void);
-void 			 pluma_prefs_manager_set_toolbar_buttons_style	(PlumaToolbarSetting tbs);
-gboolean		 pluma_prefs_manager_toolbar_buttons_style_can_set (void);
+PlumaToolbarSetting 	 lapiz_prefs_manager_get_toolbar_buttons_style	(void);
+void 			 lapiz_prefs_manager_set_toolbar_buttons_style	(PlumaToolbarSetting tbs);
+gboolean		 lapiz_prefs_manager_toolbar_buttons_style_can_set (void);
 
 /* Statusbar visible */
-gboolean		 pluma_prefs_manager_get_statusbar_visible	(void);
-void			 pluma_prefs_manager_set_statusbar_visible	(gboolean sv);
-gboolean		 pluma_prefs_manager_statusbar_visible_can_set	(void);
+gboolean		 lapiz_prefs_manager_get_statusbar_visible	(void);
+void			 lapiz_prefs_manager_set_statusbar_visible	(gboolean sv);
+gboolean		 lapiz_prefs_manager_statusbar_visible_can_set	(void);
 
 /* Side pane visible */
-gboolean		 pluma_prefs_manager_get_side_pane_visible	(void);
-void			 pluma_prefs_manager_set_side_pane_visible	(gboolean tv);
-gboolean		 pluma_prefs_manager_side_pane_visible_can_set	(void);
+gboolean		 lapiz_prefs_manager_get_side_pane_visible	(void);
+void			 lapiz_prefs_manager_set_side_pane_visible	(gboolean tv);
+gboolean		 lapiz_prefs_manager_side_pane_visible_can_set	(void);
 
 /* Bottom panel visible */
-gboolean		 pluma_prefs_manager_get_bottom_panel_visible	(void);
-void			 pluma_prefs_manager_set_bottom_panel_visible	(gboolean tv);
-gboolean		 pluma_prefs_manager_bottom_panel_visible_can_set(void);
+gboolean		 lapiz_prefs_manager_get_bottom_panel_visible	(void);
+void			 lapiz_prefs_manager_set_bottom_panel_visible	(gboolean tv);
+gboolean		 lapiz_prefs_manager_bottom_panel_visible_can_set(void);
 /* Print syntax highlighting */
-gboolean		 pluma_prefs_manager_get_print_syntax_hl	(void);
-void			 pluma_prefs_manager_set_print_syntax_hl	(gboolean ps);
-gboolean		 pluma_prefs_manager_print_syntax_hl_can_set	(void);
+gboolean		 lapiz_prefs_manager_get_print_syntax_hl	(void);
+void			 lapiz_prefs_manager_set_print_syntax_hl	(gboolean ps);
+gboolean		 lapiz_prefs_manager_print_syntax_hl_can_set	(void);
 
 /* Print header */
-gboolean		 pluma_prefs_manager_get_print_header		(void);
-void			 pluma_prefs_manager_set_print_header		(gboolean ph);
-gboolean		 pluma_prefs_manager_print_header_can_set	(void);
+gboolean		 lapiz_prefs_manager_get_print_header		(void);
+void			 lapiz_prefs_manager_set_print_header		(gboolean ph);
+gboolean		 lapiz_prefs_manager_print_header_can_set	(void);
 
 /* Wrap mode while printing */
-GtkWrapMode		 pluma_prefs_manager_get_print_wrap_mode	(void);
-void			 pluma_prefs_manager_set_print_wrap_mode	(GtkWrapMode pwm);
-gboolean		 pluma_prefs_manager_print_wrap_mode_can_set	(void);
+GtkWrapMode		 lapiz_prefs_manager_get_print_wrap_mode	(void);
+void			 lapiz_prefs_manager_set_print_wrap_mode	(GtkWrapMode pwm);
+gboolean		 lapiz_prefs_manager_print_wrap_mode_can_set	(void);
 
 /* Print line numbers */
-gint		 	 pluma_prefs_manager_get_print_line_numbers	(void);
-void 			 pluma_prefs_manager_set_print_line_numbers	(gint pln);
-gboolean		 pluma_prefs_manager_print_line_numbers_can_set	(void);
+gint		 	 lapiz_prefs_manager_get_print_line_numbers	(void);
+void 			 lapiz_prefs_manager_set_print_line_numbers	(gint pln);
+gboolean		 lapiz_prefs_manager_print_line_numbers_can_set	(void);
 
 /* Font used to print the body of documents */
-gchar			*pluma_prefs_manager_get_print_font_body	(void);
-void			 pluma_prefs_manager_set_print_font_body	(const gchar *font);
-gboolean		 pluma_prefs_manager_print_font_body_can_set	(void);
-gchar			*pluma_prefs_manager_get_default_print_font_body (void);
+gchar			*lapiz_prefs_manager_get_print_font_body	(void);
+void			 lapiz_prefs_manager_set_print_font_body	(const gchar *font);
+gboolean		 lapiz_prefs_manager_print_font_body_can_set	(void);
+gchar			*lapiz_prefs_manager_get_default_print_font_body (void);
 
 /* Font used to print headers */
-gchar			*pluma_prefs_manager_get_print_font_header	(void);
-void			 pluma_prefs_manager_set_print_font_header	(const gchar *font);
-gboolean		 pluma_prefs_manager_print_font_header_can_set	(void);
-gchar			*pluma_prefs_manager_get_default_print_font_header (void);
+gchar			*lapiz_prefs_manager_get_print_font_header	(void);
+void			 lapiz_prefs_manager_set_print_font_header	(const gchar *font);
+gboolean		 lapiz_prefs_manager_print_font_header_can_set	(void);
+gchar			*lapiz_prefs_manager_get_default_print_font_header (void);
 
 /* Font used to print line numbers */
-gchar			*pluma_prefs_manager_get_print_font_numbers	(void);
-void			 pluma_prefs_manager_set_print_font_numbers	(const gchar *font);
-gboolean		 pluma_prefs_manager_print_font_numbers_can_set	(void);
-gchar			*pluma_prefs_manager_get_default_print_font_numbers (void);
+gchar			*lapiz_prefs_manager_get_print_font_numbers	(void);
+void			 lapiz_prefs_manager_set_print_font_numbers	(const gchar *font);
+gboolean		 lapiz_prefs_manager_print_font_numbers_can_set	(void);
+gchar			*lapiz_prefs_manager_get_default_print_font_numbers (void);
 
 /* Max number of files in "Recent Files" menu.
  * This is configurable only using gsettings, dconf or dconf-editor
  */
-gint		 	 pluma_prefs_manager_get_max_recents		(void);
+gint		 	 lapiz_prefs_manager_get_max_recents		(void);
 
 /* Encodings */
-GSList 			*pluma_prefs_manager_get_auto_detected_encodings (void);
+GSList 			*lapiz_prefs_manager_get_auto_detected_encodings (void);
 
-GSList			*pluma_prefs_manager_get_shown_in_menu_encodings (void);
-void			 pluma_prefs_manager_set_shown_in_menu_encodings (const GSList *encs);
-gboolean 		 pluma_prefs_manager_shown_in_menu_encodings_can_set (void);
+GSList			*lapiz_prefs_manager_get_shown_in_menu_encodings (void);
+void			 lapiz_prefs_manager_set_shown_in_menu_encodings (const GSList *encs);
+gboolean 		 lapiz_prefs_manager_shown_in_menu_encodings_can_set (void);
 
 /* Highlight current line */
-gboolean		 pluma_prefs_manager_get_highlight_current_line	(void);
-void			 pluma_prefs_manager_set_highlight_current_line	(gboolean hl);
-gboolean		 pluma_prefs_manager_highlight_current_line_can_set (void);
+gboolean		 lapiz_prefs_manager_get_highlight_current_line	(void);
+void			 lapiz_prefs_manager_set_highlight_current_line	(gboolean hl);
+gboolean		 lapiz_prefs_manager_highlight_current_line_can_set (void);
 
 /* Highlight matching bracket */
-gboolean		 pluma_prefs_manager_get_bracket_matching	(void);
-void			 pluma_prefs_manager_set_bracket_matching	(gboolean bm);
-gboolean		 pluma_prefs_manager_bracket_matching_can_set (void);
+gboolean		 lapiz_prefs_manager_get_bracket_matching	(void);
+void			 lapiz_prefs_manager_set_bracket_matching	(gboolean bm);
+gboolean		 lapiz_prefs_manager_bracket_matching_can_set (void);
 
 /* Display right margin */
-gboolean		 pluma_prefs_manager_get_display_right_margin	(void);
-void			 pluma_prefs_manager_set_display_right_margin	(gboolean drm);
-gboolean		 pluma_prefs_manager_display_right_margin_can_set (void);
+gboolean		 lapiz_prefs_manager_get_display_right_margin	(void);
+void			 lapiz_prefs_manager_set_display_right_margin	(gboolean drm);
+gboolean		 lapiz_prefs_manager_display_right_margin_can_set (void);
 
 /* Right margin position */
-gint		 	 pluma_prefs_manager_get_right_margin_position	(void);
-void 			 pluma_prefs_manager_set_right_margin_position	(gint rmp);
-gboolean		 pluma_prefs_manager_right_margin_position_can_set (void);
+gint		 	 lapiz_prefs_manager_get_right_margin_position	(void);
+void 			 lapiz_prefs_manager_set_right_margin_position	(gint rmp);
+gboolean		 lapiz_prefs_manager_right_margin_position_can_set (void);
 
 /* Smart home end */
 GtkSourceSmartHomeEndType
-		 	 pluma_prefs_manager_get_smart_home_end		(void);
-void 			 pluma_prefs_manager_set_smart_home_end		(GtkSourceSmartHomeEndType  smart_he);
-gboolean		 pluma_prefs_manager_smart_home_end_can_set	(void);
+		 	 lapiz_prefs_manager_get_smart_home_end		(void);
+void 			 lapiz_prefs_manager_set_smart_home_end		(GtkSourceSmartHomeEndType  smart_he);
+gboolean		 lapiz_prefs_manager_smart_home_end_can_set	(void);
 
 /* Enable syntax highlighting */
-gboolean 		 pluma_prefs_manager_get_enable_syntax_highlighting (void);
-void			 pluma_prefs_manager_set_enable_syntax_highlighting (gboolean esh);
-gboolean		 pluma_prefs_manager_enable_syntax_highlighting_can_set (void);
+gboolean 		 lapiz_prefs_manager_get_enable_syntax_highlighting (void);
+void			 lapiz_prefs_manager_set_enable_syntax_highlighting (gboolean esh);
+gboolean		 lapiz_prefs_manager_enable_syntax_highlighting_can_set (void);
 
 /* Writable VFS schemes */
-GSList			*pluma_prefs_manager_get_writable_vfs_schemes	(void);
+GSList			*lapiz_prefs_manager_get_writable_vfs_schemes	(void);
 
 /* Restore cursor position */
-gboolean 		 pluma_prefs_manager_get_restore_cursor_position (void);
+gboolean 		 lapiz_prefs_manager_get_restore_cursor_position (void);
 
 /* Enable search highlighting */
-gboolean 		 pluma_prefs_manager_get_enable_search_highlighting (void);
-void			 pluma_prefs_manager_set_enable_search_highlighting (gboolean esh);
-gboolean		 pluma_prefs_manager_enable_search_highlighting_can_set (void);
+gboolean 		 lapiz_prefs_manager_get_enable_search_highlighting (void);
+void			 lapiz_prefs_manager_set_enable_search_highlighting (gboolean esh);
+gboolean		 lapiz_prefs_manager_enable_search_highlighting_can_set (void);
 
 /* Style scheme */
-gchar			*pluma_prefs_manager_get_source_style_scheme	(void);
-void			 pluma_prefs_manager_set_source_style_scheme	(const gchar *scheme);
-gboolean		 pluma_prefs_manager_source_style_scheme_can_set(void);
+gchar			*lapiz_prefs_manager_get_source_style_scheme	(void);
+void			 lapiz_prefs_manager_set_source_style_scheme	(const gchar *scheme);
+gboolean		 lapiz_prefs_manager_source_style_scheme_can_set(void);
 
 /* Plugins */
-GSList			*pluma_prefs_manager_get_active_plugins		(void);
-void			 pluma_prefs_manager_set_active_plugins		(const GSList *plugins);
-gboolean 		 pluma_prefs_manager_active_plugins_can_set	(void);
+GSList			*lapiz_prefs_manager_get_active_plugins		(void);
+void			 lapiz_prefs_manager_set_active_plugins		(const GSList *plugins);
+gboolean 		 lapiz_prefs_manager_active_plugins_can_set	(void);
 
 /* Global lockdown */
-PlumaLockdownMask	 pluma_prefs_manager_get_lockdown			(void);
+PlumaLockdownMask	 lapiz_prefs_manager_get_lockdown			(void);
 
 /* GSettings utilities */
-GSList*				 pluma_prefs_manager_get_gslist (GSettings *settings, const gchar *key);
-void				 pluma_prefs_manager_set_gslist (GSettings *settings, const gchar *key, GSList *list);
+GSList*				 lapiz_prefs_manager_get_gslist (GSettings *settings, const gchar *key);
+void				 lapiz_prefs_manager_set_gslist (GSettings *settings, const gchar *key, GSList *list);
 
 /* Enable drawing space */
-gint     pluma_prefs_manager_get_draw_spaces     (void);
-void     pluma_prefs_manager_set_draw_spaces     (gint enable_draw_spaces);
-gboolean pluma_prefs_manager_draw_spaces_can_set (void);
+gint     lapiz_prefs_manager_get_draw_spaces     (void);
+void     lapiz_prefs_manager_set_draw_spaces     (gint enable_draw_spaces);
+gboolean lapiz_prefs_manager_draw_spaces_can_set (void);
 
 /* Enable drawing tab */
-gint     pluma_prefs_manager_get_draw_tabs     (void);
-void     pluma_prefs_manager_set_draw_tabs     (gint enable_draw_tabs);
-gboolean pluma_prefs_manager_draw_tabs_can_set (void);
+gint     lapiz_prefs_manager_get_draw_tabs     (void);
+void     lapiz_prefs_manager_set_draw_tabs     (gint enable_draw_tabs);
+gboolean lapiz_prefs_manager_draw_tabs_can_set (void);
 
 /* Enable drawing newline */
-gboolean pluma_prefs_manager_get_draw_newlines     (void);
-void     pluma_prefs_manager_set_draw_newlines     (gboolean enable_draw_newlines);
-gboolean pluma_prefs_manager_draw_newlines_can_set (void);
+gboolean lapiz_prefs_manager_get_draw_newlines     (void);
+void     lapiz_prefs_manager_set_draw_newlines     (gboolean enable_draw_newlines);
+gboolean lapiz_prefs_manager_draw_newlines_can_set (void);
 
 /* Enable drawing nbsp */
-gint     pluma_prefs_manager_get_draw_nbsp     (void);
-void     pluma_prefs_manager_set_draw_nbsp     (gint enable_draw_nbsp);
-gboolean pluma_prefs_manager_draw_nbsp_can_set (void);
+gint     lapiz_prefs_manager_get_draw_nbsp     (void);
+void     lapiz_prefs_manager_set_draw_nbsp     (gint enable_draw_nbsp);
+gboolean lapiz_prefs_manager_draw_nbsp_can_set (void);
 
 #endif  /* __PLUMA_PREFS_MANAGER_H__ */

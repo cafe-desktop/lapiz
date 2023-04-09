@@ -1,6 +1,6 @@
 /*
- * pluma-tab-label.c
- * This file is part of pluma
+ * lapiz-tab-label.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Paolo Borelli
  *
@@ -26,8 +26,8 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include "pluma-tab-label.h"
-#include "pluma-close-button.h"
+#include "lapiz-tab-label.h"
+#include "lapiz-close-button.h"
 
 /* Signals */
 enum
@@ -57,16 +57,16 @@ struct _PlumaTabLabelPrivate
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaTabLabel, pluma_tab_label, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaTabLabel, lapiz_tab_label, GTK_TYPE_BOX)
 
 static void
-pluma_tab_label_finalize (GObject *object)
+lapiz_tab_label_finalize (GObject *object)
 {
-	G_OBJECT_CLASS (pluma_tab_label_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_tab_label_parent_class)->finalize (object);
 }
 
 static void
-pluma_tab_label_set_property (GObject      *object,
+lapiz_tab_label_set_property (GObject      *object,
 			      guint         prop_id,
 			      const GValue *value,
 			      GParamSpec   *pspec)
@@ -86,7 +86,7 @@ pluma_tab_label_set_property (GObject      *object,
 }
 
 static void
-pluma_tab_label_get_property (GObject    *object,
+lapiz_tab_label_get_property (GObject    *object,
 			      guint       prop_id,
 			      GValue     *value,
 			      GParamSpec *pspec)
@@ -117,7 +117,7 @@ sync_tip (PlumaTab *tab, PlumaTabLabel *tab_label)
 {
 	gchar *str;
 
-	str = _pluma_tab_get_tooltips (tab);
+	str = _lapiz_tab_get_tooltips (tab);
 	g_return_if_fail (str != NULL);
 
 	gtk_widget_set_tooltip_markup (tab_label->priv->ebox, str);
@@ -131,7 +131,7 @@ sync_name (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 
 	g_return_if_fail (tab == tab_label->priv->tab);
 
-	str = _pluma_tab_get_name (tab);
+	str = _lapiz_tab_get_name (tab);
 	g_return_if_fail (str != NULL);
 
 	gtk_label_set_text (GTK_LABEL (tab_label->priv->label), str);
@@ -147,7 +147,7 @@ sync_state (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 
 	g_return_if_fail (tab == tab_label->priv->tab);
 
-	state = pluma_tab_get_state (tab);
+	state = lapiz_tab_get_state (tab);
 
 	gtk_widget_set_sensitive (tab_label->priv->close_button,
 				  tab_label->priv->close_button_sensitive &&
@@ -169,7 +169,7 @@ sync_state (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 	{
 		GdkPixbuf *pixbuf;
 
-		pixbuf = _pluma_tab_get_icon (tab);
+		pixbuf = _lapiz_tab_get_icon (tab);
 		gtk_image_set_from_pixbuf (GTK_IMAGE (tab_label->priv->icon), pixbuf);
 
 		if (pixbuf != NULL)
@@ -186,7 +186,7 @@ sync_state (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 }
 
 static void
-pluma_tab_label_constructed (GObject *object)
+lapiz_tab_label_constructed (GObject *object)
 {
 	PlumaTabLabel *tab_label = PLUMA_TAB_LABEL (object);
 
@@ -213,14 +213,14 @@ pluma_tab_label_constructed (GObject *object)
 }
 
 static void
-pluma_tab_label_class_init (PlumaTabLabelClass *klass)
+lapiz_tab_label_class_init (PlumaTabLabelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_tab_label_finalize;
-	object_class->set_property = pluma_tab_label_set_property;
-	object_class->get_property = pluma_tab_label_get_property;
-	object_class->constructed = pluma_tab_label_constructed;
+	object_class->finalize = lapiz_tab_label_finalize;
+	object_class->set_property = lapiz_tab_label_set_property;
+	object_class->get_property = lapiz_tab_label_get_property;
+	object_class->constructed = lapiz_tab_label_constructed;
 
 	signals[CLOSE_CLICKED] =
 		g_signal_new ("close-clicked",
@@ -243,7 +243,7 @@ pluma_tab_label_class_init (PlumaTabLabelClass *klass)
 }
 
 static void
-pluma_tab_label_init (PlumaTabLabel *tab_label)
+lapiz_tab_label_init (PlumaTabLabel *tab_label)
 {
 	GtkWidget *ebox;
 	GtkWidget *hbox;
@@ -253,7 +253,7 @@ pluma_tab_label_init (PlumaTabLabel *tab_label)
 	GtkWidget *label;
 	GtkWidget *dummy_label;
 
-	tab_label->priv = pluma_tab_label_get_instance_private (tab_label);
+	tab_label->priv = lapiz_tab_label_get_instance_private (tab_label);
 
 	tab_label->priv->close_button_sensitive = TRUE;
 
@@ -269,7 +269,7 @@ pluma_tab_label_init (PlumaTabLabel *tab_label)
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
 	gtk_container_add (GTK_CONTAINER (ebox), hbox);
 
-	close_button = pluma_close_button_new ();
+	close_button = lapiz_close_button_new ();
 	gtk_widget_add_events (close_button, GDK_SCROLL_MASK);
 	gtk_widget_set_tooltip_text (close_button, _("Close document"));
 	gtk_box_pack_start (GTK_BOX (tab_label), close_button, FALSE, FALSE, 0);
@@ -310,7 +310,7 @@ pluma_tab_label_init (PlumaTabLabel *tab_label)
 }
 
 void
-pluma_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
+lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 					    gboolean       sensitive)
 {
 	PlumaTabState state;
@@ -324,7 +324,7 @@ pluma_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 
 	tab_label->priv->close_button_sensitive = sensitive;
 
-	state = pluma_tab_get_state (tab_label->priv->tab);
+	state = lapiz_tab_get_state (tab_label->priv->tab);
 
 	gtk_widget_set_sensitive (tab_label->priv->close_button,
 				  tab_label->priv->close_button_sensitive &&
@@ -337,7 +337,7 @@ pluma_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 }
 
 PlumaTab *
-pluma_tab_label_get_tab (PlumaTabLabel *tab_label)
+lapiz_tab_label_get_tab (PlumaTabLabel *tab_label)
 {
 	g_return_val_if_fail (PLUMA_IS_TAB_LABEL (tab_label), NULL);
 
@@ -345,7 +345,7 @@ pluma_tab_label_get_tab (PlumaTabLabel *tab_label)
 }
 
 GtkWidget *
-pluma_tab_label_new (PlumaTab *tab)
+lapiz_tab_label_new (PlumaTab *tab)
 {
 	PlumaTabLabel *tab_label;
 

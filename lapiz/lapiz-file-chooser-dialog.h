@@ -1,6 +1,6 @@
 /*
- * pluma-file-chooser-dialog.h
- * This file is part of pluma
+ * lapiz-file-chooser-dialog.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,13 +33,13 @@
 
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-encodings.h>
-#include <pluma/pluma-enum-types.h>
-#include <pluma/pluma-document.h>
+#include <lapiz/lapiz-encodings.h>
+#include <lapiz/lapiz-enum-types.h>
+#include <lapiz/lapiz-document.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_FILE_CHOOSER_DIALOG             (pluma_file_chooser_dialog_get_type ())
+#define PLUMA_TYPE_FILE_CHOOSER_DIALOG             (lapiz_file_chooser_dialog_get_type ())
 #define PLUMA_FILE_CHOOSER_DIALOG(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialog))
 #define PLUMA_FILE_CHOOSER_DIALOG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialogClass))
 #define PLUMA_IS_FILE_CHOOSER_DIALOG(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_FILE_CHOOSER_DIALOG))
@@ -63,26 +63,26 @@ struct _PlumaFileChooserDialog
 	PlumaFileChooserDialogPrivate *priv;
 };
 
-GType		 pluma_file_chooser_dialog_get_type	(void) G_GNUC_CONST;
+GType		 lapiz_file_chooser_dialog_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_file_chooser_dialog_new		(const gchar            *title,
+GtkWidget	*lapiz_file_chooser_dialog_new		(const gchar            *title,
 							 GtkWindow              *parent,
 							 GtkFileChooserAction    action,
 							 const PlumaEncoding    *encoding,
 							 const gchar            *first_button_text,
 							 ...);
 
-void		 pluma_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
+void		 lapiz_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
 							 const PlumaEncoding    *encoding);
 
 const PlumaEncoding
-		*pluma_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog);
+		*lapiz_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog);
 
-void		 pluma_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
+void		 lapiz_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
 							     PlumaDocumentNewlineType newline_type);
 
 PlumaDocumentNewlineType
-		 pluma_file_chooser_dialog_get_newline_type (PlumaFileChooserDialog *dialog);
+		 lapiz_file_chooser_dialog_get_newline_type (PlumaFileChooserDialog *dialog);
 
 G_END_DECLS
 

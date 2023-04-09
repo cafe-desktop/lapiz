@@ -21,7 +21,7 @@
 # Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
 #     Copyright (C), 2005 Adam Hooper <adamh@densi.com>
-# Bits from pluma Python Console Plugin
+# Bits from lapiz Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
 import os
@@ -31,7 +31,7 @@ __all__ = ('PythonConsoleConfig', 'PythonConsoleConfigWidget')
 
 class PythonConsoleConfig(object):
 
-    CONSOLE_KEY_BASE = 'org.mate.pluma.plugins.pythonconsole'
+    CONSOLE_KEY_BASE = 'org.mate.lapiz.plugins.pythonconsole'
     CONSOLE_KEY_COMMAND_COLOR = 'command-color'
     CONSOLE_KEY_ERROR_COLOR = 'error-color'
     CONSOLE_KEY_USE_SYSTEM_FONT = 'use-system-font'
@@ -82,7 +82,7 @@ class PythonConsoleConfig(object):
 
 class PythonConsoleConfigWidget(object):
 
-    CONSOLE_KEY_BASE = 'org.mate.pluma.plugins.pythonconsole'
+    CONSOLE_KEY_BASE = 'org.mate.lapiz.plugins.pythonconsole'
     CONSOLE_KEY_COMMAND_COLOR = 'command-color'
     CONSOLE_KEY_ERROR_COLOR = 'error-color'
 

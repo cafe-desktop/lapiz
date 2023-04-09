@@ -1,5 +1,5 @@
 /*
- * pluma-trail-save-plugin.h
+ * lapiz-trail-save-plugin.h
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_TRAIL_SAVE_PLUGIN		(pluma_trail_save_plugin_get_type ())
+#define PLUMA_TYPE_TRAIL_SAVE_PLUGIN		(lapiz_trail_save_plugin_get_type ())
 #define PLUMA_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePlugin))
 #define PLUMA_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePluginClass))
 #define PLUMA_IS_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_TRAIL_SAVE_PLUGIN))
@@ -67,7 +67,7 @@ struct _PlumaTrailSavePluginClass
 /*
  * Public methods
  */
-GType	pluma_trail_save_plugin_get_type	(void) G_GNUC_CONST;
+GType	lapiz_trail_save_plugin_get_type	(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);

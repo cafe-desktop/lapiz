@@ -1,4 +1,4 @@
-#include "pluma-message-bus.h"
+#include "lapiz-message-bus.h"
 
 #include <string.h>
 #include <stdarg.h>
@@ -11,24 +11,24 @@
  * @userdata: the supplied user data when connecting the callback
  *
  * Callback signature used for connecting callback functions to be called
- * when a message is received (see pluma_message_bus_connect()).
+ * when a message is received (see lapiz_message_bus_connect()).
  *
  */
 
 /**
- * SECTION:pluma-message-bus
+ * SECTION:lapiz-message-bus
  * @short_description: internal message communication bus
- * @include: pluma/pluma-message-bus.h
+ * @include: lapiz/lapiz-message-bus.h
  *
- * pluma has a communication bus very similar to DBus. Its primary use is to
+ * lapiz has a communication bus very similar to DBus. Its primary use is to
  * allow easy communication between plugins, but it can also be used to expose
- * pluma functionality to external applications by providing DBus bindings for
- * the internal pluma message bus.
+ * lapiz functionality to external applications by providing DBus bindings for
+ * the internal lapiz message bus.
  *
  * There are two different communication busses available. The default bus
- * (see pluma_message_bus_get_default()) is an application wide communication
+ * (see lapiz_message_bus_get_default()) is an application wide communication
  * bus. In addition, each #PlumaWindow has a separate, private bus
- * (see pluma_window_get_message_bus()). This makes it easier for plugins to
+ * (see lapiz_window_get_message_bus()). This makes it easier for plugins to
  * communicate to other plugins in the same window.
  *
  * The concept of the message bus is very simple. You can register a message
@@ -42,11 +42,11 @@
  * <example>
  * <title>Registering a message type</title>
  * <programlisting>
- * PlumaMessageBus *bus = pluma_message_bus_get_default ();
+ * PlumaMessageBus *bus = lapiz_message_bus_get_default ();
  *
  * // Register 'method' at '/plugins/example' with one required
  * // string argument 'arg1'
- * PlumaMessageType *message_type = pluma_message_bus_register ("/plugins/example", "method",
+ * PlumaMessageType *message_type = lapiz_message_bus_register ("/plugins/example", "method",
  *                                                              0,
  *                                                              "arg1", G_TYPE_STRING,
  *                                                              NULL);
@@ -62,14 +62,14 @@
  * {
  * 	gchar *arg1 = NULL;
  *
- * 	pluma_message_get (message, "arg1", &arg1, NULL);
+ * 	lapiz_message_get (message, "arg1", &arg1, NULL);
  * 	g_message ("Evoked /plugins/example.method with: %s", arg1);
  * 	g_free (arg1);
  * }
  *
- * PlumaMessageBus *bus = pluma_message_bus_get_default ();
+ * PlumaMessageBus *bus = lapiz_message_bus_get_default ();
  *
- * guint id = pluma_message_bus_connect (bus,
+ * guint id = lapiz_message_bus_connect (bus,
  *                                       "/plugins/example", "method",
  *                                       example_method_cb,
  *                                       NULL,
@@ -80,9 +80,9 @@
  * <example>
  * <title>Sending a message</title>
  * <programlisting>
- * PlumaMessageBus *bus = pluma_message_bus_get_default ();
+ * PlumaMessageBus *bus = lapiz_message_bus_get_default ();
  *
- * pluma_message_bus_send (bus,
+ * lapiz_message_bus_send (bus,
  *                         "/plugins/example", "method",
  *                         "arg1", "Hello World",
  *                         NULL);
@@ -138,10 +138,10 @@ enum
 
 static guint message_bus_signals[LAST_SIGNAL] = { 0 };
 
-static void pluma_message_bus_dispatch_real (PlumaMessageBus *bus,
+static void lapiz_message_bus_dispatch_real (PlumaMessageBus *bus,
 				 	     PlumaMessage    *message);
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaMessageBus, pluma_message_bus, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaMessageBus, lapiz_message_bus, G_TYPE_OBJECT)
 
 static void
 listener_free (Listener *listener)
@@ -172,7 +172,7 @@ message_queue_free (GList *queue)
 }
 
 static void
-pluma_message_bus_finalize (GObject *object)
+lapiz_message_bus_finalize (GObject *object)
 {
 	PlumaMessageBus *bus = PLUMA_MESSAGE_BUS (object);
 
@@ -185,17 +185,17 @@ pluma_message_bus_finalize (GObject *object)
 	g_hash_table_destroy (bus->priv->idmap);
 	g_hash_table_destroy (bus->priv->types);
 
-	G_OBJECT_CLASS (pluma_message_bus_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_message_bus_parent_class)->finalize (object);
 }
 
 static void
-pluma_message_bus_class_init (PlumaMessageBusClass *klass)
+lapiz_message_bus_class_init (PlumaMessageBusClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_message_bus_finalize;
+	object_class->finalize = lapiz_message_bus_finalize;
 
-	klass->dispatch = pluma_message_bus_dispatch_real;
+	klass->dispatch = lapiz_message_bus_dispatch_real;
 
 	/**
 	 * PlumaMessageBus::dispatch:
@@ -272,7 +272,7 @@ message_new (PlumaMessageBus *bus,
 	message->listeners = NULL;
 
 	g_hash_table_insert (bus->priv->messages,
-			     pluma_message_type_identifier (object_path, method),
+			     lapiz_message_type_identifier (object_path, method),
 			     message);
 	return message;
 }
@@ -286,7 +286,7 @@ lookup_message (PlumaMessageBus *bus,
 	gchar *identifier;
 	Message *message;
 
-	identifier = pluma_message_type_identifier (object_path, method);
+	identifier = lapiz_message_type_identifier (object_path, method);
 	message = (Message *)g_hash_table_lookup (bus->priv->messages, identifier);
 	g_free (identifier);
 
@@ -388,15 +388,15 @@ dispatch_message_real (PlumaMessageBus *bus,
 }
 
 static void
-pluma_message_bus_dispatch_real (PlumaMessageBus *bus,
+lapiz_message_bus_dispatch_real (PlumaMessageBus *bus,
 				 PlumaMessage    *message)
 {
 	const gchar *object_path;
 	const gchar *method;
 	Message *msg;
 
-	object_path = pluma_message_get_object_path (message);
-	method = pluma_message_get_method (message);
+	object_path = lapiz_message_get_object_path (message);
+	method = lapiz_message_get_method (message);
 
 	msg = lookup_message (bus, object_path, method, FALSE);
 
@@ -491,9 +491,9 @@ process_by_match (PlumaMessageBus      *bus,
 }
 
 static void
-pluma_message_bus_init (PlumaMessageBus *self)
+lapiz_message_bus_init (PlumaMessageBus *self)
 {
-	self->priv = pluma_message_bus_get_instance_private (self);
+	self->priv = lapiz_message_bus_get_instance_private (self);
 
 	self->priv->messages = g_hash_table_new_full (g_str_hash,
 						      g_str_equal,
@@ -508,11 +508,11 @@ pluma_message_bus_init (PlumaMessageBus *self)
 	self->priv->types = g_hash_table_new_full (g_str_hash,
 						   g_str_equal,
 						   (GDestroyNotify)g_free,
-						   (GDestroyNotify)pluma_message_type_unref);
+						   (GDestroyNotify)lapiz_message_type_unref);
 }
 
 /**
- * pluma_message_bus_get_default:
+ * lapiz_message_bus_get_default:
  *
  * Get the default application #PlumaMessageBus.
  *
@@ -520,7 +520,7 @@ pluma_message_bus_init (PlumaMessageBus *self)
  *
  */
 PlumaMessageBus *
-pluma_message_bus_get_default (void)
+lapiz_message_bus_get_default (void)
 {
 	static PlumaMessageBus *default_bus = NULL;
 
@@ -535,9 +535,9 @@ pluma_message_bus_get_default (void)
 }
 
 /**
- * pluma_message_bus_new:
+ * lapiz_message_bus_new:
  *
- * Create a new message bus. Use pluma_message_bus_get_default() to get the
+ * Create a new message bus. Use lapiz_message_bus_get_default() to get the
  * default, application wide, message bus. Creating a new bus is useful for
  * associating a specific bus with for instance a #PlumaWindow.
  *
@@ -545,13 +545,13 @@ pluma_message_bus_get_default (void)
  *
  */
 PlumaMessageBus *
-pluma_message_bus_new (void)
+lapiz_message_bus_new (void)
 {
 	return PLUMA_MESSAGE_BUS (g_object_new (PLUMA_TYPE_MESSAGE_BUS, NULL));
 }
 
 /**
- * pluma_message_bus_lookup:
+ * lapiz_message_bus_lookup:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -564,7 +564,7 @@ pluma_message_bus_new (void)
  *
  */
 PlumaMessageType *
-pluma_message_bus_lookup (PlumaMessageBus *bus,
+lapiz_message_bus_lookup (PlumaMessageBus *bus,
 			  const gchar	  *object_path,
 			  const gchar	  *method)
 {
@@ -575,7 +575,7 @@ pluma_message_bus_lookup (PlumaMessageBus *bus,
 	g_return_val_if_fail (object_path != NULL, NULL);
 	g_return_val_if_fail (method != NULL, NULL);
 
-	identifier = pluma_message_type_identifier (object_path, method);
+	identifier = lapiz_message_type_identifier (object_path, method);
 	message_type = PLUMA_MESSAGE_TYPE (g_hash_table_lookup (bus->priv->types, identifier));
 
 	g_free (identifier);
@@ -583,7 +583,7 @@ pluma_message_bus_lookup (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_register:
+ * lapiz_message_bus_register:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method to register
@@ -601,11 +601,11 @@ pluma_message_bus_lookup (PlumaMessageBus *bus,
  *
  * Return value: the registered #PlumaMessageType. The returned reference is
  *               owned by the bus. If you want to keep it alive after
- *               unregistering, use pluma_message_type_ref().
+ *               unregistering, use lapiz_message_type_ref().
  *
  */
 PlumaMessageType *
-pluma_message_bus_register (PlumaMessageBus *bus,
+lapiz_message_bus_register (PlumaMessageBus *bus,
 			    const gchar     *object_path,
 			    const gchar	    *method,
 			    guint	     num_optional,
@@ -616,19 +616,19 @@ pluma_message_bus_register (PlumaMessageBus *bus,
 	PlumaMessageType *message_type;
 
 	g_return_val_if_fail (PLUMA_IS_MESSAGE_BUS (bus), NULL);
-	g_return_val_if_fail (pluma_message_type_is_valid_object_path (object_path), NULL);
+	g_return_val_if_fail (lapiz_message_type_is_valid_object_path (object_path), NULL);
 
-	if (pluma_message_bus_is_registered (bus, object_path, method))
+	if (lapiz_message_bus_is_registered (bus, object_path, method))
 	{
 		g_warning ("Message type for '%s.%s' is already registered", object_path, method);
 		return NULL;
 	}
 
-	identifier = pluma_message_type_identifier (object_path, method);
+	identifier = lapiz_message_type_identifier (object_path, method);
 	g_hash_table_lookup (bus->priv->types, identifier);
 
 	va_start (var_args, num_optional);
-	message_type = pluma_message_type_new_valist (object_path,
+	message_type = lapiz_message_type_new_valist (object_path,
 						      method,
 						      num_optional,
 						      var_args);
@@ -648,7 +648,7 @@ pluma_message_bus_register (PlumaMessageBus *bus,
 }
 
 static void
-pluma_message_bus_unregister_real (PlumaMessageBus  *bus,
+lapiz_message_bus_unregister_real (PlumaMessageBus  *bus,
 				   PlumaMessageType *message_type,
 				   gboolean          remove_from_store)
 {
@@ -656,21 +656,21 @@ pluma_message_bus_unregister_real (PlumaMessageBus  *bus,
 
 	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
 
-	identifier = pluma_message_type_identifier (pluma_message_type_get_object_path (message_type),
-						    pluma_message_type_get_method (message_type));
+	identifier = lapiz_message_type_identifier (lapiz_message_type_get_object_path (message_type),
+						    lapiz_message_type_get_method (message_type));
 
 	/* Keep message type alive for signal emission */
-	pluma_message_type_ref (message_type);
+	lapiz_message_type_ref (message_type);
 
 	if (!remove_from_store || g_hash_table_remove (bus->priv->types, identifier))
 		g_signal_emit (bus, message_bus_signals[UNREGISTERED], 0, message_type);
 
-	pluma_message_type_unref (message_type);
+	lapiz_message_type_unref (message_type);
 	g_free (identifier);
 }
 
 /**
- * pluma_message_bus_unregister:
+ * lapiz_message_bus_unregister:
  * @bus: a #PlumaMessageBus
  * @message_type: the #PlumaMessageType to unregister
  *
@@ -681,11 +681,11 @@ pluma_message_bus_unregister_real (PlumaMessageBus  *bus,
  *
  */
 void
-pluma_message_bus_unregister (PlumaMessageBus  *bus,
+lapiz_message_bus_unregister (PlumaMessageBus  *bus,
 			      PlumaMessageType *message_type)
 {
 	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
-	pluma_message_bus_unregister_real (bus, message_type, TRUE);
+	lapiz_message_bus_unregister_real (bus, message_type, TRUE);
 }
 
 typedef struct
@@ -699,10 +699,10 @@ unregister_each (const gchar      *identifier,
 		 PlumaMessageType *message_type,
 		 UnregisterInfo   *info)
 {
-	if (strcmp (pluma_message_type_get_object_path (message_type),
+	if (strcmp (lapiz_message_type_get_object_path (message_type),
 		    info->object_path) == 0)
 	{
-		pluma_message_bus_unregister_real (info->bus, message_type, FALSE);
+		lapiz_message_bus_unregister_real (info->bus, message_type, FALSE);
 		return TRUE;
 	}
 
@@ -710,7 +710,7 @@ unregister_each (const gchar      *identifier,
 }
 
 /**
- * pluma_message_bus_unregister_all:
+ * lapiz_message_bus_unregister_all:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  *
@@ -722,7 +722,7 @@ unregister_each (const gchar      *identifier,
  *
  */
 void
-pluma_message_bus_unregister_all (PlumaMessageBus *bus,
+lapiz_message_bus_unregister_all (PlumaMessageBus *bus,
 			          const gchar     *object_path)
 {
 	UnregisterInfo info = {bus, object_path};
@@ -736,7 +736,7 @@ pluma_message_bus_unregister_all (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_is_registered:
+ * lapiz_message_bus_is_registered:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -749,7 +749,7 @@ pluma_message_bus_unregister_all (PlumaMessageBus *bus,
  *
  */
 gboolean
-pluma_message_bus_is_registered (PlumaMessageBus	*bus,
+lapiz_message_bus_is_registered (PlumaMessageBus	*bus,
 				 const gchar	*object_path,
 				 const gchar	*method)
 {
@@ -760,7 +760,7 @@ pluma_message_bus_is_registered (PlumaMessageBus	*bus,
 	g_return_val_if_fail (object_path != NULL, FALSE);
 	g_return_val_if_fail (method != NULL, FALSE);
 
-	identifier = pluma_message_type_identifier (object_path, method);
+	identifier = lapiz_message_type_identifier (object_path, method);
 	ret = g_hash_table_lookup (bus->priv->types, identifier) != NULL;
 
 	g_free(identifier);
@@ -778,13 +778,13 @@ foreach_type (const gchar      *key,
 	      PlumaMessageType *message_type,
 	      ForeachInfo      *info)
 {
-	pluma_message_type_ref (message_type);
+	lapiz_message_type_ref (message_type);
 	info->func (message_type, info->userdata);
-	pluma_message_type_unref (message_type);
+	lapiz_message_type_unref (message_type);
 }
 
 /**
- * pluma_message_bus_foreach:
+ * lapiz_message_bus_foreach:
  * @bus: the #PlumaMessagebus
  * @func: (scope call): the callback function
  * @userdata: the user data to supply to the callback function
@@ -793,7 +793,7 @@ foreach_type (const gchar      *key,
  *
  */
 void
-pluma_message_bus_foreach (PlumaMessageBus        *bus,
+lapiz_message_bus_foreach (PlumaMessageBus        *bus,
 			   PlumaMessageBusForeach  func,
 			   gpointer		   userdata)
 {
@@ -806,7 +806,7 @@ pluma_message_bus_foreach (PlumaMessageBus        *bus,
 }
 
 /**
- * pluma_message_bus_connect:
+ * lapiz_message_bus_connect:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -822,7 +822,7 @@ pluma_message_bus_foreach (PlumaMessageBus        *bus,
  *
  */
 guint
-pluma_message_bus_connect (PlumaMessageBus	*bus,
+lapiz_message_bus_connect (PlumaMessageBus	*bus,
 		           const gchar		*object_path,
 		           const gchar		*method,
 		           PlumaMessageCallback  callback,
@@ -843,15 +843,15 @@ pluma_message_bus_connect (PlumaMessageBus	*bus,
 }
 
 /**
- * pluma_message_bus_disconnect:
+ * lapiz_message_bus_disconnect:
  * @bus: a #PlumaMessageBus
- * @id: the callback id as returned by pluma_message_bus_connect()
+ * @id: the callback id as returned by lapiz_message_bus_connect()
  *
  * Disconnects a previously connected message callback.
  *
  */
 void
-pluma_message_bus_disconnect (PlumaMessageBus *bus,
+lapiz_message_bus_disconnect (PlumaMessageBus *bus,
 			      guint            id)
 {
 	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
@@ -860,7 +860,7 @@ pluma_message_bus_disconnect (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_disconnect_by_func:
+ * lapiz_message_bus_disconnect_by_func:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -869,11 +869,11 @@ pluma_message_bus_disconnect (PlumaMessageBus *bus,
  *
  * Disconnects a previously connected message callback by matching the
  * provided callback function and userdata. See also
- * pluma_message_bus_disconnect().
+ * lapiz_message_bus_disconnect().
  *
  */
 void
-pluma_message_bus_disconnect_by_func (PlumaMessageBus      *bus,
+lapiz_message_bus_disconnect_by_func (PlumaMessageBus      *bus,
 				      const gchar	   *object_path,
 				      const gchar	   *method,
 				      PlumaMessageCallback  callback,
@@ -885,16 +885,16 @@ pluma_message_bus_disconnect_by_func (PlumaMessageBus      *bus,
 }
 
 /**
- * pluma_message_bus_block:
+ * lapiz_message_bus_block:
  * @bus: a #PlumaMessageBus
  * @id: the callback id
  *
  * Blocks evoking the callback specified by @id. Unblock the callback by
- * using pluma_message_bus_unblock().
+ * using lapiz_message_bus_unblock().
  *
  */
 void
-pluma_message_bus_block (PlumaMessageBus *bus,
+lapiz_message_bus_block (PlumaMessageBus *bus,
 			 guint		  id)
 {
 	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
@@ -903,7 +903,7 @@ pluma_message_bus_block (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_block_by_func:
+ * lapiz_message_bus_block_by_func:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -911,11 +911,11 @@ pluma_message_bus_block (PlumaMessageBus *bus,
  * @userdata: the userdata with which the callback was connected
  *
  * Blocks evoking the callback that matches provided @callback and @userdata.
- * Unblock the callback using pluma_message_unblock_by_func().
+ * Unblock the callback using lapiz_message_unblock_by_func().
  *
  */
 void
-pluma_message_bus_block_by_func (PlumaMessageBus      *bus,
+lapiz_message_bus_block_by_func (PlumaMessageBus      *bus,
 				 const gchar	      *object_path,
 				 const gchar	      *method,
 				 PlumaMessageCallback  callback,
@@ -927,7 +927,7 @@ pluma_message_bus_block_by_func (PlumaMessageBus      *bus,
 }
 
 /**
- * pluma_message_bus_unblock:
+ * lapiz_message_bus_unblock:
  * @bus: a #PlumaMessageBus
  * @id: the callback id
  *
@@ -935,7 +935,7 @@ pluma_message_bus_block_by_func (PlumaMessageBus      *bus,
  *
  */
 void
-pluma_message_bus_unblock (PlumaMessageBus *bus,
+lapiz_message_bus_unblock (PlumaMessageBus *bus,
 			   guint	    id)
 {
 	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
@@ -944,7 +944,7 @@ pluma_message_bus_unblock (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_unblock_by_func:
+ * lapiz_message_bus_unblock_by_func:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -955,7 +955,7 @@ pluma_message_bus_unblock (PlumaMessageBus *bus,
  *
  */
 void
-pluma_message_bus_unblock_by_func (PlumaMessageBus      *bus,
+lapiz_message_bus_unblock_by_func (PlumaMessageBus      *bus,
 				   const gchar	        *object_path,
 				   const gchar	        *method,
 				   PlumaMessageCallback  callback,
@@ -969,10 +969,10 @@ pluma_message_bus_unblock_by_func (PlumaMessageBus      *bus,
 static gboolean
 validate_message (PlumaMessage *message)
 {
-	if (!pluma_message_validate (message))
+	if (!lapiz_message_validate (message))
 	{
-		g_warning ("Message '%s.%s' is invalid", pluma_message_get_object_path (message),
-							 pluma_message_get_method (message));
+		g_warning ("Message '%s.%s' is invalid", lapiz_message_get_object_path (message),
+							 lapiz_message_get_method (message));
 		return FALSE;
 	}
 
@@ -999,18 +999,18 @@ send_message_real (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_send_message:
+ * lapiz_message_bus_send_message:
  * @bus: a #PlumaMessageBus
  * @message: the message to send
  *
  * This sends the provided @message asynchronously over the bus. To send
- * a message synchronously, use pluma_message_bus_send_message_sync(). The
- * convenience function pluma_message_bus_send() can be used to easily send
+ * a message synchronously, use lapiz_message_bus_send_message_sync(). The
+ * convenience function lapiz_message_bus_send() can be used to easily send
  * a message without constructing the message object explicitly first.
  *
  */
 void
-pluma_message_bus_send_message (PlumaMessageBus *bus,
+lapiz_message_bus_send_message (PlumaMessageBus *bus,
 			        PlumaMessage    *message)
 {
 	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
@@ -1032,18 +1032,18 @@ send_message_sync_real (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_send_message_sync:
+ * lapiz_message_bus_send_message_sync:
  * @bus: a #PlumaMessageBus
  * @message: the message to send
  *
  * This sends the provided @message synchronously over the bus. To send
- * a message asynchronously, use pluma_message_bus_send_message(). The
- * convenience function pluma_message_bus_send_sync() can be used to easily send
+ * a message asynchronously, use lapiz_message_bus_send_message(). The
+ * convenience function lapiz_message_bus_send_sync() can be used to easily send
  * a message without constructing the message object explicitly first.
  *
  */
 void
-pluma_message_bus_send_message_sync (PlumaMessageBus *bus,
+lapiz_message_bus_send_message_sync (PlumaMessageBus *bus,
 			             PlumaMessage    *message)
 {
 	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
@@ -1060,7 +1060,7 @@ create_message (PlumaMessageBus *bus,
 {
 	PlumaMessageType *message_type;
 
-	message_type = pluma_message_bus_lookup (bus, object_path, method);
+	message_type = lapiz_message_bus_lookup (bus, object_path, method);
 
 	if (!message_type)
 	{
@@ -1068,12 +1068,12 @@ create_message (PlumaMessageBus *bus,
 		return NULL;
 	}
 
-	return pluma_message_type_instantiate_valist (message_type,
+	return lapiz_message_type_instantiate_valist (message_type,
 						      var_args);
 }
 
 /**
- * pluma_message_bus_send:
+ * lapiz_message_bus_send:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -1082,11 +1082,11 @@ create_message (PlumaMessageBus *bus,
  * This provides a convenient way to quickly send a message @method at
  * @object_path asynchronously over the bus. The variable argument list
  * specifies key (string) value pairs used to construct the message arguments.
- * To send a message synchronously use pluma_message_bus_send_sync().
+ * To send a message synchronously use lapiz_message_bus_send_sync().
  *
  */
 void
-pluma_message_bus_send (PlumaMessageBus *bus,
+lapiz_message_bus_send (PlumaMessageBus *bus,
 			const gchar     *object_path,
 			const gchar     *method,
 			...)
@@ -1112,7 +1112,7 @@ pluma_message_bus_send (PlumaMessageBus *bus,
 }
 
 /**
- * pluma_message_bus_send_sync:
+ * lapiz_message_bus_send_sync:
  * @bus: a #PlumaMessageBus
  * @object_path: the object path
  * @method: the method
@@ -1121,14 +1121,14 @@ pluma_message_bus_send (PlumaMessageBus *bus,
  * This provides a convenient way to quickly send a message @method at
  * @object_path synchronously over the bus. The variable argument list
  * specifies key (string) value pairs used to construct the message
- * arguments. To send a message asynchronously use pluma_message_bus_send().
+ * arguments. To send a message asynchronously use lapiz_message_bus_send().
  *
  * Return value: (transfer full): the constructed #PlumaMessage. The caller owns a reference
  *               to the #PlumaMessage and should call g_object_unref() when
  *               it is no longer needed
  */
 PlumaMessage *
-pluma_message_bus_send_sync (PlumaMessageBus *bus,
+lapiz_message_bus_send_sync (PlumaMessageBus *bus,
 			     const gchar     *object_path,
 			     const gchar     *method,
 			     ...)

@@ -610,7 +610,7 @@ class Manager:
         self.default_size = [alloc.width, alloc.height]
 
         if resp == Gtk.ResponseType.HELP:
-            Pluma.help_display(self.dlg, 'pluma', 'pluma-snippets-plugin')
+            Pluma.help_display(self.dlg, 'lapiz', 'lapiz-snippets-plugin')
             return
 
         self.dlg.destroy()

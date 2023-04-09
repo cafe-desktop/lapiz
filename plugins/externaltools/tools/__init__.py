@@ -168,7 +168,7 @@ class ExternalToolsPlugin(GObject.Object, Peas.Activatable):
         manager = window.get_ui_manager()
 
         self._action_group = Gtk.ActionGroup('ExternalToolsPluginActions')
-        self._action_group.set_translation_domain('pluma')
+        self._action_group.set_translation_domain('lapiz')
         self._action_group.add_actions([('ExternalToolManager',
                                          None,
                                          _('Manage _External Tools...'),

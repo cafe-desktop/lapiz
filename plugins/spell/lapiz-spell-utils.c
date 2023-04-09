@@ -1,6 +1,6 @@
 /*
- * pluma-spell-utils.c
- * This file is part of pluma
+ * lapiz-spell-utils.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Jesse van den Kieboom
  *
@@ -22,11 +22,11 @@
 
 #include <string.h>
 
-#include "pluma-spell-utils.h"
+#include "lapiz-spell-utils.h"
 #include <gtksourceview/gtksource.h>
 
 gboolean
-pluma_spell_utils_is_digit (const char *text, gssize length)
+lapiz_spell_utils_is_digit (const char *text, gssize length)
 {
 	gunichar c;
 	const gchar *p;
@@ -56,7 +56,7 @@ pluma_spell_utils_is_digit (const char *text, gssize length)
 }
 
 gboolean
-pluma_spell_utils_skip_no_spell_check (GtkTextIter *start,
+lapiz_spell_utils_skip_no_spell_check (GtkTextIter *start,
                                        GtkTextIter *end)
 {
 	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (gtk_text_iter_get_buffer (start));

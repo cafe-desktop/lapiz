@@ -1,5 +1,5 @@
 /*
- * pluma-spell-plugin.h
+ * lapiz-spell-plugin.h
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  *
@@ -33,7 +33,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_SPELL_PLUGIN		(pluma_spell_plugin_get_type ())
+#define PLUMA_TYPE_SPELL_PLUGIN		(lapiz_spell_plugin_get_type ())
 #define PLUMA_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_SPELL_PLUGIN, PlumaSpellPlugin))
 #define PLUMA_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_SPELL_PLUGIN, PlumaSpellPluginClass))
 #define PLUMA_IS_SPELL_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_SPELL_PLUGIN))
@@ -69,7 +69,7 @@ struct _PlumaSpellPluginClass
 /*
  * Public methods
  */
-GType	pluma_spell_plugin_get_type		(void) G_GNUC_CONST;
+GType	lapiz_spell_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);

@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-preferences-dialog.c
- * This file is part of pluma
+ * lapiz-preferences-dialog.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2001-2005 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2001-2003. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2001-2003. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -41,21 +41,21 @@
 #include <gtksourceview/gtksource.h>
 #include <libpeas-gtk/peas-gtk-plugin-manager.h>
 
-#include <pluma/pluma-prefs-manager.h>
+#include <lapiz/lapiz-prefs-manager.h>
 
-#include "pluma-preferences-dialog.h"
-#include "pluma-utils.h"
-#include "pluma-debug.h"
-#include "pluma-document.h"
-#include "pluma-style-scheme-manager.h"
-#include "pluma-help.h"
-#include "pluma-dirs.h"
+#include "lapiz-preferences-dialog.h"
+#include "lapiz-utils.h"
+#include "lapiz-debug.h"
+#include "lapiz-document.h"
+#include "lapiz-style-scheme-manager.h"
+#include "lapiz-help.h"
+#include "lapiz-dirs.h"
 
 /*
- * pluma-preferences dialog is a singleton since we don't
+ * lapiz-preferences dialog is a singleton since we don't
  * want two dialogs showing an inconsistent state of the
  * preferences.
- * When pluma_show_preferences_dialog is called and there
+ * When lapiz_show_preferences_dialog is called and there
  * is already a prefs dialog dialog open, it is reparented
  * and shown.
  */
@@ -139,11 +139,11 @@ struct _PlumaPreferencesDialogPrivate
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPreferencesDialog, pluma_preferences_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaPreferencesDialog, lapiz_preferences_dialog, GTK_TYPE_DIALOG)
 
 
 static void
-pluma_preferences_dialog_class_init (PlumaPreferencesDialogClass *klass)
+lapiz_preferences_dialog_class_init (PlumaPreferencesDialogClass *klass)
 {
 }
 
@@ -151,14 +151,14 @@ static void
 dialog_response_handler (GtkDialog *dlg,
 			 gint       res_id)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	switch (res_id)
 	{
 		case GTK_RESPONSE_HELP:
-			pluma_help_display (GTK_WINDOW (dlg),
+			lapiz_help_display (GTK_WINDOW (dlg),
 					    NULL,
-					    "pluma-prefs");
+					    "lapiz-prefs");
 
 			g_signal_stop_emission_by_name (dlg, "response");
 
@@ -173,33 +173,33 @@ static void
 tabs_width_spinbutton_value_changed (GtkSpinButton          *spin_button,
 				     PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->priv->tabs_width_spinbutton));
 
-	pluma_prefs_manager_set_tabs_size (gtk_spin_button_get_value_as_int (spin_button));
+	lapiz_prefs_manager_set_tabs_size (gtk_spin_button_get_value_as_int (spin_button));
 }
 
 static void
 insert_spaces_checkbutton_toggled (GtkToggleButton        *button,
 				   PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->insert_spaces_checkbutton));
 
-	pluma_prefs_manager_set_insert_spaces (gtk_toggle_button_get_active (button));
+	lapiz_prefs_manager_set_insert_spaces (gtk_toggle_button_get_active (button));
 }
 
 static void
 auto_indent_checkbutton_toggled (GtkToggleButton        *button,
 				 PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->auto_indent_checkbutton));
 
-	pluma_prefs_manager_set_auto_indent (gtk_toggle_button_get_active (button));
+	lapiz_prefs_manager_set_auto_indent (gtk_toggle_button_get_active (button));
 }
 
 static void
@@ -207,7 +207,7 @@ draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
                                  PlumaPreferencesDialog *dlg)
 {
 	DrawSpacesSettings setting;
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_spaces_checkbutton));
 
@@ -216,7 +216,7 @@ draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
 	else
 		setting = DRAW_NONE;
 
-	pluma_prefs_manager_set_draw_spaces (setting);
+	lapiz_prefs_manager_set_draw_spaces (setting);
 #ifdef GTK_SOURCE_VERSION_3_24
 	if (setting == DRAW_NONE)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
@@ -229,18 +229,18 @@ static void
 draw_trailing_spaces_checkbutton_toggled (GtkToggleButton        *button,
                                           PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton));
 
 	if (gtk_toggle_button_get_active (button))
-		pluma_prefs_manager_set_draw_spaces (DRAW_TRAILING);
+		lapiz_prefs_manager_set_draw_spaces (DRAW_TRAILING);
 	else
 	{
-		if (pluma_prefs_manager_get_draw_spaces ())
-			pluma_prefs_manager_set_draw_spaces (DRAW_ALL);
+		if (lapiz_prefs_manager_get_draw_spaces ())
+			lapiz_prefs_manager_set_draw_spaces (DRAW_ALL);
 		else
-			pluma_prefs_manager_set_draw_spaces (DRAW_NONE);
+			lapiz_prefs_manager_set_draw_spaces (DRAW_NONE);
 	}
 }
 
@@ -249,7 +249,7 @@ draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
                                PlumaPreferencesDialog *dlg)
 {
 	DrawSpacesSettings setting;
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON(dlg->priv->draw_tabs_checkbutton));
 
@@ -258,7 +258,7 @@ draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
 	else
 		setting = DRAW_NONE;
 
-	pluma_prefs_manager_set_draw_tabs (setting);
+	lapiz_prefs_manager_set_draw_tabs (setting);
 #ifdef GTK_SOURCE_VERSION_3_24
 	if (setting == DRAW_NONE)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
@@ -271,18 +271,18 @@ static void
 draw_trailing_tabs_checkbutton_toggled (GtkToggleButton        *button,
                                         PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton));
 
 	if (gtk_toggle_button_get_active (button))
-		pluma_prefs_manager_set_draw_tabs (DRAW_TRAILING);
+		lapiz_prefs_manager_set_draw_tabs (DRAW_TRAILING);
 	else
 	{
-		if (pluma_prefs_manager_get_draw_tabs ())
-			pluma_prefs_manager_set_draw_tabs (DRAW_ALL);
+		if (lapiz_prefs_manager_get_draw_tabs ())
+			lapiz_prefs_manager_set_draw_tabs (DRAW_ALL);
 		else
-			pluma_prefs_manager_set_draw_tabs (DRAW_NONE);
+			lapiz_prefs_manager_set_draw_tabs (DRAW_NONE);
 	}
 }
 
@@ -290,32 +290,32 @@ static void
 draw_newlines_checkbutton_toggled (GtkToggleButton        *button,
                                    PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_newlines_checkbutton));
 
-	pluma_prefs_manager_set_draw_newlines (gtk_toggle_button_get_active (button));
+	lapiz_prefs_manager_set_draw_newlines (gtk_toggle_button_get_active (button));
 }
 
 static void
 auto_save_checkbutton_toggled (GtkToggleButton        *button,
 			       PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->auto_save_checkbutton));
 
 	if (gtk_toggle_button_get_active (button))
 	{
 		gtk_widget_set_sensitive (dlg->priv->auto_save_spinbutton,
-					  pluma_prefs_manager_auto_save_interval_can_set());
+					  lapiz_prefs_manager_auto_save_interval_can_set());
 
-		pluma_prefs_manager_set_auto_save (TRUE);
+		lapiz_prefs_manager_set_auto_save (TRUE);
 	}
 	else
 	{
 		gtk_widget_set_sensitive (dlg->priv->auto_save_spinbutton, FALSE);
-		pluma_prefs_manager_set_auto_save (FALSE);
+		lapiz_prefs_manager_set_auto_save (FALSE);
 	}
 }
 
@@ -323,11 +323,11 @@ static void
 backup_copy_checkbutton_toggled (GtkToggleButton        *button,
 				 PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->backup_copy_checkbutton));
 
-	pluma_prefs_manager_set_create_backup_copy (gtk_toggle_button_get_active (button));
+	lapiz_prefs_manager_set_create_backup_copy (gtk_toggle_button_get_active (button));
 }
 
 static void
@@ -336,7 +336,7 @@ auto_save_spinbutton_value_changed (GtkSpinButton          *spin_button,
 {
 	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->priv->auto_save_spinbutton));
 
-	pluma_prefs_manager_set_auto_save_interval (
+	lapiz_prefs_manager_set_auto_save_interval (
 			MAX (1, gtk_spin_button_get_value_as_int (spin_button)));
 }
 
@@ -346,53 +346,53 @@ setup_editor_page (PlumaPreferencesDialog *dlg)
 	gboolean auto_save;
 	gint auto_save_interval;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	/* Set initial state */
 	gtk_spin_button_set_value (GTK_SPIN_BUTTON (dlg->priv->tabs_width_spinbutton),
-				   (guint) pluma_prefs_manager_get_tabs_size ());
+				   (guint) lapiz_prefs_manager_get_tabs_size ());
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->insert_spaces_checkbutton),
-				      pluma_prefs_manager_get_insert_spaces ());
+				      lapiz_prefs_manager_get_insert_spaces ());
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->auto_indent_checkbutton),
-				      pluma_prefs_manager_get_auto_indent ());
+				      lapiz_prefs_manager_get_auto_indent ());
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_spaces_checkbutton),
-				      pluma_prefs_manager_get_draw_spaces () > DRAW_NONE);
+				      lapiz_prefs_manager_get_draw_spaces () > DRAW_NONE);
 #ifdef GTK_SOURCE_VERSION_3_24
 	gtk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton),
-	                          pluma_prefs_manager_get_draw_spaces () > DRAW_NONE);
+	                          lapiz_prefs_manager_get_draw_spaces () > DRAW_NONE);
 	gtk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton),
-	                                    pluma_prefs_manager_get_draw_spaces () == DRAW_NONE);
+	                                    lapiz_prefs_manager_get_draw_spaces () == DRAW_NONE);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton),
-	                              pluma_prefs_manager_get_draw_spaces () == DRAW_TRAILING);
+	                              lapiz_prefs_manager_get_draw_spaces () == DRAW_TRAILING);
 #else
 	gtk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
 	gtk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), TRUE);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
 #endif
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_tabs_checkbutton),
-	                              pluma_prefs_manager_get_draw_tabs () > DRAW_NONE);
+	                              lapiz_prefs_manager_get_draw_tabs () > DRAW_NONE);
 #ifdef GTK_SOURCE_VERSION_3_24
 	gtk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_tabs_checkbutton),
-	                          pluma_prefs_manager_get_draw_tabs () > DRAW_NONE);
+	                          lapiz_prefs_manager_get_draw_tabs () > DRAW_NONE);
 	gtk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton),
-	                                    pluma_prefs_manager_get_draw_tabs () == DRAW_NONE);
+	                                    lapiz_prefs_manager_get_draw_tabs () == DRAW_NONE);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton),
-	                              pluma_prefs_manager_get_draw_tabs () == DRAW_TRAILING);
+	                              lapiz_prefs_manager_get_draw_tabs () == DRAW_TRAILING);
 #else
 	gtk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
 	gtk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
 #endif
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_newlines_checkbutton),
-	                              pluma_prefs_manager_get_draw_newlines ());
+	                              lapiz_prefs_manager_get_draw_newlines ());
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->backup_copy_checkbutton),
-				      pluma_prefs_manager_get_create_backup_copy ());
+				      lapiz_prefs_manager_get_create_backup_copy ());
 
-	auto_save = pluma_prefs_manager_get_auto_save ();
+	auto_save = lapiz_prefs_manager_get_auto_save ();
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->auto_save_checkbutton),
 				      auto_save);
 
-	auto_save_interval = pluma_prefs_manager_get_auto_save_interval ();
+	auto_save_interval = lapiz_prefs_manager_get_auto_save_interval ();
 	if (auto_save_interval <= 0)
 		auto_save_interval = GPM_DEFAULT_AUTO_SAVE_INTERVAL;
 
@@ -401,24 +401,24 @@ setup_editor_page (PlumaPreferencesDialog *dlg)
 
 	/* Set widget sensitivity */
 	gtk_widget_set_sensitive (dlg->priv->tabs_width_hbox,
-				  pluma_prefs_manager_tabs_size_can_set ());
+				  lapiz_prefs_manager_tabs_size_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->insert_spaces_checkbutton,
-				  pluma_prefs_manager_insert_spaces_can_set ());
+				  lapiz_prefs_manager_insert_spaces_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->auto_indent_checkbutton,
-				  pluma_prefs_manager_auto_indent_can_set ());
+				  lapiz_prefs_manager_auto_indent_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->draw_spaces_checkbutton,
-				  pluma_prefs_manager_draw_spaces_can_set ());
+				  lapiz_prefs_manager_draw_spaces_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->draw_tabs_checkbutton,
-				  pluma_prefs_manager_draw_tabs_can_set ());
+				  lapiz_prefs_manager_draw_tabs_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->draw_newlines_checkbutton,
-				  pluma_prefs_manager_draw_newlines_can_set ());
+				  lapiz_prefs_manager_draw_newlines_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->backup_copy_checkbutton,
-				  pluma_prefs_manager_create_backup_copy_can_set ());
+				  lapiz_prefs_manager_create_backup_copy_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->autosave_hbox,
-				  pluma_prefs_manager_auto_save_can_set ());
+				  lapiz_prefs_manager_auto_save_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->auto_save_spinbutton,
 			          auto_save &&
-				  pluma_prefs_manager_auto_save_interval_can_set ());
+				  lapiz_prefs_manager_auto_save_interval_can_set ());
 
 	/* Connect signal */
 	g_signal_connect (dlg->priv->tabs_width_spinbutton,
@@ -474,7 +474,7 @@ display_line_numbers_checkbutton_toggled (GtkToggleButton        *button,
 	g_return_if_fail (button ==
 			GTK_TOGGLE_BUTTON (dlg->priv->display_line_numbers_checkbutton));
 
-	pluma_prefs_manager_set_display_line_numbers (gtk_toggle_button_get_active (button));
+	lapiz_prefs_manager_set_display_line_numbers (gtk_toggle_button_get_active (button));
 }
 
 static void
@@ -484,7 +484,7 @@ highlight_current_line_checkbutton_toggled (GtkToggleButton        *button,
 	g_return_if_fail (button ==
 			GTK_TOGGLE_BUTTON (dlg->priv->highlight_current_line_checkbutton));
 
-	pluma_prefs_manager_set_highlight_current_line (gtk_toggle_button_get_active (button));
+	lapiz_prefs_manager_set_highlight_current_line (gtk_toggle_button_get_active (button));
 }
 
 static void
@@ -494,7 +494,7 @@ bracket_matching_checkbutton_toggled (GtkToggleButton        *button,
 	g_return_if_fail (button ==
 			GTK_TOGGLE_BUTTON (dlg->priv->bracket_matching_checkbutton));
 
-	pluma_prefs_manager_set_bracket_matching (
+	lapiz_prefs_manager_set_bracket_matching (
 				gtk_toggle_button_get_active (button));
 }
 
@@ -506,7 +506,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 {
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton)))
 	{
-		pluma_prefs_manager_set_wrap_mode (GTK_WRAP_NONE);
+		lapiz_prefs_manager_set_wrap_mode (GTK_WRAP_NONE);
 
 		gtk_widget_set_sensitive (dlg->priv->split_checkbutton,
 					  FALSE);
@@ -526,13 +526,13 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 		{
 			split_button_state = TRUE;
 
-			pluma_prefs_manager_set_wrap_mode (GTK_WRAP_WORD);
+			lapiz_prefs_manager_set_wrap_mode (GTK_WRAP_WORD);
 		}
 		else
 		{
 			split_button_state = FALSE;
 
-			pluma_prefs_manager_set_wrap_mode (GTK_WRAP_CHAR);
+			lapiz_prefs_manager_set_wrap_mode (GTK_WRAP_CHAR);
 		}
 	}
 }
@@ -547,11 +547,11 @@ right_margin_checkbutton_toggled (GtkToggleButton        *button,
 
 	active = gtk_toggle_button_get_active (button);
 
-	pluma_prefs_manager_set_display_right_margin (active);
+	lapiz_prefs_manager_set_display_right_margin (active);
 
 	gtk_widget_set_sensitive (dlg->priv->right_margin_position_hbox,
 				  active &&
-				  pluma_prefs_manager_right_margin_position_can_set ());
+				  lapiz_prefs_manager_right_margin_position_can_set ());
 }
 
 static void
@@ -564,7 +564,7 @@ right_margin_position_spinbutton_value_changed (GtkSpinButton          *spin_but
 
 	value = CLAMP (gtk_spin_button_get_value_as_int (spin_button), 1, 160);
 
-	pluma_prefs_manager_set_right_margin_position (value);
+	lapiz_prefs_manager_set_right_margin_position (value);
 }
 
 static void
@@ -574,19 +574,19 @@ setup_view_page (PlumaPreferencesDialog *dlg)
 	gboolean display_right_margin;
 	gboolean wrap_mode_can_set;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	/* Set initial state */
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->display_line_numbers_checkbutton),
-				      pluma_prefs_manager_get_display_line_numbers ());
+				      lapiz_prefs_manager_get_display_line_numbers ());
 
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->highlight_current_line_checkbutton),
-				      pluma_prefs_manager_get_highlight_current_line ());
+				      lapiz_prefs_manager_get_highlight_current_line ());
 
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->bracket_matching_checkbutton),
-				      pluma_prefs_manager_get_bracket_matching ());
+				      lapiz_prefs_manager_get_bracket_matching ());
 
-	wrap_mode = pluma_prefs_manager_get_wrap_mode ();
+	wrap_mode = lapiz_prefs_manager_get_wrap_mode ();
 	switch (wrap_mode )
 	{
 		case GTK_WRAP_WORD:
@@ -611,7 +611,7 @@ setup_view_page (PlumaPreferencesDialog *dlg)
 
 	}
 
-	display_right_margin = pluma_prefs_manager_get_display_right_margin ();
+	display_right_margin = lapiz_prefs_manager_get_display_right_margin ();
 
 	gtk_toggle_button_set_active (
 		GTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton),
@@ -619,26 +619,26 @@ setup_view_page (PlumaPreferencesDialog *dlg)
 
 	gtk_spin_button_set_value (
 		GTK_SPIN_BUTTON (dlg->priv->right_margin_position_spinbutton),
-		(guint)CLAMP (pluma_prefs_manager_get_right_margin_position (), 1, 160));
+		(guint)CLAMP (lapiz_prefs_manager_get_right_margin_position (), 1, 160));
 
 	/* Set widgets sensitivity */
 	gtk_widget_set_sensitive (dlg->priv->display_line_numbers_checkbutton,
-				  pluma_prefs_manager_display_line_numbers_can_set ());
+				  lapiz_prefs_manager_display_line_numbers_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->highlight_current_line_checkbutton,
-				  pluma_prefs_manager_highlight_current_line_can_set ());
+				  lapiz_prefs_manager_highlight_current_line_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->bracket_matching_checkbutton,
-				  pluma_prefs_manager_bracket_matching_can_set ());
-	wrap_mode_can_set = pluma_prefs_manager_wrap_mode_can_set ();
+				  lapiz_prefs_manager_bracket_matching_can_set ());
+	wrap_mode_can_set = lapiz_prefs_manager_wrap_mode_can_set ();
 	gtk_widget_set_sensitive (dlg->priv->wrap_text_checkbutton,
 				  wrap_mode_can_set);
 	gtk_widget_set_sensitive (dlg->priv->split_checkbutton,
 				  wrap_mode_can_set &&
 				  (wrap_mode != GTK_WRAP_NONE));
 	gtk_widget_set_sensitive (dlg->priv->right_margin_checkbutton,
-				  pluma_prefs_manager_display_right_margin_can_set ());
+				  lapiz_prefs_manager_display_right_margin_can_set ());
 	gtk_widget_set_sensitive (dlg->priv->right_margin_position_hbox,
 				  display_right_margin &&
-				  pluma_prefs_manager_right_margin_position_can_set ());
+				  lapiz_prefs_manager_right_margin_position_can_set ());
 
 	/* Connect signals */
 	g_signal_connect (dlg->priv->display_line_numbers_checkbutton,
@@ -675,20 +675,20 @@ static void
 default_font_font_checkbutton_toggled (GtkToggleButton        *button,
 				       PlumaPreferencesDialog *dlg)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton));
 
 	if (gtk_toggle_button_get_active (button))
 	{
 		gtk_widget_set_sensitive (dlg->priv->font_hbox, FALSE);
-		pluma_prefs_manager_set_use_default_font (TRUE);
+		lapiz_prefs_manager_set_use_default_font (TRUE);
 	}
 	else
 	{
 		gtk_widget_set_sensitive (dlg->priv->font_hbox,
-					  pluma_prefs_manager_editor_font_can_set ());
-		pluma_prefs_manager_set_use_default_font (FALSE);
+					  lapiz_prefs_manager_editor_font_can_set ());
+		lapiz_prefs_manager_set_use_default_font (FALSE);
 	}
 }
 
@@ -698,7 +698,7 @@ editor_font_button_font_set (GtkFontChooser         *font_button,
 {
 	const gchar *font_name;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (font_button == GTK_FONT_CHOOSER (dlg->priv->font_button));
 
@@ -710,7 +710,7 @@ editor_font_button_font_set (GtkFontChooser         *font_button,
 		return;
 	}
 
-	pluma_prefs_manager_set_editor_font (font_name);
+	lapiz_prefs_manager_set_editor_font (font_name);
 }
 
 static void
@@ -720,19 +720,19 @@ setup_font_colors_page_font_section (PlumaPreferencesDialog *dlg)
 	gchar *editor_font = NULL;
 	gchar *label;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	gtk_widget_set_tooltip_text (dlg->priv->font_button,
 			 _("Click on this button to select the font to be used by the editor"));
 
-	pluma_utils_set_atk_relation (dlg->priv->font_button,
+	lapiz_utils_set_atk_relation (dlg->priv->font_button,
 				      dlg->priv->default_font_checkbutton,
 				      ATK_RELATION_CONTROLLED_BY);
-	pluma_utils_set_atk_relation (dlg->priv->default_font_checkbutton,
+	lapiz_utils_set_atk_relation (dlg->priv->default_font_checkbutton,
 				      dlg->priv->font_button,
 				      ATK_RELATION_CONTROLLER_FOR);
 
-	editor_font = pluma_prefs_manager_get_system_font ();
+	editor_font = lapiz_prefs_manager_get_system_font ();
 	label = g_strdup_printf(_("_Use the system fixed width font (%s)"),
 				editor_font);
 	gtk_button_set_label (GTK_BUTTON (dlg->priv->default_font_checkbutton),
@@ -741,11 +741,11 @@ setup_font_colors_page_font_section (PlumaPreferencesDialog *dlg)
 	g_free (label);
 
 	/* read current config and setup initial state */
-	use_default_font = pluma_prefs_manager_get_use_default_font ();
+	use_default_font = lapiz_prefs_manager_get_use_default_font ();
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton),
 				      use_default_font);
 
-	editor_font = pluma_prefs_manager_get_editor_font ();
+	editor_font = lapiz_prefs_manager_get_editor_font ();
 	if (editor_font != NULL)
 	{
 		gtk_font_chooser_set_font (GTK_FONT_CHOOSER (dlg->priv->font_button),
@@ -765,13 +765,13 @@ setup_font_colors_page_font_section (PlumaPreferencesDialog *dlg)
 
 	/* Set initial widget sensitivity */
 	gtk_widget_set_sensitive (dlg->priv->default_font_checkbutton,
-				  pluma_prefs_manager_use_default_font_can_set ());
+				  lapiz_prefs_manager_use_default_font_can_set ());
 
 	if (use_default_font)
 		gtk_widget_set_sensitive (dlg->priv->font_hbox, FALSE);
 	else
 		gtk_widget_set_sensitive (dlg->priv->font_hbox,
-					  pluma_prefs_manager_editor_font_can_set ());
+					  lapiz_prefs_manager_editor_font_can_set ());
 }
 
 static void
@@ -781,8 +781,8 @@ set_buttons_sensisitivity_according_to_scheme (PlumaPreferencesDialog *dlg,
 	gboolean editable;
 
 	editable = (scheme_id != NULL) &&
-	           _pluma_style_scheme_manager_scheme_is_pluma_user_scheme (
-						pluma_get_style_scheme_manager (),
+	           _lapiz_style_scheme_manager_scheme_is_lapiz_user_scheme (
+						lapiz_get_style_scheme_manager (),
 						scheme_id);
 
 	gtk_widget_set_sensitive (dlg->priv->uninstall_scheme_button,
@@ -804,7 +804,7 @@ style_scheme_changed (GtkWidget              *treeview,
 	gtk_tree_model_get (GTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
 			    &iter, ID_COLUMN, &id, -1);
 
-	pluma_prefs_manager_set_source_style_scheme (id);
+	lapiz_prefs_manager_set_source_style_scheme (id);
 
 	set_buttons_sensisitivity_according_to_scheme (dlg, id);
 
@@ -815,13 +815,13 @@ static const gchar *
 ensure_color_scheme_id (const gchar *id)
 {
 	GtkSourceStyleScheme *scheme = NULL;
-	GtkSourceStyleSchemeManager *manager = pluma_get_style_scheme_manager ();
+	GtkSourceStyleSchemeManager *manager = lapiz_get_style_scheme_manager ();
 
 	if (id == NULL)
 	{
 		gchar *pref_id;
 
-		pref_id = pluma_prefs_manager_get_source_style_scheme ();
+		pref_id = lapiz_prefs_manager_get_source_style_scheme ();
 		scheme = gtk_source_style_scheme_manager_get_scheme (manager,
 								     pref_id);
 		g_free (pref_id);
@@ -849,7 +849,7 @@ ensure_color_scheme_id (const gchar *id)
 }
 
 /* If def_id is NULL, use the default scheme as returned by
- * pluma_style_scheme_manager_get_default_scheme. If this one returns NULL
+ * lapiz_style_scheme_manager_get_default_scheme. If this one returns NULL
  * use the first available scheme as default */
 static const gchar *
 populate_color_scheme_list (PlumaPreferencesDialog *dlg, const gchar *def_id)
@@ -867,7 +867,7 @@ populate_color_scheme_list (PlumaPreferencesDialog *dlg, const gchar *def_id)
 		return NULL;
 	}
 
-	schemes = pluma_style_scheme_manager_list_schemes_sorted (pluma_get_style_scheme_manager ());
+	schemes = lapiz_style_scheme_manager_list_schemes_sorted (lapiz_get_style_scheme_manager ());
 	l = schemes;
 	while (l != NULL)
 	{
@@ -928,20 +928,20 @@ add_scheme_chooser_response_cb (GtkDialog              *chooser,
 
 	gtk_widget_hide (GTK_WIDGET (chooser));
 
-	scheme_id = _pluma_style_scheme_manager_install_scheme (
-					pluma_get_style_scheme_manager (),
+	scheme_id = _lapiz_style_scheme_manager_install_scheme (
+					lapiz_get_style_scheme_manager (),
 					filename);
 	g_free (filename);
 
 	if (scheme_id == NULL)
 	{
-		pluma_warning (GTK_WINDOW (dlg),
+		lapiz_warning (GTK_WINDOW (dlg),
 			       _("The selected color scheme cannot be installed."));
 
 		return;
 	}
 
-	pluma_prefs_manager_set_source_style_scheme (scheme_id);
+	lapiz_prefs_manager_set_source_style_scheme (scheme_id);
 
 	scheme_id = populate_color_scheme_list (dlg, scheme_id);
 
@@ -972,7 +972,7 @@ scheme_file_chooser_dialog_new_valist (const gchar          *title,
 			response_id = va_arg (varargs, gint);
 
 			if (g_strcmp0 (button_text, "process-stop") == 0)
-				pluma_dialog_add_button (GTK_DIALOG (result), _("_Cancel"), button_text, response_id);
+				lapiz_dialog_add_button (GTK_DIALOG (result), _("_Cancel"), button_text, response_id);
 			else
 				gtk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
 
@@ -1020,7 +1020,7 @@ install_scheme_clicked (GtkButton              *button,
 						  "process-stop", GTK_RESPONSE_CANCEL,
 						  NULL);
 
-	pluma_dialog_add_button (GTK_DIALOG (chooser),
+	lapiz_dialog_add_button (GTK_DIALOG (chooser),
 				 _("A_dd Scheme"),
 				 "list-add",
 				 GTK_RESPONSE_ACCEPT);
@@ -1078,9 +1078,9 @@ uninstall_scheme_clicked (GtkButton              *button,
 				    NAME_COLUMN, &name,
 				    -1);
 
-		if (!_pluma_style_scheme_manager_uninstall_scheme (pluma_get_style_scheme_manager (), id))
+		if (!_lapiz_style_scheme_manager_uninstall_scheme (lapiz_get_style_scheme_manager (), id))
 		{
-			pluma_warning (GTK_WINDOW (dlg),
+			lapiz_warning (GTK_WINDOW (dlg),
 				       _("Could not remove color scheme \"%s\"."),
 				       name);
 		}
@@ -1133,7 +1133,7 @@ uninstall_scheme_clicked (GtkButton              *button,
 			set_buttons_sensisitivity_according_to_scheme (dlg, real_new_id);
 
 			if (real_new_id != NULL)
-				pluma_prefs_manager_set_source_style_scheme (real_new_id);
+				lapiz_prefs_manager_set_source_style_scheme (real_new_id);
 		}
 
 		g_free (id);
@@ -1188,7 +1188,7 @@ setup_font_colors_page_style_scheme_section (PlumaPreferencesDialog *dlg)
 	GtkTreeSelection *selection;
 	const gchar *def_id;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	/* Create GtkListStore for styles & setup treeview. */
 	dlg->priv->schemes_treeview_model = gtk_list_store_new (NUM_COLUMNS,
@@ -1255,7 +1255,7 @@ setup_plugins_page (PlumaPreferencesDialog *dlg)
 {
 	GtkWidget *page_content;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	page_content = peas_gtk_plugin_manager_new (NULL);
 	g_return_if_fail (page_content != NULL);
@@ -1270,7 +1270,7 @@ setup_plugins_page (PlumaPreferencesDialog *dlg)
 }
 
 static void
-pluma_preferences_dialog_init (PlumaPreferencesDialog *dlg)
+lapiz_preferences_dialog_init (PlumaPreferencesDialog *dlg)
 {
 	GtkWidget *error_widget;
 	gboolean ret;
@@ -1284,12 +1284,12 @@ pluma_preferences_dialog_init (PlumaPreferencesDialog *dlg)
 		NULL
 	};
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	dlg->priv = pluma_preferences_dialog_get_instance_private (dlg);
+	dlg->priv = lapiz_preferences_dialog_get_instance_private (dlg);
 
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_Close"), "window-close", GTK_RESPONSE_CLOSE);
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Close"), "window-close", GTK_RESPONSE_CLOSE);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
 
 	gtk_window_set_title (GTK_WINDOW (dlg), _("Pluma Preferences"));
 	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
@@ -1304,8 +1304,8 @@ pluma_preferences_dialog_init (PlumaPreferencesDialog *dlg)
 			  G_CALLBACK (dialog_response_handler),
 			  NULL);
 
-	file = pluma_dirs_get_ui_file ("pluma-preferences-dialog.ui");
-	ret = pluma_utils_get_ui_objects (file,
+	file = lapiz_dirs_get_ui_file ("lapiz-preferences-dialog.ui");
+	ret = lapiz_utils_get_ui_objects (file,
 		root_objects,
 		&error_widget,
 
@@ -1374,9 +1374,9 @@ pluma_preferences_dialog_init (PlumaPreferencesDialog *dlg)
 }
 
 void
-pluma_show_preferences_dialog (PlumaWindow *parent)
+lapiz_show_preferences_dialog (PlumaWindow *parent)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	g_return_if_fail (PLUMA_IS_WINDOW (parent));
 

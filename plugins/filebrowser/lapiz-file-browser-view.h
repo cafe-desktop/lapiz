@@ -1,5 +1,5 @@
 /*
- * pluma-file-browser-view.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-view.h - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -25,7 +25,7 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define PLUMA_TYPE_FILE_BROWSER_VIEW			(pluma_file_browser_view_get_type ())
+#define PLUMA_TYPE_FILE_BROWSER_VIEW			(lapiz_file_browser_view_get_type ())
 #define PLUMA_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserView))
 #define PLUMA_FILE_BROWSER_VIEW_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserView const))
 #define PLUMA_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserViewClass))
@@ -65,17 +65,17 @@ struct _PlumaFileBrowserViewClass
 				    GtkTreeIter *iter);
 };
 
-GType pluma_file_browser_view_get_type			(void) G_GNUC_CONST;
-void _pluma_file_browser_view_register_type		(GTypeModule 			* module);
+GType lapiz_file_browser_view_get_type			(void) G_GNUC_CONST;
+void _lapiz_file_browser_view_register_type		(GTypeModule 			* module);
 
-GtkWidget *pluma_file_browser_view_new			(void);
-void pluma_file_browser_view_set_model			(PlumaFileBrowserView 		* tree_view,
+GtkWidget *lapiz_file_browser_view_new			(void);
+void lapiz_file_browser_view_set_model			(PlumaFileBrowserView 		* tree_view,
 							 GtkTreeModel 			* model);
-void pluma_file_browser_view_start_rename		(PlumaFileBrowserView 		* tree_view,
+void lapiz_file_browser_view_start_rename		(PlumaFileBrowserView 		* tree_view,
 							 GtkTreeIter 			* iter);
-void pluma_file_browser_view_set_click_policy		(PlumaFileBrowserView 		* tree_view,
+void lapiz_file_browser_view_set_click_policy		(PlumaFileBrowserView 		* tree_view,
 							 PlumaFileBrowserViewClickPolicy  policy);
-void pluma_file_browser_view_set_restore_expand_state	(PlumaFileBrowserView 		* tree_view,
+void lapiz_file_browser_view_set_restore_expand_state	(PlumaFileBrowserView 		* tree_view,
 							 gboolean 			  restore_expand_state);
 
 G_END_DECLS

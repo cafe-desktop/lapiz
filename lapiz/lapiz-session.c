@@ -1,6 +1,6 @@
 /*
- * pluma-session.c - Basic session management for pluma
- * This file is part of pluma
+ * lapiz-session.c - Basic session management for lapiz
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Ximian, Inc.
  * Copyright (C) 2005 - Paolo Maggi
@@ -24,8 +24,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -42,16 +42,16 @@
 #include <libxml/tree.h>
 #include <libxml/xmlwriter.h>
 
-#include "pluma-session.h"
+#include "lapiz-session.h"
 
-#include "pluma-debug.h"
-#include "pluma-plugins-engine.h"
-#include "pluma-prefs-manager-app.h"
-#include "pluma-metadata-manager.h"
-#include "pluma-window.h"
-#include "pluma-app.h"
-#include "pluma-commands.h"
-#include "dialogs/pluma-close-confirmation-dialog.h"
+#include "lapiz-debug.h"
+#include "lapiz-plugins-engine.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-metadata-manager.h"
+#include "lapiz-window.h"
+#include "lapiz-app.h"
+#include "lapiz-commands.h"
+#include "dialogs/lapiz-close-confirmation-dialog.h"
 #include "smclient/eggsmclient.h"
 
 /* The master client we use for SM */
@@ -62,7 +62,7 @@ static GSList *window_dirty_list;
 
 static void	ask_next_confirmation	(void);
 
-#define PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE "pluma-session-list-of-docs-to-save-key"
+#define PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE "lapiz-session-list-of-docs-to-save-key"
 
 static void
 save_window_session (GKeyFile    *state_file,
@@ -77,7 +77,7 @@ save_window_session (GKeyFile    *state_file,
 	PlumaDocument *active_document;
 	gchar *uri;
 
-	pluma_debug (DEBUG_SESSION);
+	lapiz_debug (DEBUG_SESSION);
 
 	role = gtk_window_get_role (GTK_WINDOW (window));
 	g_key_file_set_string (state_file, group_name, "role", role);
@@ -85,28 +85,28 @@ save_window_session (GKeyFile    *state_file,
 	g_key_file_set_integer (state_file, group_name, "width", width);
 	g_key_file_set_integer (state_file, group_name, "height", height);
 
-	panel = pluma_window_get_side_panel (window);
+	panel = lapiz_window_get_side_panel (window);
 	g_key_file_set_boolean (state_file, group_name, "side-panel-visible",
 				gtk_widget_get_visible (GTK_WIDGET (panel)));
 
-	panel = pluma_window_get_bottom_panel (window);
+	panel = lapiz_window_get_bottom_panel (window);
 	g_key_file_set_boolean (state_file, group_name, "bottom-panel-visible",
 				gtk_widget_get_visible (GTK_WIDGET (panel)));
 
-	active_document = pluma_window_get_active_document (window);
+	active_document = lapiz_window_get_active_document (window);
 	if (active_document)
 	{
-	        uri = pluma_document_get_uri (active_document);
+	        uri = lapiz_document_get_uri (active_document);
 	        g_key_file_set_string (state_file, group_name,
 				       "active-document", uri);
 	}
 
-	docs = pluma_window_get_documents (window);
+	docs = lapiz_window_get_documents (window);
 
 	doc_array = g_ptr_array_new ();
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
-		uri = pluma_document_get_uri (PLUMA_DOCUMENT (l->data));
+		uri = lapiz_document_get_uri (PLUMA_DOCUMENT (l->data));
 
 		if (uri != NULL)
 		        g_ptr_array_add (doc_array, uri);
@@ -137,12 +137,12 @@ client_save_state_cb (EggSMClient *client,
 	gchar *group_name;
 	int n;
 
-	windows = pluma_app_get_windows (pluma_app_get_default ());
+	windows = lapiz_app_get_windows (lapiz_app_get_default ());
 	n = 1;
 
 	while (windows != NULL)
 	{
-	        group_name = g_strdup_printf ("pluma window %d", n);
+	        group_name = g_strdup_printf ("lapiz window %d", n);
 		save_window_session (state_file,
 				     group_name,
 				     PLUMA_WINDOW (windows->data));
@@ -176,13 +176,13 @@ window_state_change (PlumaWindow *window,
 	GList *l;
 	gboolean done = TRUE;
 
-	state = pluma_window_get_state (window);
+	state = lapiz_window_get_state (window);
 
 	/* we are still saving */
 	if (state & PLUMA_WINDOW_STATE_SAVING)
 		return;
 
-	unsaved_docs = pluma_window_get_unsaved_documents (window);
+	unsaved_docs = lapiz_window_get_unsaved_documents (window);
 
 	docs_to_save =	g_object_get_data (G_OBJECT (window),
 					   PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE);
@@ -219,7 +219,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 	GList *selected_documents;
 	GSList *l;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	switch (response_id)
 	{
@@ -231,7 +231,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 					  G_CALLBACK (window_state_change),
 					  NULL);
 
-			selected_documents = pluma_close_confirmation_dialog_get_selected_documents (dlg);
+			selected_documents = lapiz_close_confirmation_dialog_get_selected_documents (dlg);
 
 			g_return_if_fail (g_object_get_data (G_OBJECT (window),
 							     PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE) == NULL);
@@ -240,7 +240,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 					   PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE,
 					   selected_documents);
 
-			_pluma_cmd_file_save_documents_list (window, selected_documents);
+			_lapiz_cmd_file_save_documents_list (window, selected_documents);
 
 			/* FIXME: also need to lock the window to prevent further changes... */
 
@@ -274,9 +274,9 @@ show_confirmation_dialog (PlumaWindow *window)
 	GList *unsaved_docs;
 	GtkWidget *dlg;
 
-	pluma_debug (DEBUG_SESSION);
+	lapiz_debug (DEBUG_SESSION);
 
-	unsaved_docs = pluma_window_get_unsaved_documents (window);
+	unsaved_docs = lapiz_window_get_unsaved_documents (window);
 
 	g_return_if_fail (unsaved_docs != NULL);
 
@@ -288,19 +288,19 @@ show_confirmation_dialog (PlumaWindow *window)
 
 		doc = PLUMA_DOCUMENT (unsaved_docs->data);
 
-		tab = pluma_tab_get_from_document (doc);
+		tab = lapiz_tab_get_from_document (doc);
 		g_return_if_fail (tab != NULL);
 
-		pluma_window_set_active_tab (window, tab);
+		lapiz_window_set_active_tab (window, tab);
 
-		dlg = pluma_close_confirmation_dialog_new_single (
+		dlg = lapiz_close_confirmation_dialog_new_single (
 						GTK_WINDOW (window),
 						doc,
 						TRUE);
 	}
 	else
 	{
-		dlg = pluma_close_confirmation_dialog_new (GTK_WINDOW (window),
+		dlg = lapiz_close_confirmation_dialog_new (GTK_WINDOW (window),
 							   unsaved_docs,
 							   TRUE);
 	}
@@ -334,9 +334,9 @@ client_quit_requested_cb (EggSMClient *client, gpointer data)
 	PlumaApp *app;
 	const GList *l;
 
-	pluma_debug (DEBUG_SESSION);
+	lapiz_debug (DEBUG_SESSION);
 
-	app = pluma_app_get_default ();
+	app = lapiz_app_get_default ();
 
 	if (window_dirty_list != NULL)
 	{
@@ -344,9 +344,9 @@ client_quit_requested_cb (EggSMClient *client, gpointer data)
 		window_dirty_list = NULL;
 	}
 
-	for (l = pluma_app_get_windows (app); l != NULL; l = l->next)
+	for (l = lapiz_app_get_windows (app); l != NULL; l = l->next)
 	{
-		if (pluma_window_get_unsaved_documents (PLUMA_WINDOW (l->data)) != NULL)
+		if (lapiz_window_get_unsaved_documents (PLUMA_WINDOW (l->data)) != NULL)
 		{
 			window_dirty_list = g_slist_prepend (window_dirty_list, l->data);
 		}
@@ -362,7 +362,7 @@ client_quit_requested_cb (EggSMClient *client, gpointer data)
 
 	ask_next_confirmation ();
 
-	pluma_debug_message (DEBUG_SESSION, "END");
+	lapiz_debug_message (DEBUG_SESSION, "END");
 }
 
 /* quit handler for the master client */
@@ -370,41 +370,41 @@ static void
 client_quit_cb (EggSMClient *client, gpointer data)
 {
 #if 0
-	pluma_debug (DEBUG_SESSION);
+	lapiz_debug (DEBUG_SESSION);
 
 	if (!client->save_yourself_emitted)
-		pluma_file_close_all ();
+		lapiz_file_close_all ();
 
-	pluma_debug_message (DEBUG_FILE, "All files closed.");
+	lapiz_debug_message (DEBUG_FILE, "All files closed.");
 
-	matecomponent_mdi_destroy (MATECOMPONENT_MDI (pluma_mdi));
+	matecomponent_mdi_destroy (MATECOMPONENT_MDI (lapiz_mdi));
 
-	pluma_debug_message (DEBUG_FILE, "Unref pluma_mdi.");
+	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_mdi.");
 
-	g_object_unref (G_OBJECT (pluma_mdi));
+	g_object_unref (G_OBJECT (lapiz_mdi));
 
-	pluma_debug_message (DEBUG_FILE, "Unref pluma_mdi: DONE");
+	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_mdi: DONE");
 
-	pluma_debug_message (DEBUG_FILE, "Unref pluma_app_server.");
+	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_app_server.");
 
-	matecomponent_object_unref (pluma_app_server);
+	matecomponent_object_unref (lapiz_app_server);
 
-	pluma_debug_message (DEBUG_FILE, "Unref pluma_app_server: DONE");
+	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_app_server: DONE");
 #endif
 
 	gtk_main_quit ();
 }
 
 /**
- * pluma_session_init:
+ * lapiz_session_init:
  *
  * Initializes session management support.  This function should be called near
  * the beginning of the program.
  **/
 void
-pluma_session_init (void)
+lapiz_session_init (void)
 {
-	pluma_debug (DEBUG_SESSION);
+	lapiz_debug (DEBUG_SESSION);
 
 	if (master_client)
 	  return;
@@ -425,27 +425,27 @@ pluma_session_init (void)
 }
 
 /**
- * pluma_session_is_restored:
+ * lapiz_session_is_restored:
  *
- * Returns whether this pluma is running from a restarted session.
+ * Returns whether this lapiz is running from a restarted session.
  *
  * Return value: TRUE if the session manager restarted us, FALSE otherwise.
  * This should be used to determine whether to pay attention to command line
  * arguments in case the session was not restored.
  **/
 gboolean
-pluma_session_is_restored (void)
+lapiz_session_is_restored (void)
 {
 	gboolean restored;
 
-	pluma_debug (DEBUG_SESSION);
+	lapiz_debug (DEBUG_SESSION);
 
 	if (!master_client)
 		return FALSE;
 
 	restored = egg_sm_client_is_resumed (master_client);
 
-	pluma_debug_message (DEBUG_SESSION, restored ? "RESTORED" : "NOT RESTORED");
+	lapiz_debug_message (DEBUG_SESSION, restored ? "RESTORED" : "NOT RESTORED");
 
 	return restored;
 }
@@ -462,9 +462,9 @@ parse_window (GKeyFile *state_file, const char *group_name)
 
 	role = g_key_file_get_string (state_file, group_name, "role", NULL);
 
-	pluma_debug_message (DEBUG_SESSION, "Window role: %s", role);
+	lapiz_debug_message (DEBUG_SESSION, "Window role: %s", role);
 
-	window = _pluma_app_restore_window (pluma_app_get_default (), (gchar *) role);
+	window = _lapiz_app_restore_window (lapiz_app_get_default (), (gchar *) role);
 	g_free (role);
 
 	if (window == NULL)
@@ -498,16 +498,16 @@ parse_window (GKeyFile *state_file, const char *group_name)
 		visible = FALSE;
 	}
 
-	panel = pluma_window_get_side_panel (window);
+	panel = lapiz_window_get_side_panel (window);
 
 	if (visible)
 	{
-	        pluma_debug_message (DEBUG_SESSION, "Side panel visible");
+	        lapiz_debug_message (DEBUG_SESSION, "Side panel visible");
 		gtk_widget_show (GTK_WIDGET (panel));
 	}
 	else
 	{
-	      pluma_debug_message (DEBUG_SESSION, "Side panel _NOT_ visible");
+	      lapiz_debug_message (DEBUG_SESSION, "Side panel _NOT_ visible");
 	      gtk_widget_hide (GTK_WIDGET (panel));
 	}
 
@@ -519,15 +519,15 @@ parse_window (GKeyFile *state_file, const char *group_name)
 		visible = FALSE;
 	}
 
-	panel = pluma_window_get_bottom_panel (window);
+	panel = lapiz_window_get_bottom_panel (window);
 	if (visible)
 	{
-	        pluma_debug_message (DEBUG_SESSION, "Bottom panel visible");
+	        lapiz_debug_message (DEBUG_SESSION, "Bottom panel visible");
 		gtk_widget_show (GTK_WIDGET (panel));
 	}
 	else
 	{
-	        pluma_debug_message (DEBUG_SESSION, "Bottom panel _NOT_ visible");
+	        lapiz_debug_message (DEBUG_SESSION, "Bottom panel _NOT_ visible");
 		gtk_widget_hide (GTK_WIDGET (panel));
 	}
 
@@ -546,11 +546,11 @@ parse_window (GKeyFile *state_file, const char *group_name)
 			        jump_to = strcmp (active_document,
 						  documents[i]) == 0;
 
-			pluma_debug_message (DEBUG_SESSION,
+			lapiz_debug_message (DEBUG_SESSION,
 					     "URI: %s (%s)",
 					     documents[i],
 					     jump_to ? "active" : "not active");
-			pluma_window_create_tab_from_uri (window,
+			lapiz_window_create_tab_from_uri (window,
 							  documents[i],
 							  NULL,
 							  0,
@@ -566,7 +566,7 @@ parse_window (GKeyFile *state_file, const char *group_name)
 }
 
 /**
- * pluma_session_load:
+ * lapiz_session_load:
  *
  * Loads the session by fetching the necessary information from the session
  * manager and opening files.
@@ -574,13 +574,13 @@ parse_window (GKeyFile *state_file, const char *group_name)
  * Return value: TRUE if the session was loaded successfully, FALSE otherwise.
  **/
 gboolean
-pluma_session_load (void)
+lapiz_session_load (void)
 {
 	GKeyFile *state_file;
 	gchar **groups;
 	int i;
 
-	pluma_debug (DEBUG_SESSION);
+	lapiz_debug (DEBUG_SESSION);
 
 	state_file = egg_sm_client_get_state_file (master_client);
 	if (state_file == NULL)
@@ -590,7 +590,7 @@ pluma_session_load (void)
 
 	for (i = 0; groups[i] != NULL; i++)
 	{
-		if (g_str_has_prefix (groups[i], "pluma window "))
+		if (g_str_has_prefix (groups[i], "lapiz window "))
 		        parse_window (state_file, groups[i]);
 	}
 

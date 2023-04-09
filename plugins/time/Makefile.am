@@ -9,16 +9,16 @@ AM_CPPFLAGS = \
 plugin_LTLIBRARIES = libtime.la
 
 libtime_la_SOURCES = \
-	pluma-time-plugin.h	\
-	pluma-time-plugin.c
+	lapiz-time-plugin.h	\
+	lapiz-time-plugin.c
 
 libtime_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 libtime_la_LIBADD  = $(PLUMA_LIBS)
 
 uidir = $(PLUMA_PLUGINS_DATA_DIR)/time
 ui_files = \
-	pluma-time-dialog.ui				\
-	pluma-time-setup-dialog.ui
+	lapiz-time-dialog.ui				\
+	lapiz-time-setup-dialog.ui
 include $(top_srcdir)/gla11y.mk
 ui_DATA = $(ui_files)
 
@@ -28,7 +28,7 @@ plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
 $(plugin_DATA): $(plugin_in_files)
 	$(AM_V_GEN) $(MSGFMT) --keyword=Name --keyword=Description --desktop --template $< -d $(top_srcdir)/po -o $@
 
-time_gschema_in = org.mate.pluma.plugins.time.gschema.xml.in
+time_gschema_in = org.mate.lapiz.plugins.time.gschema.xml.in
 gsettings_SCHEMAS = $(time_gschema_in:.xml.in=.xml)
 @GSETTINGS_RULES@
 

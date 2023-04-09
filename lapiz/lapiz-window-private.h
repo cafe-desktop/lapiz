@@ -1,6 +1,6 @@
 /*
- * pluma-window-private.h
- * This file is part of pluma
+ * lapiz-window-private.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,13 +33,13 @@
 
 #include <libpeas/peas-extension-set.h>
 
-#include "pluma/pluma-window.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-message-bus.h"
+#include "lapiz/lapiz-window.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-message-bus.h"
 
 G_BEGIN_DECLS
 
-/* WindowPrivate is in a separate .h so that we can access it from pluma-commands */
+/* WindowPrivate is in a separate .h so that we can access it from lapiz-commands */
 
 struct _PlumaWindowPrivate
 {

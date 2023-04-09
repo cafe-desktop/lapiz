@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-languages-manager.h
- * This file is part of pluma
+ * lapiz-languages-manager.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2003-2005 - Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2003-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2003-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -37,9 +37,9 @@
 
 G_BEGIN_DECLS
 
-GtkSourceLanguageManager	*pluma_get_language_manager	(void);
+GtkSourceLanguageManager	*lapiz_get_language_manager	(void);
 
-GSList				*pluma_language_manager_list_languages_sorted
+GSList				*lapiz_language_manager_list_languages_sorted
 								(GtkSourceLanguageManager	*lm,
 								 gboolean			 include_hidden);
 

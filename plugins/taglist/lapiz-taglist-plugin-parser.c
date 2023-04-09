@@ -1,6 +1,6 @@
 /*
- * pluma-taglist-plugin-parser.c
- * This file is part of pluma
+ * lapiz-taglist-plugin-parser.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -39,11 +39,11 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include <pluma/pluma-debug.h>
+#include <lapiz/lapiz-debug.h>
 
-#include "pluma-taglist-plugin-parser.h"
+#include "lapiz-taglist-plugin-parser.h"
 
-#define USER_PLUMA_TAGLIST_PLUGIN_LOCATION "pluma/taglist/"
+#define USER_PLUMA_TAGLIST_PLUGIN_LOCATION "lapiz/taglist/"
 
 TagList* taglist = NULL;
 static gint taglist_ref_count = 0;
@@ -66,7 +66,7 @@ static gboolean
 parse_tag (Tag *tag, xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur)
 {
 	/*
-	pluma_debug_message (DEBUG_PLUGINS, "  Tag name: %s", tag->name);
+	lapiz_debug_message (DEBUG_PLUGINS, "  Tag name: %s", tag->name);
 	*/
 	/* We don't care what the top level element name is */
 	cur = cur->xmlChildrenNode;
@@ -78,7 +78,7 @@ parse_tag (Tag *tag, xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur)
 		{
 			tag->begin = xmlNodeListGetString (doc, cur->xmlChildrenNode, 1);
 			/*
-			pluma_debug_message (DEBUG_PLUGINS, "    - Begin: %s", tag->begin);
+			lapiz_debug_message (DEBUG_PLUGINS, "    - Begin: %s", tag->begin);
 			*/
 		}
 
@@ -87,7 +87,7 @@ parse_tag (Tag *tag, xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur)
 		{
 			tag->end = xmlNodeListGetString (doc, cur->xmlChildrenNode, 1);
 			/*
-			pluma_debug_message (DEBUG_PLUGINS, "    - End: %s", tag->end);
+			lapiz_debug_message (DEBUG_PLUGINS, "    - End: %s", tag->end);
 			*/
 		}
 
@@ -113,7 +113,7 @@ static gboolean
 parse_tag_group (TagGroup *tg, const gchar* fn, xmlDocPtr doc,
 		 xmlNsPtr ns, xmlNodePtr cur, gboolean sort)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "Parse TagGroup: %s", tg->name);
+	lapiz_debug_message (DEBUG_PLUGINS, "Parse TagGroup: %s", tg->name);
 
 	/* We don't care what the top level element name is */
     	cur = cur->xmlChildrenNode;
@@ -230,7 +230,7 @@ get_tag_group (const gchar* filename, xmlDocPtr doc,
 
 			if (strcmp (tgn, (gchar*)tag_group->name) == 0)
 			{
-				pluma_debug_message (DEBUG_PLUGINS,
+				lapiz_debug_message (DEBUG_PLUGINS,
 					     "Tag group '%s' already exists.", tgn);
 
 				exists = TRUE;
@@ -274,15 +274,15 @@ groups_cmp (gconstpointer a, gconstpointer b)
 /*
  *  tags file is localized by intltool-merge below.
  *
- *      <pluma:TagGroup name="XSLT - Elements">
- *      </pluma:TagGroup>
- *      <pluma:TagGroup xml:lang="am" name="LOCALIZED TEXT">
- *      </pluma:TagGroup>
- *      <pluma:TagGroup xml:lang="ar" name="LOCALIZED TEXT">
- *      </pluma:TagGroup>
+ *      <lapiz:TagGroup name="XSLT - Elements">
+ *      </lapiz:TagGroup>
+ *      <lapiz:TagGroup xml:lang="am" name="LOCALIZED TEXT">
+ *      </lapiz:TagGroup>
+ *      <lapiz:TagGroup xml:lang="ar" name="LOCALIZED TEXT">
+ *      </lapiz:TagGroup>
  *      .....
- *      <pluma:TagGroup name="XSLT - Functions">
- *      </pluma:TagGroup>
+ *      <lapiz:TagGroup name="XSLT - Functions">
+ *      </lapiz:TagGroup>
  *      .....
  *  Therefore need to pick up the best lang on the current locale.
  */
@@ -422,7 +422,7 @@ parse_taglist_file (const gchar* filename)
 	xmlNsPtr ns;
 	xmlNodePtr cur;
 
-	pluma_debug_message (DEBUG_PLUGINS, "Parse file: %s", filename);
+	lapiz_debug_message (DEBUG_PLUGINS, "Parse file: %s", filename);
 
 	xmlKeepBlanksDefault (0);
 
@@ -451,12 +451,12 @@ parse_taglist_file (const gchar* filename)
 	}
 
 	ns = xmlSearchNsByHref (doc, cur,
-			(const xmlChar *) "http://pluma.sourceforge.net/some-location");
+			(const xmlChar *) "http://lapiz.sourceforge.net/some-location");
 
 	if (ns == NULL)
 	{
 		g_warning ("The tag list file '%s' is of the wrong type, "
-			   "pluma namespace not found.", filename);
+			   "lapiz namespace not found.", filename);
 		xmlFreeDoc (doc);
 
 		return taglist;
@@ -482,7 +482,7 @@ parse_taglist_file (const gchar* filename)
 
 	xmlFreeDoc (doc);
 
-	pluma_debug_message (DEBUG_PLUGINS, "END");
+	lapiz_debug_message (DEBUG_PLUGINS, "END");
 
 	return taglist;
 }
@@ -491,7 +491,7 @@ static void
 free_tag (Tag *tag)
 {
 	/*
-	pluma_debug_message (DEBUG_PLUGINS, "Tag: %s", tag->name);
+	lapiz_debug_message (DEBUG_PLUGINS, "Tag: %s", tag->name);
 	*/
 	g_return_if_fail (tag != NULL);
 
@@ -511,7 +511,7 @@ free_tag_group (TagGroup *tag_group)
 {
 	GList *l;
 
-	pluma_debug_message (DEBUG_PLUGINS, "Tag group: %s", tag_group->name);
+	lapiz_debug_message (DEBUG_PLUGINS, "Tag group: %s", tag_group->name);
 
 	g_return_if_fail (tag_group != NULL);
 
@@ -525,14 +525,14 @@ free_tag_group (TagGroup *tag_group)
 	g_list_free (tag_group->tags);
 	g_free (tag_group);
 
-	pluma_debug_message (DEBUG_PLUGINS, "END");
+	lapiz_debug_message (DEBUG_PLUGINS, "END");
 }
 
 void free_taglist(void)
 {
 	GList* l;
 
-	pluma_debug_message(DEBUG_PLUGINS, "ref_count: %d", taglist_ref_count);
+	lapiz_debug_message(DEBUG_PLUGINS, "ref_count: %d", taglist_ref_count);
 
 	if (taglist == NULL)
 	{
@@ -557,7 +557,7 @@ void free_taglist(void)
 	g_free (taglist);
 	taglist = NULL;
 
-	pluma_debug_message (DEBUG_PLUGINS, "Really freed");
+	lapiz_debug_message (DEBUG_PLUGINS, "Really freed");
 }
 
 static TagList* parse_taglist_dir(const gchar* dir)
@@ -566,13 +566,13 @@ static TagList* parse_taglist_dir(const gchar* dir)
 	GDir* d;
 	const gchar* dirent;
 
-	pluma_debug_message(DEBUG_PLUGINS, "DIR: %s", dir);
+	lapiz_debug_message(DEBUG_PLUGINS, "DIR: %s", dir);
 
 	d = g_dir_open(dir, 0, &error);
 
 	if (!d)
 	{
-		pluma_debug_message(DEBUG_PLUGINS, "%s", error->message);
+		lapiz_debug_message(DEBUG_PLUGINS, "%s", error->message);
 		g_error_free (error);
 		return taglist;
 	}
@@ -596,7 +596,7 @@ TagList* create_taglist(const gchar* data_dir)
 {
 	gchar* pdir;
 
-	pluma_debug_message(DEBUG_PLUGINS, "ref_count: %d", taglist_ref_count);
+	lapiz_debug_message(DEBUG_PLUGINS, "ref_count: %d", taglist_ref_count);
 
 	if (taglist_ref_count > 0)
 	{

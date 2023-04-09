@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-prefs-manager.c
- * This file is part of pluma
+ * lapiz-prefs-manager.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005  Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2003. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2003. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -36,99 +36,99 @@
 #include <string.h>
 
 #include <gio/gio.h>
-#include "pluma-prefs-manager.h"
-#include "pluma-prefs-manager-private.h"
-#include "pluma-prefs-manager-app.h"
-#include "pluma-app.h"
-#include "pluma-debug.h"
-#include "pluma-view.h"
-#include "pluma-window.h"
-#include "pluma-window-private.h"
-#include "pluma-plugins-engine.h"
-#include "pluma-style-scheme-manager.h"
-#include "pluma-dirs.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-prefs-manager-private.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-app.h"
+#include "lapiz-debug.h"
+#include "lapiz-view.h"
+#include "lapiz-window.h"
+#include "lapiz-window-private.h"
+#include "lapiz-plugins-engine.h"
+#include "lapiz-style-scheme-manager.h"
+#include "lapiz-dirs.h"
 
-static void pluma_prefs_manager_editor_font_changed	(GSettings *settings,
+static void lapiz_prefs_manager_editor_font_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_system_font_changed	(GSettings *settings,
+static void lapiz_prefs_manager_system_font_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_tabs_size_changed	(GSettings *settings,
+static void lapiz_prefs_manager_tabs_size_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_wrap_mode_changed	(GSettings *settings,
+static void lapiz_prefs_manager_wrap_mode_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_line_numbers_changed	(GSettings *settings,
+static void lapiz_prefs_manager_line_numbers_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_auto_indent_changed	(GSettings *settings,
+static void lapiz_prefs_manager_auto_indent_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_undo_changed		(GSettings *settings,
+static void lapiz_prefs_manager_undo_changed		(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_right_margin_changed	(GSettings *settings,
+static void lapiz_prefs_manager_right_margin_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_smart_home_end_changed	(GSettings *settings,
+static void lapiz_prefs_manager_smart_home_end_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_hl_current_line_changed	(GSettings *settings,
+static void lapiz_prefs_manager_hl_current_line_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_bracket_matching_changed(GSettings *settings,
+static void lapiz_prefs_manager_bracket_matching_changed(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_syntax_hl_enable_changed(GSettings *settings,
+static void lapiz_prefs_manager_syntax_hl_enable_changed(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_search_hl_enable_changed(GSettings *settings,
+static void lapiz_prefs_manager_search_hl_enable_changed(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_source_style_scheme_changed(GSettings *settings,
+static void lapiz_prefs_manager_source_style_scheme_changed(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_max_recents_changed	(GSettings *settings,
+static void lapiz_prefs_manager_max_recents_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_auto_save_changed	(GSettings *settings,
+static void lapiz_prefs_manager_auto_save_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_lockdown_changed	(GSettings *settings,
+static void lapiz_prefs_manager_lockdown_changed	(GSettings *settings,
 							 gchar       *key,
 							 gpointer     user_data);
 
-static void pluma_prefs_manager_draw_spaces_changed (GSettings *settings,
+static void lapiz_prefs_manager_draw_spaces_changed (GSettings *settings,
                                                      gchar     *key,
                                                      gpointer   user_data);
 
-static void pluma_prefs_manager_draw_tabs_changed (GSettings *settings,
+static void lapiz_prefs_manager_draw_tabs_changed (GSettings *settings,
                                                    gchar     *key,
                                                    gpointer   user_data);
 
-static void pluma_prefs_manager_draw_newlines_changed (GSettings *settings,
+static void lapiz_prefs_manager_draw_newlines_changed (GSettings *settings,
                                                        gchar     *key,
                                                        gpointer   user_data);
 
-static void pluma_prefs_manager_draw_nbsp_changed (GSettings *settings,
+static void lapiz_prefs_manager_draw_nbsp_changed (GSettings *settings,
                                                    gchar     *key,
                                                    gpointer   user_data);
 
@@ -140,7 +140,7 @@ static void pluma_prefs_manager_draw_nbsp_changed (GSettings *settings,
 #define PLUMA_STATE_DEFAULT_SIDE_PANEL_SIZE	200
 #define PLUMA_STATE_DEFAULT_BOTTOM_PANEL_SIZE	140
 
-#define PLUMA_STATE_FILE_LOCATION "pluma.ini"
+#define PLUMA_STATE_FILE_LOCATION "lapiz.ini"
 
 #define PLUMA_STATE_WINDOW_GROUP "window"
 #define PLUMA_STATE_WINDOW_STATE "state"
@@ -170,7 +170,7 @@ get_state_filename (void)
 	gchar *config_dir;
 	gchar *filename = NULL;
 
-	config_dir = pluma_dirs_get_user_config_dir ();
+	config_dir = lapiz_dirs_get_user_config_dir ();
 
 	if (config_dir != NULL)
 	{
@@ -184,7 +184,7 @@ get_state_filename (void)
 }
 
 static GKeyFile *
-get_pluma_state_file (void)
+get_lapiz_state_file (void)
 {
 	static GKeyFile *state_file = NULL;
 
@@ -205,7 +205,7 @@ get_pluma_state_file (void)
 			if (err->domain != G_FILE_ERROR ||
 			    err->code != G_FILE_ERROR_NOENT)
 			{
-				g_warning ("Could not load pluma state file: %s\n",
+				g_warning ("Could not load lapiz state file: %s\n",
 					   err->message);
 			}
 
@@ -219,7 +219,7 @@ get_pluma_state_file (void)
 }
 
 static void
-pluma_state_get_int (const gchar *group,
+lapiz_state_get_int (const gchar *group,
 		     const gchar *key,
 		     gint         defval,
 		     gint        *result)
@@ -228,7 +228,7 @@ pluma_state_get_int (const gchar *group,
 	gint res;
 	GError *err = NULL;
 
-	state_file = get_pluma_state_file ();
+	state_file = get_lapiz_state_file ();
 	res = g_key_file_get_integer (state_file,
 				      group,
 				      key,
@@ -256,13 +256,13 @@ pluma_state_get_int (const gchar *group,
 }
 
 static void
-pluma_state_set_int (const gchar *group,
+lapiz_state_set_int (const gchar *group,
 		     const gchar *key,
 		     gint         value)
 {
 	GKeyFile *state_file;
 
-	state_file = get_pluma_state_file ();
+	state_file = get_lapiz_state_file ();
 	g_key_file_set_integer (state_file,
 				group,
 				key,
@@ -270,7 +270,7 @@ pluma_state_set_int (const gchar *group,
 }
 
 static gboolean
-pluma_state_file_sync (void)
+lapiz_state_file_sync (void)
 {
 	GKeyFile *state_file;
 	gchar *config_dir;
@@ -281,10 +281,10 @@ pluma_state_file_sync (void)
 	GError *err = NULL;
 	gboolean ret = FALSE;
 
-	state_file = get_pluma_state_file ();
+	state_file = get_lapiz_state_file ();
 	g_return_val_if_fail (state_file != NULL, FALSE);
 
-	config_dir = pluma_dirs_get_user_config_dir ();
+	config_dir = lapiz_dirs_get_user_config_dir ();
 	if (config_dir == NULL)
 	{
 		g_warning ("Could not get config directory\n");
@@ -317,7 +317,7 @@ pluma_state_file_sync (void)
 					  length,
 					  &err))
 		{
-			g_warning ("Could not write pluma state file: %s\n",
+			g_warning ("Could not write lapiz state file: %s\n",
 				   err->message);
 			goto out;
 		}
@@ -338,11 +338,11 @@ pluma_state_file_sync (void)
 
 /* Window state */
 gint
-pluma_prefs_manager_get_window_state (void)
+lapiz_prefs_manager_get_window_state (void)
 {
 	if (window_state == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_WINDOW_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
 				     PLUMA_STATE_WINDOW_STATE,
 				     PLUMA_STATE_DEFAULT_WINDOW_STATE,
 				     &window_state);
@@ -352,32 +352,32 @@ pluma_prefs_manager_get_window_state (void)
 }
 
 void
-pluma_prefs_manager_set_window_state (gint ws)
+lapiz_prefs_manager_set_window_state (gint ws)
 {
 	g_return_if_fail (ws > -1);
 
 	window_state = ws;
 
-	pluma_state_set_int (PLUMA_STATE_WINDOW_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
 			     PLUMA_STATE_WINDOW_STATE,
 			     ws);
 }
 
 gboolean
-pluma_prefs_manager_window_state_can_set (void)
+lapiz_prefs_manager_window_state_can_set (void)
 {
 	return TRUE;
 }
 
 /* Window size */
 void
-pluma_prefs_manager_get_window_size (gint *width, gint *height)
+lapiz_prefs_manager_get_window_size (gint *width, gint *height)
 {
 	g_return_if_fail (width != NULL && height != NULL);
 
 	if (window_width == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_WINDOW_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
 				     PLUMA_STATE_WINDOW_WIDTH,
 				     PLUMA_STATE_DEFAULT_WINDOW_WIDTH,
 				     &window_width);
@@ -385,7 +385,7 @@ pluma_prefs_manager_get_window_size (gint *width, gint *height)
 
 	if (window_height == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_WINDOW_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
 				     PLUMA_STATE_WINDOW_HEIGHT,
 				     PLUMA_STATE_DEFAULT_WINDOW_HEIGHT,
 				     &window_height);
@@ -396,7 +396,7 @@ pluma_prefs_manager_get_window_size (gint *width, gint *height)
 }
 
 void
-pluma_prefs_manager_get_default_window_size (gint *width, gint *height)
+lapiz_prefs_manager_get_default_window_size (gint *width, gint *height)
 {
 	g_return_if_fail (width != NULL && height != NULL);
 
@@ -405,34 +405,34 @@ pluma_prefs_manager_get_default_window_size (gint *width, gint *height)
 }
 
 void
-pluma_prefs_manager_set_window_size (gint width, gint height)
+lapiz_prefs_manager_set_window_size (gint width, gint height)
 {
 	g_return_if_fail (width > -1 && height > -1);
 
 	window_width = width;
 	window_height = height;
 
-	pluma_state_set_int (PLUMA_STATE_WINDOW_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
 			     PLUMA_STATE_WINDOW_WIDTH,
 			     width);
-	pluma_state_set_int (PLUMA_STATE_WINDOW_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
 			     PLUMA_STATE_WINDOW_HEIGHT,
 			     height);
 }
 
 gboolean
-pluma_prefs_manager_window_size_can_set (void)
+lapiz_prefs_manager_window_size_can_set (void)
 {
 	return TRUE;
 }
 
 /* Side panel */
 gint
-pluma_prefs_manager_get_side_panel_size (void)
+lapiz_prefs_manager_get_side_panel_size (void)
 {
 	if (side_panel_size == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_WINDOW_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
 				     PLUMA_STATE_SIDE_PANEL_SIZE,
 				     PLUMA_STATE_DEFAULT_SIDE_PANEL_SIZE,
 				     &side_panel_size);
@@ -442,13 +442,13 @@ pluma_prefs_manager_get_side_panel_size (void)
 }
 
 gint
-pluma_prefs_manager_get_default_side_panel_size (void)
+lapiz_prefs_manager_get_default_side_panel_size (void)
 {
 	return PLUMA_STATE_DEFAULT_SIDE_PANEL_SIZE;
 }
 
 void
-pluma_prefs_manager_set_side_panel_size (gint ps)
+lapiz_prefs_manager_set_side_panel_size (gint ps)
 {
 	g_return_if_fail (ps > -1);
 
@@ -456,23 +456,23 @@ pluma_prefs_manager_set_side_panel_size (gint ps)
 		return;
 
 	side_panel_size = ps;
-	pluma_state_set_int (PLUMA_STATE_WINDOW_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
 			     PLUMA_STATE_SIDE_PANEL_SIZE,
 			     ps);
 }
 
 gboolean
-pluma_prefs_manager_side_panel_size_can_set (void)
+lapiz_prefs_manager_side_panel_size_can_set (void)
 {
 	return TRUE;
 }
 
 gint
-pluma_prefs_manager_get_side_panel_active_page (void)
+lapiz_prefs_manager_get_side_panel_active_page (void)
 {
 	if (side_panel_active_page == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_WINDOW_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
 				     PLUMA_STATE_SIDE_PANEL_ACTIVE_PAGE,
 				     0,
 				     &side_panel_active_page);
@@ -482,30 +482,30 @@ pluma_prefs_manager_get_side_panel_active_page (void)
 }
 
 void
-pluma_prefs_manager_set_side_panel_active_page (gint id)
+lapiz_prefs_manager_set_side_panel_active_page (gint id)
 {
 	if (side_panel_active_page == id)
 		return;
 
 	side_panel_active_page = id;
-	pluma_state_set_int (PLUMA_STATE_WINDOW_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
 			     PLUMA_STATE_SIDE_PANEL_ACTIVE_PAGE,
 			     id);
 }
 
 gboolean
-pluma_prefs_manager_side_panel_active_page_can_set (void)
+lapiz_prefs_manager_side_panel_active_page_can_set (void)
 {
 	return TRUE;
 }
 
 /* Bottom panel */
 gint
-pluma_prefs_manager_get_bottom_panel_size (void)
+lapiz_prefs_manager_get_bottom_panel_size (void)
 {
 	if (bottom_panel_size == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_WINDOW_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
 				     PLUMA_STATE_BOTTOM_PANEL_SIZE,
 				     PLUMA_STATE_DEFAULT_BOTTOM_PANEL_SIZE,
 				     &bottom_panel_size);
@@ -515,13 +515,13 @@ pluma_prefs_manager_get_bottom_panel_size (void)
 }
 
 gint
-pluma_prefs_manager_get_default_bottom_panel_size (void)
+lapiz_prefs_manager_get_default_bottom_panel_size (void)
 {
 	return PLUMA_STATE_DEFAULT_BOTTOM_PANEL_SIZE;
 }
 
 void
-pluma_prefs_manager_set_bottom_panel_size (gint ps)
+lapiz_prefs_manager_set_bottom_panel_size (gint ps)
 {
 	g_return_if_fail (ps > -1);
 
@@ -529,23 +529,23 @@ pluma_prefs_manager_set_bottom_panel_size (gint ps)
 		return;
 
 	bottom_panel_size = ps;
-	pluma_state_set_int (PLUMA_STATE_WINDOW_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
 			     PLUMA_STATE_BOTTOM_PANEL_SIZE,
 			     ps);
 }
 
 gboolean
-pluma_prefs_manager_bottom_panel_size_can_set (void)
+lapiz_prefs_manager_bottom_panel_size_can_set (void)
 {
 	return TRUE;
 }
 
 gint
-pluma_prefs_manager_get_bottom_panel_active_page (void)
+lapiz_prefs_manager_get_bottom_panel_active_page (void)
 {
 	if (bottom_panel_active_page == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_WINDOW_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
 				     PLUMA_STATE_BOTTOM_PANEL_ACTIVE_PAGE,
 				     0,
 				     &bottom_panel_active_page);
@@ -555,30 +555,30 @@ pluma_prefs_manager_get_bottom_panel_active_page (void)
 }
 
 void
-pluma_prefs_manager_set_bottom_panel_active_page (gint id)
+lapiz_prefs_manager_set_bottom_panel_active_page (gint id)
 {
 	if (bottom_panel_active_page == id)
 		return;
 
 	bottom_panel_active_page = id;
-	pluma_state_set_int (PLUMA_STATE_WINDOW_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
 			     PLUMA_STATE_BOTTOM_PANEL_ACTIVE_PAGE,
 			     id);
 }
 
 gboolean
-pluma_prefs_manager_bottom_panel_active_page_can_set (void)
+lapiz_prefs_manager_bottom_panel_active_page_can_set (void)
 {
 	return TRUE;
 }
 
 /* File filter */
 gint
-pluma_prefs_manager_get_active_file_filter (void)
+lapiz_prefs_manager_get_active_file_filter (void)
 {
 	if (active_file_filter == -1)
 	{
-		pluma_state_get_int (PLUMA_STATE_FILEFILTER_GROUP,
+		lapiz_state_get_int (PLUMA_STATE_FILEFILTER_GROUP,
 				     PLUMA_STATE_FILEFILTER_ID,
 				     0,
 				     &active_file_filter);
@@ -588,7 +588,7 @@ pluma_prefs_manager_get_active_file_filter (void)
 }
 
 void
-pluma_prefs_manager_set_active_file_filter (gint id)
+lapiz_prefs_manager_set_active_file_filter (gint id)
 {
 	g_return_if_fail (id >= 0);
 
@@ -596,13 +596,13 @@ pluma_prefs_manager_set_active_file_filter (gint id)
 		return;
 
 	active_file_filter = id;
-	pluma_state_set_int (PLUMA_STATE_FILEFILTER_GROUP,
+	lapiz_state_set_int (PLUMA_STATE_FILEFILTER_GROUP,
 			     PLUMA_STATE_FILEFILTER_ID,
 			     id);
 }
 
 gboolean
-pluma_prefs_manager_active_file_filter_can_set (void)
+lapiz_prefs_manager_active_file_filter_can_set (void)
 {
 	return TRUE;
 }
@@ -610,165 +610,165 @@ pluma_prefs_manager_active_file_filter_can_set (void)
 /* Normal prefs are stored in GSettings */
 
 gboolean
-pluma_prefs_manager_app_init (void)
+lapiz_prefs_manager_app_init (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	g_return_val_if_fail (pluma_prefs_manager == NULL, FALSE);
+	g_return_val_if_fail (lapiz_prefs_manager == NULL, FALSE);
 
-	pluma_prefs_manager_init ();
+	lapiz_prefs_manager_init ();
 
-	if (pluma_prefs_manager != NULL)
+	if (lapiz_prefs_manager != NULL)
 	{
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_USE_DEFAULT_FONT,
-				G_CALLBACK (pluma_prefs_manager_editor_font_changed),
+				G_CALLBACK (lapiz_prefs_manager_editor_font_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_EDITOR_FONT,
-				G_CALLBACK (pluma_prefs_manager_editor_font_changed),
+				G_CALLBACK (lapiz_prefs_manager_editor_font_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->interface_settings,
+		g_signal_connect (lapiz_prefs_manager->interface_settings,
 				"changed::" GPM_SYSTEM_FONT,
-				G_CALLBACK (pluma_prefs_manager_system_font_changed),
+				G_CALLBACK (lapiz_prefs_manager_system_font_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_TABS_SIZE,
-				G_CALLBACK (pluma_prefs_manager_tabs_size_changed),
+				G_CALLBACK (lapiz_prefs_manager_tabs_size_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_INSERT_SPACES,
-				G_CALLBACK (pluma_prefs_manager_tabs_size_changed),
+				G_CALLBACK (lapiz_prefs_manager_tabs_size_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_WRAP_MODE,
-				G_CALLBACK (pluma_prefs_manager_wrap_mode_changed),
+				G_CALLBACK (lapiz_prefs_manager_wrap_mode_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_DISPLAY_LINE_NUMBERS,
-				G_CALLBACK (pluma_prefs_manager_line_numbers_changed),
+				G_CALLBACK (lapiz_prefs_manager_line_numbers_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_AUTO_INDENT,
-				G_CALLBACK (pluma_prefs_manager_auto_indent_changed),
+				G_CALLBACK (lapiz_prefs_manager_auto_indent_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_UNDO_ACTIONS_LIMIT,
-				G_CALLBACK (pluma_prefs_manager_undo_changed),
+				G_CALLBACK (lapiz_prefs_manager_undo_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_DISPLAY_RIGHT_MARGIN,
-				G_CALLBACK (pluma_prefs_manager_right_margin_changed),
+				G_CALLBACK (lapiz_prefs_manager_right_margin_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_RIGHT_MARGIN_POSITION,
-				G_CALLBACK (pluma_prefs_manager_right_margin_changed),
+				G_CALLBACK (lapiz_prefs_manager_right_margin_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_SMART_HOME_END,
-				G_CALLBACK (pluma_prefs_manager_smart_home_end_changed),
+				G_CALLBACK (lapiz_prefs_manager_smart_home_end_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_HIGHLIGHT_CURRENT_LINE,
-				G_CALLBACK (pluma_prefs_manager_hl_current_line_changed),
+				G_CALLBACK (lapiz_prefs_manager_hl_current_line_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_BRACKET_MATCHING,
-				G_CALLBACK (pluma_prefs_manager_bracket_matching_changed),
+				G_CALLBACK (lapiz_prefs_manager_bracket_matching_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_SYNTAX_HL_ENABLE,
-				G_CALLBACK (pluma_prefs_manager_syntax_hl_enable_changed),
+				G_CALLBACK (lapiz_prefs_manager_syntax_hl_enable_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_SEARCH_HIGHLIGHTING_ENABLE,
-				G_CALLBACK (pluma_prefs_manager_search_hl_enable_changed),
+				G_CALLBACK (lapiz_prefs_manager_search_hl_enable_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_SOURCE_STYLE_SCHEME,
-				G_CALLBACK (pluma_prefs_manager_source_style_scheme_changed),
+				G_CALLBACK (lapiz_prefs_manager_source_style_scheme_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_MAX_RECENTS,
-				G_CALLBACK (pluma_prefs_manager_max_recents_changed),
+				G_CALLBACK (lapiz_prefs_manager_max_recents_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_CREATE_BACKUP_COPY,
-				G_CALLBACK (pluma_prefs_manager_auto_save_changed),
+				G_CALLBACK (lapiz_prefs_manager_auto_save_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_AUTO_SAVE_INTERVAL,
-				G_CALLBACK (pluma_prefs_manager_auto_save_changed),
+				G_CALLBACK (lapiz_prefs_manager_auto_save_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 				"changed::" GPM_WRITABLE_VFS_SCHEMES,
-				G_CALLBACK (pluma_prefs_manager_auto_save_changed),
+				G_CALLBACK (lapiz_prefs_manager_auto_save_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->lockdown_settings,
+		g_signal_connect (lapiz_prefs_manager->lockdown_settings,
 				"changed",
-				G_CALLBACK (pluma_prefs_manager_lockdown_changed),
+				G_CALLBACK (lapiz_prefs_manager_lockdown_changed),
 				NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 		                  "changed::" GPM_SPACE_DRAWER_SPACE,
-		                  G_CALLBACK (pluma_prefs_manager_draw_spaces_changed),
+		                  G_CALLBACK (lapiz_prefs_manager_draw_spaces_changed),
 		                  NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 		                  "changed::" GPM_SPACE_DRAWER_TAB,
-		                  G_CALLBACK (pluma_prefs_manager_draw_tabs_changed),
+		                  G_CALLBACK (lapiz_prefs_manager_draw_tabs_changed),
 		                  NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 		                  "changed::" GPM_SPACE_DRAWER_NEWLINE,
-		                  G_CALLBACK (pluma_prefs_manager_draw_newlines_changed),
+		                  G_CALLBACK (lapiz_prefs_manager_draw_newlines_changed),
 		                  NULL);
 
-		g_signal_connect (pluma_prefs_manager->settings,
+		g_signal_connect (lapiz_prefs_manager->settings,
 		                  "changed::" GPM_SPACE_DRAWER_NBSP,
-		                  G_CALLBACK (pluma_prefs_manager_draw_nbsp_changed),
+		                  G_CALLBACK (lapiz_prefs_manager_draw_nbsp_changed),
 		                  NULL);
 
 	}
 
-	return pluma_prefs_manager != NULL;
+	return lapiz_prefs_manager != NULL;
 }
 
-/* This function must be called before exiting pluma */
+/* This function must be called before exiting lapiz */
 void
-pluma_prefs_manager_app_shutdown (void)
+lapiz_prefs_manager_app_shutdown (void)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	pluma_prefs_manager_shutdown ();
+	lapiz_prefs_manager_shutdown ();
 
-	pluma_state_file_sync ();
+	lapiz_state_file_sync ();
 }
 
 
 static void
-pluma_prefs_manager_editor_font_changed (GSettings *settings,
+lapiz_prefs_manager_editor_font_changed (GSettings *settings,
 					 gchar       *key,
 					 gpointer     user_data)
 {
@@ -778,37 +778,37 @@ pluma_prefs_manager_editor_font_changed (GSettings *settings,
 	gboolean def = TRUE;
 	gint ts;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_USE_DEFAULT_FONT) == 0)
 	{
 		def = g_settings_get_boolean (settings, key);
 
 		if (def)
-			font = pluma_prefs_manager_get_system_font ();
+			font = lapiz_prefs_manager_get_system_font ();
 		else
-			font = pluma_prefs_manager_get_editor_font ();
+			font = lapiz_prefs_manager_get_editor_font ();
 	}
 	else if (strcmp (key, GPM_EDITOR_FONT) == 0)
 	{
 		font = g_settings_get_string (settings, key);
 
-		def = pluma_prefs_manager_get_use_default_font ();
+		def = lapiz_prefs_manager_get_use_default_font ();
 	}
 	else
 		return;
 
 	g_return_if_fail (font != NULL);
 
-	ts = pluma_prefs_manager_get_tabs_size ();
+	ts = lapiz_prefs_manager_get_tabs_size ();
 
-	views = pluma_app_get_views (pluma_app_get_default ());
+	views = lapiz_app_get_views (lapiz_app_get_default ());
 	l = views;
 
 	while (l != NULL)
 	{
 		/* Note: we use def=FALSE to avoid PlumaView to query GSettings */
-		pluma_view_set_font (PLUMA_VIEW (l->data), FALSE,  font);
+		lapiz_view_set_font (PLUMA_VIEW (l->data), FALSE,  font);
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 
 		l = l->next;
@@ -819,7 +819,7 @@ pluma_prefs_manager_editor_font_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_system_font_changed (GSettings *settings,
+lapiz_prefs_manager_system_font_changed (GSettings *settings,
 					 gchar       *key,
 					 gpointer     user_data)
 {
@@ -828,25 +828,25 @@ pluma_prefs_manager_system_font_changed (GSettings *settings,
 	gchar *font;
 	gint ts;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SYSTEM_FONT) != 0)
 		return;
 
-	if (!pluma_prefs_manager_get_use_default_font ())
+	if (!lapiz_prefs_manager_get_use_default_font ())
 		return;
 
 	font = g_settings_get_string (settings, key);
 
-	ts = pluma_prefs_manager_get_tabs_size ();
+	ts = lapiz_prefs_manager_get_tabs_size ();
 
-	views = pluma_app_get_views (pluma_app_get_default ());
+	views = lapiz_app_get_views (lapiz_app_get_default ());
 	l = views;
 
 	while (l != NULL)
 	{
 		/* Note: we use def=FALSE to avoid PlumaView to query GSettings */
-		pluma_view_set_font (PLUMA_VIEW (l->data), FALSE, font);
+		lapiz_view_set_font (PLUMA_VIEW (l->data), FALSE, font);
 
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 		l = l->next;
@@ -857,11 +857,11 @@ pluma_prefs_manager_system_font_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_tabs_size_changed (GSettings *settings,
+lapiz_prefs_manager_tabs_size_changed (GSettings *settings,
 				       gchar       *key,
 				       gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_TABS_SIZE) == 0)
 	{
@@ -873,7 +873,7 @@ pluma_prefs_manager_tabs_size_changed (GSettings *settings,
 
 		tab_width = CLAMP (tab_width, 1, 24);
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -894,7 +894,7 @@ pluma_prefs_manager_tabs_size_changed (GSettings *settings,
 
 		enable = g_settings_get_boolean (settings, key);
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -931,11 +931,11 @@ get_wrap_mode_from_string (const gchar* str)
 }
 
 static void
-pluma_prefs_manager_wrap_mode_changed (GSettings *settings,
+lapiz_prefs_manager_wrap_mode_changed (GSettings *settings,
 	                               gchar         *key,
 	                               gpointer       user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_WRAP_MODE) == 0)
 	{
@@ -945,7 +945,7 @@ pluma_prefs_manager_wrap_mode_changed (GSettings *settings,
 
 		wrap_mode = get_wrap_mode_from_string (g_settings_get_string(settings, key));
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -961,11 +961,11 @@ pluma_prefs_manager_wrap_mode_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_line_numbers_changed (GSettings *settings,
+lapiz_prefs_manager_line_numbers_changed (GSettings *settings,
 					  gchar       *key,
 					  gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_DISPLAY_LINE_NUMBERS) == 0)
 	{
@@ -975,7 +975,7 @@ pluma_prefs_manager_line_numbers_changed (GSettings *settings,
 
 		dln = g_settings_get_boolean (settings, key);
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -991,11 +991,11 @@ pluma_prefs_manager_line_numbers_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_hl_current_line_changed (GSettings *settings,
+lapiz_prefs_manager_hl_current_line_changed (GSettings *settings,
 					     gchar       *key,
 					     gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_HIGHLIGHT_CURRENT_LINE) == 0)
 	{
@@ -1005,7 +1005,7 @@ pluma_prefs_manager_hl_current_line_changed (GSettings *settings,
 
 		hl = g_settings_get_boolean (settings, key);
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -1021,11 +1021,11 @@ pluma_prefs_manager_hl_current_line_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_bracket_matching_changed (GSettings *settings,
+lapiz_prefs_manager_bracket_matching_changed (GSettings *settings,
 					      gchar       *key,
 					      gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_BRACKET_MATCHING) == 0)
 	{
@@ -1035,7 +1035,7 @@ pluma_prefs_manager_bracket_matching_changed (GSettings *settings,
 
 		enable = g_settings_get_boolean (settings, key);
 
-		docs = pluma_app_get_documents (pluma_app_get_default ());
+		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		l = docs;
 
 		while (l != NULL)
@@ -1051,11 +1051,11 @@ pluma_prefs_manager_bracket_matching_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_auto_indent_changed (GSettings *settings,
+lapiz_prefs_manager_auto_indent_changed (GSettings *settings,
 					 gchar       *key,
 					 gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_AUTO_INDENT) == 0)
 	{
@@ -1065,7 +1065,7 @@ pluma_prefs_manager_auto_indent_changed (GSettings *settings,
 
 		enable = g_settings_get_boolean (settings, key);
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -1081,11 +1081,11 @@ pluma_prefs_manager_auto_indent_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_undo_changed (GSettings *settings,
+lapiz_prefs_manager_undo_changed (GSettings *settings,
 				  gchar       *key,
 				  gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_UNDO_ACTIONS_LIMIT) == 0)
 	{
@@ -1097,7 +1097,7 @@ pluma_prefs_manager_undo_changed (GSettings *settings,
 
 		ul = CLAMP (ul, -1, 250);
 
-		docs = pluma_app_get_documents (pluma_app_get_default ());
+		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		l = docs;
 
 		while (l != NULL)
@@ -1113,11 +1113,11 @@ pluma_prefs_manager_undo_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_right_margin_changed (GSettings *settings,
+lapiz_prefs_manager_right_margin_changed (GSettings *settings,
 					  gchar *key,
 					  gpointer user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_RIGHT_MARGIN_POSITION) == 0)
 	{
@@ -1129,7 +1129,7 @@ pluma_prefs_manager_right_margin_changed (GSettings *settings,
 
 		pos = CLAMP (pos, 1, 160);
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -1150,7 +1150,7 @@ pluma_prefs_manager_right_margin_changed (GSettings *settings,
 
 		display = g_settings_get_boolean (settings, key);
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -1185,11 +1185,11 @@ get_smart_home_end_from_string (const gchar *str)
 }
 
 static void
-pluma_prefs_manager_smart_home_end_changed (GSettings *settings,
+lapiz_prefs_manager_smart_home_end_changed (GSettings *settings,
 					    gchar       *key,
 					    gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SMART_HOME_END) == 0)
 	{
@@ -1199,7 +1199,7 @@ pluma_prefs_manager_smart_home_end_changed (GSettings *settings,
 
 		smart_he = get_smart_home_end_from_string (g_settings_get_string (settings, key));
 
-		views = pluma_app_get_views (pluma_app_get_default ());
+		views = lapiz_app_get_views (lapiz_app_get_default ());
 		l = views;
 
 		while (l != NULL)
@@ -1215,11 +1215,11 @@ pluma_prefs_manager_smart_home_end_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
+lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 					      gchar       *key,
 					      gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SYNTAX_HL_ENABLE) == 0)
 	{
@@ -1230,7 +1230,7 @@ pluma_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 
 		enable = g_settings_get_boolean (settings, key);
 
-		docs = pluma_app_get_documents (pluma_app_get_default ());
+		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		l = docs;
 
 		while (l != NULL)
@@ -1246,13 +1246,13 @@ pluma_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 		g_list_free (docs);
 
 		/* update the sensitivity of the Higlight Mode menu item */
-		windows = pluma_app_get_windows (pluma_app_get_default ());
+		windows = lapiz_app_get_windows (lapiz_app_get_default ());
 		while (windows != NULL)
 		{
 			GtkUIManager *ui;
 			GtkAction *a;
 
-			ui = pluma_window_get_ui_manager (PLUMA_WINDOW (windows->data));
+			ui = lapiz_window_get_ui_manager (PLUMA_WINDOW (windows->data));
 
 			a = gtk_ui_manager_get_action (ui,
 						       "/MenuBar/ViewMenu/ViewHighlightModeMenu");
@@ -1265,11 +1265,11 @@ pluma_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_search_hl_enable_changed (GSettings *settings,
+lapiz_prefs_manager_search_hl_enable_changed (GSettings *settings,
 					      gchar       *key,
 					      gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SEARCH_HIGHLIGHTING_ENABLE) == 0)
 	{
@@ -1279,14 +1279,14 @@ pluma_prefs_manager_search_hl_enable_changed (GSettings *settings,
 
 		enable = g_settings_get_boolean (settings, key);
 
-		docs = pluma_app_get_documents (pluma_app_get_default ());
+		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		l = docs;
 
 		while (l != NULL)
 		{
 			g_return_if_fail (PLUMA_IS_DOCUMENT (l->data));
 
-			pluma_document_set_enable_search_highlighting  (PLUMA_DOCUMENT (l->data),
+			lapiz_document_set_enable_search_highlighting  (PLUMA_DOCUMENT (l->data),
 									enable);
 
 			l = l->next;
@@ -1297,11 +1297,11 @@ pluma_prefs_manager_search_hl_enable_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_source_style_scheme_changed (GSettings *settings,
+lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 						 gchar       *key,
 						 gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SOURCE_STYLE_SCHEME) == 0)
 	{
@@ -1320,7 +1320,7 @@ pluma_prefs_manager_source_style_scheme_changed (GSettings *settings,
 		old_scheme = scheme;
 
 		style = gtk_source_style_scheme_manager_get_scheme (
-				pluma_get_style_scheme_manager (),
+				lapiz_get_style_scheme_manager (),
 				scheme);
 
 		if (style == NULL)
@@ -1328,7 +1328,7 @@ pluma_prefs_manager_source_style_scheme_changed (GSettings *settings,
 			g_warning ("Default style scheme '%s' not found, falling back to 'classic'", scheme);
 
 			style = gtk_source_style_scheme_manager_get_scheme (
-				pluma_get_style_scheme_manager (),
+				lapiz_get_style_scheme_manager (),
 				"classic");
 
 			if (style == NULL)
@@ -1338,7 +1338,7 @@ pluma_prefs_manager_source_style_scheme_changed (GSettings *settings,
 			}
 		}
 
-		docs = pluma_app_get_documents (pluma_app_get_default ());
+		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		for (l = docs; l != NULL; l = l->next)
 		{
 			g_return_if_fail (GTK_SOURCE_IS_BUFFER (l->data));
@@ -1352,11 +1352,11 @@ pluma_prefs_manager_source_style_scheme_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_max_recents_changed (GSettings *settings,
+lapiz_prefs_manager_max_recents_changed (GSettings *settings,
 					 gchar       *key,
 					 gpointer     user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_MAX_RECENTS) == 0)
 	{
@@ -1369,7 +1369,7 @@ pluma_prefs_manager_max_recents_changed (GSettings *settings,
 			max = GPM_DEFAULT_MAX_RECENTS;
 		}
 
-		windows = pluma_app_get_windows (pluma_app_get_default ());
+		windows = lapiz_app_get_windows (lapiz_app_get_default ());
 		while (windows != NULL)
 		{
 			PlumaWindow *w = windows->data;
@@ -1386,14 +1386,14 @@ pluma_prefs_manager_max_recents_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_auto_save_changed (GSettings *settings,
+lapiz_prefs_manager_auto_save_changed (GSettings *settings,
 				       gchar       *key,
 				       gpointer     user_data)
 {
 	GList *docs;
 	GList *l;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_AUTO_SAVE) == 0)
 	{
@@ -1401,15 +1401,15 @@ pluma_prefs_manager_auto_save_changed (GSettings *settings,
 
 		auto_save = g_settings_get_boolean (settings, key);
 
-		docs = pluma_app_get_documents (pluma_app_get_default ());
+		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		l = docs;
 
 		while (l != NULL)
 		{
 			PlumaDocument *doc = PLUMA_DOCUMENT (l->data);
-			PlumaTab *tab = pluma_tab_get_from_document (doc);
+			PlumaTab *tab = lapiz_tab_get_from_document (doc);
 
-			pluma_tab_set_auto_save_enabled (tab, auto_save);
+			lapiz_tab_set_auto_save_enabled (tab, auto_save);
 
 			l = l->next;
 		}
@@ -1425,15 +1425,15 @@ pluma_prefs_manager_auto_save_changed (GSettings *settings,
 		if (auto_save_interval <= 0)
 			auto_save_interval = GPM_DEFAULT_AUTO_SAVE_INTERVAL;
 
-		docs = pluma_app_get_documents (pluma_app_get_default ());
+		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		l = docs;
 
 		while (l != NULL)
 		{
 			PlumaDocument *doc = PLUMA_DOCUMENT (l->data);
-			PlumaTab *tab = pluma_tab_get_from_document (doc);
+			PlumaTab *tab = lapiz_tab_get_from_document (doc);
 
-			pluma_tab_set_auto_save_interval (tab, auto_save_interval);
+			lapiz_tab_set_auto_save_interval (tab, auto_save_interval);
 
 			l = l->next;
 		}
@@ -1443,43 +1443,43 @@ pluma_prefs_manager_auto_save_changed (GSettings *settings,
 }
 
 static void
-pluma_prefs_manager_lockdown_changed (GSettings *settings,
+lapiz_prefs_manager_lockdown_changed (GSettings *settings,
 				      gchar       *key,
 				      gpointer     user_data)
 {
 	PlumaApp *app;
 	gboolean locked;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	locked = g_settings_get_boolean (settings, key);
 
-	app = pluma_app_get_default ();
+	app = lapiz_app_get_default ();
 
 	if (strcmp (key, GPM_LOCKDOWN_COMMAND_LINE) == 0)
-		_pluma_app_set_lockdown_bit (app,
+		_lapiz_app_set_lockdown_bit (app,
 					     PLUMA_LOCKDOWN_COMMAND_LINE,
 					     locked);
 
 	else if (strcmp (key, GPM_LOCKDOWN_PRINTING) == 0)
-		_pluma_app_set_lockdown_bit (app,
+		_lapiz_app_set_lockdown_bit (app,
 					     PLUMA_LOCKDOWN_PRINTING,
 					     locked);
 
 	else if (strcmp (key, GPM_LOCKDOWN_PRINT_SETUP) == 0)
-		_pluma_app_set_lockdown_bit (app,
+		_lapiz_app_set_lockdown_bit (app,
 					     PLUMA_LOCKDOWN_PRINT_SETUP,
 					     locked);
 
 	else if (strcmp (key, GPM_LOCKDOWN_SAVE_TO_DISK) == 0)
-		_pluma_app_set_lockdown_bit (app,
+		_lapiz_app_set_lockdown_bit (app,
 					     PLUMA_LOCKDOWN_SAVE_TO_DISK,
 					     locked);
 }
 
 #ifdef GTK_SOURCE_VERSION_3_24
 static void
-pluma_prefs_manager_space_drawer_generic (GSettings              *settings,
+lapiz_prefs_manager_space_drawer_generic (GSettings              *settings,
                                           gint                    level,
                                           GtkSourceSpaceTypeFlags type)
 {
@@ -1487,14 +1487,14 @@ pluma_prefs_manager_space_drawer_generic (GSettings              *settings,
 	GList *views;
 	GList *l;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	views = pluma_app_get_views (pluma_app_get_default ());
+	views = lapiz_app_get_views (lapiz_app_get_default ());
 	l = views;
 
 	while (l != NULL)
 	{
-		pluma_set_source_space_drawer_by_level (GTK_SOURCE_VIEW (l->data),
+		lapiz_set_source_space_drawer_by_level (GTK_SOURCE_VIEW (l->data),
 		                                        level, type);
 		l = l->next;
 	}
@@ -1503,7 +1503,7 @@ pluma_prefs_manager_space_drawer_generic (GSettings              *settings,
 }
 #else
 static void
-pluma_prefs_manager_draw_generic (GSettings               *settings,
+lapiz_prefs_manager_draw_generic (GSettings               *settings,
                                   gint                     level,
                                   GtkSourceDrawSpacesFlags type)
 {
@@ -1511,9 +1511,9 @@ pluma_prefs_manager_draw_generic (GSettings               *settings,
 	GList *views;
 	GList *l;
 
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
-	views = pluma_app_get_views (pluma_app_get_default ());
+	views = lapiz_app_get_views (lapiz_app_get_default ());
 	l = views;
 
 	while (l != NULL)
@@ -1535,84 +1535,84 @@ pluma_prefs_manager_draw_generic (GSettings               *settings,
 #endif
 
 static void
-pluma_prefs_manager_draw_spaces_changed (GSettings *settings,
+lapiz_prefs_manager_draw_spaces_changed (GSettings *settings,
                                          gchar     *key,
                                          gpointer   user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SPACE_DRAWER_SPACE))
 		return;
 
 #ifdef GTK_SOURCE_VERSION_3_24
-	pluma_prefs_manager_space_drawer_generic (settings,
+	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_enum (settings, key),
 	                                          GTK_SOURCE_SPACE_TYPE_SPACE);
 #else
-	pluma_prefs_manager_draw_generic (settings,
+	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_enum (settings, key),
 	                                  GTK_SOURCE_DRAW_SPACES_SPACE);
 #endif
 }
 
 static void
-pluma_prefs_manager_draw_tabs_changed (GSettings *settings,
+lapiz_prefs_manager_draw_tabs_changed (GSettings *settings,
                                        gchar     *key,
                                        gpointer   user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SPACE_DRAWER_TAB))
 		return;
 
 #ifdef GTK_SOURCE_VERSION_3_24
-	pluma_prefs_manager_space_drawer_generic (settings,
+	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_enum (settings, key),
 	                                          GTK_SOURCE_SPACE_TYPE_TAB);
 #else
-	pluma_prefs_manager_draw_generic (settings,
+	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_enum (settings, key),
 	                                  GTK_SOURCE_DRAW_SPACES_TAB);
 #endif
 }
 
 static void
-pluma_prefs_manager_draw_newlines_changed (GSettings *settings,
+lapiz_prefs_manager_draw_newlines_changed (GSettings *settings,
                                            gchar     *key,
                                            gpointer   user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SPACE_DRAWER_NEWLINE))
 		return;
 
 #ifdef GTK_SOURCE_VERSION_3_24
-	pluma_prefs_manager_space_drawer_generic (settings,
+	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_boolean (settings, key) ? 1 : 0,
 	                                          GTK_SOURCE_SPACE_TYPE_NEWLINE);
 #else
-	pluma_prefs_manager_draw_generic (settings,
+	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_boolean (settings, key) ? 1 : 0,
 	                                  GTK_SOURCE_DRAW_SPACES_NEWLINE);
 #endif
 }
 
 static void
-pluma_prefs_manager_draw_nbsp_changed (GSettings *settings,
+lapiz_prefs_manager_draw_nbsp_changed (GSettings *settings,
                                        gchar     *key,
                                        gpointer   user_data)
 {
-	pluma_debug (DEBUG_PREFS);
+	lapiz_debug (DEBUG_PREFS);
 
 	if (strcmp (key, GPM_SPACE_DRAWER_NBSP))
 		return;
 
 #ifdef GTK_SOURCE_VERSION_3_24
-	pluma_prefs_manager_space_drawer_generic (settings,
+	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_enum (settings, key),
 	                                          GTK_SOURCE_SPACE_TYPE_NBSP);
 #else
-	pluma_prefs_manager_draw_generic (settings,
+	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_enum (settings, key),
 	                                  GTK_SOURCE_DRAW_SPACES_NBSP);
 #endif

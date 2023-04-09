@@ -1,6 +1,6 @@
 /*
- * pluma-close-confirmation-dialog.h
- * This file is part of pluma
+ * lapiz-close-confirmation-dialog.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2004-2005 GNOME Foundation
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2004-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2004-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -32,9 +32,9 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-document.h>
+#include <lapiz/lapiz-document.h>
 
-#define PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG		(pluma_close_confirmation_dialog_get_type ())
+#define PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG		(lapiz_close_confirmation_dialog_get_type ())
 #define PLUMA_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialog))
 #define PLUMA_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialogClass))
 #define PLUMA_IS_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG))
@@ -58,18 +58,18 @@ struct _PlumaCloseConfirmationDialogClass
 	GtkDialogClass parent_class;
 };
 
-GType 		 pluma_close_confirmation_dialog_get_type		(void) G_GNUC_CONST;
+GType 		 lapiz_close_confirmation_dialog_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_close_confirmation_dialog_new			(GtkWindow     *parent,
+GtkWidget	*lapiz_close_confirmation_dialog_new			(GtkWindow     *parent,
 									 GList         *unsaved_documents,
 									 gboolean       logout_mode);
-GtkWidget 	*pluma_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
+GtkWidget 	*lapiz_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
 									 PlumaDocument *doc,
  									 gboolean       logout_mode);
 
-const GList	*pluma_close_confirmation_dialog_get_unsaved_documents  (PlumaCloseConfirmationDialog *dlg);
+const GList	*lapiz_close_confirmation_dialog_get_unsaved_documents  (PlumaCloseConfirmationDialog *dlg);
 
-GList		*pluma_close_confirmation_dialog_get_selected_documents	(PlumaCloseConfirmationDialog *dlg);
+GList		*lapiz_close_confirmation_dialog_get_selected_documents	(PlumaCloseConfirmationDialog *dlg);
 
 #endif /* __PLUMA_CLOSE_CONFIRMATION_DIALOG_H__ */
 

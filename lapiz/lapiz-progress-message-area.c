@@ -1,6 +1,6 @@
 /*
- * pluma-progress-message-area.c
- * This file is part of pluma
+ * lapiz-progress-message-area.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,7 +38,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include "pluma-progress-message-area.h"
+#include "lapiz-progress-message-area.h"
 
 enum {
 	PROP_0,
@@ -52,10 +52,10 @@ struct _PlumaProgressMessageAreaPrivate
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaProgressMessageArea, pluma_progress_message_area, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaProgressMessageArea, lapiz_progress_message_area, GTK_TYPE_INFO_BAR)
 
 static void
-pluma_progress_message_area_set_has_cancel_button (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_has_cancel_button (PlumaProgressMessageArea *area,
 						   gboolean                  has_button)
 {
 	if (has_button)
@@ -68,7 +68,7 @@ pluma_progress_message_area_set_has_cancel_button (PlumaProgressMessageArea *are
 }
 
 static void
-pluma_progress_message_area_set_property (GObject      *object,
+lapiz_progress_message_area_set_property (GObject      *object,
 					  guint         prop_id,
 					  const GValue *value,
 					  GParamSpec   *pspec)
@@ -80,7 +80,7 @@ pluma_progress_message_area_set_property (GObject      *object,
 	switch (prop_id)
 	{
 	case PROP_HAS_CANCEL_BUTTON:
-		pluma_progress_message_area_set_has_cancel_button (area,
+		lapiz_progress_message_area_set_has_cancel_button (area,
 								   g_value_get_boolean (value));
 		break;
 	default:
@@ -90,7 +90,7 @@ pluma_progress_message_area_set_property (GObject      *object,
 }
 
 static void
-pluma_progress_message_area_get_property (GObject      *object,
+lapiz_progress_message_area_get_property (GObject      *object,
 					  guint         prop_id,
 					  GValue       *value,
 					  GParamSpec   *pspec)
@@ -104,12 +104,12 @@ pluma_progress_message_area_get_property (GObject      *object,
 }
 
 static void
-pluma_progress_message_area_class_init (PlumaProgressMessageAreaClass *klass)
+lapiz_progress_message_area_class_init (PlumaProgressMessageAreaClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-	gobject_class->set_property = pluma_progress_message_area_set_property;
-	gobject_class->get_property = pluma_progress_message_area_get_property;
+	gobject_class->set_property = lapiz_progress_message_area_set_property;
+	gobject_class->get_property = lapiz_progress_message_area_get_property;
 
 	g_object_class_install_property (gobject_class,
 					 PROP_HAS_CANCEL_BUTTON,
@@ -123,12 +123,12 @@ pluma_progress_message_area_class_init (PlumaProgressMessageAreaClass *klass)
 }
 
 static void
-pluma_progress_message_area_init (PlumaProgressMessageArea *area)
+lapiz_progress_message_area_init (PlumaProgressMessageArea *area)
 {
 	GtkWidget *vbox;
 	GtkWidget *hbox;
 
-	area->priv = pluma_progress_message_area_get_instance_private (area);
+	area->priv = lapiz_progress_message_area_get_instance_private (area);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_widget_show (vbox);
@@ -164,7 +164,7 @@ pluma_progress_message_area_init (PlumaProgressMessageArea *area)
 }
 
 GtkWidget *
-pluma_progress_message_area_new (const gchar *image_id,
+lapiz_progress_message_area_new (const gchar *image_id,
 				 const gchar *markup,
 				 gboolean     has_cancel)
 {
@@ -177,17 +177,17 @@ pluma_progress_message_area_new (const gchar *image_id,
 							  "has-cancel-button", has_cancel,
 							  NULL));
 
-	pluma_progress_message_area_set_image (area,
+	lapiz_progress_message_area_set_image (area,
 					       image_id);
 
-	pluma_progress_message_area_set_markup (area,
+	lapiz_progress_message_area_set_markup (area,
 						markup);
 
 	return GTK_WIDGET (area);
 }
 
 void
-pluma_progress_message_area_set_image (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_image (PlumaProgressMessageArea *area,
 				       const gchar              *image_id)
 {
 	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
@@ -199,7 +199,7 @@ pluma_progress_message_area_set_image (PlumaProgressMessageArea *area,
 }
 
 void
-pluma_progress_message_area_set_markup (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_markup (PlumaProgressMessageArea *area,
 					const gchar              *markup)
 {
 	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
@@ -210,7 +210,7 @@ pluma_progress_message_area_set_markup (PlumaProgressMessageArea *area,
 }
 
 void
-pluma_progress_message_area_set_text (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_text (PlumaProgressMessageArea *area,
 				      const gchar              *text)
 {
 	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
@@ -221,7 +221,7 @@ pluma_progress_message_area_set_text (PlumaProgressMessageArea *area,
 }
 
 void
-pluma_progress_message_area_set_fraction (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_fraction (PlumaProgressMessageArea *area,
 					  gdouble                   fraction)
 {
 	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
@@ -231,7 +231,7 @@ pluma_progress_message_area_set_fraction (PlumaProgressMessageArea *area,
 }
 
 void
-pluma_progress_message_area_pulse (PlumaProgressMessageArea *area)
+lapiz_progress_message_area_pulse (PlumaProgressMessageArea *area)
 {
 	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
 

@@ -1,6 +1,6 @@
 /*
- * pluma-help-commands.c
- * This file is part of pluma
+ * lapiz-help-commands.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -25,7 +25,7 @@
 
 /*
  * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -39,22 +39,22 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "pluma-commands.h"
-#include "pluma-debug.h"
-#include "pluma-help.h"
-#include "pluma-dirs.h"
+#include "lapiz-commands.h"
+#include "lapiz-debug.h"
+#include "lapiz-help.h"
+#include "lapiz-dirs.h"
 
-void _pluma_cmd_help_contents(GtkAction* action, PlumaWindow* window)
+void _lapiz_cmd_help_contents(GtkAction* action, PlumaWindow* window)
 {
-	pluma_debug(DEBUG_COMMANDS);
+	lapiz_debug(DEBUG_COMMANDS);
 
-	pluma_help_display(GTK_WINDOW(window), NULL, NULL);
+	lapiz_help_display(GTK_WINDOW(window), NULL, NULL);
 }
 
 #define ABOUT_GROUP "About"
 #define EMAILIFY(string) (g_strdelimit ((string), "%", '@'))
 
-void _pluma_cmd_help_about(GtkAction* action, PlumaWindow* window)
+void _lapiz_cmd_help_about(GtkAction* action, PlumaWindow* window)
 {
 	static const gchar* documenters[] = {
 		N_("MATE Documentation Team"),
@@ -87,10 +87,10 @@ void _pluma_cmd_help_about(GtkAction* action, PlumaWindow* window)
 	gsize n_authors = 0, i;
 	static const gchar **p;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	key_file = g_key_file_new ();
-	if (!g_key_file_load_from_file (key_file, PLUMA_DATADIR G_DIR_SEPARATOR_S "pluma.about", 0, &error)) {
+	if (!g_key_file_load_from_file (key_file, PLUMA_DATADIR G_DIR_SEPARATOR_S "lapiz.about", 0, &error)) {
 		g_warning ("Couldn't load about data: %s\n", error->message);
 		g_error_free (error);
 		g_key_file_free (key_file);

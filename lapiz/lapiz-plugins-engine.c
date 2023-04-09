@@ -1,6 +1,6 @@
 /*
- * pluma-plugins-engine.c
- * This file is part of pluma
+ * lapiz-plugins-engine.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -37,32 +37,32 @@
 #include <glib/gi18n.h>
 #include <girepository.h>
 
-#include "pluma-plugins-engine.h"
-#include "pluma-debug.h"
-#include "pluma-app.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-dirs.h"
+#include "lapiz-plugins-engine.h"
+#include "lapiz-debug.h"
+#include "lapiz-app.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-dirs.h"
 
 struct _PlumaPluginsEnginePrivate
 {
 	GSettings *plugin_settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPluginsEngine, pluma_plugins_engine, PEAS_TYPE_ENGINE)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaPluginsEngine, lapiz_plugins_engine, PEAS_TYPE_ENGINE)
 
 PlumaPluginsEngine *default_engine = NULL;
 
 static void
-pluma_plugins_engine_init (PlumaPluginsEngine *engine)
+lapiz_plugins_engine_init (PlumaPluginsEngine *engine)
 {
 	gchar *private_path;
 	GError *error = NULL;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
-	engine->priv = pluma_plugins_engine_get_instance_private (engine);
+	engine->priv = lapiz_plugins_engine_get_instance_private (engine);
 
 	engine->priv->plugin_settings = g_settings_new (PLUMA_SCHEMA);
 
@@ -96,12 +96,12 @@ pluma_plugins_engine_init (PlumaPluginsEngine *engine)
 	g_free (private_path);
 
 	peas_engine_add_search_path (PEAS_ENGINE (engine),
-	                             pluma_dirs_get_user_plugins_dir (),
-	                             pluma_dirs_get_user_plugins_dir ());
+	                             lapiz_dirs_get_user_plugins_dir (),
+	                             lapiz_dirs_get_user_plugins_dir ());
 
 	peas_engine_add_search_path (PEAS_ENGINE (engine),
-	                             pluma_dirs_get_pluma_plugins_dir (),
-	                             pluma_dirs_get_pluma_plugins_data_dir ());
+	                             lapiz_dirs_get_lapiz_plugins_dir (),
+	                             lapiz_dirs_get_lapiz_plugins_data_dir ());
 
 	g_settings_bind (engine->priv->plugin_settings,
 	                 GPM_ACTIVE_PLUGINS,
@@ -111,7 +111,7 @@ pluma_plugins_engine_init (PlumaPluginsEngine *engine)
 }
 
 static void
-pluma_plugins_engine_dispose (GObject *object)
+lapiz_plugins_engine_dispose (GObject *object)
 {
 	PlumaPluginsEngine *engine = PLUMA_PLUGINS_ENGINE (object);
 
@@ -121,19 +121,19 @@ pluma_plugins_engine_dispose (GObject *object)
 		engine->priv->plugin_settings = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_plugins_engine_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_plugins_engine_parent_class)->dispose (object);
 }
 
 static void
-pluma_plugins_engine_class_init (PlumaPluginsEngineClass *klass)
+lapiz_plugins_engine_class_init (PlumaPluginsEngineClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = pluma_plugins_engine_dispose;
+	object_class->dispose = lapiz_plugins_engine_dispose;
 }
 
 PlumaPluginsEngine *
-pluma_plugins_engine_get_default (void)
+lapiz_plugins_engine_get_default (void)
 {
 	if (default_engine != NULL)
 		return default_engine;

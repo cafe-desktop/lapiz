@@ -1,6 +1,6 @@
 /*
- * pluma-documents-panel.h
- * This file is part of pluma
+ * lapiz-documents-panel.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,14 +33,14 @@
 
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-window.h>
+#include <lapiz/lapiz-window.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_DOCUMENTS_PANEL              (pluma_documents_panel_get_type())
+#define PLUMA_TYPE_DOCUMENTS_PANEL              (lapiz_documents_panel_get_type())
 #define PLUMA_DOCUMENTS_PANEL(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_DOCUMENTS_PANEL, PlumaDocumentsPanel))
 #define PLUMA_DOCUMENTS_PANEL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_DOCUMENTS_PANEL, PlumaDocumentsPanelClass))
 #define PLUMA_IS_DOCUMENTS_PANEL(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_DOCUMENTS_PANEL))
@@ -76,9 +76,9 @@ struct _PlumaDocumentsPanelClass
 /*
  * Public methods
  */
-GType 		 pluma_documents_panel_get_type	(void) G_GNUC_CONST;
+GType 		 lapiz_documents_panel_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_documents_panel_new 	(PlumaWindow *window);
+GtkWidget	*lapiz_documents_panel_new 	(PlumaWindow *window);
 
 G_END_DECLS
 

@@ -1,6 +1,6 @@
 /*
- * pluma-view.h
- * This file is part of pluma
+ * lapiz-view.h
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -33,7 +33,7 @@
 
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-document.h>
+#include <lapiz/lapiz-document.h>
 #include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
@@ -41,7 +41,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_VIEW            (pluma_view_get_type ())
+#define PLUMA_TYPE_VIEW            (lapiz_view_get_type ())
 #define PLUMA_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_VIEW, PlumaView))
 #define PLUMA_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_VIEW, PlumaViewClass))
 #define PLUMA_IS_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_VIEW))
@@ -87,29 +87,29 @@ struct _PlumaViewClass
 /*
  * Public methods
  */
-GType		 pluma_view_get_type     	(void) G_GNUC_CONST;
+GType		 lapiz_view_get_type     	(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_view_new			(PlumaDocument   *doc);
+GtkWidget	*lapiz_view_new			(PlumaDocument   *doc);
 
-void		 pluma_view_cut_clipboard 	(PlumaView       *view);
-void		 pluma_view_copy_clipboard 	(PlumaView       *view);
-void		 pluma_view_paste_clipboard	(PlumaView       *view);
-void		 pluma_view_delete_selection	(PlumaView       *view);
-void		 pluma_view_select_all		(PlumaView       *view);
+void		 lapiz_view_cut_clipboard 	(PlumaView       *view);
+void		 lapiz_view_copy_clipboard 	(PlumaView       *view);
+void		 lapiz_view_paste_clipboard	(PlumaView       *view);
+void		 lapiz_view_delete_selection	(PlumaView       *view);
+void		 lapiz_view_select_all		(PlumaView       *view);
 
-void		 pluma_view_scroll_to_cursor 	(PlumaView       *view);
+void		 lapiz_view_scroll_to_cursor 	(PlumaView       *view);
 
-void		 pluma_override_font		(const gchar          *item,
+void		 lapiz_override_font		(const gchar          *item,
 						 GtkWidget            *widget,
 						 PangoFontDescription *font);
 
-void 		 pluma_view_set_font		(PlumaView       *view,
+void 		 lapiz_view_set_font		(PlumaView       *view,
 						 gboolean         def,
 						 const gchar     *font_name);
 
 #ifdef GTK_SOURCE_VERSION_3_24
 void
-pluma_set_source_space_drawer_by_level (GtkSourceView          *view,
+lapiz_set_source_space_drawer_by_level (GtkSourceView          *view,
                                         gint                    level,
                                         GtkSourceSpaceTypeFlags type);
 #endif

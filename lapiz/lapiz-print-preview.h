@@ -1,5 +1,5 @@
 /*
- * pluma-print-preview.h
+ * lapiz-print-preview.h
  *
  * Copyright (C) 2008 Paolo Borelli
  *
@@ -20,11 +20,11 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
- * $Id: pluma-commands-search.c 5931 2007-09-25 20:05:40Z pborelli $
+ * $Id: lapiz-commands-search.c 5931 2007-09-25 20:05:40Z pborelli $
  */
 
 
@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_PRINT_PREVIEW            (pluma_print_preview_get_type ())
+#define PLUMA_TYPE_PRINT_PREVIEW            (lapiz_print_preview_get_type ())
 #define PLUMA_PRINT_PREVIEW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), PLUMA_TYPE_PRINT_PREVIEW, PlumaPrintPreview))
 #define PLUMA_PRINT_PREVIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_PRINT_PREVIEW, PlumaPrintPreviewClass))
 #define PLUMA_IS_PRINT_PREVIEW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), PLUMA_TYPE_PRINT_PREVIEW))
@@ -61,9 +61,9 @@ struct _PlumaPrintPreviewClass
 };
 
 
-GType		 pluma_print_preview_get_type	(void) G_GNUC_CONST;
+GType		 lapiz_print_preview_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_print_preview_new	(GtkPrintOperation		*op,
+GtkWidget	*lapiz_print_preview_new	(GtkPrintOperation		*op,
 						 GtkPrintOperationPreview	*gtk_preview,
 						 GtkPrintContext		*context);
 

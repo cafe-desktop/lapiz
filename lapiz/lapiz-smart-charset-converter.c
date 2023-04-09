@@ -1,28 +1,28 @@
 /*
- * pluma-smart-charset-converter.c
- * This file is part of pluma
+ * lapiz-smart-charset-converter.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2009 - Ignacio Casal Quinteiro
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-#include "pluma-smart-charset-converter.h"
-#include "pluma-debug.h"
-#include "pluma-document.h"
+#include "lapiz-smart-charset-converter.h"
+#include "lapiz-debug.h"
+#include "lapiz-document.h"
 
 #include <gio/gio.h>
 #include <glib/gi18n.h>
@@ -38,28 +38,28 @@ struct _PlumaSmartCharsetConverterPrivate
 	guint use_first : 1;
 };
 
-static void pluma_smart_charset_converter_iface_init    (GConverterIface *iface);
+static void lapiz_smart_charset_converter_iface_init    (GConverterIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (PlumaSmartCharsetConverter, pluma_smart_charset_converter,
+G_DEFINE_TYPE_WITH_CODE (PlumaSmartCharsetConverter, lapiz_smart_charset_converter,
 			 G_TYPE_OBJECT,
 			 G_ADD_PRIVATE (PlumaSmartCharsetConverter)
 			 G_IMPLEMENT_INTERFACE (G_TYPE_CONVERTER,
-						pluma_smart_charset_converter_iface_init))
+						lapiz_smart_charset_converter_iface_init))
 
 static void
-pluma_smart_charset_converter_finalize (GObject *object)
+lapiz_smart_charset_converter_finalize (GObject *object)
 {
 	PlumaSmartCharsetConverter *smart = PLUMA_SMART_CHARSET_CONVERTER (object);
 
 	g_slist_free (smart->priv->encodings);
 
-	pluma_debug_message (DEBUG_UTILS, "finalizing smart charset converter");
+	lapiz_debug_message (DEBUG_UTILS, "finalizing smart charset converter");
 
-	G_OBJECT_CLASS (pluma_smart_charset_converter_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_smart_charset_converter_parent_class)->finalize (object);
 }
 
 static void
-pluma_smart_charset_converter_dispose (GObject *object)
+lapiz_smart_charset_converter_dispose (GObject *object)
 {
 	PlumaSmartCharsetConverter *smart = PLUMA_SMART_CHARSET_CONVERTER (object);
 
@@ -69,24 +69,24 @@ pluma_smart_charset_converter_dispose (GObject *object)
 		smart->priv->charset_conv = NULL;
 	}
 
-	pluma_debug_message (DEBUG_UTILS, "disposing smart charset converter");
+	lapiz_debug_message (DEBUG_UTILS, "disposing smart charset converter");
 
-	G_OBJECT_CLASS (pluma_smart_charset_converter_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_smart_charset_converter_parent_class)->dispose (object);
 }
 
 static void
-pluma_smart_charset_converter_class_init (PlumaSmartCharsetConverterClass *klass)
+lapiz_smart_charset_converter_class_init (PlumaSmartCharsetConverterClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_smart_charset_converter_finalize;
-	object_class->dispose = pluma_smart_charset_converter_dispose;
+	object_class->finalize = lapiz_smart_charset_converter_finalize;
+	object_class->dispose = lapiz_smart_charset_converter_dispose;
 }
 
 static void
-pluma_smart_charset_converter_init (PlumaSmartCharsetConverter *smart)
+lapiz_smart_charset_converter_init (PlumaSmartCharsetConverter *smart)
 {
-	smart->priv = pluma_smart_charset_converter_get_instance_private (smart);
+	smart->priv = lapiz_smart_charset_converter_get_instance_private (smart);
 
 	smart->priv->charset_conv = NULL;
 	smart->priv->encodings = NULL;
@@ -94,7 +94,7 @@ pluma_smart_charset_converter_init (PlumaSmartCharsetConverter *smart)
 	smart->priv->is_utf8 = FALSE;
 	smart->priv->use_first = FALSE;
 
-	pluma_debug_message (DEBUG_UTILS, "initializing smart charset converter");
+	lapiz_debug_message (DEBUG_UTILS, "initializing smart charset converter");
 }
 
 static const PlumaEncoding *
@@ -232,10 +232,10 @@ guess_encoding (PlumaSmartCharsetConverter *smart,
 			break;
 		}
 
-		pluma_debug_message (DEBUG_UTILS, "trying charset: %s",
-				     pluma_encoding_get_charset (smart->priv->current_encoding->data));
+		lapiz_debug_message (DEBUG_UTILS, "trying charset: %s",
+				     lapiz_encoding_get_charset (smart->priv->current_encoding->data));
 
-		if (enc == pluma_encoding_get_utf8 ())
+		if (enc == lapiz_encoding_get_utf8 ())
 		{
 			gsize remainder;
 			const gchar *end;
@@ -259,7 +259,7 @@ guess_encoding (PlumaSmartCharsetConverter *smart,
 		}
 
 		conv = g_charset_converter_new ("UTF-8",
-						pluma_encoding_get_charset (enc),
+						lapiz_encoding_get_charset (enc),
 						NULL);
 
 		/* If we tried all encodings we use the first one */
@@ -287,7 +287,7 @@ guess_encoding (PlumaSmartCharsetConverter *smart,
 }
 
 static GConverterResult
-pluma_smart_charset_converter_convert (GConverter *converter,
+lapiz_smart_charset_converter_convert (GConverter *converter,
 				       const void *inbuf,
 				       gsize       inbuf_size,
 				       void       *outbuf,
@@ -310,7 +310,7 @@ pluma_smart_charset_converter_convert (GConverter *converter,
 		if (smart->priv->charset_conv == NULL &&
 		    !smart->priv->is_utf8)
 		{
-			/* FIXME: Add a different domain when we kill pluma_convert */
+			/* FIXME: Add a different domain when we kill lapiz_convert */
 			g_set_error_literal (error, PLUMA_DOCUMENT_ERROR,
 					     PLUMA_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED,
 					     _("It is not possible to detect the encoding automatically"));
@@ -354,7 +354,7 @@ pluma_smart_charset_converter_convert (GConverter *converter,
 }
 
 static void
-pluma_smart_charset_converter_reset (GConverter *converter)
+lapiz_smart_charset_converter_reset (GConverter *converter)
 {
 	PlumaSmartCharsetConverter *smart = PLUMA_SMART_CHARSET_CONVERTER (converter);
 
@@ -369,14 +369,14 @@ pluma_smart_charset_converter_reset (GConverter *converter)
 }
 
 static void
-pluma_smart_charset_converter_iface_init (GConverterIface *iface)
+lapiz_smart_charset_converter_iface_init (GConverterIface *iface)
 {
-	iface->convert = pluma_smart_charset_converter_convert;
-	iface->reset = pluma_smart_charset_converter_reset;
+	iface->convert = lapiz_smart_charset_converter_convert;
+	iface->reset = lapiz_smart_charset_converter_reset;
 }
 
 PlumaSmartCharsetConverter *
-pluma_smart_charset_converter_new (GSList *candidate_encodings)
+lapiz_smart_charset_converter_new (GSList *candidate_encodings)
 {
 	PlumaSmartCharsetConverter *smart;
 
@@ -390,7 +390,7 @@ pluma_smart_charset_converter_new (GSList *candidate_encodings)
 }
 
 const PlumaEncoding *
-pluma_smart_charset_converter_get_guessed (PlumaSmartCharsetConverter *smart)
+lapiz_smart_charset_converter_get_guessed (PlumaSmartCharsetConverter *smart)
 {
 	g_return_val_if_fail (PLUMA_IS_SMART_CHARSET_CONVERTER (smart), NULL);
 
@@ -400,14 +400,14 @@ pluma_smart_charset_converter_get_guessed (PlumaSmartCharsetConverter *smart)
 	}
 	else if (smart->priv->is_utf8)
 	{
-		return pluma_encoding_get_utf8 ();
+		return lapiz_encoding_get_utf8 ();
 	}
 
 	return NULL;
 }
 
 guint
-pluma_smart_charset_converter_get_num_fallbacks (PlumaSmartCharsetConverter *smart)
+lapiz_smart_charset_converter_get_num_fallbacks (PlumaSmartCharsetConverter *smart)
 {
 	g_return_val_if_fail (PLUMA_IS_SMART_CHARSET_CONVERTER (smart), FALSE);
 

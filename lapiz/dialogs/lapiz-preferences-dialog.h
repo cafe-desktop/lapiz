@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-preferences-dialog.c
- * This file is part of pluma
+ * lapiz-preferences-dialog.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2001-2005 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2003. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2003. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -32,14 +32,14 @@
 #ifndef __PLUMA_PREFERENCES_DIALOG_H__
 #define __PLUMA_PREFERENCES_DIALOG_H__
 
-#include "pluma-window.h"
+#include "lapiz-window.h"
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PREFERENCES_DIALOG              (pluma_preferences_dialog_get_type())
+#define PLUMA_TYPE_PREFERENCES_DIALOG              (lapiz_preferences_dialog_get_type())
 #define PLUMA_PREFERENCES_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog))
 #define PLUMA_PREFERENCES_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog const))
 #define PLUMA_PREFERENCES_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialogClass))
@@ -77,9 +77,9 @@ struct _PlumaPreferencesDialogClass
 /*
  * Public methods
  */
-GType		 pluma_preferences_dialog_get_type	(void) G_GNUC_CONST;
+GType		 lapiz_preferences_dialog_get_type	(void) G_GNUC_CONST;
 
-void		 pluma_show_preferences_dialog		(PlumaWindow *parent);
+void		 lapiz_show_preferences_dialog		(PlumaWindow *parent);
 
 G_END_DECLS
 
