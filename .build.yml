@@ -32,10 +32,20 @@ requires:
     - python3-lxml
     - yelp-tools
 
+    # required for cafe-desktop
+    - intltool
+    - libdconf-dev
+    - libglib2.0-doc
+    - libstartup-notification0-dev
+    - libtool
+    - meson
+    - wget
+
 before_scripts:
   - ./html-cppcheck
+  - ./debrepo-install 'libctk-3-dev gir1.2-ctk-3.0 libctk-3-common libctk-3-0 libctk-3-doc'
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
-  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
+  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master #required for make check
 
 build_scripts:
   - ./before-build
