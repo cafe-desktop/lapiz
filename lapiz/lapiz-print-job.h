@@ -41,11 +41,11 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_PRINT_JOB              (lapiz_print_job_get_type())
-#define LAPIZ_PRINT_JOB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PRINT_JOB, PlumaPrintJob))
-#define LAPIZ_PRINT_JOB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PRINT_JOB, PlumaPrintJobClass))
+#define LAPIZ_PRINT_JOB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PRINT_JOB, LapizPrintJob))
+#define LAPIZ_PRINT_JOB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PRINT_JOB, LapizPrintJobClass))
 #define LAPIZ_IS_PRINT_JOB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PRINT_JOB))
 #define LAPIZ_IS_PRINT_JOB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PRINT_JOB))
-#define LAPIZ_PRINT_JOB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PRINT_JOB, PlumaPrintJobClass))
+#define LAPIZ_PRINT_JOB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PRINT_JOB, LapizPrintJobClass))
 
 
 typedef enum
@@ -54,50 +54,50 @@ typedef enum
 	LAPIZ_PRINT_JOB_STATUS_PAGINATING,
 	LAPIZ_PRINT_JOB_STATUS_DRAWING,
 	LAPIZ_PRINT_JOB_STATUS_DONE
-} PlumaPrintJobStatus;
+} LapizPrintJobStatus;
 
 typedef enum
 {
 	LAPIZ_PRINT_JOB_RESULT_OK,
 	LAPIZ_PRINT_JOB_RESULT_CANCEL,
 	LAPIZ_PRINT_JOB_RESULT_ERROR
-} PlumaPrintJobResult;
+} LapizPrintJobResult;
 
 /* Private structure type */
-typedef struct _PlumaPrintJobPrivate PlumaPrintJobPrivate;
+typedef struct _LapizPrintJobPrivate LapizPrintJobPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaPrintJob PlumaPrintJob;
+typedef struct _LapizPrintJob LapizPrintJob;
 
 
-struct _PlumaPrintJob
+struct _LapizPrintJob
 {
 	GObject parent;
 
 	/* <private> */
-	PlumaPrintJobPrivate *priv;
+	LapizPrintJobPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaPrintJobClass PlumaPrintJobClass;
+typedef struct _LapizPrintJobClass LapizPrintJobClass;
 
-struct _PlumaPrintJobClass
+struct _LapizPrintJobClass
 {
 	GObjectClass parent_class;
 
         /* Signals */
-	void (* printing) (PlumaPrintJob       *job,
-	                   PlumaPrintJobStatus  status);
+	void (* printing) (LapizPrintJob       *job,
+	                   LapizPrintJobStatus  status);
 
-	void (* show_preview) (PlumaPrintJob   *job,
+	void (* show_preview) (LapizPrintJob   *job,
 	                       GtkWidget       *preview);
 
-        void (*done)      (PlumaPrintJob       *job,
-		           PlumaPrintJobResult  result,
+        void (*done)      (LapizPrintJob       *job,
+		           LapizPrintJobResult  result,
                            const GError        *error);
 };
 
@@ -106,27 +106,27 @@ struct _PlumaPrintJobClass
  */
 GType			 lapiz_print_job_get_type		(void) G_GNUC_CONST;
 
-PlumaPrintJob		*lapiz_print_job_new			(PlumaView                *view);
+LapizPrintJob		*lapiz_print_job_new			(LapizView                *view);
 
-void			 lapiz_print_job_set_export_filename	(PlumaPrintJob            *job,
+void			 lapiz_print_job_set_export_filename	(LapizPrintJob            *job,
 								 const gchar              *filename);
 
-GtkPrintOperationResult	 lapiz_print_job_print			(PlumaPrintJob            *job,
+GtkPrintOperationResult	 lapiz_print_job_print			(LapizPrintJob            *job,
 								 GtkPrintOperationAction   action,
 								 GtkPageSetup             *page_setup,
 								 GtkPrintSettings         *settings,
 								 GtkWindow                *parent,
 								 GError                  **error);
 
-void			 lapiz_print_job_cancel			(PlumaPrintJob            *job);
+void			 lapiz_print_job_cancel			(LapizPrintJob            *job);
 
-const gchar		*lapiz_print_job_get_status_string	(PlumaPrintJob            *job);
+const gchar		*lapiz_print_job_get_status_string	(LapizPrintJob            *job);
 
-gdouble			 lapiz_print_job_get_progress		(PlumaPrintJob            *job);
+gdouble			 lapiz_print_job_get_progress		(LapizPrintJob            *job);
 
-GtkPrintSettings	*lapiz_print_job_get_print_settings	(PlumaPrintJob            *job);
+GtkPrintSettings	*lapiz_print_job_get_print_settings	(LapizPrintJob            *job);
 
-GtkPageSetup		*lapiz_print_job_get_page_setup		(PlumaPrintJob            *job);
+GtkPageSetup		*lapiz_print_job_get_page_setup		(LapizPrintJob            *job);
 
 G_END_DECLS
 

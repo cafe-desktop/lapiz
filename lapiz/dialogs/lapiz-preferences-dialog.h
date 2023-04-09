@@ -40,36 +40,36 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_PREFERENCES_DIALOG              (lapiz_preferences_dialog_get_type())
-#define LAPIZ_PREFERENCES_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog))
-#define LAPIZ_PREFERENCES_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog const))
-#define LAPIZ_PREFERENCES_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialogClass))
+#define LAPIZ_PREFERENCES_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, LapizPreferencesDialog))
+#define LAPIZ_PREFERENCES_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, LapizPreferencesDialog const))
+#define LAPIZ_PREFERENCES_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PREFERENCES_DIALOG, LapizPreferencesDialogClass))
 #define LAPIZ_IS_PREFERENCES_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PREFERENCES_DIALOG))
 #define LAPIZ_IS_PREFERENCES_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PREFERENCES_DIALOG))
-#define LAPIZ_PREFERENCES_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialogClass))
+#define LAPIZ_PREFERENCES_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, LapizPreferencesDialogClass))
 
 
 /* Private structure type */
-typedef struct _PlumaPreferencesDialogPrivate PlumaPreferencesDialogPrivate;
+typedef struct _LapizPreferencesDialogPrivate LapizPreferencesDialogPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaPreferencesDialog PlumaPreferencesDialog;
+typedef struct _LapizPreferencesDialog LapizPreferencesDialog;
 
-struct _PlumaPreferencesDialog
+struct _LapizPreferencesDialog
 {
 	GtkDialog dialog;
 
 	/*< private > */
-	PlumaPreferencesDialogPrivate *priv;
+	LapizPreferencesDialogPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaPreferencesDialogClass PlumaPreferencesDialogClass;
+typedef struct _LapizPreferencesDialogClass LapizPreferencesDialogClass;
 
-struct _PlumaPreferencesDialogClass
+struct _LapizPreferencesDialogClass
 {
 	GtkDialogClass parent_class;
 };
@@ -79,7 +79,7 @@ struct _PlumaPreferencesDialogClass
  */
 GType		 lapiz_preferences_dialog_get_type	(void) G_GNUC_CONST;
 
-void		 lapiz_show_preferences_dialog		(PlumaWindow *parent);
+void		 lapiz_show_preferences_dialog		(LapizWindow *parent);
 
 G_END_DECLS
 

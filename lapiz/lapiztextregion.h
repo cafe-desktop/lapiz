@@ -29,11 +29,11 @@
 
 G_BEGIN_DECLS
 
-typedef struct _PlumaTextRegion		PlumaTextRegion;
-typedef struct _PlumaTextRegionIterator	PlumaTextRegionIterator;
+typedef struct _LapizTextRegion		LapizTextRegion;
+typedef struct _LapizTextRegionIterator	LapizTextRegionIterator;
 
-struct _PlumaTextRegionIterator {
-	/* PlumaTextRegionIterator is an opaque datatype; ignore all these fields.
+struct _LapizTextRegionIterator {
+	/* LapizTextRegionIterator is an opaque datatype; ignore all these fields.
 	 * Initialize the iter with lapiz_text_region_get_iterator
 	 * function
 	 */
@@ -43,45 +43,45 @@ struct _PlumaTextRegionIterator {
 	gpointer dummy3;
 };
 
-PlumaTextRegion *lapiz_text_region_new                          (GtkTextBuffer *buffer);
-void           lapiz_text_region_destroy                      (PlumaTextRegion *region,
+LapizTextRegion *lapiz_text_region_new                          (GtkTextBuffer *buffer);
+void           lapiz_text_region_destroy                      (LapizTextRegion *region,
 							     gboolean       delete_marks);
 
-GtkTextBuffer *lapiz_text_region_get_buffer                   (PlumaTextRegion *region);
+GtkTextBuffer *lapiz_text_region_get_buffer                   (LapizTextRegion *region);
 
-void           lapiz_text_region_add                          (PlumaTextRegion     *region,
+void           lapiz_text_region_add                          (LapizTextRegion     *region,
 							     const GtkTextIter *_start,
 							     const GtkTextIter *_end);
 
-void           lapiz_text_region_subtract                     (PlumaTextRegion     *region,
+void           lapiz_text_region_subtract                     (LapizTextRegion     *region,
 							     const GtkTextIter *_start,
 							     const GtkTextIter *_end);
 
-gint           lapiz_text_region_subregions                   (PlumaTextRegion *region);
+gint           lapiz_text_region_subregions                   (LapizTextRegion *region);
 
-gboolean       lapiz_text_region_nth_subregion                (PlumaTextRegion *region,
+gboolean       lapiz_text_region_nth_subregion                (LapizTextRegion *region,
 							     guint          subregion,
 							     GtkTextIter   *start,
 							     GtkTextIter   *end);
 
-PlumaTextRegion *lapiz_text_region_intersect                    (PlumaTextRegion     *region,
+LapizTextRegion *lapiz_text_region_intersect                    (LapizTextRegion     *region,
 							     const GtkTextIter *_start,
 							     const GtkTextIter *_end);
 
-void           lapiz_text_region_get_iterator                 (PlumaTextRegion         *region,
-                                                             PlumaTextRegionIterator *iter,
+void           lapiz_text_region_get_iterator                 (LapizTextRegion         *region,
+                                                             LapizTextRegionIterator *iter,
                                                              guint                  start);
 
-gboolean       lapiz_text_region_iterator_is_end              (PlumaTextRegionIterator *iter);
+gboolean       lapiz_text_region_iterator_is_end              (LapizTextRegionIterator *iter);
 
 /* Returns FALSE if iterator is the end iterator */
-gboolean       lapiz_text_region_iterator_next	            (PlumaTextRegionIterator *iter);
+gboolean       lapiz_text_region_iterator_next	            (LapizTextRegionIterator *iter);
 
-void           lapiz_text_region_iterator_get_subregion       (PlumaTextRegionIterator *iter,
+void           lapiz_text_region_iterator_get_subregion       (LapizTextRegionIterator *iter,
 							     GtkTextIter           *start,
 							     GtkTextIter           *end);
 
-void           lapiz_text_region_debug_print                  (PlumaTextRegion *region);
+void           lapiz_text_region_debug_print                  (LapizTextRegion *region);
 
 G_END_DECLS
 

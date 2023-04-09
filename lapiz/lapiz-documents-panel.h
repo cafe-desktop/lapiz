@@ -41,34 +41,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_DOCUMENTS_PANEL              (lapiz_documents_panel_get_type())
-#define LAPIZ_DOCUMENTS_PANEL(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENTS_PANEL, PlumaDocumentsPanel))
-#define LAPIZ_DOCUMENTS_PANEL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENTS_PANEL, PlumaDocumentsPanelClass))
+#define LAPIZ_DOCUMENTS_PANEL(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENTS_PANEL, LapizDocumentsPanel))
+#define LAPIZ_DOCUMENTS_PANEL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENTS_PANEL, LapizDocumentsPanelClass))
 #define LAPIZ_IS_DOCUMENTS_PANEL(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_DOCUMENTS_PANEL))
 #define LAPIZ_IS_DOCUMENTS_PANEL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENTS_PANEL))
-#define LAPIZ_DOCUMENTS_PANEL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENTS_PANEL, PlumaDocumentsPanelClass))
+#define LAPIZ_DOCUMENTS_PANEL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENTS_PANEL, LapizDocumentsPanelClass))
 
 /* Private structure type */
-typedef struct _PlumaDocumentsPanelPrivate PlumaDocumentsPanelPrivate;
+typedef struct _LapizDocumentsPanelPrivate LapizDocumentsPanelPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaDocumentsPanel PlumaDocumentsPanel;
+typedef struct _LapizDocumentsPanel LapizDocumentsPanel;
 
-struct _PlumaDocumentsPanel
+struct _LapizDocumentsPanel
 {
 	GtkBox vbox;
 
 	/*< private > */
-	PlumaDocumentsPanelPrivate *priv;
+	LapizDocumentsPanelPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaDocumentsPanelClass PlumaDocumentsPanelClass;
+typedef struct _LapizDocumentsPanelClass LapizDocumentsPanelClass;
 
-struct _PlumaDocumentsPanelClass
+struct _LapizDocumentsPanelClass
 {
 	GtkBoxClass parent_class;
 };
@@ -78,7 +78,7 @@ struct _PlumaDocumentsPanelClass
  */
 GType 		 lapiz_documents_panel_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_documents_panel_new 	(PlumaWindow *window);
+GtkWidget	*lapiz_documents_panel_new 	(LapizWindow *window);
 
 G_END_DECLS
 

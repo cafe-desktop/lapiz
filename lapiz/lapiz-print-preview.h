@@ -36,28 +36,28 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_PRINT_PREVIEW            (lapiz_print_preview_get_type ())
-#define LAPIZ_PRINT_PREVIEW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), LAPIZ_TYPE_PRINT_PREVIEW, PlumaPrintPreview))
-#define LAPIZ_PRINT_PREVIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_PRINT_PREVIEW, PlumaPrintPreviewClass))
+#define LAPIZ_PRINT_PREVIEW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), LAPIZ_TYPE_PRINT_PREVIEW, LapizPrintPreview))
+#define LAPIZ_PRINT_PREVIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_PRINT_PREVIEW, LapizPrintPreviewClass))
 #define LAPIZ_IS_PRINT_PREVIEW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), LAPIZ_TYPE_PRINT_PREVIEW))
 #define LAPIZ_IS_PRINT_PREVIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PRINT_PREVIEW))
-#define LAPIZ_PRINT_PREVIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_PRINT_PREVIEW, PlumaPrintPreviewClass))
+#define LAPIZ_PRINT_PREVIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_PRINT_PREVIEW, LapizPrintPreviewClass))
 
-typedef struct _PlumaPrintPreview        PlumaPrintPreview;
-typedef struct _PlumaPrintPreviewPrivate PlumaPrintPreviewPrivate;
-typedef struct _PlumaPrintPreviewClass   PlumaPrintPreviewClass;
+typedef struct _LapizPrintPreview        LapizPrintPreview;
+typedef struct _LapizPrintPreviewPrivate LapizPrintPreviewPrivate;
+typedef struct _LapizPrintPreviewClass   LapizPrintPreviewClass;
 
-struct _PlumaPrintPreview
+struct _LapizPrintPreview
 {
 	GtkBox parent;
 
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 };
 
-struct _PlumaPrintPreviewClass
+struct _LapizPrintPreviewClass
 {
 	GtkBoxClass parent_class;
 
-	void (* close)		(PlumaPrintPreview          *preview);
+	void (* close)		(LapizPrintPreview          *preview);
 };
 
 

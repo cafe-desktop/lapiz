@@ -38,9 +38,9 @@
 
 #include <glib/gi18n.h>
 
-struct _PlumaDocumentsPanelPrivate
+struct _LapizDocumentsPanelPrivate
 {
-	PlumaWindow  *window;
+	LapizWindow  *window;
 
 	GtkWidget    *treeview;
 	GtkTreeModel *model;
@@ -49,7 +49,7 @@ struct _PlumaDocumentsPanelPrivate
 	guint         is_reodering : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentsPanel, lapiz_documents_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizDocumentsPanel, lapiz_documents_panel, GTK_TYPE_BOX)
 
 enum
 {
@@ -68,9 +68,9 @@ enum
 #define MAX_DOC_NAME_LENGTH 60
 
 static gchar *
-tab_get_name (PlumaTab *tab)
+tab_get_name (LapizTab *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *name;
 	gchar *docname;
 	gchar *tab_name;
@@ -119,7 +119,7 @@ tab_get_name (PlumaTab *tab)
 }
 
 static void
-get_iter_from_tab (PlumaDocumentsPanel *panel, PlumaTab *tab, GtkTreeIter *iter)
+get_iter_from_tab (LapizDocumentsPanel *panel, LapizTab *tab, GtkTreeIter *iter)
 {
 	gint num;
 	GtkWidget *nb;
@@ -137,9 +137,9 @@ get_iter_from_tab (PlumaDocumentsPanel *panel, PlumaTab *tab, GtkTreeIter *iter)
 }
 
 static void
-window_active_tab_changed (PlumaWindow         *window,
-			   PlumaTab            *tab,
-			   PlumaDocumentsPanel *panel)
+window_active_tab_changed (LapizWindow         *window,
+			   LapizTab            *tab,
+			   LapizDocumentsPanel *panel)
 {
 	g_return_if_fail (tab != NULL);
 
@@ -162,7 +162,7 @@ window_active_tab_changed (PlumaWindow         *window,
 }
 
 static void
-refresh_list (PlumaDocumentsPanel *panel)
+refresh_list (LapizDocumentsPanel *panel)
 {
 	/* TODO: refresh the list only if the panel is visible */
 
@@ -170,7 +170,7 @@ refresh_list (PlumaDocumentsPanel *panel)
 	GList *l;
 	GtkWidget *nb;
 	GtkListStore *list_store;
-	PlumaTab *active_tab;
+	LapizTab *active_tab;
 
 	/* g_debug ("refresh_list"); */
 
@@ -228,9 +228,9 @@ refresh_list (PlumaDocumentsPanel *panel)
 }
 
 static void
-sync_name_and_icon (PlumaTab            *tab,
+sync_name_and_icon (LapizTab            *tab,
 		    GParamSpec          *pspec,
-		    PlumaDocumentsPanel *panel)
+		    LapizDocumentsPanel *panel)
 {
 	GdkPixbuf *pixbuf;
 	gchar *name;
@@ -254,9 +254,9 @@ sync_name_and_icon (PlumaTab            *tab,
 }
 
 static void
-window_tab_removed (PlumaWindow         *window,
-		    PlumaTab            *tab,
-		    PlumaDocumentsPanel *panel)
+window_tab_removed (LapizWindow         *window,
+		    LapizTab            *tab,
+		    LapizDocumentsPanel *panel)
 {
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_name_and_icon),
@@ -269,9 +269,9 @@ window_tab_removed (PlumaWindow         *window,
 }
 
 static void
-window_tab_added (PlumaWindow         *window,
-		  PlumaTab            *tab,
-		  PlumaDocumentsPanel *panel)
+window_tab_added (LapizWindow         *window,
+		  LapizTab            *tab,
+		  LapizDocumentsPanel *panel)
 {
 	GtkTreeIter iter;
 	GtkTreeIter sibling;
@@ -301,7 +301,7 @@ window_tab_added (PlumaWindow         *window,
 	}
 	else
 	{
-		PlumaTab *active_tab;
+		LapizTab *active_tab;
 
 		gtk_list_store_append (GTK_LIST_STORE (panel->priv->model),
 				       &iter);
@@ -337,8 +337,8 @@ window_tab_added (PlumaWindow         *window,
 }
 
 static void
-window_tabs_reordered (PlumaWindow         *window,
-		       PlumaDocumentsPanel *panel)
+window_tabs_reordered (LapizWindow         *window,
+		       LapizDocumentsPanel *panel)
 {
 	if (panel->priv->is_reodering)
 		return;
@@ -347,8 +347,8 @@ window_tabs_reordered (PlumaWindow         *window,
 }
 
 static void
-set_window (PlumaDocumentsPanel *panel,
-	    PlumaWindow         *window)
+set_window (LapizDocumentsPanel *panel,
+	    LapizWindow         *window)
 {
 	g_return_if_fail (panel->priv->window == NULL);
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
@@ -375,7 +375,7 @@ set_window (PlumaDocumentsPanel *panel,
 
 static void
 treeview_cursor_changed (GtkTreeView         *view,
-			 PlumaDocumentsPanel *panel)
+			 LapizDocumentsPanel *panel)
 {
 	GtkTreeIter iter;
 	GtkTreeSelection *selection;
@@ -406,7 +406,7 @@ lapiz_documents_panel_set_property (GObject      *object,
 				    const GValue *value,
 				    GParamSpec   *pspec)
 {
-	PlumaDocumentsPanel *panel = LAPIZ_DOCUMENTS_PANEL (object);
+	LapizDocumentsPanel *panel = LAPIZ_DOCUMENTS_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -426,7 +426,7 @@ lapiz_documents_panel_get_property (GObject    *object,
 				    GValue     *value,
 				    GParamSpec *pspec)
 {
-	PlumaDocumentsPanel *panel = LAPIZ_DOCUMENTS_PANEL (object);
+	LapizDocumentsPanel *panel = LAPIZ_DOCUMENTS_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -443,7 +443,7 @@ lapiz_documents_panel_get_property (GObject    *object,
 static void
 lapiz_documents_panel_finalize (GObject *object)
 {
-	/* PlumaDocumentsPanel *tab = LAPIZ_DOCUMENTS_PANEL (object); */
+	/* LapizDocumentsPanel *tab = LAPIZ_DOCUMENTS_PANEL (object); */
 
 	/* TODO: disconnect signal with window */
 
@@ -453,7 +453,7 @@ lapiz_documents_panel_finalize (GObject *object)
 static void
 lapiz_documents_panel_dispose (GObject *object)
 {
-	PlumaDocumentsPanel *panel = LAPIZ_DOCUMENTS_PANEL (object);
+	LapizDocumentsPanel *panel = LAPIZ_DOCUMENTS_PANEL (object);
 
 	if (panel->priv->window != NULL)
 	{
@@ -465,7 +465,7 @@ lapiz_documents_panel_dispose (GObject *object)
 }
 
 static void
-lapiz_documents_panel_class_init (PlumaDocumentsPanelClass *klass)
+lapiz_documents_panel_class_init (LapizDocumentsPanelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -478,7 +478,7 @@ lapiz_documents_panel_class_init (PlumaDocumentsPanelClass *klass)
 					 PROP_WINDOW,
 					 g_param_spec_object ("window",
 							      "Window",
-							      "The PlumaWindow this PlumaDocumentsPanel is associated with",
+							      "The LapizWindow this LapizDocumentsPanel is associated with",
 							      LAPIZ_TYPE_WINDOW,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY |
@@ -486,7 +486,7 @@ lapiz_documents_panel_class_init (PlumaDocumentsPanelClass *klass)
 }
 
 static gboolean
-show_popup_menu (PlumaDocumentsPanel *panel,
+show_popup_menu (LapizDocumentsPanel *panel,
 		 GdkEventButton      *event)
 {
 	GtkWidget *menu;
@@ -511,7 +511,7 @@ show_popup_menu (PlumaDocumentsPanel *panel,
 static gboolean
 panel_button_press_event (GtkTreeView         *treeview,
 			  GdkEventButton      *event,
-			  PlumaDocumentsPanel *panel)
+			  LapizDocumentsPanel *panel)
 {
 	if ((GDK_BUTTON_PRESS == event->type) && (3 == event->button))
 	{
@@ -547,7 +547,7 @@ panel_button_press_event (GtkTreeView         *treeview,
 
 static gboolean
 panel_popup_menu (GtkWidget           *treeview,
-		  PlumaDocumentsPanel *panel)
+		  LapizDocumentsPanel *panel)
 {
 	/* Only respond if the treeview is the actual focus */
 	if (gtk_window_get_focus (GTK_WINDOW (panel->priv->window)) == treeview)
@@ -619,9 +619,9 @@ static void
 treeview_row_inserted (GtkTreeModel        *tree_model,
 		       GtkTreePath         *path,
 		       GtkTreeIter         *iter,
-		       PlumaDocumentsPanel *panel)
+		       LapizDocumentsPanel *panel)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 	gint *indeces;
 	GtkWidget *nb;
 	gint old_position;
@@ -655,7 +655,7 @@ treeview_row_inserted (GtkTreeModel        *tree_model,
 }
 
 static void
-lapiz_documents_panel_init (PlumaDocumentsPanel *panel)
+lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 {
 	GtkWidget 		*sw;
 	GtkTreeViewColumn	*column;
@@ -741,7 +741,7 @@ lapiz_documents_panel_init (PlumaDocumentsPanel *panel)
 }
 
 GtkWidget *
-lapiz_documents_panel_new (PlumaWindow *window)
+lapiz_documents_panel_new (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 

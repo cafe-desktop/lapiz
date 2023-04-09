@@ -50,7 +50,7 @@ enum {
 
 #define LAPIZ_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
 
-struct _PlumaHistoryEntryPrivate
+struct _LapizHistoryEntryPrivate
 {
 	gchar              *history_id;
 	guint               history_length;
@@ -60,7 +60,7 @@ struct _PlumaHistoryEntryPrivate
 	GSettings          *settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaHistoryEntry, lapiz_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizHistoryEntry, lapiz_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
 static void
 lapiz_history_entry_set_property (GObject      *object,
@@ -68,7 +68,7 @@ lapiz_history_entry_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *spec)
 {
-	PlumaHistoryEntry *entry;
+	LapizHistoryEntry *entry;
 
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (object));
 
@@ -93,7 +93,7 @@ lapiz_history_entry_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *spec)
 {
-	PlumaHistoryEntryPrivate *priv;
+	LapizHistoryEntryPrivate *priv;
 
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (object));
 
@@ -123,7 +123,7 @@ lapiz_history_entry_dispose (GObject *object)
 static void
 lapiz_history_entry_finalize (GObject *object)
 {
-	PlumaHistoryEntryPrivate *priv;
+	LapizHistoryEntryPrivate *priv;
 
 	priv = LAPIZ_HISTORY_ENTRY (object)->priv;
 
@@ -139,7 +139,7 @@ lapiz_history_entry_finalize (GObject *object)
 }
 
 static void
-lapiz_history_entry_class_init (PlumaHistoryEntryClass *klass)
+lapiz_history_entry_class_init (LapizHistoryEntryClass *klass)
 {
 	GObjectClass   *object_class = G_OBJECT_CLASS (klass);
 
@@ -172,7 +172,7 @@ lapiz_history_entry_class_init (PlumaHistoryEntryClass *klass)
 }
 
 static GtkListStore *
-get_history_store (PlumaHistoryEntry *entry)
+get_history_store (LapizHistoryEntry *entry)
 {
 	GtkTreeModel *store;
 
@@ -183,7 +183,7 @@ get_history_store (PlumaHistoryEntry *entry)
 }
 
 static GSList *
-get_history_list (PlumaHistoryEntry *entry)
+get_history_list (LapizHistoryEntry *entry)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
@@ -214,7 +214,7 @@ get_history_list (PlumaHistoryEntry *entry)
 }
 
 static void
-lapiz_history_entry_save_history (PlumaHistoryEntry *entry)
+lapiz_history_entry_save_history (LapizHistoryEntry *entry)
 {
 	GSList *settings_items;
 
@@ -289,7 +289,7 @@ clamp_list_store (GtkListStore *store,
 }
 
 static void
-insert_history_item (PlumaHistoryEntry *entry,
+insert_history_item (LapizHistoryEntry *entry,
 		     const gchar       *text,
 		     gboolean           prepend)
 {
@@ -325,7 +325,7 @@ insert_history_item (PlumaHistoryEntry *entry,
 }
 
 void
-lapiz_history_entry_prepend_text (PlumaHistoryEntry *entry,
+lapiz_history_entry_prepend_text (LapizHistoryEntry *entry,
 				  const gchar       *text)
 {
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
@@ -335,7 +335,7 @@ lapiz_history_entry_prepend_text (PlumaHistoryEntry *entry,
 }
 
 void
-lapiz_history_entry_append_text (PlumaHistoryEntry *entry,
+lapiz_history_entry_append_text (LapizHistoryEntry *entry,
 				 const gchar       *text)
 {
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
@@ -345,7 +345,7 @@ lapiz_history_entry_append_text (PlumaHistoryEntry *entry,
 }
 
 static void
-lapiz_history_entry_load_history (PlumaHistoryEntry *entry)
+lapiz_history_entry_load_history (LapizHistoryEntry *entry)
 {
 	GSList *settings_items, *l;
 	GtkListStore *store;
@@ -378,7 +378,7 @@ lapiz_history_entry_load_history (PlumaHistoryEntry *entry)
 }
 
 void
-lapiz_history_entry_clear (PlumaHistoryEntry *entry)
+lapiz_history_entry_clear (LapizHistoryEntry *entry)
 {
 	GtkListStore *store;
 
@@ -391,9 +391,9 @@ lapiz_history_entry_clear (PlumaHistoryEntry *entry)
 }
 
 static void
-lapiz_history_entry_init (PlumaHistoryEntry *entry)
+lapiz_history_entry_init (LapizHistoryEntry *entry)
 {
-	PlumaHistoryEntryPrivate *priv;
+	LapizHistoryEntryPrivate *priv;
 
 	priv = lapiz_history_entry_get_instance_private (entry);
 	entry->priv = priv;
@@ -407,7 +407,7 @@ lapiz_history_entry_init (PlumaHistoryEntry *entry)
 }
 
 void
-lapiz_history_entry_set_history_length (PlumaHistoryEntry *entry,
+lapiz_history_entry_set_history_length (LapizHistoryEntry *entry,
 					guint              history_length)
 {
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
@@ -419,7 +419,7 @@ lapiz_history_entry_set_history_length (PlumaHistoryEntry *entry,
 }
 
 guint
-lapiz_history_entry_get_history_length (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_history_length (LapizHistoryEntry *entry)
 {
 	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), 0);
 
@@ -427,7 +427,7 @@ lapiz_history_entry_get_history_length (PlumaHistoryEntry *entry)
 }
 
 gchar *
-lapiz_history_entry_get_history_id (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_history_id (LapizHistoryEntry *entry)
 {
 	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), NULL);
 
@@ -435,7 +435,7 @@ lapiz_history_entry_get_history_id (PlumaHistoryEntry *entry)
 }
 
 void
-lapiz_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
+lapiz_history_entry_set_enable_completion (LapizHistoryEntry *entry,
 					   gboolean           enable)
 {
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
@@ -477,7 +477,7 @@ lapiz_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
 }
 
 gboolean
-lapiz_history_entry_get_enable_completion (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_enable_completion (LapizHistoryEntry *entry)
 {
 	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), FALSE);
 
@@ -532,13 +532,13 @@ lapiz_history_entry_new (const gchar *history_id,
 /*
  * Utility function to get the editable text entry internal widget.
  * I would prefer to not expose this implementation detail and
- * simply make the PlumaHistoryEntry widget implement the
+ * simply make the LapizHistoryEntry widget implement the
  * GtkEditable interface. Unfortunately both GtkEditable and
  * GtkComboBox have a "changed" signal and I am not sure how to
  * handle the conflict.
  */
 GtkWidget *
-lapiz_history_entry_get_entry (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_entry (LapizHistoryEntry *entry)
 {
 	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), NULL);
 
@@ -550,7 +550,7 @@ escape_cell_data_func (GtkTreeViewColumn           *col,
 		       GtkCellRenderer             *renderer,
 		       GtkTreeModel                *model,
 		       GtkTreeIter                 *iter,
-		       PlumaHistoryEntryEscapeFunc  escape_func)
+		       LapizHistoryEntryEscapeFunc  escape_func)
 {
 	gchar *str;
 	gchar *escaped;
@@ -564,8 +564,8 @@ escape_cell_data_func (GtkTreeViewColumn           *col,
 }
 
 void
-lapiz_history_entry_set_escape_func (PlumaHistoryEntry           *entry,
-				     PlumaHistoryEntryEscapeFunc  escape_func)
+lapiz_history_entry_set_escape_func (LapizHistoryEntry           *entry,
+				     LapizHistoryEntryEscapeFunc  escape_func)
 {
 	GList *cells;
 

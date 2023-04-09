@@ -1,11 +1,11 @@
-from gi.repository import GObject, Gtk, GtkSource, Pluma
+from gi.repository import GObject, Gtk, GtkSource, Lapiz
 
 from .Library import Library
 from .LanguageManager import get_language_manager
 from .Snippet import Snippet
 
 class Proposal(GObject.Object, GtkSource.CompletionProposal):
-    __gtype_name__ = "PlumaSnippetsProposal"
+    __gtype_name__ = "LapizSnippetsProposal"
 
     def __init__(self, snippet):
         super(Proposal, self).__init__()
@@ -22,7 +22,7 @@ class Proposal(GObject.Object, GtkSource.CompletionProposal):
         return self._snippet.data['text']
 
 class Provider(GObject.Object, GtkSource.CompletionProvider):
-    __gtype_name__ = "PlumaSnippetsProvider"
+    __gtype_name__ = "LapizSnippetsProvider"
 
     def __init__(self, name, language_id, handler):
         super(Provider, self).__init__()
@@ -108,7 +108,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
 
     def do_get_info_widget(self, proposal):
         if not self.info_widget:
-            view = Pluma.View.new_with_buffer(Pluma.Document())
+            view = Lapiz.View.new_with_buffer(Lapiz.Document())
             manager = get_language_manager()
 
             lang = manager.get_language('snippets')
@@ -141,7 +141,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
         return GtkSource.CompletionActivation.USER_REQUESTED
 
 class Defaults(GObject.Object, GtkSource.CompletionProvider):
-    __gtype_name__ = "PlumaSnippetsDefaultsProvider"
+    __gtype_name__ = "LapizSnippetsDefaultsProvider"
 
     def __init__(self, handler):
         GObject.Object.__init__(self)

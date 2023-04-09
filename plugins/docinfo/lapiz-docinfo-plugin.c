@@ -58,7 +58,7 @@ typedef struct
 	GtkWidget *selected_bytes_label;
 } DocInfoDialog;
 
-struct _PlumaDocInfoPluginPrivate
+struct _LapizDocInfoPluginPrivate
 {
 	GtkWidget *window;
 
@@ -68,11 +68,11 @@ struct _PlumaDocInfoPluginPrivate
 	DocInfoDialog *dialog;
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaDocInfoPlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizDocInfoPlugin,
                                 lapiz_docinfo_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaDocInfoPlugin)
+                                G_ADD_PRIVATE_DYNAMIC (LapizDocInfoPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init))
 
@@ -83,11 +83,11 @@ enum {
 
 static void docinfo_dialog_response_cb (GtkDialog   *widget,
 					gint	    res_id,
-					PlumaDocInfoPluginPrivate *data);
+					LapizDocInfoPluginPrivate *data);
 
 static void
 docinfo_dialog_destroy_cb (GObject  *obj,
-			   PlumaDocInfoPluginPrivate *data)
+			   LapizDocInfoPluginPrivate *data)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -99,10 +99,10 @@ docinfo_dialog_destroy_cb (GObject  *obj,
 }
 
 static DocInfoDialog *
-get_docinfo_dialog (PlumaDocInfoPlugin *plugin)
+get_docinfo_dialog (LapizDocInfoPlugin *plugin)
 {
-	PlumaDocInfoPluginPrivate *data;
-	PlumaWindow *window;
+	LapizDocInfoPluginPrivate *data;
+	LapizWindow *window;
 	DocInfoDialog *dialog;
 	gchar *data_dir;
 	gchar *ui_file;
@@ -173,7 +173,7 @@ get_docinfo_dialog (PlumaDocInfoPlugin *plugin)
 }
 
 static void
-calculate_info (PlumaDocument *doc,
+calculate_info (LapizDocument *doc,
 		GtkTextIter   *start,
 		GtkTextIter   *end,
 		gint          *chars,
@@ -228,7 +228,7 @@ calculate_info (PlumaDocument *doc,
 }
 
 static void
-docinfo_real (PlumaDocument *doc,
+docinfo_real (LapizDocument *doc,
 	      DocInfoDialog *dialog)
 {
 	GtkTextIter start, end;
@@ -289,7 +289,7 @@ docinfo_real (PlumaDocument *doc,
 }
 
 static void
-selectioninfo_real (PlumaDocument *doc,
+selectioninfo_real (LapizDocument *doc,
 		    DocInfoDialog *dialog)
 {
 	gboolean sel;
@@ -356,11 +356,11 @@ selectioninfo_real (PlumaDocument *doc,
 
 static void
 docinfo_cb (GtkAction	*action,
-	    PlumaDocInfoPlugin *plugin)
+	    LapizDocInfoPlugin *plugin)
 {
-	PlumaDocInfoPluginPrivate *data;
-	PlumaWindow *window;
-	PlumaDocument *doc;
+	LapizDocInfoPluginPrivate *data;
+	LapizWindow *window;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -395,9 +395,9 @@ docinfo_cb (GtkAction	*action,
 static void
 docinfo_dialog_response_cb (GtkDialog	*widget,
 			    gint	res_id,
-			    PlumaDocInfoPluginPrivate *data)
+			    LapizDocInfoPluginPrivate *data)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -415,7 +415,7 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 
 		case GTK_RESPONSE_OK:
 		{
-			PlumaDocument *doc;
+			LapizDocument *doc;
 
 			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
 
@@ -444,10 +444,10 @@ static const GtkActionEntry action_entries[] =
 };
 
 static void
-update_ui (PlumaDocInfoPluginPrivate *data)
+update_ui (LapizDocInfoPluginPrivate *data)
 {
-	PlumaWindow *window;
-	PlumaView *view;
+	LapizWindow *window;
+	LapizView *view;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -466,9 +466,9 @@ update_ui (PlumaDocInfoPluginPrivate *data)
 }
 
 static void
-lapiz_docinfo_plugin_init (PlumaDocInfoPlugin *plugin)
+lapiz_docinfo_plugin_init (LapizDocInfoPlugin *plugin)
 {
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaDocInfoPlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizDocInfoPlugin initializing");
 
 	plugin->priv = lapiz_docinfo_plugin_get_instance_private (plugin);
 }
@@ -476,9 +476,9 @@ lapiz_docinfo_plugin_init (PlumaDocInfoPlugin *plugin)
 static void
 lapiz_docinfo_plugin_dispose (GObject *object)
 {
-	PlumaDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
+	LapizDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaDocInfoPlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizDocInfoPlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -501,7 +501,7 @@ lapiz_docinfo_plugin_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-	PlumaDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
+	LapizDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -521,7 +521,7 @@ lapiz_docinfo_plugin_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-	PlumaDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
+	LapizDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -538,9 +538,9 @@ lapiz_docinfo_plugin_get_property (GObject    *object,
 static void
 lapiz_docinfo_plugin_activate (PeasActivatable *activatable)
 {
-	PlumaDocInfoPlugin *plugin;
-	PlumaDocInfoPluginPrivate *data;
-	PlumaWindow *window;
+	LapizDocInfoPlugin *plugin;
+	LapizDocInfoPluginPrivate *data;
+	LapizWindow *window;
 	GtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -550,7 +550,7 @@ lapiz_docinfo_plugin_activate (PeasActivatable *activatable)
 	window = LAPIZ_WINDOW (data->window);
 
 	data->dialog = NULL;
-	data->ui_action_group = gtk_action_group_new ("PlumaDocInfoPluginActions");
+	data->ui_action_group = gtk_action_group_new ("LapizDocInfoPluginActions");
 
 	gtk_action_group_set_translation_domain (data->ui_action_group,
 						 GETTEXT_PACKAGE);
@@ -580,8 +580,8 @@ lapiz_docinfo_plugin_activate (PeasActivatable *activatable)
 static void
 lapiz_docinfo_plugin_deactivate (PeasActivatable *activatable)
 {
-	PlumaDocInfoPluginPrivate *data;
-	PlumaWindow *window;
+	LapizDocInfoPluginPrivate *data;
+	LapizWindow *window;
 	GtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -606,7 +606,7 @@ lapiz_docinfo_plugin_update_state (PeasActivatable *activatable)
 }
 
 static void
-lapiz_docinfo_plugin_class_init (PlumaDocInfoPluginClass *klass)
+lapiz_docinfo_plugin_class_init (LapizDocInfoPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -618,7 +618,7 @@ lapiz_docinfo_plugin_class_init (PlumaDocInfoPluginClass *klass)
 }
 
 static void
-lapiz_docinfo_plugin_class_finalize (PlumaDocInfoPluginClass *klass)
+lapiz_docinfo_plugin_class_finalize (LapizDocInfoPluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }

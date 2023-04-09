@@ -279,7 +279,7 @@
                         <property name="vexpand">True</property>
                         <property name="shadow_type">in</property>
                         <child>
-                          <object class="PlumaView" id="source_view_snippet">
+                          <object class="LapizView" id="source_view_snippet">
                             <property name="buffer">source_buffer</property>
                             <property name="visible">True</property>
                             <property name="auto-indent">True</property>
@@ -486,7 +486,7 @@
       <action-widget response="-7">closebutton1</action-widget>
     </action-widgets>
   </object>
-  <object class="PlumaDocument" id="source_buffer">
+  <object class="LapizDocument" id="source_buffer">
     <property name="highlight-matching-brackets">True</property>
   </object>
 </interface>

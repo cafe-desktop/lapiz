@@ -34,7 +34,7 @@ msgid ""
 "font."
 msgstr ""
 "Of de normaale Fastbreden-Schriftaard vum System tum Bewarken vun Text "
-"bruukt worden sall un nich eene besünnere Schriftaard vun Pluma. Wenn nich, "
+"bruukt worden sall un nich eene besünnere Schriftaard vun Lapiz. Wenn nich, "
 "word de Schriftaard, de in de Optioon »Bewarker-Schriftaard« geven is, "
 "bruukt, un nich de System-Schriftaard."
 
@@ -96,7 +96,7 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Of Pluma för sekerte Dateien Sekerheidskopien maken sall. Du kannst de "
+"Of Lapiz för sekerte Dateien Sekerheidskopien maken sall. Du kannst de "
 "Dateierwiedern för Sekerheidskopien mit de Optioon »Dateierwiedern för "
 "Sekerheidskopien« setten."
 
@@ -110,7 +110,7 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"Of Pluma ännerte Dateien na eener wissen Tied automatisk sakern sall. Du "
+"Of Lapiz ännerte Dateien na eener wissen Tied automatisk sakern sall. Du "
 "kannst deese Tiedspann mit de Optioon »Ofstand tum automatisken Sekern« "
 "setten."
 
@@ -123,7 +123,7 @@ msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"De Tahl vun Menüten, na denen Pluma ännerte Dateien automatisk sekert. Dat "
+"De Tahl vun Menüten, na denen Lapiz ännerte Dateien automatisk sekert. Dat "
 "is blot dann vun Belang, wenn de Optioon »Automatisk sekern« anknipst is."
 
 #: data/org.mate.lapiz.gschema.xml.in:51
@@ -143,7 +143,7 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"De VFS-Schemen, wat Pluma bi'm Schrieven verlöövt. Normaal is dat Schema "
+"De VFS-Schemen, wat Lapiz bi'm Schrieven verlöövt. Normaal is dat Schema "
 "»file« tum Schrieven verlöövt."
 
 #: data/org.mate.lapiz.gschema.xml.in:61
@@ -155,7 +155,7 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"De hoogste Tahl vun Dingen, wat Pluma torüggnehmen oder wedderhalen kann. "
+"De hoogste Tahl vun Dingen, wat Lapiz torüggnehmen oder wedderhalen kann. "
 "Bruuk »-1«, um de Tahl nich to begrenzen."
 
 #: data/org.mate.lapiz.gschema.xml.in:66
@@ -194,7 +194,7 @@ msgstr "Leegtekens infögen"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Of Pluma Leegtekens statt Inschuvens infögen sall."
+msgstr "Of Lapiz Leegtekens statt Inschuvens infögen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -202,7 +202,7 @@ msgstr "Automatisk inschuven"
 
 #: data/org.mate.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
-msgstr "Of Pluma neje Regen automatisk inschuven sall."
+msgstr "Of Lapiz neje Regen automatisk inschuven sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
@@ -210,7 +210,7 @@ msgstr "Riegen-Tahlen wiesen"
 
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
-msgstr "Of Pluma im Bewarker de Riegen-Tahlen wiesen sall."
+msgstr "Of Lapiz im Bewarker de Riegen-Tahlen wiesen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -218,7 +218,7 @@ msgstr "Aktuelle Rieg wiesen"
 
 #: data/org.mate.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
-msgstr "Of Pluma de aktuelle Rieg in eener annern Farv wiesen sall."
+msgstr "Of Lapiz de aktuelle Rieg in eener annern Farv wiesen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
@@ -227,7 +227,7 @@ msgstr "Daartohörende Klammer wiesen"
 #: data/org.mate.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
-"Of Pluma de Klammer, wat to de utkörten daartohöört, in eener annern Farv "
+"Of Lapiz de Klammer, wat to de utkörten daartohöört, in eener annern Farv "
 "wiesen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:101
@@ -236,7 +236,7 @@ msgstr "Rechten Rann wiesen"
 
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
-msgstr "Of Pluma im Bewarker de rechten Rann wiesen sall."
+msgstr "Of Lapiz im Bewarker de rechten Rann wiesen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -276,7 +276,7 @@ msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Of Pluma bi'm Opmaken vun eener Datei de Wieser daar hensetten sall, waar 't"
+"Of Lapiz bi'm Opmaken vun eener Datei de Wieser daar hensetten sall, waar 't"
 " tolest weer."
 
 #: data/org.mate.lapiz.gschema.xml.in:121
@@ -287,7 +287,7 @@ msgstr "Bi'm Söken wiesen"
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr ""
-"Of Pluma de Text, wat för söcht word, överall in eener annern Farv wiesen "
+"Of Lapiz de Text, wat för söcht word, överall in eener annern Farv wiesen "
 "sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:126
@@ -296,7 +296,7 @@ msgstr "Syntax wiesen"
 
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr "Of Pluma de Syntax wiesen sall."
+msgstr "Of Lapiz de Syntax wiesen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -353,7 +353,7 @@ msgstr "Mit Sietenrebeet Registerkaarts wiesen"
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
-"Wenn nich, wiest Pluma keene Registerkaarten im Bewarker, wenn dat "
+"Wenn nich, wiest Lapiz keene Registerkaarten im Bewarker, wenn dat "
 "Sietenrebeet daar is."
 
 #: data/org.mate.lapiz.gschema.xml.in:156
@@ -384,7 +384,7 @@ msgstr "Syntax drucken"
 #: data/org.mate.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
-msgstr "Of Pluma de Syntax bi'm Drucken wiesen sall."
+msgstr "Of Lapiz de Syntax bi'm Drucken wiesen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:171
 msgid "Print Header"
@@ -393,7 +393,7 @@ msgstr "Druck-Kopprieg"
 #: data/org.mate.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
-msgstr "Of Pluma bi'm Drucken vun Dateien eene Kopprieg infögen sall."
+msgstr "Of Lapiz bi'm Drucken vun Dateien eene Kopprieg infögen sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
@@ -424,7 +424,7 @@ msgid ""
 "lines."
 msgstr ""
 "Wenn deeser Weert 0 is, worden keene Riegen-Tahlen bi'm Drucken inföögt. "
-"Anners druckt Pluma all deese Tahl vun Riegen de Riegen-Tahl."
+"Anners druckt Lapiz all deese Tahl vun Riegen de Riegen-Tahl."
 
 #: data/org.mate.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -439,7 +439,7 @@ msgstr "Höövd-Schriftaard bi'm Drucken"
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Gifft de Schriftaard, wat Pluma för de Höövddeel vun eener Datei bi'm "
+"Gifft de Schriftaard, wat Lapiz för de Höövddeel vun eener Datei bi'm "
 "Drucken bruken sall."
 
 #: data/org.mate.lapiz.gschema.xml.in:190
@@ -493,7 +493,7 @@ msgid ""
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
 " recognized encodings are used."
 msgstr ""
-"Sorteerte List vun Koderens, wat Pluma bruken sall, um de Koderen vun eener "
+"Sorteerte List vun Koderens, wat Lapiz bruken sall, um de Koderen vun eener "
 "Datei automatisk uttomaken. »CURRENT« staht för de Koderen vun de aktuellen "
 "Spraak. Blot utmaakte Koderens worden bruukt."
 
@@ -584,8 +584,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -593,7 +593,7 @@ msgstr "Een Text-Bewarker för de MATE-Schrievdisk"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -602,7 +602,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -888,8 +888,8 @@ msgid "_Close"
 msgstr "_Sluten"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Pluma-Instellens"
+msgid "Lapiz Preferences"
+msgstr "Lapiz-Instellens"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1147,11 +1147,11 @@ msgstr "Eene List von verlöövten Weerten för de Koderen-Optioon wiesen"
 
 #: lapiz/lapiz.c:117
 msgid "Create a new top-level window in an existing instance of lapiz"
-msgstr "Een nejes Fenster ut eener annern Instanz vun Pluma opmaken"
+msgstr "Een nejes Fenster ut eener annern Instanz vun Lapiz opmaken"
 
 #: lapiz/lapiz.c:120
 msgid "Create a new document in an existing instance of lapiz"
-msgstr "Een nejes Dokument in eener annern Instanz vun Pluma opmaken"
+msgstr "Een nejes Dokument in eener annern Instanz vun Lapiz opmaken"
 
 #: lapiz/lapiz.c:123
 msgid "[FILE...]"
@@ -1300,12 +1300,12 @@ msgid "Sun Microsystems"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma is een lütter, lichter Text-Bewarker för de MATE-Schrievdisk."
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz is een lütter, lichter Text-Bewarker för de MATE-Schrievdisk."
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1313,7 +1313,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1322,12 +1322,12 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
+msgid "About Lapiz"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:116
@@ -1565,11 +1565,11 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:221
 #, c-format
 msgid "lapiz cannot handle %s locations."
-msgstr "Pluma kummt mit %s-Steden nich klaar."
+msgstr "Lapiz kummt mit %s-Steden nich klaar."
 
 #: lapiz/lapiz-io-error-message-area.c:227
 msgid "lapiz cannot handle this location."
-msgstr "Pluma kummt mit deeser Stee nich klaar."
+msgstr "Lapiz kummt mit deeser Stee nich klaar."
 
 #: lapiz/lapiz-io-error-message-area.c:235
 msgid "The location of the file cannot be mounted."
@@ -1627,7 +1627,7 @@ msgstr "Unverwachter Fehler: %s"
 
 #: lapiz/lapiz-io-error-message-area.c:406
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
-msgstr "Pluma kann de Datei nich finnen. Villicht is se jüüst lösket worden."
+msgstr "Lapiz kann de Datei nich finnen. Villicht is se jüüst lösket worden."
 
 #: lapiz/lapiz-io-error-message-area.c:416
 #, c-format
@@ -1666,7 +1666,7 @@ msgstr "Du hest nich de Rechten, wat du bruukst, um de Datei opentomaken."
 
 #: lapiz/lapiz-io-error-message-area.c:607
 msgid "lapiz has not been able to detect the character encoding."
-msgstr "Pluma kunn de Bookstaven-Koderen nich utfinnen."
+msgstr "Lapiz kunn de Bookstaven-Koderen nich utfinnen."
 
 #: lapiz/lapiz-io-error-message-area.c:609
 #: lapiz/lapiz-io-error-message-area.c:631
@@ -1726,14 +1726,14 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
-msgstr "Deese Datei (%s) is al in eenem annern Fenster vun Pluma open."
+msgstr "Deese Datei (%s) is al in eenem annern Fenster vun Lapiz open."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to"
 " edit it anyway?"
 msgstr ""
-"Pluma hett de Datei hier nich tum Bewarken opmaakt. Willst du se doch "
+"Lapiz hett de Datei hier nich tum Bewarken opmaakt. Willst du se doch "
 "bewarken?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
@@ -1773,7 +1773,7 @@ msgid ""
 "You can ignore this warning and save the file anyway, but if an error occurs"
 " while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"Pluma kunn de olle Versioon vun de Datei nich sekern, ehr de neje sekert "
+"Lapiz kunn de olle Versioon vun de Datei nich sekern, ehr de neje sekert "
 "word. Du kannst deese Warnen ignoreren un de Datei doch sekern, aver wenn "
 "daar een Fehler bi uptreddt, verlierst du villicht de olle Kopie vun de "
 "Datei. Doch sekern?"
@@ -1785,7 +1785,7 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"Pluma kummt bi'm Sekern mit %s-Steden nich klaar. Bidde kiek na, of du de "
+"Lapiz kummt bi'm Sekern mit %s-Steden nich klaar. Bidde kiek na, of du de "
 "Stee richtig ingeven hest, un versöök 't weer."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
@@ -1793,7 +1793,7 @@ msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed"
 " the location correctly and try again."
 msgstr ""
-"Pluma kummt bi'm Sekern mit deeser Stee nich klaar. Bidde kiek na, of du de "
+"Lapiz kummt bi'm Sekern mit deeser Stee nich klaar. Bidde kiek na, of du de "
 "Stee richtig ingeven hest, un versöök 't weer."
 
 #: lapiz/lapiz-io-error-message-area.c:1078

@@ -34,15 +34,15 @@
 
 G_BEGIN_DECLS
 
-typedef struct _PlumaSpellCheckerLanguage PlumaSpellCheckerLanguage;
+typedef struct _LapizSpellCheckerLanguage LapizSpellCheckerLanguage;
 
-const gchar			*lapiz_spell_checker_language_to_string	(const PlumaSpellCheckerLanguage *lang);
+const gchar			*lapiz_spell_checker_language_to_string	(const LapizSpellCheckerLanguage *lang);
 
-const gchar			*lapiz_spell_checker_language_to_key	(const PlumaSpellCheckerLanguage *lang);
+const gchar			*lapiz_spell_checker_language_to_key	(const LapizSpellCheckerLanguage *lang);
 
-const PlumaSpellCheckerLanguage	*lapiz_spell_checker_language_from_key	(const gchar *key);
+const LapizSpellCheckerLanguage	*lapiz_spell_checker_language_from_key	(const gchar *key);
 
-/* GSList contains "PlumaSpellCheckerLanguage*" items */
+/* GSList contains "LapizSpellCheckerLanguage*" items */
 const GSList 			*lapiz_spell_checker_get_available_languages
 									(void);
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#    Pluma External Tools plugin
+#    Lapiz External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #    Copyright (C) 2010  Per Arneng <per.arneng@anyplanet.com>
 #
@@ -26,7 +26,7 @@ from weakref import WeakKeyDictionary
 from .capture import *
 from . import linkparsing
 from . import filelookup
-from gi.repository import GLib, Gdk, Gtk, Pango, Pluma
+from gi.repository import GLib, Gdk, Gtk, Pango, Lapiz
 
 class UniqueById:
     __shared_state = WeakKeyDictionary()
@@ -222,7 +222,7 @@ class OutputPanel(UniqueById):
         gfile = self.file_lookup.lookup(link.path)
 
         if gfile:
-            Pluma.commands.load_uri(self.window, gfile.get_uri(), None,
+            Lapiz.commands.load_uri(self.window, gfile.get_uri(), None,
                                     link.line_nr)
             GLib.idle_add(self.idle_grab_focus)
 

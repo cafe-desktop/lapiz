@@ -45,7 +45,7 @@
 #include "lapiz-enum-types.h"
 #include "lapiz-gio-document-saver.h"
 
-G_DEFINE_ABSTRACT_TYPE(PlumaDocumentSaver, lapiz_document_saver, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE(LapizDocumentSaver, lapiz_document_saver, G_TYPE_OBJECT)
 
 /* Signals */
 
@@ -73,7 +73,7 @@ lapiz_document_saver_set_property (GObject      *object,
 				   const GValue *value,
 				   GParamSpec   *pspec)
 {
-	PlumaDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
+	LapizDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
 
 	switch (prop_id)
 	{
@@ -107,7 +107,7 @@ lapiz_document_saver_get_property (GObject    *object,
 				   GValue     *value,
 				   GParamSpec *pspec)
 {
-	PlumaDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
+	LapizDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
 
 	switch (prop_id)
 	{
@@ -135,7 +135,7 @@ lapiz_document_saver_get_property (GObject    *object,
 static void
 lapiz_document_saver_finalize (GObject *object)
 {
-	PlumaDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
+	LapizDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
 
 	g_free (saver->uri);
 
@@ -145,7 +145,7 @@ lapiz_document_saver_finalize (GObject *object)
 static void
 lapiz_document_saver_dispose (GObject *object)
 {
-	PlumaDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
+	LapizDocumentSaver *saver = LAPIZ_DOCUMENT_SAVER (object);
 
 	if (saver->info != NULL)
 	{
@@ -157,7 +157,7 @@ lapiz_document_saver_dispose (GObject *object)
 }
 
 static void
-lapiz_document_saver_class_init (PlumaDocumentSaverClass *klass)
+lapiz_document_saver_class_init (LapizDocumentSaverClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -170,7 +170,7 @@ lapiz_document_saver_class_init (PlumaDocumentSaverClass *klass)
 					 PROP_DOCUMENT,
 					 g_param_spec_object ("document",
 							      "Document",
-							      "The PlumaDocument this PlumaDocumentSaver is associated with",
+							      "The LapizDocument this LapizDocumentSaver is associated with",
 							      LAPIZ_TYPE_DOCUMENT,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY |
@@ -180,7 +180,7 @@ lapiz_document_saver_class_init (PlumaDocumentSaverClass *klass)
 					 PROP_URI,
 					 g_param_spec_string ("uri",
 							      "URI",
-							      "The URI this PlumaDocumentSaver saves the document to",
+							      "The URI this LapizDocumentSaver saves the document to",
 							      "",
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY |
@@ -222,7 +222,7 @@ lapiz_document_saver_class_init (PlumaDocumentSaverClass *klass)
 		g_signal_new ("saving",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaDocumentSaverClass, saving),
+			      G_STRUCT_OFFSET (LapizDocumentSaverClass, saving),
 			      NULL, NULL,
 			      lapiz_marshal_VOID__BOOLEAN_POINTER,
 			      G_TYPE_NONE,
@@ -232,19 +232,19 @@ lapiz_document_saver_class_init (PlumaDocumentSaverClass *klass)
 }
 
 static void
-lapiz_document_saver_init (PlumaDocumentSaver *saver)
+lapiz_document_saver_init (LapizDocumentSaver *saver)
 {
 	saver->used = FALSE;
 }
 
-PlumaDocumentSaver *
-lapiz_document_saver_new (PlumaDocument           *doc,
+LapizDocumentSaver *
+lapiz_document_saver_new (LapizDocument           *doc,
 			  const gchar             *uri,
-			  const PlumaEncoding     *encoding,
-			  PlumaDocumentNewlineType newline_type,
-			  PlumaDocumentSaveFlags   flags)
+			  const LapizEncoding     *encoding,
+			  LapizDocumentNewlineType newline_type,
+			  LapizDocumentSaveFlags   flags)
 {
-	PlumaDocumentSaver *saver;
+	LapizDocumentSaver *saver;
 	GType saver_type;
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
@@ -266,7 +266,7 @@ lapiz_document_saver_new (PlumaDocument           *doc,
 }
 
 void
-lapiz_document_saver_saving (PlumaDocumentSaver *saver,
+lapiz_document_saver_saving (LapizDocumentSaver *saver,
 			     gboolean            completed,
 			     GError             *error)
 {
@@ -292,7 +292,7 @@ lapiz_document_saver_saving (PlumaDocumentSaver *saver,
 }
 
 void
-lapiz_document_saver_save (PlumaDocumentSaver     *saver,
+lapiz_document_saver_save (LapizDocumentSaver     *saver,
 			   GTimeVal               *old_mtime)
 {
 	lapiz_debug (DEBUG_SAVER);
@@ -317,8 +317,8 @@ lapiz_document_saver_save (PlumaDocumentSaver     *saver,
 	LAPIZ_DOCUMENT_SAVER_GET_CLASS (saver)->save (saver, old_mtime);
 }
 
-PlumaDocument *
-lapiz_document_saver_get_document (PlumaDocumentSaver *saver)
+LapizDocument *
+lapiz_document_saver_get_document (LapizDocumentSaver *saver)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_SAVER (saver), NULL);
 
@@ -326,7 +326,7 @@ lapiz_document_saver_get_document (PlumaDocumentSaver *saver)
 }
 
 const gchar *
-lapiz_document_saver_get_uri (PlumaDocumentSaver *saver)
+lapiz_document_saver_get_uri (LapizDocumentSaver *saver)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_SAVER (saver), NULL);
 
@@ -335,7 +335,7 @@ lapiz_document_saver_get_uri (PlumaDocumentSaver *saver)
 
 /* Returns 0 if file size is unknown */
 goffset
-lapiz_document_saver_get_file_size (PlumaDocumentSaver *saver)
+lapiz_document_saver_get_file_size (LapizDocumentSaver *saver)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_SAVER (saver), 0);
 
@@ -343,7 +343,7 @@ lapiz_document_saver_get_file_size (PlumaDocumentSaver *saver)
 }
 
 goffset
-lapiz_document_saver_get_bytes_written (PlumaDocumentSaver *saver)
+lapiz_document_saver_get_bytes_written (LapizDocumentSaver *saver)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_SAVER (saver), 0);
 
@@ -351,7 +351,7 @@ lapiz_document_saver_get_bytes_written (PlumaDocumentSaver *saver)
 }
 
 GFileInfo *
-lapiz_document_saver_get_info (PlumaDocumentSaver *saver)
+lapiz_document_saver_get_info (LapizDocumentSaver *saver)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_SAVER (saver), NULL);
 

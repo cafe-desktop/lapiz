@@ -51,7 +51,7 @@
 
 typedef struct
 {
-	PlumaGioDocumentLoader *loader;
+	LapizGioDocumentLoader *loader;
 	GCancellable 	       *cancellable;
 
 	gssize			read;
@@ -66,13 +66,13 @@ typedef struct
 				G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE "," \
 				LAPIZ_METADATA_ATTRIBUTE_ENCODING
 
-static void	    lapiz_gio_document_loader_load		(PlumaDocumentLoader *loader);
-static gboolean     lapiz_gio_document_loader_cancel		(PlumaDocumentLoader *loader);
-static goffset      lapiz_gio_document_loader_get_bytes_read	(PlumaDocumentLoader *loader);
+static void	    lapiz_gio_document_loader_load		(LapizDocumentLoader *loader);
+static gboolean     lapiz_gio_document_loader_cancel		(LapizDocumentLoader *loader);
+static goffset      lapiz_gio_document_loader_get_bytes_read	(LapizDocumentLoader *loader);
 
 static void open_async_read (AsyncData *async);
 
-struct _PlumaGioDocumentLoaderPrivate
+struct _LapizGioDocumentLoaderPrivate
 {
 	/* Info on the current file */
 	GFile            *gfile;
@@ -83,19 +83,19 @@ struct _PlumaGioDocumentLoaderPrivate
 	GCancellable 	 *cancellable;
 	GInputStream	 *stream;
 	GOutputStream    *output;
-	PlumaSmartCharsetConverter *converter;
+	LapizSmartCharsetConverter *converter;
 
 	gchar             buffer[READ_CHUNK_SIZE];
 
 	GError           *error;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentLoader, lapiz_gio_document_loader, LAPIZ_TYPE_DOCUMENT_LOADER)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizGioDocumentLoader, lapiz_gio_document_loader, LAPIZ_TYPE_DOCUMENT_LOADER)
 
 static void
 lapiz_gio_document_loader_dispose (GObject *object)
 {
-	PlumaGioDocumentLoaderPrivate *priv;
+	LapizGioDocumentLoaderPrivate *priv;
 
 	priv = LAPIZ_GIO_DOCUMENT_LOADER (object)->priv;
 
@@ -140,10 +140,10 @@ lapiz_gio_document_loader_dispose (GObject *object)
 }
 
 static void
-lapiz_gio_document_loader_class_init (PlumaGioDocumentLoaderClass *klass)
+lapiz_gio_document_loader_class_init (LapizGioDocumentLoaderClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	PlumaDocumentLoaderClass *loader_class = LAPIZ_DOCUMENT_LOADER_CLASS (klass);
+	LapizDocumentLoaderClass *loader_class = LAPIZ_DOCUMENT_LOADER_CLASS (klass);
 
 	object_class->dispose = lapiz_gio_document_loader_dispose;
 
@@ -153,7 +153,7 @@ lapiz_gio_document_loader_class_init (PlumaGioDocumentLoaderClass *klass)
 }
 
 static void
-lapiz_gio_document_loader_init (PlumaGioDocumentLoader *gvloader)
+lapiz_gio_document_loader_init (LapizGioDocumentLoader *gvloader)
 {
 	gvloader->priv = lapiz_gio_document_loader_get_instance_private (gvloader);
 
@@ -162,7 +162,7 @@ lapiz_gio_document_loader_init (PlumaGioDocumentLoader *gvloader)
 }
 
 static AsyncData *
-async_data_new (PlumaGioDocumentLoader *gvloader)
+async_data_new (LapizGioDocumentLoader *gvloader)
 {
 	AsyncData *async;
 
@@ -181,10 +181,10 @@ async_data_free (AsyncData *async)
 	g_slice_free (AsyncData, async);
 }
 
-static const PlumaEncoding *
-get_metadata_encoding (PlumaDocumentLoader *loader)
+static const LapizEncoding *
+get_metadata_encoding (LapizDocumentLoader *loader)
 {
-	const PlumaEncoding *enc = NULL;
+	const LapizEncoding *enc = NULL;
 
 #ifndef ENABLE_GVFS_METADATA
 	gchar *charset;
@@ -224,7 +224,7 @@ get_metadata_encoding (PlumaDocumentLoader *loader)
 }
 
 static void
-remote_load_completed_or_failed (PlumaGioDocumentLoader *loader, AsyncData *async)
+remote_load_completed_or_failed (LapizGioDocumentLoader *loader, AsyncData *async)
 {
 	lapiz_document_loader_loading (LAPIZ_DOCUMENT_LOADER (loader),
 				       TRUE,
@@ -295,7 +295,7 @@ static void	read_file_chunk		(AsyncData *async);
 static void
 write_file_chunk (AsyncData *async)
 {
-	PlumaGioDocumentLoader *gvloader;
+	LapizGioDocumentLoader *gvloader;
 	gssize bytes_written;
 	GError *error = NULL;
 
@@ -333,7 +333,7 @@ async_read_cb (GInputStream *stream,
 	       AsyncData    *async)
 {
 	lapiz_debug (DEBUG_LOADER);
-	PlumaGioDocumentLoader *gvloader;
+	LapizGioDocumentLoader *gvloader;
 	GError *error = NULL;
 
 	lapiz_debug (DEBUG_LOADER);
@@ -374,7 +374,7 @@ async_read_cb (GInputStream *stream,
 	/* end of the file, we are done! */
 	if (async->read == 0)
 	{
-		PlumaDocumentLoader *loader;
+		LapizDocumentLoader *loader;
 
 		loader = LAPIZ_DOCUMENT_LOADER (gvloader);
 
@@ -412,7 +412,7 @@ async_read_cb (GInputStream *stream,
 static void
 read_file_chunk (AsyncData *async)
 {
-	PlumaGioDocumentLoader *gvloader;
+	LapizGioDocumentLoader *gvloader;
 
 	gvloader = async->loader;
 
@@ -426,9 +426,9 @@ read_file_chunk (AsyncData *async)
 }
 
 static GSList *
-get_candidate_encodings (PlumaGioDocumentLoader *gvloader)
+get_candidate_encodings (LapizGioDocumentLoader *gvloader)
 {
-	const PlumaEncoding *metadata;
+	const LapizEncoding *metadata;
 	GSList *encodings = NULL;
 
 	encodings = lapiz_prefs_manager_get_auto_detected_encodings ();
@@ -445,8 +445,8 @@ get_candidate_encodings (PlumaGioDocumentLoader *gvloader)
 static void
 finish_query_info (AsyncData *async)
 {
-	PlumaGioDocumentLoader *gvloader;
-	PlumaDocumentLoader *loader;
+	LapizGioDocumentLoader *gvloader;
+	LapizDocumentLoader *loader;
 	GInputStream *conv_stream;
 	GFileInfo *info;
 	GSList *candidate_encodings;
@@ -500,7 +500,7 @@ query_info_cb (GFile        *source,
 	       GAsyncResult *res,
 	       AsyncData    *async)
 {
-	PlumaGioDocumentLoader *gvloader;
+	LapizGioDocumentLoader *gvloader;
 	GFileInfo *info;
 	GError *error = NULL;
 
@@ -565,7 +565,7 @@ mount_ready_callback (GFile        *file,
 static void
 recover_not_mounted (AsyncData *async)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GMountOperation *mount_operation;
 
 	lapiz_debug (DEBUG_LOADER);
@@ -590,7 +590,7 @@ async_read_ready_callback (GObject      *source,
 		           AsyncData    *async)
 {
 	GError *error = NULL;
-	PlumaGioDocumentLoader *gvloader;
+	LapizGioDocumentLoader *gvloader;
 
 	lapiz_debug (DEBUG_LOADER);
 
@@ -651,9 +651,9 @@ open_async_read (AsyncData *async)
 }
 
 static void
-lapiz_gio_document_loader_load (PlumaDocumentLoader *loader)
+lapiz_gio_document_loader_load (LapizDocumentLoader *loader)
 {
-	PlumaGioDocumentLoader *gvloader = LAPIZ_GIO_DOCUMENT_LOADER (loader);
+	LapizGioDocumentLoader *gvloader = LAPIZ_GIO_DOCUMENT_LOADER (loader);
 	AsyncData *async;
 
 	lapiz_debug (DEBUG_LOADER);
@@ -675,15 +675,15 @@ lapiz_gio_document_loader_load (PlumaDocumentLoader *loader)
 }
 
 static goffset
-lapiz_gio_document_loader_get_bytes_read (PlumaDocumentLoader *loader)
+lapiz_gio_document_loader_get_bytes_read (LapizDocumentLoader *loader)
 {
 	return LAPIZ_GIO_DOCUMENT_LOADER (loader)->priv->bytes_read;
 }
 
 static gboolean
-lapiz_gio_document_loader_cancel (PlumaDocumentLoader *loader)
+lapiz_gio_document_loader_cancel (LapizDocumentLoader *loader)
 {
-	PlumaGioDocumentLoader *gvloader = LAPIZ_GIO_DOCUMENT_LOADER (loader);
+	LapizGioDocumentLoader *gvloader = LAPIZ_GIO_DOCUMENT_LOADER (loader);
 
 	if (gvloader->priv->cancellable == NULL)
 		return FALSE;

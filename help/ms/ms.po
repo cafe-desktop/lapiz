@@ -22,8 +22,8 @@ msgstr "Abuyop"
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
-msgstr "Panduan Pluma"
+msgid "Lapiz Manual"
+msgstr "Panduan Lapiz"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -173,7 +173,7 @@ msgid ""
 "The <application>lapiz</application> application enables you to create and "
 "edit text files."
 msgstr ""
-"Aplikasi <application>Pluma</application> membolehkan anda cipta dan sunting"
+"Aplikasi <application>Lapiz</application> membolehkan anda cipta dan sunting"
 " fail teks."
 
 #. (itstool) path: section/para
@@ -213,11 +213,11 @@ msgstr "Menu <guimenu>Aplikasi</guimenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 "Pilih <menuchoice> <guisubmenu>Aksesori</guisubmenu> <guimenuitem>Penyunting"
-" Teks Pluma</guimenuitem> </menuchoice>."
+" Teks Lapiz</guimenuitem> </menuchoice>."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:256
@@ -2023,8 +2023,8 @@ msgstr "Ctrl + Q"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
-msgstr "Keluar dari Pluma."
+msgid "Quit Lapiz."
+msgstr "Keluar dari Lapiz."
 
 #. (itstool) path: section/bridgehead
 #: C/index.docbook:1202

@@ -581,8 +581,8 @@ msgstr ""
 "alle mellomrom."
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -590,13 +590,13 @@ msgstr "En tekstbehandler for skrivebordsmiljøet MATE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Pluma er et lite, men funksjonsrikt tekstprogram designet spesifikt for "
+"Lapiz er et lite, men funksjonsrikt tekstprogram designet spesifikt for "
 "skrivebordet MATE. Det har de fleste standardfunksjoner og støtter i fult "
 "omfang international tekst i Unicode. Avanserte funksjoner som syntaks-"
 "fremhevning og automatisk innrykk av kildekode, utskrivning og redigering av"
@@ -604,11 +604,11 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
-"Pluma kan utvides via et system av programtillegg, som for øyeblikket gir "
+"Lapiz kan utvides via et system av programtillegg, som for øyeblikket gir "
 "støtte for stavekontroll, sammenligning av filer, visning av CVS-"
 "endringslogger og justering av innnrykksnivåer."
 
@@ -908,8 +908,8 @@ msgid "_Close"
 msgstr "_Lukk"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Innstillinger for Pluma"
+msgid "Lapiz Preferences"
+msgstr "Innstillinger for Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1324,45 +1324,45 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma er en liten og lett tekstbehandler for MATE-skrivebordet"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz er en liten og lett tekstbehandler for MATE-skrivebordet"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma er fri programvare. Du kan redistribuere og/eller endre programmet "
+"Lapiz er fri programvare. Du kan redistribuere og/eller endre programmet "
 "under betingelsene gitt i GNU General Public License som utgitt av Free "
 "Software Foundation; enten versjon 2 av lisensen, eller (hvis du ønsker det)"
 " enhver senere versjon."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma distribueres i håp om at programmet er nyttig, men uten NOEN GARANTI, "
+"Lapiz distribueres i håp om at programmet er nyttig, men uten NOEN GARANTI, "
 "ikke engang implisitt garanti om at det er SALGBART eller PASSER ET BESTEMT "
 "FORMÅL. Se GNU General Public License for detaljer."
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"Du skal ha mottatt en kopi av GNU General Public License sammen med Pluma. "
+"Du skal ha mottatt en kopi av GNU General Public License sammen med Lapiz. "
 "Hvis dette ikke er tilfelle, kan du skrive til Free Software Foundation, "
 "Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Om Pluma"
+msgid "About Lapiz"
+msgstr "Om Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

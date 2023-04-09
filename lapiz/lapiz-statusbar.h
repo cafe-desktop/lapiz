@@ -35,25 +35,25 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_STATUSBAR		(lapiz_statusbar_get_type ())
-#define LAPIZ_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_STATUSBAR, PlumaStatusbar))
-#define LAPIZ_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_STATUSBAR, PlumaStatusbarClass))
+#define LAPIZ_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_STATUSBAR, LapizStatusbar))
+#define LAPIZ_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_STATUSBAR, LapizStatusbarClass))
 #define LAPIZ_IS_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_STATUSBAR))
 #define LAPIZ_IS_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_STATUSBAR))
-#define LAPIZ_STATUSBAR_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_STATUSBAR, PlumaStatusbarClass))
+#define LAPIZ_STATUSBAR_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_STATUSBAR, LapizStatusbarClass))
 
-typedef struct _PlumaStatusbar		PlumaStatusbar;
-typedef struct _PlumaStatusbarPrivate	PlumaStatusbarPrivate;
-typedef struct _PlumaStatusbarClass	PlumaStatusbarClass;
+typedef struct _LapizStatusbar		LapizStatusbar;
+typedef struct _LapizStatusbarPrivate	LapizStatusbarPrivate;
+typedef struct _LapizStatusbarClass	LapizStatusbarClass;
 
-struct _PlumaStatusbar
+struct _LapizStatusbar
 {
         GtkStatusbar parent;
 
 	/* <private/> */
-        PlumaStatusbarPrivate *priv;
+        LapizStatusbarPrivate *priv;
 };
 
-struct _PlumaStatusbarClass
+struct _LapizStatusbarClass
 {
         GtkStatusbarClass parent_class;
 };
@@ -62,20 +62,20 @@ GType		 lapiz_statusbar_get_type		(void) G_GNUC_CONST;
 
 GtkWidget	*lapiz_statusbar_new			(void);
 
-void		 lapiz_statusbar_set_window_state	(PlumaStatusbar   *statusbar,
-							 PlumaWindowState  state,
+void		 lapiz_statusbar_set_window_state	(LapizStatusbar   *statusbar,
+							 LapizWindowState  state,
 							 gint              num_of_errors);
 
-void		 lapiz_statusbar_set_overwrite		(PlumaStatusbar   *statusbar,
+void		 lapiz_statusbar_set_overwrite		(LapizStatusbar   *statusbar,
 							 gboolean          overwrite);
 
-void		 lapiz_statusbar_set_cursor_position	(PlumaStatusbar   *statusbar,
+void		 lapiz_statusbar_set_cursor_position	(LapizStatusbar   *statusbar,
 							 gint              line,
 							 gint              col);
 
-void		 lapiz_statusbar_clear_overwrite 	(PlumaStatusbar   *statusbar);
+void		 lapiz_statusbar_clear_overwrite 	(LapizStatusbar   *statusbar);
 
-void		 lapiz_statusbar_flash_message		(PlumaStatusbar   *statusbar,
+void		 lapiz_statusbar_flash_message		(LapizStatusbar   *statusbar,
 							 guint             context_id,
 							 const gchar      *format,
 							 ...) G_GNUC_PRINTF(3, 4);

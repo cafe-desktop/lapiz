@@ -27,8 +27,8 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
-msgstr "Manual til Pluma"
+msgid "Lapiz Manual"
+msgstr "Manual til Lapiz"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -78,7 +78,7 @@ msgstr "Sun Microsystems"
 #. (itstool) path: othercredit/contrib
 #: C/index.docbook:98
 msgid "Provided information from earlier revisions of the lapiz application."
-msgstr "Tilbudt information fra tidligere revisioner af programmet Pluma."
+msgstr "Tilbudt information fra tidligere revisioner af programmet Lapiz."
 
 #. (itstool) path: othercredit/contrib
 #: C/index.docbook:105
@@ -217,10 +217,10 @@ msgstr "Menuen <guimenu>Programmer</guimenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
-"Vælg <menuchoice> <guisubmenu>Tilbehør</guisubmenu> <guimenuitem>Pluma - "
+"Vælg <menuchoice> <guisubmenu>Tilbehør</guisubmenu> <guimenuitem>Lapiz - "
 "tekstredigering</guimenuitem> </menuchoice>."
 
 #. (itstool) path: varlistentry/term
@@ -245,7 +245,7 @@ msgstr ""
 #. (itstool) path: info/title
 #: C/index.docbook:267
 msgid "The lapiz Window"
-msgstr "Pluma-vinduet"
+msgstr "Lapiz-vinduet"
 
 #. (itstool) path: section/para
 #: C/index.docbook:269
@@ -259,19 +259,19 @@ msgstr ""
 #. (itstool) path: info/title
 #: C/index.docbook:273
 msgid "lapiz Window"
-msgstr "Pluma-vindue"
+msgstr "Lapiz-vindue"
 
 #. (itstool) path: textobject/phrase
 #: C/index.docbook:281
 msgid "Shows lapiz main window."
-msgstr "Viser hovedvinduet for Pluma"
+msgstr "Viser hovedvinduet for Lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:287
 msgid ""
 "The <application>lapiz</application> window contains the following elements:"
 msgstr ""
-"<application>Pluma</application>-vinduet indeholder følgende elementer:"
+"<application>Lapiz</application>-vinduet indeholder følgende elementer:"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:290
@@ -421,7 +421,7 @@ msgid ""
 "<link xlink:href=\"help:mate-user-guide/shortcuts-apps\">User Guide</link>."
 msgstr ""
 "Ligesom i andre MATE-programmer kan handlinger i "
-"<application>Pluma</application> udføres på flere forskellige måder: med "
+"<application>Lapiz</application> udføres på flere forskellige måder: med "
 "menuen, med værktøjslinjen eller med genvejstasterne. Genvejstaster, som er "
 "generelle for alle programmer, er vist i <link xlink:href=\"help:mate-user-"
 "guide/shortcuts-apps\">brugervejledningen</link>."
@@ -466,9 +466,9 @@ msgid ""
 "<application>lapiz</application> from a command line."
 msgstr ""
 "Se manualsiden for <link xlink:href=\"man:lapiz\"> <citerefentry> "
-"<refentrytitle>Pluma</refentrytitle> <manvolnum>1</manvolnum> "
+"<refentrytitle>Lapiz</refentrytitle> <manvolnum>1</manvolnum> "
 "</citerefentry> </link> for yderligere information om hvordan "
-"<application>Pluma</application> startes fra kommandolinjen."
+"<application>Lapiz</application> startes fra kommandolinjen."
 
 #. (itstool) path: info/title
 #: C/index.docbook:357
@@ -490,7 +490,7 @@ msgstr ""
 "For at oprette et nyt dokument skal du vælge <menuchoice> "
 "<guimenu>Fil</guimenu> <guimenuitem>Ny</guimenuitem> </menuchoice>. "
 "Programmet viser et nyt, tomt dokument i "
-"<application>Pluma</application>-vinduet."
+"<application>Lapiz</application>-vinduet."
 
 #. (itstool) path: info/title
 #: C/index.docbook:371 C/index.docbook:2098
@@ -510,7 +510,7 @@ msgstr ""
 "<guimenu>Fil</guimenu> <guimenuitem>Åbn</guimenuitem> </menuchoice> for at "
 "vise dialogen <guilabel>Åbn filer</guilabel>. Vælg den fil som du ønsker at "
 "åbne og klik derefter på <guibutton>Åbn</guibutton>. Filen vises herefter i "
-"<application>Pluma</application>-vinduet."
+"<application>Lapiz</application>-vinduet."
 
 #. (itstool) path: textobject/phrase
 #: C/index.docbook:379
@@ -2035,8 +2035,8 @@ msgstr "Ctrl + Q"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
-msgstr "Afslut Pluma."
+msgid "Quit Lapiz."
+msgstr "Afslut Lapiz."
 
 #. (itstool) path: section/bridgehead
 #: C/index.docbook:1202
@@ -2752,7 +2752,7 @@ msgstr ""
 #: C/index.docbook:1761
 msgid "Several plugins come built-in with <application>lapiz</application>."
 msgstr ""
-"Flere udvidelsesmoduler er indbygget med <application>Pluma</application>."
+"Flere udvidelsesmoduler er indbygget med <application>Lapiz</application>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:1762
@@ -3689,7 +3689,7 @@ msgstr ""
 "xlink:href=\"man:strftime\"> <citerefentry> "
 "<refentrytitle>strftime</refentrytitle> <manvolnum>3</manvolnum> "
 "</citerefentry> </link>. Når du vælger denne mulighed vil "
-"<application>Pluma</application> ikke spørge om dato/tid-format når du "
+"<application>Lapiz</application> ikke spørge om dato/tid-format når du "
 "vælger <menuchoice> <guimenu>Rediger</guimenu> <guimenuitem>Indsæt dato og "
 "tid</guimenuitem> </menuchoice>."
 
@@ -4940,6 +4940,6 @@ msgid ""
 "Feedback Page</link>."
 msgstr ""
 "For at rapportere fejl eller foreslå forbedringer vedrørende programmet "
-"<application>Pluma</application> eller denne manual, bør du følge "
+"<application>Lapiz</application> eller denne manual, bør du følge "
 "instruktionerne på <link xlink:href=\"help:mate-user-guide/feedback\">MATE-"
 "tilbagemeldingssiden</link>."

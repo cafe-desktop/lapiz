@@ -49,48 +49,48 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_NOTEBOOK		(lapiz_notebook_get_type ())
-#define LAPIZ_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_NOTEBOOK, PlumaNotebook))
-#define LAPIZ_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_NOTEBOOK, PlumaNotebookClass))
+#define LAPIZ_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_NOTEBOOK, LapizNotebook))
+#define LAPIZ_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_NOTEBOOK, LapizNotebookClass))
 #define LAPIZ_IS_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_NOTEBOOK))
 #define LAPIZ_IS_NOTEBOOK_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_NOTEBOOK))
-#define LAPIZ_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_NOTEBOOK, PlumaNotebookClass))
+#define LAPIZ_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_NOTEBOOK, LapizNotebookClass))
 
 /* Private structure type */
-typedef struct _PlumaNotebookPrivate	PlumaNotebookPrivate;
+typedef struct _LapizNotebookPrivate	LapizNotebookPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaNotebook		PlumaNotebook;
+typedef struct _LapizNotebook		LapizNotebook;
 
-struct _PlumaNotebook
+struct _LapizNotebook
 {
 	GtkNotebook notebook;
 
 	/*< private >*/
-        PlumaNotebookPrivate *priv;
+        LapizNotebookPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaNotebookClass	PlumaNotebookClass;
+typedef struct _LapizNotebookClass	LapizNotebookClass;
 
-struct _PlumaNotebookClass
+struct _LapizNotebookClass
 {
         GtkNotebookClass parent_class;
 
 	/* Signals */
-	void	 (* tab_added)      (PlumaNotebook *notebook,
-				     PlumaTab      *tab);
-	void	 (* tab_removed)    (PlumaNotebook *notebook,
-				     PlumaTab      *tab);
-	void	 (* tab_detached)   (PlumaNotebook *notebook,
-				     PlumaTab      *tab);
-	void	 (* tabs_reordered) (PlumaNotebook *notebook);
+	void	 (* tab_added)      (LapizNotebook *notebook,
+				     LapizTab      *tab);
+	void	 (* tab_removed)    (LapizNotebook *notebook,
+				     LapizTab      *tab);
+	void	 (* tab_detached)   (LapizNotebook *notebook,
+				     LapizTab      *tab);
+	void	 (* tabs_reordered) (LapizNotebook *notebook);
 	void	 (* tab_close_request)
-				    (PlumaNotebook *notebook,
-				     PlumaTab      *tab);
+				    (LapizNotebook *notebook,
+				     LapizTab      *tab);
 };
 
 /*
@@ -100,38 +100,38 @@ GType		lapiz_notebook_get_type		(void) G_GNUC_CONST;
 
 GtkWidget      *lapiz_notebook_new		(void);
 
-void		lapiz_notebook_add_tab		(PlumaNotebook *nb,
-						 PlumaTab      *tab,
+void		lapiz_notebook_add_tab		(LapizNotebook *nb,
+						 LapizTab      *tab,
 						 gint           position,
 						 gboolean       jump_to);
 
-void		lapiz_notebook_remove_tab	(PlumaNotebook *nb,
-						 PlumaTab      *tab);
+void		lapiz_notebook_remove_tab	(LapizNotebook *nb,
+						 LapizTab      *tab);
 
-void		lapiz_notebook_remove_all_tabs 	(PlumaNotebook *nb);
+void		lapiz_notebook_remove_all_tabs 	(LapizNotebook *nb);
 
-void		lapiz_notebook_reorder_tab	(PlumaNotebook *src,
-			    			 PlumaTab      *tab,
+void		lapiz_notebook_reorder_tab	(LapizNotebook *src,
+			    			 LapizTab      *tab,
 			    			 gint           dest_position);
 
-void            lapiz_notebook_move_tab		(PlumaNotebook *src,
-						 PlumaNotebook *dest,
-						 PlumaTab      *tab,
+void            lapiz_notebook_move_tab		(LapizNotebook *src,
+						 LapizNotebook *dest,
+						 LapizTab      *tab,
 						 gint           dest_position);
 
 void		lapiz_notebook_set_close_buttons_sensitive
-						(PlumaNotebook *nb,
+						(LapizNotebook *nb,
 						 gboolean       sensitive);
 
 gboolean	lapiz_notebook_get_close_buttons_sensitive
-						(PlumaNotebook *nb);
+						(LapizNotebook *nb);
 
 void		lapiz_notebook_set_tab_drag_and_drop_enabled
-						(PlumaNotebook *nb,
+						(LapizNotebook *nb,
 						 gboolean       enable);
 
 gboolean	lapiz_notebook_get_tab_drag_and_drop_enabled
-						(PlumaNotebook *nb);
+						(LapizNotebook *nb);
 
 G_END_DECLS
 

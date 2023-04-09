@@ -45,17 +45,17 @@ enum {
 	PROP_HAS_CANCEL_BUTTON
 };
 
-struct _PlumaProgressMessageAreaPrivate
+struct _LapizProgressMessageAreaPrivate
 {
 	GtkWidget *image;
 	GtkWidget *label;
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaProgressMessageArea, lapiz_progress_message_area, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizProgressMessageArea, lapiz_progress_message_area, GTK_TYPE_INFO_BAR)
 
 static void
-lapiz_progress_message_area_set_has_cancel_button (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_has_cancel_button (LapizProgressMessageArea *area,
 						   gboolean                  has_button)
 {
 	if (has_button)
@@ -73,7 +73,7 @@ lapiz_progress_message_area_set_property (GObject      *object,
 					  const GValue *value,
 					  GParamSpec   *pspec)
 {
-	PlumaProgressMessageArea *area;
+	LapizProgressMessageArea *area;
 
 	area = LAPIZ_PROGRESS_MESSAGE_AREA (object);
 
@@ -104,7 +104,7 @@ lapiz_progress_message_area_get_property (GObject      *object,
 }
 
 static void
-lapiz_progress_message_area_class_init (PlumaProgressMessageAreaClass *klass)
+lapiz_progress_message_area_class_init (LapizProgressMessageAreaClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -123,7 +123,7 @@ lapiz_progress_message_area_class_init (PlumaProgressMessageAreaClass *klass)
 }
 
 static void
-lapiz_progress_message_area_init (PlumaProgressMessageArea *area)
+lapiz_progress_message_area_init (LapizProgressMessageArea *area)
 {
 	GtkWidget *vbox;
 	GtkWidget *hbox;
@@ -168,7 +168,7 @@ lapiz_progress_message_area_new (const gchar *image_id,
 				 const gchar *markup,
 				 gboolean     has_cancel)
 {
-	PlumaProgressMessageArea *area;
+	LapizProgressMessageArea *area;
 
 	g_return_val_if_fail (image_id != NULL, NULL);
 	g_return_val_if_fail (markup != NULL, NULL);
@@ -187,7 +187,7 @@ lapiz_progress_message_area_new (const gchar *image_id,
 }
 
 void
-lapiz_progress_message_area_set_image (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_image (LapizProgressMessageArea *area,
 				       const gchar              *image_id)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
@@ -199,7 +199,7 @@ lapiz_progress_message_area_set_image (PlumaProgressMessageArea *area,
 }
 
 void
-lapiz_progress_message_area_set_markup (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_markup (LapizProgressMessageArea *area,
 					const gchar              *markup)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
@@ -210,7 +210,7 @@ lapiz_progress_message_area_set_markup (PlumaProgressMessageArea *area,
 }
 
 void
-lapiz_progress_message_area_set_text (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_text (LapizProgressMessageArea *area,
 				      const gchar              *text)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
@@ -221,7 +221,7 @@ lapiz_progress_message_area_set_text (PlumaProgressMessageArea *area,
 }
 
 void
-lapiz_progress_message_area_set_fraction (PlumaProgressMessageArea *area,
+lapiz_progress_message_area_set_fraction (LapizProgressMessageArea *area,
 					  gdouble                   fraction)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
@@ -231,7 +231,7 @@ lapiz_progress_message_area_set_fraction (PlumaProgressMessageArea *area,
 }
 
 void
-lapiz_progress_message_area_pulse (PlumaProgressMessageArea *area)
+lapiz_progress_message_area_pulse (LapizProgressMessageArea *area)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 

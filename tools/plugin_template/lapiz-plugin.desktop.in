@@ -1,4 +1,4 @@
-[Pluma Plugin]
+[Lapiz Plugin]
 Module=##(PLUGIN_MODULE)
 IAge=2
 _Name=##(PLUGIN_NAME)

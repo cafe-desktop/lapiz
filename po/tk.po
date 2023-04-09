@@ -84,7 +84,7 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Plumaiň gaýd eden faýllary üçin zapas bejerşi. Siz zapas faýllarynyň ??? "
+"Lapiziň gaýd eden faýllary üçin zapas bejerşi. Siz zapas faýllarynyň ??? "
 "\"Zapas Nusga ???\" seçgisi bilen düzip bilersiňiz."
 
 #: data/org.mate.lapiz.gschema.xml.in:41
@@ -170,7 +170,7 @@ msgstr "Seleň Girdir"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Plumaiň täb karakterlerniň ýerine seleň girdirşi."
+msgstr "Lapiziň täb karakterlerniň ýerine seleň girdirşi."
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -186,7 +186,7 @@ msgstr "Hat Sanlaryny Görköz"
 
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
-msgstr "Plumaiň hat sanlaryny edit meýdançasynda görkezşi."
+msgstr "Lapiziň hat sanlaryny edit meýdançasynda görkezşi."
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -210,7 +210,7 @@ msgstr "Sag Gabdaly Görköz"
 
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
-msgstr "Plumaiň sag gabdaly edit meýdançasynda görkezşi."
+msgstr "Lapiziň sag gabdaly edit meýdançasynda görkezşi."
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -260,7 +260,7 @@ msgstr "Sintaks Ýagtylamagny Mümkin Et"
 
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr "Plumaiň sintaksy ýagtylamaky mümkin edşi."
+msgstr "Lapiziň sintaksy ýagtylamaky mümkin edşi."
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -345,7 +345,7 @@ msgstr "Sintaks Ýagtylygny Çapla"
 #: data/org.mate.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
-msgstr "Plumaiň sened aplananda syntaks ýagtylygny çaplaşi."
+msgstr "Lapiziň sened aplananda syntaks ýagtylygny çaplaşi."
 
 #: data/org.mate.lapiz.gschema.xml.in:171
 msgid "Print Header"
@@ -354,7 +354,7 @@ msgstr "Başlygy Çapla"
 #: data/org.mate.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
-msgstr "Plumaiň çapda sened başlygyny girişdirişi."
+msgstr "Lapiziň çapda sened başlygyny girişdirişi."
 
 #: data/org.mate.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
@@ -534,7 +534,7 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
+msgid "Lapiz"
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:8
@@ -543,7 +543,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -552,7 +552,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -836,7 +836,7 @@ msgid "_Close"
 msgstr "_Ýap"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
+msgid "Lapiz Preferences"
 msgstr ""
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
@@ -1244,12 +1244,12 @@ msgid "Sun Microsystems"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1257,7 +1257,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1266,12 +1266,12 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
+msgid "About Lapiz"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:116

@@ -46,8 +46,8 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
-msgstr "Pluma 手册"
+msgid "Lapiz Manual"
+msgstr "Lapiz 手册"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -174,7 +174,7 @@ msgstr "MATE 文档团队"
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
 msgid "This manual describes version 1.10 of lapiz."
-msgstr "本手册涉及了 Pluma 的 1.10 版本"
+msgstr "本手册涉及了 Lapiz 的 1.10 版本"
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:216
@@ -231,11 +231,11 @@ msgstr "<guimenu>应用程序</guimenu>菜单"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 "Choose<menuchoice> <guisubmenu>附件</guisubmenu> "
-"<guimenuitem>Pluma文本编辑器</guimenuitem> </menuchoice>。"
+"<guimenuitem>Lapiz文本编辑器</guimenuitem> </menuchoice>。"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:256
@@ -1833,8 +1833,8 @@ msgstr "Ctrl + Q"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
-msgstr "退出 Pluma。"
+msgid "Quit Lapiz."
+msgstr "退出 Lapiz。"
 
 #. (itstool) path: section/bridgehead
 #: C/index.docbook:1202

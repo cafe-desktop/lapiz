@@ -35,27 +35,27 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_HISTORY_ENTRY             (lapiz_history_entry_get_type ())
-#define LAPIZ_HISTORY_ENTRY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_HISTORY_ENTRY, PlumaHistoryEntry))
-#define LAPIZ_HISTORY_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_HISTORY_ENTRY, PlumaHistoryEntryClass))
+#define LAPIZ_HISTORY_ENTRY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_HISTORY_ENTRY, LapizHistoryEntry))
+#define LAPIZ_HISTORY_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_HISTORY_ENTRY, LapizHistoryEntryClass))
 #define LAPIZ_IS_HISTORY_ENTRY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_HISTORY_ENTRY))
 #define LAPIZ_IS_HISTORY_ENTRY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_HISTORY_ENTRY))
-#define LAPIZ_HISTORY_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_HISTORY_ENTRY, PlumaHistoryEntryClass))
+#define LAPIZ_HISTORY_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_HISTORY_ENTRY, LapizHistoryEntryClass))
 
 
-typedef struct _PlumaHistoryEntry        PlumaHistoryEntry;
-typedef struct _PlumaHistoryEntryClass   PlumaHistoryEntryClass;
-typedef struct _PlumaHistoryEntryPrivate PlumaHistoryEntryPrivate;
+typedef struct _LapizHistoryEntry        LapizHistoryEntry;
+typedef struct _LapizHistoryEntryClass   LapizHistoryEntryClass;
+typedef struct _LapizHistoryEntryPrivate LapizHistoryEntryPrivate;
 
-struct _PlumaHistoryEntryClass
+struct _LapizHistoryEntryClass
 {
 	GtkComboBoxTextClass parent_class;
 };
 
-struct _PlumaHistoryEntry
+struct _LapizHistoryEntry
 {
 	GtkComboBoxText parent_instance;
 
-	PlumaHistoryEntryPrivate *priv;
+	LapizHistoryEntryPrivate *priv;
 };
 
 GType		 lapiz_history_entry_get_type	(void) G_GNUC_CONST;
@@ -63,33 +63,33 @@ GType		 lapiz_history_entry_get_type	(void) G_GNUC_CONST;
 GtkWidget	*lapiz_history_entry_new		(const gchar       *history_id,
 							 gboolean           enable_completion);
 
-void		 lapiz_history_entry_prepend_text	(PlumaHistoryEntry *entry,
+void		 lapiz_history_entry_prepend_text	(LapizHistoryEntry *entry,
 							 const gchar       *text);
 
-void		 lapiz_history_entry_append_text	(PlumaHistoryEntry *entry,
+void		 lapiz_history_entry_append_text	(LapizHistoryEntry *entry,
 							 const gchar       *text);
 
-void		 lapiz_history_entry_clear		(PlumaHistoryEntry *entry);
+void		 lapiz_history_entry_clear		(LapizHistoryEntry *entry);
 
-void		 lapiz_history_entry_set_history_length	(PlumaHistoryEntry *entry,
+void		 lapiz_history_entry_set_history_length	(LapizHistoryEntry *entry,
 							 guint              max_saved);
 
-guint		 lapiz_history_entry_get_history_length	(PlumaHistoryEntry *gentry);
+guint		 lapiz_history_entry_get_history_length	(LapizHistoryEntry *gentry);
 
-gchar		*lapiz_history_entry_get_history_id	(PlumaHistoryEntry *entry);
+gchar		*lapiz_history_entry_get_history_id	(LapizHistoryEntry *entry);
 
 void             lapiz_history_entry_set_enable_completion
-							(PlumaHistoryEntry *entry,
+							(LapizHistoryEntry *entry,
 							 gboolean           enable);
 
 gboolean         lapiz_history_entry_get_enable_completion
-							(PlumaHistoryEntry *entry);
+							(LapizHistoryEntry *entry);
 
-GtkWidget	*lapiz_history_entry_get_entry		(PlumaHistoryEntry *entry);
+GtkWidget	*lapiz_history_entry_get_entry		(LapizHistoryEntry *entry);
 
-typedef gchar * (* PlumaHistoryEntryEscapeFunc) (const gchar *str);
-void		lapiz_history_entry_set_escape_func	(PlumaHistoryEntry *entry,
-							 PlumaHistoryEntryEscapeFunc escape_func);
+typedef gchar * (* LapizHistoryEntryEscapeFunc) (const gchar *str);
+void		lapiz_history_entry_set_escape_func	(LapizHistoryEntry *entry,
+							 LapizHistoryEntryEscapeFunc escape_func);
 
 G_END_DECLS
 

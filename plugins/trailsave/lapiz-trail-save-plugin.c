@@ -31,7 +31,7 @@
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
-struct _PlumaTrailSavePluginPrivate
+struct _LapizTrailSavePluginPrivate
 {
 	GtkWidget *window;
 };
@@ -41,11 +41,11 @@ enum {
 	PROP_OBJECT
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaTrailSavePlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTrailSavePlugin,
                                 lapiz_trail_save_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaTrailSavePlugin)
+                                G_ADD_PRIVATE_DYNAMIC (LapizTrailSavePlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init))
 
@@ -126,11 +126,11 @@ strip_trailing_spaces (GtkTextBuffer *text_buffer)
 }
 
 static void
-on_save (PlumaDocument         *document,
+on_save (LapizDocument         *document,
 	 const gchar           *uri,
-	 PlumaEncoding         *encoding,
-	 PlumaDocumentSaveFlags save_flags,
-	 PlumaTrailSavePlugin  *plugin)
+	 LapizEncoding         *encoding,
+	 LapizDocumentSaveFlags save_flags,
+	 LapizTrailSavePlugin  *plugin)
 {
 	GtkTextBuffer *text_buffer = GTK_TEXT_BUFFER (document);
 
@@ -138,22 +138,22 @@ on_save (PlumaDocument         *document,
 }
 
 static void
-on_tab_added (PlumaWindow *window,
-	      PlumaTab    *tab,
-	      PlumaTrailSavePlugin *plugin)
+on_tab_added (LapizWindow *window,
+	      LapizTab    *tab,
+	      LapizTrailSavePlugin *plugin)
 {
-	PlumaDocument *document;
+	LapizDocument *document;
 
 	document = lapiz_tab_get_document (tab);
 	g_signal_connect (document, "save", G_CALLBACK (on_save), plugin);
 }
 
 static void
-on_tab_removed (PlumaWindow *window,
-		PlumaTab    *tab,
-		PlumaTrailSavePlugin *plugin)
+on_tab_removed (LapizWindow *window,
+		LapizTab    *tab,
+		LapizTrailSavePlugin *plugin)
 {
-	PlumaDocument *document;
+	LapizDocument *document;
 
 	document = lapiz_tab_get_document (tab);
 	g_signal_handlers_disconnect_by_data (document, plugin);
@@ -162,11 +162,11 @@ on_tab_removed (PlumaWindow *window,
 static void
 lapiz_trail_save_plugin_activate (PeasActivatable *activatable)
 {
-	PlumaTrailSavePlugin *plugin;
-	PlumaWindow *window;
+	LapizTrailSavePlugin *plugin;
+	LapizWindow *window;
 	GList *documents;
 	GList *documents_iter;
-	PlumaDocument *document;
+	LapizDocument *document;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -182,7 +182,7 @@ lapiz_trail_save_plugin_activate (PeasActivatable *activatable)
 	     documents_iter && documents_iter->data;
 	     documents_iter = documents_iter->next)
 	{
-		document = (PlumaDocument *) documents_iter->data;
+		document = (LapizDocument *) documents_iter->data;
 		g_signal_connect (document, "save", G_CALLBACK (on_save), plugin);
 	}
 
@@ -192,11 +192,11 @@ lapiz_trail_save_plugin_activate (PeasActivatable *activatable)
 static void
 lapiz_trail_save_plugin_deactivate (PeasActivatable *activatable)
 {
-	PlumaTrailSavePlugin *plugin;
-	PlumaWindow *window;
+	LapizTrailSavePlugin *plugin;
+	LapizWindow *window;
 	GList *documents;
 	GList *documents_iter;
-	PlumaDocument *document;
+	LapizDocument *document;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -211,7 +211,7 @@ lapiz_trail_save_plugin_deactivate (PeasActivatable *activatable)
 	     documents_iter && documents_iter->data;
 	     documents_iter = documents_iter->next)
 	{
-		document = (PlumaDocument *) documents_iter->data;
+		document = (LapizDocument *) documents_iter->data;
 		g_signal_handlers_disconnect_by_data (document, plugin);
 	}
 
@@ -219,9 +219,9 @@ lapiz_trail_save_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_trail_save_plugin_init (PlumaTrailSavePlugin *plugin)
+lapiz_trail_save_plugin_init (LapizTrailSavePlugin *plugin)
 {
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTrailSavePlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTrailSavePlugin initializing");
 
 	plugin->priv = lapiz_trail_save_plugin_get_instance_private (plugin);
 }
@@ -229,9 +229,9 @@ lapiz_trail_save_plugin_init (PlumaTrailSavePlugin *plugin)
 static void
 lapiz_trail_save_plugin_dispose (GObject *object)
 {
-	PlumaTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
+	LapizTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTrailSavePlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTrailSavePlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -248,7 +248,7 @@ lapiz_trail_save_plugin_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-	PlumaTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
+	LapizTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -268,7 +268,7 @@ lapiz_trail_save_plugin_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-	PlumaTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
+	LapizTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -283,7 +283,7 @@ lapiz_trail_save_plugin_get_property (GObject    *object,
 }
 
 static void
-lapiz_trail_save_plugin_class_init (PlumaTrailSavePluginClass *klass)
+lapiz_trail_save_plugin_class_init (LapizTrailSavePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -295,7 +295,7 @@ lapiz_trail_save_plugin_class_init (PlumaTrailSavePluginClass *klass)
 }
 
 static void
-lapiz_trail_save_plugin_class_finalize (PlumaTrailSavePluginClass *klass)
+lapiz_trail_save_plugin_class_finalize (LapizTrailSavePluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }

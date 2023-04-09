@@ -1,5 +1,5 @@
 /*
- * lapiz-file-bookmarks-store.h - Pluma plugin providing easy file access
+ * lapiz-file-bookmarks-store.h - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -26,16 +26,16 @@
 
 G_BEGIN_DECLS
 #define LAPIZ_TYPE_FILE_BOOKMARKS_STORE			(lapiz_file_bookmarks_store_get_type ())
-#define LAPIZ_FILE_BOOKMARKS_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, PlumaFileBookmarksStore))
-#define LAPIZ_FILE_BOOKMARKS_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, PlumaFileBookmarksStore const))
-#define LAPIZ_FILE_BOOKMARKS_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, PlumaFileBookmarksStoreClass))
+#define LAPIZ_FILE_BOOKMARKS_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, LapizFileBookmarksStore))
+#define LAPIZ_FILE_BOOKMARKS_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, LapizFileBookmarksStore const))
+#define LAPIZ_FILE_BOOKMARKS_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, LapizFileBookmarksStoreClass))
 #define LAPIZ_IS_FILE_BOOKMARKS_STORE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_FILE_BOOKMARKS_STORE))
 #define LAPIZ_IS_FILE_BOOKMARKS_STORE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_FILE_BOOKMARKS_STORE))
-#define LAPIZ_FILE_BOOKMARKS_STORE_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, PlumaFileBookmarksStoreClass))
+#define LAPIZ_FILE_BOOKMARKS_STORE_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BOOKMARKS_STORE, LapizFileBookmarksStoreClass))
 
-typedef struct _PlumaFileBookmarksStore        PlumaFileBookmarksStore;
-typedef struct _PlumaFileBookmarksStoreClass   PlumaFileBookmarksStoreClass;
-typedef struct _PlumaFileBookmarksStorePrivate PlumaFileBookmarksStorePrivate;
+typedef struct _LapizFileBookmarksStore        LapizFileBookmarksStore;
+typedef struct _LapizFileBookmarksStoreClass   LapizFileBookmarksStoreClass;
+typedef struct _LapizFileBookmarksStorePrivate LapizFileBookmarksStorePrivate;
 
 enum
 {
@@ -64,14 +64,14 @@ enum
 	LAPIZ_FILE_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK	= 1 << 12  /* A local gtk bookmark */
 };
 
-struct _PlumaFileBookmarksStore
+struct _LapizFileBookmarksStore
 {
 	GtkTreeStore parent;
 
-	PlumaFileBookmarksStorePrivate *priv;
+	LapizFileBookmarksStorePrivate *priv;
 };
 
-struct _PlumaFileBookmarksStoreClass
+struct _LapizFileBookmarksStoreClass
 {
 	GtkTreeStoreClass parent_class;
 };
@@ -79,10 +79,10 @@ struct _PlumaFileBookmarksStoreClass
 GType lapiz_file_bookmarks_store_get_type               (void) G_GNUC_CONST;
 void _lapiz_file_bookmarks_store_register_type          (GTypeModule * module);
 
-PlumaFileBookmarksStore *lapiz_file_bookmarks_store_new (void);
-gchar *lapiz_file_bookmarks_store_get_uri               (PlumaFileBookmarksStore * model,
+LapizFileBookmarksStore *lapiz_file_bookmarks_store_new (void);
+gchar *lapiz_file_bookmarks_store_get_uri               (LapizFileBookmarksStore * model,
 					                 GtkTreeIter * iter);
-void lapiz_file_bookmarks_store_refresh                 (PlumaFileBookmarksStore * model);
+void lapiz_file_bookmarks_store_refresh                 (LapizFileBookmarksStore * model);
 
 G_END_DECLS
 #endif				/* __LAPIZ_FILE_BOOKMARKS_STORE_H__ */

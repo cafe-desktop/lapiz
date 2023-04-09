@@ -555,7 +555,7 @@ create_conversion_error_message_area (const gchar *primary_text,
 
 GtkWidget *
 lapiz_io_loading_error_message_area_new (const gchar         *uri,
-					 const PlumaEncoding *encoding,
+					 const LapizEncoding *encoding,
 					 const GError        *error)
 {
 	gchar *error_message = NULL;
@@ -667,7 +667,7 @@ lapiz_io_loading_error_message_area_new (const gchar         *uri,
 GtkWidget *
 lapiz_conversion_error_while_saving_message_area_new (
 						const gchar         *uri,
-						const PlumaEncoding *encoding,
+						const LapizEncoding *encoding,
 				    		const GError        *error)
 {
 	gchar *error_message = NULL;
@@ -719,7 +719,7 @@ lapiz_conversion_error_while_saving_message_area_new (
 	return message_area;
 }
 
-const PlumaEncoding *
+const LapizEncoding *
 lapiz_conversion_error_message_area_get_encoding (GtkWidget *message_area)
 {
 	gpointer menu;

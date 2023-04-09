@@ -44,9 +44,9 @@
 
 void
 _lapiz_cmd_edit_undo (GtkAction   *action,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 	GtkSourceBuffer *active_document;
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -65,9 +65,9 @@ _lapiz_cmd_edit_undo (GtkAction   *action,
 
 void
 _lapiz_cmd_edit_redo (GtkAction   *action,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 	GtkSourceBuffer *active_document;
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -86,9 +86,9 @@ _lapiz_cmd_edit_redo (GtkAction   *action,
 
 void
 _lapiz_cmd_edit_cut (GtkAction   *action,
-		    PlumaWindow *window)
+		    LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -102,9 +102,9 @@ _lapiz_cmd_edit_cut (GtkAction   *action,
 
 void
 _lapiz_cmd_edit_copy (GtkAction   *action,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -118,9 +118,9 @@ _lapiz_cmd_edit_copy (GtkAction   *action,
 
 void
 _lapiz_cmd_edit_paste (GtkAction   *action,
-		      PlumaWindow *window)
+		      LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -134,9 +134,9 @@ _lapiz_cmd_edit_paste (GtkAction   *action,
 
 void
 _lapiz_cmd_edit_delete (GtkAction   *action,
-		       PlumaWindow *window)
+		       LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -150,9 +150,9 @@ _lapiz_cmd_edit_delete (GtkAction   *action,
 
 void
 _lapiz_cmd_edit_select_all (GtkAction   *action,
-			   PlumaWindow *window)
+			   LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -166,7 +166,7 @@ _lapiz_cmd_edit_select_all (GtkAction   *action,
 
 void
 _lapiz_cmd_edit_preferences (GtkAction   *action,
-			    PlumaWindow *window)
+			    LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 

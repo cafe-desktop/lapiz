@@ -39,32 +39,32 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_GIO_DOCUMENT_SAVER              (lapiz_gio_document_saver_get_type())
-#define LAPIZ_GIO_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaver))
-#define LAPIZ_GIO_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaverClass))
+#define LAPIZ_GIO_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, LapizGioDocumentSaver))
+#define LAPIZ_GIO_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, LapizGioDocumentSaverClass))
 #define LAPIZ_IS_GIO_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER))
 #define LAPIZ_IS_GIO_DOCUMENT_SAVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_GIO_DOCUMENT_SAVER))
-#define LAPIZ_GIO_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaverClass))
+#define LAPIZ_GIO_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, LapizGioDocumentSaverClass))
 
 /* Private structure type */
-typedef struct _PlumaGioDocumentSaverPrivate PlumaGioDocumentSaverPrivate;
+typedef struct _LapizGioDocumentSaverPrivate LapizGioDocumentSaverPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaGioDocumentSaver PlumaGioDocumentSaver;
+typedef struct _LapizGioDocumentSaver LapizGioDocumentSaver;
 
-struct _PlumaGioDocumentSaver
+struct _LapizGioDocumentSaver
 {
-	PlumaDocumentSaver saver;
+	LapizDocumentSaver saver;
 
 	/*< private > */
-	PlumaGioDocumentSaverPrivate *priv;
+	LapizGioDocumentSaverPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef PlumaDocumentSaverClass PlumaGioDocumentSaverClass;
+typedef LapizDocumentSaverClass LapizGioDocumentSaverClass;
 
 /*
  * Public methods

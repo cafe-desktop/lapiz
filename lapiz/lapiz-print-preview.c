@@ -42,7 +42,7 @@
 
 #define PRINTER_DPI (72.)
 
-struct _PlumaPrintPreviewPrivate
+struct _LapizPrintPreviewPrivate
 {
 	GtkPrintOperation *operation;
 	GtkPrintContext *context;
@@ -83,7 +83,7 @@ struct _PlumaPrintPreviewPrivate
 	guint cur_page;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPrintPreview, lapiz_print_preview, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPrintPreview, lapiz_print_preview, GTK_TYPE_BOX)
 
 static void
 lapiz_print_preview_get_property (GObject    *object,
@@ -91,7 +91,7 @@ lapiz_print_preview_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *pspec)
 {
-	//PlumaPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
+	//LapizPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
 
 	switch (prop_id)
 	{
@@ -107,7 +107,7 @@ lapiz_print_preview_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *pspec)
 {
-	//PlumaPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
+	//LapizPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
 
 	switch (prop_id)
 	{
@@ -120,7 +120,7 @@ lapiz_print_preview_set_property (GObject      *object,
 static void
 lapiz_print_preview_finalize (GObject *object)
 {
-	//PlumaPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
+	//LapizPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
 
 	G_OBJECT_CLASS (lapiz_print_preview_parent_class)->finalize (object);
 }
@@ -128,7 +128,7 @@ lapiz_print_preview_finalize (GObject *object)
 static void
 lapiz_print_preview_grab_focus (GtkWidget *widget)
 {
-	PlumaPrintPreview *preview;
+	LapizPrintPreview *preview;
 
 	preview = LAPIZ_PRINT_PREVIEW (widget);
 
@@ -136,7 +136,7 @@ lapiz_print_preview_grab_focus (GtkWidget *widget)
 }
 
 static void
-lapiz_print_preview_class_init (PlumaPrintPreviewClass *klass)
+lapiz_print_preview_class_init (LapizPrintPreviewClass *klass)
 {
 	GObjectClass *object_class;
 	GtkWidgetClass *widget_class;
@@ -152,9 +152,9 @@ lapiz_print_preview_class_init (PlumaPrintPreviewClass *klass)
 }
 
 static void
-update_layout_size (PlumaPrintPreview *preview)
+update_layout_size (LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 
 	priv = preview->priv;
 
@@ -167,7 +167,7 @@ update_layout_size (PlumaPrintPreview *preview)
 }
 
 static void
-set_rows_and_cols (PlumaPrintPreview *preview,
+set_rows_and_cols (LapizPrintPreview *preview,
 		   gint	              rows,
 		   gint	              cols)
 {
@@ -182,13 +182,13 @@ set_rows_and_cols (PlumaPrintPreview *preview,
  * after the widget has been mapped and the dpi is known */
 
 static double
-get_paper_width (PlumaPrintPreview *preview)
+get_paper_width (LapizPrintPreview *preview)
 {
 	return preview->priv->paper_w * preview->priv->dpi;
 }
 
 static double
-get_paper_height (PlumaPrintPreview *preview)
+get_paper_height (LapizPrintPreview *preview)
 {
 	return preview->priv->paper_h * preview->priv->dpi;
 }
@@ -202,9 +202,9 @@ get_paper_height (PlumaPrintPreview *preview)
 
 /* updates the tile size to the current zoom and page size */
 static void
-update_tile_size (PlumaPrintPreview *preview)
+update_tile_size (LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 	gint w, h;
 
 	priv = preview->priv;
@@ -229,10 +229,10 @@ update_tile_size (PlumaPrintPreview *preview)
  * so that the tile size is properly updated */
 
 static void
-set_zoom_factor (PlumaPrintPreview *preview,
+set_zoom_factor (LapizPrintPreview *preview,
 		 double	            zoom)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 
 	priv = preview->priv;
 
@@ -243,9 +243,9 @@ set_zoom_factor (PlumaPrintPreview *preview,
 }
 
 static void
-set_zoom_fit_to_size (PlumaPrintPreview *preview)
+set_zoom_fit_to_size (LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 	double width, height;
 	double p_width, p_height;
 	double zoomx, zoomy;
@@ -297,21 +297,21 @@ set_zoom_fit_to_size (PlumaPrintPreview *preview)
 #define ZOOM_OUT_FACTOR (1.0 / ZOOM_IN_FACTOR)
 
 static void
-zoom_in (PlumaPrintPreview *preview)
+zoom_in (LapizPrintPreview *preview)
 {
 	set_zoom_factor (preview,
 			 preview->priv->scale * ZOOM_IN_FACTOR);
 }
 
 static void
-zoom_out (PlumaPrintPreview *preview)
+zoom_out (LapizPrintPreview *preview)
 {
 	set_zoom_factor (preview,
 			 preview->priv->scale * ZOOM_OUT_FACTOR);
 }
 
 static void
-goto_page (PlumaPrintPreview *preview, gint page)
+goto_page (LapizPrintPreview *preview, gint page)
 {
 	gchar c[32];
 
@@ -334,7 +334,7 @@ goto_page (PlumaPrintPreview *preview, gint page)
 
 static void
 prev_button_clicked (GtkWidget         *button,
-		     PlumaPrintPreview *preview)
+		     LapizPrintPreview *preview)
 {
 	GdkEvent *event;
 	gint page;
@@ -353,7 +353,7 @@ prev_button_clicked (GtkWidget         *button,
 
 static void
 next_button_clicked (GtkWidget         *button,
-		     PlumaPrintPreview *preview)
+		     LapizPrintPreview *preview)
 {
 	GdkEvent *event;
 	gint page;
@@ -372,7 +372,7 @@ next_button_clicked (GtkWidget         *button,
 
 static void
 page_entry_activated (GtkEntry          *entry,
-		      PlumaPrintPreview *preview)
+		      LapizPrintPreview *preview)
 {
 	const gchar *text;
 	gint page;
@@ -418,7 +418,7 @@ page_entry_insert_text (GtkEditable *editable,
 static gboolean
 page_entry_focus_out (GtkWidget         *widget,
 		      GdkEventFocus     *event,
-		      PlumaPrintPreview *preview)
+		      LapizPrintPreview *preview)
 {
 	const gchar *text;
 	gint page;
@@ -440,32 +440,32 @@ page_entry_focus_out (GtkWidget         *widget,
 }
 
 static void
-on_1x1_clicked (GtkMenuItem *i, PlumaPrintPreview *preview)
+on_1x1_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 1, 1);
 }
 
 static void
-on_1x2_clicked (GtkMenuItem *i, PlumaPrintPreview *preview)
+on_1x2_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 1, 2);
 }
 
 static void
-on_2x1_clicked (GtkMenuItem *i, PlumaPrintPreview *preview)
+on_2x1_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 2, 1);
 }
 
 static void
-on_2x2_clicked (GtkMenuItem *i, PlumaPrintPreview *preview)
+on_2x2_clicked (GtkMenuItem *i, LapizPrintPreview *preview)
 {
 	set_rows_and_cols (preview, 2, 2);
 }
 
 static void
 multi_button_clicked (GtkWidget	 *button,
-		      PlumaPrintPreview *preview)
+		      LapizPrintPreview *preview)
 {
 	GtkWidget *m, *i;
 
@@ -501,35 +501,35 @@ multi_button_clicked (GtkWidget	 *button,
 
 static void
 zoom_one_button_clicked (GtkWidget         *button,
-			 PlumaPrintPreview *preview)
+			 LapizPrintPreview *preview)
 {
 	set_zoom_factor (preview, 1);
 }
 
 static void
 zoom_fit_button_clicked (GtkWidget         *button,
-			 PlumaPrintPreview *preview)
+			 LapizPrintPreview *preview)
 {
 	set_zoom_fit_to_size (preview);
 }
 
 static void
 zoom_in_button_clicked (GtkWidget         *button,
-			PlumaPrintPreview *preview)
+			LapizPrintPreview *preview)
 {
 	zoom_in (preview);
 }
 
 static void
 zoom_out_button_clicked (GtkWidget         *button,
-			 PlumaPrintPreview *preview)
+			 LapizPrintPreview *preview)
 {
 	zoom_out (preview);
 }
 
 static void
 close_button_clicked (GtkWidget         *button,
-		      PlumaPrintPreview *preview)
+		      LapizPrintPreview *preview)
 {
 	gtk_widget_destroy (GTK_WIDGET (preview));
 }
@@ -537,15 +537,15 @@ close_button_clicked (GtkWidget         *button,
 static gboolean
 ignore_mouse_buttons (GtkWidget         *widget,
 		      GdkEventKey       *event,
-		      PlumaPrintPreview *preview)
+		      LapizPrintPreview *preview)
 {
 	return TRUE;
 }
 
 static void
-create_bar (PlumaPrintPreview *preview)
+create_bar (LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 	GtkWidget *toolbar;
 	GtkToolItem *i;
 	AtkObject *atko;
@@ -717,9 +717,9 @@ create_bar (PlumaPrintPreview *preview)
 }
 
 static gint
-get_first_page_displayed (PlumaPrintPreview *preview)
+get_first_page_displayed (LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 
 	priv = preview->priv;
 
@@ -728,11 +728,11 @@ get_first_page_displayed (PlumaPrintPreview *preview)
 
 /* returns the page number (starting from 0) or -1 if no page */
 static gint
-get_page_at_coords (PlumaPrintPreview *preview,
+get_page_at_coords (LapizPrintPreview *preview,
 		    gint               x,
 		    gint               y)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 	GtkAdjustment *hadj, *vadj;
 	gint r, c, pg;
 
@@ -770,7 +770,7 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 			      gint               y,
 			      gboolean           keyboard_tip,
 			      GtkTooltip        *tooltip,
-			      PlumaPrintPreview *preview)
+			      LapizPrintPreview *preview)
 {
 	gint pg;
 	gchar *tip;
@@ -789,9 +789,9 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 static gint
 preview_layout_key_press (GtkWidget         *widget,
 			  GdkEventKey       *event,
-			  PlumaPrintPreview *preview)
+			  LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 	GtkAdjustment *hadj, *vadj;
 	double x, y;
 	guint h, w;
@@ -949,9 +949,9 @@ preview_layout_key_press (GtkWidget         *widget,
 }
 
 static void
-create_preview_layout (PlumaPrintPreview *preview)
+create_preview_layout (LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 	AtkObject *atko;
 
 	priv = preview->priv;
@@ -1001,9 +1001,9 @@ create_preview_layout (PlumaPrintPreview *preview)
 }
 
 static void
-lapiz_print_preview_init (PlumaPrintPreview *preview)
+lapiz_print_preview_init (LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 
 	priv = lapiz_print_preview_get_instance_private (preview);
 
@@ -1036,7 +1036,7 @@ lapiz_print_preview_init (PlumaPrintPreview *preview)
 static void
 draw_page_content (cairo_t            *cr,
 		   gint	               page_number,
-		   PlumaPrintPreview  *preview)
+		   LapizPrintPreview  *preview)
 {
 	/* scale to the desired size */
 	cairo_scale (cr, preview->priv->scale, preview->priv->scale);
@@ -1069,7 +1069,7 @@ draw_page_content (cairo_t            *cr,
  * the orientation */
 static void
 draw_page_frame (cairo_t            *cr,
-		 PlumaPrintPreview  *preview)
+		 LapizPrintPreview  *preview)
 {
 	double w, h;
 
@@ -1112,7 +1112,7 @@ draw_page (cairo_t           *cr,
 	   double             x,
 	   double             y,
 	   gint	              page_number,
-	   PlumaPrintPreview *preview)
+	   LapizPrintPreview *preview)
 {
 	cairo_save (cr);
 
@@ -1128,9 +1128,9 @@ draw_page (cairo_t           *cr,
 static gboolean
 preview_draw (GtkWidget         *widget,
 		cairo_t *cr,
-		PlumaPrintPreview *preview)
+		LapizPrintPreview *preview)
 {
-	PlumaPrintPreviewPrivate *priv;
+	LapizPrintPreviewPrivate *priv;
 	GdkWindow *bin_window;
 	gint pg;
 	gint i, j;
@@ -1178,7 +1178,7 @@ preview_draw (GtkWidget         *widget,
 }
 
 static double
-get_screen_dpi (PlumaPrintPreview *preview)
+get_screen_dpi (LapizPrintPreview *preview)
 {
 	GdkScreen *screen;
 	double dpi;
@@ -1196,7 +1196,7 @@ get_screen_dpi (PlumaPrintPreview *preview)
 }
 
 static void
-set_n_pages (PlumaPrintPreview *preview,
+set_n_pages (LapizPrintPreview *preview,
 	     gint               n_pages)
 {
 	gchar *str;
@@ -1213,7 +1213,7 @@ set_n_pages (PlumaPrintPreview *preview,
 static void
 preview_ready (GtkPrintOperationPreview *gtk_preview,
 	       GtkPrintContext          *context,
-	       PlumaPrintPreview        *preview)
+	       LapizPrintPreview        *preview)
 {
 	gint n_pages;
 
@@ -1236,7 +1236,7 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 }
 
 static void
-update_paper_size (PlumaPrintPreview *preview,
+update_paper_size (LapizPrintPreview *preview,
 		   GtkPageSetup      *page_setup)
 {
 	GtkPaperSize *paper_size;
@@ -1253,7 +1253,7 @@ static void
 preview_got_page_size (GtkPrintOperationPreview *gtk_preview,
 		       GtkPrintContext          *context,
 		       GtkPageSetup             *page_setup,
-		       PlumaPrintPreview        *preview)
+		       LapizPrintPreview        *preview)
 {
 	update_paper_size (preview, page_setup);
 }
@@ -1289,7 +1289,7 @@ create_preview_surface_platform (GtkPaperSize *paper_size,
 }
 
 static cairo_surface_t *
-create_preview_surface (PlumaPrintPreview *preview,
+create_preview_surface (LapizPrintPreview *preview,
 			double	  *dpi_x,
 			double	  *dpi_y)
 {
@@ -1308,7 +1308,7 @@ lapiz_print_preview_new (GtkPrintOperation        *op,
 			 GtkPrintOperationPreview *gtk_preview,
 			 GtkPrintContext          *context)
 {
-	PlumaPrintPreview *preview;
+	LapizPrintPreview *preview;
 	GtkPageSetup *page_setup;
 	cairo_surface_t *surface;
 	cairo_t *cr;

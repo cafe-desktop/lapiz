@@ -32,9 +32,9 @@
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
 
-#define DOCUMENT_DATA_KEY "PlumaModelinePluginDocumentData"
+#define DOCUMENT_DATA_KEY "LapizModelinePluginDocumentData"
 
-struct _PlumaModelinePluginPrivate
+struct _LapizModelinePluginPrivate
 {
 	GtkWidget *window;
 
@@ -55,11 +55,11 @@ enum {
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaModelinePlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizModelinePlugin,
                                 lapiz_modeline_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaModelinePlugin)
+                                G_ADD_PRIVATE_DYNAMIC (LapizModelinePlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init))
 
@@ -84,9 +84,9 @@ lapiz_modeline_plugin_constructed (GObject *object)
 }
 
 static void
-lapiz_modeline_plugin_init (PlumaModelinePlugin *plugin)
+lapiz_modeline_plugin_init (LapizModelinePlugin *plugin)
 {
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizModelinePlugin initializing");
 
 	plugin->priv = lapiz_modeline_plugin_get_instance_private (plugin);
 }
@@ -94,7 +94,7 @@ lapiz_modeline_plugin_init (PlumaModelinePlugin *plugin)
 static void
 lapiz_modeline_plugin_finalize (GObject *object)
 {
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin finalizing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizModelinePlugin finalizing");
 
 	modeline_parser_shutdown ();
 
@@ -104,9 +104,9 @@ lapiz_modeline_plugin_finalize (GObject *object)
 static void
 lapiz_modeline_plugin_dispose (GObject *object)
 {
-	PlumaModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
+	LapizModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizModelinePlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -123,7 +123,7 @@ lapiz_modeline_plugin_set_property (GObject      *object,
                                     const GValue *value,
                                     GParamSpec   *pspec)
 {
-	PlumaModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
+	LapizModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -143,7 +143,7 @@ lapiz_modeline_plugin_get_property (GObject    *object,
                                     GValue     *value,
                                     GParamSpec *pspec)
 {
-	PlumaModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
+	LapizModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -158,7 +158,7 @@ lapiz_modeline_plugin_get_property (GObject    *object,
 }
 
 static void
-on_document_loaded_or_saved (PlumaDocument *document,
+on_document_loaded_or_saved (LapizDocument *document,
 			     const GError  *error,
 			     GtkSourceView *view)
 {
@@ -166,7 +166,7 @@ on_document_loaded_or_saved (PlumaDocument *document,
 }
 
 static void
-connect_handlers (PlumaView *view)
+connect_handlers (LapizView *view)
 {
 	DocumentData *data;
         GtkTextBuffer *doc;
@@ -189,7 +189,7 @@ connect_handlers (PlumaView *view)
 }
 
 static void
-disconnect_handlers (PlumaView *view)
+disconnect_handlers (LapizView *view)
 {
 	DocumentData *data;
 	GtkTextBuffer *doc;
@@ -212,16 +212,16 @@ disconnect_handlers (PlumaView *view)
 }
 
 static void
-on_window_tab_added (PlumaWindow *window,
-		     PlumaTab *tab,
+on_window_tab_added (LapizWindow *window,
+		     LapizTab *tab,
 		     gpointer user_data)
 {
 	connect_handlers (lapiz_tab_get_view (tab));
 }
 
 static void
-on_window_tab_removed (PlumaWindow *window,
-		       PlumaTab *tab,
+on_window_tab_removed (LapizWindow *window,
+		       LapizTab *tab,
 		       gpointer user_data)
 {
 	disconnect_handlers (lapiz_tab_get_view (tab));
@@ -230,8 +230,8 @@ on_window_tab_removed (PlumaWindow *window,
 static void
 lapiz_modeline_plugin_activate (PeasActivatable *activatable)
 {
-	PlumaModelinePluginPrivate *data;
-	PlumaWindow *window;
+	LapizModelinePluginPrivate *data;
+	LapizWindow *window;
 	GList *views;
 	GList *l;
 
@@ -260,8 +260,8 @@ lapiz_modeline_plugin_activate (PeasActivatable *activatable)
 static void
 lapiz_modeline_plugin_deactivate (PeasActivatable *activatable)
 {
-	PlumaModelinePluginPrivate *data;
-	PlumaWindow *window;
+	LapizModelinePluginPrivate *data;
+	LapizWindow *window;
 	GList *views;
 	GList *l;
 
@@ -286,7 +286,7 @@ lapiz_modeline_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_modeline_plugin_class_init (PlumaModelinePluginClass *klass)
+lapiz_modeline_plugin_class_init (LapizModelinePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -300,7 +300,7 @@ lapiz_modeline_plugin_class_init (PlumaModelinePluginClass *klass)
 }
 
 static void
-lapiz_modeline_plugin_class_finalize (PlumaModelinePluginClass *klass)
+lapiz_modeline_plugin_class_finalize (LapizModelinePluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }

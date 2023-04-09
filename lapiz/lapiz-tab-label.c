@@ -42,9 +42,9 @@ enum
 	PROP_TAB
 };
 
-struct _PlumaTabLabelPrivate
+struct _LapizTabLabelPrivate
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	GtkWidget *ebox;
 	GtkWidget *close_button;
@@ -57,7 +57,7 @@ struct _PlumaTabLabelPrivate
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaTabLabel, lapiz_tab_label, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizTabLabel, lapiz_tab_label, GTK_TYPE_BOX)
 
 static void
 lapiz_tab_label_finalize (GObject *object)
@@ -71,7 +71,7 @@ lapiz_tab_label_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-	PlumaTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
+	LapizTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
 
 	switch (prop_id)
 	{
@@ -91,7 +91,7 @@ lapiz_tab_label_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-	PlumaTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
+	LapizTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
 
 	switch (prop_id)
 	{
@@ -107,13 +107,13 @@ lapiz_tab_label_get_property (GObject    *object,
 
 static void
 close_button_clicked_cb (GtkWidget     *widget,
-			 PlumaTabLabel *tab_label)
+			 LapizTabLabel *tab_label)
 {
 	g_signal_emit (tab_label, signals[CLOSE_CLICKED], 0, NULL);
 }
 
 static void
-sync_tip (PlumaTab *tab, PlumaTabLabel *tab_label)
+sync_tip (LapizTab *tab, LapizTabLabel *tab_label)
 {
 	gchar *str;
 
@@ -125,7 +125,7 @@ sync_tip (PlumaTab *tab, PlumaTabLabel *tab_label)
 }
 
 static void
-sync_name (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
+sync_name (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
 {
 	gchar *str;
 
@@ -141,9 +141,9 @@ sync_name (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 }
 
 static void
-sync_state (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
+sync_state (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
 {
-	PlumaTabState  state;
+	LapizTabState  state;
 
 	g_return_if_fail (tab == tab_label->priv->tab);
 
@@ -188,7 +188,7 @@ sync_state (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 static void
 lapiz_tab_label_constructed (GObject *object)
 {
-	PlumaTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
+	LapizTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
 
 	if (!tab_label->priv->tab)
 	{
@@ -213,7 +213,7 @@ lapiz_tab_label_constructed (GObject *object)
 }
 
 static void
-lapiz_tab_label_class_init (PlumaTabLabelClass *klass)
+lapiz_tab_label_class_init (LapizTabLabelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -226,7 +226,7 @@ lapiz_tab_label_class_init (PlumaTabLabelClass *klass)
 		g_signal_new ("close-clicked",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaTabLabelClass, close_clicked),
+			      G_STRUCT_OFFSET (LapizTabLabelClass, close_clicked),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE,
@@ -236,14 +236,14 @@ lapiz_tab_label_class_init (PlumaTabLabelClass *klass)
 					 PROP_TAB,
 					 g_param_spec_object ("tab",
 							      "Tab",
-							      "The PlumaTab",
+							      "The LapizTab",
 							      LAPIZ_TYPE_TAB,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY));
 }
 
 static void
-lapiz_tab_label_init (PlumaTabLabel *tab_label)
+lapiz_tab_label_init (LapizTabLabel *tab_label)
 {
 	GtkWidget *ebox;
 	GtkWidget *hbox;
@@ -310,10 +310,10 @@ lapiz_tab_label_init (PlumaTabLabel *tab_label)
 }
 
 void
-lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
+lapiz_tab_label_set_close_button_sensitive (LapizTabLabel *tab_label,
 					    gboolean       sensitive)
 {
-	PlumaTabState state;
+	LapizTabState state;
 
 	g_return_if_fail (LAPIZ_IS_TAB_LABEL (tab_label));
 
@@ -336,8 +336,8 @@ lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 				  (state != LAPIZ_TAB_STATE_SAVING_ERROR));
 }
 
-PlumaTab *
-lapiz_tab_label_get_tab (PlumaTabLabel *tab_label)
+LapizTab *
+lapiz_tab_label_get_tab (LapizTabLabel *tab_label)
 {
 	g_return_val_if_fail (LAPIZ_IS_TAB_LABEL (tab_label), NULL);
 
@@ -345,9 +345,9 @@ lapiz_tab_label_get_tab (PlumaTabLabel *tab_label)
 }
 
 GtkWidget *
-lapiz_tab_label_new (PlumaTab *tab)
+lapiz_tab_label_new (LapizTab *tab)
 {
-	PlumaTabLabel *tab_label;
+	LapizTabLabel *tab_label;
 
 	tab_label = g_object_new (LAPIZ_TYPE_TAB_LABEL,
 				  "homogeneous", FALSE,

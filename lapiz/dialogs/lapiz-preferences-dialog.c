@@ -78,7 +78,7 @@ typedef enum
 	DRAW_ALL = 2
 } DrawSpacesSettings;
 
-struct _PlumaPreferencesDialogPrivate
+struct _LapizPreferencesDialogPrivate
 {
 	GtkWidget	*notebook;
 
@@ -139,11 +139,11 @@ struct _PlumaPreferencesDialogPrivate
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPreferencesDialog, lapiz_preferences_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPreferencesDialog, lapiz_preferences_dialog, GTK_TYPE_DIALOG)
 
 
 static void
-lapiz_preferences_dialog_class_init (PlumaPreferencesDialogClass *klass)
+lapiz_preferences_dialog_class_init (LapizPreferencesDialogClass *klass)
 {
 }
 
@@ -171,7 +171,7 @@ dialog_response_handler (GtkDialog *dlg,
 
 static void
 tabs_width_spinbutton_value_changed (GtkSpinButton          *spin_button,
-				     PlumaPreferencesDialog *dlg)
+				     LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -182,7 +182,7 @@ tabs_width_spinbutton_value_changed (GtkSpinButton          *spin_button,
 
 static void
 insert_spaces_checkbutton_toggled (GtkToggleButton        *button,
-				   PlumaPreferencesDialog *dlg)
+				   LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -193,7 +193,7 @@ insert_spaces_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 auto_indent_checkbutton_toggled (GtkToggleButton        *button,
-				 PlumaPreferencesDialog *dlg)
+				 LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -204,7 +204,7 @@ auto_indent_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
-                                 PlumaPreferencesDialog *dlg)
+                                 LapizPreferencesDialog *dlg)
 {
 	DrawSpacesSettings setting;
 	lapiz_debug (DEBUG_PREFS);
@@ -227,7 +227,7 @@ draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 draw_trailing_spaces_checkbutton_toggled (GtkToggleButton        *button,
-                                          PlumaPreferencesDialog *dlg)
+                                          LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -246,7 +246,7 @@ draw_trailing_spaces_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
-                               PlumaPreferencesDialog *dlg)
+                               LapizPreferencesDialog *dlg)
 {
 	DrawSpacesSettings setting;
 	lapiz_debug (DEBUG_PREFS);
@@ -269,7 +269,7 @@ draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 draw_trailing_tabs_checkbutton_toggled (GtkToggleButton        *button,
-                                        PlumaPreferencesDialog *dlg)
+                                        LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -288,7 +288,7 @@ draw_trailing_tabs_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 draw_newlines_checkbutton_toggled (GtkToggleButton        *button,
-                                   PlumaPreferencesDialog *dlg)
+                                   LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -299,7 +299,7 @@ draw_newlines_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 auto_save_checkbutton_toggled (GtkToggleButton        *button,
-			       PlumaPreferencesDialog *dlg)
+			       LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -321,7 +321,7 @@ auto_save_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 backup_copy_checkbutton_toggled (GtkToggleButton        *button,
-				 PlumaPreferencesDialog *dlg)
+				 LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -332,7 +332,7 @@ backup_copy_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 auto_save_spinbutton_value_changed (GtkSpinButton          *spin_button,
-				    PlumaPreferencesDialog *dlg)
+				    LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->priv->auto_save_spinbutton));
 
@@ -341,7 +341,7 @@ auto_save_spinbutton_value_changed (GtkSpinButton          *spin_button,
 }
 
 static void
-setup_editor_page (PlumaPreferencesDialog *dlg)
+setup_editor_page (LapizPreferencesDialog *dlg)
 {
 	gboolean auto_save;
 	gint auto_save_interval;
@@ -469,7 +469,7 @@ setup_editor_page (PlumaPreferencesDialog *dlg)
 
 static void
 display_line_numbers_checkbutton_toggled (GtkToggleButton        *button,
-					  PlumaPreferencesDialog *dlg)
+					  LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
 			GTK_TOGGLE_BUTTON (dlg->priv->display_line_numbers_checkbutton));
@@ -479,7 +479,7 @@ display_line_numbers_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 highlight_current_line_checkbutton_toggled (GtkToggleButton        *button,
-					    PlumaPreferencesDialog *dlg)
+					    LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
 			GTK_TOGGLE_BUTTON (dlg->priv->highlight_current_line_checkbutton));
@@ -489,7 +489,7 @@ highlight_current_line_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 bracket_matching_checkbutton_toggled (GtkToggleButton        *button,
-				      PlumaPreferencesDialog *dlg)
+				      LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
 			GTK_TOGGLE_BUTTON (dlg->priv->bracket_matching_checkbutton));
@@ -502,7 +502,7 @@ static gboolean split_button_state = TRUE;
 
 static void
 wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
-			       PlumaPreferencesDialog *dlg)
+			       LapizPreferencesDialog *dlg)
 {
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton)))
 	{
@@ -539,7 +539,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 right_margin_checkbutton_toggled (GtkToggleButton        *button,
-				  PlumaPreferencesDialog *dlg)
+				  LapizPreferencesDialog *dlg)
 {
 	gboolean active;
 
@@ -556,7 +556,7 @@ right_margin_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 right_margin_position_spinbutton_value_changed (GtkSpinButton          *spin_button,
-						PlumaPreferencesDialog *dlg)
+						LapizPreferencesDialog *dlg)
 {
 	gint value;
 
@@ -568,7 +568,7 @@ right_margin_position_spinbutton_value_changed (GtkSpinButton          *spin_but
 }
 
 static void
-setup_view_page (PlumaPreferencesDialog *dlg)
+setup_view_page (LapizPreferencesDialog *dlg)
 {
 	GtkWrapMode wrap_mode;
 	gboolean display_right_margin;
@@ -673,7 +673,7 @@ setup_view_page (PlumaPreferencesDialog *dlg)
 
 static void
 default_font_font_checkbutton_toggled (GtkToggleButton        *button,
-				       PlumaPreferencesDialog *dlg)
+				       LapizPreferencesDialog *dlg)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -694,7 +694,7 @@ default_font_font_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 editor_font_button_font_set (GtkFontChooser         *font_button,
-			     PlumaPreferencesDialog *dlg)
+			     LapizPreferencesDialog *dlg)
 {
 	const gchar *font_name;
 
@@ -714,7 +714,7 @@ editor_font_button_font_set (GtkFontChooser         *font_button,
 }
 
 static void
-setup_font_colors_page_font_section (PlumaPreferencesDialog *dlg)
+setup_font_colors_page_font_section (LapizPreferencesDialog *dlg)
 {
 	gboolean use_default_font;
 	gchar *editor_font = NULL;
@@ -775,7 +775,7 @@ setup_font_colors_page_font_section (PlumaPreferencesDialog *dlg)
 }
 
 static void
-set_buttons_sensisitivity_according_to_scheme (PlumaPreferencesDialog *dlg,
+set_buttons_sensisitivity_according_to_scheme (LapizPreferencesDialog *dlg,
 					       const gchar            *scheme_id)
 {
 	gboolean editable;
@@ -791,7 +791,7 @@ set_buttons_sensisitivity_according_to_scheme (PlumaPreferencesDialog *dlg,
 
 static void
 style_scheme_changed (GtkWidget              *treeview,
-		      PlumaPreferencesDialog *dlg)
+		      LapizPreferencesDialog *dlg)
 {
 	GtkTreePath *path;
 	GtkTreeIter iter;
@@ -852,7 +852,7 @@ ensure_color_scheme_id (const gchar *id)
  * lapiz_style_scheme_manager_get_default_scheme. If this one returns NULL
  * use the first available scheme as default */
 static const gchar *
-populate_color_scheme_list (PlumaPreferencesDialog *dlg, const gchar *def_id)
+populate_color_scheme_list (LapizPreferencesDialog *dlg, const gchar *def_id)
 {
 	GSList *schemes;
 	GSList *l;
@@ -911,7 +911,7 @@ populate_color_scheme_list (PlumaPreferencesDialog *dlg, const gchar *def_id)
 static void
 add_scheme_chooser_response_cb (GtkDialog              *chooser,
 				gint                    res_id,
-				PlumaPreferencesDialog *dlg)
+				LapizPreferencesDialog *dlg)
 {
 	gchar* filename;
 	const gchar *scheme_id;
@@ -1003,7 +1003,7 @@ scheme_file_chooser_dialog_new (const gchar          *title,
 
 static void
 install_scheme_clicked (GtkButton              *button,
-			PlumaPreferencesDialog *dlg)
+			LapizPreferencesDialog *dlg)
 {
 	GtkWidget      *chooser;
 	GtkFileFilter  *filter;
@@ -1057,7 +1057,7 @@ install_scheme_clicked (GtkButton              *button,
 
 static void
 uninstall_scheme_clicked (GtkButton              *button,
-			  PlumaPreferencesDialog *dlg)
+			  LapizPreferencesDialog *dlg)
 {
 	GtkTreeSelection *selection;
 	GtkTreeModel *model;
@@ -1181,7 +1181,7 @@ scheme_description_cell_data_func (GtkTreeViewColumn *column,
 }
 
 static void
-setup_font_colors_page_style_scheme_section (PlumaPreferencesDialog *dlg)
+setup_font_colors_page_style_scheme_section (LapizPreferencesDialog *dlg)
 {
 	GtkCellRenderer *renderer;
 	GtkTreeViewColumn *column;
@@ -1244,14 +1244,14 @@ setup_font_colors_page_style_scheme_section (PlumaPreferencesDialog *dlg)
 }
 
 static void
-setup_font_colors_page (PlumaPreferencesDialog *dlg)
+setup_font_colors_page (LapizPreferencesDialog *dlg)
 {
 	setup_font_colors_page_font_section (dlg);
 	setup_font_colors_page_style_scheme_section (dlg);
 }
 
 static void
-setup_plugins_page (PlumaPreferencesDialog *dlg)
+setup_plugins_page (LapizPreferencesDialog *dlg)
 {
 	GtkWidget *page_content;
 
@@ -1270,7 +1270,7 @@ setup_plugins_page (PlumaPreferencesDialog *dlg)
 }
 
 static void
-lapiz_preferences_dialog_init (PlumaPreferencesDialog *dlg)
+lapiz_preferences_dialog_init (LapizPreferencesDialog *dlg)
 {
 	GtkWidget *error_widget;
 	gboolean ret;
@@ -1291,7 +1291,7 @@ lapiz_preferences_dialog_init (PlumaPreferencesDialog *dlg)
 	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Close"), "window-close", GTK_RESPONSE_CLOSE);
 	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
 
-	gtk_window_set_title (GTK_WINDOW (dlg), _("Pluma Preferences"));
+	gtk_window_set_title (GTK_WINDOW (dlg), _("Lapiz Preferences"));
 	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
 
@@ -1374,7 +1374,7 @@ lapiz_preferences_dialog_init (PlumaPreferencesDialog *dlg)
 }
 
 void
-lapiz_show_preferences_dialog (PlumaWindow *parent)
+lapiz_show_preferences_dialog (LapizWindow *parent)
 {
 	lapiz_debug (DEBUG_PREFS);
 

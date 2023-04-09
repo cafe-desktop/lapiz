@@ -39,36 +39,36 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_ENCODINGS_DIALOG              (lapiz_encodings_dialog_get_type())
-#define LAPIZ_ENCODINGS_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog))
-#define LAPIZ_ENCODINGS_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog const))
-#define LAPIZ_ENCODINGS_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialogClass))
+#define LAPIZ_ENCODINGS_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, LapizEncodingsDialog))
+#define LAPIZ_ENCODINGS_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, LapizEncodingsDialog const))
+#define LAPIZ_ENCODINGS_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_ENCODINGS_DIALOG, LapizEncodingsDialogClass))
 #define LAPIZ_IS_ENCODINGS_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_ENCODINGS_DIALOG))
 #define LAPIZ_IS_ENCODINGS_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_ENCODINGS_DIALOG))
-#define LAPIZ_ENCODINGS_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialogClass))
+#define LAPIZ_ENCODINGS_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, LapizEncodingsDialogClass))
 
 
 /* Private structure type */
-typedef struct _PlumaEncodingsDialogPrivate PlumaEncodingsDialogPrivate;
+typedef struct _LapizEncodingsDialogPrivate LapizEncodingsDialogPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaEncodingsDialog PlumaEncodingsDialog;
+typedef struct _LapizEncodingsDialog LapizEncodingsDialog;
 
-struct _PlumaEncodingsDialog
+struct _LapizEncodingsDialog
 {
 	GtkDialog dialog;
 
 	/*< private > */
-	PlumaEncodingsDialogPrivate *priv;
+	LapizEncodingsDialogPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaEncodingsDialogClass PlumaEncodingsDialogClass;
+typedef struct _LapizEncodingsDialogClass LapizEncodingsDialogClass;
 
-struct _PlumaEncodingsDialogClass
+struct _LapizEncodingsDialogClass
 {
 	GtkDialogClass parent_class;
 };

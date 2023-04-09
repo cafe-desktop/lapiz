@@ -1,5 +1,5 @@
 /*
- * lapiz-file-browser-widget.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-widget.h - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -29,44 +29,44 @@
 
 G_BEGIN_DECLS
 #define LAPIZ_TYPE_FILE_BROWSER_WIDGET			(lapiz_file_browser_widget_get_type ())
-#define LAPIZ_FILE_BROWSER_WIDGET(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget))
-#define LAPIZ_FILE_BROWSER_WIDGET_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget const))
-#define LAPIZ_FILE_BROWSER_WIDGET_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidgetClass))
+#define LAPIZ_FILE_BROWSER_WIDGET(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, LapizFileBrowserWidget))
+#define LAPIZ_FILE_BROWSER_WIDGET_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, LapizFileBrowserWidget const))
+#define LAPIZ_FILE_BROWSER_WIDGET_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BROWSER_WIDGET, LapizFileBrowserWidgetClass))
 #define LAPIZ_IS_FILE_BROWSER_WIDGET(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET))
 #define LAPIZ_IS_FILE_BROWSER_WIDGET_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_FILE_BROWSER_WIDGET))
-#define LAPIZ_FILE_BROWSER_WIDGET_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidgetClass))
+#define LAPIZ_FILE_BROWSER_WIDGET_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, LapizFileBrowserWidgetClass))
 
-typedef struct _PlumaFileBrowserWidget        PlumaFileBrowserWidget;
-typedef struct _PlumaFileBrowserWidgetClass   PlumaFileBrowserWidgetClass;
-typedef struct _PlumaFileBrowserWidgetPrivate PlumaFileBrowserWidgetPrivate;
+typedef struct _LapizFileBrowserWidget        LapizFileBrowserWidget;
+typedef struct _LapizFileBrowserWidgetClass   LapizFileBrowserWidgetClass;
+typedef struct _LapizFileBrowserWidgetPrivate LapizFileBrowserWidgetPrivate;
 
 typedef
-gboolean (*PlumaFileBrowserWidgetFilterFunc) (PlumaFileBrowserWidget * obj,
-					      PlumaFileBrowserStore *
+gboolean (*LapizFileBrowserWidgetFilterFunc) (LapizFileBrowserWidget * obj,
+					      LapizFileBrowserStore *
 					      model, GtkTreeIter * iter,
 					      gpointer user_data);
 
-struct _PlumaFileBrowserWidget
+struct _LapizFileBrowserWidget
 {
 	GtkBox parent;
 
-	PlumaFileBrowserWidgetPrivate *priv;
+	LapizFileBrowserWidgetPrivate *priv;
 };
 
-struct _PlumaFileBrowserWidgetClass
+struct _LapizFileBrowserWidgetClass
 {
 	GtkBoxClass parent_class;
 
 	/* Signals */
-	void (*uri_activated)        (PlumaFileBrowserWidget * widget,
+	void (*uri_activated)        (LapizFileBrowserWidget * widget,
 			              gchar const *uri);
-	void (*error)                (PlumaFileBrowserWidget * widget,
+	void (*error)                (LapizFileBrowserWidget * widget,
 	                              guint code,
 		                      gchar const *message);
-	gboolean (*confirm_delete)   (PlumaFileBrowserWidget * widget,
-	                              PlumaFileBrowserStore * model,
+	gboolean (*confirm_delete)   (LapizFileBrowserWidget * widget,
+	                              LapizFileBrowserStore * model,
 	                              GList *list);
-	gboolean (*confirm_no_trash) (PlumaFileBrowserWidget * widget,
+	gboolean (*confirm_no_trash) (LapizFileBrowserWidget * widget,
 	                              GList *list);
 };
 
@@ -75,45 +75,45 @@ void _lapiz_file_browser_widget_register_type       (GTypeModule * module);
 
 GtkWidget *lapiz_file_browser_widget_new            (const gchar *data_dir);
 
-void lapiz_file_browser_widget_show_bookmarks       (PlumaFileBrowserWidget * obj);
-void lapiz_file_browser_widget_show_files           (PlumaFileBrowserWidget * obj);
+void lapiz_file_browser_widget_show_bookmarks       (LapizFileBrowserWidget * obj);
+void lapiz_file_browser_widget_show_files           (LapizFileBrowserWidget * obj);
 
-void lapiz_file_browser_widget_set_root             (PlumaFileBrowserWidget * obj,
+void lapiz_file_browser_widget_set_root             (LapizFileBrowserWidget * obj,
                                                      gchar const *root,
                                                      gboolean virtual_root);
 void
-lapiz_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_set_root_and_virtual_root (LapizFileBrowserWidget * obj,
 						     gchar const *root,
 						     gchar const *virtual_root);
 
 gboolean
-lapiz_file_browser_widget_get_selected_directory    (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_get_selected_directory    (LapizFileBrowserWidget * obj,
                                                      GtkTreeIter * iter);
 
-PlumaFileBrowserStore *
-lapiz_file_browser_widget_get_browser_store         (PlumaFileBrowserWidget * obj);
-PlumaFileBookmarksStore *
-lapiz_file_browser_widget_get_bookmarks_store       (PlumaFileBrowserWidget * obj);
-PlumaFileBrowserView *
-lapiz_file_browser_widget_get_browser_view          (PlumaFileBrowserWidget * obj);
+LapizFileBrowserStore *
+lapiz_file_browser_widget_get_browser_store         (LapizFileBrowserWidget * obj);
+LapizFileBookmarksStore *
+lapiz_file_browser_widget_get_bookmarks_store       (LapizFileBrowserWidget * obj);
+LapizFileBrowserView *
+lapiz_file_browser_widget_get_browser_view          (LapizFileBrowserWidget * obj);
 GtkWidget *
-lapiz_file_browser_widget_get_filter_entry          (PlumaFileBrowserWidget * obj);
+lapiz_file_browser_widget_get_filter_entry          (LapizFileBrowserWidget * obj);
 
 GtkUIManager *
-lapiz_file_browser_widget_get_ui_manager            (PlumaFileBrowserWidget * obj);
+lapiz_file_browser_widget_get_ui_manager            (LapizFileBrowserWidget * obj);
 
-gulong lapiz_file_browser_widget_add_filter         (PlumaFileBrowserWidget * obj,
-                                                     PlumaFileBrowserWidgetFilterFunc func,
+gulong lapiz_file_browser_widget_add_filter         (LapizFileBrowserWidget * obj,
+                                                     LapizFileBrowserWidgetFilterFunc func,
                                                      gpointer user_data,
                                                      GDestroyNotify notify);
-void lapiz_file_browser_widget_remove_filter        (PlumaFileBrowserWidget * obj,
+void lapiz_file_browser_widget_remove_filter        (LapizFileBrowserWidget * obj,
                                                      gulong id);
-void lapiz_file_browser_widget_set_filter_pattern   (PlumaFileBrowserWidget * obj,
+void lapiz_file_browser_widget_set_filter_pattern   (LapizFileBrowserWidget * obj,
                                                      gchar const *pattern);
 
-void lapiz_file_browser_widget_refresh		    (PlumaFileBrowserWidget * obj);
-void lapiz_file_browser_widget_history_back	    (PlumaFileBrowserWidget * obj);
-void lapiz_file_browser_widget_history_forward	    (PlumaFileBrowserWidget * obj);
+void lapiz_file_browser_widget_refresh		    (LapizFileBrowserWidget * obj);
+void lapiz_file_browser_widget_history_back	    (LapizFileBrowserWidget * obj);
+void lapiz_file_browser_widget_history_forward	    (LapizFileBrowserWidget * obj);
 
 G_END_DECLS
 #endif /* __LAPIZ_FILE_BROWSER_WIDGET_H__ */

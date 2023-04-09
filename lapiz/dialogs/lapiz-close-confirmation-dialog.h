@@ -35,25 +35,25 @@
 #include <lapiz/lapiz-document.h>
 
 #define LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG		(lapiz_close_confirmation_dialog_get_type ())
-#define LAPIZ_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialog))
-#define LAPIZ_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialogClass))
+#define LAPIZ_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, LapizCloseConfirmationDialog))
+#define LAPIZ_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, LapizCloseConfirmationDialogClass))
 #define LAPIZ_IS_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG))
 #define LAPIZ_IS_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG))
-#define LAPIZ_CLOSE_CONFIRMATION_DIALOG_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj),LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialogClass))
+#define LAPIZ_CLOSE_CONFIRMATION_DIALOG_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj),LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, LapizCloseConfirmationDialogClass))
 
-typedef struct _PlumaCloseConfirmationDialog 		PlumaCloseConfirmationDialog;
-typedef struct _PlumaCloseConfirmationDialogClass 	PlumaCloseConfirmationDialogClass;
-typedef struct _PlumaCloseConfirmationDialogPrivate 	PlumaCloseConfirmationDialogPrivate;
+typedef struct _LapizCloseConfirmationDialog 		LapizCloseConfirmationDialog;
+typedef struct _LapizCloseConfirmationDialogClass 	LapizCloseConfirmationDialogClass;
+typedef struct _LapizCloseConfirmationDialogPrivate 	LapizCloseConfirmationDialogPrivate;
 
-struct _PlumaCloseConfirmationDialog
+struct _LapizCloseConfirmationDialog
 {
 	GtkDialog parent;
 
 	/*< private > */
-	PlumaCloseConfirmationDialogPrivate *priv;
+	LapizCloseConfirmationDialogPrivate *priv;
 };
 
-struct _PlumaCloseConfirmationDialogClass
+struct _LapizCloseConfirmationDialogClass
 {
 	GtkDialogClass parent_class;
 };
@@ -64,12 +64,12 @@ GtkWidget	*lapiz_close_confirmation_dialog_new			(GtkWindow     *parent,
 									 GList         *unsaved_documents,
 									 gboolean       logout_mode);
 GtkWidget 	*lapiz_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
-									 PlumaDocument *doc,
+									 LapizDocument *doc,
  									 gboolean       logout_mode);
 
-const GList	*lapiz_close_confirmation_dialog_get_unsaved_documents  (PlumaCloseConfirmationDialog *dlg);
+const GList	*lapiz_close_confirmation_dialog_get_unsaved_documents  (LapizCloseConfirmationDialog *dlg);
 
-GList		*lapiz_close_confirmation_dialog_get_selected_documents	(PlumaCloseConfirmationDialog *dlg);
+GList		*lapiz_close_confirmation_dialog_get_selected_documents	(LapizCloseConfirmationDialog *dlg);
 
 #endif /* __LAPIZ_CLOSE_CONFIRMATION_DIALOG_H__ */
 

@@ -1,5 +1,5 @@
 /*
- * lapiz-file-browser-plugin.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-plugin.h - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -33,26 +33,26 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_FILE_BROWSER_PLUGIN		(lapiz_file_browser_plugin_get_type ())
-#define LAPIZ_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPlugin))
-#define LAPIZ_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPluginClass))
+#define LAPIZ_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, LapizFileBrowserPlugin))
+#define LAPIZ_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, LapizFileBrowserPluginClass))
 #define LAPIZ_IS_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN))
 #define LAPIZ_IS_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_FILE_BROWSER_PLUGIN))
-#define LAPIZ_FILE_BROWSER_GET_CLASS(o)		(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPluginClass))
+#define LAPIZ_FILE_BROWSER_GET_CLASS(o)		(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, LapizFileBrowserPluginClass))
 
 /* Private structure type */
-typedef struct _PlumaFileBrowserPluginPrivate PlumaFileBrowserPluginPrivate;
-typedef struct _PlumaFileBrowserPlugin        PlumaFileBrowserPlugin;
-typedef struct _PlumaFileBrowserPluginClass   PlumaFileBrowserPluginClass;
+typedef struct _LapizFileBrowserPluginPrivate LapizFileBrowserPluginPrivate;
+typedef struct _LapizFileBrowserPlugin        LapizFileBrowserPlugin;
+typedef struct _LapizFileBrowserPluginClass   LapizFileBrowserPluginClass;
 
-struct _PlumaFileBrowserPlugin
+struct _LapizFileBrowserPlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private > */
-	PlumaFileBrowserPluginPrivate *priv;
+	LapizFileBrowserPluginPrivate *priv;
 };
 
-struct _PlumaFileBrowserPluginClass
+struct _LapizFileBrowserPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

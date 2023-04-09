@@ -41,34 +41,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_APP              (lapiz_app_get_type())
-#define LAPIZ_APP(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_APP, PlumaApp))
-#define LAPIZ_APP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_APP, PlumaAppClass))
+#define LAPIZ_APP(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_APP, LapizApp))
+#define LAPIZ_APP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_APP, LapizAppClass))
 #define LAPIZ_IS_APP(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_APP))
 #define LAPIZ_IS_APP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_APP))
-#define LAPIZ_APP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_APP, PlumaAppClass))
+#define LAPIZ_APP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_APP, LapizAppClass))
 
 /* Private structure type */
-typedef struct _PlumaAppPrivate PlumaAppPrivate;
+typedef struct _LapizAppPrivate LapizAppPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaApp PlumaApp;
+typedef struct _LapizApp LapizApp;
 
-struct _PlumaApp
+struct _LapizApp
 {
 	GObject object;
 
 	/*< private > */
-	PlumaAppPrivate *priv;
+	LapizAppPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaAppClass PlumaAppClass;
+typedef struct _LapizAppClass LapizAppClass;
 
-struct _PlumaAppClass
+struct _LapizAppClass
 {
 	GObjectClass parent_class;
 };
@@ -83,58 +83,58 @@ typedef enum
 	LAPIZ_LOCKDOWN_PRINT_SETUP	= 1 << 2,
 	LAPIZ_LOCKDOWN_SAVE_TO_DISK	= 1 << 3,
 	LAPIZ_LOCKDOWN_ALL		= 0xF
-} PlumaLockdownMask;
+} LapizLockdownMask;
 
 /*
  * Public methods
  */
 GType 		 lapiz_app_get_type 			(void) G_GNUC_CONST;
 
-PlumaApp 	*lapiz_app_get_default			(void);
+LapizApp 	*lapiz_app_get_default			(void);
 
-PlumaWindow	*lapiz_app_create_window		(PlumaApp  *app,
+LapizWindow	*lapiz_app_create_window		(LapizApp  *app,
 							 GdkScreen *screen);
 
-const GList	*lapiz_app_get_windows			(PlumaApp *app);
-PlumaWindow	*lapiz_app_get_active_window		(PlumaApp *app);
+const GList	*lapiz_app_get_windows			(LapizApp *app);
+LapizWindow	*lapiz_app_get_active_window		(LapizApp *app);
 
 /* Returns a newly allocated list with all the documents */
-GList		*lapiz_app_get_documents		(PlumaApp *app);
+GList		*lapiz_app_get_documents		(LapizApp *app);
 
 /* Returns a newly allocated list with all the views */
-GList		*lapiz_app_get_views			(PlumaApp *app);
+GList		*lapiz_app_get_views			(LapizApp *app);
 
 /* Lockdown state */
-PlumaLockdownMask lapiz_app_get_lockdown		(PlumaApp *app);
+LapizLockdownMask lapiz_app_get_lockdown		(LapizApp *app);
 
 /*
  * Non exported functions
  */
-PlumaWindow	*_lapiz_app_restore_window		(PlumaApp    *app,
+LapizWindow	*_lapiz_app_restore_window		(LapizApp    *app,
 							 const gchar *role);
-PlumaWindow	*_lapiz_app_get_window_in_viewport	(PlumaApp     *app,
+LapizWindow	*_lapiz_app_get_window_in_viewport	(LapizApp     *app,
 							 GdkScreen    *screen,
 							 gint          workspace,
 							 gint          viewport_x,
 							 gint          viewport_y);
-void		 _lapiz_app_set_lockdown		(PlumaApp          *app,
-							 PlumaLockdownMask  lockdown);
-void		 _lapiz_app_set_lockdown_bit		(PlumaApp          *app,
-							 PlumaLockdownMask  bit,
+void		 _lapiz_app_set_lockdown		(LapizApp          *app,
+							 LapizLockdownMask  lockdown);
+void		 _lapiz_app_set_lockdown_bit		(LapizApp          *app,
+							 LapizLockdownMask  bit,
 							 gboolean           value);
 /*
  * This one is a lapiz-window function, but we declare it here to avoid
- * #include headaches since it needs the PlumaLockdownMask declaration.
+ * #include headaches since it needs the LapizLockdownMask declaration.
  */
-void		 _lapiz_window_set_lockdown		(PlumaWindow         *window,
-							 PlumaLockdownMask    lockdown);
+void		 _lapiz_window_set_lockdown		(LapizWindow         *window,
+							 LapizLockdownMask    lockdown);
 
 /* global print config */
-GtkPageSetup		*_lapiz_app_get_default_page_setup	(PlumaApp         *app);
-void			 _lapiz_app_set_default_page_setup	(PlumaApp         *app,
+GtkPageSetup		*_lapiz_app_get_default_page_setup	(LapizApp         *app);
+void			 _lapiz_app_set_default_page_setup	(LapizApp         *app,
 								 GtkPageSetup     *page_setup);
-GtkPrintSettings	*_lapiz_app_get_default_print_settings	(PlumaApp         *app);
-void			 _lapiz_app_set_default_print_settings	(PlumaApp         *app,
+GtkPrintSettings	*_lapiz_app_get_default_print_settings	(LapizApp         *app);
+void			 _lapiz_app_set_default_print_settings	(LapizApp         *app,
 								 GtkPrintSettings *settings);
 
 G_END_DECLS

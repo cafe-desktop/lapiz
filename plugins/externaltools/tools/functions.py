@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#    Pluma External Tools plugin
+#    Lapiz External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-from gi.repository import Gio, Gdk, Gtk, GtkSource, Pluma
+from gi.repository import Gio, Gdk, Gtk, GtkSource, Lapiz
 from .outputpanel import OutputPanel
 from .capture import *
 
@@ -89,7 +89,7 @@ def run_external_tool(window, panel, node):
             capture.set_env(LAPIZ_CURRENT_DOCUMENT_URI    = uri,
                             LAPIZ_CURRENT_DOCUMENT_NAME   = name,
                             LAPIZ_CURRENT_DOCUMENT_SCHEME = scheme)
-            if Pluma.utils_uri_has_file_scheme(uri):
+            if Lapiz.utils_uri_has_file_scheme(uri):
                 path = gfile.get_path()
                 cwd = os.path.dirname(path)
                 capture.set_cwd(cwd)
@@ -101,7 +101,7 @@ def run_external_tool(window, panel, node):
                                  if doc.get_uri() is not None]
         documents_path = [Gio.file_new_for_uri(uri).get_path()
                                  for uri in documents_uri
-                                 if Pluma.utils_uri_has_file_scheme(uri)]
+                                 if Lapiz.utils_uri_has_file_scheme(uri)]
         capture.set_env(LAPIZ_DOCUMENTS_URI  = ' '.join(documents_uri),
                         LAPIZ_DOCUMENTS_PATH = ' '.join(documents_path))
 
@@ -218,7 +218,7 @@ class MultipleDocumentsSaver:
 
         for doc in docs:
             signals[doc] = doc.connect('saving', self.on_document_saving)
-            Pluma.commands_save_document(window, doc)
+            Lapiz.commands_save_document(window, doc)
             doc.disconnect(signals[doc])
 
     def on_document_saving(self, doc, size, total_size):

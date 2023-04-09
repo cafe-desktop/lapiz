@@ -57,23 +57,23 @@ enum
 	PROP_LOCKDOWN
 };
 
-struct _PlumaAppPrivate
+struct _LapizAppPrivate
 {
 	GList	          *windows;
-	PlumaWindow       *active_window;
+	LapizWindow       *active_window;
 
-	PlumaLockdownMask  lockdown;
+	LapizLockdownMask  lockdown;
 
 	GtkPageSetup      *page_setup;
 	GtkPrintSettings  *print_settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaApp, lapiz_app, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizApp, lapiz_app, G_TYPE_OBJECT)
 
 static void
 lapiz_app_finalize (GObject *object)
 {
-	PlumaApp *app = LAPIZ_APP (object);
+	LapizApp *app = LAPIZ_APP (object);
 
 	g_list_free (app->priv->windows);
 
@@ -91,7 +91,7 @@ lapiz_app_get_property (GObject    *object,
 			GValue     *value,
 			GParamSpec *pspec)
 {
-	PlumaApp *app = LAPIZ_APP (object);
+	LapizApp *app = LAPIZ_APP (object);
 
 	switch (prop_id)
 	{
@@ -105,7 +105,7 @@ lapiz_app_get_property (GObject    *object,
 }
 
 static void
-lapiz_app_class_init (PlumaAppClass *klass)
+lapiz_app_class_init (LapizAppClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -197,7 +197,7 @@ get_page_setup_file (void)
 }
 
 static void
-load_page_setup (PlumaApp *app)
+load_page_setup (LapizApp *app)
 {
 	gchar *filename;
 	GError *error = NULL;
@@ -228,7 +228,7 @@ load_page_setup (PlumaApp *app)
 }
 
 static void
-save_page_setup (PlumaApp *app)
+save_page_setup (LapizApp *app)
 {
 	gchar *filename;
 	GError *error = NULL;
@@ -270,7 +270,7 @@ get_print_settings_file (void)
 }
 
 static void
-load_print_settings (PlumaApp *app)
+load_print_settings (LapizApp *app)
 {
 	gchar *filename;
 	GError *error = NULL;
@@ -301,7 +301,7 @@ load_print_settings (PlumaApp *app)
 }
 
 static void
-save_print_settings (PlumaApp *app)
+save_print_settings (LapizApp *app)
 {
 	gchar *filename;
 	GError *error = NULL;
@@ -324,7 +324,7 @@ save_print_settings (PlumaApp *app)
 }
 
 static void
-lapiz_app_init (PlumaApp *app)
+lapiz_app_init (LapizApp *app)
 {
 	app->priv = lapiz_app_get_instance_private (app);
 
@@ -344,15 +344,15 @@ app_weak_notify (gpointer data,
 /**
  * lapiz_app_get_default:
  *
- * Returns the #PlumaApp object. This object is a singleton and
+ * Returns the #LapizApp object. This object is a singleton and
  * represents the running lapiz instance.
  *
- * Return value: (transfer none): the #PlumaApp pointer
+ * Return value: (transfer none): the #LapizApp pointer
  */
-PlumaApp *
+LapizApp *
 lapiz_app_get_default (void)
 {
-	static PlumaApp *app = NULL;
+	static LapizApp *app = NULL;
 
 	if (app != NULL)
 		return app;
@@ -369,16 +369,16 @@ lapiz_app_get_default (void)
 }
 
 static void
-set_active_window (PlumaApp    *app,
-                   PlumaWindow *window)
+set_active_window (LapizApp    *app,
+                   LapizWindow *window)
 {
 	app->priv->active_window = window;
 }
 
 static gboolean
-window_focus_in_event (PlumaWindow   *window,
+window_focus_in_event (LapizWindow   *window,
 		       GdkEventFocus *event,
-		       PlumaApp      *app)
+		       LapizApp      *app)
 {
 	/* updates active_view and active_child when a new toplevel receives focus */
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), FALSE);
@@ -389,11 +389,11 @@ window_focus_in_event (PlumaWindow   *window,
 }
 
 static gboolean
-window_delete_event (PlumaWindow *window,
+window_delete_event (LapizWindow *window,
                      GdkEvent    *event,
-                     PlumaApp    *app)
+                     LapizApp    *app)
 {
-	PlumaWindowState ws;
+	LapizWindowState ws;
 
 	ws = lapiz_window_get_state (window);
 
@@ -410,8 +410,8 @@ window_delete_event (PlumaWindow *window,
 }
 
 static void
-window_destroy (PlumaWindow *window,
-		PlumaApp    *app)
+window_destroy (LapizWindow *window,
+		LapizApp    *app)
 {
 	app->priv->windows = g_list_remove (app->priv->windows,
 					    window);
@@ -460,12 +460,12 @@ gen_role (void)
 				g_get_host_name ());
 }
 
-static PlumaWindow *
-lapiz_app_create_window_real (PlumaApp    *app,
+static LapizWindow *
+lapiz_app_create_window_real (LapizApp    *app,
 			      gboolean     set_geometry,
 			      const gchar *role)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	lapiz_debug (DEBUG_APP);
 
@@ -547,18 +547,18 @@ lapiz_app_create_window_real (PlumaApp    *app,
 
 /**
  * lapiz_app_create_window:
- * @app: the #PlumaApp
+ * @app: the #LapizApp
  * @screen: (allow-none):
  *
- * Create a new #PlumaWindow part of @app.
+ * Create a new #LapizWindow part of @app.
  *
- * Return value: (transfer none): the new #PlumaWindow
+ * Return value: (transfer none): the new #LapizWindow
  */
-PlumaWindow *
-lapiz_app_create_window (PlumaApp  *app,
+LapizWindow *
+lapiz_app_create_window (LapizApp  *app,
 			 GdkScreen *screen)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	window = lapiz_app_create_window_real (app, TRUE, NULL);
 
@@ -572,11 +572,11 @@ lapiz_app_create_window (PlumaApp  *app,
  * Same as _create_window, but doesn't set the geometry.
  * The session manager takes care of it. Used in mate-session.
  */
-PlumaWindow *
-_lapiz_app_restore_window (PlumaApp    *app,
+LapizWindow *
+_lapiz_app_restore_window (LapizApp    *app,
 			   const gchar *role)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	window = lapiz_app_create_window_real (app, FALSE, role);
 
@@ -585,15 +585,15 @@ _lapiz_app_restore_window (PlumaApp    *app,
 
 /**
  * lapiz_app_get_windows:
- * @app: the #PlumaApp
+ * @app: the #LapizApp
  *
- * Returns all the windows currently present in #PlumaApp.
+ * Returns all the windows currently present in #LapizApp.
  *
- * Return value: (element-type Pluma.Window) (transfer none): the list of #PlumaWindows objects.
+ * Return value: (element-type Lapiz.Window) (transfer none): the list of #LapizWindows objects.
  * The list should not be freed
  */
 const GList *
-lapiz_app_get_windows (PlumaApp *app)
+lapiz_app_get_windows (LapizApp *app)
 {
 	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
@@ -602,14 +602,14 @@ lapiz_app_get_windows (PlumaApp *app)
 
 /**
  * lapiz_app_get_active_window:
- * @app: the #PlumaApp
+ * @app: the #LapizApp
  *
- * Retrives the #PlumaWindow currently active.
+ * Retrives the #LapizWindow currently active.
  *
- * Return value: (transfer none): the active #PlumaWindow
+ * Return value: (transfer none): the active #LapizWindow
  */
-PlumaWindow *
-lapiz_app_get_active_window (PlumaApp *app)
+LapizWindow *
+lapiz_app_get_active_window (LapizApp *app)
 {
 	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
@@ -625,7 +625,7 @@ lapiz_app_get_active_window (PlumaApp *app)
 }
 
 static gboolean
-is_in_viewport (PlumaWindow  *window,
+is_in_viewport (LapizWindow  *window,
 		GdkScreen    *screen,
 		gint          workspace,
 		gint          viewport_x,
@@ -664,26 +664,26 @@ is_in_viewport (PlumaWindow  *window,
 
 /**
  * _lapiz_app_get_window_in_viewport:
- * @app: the #PlumaApp
+ * @app: the #LapizApp
  * @screen: the #GdkScreen
  * @workspace: the workspace number
  * @viewport_x: the viewport horizontal origin
  * @viewport_y: the viewport vertical origin
  *
  * Since a workspace can be larger than the screen, it is divided into several
- * equal parts called viewports. This function retrives the #PlumaWindow in
+ * equal parts called viewports. This function retrives the #LapizWindow in
  * the given viewport of the given workspace.
  *
- * Return value: the #PlumaWindow in the given viewport of the given workspace.
+ * Return value: the #LapizWindow in the given viewport of the given workspace.
  */
-PlumaWindow *
-_lapiz_app_get_window_in_viewport (PlumaApp  *app,
+LapizWindow *
+_lapiz_app_get_window_in_viewport (LapizApp  *app,
 				   GdkScreen *screen,
 				   gint       workspace,
 				   gint       viewport_x,
 				   gint       viewport_y)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	GList *l;
 
@@ -712,15 +712,15 @@ _lapiz_app_get_window_in_viewport (PlumaApp  *app,
 
 /**
  * lapiz_app_get_documents:
- * @app: the #PlumaApp
+ * @app: the #LapizApp
  *
- * Returns all the documents currently open in #PlumaApp.
+ * Returns all the documents currently open in #LapizApp.
  *
- * Return value: (element-type Pluma.Document) (transfer container):
- * a newly allocated list of #PlumaDocument objects
+ * Return value: (element-type Lapiz.Document) (transfer container):
+ * a newly allocated list of #LapizDocument objects
  */
 GList *
-lapiz_app_get_documents	(PlumaApp *app)
+lapiz_app_get_documents	(LapizApp *app)
 {
 	GList *res = NULL;
 	GList *windows;
@@ -742,15 +742,15 @@ lapiz_app_get_documents	(PlumaApp *app)
 
 /**
  * lapiz_app_get_views:
- * @app: the #PlumaApp
+ * @app: the #LapizApp
  *
- * Returns all the views currently present in #PlumaApp.
+ * Returns all the views currently present in #LapizApp.
  *
- * Return value: (element-type Pluma.View) (transfer container):
- * a newly allocated list of #PlumaView objects
+ * Return value: (element-type Lapiz.View) (transfer container):
+ * a newly allocated list of #LapizView objects
  */
 GList *
-lapiz_app_get_views (PlumaApp *app)
+lapiz_app_get_views (LapizApp *app)
 {
 	GList *res = NULL;
 	GList *windows;
@@ -772,14 +772,14 @@ lapiz_app_get_views (PlumaApp *app)
 
 /**
  * lapiz_app_get_lockdown:
- * @app: a #PlumaApp
+ * @app: a #LapizApp
  *
- * Gets the lockdown mask (see #PlumaLockdownMask) for the application.
+ * Gets the lockdown mask (see #LapizLockdownMask) for the application.
  * The lockdown mask determines which functions are locked down using
  * the MATE-wise lockdown GSettings keys.
  **/
-PlumaLockdownMask
-lapiz_app_get_lockdown (PlumaApp *app)
+LapizLockdownMask
+lapiz_app_get_lockdown (LapizApp *app)
 {
 	g_return_val_if_fail (LAPIZ_IS_APP (app), LAPIZ_LOCKDOWN_ALL);
 
@@ -787,7 +787,7 @@ lapiz_app_get_lockdown (PlumaApp *app)
 }
 
 static void
-app_lockdown_changed (PlumaApp *app)
+app_lockdown_changed (LapizApp *app)
 {
 	GList *l;
 
@@ -799,8 +799,8 @@ app_lockdown_changed (PlumaApp *app)
 }
 
 void
-_lapiz_app_set_lockdown (PlumaApp          *app,
-			 PlumaLockdownMask  lockdown)
+_lapiz_app_set_lockdown (LapizApp          *app,
+			 LapizLockdownMask  lockdown)
 {
 	g_return_if_fail (LAPIZ_IS_APP (app));
 
@@ -810,8 +810,8 @@ _lapiz_app_set_lockdown (PlumaApp          *app,
 }
 
 void
-_lapiz_app_set_lockdown_bit (PlumaApp          *app,
-			     PlumaLockdownMask  bit,
+_lapiz_app_set_lockdown_bit (LapizApp          *app,
+			     LapizLockdownMask  bit,
 			     gboolean           value)
 {
 	g_return_if_fail (LAPIZ_IS_APP (app));
@@ -826,7 +826,7 @@ _lapiz_app_set_lockdown_bit (PlumaApp          *app,
 
 /* Returns a copy */
 GtkPageSetup *
-_lapiz_app_get_default_page_setup (PlumaApp *app)
+_lapiz_app_get_default_page_setup (LapizApp *app)
 {
 	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
@@ -837,7 +837,7 @@ _lapiz_app_get_default_page_setup (PlumaApp *app)
 }
 
 void
-_lapiz_app_set_default_page_setup (PlumaApp     *app,
+_lapiz_app_set_default_page_setup (LapizApp     *app,
 				   GtkPageSetup *page_setup)
 {
 	g_return_if_fail (LAPIZ_IS_APP (app));
@@ -851,7 +851,7 @@ _lapiz_app_set_default_page_setup (PlumaApp     *app,
 
 /* Returns a copy */
 GtkPrintSettings *
-_lapiz_app_get_default_print_settings (PlumaApp *app)
+_lapiz_app_get_default_print_settings (LapizApp *app)
 {
 	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
@@ -862,7 +862,7 @@ _lapiz_app_get_default_print_settings (PlumaApp *app)
 }
 
 void
-_lapiz_app_set_default_print_settings (PlumaApp         *app,
+_lapiz_app_set_default_print_settings (LapizApp         *app,
 				       GtkPrintSettings *settings)
 {
 	g_return_if_fail (LAPIZ_IS_APP (app));

@@ -39,9 +39,9 @@
 #include "lapiz-window.h"
 #include "lapiz-debug.h"
 
-#define PANEL_ITEM_KEY "PlumaPanelItemKey"
+#define PANEL_ITEM_KEY "LapizPanelItemKey"
 
-struct _PlumaPanelPrivate
+struct _LapizPanelPrivate
 {
 	GtkOrientation orientation;
 
@@ -53,9 +53,9 @@ struct _PlumaPanelPrivate
 	GtkWidget *notebook;
 };
 
-typedef struct _PlumaPanelItem PlumaPanelItem;
+typedef struct _LapizPanelItem LapizPanelItem;
 
-struct _PlumaPanelItem
+struct _LapizPanelItem
 {
 	gchar *name;
 	GtkWidget *icon;
@@ -83,7 +83,7 @@ static GObject	*lapiz_panel_constructor	(GType type,
 						 GObjectConstructParam *construct_properties);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPanel, lapiz_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPanel, lapiz_panel, GTK_TYPE_BOX)
 
 static void
 lapiz_panel_finalize (GObject *obj)
@@ -98,7 +98,7 @@ lapiz_panel_get_property (GObject    *object,
 			  GValue     *value,
 			  GParamSpec *pspec)
 {
-	PlumaPanel *panel = LAPIZ_PANEL (object);
+	LapizPanel *panel = LAPIZ_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -117,7 +117,7 @@ lapiz_panel_set_property (GObject      *object,
 			  const GValue *value,
 			  GParamSpec   *pspec)
 {
-	PlumaPanel *panel = LAPIZ_PANEL (object);
+	LapizPanel *panel = LAPIZ_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -131,18 +131,18 @@ lapiz_panel_set_property (GObject      *object,
 }
 
 static void
-lapiz_panel_close (PlumaPanel *panel)
+lapiz_panel_close (LapizPanel *panel)
 {
 	gtk_widget_hide (GTK_WIDGET (panel));
 }
 
 static void
-lapiz_panel_focus_document (PlumaPanel *panel)
+lapiz_panel_focus_document (LapizPanel *panel)
 {
 	GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (panel));
 	if (gtk_widget_is_toplevel (toplevel) && LAPIZ_IS_WINDOW (toplevel))
 	{
-		PlumaView *view;
+		LapizView *view;
 
 		view = lapiz_window_get_active_view (LAPIZ_WINDOW (toplevel));
 		if (view != NULL)
@@ -155,7 +155,7 @@ lapiz_panel_grab_focus (GtkWidget *w)
 {
 	gint n;
 	GtkWidget *tab;
-	PlumaPanel *panel = LAPIZ_PANEL (w);
+	LapizPanel *panel = LAPIZ_PANEL (w);
 
 	n = gtk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
 	if (n == -1)
@@ -169,7 +169,7 @@ lapiz_panel_grab_focus (GtkWidget *w)
 }
 
 static void
-lapiz_panel_class_init (PlumaPanelClass *klass)
+lapiz_panel_class_init (LapizPanelClass *klass)
 {
 	GtkBindingSet *binding_set;
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -201,7 +201,7 @@ lapiz_panel_class_init (PlumaPanelClass *klass)
 		g_signal_new ("item_added",
 			      G_OBJECT_CLASS_TYPE (klass),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (PlumaPanelClass, item_added),
+			      G_STRUCT_OFFSET (LapizPanelClass, item_added),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
@@ -211,7 +211,7 @@ lapiz_panel_class_init (PlumaPanelClass *klass)
 		g_signal_new ("item_removed",
 			      G_OBJECT_CLASS_TYPE (klass),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (PlumaPanelClass, item_removed),
+			      G_STRUCT_OFFSET (LapizPanelClass, item_removed),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
@@ -223,7 +223,7 @@ lapiz_panel_class_init (PlumaPanelClass *klass)
 		g_signal_new ("close",
 			      G_OBJECT_CLASS_TYPE (klass),
 			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-			      G_STRUCT_OFFSET (PlumaPanelClass, close),
+			      G_STRUCT_OFFSET (LapizPanelClass, close),
 		  	      NULL, NULL,
 		  	      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE, 0);
@@ -231,7 +231,7 @@ lapiz_panel_class_init (PlumaPanelClass *klass)
 		g_signal_new ("focus_document",
 			      G_OBJECT_CLASS_TYPE (klass),
 			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-			      G_STRUCT_OFFSET (PlumaPanelClass, focus_document),
+			      G_STRUCT_OFFSET (LapizPanelClass, focus_document),
 		  	      NULL, NULL,
 		  	      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE, 0);
@@ -296,8 +296,8 @@ set_gtk_image_from_gtk_image (GtkImage *image,
 }
 
 static void
-sync_title (PlumaPanel     *panel,
-	    PlumaPanelItem *item)
+sync_title (LapizPanel     *panel,
+	    LapizPanelItem *item)
 {
 	if (panel->priv->orientation != GTK_ORIENTATION_VERTICAL)
 		return;
@@ -325,15 +325,15 @@ static void
 notebook_page_changed (GtkNotebook     *notebook,
                        GtkWidget       *page,
                        guint            page_num,
-                       PlumaPanel      *panel)
+                       LapizPanel      *panel)
 {
 	GtkWidget *item;
-	PlumaPanelItem *data;
+	LapizPanelItem *data;
 
 	item = gtk_notebook_get_nth_page (notebook, page_num);
 	g_return_if_fail (item != NULL);
 
-	data = (PlumaPanelItem *)g_object_get_data (G_OBJECT (item),
+	data = (LapizPanelItem *)g_object_get_data (G_OBJECT (item),
 						    PANEL_ITEM_KEY);
 	g_return_if_fail (data != NULL);
 
@@ -341,7 +341,7 @@ notebook_page_changed (GtkNotebook     *notebook,
 }
 
 static void
-panel_show (PlumaPanel *panel,
+panel_show (LapizPanel *panel,
 	    gpointer    user_data)
 {
 	gint page;
@@ -356,7 +356,7 @@ panel_show (PlumaPanel *panel,
 }
 
 static void
-lapiz_panel_init (PlumaPanel *panel)
+lapiz_panel_init (LapizPanel *panel)
 {
 	panel->priv = lapiz_panel_get_instance_private (panel);
 
@@ -371,7 +371,7 @@ close_button_clicked_cb (GtkWidget *widget,
 }
 
 static GtkWidget *
-create_close_button (PlumaPanel *panel)
+create_close_button (LapizPanel *panel)
 {
 	GtkWidget *button;
 
@@ -388,7 +388,7 @@ create_close_button (PlumaPanel *panel)
 }
 
 static void
-build_notebook_for_panel (PlumaPanel *panel)
+build_notebook_for_panel (LapizPanel *panel)
 {
 	/* Create the panel notebook */
 	panel->priv->notebook = gtk_notebook_new ();
@@ -408,7 +408,7 @@ build_notebook_for_panel (PlumaPanel *panel)
 }
 
 static void
-build_horizontal_panel (PlumaPanel *panel)
+build_horizontal_panel (LapizPanel *panel)
 {
 	GtkWidget *box;
 	GtkWidget *sidebar;
@@ -450,7 +450,7 @@ build_horizontal_panel (PlumaPanel *panel)
 }
 
 static void
-build_vertical_panel (PlumaPanel *panel)
+build_vertical_panel (LapizPanel *panel)
 {
 	GtkWidget *close_button;
 	GtkWidget *title_hbox;
@@ -521,7 +521,7 @@ lapiz_panel_constructor (GType type,
 {
 
 	/* Invoke parent constructor. */
-	PlumaPanelClass *klass = LAPIZ_PANEL_CLASS (g_type_class_peek (LAPIZ_TYPE_PANEL));
+	LapizPanelClass *klass = LAPIZ_PANEL_CLASS (g_type_class_peek (LAPIZ_TYPE_PANEL));
 	GObjectClass *parent_class = G_OBJECT_CLASS (g_type_class_peek_parent (klass));
 	GObject *obj = parent_class->constructor (type,
 						  n_construct_properties,
@@ -529,7 +529,7 @@ lapiz_panel_constructor (GType type,
 
 	/* Build the panel, now that we know the orientation
 			   (_init has been called previously) */
-	PlumaPanel *panel = LAPIZ_PANEL (obj);
+	LapizPanel *panel = LAPIZ_PANEL (obj);
 
 	build_notebook_for_panel (panel);
   	if (panel->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
@@ -549,11 +549,11 @@ lapiz_panel_constructor (GType type,
  * lapiz_panel_new:
  * @orientation: a #GtkOrientation
  *
- * Creates a new #PlumaPanel with the given @orientation. You shouldn't create
+ * Creates a new #LapizPanel with the given @orientation. You shouldn't create
  * a new panel use lapiz_window_get_side_panel() or lapiz_window_get_bottom_panel()
  * instead.
  *
- * Returns: a new #PlumaPanel object.
+ * Returns: a new #LapizPanel object.
  */
 GtkWidget *
 lapiz_panel_new (GtkOrientation orientation)
@@ -562,7 +562,7 @@ lapiz_panel_new (GtkOrientation orientation)
 }
 
 static GtkWidget *
-build_tab_label (PlumaPanel  *panel,
+build_tab_label (LapizPanel  *panel,
 		 GtkWidget   *item,
 		 const gchar *name,
 		 GtkWidget   *icon)
@@ -608,7 +608,7 @@ build_tab_label (PlumaPanel  *panel,
 
 /**
  * lapiz_panel_add_item:
- * @panel: a #PlumaPanel
+ * @panel: a #LapizPanel
  * @item: the #GtkWidget to add to the @panel
  * @name: the name to be shown in the @panel
  * @image: the image to be shown in the @panel
@@ -616,12 +616,12 @@ build_tab_label (PlumaPanel  *panel,
  * Adds a new item to the @panel.
  */
 void
-lapiz_panel_add_item (PlumaPanel  *panel,
+lapiz_panel_add_item (LapizPanel  *panel,
 		      GtkWidget   *item,
 		      const gchar *name,
 		      GtkWidget   *image)
 {
-	PlumaPanelItem *data;
+	LapizPanelItem *data;
 	GtkWidget *tab_label;
 	GtkWidget *menu_label;
 	gint w, h;
@@ -631,7 +631,7 @@ lapiz_panel_add_item (PlumaPanel  *panel,
 	g_return_if_fail (name != NULL);
 	g_return_if_fail (image == NULL || GTK_IS_IMAGE (image));
 
-	data = g_new (PlumaPanelItem, 1);
+	data = g_new (LapizPanelItem, 1);
 
 	data->name = g_strdup (name);
 
@@ -671,7 +671,7 @@ lapiz_panel_add_item (PlumaPanel  *panel,
 
 /**
  * lapiz_panel_add_item_with_icon:
- * @panel: a #PlumaPanel
+ * @panel: a #LapizPanel
  * @item: the #GtkWidget to add to the @panel
  * @name: the name to be shown in the @panel
  * @icon_name: a icon name
@@ -679,7 +679,7 @@ lapiz_panel_add_item (PlumaPanel  *panel,
  * Same as lapiz_panel_add_item() but using an image from icon name.
  */
 void
-lapiz_panel_add_item_with_icon (PlumaPanel  *panel,
+lapiz_panel_add_item_with_icon (LapizPanel  *panel,
 				GtkWidget   *item,
 				const gchar *name,
 				const gchar *icon_name)
@@ -697,7 +697,7 @@ lapiz_panel_add_item_with_icon (PlumaPanel  *panel,
 
 /**
  * lapiz_panel_remove_item:
- * @panel: a #PlumaPanel
+ * @panel: a #LapizPanel
  * @item: the item to be removed from the panel
  *
  * Removes the widget @item from the panel if it is in the @panel and returns
@@ -706,10 +706,10 @@ lapiz_panel_add_item_with_icon (PlumaPanel  *panel,
  * Returns: %TRUE if it was well removed.
  */
 gboolean
-lapiz_panel_remove_item (PlumaPanel *panel,
+lapiz_panel_remove_item (LapizPanel *panel,
 			 GtkWidget  *item)
 {
-	PlumaPanelItem *data;
+	LapizPanelItem *data;
 	gint page_num;
 
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), FALSE);
@@ -721,7 +721,7 @@ lapiz_panel_remove_item (PlumaPanel *panel,
 	if (page_num == -1)
 		return FALSE;
 
-	data = (PlumaPanelItem *)g_object_get_data (G_OBJECT (item),
+	data = (LapizPanelItem *)g_object_get_data (G_OBJECT (item),
 					            PANEL_ITEM_KEY);
 	g_return_val_if_fail (data != NULL, FALSE);
 
@@ -751,7 +751,7 @@ lapiz_panel_remove_item (PlumaPanel *panel,
 
 /**
  * lapiz_panel_activate_item:
- * @panel: a #PlumaPanel
+ * @panel: a #LapizPanel
  * @item: the item to be activated
  *
  * Switches to the page that contains @item.
@@ -759,7 +759,7 @@ lapiz_panel_remove_item (PlumaPanel *panel,
  * Returns: %TRUE if it was activated
  */
 gboolean
-lapiz_panel_activate_item (PlumaPanel *panel,
+lapiz_panel_activate_item (LapizPanel *panel,
 			   GtkWidget  *item)
 {
 	gint page_num;
@@ -781,7 +781,7 @@ lapiz_panel_activate_item (PlumaPanel *panel,
 
 /**
  * lapiz_panel_item_is_active:
- * @panel: a #PlumaPanel
+ * @panel: a #LapizPanel
  * @item: a #GtkWidget
  *
  * Returns whether @item is the active widget in @panel
@@ -789,7 +789,7 @@ lapiz_panel_activate_item (PlumaPanel *panel,
  * Returns: %TRUE if @item is the active widget
  */
 gboolean
-lapiz_panel_item_is_active (PlumaPanel *panel,
+lapiz_panel_item_is_active (LapizPanel *panel,
 			    GtkWidget  *item)
 {
 	gint cur_page;
@@ -812,14 +812,14 @@ lapiz_panel_item_is_active (PlumaPanel *panel,
 
 /**
  * lapiz_panel_get_orientation:
- * @panel: a #PlumaPanel
+ * @panel: a #LapizPanel
  *
  * Gets the orientation of the @panel.
  *
- * Returns: the #GtkOrientation of #PlumaPanel
+ * Returns: the #GtkOrientation of #LapizPanel
  */
 GtkOrientation
-lapiz_panel_get_orientation (PlumaPanel *panel)
+lapiz_panel_get_orientation (LapizPanel *panel)
 {
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), GTK_ORIENTATION_VERTICAL);
 
@@ -828,14 +828,14 @@ lapiz_panel_get_orientation (PlumaPanel *panel)
 
 /**
  * lapiz_panel_get_n_items:
- * @panel: a #PlumaPanel
+ * @panel: a #LapizPanel
  *
  * Gets the number of items in a @panel.
  *
- * Returns: the number of items contained in #PlumaPanel
+ * Returns: the number of items contained in #LapizPanel
  */
 gint
-lapiz_panel_get_n_items (PlumaPanel *panel)
+lapiz_panel_get_n_items (LapizPanel *panel)
 {
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), -1);
 
@@ -843,11 +843,11 @@ lapiz_panel_get_n_items (PlumaPanel *panel)
 }
 
 gint
-_lapiz_panel_get_active_item_id (PlumaPanel *panel)
+_lapiz_panel_get_active_item_id (LapizPanel *panel)
 {
 	gint cur_page;
 	GtkWidget *item;
-	PlumaPanelItem *data;
+	LapizPanelItem *data;
 
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), 0);
 
@@ -867,7 +867,7 @@ _lapiz_panel_get_active_item_id (PlumaPanel *panel)
 	 * ad hoc id argument.
 	 */
 
-	data = (PlumaPanelItem *)g_object_get_data (G_OBJECT (item),
+	data = (LapizPanelItem *)g_object_get_data (G_OBJECT (item),
 					            PANEL_ITEM_KEY);
 	g_return_val_if_fail (data != NULL, 0);
 
@@ -875,7 +875,7 @@ _lapiz_panel_get_active_item_id (PlumaPanel *panel)
 }
 
 void
-_lapiz_panel_set_active_item_by_id (PlumaPanel *panel,
+_lapiz_panel_set_active_item_by_id (LapizPanel *panel,
 				    gint        id)
 {
 	gint n, i;
@@ -891,12 +891,12 @@ _lapiz_panel_set_active_item_by_id (PlumaPanel *panel,
 	for (i = 0; i < n; i++)
 	{
 		GtkWidget *item;
-		PlumaPanelItem *data;
+		LapizPanelItem *data;
 
 		item = gtk_notebook_get_nth_page (
 				GTK_NOTEBOOK (panel->priv->notebook), i);
 
-		data = (PlumaPanelItem *)g_object_get_data (G_OBJECT (item),
+		data = (LapizPanelItem *)g_object_get_data (G_OBJECT (item),
 						            PANEL_ITEM_KEY);
 		g_return_if_fail (data != NULL);
 

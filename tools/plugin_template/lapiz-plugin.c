@@ -90,8 +90,8 @@ free_window_data (WindowData *data)
 ##endif
 
 static void
-impl_activate (PlumaPlugin *plugin,
-	       PlumaWindow *window)
+impl_activate (LapizPlugin *plugin,
+	       LapizWindow *window)
 {
 ##ifdef WITH_MENU
 	GtkUIManager *manager;
@@ -125,8 +125,8 @@ impl_activate (PlumaPlugin *plugin,
 }
 
 static void
-impl_deactivate (PlumaPlugin *plugin,
-		 PlumaWindow *window)
+impl_deactivate (LapizPlugin *plugin,
+		 LapizWindow *window)
 {
 ##ifdef WITH_MENU
 	GtkUIManager *manager;
@@ -150,15 +150,15 @@ impl_deactivate (PlumaPlugin *plugin,
 }
 
 static void
-impl_update_ui (PlumaPlugin *plugin,
-		PlumaWindow *window)
+impl_update_ui (LapizPlugin *plugin,
+		LapizWindow *window)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 }
 
 ##ifdef WITH_CONFIGURE_DIALOG
 static GtkWidget *
-impl_create_configure_dialog (PlumaPlugin *plugin)
+impl_create_configure_dialog (LapizPlugin *plugin)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 }
@@ -168,7 +168,7 @@ static void
 ##(PLUGIN_ID.lower)_plugin_class_init (##(PLUGIN_ID.camel)PluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	PlumaPluginClass *plugin_class = LAPIZ_PLUGIN_CLASS (klass);
+	LapizPluginClass *plugin_class = LAPIZ_PLUGIN_CLASS (klass);
 
 	object_class->finalize = ##(PLUGIN_ID.lower)_plugin_finalize;
 

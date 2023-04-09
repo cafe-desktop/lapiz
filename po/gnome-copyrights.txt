@@ -113,7 +113,7 @@
 
 
 ========== bn.po ==========
-# Bengali translation of Pluma.
+# Bengali translation of Lapiz.
 # Copyright (C) 2003 Free Software Foundation
 # This file is distributed under the same license as the lapiz package.
 #
@@ -147,7 +147,7 @@
 
 
 ========== br.po ==========
-# Breton translation for Pluma
+# Breton translation for Lapiz
 # # Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the lapiz package.
 #
@@ -303,7 +303,7 @@
 
 
 ========== el.po ==========
-# Translation of Pluma to Greek
+# Translation of Lapiz to Greek
 # Copyright (C) 2000 ~ 2010, Free Software Foundation, Inc.
 #
 # spyros:
@@ -401,8 +401,8 @@
 
 
 ========== et.po ==========
-# Pluma'i eesti keele tõlge.
-# Estonian translation of Pluma.
+# Lapiz'i eesti keele tõlge.
+# Estonian translation of Lapiz.
 #
 # Copyright (C) 2002, 2003, 2005, 2006 Free Software Foundation, Inc.
 # Copyright (C) 2007-2010 The MATE Project.
@@ -577,7 +577,7 @@
 
 
 ========== hy.po ==========
-# Pluma armenian translation
+# Lapiz armenian translation
 # Copyright (C) 2006 Norayr Chilingaryan
 # This file is distributed under the same license as the lapiz package.
 # Norayr Chilingaryan <norik@freenet.am>, 2006.
@@ -830,7 +830,7 @@
 
 
 ========== ms.po ==========
-# Pluma Bahasa Melayu (ms)
+# Lapiz Bahasa Melayu (ms)
 # Jika takut risiko, Jangan bicara tentang Perjuangan
 # Hasbullah Bin Pit (sebol) <sebol@ikhlas.com>, 2002
 #

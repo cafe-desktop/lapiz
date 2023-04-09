@@ -41,7 +41,7 @@ G_BEGIN_DECLS
 
 /* WindowPrivate is in a separate .h so that we can access it from lapiz-commands */
 
-struct _PlumaWindowPrivate
+struct _LapizWindowPrivate
 {
 	GtkWidget      *notebook;
 
@@ -54,7 +54,7 @@ struct _PlumaWindowPrivate
 	GtkWidget      *tab_width_combo;
 	GtkWidget      *language_combo;
 
-	PlumaMessageBus *message_bus;
+	LapizMessageBus *message_bus;
 	PeasExtensionSet *extensions;
 
 	/* Widgets for fullscreen mode */
@@ -83,14 +83,14 @@ struct _PlumaWindowPrivate
 	GtkWidget      *toolbar;
 	GtkWidget      *toolbar_recent_menu;
 	GtkWidget      *menubar;
-	PlumaToolbarSetting toolbar_style;
+	LapizToolbarSetting toolbar_style;
 
 	/* recent files */
 	GtkActionGroup *recents_action_group;
 	guint           recents_menu_ui_id;
 	gulong          recents_handler_id;
 
-	PlumaTab       *active_tab;
+	LapizTab       *active_tab;
 	gint            num_tabs;
 
 	gint            num_tabs_with_error;
@@ -102,7 +102,7 @@ struct _PlumaWindowPrivate
 	gint            side_panel_size;
 	gint            bottom_panel_size;
 
-	PlumaWindowState state;
+	LapizWindowState state;
 
 	gint            bottom_panel_item_removed_handler_id;
 

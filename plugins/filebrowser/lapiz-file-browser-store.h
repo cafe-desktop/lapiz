@@ -1,5 +1,5 @@
 /*
- * lapiz-file-browser-store.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-store.h - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 #define LAPIZ_TYPE_FILE_BROWSER_STORE			(lapiz_file_browser_store_get_type ())
-#define LAPIZ_FILE_BROWSER_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_STORE, PlumaFileBrowserStore))
-#define LAPIZ_FILE_BROWSER_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_STORE, PlumaFileBrowserStore const))
-#define LAPIZ_FILE_BROWSER_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BROWSER_STORE, PlumaFileBrowserStoreClass))
+#define LAPIZ_FILE_BROWSER_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_STORE, LapizFileBrowserStore))
+#define LAPIZ_FILE_BROWSER_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_STORE, LapizFileBrowserStore const))
+#define LAPIZ_FILE_BROWSER_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BROWSER_STORE, LapizFileBrowserStoreClass))
 #define LAPIZ_IS_FILE_BROWSER_STORE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_FILE_BROWSER_STORE))
 #define LAPIZ_IS_FILE_BROWSER_STORE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_FILE_BROWSER_STORE))
-#define LAPIZ_FILE_BROWSER_STORE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BROWSER_STORE, PlumaFileBrowserStoreClass))
+#define LAPIZ_FILE_BROWSER_STORE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BROWSER_STORE, LapizFileBrowserStoreClass))
 
 typedef enum
 {
@@ -41,7 +41,7 @@ typedef enum
 	LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS,
 	LAPIZ_FILE_BROWSER_STORE_COLUMN_EMBLEM,
 	LAPIZ_FILE_BROWSER_STORE_COLUMN_NUM
-} PlumaFileBrowserStoreColumn;
+} LapizFileBrowserStoreColumn;
 
 typedef enum
 {
@@ -51,7 +51,7 @@ typedef enum
 	LAPIZ_FILE_BROWSER_STORE_FLAG_LOADED       = 1 << 3,
 	LAPIZ_FILE_BROWSER_STORE_FLAG_IS_FILTERED  = 1 << 4,
 	LAPIZ_FILE_BROWSER_STORE_FLAG_IS_DUMMY     = 1 << 5
-} PlumaFileBrowserStoreFlag;
+} LapizFileBrowserStoreFlag;
 
 typedef enum
 {
@@ -61,14 +61,14 @@ typedef enum
 	LAPIZ_FILE_BROWSER_STORE_RESULT_NO_TRASH,
 	LAPIZ_FILE_BROWSER_STORE_RESULT_MOUNTING,
 	LAPIZ_FILE_BROWSER_STORE_RESULT_NUM
-} PlumaFileBrowserStoreResult;
+} LapizFileBrowserStoreResult;
 
 typedef enum
 {
 	LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_NONE        = 0,
 	LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN = 1 << 0,
 	LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY = 1 << 1
-} PlumaFileBrowserStoreFilterMode;
+} LapizFileBrowserStoreFilterMode;
 
 #define FILE_IS_DIR(flags)	(flags & LAPIZ_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY)
 #define FILE_IS_HIDDEN(flags)	(flags & LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN)
@@ -77,122 +77,122 @@ typedef enum
 #define FILE_IS_FILTERED(flags)	(flags & LAPIZ_FILE_BROWSER_STORE_FLAG_IS_FILTERED)
 #define FILE_IS_DUMMY(flags)	(flags & LAPIZ_FILE_BROWSER_STORE_FLAG_IS_DUMMY)
 
-typedef struct _PlumaFileBrowserStore        PlumaFileBrowserStore;
-typedef struct _PlumaFileBrowserStoreClass   PlumaFileBrowserStoreClass;
-typedef struct _PlumaFileBrowserStorePrivate PlumaFileBrowserStorePrivate;
+typedef struct _LapizFileBrowserStore        LapizFileBrowserStore;
+typedef struct _LapizFileBrowserStoreClass   LapizFileBrowserStoreClass;
+typedef struct _LapizFileBrowserStorePrivate LapizFileBrowserStorePrivate;
 
-typedef gboolean (*PlumaFileBrowserStoreFilterFunc) (PlumaFileBrowserStore
+typedef gboolean (*LapizFileBrowserStoreFilterFunc) (LapizFileBrowserStore
 						     * model,
 						     GtkTreeIter * iter,
 						     gpointer user_data);
 
-struct _PlumaFileBrowserStore
+struct _LapizFileBrowserStore
 {
 	GObject parent;
 
-	PlumaFileBrowserStorePrivate *priv;
+	LapizFileBrowserStorePrivate *priv;
 };
 
-struct _PlumaFileBrowserStoreClass {
+struct _LapizFileBrowserStoreClass {
 	GObjectClass parent_class;
 
 	/* Signals */
-	void (*begin_loading)        (PlumaFileBrowserStore * model,
+	void (*begin_loading)        (LapizFileBrowserStore * model,
 			              GtkTreeIter * iter);
-	void (*end_loading)          (PlumaFileBrowserStore * model,
+	void (*end_loading)          (LapizFileBrowserStore * model,
 			              GtkTreeIter * iter);
-	void (*error)                (PlumaFileBrowserStore * model,
+	void (*error)                (LapizFileBrowserStore * model,
 	                              guint code,
 		                      gchar * message);
-	gboolean (*no_trash)	     (PlumaFileBrowserStore * model,
+	gboolean (*no_trash)	     (LapizFileBrowserStore * model,
 				      GList * files);
-	void (*rename)		     (PlumaFileBrowserStore * model,
+	void (*rename)		     (LapizFileBrowserStore * model,
 				      const gchar * olduri,
 				      const gchar * newuri);
-	void (*begin_refresh)	     (PlumaFileBrowserStore * model);
-	void (*end_refresh)	     (PlumaFileBrowserStore * model);
-	void (*unload)		     (PlumaFileBrowserStore * model,
+	void (*begin_refresh)	     (LapizFileBrowserStore * model);
+	void (*end_refresh)	     (LapizFileBrowserStore * model);
+	void (*unload)		     (LapizFileBrowserStore * model,
 				      const gchar * uri);
 };
 
 GType lapiz_file_browser_store_get_type               (void) G_GNUC_CONST;
 void _lapiz_file_browser_store_register_type          (GTypeModule * module);
 
-PlumaFileBrowserStore *lapiz_file_browser_store_new   (gchar const *root);
+LapizFileBrowserStore *lapiz_file_browser_store_new   (gchar const *root);
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_root_and_virtual_root    (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_root_and_virtual_root    (LapizFileBrowserStore * model,
 						       gchar const *root,
 			  			       gchar const *virtual_root);
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_root                     (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_root                     (LapizFileBrowserStore * model,
 				                       gchar const *root);
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_virtual_root             (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_virtual_root             (LapizFileBrowserStore * model,
 					               GtkTreeIter * iter);
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_virtual_root_from_string (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_virtual_root_from_string (LapizFileBrowserStore * model,
                                                        gchar const *root);
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_virtual_root_up          (PlumaFileBrowserStore * model);
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_virtual_root_top         (PlumaFileBrowserStore * model);
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_virtual_root_up          (LapizFileBrowserStore * model);
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_virtual_root_top         (LapizFileBrowserStore * model);
 
 gboolean
-lapiz_file_browser_store_get_iter_virtual_root        (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_get_iter_virtual_root        (LapizFileBrowserStore * model,
                                                        GtkTreeIter * iter);
-gboolean lapiz_file_browser_store_get_iter_root       (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_get_iter_root       (LapizFileBrowserStore * model,
 						       GtkTreeIter * iter);
-gchar * lapiz_file_browser_store_get_root             (PlumaFileBrowserStore * model);
-gchar * lapiz_file_browser_store_get_virtual_root     (PlumaFileBrowserStore * model);
+gchar * lapiz_file_browser_store_get_root             (LapizFileBrowserStore * model);
+gchar * lapiz_file_browser_store_get_virtual_root     (LapizFileBrowserStore * model);
 
-gboolean lapiz_file_browser_store_iter_equal          (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_iter_equal          (LapizFileBrowserStore * model,
                                                        GtkTreeIter * iter1,
 					               GtkTreeIter * iter2);
 
-void lapiz_file_browser_store_set_value               (PlumaFileBrowserStore * tree_model,
+void lapiz_file_browser_store_set_value               (LapizFileBrowserStore * tree_model,
                                                        GtkTreeIter * iter,
                                                        gint column,
                                                        GValue * value);
 
-void _lapiz_file_browser_store_iter_expanded          (PlumaFileBrowserStore * model,
+void _lapiz_file_browser_store_iter_expanded          (LapizFileBrowserStore * model,
                                                        GtkTreeIter * iter);
-void _lapiz_file_browser_store_iter_collapsed         (PlumaFileBrowserStore * model,
+void _lapiz_file_browser_store_iter_collapsed         (LapizFileBrowserStore * model,
                                                        GtkTreeIter * iter);
 
-PlumaFileBrowserStoreFilterMode
-lapiz_file_browser_store_get_filter_mode              (PlumaFileBrowserStore * model);
-void lapiz_file_browser_store_set_filter_mode         (PlumaFileBrowserStore * model,
-                                                       PlumaFileBrowserStoreFilterMode mode);
-void lapiz_file_browser_store_set_filter_func         (PlumaFileBrowserStore * model,
-                                                       PlumaFileBrowserStoreFilterFunc func,
+LapizFileBrowserStoreFilterMode
+lapiz_file_browser_store_get_filter_mode              (LapizFileBrowserStore * model);
+void lapiz_file_browser_store_set_filter_mode         (LapizFileBrowserStore * model,
+                                                       LapizFileBrowserStoreFilterMode mode);
+void lapiz_file_browser_store_set_filter_func         (LapizFileBrowserStore * model,
+                                                       LapizFileBrowserStoreFilterFunc func,
                                                        gpointer user_data);
-void lapiz_file_browser_store_refilter                (PlumaFileBrowserStore * model);
-PlumaFileBrowserStoreFilterMode
+void lapiz_file_browser_store_refilter                (LapizFileBrowserStore * model);
+LapizFileBrowserStoreFilterMode
 lapiz_file_browser_store_filter_mode_get_default      (void);
 
-void lapiz_file_browser_store_refresh                 (PlumaFileBrowserStore * model);
-gboolean lapiz_file_browser_store_rename              (PlumaFileBrowserStore * model,
+void lapiz_file_browser_store_refresh                 (LapizFileBrowserStore * model);
+gboolean lapiz_file_browser_store_rename              (LapizFileBrowserStore * model,
                                                        GtkTreeIter * iter,
                                                        gchar const *new_name,
                                                        GError ** error);
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_delete                       (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_delete                       (LapizFileBrowserStore * model,
                                                        GtkTreeIter * iter,
                                                        gboolean trash);
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_delete_all                   (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_delete_all                   (LapizFileBrowserStore * model,
                                                        GList *rows,
                                                        gboolean trash);
 
-gboolean lapiz_file_browser_store_new_file            (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_new_file            (LapizFileBrowserStore * model,
                                                        GtkTreeIter * parent,
                                                        GtkTreeIter * iter);
-gboolean lapiz_file_browser_store_new_directory       (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_new_directory       (LapizFileBrowserStore * model,
                                                        GtkTreeIter * parent,
                                                        GtkTreeIter * iter);
 
-void lapiz_file_browser_store_cancel_mount_operation  (PlumaFileBrowserStore *store);
+void lapiz_file_browser_store_cancel_mount_operation  (LapizFileBrowserStore *store);
 
 G_END_DECLS
 #endif				/* __LAPIZ_FILE_BROWSER_STORE_H__ */

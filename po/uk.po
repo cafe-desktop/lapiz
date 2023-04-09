@@ -584,8 +584,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -593,7 +593,7 @@ msgstr "Текстовий редактор для стільничного се
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -602,7 +602,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -901,8 +901,8 @@ msgid "_Close"
 msgstr "_Закрити"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Параметри Pluma"
+msgid "Lapiz Preferences"
+msgstr "Параметри Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1326,24 +1326,24 @@ msgid "Sun Microsystems"
 msgstr "Сун Мікросістемс"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma - це маленький та легкий редактор текстів для середовища MATE"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz - це маленький та легкий редактор текстів для середовища MATE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma - безкоштовне програмне забезпечення; ви можете розповсюджувати його "
+"Lapiz - безкоштовне програмне забезпечення; ви можете розповсюджувати його "
 "та/або змінювати відповідно до умов Загальної публічної ліцензії GNU, "
 "оголошених Фундацією вільного програмного забезпечення; або версії 2 "
 "Ліцензії, або (за вашим бажанням) будь-якої пізнішої версії."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1352,16 +1352,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"Ви мали отримати копію Генеральної публічної ліцензії GNU разом із Pluma; "
+"Ви мали отримати копію Генеральної публічної ліцензії GNU разом із Lapiz; "
 "якщо ні, пишіть у Фундацію вільного програмного забезпечення, Inc., Франклін"
 " Стріт, 51, П'ятий поверх, Бостон, MA 02110-1301 США"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Про Pluma"
+msgid "About Lapiz"
+msgstr "Про Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

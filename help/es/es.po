@@ -40,8 +40,8 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
-msgstr "Manual de Pluma"
+msgid "Lapiz Manual"
+msgstr "Manual de Lapiz"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -224,7 +224,7 @@ msgstr "Menú <guimenu>Aplicaciones</guimenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 
@@ -1728,7 +1728,7 @@ msgstr ""
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
+msgid "Quit Lapiz."
 msgstr ""
 
 #. (itstool) path: section/bridgehead
@@ -2798,8 +2798,8 @@ msgid ""
 "<xref linkend=\"lapiz-external-tools-plugin-variables\"/>."
 msgstr ""
 "Las órdenes actuales que se van a ejecutar. Se pueden usar varias variables "
-"de entorno de <application>Pluma</application> para pasar contenido a estas "
-"órdenes: consulte <xref linkend=\"Pluma-external-tools-plugin-variables\"/>."
+"de entorno de <application>Lapiz</application> para pasar contenido a estas "
+"órdenes: consulte <xref linkend=\"Lapiz-external-tools-plugin-variables\"/>."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:2019

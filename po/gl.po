@@ -601,8 +601,8 @@ msgstr ""
 "amosar todos os espazos."
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -610,13 +610,13 @@ msgstr "Un editor de texto para o contorno de escritorio MATE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Pluma é un pequeno, pero potente editor de texto deseñado especificamente "
+"Lapiz é un pequeno, pero potente editor de texto deseñado especificamente "
 "para o escritorio MATE. Conten as funcións estándares dun editor de texto e "
 "admite edición en diferentes idiomas mediante Unicode. Inclúe "
 "características avanzadas como resalte de sintaxe, tabulación automática de "
@@ -624,11 +624,11 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
-"Pluma é extensíbel mediante un sistema de engadidos, que actualmente inclúen"
+"Lapiz é extensíbel mediante un sistema de engadidos, que actualmente inclúen"
 " comprobación de ortografía, comparación de ficheiros, vista de ficheiros de"
 " rexistro CVS e axustes de niveis de tabulación."
 
@@ -934,8 +934,8 @@ msgid "_Close"
 msgstr "_Pechar"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Preferencias do Pluma"
+msgid "Lapiz Preferences"
+msgstr "Preferencias do Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1371,29 +1371,29 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "O Pluma é un editor de textos pequeno e lixeiro para o MATE"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "O Lapiz é un editor de textos pequeno e lixeiro para o MATE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma é software libre polo que vostede pode redistribuílo e/ou modificalo "
+"Lapiz é software libre polo que vostede pode redistribuílo e/ou modificalo "
 "baixo os termos da Licenza Pública Xeral de GNU publicada pola Free Software"
 " Foundation tanto na versión 2 da licenza como (baixo a súa elección) "
 "calquera versión posterior."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma distribúese coa esperanza de que lle sexa útil, pero SEN GARANTÍA "
+"Lapiz distribúese coa esperanza de que lle sexa útil, pero SEN GARANTÍA "
 "ALGUNHA, incluso sen a garantía implícita de MERCANTIBILIDADE ou ADECUACIÓN "
 "A UN PROPÓSITO EN PARTICULAR. Olle a Licenza Pública Xeral para obter máis "
 "información."
@@ -1401,16 +1401,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"Debeu recibir unha copia da Licenza Pública Xeral de GNU co Pluma, se non é "
+"Debeu recibir unha copia da Licenza Pública Xeral de GNU co Lapiz, se non é "
 "así, escriba á Free Software Foundation, Inc., 51 Franklin Street, Fifth "
 "Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Sobre o Pluma"
+msgid "About Lapiz"
+msgstr "Sobre o Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

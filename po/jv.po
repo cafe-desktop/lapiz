@@ -449,18 +449,18 @@ msgstr ""
 
 #: ../data/lapiz.appdata.xml.in.h:2
 msgid ""
-"<p> Pluma is a small, but powerful text editor designed specifically for the"
+"<p> Lapiz is a small, but powerful text editor designed specifically for the"
 " MATE desktop. It has most standard text editor functions and fully supports"
 " international text in Unicode. Advanced features include syntax "
 "highlighting and automatic indentation of source code, printing and editing "
-"of multiple documents in one window. </p> <p> Pluma is extensible through a "
+"of multiple documents in one window. </p> <p> Lapiz is extensible through a "
 "plugin system, which currently includes support for spell checking, "
 "comparing files, viewing CVS ChangeLogs, and adjusting indentation levels. "
 "</p>"
 msgstr ""
 
 #: ../data/lapiz.desktop.in.in.h:1
-msgid "Pluma"
+msgid "Lapiz"
 msgstr ""
 
 #: ../data/lapiz.desktop.in.in.h:2 ../lapiz/lapiz-print-job.c:763
@@ -472,7 +472,7 @@ msgid "Edit text files"
 msgstr ""
 
 #: ../data/lapiz.desktop.in.in.h:4
-msgid "Pluma Text Editor"
+msgid "Lapiz Text Editor"
 msgstr ""
 
 #: ../lapiz/dialogs/lapiz-close-confirmation-dialog.c:140
@@ -659,7 +659,7 @@ msgid "Could not remove color scheme \"%s\"."
 msgstr ""
 
 #: ../lapiz/dialogs/lapiz-preferences-dialog.c:1088
-msgid "Pluma Preferences"
+msgid "Lapiz Preferences"
 msgstr ""
 
 #: ../lapiz/dialogs/lapiz-preferences-dialog.ui.h:1
@@ -1013,7 +1013,7 @@ msgid "_Revert"
 msgstr ""
 
 #: ../lapiz/lapiz-commands-help.c:83
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
 msgstr ""
 
 #: ../lapiz/lapiz-commands-help.c:95

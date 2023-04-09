@@ -55,40 +55,40 @@ typedef enum
 	LAPIZ_TAB_STATE_CLOSING,
 	LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
 	LAPIZ_TAB_NUM_OF_STATES /* This is not a valid state */
-} PlumaTabState;
+} LapizTabState;
 
 /*
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_TAB              (lapiz_tab_get_type())
-#define LAPIZ_TAB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_TAB, PlumaTab))
-#define LAPIZ_TAB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_TAB, PlumaTabClass))
+#define LAPIZ_TAB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_TAB, LapizTab))
+#define LAPIZ_TAB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_TAB, LapizTabClass))
 #define LAPIZ_IS_TAB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_TAB))
 #define LAPIZ_IS_TAB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_TAB))
-#define LAPIZ_TAB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_TAB, PlumaTabClass))
+#define LAPIZ_TAB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_TAB, LapizTabClass))
 
 /* Private structure type */
-typedef struct _PlumaTabPrivate PlumaTabPrivate;
+typedef struct _LapizTabPrivate LapizTabPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaTab PlumaTab;
+typedef struct _LapizTab LapizTab;
 
-struct _PlumaTab
+struct _LapizTab
 {
 	GtkBox vbox;
 
 	/*< private > */
-	PlumaTabPrivate *priv;
+	LapizTabPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaTabClass PlumaTabClass;
+typedef struct _LapizTabClass LapizTabClass;
 
-struct _PlumaTabClass
+struct _LapizTabClass
 {
 	GtkBoxClass parent_class;
 };
@@ -98,30 +98,30 @@ struct _PlumaTabClass
  */
 GType 		 lapiz_tab_get_type 		(void) G_GNUC_CONST;
 
-PlumaView	*lapiz_tab_get_view		(PlumaTab            *tab);
+LapizView	*lapiz_tab_get_view		(LapizTab            *tab);
 
 /* This is only an helper function */
-PlumaDocument	*lapiz_tab_get_document		(PlumaTab            *tab);
+LapizDocument	*lapiz_tab_get_document		(LapizTab            *tab);
 
-PlumaTab	*lapiz_tab_get_from_document	(PlumaDocument       *doc);
+LapizTab	*lapiz_tab_get_from_document	(LapizDocument       *doc);
 
-PlumaTabState	 lapiz_tab_get_state		(PlumaTab	     *tab);
+LapizTabState	 lapiz_tab_get_state		(LapizTab	     *tab);
 
 gboolean	 lapiz_tab_get_auto_save_enabled
-						(PlumaTab            *tab);
+						(LapizTab            *tab);
 
 void		 lapiz_tab_set_auto_save_enabled
-						(PlumaTab            *tab,
+						(LapizTab            *tab,
 						 gboolean            enable);
 
 gint		 lapiz_tab_get_auto_save_interval
-						(PlumaTab            *tab);
+						(LapizTab            *tab);
 
 void		 lapiz_tab_set_auto_save_interval
-						(PlumaTab            *tab,
+						(LapizTab            *tab,
 						 gint                interval);
 
-void		 lapiz_tab_set_info_bar		(PlumaTab            *tab,
+void		 lapiz_tab_set_info_bar		(LapizTab            *tab,
 						 GtkWidget           *info_bar);
 /*
  * Non exported methods
@@ -131,30 +131,30 @@ GtkWidget 	*_lapiz_tab_new 		(void);
 /* Whether create is TRUE, creates a new empty document if location does
    not refer to an existing file */
 GtkWidget	*_lapiz_tab_new_from_uri	(const gchar         *uri,
-						 const PlumaEncoding *encoding,
+						 const LapizEncoding *encoding,
 						 gint                 line_pos,
 						 gboolean             create);
-gchar 		*_lapiz_tab_get_name		(PlumaTab            *tab);
-gchar 		*_lapiz_tab_get_tooltips	(PlumaTab            *tab);
-GdkPixbuf 	*_lapiz_tab_get_icon		(PlumaTab            *tab);
-void		 _lapiz_tab_load		(PlumaTab            *tab,
+gchar 		*_lapiz_tab_get_name		(LapizTab            *tab);
+gchar 		*_lapiz_tab_get_tooltips	(LapizTab            *tab);
+GdkPixbuf 	*_lapiz_tab_get_icon		(LapizTab            *tab);
+void		 _lapiz_tab_load		(LapizTab            *tab,
 						 const gchar         *uri,
-						 const PlumaEncoding *encoding,
+						 const LapizEncoding *encoding,
 						 gint                 line_pos,
 						 gboolean             create);
-void		 _lapiz_tab_revert		(PlumaTab            *tab);
-void		 _lapiz_tab_save		(PlumaTab            *tab);
-void		 _lapiz_tab_save_as		(PlumaTab            *tab,
+void		 _lapiz_tab_revert		(LapizTab            *tab);
+void		 _lapiz_tab_save		(LapizTab            *tab);
+void		 _lapiz_tab_save_as		(LapizTab            *tab,
 						 const gchar         *uri,
-						 const PlumaEncoding *encoding,
-						 PlumaDocumentNewlineType newline_type);
+						 const LapizEncoding *encoding,
+						 LapizDocumentNewlineType newline_type);
 
-void		 _lapiz_tab_print		(PlumaTab            *tab);
-void		 _lapiz_tab_print_preview	(PlumaTab            *tab);
+void		 _lapiz_tab_print		(LapizTab            *tab);
+void		 _lapiz_tab_print_preview	(LapizTab            *tab);
 
-void		 _lapiz_tab_mark_for_closing	(PlumaTab	     *tab);
+void		 _lapiz_tab_mark_for_closing	(LapizTab	     *tab);
 
-gboolean	 _lapiz_tab_can_close		(PlumaTab	     *tab);
+gboolean	 _lapiz_tab_can_close		(LapizTab	     *tab);
 
 G_END_DECLS
 

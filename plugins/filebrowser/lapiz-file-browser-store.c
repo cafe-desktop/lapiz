@@ -1,5 +1,5 @@
 /*
- * lapiz-file-browser-store.c - Pluma plugin providing easy file access
+ * lapiz-file-browser-store.c - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -60,7 +60,7 @@ typedef gint (*SortFunc) (FileBrowserNode * node1,
 
 struct _AsyncData
 {
-	PlumaFileBrowserStore * model;
+	LapizFileBrowserStore * model;
 	GCancellable * cancellable;
 	gboolean trash;
 	GList * files;
@@ -76,7 +76,7 @@ struct _AsyncNode
 };
 
 typedef struct {
-	PlumaFileBrowserStore * model;
+	LapizFileBrowserStore * model;
 	gchar * virtual_root;
 	GMountOperation * operation;
 	GCancellable * cancellable;
@@ -103,17 +103,17 @@ struct _FileBrowserNodeDir
 
 	GCancellable *cancellable;
 	GFileMonitor *monitor;
-	PlumaFileBrowserStore *model;
+	LapizFileBrowserStore *model;
 };
 
-struct _PlumaFileBrowserStorePrivate
+struct _LapizFileBrowserStorePrivate
 {
 	FileBrowserNode *root;
 	FileBrowserNode *virtual_root;
 	GType column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_NUM];
 
-	PlumaFileBrowserStoreFilterMode filter_mode;
-	PlumaFileBrowserStoreFilterFunc filter_func;
+	LapizFileBrowserStoreFilterMode filter_mode;
+	LapizFileBrowserStoreFilterFunc filter_func;
 	gpointer filter_user_data;
 
 	SortFunc sort_func;
@@ -122,15 +122,15 @@ struct _PlumaFileBrowserStorePrivate
 	MountInfo *mount_info;
 };
 
-static FileBrowserNode *model_find_node 		    (PlumaFileBrowserStore *model,
+static FileBrowserNode *model_find_node 		    (LapizFileBrowserStore *model,
 							     FileBrowserNode *node,
 							     GFile *uri);
-static void model_remove_node                               (PlumaFileBrowserStore * model,
+static void model_remove_node                               (LapizFileBrowserStore * model,
 							     FileBrowserNode * node,
 							     GtkTreePath * path,
 							     gboolean free_nodes);
 
-static void set_virtual_root_from_node                      (PlumaFileBrowserStore * model,
+static void set_virtual_root_from_node                      (LapizFileBrowserStore * model,
 				                             FileBrowserNode * node);
 
 static void lapiz_file_browser_store_iface_init             (GtkTreeModelIface * iface);
@@ -176,26 +176,26 @@ static gboolean lapiz_file_browser_store_drag_data_get      (GtkTreeDragSource *
 							     GtkTreePath       * path,
 							     GtkSelectionData  * selection_data);
 
-static void file_browser_node_free                          (PlumaFileBrowserStore * model,
+static void file_browser_node_free                          (LapizFileBrowserStore * model,
 							     FileBrowserNode * node);
-static void model_add_node                                  (PlumaFileBrowserStore * model,
+static void model_add_node                                  (LapizFileBrowserStore * model,
 							     FileBrowserNode * child,
 							     FileBrowserNode * parent);
-static void model_clear                                     (PlumaFileBrowserStore * model,
+static void model_clear                                     (LapizFileBrowserStore * model,
 							     gboolean free_nodes);
 static gint model_sort_default                              (FileBrowserNode * node1,
 							     FileBrowserNode * node2);
-static void model_check_dummy                               (PlumaFileBrowserStore * model,
+static void model_check_dummy                               (LapizFileBrowserStore * model,
 							     FileBrowserNode * node);
 static void next_files_async 				    (GFileEnumerator * enumerator,
 							     AsyncNode * async);
 
 static void delete_files                                    (AsyncData              *data);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBrowserStore, lapiz_file_browser_store,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserStore, lapiz_file_browser_store,
                                 G_TYPE_OBJECT,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaFileBrowserStore)
+                                G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserStore)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_MODEL,
                                                                lapiz_file_browser_store_iface_init)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_DRAG_SOURCE,
@@ -227,7 +227,7 @@ enum
 static guint model_signals[NUM_SIGNALS] = { 0 };
 
 static void
-cancel_mount_operation (PlumaFileBrowserStore *obj)
+cancel_mount_operation (LapizFileBrowserStore *obj)
 {
 	if (obj->priv->mount_info != NULL)
 	{
@@ -240,7 +240,7 @@ cancel_mount_operation (PlumaFileBrowserStore *obj)
 static void
 lapiz_file_browser_store_finalize (GObject * object)
 {
-	PlumaFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
+	LapizFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
 	GSList *item;
 
 	/* Free all the nodes */
@@ -281,7 +281,7 @@ lapiz_file_browser_store_get_property (GObject    *object,
 			               GValue     *value,
 			               GParamSpec *pspec)
 {
-	PlumaFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
+	LapizFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
 
 	switch (prop_id)
 	{
@@ -306,7 +306,7 @@ lapiz_file_browser_store_set_property (GObject      *object,
 			               const GValue *value,
 			               GParamSpec   *pspec)
 {
-	PlumaFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
+	LapizFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
 
 	switch (prop_id)
 	{
@@ -321,7 +321,7 @@ lapiz_file_browser_store_set_property (GObject      *object,
 }
 
 static void
-lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
+lapiz_file_browser_store_class_init (LapizFileBrowserStoreClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -356,7 +356,7 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 	    g_signal_new ("begin-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 					   begin_loading), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
 			  GTK_TYPE_TREE_ITER);
@@ -364,21 +364,21 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 	    g_signal_new ("end-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 					   end_loading), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
 			  GTK_TYPE_TREE_ITER);
 	model_signals[ERROR] =
 	    g_signal_new ("error", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 					   error), NULL, NULL,
 			  lapiz_file_browser_marshal_VOID__UINT_STRING,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	model_signals[NO_TRASH] =
 	    g_signal_new ("no-trash", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 					   no_trash), g_signal_accumulator_true_handled, NULL,
 			  lapiz_file_browser_marshal_BOOLEAN__POINTER,
 			  G_TYPE_BOOLEAN, 1, G_TYPE_POINTER);
@@ -386,7 +386,7 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 	    g_signal_new ("rename",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 					   rename), NULL, NULL,
 			  lapiz_file_browser_marshal_VOID__STRING_STRING,
 			  G_TYPE_NONE, 2,
@@ -396,7 +396,7 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 	    g_signal_new ("begin-refresh",
 	    		  G_OBJECT_CLASS_TYPE (object_class),
 	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+	    		  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 	    		  		   begin_refresh), NULL, NULL,
 	    		  g_cclosure_marshal_VOID__VOID,
 	    		  G_TYPE_NONE, 0);
@@ -404,7 +404,7 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 	    g_signal_new ("end-refresh",
 	    		  G_OBJECT_CLASS_TYPE (object_class),
 	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+	    		  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 	    		  		   end_refresh), NULL, NULL,
 	    		  g_cclosure_marshal_VOID__VOID,
 	    		  G_TYPE_NONE, 0);
@@ -412,7 +412,7 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 	    g_signal_new ("unload",
 	    		  G_OBJECT_CLASS_TYPE (object_class),
 	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
+	    		  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 	    		  		   unload), NULL, NULL,
 	    		  g_cclosure_marshal_VOID__STRING,
 	    		  G_TYPE_NONE, 1,
@@ -420,7 +420,7 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 }
 
 static void
-lapiz_file_browser_store_class_finalize (PlumaFileBrowserStoreClass *klass)
+lapiz_file_browser_store_class_finalize (LapizFileBrowserStoreClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -452,7 +452,7 @@ lapiz_file_browser_store_drag_source_init (GtkTreeDragSourceIface * iface)
 }
 
 static void
-lapiz_file_browser_store_init (PlumaFileBrowserStore * obj)
+lapiz_file_browser_store_init (LapizFileBrowserStore * obj)
 {
 	obj->priv = lapiz_file_browser_store_get_instance_private (obj);
 
@@ -485,13 +485,13 @@ node_has_parent (FileBrowserNode * node, FileBrowserNode * parent)
 }
 
 static gboolean
-node_in_tree (PlumaFileBrowserStore * model, FileBrowserNode * node)
+node_in_tree (LapizFileBrowserStore * model, FileBrowserNode * node)
 {
 	return node_has_parent (node, model->priv->virtual_root);
 }
 
 static gboolean
-model_node_visibility (PlumaFileBrowserStore * model,
+model_node_visibility (LapizFileBrowserStore * model,
 		       FileBrowserNode * node)
 {
 	if (node == NULL)
@@ -510,7 +510,7 @@ model_node_visibility (PlumaFileBrowserStore * model,
 }
 
 static gboolean
-model_node_inserted (PlumaFileBrowserStore * model,
+model_node_inserted (LapizFileBrowserStore * model,
 		     FileBrowserNode * node)
 {
 	return node == model->priv->virtual_root || (model_node_visibility (model, node) && node->inserted);
@@ -552,7 +552,7 @@ lapiz_file_browser_store_get_iter (GtkTreeModel * tree_model,
 {
 	gint * indices, depth, i;
 	FileBrowserNode * node;
-	PlumaFileBrowserStore * model;
+	LapizFileBrowserStore * model;
 	gint num;
 
 	g_assert (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
@@ -603,7 +603,7 @@ lapiz_file_browser_store_get_iter (GtkTreeModel * tree_model,
 }
 
 static GtkTreePath *
-lapiz_file_browser_store_get_path_real (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_get_path_real (LapizFileBrowserStore * model,
 					FileBrowserNode * node)
 {
 	GtkTreePath *path;
@@ -702,7 +702,7 @@ static gboolean
 lapiz_file_browser_store_iter_next (GtkTreeModel * tree_model,
 				    GtkTreeIter * iter)
 {
-	PlumaFileBrowserStore * model;
+	LapizFileBrowserStore * model;
 	FileBrowserNode * node;
 	GSList * item;
 	GSList * first;
@@ -736,7 +736,7 @@ lapiz_file_browser_store_iter_children (GtkTreeModel * tree_model,
 					GtkTreeIter * parent)
 {
 	FileBrowserNode * node;
-	PlumaFileBrowserStore * model;
+	LapizFileBrowserStore * model;
 	GSList * item;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
@@ -768,7 +768,7 @@ lapiz_file_browser_store_iter_children (GtkTreeModel * tree_model,
 }
 
 static gboolean
-filter_tree_model_iter_has_child_real (PlumaFileBrowserStore * model,
+filter_tree_model_iter_has_child_real (LapizFileBrowserStore * model,
 				       FileBrowserNode * node)
 {
 	GSList *item;
@@ -789,7 +789,7 @@ lapiz_file_browser_store_iter_has_child (GtkTreeModel * tree_model,
 					 GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
-	PlumaFileBrowserStore *model;
+	LapizFileBrowserStore *model;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      FALSE);
@@ -811,7 +811,7 @@ lapiz_file_browser_store_iter_n_children (GtkTreeModel * tree_model,
 					  GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
-	PlumaFileBrowserStore *model;
+	LapizFileBrowserStore *model;
 	GSList *item;
 	gint num = 0;
 
@@ -843,7 +843,7 @@ lapiz_file_browser_store_iter_nth_child (GtkTreeModel * tree_model,
 					 GtkTreeIter * parent, gint n)
 {
 	FileBrowserNode *node;
-	PlumaFileBrowserStore *model;
+	LapizFileBrowserStore *model;
 	GSList *item;
 	gint num = 0;
 
@@ -883,7 +883,7 @@ lapiz_file_browser_store_iter_parent (GtkTreeModel * tree_model,
 				      GtkTreeIter * child)
 {
 	FileBrowserNode *node;
-	PlumaFileBrowserStore *model;
+	LapizFileBrowserStore *model;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model), FALSE);
 	g_return_val_if_fail (child != NULL, FALSE);
@@ -917,7 +917,7 @@ lapiz_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
 					GtkTreePath       * path)
 {
 	GtkTreeIter iter;
-	PlumaFileBrowserStoreFlag flags;
+	LapizFileBrowserStoreFlag flags;
 
 	if (!gtk_tree_model_get_iter (GTK_TREE_MODEL (drag_source),
 				      &iter, path))
@@ -974,7 +974,7 @@ lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
 
 /* Private */
 static void
-model_begin_loading (PlumaFileBrowserStore * model, FileBrowserNode * node)
+model_begin_loading (LapizFileBrowserStore * model, FileBrowserNode * node)
 {
 	GtkTreeIter iter;
 
@@ -983,7 +983,7 @@ model_begin_loading (PlumaFileBrowserStore * model, FileBrowserNode * node)
 }
 
 static void
-model_end_loading (PlumaFileBrowserStore * model, FileBrowserNode * node)
+model_end_loading (LapizFileBrowserStore * model, FileBrowserNode * node)
 {
 	GtkTreeIter iter;
 
@@ -992,7 +992,7 @@ model_end_loading (PlumaFileBrowserStore * model, FileBrowserNode * node)
 }
 
 static void
-model_node_update_visibility (PlumaFileBrowserStore * model,
+model_node_update_visibility (LapizFileBrowserStore * model,
 			      FileBrowserNode * node)
 {
 	GtkTreeIter iter;
@@ -1077,7 +1077,7 @@ model_sort_default (FileBrowserNode * node1, FileBrowserNode * node2)
 }
 
 static void
-model_resort_node (PlumaFileBrowserStore * model, FileBrowserNode * node)
+model_resort_node (LapizFileBrowserStore * model, FileBrowserNode * node)
 {
 	FileBrowserNodeDir *dir;
 	GSList *item;
@@ -1131,7 +1131,7 @@ model_resort_node (PlumaFileBrowserStore * model, FileBrowserNode * node)
 }
 
 static void
-row_changed (PlumaFileBrowserStore * model,
+row_changed (LapizFileBrowserStore * model,
 	     GtkTreePath ** path,
 	     GtkTreeIter * iter)
 {
@@ -1147,7 +1147,7 @@ row_changed (PlumaFileBrowserStore * model,
 }
 
 static void
-row_inserted (PlumaFileBrowserStore * model,
+row_inserted (LapizFileBrowserStore * model,
 	      GtkTreePath ** path,
 	      GtkTreeIter * iter)
 {
@@ -1178,7 +1178,7 @@ row_inserted (PlumaFileBrowserStore * model,
 }
 
 static void
-row_deleted (PlumaFileBrowserStore * model,
+row_deleted (LapizFileBrowserStore * model,
 	     const GtkTreePath * path)
 {
 	GtkTreePath *copy = gtk_tree_path_copy (path);
@@ -1190,7 +1190,7 @@ row_deleted (PlumaFileBrowserStore * model,
 }
 
 static void
-model_refilter_node (PlumaFileBrowserStore * model,
+model_refilter_node (LapizFileBrowserStore * model,
 		     FileBrowserNode * node,
 		     GtkTreePath ** path)
 {
@@ -1261,7 +1261,7 @@ model_refilter_node (PlumaFileBrowserStore * model,
 }
 
 static void
-model_refilter (PlumaFileBrowserStore * model)
+model_refilter (LapizFileBrowserStore * model)
 {
 	model_refilter_node (model, model->priv->root, NULL);
 }
@@ -1300,7 +1300,7 @@ file_browser_node_new (GFile * file, FileBrowserNode * parent)
 }
 
 static FileBrowserNode *
-file_browser_node_dir_new (PlumaFileBrowserStore * model,
+file_browser_node_dir_new (LapizFileBrowserStore * model,
 			   GFile * file, FileBrowserNode * parent)
 {
 	FileBrowserNode *node =
@@ -1316,7 +1316,7 @@ file_browser_node_dir_new (PlumaFileBrowserStore * model,
 }
 
 static void
-file_browser_node_free_children (PlumaFileBrowserStore * model,
+file_browser_node_free_children (LapizFileBrowserStore * model,
 				 FileBrowserNode * node)
 {
 	GSList *item;
@@ -1340,7 +1340,7 @@ file_browser_node_free_children (PlumaFileBrowserStore * model,
 }
 
 static void
-file_browser_node_free (PlumaFileBrowserStore * model,
+file_browser_node_free (LapizFileBrowserStore * model,
 			FileBrowserNode * node)
 {
 	gchar *uri;
@@ -1394,7 +1394,7 @@ file_browser_node_free (PlumaFileBrowserStore * model,
 
 /**
  * model_remove_node_children:
- * @model: the #PlumaFileBrowserStore
+ * @model: the #LapizFileBrowserStore
  * @node: the FileBrowserNode to remove
  * @path: the path of the node, or NULL to let the path be calculated
  * @free_nodes: whether to also remove the nodes from memory
@@ -1404,7 +1404,7 @@ file_browser_node_free (PlumaFileBrowserStore * model,
  * a node.
  **/
 static void
-model_remove_node_children (PlumaFileBrowserStore * model,
+model_remove_node_children (LapizFileBrowserStore * model,
 			    FileBrowserNode * node,
 			    GtkTreePath * path,
 			    gboolean free_nodes)
@@ -1452,7 +1452,7 @@ model_remove_node_children (PlumaFileBrowserStore * model,
 
 /**
  * model_remove_node:
- * @model: the #PlumaFileBrowserStore
+ * @model: the #LapizFileBrowserStore
  * @node: the FileBrowserNode to remove
  * @path: the path to use to remove this node, or NULL to use the path
  * calculated from the node itself
@@ -1463,7 +1463,7 @@ model_remove_node_children (PlumaFileBrowserStore * model,
  * a node.
  **/
 static void
-model_remove_node (PlumaFileBrowserStore * model,
+model_remove_node (LapizFileBrowserStore * model,
 		   FileBrowserNode * node,
 		   GtkTreePath * path,
 		   gboolean free_nodes)
@@ -1514,7 +1514,7 @@ model_remove_node (PlumaFileBrowserStore * model,
 
 /**
  * model_clear:
- * @model: the #PlumaFileBrowserStore
+ * @model: the #LapizFileBrowserStore
  * @free_nodes: whether to also remove the nodes from memory
  *
  * Removes all nodes from the model. This function is used
@@ -1522,7 +1522,7 @@ model_remove_node (PlumaFileBrowserStore * model,
  * nodes in the model.
  **/
 static void
-model_clear (PlumaFileBrowserStore * model, gboolean free_nodes)
+model_clear (LapizFileBrowserStore * model, gboolean free_nodes)
 {
 	GtkTreePath *path;
 	FileBrowserNodeDir *dir;
@@ -1553,7 +1553,7 @@ model_clear (PlumaFileBrowserStore * model, gboolean free_nodes)
 }
 
 static void
-file_browser_node_unload (PlumaFileBrowserStore * model,
+file_browser_node_unload (LapizFileBrowserStore * model,
 			  FileBrowserNode * node, gboolean remove_children)
 {
 	FileBrowserNodeDir *dir;
@@ -1588,7 +1588,7 @@ file_browser_node_unload (PlumaFileBrowserStore * model,
 }
 
 static void
-model_recomposite_icon_real (PlumaFileBrowserStore * tree_model,
+model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 			     FileBrowserNode * node,
 			     GFileInfo * info)
 {
@@ -1640,7 +1640,7 @@ model_recomposite_icon_real (PlumaFileBrowserStore * tree_model,
 }
 
 static void
-model_recomposite_icon (PlumaFileBrowserStore * tree_model,
+model_recomposite_icon (LapizFileBrowserStore * tree_model,
 			GtkTreeIter * iter)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
@@ -1653,7 +1653,7 @@ model_recomposite_icon (PlumaFileBrowserStore * tree_model,
 }
 
 static FileBrowserNode *
-model_create_dummy_node (PlumaFileBrowserStore * model,
+model_create_dummy_node (LapizFileBrowserStore * model,
 			 FileBrowserNode * parent)
 {
 	FileBrowserNode *dummy;
@@ -1668,7 +1668,7 @@ model_create_dummy_node (PlumaFileBrowserStore * model,
 }
 
 static FileBrowserNode *
-model_add_dummy_node (PlumaFileBrowserStore * model,
+model_add_dummy_node (LapizFileBrowserStore * model,
 		      FileBrowserNode * parent)
 {
 	FileBrowserNode *dummy;
@@ -1684,7 +1684,7 @@ model_add_dummy_node (PlumaFileBrowserStore * model,
 }
 
 static void
-model_check_dummy (PlumaFileBrowserStore * model, FileBrowserNode * node)
+model_check_dummy (LapizFileBrowserStore * model, FileBrowserNode * node)
 {
 	// Hide the dummy child if needed
 	if (NODE_IS_DIR (node)) {
@@ -1755,7 +1755,7 @@ model_check_dummy (PlumaFileBrowserStore * model, FileBrowserNode * node)
 }
 
 static void
-insert_node_sorted (PlumaFileBrowserStore * model,
+insert_node_sorted (LapizFileBrowserStore * model,
 		    FileBrowserNode * child,
 		    FileBrowserNode * parent)
 {
@@ -1774,7 +1774,7 @@ insert_node_sorted (PlumaFileBrowserStore * model,
 }
 
 static void
-model_add_node (PlumaFileBrowserStore * model, FileBrowserNode * child,
+model_add_node (LapizFileBrowserStore * model, FileBrowserNode * child,
 		FileBrowserNode * parent)
 {
 	/* Add child to parents children */
@@ -1798,7 +1798,7 @@ model_add_node (PlumaFileBrowserStore * model, FileBrowserNode * child,
 }
 
 static void
-model_add_nodes_batch (PlumaFileBrowserStore * model,
+model_add_nodes_batch (LapizFileBrowserStore * model,
 		       GSList * children,
 		       FileBrowserNode * parent)
 {
@@ -1900,7 +1900,7 @@ backup_content_type (GFileInfo * info)
 }
 
 static void
-file_browser_node_set_from_info (PlumaFileBrowserStore * model,
+file_browser_node_set_from_info (LapizFileBrowserStore * model,
 				 FileBrowserNode * node,
 				 GFileInfo * info,
 				 gboolean isadded)
@@ -1982,7 +1982,7 @@ node_list_contains_file (GSList *children, GFile * file)
 }
 
 static FileBrowserNode *
-model_add_node_from_file (PlumaFileBrowserStore * model,
+model_add_node_from_file (LapizFileBrowserStore * model,
 			  FileBrowserNode * parent,
 			  GFile * file,
 			  GFileInfo * info)
@@ -2027,7 +2027,7 @@ model_add_node_from_file (PlumaFileBrowserStore * model,
  * not have to check if a file already exists among the ones we just
  * added */
 static void
-model_add_nodes_from_files (PlumaFileBrowserStore * model,
+model_add_nodes_from_files (LapizFileBrowserStore * model,
 			    FileBrowserNode * parent,
 			    GSList * original_children,
 			    GList * files)
@@ -2085,7 +2085,7 @@ model_add_nodes_from_files (PlumaFileBrowserStore * model,
 }
 
 static FileBrowserNode *
-model_add_node_from_dir (PlumaFileBrowserStore * model,
+model_add_node_from_dir (LapizFileBrowserStore * model,
 			 FileBrowserNode * parent,
 			 GFile * file)
 {
@@ -2264,7 +2264,7 @@ model_iterate_children_cb (GFile * file,
 }
 
 static void
-model_load_directory (PlumaFileBrowserStore * model,
+model_load_directory (LapizFileBrowserStore * model,
 		      FileBrowserNode * node)
 {
 	FileBrowserNodeDir *dir;
@@ -2300,7 +2300,7 @@ model_load_directory (PlumaFileBrowserStore * model,
 }
 
 static GList *
-get_parent_files (PlumaFileBrowserStore * model, GFile * file)
+get_parent_files (LapizFileBrowserStore * model, GFile * file)
 {
 	GList * result = NULL;
 
@@ -2319,7 +2319,7 @@ get_parent_files (PlumaFileBrowserStore * model, GFile * file)
 }
 
 static void
-model_fill (PlumaFileBrowserStore * model, FileBrowserNode * node,
+model_fill (LapizFileBrowserStore * model, FileBrowserNode * node,
 	    GtkTreePath ** path)
 {
 	gboolean free_path = FALSE;
@@ -2380,7 +2380,7 @@ model_fill (PlumaFileBrowserStore * model, FileBrowserNode * node,
 }
 
 static void
-set_virtual_root_from_node (PlumaFileBrowserStore * model,
+set_virtual_root_from_node (LapizFileBrowserStore * model,
 			    FileBrowserNode * node)
 {
 	FileBrowserNode *next;
@@ -2468,7 +2468,7 @@ set_virtual_root_from_node (PlumaFileBrowserStore * model,
 }
 
 static void
-set_virtual_root_from_file (PlumaFileBrowserStore * model,
+set_virtual_root_from_file (LapizFileBrowserStore * model,
 			    GFile * file)
 {
 	GList * files;
@@ -2495,7 +2495,7 @@ set_virtual_root_from_file (PlumaFileBrowserStore * model,
 }
 
 static FileBrowserNode *
-model_find_node_children (PlumaFileBrowserStore * model,
+model_find_node_children (LapizFileBrowserStore * model,
 			  FileBrowserNode * parent,
 			  GFile * file)
 {
@@ -2522,7 +2522,7 @@ model_find_node_children (PlumaFileBrowserStore * model,
 }
 
 static FileBrowserNode *
-model_find_node (PlumaFileBrowserStore * model,
+model_find_node (LapizFileBrowserStore * model,
 		 FileBrowserNode * node,
 		 GFile * file)
 {
@@ -2575,8 +2575,8 @@ unique_new_name (GFile * directory, gchar const * name)
 	return newuri;
 }
 
-static PlumaFileBrowserStoreResult
-model_root_mounted (PlumaFileBrowserStore * model, gchar const * virtual_root)
+static LapizFileBrowserStoreResult
+model_root_mounted (LapizFileBrowserStore * model, gchar const * virtual_root)
 {
 	model_check_dummy (model, model->priv->root);
 	g_object_notify (G_OBJECT (model), "root");
@@ -2593,7 +2593,7 @@ model_root_mounted (PlumaFileBrowserStore * model, gchar const * virtual_root)
 }
 
 static void
-handle_root_error (PlumaFileBrowserStore * model, GError *error)
+handle_root_error (LapizFileBrowserStore * model, GError *error)
 {
 	FileBrowserNode * root;
 
@@ -2624,7 +2624,7 @@ mount_cb (GFile * file,
 {
 	gboolean mounted;
 	GError * error = NULL;
-	PlumaFileBrowserStore * model = mount_info->model;
+	LapizFileBrowserStore * model = mount_info->model;
 
 	mounted = g_file_mount_enclosing_volume_finish (file, res, &error);
 
@@ -2658,8 +2658,8 @@ mount_cb (GFile * file,
 	g_free (mount_info);
 }
 
-static PlumaFileBrowserStoreResult
-model_mount_root (PlumaFileBrowserStore * model, gchar const * virtual_root)
+static LapizFileBrowserStoreResult
+model_mount_root (LapizFileBrowserStore * model, gchar const * virtual_root)
 {
 	GFileInfo * info;
 	GError * error = NULL;
@@ -2711,10 +2711,10 @@ model_mount_root (PlumaFileBrowserStore * model, gchar const * virtual_root)
 }
 
 /* Public */
-PlumaFileBrowserStore *
+LapizFileBrowserStore *
 lapiz_file_browser_store_new (gchar const *root)
 {
-	PlumaFileBrowserStore *obj =
+	LapizFileBrowserStore *obj =
 	    LAPIZ_FILE_BROWSER_STORE (g_object_new
 				      (LAPIZ_TYPE_FILE_BROWSER_STORE,
 				       NULL));
@@ -2724,7 +2724,7 @@ lapiz_file_browser_store_new (gchar const *root)
 }
 
 void
-lapiz_file_browser_store_set_value (PlumaFileBrowserStore * tree_model,
+lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 				    GtkTreeIter * iter, gint column,
 				    GValue * value)
 {
@@ -2764,8 +2764,8 @@ lapiz_file_browser_store_set_value (PlumaFileBrowserStore * tree_model,
 	}
 }
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_virtual_root (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_virtual_root (LapizFileBrowserStore * model,
 					   GtkTreeIter * iter)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
@@ -2782,9 +2782,9 @@ lapiz_file_browser_store_set_virtual_root (PlumaFileBrowserStore * model,
 	return TRUE;
 }
 
-PlumaFileBrowserStoreResult
+LapizFileBrowserStoreResult
 lapiz_file_browser_store_set_virtual_root_from_string
-    (PlumaFileBrowserStore * model, gchar const *root) {
+    (LapizFileBrowserStore * model, gchar const *root) {
 	GFile *file;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
@@ -2836,8 +2836,8 @@ lapiz_file_browser_store_set_virtual_root_from_string
 	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_virtual_root_top (PlumaFileBrowserStore *
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_virtual_root_top (LapizFileBrowserStore *
 					       model)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
@@ -2852,8 +2852,8 @@ lapiz_file_browser_store_set_virtual_root_top (PlumaFileBrowserStore *
 	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_virtual_root_up (PlumaFileBrowserStore *
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_virtual_root_up (LapizFileBrowserStore *
 					      model)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
@@ -2870,7 +2870,7 @@ lapiz_file_browser_store_set_virtual_root_up (PlumaFileBrowserStore *
 }
 
 gboolean
-lapiz_file_browser_store_get_iter_virtual_root (PlumaFileBrowserStore *
+lapiz_file_browser_store_get_iter_virtual_root (LapizFileBrowserStore *
 						model, GtkTreeIter * iter)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
@@ -2884,7 +2884,7 @@ lapiz_file_browser_store_get_iter_virtual_root (PlumaFileBrowserStore *
 }
 
 gboolean
-lapiz_file_browser_store_get_iter_root (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_get_iter_root (LapizFileBrowserStore * model,
 					GtkTreeIter * iter)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
@@ -2898,7 +2898,7 @@ lapiz_file_browser_store_get_iter_root (PlumaFileBrowserStore * model,
 }
 
 gboolean
-lapiz_file_browser_store_iter_equal (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_iter_equal (LapizFileBrowserStore * model,
 				     GtkTreeIter * iter1,
 				     GtkTreeIter * iter2)
 {
@@ -2912,15 +2912,15 @@ lapiz_file_browser_store_iter_equal (PlumaFileBrowserStore * model,
 }
 
 void
-lapiz_file_browser_store_cancel_mount_operation (PlumaFileBrowserStore *store)
+lapiz_file_browser_store_cancel_mount_operation (LapizFileBrowserStore *store)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (store));
 
 	cancel_mount_operation (store);
 }
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_root_and_virtual_root (LapizFileBrowserStore *
 						    model,
 						    gchar const *root,
 						    gchar const *virtual_root)
@@ -2989,8 +2989,8 @@ lapiz_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
 	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_set_root (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_set_root (LapizFileBrowserStore * model,
 				   gchar const *root)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
@@ -3001,7 +3001,7 @@ lapiz_file_browser_store_set_root (PlumaFileBrowserStore * model,
 }
 
 gchar *
-lapiz_file_browser_store_get_root (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_get_root (LapizFileBrowserStore * model)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), NULL);
 
@@ -3012,7 +3012,7 @@ lapiz_file_browser_store_get_root (PlumaFileBrowserStore * model)
 }
 
 gchar *
-lapiz_file_browser_store_get_virtual_root (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_get_virtual_root (LapizFileBrowserStore * model)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), NULL);
 
@@ -3023,7 +3023,7 @@ lapiz_file_browser_store_get_virtual_root (PlumaFileBrowserStore * model)
 }
 
 void
-_lapiz_file_browser_store_iter_expanded (PlumaFileBrowserStore * model,
+_lapiz_file_browser_store_iter_expanded (LapizFileBrowserStore * model,
 					 GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
@@ -3041,7 +3041,7 @@ _lapiz_file_browser_store_iter_expanded (PlumaFileBrowserStore * model,
 }
 
 void
-_lapiz_file_browser_store_iter_collapsed (PlumaFileBrowserStore * model,
+_lapiz_file_browser_store_iter_collapsed (LapizFileBrowserStore * model,
 					  GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
@@ -3069,15 +3069,15 @@ _lapiz_file_browser_store_iter_collapsed (PlumaFileBrowserStore * model,
 	}
 }
 
-PlumaFileBrowserStoreFilterMode
-lapiz_file_browser_store_get_filter_mode (PlumaFileBrowserStore * model)
+LapizFileBrowserStoreFilterMode
+lapiz_file_browser_store_get_filter_mode (LapizFileBrowserStore * model)
 {
 	return model->priv->filter_mode;
 }
 
 void
-lapiz_file_browser_store_set_filter_mode (PlumaFileBrowserStore * model,
-					  PlumaFileBrowserStoreFilterMode
+lapiz_file_browser_store_set_filter_mode (LapizFileBrowserStore * model,
+					  LapizFileBrowserStoreFilterMode
 					  mode)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
@@ -3092,8 +3092,8 @@ lapiz_file_browser_store_set_filter_mode (PlumaFileBrowserStore * model,
 }
 
 void
-lapiz_file_browser_store_set_filter_func (PlumaFileBrowserStore * model,
-					  PlumaFileBrowserStoreFilterFunc
+lapiz_file_browser_store_set_filter_func (LapizFileBrowserStore * model,
+					  LapizFileBrowserStoreFilterFunc
 					  func, gpointer user_data)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
@@ -3104,19 +3104,19 @@ lapiz_file_browser_store_set_filter_func (PlumaFileBrowserStore * model,
 }
 
 void
-lapiz_file_browser_store_refilter (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_refilter (LapizFileBrowserStore * model)
 {
 	model_refilter (model);
 }
 
-PlumaFileBrowserStoreFilterMode
+LapizFileBrowserStoreFilterMode
 lapiz_file_browser_store_filter_mode_get_default (void)
 {
 	return LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 }
 
 void
-lapiz_file_browser_store_refresh (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_refresh (LapizFileBrowserStore * model)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
 
@@ -3161,7 +3161,7 @@ reparent_node (FileBrowserNode * node, gboolean reparent)
 }
 
 gboolean
-lapiz_file_browser_store_rename (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_rename (LapizFileBrowserStore * model,
 				 GtkTreeIter * iter,
 				 const gchar * new_name,
 				 GError ** error)
@@ -3368,8 +3368,8 @@ delete_files (AsyncData *data)
 	}
 }
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_delete_all (PlumaFileBrowserStore *model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_delete_all (LapizFileBrowserStore *model,
 				     GList *rows, gboolean trash)
 {
 	FileBrowserNode * node;
@@ -3424,13 +3424,13 @@ lapiz_file_browser_store_delete_all (PlumaFileBrowserStore *model,
 	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-PlumaFileBrowserStoreResult
-lapiz_file_browser_store_delete (PlumaFileBrowserStore * model,
+LapizFileBrowserStoreResult
+lapiz_file_browser_store_delete (LapizFileBrowserStore * model,
 				 GtkTreeIter * iter, gboolean trash)
 {
 	FileBrowserNode *node;
 	GList *rows = NULL;
-	PlumaFileBrowserStoreResult result;
+	LapizFileBrowserStoreResult result;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 	g_return_val_if_fail (iter != NULL, LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
@@ -3451,7 +3451,7 @@ lapiz_file_browser_store_delete (PlumaFileBrowserStore * model,
 }
 
 gboolean
-lapiz_file_browser_store_new_file (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_new_file (LapizFileBrowserStore * model,
 				   GtkTreeIter * parent,
 				   GtkTreeIter * iter)
 {
@@ -3505,7 +3505,7 @@ lapiz_file_browser_store_new_file (PlumaFileBrowserStore * model,
 }
 
 gboolean
-lapiz_file_browser_store_new_directory (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_new_directory (LapizFileBrowserStore * model,
 					GtkTreeIter * parent,
 					GtkTreeIter * iter)
 {

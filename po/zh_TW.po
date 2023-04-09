@@ -492,7 +492,7 @@ msgstr "顯示新行"
 
 #: data/org.mate.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
-msgstr "Pluma 是否應在編輯器視窗中顯示新行。"
+msgstr "Lapiz 是否應在編輯器視窗中顯示新行。"
 
 #: data/org.mate.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
@@ -504,7 +504,7 @@ msgid ""
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
-"Pluma 是否應該在編輯器視窗中顯示非斷行空格：'show-none' 不顯示；'show-trailing' 僅顯示尾端空格；'show-all' "
+"Lapiz 是否應該在編輯器視窗中顯示非斷行空格：'show-none' 不顯示；'show-trailing' 僅顯示尾端空格；'show-all' "
 "顯示所有空格。"
 
 #: data/org.mate.lapiz.gschema.xml.in:236
@@ -517,7 +517,7 @@ msgid ""
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
 "spaces."
 msgstr ""
-"Pluma 是否應該在編輯器視窗中顯示製表符：'show-none' 不顯示；'show-trailing' 僅顯示尾端空格；'show-all' "
+"Lapiz 是否應該在編輯器視窗中顯示製表符：'show-none' 不顯示；'show-trailing' 僅顯示尾端空格；'show-all' "
 "顯示所有空格。"
 
 #: data/org.mate.lapiz.gschema.xml.in:241
@@ -530,12 +530,12 @@ msgid ""
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
 "all spaces."
 msgstr ""
-"Pluma 是否應該在編輯器視窗中顯示空格：'show-none' 不顯示；'show-trailing' 僅顯示尾端空格；'show-all' "
+"Lapiz 是否應該在編輯器視窗中顯示空格：'show-none' 不顯示；'show-trailing' 僅顯示尾端空格；'show-all' "
 "顯示所有空格。"
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -543,21 +543,21 @@ msgstr "適用於 MATE 桌面環境的文字編輯器"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Pluma 是一個專為 MATE 桌面環境設計的小巧但功能強大的文字編輯器。它擁有大多數標準的文字編輯器所應具備的功能，且完整支援以 Unicode "
+"Lapiz 是一個專為 MATE 桌面環境設計的小巧但功能強大的文字編輯器。它擁有大多數標準的文字編輯器所應具備的功能，且完整支援以 Unicode "
 "所編碼的國際化文字。也包含了一些進階功能，像是語法突顯、原始碼自動縮排、在一個視窗內列印及編輯多個文件。"
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
-msgstr "Pluma 可透過外掛程式系統擴充，目前包含了拼字檢查、比較檔案、檢視 CVS 變更紀錄、調整縮排等級等。"
+msgstr "Lapiz 可透過外掛程式系統擴充，目前包含了拼字檢查、比較檔案、檢視 CVS 變更紀錄、調整縮排等級等。"
 
 #: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
@@ -830,8 +830,8 @@ msgid "_Close"
 msgstr "關閉(_C)"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Pluma 偏好設定"
+msgid "Lapiz Preferences"
+msgstr "Lapiz 偏好設定"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1234,40 +1234,40 @@ msgid "Sun Microsystems"
 msgstr "昇陽電腦"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma 是一個小巧的文字編輯器，適用於 MATE 桌面"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz 是一個小巧的文字編輯器，適用於 MATE 桌面"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma 是自由軟體；您可以在由自由軟體基金會所發佈的 GNU 通用公眾授權條款下轉散佈它及／或修改它；使用第二版，或（依您的選擇）任意更新的版本。"
+"Lapiz 是自由軟體；您可以在由自由軟體基金會所發佈的 GNU 通用公眾授權條款下轉散佈它及／或修改它；使用第二版，或（依您的選擇）任意更新的版本。"
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma 係基於使用目的而加以散布，然而不負任何擔保責任；亦無對適售性\n"
+"Lapiz 係基於使用目的而加以散布，然而不負任何擔保責任；亦無對適售性\n"
 "或特定目的適用性所為的默示性擔保。詳情請參照 GNU 通用公共授權。"
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"您應該已收到附於 Pluma 的 GNU 通用公共授權的副本。如果沒有，請寫信至：Free Software Foundation, Inc., 51 "
+"您應該已收到附於 Lapiz 的 GNU 通用公共授權的副本。如果沒有，請寫信至：Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "關於 Pluma"
+msgid "About Lapiz"
+msgstr "關於 Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

@@ -34,7 +34,7 @@ msgid ""
 "font."
 msgstr ""
 "Hag-eñ e vo arveret nodrezh e led fest dre ziouer ar reizhiad evit embann "
-"testennoù e-lec'h un nodrezh a zo a-ratozh evit Pluma. Mar diweredekaet an "
+"testennoù e-lec'h un nodrezh a zo a-ratozh evit Lapiz. Mar diweredekaet an "
 "nodrezh anvet e dibarzhioù \"Embanner nodrezhoù\" a vo arveret e-lec'h "
 "nodrezh ar reizhiad."
 
@@ -91,7 +91,7 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Hag-eñ e renko Pluma krouiñ eiladoù gwarediñ evit ar restroù enrollet "
+"Hag-eñ e renko Lapiz krouiñ eiladoù gwarediñ evit ar restroù enrollet "
 "gantañ. Arventennet e vez an askouezh evit ar restr gwarediñ gant an dibarzh"
 " \"Askouezh evit an eilad gwarediñ\"."
 
@@ -118,7 +118,7 @@ msgid ""
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
 "Niver a vunutennoù goude ma vo enrollet ent emgefreek ar restroù daskemmet "
-"gant Pluma. Efedus e vo mard eo bet gweredekaet an dibarzh \"Enenrollañ\""
+"gant Lapiz. Efedus e vo mard eo bet gweredekaet an dibarzh \"Enenrollañ\""
 
 #: data/org.mate.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -186,7 +186,7 @@ msgstr "Enlakaat esaouennoù"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Hag-eñ e rankfe Pluma enlakat esaouennoù e-lec'h ivinelloù."
+msgstr "Hag-eñ e rankfe Lapiz enlakat esaouennoù e-lec'h ivinelloù."
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -194,7 +194,7 @@ msgstr "Pukañ emgefreek"
 
 #: data/org.mate.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
-msgstr "Hag-eñ e ranko Pluma gweredekaat ar pukañ emgefreek."
+msgstr "Hag-eñ e ranko Lapiz gweredekaat ar pukañ emgefreek."
 
 #: data/org.mate.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
@@ -203,7 +203,7 @@ msgstr "Skrammañ niverennoù al linennoù"
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr ""
-"Hag-eñ e ranko Pluma skrammañ niverennoù al linennoù war ar maez embann."
+"Hag-eñ e ranko Lapiz skrammañ niverennoù al linennoù war ar maez embann."
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -211,7 +211,7 @@ msgstr "Usskediñ al linenn vremanel"
 
 #: data/org.mate.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
-msgstr "Hag-eñ e ranko Pluma usskediñ al linenn vremanel."
+msgstr "Hag-eñ e ranko Lapiz usskediñ al linenn vremanel."
 
 #: data/org.mate.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
@@ -220,7 +220,7 @@ msgstr "Usskediñ ar c'hrommelloù a glot ganti"
 #: data/org.mate.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
-"Hag-eñ e ranko Pluma usskediñ ar c'hrommelloù a glot gant an hini bet "
+"Hag-eñ e ranko Lapiz usskediñ ar c'hrommelloù a glot gant an hini bet "
 "diuzet."
 
 #: data/org.mate.lapiz.gschema.xml.in:101
@@ -229,7 +229,7 @@ msgstr "Diskouez ar varz zehou"
 
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
-msgstr "Hag-eñ e ranko Pluma skrammañ ar marz dehou war ar maez embann."
+msgstr "Hag-eñ e ranko Lapiz skrammañ ar marz dehou war ar maez embann."
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -263,7 +263,7 @@ msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Hag-eñ e ranko Pluma adlakaat ar reti d'e lec'hiadur kent pa vez karget ur "
+"Hag-eñ e ranko Lapiz adlakaat ar reti d'e lec'hiadur kent pa vez karget ur "
 "restr."
 
 #: data/org.mate.lapiz.gschema.xml.in:121
@@ -274,7 +274,7 @@ msgstr "Gweredekaat usskediñ ar c'hlask"
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr ""
-"Hag-eñ e ranko Pluma usskediñ an holl reveziadennoù eus an destenn bet "
+"Hag-eñ e ranko Lapiz usskediñ an holl reveziadennoù eus an destenn bet "
 "klasket."
 
 #: data/org.mate.lapiz.gschema.xml.in:126
@@ -283,7 +283,7 @@ msgstr "Gweredekaat usskediñ ar c'hevreadur"
 
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr "Hag-eñ e ranko Pluma gweredekaat usskediñ ar c'hevreadur"
+msgstr "Hag-eñ e ranko Lapiz gweredekaat usskediñ ar c'hevreadur"
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -373,7 +373,7 @@ msgstr "Moullañ an talbenn"
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr ""
-"Hag-eñ e vo enlakaet talbenn an teul gant Pluma pa vo moullet an teulioù."
+"Hag-eñ e vo enlakaet talbenn an teul gant Lapiz pa vo moullet an teulioù."
 
 #: data/org.mate.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
@@ -466,7 +466,7 @@ msgid ""
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
 " recognized encodings are used."
 msgstr ""
-"Roll rummet eus an enbonegadurioù arveret gant Pluma evit dinoiñ ent "
+"Roll rummet eus an enbonegadurioù arveret gant Lapiz evit dinoiñ ent "
 "emgefreek enbonegadur ur restr. \"CURRENT/BREMANEL\" a dalv da enbonegadur "
 "ar yezh vremanel. Enbonegadurioù anavezet a vez arveret hepken."
 
@@ -556,8 +556,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -565,7 +565,7 @@ msgstr "Un embanner testennoù evit endro burev MATE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -574,7 +574,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -884,8 +884,8 @@ msgid "_Close"
 msgstr "_Serriñ"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Gwellvezioù Pluma"
+msgid "Lapiz Preferences"
+msgstr "Gwellvezioù Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1145,11 +1145,11 @@ msgstr "Skrammañ roll ar gwerzhioù a c'hall bezañ evit dibarzhioù ar bonega�
 msgid "Create a new top-level window in an existing instance of lapiz"
 msgstr ""
 "Krouiñ ur prenestr nevez war al live uhelañ en un eriol ez eus anezhañ eus "
-"Pluma"
+"Lapiz"
 
 #: lapiz/lapiz.c:120
 msgid "Create a new document in an existing instance of lapiz"
-msgstr "Krouiñ un teul nevez en un eriol ez eus anezhañ eus Pluma"
+msgstr "Krouiñ un teul nevez en un eriol ez eus anezhañ eus Lapiz"
 
 #: lapiz/lapiz.c:123
 msgid "[FILE...]"
@@ -1322,12 +1322,12 @@ msgid "Sun Microsystems"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Un embanner testennoù skañv ha bihan evit burev MATE eo Pluma"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Un embanner testennoù skañv ha bihan evit burev MATE eo Lapiz"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1335,7 +1335,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1344,12 +1344,12 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
+msgid "About Lapiz"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:116
@@ -1587,11 +1587,11 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:221
 #, c-format
 msgid "lapiz cannot handle %s locations."
-msgstr "n'hall ket Pluma dornata lec'hiadurioù %s."
+msgstr "n'hall ket Lapiz dornata lec'hiadurioù %s."
 
 #: lapiz/lapiz-io-error-message-area.c:227
 msgid "lapiz cannot handle this location."
-msgstr "N'hell ket Pluma dornata al lec'hiadur-mañ."
+msgstr "N'hell ket Lapiz dornata al lec'hiadur-mañ."
 
 #: lapiz/lapiz-io-error-message-area.c:235
 msgid "The location of the file cannot be mounted."
@@ -1649,7 +1649,7 @@ msgstr "Fazi dic'hortoz : %s"
 #: lapiz/lapiz-io-error-message-area.c:406
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr ""
-"Pluma n'hall ket kavout ar restr. Marteze eo bet diverket n'eus ket pell."
+"Lapiz n'hall ket kavout ar restr. Marteze eo bet diverket n'eus ket pell."
 
 #: lapiz/lapiz-io-error-message-area.c:416
 #, c-format
@@ -1688,7 +1688,7 @@ msgstr "N'ho peus ket an aotreoù a-zere evit digeriñ ar restr."
 
 #: lapiz/lapiz-io-error-message-area.c:607
 msgid "lapiz has not been able to detect the character encoding."
-msgstr "N'eo ket bet gouest Pluma da zinoiñ enbonegañ ar arouezennoù."
+msgstr "N'eo ket bet gouest Lapiz da zinoiñ enbonegañ ar arouezennoù."
 
 #: lapiz/lapiz-io-error-message-area.c:609
 #: lapiz/lapiz-io-error-message-area.c:631
@@ -1756,7 +1756,7 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
-msgstr "Ar restr (%s) a zo digor endeo en ur prenestr Pluma all."
+msgstr "Ar restr (%s) a zo digor endeo en ur prenestr Lapiz all."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
@@ -1804,7 +1804,7 @@ msgid ""
 "You can ignore this warning and save the file anyway, but if an error occurs"
 " while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"Pluma ne oa ket gouest da warediñ an eilad kozh eus ar restr kent enrollañ "
+"Lapiz ne oa ket gouest da warediñ an eilad kozh eus ar restr kent enrollañ "
 "an hini nevez. An evezh-mañ a c'hallit leuskel a-gostez hag enrollañ ar "
 "restr memes tra. Klouskoude, mar degouezho ur fazi e-pad an enrollañ e "
 "kollot an eilad kozh eus ar restr marteze. Enrollañ evelkent ?"
@@ -1816,7 +1816,7 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"Pluma n'hall ket dornata lec'hiadurioù %s gant ar mod skrivañ. Bezit divar "
+"Lapiz n'hall ket dornata lec'hiadurioù %s gant ar mod skrivañ. Bezit divar "
 "hoc'h eus biziataet al lec'hiadur gant un doare dereat ha klaskit en-dro."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
@@ -1824,7 +1824,7 @@ msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed"
 " the location correctly and try again."
 msgstr ""
-"Pluma n'hall ket dornata al lec'hiadur-mañ gant ar mod skrivañ. Bezit divar "
+"Lapiz n'hall ket dornata al lec'hiadur-mañ gant ar mod skrivañ. Bezit divar "
 "hoc'h eus biziataet al lec'hiadur gant un doare dereat ha klaskit en-dro."
 
 #: lapiz/lapiz-io-error-message-area.c:1078
@@ -2215,7 +2215,7 @@ msgstr "Endal_c'hadoù"
 
 #: lapiz/lapiz-ui.h:67
 msgid "Open the lapiz manual"
-msgstr "Digeriñ dornlevr Pluma"
+msgstr "Digeriñ dornlevr Lapiz"
 
 #: lapiz/lapiz-ui.h:68
 msgid "_About"

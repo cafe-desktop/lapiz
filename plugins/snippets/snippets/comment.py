@@ -1,4 +1,4 @@
-#    Pluma comment functions
+#    Lapiz comment functions
 #    Copyright (C) 2019 Andrew Fowlie
 #
 #    This program is free software; you can redistribute it and/or modify

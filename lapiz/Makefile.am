@@ -198,15 +198,15 @@ CLEANFILES = $(BUILT_SOURCES)
 
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
-INTROSPECTION_GIRS = Pluma-1.0.gir
+INTROSPECTION_GIRS = Lapiz-1.0.gir
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) --warn-all
 
-Pluma-1.0.gir: lapiz
-Pluma_1_0_gir_INCLUDES = Gtk-3.0 GtkSource-3.0
-Pluma_1_0_gir_FILES = $(INST_H_FILES) $(liblapiz_c_files) $(BUILT_SOURCES)
-Pluma_1_0_gir_VERSION = 1.0
-Pluma_1_0_gir_PROGRAM = $(builddir)/lapiz
-Pluma_1_0_gir_NAMESPACE = Pluma
+Lapiz-1.0.gir: lapiz
+Lapiz_1_0_gir_INCLUDES = Gtk-3.0 GtkSource-3.0
+Lapiz_1_0_gir_FILES = $(INST_H_FILES) $(liblapiz_c_files) $(BUILT_SOURCES)
+Lapiz_1_0_gir_VERSION = 1.0
+Lapiz_1_0_gir_PROGRAM = $(builddir)/lapiz
+Lapiz_1_0_gir_NAMESPACE = Lapiz
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = $(INTROSPECTION_GIRS)

@@ -90,7 +90,7 @@ static void
 list_encodings_and_quit (void)
 {
 	gint i = 0;
-	const PlumaEncoding *enc;
+	const LapizEncoding *enc;
 
 	while ((enc = lapiz_encoding_get_from_index (i)) != NULL)
 	{
@@ -244,7 +244,7 @@ static void
 on_message_received (const char *message,
 		     gpointer    data)
 {
-	const PlumaEncoding *encoding = NULL;
+	const LapizEncoding *encoding = NULL;
 	gchar **commands;
 	gchar **params;
 	gint workspace;
@@ -252,8 +252,8 @@ on_message_received (const char *message,
 	gint viewport_y;
 	gchar *display_name;
 	gint i;
-	PlumaApp *app;
-	PlumaWindow *window;
+	LapizApp *app;
+	LapizWindow *window;
 	GdkDisplay *display;
 	GdkScreen *screen;
 
@@ -361,7 +361,7 @@ on_message_received (const char *message,
 	}
 	else
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 		doc = lapiz_window_get_active_document (window);
 
 		if (doc == NULL ||
@@ -495,9 +495,9 @@ int
 main (int argc, char *argv[])
 {
 	GOptionContext *context;
-	PlumaPluginsEngine *engine;
-	PlumaWindow *window;
-	PlumaApp *app;
+	LapizPluginsEngine *engine;
+	LapizWindow *window;
+	LapizApp *app;
 	gboolean restored = FALSE;
 	GError *error = NULL;
 	gchar *dir;
@@ -623,7 +623,7 @@ main (int argc, char *argv[])
 
 		if (file_list != NULL)
 		{
-			const PlumaEncoding *encoding = NULL;
+			const LapizEncoding *encoding = NULL;
 
 			if (encoding_charset)
 				encoding = lapiz_encoding_get_from_charset (encoding_charset);

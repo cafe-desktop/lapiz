@@ -64,7 +64,7 @@ last_search_data_free (LastSearchData *data)
 }
 
 static void
-last_search_data_restore_position (PlumaSearchDialog *dlg)
+last_search_data_restore_position (LapizSearchDialog *dlg)
 {
 	LastSearchData *data;
 
@@ -79,7 +79,7 @@ last_search_data_restore_position (PlumaSearchDialog *dlg)
 }
 
 static void
-last_search_data_store_position (PlumaSearchDialog *dlg)
+last_search_data_store_position (LapizSearchDialog *dlg)
 {
 	LastSearchData *data;
 
@@ -102,7 +102,7 @@ last_search_data_store_position (PlumaSearchDialog *dlg)
 
 /* Use occurrences only for Replace All */
 static void
-text_found (PlumaWindow *window,
+text_found (LapizWindow *window,
 	    gint         occurrences)
 {
 	if (occurrences > 1)
@@ -129,7 +129,7 @@ text_found (PlumaWindow *window,
 
 #define MAX_MSG_LENGTH 40
 static void
-text_not_found (PlumaWindow *window,
+text_not_found (LapizWindow *window,
 		const gchar *text)
 {
 	gchar *searched;
@@ -145,11 +145,11 @@ text_not_found (PlumaWindow *window,
 }
 
 static gboolean
-run_search (PlumaView   *view,
+run_search (LapizView   *view,
 	    gboolean     wrap_around,
 	    gboolean     search_backwards)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GtkTextIter start_iter;
 	GtkTextIter match_start;
 	GtkTextIter match_end;
@@ -219,11 +219,11 @@ run_search (PlumaView   *view,
 }
 
 static void
-do_find (PlumaSearchDialog *dialog,
-	 PlumaWindow       *window)
+do_find (LapizSearchDialog *dialog,
+	 LapizWindow       *window)
 {
-	PlumaView *active_view;
-	PlumaDocument *doc;
+	LapizView *active_view;
+	LapizDocument *doc;
 	gchar *search_text;
 	const gchar *entry_text;
 	gboolean match_case;
@@ -339,10 +339,10 @@ replace_selected_text (GtkTextBuffer *buffer,
 }
 
 static void
-do_replace (PlumaSearchDialog *dialog,
-	    PlumaWindow       *window)
+do_replace (LapizSearchDialog *dialog,
+	    LapizWindow       *window)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	const gchar *search_entry_text;
 	const gchar *replace_entry_text;
 	gchar *unescaped_search_text;
@@ -431,11 +431,11 @@ do_replace (PlumaSearchDialog *dialog,
 }
 
 static void
-do_replace_all (PlumaSearchDialog *dialog,
-		PlumaWindow       *window)
+do_replace_all (LapizSearchDialog *dialog,
+		LapizWindow       *window)
 {
-	PlumaView *active_view;
-	PlumaDocument *doc;
+	LapizView *active_view;
+	LapizDocument *doc;
 	const gchar *search_entry_text;
 	const gchar *replace_entry_text;
 	gboolean match_case;
@@ -500,9 +500,9 @@ do_replace_all (PlumaSearchDialog *dialog,
 }
 
 static void
-search_dialog_response_cb (PlumaSearchDialog *dialog,
+search_dialog_response_cb (LapizSearchDialog *dialog,
 			   gint               response_id,
-			   PlumaWindow       *window)
+			   LapizWindow       *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -535,8 +535,8 @@ search_dialog_delete_event_cb (GtkWidget   *widget,
 }
 
 static void
-search_dialog_destroyed (PlumaWindow       *window,
-			 PlumaSearchDialog *dialog)
+search_dialog_destroyed (LapizWindow       *window,
+			 LapizSearchDialog *dialog)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -549,7 +549,7 @@ search_dialog_destroyed (PlumaWindow       *window,
 }
 
 static GtkWidget *
-create_dialog (PlumaWindow *window, gboolean show_replace)
+create_dialog (LapizWindow *window, gboolean show_replace)
 {
 	GtkWidget *dialog;
 
@@ -577,11 +577,11 @@ create_dialog (PlumaWindow *window, gboolean show_replace)
 
 void
 _lapiz_cmd_search_find (GtkAction   *action,
-			PlumaWindow *window)
+			LapizWindow *window)
 {
 	gpointer data;
 	GtkWidget *search_dialog;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gboolean selection_exists;
 	gboolean parse_escapes;
 	gchar *find_text = NULL;
@@ -651,11 +651,11 @@ _lapiz_cmd_search_find (GtkAction   *action,
 
 void
 _lapiz_cmd_search_replace (GtkAction   *action,
-			   PlumaWindow *window)
+			   LapizWindow *window)
 {
 	gpointer data;
 	GtkWidget *replace_dialog;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gboolean selection_exists;
 	gboolean parse_escapes;
 	gchar *find_text = NULL;
@@ -724,10 +724,10 @@ _lapiz_cmd_search_replace (GtkAction   *action,
 }
 
 static void
-do_find_again (PlumaWindow *window,
+do_find_again (LapizWindow *window,
 	       gboolean     backward)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 	gboolean wrap_around = TRUE;
 	gpointer data;
 
@@ -746,7 +746,7 @@ do_find_again (PlumaWindow *window,
 
 void
 _lapiz_cmd_search_find_next (GtkAction   *action,
-			     PlumaWindow *window)
+			     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -755,7 +755,7 @@ _lapiz_cmd_search_find_next (GtkAction   *action,
 
 void
 _lapiz_cmd_search_find_prev (GtkAction   *action,
-			     PlumaWindow *window)
+			     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -764,9 +764,9 @@ _lapiz_cmd_search_find_prev (GtkAction   *action,
 
 void
 _lapiz_cmd_search_clear_highlight (GtkAction   *action,
-				   PlumaWindow *window)
+				   LapizWindow *window)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -778,9 +778,9 @@ _lapiz_cmd_search_clear_highlight (GtkAction   *action,
 
 void
 _lapiz_cmd_search_goto_line (GtkAction   *action,
-			     PlumaWindow *window)
+			     LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -793,7 +793,7 @@ _lapiz_cmd_search_goto_line (GtkAction   *action,
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 
 
-	/* goto line is builtin in PlumaView, just activate
+	/* goto line is builtin in LapizView, just activate
 	 * the corresponding binding.
 	 */
 	gtk_bindings_activate (G_OBJECT (active_view),
@@ -803,9 +803,9 @@ _lapiz_cmd_search_goto_line (GtkAction   *action,
 
 void
 _lapiz_cmd_search_incremental_search (GtkAction   *action,
-				      PlumaWindow *window)
+				      LapizWindow *window)
 {
-	PlumaView *active_view;
+	LapizView *active_view;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -817,7 +817,7 @@ _lapiz_cmd_search_incremental_search (GtkAction   *action,
 	   activating the binding for incremental search has no effect */
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 
-	/* incremental search is builtin in PlumaView, just activate
+	/* incremental search is builtin in LapizView, just activate
 	 * the corresponding binding.
 	 */
 	gtk_bindings_activate (G_OBJECT (active_view),

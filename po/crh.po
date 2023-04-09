@@ -89,7 +89,7 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Pluma, kaydettiği dosyalar için yedek kopiyalar oluşturur. Yedek dosya "
+"Lapiz, kaydettiği dosyalar için yedek kopiyalar oluşturur. Yedek dosya "
 "uzantısını, \"Backup Copy Extension\" seçeneğiyle ayarlayabilirsiniz."
 
 #: data/org.mate.lapiz.gschema.xml.in:41
@@ -102,7 +102,7 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"Pluma'niñ deñiştirilgen dosyelerni bir zaman aralığından soñra öz-özünden "
+"Lapiz'niñ deñiştirilgen dosyelerni bir zaman aralığından soñra öz-özünden "
 "saqlap saqlamaycağı. Zaman aralığını \"Avto-saqla Aralığı\" ihtiyarından "
 "ayarlaybilirsiñiz."
 
@@ -115,7 +115,7 @@ msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Pluma'niñ deñiştirilgen dosyelerni qaç daqqa soñra öz-özünden saqlaycağı. "
+"Lapiz'niñ deñiştirilgen dosyelerni qaç daqqa soñra öz-özünden saqlaycağı. "
 "Bu, ancaq \"Avto-saqla\" ihtiyarı faal ise uyğulanır."
 
 #: data/org.mate.lapiz.gschema.xml.in:51
@@ -147,7 +147,7 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Pluma'in geri alabileceği ya da tekrarlayabileceği eylemlerin azami miktarı."
+"Lapiz'in geri alabileceği ya da tekrarlayabileceği eylemlerin azami miktarı."
 " Sınırsız sayıda eylem için \"-1\" kullanın."
 
 #: data/org.mate.lapiz.gschema.xml.in:66
@@ -184,7 +184,7 @@ msgstr "Boşluqlarnı qıstır"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Pluma'niñ sekirmelerniñ yerine boşluqlarnı qıstırıp qıstırmaycağı."
+msgstr "Lapiz'niñ sekirmelerniñ yerine boşluqlarnı qıstırıp qıstırmaycağı."
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -192,7 +192,7 @@ msgstr "Avtomatik kirinti"
 
 #: data/org.mate.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
-msgstr "Pluma'niñ avtomatik kirintilemeni qabilleştirip qabilleştirmeycegi."
+msgstr "Lapiz'niñ avtomatik kirintilemeni qabilleştirip qabilleştirmeycegi."
 
 #: data/org.mate.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
@@ -200,7 +200,7 @@ msgstr "Satır Nomeralarını Köster"
 
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
-msgstr "Pluma'in düzenleme alanında satır sayılarını göstermesi."
+msgstr "Lapiz'in düzenleme alanında satır sayılarını göstermesi."
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -208,7 +208,7 @@ msgstr "Ağımdaki Satırnı Işıqlandır"
 
 #: data/org.mate.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
-msgstr "Pluma'niñ ağımdaki satırnı ışıqlandırıp ışıqlandırmaycağı."
+msgstr "Lapiz'niñ ağımdaki satırnı ışıqlandırıp ışıqlandırmaycağı."
 
 #: data/org.mate.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
@@ -217,7 +217,7 @@ msgstr "Eşleşken Qavusnı Işıqlandır"
 #: data/org.mate.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
-"Pluma'niñ saylanğan qavus ile eşleşken birini ışıqlandırıp "
+"Lapiz'niñ saylanğan qavus ile eşleşken birini ışıqlandırıp "
 "ışıqlandırmaycağı."
 
 #: data/org.mate.lapiz.gschema.xml.in:101
@@ -226,7 +226,7 @@ msgstr "Sağ Kenarnı Köster"
 
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
-msgstr "Pluma'in düzenleme alanında sağ kenar boşluğunu göstermesi."
+msgstr "Lapiz'in düzenleme alanında sağ kenar boşluğunu göstermesi."
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -267,7 +267,7 @@ msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Pluma'in dosya yüklendiği zaman imlecin önceki yerinin geri getirilmesi."
+"Lapiz'in dosya yüklendiği zaman imlecin önceki yerinin geri getirilmesi."
 
 #: data/org.mate.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -276,7 +276,7 @@ msgstr "Qıdırma Işıqlandırmasını Qabilleştir"
 #: data/org.mate.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
-msgstr "Pluma'in arama metninin geçtiği yerleri vurgulaması."
+msgstr "Lapiz'in arama metninin geçtiği yerleri vurgulaması."
 
 #: data/org.mate.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
@@ -285,7 +285,7 @@ msgstr "Sintaksis Işıqlandırmasını Qabilleştir"
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
 msgstr ""
-"Pluma'niñ sintaksis ışıqlandırmasını qabilleştirip qabilleştirmeycegi."
+"Lapiz'niñ sintaksis ışıqlandırmasını qabilleştirip qabilleştirmeycegi."
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -373,7 +373,7 @@ msgstr "Sintaksis Işıqlandırmasını Bastır"
 #: data/org.mate.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
-msgstr "Pluma'in belgeleri yazdırırken bir belge başlığı eklemesi."
+msgstr "Lapiz'in belgeleri yazdırırken bir belge başlığı eklemesi."
 
 #: data/org.mate.lapiz.gschema.xml.in:171
 msgid "Print Header"
@@ -382,7 +382,7 @@ msgstr "Başlıqnı Bastır"
 #: data/org.mate.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
-msgstr "Pluma'in belgeleri yazdırırken bir belge başlığı eklemesi."
+msgstr "Lapiz'in belgeleri yazdırırken bir belge başlığı eklemesi."
 
 #: data/org.mate.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
@@ -572,7 +572,7 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
+msgid "Lapiz"
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:8
@@ -581,7 +581,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -590,7 +590,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -876,7 +876,7 @@ msgid "_Close"
 msgstr "_Qapat"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
+msgid "Lapiz Preferences"
 msgstr ""
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
@@ -1133,11 +1133,11 @@ msgstr "Kodlandırma ihtiyarı içün caiz qıymetler listesini köster"
 
 #: lapiz/lapiz.c:117
 msgid "Create a new top-level window in an existing instance of lapiz"
-msgstr "Pluma'niñ mevcut danesinde yañı bir üst-serviye pencere icat et"
+msgstr "Lapiz'niñ mevcut danesinde yañı bir üst-serviye pencere icat et"
 
 #: lapiz/lapiz.c:120
 msgid "Create a new document in an existing instance of lapiz"
-msgstr "Pluma'niñ mevcut danesinde yañı bir vesiqa icat et"
+msgstr "Lapiz'niñ mevcut danesinde yañı bir vesiqa icat et"
 
 #: lapiz/lapiz.c:123
 msgid "[FILE...]"
@@ -1286,12 +1286,12 @@ msgid "Sun Microsystems"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1299,7 +1299,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1308,12 +1308,12 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
+msgid "About Lapiz"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:116
@@ -2160,7 +2160,7 @@ msgstr "_İçindekiler"
 
 #: lapiz/lapiz-ui.h:67
 msgid "Open the lapiz manual"
-msgstr "Pluma qılavuzını aç"
+msgstr "Lapiz qılavuzını aç"
 
 #: lapiz/lapiz-ui.h:68
 msgid "_About"
@@ -3232,7 +3232,7 @@ msgstr "Tarz-satırları"
 
 #: plugins/modelines/modelines.plugin.desktop.in:6
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
-msgstr "Pluma içün Emacs, Kate ve Vim-uslûbı tarz-satırları destegi."
+msgstr "Lapiz içün Emacs, Kate ve Vim-uslûbı tarz-satırları destegi."
 
 #: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 #: plugins/pythonconsole/pythonconsole/__init__.py:55

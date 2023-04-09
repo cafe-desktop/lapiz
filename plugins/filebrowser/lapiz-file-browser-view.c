@@ -1,5 +1,5 @@
 /*
- * lapiz-file-browser-view.c - Pluma plugin providing easy file access
+ * lapiz-file-browser-view.c - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -30,7 +30,7 @@
 #include "lapiz-file-browser-marshal.h"
 #include "lapiz-file-browser-enum-types.h"
 
-struct _PlumaFileBrowserViewPrivate
+struct _LapizFileBrowserViewPrivate
 {
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *pixbuf_renderer;
@@ -42,7 +42,7 @@ struct _PlumaFileBrowserViewPrivate
 	GdkCursor *busy_cursor;
 
 	/* CLick policy */
-	PlumaFileBrowserViewClickPolicy click_policy;
+	LapizFileBrowserViewClickPolicy click_policy;
 	GtkTreePath *double_click_path[2]; /* Both clicks in a double click need to be on the same row */
 	GtkTreePath *hover_path;
 	GdkCursor *hand_cursor;
@@ -81,35 +81,35 @@ static const GtkTargetEntry drag_source_targets[] = {
 	{ "text/uri-list", 0, 0 }
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBrowserView,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserView,
                                 lapiz_file_browser_view,
                                 GTK_TYPE_TREE_VIEW,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaFileBrowserView))
+                                G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserView))
 
 static void on_cell_edited 		(GtkCellRendererText 	* cell,
 				 	 gchar 			* path,
 				 	 gchar 			* new_text,
-				 	PlumaFileBrowserView 	* tree_view);
+				 	LapizFileBrowserView 	* tree_view);
 
-static void on_begin_refresh 		(PlumaFileBrowserStore 	* model,
-					 PlumaFileBrowserView 	* view);
-static void on_end_refresh 		(PlumaFileBrowserStore 	* model,
-					 PlumaFileBrowserView 	* view);
+static void on_begin_refresh 		(LapizFileBrowserStore 	* model,
+					 LapizFileBrowserView 	* view);
+static void on_end_refresh 		(LapizFileBrowserStore 	* model,
+					 LapizFileBrowserView 	* view);
 
-static void on_unload			(PlumaFileBrowserStore 	* model,
+static void on_unload			(LapizFileBrowserStore 	* model,
 					 gchar const		* uri,
-					 PlumaFileBrowserView 	* view);
+					 LapizFileBrowserView 	* view);
 
-static void on_row_inserted		(PlumaFileBrowserStore 	* model,
+static void on_row_inserted		(LapizFileBrowserStore 	* model,
 					 GtkTreePath		* path,
 					 GtkTreeIter		* iter,
-					 PlumaFileBrowserView 	* view);
+					 LapizFileBrowserView 	* view);
 
 static void
 lapiz_file_browser_view_finalize (GObject * object)
 {
-	PlumaFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW(object);
+	LapizFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW(object);
 
 	if (obj->priv->hand_cursor)
 		g_object_unref (obj->priv->hand_cursor);
@@ -130,7 +130,7 @@ lapiz_file_browser_view_finalize (GObject * object)
 }
 
 static void
-add_expand_state (PlumaFileBrowserView * view,
+add_expand_state (LapizFileBrowserView * view,
 		  gchar const * uri)
 {
 	GFile * file;
@@ -147,7 +147,7 @@ add_expand_state (PlumaFileBrowserView * view,
 }
 
 static void
-remove_expand_state (PlumaFileBrowserView * view,
+remove_expand_state (LapizFileBrowserView * view,
 		     gchar const * uri)
 {
 	GFile * file;
@@ -168,7 +168,7 @@ row_expanded (GtkTreeView * tree_view,
 	      GtkTreeIter * iter,
 	      GtkTreePath * path)
 {
-	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
+	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
 
 	if (GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_expanded)
@@ -198,7 +198,7 @@ row_collapsed (GtkTreeView * tree_view,
 	       GtkTreeIter * iter,
 	       GtkTreePath * path)
 {
-	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
+	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
 
 	if (GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_collapsed)
@@ -227,7 +227,7 @@ static gboolean
 leave_notify_event (GtkWidget *widget,
 		    GdkEventCrossing *event)
 {
-	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
+	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
 	    view->priv->hover_path != NULL) {
@@ -243,7 +243,7 @@ static gboolean
 enter_notify_event (GtkWidget *widget,
 		    GdkEventCrossing *event)
 {
-	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
+	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		if (view->priv->hover_path != NULL)
@@ -268,7 +268,7 @@ motion_notify_event (GtkWidget * widget,
 		     GdkEventMotion * event)
 {
 	GtkTreePath *old_hover_path;
-	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
+	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		old_hover_path = view->priv->hover_path;
@@ -295,8 +295,8 @@ motion_notify_event (GtkWidget * widget,
 }
 
 static void
-set_click_policy_property (PlumaFileBrowserView            *obj,
-			   PlumaFileBrowserViewClickPolicy  click_policy)
+set_click_policy_property (LapizFileBrowserView            *obj,
+			   LapizFileBrowserViewClickPolicy  click_policy)
 {
 	GtkTreeIter iter;
 	GdkDisplay *display;
@@ -338,21 +338,21 @@ set_click_policy_property (PlumaFileBrowserView            *obj,
 }
 
 static void
-directory_activated (PlumaFileBrowserView *view,
+directory_activated (LapizFileBrowserView *view,
 		     GtkTreeIter          *iter)
 {
 	lapiz_file_browser_store_set_virtual_root (LAPIZ_FILE_BROWSER_STORE (view->priv->model), iter);
 }
 
 static void
-activate_selected_files (PlumaFileBrowserView *view) {
+activate_selected_files (LapizFileBrowserView *view) {
 	GtkTreeView *tree_view = GTK_TREE_VIEW (view);
 	GtkTreeSelection *selection = gtk_tree_view_get_selection (tree_view);
 	GList *rows, *row;
 	GtkTreePath *directory = NULL;
 	GtkTreePath *path;
 	GtkTreeIter iter;
-	PlumaFileBrowserStoreFlag flags;
+	LapizFileBrowserStoreFlag flags;
 
 	rows = gtk_tree_selection_get_selected_rows (selection, &view->priv->model);
 
@@ -384,7 +384,7 @@ activate_selected_files (PlumaFileBrowserView *view) {
 }
 
 static void
-activate_selected_bookmark (PlumaFileBrowserView *view) {
+activate_selected_bookmark (LapizFileBrowserView *view) {
 	GtkTreeView *tree_view = GTK_TREE_VIEW (view);
 	GtkTreeSelection *selection = gtk_tree_view_get_selection (tree_view);
 	GtkTreeIter iter;
@@ -394,7 +394,7 @@ activate_selected_bookmark (PlumaFileBrowserView *view) {
 }
 
 static void
-activate_selected_items (PlumaFileBrowserView *view)
+activate_selected_items (LapizFileBrowserView *view)
 {
 	if (LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 		activate_selected_files (view);
@@ -403,9 +403,9 @@ activate_selected_items (PlumaFileBrowserView *view)
 }
 
 static void
-toggle_hidden_filter (PlumaFileBrowserView *view)
+toggle_hidden_filter (LapizFileBrowserView *view)
 {
-	PlumaFileBrowserStoreFilterMode mode;
+	LapizFileBrowserStoreFilterMode mode;
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 	{
@@ -427,7 +427,7 @@ static void
 drag_begin (GtkWidget      *widget,
 	    GdkDragContext *context)
 {
-	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
+	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	view->priv->drag_button = 0;
 	view->priv->drag_started = TRUE;
@@ -437,7 +437,7 @@ drag_begin (GtkWidget      *widget,
 }
 
 static void
-did_not_drag (PlumaFileBrowserView *view,
+did_not_drag (LapizFileBrowserView *view,
 	      GdkEventButton       *event)
 {
 	GtkTreeView *tree_view;
@@ -474,7 +474,7 @@ static gboolean
 button_release_event (GtkWidget       *widget,
 		      GdkEventButton *event)
 {
-	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
+	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	if (event->button == view->priv->drag_button) {
 		view->priv->drag_button = 0;
@@ -495,7 +495,7 @@ button_press_event (GtkWidget      *widget,
 	int double_click_time;
 	static int click_count = 0;
 	static guint32 last_click_time = 0;
-	PlumaFileBrowserView *view;
+	LapizFileBrowserView *view;
 	GtkTreeView *tree_view;
 	GtkTreeSelection *selection;
 	GtkTreePath *path;
@@ -624,7 +624,7 @@ static gboolean
 key_press_event (GtkWidget   *widget,
 		 GdkEventKey *event)
 {
-	PlumaFileBrowserView *view;
+	LapizFileBrowserView *view;
 	guint modifiers;
 	gboolean handled;
 
@@ -673,7 +673,7 @@ key_press_event (GtkWidget   *widget,
 }
 
 static void
-fill_expand_state (PlumaFileBrowserView * view, GtkTreeIter * iter)
+fill_expand_state (LapizFileBrowserView * view, GtkTreeIter * iter)
 {
 	GtkTreePath * path;
 	GtkTreeIter child;
@@ -707,7 +707,7 @@ fill_expand_state (PlumaFileBrowserView * view, GtkTreeIter * iter)
 }
 
 static void
-uninstall_restore_signals (PlumaFileBrowserView * tree_view,
+uninstall_restore_signals (LapizFileBrowserView * tree_view,
 			   GtkTreeModel * model)
 {
 	g_signal_handlers_disconnect_by_func (model,
@@ -728,7 +728,7 @@ uninstall_restore_signals (PlumaFileBrowserView * tree_view,
 }
 
 static void
-install_restore_signals (PlumaFileBrowserView * tree_view,
+install_restore_signals (LapizFileBrowserView * tree_view,
 			 GtkTreeModel * model)
 {
 	g_signal_connect (model,
@@ -753,7 +753,7 @@ install_restore_signals (PlumaFileBrowserView * tree_view,
 }
 
 static void
-set_restore_expand_state (PlumaFileBrowserView * view,
+set_restore_expand_state (LapizFileBrowserView * view,
 			  gboolean state)
 {
 	if (state == view->priv->restore_expand_state)
@@ -793,7 +793,7 @@ get_property (GObject    *object,
 	      GValue     *value,
 	      GParamSpec *pspec)
 {
-	PlumaFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW (object);
+	LapizFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW (object);
 
 	switch (prop_id)
 	{
@@ -815,7 +815,7 @@ set_property (GObject      *object,
 	      const GValue *value,
 	      GParamSpec   *pspec)
 {
-	PlumaFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW (object);
+	LapizFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW (object);
 
 	switch (prop_id)
 	{
@@ -832,7 +832,7 @@ set_property (GObject      *object,
 }
 
 static void
-lapiz_file_browser_view_class_init (PlumaFileBrowserViewClass * klass)
+lapiz_file_browser_view_class_init (LapizFileBrowserViewClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkTreeViewClass *tree_view_class = GTK_TREE_VIEW_CLASS (klass);
@@ -877,7 +877,7 @@ lapiz_file_browser_view_class_init (PlumaFileBrowserViewClass * klass)
 	    g_signal_new ("error",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserViewClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserViewClass,
 					   error), NULL, NULL,
 			  lapiz_file_browser_marshal_VOID__UINT_STRING,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
@@ -885,7 +885,7 @@ lapiz_file_browser_view_class_init (PlumaFileBrowserViewClass * klass)
 	    g_signal_new ("file-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserViewClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserViewClass,
 					   file_activated), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
@@ -893,7 +893,7 @@ lapiz_file_browser_view_class_init (PlumaFileBrowserViewClass * klass)
 	    g_signal_new ("directory-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserViewClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserViewClass,
 					   directory_activated), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
@@ -901,14 +901,14 @@ lapiz_file_browser_view_class_init (PlumaFileBrowserViewClass * klass)
 	    g_signal_new ("bookmark-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaFileBrowserViewClass,
+			  G_STRUCT_OFFSET (LapizFileBrowserViewClass,
 					   bookmark_activated), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 }
 
 static void
-lapiz_file_browser_view_class_finalize (PlumaFileBrowserViewClass *klass)
+lapiz_file_browser_view_class_finalize (LapizFileBrowserViewClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -916,7 +916,7 @@ lapiz_file_browser_view_class_finalize (PlumaFileBrowserViewClass *klass)
 static void
 cell_data_cb (GtkTreeViewColumn * tree_column, GtkCellRenderer * cell,
 	      GtkTreeModel * tree_model, GtkTreeIter * iter,
-	      PlumaFileBrowserView * obj)
+	      LapizFileBrowserView * obj)
 {
 	GtkTreePath *path;
 	PangoUnderline underline = PANGO_UNDERLINE_NONE;
@@ -946,7 +946,7 @@ cell_data_cb (GtkTreeViewColumn * tree_column, GtkCellRenderer * cell,
 }
 
 static void
-lapiz_file_browser_view_init (PlumaFileBrowserView * obj)
+lapiz_file_browser_view_init (LapizFileBrowserView * obj)
 {
 	GdkDisplay *display;
 
@@ -1005,7 +1005,7 @@ bookmarks_separator_func (GtkTreeModel * model, GtkTreeIter * iter,
 GtkWidget *
 lapiz_file_browser_view_new (void)
 {
-	PlumaFileBrowserView *obj =
+	LapizFileBrowserView *obj =
 	    LAPIZ_FILE_BROWSER_VIEW (g_object_new
 				     (LAPIZ_TYPE_FILE_BROWSER_VIEW, NULL));
 
@@ -1013,7 +1013,7 @@ lapiz_file_browser_view_new (void)
 }
 
 void
-lapiz_file_browser_view_set_model (PlumaFileBrowserView * tree_view,
+lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
 				   GtkTreeModel * model)
 {
 	GtkTreeSelection *selection;
@@ -1070,7 +1070,7 @@ lapiz_file_browser_view_set_model (PlumaFileBrowserView * tree_view,
 }
 
 void
-lapiz_file_browser_view_start_rename (PlumaFileBrowserView * tree_view,
+lapiz_file_browser_view_start_rename (LapizFileBrowserView * tree_view,
 				      GtkTreeIter * iter)
 {
 	guint flags;
@@ -1113,8 +1113,8 @@ lapiz_file_browser_view_start_rename (PlumaFileBrowserView * tree_view,
 }
 
 void
-lapiz_file_browser_view_set_click_policy (PlumaFileBrowserView *tree_view,
-					  PlumaFileBrowserViewClickPolicy policy)
+lapiz_file_browser_view_set_click_policy (LapizFileBrowserView *tree_view,
+					  LapizFileBrowserViewClickPolicy policy)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_VIEW (tree_view));
 
@@ -1124,7 +1124,7 @@ lapiz_file_browser_view_set_click_policy (PlumaFileBrowserView *tree_view,
 }
 
 void
-lapiz_file_browser_view_set_restore_expand_state (PlumaFileBrowserView * tree_view,
+lapiz_file_browser_view_set_restore_expand_state (LapizFileBrowserView * tree_view,
 						  gboolean restore_expand_state)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_VIEW (tree_view));
@@ -1136,7 +1136,7 @@ lapiz_file_browser_view_set_restore_expand_state (PlumaFileBrowserView * tree_vi
 /* Signal handlers */
 static void
 on_cell_edited (GtkCellRendererText * cell, gchar * path, gchar * new_text,
-		PlumaFileBrowserView * tree_view)
+		LapizFileBrowserView * tree_view)
 {
 	GtkTreePath * treepath;
 	GtkTreeIter iter;
@@ -1173,8 +1173,8 @@ on_cell_edited (GtkCellRendererText * cell, gchar * path, gchar * new_text,
 }
 
 static void
-on_begin_refresh (PlumaFileBrowserStore * model,
-		  PlumaFileBrowserView * view)
+on_begin_refresh (LapizFileBrowserStore * model,
+		  LapizFileBrowserView * view)
 {
 	/* Store the refresh state, so we can handle unloading of nodes while
 	   refreshing properly */
@@ -1182,8 +1182,8 @@ on_begin_refresh (PlumaFileBrowserStore * model,
 }
 
 static void
-on_end_refresh (PlumaFileBrowserStore * model,
-		PlumaFileBrowserView * view)
+on_end_refresh (LapizFileBrowserStore * model,
+		LapizFileBrowserView * view)
 {
 	/* Store the refresh state, so we can handle unloading of nodes while
 	   refreshing properly */
@@ -1191,9 +1191,9 @@ on_end_refresh (PlumaFileBrowserStore * model,
 }
 
 static void
-on_unload (PlumaFileBrowserStore * model,
+on_unload (LapizFileBrowserStore * model,
 	   gchar const * uri,
-	   PlumaFileBrowserView * view)
+	   LapizFileBrowserView * view)
 {
 	/* Don't remove the expand state if we are refreshing */
 	if (!view->priv->restore_expand_state || view->priv->is_refresh)
@@ -1203,8 +1203,8 @@ on_unload (PlumaFileBrowserStore * model,
 }
 
 static void
-restore_expand_state (PlumaFileBrowserView * view,
-		      PlumaFileBrowserStore * model,
+restore_expand_state (LapizFileBrowserView * view,
+		      LapizFileBrowserStore * model,
 		      GtkTreeIter * iter)
 {
 	gchar * uri;
@@ -1237,10 +1237,10 @@ restore_expand_state (PlumaFileBrowserView * view,
 }
 
 static void
-on_row_inserted (PlumaFileBrowserStore * model,
+on_row_inserted (LapizFileBrowserStore * model,
 		 GtkTreePath * path,
 		 GtkTreeIter * iter,
-		 PlumaFileBrowserView * view)
+		 LapizFileBrowserView * view)
 {
 	GtkTreeIter parent;
 	GtkTreePath * copy;

@@ -1,5 +1,5 @@
 /*
- * lapiz-file-bookmarks-store.c - Pluma plugin providing easy file access
+ * lapiz-file-bookmarks-store.c - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -148,7 +148,7 @@ lapiz_file_browser_utils_uri_basename (gchar const * uri)
 }
 
 gboolean
-lapiz_file_browser_utils_confirmation_dialog (PlumaWindow * window,
+lapiz_file_browser_utils_confirmation_dialog (LapizWindow * window,
                                               GtkMessageType type,
                                               gchar const *message,
                                               gchar const *secondary)

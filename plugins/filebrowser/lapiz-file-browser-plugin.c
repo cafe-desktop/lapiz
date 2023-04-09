@@ -1,5 +1,5 @@
 /*
- * lapiz-file-browser-plugin.c - Pluma plugin providing easy file access
+ * lapiz-file-browser-plugin.c - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -50,11 +50,11 @@
 #define TERMINAL_SCHEMA				"org.mate.applications-terminal"
 #define TERMINAL_EXEC_KEY			"exec"
 
-struct _PlumaFileBrowserPluginPrivate
+struct _LapizFileBrowserPluginPrivate
 {
 	GtkWidget               *window;
 
-	PlumaFileBrowserWidget * tree_widget;
+	LapizFileBrowserWidget * tree_widget;
 	gulong                   merge_id;
 	GtkActionGroup         * action_group;
 	GtkActionGroup	       * single_selection_action_group;
@@ -73,47 +73,47 @@ enum {
 	PROP_OBJECT
 };
 
-static void on_uri_activated_cb          (PlumaFileBrowserWidget * widget,
+static void on_uri_activated_cb          (LapizFileBrowserWidget * widget,
                                           gchar const *uri,
-                                          PlumaWindow * window);
-static void on_error_cb                  (PlumaFileBrowserWidget * widget,
+                                          LapizWindow * window);
+static void on_error_cb                  (LapizFileBrowserWidget * widget,
                                           guint code,
                                           gchar const *message,
-                                          PlumaFileBrowserPluginPrivate * data);
-static void on_model_set_cb              (PlumaFileBrowserView * widget,
+                                          LapizFileBrowserPluginPrivate * data);
+static void on_model_set_cb              (LapizFileBrowserView * widget,
                                           GParamSpec *arg1,
-                                          PlumaFileBrowserPluginPrivate * data);
-static void on_virtual_root_changed_cb   (PlumaFileBrowserStore * model,
+                                          LapizFileBrowserPluginPrivate * data);
+static void on_virtual_root_changed_cb   (LapizFileBrowserStore * model,
                                           GParamSpec * param,
-                                          PlumaFileBrowserPluginPrivate * data);
-static void on_filter_mode_changed_cb    (PlumaFileBrowserStore * model,
+                                          LapizFileBrowserPluginPrivate * data);
+static void on_filter_mode_changed_cb    (LapizFileBrowserStore * model,
                                           GParamSpec * param,
-                                          PlumaFileBrowserPluginPrivate * data);
-static void on_rename_cb		 (PlumaFileBrowserStore * model,
+                                          LapizFileBrowserPluginPrivate * data);
+static void on_rename_cb		 (LapizFileBrowserStore * model,
 					  const gchar * olduri,
 					  const gchar * newuri,
-					  PlumaWindow * window);
-static void on_filter_pattern_changed_cb (PlumaFileBrowserWidget * widget,
+					  LapizWindow * window);
+static void on_filter_pattern_changed_cb (LapizFileBrowserWidget * widget,
                                           GParamSpec * param,
-                                          PlumaFileBrowserPluginPrivate * data);
-static void on_tab_added_cb              (PlumaWindow * window,
-                                          PlumaTab * tab,
-                                          PlumaFileBrowserPluginPrivate * data);
-static gboolean on_confirm_delete_cb     (PlumaFileBrowserWidget * widget,
-                                          PlumaFileBrowserStore * store,
+                                          LapizFileBrowserPluginPrivate * data);
+static void on_tab_added_cb              (LapizWindow * window,
+                                          LapizTab * tab,
+                                          LapizFileBrowserPluginPrivate * data);
+static gboolean on_confirm_delete_cb     (LapizFileBrowserWidget * widget,
+                                          LapizFileBrowserStore * store,
                                           GList * rows,
-                                          PlumaFileBrowserPluginPrivate * data);
-static gboolean on_confirm_no_trash_cb   (PlumaFileBrowserWidget * widget,
+                                          LapizFileBrowserPluginPrivate * data);
+static gboolean on_confirm_no_trash_cb   (LapizFileBrowserWidget * widget,
                                           GList * files,
-                                          PlumaWindow * window);
+                                          LapizWindow * window);
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBrowserPlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserPlugin,
                                 lapiz_file_browser_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaFileBrowserPlugin)
+                                G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init)    \
                                                                                                \
@@ -125,7 +125,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBrowserPlugin,
 )
 
 static void
-lapiz_file_browser_plugin_init (PlumaFileBrowserPlugin * plugin)
+lapiz_file_browser_plugin_init (LapizFileBrowserPlugin * plugin)
 {
 	plugin->priv = lapiz_file_browser_plugin_get_instance_private (plugin);
 }
@@ -133,7 +133,7 @@ lapiz_file_browser_plugin_init (PlumaFileBrowserPlugin * plugin)
 static void
 lapiz_file_browser_plugin_dispose (GObject * object)
 {
-	PlumaFileBrowserPlugin *plugin = LAPIZ_FILE_BROWSER_PLUGIN (object);
+	LapizFileBrowserPlugin *plugin = LAPIZ_FILE_BROWSER_PLUGIN (object);
 
 	if (plugin->priv->window != NULL)
 	{
@@ -150,7 +150,7 @@ lapiz_file_browser_plugin_set_property (GObject      *object,
                                         const GValue *value,
                                         GParamSpec   *pspec)
 {
-	PlumaFileBrowserPlugin *plugin = LAPIZ_FILE_BROWSER_PLUGIN (object);
+	LapizFileBrowserPlugin *plugin = LAPIZ_FILE_BROWSER_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -170,7 +170,7 @@ lapiz_file_browser_plugin_get_property (GObject    *object,
                                         GValue     *value,
                                         GParamSpec *pspec)
 {
-	PlumaFileBrowserPlugin *plugin = LAPIZ_FILE_BROWSER_PLUGIN (object);
+	LapizFileBrowserPlugin *plugin = LAPIZ_FILE_BROWSER_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -185,9 +185,9 @@ lapiz_file_browser_plugin_get_property (GObject    *object,
 }
 
 static void
-on_end_loading_cb (PlumaFileBrowserStore      * store,
+on_end_loading_cb (LapizFileBrowserStore      * store,
                    GtkTreeIter                * iter,
-                   PlumaFileBrowserPluginPrivate * data)
+                   LapizFileBrowserPluginPrivate * data)
 {
 	/* Disconnect the signal */
 	g_signal_handler_disconnect (store, data->end_loading_handle);
@@ -196,9 +196,9 @@ on_end_loading_cb (PlumaFileBrowserStore      * store,
 }
 
 static void
-prepare_auto_root (PlumaFileBrowserPluginPrivate *data)
+prepare_auto_root (LapizFileBrowserPluginPrivate *data)
 {
-	PlumaFileBrowserStore *store;
+	LapizFileBrowserStore *store;
 
 	data->auto_root = TRUE;
 
@@ -216,7 +216,7 @@ prepare_auto_root (PlumaFileBrowserPluginPrivate *data)
 }
 
 static void
-restore_default_location (PlumaFileBrowserPluginPrivate *data)
+restore_default_location (LapizFileBrowserPluginPrivate *data)
 {
 	gchar * root;
 	gchar * virtual_root;
@@ -262,10 +262,10 @@ restore_default_location (PlumaFileBrowserPluginPrivate *data)
 }
 
 static void
-restore_filter (PlumaFileBrowserPluginPrivate *data)
+restore_filter (LapizFileBrowserPluginPrivate *data)
 {
 	gchar *filter_mode;
-	PlumaFileBrowserStoreFilterMode mode;
+	LapizFileBrowserStoreFilterMode mode;
 	gchar *pattern;
 
 	/* Get filter_mode */
@@ -303,7 +303,7 @@ restore_filter (PlumaFileBrowserPluginPrivate *data)
 	g_free (pattern);
 }
 
-static PlumaFileBrowserViewClickPolicy
+static LapizFileBrowserViewClickPolicy
 click_policy_from_string (gchar const *click_policy)
 {
 	if (click_policy && strcmp (click_policy, "single") == 0)
@@ -317,12 +317,12 @@ on_click_policy_changed (GSettings *settings,
 			 gchar *key,
 			 gpointer user_data)
 {
-	PlumaFileBrowserPluginPrivate * data;
+	LapizFileBrowserPluginPrivate * data;
 	gchar *click_policy;
-	PlumaFileBrowserViewClickPolicy policy = LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE;
-	PlumaFileBrowserView *view;
+	LapizFileBrowserViewClickPolicy policy = LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE;
+	LapizFileBrowserView *view;
 
-	data = (PlumaFileBrowserPluginPrivate *)(user_data);
+	data = (LapizFileBrowserPluginPrivate *)(user_data);
 
 	click_policy = g_settings_get_string (settings, key);
 	policy = click_policy_from_string (click_policy);
@@ -337,10 +337,10 @@ on_enable_delete_changed (GSettings *settings,
 			  gchar *key,
 			  gpointer user_data)
 {
-	PlumaFileBrowserPluginPrivate *data;
+	LapizFileBrowserPluginPrivate *data;
 	gboolean enable = FALSE;
 
-	data = (PlumaFileBrowserPluginPrivate *)(user_data);
+	data = (LapizFileBrowserPluginPrivate *)(user_data);
 	enable = g_settings_get_boolean (settings, key);
 
 	g_object_set (G_OBJECT (data->tree_widget), "enable-delete", enable, NULL);
@@ -351,10 +351,10 @@ on_confirm_trash_changed (GSettings *settings,
 		 	  gchar *key,
 			  gpointer user_data)
 {
-	PlumaFileBrowserPluginPrivate *data;
+	LapizFileBrowserPluginPrivate *data;
 	gboolean enable = FALSE;
 
-	data = (PlumaFileBrowserPluginPrivate *)(user_data);
+	data = (LapizFileBrowserPluginPrivate *)(user_data);
 	enable = g_settings_get_boolean (settings, key);
 
 	data->confirm_trash = enable;
@@ -373,12 +373,12 @@ have_click_policy (void)
 }
 
 static void
-install_caja_prefs (PlumaFileBrowserPluginPrivate *data)
+install_caja_prefs (LapizFileBrowserPluginPrivate *data)
 {
 	gchar *pref;
 	gboolean prefb;
-	PlumaFileBrowserViewClickPolicy policy;
-	PlumaFileBrowserView *view;
+	LapizFileBrowserViewClickPolicy policy;
+	LapizFileBrowserView *view;
 
 	if (have_click_policy ()) {
 		g_signal_connect (data->caja_settings,
@@ -412,8 +412,8 @@ install_caja_prefs (PlumaFileBrowserPluginPrivate *data)
 }
 
 static void
-set_root_from_doc (PlumaFileBrowserPluginPrivate * data,
-                   PlumaDocument * doc)
+set_root_from_doc (LapizFileBrowserPluginPrivate * data,
+                   LapizDocument * doc)
 {
 	GFile *file;
 	GFile *parent;
@@ -445,14 +445,14 @@ set_root_from_doc (PlumaFileBrowserPluginPrivate * data,
 
 static void
 on_action_set_active_root (GtkAction * action,
-                           PlumaFileBrowserPluginPrivate * data)
+                           LapizFileBrowserPluginPrivate * data)
 {
 	set_root_from_doc (data,
 	                   lapiz_window_get_active_document (LAPIZ_WINDOW (data->window)));
 }
 
 static gchar *
-get_terminal (PlumaFileBrowserPluginPrivate * data)
+get_terminal (LapizFileBrowserPluginPrivate * data)
 {
 	gchar * terminal;
 
@@ -473,7 +473,7 @@ get_terminal (PlumaFileBrowserPluginPrivate * data)
 
 static void
 on_action_open_terminal (GtkAction * action,
-                         PlumaFileBrowserPluginPrivate * data)
+                         LapizFileBrowserPluginPrivate * data)
 {
 	gchar * terminal;
 	gchar * wd = NULL;
@@ -482,7 +482,7 @@ on_action_open_terminal (GtkAction * action,
 	GFile * file;
 
 	GtkTreeIter iter;
-	PlumaFileBrowserStore * store;
+	LapizFileBrowserStore * store;
 
 	/* Get the current directory */
 	if (!lapiz_file_browser_widget_get_selected_directory (data->tree_widget, &iter))
@@ -523,7 +523,7 @@ on_action_open_terminal (GtkAction * action,
 
 static void
 on_selection_changed_cb (GtkTreeSelection *selection,
-			 PlumaFileBrowserPluginPrivate *data)
+			 LapizFileBrowserPluginPrivate *data)
 {
 	GtkTreeView * tree_view;
 	GtkTreeModel * model;
@@ -587,7 +587,7 @@ static GtkActionEntry extra_single_selection_actions[] = {
 };
 
 static void
-add_popup_ui (PlumaFileBrowserPluginPrivate *data)
+add_popup_ui (LapizFileBrowserPluginPrivate *data)
 {
 	GtkUIManager * manager;
 	GtkActionGroup * action_group;
@@ -625,7 +625,7 @@ add_popup_ui (PlumaFileBrowserPluginPrivate *data)
 }
 
 static void
-remove_popup_ui (PlumaFileBrowserPluginPrivate *data)
+remove_popup_ui (LapizFileBrowserPluginPrivate *data)
 {
 	GtkUIManager * manager;
 
@@ -642,8 +642,8 @@ remove_popup_ui (PlumaFileBrowserPluginPrivate *data)
 static void
 lapiz_file_browser_plugin_update_state (PeasActivatable *activatable)
 {
-	PlumaFileBrowserPluginPrivate *data;
-	PlumaDocument * doc;
+	LapizFileBrowserPluginPrivate *data;
+	LapizDocument * doc;
 
 	data = LAPIZ_FILE_BROWSER_PLUGIN (activatable)->priv;
 
@@ -658,12 +658,12 @@ lapiz_file_browser_plugin_update_state (PeasActivatable *activatable)
 static void
 lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 {
-	PlumaFileBrowserPluginPrivate *data;
-	PlumaWindow *window;
-	PlumaPanel * panel;
+	LapizFileBrowserPluginPrivate *data;
+	LapizWindow *window;
+	LapizPanel * panel;
 	GtkWidget * image;
 	GdkPixbuf * pixbuf;
-	PlumaFileBrowserStore * store;
+	LapizFileBrowserStore * store;
 	gchar *data_dir;
 	GSettingsSchemaSource *schema_source;
 	GSettingsSchema *schema;
@@ -776,9 +776,9 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 static void
 lapiz_file_browser_plugin_deactivate (PeasActivatable *activatable)
 {
-	PlumaFileBrowserPluginPrivate *data;
-	PlumaWindow *window;
-	PlumaPanel * panel;
+	LapizFileBrowserPluginPrivate *data;
+	LapizWindow *window;
+	LapizPanel * panel;
 
 	data = LAPIZ_FILE_BROWSER_PLUGIN (activatable)->priv;
 	window = LAPIZ_WINDOW (data->window);
@@ -805,7 +805,7 @@ lapiz_file_browser_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_file_browser_plugin_class_init (PlumaFileBrowserPluginClass * klass)
+lapiz_file_browser_plugin_class_init (LapizFileBrowserPluginClass * klass)
 {
 	GObjectClass  *object_class = G_OBJECT_CLASS (klass);
 
@@ -817,7 +817,7 @@ lapiz_file_browser_plugin_class_init (PlumaFileBrowserPluginClass * klass)
 }
 
 static void
-lapiz_file_browser_plugin_class_finalize (PlumaFileBrowserPluginClass *klass)
+lapiz_file_browser_plugin_class_finalize (LapizFileBrowserPluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -842,15 +842,15 @@ peas_register_types (PeasObjectModule *module)
 
 /* Callbacks */
 static void
-on_uri_activated_cb (PlumaFileBrowserWidget * tree_widget,
-		     gchar const *uri, PlumaWindow * window)
+on_uri_activated_cb (LapizFileBrowserWidget * tree_widget,
+		     gchar const *uri, LapizWindow * window)
 {
 	lapiz_commands_load_uri (window, uri, NULL, 0);
 }
 
 static void
-on_error_cb (PlumaFileBrowserWidget * tree_widget,
-	     guint code, gchar const *message, PlumaFileBrowserPluginPrivate * data)
+on_error_cb (LapizFileBrowserWidget * tree_widget,
+	     guint code, gchar const *message, LapizFileBrowserPluginPrivate * data)
 {
 	gchar * title;
 	GtkWidget * dlg;
@@ -913,9 +913,9 @@ on_error_cb (PlumaFileBrowserWidget * tree_widget,
 }
 
 static void
-on_model_set_cb (PlumaFileBrowserView * widget,
+on_model_set_cb (LapizFileBrowserView * widget,
                  GParamSpec *arg1,
-                 PlumaFileBrowserPluginPrivate * data)
+                 LapizFileBrowserPluginPrivate * data)
 {
 	GtkTreeModel * model;
 
@@ -930,11 +930,11 @@ on_model_set_cb (PlumaFileBrowserView * widget,
 }
 
 static void
-on_filter_mode_changed_cb (PlumaFileBrowserStore * model,
+on_filter_mode_changed_cb (LapizFileBrowserStore * model,
                            GParamSpec * param,
-                           PlumaFileBrowserPluginPrivate * data)
+                           LapizFileBrowserPluginPrivate * data)
 {
-	PlumaFileBrowserStoreFilterMode mode;
+	LapizFileBrowserStoreFilterMode mode;
 
 	mode = lapiz_file_browser_store_get_filter_mode (model);
 
@@ -951,15 +951,15 @@ on_filter_mode_changed_cb (PlumaFileBrowserStore * model,
 }
 
 static void
-on_rename_cb (PlumaFileBrowserStore * store,
+on_rename_cb (LapizFileBrowserStore * store,
 	      const gchar * olduri,
 	      const gchar * newuri,
-	      PlumaWindow * window)
+	      LapizWindow * window)
 {
-	PlumaApp * app;
+	LapizApp * app;
 	GList * documents;
 	GList * item;
-	PlumaDocument * doc;
+	LapizDocument * doc;
 	GFile * docfile;
 	GFile * oldfile;
 	GFile * newfile;
@@ -1015,9 +1015,9 @@ on_rename_cb (PlumaFileBrowserStore * store,
 }
 
 static void
-on_filter_pattern_changed_cb (PlumaFileBrowserWidget * widget,
+on_filter_pattern_changed_cb (LapizFileBrowserWidget * widget,
                               GParamSpec * param,
-                              PlumaFileBrowserPluginPrivate * data)
+                              LapizFileBrowserPluginPrivate * data)
 {
 	gchar * pattern;
 
@@ -1032,9 +1032,9 @@ on_filter_pattern_changed_cb (PlumaFileBrowserWidget * widget,
 }
 
 static void
-on_virtual_root_changed_cb (PlumaFileBrowserStore * store,
+on_virtual_root_changed_cb (LapizFileBrowserStore * store,
                             GParamSpec * param,
-                            PlumaFileBrowserPluginPrivate * data)
+                            LapizFileBrowserPluginPrivate * data)
 {
 	gchar * root;
 	gchar * virtual_root;
@@ -1064,9 +1064,9 @@ on_virtual_root_changed_cb (PlumaFileBrowserStore * store,
 }
 
 static void
-on_tab_added_cb (PlumaWindow * window,
-                 PlumaTab * tab,
-                 PlumaFileBrowserPluginPrivate *data)
+on_tab_added_cb (LapizWindow * window,
+                 LapizTab * tab,
+                 LapizFileBrowserPluginPrivate *data)
 {
 	gboolean open;
 	gboolean load_default = TRUE;
@@ -1074,7 +1074,7 @@ on_tab_added_cb (PlumaWindow * window,
 	open = g_settings_get_boolean (data->settings, "open-at-first-doc");
 
 	if (open) {
-		PlumaDocument *doc;
+		LapizDocument *doc;
 		gchar *uri;
 
 		doc = lapiz_tab_get_document (tab);
@@ -1114,9 +1114,9 @@ get_filename_from_path (GtkTreeModel *model, GtkTreePath *path)
 }
 
 static gboolean
-on_confirm_no_trash_cb (PlumaFileBrowserWidget * widget,
+on_confirm_no_trash_cb (LapizFileBrowserWidget * widget,
                         GList * files,
-                        PlumaWindow * window)
+                        LapizWindow * window)
 {
 	gchar *normal;
 	gchar *message;
@@ -1143,10 +1143,10 @@ on_confirm_no_trash_cb (PlumaFileBrowserWidget * widget,
 }
 
 static gboolean
-on_confirm_delete_cb (PlumaFileBrowserWidget *widget,
-                      PlumaFileBrowserStore *store,
+on_confirm_delete_cb (LapizFileBrowserWidget *widget,
+                      LapizFileBrowserStore *store,
                       GList *paths,
-                      PlumaFileBrowserPluginPrivate *data)
+                      LapizFileBrowserPluginPrivate *data)
 {
 	gchar *normal;
 	gchar *message;

@@ -21,7 +21,7 @@ msgstr "Pablo Saratxaga <pablo@mandrakesoft.com>"
 
 #. (itstool) path: articleinfo/title
 #: C/index.docbook:23
-msgid "Pluma Manual"
+msgid "Lapiz Manual"
 msgstr ""
 
 #. (itstool) path: articleinfo/copyright
@@ -1904,7 +1904,7 @@ msgstr ""
 
 #. (itstool) path: entry/para
 #: C/index.docbook:973
-msgid "Quit Pluma."
+msgid "Quit Lapiz."
 msgstr ""
 
 #. (itstool) path: sect1/bridgehead
@@ -2553,7 +2553,7 @@ msgstr ""
 msgid ""
 "Several plugins come built-in with <application>lapiz</application>, and you"
 " can install more. The <ulink type=\"http\" "
-"url=\"http://live.gnome.org/Pluma/Plugins\">lapiz website</ulink> lists "
+"url=\"http://live.gnome.org/Lapiz/Plugins\">lapiz website</ulink> lists "
 "third-party plugins."
 msgstr ""
 
@@ -2670,7 +2670,7 @@ msgstr ""
 #: C/index.docbook:1410
 msgid ""
 "For more information on creating plugins, see the <ulink type=\"http\" "
-"url=\"http://live.gnome.org/Pluma/Plugins\"><application>lapiz</application>"
+"url=\"http://live.gnome.org/Lapiz/Plugins\"><application>lapiz</application>"
 " website</ulink>."
 msgstr ""
 

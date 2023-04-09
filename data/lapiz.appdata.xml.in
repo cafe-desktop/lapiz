@@ -4,18 +4,18 @@
  <id>lapiz.desktop</id>
  <metadata_license>CC0-1.0</metadata_license>
  <project_license>GPL-2.0+</project_license>
- <name>Pluma</name>
+ <name>Lapiz</name>
  <summary>A Text Editor for the MATE desktop environment</summary>
  <description>
   <p>
-   Pluma is a small, but powerful text editor designed specifically for
+   Lapiz is a small, but powerful text editor designed specifically for
    the MATE desktop. It has most standard text editor functions and fully
    supports international text in Unicode. Advanced features include syntax
    highlighting and automatic indentation of source code, printing and editing
    of multiple documents in one window.
   </p>
   <p>
-   Pluma is extensible through a plugin system, which currently includes
+   Lapiz is extensible through a plugin system, which currently includes
    support for spell checking, comparing files, viewing CVS ChangeLogs, and
    adjusting indentation levels.
   </p>

@@ -59,27 +59,27 @@
 #define LAPIZ_IS_CLOSING_TAB		"lapiz-is-closing-tab"
 #define LAPIZ_IS_QUITTING_ALL		"lapiz-is-quitting-all"
 
-static void tab_state_changed_while_saving (PlumaTab    *tab,
+static void tab_state_changed_while_saving (LapizTab    *tab,
 					    GParamSpec  *pspec,
-					    PlumaWindow *window);
+					    LapizWindow *window);
 
 void
 _lapiz_cmd_file_new (GtkAction   *action,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
 	lapiz_window_create_tab (window, TRUE);
 }
 
-static PlumaTab *
+static LapizTab *
 get_tab_from_file (GList *docs, GFile *file)
 {
-	PlumaTab *tab = NULL;
+	LapizTab *tab = NULL;
 
 	while (docs != NULL)
 	{
-		PlumaDocument *d;
+		LapizDocument *d;
 		GFile *l;
 
 		d = LAPIZ_DOCUMENT (docs->data);
@@ -119,13 +119,13 @@ is_duplicated_file (GSList *files, GFile *file)
 
 /* File loading */
 static gint
-load_file_list (PlumaWindow         *window,
+load_file_list (LapizWindow         *window,
 		GSList              *files,
-		const PlumaEncoding *encoding,
+		const LapizEncoding *encoding,
 		gint                 line_pos,
 		gboolean             create)
 {
-	PlumaTab      *tab;
+	LapizTab      *tab;
 	gint           loaded_files = 0; /* Number of files to load */
 	gboolean       jump_to = TRUE; /* Whether to jump to the new tab */
 	GList         *win_docs;
@@ -152,8 +152,8 @@ load_file_list (PlumaWindow         *window,
 
 					if (line_pos > 0)
 					{
-						PlumaDocument *doc;
-						PlumaView *view;
+						LapizDocument *doc;
+						LapizView *view;
 
 						doc = lapiz_tab_get_document (tab);
 						view = lapiz_tab_get_view (tab);
@@ -185,7 +185,7 @@ load_file_list (PlumaWindow         *window,
 	tab = lapiz_window_get_active_tab (window);
 	if (tab != NULL)
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 
 		doc = lapiz_tab_get_document (tab);
 
@@ -237,7 +237,7 @@ load_file_list (PlumaWindow         *window,
 
 	if (loaded_files == 1)
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 		gchar *uri_for_display;
 
 		g_return_val_if_fail (tab != NULL, loaded_files);
@@ -273,9 +273,9 @@ load_file_list (PlumaWindow         *window,
 // variants backward compat wrappers
 
 static gint
-load_uri_list (PlumaWindow         *window,
+load_uri_list (LapizWindow         *window,
 	       const GSList        *uris,
-	       const PlumaEncoding *encoding,
+	       const LapizEncoding *encoding,
 	       gint                 line_pos,
 	       gboolean             create)
 {
@@ -312,9 +312,9 @@ load_uri_list (PlumaWindow         *window,
  * Do nothing if uri does not exist
  */
 void
-lapiz_commands_load_uri (PlumaWindow         *window,
+lapiz_commands_load_uri (LapizWindow         *window,
 			 const gchar         *uri,
-			 const PlumaEncoding *encoding,
+			 const LapizEncoding *encoding,
 			 gint                 line_pos)
 {
 	GSList *uris = NULL;
@@ -344,9 +344,9 @@ lapiz_commands_load_uri (PlumaWindow         *window,
  * Returns:
  */
 gint
-lapiz_commands_load_uris (PlumaWindow         *window,
+lapiz_commands_load_uris (LapizWindow         *window,
 			  const GSList        *uris,
-			  const PlumaEncoding *encoding,
+			  const LapizEncoding *encoding,
 			  gint                 line_pos)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), 0);
@@ -361,9 +361,9 @@ lapiz_commands_load_uris (PlumaWindow         *window,
  * This should become public once we convert all api to GFile:
  */
 static gint
-lapiz_commands_load_files (PlumaWindow         *window,
+lapiz_commands_load_files (LapizWindow         *window,
 			   GSList              *files,
-			   const PlumaEncoding *encoding,
+			   const LapizEncoding *encoding,
 			   gint                 line_pos)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), 0);
@@ -380,9 +380,9 @@ lapiz_commands_load_files (PlumaWindow         *window,
  * titled document.
  */
 gint
-_lapiz_cmd_load_files_from_prompt (PlumaWindow         *window,
+_lapiz_cmd_load_files_from_prompt (LapizWindow         *window,
 				   GSList              *files,
-				   const PlumaEncoding *encoding,
+				   const LapizEncoding *encoding,
 				   gint                 line_pos)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -391,8 +391,8 @@ _lapiz_cmd_load_files_from_prompt (PlumaWindow         *window,
 }
 
 static void
-open_dialog_destroyed (PlumaWindow            *window,
-		       PlumaFileChooserDialog *dialog)
+open_dialog_destroyed (LapizWindow            *window,
+		       LapizFileChooserDialog *dialog)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -402,12 +402,12 @@ open_dialog_destroyed (PlumaWindow            *window,
 }
 
 static void
-open_dialog_response_cb (PlumaFileChooserDialog *dialog,
+open_dialog_response_cb (LapizFileChooserDialog *dialog,
                          gint                    response_id,
-                         PlumaWindow            *window)
+                         LapizWindow            *window)
 {
 	GSList *files;
-	const PlumaEncoding *encoding;
+	const LapizEncoding *encoding;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -439,11 +439,11 @@ open_dialog_response_cb (PlumaFileChooserDialog *dialog,
 
 void
 _lapiz_cmd_file_open (GtkAction   *action,
-		      PlumaWindow *window)
+		      LapizWindow *window)
 {
 	GtkWidget *open_dialog;
 	gpointer data;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GFile *default_path = NULL;
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -515,7 +515,7 @@ _lapiz_cmd_file_open (GtkAction   *action,
 }
 
 /* File saving */
-static void file_save_as (PlumaTab *tab, PlumaWindow *window);
+static void file_save_as (LapizTab *tab, LapizWindow *window);
 
 static gboolean
 is_read_only (GFile *location)
@@ -602,16 +602,16 @@ replace_read_only_file (GtkWindow *parent, GFile *file)
 }
 
 static void
-save_dialog_response_cb (PlumaFileChooserDialog *dialog,
+save_dialog_response_cb (LapizFileChooserDialog *dialog,
                          gint                    response_id,
-                         PlumaWindow            *window)
+                         LapizWindow            *window)
 {
 	GFile *file;
-	const PlumaEncoding *encoding;
-	PlumaTab *tab;
+	const LapizEncoding *encoding;
+	LapizTab *tab;
 	gpointer data;
 	GSList *tabs_to_save_as;
-	PlumaDocumentNewlineType newline_type;
+	LapizDocumentNewlineType newline_type;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -635,7 +635,7 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 
 	if (tab != NULL)
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 		gchar *parse_name;
 		gchar *uri;
 
@@ -738,16 +738,16 @@ confirm_overwrite_callback (GtkFileChooser *dialog,
 }
 
 static void
-file_save_as (PlumaTab    *tab,
-	      PlumaWindow *window)
+file_save_as (LapizTab    *tab,
+	      LapizWindow *window)
 {
 	GtkWidget *save_dialog;
 	GtkWindowGroup *wg;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GFile *file;
 	gboolean uri_set = FALSE;
-	const PlumaEncoding *encoding;
-	PlumaDocumentNewlineType newline_type;
+	const LapizEncoding *encoding;
+	LapizDocumentNewlineType newline_type;
 
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
@@ -842,10 +842,10 @@ file_save_as (PlumaTab    *tab,
 }
 
 static void
-file_save (PlumaTab    *tab,
-	   PlumaWindow *window)
+file_save (LapizTab    *tab,
+	   LapizWindow *window)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *uri_for_display;
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -879,9 +879,9 @@ file_save (PlumaTab    *tab,
 
 void
 _lapiz_cmd_file_save (GtkAction   *action,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -894,9 +894,9 @@ _lapiz_cmd_file_save (GtkAction   *action,
 
 void
 _lapiz_cmd_file_save_as (GtkAction   *action,
-			PlumaWindow *window)
+			LapizWindow *window)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -908,7 +908,7 @@ _lapiz_cmd_file_save_as (GtkAction   *action,
 }
 
 static gboolean
-document_needs_saving (PlumaDocument *doc)
+document_needs_saving (LapizDocument *doc)
 {
 	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 		return TRUE;
@@ -922,10 +922,10 @@ document_needs_saving (PlumaDocument *doc)
 }
 
 /*
- * The docs in the list must belong to the same PlumaWindow.
+ * The docs in the list must belong to the same LapizWindow.
  */
 void
-_lapiz_cmd_file_save_documents_list (PlumaWindow *window,
+_lapiz_cmd_file_save_documents_list (LapizWindow *window,
 				     GList       *docs)
 {
 	GList *l;
@@ -940,9 +940,9 @@ _lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 	l = docs;
 	while (l != NULL)
 	{
-		PlumaDocument *doc;
-		PlumaTab *t;
-		PlumaTabState state;
+		LapizDocument *doc;
+		LapizTab *t;
+		LapizTabState state;
 
 		g_return_if_fail (LAPIZ_IS_DOCUMENT (l->data));
 
@@ -1012,7 +1012,7 @@ _lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 
 	if (tabs_to_save_as != NULL)
 	{
-		PlumaTab *tab;
+		LapizTab *tab;
 
 		tabs_to_save_as = g_slist_reverse (tabs_to_save_as );
 
@@ -1031,7 +1031,7 @@ _lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 }
 
 void
-lapiz_commands_save_all_documents (PlumaWindow *window)
+lapiz_commands_save_all_documents (LapizWindow *window)
 {
 	GList *docs;
 
@@ -1048,16 +1048,16 @@ lapiz_commands_save_all_documents (PlumaWindow *window)
 
 void
 _lapiz_cmd_file_save_all (GtkAction   *action,
-			 PlumaWindow *window)
+			 LapizWindow *window)
 {
 	lapiz_commands_save_all_documents (window);
 }
 
 void
-lapiz_commands_save_document (PlumaWindow   *window,
-                              PlumaDocument *document)
+lapiz_commands_save_document (LapizWindow   *window,
+                              LapizDocument *document)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 	g_return_if_fail (LAPIZ_IS_DOCUMENT (document));
@@ -1070,10 +1070,10 @@ lapiz_commands_save_document (PlumaWindow   *window,
 
 /* File revert */
 static void
-do_revert (PlumaWindow *window,
-	   PlumaTab    *tab)
+do_revert (LapizWindow *window,
+	   LapizTab    *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *docname;
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -1094,9 +1094,9 @@ do_revert (PlumaWindow *window,
 static void
 revert_dialog_response_cb (GtkDialog   *dialog,
 			   gint         response_id,
-			   PlumaWindow *window)
+			   LapizWindow *window)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1116,8 +1116,8 @@ revert_dialog_response_cb (GtkDialog   *dialog,
 }
 
 static GtkWidget *
-revert_dialog (PlumaWindow   *window,
-	       PlumaDocument *doc)
+revert_dialog (LapizWindow   *window,
+	       LapizDocument *doc)
 {
 	GtkWidget *dialog;
 	gchar *docname;
@@ -1237,10 +1237,10 @@ revert_dialog (PlumaWindow   *window,
 
 void
 _lapiz_cmd_file_revert (GtkAction   *action,
-		       PlumaWindow *window)
+		       LapizWindow *window)
 {
-	PlumaTab       *tab;
-	PlumaDocument  *doc;
+	LapizTab       *tab;
+	LapizDocument  *doc;
 	GtkWidget      *dialog;
 	GtkWindowGroup *wg;
 
@@ -1280,10 +1280,10 @@ _lapiz_cmd_file_revert (GtkAction   *action,
 
 /* Close tab */
 static gboolean
-really_close_tab (PlumaTab *tab)
+really_close_tab (LapizTab *tab)
 {
 	GtkWidget *toplevel;
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1312,11 +1312,11 @@ really_close_tab (PlumaTab *tab)
 }
 
 static void
-tab_state_changed_while_saving (PlumaTab    *tab,
+tab_state_changed_while_saving (LapizTab    *tab,
 				GParamSpec  *pspec,
-				PlumaWindow *window)
+				LapizWindow *window)
 {
-	PlumaTabState ts;
+	LapizTabState ts;
 
 	ts = lapiz_tab_get_state (tab);
 
@@ -1326,7 +1326,7 @@ tab_state_changed_while_saving (PlumaTab    *tab,
 	   finished */
 	if (ts == LAPIZ_TAB_STATE_NORMAL)
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 
 		g_signal_handlers_disconnect_by_func (tab,
 						      G_CALLBACK (tab_state_changed_while_saving),
@@ -1353,8 +1353,8 @@ tab_state_changed_while_saving (PlumaTab    *tab,
 }
 
 static void
-save_and_close (PlumaTab    *tab,
-		PlumaWindow *window)
+save_and_close (LapizTab    *tab,
+		LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1368,8 +1368,8 @@ save_and_close (PlumaTab    *tab,
 }
 
 static void
-save_as_and_close (PlumaTab    *tab,
-		   PlumaWindow *window)
+save_as_and_close (LapizTab    *tab,
+		   LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1389,7 +1389,7 @@ save_as_and_close (PlumaTab    *tab,
 
 static void
 save_and_close_all_documents (const GList  *docs,
-			      PlumaWindow  *window)
+			      LapizWindow  *window)
 {
 	GList  *tabs;
 	GList  *l;
@@ -1412,9 +1412,9 @@ save_and_close_all_documents (const GList  *docs,
 	l = tabs;
 	while (l != NULL)
 	{
-		PlumaTab *t;
-		PlumaTabState state;
-		PlumaDocument *doc;
+		LapizTab *t;
+		LapizTabState state;
+		LapizDocument *doc;
 
 		t = LAPIZ_TAB (l->data);
 
@@ -1510,7 +1510,7 @@ save_and_close_all_documents (const GList  *docs,
 	/* Save As and close all the files in tabs_to_save_as  */
 	if (tabs_to_save_as != NULL)
 	{
-		PlumaTab *tab;
+		LapizTab *tab;
 
 		tabs_to_save_as = g_slist_reverse (tabs_to_save_as );
 
@@ -1529,9 +1529,9 @@ save_and_close_all_documents (const GList  *docs,
 
 static void
 save_and_close_document (const GList  *docs,
-			 PlumaWindow  *window)
+			 LapizWindow  *window)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1544,7 +1544,7 @@ save_and_close_document (const GList  *docs,
 }
 
 static void
-close_all_tabs (PlumaWindow *window)
+close_all_tabs (LapizWindow *window)
 {
 	gboolean is_quitting;
 
@@ -1563,10 +1563,10 @@ close_all_tabs (PlumaWindow *window)
 }
 
 static void
-close_document (PlumaWindow   *window,
-		PlumaDocument *doc)
+close_document (LapizWindow   *window,
+		LapizDocument *doc)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1577,9 +1577,9 @@ close_document (PlumaWindow   *window,
 }
 
 static void
-close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
+close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 					    gint                          response_id,
-					    PlumaWindow                  *window)
+					    LapizWindow                  *window)
 {
 	GList *selected_documents;
 	gboolean is_closing_all;
@@ -1667,10 +1667,10 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 
 /* Returns TRUE if the tab can be immediately closed */
 static gboolean
-tab_can_close (PlumaTab  *tab,
+tab_can_close (LapizTab  *tab,
 	       GtkWindow *window)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1705,8 +1705,8 @@ tab_can_close (PlumaTab  *tab,
  * LAPIZ_IS_CLOSING_ALL flag!
  */
 void
-_lapiz_cmd_file_close_tab (PlumaTab    *tab,
-			   PlumaWindow *window)
+_lapiz_cmd_file_close_tab (LapizTab    *tab,
+			   LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1731,9 +1731,9 @@ _lapiz_cmd_file_close_tab (PlumaTab    *tab,
 
 void
 _lapiz_cmd_file_close (GtkAction   *action,
-		      PlumaWindow *window)
+		      LapizWindow *window)
 {
-	PlumaTab *active_tab;
+	LapizTab *active_tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1749,7 +1749,7 @@ _lapiz_cmd_file_close (GtkAction   *action,
 
 /* Close all tabs */
 static void
-file_close_all (PlumaWindow *window,
+file_close_all (LapizWindow *window,
 		gboolean     is_quitting)
 {
 	GList     *unsaved_docs;
@@ -1786,8 +1786,8 @@ file_close_all (PlumaWindow *window,
 	if (unsaved_docs->next == NULL)
 	{
 		/* There is only one unsaved document */
-		PlumaTab      *tab;
-		PlumaDocument *doc;
+		LapizTab      *tab;
+		LapizDocument *doc;
 
 		doc = LAPIZ_DOCUMENT (unsaved_docs->data);
 
@@ -1820,7 +1820,7 @@ file_close_all (PlumaWindow *window,
 
 void
 _lapiz_cmd_file_close_all (GtkAction   *action,
-			  PlumaWindow *window)
+			  LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1834,7 +1834,7 @@ _lapiz_cmd_file_close_all (GtkAction   *action,
 
 void
 _lapiz_cmd_file_quit (GtkAction   *action,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 

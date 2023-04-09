@@ -585,8 +585,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -594,7 +594,7 @@ msgstr "Tekstimuokkain MATE-työpöytäympäristölle"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -603,7 +603,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -914,8 +914,8 @@ msgid "_Close"
 msgstr "_Sulje"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Pluman asetukset"
+msgid "Lapiz Preferences"
+msgstr "Lapizn asetukset"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1350,28 +1350,28 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma on pieni ja kevyt tekstimuokkain MATE Työpöydälle"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz on pieni ja kevyt tekstimuokkain MATE Työpöydälle"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma on vapaa ohjelmisto; voit jakaa sen uudelleen ja/tai muokata sitä Free"
+"Lapiz on vapaa ohjelmisto; voit jakaa sen uudelleen ja/tai muokata sitä Free"
 " Software Foundationin julkaiseman GNU General Public License -sopimuksen "
 "ehtojen mukaisesti; joko lisenssin versio 2 tai myöhempi versio."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma on jaettu siinä toivossa, että se on hyödyllinen, mutta ILMAN MITÄÄN "
+"Lapiz on jaettu siinä toivossa, että se on hyödyllinen, mutta ILMAN MITÄÄN "
 "TAKUUTA; edes välillistä takuuta MYYNTIKELPOISUUDESTA tai SOPIVUUDESTA "
 "TIETTYYN TARKOITUKSEEN. Katso lisätietoja GNU yleisestä julkisesta "
 "lisenssistä."
@@ -1379,16 +1379,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"GNU General Public Licence -lisenssin kopion tulisi olla toimitettuna Pluman"
+"GNU General Public Licence -lisenssin kopion tulisi olla toimitettuna Lapizn"
 " mukana. Jos näin ei ole, kirjoita Free Software Foundationille,  51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Tietoja Plumasta"
+msgid "About Lapiz"
+msgstr "Tietoja Lapizsta"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""
@@ -1842,7 +1842,7 @@ msgid ""
 "You can ignore this warning and save the file anyway, but if an error occurs"
 " while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"Pluma ei voinut varmuuskopioida vanhaa versiota tiedostosta ennen uuden "
+"Lapiz ei voinut varmuuskopioida vanhaa versiota tiedostosta ennen uuden "
 "tallentamista. Voit ohittaa tämän varoituksen ja tallentaa tästä huolimatta,"
 " mutta mikäli virhe tapahtuu tallennettaessa, saatat hävittää vanhan version"
 " tiedostosta. Tallenetaanko tästä huolimatta?"
@@ -1854,7 +1854,7 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"Pluma ei osaa kirjoittaa ”%s”-sijainteihin. Tarkista, että annoit sijainnin "
+"Lapiz ei osaa kirjoittaa ”%s”-sijainteihin. Tarkista, että annoit sijainnin "
 "oikein ja yritä uudelleen."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
@@ -1862,7 +1862,7 @@ msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed"
 " the location correctly and try again."
 msgstr ""
-"Pluma ei osaa kirjoittaa tämän tyyppiseen sijaintiin. Tarkista, että annoit "
+"Lapiz ei osaa kirjoittaa tämän tyyppiseen sijaintiin. Tarkista, että annoit "
 "sijainnin oikein ja yritä uudelleen."
 
 #: lapiz/lapiz-io-error-message-area.c:1078

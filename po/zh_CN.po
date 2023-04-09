@@ -97,7 +97,7 @@ msgstr "生成备份文件"
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr "Pluma 是否应为保存的文件创建备份文件。您可以在“备份文件扩展名”选项中设置备份文件的扩展名。"
+msgstr "Lapiz 是否应为保存的文件创建备份文件。您可以在“备份文件扩展名”选项中设置备份文件的扩展名。"
 
 #: data/org.mate.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -108,7 +108,7 @@ msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
-msgstr "Pluma 是否应每隔一段时间自动保存已修改的文件。您可以在“自动保存时间间隔”选项中设置该时间间隔。"
+msgstr "Lapiz 是否应每隔一段时间自动保存已修改的文件。您可以在“自动保存时间间隔”选项中设置该时间间隔。"
 
 #: data/org.mate.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -136,7 +136,7 @@ msgstr "可写入的 VFS 方案"
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
-msgstr "Pluma 在写入模式下支持的 VFS 方案列表。“文件”方案默认是可写的。"
+msgstr "Lapiz 在写入模式下支持的 VFS 方案列表。“文件”方案默认是可写的。"
 
 #: data/org.mate.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -146,7 +146,7 @@ msgstr "撤消操作的最多数量"
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
-msgstr "Pluma 撤消或重做操作的最多次数。使用“-1”代表无限制。"
+msgstr "Lapiz 撤消或重做操作的最多次数。使用“-1”代表无限制。"
 
 #: data/org.mate.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -178,7 +178,7 @@ msgstr "插入空格"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Pluma 是否应以空格代替制表符。"
+msgstr "Lapiz 是否应以空格代替制表符。"
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -186,7 +186,7 @@ msgstr "自动缩进"
 
 #: data/org.mate.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
-msgstr "Pluma 是否应启用自动缩进。"
+msgstr "Lapiz 是否应启用自动缩进。"
 
 #: data/org.mate.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
@@ -194,7 +194,7 @@ msgstr "显示行号"
 
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
-msgstr "Pluma 是否应在编辑区域显示行号。"
+msgstr "Lapiz 是否应在编辑区域显示行号。"
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -202,7 +202,7 @@ msgstr "突出显示当前行"
 
 #: data/org.mate.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
-msgstr "Pluma 是否应应该突出显示当前行。"
+msgstr "Lapiz 是否应应该突出显示当前行。"
 
 #: data/org.mate.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
@@ -210,7 +210,7 @@ msgstr "突出显示匹配的括号"
 
 #: data/org.mate.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
-msgstr "Pluma 是否应该突出显示和选择的括号所匹配的括号。"
+msgstr "Lapiz 是否应该突出显示和选择的括号所匹配的括号。"
 
 #: data/org.mate.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
@@ -218,7 +218,7 @@ msgstr "显示右边距"
 
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
-msgstr "Pluma 是否在编辑区域显示右边距。"
+msgstr "Lapiz 是否在编辑区域显示右边距。"
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -253,7 +253,7 @@ msgstr "恢复上一次的光标位置"
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
-msgstr "在载入文件时 Pluma 是否应恢复上次的光标位置。"
+msgstr "在载入文件时 Lapiz 是否应恢复上次的光标位置。"
 
 #: data/org.mate.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -262,7 +262,7 @@ msgstr "启用搜索突出显示"
 #: data/org.mate.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
-msgstr "Pluma 是否应该突出显示被搜索文本的全部出现。"
+msgstr "Lapiz 是否应该突出显示被搜索文本的全部出现。"
 
 #: data/org.mate.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
@@ -270,7 +270,7 @@ msgstr "启用语法突出显示"
 
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr "Pluma 是否启用语法突出显示。"
+msgstr "Lapiz 是否启用语法突出显示。"
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -320,7 +320,7 @@ msgstr "与侧边栏一同显示标签页"
 #: data/org.mate.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
-msgstr "如果设定为 False，Pluma 将在侧边栏激活时不在笔记本中显示标签页。"
+msgstr "如果设定为 False，Lapiz 将在侧边栏激活时不在笔记本中显示标签页。"
 
 #: data/org.mate.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
@@ -348,7 +348,7 @@ msgstr "打印语法突出显示"
 #: data/org.mate.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
-msgstr "Pluma 是否应在打印文档时打印语法突出显示。"
+msgstr "Lapiz 是否应在打印文档时打印语法突出显示。"
 
 #: data/org.mate.lapiz.gschema.xml.in:171
 msgid "Print Header"
@@ -357,7 +357,7 @@ msgstr "打印页眉"
 #: data/org.mate.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
-msgstr "Pluma 是否应在打印文档时包含文档头。"
+msgstr "Lapiz 是否应在打印文档时包含文档头。"
 
 #: data/org.mate.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
@@ -382,7 +382,7 @@ msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
-msgstr "如果该值为 0，则在打印文档时不插入行号；否则，Pluma 将每隔指定行数插入行号。"
+msgstr "如果该值为 0，则在打印文档时不插入行号；否则，Lapiz 将每隔指定行数插入行号。"
 
 #: data/org.mate.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -533,8 +533,8 @@ msgstr ""
 "all'显示所有空格。"
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -542,21 +542,21 @@ msgstr "用于 MATE 桌面环境的文本编辑器"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Pluma 是一个小型但功能强大的文本编辑器，专门为 MATE 桌面设计。它具有大多数标准的文本编辑器功能，并且完全支持 Unicode "
+"Lapiz 是一个小型但功能强大的文本编辑器，专门为 MATE 桌面设计。它具有大多数标准的文本编辑器功能，并且完全支持 Unicode "
 "中的国际文本。高级功能包括语法高亮显示和源代码自动缩进，在一个窗口中打印和编辑多个文档。"
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
-msgstr "Pluma 可通过插件系统扩展，该插件系统当前包括对拼写检查、比较文件、查看CVS更改日志以及调整缩进级别的支持。"
+msgstr "Lapiz 可通过插件系统扩展，该插件系统当前包括对拼写检查、比较文件、查看CVS更改日志以及调整缩进级别的支持。"
 
 #: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
@@ -829,8 +829,8 @@ msgid "_Close"
 msgstr "关闭(_C)"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Pluma 首选项"
+msgid "Lapiz Preferences"
+msgstr "Lapiz 首选项"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1233,40 +1233,40 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma 是 MATE 桌面的小型文本编辑器"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz 是 MATE 桌面的小型文本编辑器"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma 是自由软件；您可以按照自由软件基金会所发表的 GNU GPL 协议自由发放和/或修改它；GPL 协议应该采用第二版或以后的任何版本。"
+"Lapiz 是自由软件；您可以按照自由软件基金会所发表的 GNU GPL 协议自由发放和/或修改它；GPL 协议应该采用第二版或以后的任何版本。"
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma 发表的目的是希望它能够对您有用，但我们没有任何保证；对于以任何用途使用它所造成的任何直接或间接后果都不承担任何责任。请参看GNU GPL "
+"Lapiz 发表的目的是希望它能够对您有用，但我们没有任何保证；对于以任何用途使用它所造成的任何直接或间接后果都不承担任何责任。请参看GNU GPL "
 "协议中的细节。"
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"您应该在收到 Pluma 的同时收到了 GNU GPL 协议的副本；如果您没有收到的话，请给自由软件基金会写信，地址是 51 Franklin "
+"您应该在收到 Lapiz 的同时收到了 GNU GPL 协议的副本；如果您没有收到的话，请给自由软件基金会写信，地址是 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "关于 Pluma"
+msgid "About Lapiz"
+msgstr "关于 Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

@@ -3,14 +3,14 @@
 #include <lapiz/lapiz-message.h>
 
 #define MESSAGE_OBJECT_PATH 	"/plugins/filebrowser"
-#define WINDOW_DATA_KEY	       	"PlumaFileBrowserMessagesWindowData"
+#define WINDOW_DATA_KEY	       	"LapizFileBrowserMessagesWindowData"
 
-#define BUS_CONNECT(bus, name, data) lapiz_message_bus_connect(bus, MESSAGE_OBJECT_PATH, #name, (PlumaMessageCallback)  message_##name##_cb, data, NULL)
+#define BUS_CONNECT(bus, name, data) lapiz_message_bus_connect(bus, MESSAGE_OBJECT_PATH, #name, (LapizMessageCallback)  message_##name##_cb, data, NULL)
 
 typedef struct
 {
-	PlumaWindow *window;
-	PlumaMessage *message;
+	LapizWindow *window;
+	LapizMessage *message;
 } MessageCacheData;
 
 typedef struct
@@ -24,8 +24,8 @@ typedef struct
 	GList *merge_ids;
 	GtkActionGroup *merged_actions;
 
-	PlumaMessageBus *bus;
-	PlumaFileBrowserWidget *widget;
+	LapizMessageBus *bus;
+	LapizFileBrowserWidget *widget;
 	GHashTable *row_tracking;
 
 	GHashTable *filters;
@@ -35,13 +35,13 @@ typedef struct
 {
 	gulong id;
 
-	PlumaWindow *window;
-	PlumaMessage *message;
+	LapizWindow *window;
+	LapizMessage *message;
 } FilterData;
 
 static WindowData *
-window_data_new (PlumaWindow            *window,
-		 PlumaFileBrowserWidget *widget)
+window_data_new (LapizWindow            *window,
+		 LapizFileBrowserWidget *widget)
 {
 	WindowData *data = g_slice_new (WindowData);
 	GtkUIManager *manager;
@@ -73,13 +73,13 @@ window_data_new (PlumaWindow            *window,
 }
 
 static WindowData *
-get_window_data (PlumaWindow * window)
+get_window_data (LapizWindow * window)
 {
 	return (WindowData *) (g_object_get_data (G_OBJECT (window), WINDOW_DATA_KEY));
 }
 
 static void
-window_data_free (PlumaWindow *window)
+window_data_free (LapizWindow *window)
 {
 	WindowData *data = get_window_data (window);
 	GtkUIManager *manager;
@@ -103,8 +103,8 @@ window_data_free (PlumaWindow *window)
 }
 
 static FilterData *
-filter_data_new (PlumaWindow  *window,
-		 PlumaMessage *message)
+filter_data_new (LapizWindow  *window,
+		 LapizMessage *message)
 {
 	FilterData *data = g_slice_new (FilterData);
 	WindowData *wdata;
@@ -161,8 +161,8 @@ message_cache_data_free (MessageCacheData *data)
 }
 
 static MessageCacheData *
-message_cache_data_new (PlumaWindow            *window,
-			PlumaMessage           *message)
+message_cache_data_new (LapizWindow            *window,
+			LapizMessage           *message)
 {
 	MessageCacheData *data = g_slice_new (MessageCacheData);
 
@@ -173,11 +173,11 @@ message_cache_data_new (PlumaWindow            *window,
 }
 
 static void
-message_get_root_cb (PlumaMessageBus *bus,
-		     PlumaMessage    *message,
+message_get_root_cb (LapizMessageBus *bus,
+		     LapizMessage    *message,
 		     WindowData      *data)
 {
-	PlumaFileBrowserStore *store;
+	LapizFileBrowserStore *store;
 	gchar *uri;
 
 	store = lapiz_file_browser_widget_get_browser_store (data->widget);
@@ -188,8 +188,8 @@ message_get_root_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_set_root_cb (PlumaMessageBus *bus,
-		     PlumaMessage    *message,
+message_set_root_cb (LapizMessageBus *bus,
+		     LapizMessage    *message,
 		     WindowData      *data)
 {
 	gchar *root = NULL;
@@ -213,14 +213,14 @@ message_set_root_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_set_emblem_cb (PlumaMessageBus *bus,
-		       PlumaMessage    *message,
+message_set_emblem_cb (LapizMessageBus *bus,
+		       LapizMessage    *message,
 		       WindowData      *data)
 {
 	gchar *id = NULL;
 	gchar *emblem = NULL;
 	GtkTreePath *path;
-	PlumaFileBrowserStore *store;
+	LapizFileBrowserStore *store;
 
 	lapiz_message_get (message, "id", &id, "emblem", &emblem, NULL);
 
@@ -285,7 +285,7 @@ item_id (const gchar *path,
 
 static gchar *
 track_row (WindowData            *data,
-	   PlumaFileBrowserStore *store,
+	   LapizFileBrowserStore *store,
 	   GtkTreePath           *path,
 	   const gchar		 *uri)
 {
@@ -308,9 +308,9 @@ static void
 set_item_message (WindowData   *data,
 		  GtkTreeIter  *iter,
 		  GtkTreePath  *path,
-		  PlumaMessage *message)
+		  LapizMessage *message)
 {
-	PlumaFileBrowserStore *store;
+	LapizFileBrowserStore *store;
 	gchar *uri = NULL;
 	guint flags = 0;
 	gchar *track_id;
@@ -347,8 +347,8 @@ set_item_message (WindowData   *data,
 }
 
 static gboolean
-custom_message_filter_func (PlumaFileBrowserWidget *widget,
-			    PlumaFileBrowserStore  *store,
+custom_message_filter_func (LapizFileBrowserWidget *widget,
+			    LapizFileBrowserStore  *store,
 			    GtkTreeIter            *iter,
 			    FilterData             *data)
 {
@@ -382,15 +382,15 @@ custom_message_filter_func (PlumaFileBrowserWidget *widget,
 }
 
 static void
-message_add_filter_cb (PlumaMessageBus *bus,
-		       PlumaMessage    *message,
-		       PlumaWindow     *window)
+message_add_filter_cb (LapizMessageBus *bus,
+		       LapizMessage    *message,
+		       LapizWindow     *window)
 {
 	gchar *object_path = NULL;
 	gchar *method = NULL;
 	gulong id;
-	PlumaMessageType *message_type;
-	PlumaMessage *cbmessage;
+	LapizMessageType *message_type;
+	LapizMessage *cbmessage;
 	FilterData *filter_data;
 	WindowData *data = get_window_data (window);
 
@@ -437,7 +437,7 @@ message_add_filter_cb (PlumaMessageBus *bus,
 	// Register the custom filter on the widget
 	filter_data = filter_data_new (window, cbmessage);
 	id = lapiz_file_browser_widget_add_filter (data->widget,
-						   (PlumaFileBrowserWidgetFilterFunc)custom_message_filter_func,
+						   (LapizFileBrowserWidgetFilterFunc)custom_message_filter_func,
 						   filter_data,
 						   (GDestroyNotify)filter_data_free);
 
@@ -445,8 +445,8 @@ message_add_filter_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_remove_filter_cb (PlumaMessageBus *bus,
-		          PlumaMessage    *message,
+message_remove_filter_cb (LapizMessageBus *bus,
+		          LapizMessage    *message,
 		          WindowData      *data)
 {
 	gulong id = 0;
@@ -460,47 +460,47 @@ message_remove_filter_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_up_cb (PlumaMessageBus *bus,
-	       PlumaMessage    *message,
+message_up_cb (LapizMessageBus *bus,
+	       LapizMessage    *message,
 	       WindowData      *data)
 {
-	PlumaFileBrowserStore *store = lapiz_file_browser_widget_get_browser_store (data->widget);
+	LapizFileBrowserStore *store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
 	lapiz_file_browser_store_set_virtual_root_up (store);
 }
 
 static void
-message_history_back_cb (PlumaMessageBus *bus,
-		         PlumaMessage    *message,
+message_history_back_cb (LapizMessageBus *bus,
+		         LapizMessage    *message,
 		         WindowData      *data)
 {
 	lapiz_file_browser_widget_history_back (data->widget);
 }
 
 static void
-message_history_forward_cb (PlumaMessageBus *bus,
-		            PlumaMessage    *message,
+message_history_forward_cb (LapizMessageBus *bus,
+		            LapizMessage    *message,
 		            WindowData      *data)
 {
 	lapiz_file_browser_widget_history_forward (data->widget);
 }
 
 static void
-message_refresh_cb (PlumaMessageBus *bus,
-		    PlumaMessage    *message,
+message_refresh_cb (LapizMessageBus *bus,
+		    LapizMessage    *message,
 		    WindowData      *data)
 {
 	lapiz_file_browser_widget_refresh (data->widget);
 }
 
 static void
-message_set_show_hidden_cb (PlumaMessageBus *bus,
-		            PlumaMessage    *message,
+message_set_show_hidden_cb (LapizMessageBus *bus,
+		            LapizMessage    *message,
 		            WindowData      *data)
 {
 	gboolean active = FALSE;
-	PlumaFileBrowserStore *store;
-	PlumaFileBrowserStoreFilterMode mode;
+	LapizFileBrowserStore *store;
+	LapizFileBrowserStoreFilterMode mode;
 
 	lapiz_message_get (message, "active", &active, NULL);
 
@@ -516,13 +516,13 @@ message_set_show_hidden_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_set_show_binary_cb (PlumaMessageBus *bus,
-		            PlumaMessage    *message,
+message_set_show_binary_cb (LapizMessageBus *bus,
+		            LapizMessage    *message,
 		            WindowData      *data)
 {
 	gboolean active = FALSE;
-	PlumaFileBrowserStore *store;
-	PlumaFileBrowserStoreFilterMode mode;
+	LapizFileBrowserStore *store;
+	LapizFileBrowserStoreFilterMode mode;
 
 	lapiz_message_get (message, "active", &active, NULL);
 
@@ -538,24 +538,24 @@ message_set_show_binary_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_show_bookmarks_cb (PlumaMessageBus *bus,
-		           PlumaMessage    *message,
+message_show_bookmarks_cb (LapizMessageBus *bus,
+		           LapizMessage    *message,
 		           WindowData      *data)
 {
 	lapiz_file_browser_widget_show_bookmarks (data->widget);
 }
 
 static void
-message_show_files_cb (PlumaMessageBus *bus,
-		       PlumaMessage    *message,
+message_show_files_cb (LapizMessageBus *bus,
+		       LapizMessage    *message,
 		       WindowData      *data)
 {
 	lapiz_file_browser_widget_show_files (data->widget);
 }
 
 static void
-message_add_context_item_cb (PlumaMessageBus *bus,
-			     PlumaMessage    *message,
+message_add_context_item_cb (LapizMessageBus *bus,
+			     LapizMessage    *message,
 			     WindowData      *data)
 {
 	GtkAction *action = NULL;
@@ -607,8 +607,8 @@ message_add_context_item_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_remove_context_item_cb (PlumaMessageBus *bus,
-				PlumaMessage    *message,
+message_remove_context_item_cb (LapizMessageBus *bus,
+				LapizMessage    *message,
 				WindowData      *data)
 {
 	guint merge_id = 0;
@@ -626,21 +626,21 @@ message_remove_context_item_cb (PlumaMessageBus *bus,
 }
 
 static void
-message_get_view_cb (PlumaMessageBus *bus,
-		     PlumaMessage    *message,
+message_get_view_cb (LapizMessageBus *bus,
+		     LapizMessage    *message,
 		     WindowData      *data)
 {
-	PlumaFileBrowserView *view;
+	LapizFileBrowserView *view;
 	view = lapiz_file_browser_widget_get_browser_view (data->widget);
 
 	lapiz_message_set (message, "view", view, NULL);
 }
 
 static void
-register_methods (PlumaWindow            *window,
-		  PlumaFileBrowserWidget *widget)
+register_methods (LapizWindow            *window,
+		  LapizFileBrowserWidget *widget)
 {
-	PlumaMessageBus *bus = lapiz_window_get_message_bus (window);
+	LapizMessageBus *bus = lapiz_window_get_message_bus (window);
 	WindowData *data = get_window_data (window);
 
 	/* Register method calls */
@@ -744,7 +744,7 @@ register_methods (PlumaWindow            *window,
 }
 
 static void
-store_row_inserted (PlumaFileBrowserStore *store,
+store_row_inserted (LapizFileBrowserStore *store,
 		    GtkTreePath		  *path,
 		    GtkTreeIter           *iter,
 		    MessageCacheData      *data)
@@ -769,7 +769,7 @@ store_row_inserted (PlumaFileBrowserStore *store,
 }
 
 static void
-store_row_deleted (PlumaFileBrowserStore *store,
+store_row_deleted (LapizFileBrowserStore *store,
 		   GtkTreePath		 *path,
 		   MessageCacheData      *data)
 {
@@ -797,7 +797,7 @@ store_row_deleted (PlumaFileBrowserStore *store,
 }
 
 static void
-store_virtual_root_changed (PlumaFileBrowserStore *store,
+store_virtual_root_changed (LapizFileBrowserStore *store,
 			    GParamSpec            *spec,
 			    MessageCacheData      *data)
 {
@@ -819,7 +819,7 @@ store_virtual_root_changed (PlumaFileBrowserStore *store,
 }
 
 static void
-store_begin_loading (PlumaFileBrowserStore *store,
+store_begin_loading (LapizFileBrowserStore *store,
 		     GtkTreeIter           *iter,
 		     MessageCacheData      *data)
 {
@@ -835,7 +835,7 @@ store_begin_loading (PlumaFileBrowserStore *store,
 }
 
 static void
-store_end_loading (PlumaFileBrowserStore *store,
+store_end_loading (LapizFileBrowserStore *store,
 		   GtkTreeIter           *iter,
 		   MessageCacheData      *data)
 {
@@ -851,18 +851,18 @@ store_end_loading (PlumaFileBrowserStore *store,
 }
 
 static void
-register_signals (PlumaWindow            *window,
-		  PlumaFileBrowserWidget *widget)
+register_signals (LapizWindow            *window,
+		  LapizFileBrowserWidget *widget)
 {
-	PlumaMessageBus *bus = lapiz_window_get_message_bus (window);
-	PlumaFileBrowserStore *store;
-	PlumaMessageType *inserted_type;
-	PlumaMessageType *deleted_type;
-	PlumaMessageType *begin_loading_type;
-	PlumaMessageType *end_loading_type;
-	PlumaMessageType *root_changed_type;
+	LapizMessageBus *bus = lapiz_window_get_message_bus (window);
+	LapizFileBrowserStore *store;
+	LapizMessageType *inserted_type;
+	LapizMessageType *deleted_type;
+	LapizMessageType *begin_loading_type;
+	LapizMessageType *end_loading_type;
+	LapizMessageType *root_changed_type;
 
-	PlumaMessage *message;
+	LapizMessage *message;
 	WindowData *data;
 
 	/* Register signals */
@@ -972,9 +972,9 @@ register_signals (PlumaWindow            *window,
 }
 
 static void
-message_unregistered (PlumaMessageBus  *bus,
-		      PlumaMessageType *message_type,
-		      PlumaWindow      *window)
+message_unregistered (LapizMessageBus  *bus,
+		      LapizMessageType *message_type,
+		      LapizWindow      *window)
 {
 	gchar *identifier = lapiz_message_type_identifier (lapiz_message_type_get_object_path (message_type),
 							   lapiz_message_type_get_method (message_type));
@@ -990,8 +990,8 @@ message_unregistered (PlumaMessageBus  *bus,
 }
 
 void
-lapiz_file_browser_messages_register (PlumaWindow            *window,
-				      PlumaFileBrowserWidget *widget)
+lapiz_file_browser_messages_register (LapizWindow            *window,
+				      LapizFileBrowserWidget *widget)
 {
 	window_data_new (window, widget);
 
@@ -1005,10 +1005,10 @@ lapiz_file_browser_messages_register (PlumaWindow            *window,
 }
 
 static void
-cleanup_signals (PlumaWindow *window)
+cleanup_signals (LapizWindow *window)
 {
 	WindowData *data = get_window_data (window);
-	PlumaFileBrowserStore *store;
+	LapizFileBrowserStore *store;
 
 	store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
@@ -1022,9 +1022,9 @@ cleanup_signals (PlumaWindow *window)
 }
 
 void
-lapiz_file_browser_messages_unregister (PlumaWindow *window)
+lapiz_file_browser_messages_unregister (LapizWindow *window)
 {
-	PlumaMessageBus *bus = lapiz_window_get_message_bus (window);
+	LapizMessageBus *bus = lapiz_window_get_message_bus (window);
 
 	cleanup_signals (window);
 	lapiz_message_bus_unregister_all (bus, MESSAGE_OBJECT_PATH);

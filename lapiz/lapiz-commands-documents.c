@@ -43,7 +43,7 @@
 
 void
 _lapiz_cmd_documents_previous_document (GtkAction   *action,
-				       PlumaWindow *window)
+				       LapizWindow *window)
 {
 	GtkNotebook *notebook;
 
@@ -55,7 +55,7 @@ _lapiz_cmd_documents_previous_document (GtkAction   *action,
 
 void
 _lapiz_cmd_documents_next_document (GtkAction   *action,
-				   PlumaWindow *window)
+				   LapizWindow *window)
 {
 	GtkNotebook *notebook;
 
@@ -67,10 +67,10 @@ _lapiz_cmd_documents_next_document (GtkAction   *action,
 
 void
 _lapiz_cmd_documents_move_to_new_window (GtkAction   *action,
-					PlumaWindow *window)
+					LapizWindow *window)
 {
-	PlumaNotebook *old_notebook;
-	PlumaTab *tab;
+	LapizNotebook *old_notebook;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 

@@ -5,30 +5,30 @@
  * @short_description: message type description
  * @include: lapiz/lapiz-message-type.h
  *
- * A message type is a prototype description for a #PlumaMessage used to
- * transmit messages on a #PlumaMessageBus. The message type describes
+ * A message type is a prototype description for a #LapizMessage used to
+ * transmit messages on a #LapizMessageBus. The message type describes
  * the Object Path, Method and Arguments of the message.
  *
  * A message type can contain any number of required and optional arguments.
- * To instantiate a #PlumaMessage from a #PlumaMessageType, use
+ * To instantiate a #LapizMessage from a #LapizMessageType, use
  * lapiz_message_type_instantiate().
  *
- * Registering a new message type on a #PlumaMessageBus with
- * lapiz_message_bus_register() internally creates a new #PlumaMessageType. When
+ * Registering a new message type on a #LapizMessageBus with
+ * lapiz_message_bus_register() internally creates a new #LapizMessageType. When
  * then using lapiz_message_bus_send(), an actual instantiation of the
  * registered type is internally created and send over the bus.
  *
  * <example>
  * <programlisting>
  * // Defining a new message type
- * PlumaMessageType *message_type = lapiz_message_type_new ("/plugins/example",
+ * LapizMessageType *message_type = lapiz_message_type_new ("/plugins/example",
  *                                                          "method",
  *                                                          0,
  *                                                          "arg1", G_TYPE_STRING,
  *                                                          NULL);
  *
  * // Instantiating an actual message from the type
- * PlumaMessage *message = lapiz_message_type_instantiate (message_type,
+ * LapizMessage *message = lapiz_message_type_instantiate (message_type,
  *                                                         "arg1", "Hello World",
  *                                                         NULL);
  * </programlisting>
@@ -40,7 +40,7 @@ typedef struct
 	gboolean required;
 } ArgumentInfo;
 
-struct _PlumaMessageType
+struct _LapizMessageType
 {
 	/* FIXME this is an issue for introspection */
 	gint ref_count;
@@ -56,15 +56,15 @@ struct _PlumaMessageType
 
 /**
  * lapiz_message_type_ref:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  *
  * Increases the reference count on @message_type.
  *
  * Return value: @message_type
  *
  */
-PlumaMessageType *
-lapiz_message_type_ref (PlumaMessageType *message_type)
+LapizMessageType *
+lapiz_message_type_ref (LapizMessageType *message_type)
 {
 	g_return_val_if_fail (message_type != NULL, NULL);
 	g_atomic_int_inc (&message_type->ref_count);
@@ -74,14 +74,14 @@ lapiz_message_type_ref (PlumaMessageType *message_type)
 
 /**
  * lapiz_message_type_unref:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  *
  * Decreases the reference count on @message_type. When the reference count
  * drops to 0, @message_type is destroyed.
  *
  */
 void
-lapiz_message_type_unref (PlumaMessageType *message_type)
+lapiz_message_type_unref (LapizMessageType *message_type)
 {
 	g_return_if_fail (message_type != NULL);
 
@@ -99,9 +99,9 @@ lapiz_message_type_unref (PlumaMessageType *message_type)
  * lapiz_message_type_get_type:
  *
  * Retrieves the GType object which is associated with the
- * #PlumaMessageType class.
+ * #LapizMessageType class.
  *
- * Return value: the GType associated with #PlumaMessageType.
+ * Return value: the GType associated with #LapizMessageType.
  **/
 GType
 lapiz_message_type_get_type (void)
@@ -110,7 +110,7 @@ lapiz_message_type_get_type (void)
 
 	if (!our_type)
 		our_type = g_boxed_type_register_static (
-			"PlumaMessageType",
+			"LapizMessageType",
 			(GBoxedCopyFunc) lapiz_message_type_ref,
 			(GBoxedFreeFunc) lapiz_message_type_unref);
 
@@ -229,26 +229,26 @@ lapiz_message_type_is_supported (GType type)
  * @num_optional: number of optional arguments
  * @va_args: key/gtype pair variable argument list
  *
- * Create a new #PlumaMessageType for @method at @object_path. Argument names
+ * Create a new #LapizMessageType for @method at @object_path. Argument names
  * and values are supplied by the NULL terminated variable argument list.
  * The last @num_optional provided arguments are considered optional.
  *
- * Return value: the newly constructed #PlumaMessageType
+ * Return value: the newly constructed #LapizMessageType
  *
  */
-PlumaMessageType *
+LapizMessageType *
 lapiz_message_type_new_valist (const gchar *object_path,
 			       const gchar *method,
 			       guint        num_optional,
 			       va_list      var_args)
 {
-	PlumaMessageType *message_type;
+	LapizMessageType *message_type;
 
 	g_return_val_if_fail (object_path != NULL, NULL);
 	g_return_val_if_fail (method != NULL, NULL);
 	g_return_val_if_fail (lapiz_message_type_is_valid_object_path (object_path), NULL);
 
-	message_type = g_new0(PlumaMessageType, 1);
+	message_type = g_new0(LapizMessageType, 1);
 
 	message_type->ref_count = 1;
 	message_type->object_path = g_strdup(object_path);
@@ -270,20 +270,20 @@ lapiz_message_type_new_valist (const gchar *object_path,
  * @num_optional: number of optional arguments
  * @...: key/gtype pair variable argument list
  *
- * Create a new #PlumaMessageType for @method at @object_path. Argument names
+ * Create a new #LapizMessageType for @method at @object_path. Argument names
  * and values are supplied by the NULL terminated variable argument list.
  * The last @num_optional provided arguments are considered optional.
  *
- * Return value: the newly constructed #PlumaMessageType
+ * Return value: the newly constructed #LapizMessageType
  *
  */
-PlumaMessageType *
+LapizMessageType *
 lapiz_message_type_new (const gchar *object_path,
 			const gchar *method,
 			guint        num_optional,
 			...)
 {
-	PlumaMessageType *message_type;
+	LapizMessageType *message_type;
 	va_list var_args;
 
 	va_start(var_args, num_optional);
@@ -295,7 +295,7 @@ lapiz_message_type_new (const gchar *object_path,
 
 /**
  * lapiz_message_type_set:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  * @num_optional: number of optional arguments
  * @...: key/gtype pair variable argument list
  *
@@ -305,7 +305,7 @@ lapiz_message_type_new (const gchar *object_path,
  *
  */
 void
-lapiz_message_type_set (PlumaMessageType *message_type,
+lapiz_message_type_set (LapizMessageType *message_type,
 			guint		  num_optional,
 			...)
 {
@@ -318,7 +318,7 @@ lapiz_message_type_set (PlumaMessageType *message_type,
 
 /**
  * lapiz_message_type_set_valist:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  * @num_optional: number of optional arguments
  * @va_args: key/gtype pair variable argument list
  *
@@ -328,7 +328,7 @@ lapiz_message_type_set (PlumaMessageType *message_type,
  *
  */
 void
-lapiz_message_type_set_valist (PlumaMessageType *message_type,
+lapiz_message_type_set_valist (LapizMessageType *message_type,
 			       guint             num_optional,
 			       va_list	         var_args)
 {
@@ -389,7 +389,7 @@ lapiz_message_type_set_valist (PlumaMessageType *message_type,
 
 /**
  * lapiz_message_type_instantiate_valist:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  * @va_args: NULL terminated variable list of key/value pairs
  *
  * Instantiate a new message from the message type with specific values
@@ -398,11 +398,11 @@ lapiz_message_type_set_valist (PlumaMessageType *message_type,
  * Return value: (transfer full): the newly created message
  *
  */
-PlumaMessage *
-lapiz_message_type_instantiate_valist (PlumaMessageType *message_type,
+LapizMessage *
+lapiz_message_type_instantiate_valist (LapizMessageType *message_type,
 				       va_list		 va_args)
 {
-	PlumaMessage *message;
+	LapizMessage *message;
 
 	g_return_val_if_fail (message_type != NULL, NULL);
 
@@ -414,7 +414,7 @@ lapiz_message_type_instantiate_valist (PlumaMessageType *message_type,
 
 /**
  * lapiz_message_type_instantiate:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  * @...: NULL terminated variable list of key/value pairs
  *
  * Instantiate a new message from the message type with specific values
@@ -423,11 +423,11 @@ lapiz_message_type_instantiate_valist (PlumaMessageType *message_type,
  * Return value: (transfer full): the newly created message
  *
  */
-PlumaMessage *
-lapiz_message_type_instantiate (PlumaMessageType *message_type,
+LapizMessage *
+lapiz_message_type_instantiate (LapizMessageType *message_type,
 				...)
 {
-	PlumaMessage *message;
+	LapizMessage *message;
 	va_list va_args;
 
 	va_start (va_args, message_type);
@@ -439,7 +439,7 @@ lapiz_message_type_instantiate (PlumaMessageType *message_type,
 
 /**
  * lapiz_message_type_get_object_path:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  *
  * Get the message type object path.
  *
@@ -447,14 +447,14 @@ lapiz_message_type_instantiate (PlumaMessageType *message_type,
  *
  */
 const gchar *
-lapiz_message_type_get_object_path (PlumaMessageType *message_type)
+lapiz_message_type_get_object_path (LapizMessageType *message_type)
 {
 	return message_type->object_path;
 }
 
 /**
  * lapiz_message_type_get_method:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  *
  * Get the message type method.
  *
@@ -462,14 +462,14 @@ lapiz_message_type_get_object_path (PlumaMessageType *message_type)
  *
  */
 const gchar *
-lapiz_message_type_get_method (PlumaMessageType *message_type)
+lapiz_message_type_get_method (LapizMessageType *message_type)
 {
 	return message_type->method;
 }
 
 /**
  * lapiz_message_type_lookup:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  * @key: the argument key
  *
  * Get the argument key #GType.
@@ -478,7 +478,7 @@ lapiz_message_type_get_method (PlumaMessageType *message_type)
  *
  */
 GType
-lapiz_message_type_lookup (PlumaMessageType *message_type,
+lapiz_message_type_lookup (LapizMessageType *message_type,
 			   const gchar      *key)
 {
 	ArgumentInfo *info = g_hash_table_lookup (message_type->arguments, key);
@@ -491,7 +491,7 @@ lapiz_message_type_lookup (PlumaMessageType *message_type,
 
 typedef struct
 {
-	PlumaMessageTypeForeach func;
+	LapizMessageTypeForeach func;
 	gpointer user_data;
 } ForeachInfo;
 
@@ -505,7 +505,7 @@ foreach_gtype (const gchar  *key,
 
 /**
  * lapiz_message_type_foreach:
- * @message_type: the #PlumaMessageType
+ * @message_type: the #LapizMessageType
  * @func: (scope call): the callback function
  * @user_data: user data supplied to the callback function
  *
@@ -513,8 +513,8 @@ foreach_gtype (const gchar  *key,
  *
  */
 void
-lapiz_message_type_foreach (PlumaMessageType 	    *message_type,
-			    PlumaMessageTypeForeach  func,
+lapiz_message_type_foreach (LapizMessageType 	    *message_type,
+			    LapizMessageTypeForeach  func,
 			    gpointer		     user_data)
 {
 	ForeachInfo info = {func, user_data};

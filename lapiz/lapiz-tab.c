@@ -48,9 +48,9 @@
 
 #define LAPIZ_TAB_KEY "LAPIZ_TAB_KEY"
 
-struct _PlumaTabPrivate
+struct _LapizTabPrivate
 {
-	PlumaTabState	        state;
+	LapizTabState	        state;
 
 	GtkWidget	       *view;
 	GtkWidget	       *view_scrolled_window;
@@ -58,19 +58,19 @@ struct _PlumaTabPrivate
 	GtkWidget	       *message_area;
 	GtkWidget	       *print_preview;
 
-	PlumaPrintJob          *print_job;
+	LapizPrintJob          *print_job;
 
 	/* tmp data for saving */
 	gchar		       *tmp_save_uri;
 
 	/* tmp data for loading */
 	gint                    tmp_line_pos;
-	const PlumaEncoding    *tmp_encoding;
+	const LapizEncoding    *tmp_encoding;
 
 	GTimer 		       *timer;
 	guint		        times_called;
 
-	PlumaDocumentSaveFlags	save_flags;
+	LapizDocumentSaveFlags	save_flags;
 
         gint                    auto_save_interval;
         guint                   auto_save_timeout;
@@ -83,7 +83,7 @@ struct _PlumaTabPrivate
 	guint			idle_scroll;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaTab, lapiz_tab, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizTab, lapiz_tab, GTK_TYPE_BOX)
 
 enum
 {
@@ -94,10 +94,10 @@ enum
 	PROP_AUTO_SAVE_INTERVAL
 };
 
-static gboolean lapiz_tab_auto_save (PlumaTab *tab);
+static gboolean lapiz_tab_auto_save (LapizTab *tab);
 
 static void
-install_auto_save_timeout (PlumaTab *tab)
+install_auto_save_timeout (LapizTab *tab)
 {
 	gint timeout;
 
@@ -124,9 +124,9 @@ install_auto_save_timeout (PlumaTab *tab)
 }
 
 static gboolean
-install_auto_save_timeout_if_needed (PlumaTab *tab)
+install_auto_save_timeout_if_needed (LapizTab *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_TAB);
 
@@ -153,7 +153,7 @@ install_auto_save_timeout_if_needed (PlumaTab *tab)
 }
 
 static void
-remove_auto_save_timeout (PlumaTab *tab)
+remove_auto_save_timeout (LapizTab *tab)
 {
 	lapiz_debug (DEBUG_TAB);
 
@@ -171,7 +171,7 @@ lapiz_tab_get_property (GObject    *object,
 		        GValue     *value,
 		        GParamSpec *pspec)
 {
-	PlumaTab *tab = LAPIZ_TAB (object);
+	LapizTab *tab = LAPIZ_TAB (object);
 
 	switch (prop_id)
 	{
@@ -203,7 +203,7 @@ lapiz_tab_set_property (GObject      *object,
 		        const GValue *value,
 		        GParamSpec   *pspec)
 {
-	PlumaTab *tab = LAPIZ_TAB (object);
+	LapizTab *tab = LAPIZ_TAB (object);
 
 	switch (prop_id)
 	{
@@ -224,7 +224,7 @@ lapiz_tab_set_property (GObject      *object,
 static void
 lapiz_tab_finalize (GObject *object)
 {
-	PlumaTab *tab = LAPIZ_TAB (object);
+	LapizTab *tab = LAPIZ_TAB (object);
 
 	if (tab->priv->timer != NULL)
 		g_timer_destroy (tab->priv->timer);
@@ -244,7 +244,7 @@ lapiz_tab_finalize (GObject *object)
 }
 
 static void
-lapiz_tab_class_init (PlumaTabClass *klass)
+lapiz_tab_class_init (LapizTabClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -294,14 +294,14 @@ lapiz_tab_class_init (PlumaTabClass *klass)
 
 /**
  * lapiz_tab_get_state:
- * @tab: a #PlumaTab
+ * @tab: a #LapizTab
  *
- * Gets the #PlumaTabState of @tab.
+ * Gets the #LapizTabState of @tab.
  *
- * Returns: the #PlumaTabState of @tab
+ * Returns: the #LapizTabState of @tab
  */
-PlumaTabState
-lapiz_tab_get_state (PlumaTab *tab)
+LapizTabState
+lapiz_tab_get_state (LapizTab *tab)
 {
 	g_return_val_if_fail (LAPIZ_IS_TAB (tab), LAPIZ_TAB_STATE_NORMAL);
 
@@ -310,7 +310,7 @@ lapiz_tab_get_state (PlumaTab *tab)
 
 static void
 set_cursor_according_to_state (GtkTextView   *view,
-			       PlumaTabState  state)
+			       LapizTabState  state)
 {
 	GdkCursor *cursor;
 	GdkWindow *text_window;
@@ -354,14 +354,14 @@ set_cursor_according_to_state (GtkTextView   *view,
 
 static void
 view_realized (GtkTextView *view,
-	       PlumaTab    *tab)
+	       LapizTab    *tab)
 {
 	set_cursor_according_to_state (view, tab->priv->state);
 }
 
 static void
-set_view_properties_according_to_state (PlumaTab      *tab,
-					PlumaTabState  state)
+set_view_properties_according_to_state (LapizTab      *tab,
+					LapizTabState  state)
 {
 	gboolean val;
 
@@ -381,8 +381,8 @@ set_view_properties_according_to_state (PlumaTab      *tab,
 }
 
 static void
-lapiz_tab_set_state (PlumaTab      *tab,
-		     PlumaTabState  state)
+lapiz_tab_set_state (LapizTab      *tab,
+		     LapizTabState  state)
 {
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 	g_return_if_fail ((state >= 0) && (state < LAPIZ_TAB_NUM_OF_STATES));
@@ -412,9 +412,9 @@ lapiz_tab_set_state (PlumaTab      *tab,
 }
 
 static void
-document_uri_notify_handler (PlumaDocument *document,
+document_uri_notify_handler (LapizDocument *document,
 			     GParamSpec    *pspec,
-			     PlumaTab      *tab)
+			     LapizTab      *tab)
 {
 	lapiz_debug (DEBUG_TAB);
 
@@ -423,9 +423,9 @@ document_uri_notify_handler (PlumaDocument *document,
 }
 
 static void
-document_shortname_notify_handler (PlumaDocument *document,
+document_shortname_notify_handler (LapizDocument *document,
 				   GParamSpec    *pspec,
-				   PlumaTab      *tab)
+				   LapizTab      *tab)
 {
 	lapiz_debug (DEBUG_TAB);
 
@@ -435,13 +435,13 @@ document_shortname_notify_handler (PlumaDocument *document,
 
 static void
 document_modified_changed (GtkTextBuffer *document,
-			   PlumaTab      *tab)
+			   LapizTab      *tab)
 {
 	g_object_notify (G_OBJECT (tab), "name");
 }
 
 static void
-set_message_area (PlumaTab  *tab,
+set_message_area (LapizTab  *tab,
 		  GtkWidget *message_area)
 {
 	if (tab->priv->message_area == message_area)
@@ -466,9 +466,9 @@ set_message_area (PlumaTab  *tab,
 }
 
 static void
-remove_tab (PlumaTab *tab)
+remove_tab (LapizTab *tab)
 {
-	PlumaNotebook *notebook;
+	LapizNotebook *notebook;
 
 	notebook = LAPIZ_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (tab)));
 
@@ -478,12 +478,12 @@ remove_tab (PlumaTab *tab)
 static void
 io_loading_error_message_area_response (GtkWidget        *message_area,
 					gint              response_id,
-					PlumaTab         *tab)
+					LapizTab         *tab)
 {
-	PlumaDocument *doc;
-	PlumaView *view;
+	LapizDocument *doc;
+	LapizView *view;
 	gchar *uri;
-	const PlumaEncoding *encoding;
+	const LapizEncoding *encoding;
 
 	doc = lapiz_tab_get_document (tab);
 	g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
@@ -538,9 +538,9 @@ io_loading_error_message_area_response (GtkWidget        *message_area,
 static void
 file_already_open_warning_message_area_response (GtkWidget   *message_area,
 						 gint         response_id,
-						 PlumaTab    *tab)
+						 LapizTab    *tab)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	view = lapiz_tab_get_view (tab);
 
@@ -560,7 +560,7 @@ file_already_open_warning_message_area_response (GtkWidget   *message_area,
 static void
 load_cancelled (GtkWidget        *area,
                 gint              response_id,
-                PlumaTab         *tab)
+                LapizTab         *tab)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
 
@@ -570,7 +570,7 @@ load_cancelled (GtkWidget        *area,
 }
 
 static gboolean
-scroll_to_cursor (PlumaTab *tab)
+scroll_to_cursor (LapizTab *tab)
 {
 	lapiz_view_scroll_to_cursor (LAPIZ_VIEW (tab->priv->view));
 	tab->priv->idle_scroll = 0;
@@ -580,9 +580,9 @@ scroll_to_cursor (PlumaTab *tab)
 static void
 unrecoverable_reverting_error_message_area_response (GtkWidget        *message_area,
 						     gint              response_id,
-						     PlumaTab         *tab)
+						     LapizTab         *tab)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	lapiz_tab_set_state (tab,
 			     LAPIZ_TAB_STATE_NORMAL);
@@ -599,10 +599,10 @@ unrecoverable_reverting_error_message_area_response (GtkWidget        *message_a
 #define MAX_MSG_LENGTH 100
 
 static void
-show_loading_message_area (PlumaTab *tab)
+show_loading_message_area (LapizTab *tab)
 {
 	GtkWidget *area;
-	PlumaDocument *doc = NULL;
+	LapizDocument *doc = NULL;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *msg = NULL;
@@ -721,10 +721,10 @@ show_loading_message_area (PlumaTab *tab)
 }
 
 static void
-show_saving_message_area (PlumaTab *tab)
+show_saving_message_area (LapizTab *tab)
 {
 	GtkWidget *area;
-	PlumaDocument *doc = NULL;
+	LapizDocument *doc = NULL;
 	gchar *short_name;
 	gchar *from;
 	gchar *to = NULL;
@@ -804,7 +804,7 @@ show_saving_message_area (PlumaTab *tab)
 }
 
 static void
-message_area_set_progress (PlumaTab *tab,
+message_area_set_progress (LapizTab *tab,
 			   goffset   size,
 			   goffset   total_size)
 {
@@ -838,10 +838,10 @@ message_area_set_progress (PlumaTab *tab,
 }
 
 static void
-document_loading (PlumaDocument *document,
+document_loading (LapizDocument *document,
 		  goffset        size,
 		  goffset        total_size,
-		  PlumaTab      *tab)
+		  LapizTab      *tab)
 {
 	gdouble et;
 	gdouble total_time;
@@ -871,7 +871,7 @@ document_loading (PlumaDocument *document,
 }
 
 static gboolean
-remove_tab_idle (PlumaTab *tab)
+remove_tab_idle (LapizTab *tab)
 {
 	remove_tab (tab);
 
@@ -879,9 +879,9 @@ remove_tab_idle (PlumaTab *tab)
 }
 
 static void
-document_loaded (PlumaDocument *document,
+document_loaded (LapizDocument *document,
 		 const GError  *error,
-		 PlumaTab      *tab)
+		 LapizTab      *tab)
 {
 	GtkWidget *emsg;
 	GFile *location;
@@ -1015,7 +1015,7 @@ document_loaded (PlumaDocument *document,
 
 		for (l = all_documents; l != NULL; l = g_list_next (l))
 		{
-			PlumaDocument *d = LAPIZ_DOCUMENT (l->data);
+			LapizDocument *d = LAPIZ_DOCUMENT (l->data);
 
 			if (d != document)
 			{
@@ -1071,10 +1071,10 @@ document_loaded (PlumaDocument *document,
 }
 
 static void
-document_saving (PlumaDocument    *document,
+document_saving (LapizDocument    *document,
 		 goffset  size,
 		 goffset  total_size,
-		 PlumaTab         *tab)
+		 LapizTab         *tab)
 {
 	gdouble et;
 	gdouble total_time;
@@ -1106,7 +1106,7 @@ document_saving (PlumaDocument    *document,
 }
 
 static void
-end_saving (PlumaTab *tab)
+end_saving (LapizTab *tab)
 {
 	/* Reset tmp data for saving */
 	g_free (tab->priv->tmp_save_uri);
@@ -1119,9 +1119,9 @@ end_saving (PlumaTab *tab)
 static void
 unrecoverable_saving_error_message_area_response (GtkWidget        *message_area,
 						  gint              response_id,
-						  PlumaTab         *tab)
+						  LapizTab         *tab)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	if (tab->priv->print_preview != NULL)
 		lapiz_tab_set_state (tab, LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW);
@@ -1140,11 +1140,11 @@ unrecoverable_saving_error_message_area_response (GtkWidget        *message_area
 static void
 no_backup_error_message_area_response (GtkWidget        *message_area,
 				       gint              response_id,
-				       PlumaTab         *tab)
+				       LapizTab         *tab)
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 
 		doc = lapiz_tab_get_document (tab);
 		g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
@@ -1175,11 +1175,11 @@ no_backup_error_message_area_response (GtkWidget        *message_area,
 static void
 externally_modified_error_message_area_response (GtkWidget        *message_area,
 						 gint              response_id,
-						 PlumaTab         *tab)
+						 LapizTab         *tab)
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 
 		doc = lapiz_tab_get_document (tab);
 		g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
@@ -1209,16 +1209,16 @@ externally_modified_error_message_area_response (GtkWidget        *message_area,
 static void
 recoverable_saving_error_message_area_response (GtkWidget        *message_area,
 						gint              response_id,
-						PlumaTab         *tab)
+						LapizTab         *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	doc = lapiz_tab_get_document (tab);
 	g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
-		const PlumaEncoding *encoding;
+		const LapizEncoding *encoding;
 
 		encoding = lapiz_conversion_error_message_area_get_encoding (
 									GTK_WIDGET (message_area));
@@ -1251,9 +1251,9 @@ recoverable_saving_error_message_area_response (GtkWidget        *message_area,
 }
 
 static void
-document_saved (PlumaDocument *document,
+document_saved (LapizDocument *document,
 		const GError  *error,
-		PlumaTab      *tab)
+		LapizTab      *tab)
 {
 	GtkWidget *emsg;
 
@@ -1374,9 +1374,9 @@ document_saved (PlumaDocument *document,
 static void
 externally_modified_notification_message_area_response (GtkWidget        *message_area,
 							gint              response_id,
-							PlumaTab         *tab)
+							LapizTab         *tab)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	set_message_area (tab, NULL);
 	view = lapiz_tab_get_view (tab);
@@ -1397,10 +1397,10 @@ externally_modified_notification_message_area_response (GtkWidget        *messag
 }
 
 static void
-display_externally_modified_notification (PlumaTab *tab)
+display_externally_modified_notification (LapizTab *tab)
 {
 	GtkWidget *message_area;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *uri;
 	gboolean document_modified;
 
@@ -1429,9 +1429,9 @@ display_externally_modified_notification (PlumaTab *tab)
 static gboolean
 view_focused_in (GtkWidget     *widget,
                  GdkEventFocus *event,
-                 PlumaTab      *tab)
+                 LapizTab      *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	g_return_val_if_fail (LAPIZ_IS_TAB (tab), FALSE);
 
@@ -1468,10 +1468,10 @@ view_focused_in (GtkWidget     *widget,
 }
 
 static GMountOperation *
-tab_mount_operation_factory (PlumaDocument *doc,
+tab_mount_operation_factory (LapizDocument *doc,
 			     gpointer userdata)
 {
-	PlumaTab *tab = LAPIZ_TAB (userdata);
+	LapizTab *tab = LAPIZ_TAB (userdata);
 	GtkWidget *window;
 
 	window = gtk_widget_get_toplevel (GTK_WIDGET (tab));
@@ -1479,11 +1479,11 @@ tab_mount_operation_factory (PlumaDocument *doc,
 }
 
 static void
-lapiz_tab_init (PlumaTab *tab)
+lapiz_tab_init (LapizTab *tab)
 {
 	GtkWidget *sw;
-	PlumaDocument *doc;
-	PlumaLockdownMask lockdown;
+	LapizDocument *doc;
+	LapizLockdownMask lockdown;
 
 	tab->priv = lapiz_tab_get_instance_private (tab);
 
@@ -1585,11 +1585,11 @@ _lapiz_tab_new (void)
    not refer to an existing file */
 GtkWidget *
 _lapiz_tab_new_from_uri (const gchar         *uri,
-			 const PlumaEncoding *encoding,
+			 const LapizEncoding *encoding,
 			 gint                 line_pos,
 			 gboolean             create)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	g_return_val_if_fail (uri != NULL, NULL);
 
@@ -1606,28 +1606,28 @@ _lapiz_tab_new_from_uri (const gchar         *uri,
 
 /**
  * lapiz_tab_get_view:
- * @tab: a #PlumaTab
+ * @tab: a #LapizTab
  *
- * Gets the #PlumaView inside @tab.
+ * Gets the #LapizView inside @tab.
  *
- * Returns: (transfer none): the #PlumaView inside @tab
+ * Returns: (transfer none): the #LapizView inside @tab
  */
-PlumaView *
-lapiz_tab_get_view (PlumaTab *tab)
+LapizView *
+lapiz_tab_get_view (LapizTab *tab)
 {
 	return LAPIZ_VIEW (tab->priv->view);
 }
 
 /**
  * lapiz_tab_get_document:
- * @tab: a #PlumaTab
+ * @tab: a #LapizTab
  *
- * Gets the #PlumaDocument associated to @tab.
+ * Gets the #LapizDocument associated to @tab.
  *
- * Returns: (transfer none): the #PlumaDocument associated to @tab
+ * Returns: (transfer none): the #LapizDocument associated to @tab
  */
-PlumaDocument *
-lapiz_tab_get_document (PlumaTab *tab)
+LapizDocument *
+lapiz_tab_get_document (LapizTab *tab)
 {
 	return LAPIZ_DOCUMENT (gtk_text_view_get_buffer (
 					GTK_TEXT_VIEW (tab->priv->view)));
@@ -1636,9 +1636,9 @@ lapiz_tab_get_document (PlumaTab *tab)
 #define MAX_DOC_NAME_LENGTH 40
 
 gchar *
-_lapiz_tab_get_name (PlumaTab *tab)
+_lapiz_tab_get_name (LapizTab *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *name;
 	gchar *docname;
 	gchar *tab_name;
@@ -1679,9 +1679,9 @@ _lapiz_tab_get_name (PlumaTab *tab)
 }
 
 gchar *
-_lapiz_tab_get_tooltips	(PlumaTab *tab)
+_lapiz_tab_get_tooltips	(LapizTab *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *tip;
 	gchar *uri;
 	gchar *ruri;
@@ -1706,7 +1706,7 @@ _lapiz_tab_get_tooltips	(PlumaTab *tab)
 		gchar *content_description;
 		gchar *content_full_description;
 		gchar *encoding;
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 
 		case LAPIZ_TAB_STATE_LOADING_ERROR:
 			tip = g_strdup_printf (_("Error opening file %s"),
@@ -1861,7 +1861,7 @@ get_icon (GtkIconTheme *theme,
 /* FIXME: add support for theme changed. I think it should be as easy as
    call g_object_notify (tab, "name") when the icon theme changes */
 GdkPixbuf *
-_lapiz_tab_get_icon (PlumaTab *tab)
+_lapiz_tab_get_icon (LapizTab *tab)
 {
 	GdkPixbuf *pixbuf;
 	GtkIconTheme *theme;
@@ -1928,7 +1928,7 @@ _lapiz_tab_get_icon (PlumaTab *tab)
 		default:
 		{
 			GFile *location;
-			PlumaDocument *doc;
+			LapizDocument *doc;
 
 			doc = lapiz_tab_get_document (tab);
 
@@ -1945,14 +1945,14 @@ _lapiz_tab_get_icon (PlumaTab *tab)
 
 /**
  * lapiz_tab_get_from_document:
- * @doc: a #PlumaDocument
+ * @doc: a #LapizDocument
  *
- * Gets the #PlumaTab associated with @doc.
+ * Gets the #LapizTab associated with @doc.
  *
- * Returns: (transfer none): the #PlumaTab associated with @doc
+ * Returns: (transfer none): the #LapizTab associated with @doc
  */
-PlumaTab *
-lapiz_tab_get_from_document (PlumaDocument *doc)
+LapizTab *
+lapiz_tab_get_from_document (LapizDocument *doc)
 {
 	gpointer res;
 
@@ -1964,13 +1964,13 @@ lapiz_tab_get_from_document (PlumaDocument *doc)
 }
 
 void
-_lapiz_tab_load (PlumaTab            *tab,
+_lapiz_tab_load (LapizTab            *tab,
 		 const gchar         *uri,
-		 const PlumaEncoding *encoding,
+		 const LapizEncoding *encoding,
 		 gint                 line_pos,
 		 gboolean             create)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 	g_return_if_fail (tab->priv->state == LAPIZ_TAB_STATE_NORMAL);
@@ -1994,9 +1994,9 @@ _lapiz_tab_load (PlumaTab            *tab,
 }
 
 void
-_lapiz_tab_revert (PlumaTab *tab)
+_lapiz_tab_revert (LapizTab *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *uri;
 
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
@@ -2032,10 +2032,10 @@ _lapiz_tab_revert (PlumaTab *tab)
 }
 
 void
-_lapiz_tab_save (PlumaTab *tab)
+_lapiz_tab_save (LapizTab *tab)
 {
-	PlumaDocument *doc;
-	PlumaDocumentSaveFlags save_flags;
+	LapizDocument *doc;
+	LapizDocumentSaveFlags save_flags;
 
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 	g_return_if_fail ((tab->priv->state == LAPIZ_TAB_STATE_NORMAL) ||
@@ -2076,9 +2076,9 @@ _lapiz_tab_save (PlumaTab *tab)
 }
 
 static gboolean
-lapiz_tab_auto_save (PlumaTab *tab)
+lapiz_tab_auto_save (LapizTab *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_TAB);
 
@@ -2142,12 +2142,12 @@ lapiz_tab_auto_save (PlumaTab *tab)
 }
 
 void
-_lapiz_tab_save_as (PlumaTab                 *tab,
+_lapiz_tab_save_as (LapizTab                 *tab,
                     const gchar              *uri,
-                    const PlumaEncoding      *encoding,
-                    PlumaDocumentNewlineType  newline_type)
+                    const LapizEncoding      *encoding,
+                    LapizDocumentNewlineType  newline_type)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 	g_return_if_fail ((tab->priv->state == LAPIZ_TAB_STATE_NORMAL) ||
@@ -2196,10 +2196,10 @@ _lapiz_tab_save_as (PlumaTab                 *tab,
 #define LAPIZ_PRINT_SETTINGS_KEY "lapiz-print-settings-key"
 
 static GtkPageSetup *
-get_page_setup (PlumaTab *tab)
+get_page_setup (LapizTab *tab)
 {
 	gpointer data;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	doc = lapiz_tab_get_document (tab);
 
@@ -2217,10 +2217,10 @@ get_page_setup (PlumaTab *tab)
 }
 
 static GtkPrintSettings *
-get_print_settings (PlumaTab *tab)
+get_print_settings (LapizTab *tab)
 {
 	gpointer data;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GtkPrintSettings *settings;
 	gchar *uri, *name;
 
@@ -2253,9 +2253,9 @@ get_print_settings (PlumaTab *tab)
 
 /* FIXME: show the message area only if the operation will be "long" */
 static void
-printing_cb (PlumaPrintJob       *job,
-	     PlumaPrintJobStatus  status,
-	     PlumaTab            *tab)
+printing_cb (LapizPrintJob       *job,
+	     LapizPrintJobStatus  status,
+	     LapizTab            *tab)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
 
@@ -2269,10 +2269,10 @@ printing_cb (PlumaPrintJob       *job,
 }
 
 static void
-store_print_settings (PlumaTab      *tab,
-		      PlumaPrintJob *job)
+store_print_settings (LapizTab      *tab,
+		      LapizPrintJob *job)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GtkPrintSettings *settings;
 	GtkPageSetup *page_setup;
 
@@ -2309,12 +2309,12 @@ store_print_settings (PlumaTab      *tab,
 }
 
 static void
-done_printing_cb (PlumaPrintJob       *job,
-		  PlumaPrintJobResult  result,
+done_printing_cb (LapizPrintJob       *job,
+		  LapizPrintJobResult  result,
 		  const GError        *error,
-		  PlumaTab            *tab)
+		  LapizTab            *tab)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	g_return_if_fail (tab->priv->state == LAPIZ_TAB_STATE_PRINT_PREVIEWING ||
 			  tab->priv->state == LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW ||
@@ -2361,13 +2361,13 @@ done_printing_cb (PlumaPrintJob       *job,
 #if 0
 static void
 print_preview_destroyed (GtkWidget *preview,
-			 PlumaTab  *tab)
+			 LapizTab  *tab)
 {
 	tab->priv->print_preview = NULL;
 
 	if (tab->priv->state == LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW)
 	{
-		PlumaView *view;
+		LapizView *view;
 
 		lapiz_tab_set_state (tab, LAPIZ_TAB_STATE_NORMAL);
 
@@ -2387,9 +2387,9 @@ print_preview_destroyed (GtkWidget *preview,
 #endif
 
 static void
-show_preview_cb (PlumaPrintJob       *job,
-		 PlumaPrintPreview   *preview,
-		 PlumaTab            *tab)
+show_preview_cb (LapizPrintJob       *job,
+		 LapizPrintPreview   *preview,
+		 LapizTab            *tab)
 {
 //	g_return_if_fail (tab->priv->state == LAPIZ_TAB_STATE_PRINT_PREVIEWING);
 	g_return_if_fail (tab->priv->print_preview == NULL);
@@ -2417,7 +2417,7 @@ show_preview_cb (PlumaPrintJob       *job,
 #if 0
 
 static void
-set_print_preview (PlumaTab  *tab,
+set_print_preview (LapizTab  *tab,
 		   GtkWidget *print_preview)
 {
 	if (tab->priv->print_preview == print_preview)
@@ -2443,7 +2443,7 @@ set_print_preview (PlumaTab  *tab,
 }
 
 static void
-preview_finished_cb (GtkSourcePrintJob *pjob, PlumaTab *tab)
+preview_finished_cb (GtkSourcePrintJob *pjob, LapizTab *tab)
 {
 	MatePrintJob *gjob;
 	GtkWidget *preview = NULL;
@@ -2470,7 +2470,7 @@ preview_finished_cb (GtkSourcePrintJob *pjob, PlumaTab *tab)
 static void
 print_cancelled (GtkWidget        *area,
                  gint              response_id,
-                 PlumaTab         *tab)
+                 LapizTab         *tab)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
 
@@ -2480,7 +2480,7 @@ print_cancelled (GtkWidget        *area,
 }
 
 static void
-show_printing_message_area (PlumaTab *tab, gboolean preview)
+show_printing_message_area (LapizTab *tab, gboolean preview)
 {
 	GtkWidget *area;
 
@@ -2502,10 +2502,10 @@ show_printing_message_area (PlumaTab *tab, gboolean preview)
 }
 
 static void
-lapiz_tab_print_or_print_preview (PlumaTab                *tab,
+lapiz_tab_print_or_print_preview (LapizTab                *tab,
 				  GtkPrintOperationAction  print_action)
 {
-	PlumaView *view;
+	LapizView *view;
 	gboolean is_preview;
 	GtkPageSetup *setup;
 	GtkPrintSettings *settings;
@@ -2565,7 +2565,7 @@ lapiz_tab_print_or_print_preview (PlumaTab                *tab,
 }
 
 void
-_lapiz_tab_print (PlumaTab     *tab)
+_lapiz_tab_print (LapizTab     *tab)
 {
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
@@ -2582,7 +2582,7 @@ _lapiz_tab_print (PlumaTab     *tab)
 }
 
 void
-_lapiz_tab_print_preview (PlumaTab     *tab)
+_lapiz_tab_print_preview (LapizTab     *tab)
 {
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
@@ -2591,7 +2591,7 @@ _lapiz_tab_print_preview (PlumaTab     *tab)
 }
 
 void
-_lapiz_tab_mark_for_closing (PlumaTab *tab)
+_lapiz_tab_mark_for_closing (LapizTab *tab)
 {
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 	g_return_if_fail (tab->priv->state == LAPIZ_TAB_STATE_NORMAL);
@@ -2600,10 +2600,10 @@ _lapiz_tab_mark_for_closing (PlumaTab *tab)
 }
 
 gboolean
-_lapiz_tab_can_close (PlumaTab *tab)
+_lapiz_tab_can_close (LapizTab *tab)
 {
-	PlumaDocument *doc;
-	PlumaTabState  ts;
+	LapizDocument *doc;
+	LapizTabState  ts;
 
 	g_return_val_if_fail (LAPIZ_IS_TAB (tab), FALSE);
 
@@ -2633,14 +2633,14 @@ _lapiz_tab_can_close (PlumaTab *tab)
 
 /**
  * lapiz_tab_get_auto_save_enabled:
- * @tab: a #PlumaTab
+ * @tab: a #LapizTab
  *
  * Gets the current state for the autosave feature
  *
  * Return value: %TRUE if the autosave is enabled, else %FALSE
  **/
 gboolean
-lapiz_tab_get_auto_save_enabled	(PlumaTab *tab)
+lapiz_tab_get_auto_save_enabled	(LapizTab *tab)
 {
 	lapiz_debug (DEBUG_TAB);
 
@@ -2651,18 +2651,18 @@ lapiz_tab_get_auto_save_enabled	(PlumaTab *tab)
 
 /**
  * lapiz_tab_set_auto_save_enabled:
- * @tab: a #PlumaTab
+ * @tab: a #LapizTab
  * @enable: enable (%TRUE) or disable (%FALSE) auto save
  *
  * Enables or disables the autosave feature. It does not install an
  * autosave timeout if the document is new or is read-only
  **/
 void
-lapiz_tab_set_auto_save_enabled	(PlumaTab *tab,
+lapiz_tab_set_auto_save_enabled	(LapizTab *tab,
 				 gboolean  enable)
 {
-	PlumaDocument *doc = NULL;
-	PlumaLockdownMask lockdown;
+	LapizDocument *doc = NULL;
+	LapizLockdownMask lockdown;
 
 	lapiz_debug (DEBUG_TAB);
 
@@ -2713,14 +2713,14 @@ lapiz_tab_set_auto_save_enabled	(PlumaTab *tab,
 
 /**
  * lapiz_tab_get_auto_save_interval:
- * @tab: a #PlumaTab
+ * @tab: a #LapizTab
  *
  * Gets the current interval for the autosaves
  *
  * Return value: the value of the autosave
  **/
 gint
-lapiz_tab_get_auto_save_interval (PlumaTab *tab)
+lapiz_tab_get_auto_save_interval (LapizTab *tab)
 {
 	lapiz_debug (DEBUG_TAB);
 
@@ -2731,7 +2731,7 @@ lapiz_tab_get_auto_save_interval (PlumaTab *tab)
 
 /**
  * lapiz_tab_set_auto_save_interval:
- * @tab: a #PlumaTab
+ * @tab: a #LapizTab
  * @interval: the new interval
  *
  * Sets the interval for the autosave feature. It does nothing if the
@@ -2740,10 +2740,10 @@ lapiz_tab_get_auto_save_interval (PlumaTab *tab)
  * argument.
  **/
 void
-lapiz_tab_set_auto_save_interval (PlumaTab *tab,
+lapiz_tab_set_auto_save_interval (LapizTab *tab,
 				  gint      interval)
 {
-	PlumaDocument *doc = NULL;
+	LapizDocument *doc = NULL;
 
 	lapiz_debug (DEBUG_TAB);
 
@@ -2774,7 +2774,7 @@ lapiz_tab_set_auto_save_interval (PlumaTab *tab,
 }
 
 void
-lapiz_tab_set_info_bar (PlumaTab  *tab,
+lapiz_tab_set_info_bar (LapizTab  *tab,
                         GtkWidget *info_bar)
 {
 	g_return_if_fail (LAPIZ_IS_TAB (tab));

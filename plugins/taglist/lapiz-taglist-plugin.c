@@ -42,7 +42,7 @@
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
 
-struct _PlumaTaglistPluginPrivate
+struct _LapizTaglistPluginPrivate
 {
 	GtkWidget *window;
 
@@ -51,11 +51,11 @@ struct _PlumaTaglistPluginPrivate
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaTaglistPlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTaglistPlugin,
                                 lapiz_taglist_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaTaglistPlugin)
+                                G_ADD_PRIVATE_DYNAMIC (LapizTaglistPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init) \
                                                                                             \
@@ -68,19 +68,19 @@ enum {
 };
 
 static void
-lapiz_taglist_plugin_init (PlumaTaglistPlugin *plugin)
+lapiz_taglist_plugin_init (LapizTaglistPlugin *plugin)
 {
 	plugin->priv = lapiz_taglist_plugin_get_instance_private (plugin);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTaglistPlugin initializing");
 }
 
 static void
 lapiz_taglist_plugin_dispose (GObject *object)
 {
-	PlumaTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
+	LapizTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTaglistPlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -94,7 +94,7 @@ lapiz_taglist_plugin_dispose (GObject *object)
 static void
 lapiz_taglist_plugin_finalize (GObject *object)
 {
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin finalizing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTaglistPlugin finalizing");
 
 	free_taglist ();
 
@@ -104,9 +104,9 @@ lapiz_taglist_plugin_finalize (GObject *object)
 static void
 lapiz_taglist_plugin_activate (PeasActivatable *activatable)
 {
-	PlumaTaglistPluginPrivate *priv;
-	PlumaWindow *window;
-	PlumaPanel *side_panel;
+	LapizTaglistPluginPrivate *priv;
+	LapizWindow *window;
+	LapizPanel *side_panel;
 	gchar *data_dir;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -128,9 +128,9 @@ lapiz_taglist_plugin_activate (PeasActivatable *activatable)
 static void
 lapiz_taglist_plugin_deactivate (PeasActivatable *activatable)
 {
-	PlumaTaglistPluginPrivate *priv;
-	PlumaWindow *window;
-	PlumaPanel *side_panel;
+	LapizTaglistPluginPrivate *priv;
+	LapizWindow *window;
+	LapizPanel *side_panel;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -145,9 +145,9 @@ lapiz_taglist_plugin_deactivate (PeasActivatable *activatable)
 static void
 lapiz_taglist_plugin_update_state (PeasActivatable *activatable)
 {
-	PlumaTaglistPluginPrivate *priv;
-	PlumaWindow *window;
-	PlumaView *view;
+	LapizTaglistPluginPrivate *priv;
+	LapizWindow *window;
+	LapizView *view;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -166,7 +166,7 @@ lapiz_taglist_plugin_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-	PlumaTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
+	LapizTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -186,7 +186,7 @@ lapiz_taglist_plugin_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-	PlumaTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
+	LapizTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -201,7 +201,7 @@ lapiz_taglist_plugin_get_property (GObject    *object,
 }
 
 static void
-lapiz_taglist_plugin_class_init (PlumaTaglistPluginClass *klass)
+lapiz_taglist_plugin_class_init (LapizTaglistPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -214,7 +214,7 @@ lapiz_taglist_plugin_class_init (PlumaTaglistPluginClass *klass)
 }
 
 static void
-lapiz_taglist_plugin_class_finalize (PlumaTaglistPluginClass *klass)
+lapiz_taglist_plugin_class_finalize (LapizTaglistPluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }

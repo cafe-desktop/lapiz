@@ -29,36 +29,36 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_TAB_LABEL		(lapiz_tab_label_get_type ())
-#define LAPIZ_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabel))
-#define LAPIZ_TAB_LABEL_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabel const))
-#define LAPIZ_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabelClass))
+#define LAPIZ_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_TAB_LABEL, LapizTabLabel))
+#define LAPIZ_TAB_LABEL_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_TAB_LABEL, LapizTabLabel const))
+#define LAPIZ_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_TAB_LABEL, LapizTabLabelClass))
 #define LAPIZ_IS_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_TAB_LABEL))
 #define LAPIZ_IS_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_TAB_LABEL))
-#define LAPIZ_TAB_LABEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabelClass))
+#define LAPIZ_TAB_LABEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_TAB_LABEL, LapizTabLabelClass))
 
-typedef struct _PlumaTabLabel		PlumaTabLabel;
-typedef struct _PlumaTabLabelClass	PlumaTabLabelClass;
-typedef struct _PlumaTabLabelPrivate	PlumaTabLabelPrivate;
+typedef struct _LapizTabLabel		LapizTabLabel;
+typedef struct _LapizTabLabelClass	LapizTabLabelClass;
+typedef struct _LapizTabLabelPrivate	LapizTabLabelPrivate;
 
-struct _PlumaTabLabel {
+struct _LapizTabLabel {
 	GtkBox parent;
 
-	PlumaTabLabelPrivate *priv;
+	LapizTabLabelPrivate *priv;
 };
 
-struct _PlumaTabLabelClass {
+struct _LapizTabLabelClass {
 	GtkBoxClass parent_class;
 
-	void (* close_clicked)  (PlumaTabLabel *tab_label);
+	void (* close_clicked)  (LapizTabLabel *tab_label);
 };
 
 GType		 lapiz_tab_label_get_type (void) G_GNUC_CONST;
 
-GtkWidget 	*lapiz_tab_label_new (PlumaTab *tab);
+GtkWidget 	*lapiz_tab_label_new (LapizTab *tab);
 
-PlumaTab	*lapiz_tab_label_get_tab (PlumaTabLabel *tab_label);
+LapizTab	*lapiz_tab_label_get_tab (LapizTabLabel *tab_label);
 
-void		lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
+void		lapiz_tab_label_set_close_button_sensitive (LapizTabLabel *tab_label,
 							    gboolean       sensitive);
 
 G_END_DECLS

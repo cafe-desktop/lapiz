@@ -44,7 +44,7 @@ static GTimer *timer = NULL;
 static gdouble last = 0.0;
 #endif
 
-static PlumaDebugSection debug = LAPIZ_NO_DEBUG;
+static LapizDebugSection debug = LAPIZ_NO_DEBUG;
 
 void
 lapiz_debug_init (void)
@@ -97,7 +97,7 @@ out:
 }
 
 void
-lapiz_debug_message (PlumaDebugSection  section,
+lapiz_debug_message (LapizDebugSection  section,
 		     const gchar       *file,
 		     gint               line,
 		     const gchar       *function,
@@ -134,7 +134,7 @@ lapiz_debug_message (PlumaDebugSection  section,
 	}
 }
 
-void lapiz_debug (PlumaDebugSection  section,
+void lapiz_debug (LapizDebugSection  section,
 		  const gchar       *file,
 		  gint               line,
 		  const gchar       *function)

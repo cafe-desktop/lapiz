@@ -1,4 +1,4 @@
-snippets.ui://PlumaView[@id='source_view_snippet'] no-labelled-by
+snippets.ui://LapizView[@id='source_view_snippet'] no-labelled-by
 snippets.ui://GtkLabel[@id='label4'] orphan-label
 snippets.ui://GtkLabel[@id='label3'] orphan-label
 snippets.ui://GtkComboBox[@id='combo_drop_targets'] no-labelled-by

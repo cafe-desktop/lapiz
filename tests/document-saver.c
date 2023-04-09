@@ -83,17 +83,17 @@ saver_test_data_free (SaverTestData *data)
 	g_slice_free (SaverTestData, data);
 }
 
-static PlumaDocument *
+static LapizDocument *
 create_document (const gchar *contents)
 {
-	PlumaDocument *document = lapiz_document_new ();
+	LapizDocument *document = lapiz_document_new ();
 
 	gtk_text_buffer_set_text (GTK_TEXT_BUFFER (document), contents, -1);
 	return document;
 }
 
 static void
-complete_test_error (PlumaDocument *document,
+complete_test_error (LapizDocument *document,
                      GError        *error,
                      SaverTestData *data)
 {
@@ -126,7 +126,7 @@ read_file (const gchar *uri)
 }
 
 static void
-complete_test (PlumaDocument *document,
+complete_test (LapizDocument *document,
                GError        *error,
                SaverTestData *data)
 {
@@ -196,14 +196,14 @@ ensure_mounted (GFile *file)
 static void
 test_saver (const gchar              *filename_or_uri,
             const gchar              *contents,
-            PlumaDocumentNewlineType  newline_type,
-            PlumaDocumentSaveFlags    save_flags,
+            LapizDocumentNewlineType  newline_type,
+            LapizDocumentSaveFlags    save_flags,
             GCallback                 saved_callback,
             SaverTestData            *data)
 {
 	GFile *file;
 	gchar *uri;
-	PlumaDocument *document;
+	LapizDocument *document;
 	gboolean existed;
 
 	document = create_document (contents);
@@ -246,7 +246,7 @@ test_saver (const gchar              *filename_or_uri,
 
 typedef struct
 {
-	PlumaDocumentNewlineType type;
+	LapizDocumentNewlineType type;
 	const gchar *text;
 	const gchar *result;
 } NewLineTestData;
@@ -284,7 +284,7 @@ static NewLineTestData newline_test_data[] = {
 };
 
 static void
-test_new_line (const gchar *filename, PlumaDocumentSaveFlags save_flags)
+test_new_line (const gchar *filename, LapizDocumentSaveFlags save_flags)
 {
 	gint i;
 	gint num = sizeof (newline_test_data) / sizeof (NewLineTestData);
@@ -387,7 +387,7 @@ check_permissions (GFile *file,
 }
 
 static void
-check_permissions_saved (PlumaDocument *document,
+check_permissions_saved (LapizDocument *document,
                          GError        *error,
                          SaverTestData *data)
 {
@@ -496,7 +496,7 @@ test_remote_permissions ()
 }
 
 static void
-test_unowned_group_permissions (PlumaDocument *document,
+test_unowned_group_permissions (LapizDocument *document,
                                 GError        *error,
                                 SaverTestData *data)
 {

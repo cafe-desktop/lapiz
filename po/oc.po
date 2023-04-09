@@ -540,8 +540,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -549,7 +549,7 @@ msgstr "Un editor de tèxt per l’environament de burèu MATE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -558,7 +558,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -849,8 +849,8 @@ msgid "_Close"
 msgstr "_Tampar"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Preferéncias Pluma"
+msgid "Lapiz Preferences"
+msgstr "Preferéncias Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1261,29 +1261,29 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma es un pichon editor de tèxte leugièr pel burèu MATE"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz es un pichon editor de tèxte leugièr pel burèu MATE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma es un logicial liure ; lo podètz tornar distribuir e/o lo modificar "
+"Lapiz es un logicial liure ; lo podètz tornar distribuir e/o lo modificar "
 "segon los tèrmes de la licéncia publica generala GNU, coma es publicada per "
 "la Free Software Foundation ; version 2 de la licéncia, o (se volètz) tota "
 "version seguenta."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma es distribuit dins l'espèr que serà utile, mas SENS CAP DE GARANTIA ; "
+"Lapiz es distribuit dins l'espèr que serà utile, mas SENS CAP DE GARANTIA ; "
 "sens la quita garantia implicita de COMERCIABILITAT o DE CONFORMITAT A UNA "
 "UTILIZACION PARTICULARA. Vejatz la Licéncia Publica Generala GNU per mai de "
 "detalhs."
@@ -1291,16 +1291,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 "Deuriatz aver recebut una còpia de la Licéncia Publica Generala GNU al "
-"meteis temps que Pluma ; s'es pas lo cas, escrivètz a la Free Software "
+"meteis temps que Lapiz ; s'es pas lo cas, escrivètz a la Free Software "
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "A prepaus de Pluma"
+msgid "About Lapiz"
+msgstr "A prepaus de Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

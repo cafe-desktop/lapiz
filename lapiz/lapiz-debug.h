@@ -57,7 +57,7 @@ typedef enum {
 	LAPIZ_DEBUG_WINDOW   = 1 << 12,
 	LAPIZ_DEBUG_LOADER   = 1 << 13,
 	LAPIZ_DEBUG_SAVER    = 1 << 14
-} PlumaDebugSection;
+} LapizDebugSection;
 
 
 /* FIXME this is an issue for introspection */
@@ -79,12 +79,12 @@ typedef enum {
 
 void lapiz_debug_init (void);
 
-void lapiz_debug (PlumaDebugSection  section,
+void lapiz_debug (LapizDebugSection  section,
 		  const gchar       *file,
 		  gint               line,
 		  const gchar       *function);
 
-void lapiz_debug_message (PlumaDebugSection  section,
+void lapiz_debug_message (LapizDebugSection  section,
 			  const gchar       *file,
 			  gint               line,
 			  const gchar       *function,

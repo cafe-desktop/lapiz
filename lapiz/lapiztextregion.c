@@ -47,16 +47,16 @@ typedef struct _Subregion {
 	GtkTextMark *end;
 } Subregion;
 
-struct _PlumaTextRegion {
+struct _LapizTextRegion {
 	GtkTextBuffer *buffer;
 	GList         *subregions;
 	guint32        time_stamp;
 };
 
-typedef struct _PlumaTextRegionIteratorReal PlumaTextRegionIteratorReal;
+typedef struct _LapizTextRegionIteratorReal LapizTextRegionIteratorReal;
 
-struct _PlumaTextRegionIteratorReal {
-	PlumaTextRegion *region;
+struct _LapizTextRegionIteratorReal {
+	LapizTextRegion *region;
 	guint32        region_time_stamp;
 
 	GList         *subregions;
@@ -72,7 +72,7 @@ struct _PlumaTextRegionIteratorReal {
    the text iter or which is the leftmost; else return the rightmost
    subregion */
 static GList *
-find_nearest_subregion (PlumaTextRegion     *region,
+find_nearest_subregion (LapizTextRegion     *region,
 			const GtkTextIter *iter,
 			GList             *begin,
 			gboolean           leftmost,
@@ -119,14 +119,14 @@ find_nearest_subregion (PlumaTextRegion     *region,
    Public interface
    ---------------------------------------------------------------------- */
 
-PlumaTextRegion *
+LapizTextRegion *
 lapiz_text_region_new (GtkTextBuffer *buffer)
 {
-	PlumaTextRegion *region;
+	LapizTextRegion *region;
 
 	g_return_val_if_fail (buffer != NULL, NULL);
 
-	region = g_new (PlumaTextRegion, 1);
+	region = g_new (LapizTextRegion, 1);
 	region->buffer = buffer;
 	region->subregions = NULL;
 	region->time_stamp = 0;
@@ -135,7 +135,7 @@ lapiz_text_region_new (GtkTextBuffer *buffer)
 }
 
 void
-lapiz_text_region_destroy (PlumaTextRegion *region, gboolean delete_marks)
+lapiz_text_region_destroy (LapizTextRegion *region, gboolean delete_marks)
 {
 	g_return_if_fail (region != NULL);
 
@@ -156,7 +156,7 @@ lapiz_text_region_destroy (PlumaTextRegion *region, gboolean delete_marks)
 }
 
 GtkTextBuffer *
-lapiz_text_region_get_buffer (PlumaTextRegion *region)
+lapiz_text_region_get_buffer (LapizTextRegion *region)
 {
 	g_return_val_if_fail (region != NULL, NULL);
 
@@ -164,7 +164,7 @@ lapiz_text_region_get_buffer (PlumaTextRegion *region)
 }
 
 static void
-lapiz_text_region_clear_zero_length_subregions (PlumaTextRegion *region)
+lapiz_text_region_clear_zero_length_subregions (LapizTextRegion *region)
 {
 	GtkTextIter start, end;
 	GList *node;
@@ -193,7 +193,7 @@ lapiz_text_region_clear_zero_length_subregions (PlumaTextRegion *region)
 }
 
 void
-lapiz_text_region_add (PlumaTextRegion     *region,
+lapiz_text_region_add (LapizTextRegion     *region,
 		     const GtkTextIter *_start,
 		     const GtkTextIter *_end)
 {
@@ -278,7 +278,7 @@ lapiz_text_region_add (PlumaTextRegion     *region,
 }
 
 void
-lapiz_text_region_subtract (PlumaTextRegion     *region,
+lapiz_text_region_subtract (LapizTextRegion     *region,
 			  const GtkTextIter *_start,
 			  const GtkTextIter *_end)
 {
@@ -403,7 +403,7 @@ lapiz_text_region_subtract (PlumaTextRegion     *region,
 }
 
 gint
-lapiz_text_region_subregions (PlumaTextRegion *region)
+lapiz_text_region_subregions (LapizTextRegion *region)
 {
 	g_return_val_if_fail (region != NULL, 0);
 
@@ -411,7 +411,7 @@ lapiz_text_region_subregions (PlumaTextRegion *region)
 }
 
 gboolean
-lapiz_text_region_nth_subregion (PlumaTextRegion *region,
+lapiz_text_region_nth_subregion (LapizTextRegion *region,
 			       guint          subregion,
 			       GtkTextIter   *start,
 			       GtkTextIter   *end)
@@ -432,8 +432,8 @@ lapiz_text_region_nth_subregion (PlumaTextRegion *region,
 	return TRUE;
 }
 
-PlumaTextRegion *
-lapiz_text_region_intersect (PlumaTextRegion     *region,
+LapizTextRegion *
+lapiz_text_region_intersect (LapizTextRegion     *region,
 			   const GtkTextIter *_start,
 			   const GtkTextIter *_end)
 {
@@ -441,7 +441,7 @@ lapiz_text_region_intersect (PlumaTextRegion     *region,
 	GtkTextIter sr_start_iter, sr_end_iter;
 	Subregion *sr, *new_sr;
 	gboolean done;
-	PlumaTextRegion *new_region;
+	LapizTextRegion *new_region;
 	GtkTextIter start, end;
 
 	g_return_val_if_fail (region != NULL && _start != NULL && _end != NULL, NULL);
@@ -535,7 +535,7 @@ lapiz_text_region_intersect (PlumaTextRegion     *region,
 }
 
 static gboolean
-check_iterator (PlumaTextRegionIteratorReal *real)
+check_iterator (LapizTextRegionIteratorReal *real)
 {
 	if ((real->region == NULL) ||
 	    (real->region_time_stamp != real->region->time_stamp))
@@ -552,16 +552,16 @@ check_iterator (PlumaTextRegionIteratorReal *real)
 }
 
 void
-lapiz_text_region_get_iterator (PlumaTextRegion         *region,
-                              PlumaTextRegionIterator *iter,
+lapiz_text_region_get_iterator (LapizTextRegion         *region,
+                              LapizTextRegionIterator *iter,
                               guint                  start)
 {
-	PlumaTextRegionIteratorReal *real;
+	LapizTextRegionIteratorReal *real;
 
 	g_return_if_fail (region != NULL);
 	g_return_if_fail (iter != NULL);
 
-	real = (PlumaTextRegionIteratorReal *)iter;
+	real = (LapizTextRegionIteratorReal *)iter;
 
 	/* region->subregions may be NULL, -> end iter */
 
@@ -571,26 +571,26 @@ lapiz_text_region_get_iterator (PlumaTextRegion         *region,
 }
 
 gboolean
-lapiz_text_region_iterator_is_end (PlumaTextRegionIterator *iter)
+lapiz_text_region_iterator_is_end (LapizTextRegionIterator *iter)
 {
-	PlumaTextRegionIteratorReal *real;
+	LapizTextRegionIteratorReal *real;
 
 	g_return_val_if_fail (iter != NULL, FALSE);
 
-	real = (PlumaTextRegionIteratorReal *)iter;
+	real = (LapizTextRegionIteratorReal *)iter;
 	g_return_val_if_fail (check_iterator (real), FALSE);
 
 	return (real->subregions == NULL);
 }
 
 gboolean
-lapiz_text_region_iterator_next (PlumaTextRegionIterator *iter)
+lapiz_text_region_iterator_next (LapizTextRegionIterator *iter)
 {
-	PlumaTextRegionIteratorReal *real;
+	LapizTextRegionIteratorReal *real;
 
 	g_return_val_if_fail (iter != NULL, FALSE);
 
-	real = (PlumaTextRegionIteratorReal *)iter;
+	real = (LapizTextRegionIteratorReal *)iter;
 	g_return_val_if_fail (check_iterator (real), FALSE);
 
 	if (real->subregions != NULL) {
@@ -602,16 +602,16 @@ lapiz_text_region_iterator_next (PlumaTextRegionIterator *iter)
 }
 
 void
-lapiz_text_region_iterator_get_subregion (PlumaTextRegionIterator *iter,
+lapiz_text_region_iterator_get_subregion (LapizTextRegionIterator *iter,
 					GtkTextIter           *start,
 					GtkTextIter           *end)
 {
-	PlumaTextRegionIteratorReal *real;
+	LapizTextRegionIteratorReal *real;
 	Subregion *sr;
 
 	g_return_if_fail (iter != NULL);
 
-	real = (PlumaTextRegionIteratorReal *)iter;
+	real = (LapizTextRegionIteratorReal *)iter;
 	g_return_if_fail (check_iterator (real));
 	g_return_if_fail (real->subregions != NULL);
 
@@ -625,7 +625,7 @@ lapiz_text_region_iterator_get_subregion (PlumaTextRegionIterator *iter,
 }
 
 void
-lapiz_text_region_debug_print (PlumaTextRegion *region)
+lapiz_text_region_debug_print (LapizTextRegion *region)
 {
 	GList *l;
 

@@ -61,8 +61,8 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
-msgstr "Pluma Manual"
+msgid "Lapiz Manual"
+msgstr "Lapiz Manual"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -248,7 +248,7 @@ msgstr "Menu <guimenu>Aplicativos</guimenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 
@@ -1755,8 +1755,8 @@ msgstr "Ctrl + Q"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
-msgstr "Fechar Pluma."
+msgid "Quit Lapiz."
+msgstr "Fechar Lapiz."
 
 #. (itstool) path: section/bridgehead
 #: C/index.docbook:1202

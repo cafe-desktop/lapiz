@@ -42,45 +42,45 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_VIEW            (lapiz_view_get_type ())
-#define LAPIZ_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_VIEW, PlumaView))
-#define LAPIZ_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_VIEW, PlumaViewClass))
+#define LAPIZ_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_VIEW, LapizView))
+#define LAPIZ_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_VIEW, LapizViewClass))
 #define LAPIZ_IS_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_VIEW))
 #define LAPIZ_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_VIEW))
-#define LAPIZ_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_VIEW, PlumaViewClass))
+#define LAPIZ_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_VIEW, LapizViewClass))
 
 /* Private structure type */
-typedef struct _PlumaViewPrivate	PlumaViewPrivate;
+typedef struct _LapizViewPrivate	LapizViewPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaView		PlumaView;
+typedef struct _LapizView		LapizView;
 
-struct _PlumaView
+struct _LapizView
 {
 	GtkSourceView view;
 
 	/*< private > */
-	PlumaViewPrivate *priv;
+	LapizViewPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaViewClass		PlumaViewClass;
+typedef struct _LapizViewClass		LapizViewClass;
 
-struct _PlumaViewClass
+struct _LapizViewClass
 {
 	GtkSourceViewClass parent_class;
 
 	/* FIXME: Do we need placeholders ? */
 
 	/* Key bindings */
-	gboolean (* start_interactive_search)	(PlumaView       *view);
-	gboolean (* start_interactive_goto_line)(PlumaView       *view);
-	gboolean (* reset_searched_text)	(PlumaView       *view);
+	gboolean (* start_interactive_search)	(LapizView       *view);
+	gboolean (* start_interactive_goto_line)(LapizView       *view);
+	gboolean (* reset_searched_text)	(LapizView       *view);
 
-	void	 (* drop_uris)			(PlumaView	 *view,
+	void	 (* drop_uris)			(LapizView	 *view,
 						 gchar          **uri_list);
 };
 
@@ -89,21 +89,21 @@ struct _PlumaViewClass
  */
 GType		 lapiz_view_get_type     	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_view_new			(PlumaDocument   *doc);
+GtkWidget	*lapiz_view_new			(LapizDocument   *doc);
 
-void		 lapiz_view_cut_clipboard 	(PlumaView       *view);
-void		 lapiz_view_copy_clipboard 	(PlumaView       *view);
-void		 lapiz_view_paste_clipboard	(PlumaView       *view);
-void		 lapiz_view_delete_selection	(PlumaView       *view);
-void		 lapiz_view_select_all		(PlumaView       *view);
+void		 lapiz_view_cut_clipboard 	(LapizView       *view);
+void		 lapiz_view_copy_clipboard 	(LapizView       *view);
+void		 lapiz_view_paste_clipboard	(LapizView       *view);
+void		 lapiz_view_delete_selection	(LapizView       *view);
+void		 lapiz_view_select_all		(LapizView       *view);
 
-void		 lapiz_view_scroll_to_cursor 	(PlumaView       *view);
+void		 lapiz_view_scroll_to_cursor 	(LapizView       *view);
 
 void		 lapiz_override_font		(const gchar          *item,
 						 GtkWidget            *widget,
 						 PangoFontDescription *font);
 
-void 		 lapiz_view_set_font		(PlumaView       *view,
+void 		 lapiz_view_set_font		(LapizView       *view,
 						 gboolean         def,
 						 const gchar     *font_name);
 

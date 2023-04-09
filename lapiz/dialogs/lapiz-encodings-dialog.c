@@ -46,7 +46,7 @@
 #include "lapiz-help.h"
 #include "lapiz-dirs.h"
 
-struct _PlumaEncodingsDialogPrivate
+struct _LapizEncodingsDialogPrivate
 {
 	GtkListStore	*available_liststore;
 	GtkListStore	*displayed_liststore;
@@ -58,12 +58,12 @@ struct _PlumaEncodingsDialogPrivate
 	GSList		*show_in_menu_list;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaEncodingsDialog, lapiz_encodings_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizEncodingsDialog, lapiz_encodings_dialog, GTK_TYPE_DIALOG)
 
 static void
 lapiz_encodings_dialog_finalize (GObject *object)
 {
-	PlumaEncodingsDialogPrivate *priv = LAPIZ_ENCODINGS_DIALOG (object)->priv;
+	LapizEncodingsDialogPrivate *priv = LAPIZ_ENCODINGS_DIALOG (object)->priv;
 
 	g_slist_free (priv->show_in_menu_list);
 
@@ -71,7 +71,7 @@ lapiz_encodings_dialog_finalize (GObject *object)
 }
 
 static void
-lapiz_encodings_dialog_class_init (PlumaEncodingsDialogClass *klass)
+lapiz_encodings_dialog_class_init (LapizEncodingsDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -97,7 +97,7 @@ count_selected_items_func (GtkTreeModel *model,
 
 static void
 available_selection_changed_callback (GtkTreeSelection     *selection,
-				      PlumaEncodingsDialog *dialogs)
+				      LapizEncodingsDialog *dialogs)
 {
 	int count;
 
@@ -111,7 +111,7 @@ available_selection_changed_callback (GtkTreeSelection     *selection,
 
 static void
 displayed_selection_changed_callback (GtkTreeSelection     *selection,
-				      PlumaEncodingsDialog *dialogs)
+				      LapizEncodingsDialog *dialogs)
 {
 	int count;
 
@@ -131,7 +131,7 @@ get_selected_encodings_func (GtkTreeModel *model,
 {
 	GSList **list = data;
 	gchar *charset;
-	const PlumaEncoding *enc;
+	const LapizEncoding *enc;
 
 	charset = NULL;
 	gtk_tree_model_get (model, iter, COLUMN_CHARSET, &charset, -1);
@@ -152,9 +152,9 @@ update_shown_in_menu_tree_model (GtkListStore *store,
 
 	while (list != NULL)
 	{
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 
-		enc = (const PlumaEncoding*) list->data;
+		enc = (const LapizEncoding*) list->data;
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -169,7 +169,7 @@ update_shown_in_menu_tree_model (GtkListStore *store,
 
 static void
 add_button_clicked_callback (GtkWidget            *button,
-			     PlumaEncodingsDialog *dialog)
+			     LapizEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	GSList *encodings;
@@ -200,7 +200,7 @@ add_button_clicked_callback (GtkWidget            *button,
 
 static void
 remove_button_clicked_callback (GtkWidget            *button,
-				PlumaEncodingsDialog *dialog)
+				LapizEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	GSList *encodings;
@@ -229,7 +229,7 @@ remove_button_clicked_callback (GtkWidget            *button,
 }
 
 static void
-init_shown_in_menu_tree_model (PlumaEncodingsDialog *dialog)
+init_shown_in_menu_tree_model (LapizEncodingsDialog *dialog)
 {
 	GtkTreeIter iter;
 	GSList *list, *tmp;
@@ -241,9 +241,9 @@ init_shown_in_menu_tree_model (PlumaEncodingsDialog *dialog)
 
 	while (tmp != NULL)
 	{
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 
-		enc = (const PlumaEncoding *) tmp->data;
+		enc = (const LapizEncoding *) tmp->data;
 
 		dialog->priv->show_in_menu_list = g_slist_prepend (dialog->priv->show_in_menu_list,
 								   tmp->data);
@@ -266,7 +266,7 @@ init_shown_in_menu_tree_model (PlumaEncodingsDialog *dialog)
 static void
 response_handler (GtkDialog            *dialog,
 		  gint                  response_id,
-                  PlumaEncodingsDialog *dlg)
+                  LapizEncodingsDialog *dlg)
 {
 	if (response_id == GTK_RESPONSE_HELP)
 	{
@@ -283,7 +283,7 @@ response_handler (GtkDialog            *dialog,
 }
 
 static void
-lapiz_encodings_dialog_init (PlumaEncodingsDialog *dlg)
+lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 {
 	GtkWidget *content;
 	GtkCellRenderer *cell_renderer;
@@ -291,7 +291,7 @@ lapiz_encodings_dialog_init (PlumaEncodingsDialog *dlg)
 	GtkTreeViewColumn *column;
 	GtkTreeIter parent_iter;
 	GtkTreeSelection *selection;
-	const PlumaEncoding *enc;
+	const LapizEncoding *enc;
 	GtkWidget *error_widget;
 	int i;
 	gboolean ret;

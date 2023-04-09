@@ -133,7 +133,7 @@ typedef enum {
 	LAPIZ_TOOLBAR_ICONS,
 	LAPIZ_TOOLBAR_ICONS_AND_TEXT,
 	LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ
-} PlumaToolbarSetting;
+} LapizToolbarSetting;
 
 /* LIFE CYCLE MANAGEMENT FUNCTIONS */
 
@@ -209,8 +209,8 @@ void			 lapiz_prefs_manager_set_toolbar_visible	(gboolean tv);
 gboolean		 lapiz_prefs_manager_toolbar_visible_can_set	(void);
 
 /* Toolbar buttons style */
-PlumaToolbarSetting 	 lapiz_prefs_manager_get_toolbar_buttons_style	(void);
-void 			 lapiz_prefs_manager_set_toolbar_buttons_style	(PlumaToolbarSetting tbs);
+LapizToolbarSetting 	 lapiz_prefs_manager_get_toolbar_buttons_style	(void);
+void 			 lapiz_prefs_manager_set_toolbar_buttons_style	(LapizToolbarSetting tbs);
 gboolean		 lapiz_prefs_manager_toolbar_buttons_style_can_set (void);
 
 /* Statusbar visible */
@@ -330,7 +330,7 @@ void			 lapiz_prefs_manager_set_active_plugins		(const GSList *plugins);
 gboolean 		 lapiz_prefs_manager_active_plugins_can_set	(void);
 
 /* Global lockdown */
-PlumaLockdownMask	 lapiz_prefs_manager_get_lockdown			(void);
+LapizLockdownMask	 lapiz_prefs_manager_get_lockdown			(void);
 
 /* GSettings utilities */
 GSList*				 lapiz_prefs_manager_get_gslist (GSettings *settings, const gchar *key);

@@ -36,26 +36,26 @@
 
 G_BEGIN_DECLS
 
-typedef struct _PlumaEncoding PlumaEncoding;
+typedef struct _LapizEncoding LapizEncoding;
 
 #define LAPIZ_TYPE_ENCODING     (lapiz_encoding_get_type ())
 
 GType              	 lapiz_encoding_get_type (void) G_GNUC_CONST;
 
-const PlumaEncoding	*lapiz_encoding_get_from_charset (const gchar         *charset);
-const PlumaEncoding	*lapiz_encoding_get_from_index	 (gint                 index);
+const LapizEncoding	*lapiz_encoding_get_from_charset (const gchar         *charset);
+const LapizEncoding	*lapiz_encoding_get_from_index	 (gint                 index);
 
-gchar 			*lapiz_encoding_to_string	 (const PlumaEncoding *enc);
+gchar 			*lapiz_encoding_to_string	 (const LapizEncoding *enc);
 
-const gchar		*lapiz_encoding_get_name	 (const PlumaEncoding *enc);
-const gchar		*lapiz_encoding_get_charset	 (const PlumaEncoding *enc);
+const gchar		*lapiz_encoding_get_name	 (const LapizEncoding *enc);
+const gchar		*lapiz_encoding_get_charset	 (const LapizEncoding *enc);
 
-const PlumaEncoding 	*lapiz_encoding_get_utf8	 (void);
-const PlumaEncoding 	*lapiz_encoding_get_current	 (void);
+const LapizEncoding 	*lapiz_encoding_get_utf8	 (void);
+const LapizEncoding 	*lapiz_encoding_get_current	 (void);
 
 /* These should not be used, they are just to make python bindings happy */
-PlumaEncoding		*lapiz_encoding_copy		 (const PlumaEncoding *enc);
-void               	 lapiz_encoding_free		 (PlumaEncoding       *enc);
+LapizEncoding		*lapiz_encoding_copy		 (const LapizEncoding *enc);
+void               	 lapiz_encoding_free		 (LapizEncoding       *enc);
 
 G_END_DECLS
 

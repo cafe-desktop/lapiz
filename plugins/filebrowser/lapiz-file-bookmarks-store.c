@@ -1,5 +1,5 @@
 /*
- * lapiz-file-bookmarks-store.c - Pluma plugin providing easy file access
+ * lapiz-file-bookmarks-store.c - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -27,7 +27,7 @@
 #include "lapiz-file-bookmarks-store.h"
 #include "lapiz-file-browser-utils.h"
 
-struct _PlumaFileBookmarksStorePrivate
+struct _LapizFileBookmarksStorePrivate
 {
 	GVolumeMonitor * volume_monitor;
 	GFileMonitor * bookmarks_monitor;
@@ -38,29 +38,29 @@ static void remove_node               (GtkTreeModel * model,
 
 static void on_fs_changed             (GVolumeMonitor 		*monitor,
                                        GObject 			*object,
-                                       PlumaFileBookmarksStore 	*model);
+                                       LapizFileBookmarksStore 	*model);
 
 static void on_bookmarks_file_changed (GFileMonitor * monitor,
 				       GFile * file,
 				       GFile * other_file,
 				       GFileMonitorEvent event_type,
-				       PlumaFileBookmarksStore * model);
+				       LapizFileBookmarksStore * model);
 static gboolean find_with_flags       (GtkTreeModel * model,
                                        GtkTreeIter * iter,
                                        gpointer obj,
                                        guint flags,
                                        guint notflags);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBookmarksStore,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBookmarksStore,
                                 lapiz_file_bookmarks_store,
                                 GTK_TYPE_TREE_STORE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaFileBookmarksStore))
+                                G_ADD_PRIVATE_DYNAMIC (LapizFileBookmarksStore))
 
 static void
 lapiz_file_bookmarks_store_dispose (GObject * object)
 {
-	PlumaFileBookmarksStore *obj = LAPIZ_FILE_BOOKMARKS_STORE (object);
+	LapizFileBookmarksStore *obj = LAPIZ_FILE_BOOKMARKS_STORE (object);
 
 	if (obj->priv->volume_monitor != NULL) {
 		g_signal_handlers_disconnect_by_func (obj->priv->volume_monitor,
@@ -86,7 +86,7 @@ lapiz_file_bookmarks_store_finalize (GObject * object)
 }
 
 static void
-lapiz_file_bookmarks_store_class_init (PlumaFileBookmarksStoreClass *klass)
+lapiz_file_bookmarks_store_class_init (LapizFileBookmarksStoreClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -95,20 +95,20 @@ lapiz_file_bookmarks_store_class_init (PlumaFileBookmarksStoreClass *klass)
 }
 
 static void
-lapiz_file_bookmarks_store_class_finalize (PlumaFileBookmarksStoreClass *klass)
+lapiz_file_bookmarks_store_class_finalize (LapizFileBookmarksStoreClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
 
 static void
-lapiz_file_bookmarks_store_init (PlumaFileBookmarksStore * obj)
+lapiz_file_bookmarks_store_init (LapizFileBookmarksStore * obj)
 {
 	obj->priv = lapiz_file_bookmarks_store_get_instance_private (obj);
 }
 
 /* Private */
 static void
-add_node (PlumaFileBookmarksStore *model,
+add_node (LapizFileBookmarksStore *model,
 	  GdkPixbuf 		  *pixbuf,
 	  const gchar 		  *name,
 	  GObject 		  *obj,
@@ -131,7 +131,7 @@ add_node (PlumaFileBookmarksStore *model,
 }
 
 static gboolean
-add_file (PlumaFileBookmarksStore *model,
+add_file (LapizFileBookmarksStore *model,
 	  GFile 		  *file,
 	  const gchar 		  *name,
 	  guint 		   flags,
@@ -180,7 +180,7 @@ add_file (PlumaFileBookmarksStore *model,
 }
 
 static void
-check_mount_separator (PlumaFileBookmarksStore * model, guint flags,
+check_mount_separator (LapizFileBookmarksStore * model, guint flags,
 			gboolean added)
 {
 	GtkTreeIter iter;
@@ -202,7 +202,7 @@ check_mount_separator (PlumaFileBookmarksStore * model, guint flags,
 }
 
 static void
-init_special_directories (PlumaFileBookmarksStore * model)
+init_special_directories (LapizFileBookmarksStore * model)
 {
 	gchar const *path;
 	GFile * file;
@@ -284,7 +284,7 @@ get_fs_properties (gpointer    fs,
 
 
 static void
-add_fs (PlumaFileBookmarksStore *model,
+add_fs (LapizFileBookmarksStore *model,
 	gpointer 		 fs,
 	guint 			 flags,
 	GtkTreeIter		*iter)
@@ -305,7 +305,7 @@ add_fs (PlumaFileBookmarksStore *model,
 
 static void
 process_volume_cb (GVolume 		   *volume,
-		   PlumaFileBookmarksStore *model)
+		   LapizFileBookmarksStore *model)
 {
 	GMount *mount;
 	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_NONE;
@@ -327,7 +327,7 @@ process_volume_cb (GVolume 		   *volume,
 }
 
 static void
-process_drive_novolumes (PlumaFileBookmarksStore *model,
+process_drive_novolumes (LapizFileBookmarksStore *model,
 			 GDrive			 *drive)
 {
 	if (g_drive_is_media_removable (drive) &&
@@ -344,7 +344,7 @@ process_drive_novolumes (PlumaFileBookmarksStore *model,
 
 static void
 process_drive_cb (GDrive   	          *drive,
-	          PlumaFileBookmarksStore *model)
+	          LapizFileBookmarksStore *model)
 {
 	GList *volumes;
 
@@ -363,7 +363,7 @@ process_drive_cb (GDrive   	          *drive,
 }
 
 static void
-init_drives (PlumaFileBookmarksStore *model)
+init_drives (LapizFileBookmarksStore *model)
 {
 	GList *drives;
 
@@ -376,7 +376,7 @@ init_drives (PlumaFileBookmarksStore *model)
 
 static void
 process_volume_nodrive_cb (GVolume 		   *volume,
-			   PlumaFileBookmarksStore *model)
+			   LapizFileBookmarksStore *model)
 {
 	GDrive *drive;
 
@@ -392,7 +392,7 @@ process_volume_nodrive_cb (GVolume 		   *volume,
 }
 
 static void
-init_volumes (PlumaFileBookmarksStore *model)
+init_volumes (LapizFileBookmarksStore *model)
 {
 	GList *volumes;
 
@@ -405,7 +405,7 @@ init_volumes (PlumaFileBookmarksStore *model)
 
 static void
 process_mount_novolume_cb (GMount 		   *mount,
-			   PlumaFileBookmarksStore *model)
+			   LapizFileBookmarksStore *model)
 {
 	GVolume *volume;
 
@@ -423,7 +423,7 @@ process_mount_novolume_cb (GMount 		   *mount,
 }
 
 static void
-init_mounts (PlumaFileBookmarksStore *model)
+init_mounts (LapizFileBookmarksStore *model)
 {
 	GList *mounts;
 
@@ -435,7 +435,7 @@ init_mounts (PlumaFileBookmarksStore *model)
 }
 
 static void
-init_fs (PlumaFileBookmarksStore * model)
+init_fs (LapizFileBookmarksStore * model)
 {
 	if (model->priv->volume_monitor == NULL) {
 		const gchar **ptr;
@@ -468,7 +468,7 @@ init_fs (PlumaFileBookmarksStore * model)
 }
 
 static gboolean
-add_bookmark (PlumaFileBookmarksStore * model,
+add_bookmark (LapizFileBookmarksStore * model,
 	      gchar const * name,
 	      gchar const * uri)
 {
@@ -505,7 +505,7 @@ get_legacy_bookmarks_file (void)
 }
 
 static gboolean
-parse_bookmarks_file (PlumaFileBookmarksStore *model,
+parse_bookmarks_file (LapizFileBookmarksStore *model,
 		      const gchar             *bookmarks,
 		      gboolean                *added)
 {
@@ -575,7 +575,7 @@ parse_bookmarks_file (PlumaFileBookmarksStore *model,
 }
 
 static void
-init_bookmarks (PlumaFileBookmarksStore *model)
+init_bookmarks (LapizFileBookmarksStore *model)
 {
 	gchar *bookmarks;
 	gboolean added = FALSE;
@@ -773,7 +773,7 @@ remove_node (GtkTreeModel * model, GtkTreeIter * iter)
 }
 
 static void
-remove_bookmarks (PlumaFileBookmarksStore * model)
+remove_bookmarks (LapizFileBookmarksStore * model)
 {
 	GtkTreeIter iter;
 
@@ -785,7 +785,7 @@ remove_bookmarks (PlumaFileBookmarksStore * model)
 }
 
 static void
-initialize_fill (PlumaFileBookmarksStore * model)
+initialize_fill (LapizFileBookmarksStore * model)
 {
 	init_special_directories (model);
 	init_fs (model);
@@ -793,10 +793,10 @@ initialize_fill (PlumaFileBookmarksStore * model)
 }
 
 /* Public */
-PlumaFileBookmarksStore *
+LapizFileBookmarksStore *
 lapiz_file_bookmarks_store_new (void)
 {
-	PlumaFileBookmarksStore *model;
+	LapizFileBookmarksStore *model;
 	GType column_types[] = {
 		GDK_TYPE_PIXBUF,
 		G_TYPE_STRING,
@@ -822,7 +822,7 @@ lapiz_file_bookmarks_store_new (void)
 }
 
 gchar *
-lapiz_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
+lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
 				    GtkTreeIter * iter)
 {
 	GObject * obj;
@@ -867,7 +867,7 @@ lapiz_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
 }
 
 void
-lapiz_file_bookmarks_store_refresh (PlumaFileBookmarksStore * model)
+lapiz_file_bookmarks_store_refresh (LapizFileBookmarksStore * model)
 {
 	gtk_tree_store_clear (GTK_TREE_STORE (model));
 	initialize_fill (model);
@@ -876,7 +876,7 @@ lapiz_file_bookmarks_store_refresh (PlumaFileBookmarksStore * model)
 static void
 on_fs_changed (GVolumeMonitor 	      *monitor,
 	       GObject 		      *object,
-	       PlumaFileBookmarksStore *model)
+	       LapizFileBookmarksStore *model)
 {
 	GtkTreeModel *tree_model = GTK_TREE_MODEL (model);
 	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_IS_FS;
@@ -896,7 +896,7 @@ on_bookmarks_file_changed (GFileMonitor * monitor,
 			   GFile * file,
 			   GFile * other_file,
 			   GFileMonitorEvent event_type,
-			   PlumaFileBookmarksStore * model)
+			   LapizFileBookmarksStore * model)
 {
 	switch (event_type) {
 	case G_FILE_MONITOR_EVENT_CHANGED:

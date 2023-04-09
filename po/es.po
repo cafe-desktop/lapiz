@@ -50,7 +50,7 @@ msgid ""
 "font."
 msgstr ""
 "Si debe usarse la tipografía predeterminada del sistema en vez de la "
-"tipografía especificada por Pluma. Si esta opción se desactiva,  se usa la "
+"tipografía especificada por Lapiz. Si esta opción se desactiva,  se usa la "
 "tipografía mencionada en la opción «Tipografía del editor» en vez de la "
 "tipografía del sistema."
 
@@ -111,7 +111,7 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Si Pluma debe crear copias de seguridad de los archivos que guarda. Puede "
+"Si Lapiz debe crear copias de seguridad de los archivos que guarda. Puede "
 "configurar la extensión de los archivos de copia de seguridad con la opción "
 "«Extensión de las copias de seguridad»."
 
@@ -125,7 +125,7 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"Si Pluma debe guardar automáticamente los archivos modificados tras un "
+"Si Lapiz debe guardar automáticamente los archivos modificados tras un "
 "intervalo de tiempo. El intervalo de tiempo se puede configurar con la "
 "opción de intervalo para el guardado automático."
 
@@ -138,7 +138,7 @@ msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Número de minutos tras los cuales Pluma guardará automáticamente los "
+"Número de minutos tras los cuales Lapiz guardará automáticamente los "
 "archivos modificados. Solo tendrá efecto si la opción de guardar "
 "automáticamente está activada."
 
@@ -159,7 +159,7 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"Lista de esquemas VFS que admite Pluma en modo escritura. El esquema «file» "
+"Lista de esquemas VFS que admite Lapiz en modo escritura. El esquema «file» "
 "es escribible por defecto."
 
 #: data/org.mate.lapiz.gschema.xml.in:61
@@ -171,7 +171,7 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Número máximo de acciones que Pluma puede deshacer o rehacer. Use «-1» para "
+"Número máximo de acciones que Lapiz puede deshacer o rehacer. Use «-1» para "
 "un número ilimitado de acciones."
 
 #: data/org.mate.lapiz.gschema.xml.in:66
@@ -211,7 +211,7 @@ msgstr "Insertar espacios"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Si Pluma debe insertar espacios en vez de tabuladores."
+msgstr "Si Lapiz debe insertar espacios en vez de tabuladores."
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -219,7 +219,7 @@ msgstr "Sangría automática"
 
 #: data/org.mate.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
-msgstr "Si Pluma debe activar la sangría automática."
+msgstr "Si Lapiz debe activar la sangría automática."
 
 #: data/org.mate.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
@@ -227,7 +227,7 @@ msgstr "Mostrar los números de línea"
 
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
-msgstr "Si Pluma debe mostrar números de línea en el área de edición."
+msgstr "Si Lapiz debe mostrar números de línea en el área de edición."
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -235,7 +235,7 @@ msgstr "Resaltar la línea actual"
 
 #: data/org.mate.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
-msgstr "Si Pluma debe resaltar la línea actual."
+msgstr "Si Lapiz debe resaltar la línea actual."
 
 #: data/org.mate.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
@@ -243,7 +243,7 @@ msgstr "Resaltar el corchete correspondiente"
 
 #: data/org.mate.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
-msgstr "Si Pluma debe resaltar el corchete que coincide con el seleccionado."
+msgstr "Si Lapiz debe resaltar el corchete que coincide con el seleccionado."
 
 #: data/org.mate.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
@@ -251,7 +251,7 @@ msgstr "Mostrar el margen derecho"
 
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
-msgstr "Si Pluma debe mostrar el margen derecho en el área de edición."
+msgstr "Si Lapiz debe mostrar el margen derecho en el área de edición."
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -293,7 +293,7 @@ msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Si Pluma debe restaurar la posición anterior del cursor cuando se carga un "
+"Si Lapiz debe restaurar la posición anterior del cursor cuando se carga un "
 "archivo."
 
 #: data/org.mate.lapiz.gschema.xml.in:121
@@ -303,7 +303,7 @@ msgstr "Activar el resalte de búsqueda"
 #: data/org.mate.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
-msgstr "Si Pluma debe resaltar todas las apariciones del texto buscado."
+msgstr "Si Lapiz debe resaltar todas las apariciones del texto buscado."
 
 #: data/org.mate.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
@@ -311,7 +311,7 @@ msgstr "Activar el resalte de sintaxis"
 
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr "Si Pluma debe activar el resaltado de sintaxis."
+msgstr "Si Lapiz debe activar el resaltado de sintaxis."
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -374,7 +374,7 @@ msgstr "Mostrar pestañas con panel lateral"
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
-"Si se desactiva, Pluma ocultará las pestañas con el panel lateral activo."
+"Si se desactiva, Lapiz ocultará las pestañas con el panel lateral activo."
 
 #: data/org.mate.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
@@ -405,7 +405,7 @@ msgstr "Imprimir el resaltado de sintaxis"
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
-"Si Pluma debe imprimir el resaltado de sintaxis al imprimir documentos."
+"Si Lapiz debe imprimir el resaltado de sintaxis al imprimir documentos."
 
 #: data/org.mate.lapiz.gschema.xml.in:171
 msgid "Print Header"
@@ -415,7 +415,7 @@ msgstr "Imprimir cabecera"
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr ""
-"Si Pluma debe incluir una cabecera del documento al imprimir archivos."
+"Si Lapiz debe incluir una cabecera del documento al imprimir archivos."
 
 #: data/org.mate.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
@@ -447,7 +447,7 @@ msgid ""
 "lines."
 msgstr ""
 "Si este valor es cero, no se insertan números de líneas al imprimir el "
-"documento. En otro caso, Pluma imprime los números de línea cada dicha "
+"documento. En otro caso, Lapiz imprime los números de línea cada dicha "
 "cantidad de líneas."
 
 #: data/org.mate.lapiz.gschema.xml.in:185
@@ -517,7 +517,7 @@ msgid ""
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
 " recognized encodings are used."
 msgstr ""
-"Lista ordenada de codificaciones que usa Pluma para detectar automáticamente"
+"Lista ordenada de codificaciones que usa Lapiz para detectar automáticamente"
 " la codificación de un archivo. «CURRENT» (ACTUAL) es la codificación de la "
 "configuración regional actual. Solo se usan las codificaciones reconocidas."
 
@@ -565,7 +565,7 @@ msgid ""
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
 "Lista de complementos activos. Contiene la ubicación de los complementos "
-"activos. Consulte el archivo .Pluma-plugin para obtener la ubicación de un "
+"activos. Consulte el archivo .Lapiz-plugin para obtener la ubicación de un "
 "complemento dado."
 
 #: data/org.mate.lapiz.gschema.xml.in:226
@@ -575,7 +575,7 @@ msgstr "Mostrar los saltos de línia"
 #: data/org.mate.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
 msgstr ""
-"Si Pluma debería mostrar los saltos de línea en la ventana del editor."
+"Si Lapiz debería mostrar los saltos de línea en la ventana del editor."
 
 #: data/org.mate.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
@@ -587,7 +587,7 @@ msgid ""
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
-"Si Pluma debería mostrar los espacios duros en la ventana del editor: «draw-"
+"Si Lapiz debería mostrar los espacios duros en la ventana del editor: «draw-"
 "none» no los muestra; «draw-trailing» muestra solo los espacios al final de "
 "línea; «draw-all» muestra todos los espacios."
 
@@ -601,7 +601,7 @@ msgid ""
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
 "spaces."
 msgstr ""
-"Si Pluma debería mostrar las tabulaciones en la ventana del editor: «draw-"
+"Si Lapiz debería mostrar las tabulaciones en la ventana del editor: «draw-"
 "none» no las muestra; «draw-trailing» muestra solo las tabulaciones al final"
 " de línea; «draw-all» muestra todas las tabulaciones."
 
@@ -615,13 +615,13 @@ msgid ""
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
 "all spaces."
 msgstr ""
-"Si Pluma debería mostrar los espacios en la ventana del editor: «draw-none» "
+"Si Lapiz debería mostrar los espacios en la ventana del editor: «draw-none» "
 "no los muestra; «draw-trailing» muestra solo los espacios al final de línea;"
 " «draw-all» muestra todos los espacios."
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -629,13 +629,13 @@ msgstr "Un editor de texto para el ambiente del escritorio MATE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Pluma es un pequeño pero potente editor de texto diseñado específicamente "
+"Lapiz es un pequeño pero potente editor de texto diseñado específicamente "
 "para el escritorio MATE. Posee la mayoría de las características estándar de"
 " edición de texto y es totalmente compatible con la edición en diferentes "
 "idiomas mediante Unicode. Incluye algunas características avanzadas como el "
@@ -644,11 +644,11 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
-"Pluma es extensible mediante un sistema de complementos, que actualmente "
+"Lapiz es extensible mediante un sistema de complementos, que actualmente "
 "incluye la corrección ortográfica, la comparación de archivos, la "
 "visualización de los registros de cambios del CVS y el ajuste de los niveles"
 " de sangría. "
@@ -956,8 +956,8 @@ msgid "_Close"
 msgstr "_Cerrar"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Preferencias de Pluma"
+msgid "Lapiz Preferences"
+msgstr "Preferencias de Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1216,11 +1216,11 @@ msgstr ""
 
 #: lapiz/lapiz.c:117
 msgid "Create a new top-level window in an existing instance of lapiz"
-msgstr "Crea una ventana nueva en una instancia existente de Pluma"
+msgstr "Crea una ventana nueva en una instancia existente de Lapiz"
 
 #: lapiz/lapiz.c:120
 msgid "Create a new document in an existing instance of lapiz"
-msgstr "Crea un documento nuevo en una instancia existente de Pluma"
+msgstr "Crea un documento nuevo en una instancia existente de Lapiz"
 
 #: lapiz/lapiz.c:123
 msgid "[FILE...]"
@@ -1393,29 +1393,29 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma es un editor de texto pequeño y ligero para el escritorio MATE"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz es un editor de texto pequeño y ligero para el escritorio MATE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma es software libre: puede redistribuirlo y/o modificarlo según los "
+"Lapiz es software libre: puede redistribuirlo y/o modificarlo según los "
 "términos de la Licencia Pública General de GNU publicada por la Free "
 "Software Foundation, ya sea la versión 2 de la Licencia como (a su elección)"
 " cualquier versión posterior."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma se distribuye con la esperanza de que sea útil, pero SIN NINGUNA "
+"Lapiz se distribuye con la esperanza de que sea útil, pero SIN NINGUNA "
 "GARANTÍA; ni siquiera la garantía implícita de COMERCIALIZACIÓN o IDONEIDAD "
 "PARA UN PROPÓSITO PARTICULAR. Consulte la Licencia Pública General de GNU "
 "para obtener más detalles."
@@ -1423,16 +1423,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 "Debería haber recibido una copia de la Licencia Pública General de GNU con "
-"Pluma; si no es así, escriba a la Free Software Foundation, Inc., 51 "
+"Lapiz; si no es así, escriba a la Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Acerca de Pluma"
+msgid "About Lapiz"
+msgstr "Acerca de Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""
@@ -1677,11 +1677,11 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:221
 #, c-format
 msgid "lapiz cannot handle %s locations."
-msgstr "Pluma no puede gestionar ubicaciones %s."
+msgstr "Lapiz no puede gestionar ubicaciones %s."
 
 #: lapiz/lapiz-io-error-message-area.c:227
 msgid "lapiz cannot handle this location."
-msgstr "Pluma no puede gestionar esta ubicación."
+msgstr "Lapiz no puede gestionar esta ubicación."
 
 #: lapiz/lapiz-io-error-message-area.c:235
 msgid "The location of the file cannot be mounted."
@@ -1740,7 +1740,7 @@ msgstr "Error inesperado: %s"
 #: lapiz/lapiz-io-error-message-area.c:406
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr ""
-"Pluma no puede encontrar el archivo. Quizá se ha eliminado recientemente."
+"Lapiz no puede encontrar el archivo. Quizá se ha eliminado recientemente."
 
 #: lapiz/lapiz-io-error-message-area.c:416
 #, c-format
@@ -1779,7 +1779,7 @@ msgstr "No tiene los permisos necesarios para abrir el archivo."
 
 #: lapiz/lapiz-io-error-message-area.c:607
 msgid "lapiz has not been able to detect the character encoding."
-msgstr "Pluma no ha podido detectar la codificación de caracteres."
+msgstr "Lapiz no ha podido detectar la codificación de caracteres."
 
 #: lapiz/lapiz-io-error-message-area.c:609
 #: lapiz/lapiz-io-error-message-area.c:631
@@ -1847,14 +1847,14 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
-msgstr "El archivo (%s) ya está abierto en otra ventana de Pluma."
+msgstr "El archivo (%s) ya está abierto en otra ventana de Lapiz."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to"
 " edit it anyway?"
 msgstr ""
-"Pluma ha abierto una copia del archivo de solo lectura. ¿Quiere editarlo de "
+"Lapiz ha abierto una copia del archivo de solo lectura. ¿Quiere editarlo de "
 "todas formas?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
@@ -1909,7 +1909,7 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"Pluma no puede gestionar ubicaciones %s en modo escritura. Compruebe que ha "
+"Lapiz no puede gestionar ubicaciones %s en modo escritura. Compruebe que ha "
 "escrito la ubicación correctamente y pruebe de nuevo."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
@@ -1917,7 +1917,7 @@ msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed"
 " the location correctly and try again."
 msgstr ""
-"Pluma no puede gestionar esta ubicación en modo escritura. Compruebe que ha "
+"Lapiz no puede gestionar esta ubicación en modo escritura. Compruebe que ha "
 "escrito la ubicación correctamente y pruebe de nuevo."
 
 #: lapiz/lapiz-io-error-message-area.c:1078
@@ -2302,7 +2302,7 @@ msgstr "_Contenido"
 
 #: lapiz/lapiz-ui.h:67
 msgid "Open the lapiz manual"
-msgstr "Abrir el manual de Pluma"
+msgstr "Abrir el manual de Lapiz"
 
 #: lapiz/lapiz-ui.h:68
 msgid "_About"
@@ -3379,7 +3379,7 @@ msgstr "Modos de líneas"
 #: plugins/modelines/modelines.plugin.desktop.in:6
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
 msgstr ""
-"Compatibilidad con los modos de línea de Emacs, Kate y Vim para Pluma."
+"Compatibilidad con los modos de línea de Emacs, Kate y Vim para Lapiz."
 
 #: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 #: plugins/pythonconsole/pythonconsole/__init__.py:55

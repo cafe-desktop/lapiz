@@ -1,4 +1,4 @@
-[Pluma Tool]
+[Lapiz Tool]
 Name=Remove trailing spaces
 Comment=Remove useless trailing spaces in your file
 Input=document

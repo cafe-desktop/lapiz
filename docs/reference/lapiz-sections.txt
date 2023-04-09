@@ -1,9 +1,9 @@
 <SECTION>
 <FILE>lapiz-app</FILE>
-PlumaAppPrivate
-<TITLE>PlumaApp</TITLE>
-PlumaApp
-PlumaLockdownMask
+LapizAppPrivate
+<TITLE>LapizApp</TITLE>
+LapizApp
+LapizLockdownMask
 lapiz_app_get_default
 lapiz_app_create_window
 lapiz_app_get_windows
@@ -23,11 +23,11 @@ LAPIZ_APP_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-document</FILE>
-PlumaSearchFlags
-PlumaDocumentPrivate
-<TITLE>PlumaDocument</TITLE>
-PlumaDocument
-PlumaDocumentSaveFlags
+LapizSearchFlags
+LapizDocumentPrivate
+<TITLE>LapizDocument</TITLE>
+LapizDocument
+LapizDocumentSaveFlags
 LAPIZ_DOCUMENT_ERROR
 lapiz_document_error_quark
 lapiz_document_new
@@ -72,9 +72,9 @@ LAPIZ_DOCUMENT_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-encodings-combo-box</FILE>
-PlumaEncodingsComboBoxPrivate
-<TITLE>PlumaEncodingsComboBox</TITLE>
-PlumaEncodingsComboBox
+LapizEncodingsComboBoxPrivate
+<TITLE>LapizEncodingsComboBox</TITLE>
+LapizEncodingsComboBox
 lapiz_encodings_combo_box_new
 lapiz_encodings_combo_box_get_selected_encoding
 lapiz_encodings_combo_box_set_selected_encoding
@@ -90,9 +90,9 @@ LAPIZ_ENCODINGS_COMBO_BOX_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-file-chooser-dialog</FILE>
-PlumaFileChooserDialogPrivate
-<TITLE>PlumaFileChooserDialog</TITLE>
-PlumaFileChooserDialog
+LapizFileChooserDialogPrivate
+<TITLE>LapizFileChooserDialog</TITLE>
+LapizFileChooserDialog
 lapiz_file_chooser_dialog_new
 lapiz_file_chooser_dialog_set_encoding
 <SUBSECTION Standard>
@@ -107,9 +107,9 @@ LAPIZ_FILE_CHOOSER_DIALOG_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-message-bus</FILE>
-<TITLE>PlumaMessageBus</TITLE>
-PlumaMessageBus
-PlumaMessageCallback
+<TITLE>LapizMessageBus</TITLE>
+LapizMessageBus
+LapizMessageCallback
 lapiz_message_bus_get_default
 lapiz_message_bus_new
 lapiz_message_bus_lookup
@@ -141,8 +141,8 @@ LAPIZ_MESSAGE_BUS_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-message-type</FILE>
-<TITLE>PlumaMessageType</TITLE>
-PlumaMessageType
+<TITLE>LapizMessageType</TITLE>
+LapizMessageType
 lapiz_message_type_get_type
 lapiz_message_type_is_supported
 lapiz_message_type_identifier
@@ -165,8 +165,8 @@ LAPIZ_TYPE_MESSAGE_TYPE
 
 <SECTION>
 <FILE>lapiz-message</FILE>
-<TITLE>PlumaMessage</TITLE>
-PlumaMessage
+<TITLE>LapizMessage</TITLE>
+LapizMessage
 lapiz_message_get
 lapiz_message_get_valist
 lapiz_message_get_value
@@ -191,9 +191,9 @@ LAPIZ_MESSAGE_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-notebook</FILE>
-PlumaNotebookPrivate
-<TITLE>PlumaNotebook</TITLE>
-PlumaNotebook
+LapizNotebookPrivate
+<TITLE>LapizNotebook</TITLE>
+LapizNotebook
 lapiz_notebook_new
 lapiz_notebook_add_tab
 lapiz_notebook_remove_tab
@@ -216,9 +216,9 @@ LAPIZ_NOTEBOOK_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-panel</FILE>
-PlumaPanelPrivate
-<TITLE>PlumaPanel</TITLE>
-PlumaPanel
+LapizPanelPrivate
+<TITLE>LapizPanel</TITLE>
+LapizPanel
 lapiz_panel_new
 lapiz_panel_add_item
 lapiz_panel_add_item_with_icon
@@ -239,9 +239,9 @@ LAPIZ_PANEL_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-print-job-preview</FILE>
-PlumaPrintJobPreviewPrivate
-<TITLE>PlumaPrintJobPreview</TITLE>
-PlumaPrintJobPreview
+LapizPrintJobPreviewPrivate
+<TITLE>LapizPrintJobPreview</TITLE>
+LapizPrintJobPreview
 lapiz_print_job_preview_new
 <SUBSECTION Standard>
 LAPIZ_PRINT_JOB_PREVIEW
@@ -255,8 +255,8 @@ LAPIZ_PRINT_JOB_PREVIEW_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-print</FILE>
-<TITLE>PlumaPrintJob</TITLE>
-PlumaPrintJob
+<TITLE>LapizPrintJob</TITLE>
+LapizPrintJob
 lapiz_print_job_new
 lapiz_print_job_save_config
 lapiz_print_dialog_new
@@ -272,9 +272,9 @@ LAPIZ_PRINT_JOB_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-progress-message-area</FILE>
-PlumaProgressMessageAreaPrivate
-<TITLE>PlumaProgressMessageArea</TITLE>
-PlumaProgressMessageArea
+LapizProgressMessageAreaPrivate
+<TITLE>LapizProgressMessageArea</TITLE>
+LapizProgressMessageArea
 lapiz_progress_message_area_new
 lapiz_progress_message_area_set_image
 lapiz_progress_message_area_set_markup
@@ -293,9 +293,9 @@ LAPIZ_PROGRESS_MESSAGE_AREA_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-statusbar</FILE>
-PlumaStatusbarPrivate
-<TITLE>PlumaStatusbar</TITLE>
-PlumaStatusbar
+LapizStatusbarPrivate
+<TITLE>LapizStatusbar</TITLE>
+LapizStatusbar
 lapiz_statusbar_new
 lapiz_statusbar_set_window_state
 lapiz_statusbar_set_overwrite
@@ -314,10 +314,10 @@ LAPIZ_STATUSBAR_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-tab</FILE>
-PlumaTabState
-PlumaTabPrivate
-<TITLE>PlumaTab</TITLE>
-PlumaTab
+LapizTabState
+LapizTabPrivate
+<TITLE>LapizTab</TITLE>
+LapizTab
 lapiz_tab_get_view
 lapiz_tab_get_document
 lapiz_tab_get_from_document
@@ -338,9 +338,9 @@ LAPIZ_TAB_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-view</FILE>
-PlumaViewPrivate
-<TITLE>PlumaView</TITLE>
-PlumaView
+LapizViewPrivate
+<TITLE>LapizView</TITLE>
+LapizView
 lapiz_view_new
 lapiz_view_cut_clipboard
 lapiz_view_copy_clipboard
@@ -361,10 +361,10 @@ LAPIZ_VIEW_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-window</FILE>
-PlumaWindowState
-PlumaWindowPrivate
-<TITLE>PlumaWindow</TITLE>
-PlumaWindow
+LapizWindowState
+LapizWindowPrivate
+<TITLE>LapizWindow</TITLE>
+LapizWindow
 lapiz_window_create_tab
 lapiz_window_create_tab_from_uri
 lapiz_window_close_tab
@@ -397,7 +397,7 @@ LAPIZ_WINDOW_GET_CLASS
 
 <SECTION>
 <FILE>lapiz-debug</FILE>
-PlumaDebugSection
+LapizDebugSection
 DEBUG_VIEW
 DEBUG_SEARCH
 DEBUG_PRINT
@@ -420,7 +420,7 @@ lapiz_debug_message
 
 <SECTION>
 <FILE>lapiz-encodings</FILE>
-PlumaEncoding
+LapizEncoding
 LAPIZ_TYPE_ENCODING
 lapiz_encoding_get_type
 lapiz_encoding_copy
@@ -586,7 +586,7 @@ GPM_DEFAULT_SYNTAX_HL_ENABLE
 GPM_DEFAULT_WRITABLE_VFS_SCHEMES
 GPM_DEFAULT_RESTORE_CURSOR_POSITION
 GPM_DEFAULT_SEARCH_HIGHLIGHTING_ENABLE
-PlumaToolbarSetting
+LapizToolbarSetting
 lapiz_prefs_manager_init
 lapiz_prefs_manager_shutdown
 lapiz_prefs_manager_get_use_default_font

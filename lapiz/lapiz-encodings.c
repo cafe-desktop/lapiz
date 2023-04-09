@@ -39,7 +39,7 @@
 #include "lapiz-encodings.h"
 
 
-struct _PlumaEncoding
+struct _LapizEncoding
 {
 	gint   index;
 	const gchar *charset;
@@ -130,22 +130,22 @@ typedef enum
   LAPIZ_ENCODING_UTF_8,
   LAPIZ_ENCODING_UNKNOWN
 
-} PlumaEncodingIndex;
+} LapizEncodingIndex;
 
-static const PlumaEncoding utf8_encoding =  {
+static const LapizEncoding utf8_encoding =  {
 	LAPIZ_ENCODING_UTF_8,
 	"UTF-8",
 	N_("Unicode")
 };
 
 /* initialized in lapiz_encoding_lazy_init() */
-static PlumaEncoding unknown_encoding = {
+static LapizEncoding unknown_encoding = {
 	LAPIZ_ENCODING_UNKNOWN,
 	NULL,
 	NULL
 };
 
-static const PlumaEncoding encodings [] = {
+static const LapizEncoding encodings [] = {
 
   { LAPIZ_ENCODING_ISO_8859_1,
     "ISO-8859-1", N_("Western") },
@@ -297,7 +297,7 @@ lapiz_encoding_lazy_init (void)
 	initialized = TRUE;
 }
 
-const PlumaEncoding *
+const LapizEncoding *
 lapiz_encoding_get_from_charset (const gchar *charset)
 {
 	gint i;
@@ -330,7 +330,7 @@ lapiz_encoding_get_from_charset (const gchar *charset)
 	return NULL;
 }
 
-const PlumaEncoding *
+const LapizEncoding *
 lapiz_encoding_get_from_index (gint idx)
 {
 	g_return_val_if_fail (idx >= 0, NULL);
@@ -343,7 +343,7 @@ lapiz_encoding_get_from_index (gint idx)
 	return &encodings[idx];
 }
 
-const PlumaEncoding *
+const LapizEncoding *
 lapiz_encoding_get_utf8 (void)
 {
 	lapiz_encoding_lazy_init ();
@@ -351,11 +351,11 @@ lapiz_encoding_get_utf8 (void)
 	return &utf8_encoding;
 }
 
-const PlumaEncoding *
+const LapizEncoding *
 lapiz_encoding_get_current (void)
 {
 	static gboolean initialized = FALSE;
-	static const PlumaEncoding *locale_encoding = NULL;
+	static const LapizEncoding *locale_encoding = NULL;
 
 	const gchar *locale_charset;
 
@@ -388,7 +388,7 @@ lapiz_encoding_get_current (void)
 }
 
 gchar *
-lapiz_encoding_to_string (const PlumaEncoding* enc)
+lapiz_encoding_to_string (const LapizEncoding* enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
@@ -410,7 +410,7 @@ lapiz_encoding_to_string (const PlumaEncoding* enc)
 }
 
 const gchar *
-lapiz_encoding_get_charset (const PlumaEncoding* enc)
+lapiz_encoding_get_charset (const LapizEncoding* enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
@@ -422,7 +422,7 @@ lapiz_encoding_get_charset (const PlumaEncoding* enc)
 }
 
 const gchar *
-lapiz_encoding_get_name (const PlumaEncoding* enc)
+lapiz_encoding_get_name (const LapizEncoding* enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
@@ -435,16 +435,16 @@ lapiz_encoding_get_name (const PlumaEncoding* enc)
  * const, copy() just returns the same pointer and fres() doesn't
  * do nothing */
 
-PlumaEncoding *
-lapiz_encoding_copy (const PlumaEncoding *enc)
+LapizEncoding *
+lapiz_encoding_copy (const LapizEncoding *enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
 
-	return (PlumaEncoding *) enc;
+	return (LapizEncoding *) enc;
 }
 
 void
-lapiz_encoding_free (PlumaEncoding *enc)
+lapiz_encoding_free (LapizEncoding *enc)
 {
 	g_return_if_fail (enc != NULL);
 }
@@ -453,9 +453,9 @@ lapiz_encoding_free (PlumaEncoding *enc)
  * lapiz_encoding_get_type:
  *
  * Retrieves the GType object which is associated with the
- * #PlumaEncoding class.
+ * #LapizEncoding class.
  *
- * Return value: the GType associated with #PlumaEncoding.
+ * Return value: the GType associated with #LapizEncoding.
  **/
 GType
 lapiz_encoding_get_type (void)
@@ -464,7 +464,7 @@ lapiz_encoding_get_type (void)
 
 	if (!our_type)
 		our_type = g_boxed_type_register_static (
-			"PlumaEncoding",
+			"LapizEncoding",
 			(GBoxedCopyFunc) lapiz_encoding_copy,
 			(GBoxedFreeFunc) lapiz_encoding_free);
 

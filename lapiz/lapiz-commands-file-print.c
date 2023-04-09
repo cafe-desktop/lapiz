@@ -44,9 +44,9 @@
 
 void
 _lapiz_cmd_file_print_preview (GtkAction   *action,
-			       PlumaWindow *window)
+			       LapizWindow *window)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -59,9 +59,9 @@ _lapiz_cmd_file_print_preview (GtkAction   *action,
 
 void
 _lapiz_cmd_file_print (GtkAction   *action,
-		       PlumaWindow *window)
+		       LapizWindow *window)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	lapiz_debug (DEBUG_COMMANDS);
 

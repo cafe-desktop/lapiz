@@ -38,11 +38,11 @@
 #include "lapiz-spell-checker-dialog.h"
 #include "lapiz-spell-marshal.h"
 
-struct _PlumaSpellCheckerDialog
+struct _LapizSpellCheckerDialog
 {
 	GtkWindow parent_instance;
 
-	PlumaSpellChecker 	*spell_checker;
+	LapizSpellChecker 	*spell_checker;
 
 	gchar			*misspelled_word;
 
@@ -77,41 +77,41 @@ enum
 	NUM_COLUMNS
 };
 
-static void	update_suggestions_list_model 			(PlumaSpellCheckerDialog *dlg,
+static void	update_suggestions_list_model 			(LapizSpellCheckerDialog *dlg,
 								 GSList *suggestions);
 
 static void	word_entry_changed_handler			(GtkEditable *editable,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	close_button_clicked_handler 			(GtkButton *button,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	suggestions_list_selection_changed_handler 	(GtkTreeSelection *selection,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	check_word_button_clicked_handler 		(GtkButton *button,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	add_word_button_clicked_handler 		(GtkButton *button,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	ignore_button_clicked_handler 			(GtkButton *button,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	ignore_all_button_clicked_handler 		(GtkButton *button,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	change_button_clicked_handler 			(GtkButton *button,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	change_all_button_clicked_handler 		(GtkButton *button,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 static void	suggestions_list_row_activated_handler		(GtkTreeView *view,
 								 GtkTreePath *path,
 								 GtkTreeViewColumn *column,
-								 PlumaSpellCheckerDialog *dlg);
+								 LapizSpellCheckerDialog *dlg);
 
 
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(PlumaSpellCheckerDialog, lapiz_spell_checker_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE(LapizSpellCheckerDialog, lapiz_spell_checker_dialog, GTK_TYPE_WINDOW)
 
 static void
 lapiz_spell_checker_dialog_dispose (GObject *object)
 {
-	PlumaSpellCheckerDialog *dlg = LAPIZ_SPELL_CHECKER_DIALOG (object);
+	LapizSpellCheckerDialog *dlg = LAPIZ_SPELL_CHECKER_DIALOG (object);
 
 	if (dlg->spell_checker != NULL)
 	{
@@ -129,7 +129,7 @@ lapiz_spell_checker_dialog_dispose (GObject *object)
 }
 
 static void
-lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
+lapiz_spell_checker_dialog_class_init (LapizSpellCheckerDialogClass * klass)
 {
 	GObjectClass *object_class;
 
@@ -141,7 +141,7 @@ lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 		g_signal_new ("ignore",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, ignore),
+			      G_STRUCT_OFFSET (LapizSpellCheckerDialogClass, ignore),
 			      NULL, NULL,
 			      lapiz_marshal_VOID__STRING,
 			      G_TYPE_NONE,
@@ -152,7 +152,7 @@ lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 		g_signal_new ("ignore_all",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, ignore_all),
+			      G_STRUCT_OFFSET (LapizSpellCheckerDialogClass, ignore_all),
 			      NULL, NULL,
 			      lapiz_marshal_VOID__STRING,
 			      G_TYPE_NONE,
@@ -163,7 +163,7 @@ lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 		g_signal_new ("change",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, change),
+			      G_STRUCT_OFFSET (LapizSpellCheckerDialogClass, change),
 			      NULL, NULL,
 			      lapiz_marshal_VOID__STRING_STRING,
 			      G_TYPE_NONE,
@@ -175,7 +175,7 @@ lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 		g_signal_new ("change_all",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, change_all),
+			      G_STRUCT_OFFSET (LapizSpellCheckerDialogClass, change_all),
 			      NULL, NULL,
 			      lapiz_marshal_VOID__STRING_STRING,
 			      G_TYPE_NONE,
@@ -187,7 +187,7 @@ lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 		g_signal_new ("add_word_to_personal",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaSpellCheckerDialogClass, add_word_to_personal),
+			      G_STRUCT_OFFSET (LapizSpellCheckerDialogClass, add_word_to_personal),
 			      NULL, NULL,
 			      lapiz_marshal_VOID__STRING,
 			      G_TYPE_NONE,
@@ -196,7 +196,7 @@ lapiz_spell_checker_dialog_class_init (PlumaSpellCheckerDialogClass * klass)
 }
 
 static void
-create_dialog (PlumaSpellCheckerDialog *dlg,
+create_dialog (LapizSpellCheckerDialog *dlg,
 	       const gchar *data_dir)
 {
 	GtkWidget *error_widget;
@@ -324,14 +324,14 @@ create_dialog (PlumaSpellCheckerDialog *dlg,
 }
 
 static void
-lapiz_spell_checker_dialog_init (PlumaSpellCheckerDialog *dlg)
+lapiz_spell_checker_dialog_init (LapizSpellCheckerDialog *dlg)
 {
 }
 
 GtkWidget *
 lapiz_spell_checker_dialog_new (const gchar *data_dir)
 {
-	PlumaSpellCheckerDialog *dlg;
+	LapizSpellCheckerDialog *dlg;
 
 	dlg = LAPIZ_SPELL_CHECKER_DIALOG (
 			g_object_new (LAPIZ_TYPE_SPELL_CHECKER_DIALOG, NULL));
@@ -344,10 +344,10 @@ lapiz_spell_checker_dialog_new (const gchar *data_dir)
 }
 
 GtkWidget *
-lapiz_spell_checker_dialog_new_from_spell_checker (PlumaSpellChecker *spell,
+lapiz_spell_checker_dialog_new_from_spell_checker (LapizSpellChecker *spell,
 						   const gchar *data_dir)
 {
-	PlumaSpellCheckerDialog *dlg;
+	LapizSpellCheckerDialog *dlg;
 
 	g_return_val_if_fail (spell != NULL, NULL);
 
@@ -364,9 +364,9 @@ lapiz_spell_checker_dialog_new_from_spell_checker (PlumaSpellChecker *spell,
 }
 
 void
-lapiz_spell_checker_dialog_set_spell_checker (PlumaSpellCheckerDialog *dlg, PlumaSpellChecker *spell)
+lapiz_spell_checker_dialog_set_spell_checker (LapizSpellCheckerDialog *dlg, LapizSpellChecker *spell)
 {
-	const PlumaSpellCheckerLanguage* language;
+	const LapizSpellCheckerLanguage* language;
 	const gchar *lang;
 	gchar *tmp;
 
@@ -396,7 +396,7 @@ lapiz_spell_checker_dialog_set_spell_checker (PlumaSpellCheckerDialog *dlg, Plum
 }
 
 void
-lapiz_spell_checker_dialog_set_misspelled_word (PlumaSpellCheckerDialog *dlg,
+lapiz_spell_checker_dialog_set_misspelled_word (LapizSpellCheckerDialog *dlg,
 						const gchar             *word,
 						gint                     len)
 {
@@ -435,7 +435,7 @@ lapiz_spell_checker_dialog_set_misspelled_word (PlumaSpellCheckerDialog *dlg,
 }
 
 static void
-update_suggestions_list_model (PlumaSpellCheckerDialog *dlg, GSList *suggestions)
+update_suggestions_list_model (LapizSpellCheckerDialog *dlg, GSList *suggestions)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
@@ -485,7 +485,7 @@ update_suggestions_list_model (PlumaSpellCheckerDialog *dlg, GSList *suggestions
 }
 
 static void
-word_entry_changed_handler (GtkEditable *editable, PlumaSpellCheckerDialog *dlg)
+word_entry_changed_handler (GtkEditable *editable, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *text;
 
@@ -508,7 +508,7 @@ word_entry_changed_handler (GtkEditable *editable, PlumaSpellCheckerDialog *dlg)
 }
 
 static void
-close_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
+close_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
@@ -517,7 +517,7 @@ close_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
 
 static void
 suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
-		PlumaSpellCheckerDialog *dlg)
+		LapizSpellCheckerDialog *dlg)
 {
  	GtkTreeIter iter;
 	GValue value = {0, };
@@ -540,7 +540,7 @@ suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
 }
 
 static void
-check_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
+check_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *word;
 	gssize len;
@@ -584,7 +584,7 @@ check_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 }
 
 static void
-add_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
+add_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	gchar *word;
 
@@ -603,7 +603,7 @@ add_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg
 }
 
 static void
-ignore_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
+ignore_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	gchar *word;
 
@@ -618,7 +618,7 @@ ignore_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
 }
 
 static void
-ignore_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
+ignore_all_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	gchar *word;
 
@@ -637,7 +637,7 @@ ignore_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 }
 
 static void
-change_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
+change_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *entry_text;
 	gchar *change;
@@ -668,7 +668,7 @@ static void
 suggestions_list_row_activated_handler (GtkTreeView *view,
 		GtkTreePath *path,
 		GtkTreeViewColumn *column,
-		PlumaSpellCheckerDialog *dlg)
+		LapizSpellCheckerDialog *dlg)
 {
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
@@ -676,7 +676,7 @@ suggestions_list_row_activated_handler (GtkTreeView *view,
 }
 
 static void
-change_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
+change_all_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *entry_text;
 	gchar *change;
@@ -703,7 +703,7 @@ change_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 }
 
 void
-lapiz_spell_checker_dialog_set_completed (PlumaSpellCheckerDialog *dlg)
+lapiz_spell_checker_dialog_set_completed (LapizSpellCheckerDialog *dlg)
 {
 	gchar *tmp;
 

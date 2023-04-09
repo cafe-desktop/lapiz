@@ -28,54 +28,54 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_STATUS_COMBO_BOX		(lapiz_status_combo_box_get_type ())
-#define LAPIZ_STATUS_COMBO_BOX(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBox))
-#define LAPIZ_STATUS_COMBO_BOX_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBox const))
-#define LAPIZ_STATUS_COMBO_BOX_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBoxClass))
+#define LAPIZ_STATUS_COMBO_BOX(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, LapizStatusComboBox))
+#define LAPIZ_STATUS_COMBO_BOX_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, LapizStatusComboBox const))
+#define LAPIZ_STATUS_COMBO_BOX_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_STATUS_COMBO_BOX, LapizStatusComboBoxClass))
 #define LAPIZ_IS_STATUS_COMBO_BOX(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX))
 #define LAPIZ_IS_STATUS_COMBO_BOX_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_STATUS_COMBO_BOX))
-#define LAPIZ_STATUS_COMBO_BOX_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBoxClass))
+#define LAPIZ_STATUS_COMBO_BOX_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, LapizStatusComboBoxClass))
 
-typedef struct _PlumaStatusComboBox		PlumaStatusComboBox;
-typedef struct _PlumaStatusComboBoxClass	PlumaStatusComboBoxClass;
-typedef struct _PlumaStatusComboBoxPrivate	PlumaStatusComboBoxPrivate;
+typedef struct _LapizStatusComboBox		LapizStatusComboBox;
+typedef struct _LapizStatusComboBoxClass	LapizStatusComboBoxClass;
+typedef struct _LapizStatusComboBoxPrivate	LapizStatusComboBoxPrivate;
 
-struct _PlumaStatusComboBox {
+struct _LapizStatusComboBox {
 	GtkEventBox parent;
 
-	PlumaStatusComboBoxPrivate *priv;
+	LapizStatusComboBoxPrivate *priv;
 };
 
-struct _PlumaStatusComboBoxClass {
+struct _LapizStatusComboBoxClass {
 	GtkEventBoxClass parent_class;
 
-	void (*changed) (PlumaStatusComboBox *combo,
+	void (*changed) (LapizStatusComboBox *combo,
 			 GtkMenuItem         *item);
 };
 
 GType lapiz_status_combo_box_get_type 			(void) G_GNUC_CONST;
 GtkWidget *lapiz_status_combo_box_new			(const gchar 		*label);
 
-const gchar *lapiz_status_combo_box_get_label 		(PlumaStatusComboBox 	*combo);
-void lapiz_status_combo_box_set_label 			(PlumaStatusComboBox 	*combo,
+const gchar *lapiz_status_combo_box_get_label 		(LapizStatusComboBox 	*combo);
+void lapiz_status_combo_box_set_label 			(LapizStatusComboBox 	*combo,
 							 const gchar         	*label);
 
-void lapiz_status_combo_box_add_item 			(PlumaStatusComboBox 	*combo,
+void lapiz_status_combo_box_add_item 			(LapizStatusComboBox 	*combo,
 							 GtkMenuItem         	*item,
 							 const gchar         	*text);
-void lapiz_status_combo_box_remove_item			(PlumaStatusComboBox    *combo,
+void lapiz_status_combo_box_remove_item			(LapizStatusComboBox    *combo,
 							 GtkMenuItem            *item);
 
-GList *lapiz_status_combo_box_get_items			(PlumaStatusComboBox    *combo);
-const gchar *lapiz_status_combo_box_get_item_text 	(PlumaStatusComboBox	*combo,
+GList *lapiz_status_combo_box_get_items			(LapizStatusComboBox    *combo);
+const gchar *lapiz_status_combo_box_get_item_text 	(LapizStatusComboBox	*combo,
 							 GtkMenuItem		*item);
-void lapiz_status_combo_box_set_item_text 		(PlumaStatusComboBox	*combo,
+void lapiz_status_combo_box_set_item_text 		(LapizStatusComboBox	*combo,
 							 GtkMenuItem		*item,
 							 const gchar            *text);
 
-void lapiz_status_combo_box_set_item			(PlumaStatusComboBox	*combo,
+void lapiz_status_combo_box_set_item			(LapizStatusComboBox	*combo,
 							 GtkMenuItem		*item);
 
-GtkLabel *lapiz_status_combo_box_get_item_label		(PlumaStatusComboBox	*combo);
+GtkLabel *lapiz_status_combo_box_get_item_label		(LapizStatusComboBox	*combo);
 
 G_END_DECLS
 

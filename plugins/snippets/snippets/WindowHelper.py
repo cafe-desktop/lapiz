@@ -1,4 +1,4 @@
-#    Pluma snippets plugin
+#    Lapiz snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@ import re
 import os
 import gettext
 
-from gi.repository import GObject, Gtk, Pluma
+from gi.repository import GObject, Gtk, Lapiz
 
 from .Document import Document
 from .Library import Library
@@ -43,7 +43,7 @@ class WindowHelper:
 
         # Add controllers to all the current views
         for view in self.window.get_views():
-            if isinstance(view, Pluma.View) and not self.has_controller(view):
+            if isinstance(view, Lapiz.View) and not self.has_controller(view):
                 view._snippet_controller = Document(self, view)
 
         self.update()
@@ -56,7 +56,7 @@ class WindowHelper:
 
         # Iterate over all the tabs and remove every controller
         for view in self.window.get_views():
-            if isinstance(view, Pluma.View) and self.has_controller(view):
+            if isinstance(view, Lapiz.View) and self.has_controller(view):
                 view._snippet_controller.stop()
                 view._snippet_controller = None
 
@@ -66,7 +66,7 @@ class WindowHelper:
     def insert_menu(self):
         manager = self.window.get_ui_manager()
 
-        self.action_group = Gtk.ActionGroup("PlumaSnippetPluginActions")
+        self.action_group = Gtk.ActionGroup("LapizSnippetPluginActions")
         self.action_group.set_translation_domain('lapiz')
         self.action_group.add_actions([('ManageSnippets', None,
                 _('Manage _Snippets...'), \
@@ -137,7 +137,7 @@ class WindowHelper:
         # Create a new controller for this tab if it has a standard lapiz view
         view = tab.get_view()
 
-        if isinstance(view, Pluma.View) and not self.has_controller(view):
+        if isinstance(view, Lapiz.View) and not self.has_controller(view):
             view._snippet_controller = Document(self, view)
 
         self.update()

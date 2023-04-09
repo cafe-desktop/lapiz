@@ -51,7 +51,7 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
+msgid "Lapiz Manual"
 msgstr "Manuel de lapiz"
 
 #. (itstool) path: publisher/publishername
@@ -232,7 +232,7 @@ msgstr "Démarrage de lapiz"
 #: C/index.docbook:246
 msgid "You can start <application>lapiz</application> in the following ways:"
 msgstr ""
-"<application>Pluma</application> peut être démarré de la façon suivante :"
+"<application>Lapiz</application> peut être démarré de la façon suivante :"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:249
@@ -242,11 +242,11 @@ msgstr "Par le menu <guimenu>Applications</guimenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 "Choisissez <menuchoice><guimenu>Accessoires</guimenu><guimenuitem>Éditeur de"
-" texte Pluma</guimenuitem></menuchoice>."
+" texte Lapiz</guimenuitem></menuchoice>."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:256
@@ -730,7 +730,7 @@ msgid ""
 "specific piece of text, or <guilabel>Incremental Search</guilabel> to "
 "highlight matching text as you type it."
 msgstr ""
-"<application>Pluma</application> fournit deux moyens pour faire des "
+"<application>Lapiz</application> fournit deux moyens pour faire des "
 "recherches dans le texte. Utilisez <guilabel>Rechercher</guilabel> pour "
 "trouver un morceau de texte particulier ou <guilabel>Recherche "
 "incrémentale</guilabel> pour mettre en surbrillance le texte au fur et à "
@@ -1263,7 +1263,7 @@ msgid ""
 "You can use <application>lapiz</application> to perform the following print "
 "operations:"
 msgstr ""
-"<application>Pluma</application> permet d'exécuter les opérations "
+"<application>Lapiz</application> permet d'exécuter les opérations "
 "d'impression suivantes :"
 
 #. (itstool) path: listitem/para
@@ -1969,8 +1969,8 @@ msgstr "Ctrl + Q"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
-msgstr "Quitte Pluma."
+msgid "Quit Lapiz."
+msgstr "Quitte Lapiz."
 
 #. (itstool) path: section/bridgehead
 #: C/index.docbook:1202

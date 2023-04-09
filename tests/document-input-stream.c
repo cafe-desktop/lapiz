@@ -30,7 +30,7 @@
 static void
 test_consecutive_read (const gchar *inbuf,
 		       const gchar *outbuf,
-		       PlumaDocumentNewlineType type,
+		       LapizDocumentNewlineType type,
 		       gsize read_chunk_len)
 {
 	GtkTextBuffer *buf;
