@@ -29,8 +29,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_DOCUMENT_LOADER_H__
-#define __PLUMA_DOCUMENT_LOADER_H__
+#ifndef __LAPIZ_DOCUMENT_LOADER_H__
+#define __LAPIZ_DOCUMENT_LOADER_H__
 
 #include <lapiz/lapiz-document.h>
 
@@ -39,12 +39,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_DOCUMENT_LOADER              (lapiz_document_loader_get_type())
-#define PLUMA_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_DOCUMENT_LOADER, PlumaDocumentLoader))
-#define PLUMA_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_DOCUMENT_LOADER, PlumaDocumentLoaderClass))
-#define PLUMA_IS_DOCUMENT_LOADER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_DOCUMENT_LOADER))
-#define PLUMA_IS_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_DOCUMENT_LOADER))
-#define PLUMA_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_DOCUMENT_LOADER, PlumaDocumentLoaderClass))
+#define LAPIZ_TYPE_DOCUMENT_LOADER              (lapiz_document_loader_get_type())
+#define LAPIZ_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENT_LOADER, PlumaDocumentLoader))
+#define LAPIZ_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENT_LOADER, PlumaDocumentLoaderClass))
+#define LAPIZ_IS_DOCUMENT_LOADER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_DOCUMENT_LOADER))
+#define LAPIZ_IS_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT_LOADER))
+#define LAPIZ_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENT_LOADER, PlumaDocumentLoaderClass))
 
 /* Private structure type */
 typedef struct _PlumaDocumentLoaderPrivate PlumaDocumentLoaderPrivate;
@@ -127,4 +127,4 @@ GFileInfo		*lapiz_document_loader_get_info		(PlumaDocumentLoader *loader);
 
 G_END_DECLS
 
-#endif  /* __PLUMA_DOCUMENT_LOADER_H__  */
+#endif  /* __LAPIZ_DOCUMENT_LOADER_H__  */

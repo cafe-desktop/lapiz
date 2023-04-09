@@ -81,7 +81,7 @@ set_window (PlumaTaglistPluginPanel *panel,
 	    PlumaWindow             *window)
 {
 	g_return_if_fail (panel->priv->window == NULL);
-	g_return_if_fail (PLUMA_IS_WINDOW (window));
+	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 
 	panel->priv->window = window;
 
@@ -94,7 +94,7 @@ lapiz_taglist_plugin_panel_set_property (GObject      *object,
 					 const GValue *value,
 					 GParamSpec   *pspec)
 {
-	PlumaTaglistPluginPanel *panel = PLUMA_TAGLIST_PLUGIN_PANEL (object);
+	PlumaTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -114,7 +114,7 @@ lapiz_taglist_plugin_panel_get_property (GObject    *object,
 					 GValue     *value,
 					 GParamSpec *pspec)
 {
-	PlumaTaglistPluginPanel *panel = PLUMA_TAGLIST_PLUGIN_PANEL (object);
+	PlumaTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -131,7 +131,7 @@ lapiz_taglist_plugin_panel_get_property (GObject    *object,
 static void
 lapiz_taglist_plugin_panel_finalize (GObject *object)
 {
-	PlumaTaglistPluginPanel *panel = PLUMA_TAGLIST_PLUGIN_PANEL (object);
+	PlumaTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
 
 	g_free (panel->priv->data_dir);
 
@@ -152,7 +152,7 @@ lapiz_taglist_plugin_panel_class_init (PlumaTaglistPluginPanelClass *klass)
 					 g_param_spec_object ("window",
 							 "Window",
 							 "The PlumaWindow this PlumaTaglistPluginPanel is associated with",
-							 PLUMA_TYPE_WINDOW,
+							 LAPIZ_TYPE_WINDOW,
 							 G_PARAM_READWRITE |
 							 G_PARAM_CONSTRUCT_ONLY));
 }
@@ -584,7 +584,7 @@ draw_event_cb (GtkWidget      *panel,
                cairo_t        *cr,
                gpointer        user_data)
 {
-	PlumaTaglistPluginPanel *ppanel = PLUMA_TAGLIST_PLUGIN_PANEL (panel);
+	PlumaTaglistPluginPanel *ppanel = LAPIZ_TAGLIST_PLUGIN_PANEL (panel);
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -593,7 +593,7 @@ draw_event_cb (GtkWidget      *panel,
 		create_taglist (ppanel->priv->data_dir);
 
 	/* And populate combo box */
-	populate_tag_groups_combo (PLUMA_TAGLIST_PLUGIN_PANEL (panel));
+	populate_tag_groups_combo (LAPIZ_TAGLIST_PLUGIN_PANEL (panel));
 
 	/* We need to manage only the first draw -> disconnect */
 	g_signal_handlers_disconnect_by_func (panel, draw_event_cb, NULL);
@@ -776,9 +776,9 @@ lapiz_taglist_plugin_panel_new (PlumaWindow *window,
 {
 	PlumaTaglistPluginPanel *panel;
 
-	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
+	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
-	panel = g_object_new (PLUMA_TYPE_TAGLIST_PLUGIN_PANEL,
+	panel = g_object_new (LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL,
 			      "window", window,
 			      NULL);
 

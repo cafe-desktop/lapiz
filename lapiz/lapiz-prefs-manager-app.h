@@ -29,8 +29,8 @@
  *
  */
 
-#ifndef __PLUMA_PREFS_MANAGER_APP_H__
-#define __PLUMA_PREFS_MANAGER_APP_H__
+#ifndef __LAPIZ_PREFS_MANAGER_APP_H__
+#define __LAPIZ_PREFS_MANAGER_APP_H__
 
 #include <glib.h>
 #include <lapiz/lapiz-prefs-manager.h>
@@ -81,4 +81,4 @@ void 		 lapiz_prefs_manager_set_active_file_filter	(gint id);
 gboolean	 lapiz_prefs_manager_active_file_filter_can_set	(void);
 
 
-#endif /* __PLUMA_PREFS_MANAGER_APP_H__ */
+#endif /* __LAPIZ_PREFS_MANAGER_APP_H__ */

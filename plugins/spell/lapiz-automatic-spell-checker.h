@@ -32,8 +32,8 @@
  * Copyright (c) 2002 Evan Martin.
  */
 
-#ifndef __PLUMA_AUTOMATIC_SPELL_CHECKER_H__
-#define __PLUMA_AUTOMATIC_SPELL_CHECKER_H__
+#ifndef __LAPIZ_AUTOMATIC_SPELL_CHECKER_H__
+#define __LAPIZ_AUTOMATIC_SPELL_CHECKER_H__
 
 #include <lapiz/lapiz-document.h>
 #include <lapiz/lapiz-view.h>
@@ -63,5 +63,5 @@ void 				 lapiz_automatic_spell_checker_detach_view (
 void				 lapiz_automatic_spell_checker_recheck_all (
 							PlumaAutomaticSpellChecker 	*spell);
 
-#endif  /* __PLUMA_AUTOMATIC_SPELL_CHECKER_H__ */
+#endif  /* __LAPIZ_AUTOMATIC_SPELL_CHECKER_H__ */
 

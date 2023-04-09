@@ -28,8 +28,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_GIO_DOCUMENT_SAVER_H__
-#define __PLUMA_GIO_DOCUMENT_SAVER_H__
+#ifndef __LAPIZ_GIO_DOCUMENT_SAVER_H__
+#define __LAPIZ_GIO_DOCUMENT_SAVER_H__
 
 #include <lapiz/lapiz-document-saver.h>
 
@@ -38,12 +38,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_GIO_DOCUMENT_SAVER              (lapiz_gio_document_saver_get_type())
-#define PLUMA_GIO_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaver))
-#define PLUMA_GIO_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaverClass))
-#define PLUMA_IS_GIO_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_GIO_DOCUMENT_SAVER))
-#define PLUMA_IS_GIO_DOCUMENT_SAVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_GIO_DOCUMENT_SAVER))
-#define PLUMA_GIO_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaverClass))
+#define LAPIZ_TYPE_GIO_DOCUMENT_SAVER              (lapiz_gio_document_saver_get_type())
+#define LAPIZ_GIO_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaver))
+#define LAPIZ_GIO_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaverClass))
+#define LAPIZ_IS_GIO_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER))
+#define LAPIZ_IS_GIO_DOCUMENT_SAVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_GIO_DOCUMENT_SAVER))
+#define LAPIZ_GIO_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaverClass))
 
 /* Private structure type */
 typedef struct _PlumaGioDocumentSaverPrivate PlumaGioDocumentSaverPrivate;
@@ -73,4 +73,4 @@ GType 		 	 lapiz_gio_document_saver_get_type	(void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif  /* __PLUMA_GIO_DOCUMENT_SAVER_H__  */
+#endif  /* __LAPIZ_GIO_DOCUMENT_SAVER_H__  */

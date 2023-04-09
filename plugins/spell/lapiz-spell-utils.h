@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __PLUMA_SPELL_UTILS_H__
-#define __PLUMA_SPELL_UTILS_H__
+#ifndef __LAPIZ_SPELL_UTILS_H__
+#define __LAPIZ_SPELL_UTILS_H__
 
 #include <gtk/gtk.h>
 
@@ -33,5 +33,5 @@ gboolean lapiz_spell_utils_skip_no_spell_check (GtkTextIter *start, GtkTextIter 
 
 G_END_DECLS
 
-#endif /* __PLUMA_SPELL_UTILS_H__ */
+#endif /* __LAPIZ_SPELL_UTILS_H__ */
 

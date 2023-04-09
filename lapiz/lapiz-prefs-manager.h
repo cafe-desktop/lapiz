@@ -27,15 +27,15 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_PREFS_MANAGER_H__
-#define __PLUMA_PREFS_MANAGER_H__
+#ifndef __LAPIZ_PREFS_MANAGER_H__
+#define __LAPIZ_PREFS_MANAGER_H__
 
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <gtksourceview/gtksource.h>
 #include "lapiz-app.h"
 
-#define PLUMA_SCHEMA	"org.mate.lapiz"
+#define LAPIZ_SCHEMA	"org.mate.lapiz"
 
 /* Editor */
 #define GPM_USE_DEFAULT_FONT	"use-default-font"
@@ -129,10 +129,10 @@
 #define GPM_SPACE_DRAWER_NBSP		"enable-space-drawer-nbsp"
 
 typedef enum {
-	PLUMA_TOOLBAR_SYSTEM = 0,
-	PLUMA_TOOLBAR_ICONS,
-	PLUMA_TOOLBAR_ICONS_AND_TEXT,
-	PLUMA_TOOLBAR_ICONS_BOTH_HORIZ
+	LAPIZ_TOOLBAR_SYSTEM = 0,
+	LAPIZ_TOOLBAR_ICONS,
+	LAPIZ_TOOLBAR_ICONS_AND_TEXT,
+	LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ
 } PlumaToolbarSetting;
 
 /* LIFE CYCLE MANAGEMENT FUNCTIONS */
@@ -356,4 +356,4 @@ gint     lapiz_prefs_manager_get_draw_nbsp     (void);
 void     lapiz_prefs_manager_set_draw_nbsp     (gint enable_draw_nbsp);
 gboolean lapiz_prefs_manager_draw_nbsp_can_set (void);
 
-#endif  /* __PLUMA_PREFS_MANAGER_H__ */
+#endif  /* __LAPIZ_PREFS_MANAGER_H__ */

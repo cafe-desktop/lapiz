@@ -406,7 +406,7 @@ lapiz_message_type_instantiate_valist (PlumaMessageType *message_type,
 
 	g_return_val_if_fail (message_type != NULL, NULL);
 
-	message = PLUMA_MESSAGE (g_object_new (PLUMA_TYPE_MESSAGE, "type", message_type, NULL));
+	message = LAPIZ_MESSAGE (g_object_new (LAPIZ_TYPE_MESSAGE, "type", message_type, NULL));
 	lapiz_message_set_valist (message, va_args);
 
 	return message;

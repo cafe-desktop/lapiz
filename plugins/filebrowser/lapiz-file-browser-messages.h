@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_FILE_BROWSER_MESSAGES_H__
-#define __PLUMA_FILE_BROWSER_MESSAGES_H__
+#ifndef __LAPIZ_FILE_BROWSER_MESSAGES_H__
+#define __LAPIZ_FILE_BROWSER_MESSAGES_H__
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-message-bus.h>
@@ -30,6 +30,6 @@ void lapiz_file_browser_messages_register   (PlumaWindow *window,
 					     PlumaFileBrowserWidget *widget);
 void lapiz_file_browser_messages_unregister (PlumaWindow *window);
 
-#endif /* __PLUMA_FILE_BROWSER_MESSAGES_H__ */
+#endif /* __LAPIZ_FILE_BROWSER_MESSAGES_H__ */
 
 // ex:ts=8:noet:

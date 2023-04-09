@@ -3018,37 +3018,37 @@ msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1564
-msgid "PLUMA_CURRENT_DOCUMENT_URI"
+msgid "LAPIZ_CURRENT_DOCUMENT_URI"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1567
-msgid "PLUMA_CURRENT_DOCUMENT_NAME"
+msgid "LAPIZ_CURRENT_DOCUMENT_NAME"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1570
-msgid "PLUMA_CURRENT_DOCUMENT_SCHEME"
+msgid "LAPIZ_CURRENT_DOCUMENT_SCHEME"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1573
-msgid "PLUMA_CURRENT_DOCUMENT_PATH"
+msgid "LAPIZ_CURRENT_DOCUMENT_PATH"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1576
-msgid "PLUMA_CURRENT_DOCUMENT_DIR"
+msgid "LAPIZ_CURRENT_DOCUMENT_DIR"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1579
-msgid "PLUMA_DOCUMENTS_URI"
+msgid "LAPIZ_DOCUMENTS_URI"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1582
-msgid "PLUMA_DOCUMENTS_PATH"
+msgid "LAPIZ_DOCUMENTS_PATH"
 msgstr ""
 
 #. (itstool) path: sect2/title
@@ -3732,7 +3732,7 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:1821
-msgid "$PLUMA_SELECTED_TEXT"
+msgid "$LAPIZ_SELECTED_TEXT"
 msgstr ""
 
 #. (itstool) path: listitem/para
@@ -3742,7 +3742,7 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:1826
-msgid "$PLUMA_FILENAME"
+msgid "$LAPIZ_FILENAME"
 msgstr ""
 
 #. (itstool) path: listitem/para
@@ -3754,7 +3754,7 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:1831
-msgid "$PLUMA_BASENAME"
+msgid "$LAPIZ_BASENAME"
 msgstr ""
 
 #. (itstool) path: listitem/para
@@ -3766,7 +3766,7 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:1836
-msgid "$PLUMA_CURRENT_WORD"
+msgid "$LAPIZ_CURRENT_WORD"
 msgstr ""
 
 #. (itstool) path: listitem/para

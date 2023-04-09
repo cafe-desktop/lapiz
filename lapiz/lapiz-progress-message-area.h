@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_PROGRESS_MESSAGE_AREA_H__
-#define __PLUMA_PROGRESS_MESSAGE_AREA_H__
+#ifndef __LAPIZ_PROGRESS_MESSAGE_AREA_H__
+#define __LAPIZ_PROGRESS_MESSAGE_AREA_H__
 
 #include <gtk/gtk.h>
 
@@ -38,12 +38,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PROGRESS_MESSAGE_AREA              (lapiz_progress_message_area_get_type())
-#define PLUMA_PROGRESS_MESSAGE_AREA(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageArea))
-#define PLUMA_PROGRESS_MESSAGE_AREA_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageAreaClass))
-#define PLUMA_IS_PROGRESS_MESSAGE_AREA(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PROGRESS_MESSAGE_AREA))
-#define PLUMA_IS_PROGRESS_MESSAGE_AREA_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_PROGRESS_MESSAGE_AREA))
-#define PLUMA_PROGRESS_MESSAGE_AREA_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageAreaClass))
+#define LAPIZ_TYPE_PROGRESS_MESSAGE_AREA              (lapiz_progress_message_area_get_type())
+#define LAPIZ_PROGRESS_MESSAGE_AREA(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageArea))
+#define LAPIZ_PROGRESS_MESSAGE_AREA_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageAreaClass))
+#define LAPIZ_IS_PROGRESS_MESSAGE_AREA(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA))
+#define LAPIZ_IS_PROGRESS_MESSAGE_AREA_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA))
+#define LAPIZ_PROGRESS_MESSAGE_AREA_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageAreaClass))
 
 /* Private structure type */
 typedef struct _PlumaProgressMessageAreaPrivate PlumaProgressMessageAreaPrivate;
@@ -97,4 +97,4 @@ void		 lapiz_progress_message_area_pulse		(PlumaProgressMessageArea *area);
 
 G_END_DECLS
 
-#endif  /* __PLUMA_PROGRESS_MESSAGE_AREA_H__  */
+#endif  /* __LAPIZ_PROGRESS_MESSAGE_AREA_H__  */

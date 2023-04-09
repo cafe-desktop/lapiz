@@ -49,7 +49,7 @@ def run_external_tool(window, panel, node):
 
     capture = Capture(node.command, cwd)
     capture.env = os.environ.copy()
-    capture.set_env(PLUMA_CWD = cwd)
+    capture.set_env(LAPIZ_CWD = cwd)
 
     view = window.get_active_view()
     if view is not None:
@@ -59,7 +59,7 @@ def run_external_tool(window, panel, node):
 
         # Current line number
         piter = document.get_iter_at_mark(document.get_insert())
-        capture.set_env(PLUMA_CURRENT_LINE_NUMBER=str(piter.get_line() + 1))
+        capture.set_env(LAPIZ_CURRENT_LINE_NUMBER=str(piter.get_line() + 1))
 
         # Current line text
         piter.set_line_offset(0)
@@ -68,33 +68,33 @@ def run_external_tool(window, panel, node):
         if not end.ends_line():
             end.forward_to_line_end()
 
-        capture.set_env(PLUMA_CURRENT_LINE=piter.get_text(end))
+        capture.set_env(LAPIZ_CURRENT_LINE=piter.get_text(end))
 
         # Selected text (only if input is not selection)
         if node.input != 'selection' and node.input != 'selection-document':
             bounds = document.get_selection_bounds()
 
             if bounds:
-                capture.set_env(PLUMA_SELECTED_TEXT=bounds[0].get_text(bounds[1]))
+                capture.set_env(LAPIZ_SELECTED_TEXT=bounds[0].get_text(bounds[1]))
 
         bounds = current_word(document)
-        capture.set_env(PLUMA_CURRENT_WORD=bounds[0].get_text(bounds[1]))
+        capture.set_env(LAPIZ_CURRENT_WORD=bounds[0].get_text(bounds[1]))
 
-        capture.set_env(PLUMA_CURRENT_DOCUMENT_TYPE=document.get_mime_type())
+        capture.set_env(LAPIZ_CURRENT_DOCUMENT_TYPE=document.get_mime_type())
 
         if uri is not None:
             gfile = Gio.file_new_for_uri(uri)
             scheme = gfile.get_uri_scheme()
             name = os.path.basename(uri)
-            capture.set_env(PLUMA_CURRENT_DOCUMENT_URI    = uri,
-                            PLUMA_CURRENT_DOCUMENT_NAME   = name,
-                            PLUMA_CURRENT_DOCUMENT_SCHEME = scheme)
+            capture.set_env(LAPIZ_CURRENT_DOCUMENT_URI    = uri,
+                            LAPIZ_CURRENT_DOCUMENT_NAME   = name,
+                            LAPIZ_CURRENT_DOCUMENT_SCHEME = scheme)
             if Pluma.utils_uri_has_file_scheme(uri):
                 path = gfile.get_path()
                 cwd = os.path.dirname(path)
                 capture.set_cwd(cwd)
-                capture.set_env(PLUMA_CURRENT_DOCUMENT_PATH = path,
-                                PLUMA_CURRENT_DOCUMENT_DIR  = cwd)
+                capture.set_env(LAPIZ_CURRENT_DOCUMENT_PATH = path,
+                                LAPIZ_CURRENT_DOCUMENT_DIR  = cwd)
 
         documents_uri = [doc.get_uri()
                                  for doc in window.get_documents()
@@ -102,8 +102,8 @@ def run_external_tool(window, panel, node):
         documents_path = [Gio.file_new_for_uri(uri).get_path()
                                  for uri in documents_uri
                                  if Pluma.utils_uri_has_file_scheme(uri)]
-        capture.set_env(PLUMA_DOCUMENTS_URI  = ' '.join(documents_uri),
-                        PLUMA_DOCUMENTS_PATH = ' '.join(documents_path))
+        capture.set_env(LAPIZ_DOCUMENTS_URI  = ' '.join(documents_uri),
+                        LAPIZ_DOCUMENTS_PATH = ' '.join(documents_path))
 
     flags = capture.CAPTURE_BOTH
 

@@ -35,8 +35,8 @@
  *
  */
 
-#ifndef PLUMA_NOTEBOOK_H
-#define PLUMA_NOTEBOOK_H
+#ifndef LAPIZ_NOTEBOOK_H
+#define LAPIZ_NOTEBOOK_H
 
 #include <lapiz/lapiz-tab.h>
 
@@ -48,12 +48,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_NOTEBOOK		(lapiz_notebook_get_type ())
-#define PLUMA_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_NOTEBOOK, PlumaNotebook))
-#define PLUMA_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_NOTEBOOK, PlumaNotebookClass))
-#define PLUMA_IS_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_NOTEBOOK))
-#define PLUMA_IS_NOTEBOOK_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_NOTEBOOK))
-#define PLUMA_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_NOTEBOOK, PlumaNotebookClass))
+#define LAPIZ_TYPE_NOTEBOOK		(lapiz_notebook_get_type ())
+#define LAPIZ_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_NOTEBOOK, PlumaNotebook))
+#define LAPIZ_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_NOTEBOOK, PlumaNotebookClass))
+#define LAPIZ_IS_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_NOTEBOOK))
+#define LAPIZ_IS_NOTEBOOK_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_NOTEBOOK))
+#define LAPIZ_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_NOTEBOOK, PlumaNotebookClass))
 
 /* Private structure type */
 typedef struct _PlumaNotebookPrivate	PlumaNotebookPrivate;
@@ -135,4 +135,4 @@ gboolean	lapiz_notebook_get_tab_drag_and_drop_enabled
 
 G_END_DECLS
 
-#endif /* PLUMA_NOTEBOOK_H */
+#endif /* LAPIZ_NOTEBOOK_H */

@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_FILE_CHOOSER_DIALOG_H__
-#define __PLUMA_FILE_CHOOSER_DIALOG_H__
+#ifndef __LAPIZ_FILE_CHOOSER_DIALOG_H__
+#define __LAPIZ_FILE_CHOOSER_DIALOG_H__
 
 #include <gtk/gtk.h>
 
@@ -39,12 +39,12 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_FILE_CHOOSER_DIALOG             (lapiz_file_chooser_dialog_get_type ())
-#define PLUMA_FILE_CHOOSER_DIALOG(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialog))
-#define PLUMA_FILE_CHOOSER_DIALOG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialogClass))
-#define PLUMA_IS_FILE_CHOOSER_DIALOG(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_FILE_CHOOSER_DIALOG))
-#define PLUMA_IS_FILE_CHOOSER_DIALOG_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_FILE_CHOOSER_DIALOG))
-#define PLUMA_FILE_CHOOSER_DIALOG_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialogClass))
+#define LAPIZ_TYPE_FILE_CHOOSER_DIALOG             (lapiz_file_chooser_dialog_get_type ())
+#define LAPIZ_FILE_CHOOSER_DIALOG(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialog))
+#define LAPIZ_FILE_CHOOSER_DIALOG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialogClass))
+#define LAPIZ_IS_FILE_CHOOSER_DIALOG(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG))
+#define LAPIZ_IS_FILE_CHOOSER_DIALOG_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_FILE_CHOOSER_DIALOG))
+#define LAPIZ_FILE_CHOOSER_DIALOG_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialogClass))
 
 typedef struct _PlumaFileChooserDialog      PlumaFileChooserDialog;
 typedef struct _PlumaFileChooserDialogClass PlumaFileChooserDialogClass;
@@ -86,4 +86,4 @@ PlumaDocumentNewlineType
 
 G_END_DECLS
 
-#endif /* __PLUMA_FILE_CHOOSER_DIALOG_H__ */
+#endif /* __LAPIZ_FILE_CHOOSER_DIALOG_H__ */

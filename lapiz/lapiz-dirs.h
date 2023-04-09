@@ -21,8 +21,8 @@
  */
 
 
-#ifndef __PLUMA_DIRS_H__
-#define __PLUMA_DIRS_H__
+#ifndef __LAPIZ_DIRS_H__
+#define __LAPIZ_DIRS_H__
 
 #include <glib.h>
 
@@ -50,4 +50,4 @@ gchar		*lapiz_dirs_get_ui_file			(const gchar *file);
 
 G_END_DECLS
 
-#endif /* __PLUMA_DIRS_H__ */
+#endif /* __LAPIZ_DIRS_H__ */

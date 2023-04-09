@@ -80,12 +80,12 @@ struct _PlumaGioDocumentSaverPrivate
 	GError                   *error;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentSaver, lapiz_gio_document_saver, PLUMA_TYPE_DOCUMENT_SAVER)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentSaver, lapiz_gio_document_saver, LAPIZ_TYPE_DOCUMENT_SAVER)
 
 static void
 lapiz_gio_document_saver_dispose (GObject *object)
 {
-	PlumaGioDocumentSaverPrivate *priv = PLUMA_GIO_DOCUMENT_SAVER (object)->priv;
+	PlumaGioDocumentSaverPrivate *priv = LAPIZ_GIO_DOCUMENT_SAVER (object)->priv;
 
 	if (priv->cancellable != NULL)
 	{
@@ -156,7 +156,7 @@ static void
 lapiz_gio_document_saver_class_init (PlumaGioDocumentSaverClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	PlumaDocumentSaverClass *saver_class = PLUMA_DOCUMENT_SAVER_CLASS (klass);
+	PlumaDocumentSaverClass *saver_class = LAPIZ_DOCUMENT_SAVER_CLASS (klass);
 
 	object_class->dispose = lapiz_gio_document_saver_dispose;
 
@@ -178,7 +178,7 @@ static void
 remote_save_completed_or_failed (PlumaGioDocumentSaver *gvsaver,
 				 AsyncData 	       *async)
 {
-	lapiz_document_saver_saving (PLUMA_DOCUMENT_SAVER (gvsaver),
+	lapiz_document_saver_saving (LAPIZ_DOCUMENT_SAVER (gvsaver),
 				     TRUE,
 				     gvsaver->priv->error);
 
@@ -297,10 +297,10 @@ remote_get_info_cb (GFile        *source,
 
 	if (info != NULL)
 	{
-		if (PLUMA_DOCUMENT_SAVER (saver)->info != NULL)
-			g_object_unref (PLUMA_DOCUMENT_SAVER (saver)->info);
+		if (LAPIZ_DOCUMENT_SAVER (saver)->info != NULL)
+			g_object_unref (LAPIZ_DOCUMENT_SAVER (saver)->info);
 
-		PLUMA_DOCUMENT_SAVER (saver)->info = info;
+		LAPIZ_DOCUMENT_SAVER (saver)->info = info;
 	}
 	else
 	{
@@ -423,7 +423,7 @@ async_write_cb (GOutputStream *stream,
 	/* note that this signal blocks the write... check if it isn't
 	 * a performance problem
 	 */
-	lapiz_document_saver_saving (PLUMA_DOCUMENT_SAVER (gvsaver),
+	lapiz_document_saver_saving (LAPIZ_DOCUMENT_SAVER (gvsaver),
 				     FALSE,
 				     NULL);
 
@@ -482,7 +482,7 @@ read_file_chunk (AsyncData *async)
 	}
 
 	/* Get how many chars have been read */
-	dstream = PLUMA_DOCUMENT_INPUT_STREAM (gvsaver->priv->input);
+	dstream = LAPIZ_DOCUMENT_INPUT_STREAM (gvsaver->priv->input);
 	gvsaver->priv->bytes_written = lapiz_document_input_stream_tell (dstream);
 
 	write_file_chunk (async);
@@ -509,7 +509,7 @@ async_replace_ready_callback (GFile        *source,
 	}
 
 	gvsaver = async->saver;
-	saver = PLUMA_DOCUMENT_SAVER (gvsaver);
+	saver = LAPIZ_DOCUMENT_SAVER (gvsaver);
 	file_stream = g_file_replace_finish (source, res, &error);
 
 	/* handle any error that might occur */
@@ -543,7 +543,7 @@ async_replace_ready_callback (GFile        *source,
 	gvsaver->priv->input = lapiz_document_input_stream_new (GTK_TEXT_BUFFER (saver->document),
 								saver->newline_type);
 
-	gvsaver->priv->size = lapiz_document_input_stream_get_total_size (PLUMA_DOCUMENT_INPUT_STREAM (gvsaver->priv->input));
+	gvsaver->priv->size = lapiz_document_input_stream_get_total_size (LAPIZ_DOCUMENT_INPUT_STREAM (gvsaver->priv->input));
 
 	read_file_chunk (async);
 }
@@ -561,7 +561,7 @@ begin_write (AsyncData *async)
 	 * backup as of yet
 	 */
 	gvsaver = async->saver;
-	saver = PLUMA_DOCUMENT_SAVER (gvsaver);
+	saver = LAPIZ_DOCUMENT_SAVER (gvsaver);
 
 	/* Do not make backups for remote files so they do not clutter remote systems */
 	backup = (saver->keep_backup && lapiz_document_is_local (saver->document));
@@ -618,7 +618,7 @@ recover_not_mounted (AsyncData *async)
 
 	lapiz_debug (DEBUG_LOADER);
 
-	doc = lapiz_document_saver_get_document (PLUMA_DOCUMENT_SAVER (async->saver));
+	doc = lapiz_document_saver_get_document (LAPIZ_DOCUMENT_SAVER (async->saver));
 	mount_operation = _lapiz_document_create_mount_operation (doc);
 
 	async->tried_mount = TRUE;
@@ -683,12 +683,12 @@ check_modification_callback (GFile        *source,
 
 		if ((old_mtime.tv_sec > 0 || old_mtime.tv_usec > 0) &&
 		    (mtime.tv_sec != old_mtime.tv_sec || mtime.tv_usec != old_mtime.tv_usec) &&
-		    (PLUMA_DOCUMENT_SAVER (gvsaver)->flags & PLUMA_DOCUMENT_SAVE_IGNORE_MTIME) == 0)
+		    (LAPIZ_DOCUMENT_SAVER (gvsaver)->flags & LAPIZ_DOCUMENT_SAVE_IGNORE_MTIME) == 0)
 		{
 			lapiz_debug_message (DEBUG_SAVER, "File is externally modified");
 			g_set_error (&gvsaver->priv->error,
-				     PLUMA_DOCUMENT_ERROR,
-				     PLUMA_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
+				     LAPIZ_DOCUMENT_ERROR,
+				     LAPIZ_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
 				     "Externally modified");
 
 			remote_save_completed_or_failed (gvsaver, async);
@@ -741,7 +741,7 @@ static void
 lapiz_gio_document_saver_save (PlumaDocumentSaver *saver,
 			       GTimeVal           *old_mtime)
 {
-	PlumaGioDocumentSaver *gvsaver = PLUMA_GIO_DOCUMENT_SAVER (saver);
+	PlumaGioDocumentSaver *gvsaver = LAPIZ_GIO_DOCUMENT_SAVER (saver);
 
 	gvsaver->priv->old_mtime = *old_mtime;
 	gvsaver->priv->gfile = g_file_new_for_uri (saver->uri);
@@ -759,11 +759,11 @@ lapiz_gio_document_saver_save (PlumaDocumentSaver *saver,
 static goffset
 lapiz_gio_document_saver_get_file_size (PlumaDocumentSaver *saver)
 {
-	return PLUMA_GIO_DOCUMENT_SAVER (saver)->priv->size;
+	return LAPIZ_GIO_DOCUMENT_SAVER (saver)->priv->size;
 }
 
 static goffset
 lapiz_gio_document_saver_get_bytes_written (PlumaDocumentSaver *saver)
 {
-	return PLUMA_GIO_DOCUMENT_SAVER (saver)->priv->bytes_written;
+	return LAPIZ_GIO_DOCUMENT_SAVER (saver)->priv->bytes_written;
 }

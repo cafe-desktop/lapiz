@@ -22,8 +22,8 @@
  * $Id: lapiz-source-style-manager.h 5598 2007-04-15 13:16:24Z pborelli $
  */
 
-#ifndef __PLUMA_STYLE_SCHEME_MANAGER_H__
-#define __PLUMA_STYLE_SCHEME_MANAGER_H__
+#ifndef __LAPIZ_STYLE_SCHEME_MANAGER_H__
+#define __LAPIZ_STYLE_SCHEME_MANAGER_H__
 
 #include <gtksourceview/gtksource.h>
 
@@ -53,4 +53,4 @@ gboolean	 _lapiz_style_scheme_manager_uninstall_scheme
 
 G_END_DECLS
 
-#endif /* __PLUMA_STYLE_SCHEME_MANAGER_H__ */
+#endif /* __LAPIZ_STYLE_SCHEME_MANAGER_H__ */

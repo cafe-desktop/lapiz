@@ -65,7 +65,7 @@ test_consecutive_write (const gchar *inbuf,
 	g_assert_cmpstr (inbuf, ==, b);
 	g_free (b);
 
-	type = lapiz_document_output_stream_detect_newline_type (PLUMA_DOCUMENT_OUTPUT_STREAM (out));
+	type = lapiz_document_output_stream_detect_newline_type (LAPIZ_DOCUMENT_OUTPUT_STREAM (out));
 	g_assert (type == newline_type);
 
 	g_output_stream_close (out, NULL, &err);
@@ -85,39 +85,39 @@ test_consecutive_write (const gchar *inbuf,
 static void
 test_empty ()
 {
-	test_consecutive_write ("", "", 10, PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT);
-	test_consecutive_write ("\r\n", "", 10, PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF);
-	test_consecutive_write ("\r", "", 10, PLUMA_DOCUMENT_NEWLINE_TYPE_CR);
-	test_consecutive_write ("\n", "", 10, PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+	test_consecutive_write ("", "", 10, LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+	test_consecutive_write ("\r\n", "", 10, LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF);
+	test_consecutive_write ("\r", "", 10, LAPIZ_DOCUMENT_NEWLINE_TYPE_CR);
+	test_consecutive_write ("\n", "", 10, LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 }
 
 static void
 test_consecutive ()
 {
 	test_consecutive_write ("hello\nhow\nare\nyou", "hello\nhow\nare\nyou", 3,
-				PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+				LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 	test_consecutive_write ("hello\rhow\rare\ryou", "hello\rhow\rare\ryou", 3,
-				PLUMA_DOCUMENT_NEWLINE_TYPE_CR);
+				LAPIZ_DOCUMENT_NEWLINE_TYPE_CR);
 	test_consecutive_write ("hello\r\nhow\r\nare\r\nyou", "hello\r\nhow\r\nare\r\nyou", 3,
-				PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF);
+				LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF);
 }
 
 static void
 test_consecutive_tnewline ()
 {
 	test_consecutive_write ("hello\nhow\nare\nyou\n", "hello\nhow\nare\nyou", 3,
-				PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+				LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 	test_consecutive_write ("hello\rhow\rare\ryou\r", "hello\rhow\rare\ryou", 3,
-				PLUMA_DOCUMENT_NEWLINE_TYPE_CR);
+				LAPIZ_DOCUMENT_NEWLINE_TYPE_CR);
 	test_consecutive_write ("hello\r\nhow\r\nare\r\nyou\r\n", "hello\r\nhow\r\nare\r\nyou", 3,
-				PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF);
+				LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF);
 }
 
 static void
 test_big_char ()
 {
 	test_consecutive_write ("\343\203\200\343\203\200", "\343\203\200\343\203\200", 2,
-				PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+				LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 }
 
 int main (int   argc,

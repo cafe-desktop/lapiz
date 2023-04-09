@@ -29,8 +29,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_PREFERENCES_DIALOG_H__
-#define __PLUMA_PREFERENCES_DIALOG_H__
+#ifndef __LAPIZ_PREFERENCES_DIALOG_H__
+#define __LAPIZ_PREFERENCES_DIALOG_H__
 
 #include "lapiz-window.h"
 
@@ -39,13 +39,13 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PREFERENCES_DIALOG              (lapiz_preferences_dialog_get_type())
-#define PLUMA_PREFERENCES_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog))
-#define PLUMA_PREFERENCES_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog const))
-#define PLUMA_PREFERENCES_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialogClass))
-#define PLUMA_IS_PREFERENCES_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PREFERENCES_DIALOG))
-#define PLUMA_IS_PREFERENCES_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_PREFERENCES_DIALOG))
-#define PLUMA_PREFERENCES_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialogClass))
+#define LAPIZ_TYPE_PREFERENCES_DIALOG              (lapiz_preferences_dialog_get_type())
+#define LAPIZ_PREFERENCES_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog))
+#define LAPIZ_PREFERENCES_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialog const))
+#define LAPIZ_PREFERENCES_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialogClass))
+#define LAPIZ_IS_PREFERENCES_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PREFERENCES_DIALOG))
+#define LAPIZ_IS_PREFERENCES_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PREFERENCES_DIALOG))
+#define LAPIZ_PREFERENCES_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PREFERENCES_DIALOG, PlumaPreferencesDialogClass))
 
 
 /* Private structure type */
@@ -83,5 +83,5 @@ void		 lapiz_show_preferences_dialog		(PlumaWindow *parent);
 
 G_END_DECLS
 
-#endif /* __PLUMA_PREFERENCES_DIALOG_H__ */
+#endif /* __LAPIZ_PREFERENCES_DIALOG_H__ */
 

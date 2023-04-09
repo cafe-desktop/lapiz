@@ -27,8 +27,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_PREFS_MANAGER_PRIVATE_H__
-#define __PLUMA_PREFS_MANAGER_PRIVATE_H__
+#ifndef __LAPIZ_PREFS_MANAGER_PRIVATE_H__
+#define __LAPIZ_PREFS_MANAGER_PRIVATE_H__
 
 #include <gio/gio.h>
 
@@ -42,6 +42,6 @@ struct _PlumaPrefsManager {
 
 extern PlumaPrefsManager *lapiz_prefs_manager;
 
-#endif /* __PLUMA_PREFS_MANAGER_PRIVATE_H__ */
+#endif /* __LAPIZ_PREFS_MANAGER_PRIVATE_H__ */
 
 

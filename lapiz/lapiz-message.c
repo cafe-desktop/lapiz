@@ -40,7 +40,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (PlumaMessage, lapiz_message, G_TYPE_OBJECT)
 static void
 lapiz_message_finalize (GObject *object)
 {
-	PlumaMessage *message = PLUMA_MESSAGE (object);
+	PlumaMessage *message = LAPIZ_MESSAGE (object);
 
 	lapiz_message_type_unref (message->priv->type);
 	g_hash_table_destroy (message->priv->values);
@@ -54,7 +54,7 @@ lapiz_message_get_property (GObject    *object,
 			    GValue     *value,
 			    GParamSpec *pspec)
 {
-	PlumaMessage *msg = PLUMA_MESSAGE (object);
+	PlumaMessage *msg = LAPIZ_MESSAGE (object);
 
 	switch (prop_id)
 	{
@@ -79,12 +79,12 @@ lapiz_message_set_property (GObject      *object,
 			    const GValue *value,
 			    GParamSpec   *pspec)
 {
-	PlumaMessage *msg = PLUMA_MESSAGE (object);
+	PlumaMessage *msg = LAPIZ_MESSAGE (object);
 
 	switch (prop_id)
 	{
 		case PROP_TYPE:
-			msg->priv->type = PLUMA_MESSAGE_TYPE (g_value_dup_boxed (value));
+			msg->priv->type = LAPIZ_MESSAGE_TYPE (g_value_dup_boxed (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -158,7 +158,7 @@ lapiz_message_class_init (PlumaMessageClass *klass)
 					 g_param_spec_boxed ("type",
 					 		     "TYPE",
 					 		     "The message type",
-					 		     PLUMA_TYPE_MESSAGE_TYPE,
+					 		     LAPIZ_TYPE_MESSAGE_TYPE,
 					 		     G_PARAM_READWRITE |
 					 		     G_PARAM_CONSTRUCT_ONLY |
 					 		     G_PARAM_STATIC_STRINGS));
@@ -235,7 +235,7 @@ value_lookup (PlumaMessage *message,
 const gchar *
 lapiz_message_get_method (PlumaMessage *message)
 {
-	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), NULL);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE (message), NULL);
 
 	return lapiz_message_type_get_method (message->priv->type);
 }
@@ -252,7 +252,7 @@ lapiz_message_get_method (PlumaMessage *message)
 const gchar *
 lapiz_message_get_object_path (PlumaMessage *message)
 {
-	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), NULL);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE (message), NULL);
 
 	return lapiz_message_type_get_object_path (message->priv->type);
 }
@@ -272,7 +272,7 @@ lapiz_message_set (PlumaMessage *message,
 {
 	va_list ap;
 
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	va_start (ap, message);
 	lapiz_message_set_valist (message, ap);
@@ -294,7 +294,7 @@ lapiz_message_set_valist (PlumaMessage *message,
 {
 	const gchar *key;
 
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	while ((key = va_arg (var_args, const gchar *)) != NULL)
 	{
@@ -343,7 +343,7 @@ lapiz_message_set_value (PlumaMessage *message,
 			 GValue	      *value)
 {
 	GValue *container;
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	container = value_lookup (message, key, TRUE);
 
@@ -376,7 +376,7 @@ lapiz_message_set_valuesv (PlumaMessage	 *message,
 {
 	gint i;
 
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	for (i = 0; i < n_values; i++)
 	{
@@ -401,7 +401,7 @@ lapiz_message_get (PlumaMessage	*message,
 {
 	va_list ap;
 
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	va_start (ap, message);
 	lapiz_message_get_valist (message, ap);
@@ -424,7 +424,7 @@ lapiz_message_get_valist (PlumaMessage *message,
 {
 	const gchar *key;
 
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	while ((key = va_arg (var_args, const gchar *)) != NULL)
 	{
@@ -478,7 +478,7 @@ lapiz_message_get_value (PlumaMessage *message,
 {
 	GValue *container;
 
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	container = value_lookup (message, key, FALSE);
 
@@ -508,7 +508,7 @@ GType
 lapiz_message_get_key_type (PlumaMessage    *message,
 			    const gchar	    *key)
 {
-	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), G_TYPE_INVALID);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE (message), G_TYPE_INVALID);
 	g_return_val_if_fail (message->priv->type != NULL, G_TYPE_INVALID);
 
 	return lapiz_message_type_lookup (message->priv->type, key);
@@ -528,7 +528,7 @@ gboolean
 lapiz_message_has_key (PlumaMessage *message,
 		       const gchar  *key)
 {
-	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE (message), FALSE);
 
 	return value_lookup (message, key, FALSE) != NULL;
 }
@@ -570,7 +570,7 @@ lapiz_message_validate (PlumaMessage *message)
 {
 	ValidateInfo info = {message, TRUE};
 
-	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE (message), FALSE);
 	g_return_val_if_fail (message->priv->type != NULL, FALSE);
 
 	if (!message->priv->valid)

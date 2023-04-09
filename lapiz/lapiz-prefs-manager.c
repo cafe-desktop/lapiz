@@ -171,7 +171,7 @@ lapiz_prefs_manager_init (void)
 	if (lapiz_prefs_manager == NULL)
 	{
 		lapiz_prefs_manager = g_new0 (PlumaPrefsManager, 1);
-		lapiz_prefs_manager->settings = g_settings_new (PLUMA_SCHEMA);
+		lapiz_prefs_manager->settings = g_settings_new (LAPIZ_SCHEMA);
 		lapiz_prefs_manager->lockdown_settings = g_settings_new (GPM_LOCKDOWN_SCHEMA);
 		lapiz_prefs_manager->interface_settings = g_settings_new (GPM_INTERFACE_SCHEMA);
 	}
@@ -422,18 +422,18 @@ lapiz_prefs_manager_get_toolbar_buttons_style (void)
 
 	str = lapiz_prefs_manager_get_string (GPM_TOOLBAR_BUTTONS_STYLE);
 
-	if (strcmp (str, "PLUMA_TOOLBAR_ICONS") == 0)
-		res = PLUMA_TOOLBAR_ICONS;
+	if (strcmp (str, "LAPIZ_TOOLBAR_ICONS") == 0)
+		res = LAPIZ_TOOLBAR_ICONS;
 	else
 	{
-		if (strcmp (str, "PLUMA_TOOLBAR_ICONS_AND_TEXT") == 0)
-			res = PLUMA_TOOLBAR_ICONS_AND_TEXT;
+		if (strcmp (str, "LAPIZ_TOOLBAR_ICONS_AND_TEXT") == 0)
+			res = LAPIZ_TOOLBAR_ICONS_AND_TEXT;
 		else
 		{
-			if (strcmp (str, "PLUMA_TOOLBAR_ICONS_BOTH_HORIZ") == 0)
-				res = PLUMA_TOOLBAR_ICONS_BOTH_HORIZ;
+			if (strcmp (str, "LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ") == 0)
+				res = LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ;
 			else
-				res = PLUMA_TOOLBAR_SYSTEM;
+				res = LAPIZ_TOOLBAR_SYSTEM;
 		}
 	}
 
@@ -451,19 +451,19 @@ lapiz_prefs_manager_set_toolbar_buttons_style (PlumaToolbarSetting tbs)
 
 	switch (tbs)
 	{
-		case PLUMA_TOOLBAR_ICONS:
-			str = "PLUMA_TOOLBAR_ICONS";
+		case LAPIZ_TOOLBAR_ICONS:
+			str = "LAPIZ_TOOLBAR_ICONS";
 			break;
 
-		case PLUMA_TOOLBAR_ICONS_AND_TEXT:
-			str = "PLUMA_TOOLBAR_ICONS_AND_TEXT";
+		case LAPIZ_TOOLBAR_ICONS_AND_TEXT:
+			str = "LAPIZ_TOOLBAR_ICONS_AND_TEXT";
 			break;
 
-	        case PLUMA_TOOLBAR_ICONS_BOTH_HORIZ:
-			str = "PLUMA_TOOLBAR_ICONS_BOTH_HORIZ";
+	        case LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ:
+			str = "LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ";
 			break;
-		default: /* PLUMA_TOOLBAR_SYSTEM */
-			str = "PLUMA_TOOLBAR_SYSTEM";
+		default: /* LAPIZ_TOOLBAR_SYSTEM */
+			str = "LAPIZ_TOOLBAR_SYSTEM";
 	}
 
 	lapiz_prefs_manager_set_string (GPM_TOOLBAR_BUTTONS_STYLE,
@@ -974,16 +974,16 @@ lapiz_prefs_manager_get_lockdown (void)
 	guint lockdown = 0;
 
 	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_COMMAND_LINE))
-		lockdown |= PLUMA_LOCKDOWN_COMMAND_LINE;
+		lockdown |= LAPIZ_LOCKDOWN_COMMAND_LINE;
 
 	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_PRINTING))
-		lockdown |= PLUMA_LOCKDOWN_PRINTING;
+		lockdown |= LAPIZ_LOCKDOWN_PRINTING;
 
 	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_PRINT_SETUP))
-		lockdown |= PLUMA_LOCKDOWN_PRINT_SETUP;
+		lockdown |= LAPIZ_LOCKDOWN_PRINT_SETUP;
 
 	if (g_settings_get_boolean (lapiz_prefs_manager->lockdown_settings, GPM_LOCKDOWN_SAVE_TO_DISK))
-		lockdown |= PLUMA_LOCKDOWN_SAVE_TO_DISK;
+		lockdown |= LAPIZ_LOCKDOWN_SAVE_TO_DISK;
 
 	return lockdown;
 }

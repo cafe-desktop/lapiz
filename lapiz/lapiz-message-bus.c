@@ -174,7 +174,7 @@ message_queue_free (GList *queue)
 static void
 lapiz_message_bus_finalize (GObject *object)
 {
-	PlumaMessageBus *bus = PLUMA_MESSAGE_BUS (object);
+	PlumaMessageBus *bus = LAPIZ_MESSAGE_BUS (object);
 
 	if (bus->priv->idle_id != 0)
 		g_source_remove (bus->priv->idle_id);
@@ -217,7 +217,7 @@ lapiz_message_bus_class_init (PlumaMessageBusClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      PLUMA_TYPE_MESSAGE);
+			      LAPIZ_TYPE_MESSAGE);
 
 	/**
 	 * PlumaMessageBus::registered:
@@ -237,7 +237,7 @@ lapiz_message_bus_class_init (PlumaMessageBusClass *klass)
 			      g_cclosure_marshal_VOID__BOXED,
 			      G_TYPE_NONE,
 			      1,
-			      PLUMA_TYPE_MESSAGE_TYPE);
+			      LAPIZ_TYPE_MESSAGE_TYPE);
 
 	/**
 	 * PlumaMessageBus::unregistered:
@@ -257,7 +257,7 @@ lapiz_message_bus_class_init (PlumaMessageBusClass *klass)
 			      g_cclosure_marshal_VOID__BOXED,
 			      G_TYPE_NONE,
 			      1,
-			      PLUMA_TYPE_MESSAGE_TYPE);
+			      LAPIZ_TYPE_MESSAGE_TYPE);
 }
 
 static Message *
@@ -427,7 +427,7 @@ idle_dispatch (PlumaMessageBus *bus)
 
 	for (item = list; item; item = item->next)
 	{
-		PlumaMessage *msg = PLUMA_MESSAGE (item->data);
+		PlumaMessage *msg = LAPIZ_MESSAGE (item->data);
 
 		dispatch_message (bus, msg);
 	}
@@ -526,7 +526,7 @@ lapiz_message_bus_get_default (void)
 
 	if (G_UNLIKELY (default_bus == NULL))
 	{
-		default_bus = g_object_new (PLUMA_TYPE_MESSAGE_BUS, NULL);
+		default_bus = g_object_new (LAPIZ_TYPE_MESSAGE_BUS, NULL);
 		g_object_add_weak_pointer (G_OBJECT (default_bus),
 				           (gpointer) &default_bus);
 	}
@@ -547,7 +547,7 @@ lapiz_message_bus_get_default (void)
 PlumaMessageBus *
 lapiz_message_bus_new (void)
 {
-	return PLUMA_MESSAGE_BUS (g_object_new (PLUMA_TYPE_MESSAGE_BUS, NULL));
+	return LAPIZ_MESSAGE_BUS (g_object_new (LAPIZ_TYPE_MESSAGE_BUS, NULL));
 }
 
 /**
@@ -571,12 +571,12 @@ lapiz_message_bus_lookup (PlumaMessageBus *bus,
 	gchar *identifier;
 	PlumaMessageType *message_type;
 
-	g_return_val_if_fail (PLUMA_IS_MESSAGE_BUS (bus), NULL);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE_BUS (bus), NULL);
 	g_return_val_if_fail (object_path != NULL, NULL);
 	g_return_val_if_fail (method != NULL, NULL);
 
 	identifier = lapiz_message_type_identifier (object_path, method);
-	message_type = PLUMA_MESSAGE_TYPE (g_hash_table_lookup (bus->priv->types, identifier));
+	message_type = LAPIZ_MESSAGE_TYPE (g_hash_table_lookup (bus->priv->types, identifier));
 
 	g_free (identifier);
 	return message_type;
@@ -615,7 +615,7 @@ lapiz_message_bus_register (PlumaMessageBus *bus,
 	va_list var_args;
 	PlumaMessageType *message_type;
 
-	g_return_val_if_fail (PLUMA_IS_MESSAGE_BUS (bus), NULL);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE_BUS (bus), NULL);
 	g_return_val_if_fail (lapiz_message_type_is_valid_object_path (object_path), NULL);
 
 	if (lapiz_message_bus_is_registered (bus, object_path, method))
@@ -654,7 +654,7 @@ lapiz_message_bus_unregister_real (PlumaMessageBus  *bus,
 {
 	gchar *identifier;
 
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 
 	identifier = lapiz_message_type_identifier (lapiz_message_type_get_object_path (message_type),
 						    lapiz_message_type_get_method (message_type));
@@ -684,7 +684,7 @@ void
 lapiz_message_bus_unregister (PlumaMessageBus  *bus,
 			      PlumaMessageType *message_type)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 	lapiz_message_bus_unregister_real (bus, message_type, TRUE);
 }
 
@@ -727,7 +727,7 @@ lapiz_message_bus_unregister_all (PlumaMessageBus *bus,
 {
 	UnregisterInfo info = {bus, object_path};
 
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 	g_return_if_fail (object_path != NULL);
 
 	g_hash_table_foreach_remove (bus->priv->types,
@@ -756,7 +756,7 @@ lapiz_message_bus_is_registered (PlumaMessageBus	*bus,
 	gchar *identifier;
 	gboolean ret;
 
-	g_return_val_if_fail (PLUMA_IS_MESSAGE_BUS (bus), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE_BUS (bus), FALSE);
 	g_return_val_if_fail (object_path != NULL, FALSE);
 	g_return_val_if_fail (method != NULL, FALSE);
 
@@ -799,7 +799,7 @@ lapiz_message_bus_foreach (PlumaMessageBus        *bus,
 {
 	ForeachInfo info = {func, userdata};
 
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 	g_return_if_fail (func != NULL);
 
 	g_hash_table_foreach (bus->priv->types, (GHFunc)foreach_type, &info);
@@ -831,7 +831,7 @@ lapiz_message_bus_connect (PlumaMessageBus	*bus,
 {
 	Message *message;
 
-	g_return_val_if_fail (PLUMA_IS_MESSAGE_BUS (bus), 0);
+	g_return_val_if_fail (LAPIZ_IS_MESSAGE_BUS (bus), 0);
 	g_return_val_if_fail (object_path != NULL, 0);
 	g_return_val_if_fail (method != NULL, 0);
 	g_return_val_if_fail (callback != NULL, 0);
@@ -854,7 +854,7 @@ void
 lapiz_message_bus_disconnect (PlumaMessageBus *bus,
 			      guint            id)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 
 	process_by_id (bus, id, remove_listener);
 }
@@ -879,7 +879,7 @@ lapiz_message_bus_disconnect_by_func (PlumaMessageBus      *bus,
 				      PlumaMessageCallback  callback,
 				      gpointer		    userdata)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 
 	process_by_match (bus, object_path, method, callback, userdata, remove_listener);
 }
@@ -897,7 +897,7 @@ void
 lapiz_message_bus_block (PlumaMessageBus *bus,
 			 guint		  id)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 
 	process_by_id (bus, id, block_listener);
 }
@@ -921,7 +921,7 @@ lapiz_message_bus_block_by_func (PlumaMessageBus      *bus,
 				 PlumaMessageCallback  callback,
 				 gpointer	       userdata)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 
 	process_by_match (bus, object_path, method, callback, userdata, block_listener);
 }
@@ -938,7 +938,7 @@ void
 lapiz_message_bus_unblock (PlumaMessageBus *bus,
 			   guint	    id)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 
 	process_by_id (bus, id, unblock_listener);
 }
@@ -961,7 +961,7 @@ lapiz_message_bus_unblock_by_func (PlumaMessageBus      *bus,
 				   PlumaMessageCallback  callback,
 				   gpointer	         userdata)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
 
 	process_by_match (bus, object_path, method, callback, userdata, unblock_listener);
 }
@@ -1013,8 +1013,8 @@ void
 lapiz_message_bus_send_message (PlumaMessageBus *bus,
 			        PlumaMessage    *message)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	send_message_real (bus, message);
 }
@@ -1046,8 +1046,8 @@ void
 lapiz_message_bus_send_message_sync (PlumaMessageBus *bus,
 			             PlumaMessage    *message)
 {
-	g_return_if_fail (PLUMA_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (PLUMA_IS_MESSAGE (message));
+	g_return_if_fail (LAPIZ_IS_MESSAGE_BUS (bus));
+	g_return_if_fail (LAPIZ_IS_MESSAGE (message));
 
 	send_message_sync_real (bus, message);
 }

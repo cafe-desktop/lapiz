@@ -2045,25 +2045,25 @@
                 <para>You can use the following variables in the <guilabel>Commands</guilabel> field of the command definition:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>PLUMA_CURRENT_DOCUMENT_URI</para>
+                        <para>LAPIZ_CURRENT_DOCUMENT_URI</para>
                     </listitem>
                     <listitem>
-                        <para>PLUMA_CURRENT_DOCUMENT_NAME</para>
+                        <para>LAPIZ_CURRENT_DOCUMENT_NAME</para>
                     </listitem>
                     <listitem>
-                        <para>PLUMA_CURRENT_DOCUMENT_SCHEME</para>
+                        <para>LAPIZ_CURRENT_DOCUMENT_SCHEME</para>
                     </listitem>
                     <listitem>
-                        <para>PLUMA_CURRENT_DOCUMENT_PATH</para>
+                        <para>LAPIZ_CURRENT_DOCUMENT_PATH</para>
                     </listitem>
                     <listitem>
-                        <para>PLUMA_CURRENT_DOCUMENT_DIR</para>
+                        <para>LAPIZ_CURRENT_DOCUMENT_DIR</para>
                     </listitem>
                     <listitem>
-                        <para>PLUMA_DOCUMENTS_URI</para>
+                        <para>LAPIZ_DOCUMENTS_URI</para>
                     </listitem>
                     <listitem>
-                        <para>PLUMA_DOCUMENTS_PATH</para>
+                        <para>LAPIZ_DOCUMENTS_PATH</para>
                     </listitem>
                 </itemizedlist>
             </section>
@@ -2378,25 +2378,25 @@
                             <para>Environmental variable such as <literal>$PATH</literal> and <literal>$HOME</literal> are substituted in snippet text. The following variables specific to <application>lapiz</application> can also be used:</para>
                             <variablelist>
                                 <varlistentry>
-                                    <term>$PLUMA_SELECTED_TEXT</term>
+                                    <term>$LAPIZ_SELECTED_TEXT</term>
                                     <listitem>
                                         <para>The currently selected text.</para>
                                     </listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                    <term>$PLUMA_FILENAME</term>
+                                    <term>$LAPIZ_FILENAME</term>
                                     <listitem>
                                         <para>The full filename of the document, or an empty string if the document isn't saved yet.</para>
                                     </listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                    <term>$PLUMA_BASENAME</term>
+                                    <term>$LAPIZ_BASENAME</term>
                                     <listitem>
                                         <para>The basename of the filename of the document, or an empty string if the document isn't saved yet.</para>
                                     </listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                    <term>$PLUMA_CURRENT_WORD</term>
+                                    <term>$LAPIZ_CURRENT_WORD</term>
                                     <listitem>
                                         <para>The word at the cursor's location in the document. When this variable is used, the current word will be replaced by the snippet text.</para>
                                     </listitem>

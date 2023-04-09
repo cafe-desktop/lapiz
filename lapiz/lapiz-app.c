@@ -47,8 +47,8 @@
 #include "lapiz-enum-types.h"
 #include "lapiz-dirs.h"
 
-#define PLUMA_PAGE_SETUP_FILE		"lapiz-page-setup"
-#define PLUMA_PRINT_SETTINGS_FILE	"lapiz-print-settings"
+#define LAPIZ_PAGE_SETUP_FILE		"lapiz-page-setup"
+#define LAPIZ_PRINT_SETTINGS_FILE	"lapiz-print-settings"
 
 /* Properties */
 enum
@@ -73,7 +73,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (PlumaApp, lapiz_app, G_TYPE_OBJECT)
 static void
 lapiz_app_finalize (GObject *object)
 {
-	PlumaApp *app = PLUMA_APP (object);
+	PlumaApp *app = LAPIZ_APP (object);
 
 	g_list_free (app->priv->windows);
 
@@ -91,7 +91,7 @@ lapiz_app_get_property (GObject    *object,
 			GValue     *value,
 			GParamSpec *pspec)
 {
-	PlumaApp *app = PLUMA_APP (object);
+	PlumaApp *app = LAPIZ_APP (object);
 
 	switch (prop_id)
 	{
@@ -117,7 +117,7 @@ lapiz_app_class_init (PlumaAppClass *klass)
 					 g_param_spec_flags ("lockdown",
 							     "Lockdown",
 							     "The lockdown mask",
-							     PLUMA_TYPE_LOCKDOWN_MASK,
+							     LAPIZ_TYPE_LOCKDOWN_MASK,
 							     0,
 							     G_PARAM_READABLE |
 							     G_PARAM_STATIC_STRINGS));
@@ -188,7 +188,7 @@ get_page_setup_file (void)
 	if (config_dir != NULL)
 	{
 		setup = g_build_filename (config_dir,
-					  PLUMA_PAGE_SETUP_FILE,
+					  LAPIZ_PAGE_SETUP_FILE,
 					  NULL);
 		g_free (config_dir);
 	}
@@ -261,7 +261,7 @@ get_print_settings_file (void)
 	if (config_dir != NULL)
 	{
 		settings = g_build_filename (config_dir,
-					     PLUMA_PRINT_SETTINGS_FILE,
+					     LAPIZ_PRINT_SETTINGS_FILE,
 					     NULL);
 		g_free (config_dir);
 	}
@@ -357,7 +357,7 @@ lapiz_app_get_default (void)
 	if (app != NULL)
 		return app;
 
-	app = PLUMA_APP (g_object_new (PLUMA_TYPE_APP, NULL));
+	app = LAPIZ_APP (g_object_new (LAPIZ_TYPE_APP, NULL));
 
 	g_object_add_weak_pointer (G_OBJECT (app),
 				   (gpointer) &app);
@@ -381,7 +381,7 @@ window_focus_in_event (PlumaWindow   *window,
 		       PlumaApp      *app)
 {
 	/* updates active_view and active_child when a new toplevel receives focus */
-	g_return_val_if_fail (PLUMA_IS_WINDOW (window), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), FALSE);
 
 	set_active_window (app, window);
 
@@ -398,9 +398,9 @@ window_delete_event (PlumaWindow *window,
 	ws = lapiz_window_get_state (window);
 
 	if (ws &
-	    (PLUMA_WINDOW_STATE_SAVING |
-	     PLUMA_WINDOW_STATE_PRINTING |
-	     PLUMA_WINDOW_STATE_SAVING_SESSION))
+	    (LAPIZ_WINDOW_STATE_SAVING |
+	     LAPIZ_WINDOW_STATE_PRINTING |
+	     LAPIZ_WINDOW_STATE_SAVING_SESSION))
 	    	return TRUE;
 
 	_lapiz_cmd_file_quit (NULL, window);
@@ -477,12 +477,12 @@ lapiz_app_create_window_real (PlumaApp    *app,
 	 */
 	if (app->priv->windows == NULL)
 	{
-		window = g_object_new (PLUMA_TYPE_WINDOW, NULL);
+		window = g_object_new (LAPIZ_TYPE_WINDOW, NULL);
 		set_active_window (app, window);
 	}
 	else
 	{
-		window = g_object_new (PLUMA_TYPE_WINDOW, NULL);
+		window = g_object_new (LAPIZ_TYPE_WINDOW, NULL);
 	}
 
 	app->priv->windows = g_list_prepend (app->priv->windows,
@@ -595,7 +595,7 @@ _lapiz_app_restore_window (PlumaApp    *app,
 const GList *
 lapiz_app_get_windows (PlumaApp *app)
 {
-	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
 	return app->priv->windows;
 }
@@ -611,7 +611,7 @@ lapiz_app_get_windows (PlumaApp *app)
 PlumaWindow *
 lapiz_app_get_active_window (PlumaApp *app)
 {
-	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
 	/* make sure our active window is always realized:
 	 * this is needed on startup if we launch two lapiz fast
@@ -639,7 +639,7 @@ is_in_viewport (PlumaWindow  *window,
 
 	/* Check for workspace match */
 	ws = lapiz_utils_get_window_workspace (GTK_WINDOW (window));
-	if (ws != workspace && ws != PLUMA_ALL_WORKSPACES)
+	if (ws != workspace && ws != LAPIZ_ALL_WORKSPACES)
 		return FALSE;
 
 	/* Check for viewport match */
@@ -687,12 +687,12 @@ _lapiz_app_get_window_in_viewport (PlumaApp  *app,
 
 	GList *l;
 
-	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
 	/* first try if the active window */
 	window = app->priv->active_window;
 
-	g_return_val_if_fail (PLUMA_IS_WINDOW (window), NULL);
+	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
 	if (is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
 		return window;
@@ -725,14 +725,14 @@ lapiz_app_get_documents	(PlumaApp *app)
 	GList *res = NULL;
 	GList *windows;
 
-	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
 	windows = app->priv->windows;
 
 	while (windows != NULL)
 	{
 		res = g_list_concat (res,
-				     lapiz_window_get_documents (PLUMA_WINDOW (windows->data)));
+				     lapiz_window_get_documents (LAPIZ_WINDOW (windows->data)));
 
 		windows = g_list_next (windows);
 	}
@@ -755,14 +755,14 @@ lapiz_app_get_views (PlumaApp *app)
 	GList *res = NULL;
 	GList *windows;
 
-	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
 	windows = app->priv->windows;
 
 	while (windows != NULL)
 	{
 		res = g_list_concat (res,
-				     lapiz_window_get_views (PLUMA_WINDOW (windows->data)));
+				     lapiz_window_get_views (LAPIZ_WINDOW (windows->data)));
 
 		windows = g_list_next (windows);
 	}
@@ -781,7 +781,7 @@ lapiz_app_get_views (PlumaApp *app)
 PlumaLockdownMask
 lapiz_app_get_lockdown (PlumaApp *app)
 {
-	g_return_val_if_fail (PLUMA_IS_APP (app), PLUMA_LOCKDOWN_ALL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), LAPIZ_LOCKDOWN_ALL);
 
 	return app->priv->lockdown;
 }
@@ -792,7 +792,7 @@ app_lockdown_changed (PlumaApp *app)
 	GList *l;
 
 	for (l = app->priv->windows; l != NULL; l = l->next)
-		_lapiz_window_set_lockdown (PLUMA_WINDOW (l->data),
+		_lapiz_window_set_lockdown (LAPIZ_WINDOW (l->data),
 					    app->priv->lockdown);
 
 	g_object_notify (G_OBJECT (app), "lockdown");
@@ -802,7 +802,7 @@ void
 _lapiz_app_set_lockdown (PlumaApp          *app,
 			 PlumaLockdownMask  lockdown)
 {
-	g_return_if_fail (PLUMA_IS_APP (app));
+	g_return_if_fail (LAPIZ_IS_APP (app));
 
 	app->priv->lockdown = lockdown;
 
@@ -814,7 +814,7 @@ _lapiz_app_set_lockdown_bit (PlumaApp          *app,
 			     PlumaLockdownMask  bit,
 			     gboolean           value)
 {
-	g_return_if_fail (PLUMA_IS_APP (app));
+	g_return_if_fail (LAPIZ_IS_APP (app));
 
 	if (value)
 		app->priv->lockdown |= bit;
@@ -828,7 +828,7 @@ _lapiz_app_set_lockdown_bit (PlumaApp          *app,
 GtkPageSetup *
 _lapiz_app_get_default_page_setup (PlumaApp *app)
 {
-	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
 	if (app->priv->page_setup == NULL)
 		load_page_setup (app);
@@ -840,7 +840,7 @@ void
 _lapiz_app_set_default_page_setup (PlumaApp     *app,
 				   GtkPageSetup *page_setup)
 {
-	g_return_if_fail (PLUMA_IS_APP (app));
+	g_return_if_fail (LAPIZ_IS_APP (app));
 	g_return_if_fail (GTK_IS_PAGE_SETUP (page_setup));
 
 	if (app->priv->page_setup != NULL)
@@ -853,7 +853,7 @@ _lapiz_app_set_default_page_setup (PlumaApp     *app,
 GtkPrintSettings *
 _lapiz_app_get_default_print_settings (PlumaApp *app)
 {
-	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
+	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
 
 	if (app->priv->print_settings == NULL)
 		load_print_settings (app);
@@ -865,7 +865,7 @@ void
 _lapiz_app_set_default_print_settings (PlumaApp         *app,
 				       GtkPrintSettings *settings)
 {
-	g_return_if_fail (PLUMA_IS_APP (app));
+	g_return_if_fail (LAPIZ_IS_APP (app));
 	g_return_if_fail (GTK_IS_PRINT_SETTINGS (settings));
 
 	if (app->priv->print_settings != NULL)

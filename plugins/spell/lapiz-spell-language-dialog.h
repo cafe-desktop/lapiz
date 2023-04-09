@@ -27,20 +27,20 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_SPELL_LANGUAGE_DIALOG_H__
-#define __PLUMA_SPELL_LANGUAGE_DIALOG_H__
+#ifndef __LAPIZ_SPELL_LANGUAGE_DIALOG_H__
+#define __LAPIZ_SPELL_LANGUAGE_DIALOG_H__
 
 #include <gtk/gtk.h>
 #include "lapiz-spell-checker-language.h"
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_SPELL_LANGUAGE_DIALOG              (lapiz_spell_language_dialog_get_type())
-#define PLUMA_SPELL_LANGUAGE_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialog))
-#define PLUMA_SPELL_LANGUAGE_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialogClass))
-#define PLUMA_IS_SPELL_LANGUAGE_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG))
-#define PLUMA_IS_SPELL_LANGUAGE_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG))
-#define PLUMA_SPELL_LANGUAGE_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialogClass))
+#define LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG              (lapiz_spell_language_dialog_get_type())
+#define LAPIZ_SPELL_LANGUAGE_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialog))
+#define LAPIZ_SPELL_LANGUAGE_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialogClass))
+#define LAPIZ_IS_SPELL_LANGUAGE_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG))
+#define LAPIZ_IS_SPELL_LANGUAGE_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG))
+#define LAPIZ_SPELL_LANGUAGE_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialogClass))
 
 
 typedef struct _PlumaSpellLanguageDialog PlumaSpellLanguageDialog;
@@ -63,5 +63,5 @@ const PlumaSpellCheckerLanguage *
 
 G_END_DECLS
 
-#endif  /* __PLUMA_SPELL_LANGUAGE_DIALOG_H__ */
+#endif  /* __LAPIZ_SPELL_LANGUAGE_DIALOG_H__ */
 

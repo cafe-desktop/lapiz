@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_TAGLIST_PLUGIN_PARSER_H__
-#define __PLUMA_TAGLIST_PLUGIN_PARSER_H__
+#ifndef __LAPIZ_TAGLIST_PLUGIN_PARSER_H__
+#define __LAPIZ_TAGLIST_PLUGIN_PARSER_H__
 
 #include <libxml/tree.h>
 #include <glib.h>
@@ -61,5 +61,5 @@ TagList* create_taglist(const gchar* data_dir);
 
 void free_taglist(void);
 
-#endif /* __PLUMA_TAGLIST_PLUGIN_PARSER_H__ */
+#endif /* __LAPIZ_TAGLIST_PLUGIN_PARSER_H__ */
 

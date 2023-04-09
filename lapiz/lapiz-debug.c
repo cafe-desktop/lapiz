@@ -44,53 +44,53 @@ static GTimer *timer = NULL;
 static gdouble last = 0.0;
 #endif
 
-static PlumaDebugSection debug = PLUMA_NO_DEBUG;
+static PlumaDebugSection debug = LAPIZ_NO_DEBUG;
 
 void
 lapiz_debug_init (void)
 {
-	if (g_getenv ("PLUMA_DEBUG") != NULL)
+	if (g_getenv ("LAPIZ_DEBUG") != NULL)
 	{
 		/* enable all debugging */
-		debug = ~PLUMA_NO_DEBUG;
+		debug = ~LAPIZ_NO_DEBUG;
 		goto out;
 	}
 
-	if (g_getenv ("PLUMA_DEBUG_VIEW") != NULL)
-		debug = debug | PLUMA_DEBUG_VIEW;
-	if (g_getenv ("PLUMA_DEBUG_SEARCH") != NULL)
-		debug = debug | PLUMA_DEBUG_SEARCH;
-	if (g_getenv ("PLUMA_DEBUG_PREFS") != NULL)
-		debug = debug | PLUMA_DEBUG_PREFS;
-	if (g_getenv ("PLUMA_DEBUG_PRINT") != NULL)
-		debug = debug | PLUMA_DEBUG_PRINT;
-	if (g_getenv ("PLUMA_DEBUG_PLUGINS") != NULL)
-		debug = debug | PLUMA_DEBUG_PLUGINS;
-	if (g_getenv ("PLUMA_DEBUG_TAB") != NULL)
-		debug = debug | PLUMA_DEBUG_TAB;
-	if (g_getenv ("PLUMA_DEBUG_DOCUMENT") != NULL)
-		debug = debug | PLUMA_DEBUG_DOCUMENT;
-	if (g_getenv ("PLUMA_DEBUG_COMMANDS") != NULL)
-		debug = debug | PLUMA_DEBUG_COMMANDS;
-	if (g_getenv ("PLUMA_DEBUG_APP") != NULL)
-		debug = debug | PLUMA_DEBUG_APP;
-	if (g_getenv ("PLUMA_DEBUG_SESSION") != NULL)
-		debug = debug | PLUMA_DEBUG_SESSION;
-	if (g_getenv ("PLUMA_DEBUG_UTILS") != NULL)
-		debug = debug | PLUMA_DEBUG_UTILS;
-	if (g_getenv ("PLUMA_DEBUG_METADATA") != NULL)
-		debug = debug | PLUMA_DEBUG_METADATA;
-	if (g_getenv ("PLUMA_DEBUG_WINDOW") != NULL)
-		debug = debug | PLUMA_DEBUG_WINDOW;
-	if (g_getenv ("PLUMA_DEBUG_LOADER") != NULL)
-		debug = debug | PLUMA_DEBUG_LOADER;
-	if (g_getenv ("PLUMA_DEBUG_SAVER") != NULL)
-		debug = debug | PLUMA_DEBUG_SAVER;
+	if (g_getenv ("LAPIZ_DEBUG_VIEW") != NULL)
+		debug = debug | LAPIZ_DEBUG_VIEW;
+	if (g_getenv ("LAPIZ_DEBUG_SEARCH") != NULL)
+		debug = debug | LAPIZ_DEBUG_SEARCH;
+	if (g_getenv ("LAPIZ_DEBUG_PREFS") != NULL)
+		debug = debug | LAPIZ_DEBUG_PREFS;
+	if (g_getenv ("LAPIZ_DEBUG_PRINT") != NULL)
+		debug = debug | LAPIZ_DEBUG_PRINT;
+	if (g_getenv ("LAPIZ_DEBUG_PLUGINS") != NULL)
+		debug = debug | LAPIZ_DEBUG_PLUGINS;
+	if (g_getenv ("LAPIZ_DEBUG_TAB") != NULL)
+		debug = debug | LAPIZ_DEBUG_TAB;
+	if (g_getenv ("LAPIZ_DEBUG_DOCUMENT") != NULL)
+		debug = debug | LAPIZ_DEBUG_DOCUMENT;
+	if (g_getenv ("LAPIZ_DEBUG_COMMANDS") != NULL)
+		debug = debug | LAPIZ_DEBUG_COMMANDS;
+	if (g_getenv ("LAPIZ_DEBUG_APP") != NULL)
+		debug = debug | LAPIZ_DEBUG_APP;
+	if (g_getenv ("LAPIZ_DEBUG_SESSION") != NULL)
+		debug = debug | LAPIZ_DEBUG_SESSION;
+	if (g_getenv ("LAPIZ_DEBUG_UTILS") != NULL)
+		debug = debug | LAPIZ_DEBUG_UTILS;
+	if (g_getenv ("LAPIZ_DEBUG_METADATA") != NULL)
+		debug = debug | LAPIZ_DEBUG_METADATA;
+	if (g_getenv ("LAPIZ_DEBUG_WINDOW") != NULL)
+		debug = debug | LAPIZ_DEBUG_WINDOW;
+	if (g_getenv ("LAPIZ_DEBUG_LOADER") != NULL)
+		debug = debug | LAPIZ_DEBUG_LOADER;
+	if (g_getenv ("LAPIZ_DEBUG_SAVER") != NULL)
+		debug = debug | LAPIZ_DEBUG_SAVER;
 
 out:
 
 #ifdef ENABLE_PROFILING
-	if (debug != PLUMA_NO_DEBUG)
+	if (debug != LAPIZ_NO_DEBUG)
 		timer = g_timer_new ();
 #endif
 	return;

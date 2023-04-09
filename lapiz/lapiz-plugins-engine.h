@@ -28,20 +28,20 @@
  * $Id$
  */
 
-#ifndef __PLUMA_PLUGINS_ENGINE_H__
-#define __PLUMA_PLUGINS_ENGINE_H__
+#ifndef __LAPIZ_PLUGINS_ENGINE_H__
+#define __LAPIZ_PLUGINS_ENGINE_H__
 
 #include <glib.h>
 #include <libpeas/peas-engine.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_PLUGINS_ENGINE              (lapiz_plugins_engine_get_type ())
-#define PLUMA_PLUGINS_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PLUGINS_ENGINE, PlumaPluginsEngine))
-#define PLUMA_PLUGINS_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PLUGINS_ENGINE, PlumaPluginsEngineClass))
-#define PLUMA_IS_PLUGINS_ENGINE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PLUGINS_ENGINE))
-#define PLUMA_IS_PLUGINS_ENGINE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_PLUGINS_ENGINE))
-#define PLUMA_PLUGINS_ENGINE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_PLUGINS_ENGINE, PlumaPluginsEngineClass))
+#define LAPIZ_TYPE_PLUGINS_ENGINE              (lapiz_plugins_engine_get_type ())
+#define LAPIZ_PLUGINS_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PLUGINS_ENGINE, PlumaPluginsEngine))
+#define LAPIZ_PLUGINS_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PLUGINS_ENGINE, PlumaPluginsEngineClass))
+#define LAPIZ_IS_PLUGINS_ENGINE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PLUGINS_ENGINE))
+#define LAPIZ_IS_PLUGINS_ENGINE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PLUGINS_ENGINE))
+#define LAPIZ_PLUGINS_ENGINE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PLUGINS_ENGINE, PlumaPluginsEngineClass))
 
 typedef struct _PlumaPluginsEngine		PlumaPluginsEngine;
 typedef struct _PlumaPluginsEnginePrivate	PlumaPluginsEnginePrivate;
@@ -65,4 +65,4 @@ PlumaPluginsEngine	*lapiz_plugins_engine_get_default	(void);
 
 G_END_DECLS
 
-#endif  /* __PLUMA_PLUGINS_ENGINE_H__ */
+#endif  /* __LAPIZ_PLUGINS_ENGINE_H__ */

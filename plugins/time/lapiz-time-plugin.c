@@ -203,7 +203,7 @@ lapiz_time_plugin_init (PlumaTimePlugin *plugin)
 static void
 lapiz_time_plugin_finalize (GObject *object)
 {
-	PlumaTimePlugin *plugin = PLUMA_TIME_PLUGIN (object);
+	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin finalizing");
 
@@ -215,7 +215,7 @@ lapiz_time_plugin_finalize (GObject *object)
 static void
 lapiz_time_plugin_dispose (GObject *object)
 {
-	PlumaTimePlugin *plugin = PLUMA_TIME_PLUGIN (object);
+	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin disposing");
 
@@ -243,7 +243,7 @@ update_ui (PlumaTimePluginPrivate *data)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 	view = lapiz_window_get_active_view (window);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "View: %p", view);
@@ -265,9 +265,9 @@ lapiz_time_plugin_activate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	plugin = PLUMA_TIME_PLUGIN (activatable);
+	plugin = LAPIZ_TIME_PLUGIN (activatable);
 	data = plugin->priv;
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 
 	manager = lapiz_window_get_ui_manager (window);
 
@@ -303,8 +303,8 @@ lapiz_time_plugin_deactivate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	data = PLUMA_TIME_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (data->window);
+	data = LAPIZ_TIME_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (data->window);
 
 	manager = lapiz_window_get_ui_manager (window);
 
@@ -317,7 +317,7 @@ lapiz_time_plugin_update_state (PeasActivatable *activatable)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
-	update_ui (PLUMA_TIME_PLUGIN (activatable)->priv);
+	update_ui (LAPIZ_TIME_PLUGIN (activatable)->priv);
 }
 
 /* whether we should prompt the user or use the specified format */
@@ -1075,7 +1075,7 @@ time_cb (GtkAction  *action,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (plugin->priv->window);
+	window = LAPIZ_WINDOW (plugin->priv->window);
 	buffer = GTK_TEXT_BUFFER (lapiz_window_get_active_document (window));
 	g_return_if_fail (buffer != NULL);
 
@@ -1128,7 +1128,7 @@ lapiz_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
 {
 	TimeConfigureDialog *dialog;
 
-	dialog = get_configure_dialog (PLUMA_TIME_PLUGIN (configurable));
+	dialog = get_configure_dialog (LAPIZ_TIME_PLUGIN (configurable));
 
 	return dialog->content;
 }
@@ -1139,7 +1139,7 @@ lapiz_time_plugin_set_property (GObject      *object,
                                 const GValue *value,
                                 GParamSpec   *pspec)
 {
-	PlumaTimePlugin *plugin = PLUMA_TIME_PLUGIN (object);
+	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -1159,7 +1159,7 @@ lapiz_time_plugin_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-	PlumaTimePlugin *plugin = PLUMA_TIME_PLUGIN (object);
+	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -1213,9 +1213,9 @@ peas_register_types (PeasObjectModule *module)
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
-	                                            PLUMA_TYPE_TIME_PLUGIN);
+	                                            LAPIZ_TYPE_TIME_PLUGIN);
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_GTK_TYPE_CONFIGURABLE,
-	                                            PLUMA_TYPE_TIME_PLUGIN);
+	                                            LAPIZ_TYPE_TIME_PLUGIN);
 }

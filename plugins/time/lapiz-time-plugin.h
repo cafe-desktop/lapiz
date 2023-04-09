@@ -20,8 +20,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_TIME_PLUGIN_H__
-#define __PLUMA_TIME_PLUGIN_H__
+#ifndef __LAPIZ_TIME_PLUGIN_H__
+#define __LAPIZ_TIME_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -33,12 +33,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_TIME_PLUGIN		(lapiz_time_plugin_get_type ())
-#define PLUMA_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_TIME_PLUGIN, PlumaTimePlugin))
-#define PLUMA_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_TIME_PLUGIN, PlumaTimePluginClass))
-#define PLUMA_IS_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_TIME_PLUGIN))
-#define PLUMA_IS_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_TIME_PLUGIN))
-#define PLUMA_TIME_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_TIME_PLUGIN, PlumaTimePluginClass))
+#define LAPIZ_TYPE_TIME_PLUGIN		(lapiz_time_plugin_get_type ())
+#define LAPIZ_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_TIME_PLUGIN, PlumaTimePlugin))
+#define LAPIZ_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_TIME_PLUGIN, PlumaTimePluginClass))
+#define LAPIZ_IS_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_TIME_PLUGIN))
+#define LAPIZ_IS_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_TIME_PLUGIN))
+#define LAPIZ_TIME_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_TIME_PLUGIN, PlumaTimePluginClass))
 
 /* Private structure type */
 typedef struct _PlumaTimePluginPrivate	PlumaTimePluginPrivate;
@@ -76,4 +76,4 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __PLUMA_TIME_PLUGIN_H__ */
+#endif /* __LAPIZ_TIME_PLUGIN_H__ */

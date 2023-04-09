@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_IO_ERROR_MESSAGE_AREA_H__
-#define __PLUMA_IO_ERROR_MESSAGE_AREA_H__
+#ifndef __LAPIZ_IO_ERROR_MESSAGE_AREA_H__
+#define __LAPIZ_IO_ERROR_MESSAGE_AREA_H__
 
 #include <glib.h>
 
@@ -65,4 +65,4 @@ GtkWidget	*lapiz_externally_modified_message_area_new		 (const gchar         *ur
 
 G_END_DECLS
 
-#endif  /* __PLUMA_IO_ERROR_MESSAGE_AREA_H__  */
+#endif  /* __LAPIZ_IO_ERROR_MESSAGE_AREA_H__  */

@@ -21,7 +21,7 @@ import os
 import subprocess
 
 try:
-    name = os.environ["PLUMA_CURRENT_DOCUMENT_NAME"]
+    name = os.environ["LAPIZ_CURRENT_DOCUMENT_NAME"]
 except KeyError:
     exit(1)
 

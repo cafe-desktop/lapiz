@@ -1,7 +1,7 @@
 # Tag list plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
-taglistdir = $(PLUMA_PLUGINS_DATA_DIR)/taglist
+taglistdir = $(LAPIZ_PLUGINS_DATA_DIR)/taglist
 
 taglist_in_files = \
 	HTML.tags.xml.in	\
@@ -13,7 +13,7 @@ taglist_DATA = $(taglist_in_files:.tags.xml.in=.tags.gz)
 
 AM_CPPFLAGS = 							\
 	-I$(top_srcdir) 					\
-	$(PLUMA_CFLAGS) 					\
+	$(LAPIZ_CFLAGS) 					\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libtaglist.la
@@ -27,7 +27,7 @@ libtaglist_la_SOURCES = \
 	lapiz-taglist-plugin.h
 
 libtaglist_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libtaglist_la_LIBADD  = $(PLUMA_LIBS)
+libtaglist_la_LIBADD  = $(LAPIZ_LIBS)
 
 plugin_in_files = taglist.plugin.desktop.in
 plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)

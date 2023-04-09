@@ -18,8 +18,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_TRAIL_SAVE_PLUGIN_H__
-#define __PLUMA_TRAIL_SAVE_PLUGIN_H__
+#ifndef __LAPIZ_TRAIL_SAVE_PLUGIN_H__
+#define __LAPIZ_TRAIL_SAVE_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -31,12 +31,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_TRAIL_SAVE_PLUGIN		(lapiz_trail_save_plugin_get_type ())
-#define PLUMA_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePlugin))
-#define PLUMA_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePluginClass))
-#define PLUMA_IS_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_TRAIL_SAVE_PLUGIN))
-#define PLUMA_IS_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_TRAIL_SAVE_PLUGIN))
-#define PLUMA_TRAIL_SAVE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePluginClass))
+#define LAPIZ_TYPE_TRAIL_SAVE_PLUGIN		(lapiz_trail_save_plugin_get_type ())
+#define LAPIZ_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePlugin))
+#define LAPIZ_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePluginClass))
+#define LAPIZ_IS_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN))
+#define LAPIZ_IS_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN))
+#define LAPIZ_TRAIL_SAVE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePluginClass))
 
 /* Private structure type */
 typedef struct _PlumaTrailSavePluginPrivate	PlumaTrailSavePluginPrivate;
@@ -74,4 +74,4 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __PLUMA_TRAIL_SAVE_PLUGIN_H__ */
+#endif /* __LAPIZ_TRAIL_SAVE_PLUGIN_H__ */

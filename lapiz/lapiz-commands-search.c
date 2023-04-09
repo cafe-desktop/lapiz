@@ -47,8 +47,8 @@
 #include "lapiz-utils.h"
 #include "dialogs/lapiz-search-dialog.h"
 
-#define PLUMA_SEARCH_DIALOG_KEY		"lapiz-search-dialog-key"
-#define PLUMA_LAST_SEARCH_DATA_KEY	"lapiz-last-search-data-key"
+#define LAPIZ_SEARCH_DIALOG_KEY		"lapiz-search-dialog-key"
+#define LAPIZ_LAST_SEARCH_DATA_KEY	"lapiz-last-search-data-key"
 
 typedef struct _LastSearchData LastSearchData;
 struct _LastSearchData
@@ -68,7 +68,7 @@ last_search_data_restore_position (PlumaSearchDialog *dlg)
 {
 	LastSearchData *data;
 
-	data = g_object_get_data (G_OBJECT (dlg), PLUMA_LAST_SEARCH_DATA_KEY);
+	data = g_object_get_data (G_OBJECT (dlg), LAPIZ_LAST_SEARCH_DATA_KEY);
 
 	if (data != NULL)
 	{
@@ -83,14 +83,14 @@ last_search_data_store_position (PlumaSearchDialog *dlg)
 {
 	LastSearchData *data;
 
-	data = g_object_get_data (G_OBJECT (dlg), PLUMA_LAST_SEARCH_DATA_KEY);
+	data = g_object_get_data (G_OBJECT (dlg), LAPIZ_LAST_SEARCH_DATA_KEY);
 
 	if (data == NULL)
 	{
 		data = g_slice_new (LastSearchData);
 
 		g_object_set_data_full (G_OBJECT (dlg),
-					PLUMA_LAST_SEARCH_DATA_KEY,
+					LAPIZ_LAST_SEARCH_DATA_KEY,
 					data,
 					(GDestroyNotify) last_search_data_free);
 	}
@@ -107,7 +107,7 @@ text_found (PlumaWindow *window,
 {
 	if (occurrences > 1)
 	{
-		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
 					       ngettext("Found and replaced %d occurrence",
 					     	        "Found and replaced %d occurrences",
@@ -117,11 +117,11 @@ text_found (PlumaWindow *window,
 	else
 	{
 		if (occurrences == 1)
-			lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+			lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 						       window->priv->generic_message_cid,
 						       _("Found and replaced one occurrence"));
 		else
-			lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+			lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 						       window->priv->generic_message_cid,
 						       " ");
 	}
@@ -136,7 +136,7 @@ text_not_found (PlumaWindow *window,
 
 	searched = lapiz_utils_str_end_truncate (text, MAX_MSG_LENGTH);
 
-	lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+	lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 				       window->priv->generic_message_cid,
 				       /* Translators: %s is replaced by the text
 				          entered by the user in the search box */
@@ -155,7 +155,7 @@ run_search (PlumaView   *view,
 	GtkTextIter match_end;
 	gboolean found = FALSE;
 
-	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
 	if (!search_backwards)
 	{
@@ -242,7 +242,7 @@ do_find (PlumaSearchDialog *dialog,
 	if (active_view == NULL)
 		return;
 
-	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	match_case = lapiz_search_dialog_get_match_case (dialog);
         match_regex = lapiz_search_dialog_get_match_regex(dialog);
@@ -257,9 +257,9 @@ do_find (PlumaSearchDialog *dialog,
 		entry_text = lapiz_search_dialog_get_search_text (dialog);
 	}
 
-	PLUMA_SEARCH_SET_CASE_SENSITIVE (flags, match_case);
-	PLUMA_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
-        PLUMA_SEARCH_SET_MATCH_REGEX (flags, match_regex);
+	LAPIZ_SEARCH_SET_CASE_SENSITIVE (flags, match_case);
+	LAPIZ_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
+        LAPIZ_SEARCH_SET_MATCH_REGEX (flags, match_regex);
 
 	search_text = lapiz_document_get_search_text (doc, &old_flags);
 
@@ -291,7 +291,7 @@ do_find (PlumaSearchDialog *dialog,
 	}
 
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   PLUMA_SEARCH_DIALOG_REPLACE_RESPONSE,
+					   LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE,
 					   found);
 }
 
@@ -449,7 +449,7 @@ do_replace_all (PlumaSearchDialog *dialog,
 	if (active_view == NULL)
 		return;
 
-	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	parse_escapes = lapiz_search_dialog_get_parse_escapes (dialog);
 	if (!parse_escapes) {
@@ -472,9 +472,9 @@ do_replace_all (PlumaSearchDialog *dialog,
     match_regex = lapiz_search_dialog_get_match_regex(dialog);
 	entire_word = lapiz_search_dialog_get_entire_word (dialog);
 
-	PLUMA_SEARCH_SET_CASE_SENSITIVE (flags, match_case);
-	PLUMA_SEARCH_SET_MATCH_REGEX (flags, match_regex);
-	PLUMA_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
+	LAPIZ_SEARCH_SET_CASE_SENSITIVE (flags, match_case);
+	LAPIZ_SEARCH_SET_MATCH_REGEX (flags, match_regex);
+	LAPIZ_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
 
 	count = lapiz_document_replace_all (doc,
 					    search_entry_text,
@@ -495,7 +495,7 @@ do_replace_all (PlumaSearchDialog *dialog,
 	}
 
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   PLUMA_SEARCH_DIALOG_REPLACE_RESPONSE,
+					   LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE,
 					   FALSE);
 }
 
@@ -508,13 +508,13 @@ search_dialog_response_cb (PlumaSearchDialog *dialog,
 
 	switch (response_id)
 	{
-		case PLUMA_SEARCH_DIALOG_FIND_RESPONSE:
+		case LAPIZ_SEARCH_DIALOG_FIND_RESPONSE:
 			do_find (dialog, window);
 			break;
-		case PLUMA_SEARCH_DIALOG_REPLACE_RESPONSE:
+		case LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE:
 			do_replace (dialog, window);
 			break;
-		case PLUMA_SEARCH_DIALOG_REPLACE_ALL_RESPONSE:
+		case LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE:
 			do_replace_all (dialog, window);
 			break;
 		default:
@@ -541,10 +541,10 @@ search_dialog_destroyed (PlumaWindow       *window,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_SEARCH_DIALOG_KEY,
+			   LAPIZ_SEARCH_DIALOG_KEY,
 			   NULL);
 	g_object_set_data (G_OBJECT (dialog),
-			   PLUMA_LAST_SEARCH_DATA_KEY,
+			   LAPIZ_LAST_SEARCH_DATA_KEY,
 			   NULL);
 }
 
@@ -565,7 +565,7 @@ create_dialog (PlumaWindow *window, gboolean show_replace)
 			 NULL);
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_SEARCH_DIALOG_KEY,
+			   LAPIZ_SEARCH_DIALOG_KEY,
 			   dialog);
 
 	g_object_weak_ref (G_OBJECT (dialog),
@@ -590,7 +590,7 @@ _lapiz_cmd_search_find (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	data = g_object_get_data (G_OBJECT (window), PLUMA_SEARCH_DIALOG_KEY);
+	data = g_object_get_data (G_OBJECT (window), LAPIZ_SEARCH_DIALOG_KEY);
 
 	if (data == NULL)
 	{
@@ -598,13 +598,13 @@ _lapiz_cmd_search_find (GtkAction   *action,
 	}
 	else
 	{
-		g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (data));
+		g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (data));
 
 		search_dialog = GTK_WIDGET (data);
 
 		/* turn the dialog into a find dialog if needed */
-		if (lapiz_search_dialog_get_show_replace (PLUMA_SEARCH_DIALOG (search_dialog)))
-			lapiz_search_dialog_set_show_replace (PLUMA_SEARCH_DIALOG (search_dialog),
+		if (lapiz_search_dialog_get_show_replace (LAPIZ_SEARCH_DIALOG (search_dialog)))
+			lapiz_search_dialog_set_show_replace (LAPIZ_SEARCH_DIALOG (search_dialog),
 							      FALSE);
 	}
 
@@ -627,13 +627,13 @@ _lapiz_cmd_search_find (GtkAction   *action,
 		 * single-character literal '\n' in the "search for"
 		 * box).
 		 */
-		parse_escapes = lapiz_search_dialog_get_parse_escapes (PLUMA_SEARCH_DIALOG (search_dialog));
-		search_text = lapiz_search_dialog_get_search_text (PLUMA_SEARCH_DIALOG (search_dialog));
+		parse_escapes = lapiz_search_dialog_get_parse_escapes (LAPIZ_SEARCH_DIALOG (search_dialog));
+		search_text = lapiz_search_dialog_get_search_text (LAPIZ_SEARCH_DIALOG (search_dialog));
 		if (!(search_text != NULL
 		      && !strcmp(lapiz_utils_unescape_search_text(search_text), find_text)
 		      && parse_escapes)) {
 			/* General case */
-			lapiz_search_dialog_set_search_text (PLUMA_SEARCH_DIALOG (search_dialog),
+			lapiz_search_dialog_set_search_text (LAPIZ_SEARCH_DIALOG (search_dialog),
 							     find_text);
 		}
 		g_free (find_text);
@@ -644,8 +644,8 @@ _lapiz_cmd_search_find (GtkAction   *action,
 	}
 
 	gtk_widget_show (search_dialog);
-	last_search_data_restore_position (PLUMA_SEARCH_DIALOG (search_dialog));
-	lapiz_search_dialog_present_with_time (PLUMA_SEARCH_DIALOG (search_dialog),
+	last_search_data_restore_position (LAPIZ_SEARCH_DIALOG (search_dialog));
+	lapiz_search_dialog_present_with_time (LAPIZ_SEARCH_DIALOG (search_dialog),
 					       GDK_CURRENT_TIME);
 }
 
@@ -664,7 +664,7 @@ _lapiz_cmd_search_replace (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	data = g_object_get_data (G_OBJECT (window), PLUMA_SEARCH_DIALOG_KEY);
+	data = g_object_get_data (G_OBJECT (window), LAPIZ_SEARCH_DIALOG_KEY);
 
 	if (data == NULL)
 	{
@@ -672,13 +672,13 @@ _lapiz_cmd_search_replace (GtkAction   *action,
 	}
 	else
 	{
-		g_return_if_fail (PLUMA_IS_SEARCH_DIALOG (data));
+		g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (data));
 
 		replace_dialog = GTK_WIDGET (data);
 
 		/* turn the dialog into a find dialog if needed */
-		if (!lapiz_search_dialog_get_show_replace (PLUMA_SEARCH_DIALOG (replace_dialog)))
-			lapiz_search_dialog_set_show_replace (PLUMA_SEARCH_DIALOG (replace_dialog),
+		if (!lapiz_search_dialog_get_show_replace (LAPIZ_SEARCH_DIALOG (replace_dialog)))
+			lapiz_search_dialog_set_show_replace (LAPIZ_SEARCH_DIALOG (replace_dialog),
 							      TRUE);
 	}
 
@@ -701,13 +701,13 @@ _lapiz_cmd_search_replace (GtkAction   *action,
 		 * single-character literal '\n' in the "search for"
 		 * box).
 		 */
-		parse_escapes = lapiz_search_dialog_get_parse_escapes (PLUMA_SEARCH_DIALOG (replace_dialog));
-		search_text = lapiz_search_dialog_get_search_text (PLUMA_SEARCH_DIALOG (replace_dialog));
+		parse_escapes = lapiz_search_dialog_get_parse_escapes (LAPIZ_SEARCH_DIALOG (replace_dialog));
+		search_text = lapiz_search_dialog_get_search_text (LAPIZ_SEARCH_DIALOG (replace_dialog));
 		if (!(search_text != NULL
 		      && !strcmp(lapiz_utils_unescape_search_text(search_text), find_text)
 		      && parse_escapes)) {
 			/* General case */
-			lapiz_search_dialog_set_search_text (PLUMA_SEARCH_DIALOG (replace_dialog),
+			lapiz_search_dialog_set_search_text (LAPIZ_SEARCH_DIALOG (replace_dialog),
 							     find_text);
 		}
 		g_free (find_text);
@@ -718,8 +718,8 @@ _lapiz_cmd_search_replace (GtkAction   *action,
 	}
 
 	gtk_widget_show (replace_dialog);
-	last_search_data_restore_position (PLUMA_SEARCH_DIALOG (replace_dialog));
-	lapiz_search_dialog_present_with_time (PLUMA_SEARCH_DIALOG (replace_dialog),
+	last_search_data_restore_position (LAPIZ_SEARCH_DIALOG (replace_dialog));
+	lapiz_search_dialog_present_with_time (LAPIZ_SEARCH_DIALOG (replace_dialog),
 					       GDK_CURRENT_TIME);
 }
 
@@ -734,10 +734,10 @@ do_find_again (PlumaWindow *window,
 	active_view = lapiz_window_get_active_view (window);
 	g_return_if_fail (active_view != NULL);
 
-	data = g_object_get_data (G_OBJECT (window), PLUMA_SEARCH_DIALOG_KEY);
+	data = g_object_get_data (G_OBJECT (window), LAPIZ_SEARCH_DIALOG_KEY);
 
 	if (data != NULL)
-		wrap_around = lapiz_search_dialog_get_wrap_around (PLUMA_SEARCH_DIALOG (data));
+		wrap_around = lapiz_search_dialog_get_wrap_around (LAPIZ_SEARCH_DIALOG (data));
 
 	run_search (active_view,
 		    wrap_around,
@@ -771,9 +771,9 @@ _lapiz_cmd_search_clear_highlight (GtkAction   *action,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	doc = lapiz_window_get_active_document (window);
-	lapiz_document_set_search_text (PLUMA_DOCUMENT (doc),
+	lapiz_document_set_search_text (LAPIZ_DOCUMENT (doc),
 					"",
-					PLUMA_SEARCH_DONT_SET_FLAGS);
+					LAPIZ_SEARCH_DONT_SET_FLAGS);
 }
 
 void

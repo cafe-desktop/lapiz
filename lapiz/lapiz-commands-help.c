@@ -90,7 +90,7 @@ void _lapiz_cmd_help_about(GtkAction* action, PlumaWindow* window)
 	lapiz_debug (DEBUG_COMMANDS);
 
 	key_file = g_key_file_new ();
-	if (!g_key_file_load_from_file (key_file, PLUMA_DATADIR G_DIR_SEPARATOR_S "lapiz.about", 0, &error)) {
+	if (!g_key_file_load_from_file (key_file, LAPIZ_DATADIR G_DIR_SEPARATOR_S "lapiz.about", 0, &error)) {
 		g_warning ("Couldn't load about data: %s\n", error->message);
 		g_error_free (error);
 		g_key_file_free (key_file);

@@ -27,8 +27,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_TAGLIST_PLUGIN_H__
-#define __PLUMA_TAGLIST_PLUGIN_H__
+#ifndef __LAPIZ_TAGLIST_PLUGIN_H__
+#define __LAPIZ_TAGLIST_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -40,12 +40,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_TAGLIST_PLUGIN		(lapiz_taglist_plugin_get_type ())
-#define PLUMA_TAGLIST_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_TAGLIST_PLUGIN, PlumaTaglistPlugin))
-#define PLUMA_TAGLIST_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_TAGLIST_PLUGIN, PlumaTaglistPluginClass))
-#define PLUMA_IS_TAGLIST_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_TAGLIST_PLUGIN))
-#define PLUMA_IS_TAGLIST_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_TAGLIST_PLUGIN))
-#define PLUMA_TAGLIST_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_TAGLIST_PLUGIN, PlumaTaglistPluginClass))
+#define LAPIZ_TYPE_TAGLIST_PLUGIN		(lapiz_taglist_plugin_get_type ())
+#define LAPIZ_TAGLIST_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_TAGLIST_PLUGIN, PlumaTaglistPlugin))
+#define LAPIZ_TAGLIST_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_TAGLIST_PLUGIN, PlumaTaglistPluginClass))
+#define LAPIZ_IS_TAGLIST_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_TAGLIST_PLUGIN))
+#define LAPIZ_IS_TAGLIST_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_TAGLIST_PLUGIN))
+#define LAPIZ_TAGLIST_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_TAGLIST_PLUGIN, PlumaTaglistPluginClass))
 
 /* Private structure type */
 typedef struct _PlumaTaglistPluginPrivate	PlumaTaglistPluginPrivate;
@@ -83,4 +83,4 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __PLUMA_TAGLIST_PLUGIN_H__ */
+#endif /* __LAPIZ_TAGLIST_PLUGIN_H__ */

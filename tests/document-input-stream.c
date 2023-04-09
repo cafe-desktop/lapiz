@@ -78,63 +78,63 @@ static void
 test_empty ()
 {
 	/* empty file should not have a trailing newline */
-	test_consecutive_read ("", "", PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, 10);
+	test_consecutive_read ("", "", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, 10);
 }
 
 static void
 test_consecutive_cut_char ()
 {
 	/* first \n is read then fo and then is added \r but not \n */
-	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\r\nfo\r\nbar\r\n\r\nblah\r\n\r\n", PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, 8);
-	test_consecutive_read ("\nfo\nbar\n\nblah", "\r\nfo\r\nbar\r\n\r\nblah\r\n", PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, 8);
+	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\r\nfo\r\nbar\r\n\r\nblah\r\n\r\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, 8);
+	test_consecutive_read ("\nfo\nbar\n\nblah", "\r\nfo\r\nbar\r\n\r\nblah\r\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, 8);
 }
 
 static void
 test_consecutive_big_read ()
 {
-	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\rfo\rbar\r\rblah\r\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 200);
-	test_consecutive_read ("\nfo\nbar\n\nblah", "\rfo\rbar\r\rblah\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 200);
+	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\rfo\rbar\r\rblah\r\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 200);
+	test_consecutive_read ("\nfo\nbar\n\nblah", "\rfo\rbar\r\rblah\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 200);
 
-	test_consecutive_read ("\rfo\rbar\r\rblah\r", "\nfo\nbar\n\nblah\n\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 200);
-	test_consecutive_read ("\rfo\rbar\r\rblah", "\nfo\nbar\n\nblah\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 200);
+	test_consecutive_read ("\rfo\rbar\r\rblah\r", "\nfo\nbar\n\nblah\n\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 200);
+	test_consecutive_read ("\rfo\rbar\r\rblah", "\nfo\nbar\n\nblah\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 200);
 
-	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah\r\n", "\nfo\nbar\n\nblah\n\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 200);
-	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah", "\nfo\nbar\n\nblah\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 200);
+	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah\r\n", "\nfo\nbar\n\nblah\n\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 200);
+	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah", "\nfo\nbar\n\nblah\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 200);
 
-	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\r\nfo\r\nbar\r\n\r\nblah\r\n\r\n", PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, 200);
-	test_consecutive_read ("\nfo\nbar\n\nblah", "\r\nfo\r\nbar\r\n\r\nblah\r\n", PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, 200);
+	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\r\nfo\r\nbar\r\n\r\nblah\r\n\r\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, 200);
+	test_consecutive_read ("\nfo\nbar\n\nblah", "\r\nfo\r\nbar\r\n\r\nblah\r\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, 200);
 }
 
 static void
 test_consecutive_middle_read ()
 {
-	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\rfo\rbar\r\rblah\r\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 6);
-	test_consecutive_read ("\nfo\nbar\n\nblah", "\rfo\rbar\r\rblah\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 6);
+	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\rfo\rbar\r\rblah\r\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 6);
+	test_consecutive_read ("\nfo\nbar\n\nblah", "\rfo\rbar\r\rblah\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 6);
 
-	test_consecutive_read ("\rfo\rbar\r\rblah\r", "\nfo\nbar\n\nblah\n\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 6);
-	test_consecutive_read ("\rfo\rbar\r\rblah", "\nfo\nbar\n\nblah\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 6);
+	test_consecutive_read ("\rfo\rbar\r\rblah\r", "\nfo\nbar\n\nblah\n\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 6);
+	test_consecutive_read ("\rfo\rbar\r\rblah", "\nfo\nbar\n\nblah\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 6);
 
-	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah\r\n", "\nfo\nbar\n\nblah\n\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 6);
-	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah", "\nfo\nbar\n\nblah\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 6);
+	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah\r\n", "\nfo\nbar\n\nblah\n\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 6);
+	test_consecutive_read ("\r\nfo\r\nbar\r\n\r\nblah", "\nfo\nbar\n\nblah\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 6);
 
-	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\r\nfo\r\nbar\r\n\r\nblah\r\n\r\n", PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, 6);
-	test_consecutive_read ("\nfo\nbar\n\nblah", "\r\nfo\r\nbar\r\n\r\nblah\r\n", PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, 6);
+	test_consecutive_read ("\nfo\nbar\n\nblah\n", "\r\nfo\r\nbar\r\n\r\nblah\r\n\r\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, 6);
+	test_consecutive_read ("\nfo\nbar\n\nblah", "\r\nfo\r\nbar\r\n\r\nblah\r\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, 6);
 }
 
 static void
 test_consecutive_multibyte_cut ()
 {
-	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\rhello\xe6\x96\x87\rworld\r\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 6);
-	test_consecutive_read ("hello\rhello\xe6\x96\x87\rworld\r", "hello\rhello\xe6\x96\x87\rworld\r\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 6);
-	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\nhello\xe6\x96\x87\nworld\n\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 6);
+	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\rhello\xe6\x96\x87\rworld\r\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 6);
+	test_consecutive_read ("hello\rhello\xe6\x96\x87\rworld\r", "hello\rhello\xe6\x96\x87\rworld\r\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 6);
+	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\nhello\xe6\x96\x87\nworld\n\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 6);
 }
 
 static void
 test_consecutive_multibyte_big_read ()
 {
-	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\rhello\xe6\x96\x87\rworld\r\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 200);
-	test_consecutive_read ("hello\rhello\xe6\x96\x87\rworld\r", "hello\rhello\xe6\x96\x87\rworld\r\r", PLUMA_DOCUMENT_NEWLINE_TYPE_CR, 200);
-	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\nhello\xe6\x96\x87\nworld\n\n", PLUMA_DOCUMENT_NEWLINE_TYPE_LF, 200);
+	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\rhello\xe6\x96\x87\rworld\r\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 200);
+	test_consecutive_read ("hello\rhello\xe6\x96\x87\rworld\r", "hello\rhello\xe6\x96\x87\rworld\r\r", LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, 200);
+	test_consecutive_read ("hello\nhello\xe6\x96\x87\nworld\n", "hello\nhello\xe6\x96\x87\nworld\n\n", LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, 200);
 }
 
 int main (int   argc,

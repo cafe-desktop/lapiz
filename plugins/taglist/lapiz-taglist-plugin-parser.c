@@ -43,7 +43,7 @@
 
 #include "lapiz-taglist-plugin-parser.h"
 
-#define USER_PLUMA_TAGLIST_PLUGIN_LOCATION "lapiz/taglist/"
+#define USER_LAPIZ_TAGLIST_PLUGIN_LOCATION "lapiz/taglist/"
 
 TagList* taglist = NULL;
 static gint taglist_ref_count = 0;
@@ -612,7 +612,7 @@ TagList* create_taglist(const gchar* data_dir)
 	home = g_get_home_dir ();
 	if (home != NULL)
 	{
-		pdir = g_build_filename(home, ".config", USER_PLUMA_TAGLIST_PLUGIN_LOCATION, NULL);
+		pdir = g_build_filename(home, ".config", USER_LAPIZ_TAGLIST_PLUGIN_LOCATION, NULL);
 		parse_taglist_dir(pdir);
 		g_free (pdir);
 	}

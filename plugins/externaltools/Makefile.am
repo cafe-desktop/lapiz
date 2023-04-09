@@ -1,6 +1,6 @@
 # External Tools plugin
 SUBDIRS = tools data scripts
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 plugin_in_files = externaltools.plugin.desktop.in
 plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)

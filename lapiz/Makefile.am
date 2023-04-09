@@ -9,17 +9,17 @@ AM_CPPFLAGS =								\
 	-I$(top_srcdir)							\
 	-I$(srcdir)							\
 	-I$(srcdir)/smclient						\
-	$(PLUMA_CFLAGS)							\
+	$(LAPIZ_CFLAGS)							\
 	$(WARN_CFLAGS)							\
 	$(INTROSPECTION_CFLAGS)						\
 	-DDATADIR=\""$(datadir)"\"					\
-	-DPLUMA_DATADIR=\""$(datadir)/lapiz"\"				\
+	-DLAPIZ_DATADIR=\""$(datadir)/lapiz"\"				\
 	-DLIBDIR=\""$(libdir)"\"
 
 lapiz_SOURCES = \
 	lapiz.c
 
-lapiz_LDADD = liblapiz.la $(PLUMA_LIBS) $(EGG_SMCLIENT_LIBS) $(INTROSPECTION_LIBS)
+lapiz_LDADD = liblapiz.la $(LAPIZ_LIBS) $(EGG_SMCLIENT_LIBS) $(INTROSPECTION_LIBS)
 
 lapiz_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
 
@@ -29,8 +29,8 @@ liblapiz_la_LIBADD = \
 	dialogs/libdialogs.la		\
 	smclient/libeggsmclient.la
 
-# PLUMA_LIBS must be the last to ensure correct order on some platforms
-liblapiz_la_LIBADD += $(PLUMA_LIBS) -lICE
+# LAPIZ_LIBS must be the last to ensure correct order on some platforms
+liblapiz_la_LIBADD += $(LAPIZ_LIBS) -lICE
 
 BUILT_SOURCES = 			\
 	lapiz-enum-types.c		\

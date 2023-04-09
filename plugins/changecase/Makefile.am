@@ -1,9 +1,9 @@
 # changecase plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	$(PLUMA_CFLAGS) 				\
+	$(LAPIZ_CFLAGS) 				\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libchangecase.la
@@ -13,9 +13,9 @@ libchangecase_la_SOURCES = \
 	lapiz-changecase-plugin.c
 
 libchangecase_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libchangecase_la_LIBADD = $(PLUMA_LIBS)
+libchangecase_la_LIBADD = $(LAPIZ_LIBS)
 
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/changecase
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/changecase
 ui_DATA =
 
 plugin_in_files = changecase.plugin.desktop.in

@@ -48,7 +48,7 @@ enum {
 
 #define MIN_ITEM_LEN 3
 
-#define PLUMA_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
+#define LAPIZ_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
 
 struct _PlumaHistoryEntryPrivate
 {
@@ -70,9 +70,9 @@ lapiz_history_entry_set_property (GObject      *object,
 {
 	PlumaHistoryEntry *entry;
 
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (object));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (object));
 
-	entry = PLUMA_HISTORY_ENTRY (object);
+	entry = LAPIZ_HISTORY_ENTRY (object);
 
 	switch (prop_id) {
 	case PROP_HISTORY_ID:
@@ -95,9 +95,9 @@ lapiz_history_entry_get_property (GObject    *object,
 {
 	PlumaHistoryEntryPrivate *priv;
 
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (object));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (object));
 
-	priv = PLUMA_HISTORY_ENTRY (object)->priv;
+	priv = LAPIZ_HISTORY_ENTRY (object)->priv;
 
 	switch (prop_id) {
 	case PROP_HISTORY_ID:
@@ -114,7 +114,7 @@ lapiz_history_entry_get_property (GObject    *object,
 static void
 lapiz_history_entry_dispose (GObject *object)
 {
-	lapiz_history_entry_set_enable_completion (PLUMA_HISTORY_ENTRY (object),
+	lapiz_history_entry_set_enable_completion (LAPIZ_HISTORY_ENTRY (object),
 						   FALSE);
 
 	G_OBJECT_CLASS (lapiz_history_entry_parent_class)->dispose (object);
@@ -125,7 +125,7 @@ lapiz_history_entry_finalize (GObject *object)
 {
 	PlumaHistoryEntryPrivate *priv;
 
-	priv = PLUMA_HISTORY_ENTRY (object)->priv;
+	priv = LAPIZ_HISTORY_ENTRY (object)->priv;
 
 	g_free (priv->history_id);
 
@@ -164,7 +164,7 @@ lapiz_history_entry_class_init (PlumaHistoryEntryClass *klass)
 							    "Max History Length",
 							    0,
 							    G_MAXUINT,
-							    PLUMA_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT,
+							    LAPIZ_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT,
 							    G_PARAM_READWRITE |
 							    G_PARAM_STATIC_STRINGS));
 
@@ -218,7 +218,7 @@ lapiz_history_entry_save_history (PlumaHistoryEntry *entry)
 {
 	GSList *settings_items;
 
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
 	settings_items = get_history_list (entry);
 
@@ -328,7 +328,7 @@ void
 lapiz_history_entry_prepend_text (PlumaHistoryEntry *entry,
 				  const gchar       *text)
 {
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 	g_return_if_fail (text != NULL);
 
 	insert_history_item (entry, text, TRUE);
@@ -338,7 +338,7 @@ void
 lapiz_history_entry_append_text (PlumaHistoryEntry *entry,
 				 const gchar       *text)
 {
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 	g_return_if_fail (text != NULL);
 
 	insert_history_item (entry, text, FALSE);
@@ -352,7 +352,7 @@ lapiz_history_entry_load_history (PlumaHistoryEntry *entry)
 	GtkTreeIter iter;
 	guint i;
 
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
 	store = get_history_store (entry);
 
@@ -382,7 +382,7 @@ lapiz_history_entry_clear (PlumaHistoryEntry *entry)
 {
 	GtkListStore *store;
 
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
 	store = get_history_store (entry);
 	gtk_list_store_clear (store);
@@ -399,18 +399,18 @@ lapiz_history_entry_init (PlumaHistoryEntry *entry)
 	entry->priv = priv;
 
 	priv->history_id = NULL;
-	priv->history_length = PLUMA_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
+	priv->history_length = LAPIZ_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
 
 	priv->completion = NULL;
 
-	priv->settings = g_settings_new (PLUMA_SCHEMA);
+	priv->settings = g_settings_new (LAPIZ_SCHEMA);
 }
 
 void
 lapiz_history_entry_set_history_length (PlumaHistoryEntry *entry,
 					guint              history_length)
 {
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 	g_return_if_fail (history_length > 0);
 
 	entry->priv->history_length = history_length;
@@ -421,7 +421,7 @@ lapiz_history_entry_set_history_length (PlumaHistoryEntry *entry,
 guint
 lapiz_history_entry_get_history_length (PlumaHistoryEntry *entry)
 {
-	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), 0);
+	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), 0);
 
 	return entry->priv->history_length;
 }
@@ -429,7 +429,7 @@ lapiz_history_entry_get_history_length (PlumaHistoryEntry *entry)
 gchar *
 lapiz_history_entry_get_history_id (PlumaHistoryEntry *entry)
 {
-	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), NULL);
+	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), NULL);
 
 	return g_strdup (entry->priv->history_id);
 }
@@ -438,7 +438,7 @@ void
 lapiz_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
 					   gboolean           enable)
 {
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
 	if (enable)
 	{
@@ -479,7 +479,7 @@ lapiz_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
 gboolean
 lapiz_history_entry_get_enable_completion (PlumaHistoryEntry *entry)
 {
-	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), FALSE);
 
 	return entry->priv->completion != NULL;
 }
@@ -501,7 +501,7 @@ lapiz_history_entry_new (const gchar *history_id,
 
 	store = gtk_list_store_new (1, G_TYPE_STRING);
 
-	ret = g_object_new (PLUMA_TYPE_HISTORY_ENTRY,
+	ret = g_object_new (LAPIZ_TYPE_HISTORY_ENTRY,
 			    "history-id", history_id,
 	                    "model", store,
 			    "has-entry", TRUE,
@@ -521,9 +521,9 @@ lapiz_history_entry_new (const gchar *history_id,
 	 * This would also ensure that the model cannot be
 	 * set explicitely at a later time.
 	 */
-	lapiz_history_entry_load_history (PLUMA_HISTORY_ENTRY (ret));
+	lapiz_history_entry_load_history (LAPIZ_HISTORY_ENTRY (ret));
 
-	lapiz_history_entry_set_enable_completion (PLUMA_HISTORY_ENTRY (ret),
+	lapiz_history_entry_set_enable_completion (LAPIZ_HISTORY_ENTRY (ret),
 						   enable_completion);
 
 	return ret;
@@ -540,7 +540,7 @@ lapiz_history_entry_new (const gchar *history_id,
 GtkWidget *
 lapiz_history_entry_get_entry (PlumaHistoryEntry *entry)
 {
-	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), NULL);
+	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), NULL);
 
 	return gtk_bin_get_child (GTK_BIN (entry));
 }
@@ -569,7 +569,7 @@ lapiz_history_entry_set_escape_func (PlumaHistoryEntry           *entry,
 {
 	GList *cells;
 
-	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
+	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
 	cells = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (entry));
 

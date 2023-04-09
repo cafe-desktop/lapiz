@@ -27,8 +27,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_METADATA_MANAGER_H__
-#define __PLUMA_METADATA_MANAGER_H__
+#ifndef __LAPIZ_METADATA_MANAGER_H__
+#define __LAPIZ_METADATA_MANAGER_H__
 
 #include <glib.h>
 
@@ -47,4 +47,4 @@ void		 lapiz_metadata_manager_set		(const gchar *uri,
 
 G_END_DECLS
 
-#endif /* __PLUMA_METADATA_MANAGER_H__ */
+#endif /* __LAPIZ_METADATA_MANAGER_H__ */

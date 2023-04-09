@@ -1,5 +1,5 @@
-#ifndef __PLUMA_FILE_BROWSER_UTILS_H__
-#define __PLUMA_FILE_BROWSER_UTILS_H__
+#ifndef __LAPIZ_FILE_BROWSER_UTILS_H__
+#define __LAPIZ_FILE_BROWSER_UTILS_H__
 
 #include <lapiz/lapiz-window.h>
 #include <gio/gio.h>
@@ -20,6 +20,6 @@ gboolean lapiz_file_browser_utils_confirmation_dialog     (PlumaWindow * window,
                                                            gchar const *message,
                                                            gchar const *secondary);
 
-#endif /* __PLUMA_FILE_BROWSER_UTILS_H__ */
+#endif /* __LAPIZ_FILE_BROWSER_UTILS_H__ */
 
 // ex:ts=8:noet:

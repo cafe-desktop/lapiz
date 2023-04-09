@@ -113,7 +113,7 @@ get_docinfo_dialog (PlumaDocInfoPlugin *plugin)
 	lapiz_debug (DEBUG_PLUGINS);
 
 	data = plugin->priv;
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 
 	dialog = g_new (DocInfoDialog, 1);
 
@@ -365,7 +365,7 @@ docinfo_cb (GtkAction	*action,
 	lapiz_debug (DEBUG_PLUGINS);
 
 	data = plugin->priv;
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
@@ -401,7 +401,7 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 
 	switch (res_id)
 	{
@@ -451,7 +451,7 @@ update_ui (PlumaDocInfoPluginPrivate *data)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 	view = lapiz_window_get_active_view (window);
 
 	gtk_action_group_set_sensitive (data->ui_action_group,
@@ -476,7 +476,7 @@ lapiz_docinfo_plugin_init (PlumaDocInfoPlugin *plugin)
 static void
 lapiz_docinfo_plugin_dispose (GObject *object)
 {
-	PlumaDocInfoPlugin *plugin = PLUMA_DOCINFO_PLUGIN (object);
+	PlumaDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaDocInfoPlugin disposing");
 
@@ -501,7 +501,7 @@ lapiz_docinfo_plugin_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-	PlumaDocInfoPlugin *plugin = PLUMA_DOCINFO_PLUGIN (object);
+	PlumaDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -521,7 +521,7 @@ lapiz_docinfo_plugin_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-	PlumaDocInfoPlugin *plugin = PLUMA_DOCINFO_PLUGIN (object);
+	PlumaDocInfoPlugin *plugin = LAPIZ_DOCINFO_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -545,9 +545,9 @@ lapiz_docinfo_plugin_activate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	plugin = PLUMA_DOCINFO_PLUGIN (activatable);
+	plugin = LAPIZ_DOCINFO_PLUGIN (activatable);
 	data = plugin->priv;
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 
 	data->dialog = NULL;
 	data->ui_action_group = gtk_action_group_new ("PlumaDocInfoPluginActions");
@@ -586,8 +586,8 @@ lapiz_docinfo_plugin_deactivate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	data = PLUMA_DOCINFO_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (data->window);
+	data = LAPIZ_DOCINFO_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (data->window);
 
 	manager = lapiz_window_get_ui_manager (window);
 
@@ -602,7 +602,7 @@ lapiz_docinfo_plugin_update_state (PeasActivatable *activatable)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
-	update_ui (PLUMA_DOCINFO_PLUGIN (activatable)->priv);
+	update_ui (LAPIZ_DOCINFO_PLUGIN (activatable)->priv);
 }
 
 static void
@@ -638,5 +638,5 @@ peas_register_types (PeasObjectModule *module)
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
-	                                            PLUMA_TYPE_DOCINFO_PLUGIN);
+	                                            LAPIZ_TYPE_DOCINFO_PLUGIN);
 }

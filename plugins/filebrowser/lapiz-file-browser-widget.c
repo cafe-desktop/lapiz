@@ -331,7 +331,7 @@ cancel_async_operation (PlumaFileBrowserWidget *widget)
 static void
 lapiz_file_browser_widget_finalize (GObject * object)
 {
-	PlumaFileBrowserWidget *obj = PLUMA_FILE_BROWSER_WIDGET (object);
+	PlumaFileBrowserWidget *obj = LAPIZ_FILE_BROWSER_WIDGET (object);
 	GList *loc;
 
 	remove_path_items (obj);
@@ -369,7 +369,7 @@ lapiz_file_browser_widget_get_property (GObject    *object,
 			               GValue     *value,
 			               GParamSpec *pspec)
 {
-	PlumaFileBrowserWidget *obj = PLUMA_FILE_BROWSER_WIDGET (object);
+	PlumaFileBrowserWidget *obj = LAPIZ_FILE_BROWSER_WIDGET (object);
 
 	switch (prop_id)
 	{
@@ -391,7 +391,7 @@ lapiz_file_browser_widget_set_property (GObject      *object,
 			               const GValue *value,
 			               GParamSpec   *pspec)
 {
-	PlumaFileBrowserWidget *obj = PLUMA_FILE_BROWSER_WIDGET (object);
+	PlumaFileBrowserWidget *obj = LAPIZ_FILE_BROWSER_WIDGET (object);
 
 	switch (prop_id)
 	{
@@ -1094,9 +1094,9 @@ add_bookmark_hash (PlumaFileBrowserWidget * obj,
 	g_free (uri);
 
 	gtk_tree_model_get (model, iter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_ICON,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_ICON,
 			    &pixbuf,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_NAME,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME,
 			    &name, -1);
 
 	item = g_new (NameIcon, 1);
@@ -1165,14 +1165,14 @@ create_tree (PlumaFileBrowserWidget * obj)
 	obj->priv->file_store = lapiz_file_browser_store_new (NULL);
 	obj->priv->bookmarks_store = lapiz_file_bookmarks_store_new ();
 	obj->priv->treeview =
-	    PLUMA_FILE_BROWSER_VIEW (lapiz_file_browser_view_new ());
+	    LAPIZ_FILE_BROWSER_VIEW (lapiz_file_browser_view_new ());
 
 	lapiz_file_browser_view_set_restore_expand_state (obj->priv->treeview, TRUE);
 
 	lapiz_file_browser_store_set_filter_mode (obj->priv->file_store,
-						  PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN
+						  LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN
 						  |
-						  PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
+						  LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
 	lapiz_file_browser_store_set_filter_func (obj->priv->file_store,
 						  (PlumaFileBrowserStoreFilterFunc)
 						  filter_real, obj);
@@ -1286,7 +1286,7 @@ update_sensitivity (PlumaFileBrowserWidget * obj)
 	GtkAction *action;
 	gint mode;
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (model)) {
+	if (LAPIZ_IS_FILE_BROWSER_STORE (model)) {
 		gtk_action_group_set_sensitive (obj->priv->action_group,
 						TRUE);
 		gtk_action_group_set_sensitive (obj->priv->bookmark_action_group,
@@ -1294,15 +1294,15 @@ update_sensitivity (PlumaFileBrowserWidget * obj)
 
 		mode =
 		    lapiz_file_browser_store_get_filter_mode
-		    (PLUMA_FILE_BROWSER_STORE (model));
+		    (LAPIZ_FILE_BROWSER_STORE (model));
 
 		action =
 		    gtk_action_group_get_action (obj->priv->action_group,
 						 "FilterHidden");
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
 					      !(mode &
-						PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN));
-	} else if (PLUMA_IS_FILE_BOOKMARKS_STORE (model)) {
+						LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN));
+	} else if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model)) {
 		gtk_action_group_set_sensitive (obj->priv->action_group,
 						FALSE);
 		gtk_action_group_set_sensitive (obj->priv->bookmark_action_group,
@@ -1345,9 +1345,9 @@ popup_menu (PlumaFileBrowserWidget * obj, GdkEventButton * event, GtkTreeModel *
 {
 	GtkWidget *menu;
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
 		menu = gtk_ui_manager_get_widget (obj->priv->manager, "/FilePopup");
-	else if (PLUMA_IS_FILE_BOOKMARKS_STORE (model))
+	else if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model))
 		menu = gtk_ui_manager_get_widget (obj->priv->manager, "/BookmarkPopup");
 	else
 		return FALSE;
@@ -1392,8 +1392,8 @@ filter_glob (PlumaFileBrowserWidget * obj, PlumaFileBrowserStore * store,
 		return TRUE;
 
 	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_NAME, &name,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_NAME, &name,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (FILE_IS_DIR (flags) || FILE_IS_DUMMY (flags))
@@ -1416,7 +1416,7 @@ rename_selected_file (PlumaFileBrowserWidget * obj)
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
 	if (lapiz_file_browser_widget_get_first_selected (obj, &iter))
@@ -1448,7 +1448,7 @@ get_deletable_files (PlumaFileBrowserWidget *obj) {
 			continue;
 
 		gtk_tree_model_get (model, &iter,
-				    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS,
+				    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS,
 				    &flags, -1);
 
 		if (FILE_IS_DUMMY (flags))
@@ -1473,7 +1473,7 @@ delete_selected_files (PlumaFileBrowserWidget * obj, gboolean trash)
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return FALSE;
 
 	rows = get_deletable_files (obj);
@@ -1488,13 +1488,13 @@ delete_selected_files (PlumaFileBrowserWidget * obj, gboolean trash)
 			return FALSE;
 	}
 
-	result = lapiz_file_browser_store_delete_all (PLUMA_FILE_BROWSER_STORE (model),
+	result = lapiz_file_browser_store_delete_all (LAPIZ_FILE_BROWSER_STORE (model),
 						      rows, trash);
 
 	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
 	g_list_free (rows);
 
-	return result == PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return result == LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 static gboolean
@@ -1710,10 +1710,10 @@ update_filter_mode (PlumaFileBrowserWidget * obj,
 	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	gint now;
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (model)) {
+	if (LAPIZ_IS_FILE_BROWSER_STORE (model)) {
 		now =
 		    lapiz_file_browser_store_get_filter_mode
-		    (PLUMA_FILE_BROWSER_STORE (model));
+		    (LAPIZ_FILE_BROWSER_STORE (model));
 
 		if (active)
 			now &= ~mode;
@@ -1721,7 +1721,7 @@ update_filter_mode (PlumaFileBrowserWidget * obj,
 			now |= mode;
 
 		lapiz_file_browser_store_set_filter_mode
-		    (PLUMA_FILE_BROWSER_STORE (model), now);
+		    (LAPIZ_FILE_BROWSER_STORE (model), now);
 	}
 }
 
@@ -1786,8 +1786,8 @@ set_filter_pattern_real (PlumaFileBrowserWidget * obj,
 		}
 	}
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (model))
-		lapiz_file_browser_store_refilter (PLUMA_FILE_BROWSER_STORE
+	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
+		lapiz_file_browser_store_refilter (LAPIZ_FILE_BROWSER_STORE
 						   (model));
 
 	g_object_notify (G_OBJECT (obj), "filter-pattern");
@@ -1800,7 +1800,7 @@ GtkWidget *
 lapiz_file_browser_widget_new (const gchar *data_dir)
 {
 	PlumaFileBrowserWidget *obj =
-	    g_object_new (PLUMA_TYPE_FILE_BROWSER_WIDGET, NULL);
+	    g_object_new (LAPIZ_TYPE_FILE_BROWSER_WIDGET, NULL);
 
 	create_toolbar (obj, data_dir);
 	create_combo (obj);
@@ -1863,7 +1863,7 @@ lapiz_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget *obj
 		    lapiz_file_browser_store_set_root_and_virtual_root
 		    (obj->priv->file_store, root, virtual_root);
 
-	if (result == PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE)
+	if (result == LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE)
 		show_files_real (obj, TRUE);
 }
 
@@ -1943,8 +1943,8 @@ lapiz_file_browser_widget_add_filter (PlumaFileBrowserWidget * obj,
 	obj->priv->filter_funcs =
 	    g_slist_append (obj->priv->filter_funcs, f);
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (model))
-		lapiz_file_browser_store_refilter (PLUMA_FILE_BROWSER_STORE
+	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
+		lapiz_file_browser_store_refilter (LAPIZ_FILE_BROWSER_STORE
 						   (model));
 
 	return f->id;
@@ -1991,17 +1991,17 @@ lapiz_file_browser_widget_get_selected_directory (PlumaFileBrowserWidget * obj,
 	GtkTreeIter parent;
 	guint flags;
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return FALSE;
 
 	if (!lapiz_file_browser_widget_get_first_selected (obj, iter)) {
 		if (!lapiz_file_browser_store_get_iter_virtual_root
-		    (PLUMA_FILE_BROWSER_STORE (model), iter))
+		    (LAPIZ_FILE_BROWSER_STORE (model), iter))
 			return FALSE;
 	}
 
 	gtk_tree_model_get (model, iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (!FILE_IS_DIR (flags)) {
@@ -2029,7 +2029,7 @@ lapiz_file_browser_widget_get_num_selected_files_or_directories (PlumaFileBrowse
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (PLUMA_IS_FILE_BOOKMARKS_STORE (model))
+	if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model))
 		return 0;
 
 	rows = gtk_tree_selection_get_selected_rows (selection, &model);
@@ -2042,7 +2042,7 @@ lapiz_file_browser_widget_get_num_selected_files_or_directories (PlumaFileBrowse
 			continue;
 
 		gtk_tree_model_get (model, &iter,
-				    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+				    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 				    -1);
 
 		if (!FILE_IS_DUMMY (flags)) {
@@ -2137,7 +2137,7 @@ activate_mount (PlumaFileBrowserWidget *widget,
 		g_signal_emit (widget,
 			       signals[ERROR],
 			       0,
-			       PLUMA_FILE_BROWSER_ERROR_SET_ROOT,
+			       LAPIZ_FILE_BROWSER_ERROR_SET_ROOT,
 			       message);
 
 		g_free (name);
@@ -2217,7 +2217,7 @@ poll_for_media_cb (GDrive       *drive,
 		g_signal_emit (async->widget,
 			       signals[ERROR],
 			       0,
-			       PLUMA_FILE_BROWSER_ERROR_SET_ROOT,
+			       LAPIZ_FILE_BROWSER_ERROR_SET_ROOT,
 			       message);
 
 		g_free (name);
@@ -2264,7 +2264,7 @@ mount_volume_cb (GVolume      *volume,
 		g_signal_emit (async->widget,
 			       signals[ERROR],
 			       0,
-			       PLUMA_FILE_BROWSER_ERROR_SET_ROOT,
+			       LAPIZ_FILE_BROWSER_ERROR_SET_ROOT,
 			       message);
 
 		g_free (name);
@@ -2285,7 +2285,7 @@ activate_drive (PlumaFileBrowserWidget *obj,
 	AsyncData *async;
 
 	gtk_tree_model_get (GTK_TREE_MODEL (obj->priv->bookmarks_store), iter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
 			    &drive, -1);
 
 	/* most common use case is a floppy drive, we'll poll for media and
@@ -2328,7 +2328,7 @@ activate_volume (PlumaFileBrowserWidget *obj,
 	GVolume *volume;
 
 	gtk_tree_model_get (GTK_TREE_MODEL (obj->priv->bookmarks_store), iter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
 			    &volume, -1);
 
 	/* see if we can mount the volume */
@@ -2342,15 +2342,15 @@ lapiz_file_browser_widget_refresh (PlumaFileBrowserWidget *obj)
 	GtkTreeModel *model =
 	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (model))
-		lapiz_file_browser_store_refresh (PLUMA_FILE_BROWSER_STORE
+	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
+		lapiz_file_browser_store_refresh (LAPIZ_FILE_BROWSER_STORE
 						  (model));
-	else if (PLUMA_IS_FILE_BOOKMARKS_STORE (model)) {
+	else if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model)) {
 		g_hash_table_ref (obj->priv->bookmarks_hash);
 		g_hash_table_destroy (obj->priv->bookmarks_hash);
 
 		lapiz_file_bookmarks_store_refresh
-		    (PLUMA_FILE_BOOKMARKS_STORE (model));
+		    (LAPIZ_FILE_BOOKMARKS_STORE (model));
 	}
 }
 
@@ -2385,17 +2385,17 @@ bookmark_open (PlumaFileBrowserWidget *obj,
 	gint flags;
 
 	gtk_tree_model_get (model, iter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
 			    &flags, -1);
 
-	if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_DRIVE)
+	if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_DRIVE)
 	{
 		/* handle a drive node */
 		lapiz_file_browser_store_cancel_mount_operation (obj->priv->file_store);
 		activate_drive (obj, iter);
 		return;
 	}
-	else if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_VOLUME)
+	else if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_VOLUME)
 	{
 		/* handle a volume node */
 		lapiz_file_browser_store_cancel_mount_operation (obj->priv->file_store);
@@ -2405,7 +2405,7 @@ bookmark_open (PlumaFileBrowserWidget *obj,
 
 	uri =
 	    lapiz_file_bookmarks_store_get_uri
-	    (PLUMA_FILE_BOOKMARKS_STORE (model), iter);
+	    (LAPIZ_FILE_BOOKMARKS_STORE (model), iter);
 
 	if (uri) {
 		/* here we check if the bookmark is a mount point, or if it
@@ -2413,8 +2413,8 @@ bookmark_open (PlumaFileBrowserWidget *obj,
 		   root to the uri of the bookmark and not try to set the
 		   topmost parent as root (since that may as well not be the
 		   mount point anymore) */
-		if ((flags & PLUMA_FILE_BOOKMARKS_STORE_IS_MOUNT) ||
-		    (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)) {
+		if ((flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_MOUNT) ||
+		    (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)) {
 			lapiz_file_browser_widget_set_root (obj,
 							    uri,
 							    FALSE);
@@ -2439,8 +2439,8 @@ file_open  (PlumaFileBrowserWidget *obj,
 	gint flags;
 
 	gtk_tree_model_get (model, iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI, &uri,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
 
 	if (!FILE_IS_DIR (flags) && !FILE_IS_DUMMY (flags)) {
@@ -2461,8 +2461,8 @@ directory_open (PlumaFileBrowserWidget *obj,
 	PlumaFileBrowserStoreFlag flags;
 
 	gtk_tree_model_get (model, iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI, &uri,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
 
 	if (FILE_IS_DIR (flags)) {
@@ -2470,7 +2470,7 @@ directory_open (PlumaFileBrowserWidget *obj,
 
 		if (!gtk_show_uri_on_window (NULL, uri, GDK_CURRENT_TIME, &error)) {
 			g_signal_emit (obj, signals[ERROR], 0,
-				       PLUMA_FILE_BROWSER_ERROR_OPEN_DIRECTORY,
+				       LAPIZ_FILE_BROWSER_ERROR_OPEN_DIRECTORY,
 				       error->message);
 
 			g_error_free (error);
@@ -2540,7 +2540,7 @@ on_virtual_root_changed (PlumaFileBrowserStore * model,
 
 	if (lapiz_file_browser_store_get_iter_virtual_root (model, &iter)) {
 		gtk_tree_model_get (GTK_TREE_MODEL (model), &iter,
-				    PLUMA_FILE_BROWSER_STORE_COLUMN_URI,
+				    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 				    &uri, -1);
 
 		if (lapiz_file_browser_store_get_iter_root (model, &root)) {
@@ -2575,7 +2575,7 @@ on_virtual_root_changed (PlumaFileBrowserStore * model,
 
 				gtk_tree_model_get (GTK_TREE_MODEL (model),
 						    &iter,
-						    PLUMA_FILE_BROWSER_STORE_COLUMN_ICON,
+						    LAPIZ_FILE_BROWSER_STORE_COLUMN_ICON,
 						    &pixbuf, -1);
 
 				obj->priv->current_location =
@@ -2641,7 +2641,7 @@ on_model_set (GObject * gobject, GParamSpec * arg1,
 
 	clear_signals (obj);
 
-	if (PLUMA_IS_FILE_BOOKMARKS_STORE (model)) {
+	if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model)) {
 		clear_next_locations (obj);
 
 		/* Add the current location to the back menu */
@@ -2666,7 +2666,7 @@ on_model_set (GObject * gobject, GParamSpec * arg1,
 			    g_signal_connect (gobject, "bookmark-activated",
 					      G_CALLBACK
 					      (on_bookmark_activated), obj));
-	} else if (PLUMA_IS_FILE_BROWSER_STORE (model)) {
+	} else if (LAPIZ_IS_FILE_BROWSER_STORE (model)) {
 		/* make sure any async operation is cancelled */
 		cancel_async_operation (obj);
 
@@ -2808,7 +2808,7 @@ on_treeview_key_press_event (PlumaFileBrowserView * treeview,
 	if (do_change_directory (obj, event))
 		return TRUE;
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE
+	if (!LAPIZ_IS_FILE_BROWSER_STORE
 	    (gtk_tree_view_get_model (GTK_TREE_VIEW (treeview))))
 		return FALSE;
 
@@ -2849,7 +2849,7 @@ on_selection_changed (GtkTreeSelection * selection,
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
 	{
 		selected = lapiz_file_browser_widget_get_num_selected_files_or_directories (obj,
 											    &files,
@@ -2944,14 +2944,14 @@ on_filter_mode_changed (PlumaFileBrowserStore * model,
 
 	action = GTK_TOGGLE_ACTION (gtk_action_group_get_action (obj->priv->action_group,
 	                                                         "FilterHidden"));
-	active = !(mode & PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
+	active = !(mode & LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
 
 	if (active != gtk_toggle_action_get_active (action))
 		gtk_toggle_action_set_active (action, active);
 
 	action = GTK_TOGGLE_ACTION (gtk_action_group_get_action (obj->priv->action_group,
 	                                                         "FilterBinary"));
-	active = !(mode & PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
+	active = !(mode & LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
 
 	if (active != gtk_toggle_action_get_active (action))
 		gtk_toggle_action_set_active (action, active);
@@ -2978,10 +2978,10 @@ on_action_directory_up (GtkAction              * action,
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
-	lapiz_file_browser_store_set_virtual_root_up (PLUMA_FILE_BROWSER_STORE (model));
+	lapiz_file_browser_store_set_virtual_root_up (LAPIZ_FILE_BROWSER_STORE (model));
 }
 
 static void
@@ -2993,14 +2993,14 @@ on_action_directory_new (GtkAction * action, PlumaFileBrowserWidget * obj)
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
 	if (!lapiz_file_browser_widget_get_selected_directory (obj, &parent))
 		return;
 
 	if (lapiz_file_browser_store_new_directory
-	    (PLUMA_FILE_BROWSER_STORE (model), &parent, &iter)) {
+	    (LAPIZ_FILE_BROWSER_STORE (model), &parent, &iter)) {
 		lapiz_file_browser_view_start_rename (obj->priv->treeview,
 						      &iter);
 	}
@@ -3019,7 +3019,7 @@ on_action_file_open (GtkAction * action, PlumaFileBrowserWidget * obj)
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
 	rows = gtk_tree_selection_get_selected_rows (selection, &model);
@@ -3045,14 +3045,14 @@ on_action_file_new (GtkAction * action, PlumaFileBrowserWidget * obj)
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
 	if (!lapiz_file_browser_widget_get_selected_directory (obj, &parent))
 		return;
 
 	if (lapiz_file_browser_store_new_file
-	    (PLUMA_FILE_BROWSER_STORE (model), &parent, &iter)) {
+	    (LAPIZ_FILE_BROWSER_STORE (model), &parent, &iter)) {
 		lapiz_file_browser_view_start_rename (obj->priv->treeview,
 						      &iter);
 	}
@@ -3097,7 +3097,7 @@ on_action_directory_open (GtkAction * action, PlumaFileBrowserWidget * obj)
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
 	rows = gtk_tree_selection_get_selected_rows (selection, &model);
@@ -3124,7 +3124,7 @@ on_action_filter_hidden (GtkAction * action, PlumaFileBrowserWidget * obj)
 {
 	update_filter_mode (obj,
 	                    action,
-	                    PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
+	                    LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
 }
 
 static void
@@ -3132,7 +3132,7 @@ on_action_filter_binary (GtkAction * action, PlumaFileBrowserWidget * obj)
 {
 	update_filter_mode (obj,
 	                    action,
-	                    PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
+	                    LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
 }
 
 static void
@@ -3145,7 +3145,7 @@ on_action_bookmark_open (GtkAction * action, PlumaFileBrowserWidget * obj)
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 
-	if (!PLUMA_IS_FILE_BOOKMARKS_STORE (model))
+	if (!LAPIZ_IS_FILE_BOOKMARKS_STORE (model))
 		return;
 
 	if (gtk_tree_selection_get_selected (selection, NULL, &iter))

@@ -891,7 +891,7 @@ lapiz_utils_get_current_workspace (GdkScreen *screen)
  * Get the workspace the window is on
  *
  * This function gets the workspace that the #GtkWindow is visible on,
- * it returns PLUMA_ALL_WORKSPACES if the window is sticky, or if
+ * it returns LAPIZ_ALL_WORKSPACES if the window is sticky, or if
  * the window manager doesn support this function
  */
 guint
@@ -906,7 +906,7 @@ lapiz_utils_get_window_workspace (GtkWindow *gtkwindow)
 	gulong bytes_after;
 	guint *workspace;
 	gint err, result;
-	guint ret = PLUMA_ALL_WORKSPACES;
+	guint ret = LAPIZ_ALL_WORKSPACES;
 
 	g_return_val_if_fail (GTK_IS_WINDOW (gtkwindow), 0);
 	g_return_val_if_fail (gtk_widget_get_realized (GTK_WIDGET (gtkwindow)), 0);

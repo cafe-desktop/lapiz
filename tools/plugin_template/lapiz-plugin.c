@@ -36,7 +36,7 @@ struct _##(PLUGIN_ID.camel)PluginPrivate
 	gpointer dummy;
 };
 
-PLUMA_PLUGIN_REGISTER_TYPE (##(PLUGIN_ID.camel)Plugin, ##(PLUGIN_ID.lower)_plugin)
+LAPIZ_PLUGIN_REGISTER_TYPE (##(PLUGIN_ID.camel)Plugin, ##(PLUGIN_ID.lower)_plugin)
 
 ##ifdef WITH_MENU
 /* UI string. See lapiz-ui.xml for reference */
@@ -168,7 +168,7 @@ static void
 ##(PLUGIN_ID.lower)_plugin_class_init (##(PLUGIN_ID.camel)PluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	PlumaPluginClass *plugin_class = PLUMA_PLUGIN_CLASS (klass);
+	PlumaPluginClass *plugin_class = LAPIZ_PLUGIN_CLASS (klass);
 
 	object_class->finalize = ##(PLUGIN_ID.lower)_plugin_finalize;
 

@@ -15,12 +15,12 @@ AC_CONFIG_HEADERS(config.h)
 AC_CONFIG_SRCDIR(lapiz/lapiz.c)
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_DEFINE(PLUMA_MAJOR_VERSION, lapiz_major_version, [Pluma major version])
-AC_SUBST(PLUMA_MAJOR_VERSION, lapiz_major_version)
-AC_DEFINE(PLUMA_MINOR_VERSION, lapiz_minor_version, [Pluma minor version])
-AC_SUBST(PLUMA_MINOR_VERSION, lapiz_minor_version)
-AC_DEFINE(PLUMA_MICRO_VERSION, lapiz_micro_version, [Pluma micro version])
-AC_SUBST(PLUMA_MICRO_VERSION, lapiz_micro_version)
+AC_DEFINE(LAPIZ_MAJOR_VERSION, lapiz_major_version, [Pluma major version])
+AC_SUBST(LAPIZ_MAJOR_VERSION, lapiz_major_version)
+AC_DEFINE(LAPIZ_MINOR_VERSION, lapiz_minor_version, [Pluma minor version])
+AC_SUBST(LAPIZ_MINOR_VERSION, lapiz_minor_version)
+AC_DEFINE(LAPIZ_MICRO_VERSION, lapiz_micro_version, [Pluma micro version])
+AC_SUBST(LAPIZ_MICRO_VERSION, lapiz_micro_version)
 
 AM_INIT_AUTOMAKE([1.10 dist-xz no-dist-gzip -Wno-portability check-news])
 AM_MAINTAINER_MODE
@@ -48,7 +48,7 @@ dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 
 dnl toolbar style for GSettings schemas
-TOOLBAR_STYLE="PLUMA_TOOLBAR_SYSTEM"
+TOOLBAR_STYLE="LAPIZ_TOOLBAR_SYSTEM"
 AC_SUBST(TOOLBAR_STYLE)
 
 dnl ===============================================================
@@ -58,7 +58,7 @@ dnl ===============================================================
 # This macro expands DIR and assigns it to RET.
 # If DIR is NONE, then it's replaced by DEFAULT.
 # Based on AC_DEFINE_DIR
-AC_DEFUN([PLUMA_FULLPATH], [
+AC_DEFUN([LAPIZ_FULLPATH], [
   test "x$prefix" = xNONE && prefix="$ac_default_prefix"
   test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
   ac_expand=[$]$1
@@ -69,7 +69,7 @@ AC_DEFUN([PLUMA_FULLPATH], [
 
 dnl FULL_LIBEXECDIR is used for X-MATE-Bugzilla-ExtraInfoScript expansion
 dnl in data/lapiz.desktop.in.in
-PLUMA_FULLPATH(libexecdir, NONE, FULL_LIBEXECDIR)
+LAPIZ_FULLPATH(libexecdir, NONE, FULL_LIBEXECDIR)
 AC_SUBST(FULL_LIBEXECDIR)
 
 dnl ================================================================
@@ -159,7 +159,7 @@ GTK_REQUIRED=3.22.0
 GTKSOURCEVIEW_REQUIRED=3.0.0
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
-PKG_CHECK_MODULES(PLUMA, [
+PKG_CHECK_MODULES(LAPIZ, [
 	libxml-2.0 >= 2.5.0
 	glib-2.0 >= 2.50.0
 	$GMODULE_ADD
@@ -173,11 +173,11 @@ PKG_CHECK_MODULES(PLUMA, [
 
 PKG_CHECK_MODULES(X11, [x11])
 
-PLUMA_CFLAGS="$PLUMA_CFLAGS $X11_CFLAGS"
-PLUMA_LIBS="$PLUMA_LIBS $X11_LIBS"
+LAPIZ_CFLAGS="$LAPIZ_CFLAGS $X11_CFLAGS"
+LAPIZ_LIBS="$LAPIZ_LIBS $X11_LIBS"
 
-AC_SUBST(PLUMA_CFLAGS)
-AC_SUBST(PLUMA_LIBS)
+AC_SUBST(LAPIZ_CFLAGS)
+AC_SUBST(LAPIZ_LIBS)
 
 PKG_CHECK_MODULES(EGG_SMCLIENT, [sm >= 1.0.0])
 
@@ -219,11 +219,11 @@ PLUGIN_LIBTOOL_FLAGS="-module -avoid-version"
 
 AC_SUBST(PLUGIN_LIBTOOL_FLAGS)
 
-PLUMA_PLUGINS_DATA_DIR="$datadir/lapiz/plugins"
-AC_SUBST(PLUMA_PLUGINS_DATA_DIR)
+LAPIZ_PLUGINS_DATA_DIR="$datadir/lapiz/plugins"
+AC_SUBST(LAPIZ_PLUGINS_DATA_DIR)
 
-PLUMA_PLUGINS_LIBS_DIR="$libdir/lapiz/plugins"
-AC_SUBST(PLUMA_PLUGINS_LIBS_DIR)
+LAPIZ_PLUGINS_LIBS_DIR="$libdir/lapiz/plugins"
+AC_SUBST(LAPIZ_PLUGINS_LIBS_DIR)
 
 YELP_HELP_INIT
 
@@ -287,8 +287,8 @@ Configuration:
 	Tests enabled:		$enable_tests
 "
 
-if expr ${PLUMA_MINOR_VERSION} % 2 > /dev/null; then
-	stable_version=`expr ${PLUMA_MINOR_VERSION} - 1`
+if expr ${LAPIZ_MINOR_VERSION} % 2 > /dev/null; then
+	stable_version=`expr ${LAPIZ_MINOR_VERSION} - 1`
 
 cat << EOF
  *** IMPORTANT ***

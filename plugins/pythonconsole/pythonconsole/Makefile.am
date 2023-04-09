@@ -1,12 +1,12 @@
 # Python console plugin
 
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)/pythonconsole
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)/pythonconsole
 plugin_PYTHON =		\
 	__init__.py	\
 	console.py	\
 	config.py
 
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/pythonconsole/ui
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/pythonconsole/ui
 ui_files = config.ui
 include $(top_srcdir)/gla11y.mk
 ui_DATA = $(ui_files)

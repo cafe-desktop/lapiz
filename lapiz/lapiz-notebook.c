@@ -100,7 +100,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 lapiz_notebook_dispose (GObject *object)
 {
-	PlumaNotebook *notebook = PLUMA_NOTEBOOK (object);
+	PlumaNotebook *notebook = LAPIZ_NOTEBOOK (object);
 
 	if (!notebook->priv->destroy_has_run)
 	{
@@ -111,7 +111,7 @@ lapiz_notebook_dispose (GObject *object)
 		for (l = children; l != NULL; l = g_list_next (l))
 		{
 			lapiz_notebook_remove_tab (notebook,
-						   PLUMA_TAB (l->data));
+						   LAPIZ_TAB (l->data));
 		}
 
 		g_list_free (children);
@@ -141,7 +141,7 @@ lapiz_notebook_class_init (PlumaNotebookClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      PLUMA_TYPE_TAB);
+			      LAPIZ_TYPE_TAB);
 	signals[TAB_REMOVED] =
 		g_signal_new ("tab_removed",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -151,7 +151,7 @@ lapiz_notebook_class_init (PlumaNotebookClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      PLUMA_TYPE_TAB);
+			      LAPIZ_TYPE_TAB);
 	signals[TAB_DETACHED] =
 		g_signal_new ("tab_detached",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -161,7 +161,7 @@ lapiz_notebook_class_init (PlumaNotebookClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      PLUMA_TYPE_TAB);
+			      LAPIZ_TYPE_TAB);
 	signals[TABS_REORDERED] =
 		g_signal_new ("tabs_reordered",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -180,7 +180,7 @@ lapiz_notebook_class_init (PlumaNotebookClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      PLUMA_TYPE_TAB);
+			      LAPIZ_TYPE_TAB);
 }
 
 static PlumaNotebook *
@@ -211,10 +211,10 @@ find_notebook_at_pointer (gint abs_x, gint abs_y)
 
 	/* toplevel should be an PlumaWindow */
 	if ((toplevel != NULL) &&
-	    PLUMA_IS_WINDOW (toplevel))
+	    LAPIZ_IS_WINDOW (toplevel))
 	{
-		return PLUMA_NOTEBOOK (_lapiz_window_get_notebook
-						(PLUMA_WINDOW (toplevel)));
+		return LAPIZ_NOTEBOOK (_lapiz_window_get_notebook
+						(LAPIZ_WINDOW (toplevel)));
 	}
 
 	/* We are outside all windows containing a notebook */
@@ -339,10 +339,10 @@ lapiz_notebook_move_tab (PlumaNotebook *src,
 			 PlumaTab      *tab,
 			 gint           dest_position)
 {
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (src));
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (dest));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (src));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (dest));
 	g_return_if_fail (src != dest);
-	g_return_if_fail (PLUMA_IS_TAB (tab));
+	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
 	/* make sure the tab isn't destroyed while we move it */
 	g_object_ref (tab);
@@ -369,8 +369,8 @@ lapiz_notebook_reorder_tab (PlumaNotebook *src,
 {
 	gint old_position;
 
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (src));
-	g_return_if_fail (PLUMA_IS_TAB (tab));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (src));
+	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
 	old_position = gtk_notebook_page_num (GTK_NOTEBOOK (src),
 				    	      GTK_WIDGET (tab));
@@ -465,8 +465,8 @@ move_current_tab (PlumaNotebook *notebook,
 		cur_tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook),
 						     cur_page_num);
 
-		lapiz_notebook_reorder_tab (PLUMA_NOTEBOOK (notebook),
-					    PLUMA_TAB (cur_tab),
+		lapiz_notebook_reorder_tab (LAPIZ_NOTEBOOK (notebook),
+					    LAPIZ_TAB (cur_tab),
 					    dest_position);
 	}
 }
@@ -547,11 +547,11 @@ move_current_tab_to_another_notebook (PlumaNotebook  *src,
 	 * to that new notebook, and let this notebook handle the
 	 * drag
 	 */
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (dest));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (dest));
 	g_return_if_fail (dest != src);
 
 	cur_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (src));
-	tab = PLUMA_TAB (gtk_notebook_get_nth_page (GTK_NOTEBOOK (src),
+	tab = LAPIZ_TAB (gtk_notebook_get_nth_page (GTK_NOTEBOOK (src),
 						    cur_page));
 
 	/* stop drag in origin window */
@@ -743,7 +743,7 @@ focus_out_cb (PlumaNotebook  *notebook,
 GtkWidget *
 lapiz_notebook_new (void)
 {
-	return GTK_WIDGET (g_object_new (PLUMA_TYPE_NOTEBOOK, NULL));
+	return GTK_WIDGET (g_object_new (LAPIZ_TYPE_NOTEBOOK, NULL));
 }
 
 static void
@@ -752,7 +752,7 @@ lapiz_notebook_switch_page_cb (GtkNotebook     *notebook,
                                guint            page_num,
                                gpointer         data)
 {
-	PlumaNotebook *nb = PLUMA_NOTEBOOK (notebook);
+	PlumaNotebook *nb = LAPIZ_NOTEBOOK (notebook);
 	GtkWidget *child;
 	PlumaView *view;
 
@@ -770,7 +770,7 @@ lapiz_notebook_switch_page_cb (GtkNotebook     *notebook,
 						 child);
 
 	/* give focus to the view */
-	view = lapiz_tab_get_view (PLUMA_TAB (child));
+	view = lapiz_tab_get_view (LAPIZ_TAB (child));
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 }
 
@@ -848,7 +848,7 @@ lapiz_notebook_init (PlumaNotebook *notebook)
 static void
 lapiz_notebook_finalize (GObject *object)
 {
-	PlumaNotebook *notebook = PLUMA_NOTEBOOK (object);
+	PlumaNotebook *notebook = LAPIZ_NOTEBOOK (object);
 
 	g_list_free (notebook->priv->focused_pages);
 
@@ -968,8 +968,8 @@ lapiz_notebook_add_tab (PlumaNotebook *nb,
 {
 	GtkWidget *tab_label;
 
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (nb));
-	g_return_if_fail (PLUMA_IS_TAB (tab));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (nb));
+	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
 	tab_label = create_tab_label (nb, tab);
 	gtk_notebook_insert_page (GTK_NOTEBOOK (nb),
@@ -1062,8 +1062,8 @@ lapiz_notebook_remove_tab (PlumaNotebook *nb,
 {
 	gint position, curr;
 
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (nb));
-	g_return_if_fail (PLUMA_IS_TAB (tab));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (nb));
+	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
 	/* Remove the page from the focused pages list */
 	nb->priv->focused_pages =  g_list_remove (nb->priv->focused_pages,
@@ -1089,7 +1089,7 @@ lapiz_notebook_remove_tab (PlumaNotebook *nb,
 void
 lapiz_notebook_remove_all_tabs (PlumaNotebook *nb)
 {
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (nb));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (nb));
 
 	g_list_free (nb->priv->focused_pages);
 	nb->priv->focused_pages = NULL;
@@ -1107,7 +1107,7 @@ set_close_buttons_sensitivity (PlumaTab      *tab,
 
 	tab_label = get_tab_label (tab);
 
-	lapiz_tab_label_set_close_button_sensitive (PLUMA_TAB_LABEL (tab_label),
+	lapiz_tab_label_set_close_button_sensitive (LAPIZ_TAB_LABEL (tab_label),
 						    nb->priv->close_buttons_sensitive);
 }
 
@@ -1122,7 +1122,7 @@ void
 lapiz_notebook_set_close_buttons_sensitive (PlumaNotebook *nb,
 					    gboolean       sensitive)
 {
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (nb));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (nb));
 
 	sensitive = (sensitive != FALSE);
 
@@ -1147,7 +1147,7 @@ lapiz_notebook_set_close_buttons_sensitive (PlumaNotebook *nb,
 gboolean
 lapiz_notebook_get_close_buttons_sensitive (PlumaNotebook *nb)
 {
-	g_return_val_if_fail (PLUMA_IS_NOTEBOOK (nb), TRUE);
+	g_return_val_if_fail (LAPIZ_IS_NOTEBOOK (nb), TRUE);
 
 	return nb->priv->close_buttons_sensitive;
 }
@@ -1163,7 +1163,7 @@ void
 lapiz_notebook_set_tab_drag_and_drop_enabled (PlumaNotebook *nb,
 					      gboolean       enable)
 {
-	g_return_if_fail (PLUMA_IS_NOTEBOOK (nb));
+	g_return_if_fail (LAPIZ_IS_NOTEBOOK (nb));
 
 	enable = (enable != FALSE);
 
@@ -1184,7 +1184,7 @@ lapiz_notebook_set_tab_drag_and_drop_enabled (PlumaNotebook *nb,
 gboolean
 lapiz_notebook_get_tab_drag_and_drop_enabled (PlumaNotebook *nb)
 {
-	g_return_val_if_fail (PLUMA_IS_NOTEBOOK (nb), TRUE);
+	g_return_val_if_fail (LAPIZ_IS_NOTEBOOK (nb), TRUE);
 
 	return nb->priv->tab_drag_and_drop_enabled;
 }

@@ -1,18 +1,18 @@
-#ifndef __PLUMA_MESSAGE_H__
-#define __PLUMA_MESSAGE_H__
+#ifndef __LAPIZ_MESSAGE_H__
+#define __LAPIZ_MESSAGE_H__
 
 #include <glib-object.h>
 #include <stdarg.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_MESSAGE			(lapiz_message_get_type ())
-#define PLUMA_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_MESSAGE, PlumaMessage))
-#define PLUMA_MESSAGE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_MESSAGE, PlumaMessage const))
-#define PLUMA_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_MESSAGE, PlumaMessageClass))
-#define PLUMA_IS_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_MESSAGE))
-#define PLUMA_IS_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_MESSAGE))
-#define PLUMA_MESSAGE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_MESSAGE, PlumaMessageClass))
+#define LAPIZ_TYPE_MESSAGE			(lapiz_message_get_type ())
+#define LAPIZ_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_MESSAGE, PlumaMessage))
+#define LAPIZ_MESSAGE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_MESSAGE, PlumaMessage const))
+#define LAPIZ_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_MESSAGE, PlumaMessageClass))
+#define LAPIZ_IS_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_MESSAGE))
+#define LAPIZ_IS_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_MESSAGE))
+#define LAPIZ_MESSAGE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_MESSAGE, PlumaMessageClass))
 
 typedef struct _PlumaMessage		PlumaMessage;
 typedef struct _PlumaMessageClass	PlumaMessageClass;
@@ -66,6 +66,6 @@ gboolean lapiz_message_validate		(PlumaMessage	 *message);
 
 G_END_DECLS
 
-#endif /* __PLUMA_MESSAGE_H__ */
+#endif /* __LAPIZ_MESSAGE_H__ */
 
 // ex:ts=8:noet:

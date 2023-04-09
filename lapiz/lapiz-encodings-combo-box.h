@@ -29,20 +29,20 @@
  * $Id: lapiz-encodings-option-menu.h 4429 2005-12-12 17:28:04Z pborelli $
  */
 
-#ifndef __PLUMA_ENCODINGS_COMBO_BOX_H__
-#define __PLUMA_ENCODINGS_COMBO_BOX_H__
+#ifndef __LAPIZ_ENCODINGS_COMBO_BOX_H__
+#define __LAPIZ_ENCODINGS_COMBO_BOX_H__
 
 #include <gtk/gtk.h>
 #include <lapiz/lapiz-encodings.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_ENCODINGS_COMBO_BOX             (lapiz_encodings_combo_box_get_type ())
-#define PLUMA_ENCODINGS_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBox))
-#define PLUMA_ENCODINGS_COMBO_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBoxClass))
-#define PLUMA_IS_ENCODINGS_COMBO_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_ENCODINGS_COMBO_BOX))
-#define PLUMA_IS_ENCODINGS_COMBO_BOX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_ENCODINGS_COMBO_BOX))
-#define PLUMA_ENCODINGS_COMBO_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBoxClass))
+#define LAPIZ_TYPE_ENCODINGS_COMBO_BOX             (lapiz_encodings_combo_box_get_type ())
+#define LAPIZ_ENCODINGS_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBox))
+#define LAPIZ_ENCODINGS_COMBO_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBoxClass))
+#define LAPIZ_IS_ENCODINGS_COMBO_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX))
+#define LAPIZ_IS_ENCODINGS_COMBO_BOX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_ENCODINGS_COMBO_BOX))
+#define LAPIZ_ENCODINGS_COMBO_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBoxClass))
 
 
 typedef struct _PlumaEncodingsComboBox 	PlumaEncodingsComboBox;
@@ -73,6 +73,6 @@ void		     lapiz_encodings_combo_box_set_selected_encoding	(PlumaEncodingsComboB
 
 G_END_DECLS
 
-#endif /* __PLUMA_ENCODINGS_COMBO_BOX_H__ */
+#endif /* __LAPIZ_ENCODINGS_COMBO_BOX_H__ */
 
 

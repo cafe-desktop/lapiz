@@ -259,7 +259,7 @@ message_set_emblem_cb (PlumaMessageBus *bus,
 
 				lapiz_file_browser_store_set_value (store,
 								    &iter,
-								    PLUMA_FILE_BROWSER_STORE_COLUMN_EMBLEM,
+								    LAPIZ_FILE_BROWSER_STORE_COLUMN_EMBLEM,
 								    &value);
 
 				g_value_unset (&value);
@@ -318,8 +318,8 @@ set_item_message (WindowData   *data,
 	store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
 	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI, &uri,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (!uri)
@@ -359,8 +359,8 @@ custom_message_filter_func (PlumaFileBrowserWidget *widget,
 	GtkTreePath *path;
 
 	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI, &uri,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (!uri || FILE_IS_DUMMY (flags))
@@ -508,9 +508,9 @@ message_set_show_hidden_cb (PlumaMessageBus *bus,
 	mode = lapiz_file_browser_store_get_filter_mode (store);
 
 	if (active)
-		mode &= ~PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
+		mode &= ~LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 	else
-		mode |= PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
+		mode |= LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 
 	lapiz_file_browser_store_set_filter_mode (store, mode);
 }
@@ -530,9 +530,9 @@ message_set_show_binary_cb (PlumaMessageBus *bus,
 	mode = lapiz_file_browser_store_get_filter_mode (store);
 
 	if (active)
-		mode &= ~PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
+		mode &= ~LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
 	else
-		mode |= PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
+		mode |= LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
 
 	lapiz_file_browser_store_set_filter_mode (store, mode);
 }
@@ -716,7 +716,7 @@ register_methods (PlumaWindow            *window,
 	lapiz_message_bus_register (bus,
 				    MESSAGE_OBJECT_PATH, "get_view",
 				    1,
-				    "view", PLUMA_TYPE_FILE_BROWSER_VIEW,
+				    "view", LAPIZ_TYPE_FILE_BROWSER_VIEW,
 				    NULL);
 
 	BUS_CONNECT (bus, get_root, data);
@@ -753,8 +753,8 @@ store_row_inserted (PlumaFileBrowserStore *store,
 	guint flags = 0;
 
 	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI, &uri,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (!FILE_IS_DUMMY (flags) && !FILE_IS_FILTERED (flags))
@@ -781,8 +781,8 @@ store_row_deleted (PlumaFileBrowserStore *store,
 		return;
 
 	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI, &uri,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (!FILE_IS_DUMMY (flags) && !FILE_IS_FILTERED (flags))

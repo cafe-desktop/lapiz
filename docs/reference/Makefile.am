@@ -88,11 +88,11 @@ GTKDOC_CFLAGS=	\
 	-I$(top_builddir)/lapiz \
 	-I$(top_srcdir)		\
 	-I$(top_builddir)	\
-	$(PLUMA_CFLAGS)
+	$(LAPIZ_CFLAGS)
 
 GTKDOC_LIBS=	\
 	$(top_builddir)/lapiz/liblapiz.la	\
-	$(PLUMA_LIBS)
+	$(LAPIZ_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make

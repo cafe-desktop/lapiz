@@ -20,20 +20,20 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_CLOSE_BUTTON_H__
-#define __PLUMA_CLOSE_BUTTON_H__
+#ifndef __LAPIZ_CLOSE_BUTTON_H__
+#define __LAPIZ_CLOSE_BUTTON_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_CLOSE_BUTTON			(lapiz_close_button_get_type ())
-#define PLUMA_CLOSE_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_CLOSE_BUTTON, PlumaCloseButton))
-#define PLUMA_CLOSE_BUTTON_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_CLOSE_BUTTON, PlumaCloseButton const))
-#define PLUMA_CLOSE_BUTTON_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_CLOSE_BUTTON, PlumaCloseButtonClass))
-#define PLUMA_IS_CLOSE_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_CLOSE_BUTTON))
-#define PLUMA_IS_CLOSE_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_CLOSE_BUTTON))
-#define PLUMA_CLOSE_BUTTON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_CLOSE_BUTTON, PlumaCloseButtonClass))
+#define LAPIZ_TYPE_CLOSE_BUTTON			(lapiz_close_button_get_type ())
+#define LAPIZ_CLOSE_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButton))
+#define LAPIZ_CLOSE_BUTTON_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButton const))
+#define LAPIZ_CLOSE_BUTTON_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButtonClass))
+#define LAPIZ_IS_CLOSE_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_CLOSE_BUTTON))
+#define LAPIZ_IS_CLOSE_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_CLOSE_BUTTON))
+#define LAPIZ_CLOSE_BUTTON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButtonClass))
 
 typedef struct _PlumaCloseButton	PlumaCloseButton;
 typedef struct _PlumaCloseButtonClass	PlumaCloseButtonClass;
@@ -53,4 +53,4 @@ GtkWidget	 *lapiz_close_button_new (void);
 
 G_END_DECLS
 
-#endif /* __PLUMA_CLOSE_BUTTON_H__ */
+#endif /* __LAPIZ_CLOSE_BUTTON_H__ */

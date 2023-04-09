@@ -134,25 +134,25 @@ static void lapiz_prefs_manager_draw_nbsp_changed (GSettings *settings,
 
 /* GUI state is serialized to a .desktop file, not in GSettings */
 
-#define PLUMA_STATE_DEFAULT_WINDOW_STATE	0
-#define PLUMA_STATE_DEFAULT_WINDOW_WIDTH	650
-#define PLUMA_STATE_DEFAULT_WINDOW_HEIGHT	500
-#define PLUMA_STATE_DEFAULT_SIDE_PANEL_SIZE	200
-#define PLUMA_STATE_DEFAULT_BOTTOM_PANEL_SIZE	140
+#define LAPIZ_STATE_DEFAULT_WINDOW_STATE	0
+#define LAPIZ_STATE_DEFAULT_WINDOW_WIDTH	650
+#define LAPIZ_STATE_DEFAULT_WINDOW_HEIGHT	500
+#define LAPIZ_STATE_DEFAULT_SIDE_PANEL_SIZE	200
+#define LAPIZ_STATE_DEFAULT_BOTTOM_PANEL_SIZE	140
 
-#define PLUMA_STATE_FILE_LOCATION "lapiz.ini"
+#define LAPIZ_STATE_FILE_LOCATION "lapiz.ini"
 
-#define PLUMA_STATE_WINDOW_GROUP "window"
-#define PLUMA_STATE_WINDOW_STATE "state"
-#define PLUMA_STATE_WINDOW_HEIGHT "height"
-#define PLUMA_STATE_WINDOW_WIDTH "width"
-#define PLUMA_STATE_SIDE_PANEL_SIZE "side_panel_size"
-#define PLUMA_STATE_BOTTOM_PANEL_SIZE "bottom_panel_size"
-#define PLUMA_STATE_SIDE_PANEL_ACTIVE_PAGE "side_panel_active_page"
-#define PLUMA_STATE_BOTTOM_PANEL_ACTIVE_PAGE "bottom_panel_active_page"
+#define LAPIZ_STATE_WINDOW_GROUP "window"
+#define LAPIZ_STATE_WINDOW_STATE "state"
+#define LAPIZ_STATE_WINDOW_HEIGHT "height"
+#define LAPIZ_STATE_WINDOW_WIDTH "width"
+#define LAPIZ_STATE_SIDE_PANEL_SIZE "side_panel_size"
+#define LAPIZ_STATE_BOTTOM_PANEL_SIZE "bottom_panel_size"
+#define LAPIZ_STATE_SIDE_PANEL_ACTIVE_PAGE "side_panel_active_page"
+#define LAPIZ_STATE_BOTTOM_PANEL_ACTIVE_PAGE "bottom_panel_active_page"
 
-#define PLUMA_STATE_FILEFILTER_GROUP "filefilter"
-#define PLUMA_STATE_FILEFILTER_ID "id"
+#define LAPIZ_STATE_FILEFILTER_GROUP "filefilter"
+#define LAPIZ_STATE_FILEFILTER_ID "id"
 
 static gint window_state = -1;
 static gint window_height = -1;
@@ -175,7 +175,7 @@ get_state_filename (void)
 	if (config_dir != NULL)
 	{
 		filename = g_build_filename (config_dir,
-					     PLUMA_STATE_FILE_LOCATION,
+					     LAPIZ_STATE_FILE_LOCATION,
 					     NULL);
 		g_free (config_dir);
 	}
@@ -342,9 +342,9 @@ lapiz_prefs_manager_get_window_state (void)
 {
 	if (window_state == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
-				     PLUMA_STATE_WINDOW_STATE,
-				     PLUMA_STATE_DEFAULT_WINDOW_STATE,
+		lapiz_state_get_int (LAPIZ_STATE_WINDOW_GROUP,
+				     LAPIZ_STATE_WINDOW_STATE,
+				     LAPIZ_STATE_DEFAULT_WINDOW_STATE,
 				     &window_state);
 	}
 
@@ -358,8 +358,8 @@ lapiz_prefs_manager_set_window_state (gint ws)
 
 	window_state = ws;
 
-	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
-			     PLUMA_STATE_WINDOW_STATE,
+	lapiz_state_set_int (LAPIZ_STATE_WINDOW_GROUP,
+			     LAPIZ_STATE_WINDOW_STATE,
 			     ws);
 }
 
@@ -377,17 +377,17 @@ lapiz_prefs_manager_get_window_size (gint *width, gint *height)
 
 	if (window_width == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
-				     PLUMA_STATE_WINDOW_WIDTH,
-				     PLUMA_STATE_DEFAULT_WINDOW_WIDTH,
+		lapiz_state_get_int (LAPIZ_STATE_WINDOW_GROUP,
+				     LAPIZ_STATE_WINDOW_WIDTH,
+				     LAPIZ_STATE_DEFAULT_WINDOW_WIDTH,
 				     &window_width);
 	}
 
 	if (window_height == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
-				     PLUMA_STATE_WINDOW_HEIGHT,
-				     PLUMA_STATE_DEFAULT_WINDOW_HEIGHT,
+		lapiz_state_get_int (LAPIZ_STATE_WINDOW_GROUP,
+				     LAPIZ_STATE_WINDOW_HEIGHT,
+				     LAPIZ_STATE_DEFAULT_WINDOW_HEIGHT,
 				     &window_height);
 	}
 
@@ -400,8 +400,8 @@ lapiz_prefs_manager_get_default_window_size (gint *width, gint *height)
 {
 	g_return_if_fail (width != NULL && height != NULL);
 
-	*width = PLUMA_STATE_DEFAULT_WINDOW_WIDTH;
-	*height = PLUMA_STATE_DEFAULT_WINDOW_HEIGHT;
+	*width = LAPIZ_STATE_DEFAULT_WINDOW_WIDTH;
+	*height = LAPIZ_STATE_DEFAULT_WINDOW_HEIGHT;
 }
 
 void
@@ -412,11 +412,11 @@ lapiz_prefs_manager_set_window_size (gint width, gint height)
 	window_width = width;
 	window_height = height;
 
-	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
-			     PLUMA_STATE_WINDOW_WIDTH,
+	lapiz_state_set_int (LAPIZ_STATE_WINDOW_GROUP,
+			     LAPIZ_STATE_WINDOW_WIDTH,
 			     width);
-	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
-			     PLUMA_STATE_WINDOW_HEIGHT,
+	lapiz_state_set_int (LAPIZ_STATE_WINDOW_GROUP,
+			     LAPIZ_STATE_WINDOW_HEIGHT,
 			     height);
 }
 
@@ -432,9 +432,9 @@ lapiz_prefs_manager_get_side_panel_size (void)
 {
 	if (side_panel_size == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
-				     PLUMA_STATE_SIDE_PANEL_SIZE,
-				     PLUMA_STATE_DEFAULT_SIDE_PANEL_SIZE,
+		lapiz_state_get_int (LAPIZ_STATE_WINDOW_GROUP,
+				     LAPIZ_STATE_SIDE_PANEL_SIZE,
+				     LAPIZ_STATE_DEFAULT_SIDE_PANEL_SIZE,
 				     &side_panel_size);
 	}
 
@@ -444,7 +444,7 @@ lapiz_prefs_manager_get_side_panel_size (void)
 gint
 lapiz_prefs_manager_get_default_side_panel_size (void)
 {
-	return PLUMA_STATE_DEFAULT_SIDE_PANEL_SIZE;
+	return LAPIZ_STATE_DEFAULT_SIDE_PANEL_SIZE;
 }
 
 void
@@ -456,8 +456,8 @@ lapiz_prefs_manager_set_side_panel_size (gint ps)
 		return;
 
 	side_panel_size = ps;
-	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
-			     PLUMA_STATE_SIDE_PANEL_SIZE,
+	lapiz_state_set_int (LAPIZ_STATE_WINDOW_GROUP,
+			     LAPIZ_STATE_SIDE_PANEL_SIZE,
 			     ps);
 }
 
@@ -472,8 +472,8 @@ lapiz_prefs_manager_get_side_panel_active_page (void)
 {
 	if (side_panel_active_page == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
-				     PLUMA_STATE_SIDE_PANEL_ACTIVE_PAGE,
+		lapiz_state_get_int (LAPIZ_STATE_WINDOW_GROUP,
+				     LAPIZ_STATE_SIDE_PANEL_ACTIVE_PAGE,
 				     0,
 				     &side_panel_active_page);
 	}
@@ -488,8 +488,8 @@ lapiz_prefs_manager_set_side_panel_active_page (gint id)
 		return;
 
 	side_panel_active_page = id;
-	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
-			     PLUMA_STATE_SIDE_PANEL_ACTIVE_PAGE,
+	lapiz_state_set_int (LAPIZ_STATE_WINDOW_GROUP,
+			     LAPIZ_STATE_SIDE_PANEL_ACTIVE_PAGE,
 			     id);
 }
 
@@ -505,9 +505,9 @@ lapiz_prefs_manager_get_bottom_panel_size (void)
 {
 	if (bottom_panel_size == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
-				     PLUMA_STATE_BOTTOM_PANEL_SIZE,
-				     PLUMA_STATE_DEFAULT_BOTTOM_PANEL_SIZE,
+		lapiz_state_get_int (LAPIZ_STATE_WINDOW_GROUP,
+				     LAPIZ_STATE_BOTTOM_PANEL_SIZE,
+				     LAPIZ_STATE_DEFAULT_BOTTOM_PANEL_SIZE,
 				     &bottom_panel_size);
 	}
 
@@ -517,7 +517,7 @@ lapiz_prefs_manager_get_bottom_panel_size (void)
 gint
 lapiz_prefs_manager_get_default_bottom_panel_size (void)
 {
-	return PLUMA_STATE_DEFAULT_BOTTOM_PANEL_SIZE;
+	return LAPIZ_STATE_DEFAULT_BOTTOM_PANEL_SIZE;
 }
 
 void
@@ -529,8 +529,8 @@ lapiz_prefs_manager_set_bottom_panel_size (gint ps)
 		return;
 
 	bottom_panel_size = ps;
-	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
-			     PLUMA_STATE_BOTTOM_PANEL_SIZE,
+	lapiz_state_set_int (LAPIZ_STATE_WINDOW_GROUP,
+			     LAPIZ_STATE_BOTTOM_PANEL_SIZE,
 			     ps);
 }
 
@@ -545,8 +545,8 @@ lapiz_prefs_manager_get_bottom_panel_active_page (void)
 {
 	if (bottom_panel_active_page == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_WINDOW_GROUP,
-				     PLUMA_STATE_BOTTOM_PANEL_ACTIVE_PAGE,
+		lapiz_state_get_int (LAPIZ_STATE_WINDOW_GROUP,
+				     LAPIZ_STATE_BOTTOM_PANEL_ACTIVE_PAGE,
 				     0,
 				     &bottom_panel_active_page);
 	}
@@ -561,8 +561,8 @@ lapiz_prefs_manager_set_bottom_panel_active_page (gint id)
 		return;
 
 	bottom_panel_active_page = id;
-	lapiz_state_set_int (PLUMA_STATE_WINDOW_GROUP,
-			     PLUMA_STATE_BOTTOM_PANEL_ACTIVE_PAGE,
+	lapiz_state_set_int (LAPIZ_STATE_WINDOW_GROUP,
+			     LAPIZ_STATE_BOTTOM_PANEL_ACTIVE_PAGE,
 			     id);
 }
 
@@ -578,8 +578,8 @@ lapiz_prefs_manager_get_active_file_filter (void)
 {
 	if (active_file_filter == -1)
 	{
-		lapiz_state_get_int (PLUMA_STATE_FILEFILTER_GROUP,
-				     PLUMA_STATE_FILEFILTER_ID,
+		lapiz_state_get_int (LAPIZ_STATE_FILEFILTER_GROUP,
+				     LAPIZ_STATE_FILEFILTER_ID,
 				     0,
 				     &active_file_filter);
 	}
@@ -596,8 +596,8 @@ lapiz_prefs_manager_set_active_file_filter (gint id)
 		return;
 
 	active_file_filter = id;
-	lapiz_state_set_int (PLUMA_STATE_FILEFILTER_GROUP,
-			     PLUMA_STATE_FILEFILTER_ID,
+	lapiz_state_set_int (LAPIZ_STATE_FILEFILTER_GROUP,
+			     LAPIZ_STATE_FILEFILTER_ID,
 			     id);
 }
 
@@ -808,7 +808,7 @@ lapiz_prefs_manager_editor_font_changed (GSettings *settings,
 	while (l != NULL)
 	{
 		/* Note: we use def=FALSE to avoid PlumaView to query GSettings */
-		lapiz_view_set_font (PLUMA_VIEW (l->data), FALSE,  font);
+		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE,  font);
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 
 		l = l->next;
@@ -846,7 +846,7 @@ lapiz_prefs_manager_system_font_changed (GSettings *settings,
 	while (l != NULL)
 	{
 		/* Note: we use def=FALSE to avoid PlumaView to query GSettings */
-		lapiz_view_set_font (PLUMA_VIEW (l->data), FALSE, font);
+		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE, font);
 
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 		l = l->next;
@@ -1252,7 +1252,7 @@ lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 			GtkUIManager *ui;
 			GtkAction *a;
 
-			ui = lapiz_window_get_ui_manager (PLUMA_WINDOW (windows->data));
+			ui = lapiz_window_get_ui_manager (LAPIZ_WINDOW (windows->data));
 
 			a = gtk_ui_manager_get_action (ui,
 						       "/MenuBar/ViewMenu/ViewHighlightModeMenu");
@@ -1284,9 +1284,9 @@ lapiz_prefs_manager_search_hl_enable_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			g_return_if_fail (PLUMA_IS_DOCUMENT (l->data));
+			g_return_if_fail (LAPIZ_IS_DOCUMENT (l->data));
 
-			lapiz_document_set_enable_search_highlighting  (PLUMA_DOCUMENT (l->data),
+			lapiz_document_set_enable_search_highlighting  (LAPIZ_DOCUMENT (l->data),
 									enable);
 
 			l = l->next;
@@ -1406,7 +1406,7 @@ lapiz_prefs_manager_auto_save_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			PlumaDocument *doc = PLUMA_DOCUMENT (l->data);
+			PlumaDocument *doc = LAPIZ_DOCUMENT (l->data);
 			PlumaTab *tab = lapiz_tab_get_from_document (doc);
 
 			lapiz_tab_set_auto_save_enabled (tab, auto_save);
@@ -1430,7 +1430,7 @@ lapiz_prefs_manager_auto_save_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			PlumaDocument *doc = PLUMA_DOCUMENT (l->data);
+			PlumaDocument *doc = LAPIZ_DOCUMENT (l->data);
 			PlumaTab *tab = lapiz_tab_get_from_document (doc);
 
 			lapiz_tab_set_auto_save_interval (tab, auto_save_interval);
@@ -1458,22 +1458,22 @@ lapiz_prefs_manager_lockdown_changed (GSettings *settings,
 
 	if (strcmp (key, GPM_LOCKDOWN_COMMAND_LINE) == 0)
 		_lapiz_app_set_lockdown_bit (app,
-					     PLUMA_LOCKDOWN_COMMAND_LINE,
+					     LAPIZ_LOCKDOWN_COMMAND_LINE,
 					     locked);
 
 	else if (strcmp (key, GPM_LOCKDOWN_PRINTING) == 0)
 		_lapiz_app_set_lockdown_bit (app,
-					     PLUMA_LOCKDOWN_PRINTING,
+					     LAPIZ_LOCKDOWN_PRINTING,
 					     locked);
 
 	else if (strcmp (key, GPM_LOCKDOWN_PRINT_SETUP) == 0)
 		_lapiz_app_set_lockdown_bit (app,
-					     PLUMA_LOCKDOWN_PRINT_SETUP,
+					     LAPIZ_LOCKDOWN_PRINT_SETUP,
 					     locked);
 
 	else if (strcmp (key, GPM_LOCKDOWN_SAVE_TO_DISK) == 0)
 		_lapiz_app_set_lockdown_bit (app,
-					     PLUMA_LOCKDOWN_SAVE_TO_DISK,
+					     LAPIZ_LOCKDOWN_SAVE_TO_DISK,
 					     locked);
 }
 

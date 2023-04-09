@@ -31,8 +31,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_COMMANDS_H__
-#define __PLUMA_COMMANDS_H__
+#ifndef __LAPIZ_COMMANDS_H__
+#define __LAPIZ_COMMANDS_H__
 
 #include <gtk/gtk.h>
 #include <lapiz/lapiz-window.h>
@@ -156,4 +156,4 @@ void		_lapiz_cmd_file_save_documents_list	(PlumaWindow *window,
 
 G_END_DECLS
 
-#endif /* __PLUMA_COMMANDS_H__ */
+#endif /* __LAPIZ_COMMANDS_H__ */

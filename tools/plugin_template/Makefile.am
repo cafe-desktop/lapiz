@@ -1,12 +1,12 @@
 # ##(PLUGIN_NAME)
 
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 						\
-	$(PLUMA_CFLAGS) 						\
+	$(LAPIZ_CFLAGS) 						\
 	$(WARN_CFLAGS)							\
-	-DPLUMA_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
+	-DLAPIZ_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
 plugin_LTLIBRARIES = lib##(PLUGIN_MODULE).la
 
@@ -15,10 +15,10 @@ lib##(PLUGIN_MODULE)_la_SOURCES = \
 	##(PLUGIN_MODULE)-plugin.c
 
 lib##(PLUGIN_MODULE)_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-lib##(PLUGIN_MODULE)_la_LIBADD  = $(PLUMA_LIBS)
+lib##(PLUGIN_MODULE)_la_LIBADD  = $(LAPIZ_LIBS)
 
 # UI files (if you use gtkbuilder for your plugin, list those files here)
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/##(PLUGIN_MODULE)
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/##(PLUGIN_MODULE)
 ui_DATA =
 
 plugin_in_files = ##(PLUGIN_MODULE).lapiz-plugin.desktop.in

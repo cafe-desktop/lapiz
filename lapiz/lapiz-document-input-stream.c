@@ -71,7 +71,7 @@ lapiz_document_input_stream_set_property (GObject      *object,
 					  const GValue *value,
 					  GParamSpec   *pspec)
 {
-	PlumaDocumentInputStream *stream = PLUMA_DOCUMENT_INPUT_STREAM (object);
+	PlumaDocumentInputStream *stream = LAPIZ_DOCUMENT_INPUT_STREAM (object);
 
 	switch (prop_id)
 	{
@@ -95,7 +95,7 @@ lapiz_document_input_stream_get_property (GObject    *object,
 					  GValue     *value,
 					  GParamSpec *pspec)
 {
-	PlumaDocumentInputStream *stream = PLUMA_DOCUMENT_INPUT_STREAM (object);
+	PlumaDocumentInputStream *stream = LAPIZ_DOCUMENT_INPUT_STREAM (object);
 
 	switch (prop_id)
 	{
@@ -145,8 +145,8 @@ lapiz_document_input_stream_class_init (PlumaDocumentInputStreamClass *klass)
 					 g_param_spec_enum ("newline-type",
 							    "Newline type",
 							    "The accepted types of line ending",
-							    PLUMA_TYPE_DOCUMENT_NEWLINE_TYPE,
-							    PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+							    LAPIZ_TYPE_DOCUMENT_NEWLINE_TYPE,
+							    LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 							    G_PARAM_READWRITE |
 							    G_PARAM_STATIC_NAME |
 							    G_PARAM_STATIC_BLURB |
@@ -166,12 +166,12 @@ get_new_line_size (PlumaDocumentInputStream *stream)
 
 	switch (stream->priv->newline_type)
 	{
-		case PLUMA_DOCUMENT_NEWLINE_TYPE_CR:
-		case PLUMA_DOCUMENT_NEWLINE_TYPE_LF:
+		case LAPIZ_DOCUMENT_NEWLINE_TYPE_CR:
+		case LAPIZ_DOCUMENT_NEWLINE_TYPE_LF:
 			ret = 1;
 			break;
 
-		case PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF:
+		case LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF:
 			ret = 2;
 			break;
 
@@ -200,7 +200,7 @@ lapiz_document_input_stream_new (GtkTextBuffer           *buffer,
 
 	g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
 
-	stream = g_object_new (PLUMA_TYPE_DOCUMENT_INPUT_STREAM,
+	stream = g_object_new (LAPIZ_TYPE_DOCUMENT_INPUT_STREAM,
 			       "buffer", buffer,
 			       "newline-type", type,
 			       NULL);
@@ -211,7 +211,7 @@ lapiz_document_input_stream_new (GtkTextBuffer           *buffer,
 gsize
 lapiz_document_input_stream_get_total_size (PlumaDocumentInputStream *stream)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_INPUT_STREAM (stream), 0);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_INPUT_STREAM (stream), 0);
 
 	return gtk_text_buffer_get_char_count (stream->priv->buffer);
 }
@@ -219,7 +219,7 @@ lapiz_document_input_stream_get_total_size (PlumaDocumentInputStream *stream)
 gsize
 lapiz_document_input_stream_tell (PlumaDocumentInputStream *stream)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_INPUT_STREAM (stream), 0);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_INPUT_STREAM (stream), 0);
 
 	/* FIXME: is this potentially inefficient? If yes, we could keep
 	   track of the offset internally, assuming the mark doesn't move
@@ -246,15 +246,15 @@ get_new_line (PlumaDocumentInputStream *stream)
 
 	switch (stream->priv->newline_type)
 	{
-		case PLUMA_DOCUMENT_NEWLINE_TYPE_CR:
+		case LAPIZ_DOCUMENT_NEWLINE_TYPE_CR:
 			ret = "\r";
 			break;
 
-		case PLUMA_DOCUMENT_NEWLINE_TYPE_LF:
+		case LAPIZ_DOCUMENT_NEWLINE_TYPE_LF:
 			ret = "\n";
 			break;
 
-		case PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF:
+		case LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF:
 			ret = "\r\n";
 			break;
 
@@ -393,7 +393,7 @@ lapiz_document_input_stream_read (GInputStream  *stream,
 	GtkTextIter iter;
 	gssize space_left, read, n;
 
-	dstream = PLUMA_DOCUMENT_INPUT_STREAM (stream);
+	dstream = LAPIZ_DOCUMENT_INPUT_STREAM (stream);
 
 	if (count < 6)
 	{
@@ -462,7 +462,7 @@ lapiz_document_input_stream_close (GInputStream  *stream,
 				   GCancellable  *cancellable,
 				   GError       **error)
 {
-	PlumaDocumentInputStream *dstream = PLUMA_DOCUMENT_INPUT_STREAM (stream);
+	PlumaDocumentInputStream *dstream = LAPIZ_DOCUMENT_INPUT_STREAM (stream);
 
 	dstream->priv->newline_added = FALSE;
 

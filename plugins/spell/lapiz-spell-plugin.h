@@ -20,8 +20,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_SPELL_PLUGIN_H__
-#define __PLUMA_SPELL_PLUGIN_H__
+#ifndef __LAPIZ_SPELL_PLUGIN_H__
+#define __LAPIZ_SPELL_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -33,12 +33,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_SPELL_PLUGIN		(lapiz_spell_plugin_get_type ())
-#define PLUMA_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_SPELL_PLUGIN, PlumaSpellPlugin))
-#define PLUMA_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_SPELL_PLUGIN, PlumaSpellPluginClass))
-#define PLUMA_IS_SPELL_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_SPELL_PLUGIN))
-#define PLUMA_IS_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_SPELL_PLUGIN))
-#define PLUMA_SPELL_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_SPELL_PLUGIN, PlumaSpellPluginClass))
+#define LAPIZ_TYPE_SPELL_PLUGIN		(lapiz_spell_plugin_get_type ())
+#define LAPIZ_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_SPELL_PLUGIN, PlumaSpellPlugin))
+#define LAPIZ_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_SPELL_PLUGIN, PlumaSpellPluginClass))
+#define LAPIZ_IS_SPELL_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_SPELL_PLUGIN))
+#define LAPIZ_IS_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_SPELL_PLUGIN))
+#define LAPIZ_SPELL_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_SPELL_PLUGIN, PlumaSpellPluginClass))
 
 /* Private structure type */
 typedef struct _PlumaSpellPluginPrivate	PlumaSpellPluginPrivate;
@@ -76,4 +76,4 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __PLUMA_SPELL_PLUGIN_H__ */
+#endif /* __LAPIZ_SPELL_PLUGIN_H__ */

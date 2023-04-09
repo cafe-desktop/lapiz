@@ -26,20 +26,20 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef PLUMA_STATUSBAR_H
-#define PLUMA_STATUSBAR_H
+#ifndef LAPIZ_STATUSBAR_H
+#define LAPIZ_STATUSBAR_H
 
 #include <gtk/gtk.h>
 #include <lapiz/lapiz-window.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_STATUSBAR		(lapiz_statusbar_get_type ())
-#define PLUMA_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_STATUSBAR, PlumaStatusbar))
-#define PLUMA_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_STATUSBAR, PlumaStatusbarClass))
-#define PLUMA_IS_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_STATUSBAR))
-#define PLUMA_IS_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_STATUSBAR))
-#define PLUMA_STATUSBAR_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_STATUSBAR, PlumaStatusbarClass))
+#define LAPIZ_TYPE_STATUSBAR		(lapiz_statusbar_get_type ())
+#define LAPIZ_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_STATUSBAR, PlumaStatusbar))
+#define LAPIZ_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_STATUSBAR, PlumaStatusbarClass))
+#define LAPIZ_IS_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_STATUSBAR))
+#define LAPIZ_IS_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_STATUSBAR))
+#define LAPIZ_STATUSBAR_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_STATUSBAR, PlumaStatusbarClass))
 
 typedef struct _PlumaStatusbar		PlumaStatusbar;
 typedef struct _PlumaStatusbarPrivate	PlumaStatusbarPrivate;

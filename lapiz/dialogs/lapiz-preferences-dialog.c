@@ -1378,11 +1378,11 @@ lapiz_show_preferences_dialog (PlumaWindow *parent)
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (PLUMA_IS_WINDOW (parent));
+	g_return_if_fail (LAPIZ_IS_WINDOW (parent));
 
 	if (preferences_dialog == NULL)
 	{
-		preferences_dialog = GTK_WIDGET (g_object_new (PLUMA_TYPE_PREFERENCES_DIALOG, NULL));
+		preferences_dialog = GTK_WIDGET (g_object_new (LAPIZ_TYPE_PREFERENCES_DIALOG, NULL));
 		g_signal_connect (preferences_dialog,
 				  "destroy",
 				  G_CALLBACK (gtk_widget_destroyed),

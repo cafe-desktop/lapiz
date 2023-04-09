@@ -1,9 +1,9 @@
 # Spell checker plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = 							\
 	-I$(top_srcdir)						\
-	$(PLUMA_CFLAGS) 					\
+	$(LAPIZ_CFLAGS) 					\
 	$(ENCHANT_CFLAGS)					\
 	$(WARN_CFLAGS)
 
@@ -31,9 +31,9 @@ libspell_la_SOURCES = \
 	$(BUILT_SOURCES)			
 
 libspell_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS) 
-libspell_la_LIBADD  = $(PLUMA_LIBS) $(ENCHANT_LIBS)
+libspell_la_LIBADD  = $(LAPIZ_LIBS) $(ENCHANT_LIBS)
 
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/spell
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/spell
 ui_files = spell-checker.ui languages-dialog.ui lapiz-spell-setup-dialog.ui
 include $(top_srcdir)/gla11y.mk
 ui_DATA = $(ui_files)

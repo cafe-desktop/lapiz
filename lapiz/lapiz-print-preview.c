@@ -91,7 +91,7 @@ lapiz_print_preview_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *pspec)
 {
-	//PlumaPrintPreview *preview = PLUMA_PRINT_PREVIEW (object);
+	//PlumaPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
 
 	switch (prop_id)
 	{
@@ -107,7 +107,7 @@ lapiz_print_preview_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *pspec)
 {
-	//PlumaPrintPreview *preview = PLUMA_PRINT_PREVIEW (object);
+	//PlumaPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
 
 	switch (prop_id)
 	{
@@ -120,7 +120,7 @@ lapiz_print_preview_set_property (GObject      *object,
 static void
 lapiz_print_preview_finalize (GObject *object)
 {
-	//PlumaPrintPreview *preview = PLUMA_PRINT_PREVIEW (object);
+	//PlumaPrintPreview *preview = LAPIZ_PRINT_PREVIEW (object);
 
 	G_OBJECT_CLASS (lapiz_print_preview_parent_class)->finalize (object);
 }
@@ -130,7 +130,7 @@ lapiz_print_preview_grab_focus (GtkWidget *widget)
 {
 	PlumaPrintPreview *preview;
 
-	preview = PLUMA_PRINT_PREVIEW (widget);
+	preview = LAPIZ_PRINT_PREVIEW (widget);
 
 	gtk_widget_grab_focus (GTK_WIDGET (preview->priv->layout));
 }
@@ -1317,7 +1317,7 @@ lapiz_print_preview_new (GtkPrintOperation        *op,
 	g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), NULL);
 	g_return_val_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (gtk_preview), NULL);
 
-	preview = g_object_new (PLUMA_TYPE_PRINT_PREVIEW, NULL);
+	preview = g_object_new (LAPIZ_TYPE_PRINT_PREVIEW, NULL);
 
 	preview->priv->operation = g_object_ref (op);
 	preview->priv->gtk_preview = g_object_ref (gtk_preview);

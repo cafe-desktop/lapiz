@@ -75,7 +75,7 @@ get_overwrite_mode_length (void)
 static void
 lapiz_statusbar_dispose (GObject *object)
 {
-	PlumaStatusbar *statusbar = PLUMA_STATUSBAR (object);
+	PlumaStatusbar *statusbar = LAPIZ_STATUSBAR (object);
 
 	if (statusbar->priv->flash_timeout > 0)
 	{
@@ -188,7 +188,7 @@ lapiz_statusbar_init (PlumaStatusbar *statusbar)
 GtkWidget *
 lapiz_statusbar_new (void)
 {
-	return GTK_WIDGET (g_object_new (PLUMA_TYPE_STATUSBAR, NULL));
+	return GTK_WIDGET (g_object_new (LAPIZ_TYPE_STATUSBAR, NULL));
 }
 
 /**
@@ -204,7 +204,7 @@ lapiz_statusbar_set_overwrite (PlumaStatusbar *statusbar,
 {
 	gchar *msg;
 
-	g_return_if_fail (PLUMA_IS_STATUSBAR (statusbar));
+	g_return_if_fail (LAPIZ_IS_STATUSBAR (statusbar));
 
 	msg = get_overwrite_mode_string (overwrite);
 
@@ -216,7 +216,7 @@ lapiz_statusbar_set_overwrite (PlumaStatusbar *statusbar,
 void
 lapiz_statusbar_clear_overwrite (PlumaStatusbar *statusbar)
 {
-	g_return_if_fail (PLUMA_IS_STATUSBAR (statusbar));
+	g_return_if_fail (LAPIZ_IS_STATUSBAR (statusbar));
 
 	gtk_label_set_text (GTK_LABEL (statusbar->priv->overwrite_mode_label), NULL);
 }
@@ -236,7 +236,7 @@ lapiz_statusbar_set_cursor_position (PlumaStatusbar *statusbar,
 {
 	gchar *msg = NULL;
 
-	g_return_if_fail (PLUMA_IS_STATUSBAR (statusbar));
+	g_return_if_fail (LAPIZ_IS_STATUSBAR (statusbar));
 
 	if ((line >= 0) || (col >= 0))
 	{
@@ -280,7 +280,7 @@ lapiz_statusbar_flash_message (PlumaStatusbar *statusbar,
 	va_list args;
 	gchar *msg;
 
-	g_return_if_fail (PLUMA_IS_STATUSBAR (statusbar));
+	g_return_if_fail (LAPIZ_IS_STATUSBAR (statusbar));
 	g_return_if_fail (format != NULL);
 
 	va_start (args, format);
@@ -315,31 +315,31 @@ lapiz_statusbar_set_window_state (PlumaStatusbar   *statusbar,
 				  PlumaWindowState  state,
 				  gint              num_of_errors)
 {
-	g_return_if_fail (PLUMA_IS_STATUSBAR (statusbar));
+	g_return_if_fail (LAPIZ_IS_STATUSBAR (statusbar));
 
 	gtk_widget_hide (statusbar->priv->state_frame);
 	gtk_widget_hide (statusbar->priv->save_image);
 	gtk_widget_hide (statusbar->priv->load_image);
 	gtk_widget_hide (statusbar->priv->print_image);
 
-	if (state & PLUMA_WINDOW_STATE_SAVING)
+	if (state & LAPIZ_WINDOW_STATE_SAVING)
 	{
 		gtk_widget_show (statusbar->priv->state_frame);
 		gtk_widget_show (statusbar->priv->save_image);
 	}
-	if (state & PLUMA_WINDOW_STATE_LOADING)
+	if (state & LAPIZ_WINDOW_STATE_LOADING)
 	{
 		gtk_widget_show (statusbar->priv->state_frame);
 		gtk_widget_show (statusbar->priv->load_image);
 	}
 
-	if (state & PLUMA_WINDOW_STATE_PRINTING)
+	if (state & LAPIZ_WINDOW_STATE_PRINTING)
 	{
 		gtk_widget_show (statusbar->priv->state_frame);
 		gtk_widget_show (statusbar->priv->print_image);
 	}
 
-	if (state & PLUMA_WINDOW_STATE_ERROR)
+	if (state & LAPIZ_WINDOW_STATE_ERROR)
 	{
 	 	gchar *tip;
 

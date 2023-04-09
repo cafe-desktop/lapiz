@@ -49,7 +49,7 @@ G_DEFINE_TYPE_WITH_CODE (PlumaSmartCharsetConverter, lapiz_smart_charset_convert
 static void
 lapiz_smart_charset_converter_finalize (GObject *object)
 {
-	PlumaSmartCharsetConverter *smart = PLUMA_SMART_CHARSET_CONVERTER (object);
+	PlumaSmartCharsetConverter *smart = LAPIZ_SMART_CHARSET_CONVERTER (object);
 
 	g_slist_free (smart->priv->encodings);
 
@@ -61,7 +61,7 @@ lapiz_smart_charset_converter_finalize (GObject *object)
 static void
 lapiz_smart_charset_converter_dispose (GObject *object)
 {
-	PlumaSmartCharsetConverter *smart = PLUMA_SMART_CHARSET_CONVERTER (object);
+	PlumaSmartCharsetConverter *smart = LAPIZ_SMART_CHARSET_CONVERTER (object);
 
 	if (smart->priv->charset_conv != NULL)
 	{
@@ -297,7 +297,7 @@ lapiz_smart_charset_converter_convert (GConverter *converter,
 				       gsize      *bytes_written,
 				       GError    **error)
 {
-	PlumaSmartCharsetConverter *smart = PLUMA_SMART_CHARSET_CONVERTER (converter);
+	PlumaSmartCharsetConverter *smart = LAPIZ_SMART_CHARSET_CONVERTER (converter);
 
 	/* Guess the encoding if we didn't make it yet */
 	if (smart->priv->charset_conv == NULL &&
@@ -311,8 +311,8 @@ lapiz_smart_charset_converter_convert (GConverter *converter,
 		    !smart->priv->is_utf8)
 		{
 			/* FIXME: Add a different domain when we kill lapiz_convert */
-			g_set_error_literal (error, PLUMA_DOCUMENT_ERROR,
-					     PLUMA_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED,
+			g_set_error_literal (error, LAPIZ_DOCUMENT_ERROR,
+					     LAPIZ_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED,
 					     _("It is not possible to detect the encoding automatically"));
 			return G_CONVERTER_ERROR;
 		}
@@ -356,7 +356,7 @@ lapiz_smart_charset_converter_convert (GConverter *converter,
 static void
 lapiz_smart_charset_converter_reset (GConverter *converter)
 {
-	PlumaSmartCharsetConverter *smart = PLUMA_SMART_CHARSET_CONVERTER (converter);
+	PlumaSmartCharsetConverter *smart = LAPIZ_SMART_CHARSET_CONVERTER (converter);
 
 	smart->priv->current_encoding = NULL;
 	smart->priv->is_utf8 = FALSE;
@@ -382,7 +382,7 @@ lapiz_smart_charset_converter_new (GSList *candidate_encodings)
 
 	g_return_val_if_fail (candidate_encodings != NULL, NULL);
 
-	smart = g_object_new (PLUMA_TYPE_SMART_CHARSET_CONVERTER, NULL);
+	smart = g_object_new (LAPIZ_TYPE_SMART_CHARSET_CONVERTER, NULL);
 
 	smart->priv->encodings = g_slist_copy (candidate_encodings);
 
@@ -392,7 +392,7 @@ lapiz_smart_charset_converter_new (GSList *candidate_encodings)
 const PlumaEncoding *
 lapiz_smart_charset_converter_get_guessed (PlumaSmartCharsetConverter *smart)
 {
-	g_return_val_if_fail (PLUMA_IS_SMART_CHARSET_CONVERTER (smart), NULL);
+	g_return_val_if_fail (LAPIZ_IS_SMART_CHARSET_CONVERTER (smart), NULL);
 
 	if (smart->priv->current_encoding != NULL)
 	{
@@ -409,7 +409,7 @@ lapiz_smart_charset_converter_get_guessed (PlumaSmartCharsetConverter *smart)
 guint
 lapiz_smart_charset_converter_get_num_fallbacks (PlumaSmartCharsetConverter *smart)
 {
-	g_return_val_if_fail (PLUMA_IS_SMART_CHARSET_CONVERTER (smart), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_SMART_CHARSET_CONVERTER (smart), FALSE);
 
 	if (smart->priv->charset_conv == NULL)
 		return FALSE;

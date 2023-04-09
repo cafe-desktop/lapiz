@@ -1,12 +1,12 @@
 # Modelines Plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	$(PLUMA_CFLAGS) 				\
+	$(LAPIZ_CFLAGS) 				\
 	$(WARN_CFLAGS)
 
-modelinesdir = $(PLUMA_PLUGINS_DATA_DIR)/modelines
+modelinesdir = $(LAPIZ_PLUGINS_DATA_DIR)/modelines
 modelines_DATA = \
 	language-mappings
 
@@ -19,7 +19,7 @@ libmodelines_la_SOURCES = \
 	modeline-parser.c
 
 libmodelines_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libmodelines_la_LIBADD  = $(PLUMA_LIBS)
+libmodelines_la_LIBADD  = $(LAPIZ_LIBS)
 
 plugin_in_files = modelines.plugin.desktop.in
 plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)

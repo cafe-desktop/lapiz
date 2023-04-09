@@ -283,7 +283,7 @@ lapiz_changecase_plugin_init (PlumaChangecasePlugin *plugin)
 static void
 lapiz_changecase_plugin_dispose (GObject *object)
 {
-	PlumaChangecasePlugin *plugin = PLUMA_CHANGECASE_PLUGIN (object);
+	PlumaChangecasePlugin *plugin = LAPIZ_CHANGECASE_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaChangecasePlugin disposing");
 
@@ -308,7 +308,7 @@ lapiz_changecase_plugin_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-	PlumaChangecasePlugin *plugin = PLUMA_CHANGECASE_PLUGIN (object);
+	PlumaChangecasePlugin *plugin = LAPIZ_CHANGECASE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -328,7 +328,7 @@ lapiz_changecase_plugin_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-	PlumaChangecasePlugin *plugin = PLUMA_CHANGECASE_PLUGIN (object);
+	PlumaChangecasePlugin *plugin = LAPIZ_CHANGECASE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -352,7 +352,7 @@ update_ui (PlumaChangecasePluginPrivate *data)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 	view = GTK_TEXT_VIEW (lapiz_window_get_active_view (window));
 
 	if (view != NULL)
@@ -379,8 +379,8 @@ lapiz_changecase_plugin_activate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	data = PLUMA_CHANGECASE_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (data->window);
+	data = LAPIZ_CHANGECASE_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (data->window);
 
 	manager = lapiz_window_get_ui_manager (window);
 
@@ -416,8 +416,8 @@ lapiz_changecase_plugin_deactivate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	data = PLUMA_CHANGECASE_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (data->window);
+	data = LAPIZ_CHANGECASE_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (data->window);
 
 	manager = lapiz_window_get_ui_manager (window);
 
@@ -430,7 +430,7 @@ lapiz_changecase_plugin_update_state (PeasActivatable *activatable)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
-	update_ui (PLUMA_CHANGECASE_PLUGIN (activatable)->priv);
+	update_ui (LAPIZ_CHANGECASE_PLUGIN (activatable)->priv);
 }
 
 static void
@@ -466,5 +466,5 @@ peas_register_types (PeasObjectModule *module)
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
-	                                            PLUMA_TYPE_CHANGECASE_PLUGIN);
+	                                            LAPIZ_TYPE_CHANGECASE_PLUGIN);
 }

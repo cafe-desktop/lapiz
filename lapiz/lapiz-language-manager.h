@@ -29,8 +29,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_LANGUAGES_MANAGER_H__
-#define __PLUMA_LANGUAGES_MANAGER_H__
+#ifndef __LAPIZ_LANGUAGES_MANAGER_H__
+#define __LAPIZ_LANGUAGES_MANAGER_H__
 
 #include <glib-object.h>
 #include <gtksourceview/gtksource.h>
@@ -45,4 +45,4 @@ GSList				*lapiz_language_manager_list_languages_sorted
 
 G_END_DECLS
 
-#endif /* __PLUMA_LANGUAGES_MANAGER_H__ */
+#endif /* __LAPIZ_LANGUAGES_MANAGER_H__ */

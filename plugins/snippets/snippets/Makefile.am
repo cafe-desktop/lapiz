@@ -1,5 +1,5 @@
 # Python snippets plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)/snippets
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)/snippets
 
 plugin_PYTHON = \
 	__init__.py \
@@ -18,7 +18,7 @@ plugin_PYTHON = \
 	Completion.py \
 	comment.py
 
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/snippets/ui
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/snippets/ui
 ui_files = snippets.ui
 include $(top_srcdir)/gla11y.mk
 ui_DATA = $(ui_files)

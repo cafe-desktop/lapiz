@@ -252,35 +252,35 @@ typedef struct
 } NewLineTestData;
 
 static NewLineTestData newline_test_data[] = {
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\nworld", "\nhello\nworld\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\nworld\n", "\nhello\nworld\n\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\nworld\n\n", "\nhello\nworld\n\n\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\r\nhello\r\nworld", "\nhello\nworld\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\r\nhello\r\nworld\r\n", "\nhello\nworld\n\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\rhello\rworld", "\nhello\nworld\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\rhello\rworld\r", "\nhello\nworld\n\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\r\nworld", "\nhello\nworld\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\r\nworld\r", "\nhello\nworld\n\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\nworld", "\nhello\nworld\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\nworld\n", "\nhello\nworld\n\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\nworld\n\n", "\nhello\nworld\n\n\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\r\nhello\r\nworld", "\nhello\nworld\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\r\nhello\r\nworld\r\n", "\nhello\nworld\n\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\rhello\rworld", "\nhello\nworld\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\rhello\rworld\r", "\nhello\nworld\n\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\r\nworld", "\nhello\nworld\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_LF, "\nhello\r\nworld\r", "\nhello\nworld\n\n"},
 
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\nworld", "\r\nhello\r\nworld\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\nworld\n", "\r\nhello\r\nworld\r\n\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\nworld\n\n", "\r\nhello\r\nworld\r\n\r\n\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\r\nhello\r\nworld", "\r\nhello\r\nworld\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\r\nhello\r\nworld\r\n", "\r\nhello\r\nworld\r\n\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\rhello\rworld", "\r\nhello\r\nworld\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\rhello\rworld\r", "\r\nhello\r\nworld\r\n\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\r\nworld", "\r\nhello\r\nworld\r\n"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\r\nworld\r", "\r\nhello\r\nworld\r\n\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\nworld", "\r\nhello\r\nworld\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\nworld\n", "\r\nhello\r\nworld\r\n\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\nworld\n\n", "\r\nhello\r\nworld\r\n\r\n\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\r\nhello\r\nworld", "\r\nhello\r\nworld\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\r\nhello\r\nworld\r\n", "\r\nhello\r\nworld\r\n\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\rhello\rworld", "\r\nhello\r\nworld\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\rhello\rworld\r", "\r\nhello\r\nworld\r\n\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\r\nworld", "\r\nhello\r\nworld\r\n"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF, "\nhello\r\nworld\r", "\r\nhello\r\nworld\r\n\r\n"},
 
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\nworld", "\rhello\rworld\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\nworld\n", "\rhello\rworld\r\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\nworld\n\n", "\rhello\rworld\r\r\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\r\nhello\r\nworld", "\rhello\rworld\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\r\nhello\r\nworld\r\n", "\rhello\rworld\r\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\rhello\rworld", "\rhello\rworld\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\rhello\rworld\r", "\rhello\rworld\r\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\r\nworld", "\rhello\rworld\r"},
-	{PLUMA_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\r\nworld\r", "\rhello\rworld\r\r"}
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\nworld", "\rhello\rworld\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\nworld\n", "\rhello\rworld\r\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\nworld\n\n", "\rhello\rworld\r\r\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\r\nhello\r\nworld", "\rhello\rworld\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\r\nhello\r\nworld\r\n", "\rhello\rworld\r\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\rhello\rworld", "\rhello\rworld\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\rhello\rworld\r", "\rhello\rworld\r\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\r\nworld", "\rhello\rworld\r"},
+	{LAPIZ_DOCUMENT_NEWLINE_TYPE_CR, "\nhello\r\nworld\r", "\rhello\rworld\r\r"}
 };
 
 static void
@@ -313,21 +313,21 @@ test_local ()
 {
 	test_saver (DEFAULT_LOCAL_URI,
 	            "hello world",
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (DEFAULT_LOCAL_URI, "hello world\n", NULL));
 
 	test_saver (DEFAULT_LOCAL_URI,
 	            "hello world\r\n",
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (DEFAULT_LOCAL_URI, "hello world\n\n", NULL));
 
 	test_saver (DEFAULT_LOCAL_URI,
 	            "hello world\n",
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (DEFAULT_LOCAL_URI, "hello world\n\n", NULL));
@@ -344,21 +344,21 @@ test_remote ()
 {
 	test_saver (DEFAULT_REMOTE_URI,
 	            "hello world",
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (DEFAULT_REMOTE_URI, "hello world\n", NULL));
 
 	test_saver (DEFAULT_REMOTE_URI,
 	            "hello world\r\n",
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (DEFAULT_REMOTE_URI, "hello world\n\n", NULL));
 
 	test_saver (DEFAULT_REMOTE_URI,
 	            "hello world\n",
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (DEFAULT_REMOTE_URI, "hello world\n\n", NULL));
@@ -440,7 +440,7 @@ test_permissions (const gchar *uri,
 
 	test_saver (uri,
 	            DEFAULT_CONTENT,
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            G_CALLBACK (check_permissions_saved),
 	            saver_test_data_new (uri,
@@ -465,7 +465,7 @@ test_local_unowned_directory ()
 {
 	test_saver (UNOWNED_LOCAL_URI,
 	            DEFAULT_CONTENT,
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (UNOWNED_LOCAL_URI,
@@ -478,7 +478,7 @@ test_remote_unowned_directory ()
 {
 	test_saver (UNOWNED_REMOTE_URI,
 	            DEFAULT_CONTENT,
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            NULL,
 	            saver_test_data_new (UNOWNED_REMOTE_URI,
@@ -530,7 +530,7 @@ test_unowned_group (const gchar *uri)
 {
 	test_saver (uri,
 	            DEFAULT_CONTENT,
-	            PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	            LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	            0,
 	            G_CALLBACK (test_unowned_group_permissions),
 	            saver_test_data_new (uri,

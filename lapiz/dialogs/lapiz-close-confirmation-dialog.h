@@ -26,20 +26,20 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_CLOSE_CONFIRMATION_DIALOG_H__
-#define __PLUMA_CLOSE_CONFIRMATION_DIALOG_H__
+#ifndef __LAPIZ_CLOSE_CONFIRMATION_DIALOG_H__
+#define __LAPIZ_CLOSE_CONFIRMATION_DIALOG_H__
 
 #include <glib.h>
 #include <gtk/gtk.h>
 
 #include <lapiz/lapiz-document.h>
 
-#define PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG		(lapiz_close_confirmation_dialog_get_type ())
-#define PLUMA_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialog))
-#define PLUMA_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialogClass))
-#define PLUMA_IS_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG))
-#define PLUMA_IS_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG))
-#define PLUMA_CLOSE_CONFIRMATION_DIALOG_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj),PLUMA_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialogClass))
+#define LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG		(lapiz_close_confirmation_dialog_get_type ())
+#define LAPIZ_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialog))
+#define LAPIZ_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialogClass))
+#define LAPIZ_IS_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG))
+#define LAPIZ_IS_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG))
+#define LAPIZ_CLOSE_CONFIRMATION_DIALOG_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj),LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG, PlumaCloseConfirmationDialogClass))
 
 typedef struct _PlumaCloseConfirmationDialog 		PlumaCloseConfirmationDialog;
 typedef struct _PlumaCloseConfirmationDialogClass 	PlumaCloseConfirmationDialogClass;
@@ -71,5 +71,5 @@ const GList	*lapiz_close_confirmation_dialog_get_unsaved_documents  (PlumaCloseC
 
 GList		*lapiz_close_confirmation_dialog_get_selected_documents	(PlumaCloseConfirmationDialog *dlg);
 
-#endif /* __PLUMA_CLOSE_CONFIRMATION_DIALOG_H__ */
+#endif /* __LAPIZ_CLOSE_CONFIRMATION_DIALOG_H__ */
 

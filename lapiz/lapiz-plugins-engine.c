@@ -64,7 +64,7 @@ lapiz_plugins_engine_init (PlumaPluginsEngine *engine)
 
 	engine->priv = lapiz_plugins_engine_get_instance_private (engine);
 
-	engine->priv->plugin_settings = g_settings_new (PLUMA_SCHEMA);
+	engine->priv->plugin_settings = g_settings_new (LAPIZ_SCHEMA);
 
 	/* This should be moved to libpeas */
 	if (!g_irepository_require (g_irepository_get_default (),
@@ -113,7 +113,7 @@ lapiz_plugins_engine_init (PlumaPluginsEngine *engine)
 static void
 lapiz_plugins_engine_dispose (GObject *object)
 {
-	PlumaPluginsEngine *engine = PLUMA_PLUGINS_ENGINE (object);
+	PlumaPluginsEngine *engine = LAPIZ_PLUGINS_ENGINE (object);
 
 	if (engine->priv->plugin_settings != NULL)
 	{
@@ -138,7 +138,7 @@ lapiz_plugins_engine_get_default (void)
 	if (default_engine != NULL)
 		return default_engine;
 
-	default_engine = PLUMA_PLUGINS_ENGINE (g_object_new (PLUMA_TYPE_PLUGINS_ENGINE, NULL));
+	default_engine = LAPIZ_PLUGINS_ENGINE (g_object_new (LAPIZ_TYPE_PLUGINS_ENGINE, NULL));
 	g_object_add_weak_pointer (G_OBJECT (default_engine),
 	                           (gpointer) &default_engine);
 

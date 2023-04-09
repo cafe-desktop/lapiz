@@ -39,7 +39,7 @@
 #include "lapiz-dirs.h"
 
 /*
-#define PLUMA_METADATA_VERBOSE_DEBUG	1
+#define LAPIZ_METADATA_VERBOSE_DEBUG	1
 */
 
 #define METADATA_FILE 	"lapiz-metadata.xml"
@@ -79,7 +79,7 @@ item_free (gpointer data)
 
 	g_return_if_fail (data != NULL);
 
-#ifdef PLUMA_METADATA_VERBOSE_DEBUG
+#ifdef LAPIZ_METADATA_VERBOSE_DEBUG
 	lapiz_debug (DEBUG_METADATA);
 #endif
 
@@ -157,7 +157,7 @@ parseItem (xmlDocPtr doc, xmlNodePtr cur)
 	xmlChar *uri;
 	xmlChar *atime;
 
-#ifdef PLUMA_METADATA_VERBOSE_DEBUG
+#ifdef LAPIZ_METADATA_VERBOSE_DEBUG
 	lapiz_debug (DEBUG_METADATA);
 #endif
 
@@ -402,7 +402,7 @@ save_values (const gchar *key, const gchar *value, xmlNodePtr parent)
 {
 	xmlNodePtr xml_node;
 
-#ifdef PLUMA_METADATA_VERBOSE_DEBUG
+#ifdef LAPIZ_METADATA_VERBOSE_DEBUG
 	lapiz_debug (DEBUG_METADATA);
 #endif
 
@@ -423,7 +423,7 @@ save_values (const gchar *key, const gchar *value, xmlNodePtr parent)
 		    (const xmlChar *)"value",
 		    (const xmlChar *)value);
 
-#ifdef PLUMA_METADATA_VERBOSE_DEBUG
+#ifdef LAPIZ_METADATA_VERBOSE_DEBUG
 	lapiz_debug_message (DEBUG_METADATA, "entry: %s = %s", key, value);
 #endif
 }
@@ -435,7 +435,7 @@ save_item (const gchar *key, const gpointer *data, xmlNodePtr parent)
 	const Item *item = (const Item *)data;
 	gchar *atime;
 
-#ifdef PLUMA_METADATA_VERBOSE_DEBUG
+#ifdef LAPIZ_METADATA_VERBOSE_DEBUG
 	lapiz_debug (DEBUG_METADATA);
 #endif
 
@@ -448,14 +448,14 @@ save_item (const gchar *key, const gpointer *data, xmlNodePtr parent)
 
 	xmlSetProp (xml_node, (const xmlChar *)"uri", (const xmlChar *)key);
 
-#ifdef PLUMA_METADATA_VERBOSE_DEBUG
+#ifdef LAPIZ_METADATA_VERBOSE_DEBUG
 	lapiz_debug_message (DEBUG_METADATA, "uri: %s", key);
 #endif
 
 	atime = g_strdup_printf ("%ld", item->atime);
 	xmlSetProp (xml_node, (const xmlChar *)"atime", (const xmlChar *)atime);
 
-#ifdef PLUMA_METADATA_VERBOSE_DEBUG
+#ifdef LAPIZ_METADATA_VERBOSE_DEBUG
 	lapiz_debug_message (DEBUG_METADATA, "atime: %s", atime);
 #endif
 
