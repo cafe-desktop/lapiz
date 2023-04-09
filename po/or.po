@@ -9,22 +9,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/lapiz/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
 "POT-Creation-Date: 2020-01-13 17:23+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
-"Language-Team: Oriya (https://www.transifex.com/mate/teams/13566/or/)\n"
+"Language-Team: Oriya (https://www.transifex.com/cafe/teams/13566/or/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: or\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.mate.lapiz.gschema.xml.in:11
+#: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପକୁ ବ୍ଯବହାର କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:12
+#: data/org.cafe.lapiz.gschema.xml.in:12
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to lapiz. If this option is turned off, then the "
@@ -36,16 +36,16 @@ msgstr ""
 "ବିକଳ୍ପକୁ ଅଫ କରିଦିଆଯାଏ, \"Editor Font\" ବିକଳ୍ପରେ ନାମିତ ଅକ୍ଷରରୂପକୁ ତାହା "
 "ପରିବର୍ତ୍ତେ ବ୍ୟବହାର କରିବା ଉଚିତ।"
 
-#: data/org.mate.lapiz.gschema.xml.in:15
+#: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
 msgid "'Monospace 12'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:16
+#: data/org.cafe.lapiz.gschema.xml.in:16
 msgid "Editor Font"
 msgstr "ସମ୍ପାଦକର ଅକ୍ଷରରୂପ"
 
-#: data/org.mate.lapiz.gschema.xml.in:17
+#: data/org.cafe.lapiz.gschema.xml.in:17
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -53,37 +53,37 @@ msgstr ""
 "ଗୋଟିଏ ଇଚ୍ଛାରୂପ ଅକ୍ଷରରୂପ ଯେଉଁଟାକି ସମ୍ପାଦନ ଅଞ୍ଚଳରେ ବ୍ଯବହାର କରାଯିବ. "
 "\"ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ\" ଚୟନ ବଛା ନ ହୋଇଥିଲେ ହିଁ ଏହାର ପ୍ରଭାବ ହେବ"
 
-#: data/org.mate.lapiz.gschema.xml.in:21
+#: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:22
+#: data/org.cafe.lapiz.gschema.xml.in:22
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:26
+#: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:27
+#: data/org.cafe.lapiz.gschema.xml.in:27
 msgid "If false, it hides the first tab if there is only one tab."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:31
+#: data/org.cafe.lapiz.gschema.xml.in:31
 msgid "Style Scheme"
 msgstr "ଶୈଳୀ ଯୋଜନା"
 
-#: data/org.mate.lapiz.gschema.xml.in:32
+#: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:36
+#: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
 msgstr "ନକଲ ସଂରକ୍ଷଣଗୁଡ଼ିକୁ ସୃଷ୍ଟି କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:37
+#: data/org.cafe.lapiz.gschema.xml.in:37
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -91,40 +91,40 @@ msgstr ""
 "lapiz ସଂରକ୍ଷଣ କରାଯାଉଥିବା ଫାଇଲର ନକଲ ସୃଷ୍ଟି କରିବ କି. ଆପଣ \"ନକଲ ସଂରକ୍ଷଣର "
 "ଅନୁଲଗ୍ନ\" ଚୟନ ଦ୍ବାରା ନକଲ ଫାଇଲର ଅନୁଲଗ୍ନ ନିର୍ଦ୍ଧିଷ୍ଟ କରିପାରିବେ."
 
-#: data/org.mate.lapiz.gschema.xml.in:41
+#: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:42
+#: data/org.cafe.lapiz.gschema.xml.in:42
 msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:46
+#: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:47
+#: data/org.cafe.lapiz.gschema.xml.in:47
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:51
+#: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:52
+#: data/org.cafe.lapiz.gschema.xml.in:52
 msgid "Show save confirmation if the files have changes."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:56
+#: data/org.cafe.lapiz.gschema.xml.in:56
 msgid "Writable VFS schemes"
 msgstr "ଲିଖନୀୟ VFS ଯୋଜନା"
 
-#: data/org.mate.lapiz.gschema.xml.in:57
+#: data/org.cafe.lapiz.gschema.xml.in:57
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
@@ -132,11 +132,11 @@ msgstr ""
 "lapiz ଲିଖିତ ଆକାରରେ VFS ଯୋଜନାଗୁଡ଼ିକର ତାଲିକାକୁ ସମର୍ଥନ କରେ. 'ଫାଇଲ' ଯୋଜନାଟି "
 "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଭାବେ ଲେଖାଯୋଗ୍ୟ."
 
-#: data/org.mate.lapiz.gschema.xml.in:61
+#: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:62
+#: data/org.cafe.lapiz.gschema.xml.in:62
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -144,11 +144,11 @@ msgstr ""
 "ପଦକ୍ଷେପ ବାତିଲ କିମ୍ବା ପୂର୍ବ ପଦକ୍ଷେପ ପାଇଁ lapiz ସକ୍ଷମ ହୋଇପାରୁଥିବା ସର୍ବାଧିକ "
 "ସଂଖ୍ୟକ ପଦକ୍ଷେପ. ଅସରନ୍ତି ପଦକ୍ଷେପ ପାଇଁ \"-1\"କୁ ବ୍ୟବହାର କରନ୍ତୁ."
 
-#: data/org.mate.lapiz.gschema.xml.in:66
+#: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
 msgstr "ଧାଡ଼ି ମୋଡ଼ା ଧାରା"
 
-#: data/org.mate.lapiz.gschema.xml.in:67
+#: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
 "for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -162,77 +162,77 @@ msgstr ""
 "\"GTK_WRAP_CHAR\". ଲକ୍ଷ କରନ୍ତୁ କି ଏହି ମୂଲ୍ଯଗୁଡ଼ିକ ଅକ୍ଷର ନିର୍ଦ୍ଦିଷ୍ଟ, ତେଣୁ "
 "ଏଗୁଡ଼ିକ ଠିକ ଏହି ପରି ଦେଖାଯିବା ଆବଶ୍ଯକ."
 
-#: data/org.mate.lapiz.gschema.xml.in:71
+#: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
 msgstr "ଟାବ ଆକାର"
 
-#: data/org.mate.lapiz.gschema.xml.in:72
+#: data/org.cafe.lapiz.gschema.xml.in:72
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "ଟାବ୍ ବଦଳରେ ପ୍ରଦର୍ଶିତ କରାଯିବା ଖାଲି ସ୍ଥାନର ସଂଖ୍ଯା ନିର୍ଦ୍ଦିଷ୍ଟ କରେ."
 
-#: data/org.mate.lapiz.gschema.xml.in:76
+#: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
 msgstr "ଖାଲି ସ୍ଥାନ ଭର୍ତ୍ତି କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:77
+#: data/org.cafe.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
 msgstr "lapiz ଟ୍ଯାବ ବଦଳରେ ଖାଲି ସ୍ଥାନ ଭର୍ତ୍ତି କରିବ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:81
+#: data/org.cafe.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:82
+#: data/org.cafe.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:86
+#: data/org.cafe.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
 msgstr "ଧାଡ଼ି ସଂଖ୍ଯାଗୁଡ଼ିକୁ ପ୍ରଦର୍ଶନ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:87
+#: data/org.cafe.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr "lapiz ସମ୍ପାଦନ ଅଞ୍ଚଳରେ ଧାଡ଼ି ସଂଖ୍ଯା ପ୍ରଦର୍ଶନ କରିବ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:91
+#: data/org.cafe.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
 msgstr "ବର୍ତ୍ତମାନ ରେଖାକୁ ଆଲୋକପାତ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:92
+#: data/org.cafe.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
 msgstr "ପ୍ରଚଳିତ ଧାଡ଼ିକୁ lapiz ଆଲୋକପାତ କରିବା ଉଚିତ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:96
+#: data/org.cafe.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
 msgstr "ମେଳ ହେଉଥିବା ବନ୍ଧନୀକୁ ଆଲୋକପାତ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:97
+#: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:101
+#: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
 msgstr "ଡାହାଣ ମାର୍ଜିନ୍ ପ୍ରଦର୍ଶନ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:102
+#: data/org.cafe.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
 msgstr "lapiz ସମ୍ପାଦନ ଅଞ୍ଚଳରେ ଡାହାଣ ମାର୍ଜିନ୍ ପ୍ରଦର୍ଶନ କରିବ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:106
+#: data/org.cafe.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
 msgstr "ଡାହାଣ ମାର୍ଜିନ୍ ର ସ୍ଥିତି"
 
-#: data/org.mate.lapiz.gschema.xml.in:107
+#: data/org.cafe.lapiz.gschema.xml.in:107
 msgid "Specifies the position of the right margin."
 msgstr "ଡାହାଣ ମାର୍ଜିନ୍ ର ସ୍ଥିତି ନିର୍ଦ୍ଦିଷ୍ଟ କରେ."
 
-#: data/org.mate.lapiz.gschema.xml.in:111
+#: data/org.cafe.lapiz.gschema.xml.in:111
 msgid "Smart Home End"
 msgstr "Smart Home End"
 
-#: data/org.mate.lapiz.gschema.xml.in:112
+#: data/org.cafe.lapiz.gschema.xml.in:112
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
@@ -251,11 +251,11 @@ msgstr ""
 "ଆରମ୍ଭ/ଶେଷରେ ଗତିକରିବା ପରିବର୍ତ୍ତେ ପାଠ୍ୟର ଆରମ୍ଭ/ଶେଷରେ ଗତି କରିବା ପାଇଁ \"ALWAYS\""
 " ବ୍ୟବହାର କରନ୍ତୁ।"
 
-#: data/org.mate.lapiz.gschema.xml.in:116
+#: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
 msgstr "ପୂର୍ବବର୍ତ୍ତୀ ଦର୍ଶିକା ଅବସ୍ଥାନକୁ ପୁନଃସ୍ଥାପନ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:117
+#: data/org.cafe.lapiz.gschema.xml.in:117
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
@@ -263,36 +263,36 @@ msgstr ""
 "ଗୋଟିଏ ଫାଇଲ ଧାରଣକରୁଥିବା ସମୟରେ lapiz ପୂର୍ବ ସୂଚକ ସ୍ଥାନକୁ ପୁନଃସ୍ଥାପନ କରିବା ଉଚିତ "
 "କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:121
+#: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
 msgstr "ବିଶିଷ୍ଟତାକୁ ସନ୍ଧାନ କରିବା ପାଇଁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:122
+#: data/org.cafe.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr "ଖୋଜାଯାଇଥିବା ପାଠ୍ୟର ସମସ୍ତ ଘଟଣାକୁ lapiz ଆଲୋକପାତ କରିବା ଉଚିତ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:126
+#: data/org.cafe.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
 msgstr "ବାକ୍ଯ ବିନ୍ଯାସ ବିଶେଷଦର୍ଶନକୁ ସମର୍ଥ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:127
+#: data/org.cafe.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
 msgstr "lapiz ବାକ୍ଯ ବିନ୍ଯାସ ବିଶେଷଦର୍ଶନ ସମର୍ଥ କରିବ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:131
+#: data/org.cafe.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
 msgstr "ସାଧନ ପଟିଟି ଦ୍ରୁଶ୍ଯମାନ ହେଉଛି"
 
-#: data/org.mate.lapiz.gschema.xml.in:132
+#: data/org.cafe.lapiz.gschema.xml.in:132
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "ସମ୍ପାଦନ ୱିଣ୍ଡୋରେ ସାଧନ ପଟି ଦେଖାଯିବା ଉଚିତ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:136
+#: data/org.cafe.lapiz.gschema.xml.in:136
 msgid "Toolbar Buttons Style"
 msgstr "ସାଧନ ପଟି ଚାବିର ଶୈଳୀ"
 
-#: data/org.mate.lapiz.gschema.xml.in:137
+#: data/org.cafe.lapiz.gschema.xml.in:137
 msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
@@ -309,47 +309,47 @@ msgstr ""
 "ପ୍ରଦର୍ଶନ କରିବା ପାଇଁ. ଲକ୍ଷ କରନ୍ତୁ କି ଏହି ମୂଲ୍ଯଗୁଡ଼ିକ ଅକ୍ଷର ନିର୍ଦ୍ଦିଷ୍ଟ, ତେଣୁ "
 "ଏହାକୁ ଠିକ ଏହି ପରି ଦେଖାଯିବା ଆବଶ୍ଯକ."
 
-#: data/org.mate.lapiz.gschema.xml.in:141
+#: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
 msgstr "ଅବସ୍ଥିତି ପଟିଟି ଦ୍ରୁଶ୍ଯମାନ ହେଉଛି"
 
-#: data/org.mate.lapiz.gschema.xml.in:142
+#: data/org.cafe.lapiz.gschema.xml.in:142
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "ସମ୍ପାଦନ ୱିଣ୍ଡୋର ନିମ୍ନଭାଗରେ ଅବସ୍ଥିତି ପଟି ଦେଖାଯିବା ଉଚିତ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:146
+#: data/org.cafe.lapiz.gschema.xml.in:146
 msgid "Side Pane is Visible"
 msgstr "ପାର୍ଶ୍ବ ପଟି ଦେଖାଯାଉଛି"
 
-#: data/org.mate.lapiz.gschema.xml.in:147
+#: data/org.cafe.lapiz.gschema.xml.in:147
 msgid ""
 "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:151
+#: data/org.cafe.lapiz.gschema.xml.in:151
 msgid "Show tabs with side pane"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:152
+#: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:156
+#: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
 msgstr "ନିମ୍ନ ପଟି ଦେଖାଯାଉଛି"
 
-#: data/org.mate.lapiz.gschema.xml.in:157
+#: data/org.cafe.lapiz.gschema.xml.in:157
 msgid ""
 "Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr "ସମ୍ପାଦନ ୱିଣ୍ଡୋର ତଳେଥିବା ନିମ୍ନ ପଟ୍ଟିକା ଦୃଶ୍ୟମାନ ହେବା ଉଚିତ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:161
+#: data/org.cafe.lapiz.gschema.xml.in:161
 msgid "Maximum Recent Files"
 msgstr "ସାମ୍ପ୍ରତିକ ଫାଇଲଗୁଡ଼ିକର ସର୍ବାଧିକ ସଂଖ୍ଯା"
 
-#: data/org.mate.lapiz.gschema.xml.in:162
+#: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed"
 " in the \"Recent Files\" submenu."
@@ -357,29 +357,29 @@ msgstr ""
 "ସାମ୍ପ୍ରତିକ କାଳରେ ଖୋଲାଯାଇଥିବା ଫାଇଲଗୁଡ଼ିକର ସର୍ବାଧିକ ସଂଖ୍ଯା ନିର୍ଦ୍ଦିଷ୍ଟ କରେ, "
 "ଯାହାକି \"ସାମ୍ପ୍ରତିକ ଫାଇଲ\" ଉପମେନୁରେ ପ୍ରଦର୍ଶିତ ହେବ."
 
-#: data/org.mate.lapiz.gschema.xml.in:166
+#: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "ବାକ୍ଯ ବିନ୍ଯାସ ବିଶେଷଦର୍ଶନ ମୁଦ୍ରଣ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:167
+#: data/org.cafe.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "ଦଲିଲ ମୁଦ୍ରଣ ସମୟରେ lapiz ବାକ୍ଯ ବିନ୍ଯାସ ବିଶେଷଦର୍ଶନ ମୁଦ୍ରଣ କରିବ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:171
+#: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "ଶୀର୍ଷକ ମୁଦ୍ରଣ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:172
+#: data/org.cafe.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr "ଦଲିଲ ମୁଦ୍ରଣ ସମୟରେ lapiz ଦଲିଲର ଶୀର୍ଷକ ଯୋଡ଼ିବ କି."
 
-#: data/org.mate.lapiz.gschema.xml.in:176
+#: data/org.cafe.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
 msgstr "ଧାଡ଼ି ମୋଡ଼ା ଧାରାର ମୁଦ୍ରଣ"
 
-#: data/org.mate.lapiz.gschema.xml.in:177
+#: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
 "wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -393,11 +393,11 @@ msgstr ""
 "\"GTK_WRAP_CHAR\". ଲକ୍ଷ କରନ୍ତୁ କି ଏହି ମୂଲ୍ଯଗୁଡ଼ିକ ଅକ୍ଷର ନିର୍ଦ୍ଦିଷ୍ଟ, ତେଣୁ "
 "ଏଗୁଡ଼ିକ ଠିକ ଏହି ପରି ଦେଖାଯିବା ଆବଶ୍ଯକ."
 
-#: data/org.mate.lapiz.gschema.xml.in:181
+#: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
 msgstr "ଧାଡ଼ି ସଂଖ୍ଯା ମୁଦ୍ରଣ କରନ୍ତୁ"
 
-#: data/org.mate.lapiz.gschema.xml.in:182
+#: data/org.cafe.lapiz.gschema.xml.in:182
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
@@ -406,31 +406,31 @@ msgstr ""
 "ଏହି ସଂଖ୍ଯା ଶୂନ୍ଯ ଥିଲେ ଦଲିଲ ମୁଦ୍ରଣ ସମୟରେ ଧାଡ଼ି ସଂଖ୍ଯା ଯୋଡ଼ାଯିବ ନାହିଁ. "
 "ନହେଲେ,lapiz ଏତିକି ଧାଡ଼ିରେ ଥରେ ଧାଡ଼ି ସଂଖ୍ଯା ମୁଦ୍ରଣ କରିବ."
 
-#: data/org.mate.lapiz.gschema.xml.in:185
+#: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
 msgid "'Monospace 9'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:186
+#: data/org.cafe.lapiz.gschema.xml.in:186
 msgid "Body Font for Printing"
 msgstr "ମୁଦ୍ରଣ ପାଇଁ ମୁଖ୍ଯ ଅଂଶର ଅକ୍ଷରରୂପ"
 
-#: data/org.mate.lapiz.gschema.xml.in:187
+#: data/org.cafe.lapiz.gschema.xml.in:187
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "ମୁଦ୍ରଣ ସମୟରେ ଦଲିଲର ମୁଖ୍ଯ ଅଂଶ ପାଇଁ ବ୍ଯବହାର କରାଯିବା ଅକ୍ଷରରୂପ ନିର୍ଦ୍ଦିଷ୍ଟ କରେ."
 
-#: data/org.mate.lapiz.gschema.xml.in:190
+#: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
 msgid "'Sans 11'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:191
+#: data/org.cafe.lapiz.gschema.xml.in:191
 msgid "Header Font for Printing"
 msgstr "ମୁଦ୍ରଣ ପାଇଁ ଶୀର୍ଷକର ଅକ୍ଷରରୂପ"
 
-#: data/org.mate.lapiz.gschema.xml.in:192
+#: data/org.cafe.lapiz.gschema.xml.in:192
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -438,16 +438,16 @@ msgstr ""
 "ଦଲିଲ ମୁଦ୍ରଣ ସମୟରେ ପୃଷ୍ଠା ଶୀର୍ଷକ ପାଇଁ ବ୍ଯବହାର କରାଯିବା ଅକ୍ଷରରୂପ ନିର୍ଦ୍ଦିଷ୍ଟ "
 "କରେ. \"ଶୀର୍ଷକ ମୁଦ୍ରଣ କରନ୍ତୁ\" ଚୟନ ଶୂନ୍ଯ ନ ହୋଇଥିଲେ ହିଁ ଏହାର ପ୍ରଭାବ ହେବ."
 
-#: data/org.mate.lapiz.gschema.xml.in:195
+#: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
 msgid "'Sans 8'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:196
+#: data/org.cafe.lapiz.gschema.xml.in:196
 msgid "Line Number Font for Printing"
 msgstr "ମୁଦ୍ରଣ ପାଇଁ ଧାଡ଼ି ସଂଖ୍ଯାର ଅକ୍ଷରରୂପ"
 
-#: data/org.mate.lapiz.gschema.xml.in:197
+#: data/org.cafe.lapiz.gschema.xml.in:197
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -455,58 +455,58 @@ msgstr ""
 "ମୁଦ୍ରଣ ସମୟରେ ଧାଡ଼ି ସଂଖ୍ଯା ପାଇଁ ବ୍ଯବହାର କରାଯିବା ଅକ୍ଷରରୂପ ନିର୍ଦ୍ଦିଷ୍ଟ କରେ. "
 "\"ଧାଡ଼ି ସଂଖ୍ଯା ମୁଦ୍ରଣ କରନ୍ତୁ\" ଚୟନ ଶୂନ୍ଯ ନ ହୋଇଥିଲେ ହିଁ ଏହାର ପ୍ରଭାବ ହେବ."
 
-#: data/org.mate.lapiz.gschema.xml.in:200
+#: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
 msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:201
+#: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:202
+#: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
 " recognized encodings are used."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:205
+#: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
 msgid "[ 'ISO-8859-15' ]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:206
+#: data/org.cafe.lapiz.gschema.xml.in:206
 msgid "Encodings shown in menu"
 msgstr "ମେନୁରେ ଦେଖା ହୋଇଥିବା ସଙ୍କେତାବଳୀ"
 
-#: data/org.mate.lapiz.gschema.xml.in:207
+#: data/org.cafe.lapiz.gschema.xml.in:207
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:211
+#: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:212
+#: data/org.cafe.lapiz.gschema.xml.in:212
 msgid "List of entries in \"search for\" textbox."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:216
+#: data/org.cafe.lapiz.gschema.xml.in:216
 msgid "History for \"replace with\" entries"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:217
+#: data/org.cafe.lapiz.gschema.xml.in:217
 msgid "List of entries in \"replace with\" textbox."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:221
+#: data/org.cafe.lapiz.gschema.xml.in:221
 msgid "Active plugins"
 msgstr "ସକ୍ରିୟ ପ୍ଲଗ-ଇନ"
 
-#: data/org.mate.lapiz.gschema.xml.in:222
+#: data/org.cafe.lapiz.gschema.xml.in:222
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
@@ -515,41 +515,41 @@ msgstr ""
 "ଧାରଣକରିଥାଏ. ପ୍ରଦତ୍ତ ପ୍ଲଗଇନର \"ସ୍ଥାନ\"କୁ ପାଇବା ପାଇଁ .lapiz-plugin ଫାଇଲକୁ "
 "ଦେଖନ୍ତୁ."
 
-#: data/org.mate.lapiz.gschema.xml.in:226
+#: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:227
+#: data/org.cafe.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:231
+#: data/org.cafe.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:232
+#: data/org.cafe.lapiz.gschema.xml.in:232
 msgid ""
 "Whether lapiz should show not breaking spaces in the editor window: 'show-"
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:236
+#: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:237
+#: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
 "Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
 "spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:241
+#: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:242
+#: data/org.cafe.lapiz.gschema.xml.in:242
 msgid ""
 "Whether lapiz should show spaces in the editor window: 'show-none' no "
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
@@ -2847,11 +2847,11 @@ msgstr "ପାର୍ଶ୍ୱ ପରଦାଖଣ୍ଡରୁ ସହଜ ଫାଇ
 msgid "system-file-manager"
 msgstr ""
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr ""
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:7
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:7
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2859,11 +2859,11 @@ msgid ""
 "with Caja, etc.)"
 msgstr ""
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
 msgstr "ଫାଇଲ ବ୍ରାଉଜର ଛଣା ବ୍ୟବସ୍ଥା"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:12
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hidden (filter hidden files), binary "
@@ -2875,11 +2875,11 @@ msgstr ""
 "ଫାଇଲଗୁଡ଼ିକ), ଦ୍ୱିମିକ(ଦ୍ୱିମିକ ଫାଇଲ ଛାଣିଥାଏ) ଏବଂ hidden_and_binary (ଉଭୟ "
 "ଲୁକ୍କାଇତ ଏବଂ ଦ୍ୱିମିକ ଫାଇଲକୁ ଛାଣିଥାଏ)।"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
 msgstr "ଫାଇଲ ବ୍ରାଉଜର ଛଣା ପ୍ରକାର"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:17
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top"
 " of the filter_mode."
@@ -2887,11 +2887,11 @@ msgstr ""
 "ଫାଇଲ ବ୍ରାଉଜରକୁ ଛାଣିବା ପାଇଁ ଛାଣକ ପ୍ରକାର। ଏହି ଛାଣକ filter_mode ଉପରେ କାର୍ଯ୍ୟ "
 "କରିଥାଏ।"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:24
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
 msgstr "ଟ୍ରି ଦୃଶ୍ୟ ସହିତ ଖୋଲନ୍ତୁ"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:25
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2899,11 +2899,11 @@ msgstr ""
 "ଚିହ୍ନିତ ସ୍ଥାନ ଦୃଶ୍ୟ ପରିବର୍ତ୍ତେ ଫାଇଲ ବ୍ରାଉଜର ପ୍ଲଗଇନ ଧାରଣ ହୋଇସାରିବା ପରେ ବୃକ୍ଷ "
 "ଦୃଶ୍ୟକୁ ଖୋଲନ୍ତୁ"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:29
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
 msgstr "ଫାଇଲ ବ୍ରାଉଜର ମୂଳ ଡିରେକ୍ଟୋରୀ"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:30
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2911,11 +2911,11 @@ msgstr ""
 "ଫାଇଲ ବ୍ରାଉଜିଙ୍ଗ ପ୍ଲଗଇନ ଏବଂ ଧାରଣ ହୋଇଥିବା/ବୃକ୍ଷ ଦୃଶ୍ୟ TRUE ହୋଇଥିଲେ ଫାଇଲ "
 "ବ୍ରାଉଜର ପ୍ରମୂଖ ଚାଳକ ଡ଼ିରେକ୍ଟରୀକୁ ବ୍ୟବହାର କରାଯାଇଥାଏ।"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:34
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
 msgstr "ଫାଇଲ ବ୍ରାଉଜର ଆଭାସୀ ମୂଳ ଡିରେକ୍ଟୋରୀ"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
 "The file browser virtual root directory to use when loading the file browser"
 " plugin when onload/tree_view is TRUE. The virtual root must always be below"
@@ -2925,11 +2925,11 @@ msgstr ""
 " ବ୍ରାଉଜର ଆଭାସୀ ପ୍ରମୂଖ ଚାଳକ ଡିରେକ୍ଟରୀକୁ ବ୍ୟବହାର କରାଯାଇଥାଏ। ଆଭାସୀ ପ୍ରମୂଖ ଚାଳକ "
 "ସର୍ବଦା ପ୍ରକୃତ ପ୍ରମୂଖ ଚାଳକ ନିମ୍ନରେ ଥାଏ।"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:39
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
 msgstr "ସୁଦୂର ସ୍ଥାନର ପୁନଃସ୍ଥାପନକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:40
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "ସୁଦୂର ସ୍ଥାନରେ ପୁନଃସ୍ଥାପନକୁ ସକ୍ରିୟ କରାଯିବ କି ନାହିଁ ତାହା ସେଟକରନ୍ତୁ।"
 
@@ -3541,7 +3541,7 @@ msgstr "ଏହି ସ୍ତମ୍ଭରୁ ପ୍ରାରମ୍ଭ କରନ୍
 msgid "You cannot undo a sort operation"
 msgstr "ଆପଣ ଏକ ସଜଡ଼ା ତାଳନକୁ ପଦକ୍ଷେପ ବାତିଲ କରିପାରିବେ ନାହିଁ"
 
-#: plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml.in:11
+#: plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml.in:11
 msgid "Autocheck Type"
 msgstr ""
 
@@ -6383,15 +6383,15 @@ msgstr ""
 msgid "wizardpage"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:12
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:12
 msgid "Prompt type"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:16
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:16
 msgid "Selected format"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:20
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:20
 msgid "Custom format"
 msgstr "ଇଚ୍ଛାରୂପକ ସଂରୂପ"
 

@@ -2,7 +2,7 @@
  * lapiz-sort-plugin.c
  *
  * Original author: Carlo Borreo <borreo@softhome.net>
- * Ported to Lapiz2 by Lee Mallabone <mate@fonicmonkey.net>
+ * Ported to Lapiz2 by Lee Mallabone <cafe@fonicmonkey.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

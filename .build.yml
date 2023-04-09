@@ -3,8 +3,8 @@
 ##########################################################
 requires:
   debian:
-    # Useful URL: https://github.com/mate-desktop/debian-packages
-    # Useful URL: https://salsa.debian.org/debian-mate-team/lapiz
+    # Useful URL: https://github.com/cafe-desktop/debian-packages
+    # Useful URL: https://salsa.debian.org/debian-cafe-team/lapiz
     - aptitude
     - autoconf-archive
     - autopoint
@@ -28,8 +28,8 @@ requires:
     - libx11-dev
     - libxml2-dev
     - make
-    - mate-common
-    - mate-desktop
+    - cafe-common
+    - cafe-desktop
     - python3-dev
     - python3-lxml
     - yelp-tools
@@ -43,4 +43,4 @@ build_scripts:
   - ./after-build
 
 after_scripts:
-  - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/mate-icon-theme/raw/master/mate/16x16/apps/accessories-text-editor.png; fi
+  - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/cafe-icon-theme/raw/master/cafe/16x16/apps/accessories-text-editor.png; fi

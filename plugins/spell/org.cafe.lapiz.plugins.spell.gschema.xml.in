@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="@GETTEXT_PACKAGE@">
-  <enum id="org.mate.lapiz.plugins.spell.AutocheckType">
+  <enum id="org.cafe.lapiz.plugins.spell.AutocheckType">
     <value value="0" nick="never"/>
     <value value="1" nick="document"/>
     <value value="2" nick="always"/>
   </enum>
-  <schema path="/org/mate/lapiz/plugins/spell/" id="org.mate.lapiz.plugins.spell">
-    <key name="autocheck-type" enum="org.mate.lapiz.plugins.spell.AutocheckType">
+  <schema path="/org/cafe/lapiz/plugins/spell/" id="org.cafe.lapiz.plugins.spell">
+    <key name="autocheck-type" enum="org.cafe.lapiz.plugins.spell.AutocheckType">
       <default>'document'</default>
       <summary>Autocheck Type</summary>
     </key>

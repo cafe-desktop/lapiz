@@ -112,7 +112,7 @@
   <snippet id="yelp">
     <text><![CDATA[<ulink type="help" url="$1">$2</ulink>]]></text>
     <tag>help</tag>
-    <description>ulink mate help</description>
+    <description>ulink cafe help</description>
     <accelerator/>
   </snippet>
 </snippets>

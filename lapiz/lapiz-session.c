@@ -377,7 +377,7 @@ client_quit_cb (EggSMClient *client, gpointer data)
 
 	lapiz_debug_message (DEBUG_FILE, "All files closed.");
 
-	matecomponent_mdi_destroy (MATECOMPONENT_MDI (lapiz_mdi));
+	cafecomponent_mdi_destroy (MATECOMPONENT_MDI (lapiz_mdi));
 
 	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_mdi.");
 
@@ -387,7 +387,7 @@ client_quit_cb (EggSMClient *client, gpointer data)
 
 	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_app_server.");
 
-	matecomponent_object_unref (lapiz_app_server);
+	cafecomponent_object_unref (lapiz_app_server);
 
 	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_app_server: DONE");
 #endif

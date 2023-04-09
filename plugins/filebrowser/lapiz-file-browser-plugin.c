@@ -41,13 +41,13 @@
 #include "lapiz-file-browser-widget.h"
 #include "lapiz-file-browser-messages.h"
 
-#define FILE_BROWSER_SCHEMA 		"org.mate.lapiz.plugins.filebrowser"
-#define FILE_BROWSER_ONLOAD_SCHEMA 	"org.mate.lapiz.plugins.filebrowser.on-load"
-#define CAJA_SCHEMA					"org.mate.caja.preferences"
+#define FILE_BROWSER_SCHEMA 		"org.cafe.lapiz.plugins.filebrowser"
+#define FILE_BROWSER_ONLOAD_SCHEMA 	"org.cafe.lapiz.plugins.filebrowser.on-load"
+#define CAJA_SCHEMA					"org.cafe.caja.preferences"
 #define CAJA_CLICK_POLICY_KEY		"click-policy"
 #define CAJA_ENABLE_DELETE_KEY		"enable-delete"
 #define CAJA_CONFIRM_TRASH_KEY		"confirm-trash"
-#define TERMINAL_SCHEMA				"org.mate.applications-terminal"
+#define TERMINAL_SCHEMA				"org.cafe.applications-terminal"
 #define TERMINAL_EXEC_KEY			"exec"
 
 struct _LapizFileBrowserPluginPrivate

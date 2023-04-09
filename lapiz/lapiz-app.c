@@ -570,7 +570,7 @@ lapiz_app_create_window (LapizApp  *app,
 
 /*
  * Same as _create_window, but doesn't set the geometry.
- * The session manager takes care of it. Used in mate-session.
+ * The session manager takes care of it. Used in cafe-session.
  */
 LapizWindow *
 _lapiz_app_restore_window (LapizApp    *app,

@@ -16,12 +16,12 @@ echo_padded ()
 if (which gsettings >/dev/null)
 then
 	echo "GSettings configuration dump:"
-	gsettings list-recursively org.mate.lapiz
+	gsettings list-recursively org.cafe.lapiz
 	echo
 fi
 
 echo "Active plugins:"
-gsettings get org.mate.lapiz active-plugins 				\
+gsettings get org.cafe.lapiz active-plugins 				\
 	| sed -r -e 's/^\[(.*)\]$/\1/' -e 's/, /\n/g'			\
 	| sed -e 's/^.*$/  - \0/'
 echo

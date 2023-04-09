@@ -281,7 +281,7 @@
 # Copyright (C) 1999-2005 Free Software Foundation, Inc.
 # Matthias Warkus <mawarkus@gnome.org>, 1999-2001.
 # Manuel Borchers <webmaster@matronix.de>, 2002.
-# Christian Neumair <chris@mate-de.org>, 2002-2004.
+# Christian Neumair <chris@cafe-de.org>, 2002-2004.
 # Hendrik Richter <hendrikr@gnome.org>, 2004-2010.
 # Frank Arnold <frank@scirocco-5v-turbo.de>, 2005, 2006.
 # Jochen Skulj <jochen@jochenskulj.de>, 2006, 2007, 2009.
@@ -380,13 +380,13 @@
 
 
 ========== es.po ==========
-# translation of lapiz.mate-2-30.po to Español
+# translation of lapiz.cafe-2-30.po to Español
 # translation of lapiz to spanish
 # Copyright © 1999-2003, 2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the lapiz package.
 #
 # Pablo Saratxaga <srtxg@chanae.alphanet.ch>, 1999-2000.
-# Carlos Perelló Marín <carlos@mate-db.org>, 2000-2001.
+# Carlos Perelló Marín <carlos@cafe-db.org>, 2000-2001.
 # Chema Celorio <chema@celorio.com>, 2000.
 # QA by <asan@euskalnet.net>, 2001.
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com>,2002, 2003, 2004.
@@ -443,7 +443,7 @@
 
 ========== fi.po ==========
 # lapiz Finnish Translation
-# Suomennos: http://www.mate.fi/
+# Suomennos: http://www.cafe.fi/
 # Copyright (C) 1999-2010 Free Software Foundation Inc.
 # Jarkko Ranta <jjranta@cc.joensuu.fi>, 2000-2004.
 # Sami Pesonen <sampeson@iki.fi>, 2005.
@@ -555,7 +555,7 @@
 ========== hr.po ==========
 # Translation of lapiz to Croatiann
 # Copyright (C) Croatiann team
-# Translators: Automatski Prijevod <>,Bozo Juretic <bjuretic@srce.hr>,Danijel Studen <dstuden@vuka.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Mato Kutlić <mate@iskraemeco.hr>,pr pr <delacko@192.168.0.1>,Robert Sedak <robert.sedak@sk.t-com.hr>,Vlatko Kosturjak <kost@linux.hr>,
+# Translators: Automatski Prijevod <>,Bozo Juretic <bjuretic@srce.hr>,Danijel Studen <dstuden@vuka.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Mato Kutlić <cafe@iskraemeco.hr>,pr pr <delacko@192.168.0.1>,Robert Sedak <robert.sedak@sk.t-com.hr>,Vlatko Kosturjak <kost@linux.hr>,
 
 
 
@@ -564,14 +564,14 @@
 # Hungarian translation of lapiz.
 # Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 #
-# Szabolcs Ban <shooby at mate dot hu>, 2000.
-# Emese Kovacs <emese at mate dot hu>, 2000, 2001.
+# Szabolcs Ban <shooby at cafe dot hu>, 2000.
+# Emese Kovacs <emese at cafe dot hu>, 2000, 2001.
 # Peter Doma <zelin at pointernet dot hu>, 2002.
-# Andras Timar <timar at mate dot hu>, 2001, 2002, 2003.
-# Gabor Sari <saga at mate dot hu>, 2003.
-# Laszlo Dvornik <dvornik at mate dot hu>, 2004.
-# Gabor Kelemen <kelemeng at mate dot hu>, 2005, 2006, 2007, 2008, 2009, 2010.
-# Mate Ory <orymate at gmail dot com>, 2006, 2007, 2008.
+# Andras Timar <timar at cafe dot hu>, 2001, 2002, 2003.
+# Gabor Sari <saga at cafe dot hu>, 2003.
+# Laszlo Dvornik <dvornik at cafe dot hu>, 2004.
+# Gabor Kelemen <kelemeng at cafe dot hu>, 2005, 2006, 2007, 2008, 2009, 2010.
+# Mate Ory <orycafe at gmail dot com>, 2006, 2007, 2008.
 
 
 
@@ -919,7 +919,7 @@
 
 
 ========== or.po ==========
-# translation of lapiz.mate-2-30.or.po to Oriya
+# translation of lapiz.cafe-2-30.or.po to Oriya
 # translation of or.po to
 # Oriya translation of lapiz.HEAD.pot.
 # This file is distributed under the same license as the lapiz package.
@@ -1013,9 +1013,9 @@
 ========== ro.po ==========
 # Romanian translation for lapiz
 # Copyright (C) 2003-2008 Free Software Foundation, Inc.
-# Mugurel Tudor <mugurelu@mate.ro>, 2003, 2004.
+# Mugurel Tudor <mugurelu@cafe.ro>, 2003, 2004.
 # Dan Damian <dand@ubuntu.ro>, 2005-2007.
-# Mișu Moldovan <dumol@mate.ro>, 2003, 2004, 2008.
+# Mișu Moldovan <dumol@cafe.ro>, 2003, 2004, 2008.
 # Adi Roiban https://launchpad.net/~adiroiban, 2008, 2009
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009, 2010
 
@@ -1092,7 +1092,7 @@
 #
 # Andraž Tori <andraz.tori1@guest.arnes.si>, 2000 - 2005.
 # Matic Žgur <mr.zgur@gmail.com>, 2006 - 2007.
-# Matej Urbančič <mateju@svn.gnome.org>, 2007 - 2010.
+# Matej Urbančič <cafeju@svn.gnome.org>, 2007 - 2010.
 #
 
 
@@ -1273,7 +1273,7 @@
 # Original by Dillion Chen <dillon.chen@turbolinux.com.cn>
 # Totally rewritten by Tom Mak <mhh@126.com>, 2001
 # Minor update by Wang Jian <lark@linux.net.cn>, 2001
-# Sun Gl0n <mate_int_l10n@ireland.sun.com>, 2002
+# Sun Gl0n <cafe_int_l10n@ireland.sun.com>, 2002
 # Miles Hoo <MilesHoo@sohu.com>, 2002
 # Funda Wang <fundawang@linux.net.cn>, 2003-2005
 # 甘露(Gan Lu) <rhythm.gan@gmail.com>, 2009

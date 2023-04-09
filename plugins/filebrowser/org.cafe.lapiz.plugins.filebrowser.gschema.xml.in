@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <schemalist>
-  <schema id="org.mate.lapiz.plugins.filebrowser" path="/org/mate/lapiz/plugins/filebrowser/">
+  <schema id="org.cafe.lapiz.plugins.filebrowser" path="/org/cafe/lapiz/plugins/filebrowser/">
     <key name="open-at-first-doc" type="b">
       <default>true</default>
       <summary>Set Location to First Document</summary>
@@ -16,9 +16,9 @@
       <summary>File Browser Filter Pattern</summary>
       <description>The filter pattern to filter the file browser with. This filter works on top of the filter_mode.</description>
     </key>
-    <child name="on-load" schema="org.mate.lapiz.plugins.filebrowser.on-load"/>
+    <child name="on-load" schema="org.cafe.lapiz.plugins.filebrowser.on-load"/>
   </schema>
-  <schema id="org.mate.lapiz.plugins.filebrowser.on-load" path="/org/mate/lapiz/plugins/filebrowser/on-load/">
+  <schema id="org.cafe.lapiz.plugins.filebrowser.on-load" path="/org/cafe/lapiz/plugins/filebrowser/on-load/">
     <key name="tree-view" type="b">
       <default>true</default>
       <summary>Open With Tree View</summary>

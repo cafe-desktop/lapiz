@@ -37,7 +37,7 @@ class Manager:
     TARGET_URI = 105
 
     model = None
-    drag_icons = ('mate-mime-application-x-tarz', 'mate-package', 'package')
+    drag_icons = ('cafe-mime-application-x-tarz', 'cafe-package', 'package')
     default_export_name = _('Snippets archive') + '.tar.gz'
     dragging = False
     dnd_target_list = [Gtk.TargetEntry.new('text/uri-list', 0, TARGET_URI)]

@@ -338,7 +338,7 @@
 ### lapiz 1.16.0
 
   * Use GtkAboutDialog instead of MateAboutDialog
-  * Drop dependency on libmate-desktop and --without-matedesktop
+  * Drop dependency on libcafe-desktop and --without-cafedesktop
     build option
   * GTK+3: fix lots of deprecations
   * Some more fixes and cleanups
@@ -373,8 +373,8 @@
 
 ### lapiz 1.12.1
 
-  * Add --without-matedesktop option to enable build without
-    dependency on libmate-desktop
+  * Add --without-cafedesktop option to enable build without
+    dependency on libcafe-desktop
 
 ### lapiz 1.12.0
 
@@ -406,7 +406,7 @@
 
 ### lapiz 1.10.0
 
-  * Use MateAboutDialog from libmate-desktop
+  * Use MateAboutDialog from libcafe-desktop
 
 ### lapiz 1.8.1
 
@@ -416,7 +416,7 @@
 ### lapiz 1.8.0
 
   * Add GTK3 support
-  * Use yelp-tools instead of mate-doc-utils
+  * Use yelp-tools instead of cafe-doc-utils
   * Move user plugin dir from config_dir to data_dir. Plugins should have
     never been installed in the config dir as they are not part of the
     configuration. This means user will need to move the plugins directory
@@ -424,7 +424,7 @@
 
 ### lapiz 1.5.0
 
-  * Migration to GSettings and drop mateconf
+  * Migration to GSettings and drop cafeconf
     (All code is migrated, except pythonconsole plugin. The plugin works,
     except you cant configure it; the configurable things were command
     and error colors; this will be fixed migrating the plugin to Gir

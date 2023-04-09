@@ -359,7 +359,7 @@ class LanguageContainer:
             s = []
 
             # FIXME: change this to use
-            # matevfs.mime_type_get_equivalence when it comes
+            # cafevfs.mime_type_get_equivalence when it comes
             # available
             for key, val in snippets.items():
                 if not value.startswith(key):

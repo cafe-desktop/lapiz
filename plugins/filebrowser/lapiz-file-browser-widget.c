@@ -795,7 +795,7 @@ static GtkActionEntry toplevel_actions[] =
 
 static const GtkActionEntry tree_actions_selection[] =
 {
-	{"FileMoveToTrash", "mate-stock-trash", N_("_Move to Trash"), NULL,
+	{"FileMoveToTrash", "cafe-stock-trash", N_("_Move to Trash"), NULL,
 	 N_("Move selected file or folder to trash"),
 	 G_CALLBACK (on_action_file_move_to_trash)},
 	{"FileDelete", "edit-delete", N_("_Delete"), NULL,

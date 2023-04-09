@@ -35,7 +35,7 @@
 #include <gtksourceview/gtksource.h>
 #include "lapiz-app.h"
 
-#define LAPIZ_SCHEMA	"org.mate.lapiz"
+#define LAPIZ_SCHEMA	"org.cafe.lapiz"
 
 /* Editor */
 #define GPM_USE_DEFAULT_FONT	"use-default-font"
@@ -101,24 +101,24 @@
 /* Syntax highlighting */
 #define GPM_SYNTAX_HL_ENABLE		"enable-syntax-highlighting"
 
-/* White list of writable mate-vfs methods */
+/* White list of writable cafe-vfs methods */
 #define GPM_WRITABLE_VFS_SCHEMES 	"writable-vfs-schemes"
 
 /* Plugins */
 #define GPM_ACTIVE_PLUGINS			"active-plugins"
 
 /* Global Interface keys */
-#define GPM_INTERFACE_SCHEMA		"org.mate.interface"
+#define GPM_INTERFACE_SCHEMA		"org.cafe.interface"
 #define GPM_SYSTEM_FONT				"monospace-font-name"
 
 /* Global Lockdown keys */
-#define GPM_LOCKDOWN_SCHEMA			"org.mate.lockdown"
+#define GPM_LOCKDOWN_SCHEMA			"org.cafe.lockdown"
 #define GPM_LOCKDOWN_COMMAND_LINE	"disable-command-line"
 #define GPM_LOCKDOWN_PRINTING		"disable-printing"
 #define GPM_LOCKDOWN_PRINT_SETUP	"disable-print-setup"
 #define GPM_LOCKDOWN_SAVE_TO_DISK	"disable-save-to-disk"
 
-/* Fallback default values. Keep in sync with org.mate.lapiz.gschema.xml */
+/* Fallback default values. Keep in sync with org.cafe.lapiz.gschema.xml */
 #define GPM_DEFAULT_AUTO_SAVE_INTERVAL	10 /* minutes */
 #define GPM_DEFAULT_MAX_RECENTS			5
 

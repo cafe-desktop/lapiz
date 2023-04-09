@@ -13,22 +13,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/lapiz/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
 "POT-Creation-Date: 2020-01-13 17:23+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
-"Language-Team: Tamil (https://www.transifex.com/mate/teams/13566/ta/)\n"
+"Language-Team: Tamil (https://www.transifex.com/cafe/teams/13566/ta/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ta\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.mate.lapiz.gschema.xml.in:11
+#: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
 msgstr "கொடாநிலை எழுத்துரு பயன்படுத்துக"
 
-#: data/org.mate.lapiz.gschema.xml.in:12
+#: data/org.cafe.lapiz.gschema.xml.in:12
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to lapiz. If this option is turned off, then the "
@@ -39,16 +39,16 @@ msgstr ""
 "இந்த தேர்வை நீக்கினால் \"எழுத்துருவை திருத்து\" தேர்வின் மூலம் நீங்கள் "
 "தேர்வு செய்தவைகளை பயன்படுத்தும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:15
+#: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
 msgid "'Monospace 12'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:16
+#: data/org.cafe.lapiz.gschema.xml.in:16
 msgid "Editor Font"
 msgstr "திருத்தி எழுத்துரு"
 
-#: data/org.mate.lapiz.gschema.xml.in:17
+#: data/org.cafe.lapiz.gschema.xml.in:17
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -57,37 +57,37 @@ msgstr ""
 "எழுத்துருவை பயன்படுத்து\"தேர்வு நீக்கப்பட்டு இருந்தால் மட்டுமே இது செயல் "
 "படும்."
 
-#: data/org.mate.lapiz.gschema.xml.in:21
+#: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:22
+#: data/org.cafe.lapiz.gschema.xml.in:22
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:26
+#: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:27
+#: data/org.cafe.lapiz.gschema.xml.in:27
 msgid "If false, it hides the first tab if there is only one tab."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:31
+#: data/org.cafe.lapiz.gschema.xml.in:31
 msgid "Style Scheme"
 msgstr "பாங்கு திட்டங்கள்"
 
-#: data/org.mate.lapiz.gschema.xml.in:32
+#: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "உரையை வண்ணப்படுத்த பயன்படும்  GtkSourceView பாணி திட்டத்தின் அடையாளம்"
 
-#: data/org.mate.lapiz.gschema.xml.in:36
+#: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
 msgstr "காப்புநகல்களை உருவாக்கு"
 
-#: data/org.mate.lapiz.gschema.xml.in:37
+#: data/org.cafe.lapiz.gschema.xml.in:37
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -95,11 +95,11 @@ msgstr ""
 "கெடிட் தான் சேமிக்கும் கோப்புகளுக்கான காப்புக்கோப்பை உருவாக்க வேண்டுமா. "
 "நீங்கள் \" காப்பு நகல் விரிவாக்கம் \" ஐ பயன்படுத்தி காப்பு கோப்பை அமைக்கலாம்"
 
-#: data/org.mate.lapiz.gschema.xml.in:41
+#: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
 msgstr "தானாக சேமிக்கவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:42
+#: data/org.cafe.lapiz.gschema.xml.in:42
 msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -108,11 +108,11 @@ msgstr ""
 "மாற்றப்பட்ட கோப்புகளை கெடிட் குறிப்பிட்ட கால இடைவெளிக்கு பிறகு தானாக சேமிக்க"
 " வேண்டுமா. \"தானாக சேமிக்கும் கால இடைவெளி\" இல் நேரத்தை அமைக்கலாம்."
 
-#: data/org.mate.lapiz.gschema.xml.in:46
+#: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
 msgstr "தானாக சேமிக்க இடைவெளி"
 
-#: data/org.mate.lapiz.gschema.xml.in:47
+#: data/org.cafe.lapiz.gschema.xml.in:47
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -120,19 +120,19 @@ msgstr ""
 "தானாக கோப்பை சேமிக்க ஆகும் நேரம். இது விளைவுகளை மட்டும் "
 "எடுத்துக்கொள்ளும்\"தானாக சேமித்தல்\" தேர்வு செயல்படுத்தப்பட்டது."
 
-#: data/org.mate.lapiz.gschema.xml.in:51
+#: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:52
+#: data/org.cafe.lapiz.gschema.xml.in:52
 msgid "Show save confirmation if the files have changes."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:56
+#: data/org.cafe.lapiz.gschema.xml.in:56
 msgid "Writable VFS schemes"
 msgstr "எழுதக் கூடிய விஎப்எஸ் திட்டங்கள்"
 
-#: data/org.mate.lapiz.gschema.xml.in:57
+#: data/org.cafe.lapiz.gschema.xml.in:57
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
@@ -140,11 +140,11 @@ msgstr ""
 "கெடிட் எழுதக்கூடிய விஎஃப்எஸ் அமைப்புகளின் பட்டியல். கோப்பு ('file') என்ற "
 "அமைப்பு முன்னிருப்பு அமைப்பாகும்."
 
-#: data/org.mate.lapiz.gschema.xml.in:61
+#: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
 msgstr "அதிகபட்ச மறை செயல்களின் எண்ணிக்கை"
 
-#: data/org.mate.lapiz.gschema.xml.in:62
+#: data/org.cafe.lapiz.gschema.xml.in:62
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -152,11 +152,11 @@ msgstr ""
 "கெடிட் ஆல் ரத்து செய் அல்லது மீட்டும் செய் செயல்களின்அதிகபட்ச எண்ணிக்கை. "
 "எல்லையற்ற எண்ணிக்கை செயல்களுக்கு \"-1\" உபயோகிக்கவும்."
 
-#: data/org.mate.lapiz.gschema.xml.in:66
+#: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
 msgstr "வரி மடக்கல் பாங்கு"
 
-#: data/org.mate.lapiz.gschema.xml.in:67
+#: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
 "for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -171,11 +171,11 @@ msgstr ""
 "மாற்றி உணரக்கூடியவை அதனால் இங்கே துல்லியமாக காட்டப்பட வேண்டும் என்பதை "
 "நினைவில் கொள்க"
 
-#: data/org.mate.lapiz.gschema.xml.in:71
+#: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
 msgstr "தத்தல் அளவு"
 
-#: data/org.mate.lapiz.gschema.xml.in:72
+#: data/org.cafe.lapiz.gschema.xml.in:72
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
@@ -183,69 +183,69 @@ msgstr ""
 "தத்தல் விசையை பயன்படுத்தும்போது காட்டப்பட வேண்டிய இடைவெளிகளின் எண்ணிக்கையை "
 "குறிப்பிடவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:76
+#: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
 msgstr "இடைவெளிகளை செருகவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:77
+#: data/org.cafe.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
 msgstr "கெடிட் தத்தல்களுக்கு பதிலாக வெற்று இடத்தை சொருக வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:81
+#: data/org.cafe.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
 msgstr "தானியங்கி ஒதுக்கம்"
 
-#: data/org.mate.lapiz.gschema.xml.in:82
+#: data/org.cafe.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
 msgstr "கெடிட் தானியங்கு ஓரச்சீர்மையை இயலுமை படுத்த வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:86
+#: data/org.cafe.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
 msgstr "வரிசை எண்களை காட்டுக"
 
-#: data/org.mate.lapiz.gschema.xml.in:87
+#: data/org.cafe.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr "கெடிட் திருத்தும் பரப்பில் கோட்டு எண்ணிக்கையை காட்ட வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:91
+#: data/org.cafe.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
 msgstr "நடப்பு வரியை சிறப்புச் சுட்டுக"
 
-#: data/org.mate.lapiz.gschema.xml.in:92
+#: data/org.cafe.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
 msgstr "கெடிட் நடப்பு வரியை சிறப்பு சுட்ட வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:96
+#: data/org.cafe.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
 msgstr "பொருந்தும் அடைப்புக்குறியை சிறப்புச் சுட்டுக"
 
-#: data/org.mate.lapiz.gschema.xml.in:97
+#: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
 "தேர்ந்தெடுத்த ஒன்றுக்கு பொருந்தும்  அடைப்புக்குறியை  கெடிட் சிறப்பு சுட்ட "
 "வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:101
+#: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
 msgstr "வலது எல்லையை காண்பிக்கவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:102
+#: data/org.cafe.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
 msgstr "கெடிட் திருத்தும் பரப்பில் வலது விளிம்பை காட்ட வேண்டுமா. "
 
-#: data/org.mate.lapiz.gschema.xml.in:106
+#: data/org.cafe.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
 msgstr "வலது எல்லை இடம்"
 
-#: data/org.mate.lapiz.gschema.xml.in:107
+#: data/org.cafe.lapiz.gschema.xml.in:107
 msgid "Specifies the position of the right margin."
 msgstr "வலது எல்லையின் இருப்பிடத்தை குறிப்பிடுகிறது."
 
-#: data/org.mate.lapiz.gschema.xml.in:111
+#: data/org.cafe.lapiz.gschema.xml.in:111
 msgid "Smart Home End"
 msgstr "சூட்டிகை இல்லம் முடிவு"
 
-#: data/org.mate.lapiz.gschema.xml.in:112
+#: data/org.cafe.lapiz.gschema.xml.in:112
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
@@ -265,11 +265,11 @@ msgstr ""
 "முடிவுக்கு நகரவும் \"BEFORE\" ஐ பயன்படுத்துக. மேலும் எப்போதும் வரியை விலக்கி"
 " உரையின் துவக்கம்/ முடிவுக்கு நகர \"ALWAYS\" ஐ பயன்படுத்துக."
 
-#: data/org.mate.lapiz.gschema.xml.in:116
+#: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
 msgstr "முந்தைய நிலைகாட்டி இடத்தை மறுசேமி"
 
-#: data/org.mate.lapiz.gschema.xml.in:117
+#: data/org.cafe.lapiz.gschema.xml.in:117
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
@@ -277,38 +277,38 @@ msgstr ""
 "கெடிட் கோப்பை திறக்கும் போது நிலை காட்டியை முன் இருந்த இடத்திலேயே வைக்க "
 "வேண்டுமா"
 
-#: data/org.mate.lapiz.gschema.xml.in:121
+#: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
 msgstr "தேடுதல் சிறப்புச் சுட்டுதலை இயலுமைபடுத்தவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:122
+#: data/org.cafe.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr ""
 "கெடிட் ஆவணத்தில் தேடப் பட்ட சொல் இருக்கும் எல்லா இடங்களையும் சிறப்பு சுட்ட "
 "வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:126
+#: data/org.cafe.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
 msgstr "தொடர் அமைப்பை சிறப்புச் சுட்டுதலை இயலுமைபடுத்தவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:127
+#: data/org.cafe.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
 msgstr "கெடிட் தொடரமைப்பு சிறப்புச் சுட்டலை இயலுமைபடுத்த வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:131
+#: data/org.cafe.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
 msgstr "கருவிப்பட்டை தெரிகிறது"
 
-#: data/org.mate.lapiz.gschema.xml.in:132
+#: data/org.cafe.lapiz.gschema.xml.in:132
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "திருத்தி சாளரத்தில் கருவிப்பட்டி காட்டப்பட வேண்டுமா"
 
-#: data/org.mate.lapiz.gschema.xml.in:136
+#: data/org.cafe.lapiz.gschema.xml.in:136
 msgid "Toolbar Buttons Style"
 msgstr "கருவிப்பட்டை பொத்தான்கள் பாணி"
 
-#: data/org.mate.lapiz.gschema.xml.in:137
+#: data/org.cafe.lapiz.gschema.xml.in:137
 msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
@@ -325,48 +325,48 @@ msgstr ""
 "உணரக்கூடியவை, நீங்கள் குறிப்பிட்டது போல் இருக்கிறதா என்பதை "
 "கவனித்துக்கொள்ளவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:141
+#: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
 msgstr "நிலைப்பட்டை தெரிகிறது"
 
-#: data/org.mate.lapiz.gschema.xml.in:142
+#: data/org.cafe.lapiz.gschema.xml.in:142
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "திருத்தி சாளரத்தின் கீழ் உள்ள நிலைப்பட்டி காட்டப்பட வேண்டுமா"
 
-#: data/org.mate.lapiz.gschema.xml.in:146
+#: data/org.cafe.lapiz.gschema.xml.in:146
 msgid "Side Pane is Visible"
 msgstr "பக்கப் பட்டை தெரிகிறது"
 
-#: data/org.mate.lapiz.gschema.xml.in:147
+#: data/org.cafe.lapiz.gschema.xml.in:147
 msgid ""
 "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "திருத்தும் சாளரங்களின் இடது பக்கத்தில் பக்கச் சட்டம் காட்டப்பட வேண்டுமா"
 
-#: data/org.mate.lapiz.gschema.xml.in:151
+#: data/org.cafe.lapiz.gschema.xml.in:151
 msgid "Show tabs with side pane"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:152
+#: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:156
+#: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
 msgstr "கீழ் பலகம் தெரிகிறது"
 
-#: data/org.mate.lapiz.gschema.xml.in:157
+#: data/org.cafe.lapiz.gschema.xml.in:157
 msgid ""
 "Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr "திருத்தும் சாளரத்தின் கீழ் உள்ள சட்டம் காட்டப்பட வேண்டுமா"
 
-#: data/org.mate.lapiz.gschema.xml.in:161
+#: data/org.cafe.lapiz.gschema.xml.in:161
 msgid "Maximum Recent Files"
 msgstr "அதிகபட்ச அண்மைக் கோப்புகள்"
 
-#: data/org.mate.lapiz.gschema.xml.in:162
+#: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed"
 " in the \"Recent Files\" submenu."
@@ -374,30 +374,30 @@ msgstr ""
 "சமீபத்திய கோப்புகள் துணைப்பட்டியலிக் காட்டப்பட வேண்டிய அதிக பட்ச கோப்புகளின்"
 " எண்ணிக்கை"
 
-#: data/org.mate.lapiz.gschema.xml.in:166
+#: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "தொடர் அமைப்பை அச்சிடவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:167
+#: data/org.cafe.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "ஆவணத்தை அச்சிடும்பொழுது கெடிட் தொடரமைப்பு சிறப்புச் சுட்டலை அச்சிட வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:171
+#: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "தலைப்பகுதியை அச்சிடுக"
 
-#: data/org.mate.lapiz.gschema.xml.in:172
+#: data/org.cafe.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr "கெடிட் ஆவணத்தை அச்சடிக்கும் போது ஆவணத் தலைப்பை சேர்க்க வேண்டுமா."
 
-#: data/org.mate.lapiz.gschema.xml.in:176
+#: data/org.cafe.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
 msgstr "வரி மடக்கல் பாங்கை அச்சடி"
 
-#: data/org.mate.lapiz.gschema.xml.in:177
+#: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
 "wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -412,11 +412,11 @@ msgstr ""
 "மாற்றி உணரக்கூடியவை அதனால் இங்கே துல்லியமாக காட்டப்பட வேண்டும் என்பதை "
 "நினைவில் கொள்க."
 
-#: data/org.mate.lapiz.gschema.xml.in:181
+#: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
 msgstr "வரிசை எண்களை அச்சிடுக"
 
-#: data/org.mate.lapiz.gschema.xml.in:182
+#: data/org.cafe.lapiz.gschema.xml.in:182
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
@@ -426,30 +426,30 @@ msgstr ""
 " இல்லையானால் உள்ள எண்ணுக்கு தகுந்தபடி அந்த எண் வரிகளுக்கு ஒரு முறை கோட்டு "
 "எண் கெடிடால் அச்சில் புகுத்தப் படும்."
 
-#: data/org.mate.lapiz.gschema.xml.in:185
+#: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
 msgid "'Monospace 9'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:186
+#: data/org.cafe.lapiz.gschema.xml.in:186
 msgid "Body Font for Printing"
 msgstr "முழு உரையின் அச்சிடுவதற்கான எழுத்துரு"
 
-#: data/org.mate.lapiz.gschema.xml.in:187
+#: data/org.cafe.lapiz.gschema.xml.in:187
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "ஆவணம் அச்சடிக்கும் போது பயன்படுத்த வேண்டிய எழுத்துருவை குறிக்கும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:190
+#: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
 msgid "'Sans 11'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:191
+#: data/org.cafe.lapiz.gschema.xml.in:191
 msgid "Header Font for Printing"
 msgstr "அச்சிட தலைப்பு எழுத்துக்கான எழுத்துரு"
 
-#: data/org.mate.lapiz.gschema.xml.in:192
+#: data/org.cafe.lapiz.gschema.xml.in:192
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -457,16 +457,16 @@ msgstr ""
 "ஆவணத்தை அச்சிடும்பொழுதுத் தலைப்புப் பக்கத்திற்குப் பயன்படும் எழுத்தைக் "
 "குறிப்பிடு.  \"Print Header\" தேர்வினைத் திருப்ப இது மட்டுமே செயல் கொள்ளும்."
 
-#: data/org.mate.lapiz.gschema.xml.in:195
+#: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
 msgid "'Sans 8'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:196
+#: data/org.cafe.lapiz.gschema.xml.in:196
 msgid "Line Number Font for Printing"
 msgstr "வரியெண்ணை அச்சடிக்க வேண்டிய எழுத்துரு"
 
-#: data/org.mate.lapiz.gschema.xml.in:197
+#: data/org.cafe.lapiz.gschema.xml.in:197
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -474,16 +474,16 @@ msgstr ""
 "அச்சிடும்பொழுது வரி எண்ணைப் பயன்படுத்த எழுத்தைக் குறிப்பிடு.\"Print Line "
 "Numbers\" தேர்வு பூஜியம் இல்லையென்றால் அது விளைவை ஏற்கும்."
 
-#: data/org.mate.lapiz.gschema.xml.in:200
+#: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
 msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:201
+#: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
 msgstr "தானாக கண்டறிந்த குறியீட்டாக்கம்"
 
-#: data/org.mate.lapiz.gschema.xml.in:202
+#: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
@@ -492,16 +492,16 @@ msgstr ""
 "ஜிஎடிட் பயன்படுத்தி தானாகவே எழுத்துருக்களை கண்டறிந்துகொள்வதற்காக பட்டியலில் "
 "உள்ள எழுத்துருக்கள் \"தற்போதைய\" இப்போதுள்ள மொழியின் எழுத்துருவைக்காட்டும்."
 
-#: data/org.mate.lapiz.gschema.xml.in:205
+#: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
 msgid "[ 'ISO-8859-15' ]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:206
+#: data/org.cafe.lapiz.gschema.xml.in:206
 msgid "Encodings shown in menu"
 msgstr "பட்டியலில் காட்டப் பட்ட குறியாக்கங்கள்"
 
-#: data/org.mate.lapiz.gschema.xml.in:207
+#: data/org.cafe.lapiz.gschema.xml.in:207
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -510,27 +510,27 @@ msgstr ""
 "எழுத்துருக்களின் பட்டியல். புரியக்கூடிய குறிமுறைகள் மட்டுமே "
 "பயன்படுத்தப்பட்டுள்ளன."
 
-#: data/org.mate.lapiz.gschema.xml.in:211
+#: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:212
+#: data/org.cafe.lapiz.gschema.xml.in:212
 msgid "List of entries in \"search for\" textbox."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:216
+#: data/org.cafe.lapiz.gschema.xml.in:216
 msgid "History for \"replace with\" entries"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:217
+#: data/org.cafe.lapiz.gschema.xml.in:217
 msgid "List of entries in \"replace with\" textbox."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:221
+#: data/org.cafe.lapiz.gschema.xml.in:221
 msgid "Active plugins"
 msgstr "செயல்படும் செருகிகள்"
 
-#: data/org.mate.lapiz.gschema.xml.in:222
+#: data/org.cafe.lapiz.gschema.xml.in:222
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
@@ -539,41 +539,41 @@ msgstr ""
 "இதில் உள்ளது. எந்த ஒரு உதவி செருகலின் \"Location\" ஐ அறிய .lapiz-plugin "
 "கோப்பை பார்க்கவும்"
 
-#: data/org.mate.lapiz.gschema.xml.in:226
+#: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:227
+#: data/org.cafe.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:231
+#: data/org.cafe.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:232
+#: data/org.cafe.lapiz.gschema.xml.in:232
 msgid ""
 "Whether lapiz should show not breaking spaces in the editor window: 'show-"
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:236
+#: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:237
+#: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
 "Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
 "spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:241
+#: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:242
+#: data/org.cafe.lapiz.gschema.xml.in:242
 msgid ""
 "Whether lapiz should show spaces in the editor window: 'show-none' no "
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
@@ -2886,11 +2886,11 @@ msgstr "பக்க பலகத்திலிருந்து கோப்�
 msgid "system-file-manager"
 msgstr ""
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "முதல் ஆவணத்திற்கு இடத்தை அமைக்கவும்"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:7
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:7
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2902,11 +2902,11 @@ msgstr ""
 "பொதுவாக கட்டளை வரியிலிருந்து ஆவணத்தை திறக்கவோ அல்லது நாடுலஸ் வழியாக திறக்கவோ"
 " பயனாகும்."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
 msgstr "கோப்பு உலாவி வடிப்பி முறை"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:12
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hidden (filter hidden files), binary "
@@ -2918,11 +2918,11 @@ msgstr ""
 "எதுவுமில்லை),மறைந்த  (மறைந்த கோப்புகளை வடிகட்டு), இருநிலை (இருநிலை கோப்புகளை"
 " வடிகட்டு) மற்றும் hidden_and_binary (மறைந்த மற்றும் இரும கோப்புகள்)."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
 msgstr "கோப்பு உலாவி வடிப்பி தோரணி"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:17
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top"
 " of the filter_mode."
@@ -2930,11 +2930,11 @@ msgstr ""
 "கோப்பு உலாவி உபயோகிக்க வேண்டிய வடிகட்டி தோரணி. வடிகட்டி, வடிகட்டி பாணியின் ("
 " filter_mode) மீது இயங்கும். "
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:24
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
 msgstr "கிளை பார்வையாக திறக்கவும்"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:25
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2942,11 +2942,11 @@ msgstr ""
 "கோப்பு சொருகுப்பொருள் ஏற்றப் படும் போது புத்தக குறிகள் காட்சி அல்லாது கிளைக்"
 " காட்சியை திறக்கவும்."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:29
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
 msgstr "கோப்பு உலாவி ரூட் அடைவு"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:30
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2954,11 +2954,11 @@ msgstr ""
 "ஏற்றும் போது கிளைக் காட்சியை திறக்கவும் என்பது உண்மை எனும் போது உபயோகிக்க "
 "வேண்டிய கோப்பு உலாவியின் மூல கோப்பு."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:34
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
 msgstr "கோப்பு உலாவி மெய்நிகர் ரூட் அடைவு"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
 "The file browser virtual root directory to use when loading the file browser"
 " plugin when onload/tree_view is TRUE. The virtual root must always be below"
@@ -2968,11 +2968,11 @@ msgstr ""
 "வேண்டிய கோப்பு உலாவியின் மெய்நிகர் மூல கோப்பு. மெய்நிகர் மூலம் எப்போதும் "
 "மூலத்தின் கீழேயே இருக்க வேண்டும்."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:39
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
 msgstr "தொலை இடங்களின் மீட்டமைப்பினை இயலுமைபடுத்தவும்"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:40
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "தொலைநிலை இடங்களை மீட்பதை இயலுமைபடுத்துவதா என அமைக்கிறது."
 
@@ -3590,7 +3590,7 @@ msgstr "_t பத்தியில் தொடங்கவும்:"
 msgid "You cannot undo a sort operation"
 msgstr "வரிசைப் படுத்தியச் செயல்பாட்டினை உங்களால் ரத்துச் செய்ய முடியாது"
 
-#: plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml.in:11
+#: plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml.in:11
 msgid "Autocheck Type"
 msgstr ""
 
@@ -6434,15 +6434,15 @@ msgstr ""
 msgid "wizardpage"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:12
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:12
 msgid "Prompt type"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:16
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:16
 msgid "Selected format"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:20
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:20
 msgid "Custom format"
 msgstr "தனிப்பயன் வடிவம்"
 

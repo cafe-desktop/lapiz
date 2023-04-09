@@ -1,4 +1,4 @@
 #!/bin/sh
 
-#TODO: use "mateconftool-2 -g /desktop/mate/applications/terminal/exec"
-mate-terminal --working-directory=$LAPIZ_CURRENT_DOCUMENT_DIR &
+#TODO: use "cafeconftool-2 -g /desktop/cafe/applications/terminal/exec"
+cafe-terminal --working-directory=$LAPIZ_CURRENT_DOCUMENT_DIR &

@@ -3,7 +3,7 @@
 <!--
       (Do not remove this comment block.)
   Maintained by the MATE Documentation Project
-  http://wiki.mate-desktop.org/dev-doc:doc-team-guide
+  http://wiki.cafe-desktop.org/dev-doc:doc-team-guide
   Template version: 2.0 beta
   Template last modified Jan 30, 2002
 -->
@@ -334,7 +334,7 @@
                 </varlistentry>
             </variablelist>
             <para>When you right-click in the <application>lapiz</application> window, the application displays a popup menu. The popup menu contains the most common text editing commands.</para>
-            <para>Like other MATE applications, actions in <application>lapiz</application> can be performed in several ways: with the menu, with the toolbar, or with shortcut keys. Shortcuts keys common to all applications are listed in the <link xlink:href="help:mate-user-guide/shortcuts-apps">User Guide</link>.</para>
+            <para>Like other MATE applications, actions in <application>lapiz</application> can be performed in several ways: with the menu, with the toolbar, or with shortcut keys. Shortcuts keys common to all applications are listed in the <link xlink:href="help:cafe-user-guide/shortcuts-apps">User Guide</link>.</para>
         </section>
 
         <!-- ============= To Open Multiple Files from the Command Line ====== -->
@@ -1032,7 +1032,7 @@
             <title>Shortcut Keys</title>
         </info>
         <para>Use shortcut keys to perform common tasks more quickly than with the mouse and menus. The following tables list all of <application>lapiz</application>'s shortcut keys.</para>
-        <para>For more on shortcut keys, see the <link xlink:href="help:mate-user-guide/keyboard-skills">Desktop User Guide</link>.</para>
+        <para>For more on shortcut keys, see the <link xlink:href="help:cafe-user-guide/keyboard-skills">Desktop User Guide</link>.</para>
 
         <!-- ============= Tabs ======================== -->
         <bridgehead>Tabs</bridgehead>
@@ -1824,7 +1824,7 @@
             </itemizedlist>
 
             <note>
-                <para>For more information on creating plugins, see <link xlink:href="https://github.com/mate-desktop/lapiz/tree/master/plugins"></link>.</para>
+                <para>For more information on creating plugins, see <link xlink:href="https://github.com/cafe-desktop/lapiz/tree/master/plugins"></link>.</para>
             </note>
         </section>
 

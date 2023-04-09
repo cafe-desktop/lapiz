@@ -12,8 +12,8 @@ PKG_NAME="lapiz"
     exit 1
 }
 
-which mate-autogen || {
-    echo "You need to install mate-common"
+which cafe-autogen || {
+    echo "You need to install cafe-common"
     exit 1
 }
 
@@ -24,8 +24,8 @@ which yelp-build || {
 }
 
 REQUIRED_AUTOMAKE_VERSION=1.9
-MATE_DATADIR="$mate_datadir"
+MATE_DATADIR="$cafe_datadir"
 USE_COMMON_DOC_BUILD=yes
 
-. mate-autogen
+. cafe-autogen
 

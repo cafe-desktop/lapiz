@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <schemalist gettext-domain="@GETTEXT_PACKAGE@">
-  <enum id="org.mate.lapiz.SpaceDrawer">
+  <enum id="org.cafe.lapiz.SpaceDrawer">
     <value nick="show-none" value="0"/>
     <value nick="show-trailing" value="1"/>
     <value nick="show-all" value="2"/>
   </enum>
-  <schema id="org.mate.lapiz" path="/org/mate/lapiz/">
+  <schema id="org.cafe.lapiz" path="/org/cafe/lapiz/">
     <key name="use-default-font" type="b">
       <default>true</default>
       <summary>Use Default Font</summary>
@@ -226,17 +226,17 @@
       <summary>Show newline</summary>
       <description>Whether lapiz should show newlines in the editor window.</description>
     </key>
-    <key name="enable-space-drawer-nbsp" enum="org.mate.lapiz.SpaceDrawer">
+    <key name="enable-space-drawer-nbsp" enum="org.cafe.lapiz.SpaceDrawer">
       <default>'show-none'</default>
       <summary>Show nbsp</summary>
       <description>Whether lapiz should show not breaking spaces in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
     </key>
-    <key name="enable-space-drawer-tab" enum="org.mate.lapiz.SpaceDrawer">
+    <key name="enable-space-drawer-tab" enum="org.cafe.lapiz.SpaceDrawer">
       <default>'show-none'</default>
       <summary>Show tabs</summary>
       <description>Whether lapiz should show tabs in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
     </key>
-    <key name="enable-space-drawer-space" enum="org.mate.lapiz.SpaceDrawer">
+    <key name="enable-space-drawer-space" enum="org.cafe.lapiz.SpaceDrawer">
       <default>'show-none'</default>
       <summary>Show spaces</summary>
       <description>Whether lapiz should show spaces in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>

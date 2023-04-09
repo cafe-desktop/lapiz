@@ -50,7 +50,7 @@
 #define MENU_PATH "/MenuBar/EditMenu/EditOps_4"
 
 /* GSettings keys */
-#define TIME_SCHEMA			"org.mate.lapiz.plugins.time"
+#define TIME_SCHEMA			"org.cafe.lapiz.plugins.time"
 #define PROMPT_TYPE_KEY		"prompt-type"
 #define SELECTED_FORMAT_KEY	"selected-format"
 #define CUSTOM_FORMAT_KEY	"custom-format"
