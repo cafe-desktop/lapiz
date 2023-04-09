@@ -194,9 +194,9 @@ find_notebook_at_pointer (gint abs_x, gint abs_y)
 	gint x, y;
 
 	/* FIXME multi-head */
-	seat = gdk_display_get_default_seat (gdk_display_get_default ());
-	device = gdk_seat_get_pointer (seat);
-	win_at_pointer = gdk_device_get_window_at_position (device, &x, &y);
+	seat = cdk_display_get_default_seat (cdk_display_get_default ());
+	device = cdk_seat_get_pointer (seat);
+	win_at_pointer = cdk_device_get_window_at_position (device, &x, &y);
 
 	if (win_at_pointer == NULL)
 	{
@@ -204,10 +204,10 @@ find_notebook_at_pointer (gint abs_x, gint abs_y)
 		return NULL;
 	}
 
-	toplevel_win = gdk_window_get_toplevel (win_at_pointer);
+	toplevel_win = cdk_window_get_toplevel (win_at_pointer);
 
 	/* get the CtkWidget which owns the toplevel GdkWindow */
-	gdk_window_get_user_data (toplevel_win, &toplevel);
+	cdk_window_get_user_data (toplevel_win, &toplevel);
 
 	/* toplevel should be an LapizWindow */
 	if ((toplevel != NULL) &&
@@ -270,7 +270,7 @@ find_tab_num_at_pos (LapizNotebook *notebook,
 			continue;
 		}
 
-		gdk_window_get_origin (GDK_WINDOW (ctk_widget_get_window (tab)),
+		cdk_window_get_origin (GDK_WINDOW (ctk_widget_get_window (tab)),
 				       &x_root, &y_root);
 
 		ctk_widget_get_allocation(tab, &allocation);
@@ -399,8 +399,8 @@ drag_start (LapizNotebook *notebook,
 	GdkDisplay *display;
 
 	display = ctk_widget_get_display (CTK_WIDGET (notebook));
-	seat = gdk_display_get_default_seat (display);
-	device = gdk_seat_get_pointer (seat);
+	seat = cdk_display_get_default_seat (display);
+	device = cdk_seat_get_pointer (seat);
 
 	if (!leftdown) return;
 
@@ -409,15 +409,15 @@ drag_start (LapizNotebook *notebook,
 	/* get a new cursor, if necessary */
 	/* FIXME multi-head */
 	if (cursor == NULL)
-		cursor = gdk_cursor_new_for_display (display, GDK_FLEUR);
+		cursor = cdk_cursor_new_for_display (display, GDK_FLEUR);
 
 	/* grab the pointer */
 	ctk_grab_add (CTK_WIDGET (notebook));
 
 	/* FIXME multi-head */
-	if (!gdk_display_device_is_grabbed (display, device))
+	if (!cdk_display_device_is_grabbed (display, device))
 	{
-		gdk_seat_grab (seat,
+		cdk_seat_grab (seat,
 			       ctk_widget_get_window (CTK_WIDGET (notebook)),
 			       GDK_SEAT_CAPABILITY_POINTER,
 			       FALSE,
@@ -539,8 +539,8 @@ move_current_tab_to_another_notebook (LapizNotebook  *src,
 	GdkDisplay *display;
 
 	display = ctk_widget_get_display (CTK_WIDGET (CTK_NOTEBOOK (src)));
-	seat = gdk_display_get_default_seat (display);
-	device = gdk_seat_get_pointer (seat);
+	seat = cdk_display_get_default_seat (display);
+	device = cdk_seat_get_pointer (seat);
 
 	/* This is getting tricky, the tab was dragged in a notebook
 	 * in another window of the same app, we move the tab
@@ -557,9 +557,9 @@ move_current_tab_to_another_notebook (LapizNotebook  *src,
 	/* stop drag in origin window */
 	/* ungrab the pointer if it's grabbed */
 	drag_stop (src);
-	if (gdk_display_device_is_grabbed (display, device))
+	if (cdk_display_device_is_grabbed (display, device))
 	{
-		gdk_seat_ungrab (seat);
+		cdk_seat_ungrab (seat);
 	}
 	ctk_grab_remove (CTK_WIDGET (src));
 
@@ -585,8 +585,8 @@ button_release_cb (LapizNotebook  *notebook,
 	GdkDisplay *display;
 
 	display = ctk_widget_get_display (CTK_WIDGET (CTK_NOTEBOOK (notebook)));
-	seat = gdk_display_get_default_seat (display);
-	device = gdk_seat_get_pointer (seat);
+	seat = cdk_display_get_default_seat (display);
+	device = cdk_seat_get_pointer (seat);
 
 	if (event->button == 1) leftdown = FALSE;
 
@@ -611,9 +611,9 @@ button_release_cb (LapizNotebook  *notebook,
 		}
 
 		/* ungrab the pointer if it's grabbed */
-		if (gdk_display_device_is_grabbed (display, device))
+		if (cdk_display_device_is_grabbed (display, device))
 		{
-			gdk_seat_ungrab (seat);
+			cdk_seat_ungrab (seat);
 		}
 		ctk_grab_remove (CTK_WIDGET (notebook));
 	}

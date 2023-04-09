@@ -32,8 +32,8 @@
 
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
-#include <gdk/gdk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdk.h>
+#include <cdk/cdkkeysyms.h>
 
 #include "lapiz-close-button.h"
 #include "lapiz-window.h"

@@ -36,7 +36,7 @@
 #include <sys/types.h>
 #include <string.h>
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <ctk/ctk.h>
@@ -697,10 +697,10 @@ set_paste_sensitivity_according_to_clipboard (LapizWindow  *window,
 
 	display = ctk_clipboard_get_display (clipboard);
 
-	if (gdk_display_supports_selection_notification (display))
+	if (cdk_display_supports_selection_notification (display))
 	{
 		ctk_clipboard_request_contents (clipboard,
-						gdk_atom_intern_static_string ("TARGETS"),
+						cdk_atom_intern_static_string ("TARGETS"),
 						(CtkClipboardReceivedFunc) received_clipboard_contents,
 						g_object_ref (window));
 	}
@@ -2858,9 +2858,9 @@ fullscreen_controls_show (LapizWindow *window)
 	gint w, h;
 
 	screen = ctk_window_get_screen (CTK_WINDOW (window));
-	display = gdk_screen_get_display (screen);
+	display = cdk_screen_get_display (screen);
 
-	gdk_monitor_get_geometry (gdk_display_get_monitor_at_window (display,
+	cdk_monitor_get_geometry (cdk_display_get_monitor_at_window (display,
 								     ctk_widget_get_window (CTK_WIDGET (window))),
 				  &fs_rect);
 
@@ -2885,9 +2885,9 @@ run_fullscreen_animation (gpointer data)
 	gint x, y;
 
 	screen = ctk_window_get_screen (CTK_WINDOW (window));
-	display = gdk_screen_get_display (screen);
+	display = cdk_screen_get_display (screen);
 
-	gdk_monitor_get_geometry (gdk_display_get_monitor_at_window (display,
+	cdk_monitor_get_geometry (cdk_display_get_monitor_at_window (display,
 								     ctk_widget_get_window (CTK_WIDGET (window))),
 				  &fs_rect);
 
@@ -2962,9 +2962,9 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 		GdkDisplay *display;
 
 		screen = ctk_window_get_screen (CTK_WINDOW (window));
-		display = gdk_screen_get_display (screen);
+		display = cdk_screen_get_display (screen);
 
-		gdk_monitor_get_geometry (gdk_display_get_monitor_at_window (display,
+		cdk_monitor_get_geometry (cdk_display_get_monitor_at_window (display,
 									     ctk_widget_get_window (CTK_WIDGET (window))),
 					  &fs_rect);
 
@@ -2997,10 +2997,10 @@ on_fullscreen_controls_leave_notify_event (CtkWidget        *widget,
 	gint w, h;
 	gint x, y;
 
-	device = gdk_event_get_device ((GdkEvent *)event);
+	device = cdk_event_get_device ((GdkEvent *)event);
 
 	ctk_window_get_size (CTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
-	gdk_device_get_position (device, NULL, &x, &y);
+	cdk_device_get_position (device, NULL, &x, &y);
 
 	/* ctk seems to emit leave notify when clicking on tool items,
 	 * work around it by checking the coordinates

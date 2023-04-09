@@ -22,7 +22,7 @@
 #include <string.h>
 #include <gio/gio.h>
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 #include "lapiz-file-browser-store.h"
 #include "lapiz-file-bookmarks-store.h"
@@ -255,7 +255,7 @@ enter_notify_event (CtkWidget *widget,
 					       NULL, NULL, NULL);
 
 		if (view->priv->hover_path != NULL)
-			gdk_window_set_cursor (ctk_widget_get_window (widget),
+			cdk_window_set_cursor (ctk_widget_get_window (widget),
 					       view->priv->hand_cursor);
 	}
 
@@ -279,10 +279,10 @@ motion_notify_event (CtkWidget * widget,
 
 		if ((old_hover_path != NULL) != (view->priv->hover_path != NULL)) {
 			if (view->priv->hover_path != NULL)
-				gdk_window_set_cursor (ctk_widget_get_window (widget),
+				cdk_window_set_cursor (ctk_widget_get_window (widget),
 						       view->priv->hand_cursor);
 			else
-				gdk_window_set_cursor (ctk_widget_get_window (widget),
+				cdk_window_set_cursor (ctk_widget_get_window (widget),
 						       NULL);
 		}
 
@@ -308,7 +308,7 @@ set_click_policy_property (LapizFileBrowserView            *obj,
 
 	if (click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		if (obj->priv->hand_cursor == NULL)
-			obj->priv->hand_cursor = gdk_cursor_new_for_display (display, GDK_HAND2);
+			obj->priv->hand_cursor = cdk_cursor_new_for_display (display, GDK_HAND2);
 	} else if (click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE) {
 		if (obj->priv->hover_path != NULL) {
 			if (ctk_tree_model_get_iter (CTK_TREE_MODEL (obj->priv->model),
@@ -322,12 +322,12 @@ set_click_policy_property (LapizFileBrowserView            *obj,
 
 		if (ctk_widget_get_realized (CTK_WIDGET (obj))) {
 			win = ctk_widget_get_window (CTK_WIDGET (obj));
-			gdk_window_set_cursor (win, NULL);
+			cdk_window_set_cursor (win, NULL);
 
 			display = ctk_widget_get_display (CTK_WIDGET (obj));
 
 			if (display != NULL)
-				gdk_display_flush (display);
+				cdk_display_flush (display);
 		}
 
 		if (obj->priv->hand_cursor) {
@@ -985,7 +985,7 @@ lapiz_file_browser_view_init (LapizFileBrowserView * obj)
 						GDK_ACTION_COPY);
 
 	display = ctk_widget_get_display (CTK_WIDGET (obj));
-	obj->priv->busy_cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
+	obj->priv->busy_cursor = cdk_cursor_new_for_display (display, GDK_WATCH);
 }
 
 static gboolean

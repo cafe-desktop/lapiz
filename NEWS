@@ -190,19 +190,19 @@
 ### lapiz 1.21.1
 
   * Translations update
-  * lapiz-utils.c: avoid deprecated 'gdk_error_trap_push/pop'
+  * lapiz-utils.c: avoid deprecated 'cdk_error_trap_push/pop'
   * lapiz-notebook: avoid new file with double click in vertical scrollbar
   * lapiz-notebook: avoid new file with double click in forward arrow button
   * lapiz-notebook: Fix: unexpected behavior with dnd selected text
   * lapiz-view: Fix: unexpected behavior with dnd under line numbers
-  * lapiz-notebook: pass event to gdk_seat_grab
+  * lapiz-notebook: pass event to cdk_seat_grab
   * lapiz-window: use ctk_menu_popup_at_widget for CtkNotebook
   * lapiz-utils: remove unused 'lapiz_utils_menu_position_under_tree_view'
   * avoid deprecated 'ctk_menu_popup'
   * lapiz-print-preview: Fix weird behavior with mouse buttons
   * Fix: Lapiz crashes with mouse wheel over a tab
-  * lapiz-notebook.c: avoid deprecated 'gdk_pointer_ ...' functions
-  * lapiz-notebook.c: avoid deprecated 'gdk_window_at_pointer'
+  * lapiz-notebook.c: avoid deprecated 'cdk_pointer_ ...' functions
+  * lapiz-notebook.c: avoid deprecated 'cdk_window_at_pointer'
   * avoid deprecated 'ctk_dialog_get_action_area'
   * lapiz-view.c: avoid deprecated 'ctk_widget_override_font'
   * avoid deprecated 'ctk_font_button_set/get_font_name'
@@ -267,12 +267,12 @@
   * don't request to save documents with no changes
   * add gsettings key to hide/show(default) tabs with the side pane
   * Hide tabs if we are using the sidebar
-  * ctk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
-  * avoid deprecated gdk_screen_get_width/height
-  * avoid deprecated gdk_screen_make_display_name
+  * ctk 3.22: avoid deprecated cdk_screen_get_monitor... functions:
+  * avoid deprecated cdk_screen_get_width/height
+  * avoid deprecated cdk_screen_make_display_name
   * lapiz-help: don't use deprecated ctk_show_uri
   * filebrowser: don't use deprecated ctk_show_uri
-  * avoid deprecated gdk_display_get_screen and gdk_screen_get_number
+  * avoid deprecated cdk_display_get_screen and cdk_screen_get_number
   * enable the abbility to save the document if it was changed externally
   * disable the abbility to save the document if it has no changes
 
@@ -291,7 +291,7 @@
   * file-browser-view: silent some build warnings
   * lapiz-view: avoid CtkStock deprecations
   * lapiz-tab: replace some CtkStock icons
-  * lapiz-notebook: don't use deprecated gdk_cursor_new
+  * lapiz-notebook: don't use deprecated cdk_cursor_new
   * progress-message-area: fix one CtkStock deprecation
   * io-error-message-dialog: fix some CtkStock deprecation warnings
   * Restore Polish translation credits from GNOME

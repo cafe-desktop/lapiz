@@ -40,7 +40,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 #ifdef HAVE_INTROSPECTION
 #include <girepository.h>
@@ -223,11 +223,11 @@ display_open_if_needed (const gchar *name)
 	GSList *l;
 	GdkDisplay *display = NULL;
 
-	displays = gdk_display_manager_list_displays (gdk_display_manager_get ());
+	displays = cdk_display_manager_list_displays (cdk_display_manager_get ());
 
 	for (l = displays; l != NULL; l = l->next)
 	{
-		if (strcmp (gdk_display_get_name ((GdkDisplay *) l->data), name) == 0)
+		if (strcmp (cdk_display_get_name ((GdkDisplay *) l->data), name) == 0)
 		{
 			display = l->data;
 			break;
@@ -236,7 +236,7 @@ display_open_if_needed (const gchar *name)
 
 	g_slist_free (displays);
 
-	return display != NULL ? display : gdk_display_open (name);
+	return display != NULL ? display : cdk_display_open (name);
 }
 
 /* serverside */
@@ -279,7 +279,7 @@ on_message_received (const char *message,
 		goto out;
 	}
 
-	screen = gdk_display_get_default_screen (display);
+	screen = cdk_display_get_default_screen (display);
 
 	g_strfreev (params);
 
@@ -380,9 +380,9 @@ on_message_received (const char *message,
 		ctk_widget_realize (CTK_WIDGET (window));
 
 	if (startup_timestamp <= 0)
-		startup_timestamp = gdk_x11_get_server_time (ctk_widget_get_window (CTK_WIDGET (window)));
+		startup_timestamp = cdk_x11_get_server_time (ctk_widget_get_window (CTK_WIDGET (window)));
 
-	gdk_x11_window_set_user_time (ctk_widget_get_window (CTK_WIDGET (window)),
+	cdk_x11_window_set_user_time (ctk_widget_get_window (CTK_WIDGET (window)),
 				      startup_timestamp);
 
 	ctk_window_present (CTK_WINDOW (window));
@@ -418,11 +418,11 @@ send_bacon_message (void)
 
 	lapiz_debug (DEBUG_APP);
 
-	screen = gdk_screen_get_default ();
-	display = gdk_screen_get_display (screen);
+	screen = cdk_screen_get_default ();
+	display = cdk_screen_get_display (screen);
 
-	display_name = gdk_display_get_name (display);
-	screen_number = gdk_x11_screen_get_screen_number (screen);
+	display_name = cdk_display_get_name (display);
+	screen_number = cdk_x11_screen_get_screen_number (screen);
 
 	lapiz_debug_message (DEBUG_APP, "Display: %s", display_name);
 	lapiz_debug_message (DEBUG_APP, "Screen: %d", screen_number);
@@ -516,7 +516,7 @@ main (int argc, char *argv[])
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
-	gdk_set_allowed_backends ("x11");
+	cdk_set_allowed_backends ("x11");
 
 	startup_timestamp = get_startup_timestamp();
 
@@ -560,7 +560,7 @@ main (int argc, char *argv[])
 			/* we never popup a window... tell startup-notification
 			 * that we are done.
 			 */
-			gdk_notify_startup_complete ();
+			cdk_notify_startup_complete ();
 
 			bacon_message_connection_free (connection);
 

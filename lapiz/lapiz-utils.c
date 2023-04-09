@@ -53,7 +53,7 @@
 
 /* For the workspace/viewport stuff */
 #ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -117,7 +117,7 @@ widget_get_origin (CtkWidget *widget, gint *x, gint *y)
 	GdkWindow *window;
 
 	window = ctk_widget_get_window (widget);
-	gdk_window_get_origin (window, x, y);
+	cdk_window_get_origin (window, x, y);
 }
 
 void
@@ -860,15 +860,15 @@ lapiz_utils_get_current_workspace (GdkScreen *screen)
 
 	g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
-	root_win = gdk_screen_get_root_window (screen);
-	display = gdk_screen_get_display (screen);
+	root_win = cdk_screen_get_root_window (screen);
+	display = cdk_screen_get_display (screen);
 
-	gdk_x11_display_error_trap_push (display);
+	cdk_x11_display_error_trap_push (display);
 	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
-				     gdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
+				     cdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
 				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 				     &bytes_after, (gpointer) &current_desktop);
-	err = gdk_x11_display_error_trap_pop (display);
+	err = cdk_x11_display_error_trap_pop (display);
 
 	if (err != Success || result != Success)
 		return ret;
@@ -912,14 +912,14 @@ lapiz_utils_get_window_workspace (CtkWindow *ctkwindow)
 	g_return_val_if_fail (ctk_widget_get_realized (CTK_WIDGET (ctkwindow)), 0);
 
 	window = ctk_widget_get_window (CTK_WIDGET (ctkwindow));
-	display = gdk_window_get_display (window);
+	display = cdk_window_get_display (window);
 
-	gdk_x11_display_error_trap_push (display);
+	cdk_x11_display_error_trap_push (display);
 	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
-				     gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
+				     cdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
 				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 				     &bytes_after, (gpointer) &workspace);
-	err = gdk_x11_display_error_trap_pop (display);
+	err = cdk_x11_display_error_trap_pop (display);
 
 	if (err != Success || result != Success)
 		return ret;
@@ -967,15 +967,15 @@ lapiz_utils_get_current_viewport (GdkScreen    *screen,
 	*x = 0;
 	*y = 0;
 
-	root_win = gdk_screen_get_root_window (screen);
-	display = gdk_screen_get_display (screen);
+	root_win = cdk_screen_get_root_window (screen);
+	display = cdk_screen_get_display (screen);
 
-	gdk_x11_display_error_trap_push (display);
+	cdk_x11_display_error_trap_push (display);
 	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
-				     gdk_x11_get_xatom_by_name_for_display (display, "_NET_DESKTOP_VIEWPORT"),
+				     cdk_x11_get_xatom_by_name_for_display (display, "_NET_DESKTOP_VIEWPORT"),
 				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 				     &bytes_after, (void*) &coordinates);
-	err = gdk_x11_display_error_trap_pop (display);
+	err = cdk_x11_display_error_trap_pop (display);
 
 	if (err != Success || result != Success)
 		return;

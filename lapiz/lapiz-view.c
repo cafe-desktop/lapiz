@@ -38,7 +38,7 @@
 #include <stdlib.h>
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 #include <glib/gi18n.h>
 
@@ -1107,7 +1107,7 @@ static void
 send_focus_change (CtkWidget *widget,
 		   gboolean   in)
 {
-	GdkEvent *fevent = gdk_event_new (GDK_FOCUS_CHANGE);
+	GdkEvent *fevent = cdk_event_new (GDK_FOCUS_CHANGE);
 
 	g_object_ref (widget);
 
@@ -1120,7 +1120,7 @@ send_focus_change (CtkWidget *widget,
 	g_object_notify (G_OBJECT (widget), "has-focus");
 
 	g_object_unref (widget);
-	gdk_event_free (fevent);
+	cdk_event_free (fevent);
 }
 
 static void
@@ -1179,7 +1179,7 @@ update_search_window_position (LapizView *view)
 
 	ctk_widget_realize (view->priv->search_window);
 
-	gdk_window_get_origin (view_window, &view_x, &view_y);
+	cdk_window_get_origin (view_window, &view_x, &view_y);
 
 	x = MAX (12, view_x + 12);
 	y = MAX (12, view_y - 12);
@@ -2097,8 +2097,8 @@ lapiz_view_drag_motion (CtkWidget      *widget,
 	/* If this is a URL, deal with it here */
 	if (drag_get_uri_target (widget, context) != GDK_NONE)
 	{
-		gdk_drag_status (context,
-				 gdk_drag_context_get_suggested_action (context),
+		cdk_drag_status (context,
+				 cdk_drag_context_get_suggested_action (context),
 				 timestamp);
 		result = TRUE;
 	}
@@ -2293,7 +2293,7 @@ search_highlight_updated_cb (LapizDocument *doc,
 	updated_rect.width = visible_rect.width;
 
 	/* intersect both rectangles to see whether we need to queue a redraw */
-	if (gdk_rectangle_intersect (&updated_rect, &visible_rect, &redraw_rect))
+	if (cdk_rectangle_intersect (&updated_rect, &visible_rect, &redraw_rect))
 	{
 		GdkRectangle widget_rect;
 
