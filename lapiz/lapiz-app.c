@@ -510,7 +510,7 @@ lapiz_app_create_window_real (LapizApp    *app,
 
 		state = lapiz_prefs_manager_get_window_state ();
 
-		if ((state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
+		if ((state & CDK_WINDOW_STATE_MAXIMIZED) != 0)
 		{
 			lapiz_prefs_manager_get_default_window_size (&w, &h);
 			ctk_window_set_default_size (CTK_WINDOW (window), w, h);
@@ -523,7 +523,7 @@ lapiz_app_create_window_real (LapizApp    *app,
 			ctk_window_unmaximize (CTK_WINDOW (window));
 		}
 
-		if ((state & GDK_WINDOW_STATE_STICKY ) != 0)
+		if ((state & CDK_WINDOW_STATE_STICKY ) != 0)
 			ctk_window_stick (CTK_WINDOW (window));
 		else
 			ctk_window_unstick (CTK_WINDOW (window));

@@ -747,7 +747,7 @@ create_combo (LapizFileBrowserWidget * obj)
 
 	obj->priv->combo_model = ctk_tree_store_new (N_COLUMNS,
 						     G_TYPE_UINT,
-						     GDK_TYPE_PIXBUF,
+						     CDK_TYPE_PIXBUF,
 						     G_TYPE_STRING,
 						     G_TYPE_FILE,
 						     G_TYPE_UINT);
@@ -1139,7 +1139,7 @@ on_begin_loading (LapizFileBrowserStore  *model,
 		  CtkTreeIter            *iter,
 		  LapizFileBrowserWidget *obj)
 {
-	if (!GDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
+	if (!CDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
 		return;
 
 	cdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (obj)),
@@ -1151,7 +1151,7 @@ on_end_loading (LapizFileBrowserStore  *model,
 		CtkTreeIter            *iter,
 		LapizFileBrowserWidget *obj)
 {
-	if (!GDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
+	if (!CDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
 		return;
 
 	cdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (obj)), NULL);
@@ -1273,7 +1273,7 @@ lapiz_file_browser_widget_init (LapizFileBrowserWidget * obj)
 	                                CTK_ORIENTATION_VERTICAL);
 
 	display = ctk_widget_get_display (CTK_WIDGET (obj));
-	obj->priv->busy_cursor = cdk_cursor_new_for_display (display, GDK_WATCH);
+	obj->priv->busy_cursor = cdk_cursor_new_for_display (display, CDK_WATCH);
 }
 
 /* Private */
@@ -2097,7 +2097,7 @@ set_busy (LapizFileBrowserWidget *obj, gboolean busy)
 
 	window = ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview));
 
-	if (!GDK_IS_WINDOW (window))
+	if (!CDK_IS_WINDOW (window))
 		return;
 
 	if (busy)
@@ -2106,7 +2106,7 @@ set_busy (LapizFileBrowserWidget *obj, gboolean busy)
 		GdkCursor *cursor;
 
 		display = ctk_widget_get_display (CTK_WIDGET (obj));
-		cursor = cdk_cursor_new_for_display (display, GDK_WATCH);
+		cursor = cdk_cursor_new_for_display (display, CDK_WATCH);
 		cdk_window_set_cursor (window, cursor);
 		g_object_unref (obj->priv->busy_cursor);
 	}
@@ -2468,7 +2468,7 @@ directory_open (LapizFileBrowserWidget *obj,
 	if (FILE_IS_DIR (flags)) {
 		result = TRUE;
 
-		if (!ctk_show_uri_on_window (NULL, uri, GDK_CURRENT_TIME, &error)) {
+		if (!ctk_show_uri_on_window (NULL, uri, CDK_CURRENT_TIME, &error)) {
 			g_signal_emit (obj, signals[ERROR], 0,
 				       LAPIZ_FILE_BROWSER_ERROR_OPEN_DIRECTORY,
 				       error->message);
@@ -2746,7 +2746,7 @@ on_treeview_button_press_event (LapizFileBrowserView * treeview,
 				GdkEventButton * event,
 				LapizFileBrowserWidget * obj)
 {
-	if (event->type == GDK_BUTTON_PRESS && event->button == 3) {
+	if (event->type == CDK_BUTTON_PRESS && event->button == 3) {
 		return popup_menu (obj, event,
 				   ctk_tree_view_get_model (CTK_TREE_VIEW (treeview)));
 	}
@@ -2761,27 +2761,27 @@ do_change_directory (LapizFileBrowserWidget * obj,
 	CtkAction * action = NULL;
 
 	if ((event->state &
-	    (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK & ~GDK_MOD1_MASK)) ==
-	     event->state && event->keyval == GDK_KEY_BackSpace)
+	    (~CDK_CONTROL_MASK & ~CDK_SHIFT_MASK & ~CDK_MOD1_MASK)) ==
+	     event->state && event->keyval == CDK_KEY_BackSpace)
 		action = ctk_action_group_get_action (obj->priv->
 		                                      action_group_sensitive,
 		                                      "DirectoryPrevious");
-	else if (!((event->state & GDK_MOD1_MASK) &&
-	    (event->state & (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK)) == event->state))
+	else if (!((event->state & CDK_MOD1_MASK) &&
+	    (event->state & (~CDK_CONTROL_MASK & ~CDK_SHIFT_MASK)) == event->state))
 		return FALSE;
 
 	switch (event->keyval) {
-		case GDK_KEY_Left:
+		case CDK_KEY_Left:
 			action = ctk_action_group_get_action (obj->priv->
 			                                      action_group_sensitive,
 			                                      "DirectoryPrevious");
 		break;
-		case GDK_KEY_Right:
+		case CDK_KEY_Right:
 			action = ctk_action_group_get_action (obj->priv->
 			                                      action_group_sensitive,
 			                                      "DirectoryNext");
 		break;
-		case GDK_KEY_Up:
+		case CDK_KEY_Up:
 			action = ctk_action_group_get_action (obj->priv->
 			                                      action_group,
 			                                      "DirectoryUp");
@@ -2814,10 +2814,10 @@ on_treeview_key_press_event (LapizFileBrowserView * treeview,
 
 	modifiers = ctk_accelerator_get_default_mod_mask ();
 
-	if (event->keyval == GDK_KEY_Delete
-	    || event->keyval == GDK_KEY_KP_Delete) {
+	if (event->keyval == CDK_KEY_Delete
+	    || event->keyval == CDK_KEY_KP_Delete) {
 
-		if ((event->state & modifiers) == GDK_SHIFT_MASK) {
+		if ((event->state & modifiers) == CDK_SHIFT_MASK) {
 			if (obj->priv->enable_delete) {
 				delete_selected_files (obj, FALSE);
 				return TRUE;
@@ -2828,7 +2828,7 @@ on_treeview_key_press_event (LapizFileBrowserView * treeview,
 		}
 	}
 
-	if ((event->keyval == GDK_KEY_F2)
+	if ((event->keyval == CDK_KEY_F2)
 	    && (event->state & modifiers) == 0) {
 		rename_selected_file (obj);
 

@@ -270,7 +270,7 @@ find_tab_num_at_pos (LapizNotebook *notebook,
 			continue;
 		}
 
-		cdk_window_get_origin (GDK_WINDOW (ctk_widget_get_window (tab)),
+		cdk_window_get_origin (CDK_WINDOW (ctk_widget_get_window (tab)),
 				       &x_root, &y_root);
 
 		ctk_widget_get_allocation(tab, &allocation);
@@ -409,7 +409,7 @@ drag_start (LapizNotebook *notebook,
 	/* get a new cursor, if necessary */
 	/* FIXME multi-head */
 	if (cursor == NULL)
-		cursor = cdk_cursor_new_for_display (display, GDK_FLEUR);
+		cursor = cdk_cursor_new_for_display (display, CDK_FLEUR);
 
 	/* grab the pointer */
 	ctk_grab_add (CTK_WIDGET (notebook));
@@ -419,7 +419,7 @@ drag_start (LapizNotebook *notebook,
 	{
 		cdk_seat_grab (seat,
 			       ctk_widget_get_window (CTK_WIDGET (notebook)),
-			       GDK_SEAT_CAPABILITY_POINTER,
+			       CDK_SEAT_CAPABILITY_POINTER,
 			       FALSE,
 			       cursor,
 			       event,
@@ -643,7 +643,7 @@ button_press_cb (LapizNotebook  *notebook,
 					   event->y_root);
 
 	if ((event->button == 1) &&
-	    (event->type == GDK_BUTTON_PRESS) &&
+	    (event->type == CDK_BUTTON_PRESS) &&
 	    (tab_clicked >= 0))
 	{
 		notebook->priv->x_start = event->x_root;
@@ -655,7 +655,7 @@ button_press_cb (LapizNotebook  *notebook,
 					  G_CALLBACK (motion_notify_cb),
 					  NULL);
 	}
-	else if ((event->type == GDK_BUTTON_PRESS) &&
+	else if ((event->type == CDK_BUTTON_PRESS) &&
 		 (event->button == 3 || event->button == 2))
 	{
 		if (tab_clicked == -1)
@@ -682,7 +682,7 @@ button_press_cb (LapizNotebook  *notebook,
 
 	if (event->button == 1)
 	{
-		if (event->type == GDK_BUTTON_PRESS)
+		if (event->type == CDK_BUTTON_PRESS)
 		{
 			tab1click = ctk_notebook_get_current_page (CTK_NOTEBOOK (notebook));
 
@@ -691,7 +691,7 @@ button_press_cb (LapizNotebook  *notebook,
 			else
 				newfile = FALSE;
 		}
-		else if (event->type == GDK_2BUTTON_PRESS)
+		else if (event->type == CDK_2BUTTON_PRESS)
 		{
 			if ((tab1click != ctk_notebook_get_current_page (CTK_NOTEBOOK (notebook))) ||
 			    (tab_clicked >= 0) || ((tab_clicked == -1) && (!newfile)) || (!leftdown))
@@ -837,7 +837,7 @@ lapiz_notebook_init (LapizNotebook *notebook)
 			  NULL);
 
 	ctk_widget_add_events (CTK_WIDGET (notebook),
-			       GDK_BUTTON1_MOTION_MASK);
+			       CDK_BUTTON1_MOTION_MASK);
 
 	g_signal_connect_after (G_OBJECT (notebook),
 				"switch_page",

@@ -341,7 +341,7 @@ prev_button_clicked (CtkWidget         *button,
 
 	event = ctk_get_current_event ();
 
-	if (event->button.state & GDK_SHIFT_MASK)
+	if (event->button.state & CDK_SHIFT_MASK)
 		page = 0;
 	else
 		page = preview->priv->cur_page - preview->priv->rows * preview->priv->cols;
@@ -360,7 +360,7 @@ next_button_clicked (CtkWidget         *button,
 
 	event = ctk_get_current_event ();
 
-	if (event->button.state & GDK_SHIFT_MASK)
+	if (event->button.state & CDK_SHIFT_MASK)
 		page = preview->priv->n_pages - 1;
 	else
 		page = preview->priv->cur_page + preview->priv->rows * preview->priv->cols;
@@ -831,49 +831,49 @@ preview_layout_key_press (CtkWidget         *widget,
 		break;
 	case '+':
 	case '=':
-	case GDK_KEY_KP_Add:
+	case CDK_KEY_KP_Add:
 		zoom_in (preview);
 		break;
 	case '-':
 	case '_':
-	case GDK_KEY_KP_Subtract:
+	case CDK_KEY_KP_Subtract:
 		zoom_out (preview);
 		break;
-	case GDK_KEY_KP_Right:
-	case GDK_KEY_Right:
-		if (event->state & GDK_SHIFT_MASK)
+	case CDK_KEY_KP_Right:
+	case CDK_KEY_Right:
+		if (event->state & CDK_SHIFT_MASK)
 			x = hupper - hpage;
 		else
 			x = MIN (hupper - hpage, x + hstep);
 		domove = TRUE;
 		break;
-	case GDK_KEY_KP_Left:
-	case GDK_KEY_Left:
-		if (event->state & GDK_SHIFT_MASK)
+	case CDK_KEY_KP_Left:
+	case CDK_KEY_Left:
+		if (event->state & CDK_SHIFT_MASK)
 			x = hlower;
 		else
 			x = MAX (hlower, x - hstep);
 		domove = TRUE;
 		break;
-	case GDK_KEY_KP_Up:
-	case GDK_KEY_Up:
-		if (event->state & GDK_SHIFT_MASK)
+	case CDK_KEY_KP_Up:
+	case CDK_KEY_Up:
+		if (event->state & CDK_SHIFT_MASK)
 			goto page_up;
 		y = MAX (vlower, y - vstep);
 		domove = TRUE;
 		break;
-	case GDK_KEY_KP_Down:
-	case GDK_KEY_Down:
-		if (event->state & GDK_SHIFT_MASK)
+	case CDK_KEY_KP_Down:
+	case CDK_KEY_Down:
+		if (event->state & CDK_SHIFT_MASK)
 			goto page_down;
 		y = MIN (vupper - vpage, y + vstep);
 		domove = TRUE;
 		break;
-	case GDK_KEY_KP_Page_Up:
-	case GDK_KEY_Page_Up:
-	case GDK_KEY_Delete:
-	case GDK_KEY_KP_Delete:
-	case GDK_KEY_BackSpace:
+	case CDK_KEY_KP_Page_Up:
+	case CDK_KEY_Page_Up:
+	case CDK_KEY_Delete:
+	case CDK_KEY_KP_Delete:
+	case CDK_KEY_BackSpace:
 	page_up:
 		if (y <= vlower)
 		{
@@ -889,8 +889,8 @@ preview_layout_key_press (CtkWidget         *widget,
 		}
 		domove = TRUE;
 		break;
-	case GDK_KEY_KP_Page_Down:
-	case GDK_KEY_Page_Down:
+	case CDK_KEY_KP_Page_Down:
+	case CDK_KEY_Page_Down:
 	case ' ':
 	page_down:
 		if (y >= (vupper - vpage))
@@ -907,29 +907,29 @@ preview_layout_key_press (CtkWidget         *widget,
 		}
 		domove = TRUE;
 		break;
-	case GDK_KEY_KP_Home:
-	case GDK_KEY_Home:
+	case CDK_KEY_KP_Home:
+	case CDK_KEY_Home:
 		goto_page (preview, 0);
 		y = 0;
 		domove = TRUE;
 		break;
-	case GDK_KEY_KP_End:
-	case GDK_KEY_End:
+	case CDK_KEY_KP_End:
+	case CDK_KEY_End:
 		goto_page (preview, preview->priv->n_pages - 1);
 		y = 0;
 		domove = TRUE;
 		break;
-	case GDK_KEY_Escape:
+	case CDK_KEY_Escape:
 		ctk_widget_destroy (CTK_WIDGET (preview));
 		break;
 	case 'c':
-		if (event->state & GDK_MOD1_MASK)
+		if (event->state & CDK_MOD1_MASK)
 		{
 			ctk_widget_destroy (CTK_WIDGET (preview));
 		}
 		break;
 	case 'p':
-		if (event->state & GDK_MOD1_MASK)
+		if (event->state & CDK_MOD1_MASK)
 		{
 			ctk_widget_grab_focus (preview->priv->page_entry);
 		}
@@ -964,9 +964,9 @@ create_preview_layout (LapizPrintPreview *preview)
 	atk_object_set_description (atko, _("The preview of a page in the document to be printed"));
 
 	ctk_widget_add_events (priv->layout,
-			       GDK_POINTER_MOTION_MASK |
-			       GDK_BUTTON_PRESS_MASK |
-			       GDK_KEY_PRESS_MASK);
+			       CDK_POINTER_MOTION_MASK |
+			       CDK_BUTTON_PRESS_MASK |
+			       CDK_KEY_PRESS_MASK);
 
 	ctk_widget_set_can_focus (priv->layout, TRUE);
 

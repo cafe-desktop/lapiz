@@ -44,7 +44,7 @@ process_icon_pixbuf (GdkPixbuf * pixbuf,
 		scale = cdk_pixbuf_scale_simple (pixbuf,
 		                                 size,
 		                                 size,
-		                                 GDK_INTERP_BILINEAR);
+		                                 CDK_INTERP_BILINEAR);
 		g_object_unref (pixbuf);
 		pixbuf = scale;
 	}

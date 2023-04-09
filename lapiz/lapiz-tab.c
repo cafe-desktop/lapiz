@@ -328,7 +328,7 @@ set_cursor_according_to_state (CtkTextView   *view,
 	{
 		cursor = cdk_cursor_new_for_display (
 				ctk_widget_get_display (CTK_WIDGET (view)),
-				GDK_WATCH);
+				CDK_WATCH);
 
 		if (text_window != NULL)
 			cdk_window_set_cursor (text_window, cursor);
@@ -341,7 +341,7 @@ set_cursor_according_to_state (CtkTextView   *view,
 	{
 		cursor = cdk_cursor_new_for_display (
 				ctk_widget_get_display (CTK_WIDGET (view)),
-				GDK_XTERM);
+				CDK_XTERM);
 
 		if (text_window != NULL)
 			cdk_window_set_cursor (text_window, cursor);
@@ -1791,7 +1791,7 @@ resize_icon (GdkPixbuf *pixbuf,
 		scaled_pixbuf = cdk_pixbuf_scale_simple	(pixbuf,
 							 width,
 							 height,
-							 GDK_INTERP_BILINEAR);
+							 CDK_INTERP_BILINEAR);
 		g_object_unref (pixbuf);
 		pixbuf = scaled_pixbuf;
 	}

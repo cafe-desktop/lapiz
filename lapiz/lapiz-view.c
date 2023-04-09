@@ -186,28 +186,28 @@ static gboolean
 lapiz_view_scroll_event (CtkWidget      *widget,
                          GdkEventScroll *event)
 {
-	if (event->direction == GDK_SCROLL_UP)
+	if (event->direction == CDK_SCROLL_UP)
 	{
 		event->delta_x = 0;
 		event->delta_y = -1;
 	}
-	else if (event->direction == GDK_SCROLL_DOWN)
+	else if (event->direction == CDK_SCROLL_DOWN)
 	{
 		event->delta_x = 0;
 		event->delta_y = 1;
 	}
-	else if (event->direction == GDK_SCROLL_LEFT)
+	else if (event->direction == CDK_SCROLL_LEFT)
 	{
 		event->delta_x = -1;
 		event->delta_y = 0;
 	}
-	else if (event->direction == GDK_SCROLL_RIGHT)
+	else if (event->direction == CDK_SCROLL_RIGHT)
 	{
 		event->delta_x = 1;
 		event->delta_y = 0;
 	}
 
-	event->direction = GDK_SCROLL_SMOOTH;
+	event->direction = CDK_SCROLL_SMOOTH;
 
 	return FALSE;
 }
@@ -302,23 +302,23 @@ lapiz_view_class_init (LapizViewClass *klass)
 	binding_set = ctk_binding_set_by_class (klass);
 
 	ctk_binding_entry_add_signal (binding_set,
-				      GDK_KEY_k,
-				      GDK_CONTROL_MASK,
+				      CDK_KEY_k,
+				      CDK_CONTROL_MASK,
 				      "start_interactive_search", 0);
 
 	ctk_binding_entry_add_signal (binding_set,
-				      GDK_KEY_i,
-				      GDK_CONTROL_MASK,
+				      CDK_KEY_i,
+				      CDK_CONTROL_MASK,
 				      "start_interactive_goto_line", 0);
 
 	ctk_binding_entry_add_signal (binding_set,
-				      GDK_KEY_k,
-				      GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+				      CDK_KEY_k,
+				      CDK_CONTROL_MASK | CDK_SHIFT_MASK,
 				      "reset_searched_text", 0);
 
 	ctk_binding_entry_add_signal (binding_set,
-				      GDK_KEY_d,
-				      GDK_CONTROL_MASK,
+				      CDK_KEY_d,
+				      CDK_CONTROL_MASK,
 				      "delete_from_cursor", 2,
 				      G_TYPE_ENUM, CTK_DELETE_PARAGRAPHS,
 				      G_TYPE_INT, 1);
@@ -609,7 +609,7 @@ lapiz_view_cut_clipboard (LapizView *view)
 	g_return_if_fail (buffer != NULL);
 
 	clipboard = ctk_widget_get_clipboard (CTK_WIDGET (view),
-					      GDK_SELECTION_CLIPBOARD);
+					      CDK_SELECTION_CLIPBOARD);
 
 	/* FIXME: what is default editability of a buffer? */
   	ctk_text_buffer_cut_clipboard (buffer,
@@ -639,7 +639,7 @@ lapiz_view_copy_clipboard (LapizView *view)
 	g_return_if_fail (buffer != NULL);
 
 	clipboard = ctk_widget_get_clipboard (CTK_WIDGET (view),
-					      GDK_SELECTION_CLIPBOARD);
+					      CDK_SELECTION_CLIPBOARD);
 
   	ctk_text_buffer_copy_clipboard (buffer, clipboard);
 
@@ -660,7 +660,7 @@ lapiz_view_paste_clipboard (LapizView *view)
 	g_return_if_fail (buffer != NULL);
 
 	clipboard = ctk_widget_get_clipboard (CTK_WIDGET (view),
-					      GDK_SELECTION_CLIPBOARD);
+					      CDK_SELECTION_CLIPBOARD);
 
 	/* FIXME: what is default editability of a buffer? */
   	ctk_text_buffer_paste_clipboard (buffer,
@@ -1107,11 +1107,11 @@ static void
 send_focus_change (CtkWidget *widget,
 		   gboolean   in)
 {
-	GdkEvent *fevent = cdk_event_new (GDK_FOCUS_CHANGE);
+	GdkEvent *fevent = cdk_event_new (CDK_FOCUS_CHANGE);
 
 	g_object_ref (widget);
 
-	fevent->focus_change.type = GDK_FOCUS_CHANGE;
+	fevent->focus_change.type = CDK_FOCUS_CHANGE;
 	fevent->focus_change.window = g_object_ref (ctk_widget_get_window (widget));
 	fevent->focus_change.in = in;
 
@@ -1250,12 +1250,12 @@ search_window_scroll_event (CtkWidget      *widget,
 		return retval;
 
 	/* SEARCH mode */
-	if (event->direction == GDK_SCROLL_UP)
+	if (event->direction == CDK_SCROLL_UP)
 	{
 		search_again (view, TRUE);
 		retval = TRUE;
 	}
-	else if (event->direction == GDK_SCROLL_DOWN)
+	else if (event->direction == CDK_SCROLL_DOWN)
 	{
       		search_again (view, FALSE);
       		retval = TRUE;
@@ -1275,14 +1275,14 @@ search_window_key_press_event (CtkWidget   *widget,
 	modifiers = ctk_accelerator_get_default_mod_mask ();
 
 	/* Close window */
-	if (event->keyval == GDK_KEY_Tab)
+	if (event->keyval == CDK_KEY_Tab)
 	{
 		hide_search_window (view, FALSE);
 		retval = TRUE;
 	}
 
 	/* Close window and cancel the search */
-	if (event->keyval == GDK_KEY_Escape)
+	if (event->keyval == CDK_KEY_Escape)
 	{
 		if (view->priv->search_mode == SEARCH)
 		{
@@ -1306,28 +1306,28 @@ search_window_key_press_event (CtkWidget   *widget,
 	/* SEARCH mode */
 
 	/* select previous matching iter */
-	if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up)
+	if (event->keyval == CDK_KEY_Up || event->keyval == CDK_KEY_KP_Up)
 	{
 		search_again (view, TRUE);
 		retval = TRUE;
 	}
 
-	if (((event->state & modifiers) == (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) &&
-	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
+	if (((event->state & modifiers) == (CDK_CONTROL_MASK | CDK_SHIFT_MASK)) &&
+	    (event->keyval == CDK_KEY_g || event->keyval == CDK_KEY_G))
 	{
 		search_again (view, TRUE);
 		retval = TRUE;
 	}
 
 	/* select next matching iter */
-	if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down)
+	if (event->keyval == CDK_KEY_Down || event->keyval == CDK_KEY_KP_Down)
 	{
 		search_again (view, FALSE);
 		retval = TRUE;
 	}
 
-	if (((event->state & modifiers) == GDK_CONTROL_MASK) &&
-	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
+	if (((event->state & modifiers) == CDK_CONTROL_MASK) &&
+	    (event->keyval == CDK_KEY_g || event->keyval == CDK_KEY_G))
 	{
 		search_again (view, FALSE);
 		retval = TRUE;
@@ -2095,7 +2095,7 @@ lapiz_view_drag_motion (CtkWidget      *widget,
 	result = CTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_motion (widget, context, x, y, timestamp);
 
 	/* If this is a URL, deal with it here */
-	if (drag_get_uri_target (widget, context) != GDK_NONE)
+	if (drag_get_uri_target (widget, context) != CDK_NONE)
 	{
 		cdk_drag_status (context,
 				 cdk_drag_context_get_suggested_action (context),
@@ -2149,7 +2149,7 @@ lapiz_view_drag_drop (CtkWidget      *widget,
 	/* If this is a URL, just get the drag data */
 	target = drag_get_uri_target (widget, context);
 
-	if (target != GDK_NONE)
+	if (target != CDK_NONE)
 	{
 		ctk_drag_get_data (widget, context, target, timestamp);
 		result = TRUE;
@@ -2210,7 +2210,7 @@ lapiz_view_button_press_event (CtkWidget *widget, GdkEventButton *event)
 {
 	static gchar  *primtxt = "";
 
-	gchar *txt_clip = ctk_clipboard_wait_for_text (ctk_clipboard_get (GDK_SELECTION_PRIMARY));
+	gchar *txt_clip = ctk_clipboard_wait_for_text (ctk_clipboard_get (CDK_SELECTION_PRIMARY));
 
 	if (txt_clip)
 	{
@@ -2218,9 +2218,9 @@ lapiz_view_button_press_event (CtkWidget *widget, GdkEventButton *event)
 		g_free (txt_clip);
 	}
 	else
-		ctk_clipboard_set_text (ctk_clipboard_get (GDK_SELECTION_PRIMARY), primtxt, strlen (primtxt));
+		ctk_clipboard_set_text (ctk_clipboard_get (CDK_SELECTION_PRIMARY), primtxt, strlen (primtxt));
 
-	if ((event->type == GDK_BUTTON_PRESS) &&
+	if ((event->type == CDK_BUTTON_PRESS) &&
 	    (event->window == ctk_text_view_get_window (CTK_TEXT_VIEW (widget),
 						        CTK_TEXT_WINDOW_LEFT)))
 	{
@@ -2241,7 +2241,7 @@ lapiz_view_button_press_event (CtkWidget *widget, GdkEventButton *event)
 			middle_or_right_down = TRUE;
 	}
 
-	if ((event->type == GDK_2BUTTON_PRESS) && (event->button == 1) &&
+	if ((event->type == CDK_2BUTTON_PRESS) && (event->button == 1) &&
 	    (event->window == ctk_text_view_get_window (CTK_TEXT_VIEW (widget), CTK_TEXT_WINDOW_TEXT)))
 		return TRUE;
 
