@@ -83,14 +83,14 @@ expand_content_files=
 # CFLAGS and LDFLAGS for compiling ctkdoc-scangobj with your library.
 # Only needed if you are using ctkdoc-scangobj to dynamically query widget
 # signals and properties.
-CTKDOC_CFLAGS=	\
+GTKDOC_CFLAGS=	\
 	-I$(top_srcdir)/lapiz	\
 	-I$(top_builddir)/lapiz \
 	-I$(top_srcdir)		\
 	-I$(top_builddir)	\
 	$(LAPIZ_CFLAGS)
 
-CTKDOC_LIBS=	\
+GTKDOC_LIBS=	\
 	$(top_builddir)/lapiz/liblapiz.la	\
 	$(LAPIZ_LIBS)
 
