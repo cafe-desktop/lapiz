@@ -40,7 +40,7 @@ AC_PATH_PROG([GLA11Y], [gla11y], [true])
 LT_PREREQ([2.2.6])
 LT_INIT(disable-static)
 
-CTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
+GTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
 
 AC_CHECK_LIB(m, floor)
 
