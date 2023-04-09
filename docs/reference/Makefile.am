@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-# see /ctk-doc/examples/Makefile.am
+# see /gtk-doc/examples/Makefile.am
 
 # We require automake 1.6 at least.
 AUTOMAKE_OPTIONS = 1.6
@@ -12,7 +12,7 @@ DOC_MODULE=lapiz
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 
 # The directory containing the source code. Relative to $(srcdir).
-# ctk-doc will search all .c & .h files beneath here for inline comments
+# gtk-doc will search all .c & .h files beneath here for inline comments
 # documenting the functions and macros.
 DOC_SOURCE_DIR=../../lapiz
 
@@ -75,7 +75,7 @@ HTML_IMAGES=
 # e.g. content_files=running.sgml building.sgml changes-2.0.sgml
 content_files=
 
-# SGML files where ctk-doc abbrevations (#CtkWidget) are expanded
+# SGML files where gtk-doc abbrevations (#CtkWidget) are expanded
 # These files must be listed here *and* in content_files
 # e.g. expand_content_files=running.sgml
 expand_content_files=
@@ -94,8 +94,8 @@ CTKDOC_LIBS=	\
 	$(top_builddir)/lapiz/liblapiz.la	\
 	$(LAPIZ_LIBS)
 
-# This includes the standard ctk-doc make rules, copied by ctkdocize.
-include $(top_srcdir)/ctk-doc.make
+# This includes the standard gtk-doc make rules, copied by ctkdocize.
+include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
 # e.g. EXTRA_DIST += version.xml.in
