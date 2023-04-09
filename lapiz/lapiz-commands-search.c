@@ -525,7 +525,7 @@ search_dialog_response_cb (LapizSearchDialog *dialog,
 
 static gboolean
 search_dialog_delete_event_cb (CtkWidget   *widget,
-			       GdkEventAny *event,
+			       CdkEventAny *event,
 			       gpointer     user_data)
 {
 	lapiz_debug (DEBUG_COMMANDS);

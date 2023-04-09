@@ -21,7 +21,7 @@ import os
 import sys
 import fnmatch
 import xml.sax.saxutils
-from gi.repository import GObject, Gio, GLib, Gdk, Ctk, Pango, Lapiz
+from gi.repository import GObject, Gio, GLib, Cdk, Ctk, Pango, Lapiz
 from .virtualdirs import VirtualDirectory
 
 class Popup(Ctk.Dialog):
@@ -47,11 +47,11 @@ class Popup(Ctk.Dialog):
         self._cursor = None
         self._shift_start = None
 
-        self._busy_cursor = Gdk.Cursor(Gdk.CursorType.WATCH)
+        self._busy_cursor = Cdk.Cursor(Cdk.CursorType.WATCH)
 
         accel_group = Ctk.AccelGroup()
-        accel_group.connect(Gdk.keyval_from_name('l'),
-                            Gdk.ModifierType.CONTROL_MASK,
+        accel_group.connect(Cdk.keyval_from_name('l'),
+                            Cdk.ModifierType.CONTROL_MASK,
                             0,
                             self.on_focus_entry)
 
@@ -324,7 +324,7 @@ class Popup(Ctk.Dialog):
         else:
             self.get_window().set_cursor(None)
 
-        Gdk.flush()
+        Cdk.flush()
 
     def _remove_cursor(self):
         if self._cursor:
@@ -519,18 +519,18 @@ class Popup(Ctk.Dialog):
             "Page_Up": -5
         }
 
-        keyname = Gdk.keyval_name(event.keyval)
+        keyname = Cdk.keyval_name(event.keyval)
 
         if keyname == "Escape":
             self.destroy()
             return True
         elif keyname in move_mapping:
             return self._move_selection(move_mapping[keyname],
-                                   event.state & Gdk.ModifierType.CONTROL_MASK,
-                                   event.state & Gdk.ModifierType.SHIFT_MASK)
+                                   event.state & Cdk.ModifierType.CONTROL_MASK,
+                                   event.state & Cdk.ModifierType.SHIFT_MASK)
         elif keyname in ["Return", "KP_Enter", "Tab", "ISO_Left_Tab"]:
             return self._activate()
-        elif keyname == "space" and event.state & Gdk.ModifierType.CONTROL_MASK:
+        elif keyname == "space" and event.state & Cdk.ModifierType.CONTROL_MASK:
             self.toggle_cursor()
 
         return False

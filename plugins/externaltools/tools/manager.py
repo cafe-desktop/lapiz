@@ -24,7 +24,7 @@ from .library import *
 from .functions import *
 import hashlib
 from xml.sax import saxutils
-from gi.repository import GObject, Gio, Gdk, Ctk, CtkSource, Lapiz
+from gi.repository import GObject, Gio, Cdk, Ctk, CtkSource, Lapiz
 
 class LanguagesPopup(Ctk.Popover):
     __gtype_name__ = "LanguagesPopup"
@@ -672,7 +672,7 @@ class Manager(GObject.Object):
 
     def on_accelerator_key_press(self, entry, event):
         mask = event.state & Ctk.accelerator_get_default_mod_mask()
-        keyname = Gdk.keyval_name(event.keyval)
+        keyname = Cdk.keyval_name(event.keyval)
 
         if keyname == 'Escape':
             entry.set_text(default(self.current_node.shortcut, ''))
@@ -692,7 +692,7 @@ class Manager(GObject.Object):
 
             # Capture all `normal characters`
             return True
-        elif Gdk.keyval_to_unicode(event.keyval):
+        elif Cdk.keyval_to_unicode(event.keyval):
             if mask:
                 # New accelerator
                 if self.set_accelerator(event.keyval, mask):

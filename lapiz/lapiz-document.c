@@ -2328,9 +2328,9 @@ _lapiz_document_get_seconds_since_last_save_or_load (LapizDocument *doc)
 static void
 get_search_match_colors (LapizDocument *doc,
 			 gboolean      *foreground_set,
-			 GdkRGBA       *foreground,
+			 CdkRGBA       *foreground,
 			 gboolean      *background_set,
-			 GdkRGBA       *background)
+			 CdkRGBA       *background)
 {
 	CtkSourceStyleScheme *style_scheme;
 	CtkSourceStyle *style;
@@ -2393,8 +2393,8 @@ sync_found_tag (LapizDocument *doc,
 		GParamSpec    *pspec,
 		gpointer       data)
 {
-	GdkRGBA fg;
-	GdkRGBA bg;
+	CdkRGBA fg;
+	CdkRGBA bg;
 	gboolean fg_set;
 	gboolean bg_set;
 

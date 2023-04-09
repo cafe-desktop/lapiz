@@ -24,7 +24,7 @@
   * add translator hints
   * migrate from intltool to gettext
   * sync with fixed uk translations uk from transifex
-  * window: Do not override GdkWindowState
+  * window: Do not override CdkWindowState
   * lapiz-document: avoid garbarge value in 'file_with_bom' function
   * preferences: Change Draw to Show
   * document-loader: remove unused variables

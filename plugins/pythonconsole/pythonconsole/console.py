@@ -28,7 +28,7 @@ import string
 import sys
 import re
 import traceback
-from gi.repository import GObject, Gdk, Ctk, Pango
+from gi.repository import GObject, Cdk, Ctk, Pango
 
 from .config import PythonConsoleConfig
 
@@ -119,13 +119,13 @@ class PythonConsole(Ctk.ScrolledWindow):
     def __key_press_event_cb(self, view, event):
         modifier_mask = Ctk.accelerator_get_default_mod_mask()
         event_state = event.state & modifier_mask
-        keyname = Gdk.keyval_name(event.keyval)
+        keyname = Cdk.keyval_name(event.keyval)
 
-        if keyname == "d" and event_state == Gdk.ModifierType.CONTROL_MASK:
+        if keyname == "d" and event_state == Cdk.ModifierType.CONTROL_MASK:
             self.destroy()
 
         elif keyname == "Return" and \
-             event_state == Gdk.ModifierType.CONTROL_MASK:
+             event_state == Cdk.ModifierType.CONTROL_MASK:
             # Get the command
             buffer = view.get_buffer()
             inp_mark = buffer.get_mark("input")
@@ -224,7 +224,7 @@ class PythonConsole(Ctk.ScrolledWindow):
         # since it is useful when editing python
 
         elif (keyname == "KP_Home" or keyname == "Home") and \
-             event_state == event_state & (Gdk.ModifierType.SHIFT_MASK|Gdk.ModifierType.CONTROL_MASK):
+             event_state == event_state & (Cdk.ModifierType.SHIFT_MASK|Cdk.ModifierType.CONTROL_MASK):
             # Go to the begin of the command instead of the begin of the line
             buffer = view.get_buffer()
             iter = buffer.get_iter_at_mark(buffer.get_mark("input"))
@@ -236,14 +236,14 @@ class PythonConsole(Ctk.ScrolledWindow):
             if iter.equal(ins):
                 iter = buffer.get_iter_at_mark(buffer.get_mark("input"))
 
-            if event_state & Gdk.ModifierType.SHIFT_MASK:
+            if event_state & Cdk.ModifierType.SHIFT_MASK:
                 buffer.move_mark_by_name("insert", iter)
             else:
                 buffer.place_cursor(iter)
             return True
 
         elif (keyname == "KP_End" or keyname == "End") and \
-             event_state == event_state & (Gdk.ModifierType.SHIFT_MASK|Gdk.ModifierType.CONTROL_MASK):
+             event_state == event_state & (Cdk.ModifierType.SHIFT_MASK|Cdk.ModifierType.CONTROL_MASK):
 
             buffer = view.get_buffer()
             iter = buffer.get_end_iter()
@@ -259,7 +259,7 @@ class PythonConsole(Ctk.ScrolledWindow):
             if iter.equal(ins):
                 iter = buffer.get_end_iter()
 
-            if event_state & Gdk.ModifierType.SHIFT_MASK:
+            if event_state & Cdk.ModifierType.SHIFT_MASK:
                 buffer.move_mark_by_name("insert", iter)
             else:
                 buffer.place_cursor(iter)

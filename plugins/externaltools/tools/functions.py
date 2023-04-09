@@ -17,7 +17,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-from gi.repository import Gio, Gdk, Ctk, CtkSource, Lapiz
+from gi.repository import Gio, Cdk, Ctk, CtkSource, Lapiz
 from .outputpanel import OutputPanel
 from .capture import *
 
@@ -254,7 +254,7 @@ def capture_stderr_line_panel(capture, line, panel):
     panel.write(line, panel.error_tag)
 
 def capture_begin_execute_panel(capture, panel, view, label):
-    view.get_window(Ctk.TextWindowType.TEXT).set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
+    view.get_window(Ctk.TextWindowType.TEXT).set_cursor(Cdk.Cursor.new(Cdk.CursorType.WATCH))
 
     panel['stop'].set_sensitive(True)
     panel.clear()
@@ -277,7 +277,7 @@ def capture_end_execute_panel(capture, exit_code, panel, view, output_type):
         if language is not None:
             doc.set_language(language)
 
-    view.get_window(Ctk.TextWindowType.TEXT).set_cursor(Gdk.Cursor.new(Gdk.CursorType.XTERM))
+    view.get_window(Ctk.TextWindowType.TEXT).set_cursor(Cdk.Cursor.new(Cdk.CursorType.XTERM))
     view.set_cursor_visible(True)
     view.set_editable(True)
 

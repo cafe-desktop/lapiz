@@ -180,7 +180,7 @@ menu_deactivate (CtkMenu             *menu,
 
 static void
 button_press_event (CtkWidget           *widget,
-		    GdkEventButton      *event,
+		    CdkEventButton      *event,
 		    LapizStatusComboBox *combo)
 {
 	CtkRequisition request;
@@ -203,7 +203,7 @@ button_press_event (CtkWidget           *widget,
 				  ctk_widget_get_parent (widget),
 				  CDK_GRAVITY_NORTH_WEST,
 				  CDK_GRAVITY_SOUTH_WEST,
-				  (const GdkEvent*) event);
+				  (const CdkEvent*) event);
 
 	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (combo->priv->button), TRUE);
 

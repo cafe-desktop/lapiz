@@ -109,7 +109,7 @@ lapiz_file_bookmarks_store_init (LapizFileBookmarksStore * obj)
 /* Private */
 static void
 add_node (LapizFileBookmarksStore *model,
-	  GdkPixbuf 		  *pixbuf,
+	  CdkPixbuf 		  *pixbuf,
 	  const gchar 		  *name,
 	  GObject 		  *obj,
 	  guint 		   flags,
@@ -137,7 +137,7 @@ add_file (LapizFileBookmarksStore *model,
 	  guint 		   flags,
 	  CtkTreeIter 		  *iter)
 {
-	GdkPixbuf *pixbuf = NULL;
+	CdkPixbuf *pixbuf = NULL;
 	gboolean native;
 	gchar *newname;
 
@@ -244,7 +244,7 @@ init_special_directories (LapizFileBookmarksStore * model)
 static void
 get_fs_properties (gpointer    fs,
 		   gchar     **name,
-		   GdkPixbuf **pixbuf,
+		   CdkPixbuf **pixbuf,
 		   guint      *flags)
 {
 	GIcon *icon = NULL;
@@ -290,7 +290,7 @@ add_fs (LapizFileBookmarksStore *model,
 	CtkTreeIter		*iter)
 {
 	gchar *name;
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	guint fsflags;
 
 	get_fs_properties (fs, &name, &pixbuf, &fsflags);

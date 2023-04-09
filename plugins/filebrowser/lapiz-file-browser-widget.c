@@ -108,7 +108,7 @@ typedef struct
 typedef struct
 {
 	gchar *name;
-	GdkPixbuf *icon;
+	CdkPixbuf *icon;
 } NameIcon;
 
 struct _LapizFileBrowserWidgetPrivate
@@ -153,7 +153,7 @@ struct _LapizFileBrowserWidgetPrivate
 
 	GCancellable *cancellable;
 
-	GdkCursor *busy_cursor;
+	CdkCursor *busy_cursor;
 };
 
 static void set_enable_delete		       (LapizFileBrowserWidget *obj,
@@ -177,10 +177,10 @@ static void on_combo_changed                   (CtkComboBox * combo,
 static gboolean on_treeview_popup_menu         (LapizFileBrowserView * treeview,
 						LapizFileBrowserWidget * obj);
 static gboolean on_treeview_button_press_event (LapizFileBrowserView * treeview,
-						GdkEventButton * event,
+						CdkEventButton * event,
 						LapizFileBrowserWidget * obj);
 static gboolean on_treeview_key_press_event    (LapizFileBrowserView * treeview,
-						GdkEventKey * event,
+						CdkEventKey * event,
 						LapizFileBrowserWidget * obj);
 static void on_selection_changed               (CtkTreeSelection * selection,
 						LapizFileBrowserWidget * obj);
@@ -521,7 +521,7 @@ separator_func (CtkTreeModel * model, CtkTreeIter * iter, gpointer data)
 
 static gboolean
 get_from_bookmark_file (LapizFileBrowserWidget * obj, GFile * file,
-		       gchar ** name, GdkPixbuf ** icon)
+		       gchar ** name, CdkPixbuf ** icon)
 {
 	gpointer data;
 	NameIcon * item;
@@ -552,7 +552,7 @@ insert_path_item (LapizFileBrowserWidget * obj,
 		  guint indent)
 {
 	gchar * unescape;
-	GdkPixbuf * icon = NULL;
+	CdkPixbuf * icon = NULL;
 
 	/* Try to get the icon and name from the bookmarks hash */
 	if (!get_from_bookmark_file (obj, file, &unescape, &icon)) {
@@ -702,7 +702,7 @@ fill_combo_model (LapizFileBrowserWidget * obj)
 {
 	CtkTreeStore *store = obj->priv->combo_model;
 	CtkTreeIter iter;
-	GdkPixbuf *icon;
+	CdkPixbuf *icon;
 
 	icon = lapiz_file_browser_utils_pixbuf_from_theme ("go-home", CTK_ICON_SIZE_MENU);
 
@@ -1075,7 +1075,7 @@ add_bookmark_hash (LapizFileBrowserWidget * obj,
                    CtkTreeIter * iter)
 {
 	CtkTreeModel *model;
-	GdkPixbuf * pixbuf;
+	CdkPixbuf * pixbuf;
 	gchar * name;
 	gchar * uri;
 	GFile * file;
@@ -1259,7 +1259,7 @@ create_filter (LapizFileBrowserWidget * obj)
 static void
 lapiz_file_browser_widget_init (LapizFileBrowserWidget * obj)
 {
-	GdkDisplay *display;
+	CdkDisplay *display;
 
 	obj->priv = lapiz_file_browser_widget_get_instance_private (obj);
 
@@ -1341,7 +1341,7 @@ lapiz_file_browser_widget_get_first_selected (LapizFileBrowserWidget *obj,
 }
 
 static gboolean
-popup_menu (LapizFileBrowserWidget * obj, GdkEventButton * event, CtkTreeModel * model)
+popup_menu (LapizFileBrowserWidget * obj, CdkEventButton * event, CtkTreeModel * model)
 {
 	CtkWidget *menu;
 
@@ -1527,11 +1527,11 @@ get_topmost_file (GFile * file)
 
 static CtkWidget *
 create_goto_menu_item (LapizFileBrowserWidget * obj, GList * item,
-		       GdkPixbuf * icon)
+		       CdkPixbuf * icon)
 {
 	CtkWidget *result;
 	gchar *unescape;
-	GdkPixbuf *pixbuf = NULL;
+	CdkPixbuf *pixbuf = NULL;
 	Location *loc;
 
 	loc = (Location *) (item->data);
@@ -2093,7 +2093,7 @@ async_free (AsyncData *async)
 static void
 set_busy (LapizFileBrowserWidget *obj, gboolean busy)
 {
-	GdkWindow *window;
+	CdkWindow *window;
 
 	window = ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview));
 
@@ -2102,8 +2102,8 @@ set_busy (LapizFileBrowserWidget *obj, gboolean busy)
 
 	if (busy)
 	{
-		GdkDisplay *display;
-		GdkCursor *cursor;
+		CdkDisplay *display;
+		CdkCursor *cursor;
 
 		display = ctk_widget_get_display (CTK_WIDGET (obj));
 		cursor = cdk_cursor_new_for_display (display, CDK_WATCH);
@@ -2530,7 +2530,7 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 	CtkTreeIter root;
 	CtkAction *action;
 	Location *loc;
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 
 	if (ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview)) !=
 	    CTK_TREE_MODEL (obj->priv->file_store))
@@ -2743,7 +2743,7 @@ on_treeview_popup_menu (LapizFileBrowserView * treeview,
 
 static gboolean
 on_treeview_button_press_event (LapizFileBrowserView * treeview,
-				GdkEventButton * event,
+				CdkEventButton * event,
 				LapizFileBrowserWidget * obj)
 {
 	if (event->type == CDK_BUTTON_PRESS && event->button == 3) {
@@ -2756,7 +2756,7 @@ on_treeview_button_press_event (LapizFileBrowserView * treeview,
 
 static gboolean
 do_change_directory (LapizFileBrowserWidget * obj,
-                     GdkEventKey            * event)
+                     CdkEventKey            * event)
 {
 	CtkAction * action = NULL;
 
@@ -2800,7 +2800,7 @@ do_change_directory (LapizFileBrowserWidget * obj,
 
 static gboolean
 on_treeview_key_press_event (LapizFileBrowserView * treeview,
-			     GdkEventKey * event,
+			     CdkEventKey * event,
 			     LapizFileBrowserWidget * obj)
 {
 	guint modifiers;

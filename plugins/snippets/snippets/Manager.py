@@ -19,7 +19,7 @@ import os
 import tempfile
 import shutil
 
-from gi.repository import GObject, Gio, Gdk, Ctk, CtkSource, Lapiz
+from gi.repository import GObject, Gio, Cdk, Ctk, CtkSource, Lapiz
 
 from .Snippet import Snippet
 from .Helper import *
@@ -211,16 +211,16 @@ class Manager:
 
         # Check action
         action = None
-        if context.suggested_action == Gdk.DragAction.COPY:
-            action = Gdk.DragAction.COPY
+        if context.suggested_action == Cdk.DragAction.COPY:
+            action = Cdk.DragAction.COPY
         else:
             for act in context.actions:
-                if act == Gdk.DragAction.COPY:
-                      action = Gdk.DragAction.COPY
+                if act == Cdk.DragAction.COPY:
+                      action = Cdk.DragAction.COPY
                       break
 
-        if action == Gdk.DragAction.COPY:
-            context.drag_status(Gdk.DragAction.COPY, timestamp)
+        if action == Cdk.DragAction.COPY:
+            context.drag_status(Cdk.DragAction.COPY, timestamp)
             return True
         else:
             return False
@@ -229,11 +229,11 @@ class Manager:
         tv = self.tree_view
 
         # Set it as a drag source for exporting snippets
-        tv.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, self.dnd_target_list, Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY)
+        tv.drag_source_set(Cdk.ModifierType.BUTTON1_MASK, self.dnd_target_list, Cdk.DragAction.DEFAULT | Cdk.DragAction.COPY)
 
         # Set it as a drag destination for importing snippets
         tv.drag_dest_set(Ctk.DestDefaults.HIGHLIGHT | Ctk.DestDefaults.DROP,
-                 self.dnd_target_list, Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY)
+                 self.dnd_target_list, Cdk.DragAction.DEFAULT | Cdk.DragAction.COPY)
 
         tv.connect('drag_data_get', self.on_tree_view_drag_data_get)
         tv.connect('drag_begin', self.on_tree_view_drag_begin)
@@ -1027,14 +1027,14 @@ class Manager:
     def on_entry_accelerator_key_press(self, entry, event):
         source_view = self['source_view_snippet']
 
-        if event.keyval == Gdk.keyval_from_name('Escape'):
+        if event.keyval == Cdk.keyval_from_name('Escape'):
             # Reset
             entry.set_text(self.snippet.accelerator_display())
             self.tree_view.grab_focus()
 
             return True
-        elif event.keyval == Gdk.keyval_from_name('Delete') or \
-                event.keyval == Gdk.keyval_from_name('BackSpace'):
+        elif event.keyval == Cdk.keyval_from_name('Delete') or \
+                event.keyval == Cdk.keyval_from_name('BackSpace'):
             # Remove the accelerator
             entry.set_text('')
             self.snippet['accelerator'] = ''
@@ -1113,7 +1113,7 @@ class Manager:
         return False
 
     def on_tree_view_snippets_key_press(self, treeview, event):
-        if event.keyval == Gdk.keyval_from_name('Delete'):
+        if event.keyval == Cdk.keyval_from_name('Delete'):
             self.on_button_remove_snippet_clicked(None)
             return True
 

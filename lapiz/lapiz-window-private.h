@@ -97,7 +97,7 @@ struct _LapizWindowPrivate
 
 	gint            width;
 	gint            height;
-	GdkWindowState  window_state;
+	CdkWindowState  window_state;
 
 	gint            side_panel_size;
 	gint            bottom_panel_size;

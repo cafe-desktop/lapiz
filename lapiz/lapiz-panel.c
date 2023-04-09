@@ -265,7 +265,7 @@ set_ctk_image_from_ctk_image (CtkImage *image,
 		break;
 	case CTK_IMAGE_PIXBUF:
 		{
-			GdkPixbuf *pb;
+			CdkPixbuf *pb;
 
 			pb = ctk_image_get_pixbuf (source);
 			ctk_image_set_from_pixbuf (image, pb);
@@ -273,7 +273,7 @@ set_ctk_image_from_ctk_image (CtkImage *image,
 		break;
 	case CTK_IMAGE_ANIMATION:
 		{
-			GdkPixbufAnimation *a;
+			CdkPixbufAnimation *a;
 
 			a = ctk_image_get_animation (source);
 			ctk_image_set_from_animation (image, a);

@@ -336,7 +336,7 @@ static void
 prev_button_clicked (CtkWidget         *button,
 		     LapizPrintPreview *preview)
 {
-	GdkEvent *event;
+	CdkEvent *event;
 	gint page;
 
 	event = ctk_get_current_event ();
@@ -355,7 +355,7 @@ static void
 next_button_clicked (CtkWidget         *button,
 		     LapizPrintPreview *preview)
 {
-	GdkEvent *event;
+	CdkEvent *event;
 	gint page;
 
 	event = ctk_get_current_event ();
@@ -417,7 +417,7 @@ page_entry_insert_text (CtkEditable *editable,
 
 static gboolean
 page_entry_focus_out (CtkWidget         *widget,
-		      GdkEventFocus     *event,
+		      CdkEventFocus     *event,
 		      LapizPrintPreview *preview)
 {
 	const gchar *text;
@@ -536,7 +536,7 @@ close_button_clicked (CtkWidget         *button,
 
 static gboolean
 ignore_mouse_buttons (CtkWidget         *widget,
-		      GdkEventKey       *event,
+		      CdkEventKey       *event,
 		      LapizPrintPreview *preview)
 {
 	return TRUE;
@@ -788,7 +788,7 @@ preview_layout_query_tooltip (CtkWidget         *widget,
 
 static gint
 preview_layout_key_press (CtkWidget         *widget,
-			  GdkEventKey       *event,
+			  CdkEventKey       *event,
 			  LapizPrintPreview *preview)
 {
 	LapizPrintPreviewPrivate *priv;
@@ -1131,7 +1131,7 @@ preview_draw (CtkWidget         *widget,
 		LapizPrintPreview *preview)
 {
 	LapizPrintPreviewPrivate *priv;
-	GdkWindow *bin_window;
+	CdkWindow *bin_window;
 	gint pg;
 	gint i, j;
 
@@ -1180,7 +1180,7 @@ preview_draw (CtkWidget         *widget,
 static double
 get_screen_dpi (LapizPrintPreview *preview)
 {
-	GdkScreen *screen;
+	CdkScreen *screen;
 	double dpi;
 
 	screen = ctk_widget_get_screen (CTK_WIDGET (preview));

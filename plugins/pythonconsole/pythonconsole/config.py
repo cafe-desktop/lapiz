@@ -25,7 +25,7 @@
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
 import os
-from gi.repository import Gio, Ctk, Gdk
+from gi.repository import Gio, Ctk, Cdk
 
 __all__ = ('PythonConsoleConfig', 'PythonConsoleConfigWidget')
 
@@ -115,7 +115,7 @@ class PythonConsoleConfigWidget(object):
 
     @staticmethod
     def set_colorbutton_color(colorbutton, value):
-        rgba = Gdk.RGBA()
+        rgba = Cdk.RGBA()
         parsed = rgba.parse(value)
 
         if parsed:

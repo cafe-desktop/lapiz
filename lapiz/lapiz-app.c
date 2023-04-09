@@ -377,7 +377,7 @@ set_active_window (LapizApp    *app,
 
 static gboolean
 window_focus_in_event (LapizWindow   *window,
-		       GdkEventFocus *event,
+		       CdkEventFocus *event,
 		       LapizApp      *app)
 {
 	/* updates active_view and active_child when a new toplevel receives focus */
@@ -390,7 +390,7 @@ window_focus_in_event (LapizWindow   *window,
 
 static gboolean
 window_delete_event (LapizWindow *window,
-                     GdkEvent    *event,
+                     CdkEvent    *event,
                      LapizApp    *app)
 {
 	LapizWindowState ws;
@@ -505,7 +505,7 @@ lapiz_app_create_window_real (LapizApp    *app,
 
 	if (set_geometry)
 	{
-		GdkWindowState state;
+		CdkWindowState state;
 		gint w, h;
 
 		state = lapiz_prefs_manager_get_window_state ();
@@ -556,7 +556,7 @@ lapiz_app_create_window_real (LapizApp    *app,
  */
 LapizWindow *
 lapiz_app_create_window (LapizApp  *app,
-			 GdkScreen *screen)
+			 CdkScreen *screen)
 {
 	LapizWindow *window;
 
@@ -626,12 +626,12 @@ lapiz_app_get_active_window (LapizApp *app)
 
 static gboolean
 is_in_viewport (LapizWindow  *window,
-		GdkScreen    *screen,
+		CdkScreen    *screen,
 		gint          workspace,
 		gint          viewport_x,
 		gint          viewport_y)
 {
-	GdkWindow *cdkwindow;
+	CdkWindow *cdkwindow;
 	gint ws;
 	gint sc_width, sc_height;
 	gint x, y, width, height;
@@ -665,7 +665,7 @@ is_in_viewport (LapizWindow  *window,
 /**
  * _lapiz_app_get_window_in_viewport:
  * @app: the #LapizApp
- * @screen: the #GdkScreen
+ * @screen: the #CdkScreen
  * @workspace: the workspace number
  * @viewport_x: the viewport horizontal origin
  * @viewport_y: the viewport vertical origin
@@ -678,7 +678,7 @@ is_in_viewport (LapizWindow  *window,
  */
 LapizWindow *
 _lapiz_app_get_window_in_viewport (LapizApp  *app,
-				   GdkScreen *screen,
+				   CdkScreen *screen,
 				   gint       workspace,
 				   gint       viewport_x,
 				   gint       viewport_y)

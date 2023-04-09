@@ -75,11 +75,11 @@ static gboolean lapiz_notebook_change_current_page (CtkNotebook *notebook,
 
 static void move_current_tab_to_another_notebook  (LapizNotebook  *src,
 						   LapizNotebook  *dest,
-						   GdkEventMotion *event,
+						   CdkEventMotion *event,
 						   gint            dest_position);
 
 /* Local variables */
-static GdkCursor *cursor = NULL;
+static CdkCursor *cursor = NULL;
 static gboolean leftdown = FALSE;
 static gboolean drag_ready = FALSE;
 static gboolean newfile_ready = TRUE;
@@ -186,11 +186,11 @@ lapiz_notebook_class_init (LapizNotebookClass *klass)
 static LapizNotebook *
 find_notebook_at_pointer (gint abs_x, gint abs_y)
 {
-	GdkWindow *win_at_pointer;
-	GdkWindow *toplevel_win;
+	CdkWindow *win_at_pointer;
+	CdkWindow *toplevel_win;
 	gpointer toplevel = NULL;
-	GdkSeat *seat;
-	GdkDevice *device;
+	CdkSeat *seat;
+	CdkDevice *device;
 	gint x, y;
 
 	/* FIXME multi-head */
@@ -206,7 +206,7 @@ find_notebook_at_pointer (gint abs_x, gint abs_y)
 
 	toplevel_win = cdk_window_get_toplevel (win_at_pointer);
 
-	/* get the CtkWidget which owns the toplevel GdkWindow */
+	/* get the CtkWidget which owns the toplevel CdkWindow */
 	cdk_window_get_user_data (toplevel_win, &toplevel);
 
 	/* toplevel should be an LapizWindow */
@@ -392,11 +392,11 @@ lapiz_notebook_reorder_tab (LapizNotebook *src,
 
 static void
 drag_start (LapizNotebook *notebook,
-            GdkEvent      *event)
+            CdkEvent      *event)
 {
-	GdkSeat    *seat;
-	GdkDevice  *device;
-	GdkDisplay *display;
+	CdkSeat    *seat;
+	CdkDevice  *device;
+	CdkDisplay *display;
 
 	display = ctk_widget_get_display (CTK_WIDGET (notebook));
 	seat = cdk_display_get_default_seat (display);
@@ -473,7 +473,7 @@ move_current_tab (LapizNotebook *notebook,
 
 static gboolean
 motion_notify_cb (LapizNotebook  *notebook,
-		  GdkEventMotion *event,
+		  CdkEventMotion *event,
 		  gpointer        data)
 {
 	LapizNotebook *dest;
@@ -492,7 +492,7 @@ motion_notify_cb (LapizNotebook  *notebook,
 					      event->y_root))
 		{
 			if (drag_ready)
-				drag_start (notebook, (GdkEvent *) event);
+				drag_start (notebook, (CdkEvent *) event);
 			else
 				drag_stop (notebook);
 
@@ -529,14 +529,14 @@ motion_notify_cb (LapizNotebook  *notebook,
 static void
 move_current_tab_to_another_notebook (LapizNotebook  *src,
 				      LapizNotebook  *dest,
-				      GdkEventMotion *event,
+				      CdkEventMotion *event,
 				      gint            dest_position)
 {
 	LapizTab   *tab;
 	gint        cur_page;
-	GdkSeat    *seat;
-	GdkDevice  *device;
-	GdkDisplay *display;
+	CdkSeat    *seat;
+	CdkDevice  *device;
+	CdkDisplay *display;
 
 	display = ctk_widget_get_display (CTK_WIDGET (CTK_NOTEBOOK (src)));
 	seat = cdk_display_get_default_seat (display);
@@ -572,17 +572,17 @@ move_current_tab_to_another_notebook (LapizNotebook  *src,
 				  G_CALLBACK (motion_notify_cb),
 				  NULL);
 
-	drag_start (dest, (GdkEvent *) event);
+	drag_start (dest, (CdkEvent *) event);
 }
 
 static gboolean
 button_release_cb (LapizNotebook  *notebook,
-		   GdkEventButton *event,
+		   CdkEventButton *event,
 		   gpointer        data)
 {
-	GdkSeat    *seat;
-	GdkDevice  *device;
-	GdkDisplay *display;
+	CdkSeat    *seat;
+	CdkDevice  *device;
+	CdkDisplay *display;
 
 	display = ctk_widget_get_display (CTK_WIDGET (CTK_NOTEBOOK (notebook)));
 	seat = cdk_display_get_default_seat (display);
@@ -627,7 +627,7 @@ button_release_cb (LapizNotebook  *notebook,
 
 static gboolean
 button_press_cb (LapizNotebook  *notebook,
-		 GdkEventButton *event,
+		 CdkEventButton *event,
 		 gpointer        data)
 {
 	static gboolean newfile = FALSE;
@@ -708,7 +708,7 @@ button_press_cb (LapizNotebook  *notebook,
 
 static gboolean
 grab_focus_cb (LapizNotebook  *notebook,
-	       GdkEventButton *event,
+	       CdkEventButton *event,
 	       gpointer        data)
 {
 	drag_ready = TRUE;
@@ -717,7 +717,7 @@ grab_focus_cb (LapizNotebook  *notebook,
 
 static gboolean
 focus_in_cb (LapizNotebook  *notebook,
-	     GdkEventButton *event,
+	     CdkEventButton *event,
 	     gpointer        data)
 {
 	newfile_ready = FALSE;
@@ -726,7 +726,7 @@ focus_in_cb (LapizNotebook  *notebook,
 
 static gboolean
 focus_out_cb (LapizNotebook  *notebook,
-	      GdkEventButton *event,
+	      CdkEventButton *event,
 	      gpointer        data)
 {
 	newfile_ready = TRUE;
