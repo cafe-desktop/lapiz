@@ -40,7 +40,7 @@ AC_PATH_PROG([GLA11Y], [gla11y], [true])
 LT_PREREQ([2.2.6])
 LT_INIT(disable-static)
 
-GTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
+CTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
 
 AC_CHECK_LIB(m, floor)
 
@@ -155,8 +155,8 @@ fi
 
 AM_CONDITIONAL(ENABLE_ENCHANT, test x"$enable_enchant" = "xyes")
 
-GTK_REQUIRED=3.22.0
-GTKSOURCEVIEW_REQUIRED=3.0.0
+CTK_REQUIRED=3.22.0
+CTKSOURCEVIEW_REQUIRED=3.0.0
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 PKG_CHECK_MODULES(LAPIZ, [
@@ -165,8 +165,8 @@ PKG_CHECK_MODULES(LAPIZ, [
 	$GMODULE_ADD
 	gthread-2.0 >= 2.13.0
 	gio-2.0 >= 2.50.0
-	ctk+-3.0 >= $GTK_REQUIRED
-	ctksourceview-3.0 >= $GTKSOURCEVIEW_REQUIRED
+	ctk+-3.0 >= $CTK_REQUIRED
+	ctksourceview-3.0 >= $CTKSOURCEVIEW_REQUIRED
 	libpeas-1.0 >= 1.2.0
 	libpeas-ctk-1.0 >= 1.2.0
 ])

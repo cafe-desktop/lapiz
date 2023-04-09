@@ -540,7 +540,7 @@ async_replace_ready_callback (GFile        *source,
 		gvsaver->priv->stream = G_OUTPUT_STREAM (file_stream);
 	}
 
-	gvsaver->priv->input = lapiz_document_input_stream_new (GTK_TEXT_BUFFER (saver->document),
+	gvsaver->priv->input = lapiz_document_input_stream_new (CTK_TEXT_BUFFER (saver->document),
 								saver->newline_type);
 
 	gvsaver->priv->size = lapiz_document_input_stream_get_total_size (LAPIZ_DOCUMENT_INPUT_STREAM (gvsaver->priv->input));

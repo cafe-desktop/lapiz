@@ -160,15 +160,15 @@ msgstr "โหมดการตัดบรรทัด"
 
 #: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
-"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
+"for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
 "กรุณาเลือกว่าจะตัดบรรทัดอย่างไรเวลาแก้ไข หากไม่ตัดบรรทัดเลือก "
-"\"GTK_WRAP_NONE\" หรือตัดบรรทัดเมื่อจบคำเลือก \"GTK_WRAP_WORD\" "
-"หรือตัดบรรทัดที่ระดับตัวอักษรเลือก \"GTK_WRAP_CHAR\" หมายเหตุ "
+"\"CTK_WRAP_NONE\" หรือตัดบรรทัดเมื่อจบคำเลือก \"CTK_WRAP_WORD\" "
+"หรือตัดบรรทัดที่ระดับตัวอักษรเลือก \"CTK_WRAP_CHAR\" หมายเหตุ "
 "ตัวพิมพ์ใหญ่-เล็กมีความหมายต่างกัน"
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
@@ -383,15 +383,15 @@ msgstr "พิมพ์โดยใช้โหมดตัดบรรทัด
 
 #: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
-"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
+"wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
 "กรุณาเลือกว่าจะตัดบรรทัดอย่างไรเวลาพิมพ์ หากไม่ตัดบรรทัดเลือก "
-"\"GTK_WRAP_NONE\" หรือตัดบรรทัดเมื่อจบคำเลือก \"GTK_WRAP_WORD\" "
-"หรือตัดบรรทัดที่ระดับตัวอักษรเลือก \"GTK_WRAP_CHAR\" หมายเหตุ "
+"\"CTK_WRAP_NONE\" หรือตัดบรรทัดเมื่อจบคำเลือก \"CTK_WRAP_WORD\" "
+"หรือตัดบรรทัดที่ระดับตัวอักษรเลือก \"CTK_WRAP_CHAR\" หมายเหตุ "
 "ตัวพิมพ์ใหญ่-เล็กมีความหมายต่างกัน"
 
 #: data/org.cafe.lapiz.gschema.xml.in:181

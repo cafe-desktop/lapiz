@@ -59,7 +59,7 @@ gboolean
 lapiz_spell_utils_skip_no_spell_check (GtkTextIter *start,
                                        GtkTextIter *end)
 {
-	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (ctk_text_iter_get_buffer (start));
+	GtkSourceBuffer *buffer = CTK_SOURCE_BUFFER (ctk_text_iter_get_buffer (start));
 
 	while (ctk_source_buffer_iter_has_context_class (buffer, start, "no-spell-check"))
 	{

@@ -252,7 +252,7 @@ message_set_emblem_cb (LapizMessageBus *bus,
 
 			store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
-			if (ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+			if (ctk_tree_model_get_iter (CTK_TREE_MODEL (store), &iter, path))
 			{
 				g_value_init (&value, GDK_TYPE_PIXBUF);
 				g_value_set_object (&value, pixbuf);
@@ -296,7 +296,7 @@ track_row (WindowData            *data,
 	pathstr = ctk_tree_path_to_string (path);
 	id = item_id (pathstr, uri);
 
-	ref = ctk_tree_row_reference_new (GTK_TREE_MODEL (store), path);
+	ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (store), path);
 	g_hash_table_insert (data->row_tracking, g_strdup (id), ref);
 
 	g_free (pathstr);
@@ -317,7 +317,7 @@ set_item_message (WindowData   *data,
 
 	store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
-	ctk_tree_model_get (GTK_TREE_MODEL (store), iter,
+	ctk_tree_model_get (CTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -358,7 +358,7 @@ custom_message_filter_func (LapizFileBrowserWidget *widget,
 	gboolean filter = FALSE;
 	GtkTreePath *path;
 
-	ctk_tree_model_get (GTK_TREE_MODEL (store), iter,
+	ctk_tree_model_get (CTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -369,7 +369,7 @@ custom_message_filter_func (LapizFileBrowserWidget *widget,
 		return FALSE;
 	}
 
-	path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
+	path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);
 	set_item_message (wdata, iter, path, data->message);
 	ctk_tree_path_free (path);
 
@@ -588,7 +588,7 @@ message_add_context_item_cb (LapizMessageBus *bus,
 			       path,
 			       name,
 			       ctk_action_get_name (action),
-			       GTK_UI_MANAGER_AUTO,
+			       CTK_UI_MANAGER_AUTO,
 			       FALSE);
 
 	if (ctk_ui_manager_get_widget (manager, path))
@@ -681,7 +681,7 @@ register_methods (LapizWindow            *window,
 	lapiz_message_bus_register (bus,
 				    MESSAGE_OBJECT_PATH, "add_context_item",
 				    1,
-				    "action", GTK_TYPE_ACTION,
+				    "action", CTK_TYPE_ACTION,
 				    "path", G_TYPE_STRING,
 				    "id", G_TYPE_UINT,
 				    NULL);
@@ -752,7 +752,7 @@ store_row_inserted (LapizFileBrowserStore *store,
 	gchar *uri = NULL;
 	guint flags = 0;
 
-	ctk_tree_model_get (GTK_TREE_MODEL (store), iter,
+	ctk_tree_model_get (CTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -777,10 +777,10 @@ store_row_deleted (LapizFileBrowserStore *store,
 	gchar *uri = NULL;
 	guint flags = 0;
 
-	if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+	if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (store), &iter, path))
 		return;
 
-	ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+	ctk_tree_model_get (CTK_TREE_MODEL (store), &iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -826,7 +826,7 @@ store_begin_loading (LapizFileBrowserStore *store,
 	GtkTreePath *path;
 	WindowData *wdata = get_window_data (data->window);
 
-	path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
+	path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);
 
 	set_item_message (wdata, iter, path, data->message);
 
@@ -842,7 +842,7 @@ store_end_loading (LapizFileBrowserStore *store,
 	GtkTreePath *path;
 	WindowData *wdata = get_window_data (data->window);
 
-	path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
+	path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);
 
 	set_item_message (wdata, iter, path, data->message);
 

@@ -82,7 +82,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSpellPlugin,
                                 G_ADD_PRIVATE_DYNAMIC (LapizSpellPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_CTK_TYPE_CONFIGURABLE,
                                                                peas_ctk_configurable_iface_init))
 
 static void	spell_cb	(GtkAction *action, LapizSpellPlugin *plugin);
@@ -324,7 +324,7 @@ update_current (LapizDocument *doc,
 	range = get_check_range (doc);
 	g_return_if_fail (range != NULL);
 
-	ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc),
 					    &iter, current);
 
 	if (!ctk_text_iter_inside_word (&iter))
@@ -344,19 +344,19 @@ update_current (LapizDocument *doc,
 			ctk_text_iter_backward_word_start (&iter);
 	}
 
-	ctk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_get_iter_at_mark (CTK_TEXT_BUFFER (doc),
 					  &end_iter,
 					  range->end_mark);
 
 	if (ctk_text_iter_compare (&end_iter, &iter) < 0)
 	{
-		ctk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_move_mark (CTK_TEXT_BUFFER (doc),
 					   range->current_mark,
 					   &end_iter);
 	}
 	else
 	{
-		ctk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_move_mark (CTK_TEXT_BUFFER (doc),
 					   range->current_mark,
 					   &iter);
 	}
@@ -378,17 +378,17 @@ set_check_range (LapizDocument *doc,
 	{
 		lapiz_debug_message (DEBUG_PLUGINS, "There was not a previous check range");
 
-		ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &iter);
+		ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (doc), &iter);
 
 		range = g_new0 (CheckRange, 1);
 
-		range->start_mark = ctk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
+		range->start_mark = ctk_text_buffer_create_mark (CTK_TEXT_BUFFER (doc),
 				"check_range_start_mark", &iter, TRUE);
 
-		range->end_mark = ctk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
+		range->end_mark = ctk_text_buffer_create_mark (CTK_TEXT_BUFFER (doc),
 				"check_range_end_mark", &iter, FALSE);
 
-		range->current_mark = ctk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
+		range->current_mark = ctk_text_buffer_create_mark (CTK_TEXT_BUFFER (doc),
 				"check_range_current_mark", &iter, TRUE);
 
 		g_object_set_qdata_full (G_OBJECT (doc),
@@ -422,10 +422,10 @@ set_check_range (LapizDocument *doc,
 		start = end;
 	}
 
-	ctk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_move_mark (CTK_TEXT_BUFFER (doc),
 				   range->start_mark,
 				   start);
-	ctk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_move_mark (CTK_TEXT_BUFFER (doc),
 				   range->end_mark,
 				   end);
 
@@ -452,12 +452,12 @@ get_current_word (LapizDocument *doc, gint *start, gint *end)
 	range = get_check_range (doc);
 	g_return_val_if_fail (range != NULL, NULL);
 
-	ctk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_get_iter_at_mark (CTK_TEXT_BUFFER (doc),
 			&end_iter, range->end_mark);
 
 	range_end = ctk_text_iter_get_offset (&end_iter);
 
-	ctk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_get_iter_at_mark (CTK_TEXT_BUFFER (doc),
 			&current_iter, range->current_mark);
 
 	end_iter = current_iter;
@@ -477,7 +477,7 @@ get_current_word (LapizDocument *doc, gint *start, gint *end)
 	if (!(*start < *end))
 		return NULL;
 
-	return ctk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc),
+	return ctk_text_buffer_get_slice (CTK_TEXT_BUFFER (doc),
 					  &current_iter,
 					  &end_iter,
 					  TRUE);
@@ -498,10 +498,10 @@ goto_next_word (LapizDocument *doc)
 	range = get_check_range (doc);
 	g_return_val_if_fail (range != NULL, FALSE);
 
-	ctk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_get_iter_at_mark (CTK_TEXT_BUFFER (doc),
 					  &current_iter,
 					  range->current_mark);
-	ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &end_iter);
+	ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (doc), &end_iter);
 
 	old_current_iter = current_iter;
 
@@ -530,7 +530,7 @@ get_next_misspelled_word (LapizView *view)
 
 	g_return_val_if_fail (view != NULL, NULL);
 
-	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 	g_return_val_if_fail (doc != NULL, NULL);
 
 	range = get_check_range (doc);
@@ -561,7 +561,7 @@ get_next_misspelled_word (LapizView *view)
 	}
 
 	if (!goto_next_word (doc))
-		update_current (doc, ctk_text_buffer_get_char_count (GTK_TEXT_BUFFER (doc)));
+		update_current (doc, ctk_text_buffer_get_char_count (CTK_TEXT_BUFFER (doc)));
 
 	if (word != NULL)
 	{
@@ -572,10 +572,10 @@ get_next_misspelled_word (LapizView *view)
 
 		lapiz_debug_message (DEBUG_PLUGINS, "Select [%d, %d]", start, end);
 
-		ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &s, start);
-		ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &e, end);
+		ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc), &s, start);
+		ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc), &e, end);
 
-		ctk_text_buffer_select_range (GTK_TEXT_BUFFER (doc), &s, &e);
+		ctk_text_buffer_select_range (CTK_TEXT_BUFFER (doc), &s, &e);
 
 		lapiz_view_scroll_to_cursor (view);
 	}
@@ -632,19 +632,19 @@ change_cb (LapizSpellCheckerDialog *dlg,
 	g_return_if_fail (word != NULL);
 	g_return_if_fail (change != NULL);
 
-	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 	g_return_if_fail (doc != NULL);
 
 	range = get_check_range (doc);
 	g_return_if_fail (range != NULL);
 
-	ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &start, range->mw_start);
+	ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc), &start, range->mw_start);
 	if (range->mw_end < 0)
-		ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &end);
+		ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (doc), &end);
 	else
-		ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &end, range->mw_end);
+		ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc), &end, range->mw_end);
 
-	w = ctk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc), &start, &end, TRUE);
+	w = ctk_text_buffer_get_slice (CTK_TEXT_BUFFER (doc), &start, &end, TRUE);
 	g_return_if_fail (w != NULL);
 
 	if (strcmp (w, word) != 0)
@@ -655,12 +655,12 @@ change_cb (LapizSpellCheckerDialog *dlg,
 
 	g_free (w);
 
-	ctk_text_buffer_begin_user_action (GTK_TEXT_BUFFER(doc));
+	ctk_text_buffer_begin_user_action (CTK_TEXT_BUFFER(doc));
 
-	ctk_text_buffer_delete (GTK_TEXT_BUFFER (doc), &start, &end);
-	ctk_text_buffer_insert (GTK_TEXT_BUFFER (doc), &start, change, -1);
+	ctk_text_buffer_delete (CTK_TEXT_BUFFER (doc), &start, &end);
+	ctk_text_buffer_insert (CTK_TEXT_BUFFER (doc), &start, change, -1);
 
-	ctk_text_buffer_end_user_action (GTK_TEXT_BUFFER(doc));
+	ctk_text_buffer_end_user_action (CTK_TEXT_BUFFER(doc));
 
 	update_current (doc, range->mw_start + g_utf8_strlen (change, -1));
 
@@ -686,19 +686,19 @@ change_all_cb (LapizSpellCheckerDialog *dlg,
 	g_return_if_fail (word != NULL);
 	g_return_if_fail (change != NULL);
 
-	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 	g_return_if_fail (doc != NULL);
 
 	range = get_check_range (doc);
 	g_return_if_fail (range != NULL);
 
-	ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &start, range->mw_start);
+	ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc), &start, range->mw_start);
 	if (range->mw_end < 0)
-		ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &end);
+		ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (doc), &end);
 	else
-		ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &end, range->mw_end);
+		ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc), &end, range->mw_end);
 
-	w = ctk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc), &start, &end, TRUE);
+	w = ctk_text_buffer_get_slice (CTK_TEXT_BUFFER (doc), &start, &end, TRUE);
 	g_return_if_fail (w != NULL);
 
 	if (strcmp (w, word) != 0)
@@ -738,7 +738,7 @@ language_dialog_response (GtkDialog         *dlg,
 			  gint               res_id,
 			  LapizSpellChecker *spell)
 {
-	if (res_id == GTK_RESPONSE_OK)
+	if (res_id == CTK_RESPONSE_OK)
 	{
 		const LapizSpellCheckerLanguage *lang;
 
@@ -747,7 +747,7 @@ language_dialog_response (GtkDialog         *dlg,
 			lapiz_spell_checker_set_language (spell, lang);
 	}
 
-	ctk_widget_destroy (GTK_WIDGET (dlg));
+	ctk_widget_destroy (CTK_WIDGET (dlg));
 }
 
 static SpellConfigureDialog *
@@ -792,15 +792,15 @@ get_configure_dialog (LapizSpellPlugin *plugin)
 
 	if (autocheck_type == AUTOCHECK_ALWAYS)
 	{
-		ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->always), TRUE);
+		ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dialog->always), TRUE);
 	}
 	else if (autocheck_type == AUTOCHECK_DOCUMENT)
 	{
-		ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->document), TRUE);
+		ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dialog->document), TRUE);
 	}
 	else
 	{
-		ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->never), TRUE);
+		ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dialog->never), TRUE);
 	}
 
 	return dialog;
@@ -812,11 +812,11 @@ configure_dialog_button_toggled (GtkToggleButton      *button,
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
-	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->always)))
+	if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dialog->always)))
 	{
 		set_autocheck_type (dialog->settings, AUTOCHECK_ALWAYS);
 	}
-	else if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->document)))
+	else if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dialog->document)))
 	{
 		set_autocheck_type (dialog->settings, AUTOCHECK_DOCUMENT);
 	}
@@ -862,16 +862,16 @@ set_language_cb (GtkAction   *action,
 	lang = lapiz_spell_checker_get_language (spell);
 
 	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
-	dlg = lapiz_spell_language_dialog_new (GTK_WINDOW (window),
+	dlg = lapiz_spell_language_dialog_new (CTK_WINDOW (window),
 					       lang,
 					       data_dir);
 	g_free (data_dir);
 
 	wg = lapiz_window_get_group (window);
 
-	ctk_window_group_add_window (wg, GTK_WINDOW (dlg));
+	ctk_window_group_add_window (wg, CTK_WINDOW (dlg));
 
-	ctk_window_set_modal (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_modal (CTK_WINDOW (dlg), TRUE);
 
 	g_signal_connect (dlg,
 			  "response",
@@ -902,13 +902,13 @@ spell_cb (GtkAction   *action,
 	view = lapiz_window_get_active_view (window);
 	g_return_if_fail (view != NULL);
 
-	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 	g_return_if_fail (doc != NULL);
 
 	spell = get_spell_checker_from_document (doc);
 	g_return_if_fail (spell != NULL);
 
-	if (ctk_text_buffer_get_char_count (GTK_TEXT_BUFFER (doc)) <= 0)
+	if (ctk_text_buffer_get_char_count (CTK_TEXT_BUFFER (doc)) <= 0)
 	{
 		GtkWidget *statusbar;
 
@@ -920,12 +920,12 @@ spell_cb (GtkAction   *action,
 		return;
 	}
 
-	if (!ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+	if (!ctk_text_buffer_get_selection_bounds (CTK_TEXT_BUFFER (doc),
 						   &start,
 						   &end))
 	{
 		/* no selection, get the whole doc */
-		ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 					    &start,
 					    &end);
 	}
@@ -949,9 +949,9 @@ spell_cb (GtkAction   *action,
 	dlg = lapiz_spell_checker_dialog_new_from_spell_checker (spell, data_dir);
 	g_free (data_dir);
 
-	ctk_window_set_modal (GTK_WINDOW (dlg), TRUE);
-	ctk_window_set_transient_for (GTK_WINDOW (dlg),
-				      GTK_WINDOW (window));
+	ctk_window_set_modal (CTK_WINDOW (dlg), TRUE);
+	ctk_window_set_transient_for (CTK_WINDOW (dlg),
+				      CTK_WINDOW (window));
 
 	g_signal_connect (dlg, "ignore", G_CALLBACK (ignore_cb), view);
 	g_signal_connect (dlg, "ignore_all", G_CALLBACK (ignore_cb), view);
@@ -1021,7 +1021,7 @@ auto_spell_cb (GtkAction   *action,
 
 	window = LAPIZ_WINDOW (plugin->priv->window);
 
-	active = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	active = ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action));
 
 	lapiz_debug_message (DEBUG_PLUGINS, active ? "Auto Spell activated" : "Auto Spell deactivated");
 
@@ -1077,7 +1077,7 @@ update_ui (LapizSpellPlugin *plugin)
 			g_signal_handlers_block_by_func (action, auto_spell_cb,
 							 plugin);
 			set_auto_spell (window, doc, autospell);
-			ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+			ctk_toggle_action_set_active (CTK_TOGGLE_ACTION (action),
 						      autospell);
 			g_signal_handlers_unblock_by_func (action, auto_spell_cb,
 							   plugin);
@@ -1086,7 +1086,7 @@ update_ui (LapizSpellPlugin *plugin)
 
 	ctk_action_group_set_sensitive (data->action_group,
 					(view != NULL) &&
-					ctk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+					ctk_text_view_get_editable (CTK_TEXT_VIEW (view)));
 }
 
 static void
@@ -1144,7 +1144,7 @@ set_auto_spell_from_metadata (LapizSpellPlugin *plugin,
 
 		g_signal_handlers_block_by_func (action, auto_spell_cb,
 						 plugin);
-		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+		ctk_toggle_action_set_active (CTK_TOGGLE_ACTION (action),
 					      active);
 		g_signal_handlers_unblock_by_func (action, auto_spell_cb,
 						   plugin);
@@ -1292,7 +1292,7 @@ lapiz_spell_plugin_activate (PeasActivatable *activatable)
 	data->ui_id = ctk_ui_manager_new_merge_id (manager);
 
 	data->message_cid = ctk_statusbar_get_context_id
-			(GTK_STATUSBAR (lapiz_window_get_statusbar (window)),
+			(CTK_STATUSBAR (lapiz_window_get_statusbar (window)),
 			 "spell_plugin_message");
 
 	ctk_ui_manager_add_ui (manager,
@@ -1300,7 +1300,7 @@ lapiz_spell_plugin_activate (PeasActivatable *activatable)
 			       MENU_PATH,
 			       "CheckSpell",
 			       "CheckSpell",
-			       GTK_UI_MANAGER_MENUITEM,
+			       CTK_UI_MANAGER_MENUITEM,
 			       FALSE);
 
 	ctk_ui_manager_add_ui (manager,
@@ -1308,7 +1308,7 @@ lapiz_spell_plugin_activate (PeasActivatable *activatable)
 			       MENU_PATH,
 			       "AutoSpell",
 			       "AutoSpell",
-			       GTK_UI_MANAGER_MENUITEM,
+			       CTK_UI_MANAGER_MENUITEM,
 			       FALSE);
 
 	ctk_ui_manager_add_ui (manager,
@@ -1316,7 +1316,7 @@ lapiz_spell_plugin_activate (PeasActivatable *activatable)
 			       MENU_PATH,
 			       "ConfigSpell",
 			       "ConfigSpell",
-			       GTK_UI_MANAGER_MENUITEM,
+			       CTK_UI_MANAGER_MENUITEM,
 			       FALSE);
 
 	update_ui (plugin);
@@ -1386,7 +1386,7 @@ lapiz_spell_plugin_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_OBJECT:
-			plugin->priv->window = GTK_WIDGET (g_value_dup_object (value));
+			plugin->priv->window = CTK_WIDGET (g_value_dup_object (value));
 			break;
 
 		default:
@@ -1491,6 +1491,6 @@ peas_register_types (PeasObjectModule *module)
 	                                            LAPIZ_TYPE_SPELL_PLUGIN);
 
 	peas_object_module_register_extension_type (module,
-	                                            PEAS_GTK_TYPE_CONFIGURABLE,
+	                                            PEAS_CTK_TYPE_CONFIGURABLE,
 	                                            LAPIZ_TYPE_SPELL_PLUGIN);
 }

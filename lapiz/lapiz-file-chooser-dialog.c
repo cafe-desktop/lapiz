@@ -62,7 +62,7 @@ struct _LapizFileChooserDialogPrivate
 	GtkListStore *newline_store;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizFileChooserDialog, lapiz_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizFileChooserDialog, lapiz_file_chooser_dialog, CTK_TYPE_FILE_CHOOSER_DIALOG)
 
 static void
 lapiz_file_chooser_dialog_class_init (LapizFileChooserDialogClass *klass)
@@ -76,20 +76,20 @@ create_option_menu (LapizFileChooserDialog *dialog)
 	GtkWidget *menu;
 
 	label = ctk_label_new_with_mnemonic (_("C_haracter Encoding:"));
-	ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+	ctk_label_set_xalign (CTK_LABEL (label), 0.0);
 
 	menu = lapiz_encodings_combo_box_new (
-		ctk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE);
+		ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog)) == CTK_FILE_CHOOSER_ACTION_SAVE);
 
-	ctk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
+	ctk_label_set_mnemonic_widget (CTK_LABEL (label), menu);
 
-	ctk_box_pack_start (GTK_BOX (dialog->priv->extra_widget),
+	ctk_box_pack_start (CTK_BOX (dialog->priv->extra_widget),
 	                    label,
 	                    FALSE,
 	                    TRUE,
 	                    0);
 
-	ctk_box_pack_start (GTK_BOX (dialog->priv->extra_widget),
+	ctk_box_pack_start (CTK_BOX (dialog->priv->extra_widget),
 	                    menu,
 	                    TRUE,
 	                    TRUE,
@@ -104,7 +104,7 @@ create_option_menu (LapizFileChooserDialog *dialog)
 static void
 update_newline_visibility (LapizFileChooserDialog *dialog)
 {
-	if (ctk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE)
+	if (ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog)) == CTK_FILE_CHOOSER_ACTION_SAVE)
 	{
 		ctk_widget_show (dialog->priv->newline_label);
 		ctk_widget_show (dialog->priv->newline_combo);
@@ -141,48 +141,48 @@ create_newline_combo (LapizFileChooserDialog *dialog)
 	GtkTreeIter iter;
 
 	label = ctk_label_new_with_mnemonic (_("L_ine Ending:"));
-	ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+	ctk_label_set_xalign (CTK_LABEL (label), 0.0);
 
 	store = ctk_list_store_new (2, G_TYPE_STRING, LAPIZ_TYPE_DOCUMENT_NEWLINE_TYPE);
-	combo = ctk_combo_box_new_with_model (GTK_TREE_MODEL (store));
+	combo = ctk_combo_box_new_with_model (CTK_TREE_MODEL (store));
 	renderer = ctk_cell_renderer_text_new ();
 
-	ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo),
+	ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo),
 	                            renderer,
 	                            TRUE);
 
-	ctk_cell_layout_add_attribute (GTK_CELL_LAYOUT (combo),
+	ctk_cell_layout_add_attribute (CTK_CELL_LAYOUT (combo),
 	                               renderer,
 	                               "text",
 	                               0);
 
-	newline_combo_append (GTK_COMBO_BOX (combo),
+	newline_combo_append (CTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
 	                      _("Unix/Linux"),
 	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 
-	newline_combo_append (GTK_COMBO_BOX (combo),
+	newline_combo_append (CTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
 	                      _("Mac OS Classic"),
 	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_CR);
 
-	newline_combo_append (GTK_COMBO_BOX (combo),
+	newline_combo_append (CTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
 	                      _("Windows"),
 	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF);
 
-	ctk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
+	ctk_label_set_mnemonic_widget (CTK_LABEL (label), combo);
 
-	ctk_box_pack_start (GTK_BOX (dialog->priv->extra_widget),
+	ctk_box_pack_start (CTK_BOX (dialog->priv->extra_widget),
 	                    label,
 	                    FALSE,
 	                    TRUE,
 	                    0);
 
-	ctk_box_pack_start (GTK_BOX (dialog->priv->extra_widget),
+	ctk_box_pack_start (CTK_BOX (dialog->priv->extra_widget),
 	                    combo,
 	                    TRUE,
 	                    TRUE,
@@ -198,14 +198,14 @@ create_newline_combo (LapizFileChooserDialog *dialog)
 static void
 create_extra_widget (LapizFileChooserDialog *dialog)
 {
-	dialog->priv->extra_widget = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+	dialog->priv->extra_widget = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
 
 	ctk_widget_show (dialog->priv->extra_widget);
 
 	create_option_menu (dialog);
 	create_newline_combo (dialog);
 
-	ctk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (dialog),
+	ctk_file_chooser_set_extra_widget (CTK_FILE_CHOOSER (dialog),
 					   dialog->priv->extra_widget);
 
 }
@@ -217,17 +217,17 @@ action_changed (LapizFileChooserDialog *dialog,
 {
 	GtkFileChooserAction action;
 
-	action = ctk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog));
+	action = ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog));
 
 	switch (action)
 	{
-		case GTK_FILE_CHOOSER_ACTION_OPEN:
+		case CTK_FILE_CHOOSER_ACTION_OPEN:
 			g_object_set (dialog->priv->option_menu,
 				      "save_mode", FALSE,
 				      NULL);
 			ctk_widget_show (dialog->priv->option_menu);
 			break;
-		case GTK_FILE_CHOOSER_ACTION_SAVE:
+		case CTK_FILE_CHOOSER_ACTION_SAVE:
 			g_object_set (dialog->priv->option_menu,
 				      "save_mode", TRUE,
 				      NULL);
@@ -250,7 +250,7 @@ filter_changed (LapizFileChooserDialog *dialog,
 	if (!lapiz_prefs_manager_active_file_filter_can_set ())
 		return;
 
-	filter = ctk_file_chooser_get_filter (GTK_FILE_CHOOSER (dialog));
+	filter = ctk_file_chooser_get_filter (CTK_FILE_CHOOSER (dialog));
 	if (filter != NULL)
 	{
 		const gchar *name;
@@ -291,7 +291,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 			GtkSourceLanguage *lang;
 
 			lang = ctk_source_language_manager_get_language (lm, *languages);
-			g_return_val_if_fail (GTK_SOURCE_IS_LANGUAGE (lang), FALSE);
+			g_return_val_if_fail (CTK_SOURCE_IS_LANGUAGE (lang), FALSE);
 			++languages;
 
 			mime_types = ctk_source_language_get_mime_types (lang);
@@ -372,7 +372,7 @@ lapiz_file_chooser_dialog_new_valist (const gchar          *title,
 			       "title", title,
 			       "local-only", FALSE,
 			       "action", action,
-			       "select-multiple", action == GTK_FILE_CHOOSER_ACTION_OPEN,
+			       "select-multiple", action == CTK_FILE_CHOOSER_ACTION_OPEN,
 			       NULL);
 
 	create_extra_widget (LAPIZ_FILE_CHOOSER_DIALOG (result));
@@ -395,28 +395,28 @@ lapiz_file_chooser_dialog_new_valist (const gchar          *title,
 
 	ctk_file_filter_set_name (filter, ALL_FILES);
 	ctk_file_filter_add_pattern (filter, "*");
-	ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (result), filter);
-	ctk_file_chooser_set_action (GTK_FILE_CHOOSER (result), action);
+	ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (result), filter);
+	ctk_file_chooser_set_action (CTK_FILE_CHOOSER (result), action);
 
 	if (active_filter != 1)
 	{
 		/* Make this filter the default */
-		ctk_file_chooser_set_filter (GTK_FILE_CHOOSER (result), filter);
+		ctk_file_chooser_set_filter (CTK_FILE_CHOOSER (result), filter);
 	}
 
 	filter = ctk_file_filter_new ();
 	ctk_file_filter_set_name (filter, ALL_TEXT_FILES);
 	ctk_file_filter_add_custom (filter,
-				    GTK_FILE_FILTER_MIME_TYPE,
+				    CTK_FILE_FILTER_MIME_TYPE,
 				    all_text_files_filter,
 				    NULL,
 				    NULL);
-	ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (result), filter);
+	ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (result), filter);
 
 	if (active_filter == 1)
 	{
 		/* Make this filter the default */
-		ctk_file_chooser_set_filter (GTK_FILE_CHOOSER (result), filter);
+		ctk_file_chooser_set_filter (CTK_FILE_CHOOSER (result), filter);
 	}
 
 	g_signal_connect (result,
@@ -424,27 +424,27 @@ lapiz_file_chooser_dialog_new_valist (const gchar          *title,
 			  G_CALLBACK (filter_changed),
 			  NULL);
 
-	ctk_window_set_transient_for (GTK_WINDOW (result), parent);
-	ctk_window_set_destroy_with_parent (GTK_WINDOW (result), TRUE);
+	ctk_window_set_transient_for (CTK_WINDOW (result), parent);
+	ctk_window_set_destroy_with_parent (CTK_WINDOW (result), TRUE);
 
 	while (button_text)
 	{
 		response_id = va_arg (varargs, gint);
 
 		if (g_strcmp0 (button_text, "process-stop") == 0)
-			lapiz_dialog_add_button (GTK_DIALOG (result), _("_Cancel"), button_text, response_id);
+			lapiz_dialog_add_button (CTK_DIALOG (result), _("_Cancel"), button_text, response_id);
 		else if (g_strcmp0 (button_text, "document-open") == 0)
-			lapiz_dialog_add_button (GTK_DIALOG (result), _("_Open"), button_text, response_id);
+			lapiz_dialog_add_button (CTK_DIALOG (result), _("_Open"), button_text, response_id);
 		else if (g_strcmp0 (button_text, "document-save") == 0)
-			lapiz_dialog_add_button (GTK_DIALOG (result), _("_Save"), button_text, response_id);
+			lapiz_dialog_add_button (CTK_DIALOG (result), _("_Save"), button_text, response_id);
 		else
-			ctk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
+			ctk_dialog_add_button (CTK_DIALOG (result), button_text, response_id);
 
-		if ((response_id == GTK_RESPONSE_OK) ||
-		    (response_id == GTK_RESPONSE_ACCEPT) ||
-		    (response_id == GTK_RESPONSE_YES) ||
-		    (response_id == GTK_RESPONSE_APPLY))
-			ctk_dialog_set_default_response (GTK_DIALOG (result), response_id);
+		if ((response_id == CTK_RESPONSE_OK) ||
+		    (response_id == CTK_RESPONSE_ACCEPT) ||
+		    (response_id == CTK_RESPONSE_YES) ||
+		    (response_id == CTK_RESPONSE_APPLY))
+			ctk_dialog_set_default_response (CTK_DIALOG (result), response_id);
 
 		button_text = va_arg (varargs, const gchar *);
 	}
@@ -505,8 +505,8 @@ lapiz_file_chooser_dialog_get_encoding (LapizFileChooserDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
 	g_return_val_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu), NULL);
-	g_return_val_if_fail ((ctk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_OPEN ||
-			       ctk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE), NULL);
+	g_return_val_if_fail ((ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog)) == CTK_FILE_CHOOSER_ACTION_OPEN ||
+			       ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog)) == CTK_FILE_CHOOSER_ACTION_SAVE), NULL);
 
 	return lapiz_encodings_combo_box_get_selected_encoding (
 				LAPIZ_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
@@ -520,9 +520,9 @@ lapiz_file_chooser_dialog_set_newline_type (LapizFileChooserDialog  *dialog,
 	GtkTreeModel *model;
 
 	g_return_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog));
-	g_return_if_fail (ctk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE);
+	g_return_if_fail (ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog)) == CTK_FILE_CHOOSER_ACTION_SAVE);
 
-	model = GTK_TREE_MODEL (dialog->priv->newline_store);
+	model = CTK_TREE_MODEL (dialog->priv->newline_store);
 
 	if (!ctk_tree_model_get_iter_first (model, &iter))
 	{
@@ -537,7 +537,7 @@ lapiz_file_chooser_dialog_set_newline_type (LapizFileChooserDialog  *dialog,
 
 		if (newline_type == nt)
 		{
-			ctk_combo_box_set_active_iter (GTK_COMBO_BOX (dialog->priv->newline_combo),
+			ctk_combo_box_set_active_iter (CTK_COMBO_BOX (dialog->priv->newline_combo),
 			                               &iter);
 			break;
 		}
@@ -551,13 +551,13 @@ lapiz_file_chooser_dialog_get_newline_type (LapizFileChooserDialog *dialog)
 	LapizDocumentNewlineType newline_type;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog), LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
-	g_return_val_if_fail (ctk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE,
+	g_return_val_if_fail (ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog)) == CTK_FILE_CHOOSER_ACTION_SAVE,
 	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
 
-	ctk_combo_box_get_active_iter (GTK_COMBO_BOX (dialog->priv->newline_combo),
+	ctk_combo_box_get_active_iter (CTK_COMBO_BOX (dialog->priv->newline_combo),
 	                               &iter);
 
-	ctk_tree_model_get (GTK_TREE_MODEL (dialog->priv->newline_store),
+	ctk_tree_model_get (CTK_TREE_MODEL (dialog->priv->newline_store),
 	                    &iter,
 	                    1,
 	                    &newline_type,

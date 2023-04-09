@@ -809,7 +809,7 @@ lapiz_prefs_manager_editor_font_changed (GSettings *settings,
 	{
 		/* Note: we use def=FALSE to avoid LapizView to query GSettings */
 		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE,  font);
-		ctk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
+		ctk_source_view_set_tab_width (CTK_SOURCE_VIEW (l->data), ts);
 
 		l = l->next;
 	}
@@ -848,7 +848,7 @@ lapiz_prefs_manager_system_font_changed (GSettings *settings,
 		/* Note: we use def=FALSE to avoid LapizView to query GSettings */
 		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE, font);
 
-		ctk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
+		ctk_source_view_set_tab_width (CTK_SOURCE_VIEW (l->data), ts);
 		l = l->next;
 	}
 
@@ -878,7 +878,7 @@ lapiz_prefs_manager_tabs_size_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_tab_width (CTK_SOURCE_VIEW (l->data),
 						       tab_width);
 
 			l = l->next;
@@ -900,7 +900,7 @@ lapiz_prefs_manager_tabs_size_changed (GSettings *settings,
 		while (l != NULL)
 		{
 			ctk_source_view_set_insert_spaces_instead_of_tabs (
-					GTK_SOURCE_VIEW (l->data),
+					CTK_SOURCE_VIEW (l->data),
 					enable);
 
 			l = l->next;
@@ -915,16 +915,16 @@ get_wrap_mode_from_string (const gchar* str)
 {
 	GtkWrapMode res;
 
-	g_return_val_if_fail (str != NULL, GTK_WRAP_WORD);
+	g_return_val_if_fail (str != NULL, CTK_WRAP_WORD);
 
-	if (strcmp (str, "GTK_WRAP_NONE") == 0)
-		res = GTK_WRAP_NONE;
+	if (strcmp (str, "CTK_WRAP_NONE") == 0)
+		res = CTK_WRAP_NONE;
 	else
 	{
-		if (strcmp (str, "GTK_WRAP_CHAR") == 0)
-			res = GTK_WRAP_CHAR;
+		if (strcmp (str, "CTK_WRAP_CHAR") == 0)
+			res = CTK_WRAP_CHAR;
 		else
-			res = GTK_WRAP_WORD;
+			res = CTK_WRAP_WORD;
 	}
 
 	return res;
@@ -950,7 +950,7 @@ lapiz_prefs_manager_wrap_mode_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (l->data),
+			ctk_text_view_set_wrap_mode (CTK_TEXT_VIEW (l->data),
 						     wrap_mode);
 
 			l = l->next;
@@ -980,7 +980,7 @@ lapiz_prefs_manager_line_numbers_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_show_line_numbers (CTK_SOURCE_VIEW (l->data),
 							       dln);
 
 			l = l->next;
@@ -1010,7 +1010,7 @@ lapiz_prefs_manager_hl_current_line_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_view_set_highlight_current_line (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_highlight_current_line (CTK_SOURCE_VIEW (l->data),
 								    hl);
 
 			l = l->next;
@@ -1040,7 +1040,7 @@ lapiz_prefs_manager_bracket_matching_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_highlight_matching_brackets (CTK_SOURCE_BUFFER (l->data),
 									   enable);
 
 			l = l->next;
@@ -1070,7 +1070,7 @@ lapiz_prefs_manager_auto_indent_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_view_set_auto_indent (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_auto_indent (CTK_SOURCE_VIEW (l->data),
 							 enable);
 
 			l = l->next;
@@ -1102,7 +1102,7 @@ lapiz_prefs_manager_undo_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_max_undo_levels (CTK_SOURCE_BUFFER (l->data),
 							       ul);
 
 			l = l->next;
@@ -1134,7 +1134,7 @@ lapiz_prefs_manager_right_margin_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_view_set_right_margin_position (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_right_margin_position (CTK_SOURCE_VIEW (l->data),
 								   pos);
 
 			l = l->next;
@@ -1155,7 +1155,7 @@ lapiz_prefs_manager_right_margin_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_view_set_show_right_margin (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_show_right_margin (CTK_SOURCE_VIEW (l->data),
 							       display);
 
 			l = l->next;
@@ -1170,16 +1170,16 @@ get_smart_home_end_from_string (const gchar *str)
 {
 	GtkSourceSmartHomeEndType res;
 
-	g_return_val_if_fail (str != NULL, GTK_SOURCE_SMART_HOME_END_AFTER);
+	g_return_val_if_fail (str != NULL, CTK_SOURCE_SMART_HOME_END_AFTER);
 
 	if (strcmp (str, "DISABLED") == 0)
-		res = GTK_SOURCE_SMART_HOME_END_DISABLED;
+		res = CTK_SOURCE_SMART_HOME_END_DISABLED;
 	else if (strcmp (str, "BEFORE") == 0)
-		res = GTK_SOURCE_SMART_HOME_END_BEFORE;
+		res = CTK_SOURCE_SMART_HOME_END_BEFORE;
 	else if (strcmp (str, "ALWAYS") == 0)
-		res = GTK_SOURCE_SMART_HOME_END_ALWAYS;
+		res = CTK_SOURCE_SMART_HOME_END_ALWAYS;
 	else
-		res = GTK_SOURCE_SMART_HOME_END_AFTER;
+		res = CTK_SOURCE_SMART_HOME_END_AFTER;
 
 	return res;
 }
@@ -1204,7 +1204,7 @@ lapiz_prefs_manager_smart_home_end_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			ctk_source_view_set_smart_home_end (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_smart_home_end (CTK_SOURCE_VIEW (l->data),
 							    smart_he);
 
 			l = l->next;
@@ -1235,9 +1235,9 @@ lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			g_return_if_fail (GTK_SOURCE_IS_BUFFER (l->data));
+			g_return_if_fail (CTK_SOURCE_IS_BUFFER (l->data));
 
-			ctk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_highlight_syntax (CTK_SOURCE_BUFFER (l->data),
 								enable);
 
 			l = l->next;
@@ -1341,9 +1341,9 @@ lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 		docs = lapiz_app_get_documents (lapiz_app_get_default ());
 		for (l = docs; l != NULL; l = l->next)
 		{
-			g_return_if_fail (GTK_SOURCE_IS_BUFFER (l->data));
+			g_return_if_fail (CTK_SOURCE_IS_BUFFER (l->data));
 
-			ctk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_style_scheme (CTK_SOURCE_BUFFER (l->data),
 							    style);
 		}
 
@@ -1374,7 +1374,7 @@ lapiz_prefs_manager_max_recents_changed (GSettings *settings,
 		{
 			LapizWindow *w = windows->data;
 
-			ctk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (w->priv->toolbar_recent_menu),
+			ctk_recent_chooser_set_limit (CTK_RECENT_CHOOSER (w->priv->toolbar_recent_menu),
 						      max);
 
 			windows = g_list_next (windows);
@@ -1477,7 +1477,7 @@ lapiz_prefs_manager_lockdown_changed (GSettings *settings,
 					     locked);
 }
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 static void
 lapiz_prefs_manager_space_drawer_generic (GSettings              *settings,
                                           gint                    level,
@@ -1494,7 +1494,7 @@ lapiz_prefs_manager_space_drawer_generic (GSettings              *settings,
 
 	while (l != NULL)
 	{
-		lapiz_set_source_space_drawer_by_level (GTK_SOURCE_VIEW (l->data),
+		lapiz_set_source_space_drawer_by_level (CTK_SOURCE_VIEW (l->data),
 		                                        level, type);
 		l = l->next;
 	}
@@ -1520,12 +1520,12 @@ lapiz_prefs_manager_draw_generic (GSettings               *settings,
 	{
 		GtkSourceDrawSpacesFlags value;
 
-		value = ctk_source_view_get_draw_spaces (GTK_SOURCE_VIEW (l->data));
+		value = ctk_source_view_get_draw_spaces (CTK_SOURCE_VIEW (l->data));
 		if (level > 0)
 			value |= type;
 		else
 			value &= ~type;
-		ctk_source_view_set_draw_spaces (GTK_SOURCE_VIEW (l->data),
+		ctk_source_view_set_draw_spaces (CTK_SOURCE_VIEW (l->data),
 		                                 value);
 		l = l->next;
 	}
@@ -1544,14 +1544,14 @@ lapiz_prefs_manager_draw_spaces_changed (GSettings *settings,
 	if (strcmp (key, GPM_SPACE_DRAWER_SPACE))
 		return;
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_enum (settings, key),
-	                                          GTK_SOURCE_SPACE_TYPE_SPACE);
+	                                          CTK_SOURCE_SPACE_TYPE_SPACE);
 #else
 	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_enum (settings, key),
-	                                  GTK_SOURCE_DRAW_SPACES_SPACE);
+	                                  CTK_SOURCE_DRAW_SPACES_SPACE);
 #endif
 }
 
@@ -1565,14 +1565,14 @@ lapiz_prefs_manager_draw_tabs_changed (GSettings *settings,
 	if (strcmp (key, GPM_SPACE_DRAWER_TAB))
 		return;
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_enum (settings, key),
-	                                          GTK_SOURCE_SPACE_TYPE_TAB);
+	                                          CTK_SOURCE_SPACE_TYPE_TAB);
 #else
 	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_enum (settings, key),
-	                                  GTK_SOURCE_DRAW_SPACES_TAB);
+	                                  CTK_SOURCE_DRAW_SPACES_TAB);
 #endif
 }
 
@@ -1586,14 +1586,14 @@ lapiz_prefs_manager_draw_newlines_changed (GSettings *settings,
 	if (strcmp (key, GPM_SPACE_DRAWER_NEWLINE))
 		return;
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_boolean (settings, key) ? 1 : 0,
-	                                          GTK_SOURCE_SPACE_TYPE_NEWLINE);
+	                                          CTK_SOURCE_SPACE_TYPE_NEWLINE);
 #else
 	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_boolean (settings, key) ? 1 : 0,
-	                                  GTK_SOURCE_DRAW_SPACES_NEWLINE);
+	                                  CTK_SOURCE_DRAW_SPACES_NEWLINE);
 #endif
 }
 
@@ -1607,13 +1607,13 @@ lapiz_prefs_manager_draw_nbsp_changed (GSettings *settings,
 	if (strcmp (key, GPM_SPACE_DRAWER_NBSP))
 		return;
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 	lapiz_prefs_manager_space_drawer_generic (settings,
 	                                          g_settings_get_enum (settings, key),
-	                                          GTK_SOURCE_SPACE_TYPE_NBSP);
+	                                          CTK_SOURCE_SPACE_TYPE_NBSP);
 #else
 	lapiz_prefs_manager_draw_generic (settings,
 	                                  g_settings_get_enum (settings, key),
-	                                  GTK_SOURCE_DRAW_SPACES_NBSP);
+	                                  CTK_SOURCE_DRAW_SPACES_NBSP);
 #endif
 }

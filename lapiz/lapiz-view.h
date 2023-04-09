@@ -107,7 +107,7 @@ void 		 lapiz_view_set_font		(LapizView       *view,
 						 gboolean         def,
 						 const gchar     *font_name);
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 void
 lapiz_set_source_space_drawer_by_level (GtkSourceView          *view,
                                         gint                    level,

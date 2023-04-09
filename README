@@ -4,7 +4,7 @@ General Information
 lapiz is a small and lightweight UTF-8 text editor for the CAFE
 environment. Based on gedit, the text editor for the GNOME2 environment.
 
-lapiz is part of CAFE and uses the latest GTK+ and CAFE libraries.
+lapiz is part of CAFE and uses the latest CTK+ and CAFE libraries.
 Complete CAFE integration is featured, with support for Drag and Drop (DnD)
 from Caja (the CAFE file manager), the use of the CAFE help system,
 the CAFE Virtual File System and the CAFE print framework.
@@ -55,7 +55,7 @@ You can download the latest lapiz tarball from:
 Installation
 ============
 
-lapiz requires GTK+-3.14.x and GtkSourceView 3.0.x.
+lapiz requires CTK+-3.14.x and GtkSourceView 3.0.x.
 
 Simple install procedure:
 

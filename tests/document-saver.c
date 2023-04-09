@@ -88,7 +88,7 @@ create_document (const gchar *contents)
 {
 	LapizDocument *document = lapiz_document_new ();
 
-	ctk_text_buffer_set_text (GTK_TEXT_BUFFER (document), contents, -1);
+	ctk_text_buffer_set_text (CTK_TEXT_BUFFER (document), contents, -1);
 	return document;
 }
 

@@ -323,16 +323,16 @@ get_wrap_mode_from_string (const gchar* str)
 {
 	GtkWrapMode res;
 
-	g_return_val_if_fail (str != NULL, GTK_WRAP_WORD);
+	g_return_val_if_fail (str != NULL, CTK_WRAP_WORD);
 
-	if (strcmp (str, "GTK_WRAP_NONE") == 0)
-		res = GTK_WRAP_NONE;
+	if (strcmp (str, "CTK_WRAP_NONE") == 0)
+		res = CTK_WRAP_NONE;
 	else
 	{
-		if (strcmp (str, "GTK_WRAP_CHAR") == 0)
-			res = GTK_WRAP_CHAR;
+		if (strcmp (str, "CTK_WRAP_CHAR") == 0)
+			res = CTK_WRAP_CHAR;
 		else
-			res = GTK_WRAP_WORD;
+			res = CTK_WRAP_WORD;
 	}
 
 	return res;
@@ -365,16 +365,16 @@ lapiz_prefs_manager_set_wrap_mode (GtkWrapMode wp)
 
 	switch (wp)
 	{
-		case GTK_WRAP_NONE:
-			str = "GTK_WRAP_NONE";
+		case CTK_WRAP_NONE:
+			str = "CTK_WRAP_NONE";
 			break;
 
-		case GTK_WRAP_CHAR:
-			str = "GTK_WRAP_CHAR";
+		case CTK_WRAP_CHAR:
+			str = "CTK_WRAP_CHAR";
 			break;
 
-		default: /* GTK_WRAP_WORD */
-			str = "GTK_WRAP_WORD";
+		default: /* CTK_WRAP_WORD */
+			str = "CTK_WRAP_WORD";
 	}
 
 	lapiz_prefs_manager_set_string (GPM_WRAP_MODE,
@@ -512,14 +512,14 @@ lapiz_prefs_manager_get_print_wrap_mode (void)
 
 	str = lapiz_prefs_manager_get_string (GPM_PRINT_WRAP_MODE);
 
-	if (strcmp (str, "GTK_WRAP_NONE") == 0)
-		res = GTK_WRAP_NONE;
+	if (strcmp (str, "CTK_WRAP_NONE") == 0)
+		res = CTK_WRAP_NONE;
 	else
 	{
-		if (strcmp (str, "GTK_WRAP_WORD") == 0)
-			res = GTK_WRAP_WORD;
+		if (strcmp (str, "CTK_WRAP_WORD") == 0)
+			res = CTK_WRAP_WORD;
 		else
-			res = GTK_WRAP_CHAR;
+			res = CTK_WRAP_CHAR;
 	}
 
 	g_free (str);
@@ -536,16 +536,16 @@ lapiz_prefs_manager_set_print_wrap_mode (GtkWrapMode pwp)
 
 	switch (pwp)
 	{
-		case GTK_WRAP_NONE:
-			str = "GTK_WRAP_NONE";
+		case CTK_WRAP_NONE:
+			str = "CTK_WRAP_NONE";
 			break;
 
-		case GTK_WRAP_WORD:
-			str = "GTK_WRAP_WORD";
+		case CTK_WRAP_WORD:
+			str = "CTK_WRAP_WORD";
 			break;
 
-		default: /* GTK_WRAP_CHAR */
-			str = "GTK_WRAP_CHAR";
+		default: /* CTK_WRAP_CHAR */
+			str = "CTK_WRAP_CHAR";
 	}
 
 	lapiz_prefs_manager_set_string (GPM_PRINT_WRAP_MODE, str);
@@ -823,16 +823,16 @@ get_smart_home_end_from_string (const gchar *str)
 {
 	GtkSourceSmartHomeEndType res;
 
-	g_return_val_if_fail (str != NULL, GTK_SOURCE_SMART_HOME_END_AFTER);
+	g_return_val_if_fail (str != NULL, CTK_SOURCE_SMART_HOME_END_AFTER);
 
 	if (strcmp (str, "DISABLED") == 0)
-		res = GTK_SOURCE_SMART_HOME_END_DISABLED;
+		res = CTK_SOURCE_SMART_HOME_END_DISABLED;
 	else if (strcmp (str, "BEFORE") == 0)
-		res = GTK_SOURCE_SMART_HOME_END_BEFORE;
+		res = CTK_SOURCE_SMART_HOME_END_BEFORE;
 	else if (strcmp (str, "ALWAYS") == 0)
-		res = GTK_SOURCE_SMART_HOME_END_ALWAYS;
+		res = CTK_SOURCE_SMART_HOME_END_ALWAYS;
 	else
-		res = GTK_SOURCE_SMART_HOME_END_AFTER;
+		res = CTK_SOURCE_SMART_HOME_END_AFTER;
 
 	return res;
 }
@@ -863,19 +863,19 @@ lapiz_prefs_manager_set_smart_home_end (GtkSourceSmartHomeEndType smart_he)
 
 	switch (smart_he)
 	{
-		case GTK_SOURCE_SMART_HOME_END_DISABLED:
+		case CTK_SOURCE_SMART_HOME_END_DISABLED:
 			str = "DISABLED";
 			break;
 
-		case GTK_SOURCE_SMART_HOME_END_BEFORE:
+		case CTK_SOURCE_SMART_HOME_END_BEFORE:
 			str = "BEFORE";
 			break;
 
-		case GTK_SOURCE_SMART_HOME_END_ALWAYS:
+		case CTK_SOURCE_SMART_HOME_END_ALWAYS:
 			str = "ALWAYS";
 			break;
 
-		default: /* GTK_SOURCE_SMART_HOME_END_AFTER */
+		default: /* CTK_SOURCE_SMART_HOME_END_AFTER */
 			str = "AFTER";
 	}
 

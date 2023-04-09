@@ -191,7 +191,7 @@ class OutputPanel(UniqueById):
         # get the offset within the buffer from the x,y coordinates
         buff_x, buff_y = view.window_to_buffer_coords(Gtk.TextWindowType.TEXT,
                                                         x, y)
-        # usual API breakage in GTK+3, nothing new...
+        # usual API breakage in CTK+3, nothing new...
         # see https://bugzilla.gnome.org/768793
         if Gtk.get_minor_version() >= 20:
             (over_text, iter_at_xy) = view.get_iter_at_location(buff_x, buff_y)

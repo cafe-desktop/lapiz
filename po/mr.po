@@ -153,16 +153,16 @@ msgstr "ओळ गुंडाळणे पद्धती"
 
 #: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
-"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
+"for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
 "(संपादना प्रसंगी) लांबलचक ओळी मुद्रित करताना योग्य स्थळी पुढील शब्दभाग "
-"खालच्या ओळीत घेण्याची सूचना. हे न करण्यासाठी \"GTK_WRAP_NONE\" "
-"वापरा,शब्दाच्या सीमेवर वाक्य तोडण्यासाठी \"GTK_WRAP_WORD\" वापराआणि "
-"अक्षरांवर वाक्य तोडण्यासाठी \"GTK_WRAP_CHAR\" वापरा. लक्षात असुद्या की ही "
+"खालच्या ओळीत घेण्याची सूचना. हे न करण्यासाठी \"CTK_WRAP_NONE\" "
+"वापरा,शब्दाच्या सीमेवर वाक्य तोडण्यासाठी \"CTK_WRAP_WORD\" वापराआणि "
+"अक्षरांवर वाक्य तोडण्यासाठी \"CTK_WRAP_CHAR\" वापरा. लक्षात असुद्या की ही "
 "नावे जशी लिहीली आहेत तशीच वापरायला हवीत (मोठ्या लिपीत)."
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
@@ -383,16 +383,16 @@ msgstr "मुद्रित ओळीतील शेषभाग खाली
 
 #: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
-"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
+"wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
 "लांबलचक ओळी मुद्रित करताना योग्य स्थळी पुढील शब्दभाग खालच्या ओळीत घेण्याची "
-"सूचना .।हे न करण्यासाठी \"GTK_WRAP_NONE\" वापरा,शब्दाच्या सीमेवर वाक्य "
-"तोडण्यासाठी \"GTK_WRAP_WORD\"वापरा आणि अक्षरांवर वाक्य तोडण्यासाठी "
-"\"GTK_WRAP_CHAR\"वापरा . लक्षात असुद्या की ही नावे जशी लिहिली आहेत तशीच "
+"सूचना .।हे न करण्यासाठी \"CTK_WRAP_NONE\" वापरा,शब्दाच्या सीमेवर वाक्य "
+"तोडण्यासाठी \"CTK_WRAP_WORD\"वापरा आणि अक्षरांवर वाक्य तोडण्यासाठी "
+"\"CTK_WRAP_CHAR\"वापरा . लक्षात असुद्या की ही नावे जशी लिहिली आहेत तशीच "
 "वापरायला हवीत (मोठ्या लिपीत)."
 
 #: data/org.cafe.lapiz.gschema.xml.in:181

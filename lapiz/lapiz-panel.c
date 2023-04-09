@@ -83,7 +83,7 @@ static GObject	*lapiz_panel_constructor	(GType type,
 						 GObjectConstructParam *construct_properties);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizPanel, lapiz_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPanel, lapiz_panel, CTK_TYPE_BOX)
 
 static void
 lapiz_panel_finalize (GObject *obj)
@@ -133,20 +133,20 @@ lapiz_panel_set_property (GObject      *object,
 static void
 lapiz_panel_close (LapizPanel *panel)
 {
-	ctk_widget_hide (GTK_WIDGET (panel));
+	ctk_widget_hide (CTK_WIDGET (panel));
 }
 
 static void
 lapiz_panel_focus_document (LapizPanel *panel)
 {
-	GtkWidget *toplevel = ctk_widget_get_toplevel (GTK_WIDGET (panel));
+	GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (panel));
 	if (ctk_widget_is_toplevel (toplevel) && LAPIZ_IS_WINDOW (toplevel))
 	{
 		LapizView *view;
 
 		view = lapiz_window_get_active_view (LAPIZ_WINDOW (toplevel));
 		if (view != NULL)
-			ctk_widget_grab_focus (GTK_WIDGET (view));
+			ctk_widget_grab_focus (CTK_WIDGET (view));
 	}
 }
 
@@ -157,11 +157,11 @@ lapiz_panel_grab_focus (GtkWidget *w)
 	GtkWidget *tab;
 	LapizPanel *panel = LAPIZ_PANEL (w);
 
-	n = ctk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
+	n = ctk_notebook_get_current_page (CTK_NOTEBOOK (panel->priv->notebook));
 	if (n == -1)
 		return;
 
-	tab = ctk_notebook_get_nth_page (GTK_NOTEBOOK (panel->priv->notebook),
+	tab = ctk_notebook_get_nth_page (CTK_NOTEBOOK (panel->priv->notebook),
 					 n);
 	g_return_if_fail (tab != NULL);
 
@@ -173,7 +173,7 @@ lapiz_panel_class_init (LapizPanelClass *klass)
 {
 	GtkBindingSet *binding_set;
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
 	object_class->constructor = lapiz_panel_constructor;
 	object_class->finalize = lapiz_panel_finalize;
@@ -185,8 +185,8 @@ lapiz_panel_class_init (LapizPanelClass *klass)
 					 g_param_spec_enum ("panel-orientation",
 							    "Panel Orientation",
 							    "The panel's orientation",
-							    GTK_TYPE_ORIENTATION,
-							    GTK_ORIENTATION_VERTICAL,
+							    CTK_TYPE_ORIENTATION,
+							    CTK_ORIENTATION_VERTICAL,
 							    G_PARAM_WRITABLE |
 							    G_PARAM_READABLE |
 							    G_PARAM_CONSTRUCT_ONLY |
@@ -206,7 +206,7 @@ lapiz_panel_class_init (LapizPanelClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      GTK_TYPE_WIDGET);
+			      CTK_TYPE_WIDGET);
 	signals[ITEM_REMOVED] =
 		g_signal_new ("item_removed",
 			      G_OBJECT_CLASS_TYPE (klass),
@@ -216,7 +216,7 @@ lapiz_panel_class_init (LapizPanelClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      GTK_TYPE_WIDGET);
+			      CTK_TYPE_WIDGET);
 
 	/* Keybinding signals */
 	signals[CLOSE] =
@@ -260,10 +260,10 @@ set_ctk_image_from_ctk_image (GtkImage *image,
 {
 	switch (ctk_image_get_storage_type (source))
 	{
-	case GTK_IMAGE_EMPTY:
+	case CTK_IMAGE_EMPTY:
 		ctk_image_clear (image);
 		break;
-	case GTK_IMAGE_PIXBUF:
+	case CTK_IMAGE_PIXBUF:
 		{
 			GdkPixbuf *pb;
 
@@ -271,7 +271,7 @@ set_ctk_image_from_ctk_image (GtkImage *image,
 			ctk_image_set_from_pixbuf (image, pb);
 		}
 		break;
-	case GTK_IMAGE_ANIMATION:
+	case CTK_IMAGE_ANIMATION:
 		{
 			GdkPixbufAnimation *a;
 
@@ -279,7 +279,7 @@ set_ctk_image_from_ctk_image (GtkImage *image,
 			ctk_image_set_from_animation (image, a);
 		}
 		break;
-	case GTK_IMAGE_ICON_NAME:
+	case CTK_IMAGE_ICON_NAME:
 		{
 			const gchar *n;
 			GtkIconSize s;
@@ -291,7 +291,7 @@ set_ctk_image_from_ctk_image (GtkImage *image,
 	default:
 		ctk_image_set_from_icon_name (image,
 		                              "text-x-generic",
-		                              GTK_ICON_SIZE_MENU);
+		                              CTK_ICON_SIZE_MENU);
 	}
 }
 
@@ -299,25 +299,25 @@ static void
 sync_title (LapizPanel     *panel,
 	    LapizPanelItem *item)
 {
-	if (panel->priv->orientation != GTK_ORIENTATION_VERTICAL)
+	if (panel->priv->orientation != CTK_ORIENTATION_VERTICAL)
 		return;
 
 	if (item != NULL)
 	{
-		ctk_label_set_text (GTK_LABEL (panel->priv->title_label),
+		ctk_label_set_text (CTK_LABEL (panel->priv->title_label),
 				    item->name);
 
-		set_ctk_image_from_ctk_image (GTK_IMAGE (panel->priv->title_image),
-					      GTK_IMAGE (item->icon));
+		set_ctk_image_from_ctk_image (CTK_IMAGE (panel->priv->title_image),
+					      CTK_IMAGE (item->icon));
 	}
 	else
 	{
-		ctk_label_set_text (GTK_LABEL (panel->priv->title_label),
+		ctk_label_set_text (CTK_LABEL (panel->priv->title_label),
 				    _("Empty"));
 
-		ctk_image_set_from_icon_name (GTK_IMAGE (panel->priv->title_image),
+		ctk_image_set_from_icon_name (CTK_IMAGE (panel->priv->title_image),
 		                              "text-x-generic",
-		                              GTK_ICON_SIZE_MENU);
+		                              CTK_ICON_SIZE_MENU);
 	}
 }
 
@@ -347,7 +347,7 @@ panel_show (LapizPanel *panel,
 	gint page;
 	GtkNotebook *nb;
 
-	nb = GTK_NOTEBOOK (panel->priv->notebook);
+	nb = CTK_NOTEBOOK (panel->priv->notebook);
 
 	page = ctk_notebook_get_current_page (nb);
 
@@ -360,7 +360,7 @@ lapiz_panel_init (LapizPanel *panel)
 {
 	panel->priv = lapiz_panel_get_instance_private (panel);
 
-	ctk_orientable_set_orientation (GTK_ORIENTABLE (panel), GTK_ORIENTATION_VERTICAL);
+	ctk_orientable_set_orientation (CTK_ORIENTABLE (panel), CTK_ORIENTATION_VERTICAL);
 }
 
 static void
@@ -393,13 +393,13 @@ build_notebook_for_panel (LapizPanel *panel)
 	/* Create the panel notebook */
 	panel->priv->notebook = ctk_notebook_new ();
 
-	ctk_notebook_set_tab_pos (GTK_NOTEBOOK (panel->priv->notebook),
-				  GTK_POS_BOTTOM);
-	ctk_notebook_set_scrollable (GTK_NOTEBOOK (panel->priv->notebook),
+	ctk_notebook_set_tab_pos (CTK_NOTEBOOK (panel->priv->notebook),
+				  CTK_POS_BOTTOM);
+	ctk_notebook_set_scrollable (CTK_NOTEBOOK (panel->priv->notebook),
 				     TRUE);
-	ctk_notebook_popup_enable (GTK_NOTEBOOK (panel->priv->notebook));
+	ctk_notebook_popup_enable (CTK_NOTEBOOK (panel->priv->notebook));
 
-	ctk_widget_show (GTK_WIDGET (panel->priv->notebook));
+	ctk_widget_show (CTK_WIDGET (panel->priv->notebook));
 
 	g_signal_connect (panel->priv->notebook,
 			  "switch-page",
@@ -414,19 +414,19 @@ build_horizontal_panel (LapizPanel *panel)
 	GtkWidget *sidebar;
 	GtkWidget *close_button;
 
-	box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 
-	ctk_box_pack_start (GTK_BOX (box),
+	ctk_box_pack_start (CTK_BOX (box),
 			    panel->priv->notebook,
 			    TRUE,
 			    TRUE,
 			    0);
 
 	/* Toolbar, close button and first separator */
-	sidebar = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	ctk_container_set_border_width (GTK_CONTAINER (sidebar), 4);
+	sidebar = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+	ctk_container_set_border_width (CTK_CONTAINER (sidebar), 4);
 
-	ctk_box_pack_start (GTK_BOX (box),
+	ctk_box_pack_start (CTK_BOX (box),
 			    sidebar,
 			    FALSE,
 			    FALSE,
@@ -434,7 +434,7 @@ build_horizontal_panel (LapizPanel *panel)
 
 	close_button = create_close_button (panel);
 
-	ctk_box_pack_start (GTK_BOX (sidebar),
+	ctk_box_pack_start (CTK_BOX (sidebar),
 			    close_button,
 			    FALSE,
 			    FALSE,
@@ -442,7 +442,7 @@ build_horizontal_panel (LapizPanel *panel)
 
 	ctk_widget_show_all (box);
 
-	ctk_box_pack_start (GTK_BOX (panel),
+	ctk_box_pack_start (CTK_BOX (panel),
 			    box,
 			    TRUE,
 			    TRUE,
@@ -458,13 +458,13 @@ build_vertical_panel (LapizPanel *panel)
 	GtkWidget *dummy_label;
 
 	/* Create title hbox */
-	title_hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-	ctk_container_set_border_width (GTK_CONTAINER (title_hbox), 5);
+	title_hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+	ctk_container_set_border_width (CTK_CONTAINER (title_hbox), 5);
 
-	ctk_box_pack_start (GTK_BOX (panel), title_hbox, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (panel), title_hbox, FALSE, FALSE, 0);
 
-	icon_name_hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	ctk_box_pack_start (GTK_BOX (title_hbox),
+	icon_name_hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+	ctk_box_pack_start (CTK_BOX (title_hbox),
 			    icon_name_hbox,
 			    TRUE,
 			    TRUE,
@@ -472,8 +472,8 @@ build_vertical_panel (LapizPanel *panel)
 
 	panel->priv->title_image =
 				ctk_image_new_from_icon_name ("text-x-generic",
-				                              GTK_ICON_SIZE_MENU);
-	ctk_box_pack_start (GTK_BOX (icon_name_hbox),
+				                              CTK_ICON_SIZE_MENU);
+	ctk_box_pack_start (CTK_BOX (icon_name_hbox),
 			    panel->priv->title_image,
 			    FALSE,
 			    TRUE,
@@ -481,17 +481,17 @@ build_vertical_panel (LapizPanel *panel)
 
 	dummy_label = ctk_label_new (" ");
 
-	ctk_box_pack_start (GTK_BOX (icon_name_hbox),
+	ctk_box_pack_start (CTK_BOX (icon_name_hbox),
 			    dummy_label,
 			    FALSE,
 			    FALSE,
 			    0);
 
 	panel->priv->title_label = ctk_label_new (_("Empty"));
-	ctk_label_set_xalign (GTK_LABEL (panel->priv->title_label), 0.0);
-	ctk_label_set_ellipsize(GTK_LABEL (panel->priv->title_label), PANGO_ELLIPSIZE_END);
+	ctk_label_set_xalign (CTK_LABEL (panel->priv->title_label), 0.0);
+	ctk_label_set_ellipsize(CTK_LABEL (panel->priv->title_label), PANGO_ELLIPSIZE_END);
 
-	ctk_box_pack_start (GTK_BOX (icon_name_hbox),
+	ctk_box_pack_start (CTK_BOX (icon_name_hbox),
 			    panel->priv->title_label,
 			    TRUE,
 			    TRUE,
@@ -499,7 +499,7 @@ build_vertical_panel (LapizPanel *panel)
 
 	close_button = create_close_button (panel);
 
-	ctk_box_pack_start (GTK_BOX (title_hbox),
+	ctk_box_pack_start (CTK_BOX (title_hbox),
 			    close_button,
 			    FALSE,
 			    FALSE,
@@ -507,7 +507,7 @@ build_vertical_panel (LapizPanel *panel)
 
 	ctk_widget_show_all (title_hbox);
 
-	ctk_box_pack_start (GTK_BOX (panel),
+	ctk_box_pack_start (CTK_BOX (panel),
 			    panel->priv->notebook,
 			    TRUE,
 			    TRUE,
@@ -532,7 +532,7 @@ lapiz_panel_constructor (GType type,
 	LapizPanel *panel = LAPIZ_PANEL (obj);
 
 	build_notebook_for_panel (panel);
-  	if (panel->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  	if (panel->priv->orientation == CTK_ORIENTATION_HORIZONTAL)
   		build_horizontal_panel (panel);
 	else
 		build_vertical_panel (panel);
@@ -558,7 +558,7 @@ lapiz_panel_constructor (GType type,
 GtkWidget *
 lapiz_panel_new (GtkOrientation orientation)
 {
-	return GTK_WIDGET (g_object_new (LAPIZ_TYPE_PANEL, "panel-orientation", orientation, NULL));
+	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_PANEL, "panel-orientation", orientation, NULL));
 }
 
 static GtkWidget *
@@ -572,32 +572,32 @@ build_tab_label (LapizPanel  *panel,
 
 	/* set hbox spacing and label padding (see below) so that there's an
 	 * equal amount of space around the label */
-	hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
+	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
 
 	label_ebox = ctk_event_box_new ();
-	ctk_event_box_set_visible_window (GTK_EVENT_BOX (label_ebox), FALSE);
-	ctk_box_pack_start (GTK_BOX (hbox), label_ebox, TRUE, TRUE, 0);
+	ctk_event_box_set_visible_window (CTK_EVENT_BOX (label_ebox), FALSE);
+	ctk_box_pack_start (CTK_BOX (hbox), label_ebox, TRUE, TRUE, 0);
 
-	label_hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	ctk_container_add (GTK_CONTAINER (label_ebox), label_hbox);
+	label_hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
+	ctk_container_add (CTK_CONTAINER (label_ebox), label_hbox);
 
 	/* setup icon */
-	ctk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
 
 	/* setup label */
 	label = ctk_label_new (name);
-	ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+	ctk_label_set_xalign (CTK_LABEL (label), 0.0);
 	ctk_widget_set_margin_start (label, 0);
 	ctk_widget_set_margin_end (label, 0);
 	ctk_widget_set_margin_top (label, 0);
 	ctk_widget_set_margin_bottom (label, 0);
-	ctk_box_pack_start (GTK_BOX (label_hbox), label, TRUE, TRUE, 0);
+	ctk_box_pack_start (CTK_BOX (label_hbox), label, TRUE, TRUE, 0);
 
 	ctk_widget_set_tooltip_text (label_ebox, name);
 
 	ctk_widget_show_all (hbox);
 
-	if (panel->priv->orientation == GTK_ORIENTATION_VERTICAL)
+	if (panel->priv->orientation == CTK_ORIENTATION_VERTICAL)
 		ctk_widget_hide(label);
 
 	g_object_set_data (G_OBJECT (item), "label", label);
@@ -627,9 +627,9 @@ lapiz_panel_add_item (LapizPanel  *panel,
 	gint w, h;
 
 	g_return_if_fail (LAPIZ_IS_PANEL (panel));
-	g_return_if_fail (GTK_IS_WIDGET (item));
+	g_return_if_fail (CTK_IS_WIDGET (item));
 	g_return_if_fail (name != NULL);
-	g_return_if_fail (image == NULL || GTK_IS_IMAGE (image));
+	g_return_if_fail (image == NULL || CTK_IS_IMAGE (image));
 
 	data = g_new (LapizPanelItem, 1);
 
@@ -639,14 +639,14 @@ lapiz_panel_add_item (LapizPanel  *panel,
 	{
 		/* default to empty */
 		data->icon = ctk_image_new_from_icon_name ("text-x-generic",
-		                                           GTK_ICON_SIZE_MENU);
+		                                           CTK_ICON_SIZE_MENU);
 	}
 	else
 	{
 		data->icon = image;
 	}
 
-	ctk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
+	ctk_icon_size_lookup (CTK_ICON_SIZE_MENU, &w, &h);
 	ctk_widget_set_size_request (data->icon, w, h);
 
 	g_object_set_data (G_OBJECT (item),
@@ -656,12 +656,12 @@ lapiz_panel_add_item (LapizPanel  *panel,
 	tab_label = build_tab_label (panel, item, data->name, data->icon);
 
 	menu_label = ctk_label_new (name);
-	ctk_label_set_xalign (GTK_LABEL (menu_label), 0.0);
+	ctk_label_set_xalign (CTK_LABEL (menu_label), 0.0);
 
 	if (!ctk_widget_get_visible (item))
 		ctk_widget_show (item);
 
-	ctk_notebook_append_page_menu (GTK_NOTEBOOK (panel->priv->notebook),
+	ctk_notebook_append_page_menu (CTK_NOTEBOOK (panel->priv->notebook),
 				       item,
 				       tab_label,
 				       menu_label);
@@ -689,7 +689,7 @@ lapiz_panel_add_item_with_icon (LapizPanel  *panel,
 	if (icon_name != NULL)
 	{
 		icon = ctk_image_new_from_icon_name (icon_name,
-		                                     GTK_ICON_SIZE_MENU);
+		                                     CTK_ICON_SIZE_MENU);
 	}
 
 	lapiz_panel_add_item (panel, item, name, icon);
@@ -713,9 +713,9 @@ lapiz_panel_remove_item (LapizPanel *panel,
 	gint page_num;
 
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), FALSE);
-	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
+	g_return_val_if_fail (CTK_IS_WIDGET (item), FALSE);
 
-	page_num = ctk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
+	page_num = ctk_notebook_page_num (CTK_NOTEBOOK (panel->priv->notebook),
 					  item);
 
 	if (page_num == -1)
@@ -735,11 +735,11 @@ lapiz_panel_remove_item (LapizPanel *panel,
 	/* ref the item to keep it alive during signal emission */
 	g_object_ref (G_OBJECT (item));
 
-	ctk_notebook_remove_page (GTK_NOTEBOOK (panel->priv->notebook),
+	ctk_notebook_remove_page (CTK_NOTEBOOK (panel->priv->notebook),
 				  page_num);
 
 	/* if we removed all the pages, reset the title */
-	if (ctk_notebook_get_n_pages (GTK_NOTEBOOK (panel->priv->notebook)) == 0)
+	if (ctk_notebook_get_n_pages (CTK_NOTEBOOK (panel->priv->notebook)) == 0)
 		sync_title (panel, NULL);
 
 	g_signal_emit (G_OBJECT (panel), signals[ITEM_REMOVED], 0, item);
@@ -765,15 +765,15 @@ lapiz_panel_activate_item (LapizPanel *panel,
 	gint page_num;
 
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), FALSE);
-	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
+	g_return_val_if_fail (CTK_IS_WIDGET (item), FALSE);
 
-	page_num = ctk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
+	page_num = ctk_notebook_page_num (CTK_NOTEBOOK (panel->priv->notebook),
 					  item);
 
 	if (page_num == -1)
 		return FALSE;
 
-	ctk_notebook_set_current_page (GTK_NOTEBOOK (panel->priv->notebook),
+	ctk_notebook_set_current_page (CTK_NOTEBOOK (panel->priv->notebook),
 				       page_num);
 
 	return TRUE;
@@ -796,16 +796,16 @@ lapiz_panel_item_is_active (LapizPanel *panel,
 	gint page_num;
 
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), FALSE);
-	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
+	g_return_val_if_fail (CTK_IS_WIDGET (item), FALSE);
 
-	page_num = ctk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
+	page_num = ctk_notebook_page_num (CTK_NOTEBOOK (panel->priv->notebook),
 					  item);
 
 	if (page_num == -1)
 		return FALSE;
 
 	cur_page = ctk_notebook_get_current_page (
-				GTK_NOTEBOOK (panel->priv->notebook));
+				CTK_NOTEBOOK (panel->priv->notebook));
 
 	return (page_num == cur_page);
 }
@@ -821,7 +821,7 @@ lapiz_panel_item_is_active (LapizPanel *panel,
 GtkOrientation
 lapiz_panel_get_orientation (LapizPanel *panel)
 {
-	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), GTK_ORIENTATION_VERTICAL);
+	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), CTK_ORIENTATION_VERTICAL);
 
 	return panel->priv->orientation;
 }
@@ -839,7 +839,7 @@ lapiz_panel_get_n_items (LapizPanel *panel)
 {
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), -1);
 
-	return ctk_notebook_get_n_pages (GTK_NOTEBOOK (panel->priv->notebook));
+	return ctk_notebook_get_n_pages (CTK_NOTEBOOK (panel->priv->notebook));
 }
 
 gint
@@ -852,12 +852,12 @@ _lapiz_panel_get_active_item_id (LapizPanel *panel)
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), 0);
 
 	cur_page = ctk_notebook_get_current_page (
-				GTK_NOTEBOOK (panel->priv->notebook));
+				CTK_NOTEBOOK (panel->priv->notebook));
 	if (cur_page == -1)
 		return 0;
 
 	item = ctk_notebook_get_nth_page (
-				GTK_NOTEBOOK (panel->priv->notebook),
+				CTK_NOTEBOOK (panel->priv->notebook),
 				cur_page);
 
 	/* FIXME: for now we use as the hash of the name as id.
@@ -886,7 +886,7 @@ _lapiz_panel_set_active_item_by_id (LapizPanel *panel,
 		return;
 
 	n = ctk_notebook_get_n_pages (
-				GTK_NOTEBOOK (panel->priv->notebook));
+				CTK_NOTEBOOK (panel->priv->notebook));
 
 	for (i = 0; i < n; i++)
 	{
@@ -894,7 +894,7 @@ _lapiz_panel_set_active_item_by_id (LapizPanel *panel,
 		LapizPanelItem *data;
 
 		item = ctk_notebook_get_nth_page (
-				GTK_NOTEBOOK (panel->priv->notebook), i);
+				CTK_NOTEBOOK (panel->priv->notebook), i);
 
 		data = (LapizPanelItem *)g_object_get_data (G_OBJECT (item),
 						            PANEL_ITEM_KEY);
@@ -903,7 +903,7 @@ _lapiz_panel_set_active_item_by_id (LapizPanel *panel,
 		if (g_str_hash (data->name) == id)
 		{
 			ctk_notebook_set_current_page (
-				GTK_NOTEBOOK (panel->priv->notebook), i);
+				CTK_NOTEBOOK (panel->priv->notebook), i);
 
 			return;
 		}

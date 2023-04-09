@@ -172,7 +172,7 @@ enum {
 
 static guint document_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizDocument, lapiz_document, GTK_SOURCE_TYPE_BUFFER)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizDocument, lapiz_document, CTK_SOURCE_TYPE_BUFFER)
 
 GQuark
 lapiz_document_error_quark (void)
@@ -250,9 +250,9 @@ lapiz_document_dispose (GObject *object)
 		}
 
 		ctk_text_buffer_get_iter_at_mark (
-				GTK_TEXT_BUFFER (doc),
+				CTK_TEXT_BUFFER (doc),
 				&iter,
-				ctk_text_buffer_get_insert (GTK_TEXT_BUFFER (doc)));
+				ctk_text_buffer_get_insert (CTK_TEXT_BUFFER (doc)));
 
 		position = g_strdup_printf ("%d",
 					    ctk_text_iter_get_offset (&iter));
@@ -404,8 +404,8 @@ lapiz_document_mark_set (GtkTextBuffer     *buffer,
 {
 	LapizDocument *doc = LAPIZ_DOCUMENT (buffer);
 
-	if (GTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->mark_set)
-		GTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->mark_set (buffer,
+	if (CTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->mark_set)
+		CTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->mark_set (buffer,
 									       iter,
 									       mark);
 
@@ -420,14 +420,14 @@ lapiz_document_changed (GtkTextBuffer *buffer)
 {
 	emit_cursor_moved (LAPIZ_DOCUMENT (buffer));
 
-	GTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->changed (buffer);
+	CTK_TEXT_BUFFER_CLASS (lapiz_document_parent_class)->changed (buffer);
 }
 
 static void
 lapiz_document_class_init (LapizDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkTextBufferClass *buf_class = GTK_TEXT_BUFFER_CLASS (klass);
+	GtkTextBufferClass *buf_class = CTK_TEXT_BUFFER_CLASS (klass);
 
 	object_class->dispose = lapiz_document_dispose;
 	object_class->finalize = lapiz_document_finalize;
@@ -642,8 +642,8 @@ lapiz_document_class_init (LapizDocumentClass *klass)
 			      lapiz_marshal_VOID__BOXED_BOXED,
 			      G_TYPE_NONE,
 			      2,
-			      GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
-			      GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE);
+			      CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
+			      CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static gboolean
@@ -699,7 +699,7 @@ set_language (LapizDocument     *doc,
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
-	old_lang = ctk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
+	old_lang = ctk_source_buffer_get_language (CTK_SOURCE_BUFFER (doc));
 
 	if (old_lang == lang)
 		return;
@@ -712,18 +712,18 @@ set_language (LapizDocument     *doc,
 		file = lapiz_document_get_location (doc);
 
 		if (!file_with_bom (file))
-			ctk_source_buffer_set_language (GTK_SOURCE_BUFFER (doc), lang);
+			ctk_source_buffer_set_language (CTK_SOURCE_BUFFER (doc), lang);
 
 		g_object_unref (file);
 	}
 	else
-		ctk_source_buffer_set_language (GTK_SOURCE_BUFFER (doc), lang);
+		ctk_source_buffer_set_language (CTK_SOURCE_BUFFER (doc), lang);
 
 	if (lang != NULL)
-		ctk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (doc),
+		ctk_source_buffer_set_highlight_syntax (CTK_SOURCE_BUFFER (doc),
 				 lapiz_prefs_manager_get_enable_syntax_highlighting ());
 	else
-		ctk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (doc),
+		ctk_source_buffer_set_highlight_syntax (CTK_SOURCE_BUFFER (doc),
 				 FALSE);
 
 	if (set_by_user && (doc->priv->uri != NULL))
@@ -948,10 +948,10 @@ lapiz_document_init (LapizDocument *doc)
 
 	doc->priv->newline_type = LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 
-	ctk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (doc),
+	ctk_source_buffer_set_max_undo_levels (CTK_SOURCE_BUFFER (doc),
 					       lapiz_prefs_manager_get_undo_actions_limit ());
 
-	ctk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (doc),
+	ctk_source_buffer_set_highlight_matching_brackets (CTK_SOURCE_BUFFER (doc),
 							   lapiz_prefs_manager_get_bracket_matching ());
 
 	lapiz_document_set_enable_search_highlighting (doc,
@@ -959,7 +959,7 @@ lapiz_document_init (LapizDocument *doc)
 
 	style_scheme = get_default_style_scheme ();
 	if (style_scheme != NULL)
-		ctk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (doc),
+		ctk_source_buffer_set_style_scheme (CTK_SOURCE_BUFFER (doc),
 						    style_scheme);
 
 	g_signal_connect_after (doc,
@@ -1367,7 +1367,7 @@ document_loader_loaded (LapizDocumentLoader *loader,
 		if (doc->priv->requested_line_pos > 0)
 		{
 			/* line_pos - 1 because get_iter_at_line counts from 0 */
-			ctk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_get_iter_at_line (CTK_TEXT_BUFFER (doc),
 							  &iter,
 							  doc->priv->requested_line_pos - 1);
 		}
@@ -1382,7 +1382,7 @@ document_loader_loaded (LapizDocumentLoader *loader,
 			offset = pos ? atoi (pos) : 0;
 			g_free (pos);
 
-			ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_get_iter_at_offset (CTK_TEXT_BUFFER (doc),
 							    &iter,
 							    MAX (offset, 0));
 
@@ -1391,18 +1391,18 @@ document_loader_loaded (LapizDocumentLoader *loader,
 			 * a utf8 character cluster */
 			if (!ctk_text_iter_is_cursor_position (&iter))
 			{
-				ctk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
+				ctk_text_buffer_get_start_iter (CTK_TEXT_BUFFER (doc),
 								&iter);
 			}
 		}
 		/* otherwise to the top */
 		else
 		{
-			ctk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_get_start_iter (CTK_TEXT_BUFFER (doc),
 							&iter);
 		}
 
-		ctk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+		ctk_text_buffer_place_cursor (CTK_TEXT_BUFFER (doc), &iter);
 	}
 
 	/* special case creating a named new doc */
@@ -1570,7 +1570,7 @@ document_saver_saving (LapizDocumentSaver *saver,
 
 			_lapiz_document_set_readonly (doc, FALSE);
 
-			ctk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_set_modified (CTK_TEXT_BUFFER (doc),
 						      FALSE);
 
 			set_encoding (doc,
@@ -1691,7 +1691,7 @@ lapiz_document_insert_file (LapizDocument       *doc,
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
 	g_return_val_if_fail (ctk_text_iter_get_buffer (iter) ==
-				GTK_TEXT_BUFFER (doc), FALSE);
+				CTK_TEXT_BUFFER (doc), FALSE);
 
 	/* TODO */
 
@@ -1704,7 +1704,7 @@ lapiz_document_is_untouched (LapizDocument *doc)
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), TRUE);
 
 	return (doc->priv->uri == NULL) &&
-		(!ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)));
+		(!ctk_text_buffer_get_modified (CTK_TEXT_BUFFER (doc)));
 }
 
 gboolean
@@ -1753,22 +1753,22 @@ lapiz_document_goto_line (LapizDocument *doc,
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (line >= -1, FALSE);
 
-	line_count = ctk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc));
+	line_count = ctk_text_buffer_get_line_count (CTK_TEXT_BUFFER (doc));
 
 	if (line >= line_count)
 	{
 		ret = FALSE;
-		ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (doc),
 					      &iter);
 	}
 	else
 	{
-		ctk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_iter_at_line (CTK_TEXT_BUFFER (doc),
 						  &iter,
 						  line);
 	}
 
-	ctk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+	ctk_text_buffer_place_cursor (CTK_TEXT_BUFFER (doc), &iter);
 
 	return ret;
 }
@@ -1786,7 +1786,7 @@ lapiz_document_goto_line_offset (LapizDocument *doc,
 	g_return_val_if_fail (line >= -1, FALSE);
 	g_return_val_if_fail (line_offset >= -1, FALSE);
 
-	ctk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_get_iter_at_line (CTK_TEXT_BUFFER (doc),
 					  &iter,
 					  line);
 
@@ -1800,7 +1800,7 @@ lapiz_document_goto_line_offset (LapizDocument *doc,
 		ctk_text_iter_set_line_offset (&iter, line_offset);
 	}
 
-	ctk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+	ctk_text_buffer_place_cursor (CTK_TEXT_BUFFER (doc), &iter);
 
 	return ret;
 }
@@ -1889,7 +1889,7 @@ lapiz_document_set_search_text (LapizDocument *doc,
 		GtkTextIter begin;
 		GtkTextIter end;
 
-		ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 					    &begin,
 					    &end);
 
@@ -1980,9 +1980,9 @@ lapiz_document_search_forward (LapizDocument     *doc,
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail ((start == NULL) ||
-			      (ctk_text_iter_get_buffer (start) ==  GTK_TEXT_BUFFER (doc)), FALSE);
+			      (ctk_text_iter_get_buffer (start) ==  CTK_TEXT_BUFFER (doc)), FALSE);
 	g_return_val_if_fail ((end == NULL) ||
-			      (ctk_text_iter_get_buffer (end) ==  GTK_TEXT_BUFFER (doc)), FALSE);
+			      (ctk_text_iter_get_buffer (end) ==  CTK_TEXT_BUFFER (doc)), FALSE);
 
 	if (doc->priv->search_text == NULL)
 	{
@@ -1993,15 +1993,15 @@ lapiz_document_search_forward (LapizDocument     *doc,
 		lapiz_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == \"%s\"\n", doc->priv->search_text);
 
 	if (start == NULL)
-		ctk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
+		ctk_text_buffer_get_start_iter (CTK_TEXT_BUFFER (doc), &iter);
 	else
 		iter = *start;
 
-	search_flags = GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY;
+	search_flags = CTK_TEXT_SEARCH_VISIBLE_ONLY | CTK_TEXT_SEARCH_TEXT_ONLY;
 
 	if (!LAPIZ_SEARCH_IS_CASE_SENSITIVE (doc->priv->search_flags))
 	{
-		search_flags = search_flags | GTK_TEXT_SEARCH_CASE_INSENSITIVE;
+		search_flags = search_flags | CTK_TEXT_SEARCH_CASE_INSENSITIVE;
 	}
 
 	while (!found)
@@ -2069,9 +2069,9 @@ lapiz_document_search_backward (LapizDocument     *doc,
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail ((start == NULL) ||
-(			      ctk_text_iter_get_buffer (start) ==  GTK_TEXT_BUFFER (doc)), FALSE);
+(			      ctk_text_iter_get_buffer (start) ==  CTK_TEXT_BUFFER (doc)), FALSE);
 	g_return_val_if_fail ((end == NULL) ||
-			      (ctk_text_iter_get_buffer (end) ==  GTK_TEXT_BUFFER (doc)), FALSE);
+			      (ctk_text_iter_get_buffer (end) ==  CTK_TEXT_BUFFER (doc)), FALSE);
 
 	if (doc->priv->search_text == NULL)
 	{
@@ -2082,15 +2082,15 @@ lapiz_document_search_backward (LapizDocument     *doc,
 		lapiz_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == \"%s\"\n", doc->priv->search_text);
 
 	if (end == NULL)
-		ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &iter);
+		ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (doc), &iter);
 	else
 		iter = *end;
 
-	search_flags = GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY;
+	search_flags = CTK_TEXT_SEARCH_VISIBLE_ONLY | CTK_TEXT_SEARCH_TEXT_ONLY;
 
 	if (!LAPIZ_SEARCH_IS_CASE_SENSITIVE (doc->priv->search_flags))
 	{
-		search_flags = search_flags | GTK_TEXT_SEARCH_CASE_INSENSITIVE;
+		search_flags = search_flags | CTK_TEXT_SEARCH_CASE_INSENSITIVE;
 	}
 
 	while (!found)
@@ -2161,7 +2161,7 @@ lapiz_document_replace_all (LapizDocument       *doc,
 	g_return_val_if_fail (replace != NULL, 0);
 	g_return_val_if_fail ((find != NULL) || (doc->priv->search_text != NULL), 0);
 
-	buffer = GTK_TEXT_BUFFER (doc);
+	buffer = CTK_TEXT_BUFFER (doc);
 
 	if (find == NULL)
 		search_text = g_strdup (doc->priv->search_text);
@@ -2176,11 +2176,11 @@ lapiz_document_replace_all (LapizDocument       *doc,
 
 	ctk_text_buffer_get_start_iter (buffer, &iter);
 
-	search_flags = GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY;
+	search_flags = CTK_TEXT_SEARCH_VISIBLE_ONLY | CTK_TEXT_SEARCH_TEXT_ONLY;
 
 	if (!LAPIZ_SEARCH_IS_CASE_SENSITIVE (flags))
 	{
-		search_flags = search_flags | GTK_TEXT_SEARCH_CASE_INSENSITIVE;
+		search_flags = search_flags | CTK_TEXT_SEARCH_CASE_INSENSITIVE;
 	}
 
 
@@ -2191,8 +2191,8 @@ lapiz_document_replace_all (LapizDocument       *doc,
 	doc->priv->stop_cursor_moved_emission = TRUE;
 
 	/* also avoid spending time matching brackets */
-	brackets_highlighting = ctk_source_buffer_get_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer));
-	ctk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer), FALSE);
+	brackets_highlighting = ctk_source_buffer_get_highlight_matching_brackets (CTK_SOURCE_BUFFER (buffer));
+	ctk_source_buffer_set_highlight_matching_brackets (CTK_SOURCE_BUFFER (buffer), FALSE);
 
 	/* and do search highliting later */
 	search_highliting = lapiz_document_get_enable_search_highlighting (doc);
@@ -2264,7 +2264,7 @@ lapiz_document_replace_all (LapizDocument       *doc,
 	doc->priv->stop_cursor_moved_emission = FALSE;
 	emit_cursor_moved (doc);
 
-	ctk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer),
+	ctk_source_buffer_set_highlight_matching_brackets (CTK_SOURCE_BUFFER (buffer),
 							   brackets_highlighting);
 	lapiz_document_set_enable_search_highlighting (doc, search_highliting);
 
@@ -2300,7 +2300,7 @@ lapiz_document_get_language (LapizDocument *doc)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
 
-	return ctk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
+	return ctk_source_buffer_get_language (CTK_SOURCE_BUFFER (doc));
 }
 
 const LapizEncoding *
@@ -2337,7 +2337,7 @@ get_search_match_colors (LapizDocument *doc,
 	gchar *bg;
 	gchar *fg;
 
-	style_scheme = ctk_source_buffer_get_style_scheme (GTK_SOURCE_BUFFER (doc));
+	style_scheme = ctk_source_buffer_get_style_scheme (CTK_SOURCE_BUFFER (doc));
 	if (style_scheme == NULL)
 		goto fallback;
 
@@ -2400,7 +2400,7 @@ sync_found_tag (LapizDocument *doc,
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
-	g_return_if_fail (GTK_TEXT_TAG (doc->priv->found_tag));
+	g_return_if_fail (CTK_TEXT_TAG (doc->priv->found_tag));
 
 	get_search_match_colors (doc,
 				 &fg_set, &fg,
@@ -2441,11 +2441,11 @@ search_region (LapizDocument *doc,
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
-	buffer = GTK_TEXT_BUFFER (doc);
+	buffer = CTK_TEXT_BUFFER (doc);
 
 	if (doc->priv->found_tag == NULL)
 	{
-		doc->priv->found_tag = ctk_text_buffer_create_tag (GTK_TEXT_BUFFER (doc),
+		doc->priv->found_tag = ctk_text_buffer_create_tag (CTK_TEXT_BUFFER (doc),
 								   "found",
 								   NULL);
 
@@ -2460,7 +2460,7 @@ search_region (LapizDocument *doc,
 	/* make sure the 'found' tag has the priority over
 	 * syntax highlighting tags */
 	text_tag_set_highest_priority (doc->priv->found_tag,
-				       GTK_TEXT_BUFFER (doc));
+				       CTK_TEXT_BUFFER (doc));
 
 
 	if (doc->priv->search_text == NULL)
@@ -2494,11 +2494,11 @@ search_region (LapizDocument *doc,
 
 	iter = *start;
 
-	search_flags = GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY;
+	search_flags = CTK_TEXT_SEARCH_VISIBLE_ONLY | CTK_TEXT_SEARCH_TEXT_ONLY;
 
 	if (!LAPIZ_SEARCH_IS_CASE_SENSITIVE (doc->priv->search_flags))
 	{
-		search_flags = search_flags | GTK_TEXT_SEARCH_CASE_INSENSITIVE;
+		search_flags = search_flags | CTK_TEXT_SEARCH_CASE_INSENSITIVE;
 	}
 
 	do
@@ -2681,11 +2681,11 @@ lapiz_document_set_enable_search_highlighting (LapizDocument *doc,
 			GtkTextIter begin;
 			GtkTextIter end;
 
-			ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 						    &begin,
 						    &end);
 
-			ctk_text_buffer_remove_tag (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_remove_tag (CTK_TEXT_BUFFER (doc),
 				    		    doc->priv->found_tag,
 				    		    &begin,
 				    		    &end);
@@ -2697,14 +2697,14 @@ lapiz_document_set_enable_search_highlighting (LapizDocument *doc,
 	}
 	else
 	{
-		doc->priv->to_search_region = lapiz_text_region_new (GTK_TEXT_BUFFER (doc));
+		doc->priv->to_search_region = lapiz_text_region_new (CTK_TEXT_BUFFER (doc));
 		if (lapiz_document_get_can_search_again (doc))
 		{
 			/* If search_text is not empty, highligth all its occurrences */
 			GtkTextIter begin;
 			GtkTextIter end;
 
-			ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 						    &begin,
 						    &end);
 

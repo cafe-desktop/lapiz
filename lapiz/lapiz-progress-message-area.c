@@ -52,17 +52,17 @@ struct _LapizProgressMessageAreaPrivate
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizProgressMessageArea, lapiz_progress_message_area, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizProgressMessageArea, lapiz_progress_message_area, CTK_TYPE_INFO_BAR)
 
 static void
 lapiz_progress_message_area_set_has_cancel_button (LapizProgressMessageArea *area,
 						   gboolean                  has_button)
 {
 	if (has_button)
-		ctk_button_set_image (GTK_BUTTON (ctk_info_bar_add_button (GTK_INFO_BAR (area),
+		ctk_button_set_image (CTK_BUTTON (ctk_info_bar_add_button (CTK_INFO_BAR (area),
 									   _("_Cancel"),
-									   GTK_RESPONSE_CANCEL)),
-				      ctk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
+									   CTK_RESPONSE_CANCEL)),
+				      ctk_image_new_from_icon_name ("process-stop", CTK_ICON_SIZE_BUTTON));
 
 	g_object_notify (G_OBJECT (area), "has-cancel-button");
 }
@@ -130,37 +130,37 @@ lapiz_progress_message_area_init (LapizProgressMessageArea *area)
 
 	area->priv = lapiz_progress_message_area_get_instance_private (area);
 
-	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
 	ctk_widget_show (vbox);
 
-	hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
+	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
 	ctk_widget_show (hbox);
-	ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
 	area->priv->image = ctk_image_new_from_icon_name ("image-missing",
-							  GTK_ICON_SIZE_SMALL_TOOLBAR);
+							  CTK_ICON_SIZE_SMALL_TOOLBAR);
 	ctk_widget_show (area->priv->image);
-	ctk_widget_set_halign (area->priv->image, GTK_ALIGN_CENTER);
-	ctk_widget_set_valign (area->priv->image, GTK_ALIGN_CENTER);
-	ctk_box_pack_start (GTK_BOX (hbox), area->priv->image, FALSE, FALSE, 4);
+	ctk_widget_set_halign (area->priv->image, CTK_ALIGN_CENTER);
+	ctk_widget_set_valign (area->priv->image, CTK_ALIGN_CENTER);
+	ctk_box_pack_start (CTK_BOX (hbox), area->priv->image, FALSE, FALSE, 4);
 
 	area->priv->label = ctk_label_new ("");
 	ctk_widget_show (area->priv->label);
-	ctk_box_pack_start (GTK_BOX (hbox), area->priv->label, TRUE, TRUE, 0);
-	ctk_label_set_use_markup (GTK_LABEL (area->priv->label), TRUE);
-	ctk_label_set_xalign (GTK_LABEL (area->priv->label), 0.0);
-	ctk_label_set_ellipsize (GTK_LABEL (area->priv->label),
+	ctk_box_pack_start (CTK_BOX (hbox), area->priv->label, TRUE, TRUE, 0);
+	ctk_label_set_use_markup (CTK_LABEL (area->priv->label), TRUE);
+	ctk_label_set_xalign (CTK_LABEL (area->priv->label), 0.0);
+	ctk_label_set_ellipsize (CTK_LABEL (area->priv->label),
 				 PANGO_ELLIPSIZE_END);
 
 	area->priv->progress = ctk_progress_bar_new ();
 	ctk_widget_show (area->priv->progress);
-	ctk_box_pack_start (GTK_BOX (vbox), area->priv->progress, TRUE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (vbox), area->priv->progress, TRUE, FALSE, 0);
 	ctk_widget_set_size_request (area->priv->progress, -1, 15);
 
 	GtkWidget *content;
 
-	content = ctk_info_bar_get_content_area (GTK_INFO_BAR (area));
-	ctk_container_add (GTK_CONTAINER (content), vbox);
+	content = ctk_info_bar_get_content_area (CTK_INFO_BAR (area));
+	ctk_container_add (CTK_CONTAINER (content), vbox);
 }
 
 GtkWidget *
@@ -183,7 +183,7 @@ lapiz_progress_message_area_new (const gchar *image_id,
 	lapiz_progress_message_area_set_markup (area,
 						markup);
 
-	return GTK_WIDGET (area);
+	return CTK_WIDGET (area);
 }
 
 void
@@ -193,9 +193,9 @@ lapiz_progress_message_area_set_image (LapizProgressMessageArea *area,
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 	g_return_if_fail (image_id != NULL);
 
-	ctk_image_set_from_icon_name (GTK_IMAGE (area->priv->image),
+	ctk_image_set_from_icon_name (CTK_IMAGE (area->priv->image),
 				      image_id,
-				      GTK_ICON_SIZE_SMALL_TOOLBAR);
+				      CTK_ICON_SIZE_SMALL_TOOLBAR);
 }
 
 void
@@ -205,7 +205,7 @@ lapiz_progress_message_area_set_markup (LapizProgressMessageArea *area,
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 	g_return_if_fail (markup != NULL);
 
-	ctk_label_set_markup (GTK_LABEL (area->priv->label),
+	ctk_label_set_markup (CTK_LABEL (area->priv->label),
 			      markup);
 }
 
@@ -216,7 +216,7 @@ lapiz_progress_message_area_set_text (LapizProgressMessageArea *area,
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 	g_return_if_fail (text != NULL);
 
-	ctk_label_set_text (GTK_LABEL (area->priv->label),
+	ctk_label_set_text (CTK_LABEL (area->priv->label),
 			    text);
 }
 
@@ -226,7 +226,7 @@ lapiz_progress_message_area_set_fraction (LapizProgressMessageArea *area,
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 
-	ctk_progress_bar_set_fraction (GTK_PROGRESS_BAR (area->priv->progress),
+	ctk_progress_bar_set_fraction (CTK_PROGRESS_BAR (area->priv->progress),
 				       fraction);
 }
 
@@ -235,5 +235,5 @@ lapiz_progress_message_area_pulse (LapizProgressMessageArea *area)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 
-	ctk_progress_bar_pulse (GTK_PROGRESS_BAR (area->priv->progress));
+	ctk_progress_bar_pulse (CTK_PROGRESS_BAR (area->priv->progress));
 }

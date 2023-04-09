@@ -196,9 +196,9 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserStore, lapiz_file_browser_store,
                                 G_TYPE_OBJECT,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserStore)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_MODEL,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (CTK_TYPE_TREE_MODEL,
                                                                lapiz_file_browser_store_iface_init)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_DRAG_SOURCE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (CTK_TYPE_TREE_DRAG_SOURCE,
                                                                lapiz_file_browser_store_drag_source_init))
 
 /* Properties */
@@ -359,7 +359,7 @@ lapiz_file_browser_store_class_init (LapizFileBrowserStoreClass * klass)
 			  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 					   begin_loading), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
-			  GTK_TYPE_TREE_ITER);
+			  CTK_TYPE_TREE_ITER);
 	model_signals[END_LOADING] =
 	    g_signal_new ("end-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
@@ -367,7 +367,7 @@ lapiz_file_browser_store_class_init (LapizFileBrowserStoreClass * klass)
 			  G_STRUCT_OFFSET (LapizFileBrowserStoreClass,
 					   end_loading), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
-			  GTK_TYPE_TREE_ITER);
+			  CTK_TYPE_TREE_ITER);
 	model_signals[ERROR] =
 	    g_signal_new ("error", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
@@ -524,7 +524,7 @@ lapiz_file_browser_store_get_flags (GtkTreeModel * tree_model)
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      (GtkTreeModelFlags) 0);
 
-	return GTK_TREE_MODEL_ITERS_PERSIST;
+	return CTK_TREE_MODEL_ITERS_PERSIST;
 }
 
 static gint
@@ -919,13 +919,13 @@ lapiz_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
 	GtkTreeIter iter;
 	LapizFileBrowserStoreFlag flags;
 
-	if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (drag_source),
+	if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_source),
 				      &iter, path))
 	{
 		return FALSE;
 	}
 
-	ctk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
+	ctk_tree_model_get (CTK_TREE_MODEL (drag_source), &iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
@@ -949,13 +949,13 @@ lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
 	gchar *uris[2] = {0, };
 	gboolean ret;
 
-	if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (drag_source),
+	if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_source),
 				      &iter, path))
 	{
 		return FALSE;
 	}
 
-	ctk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
+	ctk_tree_model_get (CTK_TREE_MODEL (drag_source), &iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
 
@@ -1122,7 +1122,7 @@ model_resort_node (LapizFileBrowserStore * model, FileBrowserNode * node)
 		    lapiz_file_browser_store_get_path_real (model,
 							    node->parent);
 
-		ctk_tree_model_rows_reordered (GTK_TREE_MODEL (model),
+		ctk_tree_model_rows_reordered (CTK_TREE_MODEL (model),
 					       path, &iter, neworder);
 
 		g_free (neworder);
@@ -1135,11 +1135,11 @@ row_changed (LapizFileBrowserStore * model,
 	     GtkTreePath ** path,
 	     GtkTreeIter * iter)
 {
-	GtkTreeRowReference *ref = ctk_tree_row_reference_new (GTK_TREE_MODEL (model), *path);
+	GtkTreeRowReference *ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (model), *path);
 
 	/* Insert a copy of the actual path here because the row-inserted
 	   signal may alter the path */
-	ctk_tree_model_row_changed (GTK_TREE_MODEL(model), *path, iter);
+	ctk_tree_model_row_changed (CTK_TREE_MODEL(model), *path, iter);
 	ctk_tree_path_free (*path);
 
 	*path = ctk_tree_row_reference_get_path (ref);
@@ -1157,10 +1157,10 @@ row_inserted (LapizFileBrowserStore * model,
 	   Because functions that use this function rely on the notion that
 	   the path remains pointed towards the inserted node, we use the
 	   reference to keep track. */
-	GtkTreeRowReference *ref = ctk_tree_row_reference_new (GTK_TREE_MODEL (model), *path);
+	GtkTreeRowReference *ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (model), *path);
 	GtkTreePath * copy = ctk_tree_path_copy (*path);
 
-	ctk_tree_model_row_inserted (GTK_TREE_MODEL(model), copy, iter);
+	ctk_tree_model_row_inserted (CTK_TREE_MODEL(model), copy, iter);
 	ctk_tree_path_free (copy);
 
 	if (ref)
@@ -1185,7 +1185,7 @@ row_deleted (LapizFileBrowserStore * model,
 
 	/* Delete a copy of the actual path here because the row-deleted
 	   signal may alter the path */
-	ctk_tree_model_row_deleted (GTK_TREE_MODEL(model), copy);
+	ctk_tree_model_row_deleted (CTK_TREE_MODEL(model), copy);
 	ctk_tree_path_free (copy);
 }
 
@@ -1603,11 +1603,11 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 	if (info) {
 		GIcon *gicon = g_file_info_get_icon (info);
 		if (gicon != NULL)
-			icon = lapiz_file_browser_utils_pixbuf_from_icon (gicon, GTK_ICON_SIZE_MENU);
+			icon = lapiz_file_browser_utils_pixbuf_from_icon (gicon, CTK_ICON_SIZE_MENU);
 		else
 			icon = NULL;
 	} else {
-		icon = lapiz_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU);
+		icon = lapiz_file_browser_utils_pixbuf_from_file (node->file, CTK_ICON_SIZE_MENU);
 	}
 
 	if (node->icon)
@@ -1616,7 +1616,7 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 	if (node->emblem) {
 		gint icon_size;
 
-		ctk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
+		ctk_icon_size_lookup (CTK_ICON_SIZE_MENU, NULL, &icon_size);
 
 		if (icon == NULL) {
 			node->icon =
@@ -2101,7 +2101,7 @@ model_add_node_from_dir (LapizFileBrowserStore * model,
 		}
 
 		if (node->icon == NULL) {
-			node->icon = lapiz_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
+			node->icon = lapiz_file_browser_utils_pixbuf_from_theme ("folder", CTK_ICON_SIZE_MENU);
 		}
 
 		model_add_node (model, node, parent);
@@ -2757,7 +2757,7 @@ lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 	model_recomposite_icon (tree_model, iter);
 
 	if (model_node_visibility (tree_model, node)) {
-		path = lapiz_file_browser_store_get_path (GTK_TREE_MODEL (tree_model),
+		path = lapiz_file_browser_store_get_path (CTK_TREE_MODEL (tree_model),
 							  iter);
 		row_changed (tree_model, &path, iter);
 		ctk_tree_path_free (path);
@@ -3393,7 +3393,7 @@ lapiz_file_browser_store_delete_all (LapizFileBrowserStore *model,
 	for (row = rows; row; row = row->next) {
 		path = (GtkTreePath *)(row->data);
 
-		if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path))
+		if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (model), &iter, path))
 			continue;
 
 		/* Skip if the current path is actually a descendant of the

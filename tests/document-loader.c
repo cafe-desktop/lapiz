@@ -77,7 +77,7 @@ on_document_loaded (LapizDocument  *document,
 	{
 		gchar *text;
 
-		ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (document), &start, &end);
+		ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (document), &start, &end);
 		text = ctk_text_iter_get_slice (&start, &end);
 
 		g_assert_cmpstr (text, ==, data->in_buffer);

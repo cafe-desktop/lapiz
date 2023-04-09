@@ -49,7 +49,7 @@ struct _LapizDocumentsPanelPrivate
 	guint         is_reodering : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizDocumentsPanel, lapiz_documents_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizDocumentsPanel, lapiz_documents_panel, CTK_TYPE_BOX)
 
 enum
 {
@@ -84,7 +84,7 @@ tab_get_name (LapizTab *tab)
 	/* Truncate the name so it doesn't get insanely wide. */
 	docname = lapiz_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
 
-	if (ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	if (ctk_text_buffer_get_modified (CTK_TEXT_BUFFER (doc)))
 	{
 		if (lapiz_document_get_readonly (doc))
 		{
@@ -126,8 +126,8 @@ get_iter_from_tab (LapizDocumentsPanel *panel, LapizTab *tab, GtkTreeIter *iter)
 	GtkTreePath *path;
 
 	nb = _lapiz_window_get_notebook (panel->priv->window);
-	num = ctk_notebook_page_num (GTK_NOTEBOOK (nb),
-				     GTK_WIDGET (tab));
+	num = ctk_notebook_page_num (CTK_NOTEBOOK (nb),
+				     CTK_WIDGET (tab));
 
 	path = ctk_tree_path_new_from_indices (num, -1);
 	ctk_tree_model_get_iter (panel->priv->model,
@@ -150,11 +150,11 @@ window_active_tab_changed (LapizWindow         *window,
 
 		get_iter_from_tab (panel, tab, &iter);
 
-		if (ctk_list_store_iter_is_valid (GTK_LIST_STORE (panel->priv->model),
+		if (ctk_list_store_iter_is_valid (CTK_LIST_STORE (panel->priv->model),
 						  &iter))
 		{
 			selection = ctk_tree_view_get_selection (
-					GTK_TREE_VIEW (panel->priv->treeview));
+					CTK_TREE_VIEW (panel->priv->treeview));
 
 			ctk_tree_selection_select_iter (selection, &iter);
 		}
@@ -174,7 +174,7 @@ refresh_list (LapizDocumentsPanel *panel)
 
 	/* g_debug ("refresh_list"); */
 
-	list_store = GTK_LIST_STORE (panel->priv->model);
+	list_store = CTK_LIST_STORE (panel->priv->model);
 
 	ctk_list_store_clear (list_store);
 
@@ -182,7 +182,7 @@ refresh_list (LapizDocumentsPanel *panel)
 
 	nb = _lapiz_window_get_notebook (panel->priv->window);
 
-	tabs = ctk_container_get_children (GTK_CONTAINER (nb));
+	tabs = ctk_container_get_children (CTK_CONTAINER (nb));
 	l = tabs;
 
 	panel->priv->adding_tab = TRUE;
@@ -214,7 +214,7 @@ refresh_list (LapizDocumentsPanel *panel)
 			GtkTreeSelection *selection;
 
 			selection = ctk_tree_view_get_selection (
-					GTK_TREE_VIEW (panel->priv->treeview));
+					CTK_TREE_VIEW (panel->priv->treeview));
 
 			ctk_tree_selection_select_iter (selection, &iter);
 		}
@@ -241,7 +241,7 @@ sync_name_and_icon (LapizTab            *tab,
 	name = tab_get_name (tab);
 	pixbuf = _lapiz_tab_get_icon (tab);
 
-	ctk_list_store_set (GTK_LIST_STORE (panel->priv->model),
+	ctk_list_store_set (CTK_LIST_STORE (panel->priv->model),
 			    &iter,
 			    PIXBUF_COLUMN, pixbuf,
 			    NAME_COLUMN, name,
@@ -263,7 +263,7 @@ window_tab_removed (LapizWindow         *window,
 					      panel);
 
 	if (_lapiz_window_is_removing_tabs (window))
-		ctk_list_store_clear (GTK_LIST_STORE (panel->priv->model));
+		ctk_list_store_clear (CTK_LIST_STORE (panel->priv->model));
 	else
 		refresh_list (panel);
 }
@@ -292,10 +292,10 @@ window_tab_added (LapizWindow         *window,
 
 	panel->priv->adding_tab = TRUE;
 
-	if (ctk_list_store_iter_is_valid (GTK_LIST_STORE (panel->priv->model),
+	if (ctk_list_store_iter_is_valid (CTK_LIST_STORE (panel->priv->model),
 					  &sibling))
 	{
-		ctk_list_store_insert_after (GTK_LIST_STORE (panel->priv->model),
+		ctk_list_store_insert_after (CTK_LIST_STORE (panel->priv->model),
 					     &iter,
 					     &sibling);
 	}
@@ -303,7 +303,7 @@ window_tab_added (LapizWindow         *window,
 	{
 		LapizTab *active_tab;
 
-		ctk_list_store_append (GTK_LIST_STORE (panel->priv->model),
+		ctk_list_store_append (CTK_LIST_STORE (panel->priv->model),
 				       &iter);
 
 		active_tab = lapiz_window_get_active_tab (panel->priv->window);
@@ -313,7 +313,7 @@ window_tab_added (LapizWindow         *window,
 			GtkTreeSelection *selection;
 
 			selection = ctk_tree_view_get_selection (
-						GTK_TREE_VIEW (panel->priv->treeview));
+						CTK_TREE_VIEW (panel->priv->treeview));
 
 			ctk_tree_selection_select_iter (selection, &iter);
 		}
@@ -322,7 +322,7 @@ window_tab_added (LapizWindow         *window,
 	name = tab_get_name (tab);
 	pixbuf = _lapiz_tab_get_icon (tab);
 
-	ctk_list_store_set (GTK_LIST_STORE (panel->priv->model),
+	ctk_list_store_set (CTK_LIST_STORE (panel->priv->model),
 			    &iter,
 		            PIXBUF_COLUMN, pixbuf,
 		            NAME_COLUMN, name,
@@ -382,7 +382,7 @@ treeview_cursor_changed (GtkTreeView         *view,
 	gpointer tab;
 
 	selection = ctk_tree_view_get_selection (
-				GTK_TREE_VIEW (panel->priv->treeview));
+				CTK_TREE_VIEW (panel->priv->treeview));
 
 	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 	{
@@ -497,12 +497,12 @@ show_popup_menu (LapizDocumentsPanel *panel,
 
 	if (event != NULL)
 	{
-		ctk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+		ctk_menu_popup_at_pointer (CTK_MENU (menu), NULL);
 	}
 	else
 	{
 		menu_popup_at_treeview_selection (menu, panel->priv->treeview);
-		ctk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+		ctk_menu_shell_select_first (CTK_MENU_SHELL (menu), FALSE);
 	}
 
 	return TRUE;
@@ -550,7 +550,7 @@ panel_popup_menu (GtkWidget           *treeview,
 		  LapizDocumentsPanel *panel)
 {
 	/* Only respond if the treeview is the actual focus */
-	if (ctk_window_get_focus (GTK_WINDOW (panel->priv->window)) == treeview)
+	if (ctk_window_get_focus (CTK_WINDOW (panel->priv->window)) == treeview)
 	{
 		return show_popup_menu (panel, NULL);
 	}
@@ -567,7 +567,7 @@ treeview_query_tooltip (GtkWidget  *widget,
 			gpointer    data)
 {
 	GtkTreeIter iter;
-	GtkTreeView *tree_view = GTK_TREE_VIEW (widget);
+	GtkTreeView *tree_view = CTK_TREE_VIEW (widget);
 	GtkTreeModel *model = ctk_tree_view_get_model (tree_view);
 	GtkTreePath *path = NULL;
 	gpointer *tab;
@@ -642,8 +642,8 @@ treeview_row_inserted (GtkTreeModel        *tree_model,
 	nb = _lapiz_window_get_notebook (panel->priv->window);
 
 	new_position = indeces[0];
-	old_position = ctk_notebook_page_num (GTK_NOTEBOOK (nb),
-				    	      GTK_WIDGET (tab));
+	old_position = ctk_notebook_page_num (CTK_NOTEBOOK (nb),
+				    	      CTK_WIDGET (tab));
 	if (new_position > old_position)
 		new_position = MAX (0, new_position - 1);
 
@@ -667,23 +667,23 @@ lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 	panel->priv->adding_tab = FALSE;
 	panel->priv->is_reodering = FALSE;
 
-	ctk_orientable_set_orientation (GTK_ORIENTABLE (panel),
-	                                GTK_ORIENTATION_VERTICAL);
+	ctk_orientable_set_orientation (CTK_ORIENTABLE (panel),
+	                                CTK_ORIENTATION_VERTICAL);
 
 	/* Create the scrolled window */
 	sw = ctk_scrolled_window_new (NULL, NULL);
 	g_return_if_fail (sw != NULL);
 
-	ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-					GTK_POLICY_AUTOMATIC,
-					GTK_POLICY_AUTOMATIC);
-	ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                             GTK_SHADOW_IN);
+	ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+					CTK_POLICY_AUTOMATIC,
+					CTK_POLICY_AUTOMATIC);
+	ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+                                             CTK_SHADOW_IN);
 	ctk_widget_show (sw);
-	ctk_box_pack_start (GTK_BOX (panel), sw, TRUE, TRUE, 0);
+	ctk_box_pack_start (CTK_BOX (panel), sw, TRUE, TRUE, 0);
 
 	/* Create the empty model */
-	panel->priv->model = GTK_TREE_MODEL (ctk_list_store_new (N_COLUMNS,
+	panel->priv->model = CTK_TREE_MODEL (ctk_list_store_new (N_COLUMNS,
 								 GDK_TYPE_PIXBUF,
 								 G_TYPE_STRING,
 								 G_TYPE_POINTER));
@@ -691,9 +691,9 @@ lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 	/* Create the treeview */
 	panel->priv->treeview = ctk_tree_view_new_with_model (panel->priv->model);
 	g_object_unref (G_OBJECT (panel->priv->model));
-	ctk_container_add (GTK_CONTAINER (sw), panel->priv->treeview);
-	ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (panel->priv->treeview), FALSE);
-	ctk_tree_view_set_reorderable (GTK_TREE_VIEW (panel->priv->treeview), TRUE);
+	ctk_container_add (CTK_CONTAINER (sw), panel->priv->treeview);
+	ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (panel->priv->treeview), FALSE);
+	ctk_tree_view_set_reorderable (CTK_TREE_VIEW (panel->priv->treeview), TRUE);
 
 	g_object_set (panel->priv->treeview, "has-tooltip", TRUE, NULL);
 
@@ -709,13 +709,13 @@ lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 	ctk_tree_view_column_pack_start (column, cell, TRUE);
 	ctk_tree_view_column_add_attribute (column, cell, "markup", NAME_COLUMN);
 
-	ctk_tree_view_append_column (GTK_TREE_VIEW (panel->priv->treeview),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (panel->priv->treeview),
 				     column);
 
 	selection = ctk_tree_view_get_selection (
-			GTK_TREE_VIEW (panel->priv->treeview));
+			CTK_TREE_VIEW (panel->priv->treeview));
 
-	ctk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
+	ctk_tree_selection_set_mode (selection, CTK_SELECTION_SINGLE);
 
 	g_signal_connect (panel->priv->treeview,
 			  "cursor_changed",
@@ -745,7 +745,7 @@ lapiz_documents_panel_new (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
-	return GTK_WIDGET (g_object_new (LAPIZ_TYPE_DOCUMENTS_PANEL,
+	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_DOCUMENTS_PANEL,
 					 "window", window,
 					 NULL));
 }

@@ -376,16 +376,16 @@ on_message_received (const char *message,
 	 * terminal. We also need to make sure that the window
 	 * has been realized otherwise it will not work. lame.
 	 */
-	if (!ctk_widget_get_realized (GTK_WIDGET (window)))
-		ctk_widget_realize (GTK_WIDGET (window));
+	if (!ctk_widget_get_realized (CTK_WIDGET (window)))
+		ctk_widget_realize (CTK_WIDGET (window));
 
 	if (startup_timestamp <= 0)
-		startup_timestamp = gdk_x11_get_server_time (ctk_widget_get_window (GTK_WIDGET (window)));
+		startup_timestamp = gdk_x11_get_server_time (ctk_widget_get_window (CTK_WIDGET (window)));
 
-	gdk_x11_window_set_user_time (ctk_widget_get_window (GTK_WIDGET (window)),
+	gdk_x11_window_set_user_time (ctk_widget_get_window (CTK_WIDGET (window)),
 				      startup_timestamp);
 
-	ctk_window_present (GTK_WINDOW (window));
+	ctk_window_present (CTK_WINDOW (window));
 
  out:
 	g_strfreev (commands);
@@ -641,7 +641,7 @@ main (int argc, char *argv[])
 		}
 
 		lapiz_debug_message (DEBUG_APP, "Show window");
-		ctk_widget_show (GTK_WIDGET (window));
+		ctk_widget_show (CTK_WIDGET (window));
 
 		free_command_line_data ();
 	}

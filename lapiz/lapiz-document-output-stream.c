@@ -132,14 +132,14 @@ lapiz_document_output_stream_constructed (GObject *object)
 	}
 
 	/* Init the undoable action */
-	ctk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
+	ctk_source_buffer_begin_not_undoable_action (CTK_SOURCE_BUFFER (stream->priv->doc));
 	/* clear the buffer */
-	ctk_text_buffer_set_text (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_set_text (CTK_TEXT_BUFFER (stream->priv->doc),
 				  "", 0);
-	ctk_text_buffer_set_modified (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_set_modified (CTK_TEXT_BUFFER (stream->priv->doc),
 				      FALSE);
 
-	ctk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
+	ctk_source_buffer_end_not_undoable_action (CTK_SOURCE_BUFFER (stream->priv->doc));
 }
 
 static void
@@ -227,7 +227,7 @@ lapiz_document_output_stream_detect_newline_type (LapizDocumentOutputStream *str
 
 	type = LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 
-	ctk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_get_start_iter (CTK_TEXT_BUFFER (stream->priv->doc),
 					&iter);
 
 	if (ctk_text_iter_ends_line (&iter) || ctk_text_iter_forward_to_line_end (&iter))
@@ -246,7 +246,7 @@ remove_ending_newline (LapizDocumentOutputStream *stream)
 	GtkTextIter end;
 	GtkTextIter start;
 
-	ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (stream->priv->doc), &end);
+	ctk_text_buffer_get_end_iter (CTK_TEXT_BUFFER (stream->priv->doc), &end);
 	start = end;
 
 	ctk_text_iter_set_line_offset (&start, 0);
@@ -260,7 +260,7 @@ remove_ending_newline (LapizDocumentOutputStream *stream)
 		}
 
 		/* Delete the empty line which is from 'start' to 'end' */
-		ctk_text_buffer_delete (GTK_TEXT_BUFFER (stream->priv->doc),
+		ctk_text_buffer_delete (CTK_TEXT_BUFFER (stream->priv->doc),
 		                        &start,
 		                        &end);
 	}
@@ -271,10 +271,10 @@ end_append_text_to_document (LapizDocumentOutputStream *stream)
 {
 	remove_ending_newline (stream);
 
-	ctk_text_buffer_set_modified (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_set_modified (CTK_TEXT_BUFFER (stream->priv->doc),
 				      FALSE);
 
-	ctk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
+	ctk_source_buffer_end_not_undoable_action (CTK_SOURCE_BUFFER (stream->priv->doc));
 }
 
 static gssize
@@ -299,9 +299,9 @@ lapiz_document_output_stream_write (GOutputStream            *stream,
 	if (!ostream->priv->is_initialized)
 	{
 		/* Init the undoable action */
-		ctk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (ostream->priv->doc));
+		ctk_source_buffer_begin_not_undoable_action (CTK_SOURCE_BUFFER (ostream->priv->doc));
 
-		ctk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (ostream->priv->doc),
+		ctk_text_buffer_get_start_iter (CTK_TEXT_BUFFER (ostream->priv->doc),
 						&ostream->priv->pos);
 		ostream->priv->is_initialized = TRUE;
 	}
@@ -363,7 +363,7 @@ lapiz_document_output_stream_write (GOutputStream            *stream,
 		}
 	}
 
-	ctk_text_buffer_insert (GTK_TEXT_BUFFER (ostream->priv->doc),
+	ctk_text_buffer_insert (CTK_TEXT_BUFFER (ostream->priv->doc),
 				&ostream->priv->pos, text, len);
 
 	if (freetext)

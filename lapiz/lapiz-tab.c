@@ -83,7 +83,7 @@ struct _LapizTabPrivate
 	guint			idle_scroll;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizTab, lapiz_tab, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizTab, lapiz_tab, CTK_TYPE_BOX)
 
 enum
 {
@@ -316,8 +316,8 @@ set_cursor_according_to_state (GtkTextView   *view,
 	GdkWindow *text_window;
 	GdkWindow *left_window;
 
-	text_window = ctk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT);
-	left_window = ctk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT);
+	text_window = ctk_text_view_get_window (view, CTK_TEXT_WINDOW_TEXT);
+	left_window = ctk_text_view_get_window (view, CTK_TEXT_WINDOW_LEFT);
 
 	if ((state == LAPIZ_TAB_STATE_LOADING)          ||
 	    (state == LAPIZ_TAB_STATE_REVERTING)        ||
@@ -327,7 +327,7 @@ set_cursor_according_to_state (GtkTextView   *view,
 	    (state == LAPIZ_TAB_STATE_CLOSING))
 	{
 		cursor = gdk_cursor_new_for_display (
-				ctk_widget_get_display (GTK_WIDGET (view)),
+				ctk_widget_get_display (CTK_WIDGET (view)),
 				GDK_WATCH);
 
 		if (text_window != NULL)
@@ -340,7 +340,7 @@ set_cursor_according_to_state (GtkTextView   *view,
 	else
 	{
 		cursor = gdk_cursor_new_for_display (
-				ctk_widget_get_display (GTK_WIDGET (view)),
+				ctk_widget_get_display (CTK_WIDGET (view)),
 				GDK_XTERM);
 
 		if (text_window != NULL)
@@ -368,16 +368,16 @@ set_view_properties_according_to_state (LapizTab      *tab,
 	val = ((state == LAPIZ_TAB_STATE_NORMAL) &&
 	       (tab->priv->print_preview == NULL) &&
 	       !tab->priv->not_editable);
-	ctk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), val);
+	ctk_text_view_set_editable (CTK_TEXT_VIEW (tab->priv->view), val);
 
 	val = ((state != LAPIZ_TAB_STATE_LOADING) &&
 	       (state != LAPIZ_TAB_STATE_CLOSING));
-	ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tab->priv->view), val);
+	ctk_text_view_set_cursor_visible (CTK_TEXT_VIEW (tab->priv->view), val);
 
 	val = ((state != LAPIZ_TAB_STATE_LOADING) &&
 	       (state != LAPIZ_TAB_STATE_CLOSING) &&
 	       (lapiz_prefs_manager_get_highlight_current_line ()));
-	ctk_source_view_set_highlight_current_line (GTK_SOURCE_VIEW (tab->priv->view), val);
+	ctk_source_view_set_highlight_current_line (CTK_SOURCE_VIEW (tab->priv->view), val);
 }
 
 static void
@@ -405,7 +405,7 @@ lapiz_tab_set_state (LapizTab      *tab,
 			ctk_widget_show (tab->priv->view_scrolled_window);
 	}
 
-	set_cursor_according_to_state (GTK_TEXT_VIEW (tab->priv->view),
+	set_cursor_according_to_state (CTK_TEXT_VIEW (tab->priv->view),
 				       state);
 
 	g_object_notify (G_OBJECT (tab), "state");
@@ -455,7 +455,7 @@ set_message_area (LapizTab  *tab,
 	if (message_area == NULL)
 		return;
 
-	ctk_box_pack_start (GTK_BOX (tab),
+	ctk_box_pack_start (CTK_BOX (tab),
 			    tab->priv->message_area,
 			    FALSE,
 			    FALSE,
@@ -470,7 +470,7 @@ remove_tab (LapizTab *tab)
 {
 	LapizNotebook *notebook;
 
-	notebook = LAPIZ_NOTEBOOK (ctk_widget_get_parent (GTK_WIDGET (tab)));
+	notebook = LAPIZ_NOTEBOOK (ctk_widget_get_parent (CTK_WIDGET (tab)));
 
 	lapiz_notebook_remove_tab (notebook, tab);
 }
@@ -496,9 +496,9 @@ io_loading_error_message_area_response (GtkWidget        *message_area,
 
 	switch (response_id)
 	{
-		case GTK_RESPONSE_OK:
+		case CTK_RESPONSE_OK:
 			encoding = lapiz_conversion_error_message_area_get_encoding (
-					GTK_WIDGET (message_area));
+					CTK_WIDGET (message_area));
 
 			if (encoding != NULL)
 			{
@@ -516,17 +516,17 @@ io_loading_error_message_area_response (GtkWidget        *message_area,
 					     tab->priv->tmp_line_pos,
 					     FALSE);
 			break;
-		case GTK_RESPONSE_YES:
+		case CTK_RESPONSE_YES:
 			/* This means that we want to edit the document anyway */
 			set_message_area (tab, NULL);
 			_lapiz_document_set_readonly (doc, FALSE);
 			break;
-		case GTK_RESPONSE_NO:
+		case CTK_RESPONSE_NO:
 			/* We don't want to edit the document just show it */
 			set_message_area (tab, NULL);
 			break;
 		default:
-			_lapiz_recent_remove (LAPIZ_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (tab))), uri);
+			_lapiz_recent_remove (LAPIZ_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (tab))), uri);
 
 			remove_tab (tab);
 			break;
@@ -544,17 +544,17 @@ file_already_open_warning_message_area_response (GtkWidget   *message_area,
 
 	view = lapiz_tab_get_view (tab);
 
-	if (response_id == GTK_RESPONSE_YES)
+	if (response_id == CTK_RESPONSE_YES)
 	{
 		tab->priv->not_editable = FALSE;
 
-		ctk_text_view_set_editable (GTK_TEXT_VIEW (view),
+		ctk_text_view_set_editable (CTK_TEXT_VIEW (view),
 					    TRUE);
 	}
 
 	ctk_widget_destroy (message_area);
 
-	ctk_widget_grab_focus (GTK_WIDGET (view));
+	ctk_widget_grab_focus (CTK_WIDGET (view));
 }
 
 static void
@@ -591,7 +591,7 @@ unrecoverable_reverting_error_message_area_response (GtkWidget        *message_a
 
 	view = lapiz_tab_get_view (tab);
 
-	ctk_widget_grab_focus (GTK_WIDGET (view));
+	ctk_widget_grab_focus (CTK_WIDGET (view));
 
 	install_auto_save_timeout_if_needed (tab);
 }
@@ -925,7 +925,7 @@ document_loaded (LapizDocument *document,
 		}
 		else
 		{
-			_lapiz_recent_remove (LAPIZ_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (tab))), uri);
+			_lapiz_recent_remove (LAPIZ_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (tab))), uri);
 
 			if (tab->priv->state == LAPIZ_TAB_STATE_LOADING_ERROR)
 			{
@@ -953,8 +953,8 @@ document_loaded (LapizDocument *document,
 			set_message_area (tab, emsg);
 		}
 
-		ctk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
-						   GTK_RESPONSE_CANCEL);
+		ctk_info_bar_set_default_response (CTK_INFO_BAR (emsg),
+						   CTK_RESPONSE_CANCEL);
 
 		ctk_widget_show (emsg);
 
@@ -972,7 +972,7 @@ document_loaded (LapizDocument *document,
 		g_return_if_fail (uri != NULL);
 
 		mime = lapiz_document_get_mime_type (document);
-		_lapiz_recent_add (LAPIZ_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (tab))),
+		_lapiz_recent_add (LAPIZ_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (tab))),
 				   uri,
 				   mime);
 		g_free (mime);
@@ -996,8 +996,8 @@ document_loaded (LapizDocument *document,
 					  G_CALLBACK (io_loading_error_message_area_response),
 					  tab);
 
-			ctk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
-							   GTK_RESPONSE_CANCEL);
+			ctk_info_bar_set_default_response (CTK_INFO_BAR (emsg),
+							   CTK_RESPONSE_CANCEL);
 
 			ctk_widget_show (emsg);
 		}
@@ -1034,8 +1034,8 @@ document_loaded (LapizDocument *document,
 
 					set_message_area (tab, w);
 
-					ctk_info_bar_set_default_response (GTK_INFO_BAR (w),
-									   GTK_RESPONSE_CANCEL);
+					ctk_info_bar_set_default_response (CTK_INFO_BAR (w),
+									   CTK_RESPONSE_CANCEL);
 
 					ctk_widget_show (w);
 
@@ -1134,7 +1134,7 @@ unrecoverable_saving_error_message_area_response (GtkWidget        *message_area
 
 	view = lapiz_tab_get_view (tab);
 
-	ctk_widget_grab_focus (GTK_WIDGET (view));
+	ctk_widget_grab_focus (CTK_WIDGET (view));
 }
 
 static void
@@ -1142,7 +1142,7 @@ no_backup_error_message_area_response (GtkWidget        *message_area,
 				       gint              response_id,
 				       LapizTab         *tab)
 {
-	if (response_id == GTK_RESPONSE_YES)
+	if (response_id == CTK_RESPONSE_YES)
 	{
 		LapizDocument *doc;
 
@@ -1177,7 +1177,7 @@ externally_modified_error_message_area_response (GtkWidget        *message_area,
 						 gint              response_id,
 						 LapizTab         *tab)
 {
-	if (response_id == GTK_RESPONSE_YES)
+	if (response_id == CTK_RESPONSE_YES)
 	{
 		LapizDocument *doc;
 
@@ -1216,12 +1216,12 @@ recoverable_saving_error_message_area_response (GtkWidget        *message_area,
 	doc = lapiz_tab_get_document (tab);
 	g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
 
-	if (response_id == GTK_RESPONSE_OK)
+	if (response_id == CTK_RESPONSE_OK)
 	{
 		const LapizEncoding *encoding;
 
 		encoding = lapiz_conversion_error_message_area_get_encoding (
-									GTK_WIDGET (message_area));
+									CTK_WIDGET (message_area));
 
 		g_return_if_fail (encoding != NULL);
 
@@ -1313,7 +1313,7 @@ document_saved (LapizDocument *document,
 			  error->code != G_IO_ERROR_PARTIAL_INPUT))
 		{
 			/* These errors are _NOT_ recoverable */
-			_lapiz_recent_remove  (LAPIZ_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (tab))),
+			_lapiz_recent_remove  (LAPIZ_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (tab))),
 					       tab->priv->tmp_save_uri);
 
 			emsg = lapiz_unrecoverable_saving_error_message_area_new (tab->priv->tmp_save_uri,
@@ -1346,8 +1346,8 @@ document_saved (LapizDocument *document,
 					  tab);
 		}
 
-		ctk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
-						   GTK_RESPONSE_CANCEL);
+		ctk_info_bar_set_default_response (CTK_INFO_BAR (emsg),
+						   CTK_RESPONSE_CANCEL);
 
 		ctk_widget_show (emsg);
 	}
@@ -1355,7 +1355,7 @@ document_saved (LapizDocument *document,
 	{
 		gchar *mime = lapiz_document_get_mime_type (document);
 
-		_lapiz_recent_add (LAPIZ_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (tab))),
+		_lapiz_recent_add (LAPIZ_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (tab))),
 				   tab->priv->tmp_save_uri,
 				   mime);
 		g_free (mime);
@@ -1381,7 +1381,7 @@ externally_modified_notification_message_area_response (GtkWidget        *messag
 	set_message_area (tab, NULL);
 	view = lapiz_tab_get_view (tab);
 
-	if (response_id == GTK_RESPONSE_OK)
+	if (response_id == CTK_RESPONSE_OK)
 	{
 		_lapiz_tab_revert (tab);
 	}
@@ -1393,7 +1393,7 @@ externally_modified_notification_message_area_response (GtkWidget        *messag
 		lapiz_tab_set_state (tab, LAPIZ_TAB_STATE_NORMAL);
 	}
 
-	ctk_widget_grab_focus (GTK_WIDGET (view));
+	ctk_widget_grab_focus (CTK_WIDGET (view));
 }
 
 static void
@@ -1412,7 +1412,7 @@ display_externally_modified_notification (LapizTab *tab)
 	uri = lapiz_document_get_uri (doc);
 	g_return_if_fail (uri != NULL);
 
-	document_modified = ctk_text_buffer_get_modified (GTK_TEXT_BUFFER(doc));
+	document_modified = ctk_text_buffer_get_modified (CTK_TEXT_BUFFER(doc));
 	message_area = lapiz_externally_modified_message_area_new (uri, document_modified);
 	g_free (uri);
 
@@ -1474,8 +1474,8 @@ tab_mount_operation_factory (LapizDocument *doc,
 	LapizTab *tab = LAPIZ_TAB (userdata);
 	GtkWidget *window;
 
-	window = ctk_widget_get_toplevel (GTK_WIDGET (tab));
-	return ctk_mount_operation_new (GTK_WINDOW (window));
+	window = ctk_widget_get_toplevel (CTK_WIDGET (tab));
+	return ctk_mount_operation_new (CTK_WINDOW (window));
 }
 
 static void
@@ -1495,16 +1495,16 @@ lapiz_tab_init (LapizTab *tab)
 
 	tab->priv->ask_if_externally_modified = TRUE;
 
-	ctk_orientable_set_orientation (GTK_ORIENTABLE (tab),
-	                                GTK_ORIENTATION_VERTICAL);
+	ctk_orientable_set_orientation (CTK_ORIENTABLE (tab),
+	                                CTK_ORIENTATION_VERTICAL);
 
 	/* Create the scrolled window */
 	sw = ctk_scrolled_window_new (NULL, NULL);
 	tab->priv->view_scrolled_window = sw;
 
-	ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-					GTK_POLICY_AUTOMATIC,
-					GTK_POLICY_AUTOMATIC);
+	ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+					CTK_POLICY_AUTOMATIC,
+					CTK_POLICY_AUTOMATIC);
 
 	/* Manage auto save data */
 	lockdown = lapiz_app_get_lockdown (lapiz_app_get_default ());
@@ -1529,10 +1529,10 @@ lapiz_tab_init (LapizTab *tab)
 	ctk_widget_show (tab->priv->view);
 	g_object_set_data (G_OBJECT (tab->priv->view), LAPIZ_TAB_KEY, tab);
 
-	ctk_box_pack_end (GTK_BOX (tab), sw, TRUE, TRUE, 0);
-	ctk_container_add (GTK_CONTAINER (sw), tab->priv->view);
-	ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-					     GTK_SHADOW_IN);
+	ctk_box_pack_end (CTK_BOX (tab), sw, TRUE, TRUE, 0);
+	ctk_container_add (CTK_CONTAINER (sw), tab->priv->view);
+	ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+					     CTK_SHADOW_IN);
 	ctk_widget_show (sw);
 
 	g_signal_connect (doc,
@@ -1578,7 +1578,7 @@ lapiz_tab_init (LapizTab *tab)
 GtkWidget *
 _lapiz_tab_new (void)
 {
-	return GTK_WIDGET (g_object_new (LAPIZ_TYPE_TAB, NULL));
+	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_TAB, NULL));
 }
 
 /* Whether create is TRUE, creates a new empty document if location does
@@ -1601,7 +1601,7 @@ _lapiz_tab_new_from_uri (const gchar         *uri,
 			 line_pos,
 			 create);
 
-	return GTK_WIDGET (tab);
+	return CTK_WIDGET (tab);
 }
 
 /**
@@ -1630,7 +1630,7 @@ LapizDocument *
 lapiz_tab_get_document (LapizTab *tab)
 {
 	return LAPIZ_DOCUMENT (ctk_text_view_get_buffer (
-					GTK_TEXT_VIEW (tab->priv->view)));
+					CTK_TEXT_VIEW (tab->priv->view)));
 }
 
 #define MAX_DOC_NAME_LENGTH 40
@@ -1652,7 +1652,7 @@ _lapiz_tab_get_name (LapizTab *tab)
 	/* Truncate the name so it doesn't get insanely wide. */
 	docname = lapiz_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
 
-	if (ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	if (ctk_text_buffer_get_modified (CTK_TEXT_BUFFER (doc)))
 	{
 		tab_name = g_strdup_printf ("*%s", docname);
 	}
@@ -1870,12 +1870,12 @@ _lapiz_tab_get_icon (LapizTab *tab)
 
 	g_return_val_if_fail (LAPIZ_IS_TAB (tab), NULL);
 
-	screen = ctk_widget_get_screen (GTK_WIDGET (tab));
+	screen = ctk_widget_get_screen (CTK_WIDGET (tab));
 
 	theme = ctk_icon_theme_get_for_screen (screen);
 	g_return_val_if_fail (theme != NULL, NULL);
 
-	ctk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
+	ctk_icon_size_lookup (CTK_ICON_SIZE_MENU, NULL, &icon_size);
 
 	switch (tab->priv->state)
 	{
@@ -2094,7 +2094,7 @@ lapiz_tab_auto_save (LapizTab *tab)
 	g_return_val_if_fail (tab->priv->auto_save, FALSE);
 	g_return_val_if_fail (tab->priv->auto_save_interval > 0, FALSE);
 
-	if (!ctk_text_buffer_get_modified (GTK_TEXT_BUFFER(doc)))
+	if (!ctk_text_buffer_get_modified (CTK_TEXT_BUFFER(doc)))
 	{
 		lapiz_debug_message (DEBUG_TAB, "Document not modified");
 
@@ -2212,7 +2212,7 @@ get_page_setup (LapizTab *tab)
 	}
 	else
 	{
-		return ctk_page_setup_copy (GTK_PAGE_SETUP (data));
+		return ctk_page_setup_copy (CTK_PAGE_SETUP (data));
 	}
 }
 
@@ -2235,7 +2235,7 @@ get_print_settings (LapizTab *tab)
 	}
 	else
 	{
-		settings = ctk_print_settings_copy (GTK_PRINT_SETTINGS (data));
+		settings = ctk_print_settings_copy (CTK_PRINT_SETTINGS (data));
 	}
 
 	name = lapiz_document_get_short_name_for_display (doc);
@@ -2243,7 +2243,7 @@ get_print_settings (LapizTab *tab)
 			   g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS),
 			   "/", name, ".pdf", NULL);
 
-	ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_URI, uri);
+	ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_URI, uri);
 
 	g_free (uri);
 	g_free (name);
@@ -2283,7 +2283,7 @@ store_print_settings (LapizTab      *tab,
 	/* clear n-copies settings since we do not want to
 	 * persist that one */
 	ctk_print_settings_unset (settings,
-				  GTK_PRINT_SETTINGS_N_COPIES);
+				  CTK_PRINT_SETTINGS_N_COPIES);
 
 	/* remember settings for this document */
 	g_object_set_data_full (G_OBJECT (doc),
@@ -2352,7 +2352,7 @@ done_printing_cb (LapizPrintJob       *job,
 	lapiz_tab_set_state (tab, LAPIZ_TAB_STATE_NORMAL);
 
 	view = lapiz_tab_get_view (tab);
-	ctk_widget_grab_focus (GTK_WIDGET (view));
+	ctk_widget_grab_focus (CTK_WIDGET (view));
 
  	g_object_unref (tab->priv->print_job);
 	tab->priv->print_job = NULL;
@@ -2372,7 +2372,7 @@ print_preview_destroyed (GtkWidget *preview,
 		lapiz_tab_set_state (tab, LAPIZ_TAB_STATE_NORMAL);
 
 		view = lapiz_tab_get_view (tab);
-		ctk_widget_grab_focus (GTK_WIDGET (view));
+		ctk_widget_grab_focus (CTK_WIDGET (view));
 	}
 	else
 	{
@@ -2396,8 +2396,8 @@ show_preview_cb (LapizPrintJob       *job,
 
 	set_message_area (tab, NULL); /* destroy the message area */
 
-	tab->priv->print_preview = GTK_WIDGET (preview);
-	ctk_box_pack_end (GTK_BOX (tab),
+	tab->priv->print_preview = CTK_WIDGET (preview);
+	ctk_box_pack_end (CTK_BOX (tab),
 			  tab->priv->print_preview,
 			  TRUE,
 			  TRUE,
@@ -2428,7 +2428,7 @@ set_print_preview (LapizTab  *tab,
 
 	tab->priv->print_preview = print_preview;
 
-	ctk_box_pack_end (GTK_BOX (tab),
+	ctk_box_pack_end (CTK_BOX (tab),
 			  tab->priv->print_preview,
 			  TRUE,
 			  TRUE,
@@ -2517,7 +2517,7 @@ lapiz_tab_print_or_print_preview (LapizTab                *tab,
 
 	view = lapiz_tab_get_view (tab);
 
-	is_preview = (print_action == GTK_PRINT_OPERATION_ACTION_PREVIEW);
+	is_preview = (print_action == CTK_PRINT_OPERATION_ACTION_PREVIEW);
 
 	tab->priv->print_job = lapiz_print_job_new (view);
 	g_object_add_weak_pointer (G_OBJECT (tab->priv->print_job),
@@ -2550,11 +2550,11 @@ lapiz_tab_print_or_print_preview (LapizTab                *tab,
 				     print_action,
 				     setup,
 				     settings,
-				     GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (tab))),
+				     CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (tab))),
 				     &error);
 
 	// TODO: manage res in the correct way
-	if (res == GTK_PRINT_OPERATION_RESULT_ERROR)
+	if (res == CTK_PRINT_OPERATION_RESULT_ERROR)
 	{
 		/* FIXME: go in error state */
 		lapiz_tab_set_state (tab, LAPIZ_TAB_STATE_NORMAL);
@@ -2578,7 +2578,7 @@ _lapiz_tab_print (LapizTab     *tab)
 	}
 
 	lapiz_tab_print_or_print_preview (tab,
-					  GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG);
+					  CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG);
 }
 
 void
@@ -2587,7 +2587,7 @@ _lapiz_tab_print_preview (LapizTab     *tab)
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
 	lapiz_tab_print_or_print_preview (tab,
-					  GTK_PRINT_OPERATION_ACTION_PREVIEW);
+					  CTK_PRINT_OPERATION_ACTION_PREVIEW);
 }
 
 void
@@ -2616,7 +2616,7 @@ _lapiz_tab_can_close (LapizTab *tab)
 	    (ts == LAPIZ_TAB_STATE_LOADING_ERROR)   ||
 	    (ts == LAPIZ_TAB_STATE_REVERTING)       ||
 	    (ts == LAPIZ_TAB_STATE_REVERTING_ERROR) || /* CHECK: I'm not sure this is the right behavior for REVERTING ERROR */
-	    (!ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc))) ||
+	    (!ctk_text_buffer_get_modified (CTK_TEXT_BUFFER (doc))) ||
 	    (!g_settings_get_boolean (lapiz_prefs_manager->settings, "show-save-confirmation")))
 		return TRUE;
 
@@ -2627,7 +2627,7 @@ _lapiz_tab_can_close (LapizTab *tab)
 	/* TODO: we need to save the file also if it has been externally
 	   modified - Paolo (Oct 10, 2005) */
 
-	return (!ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) &&
+	return (!ctk_text_buffer_get_modified (CTK_TEXT_BUFFER (doc)) &&
 		!lapiz_document_get_deleted (doc));
 }
 
@@ -2778,7 +2778,7 @@ lapiz_tab_set_info_bar (LapizTab  *tab,
                         GtkWidget *info_bar)
 {
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
-	g_return_if_fail (info_bar == NULL || GTK_IS_WIDGET (info_bar));
+	g_return_if_fail (info_bar == NULL || CTK_IS_WIDGET (info_bar));
 
 	/* FIXME: this can cause problems with the tab state machine */
 	set_message_area (tab, info_bar);

@@ -128,7 +128,7 @@ lapiz_modeline_plugin_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_OBJECT:
-			plugin->priv->window = GTK_WIDGET (g_value_dup_object (value));
+			plugin->priv->window = CTK_WIDGET (g_value_dup_object (value));
 			break;
 
 		default:
@@ -171,7 +171,7 @@ connect_handlers (LapizView *view)
 	DocumentData *data;
         GtkTextBuffer *doc;
 
-        doc = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+        doc = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
         data = g_slice_new (DocumentData);
 
@@ -194,7 +194,7 @@ disconnect_handlers (LapizView *view)
 	DocumentData *data;
 	GtkTextBuffer *doc;
 
-	doc = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	doc = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
 	data = g_object_steal_data (G_OBJECT (doc), DOCUMENT_DATA_KEY);
 
@@ -244,7 +244,7 @@ lapiz_modeline_plugin_activate (PeasActivatable *activatable)
 	for (l = views; l != NULL; l = l->next)
 	{
 		connect_handlers (LAPIZ_VIEW (l->data));
-		modeline_parser_apply_modeline (GTK_SOURCE_VIEW (l->data));
+		modeline_parser_apply_modeline (CTK_SOURCE_VIEW (l->data));
 	}
 	g_list_free (views);
 
@@ -279,7 +279,7 @@ lapiz_modeline_plugin_deactivate (PeasActivatable *activatable)
 	{
 		disconnect_handlers (LAPIZ_VIEW (l->data));
 
-		modeline_parser_deactivate (GTK_SOURCE_VIEW (l->data));
+		modeline_parser_deactivate (CTK_SOURCE_VIEW (l->data));
 	}
 
 	g_list_free (views);

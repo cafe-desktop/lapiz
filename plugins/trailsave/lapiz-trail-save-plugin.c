@@ -132,7 +132,7 @@ on_save (LapizDocument         *document,
 	 LapizDocumentSaveFlags save_flags,
 	 LapizTrailSavePlugin  *plugin)
 {
-	GtkTextBuffer *text_buffer = GTK_TEXT_BUFFER (document);
+	GtkTextBuffer *text_buffer = CTK_TEXT_BUFFER (document);
 
 	strip_trailing_spaces (text_buffer);
 }
@@ -253,7 +253,7 @@ lapiz_trail_save_plugin_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_OBJECT:
-			plugin->priv->window = GTK_WIDGET (g_value_dup_object (value));
+			plugin->priv->window = CTK_WIDGET (g_value_dup_object (value));
 			break;
 
 		default:

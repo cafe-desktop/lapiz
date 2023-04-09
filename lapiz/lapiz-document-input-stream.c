@@ -76,7 +76,7 @@ lapiz_document_input_stream_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_BUFFER:
-			stream->priv->buffer = GTK_TEXT_BUFFER (g_value_get_object (value));
+			stream->priv->buffer = CTK_TEXT_BUFFER (g_value_get_object (value));
 			break;
 
 		case PROP_NEWLINE_TYPE:
@@ -130,7 +130,7 @@ lapiz_document_input_stream_class_init (LapizDocumentInputStreamClass *klass)
 					 g_param_spec_object ("buffer",
 							      "Buffer",
 							      "The buffer which is read",
-							      GTK_TYPE_TEXT_BUFFER,
+							      CTK_TYPE_TEXT_BUFFER,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY));
 
@@ -198,7 +198,7 @@ lapiz_document_input_stream_new (GtkTextBuffer           *buffer,
 {
 	LapizDocumentInputStream *stream;
 
-	g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+	g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
 	stream = g_object_new (LAPIZ_TYPE_DOCUMENT_INPUT_STREAM,
 			       "buffer", buffer,

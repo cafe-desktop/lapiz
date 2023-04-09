@@ -53,7 +53,7 @@ static gboolean find_with_flags       (GtkTreeModel * model,
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBookmarksStore,
                                 lapiz_file_bookmarks_store,
-                                GTK_TYPE_TREE_STORE,
+                                CTK_TYPE_TREE_STORE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizFileBookmarksStore))
 
@@ -117,9 +117,9 @@ add_node (LapizFileBookmarksStore *model,
 {
 	GtkTreeIter newiter;
 
-	ctk_tree_store_append (GTK_TREE_STORE (model), &newiter, NULL);
+	ctk_tree_store_append (CTK_TREE_STORE (model), &newiter, NULL);
 
-	ctk_tree_store_set (GTK_TREE_STORE (model), &newiter,
+	ctk_tree_store_set (CTK_TREE_STORE (model), &newiter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_ICON, pixbuf,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME, name,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, obj,
@@ -148,18 +148,18 @@ add_file (LapizFileBookmarksStore *model,
 	}
 
 	if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_HOME)
-		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-home", GTK_ICON_SIZE_MENU);
+		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-home", CTK_ICON_SIZE_MENU);
 	else if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_DESKTOP)
-		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-desktop", GTK_ICON_SIZE_MENU);
+		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-desktop", CTK_ICON_SIZE_MENU);
 	else if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_ROOT)
-		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("drive-harddisk", GTK_ICON_SIZE_MENU);
+		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("drive-harddisk", CTK_ICON_SIZE_MENU);
 
 	if (pixbuf == NULL) {
 		/* getting the icon is a sync get_info call, so we just do it for local files */
 		if (native) {
-			pixbuf = lapiz_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
+			pixbuf = lapiz_file_browser_utils_pixbuf_from_file (file, CTK_ICON_SIZE_MENU);
 		} else {
-			pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
+			pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("folder", CTK_ICON_SIZE_MENU);
 		}
 	}
 
@@ -187,7 +187,7 @@ check_mount_separator (LapizFileBookmarksStore * model, guint flags,
 	gboolean found;
 
 	found =
-	    find_with_flags (GTK_TREE_MODEL (model), &iter, NULL,
+	    find_with_flags (CTK_TREE_MODEL (model), &iter, NULL,
 			     flags |
 			     LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR, 0);
 
@@ -197,7 +197,7 @@ check_mount_separator (LapizFileBookmarksStore * model, guint flags,
 			  flags | LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR,
 			  NULL);
 	} else if (!added && found) {
-		remove_node (GTK_TREE_MODEL (model), &iter);
+		remove_node (CTK_TREE_MODEL (model), &iter);
 	}
 }
 
@@ -277,7 +277,7 @@ get_fs_properties (gpointer    fs,
 
 	if (icon)
 	{
-		*pixbuf = lapiz_file_browser_utils_pixbuf_from_icon (icon, GTK_ICON_SIZE_MENU);
+		*pixbuf = lapiz_file_browser_utils_pixbuf_from_icon (icon, CTK_ICON_SIZE_MENU);
 		g_object_unref (icon);
 	}
 }
@@ -769,7 +769,7 @@ remove_node (GtkTreeModel * model, GtkTreeIter * iter)
 		}
 	}
 
-	ctk_tree_store_remove (GTK_TREE_STORE (model), iter);
+	ctk_tree_store_remove (CTK_TREE_STORE (model), iter);
 }
 
 static void
@@ -777,10 +777,10 @@ remove_bookmarks (LapizFileBookmarksStore * model)
 {
 	GtkTreeIter iter;
 
-	while (find_with_flags (GTK_TREE_MODEL (model), &iter, NULL,
+	while (find_with_flags (CTK_TREE_MODEL (model), &iter, NULL,
 				LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
 				0)) {
-		remove_node (GTK_TREE_MODEL (model), &iter);
+		remove_node (CTK_TREE_MODEL (model), &iter);
 	}
 }
 
@@ -805,16 +805,16 @@ lapiz_file_bookmarks_store_new (void)
 	};
 
 	model = g_object_new (LAPIZ_TYPE_FILE_BOOKMARKS_STORE, NULL);
-	ctk_tree_store_set_column_types (GTK_TREE_STORE (model),
+	ctk_tree_store_set_column_types (CTK_TREE_STORE (model),
 					 LAPIZ_FILE_BOOKMARKS_STORE_N_COLUMNS,
 					 column_types);
 
-	ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model),
+	ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (model),
 						 bookmarks_compare_func,
 						 NULL, NULL);
-	ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model),
-					      GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-					      GTK_SORT_ASCENDING);
+	ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (model),
+					      CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+					      CTK_SORT_ASCENDING);
 
 	initialize_fill (model);
 
@@ -834,7 +834,7 @@ lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
 	g_return_val_if_fail (LAPIZ_IS_FILE_BOOKMARKS_STORE (model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
 
-	ctk_tree_model_get (GTK_TREE_MODEL (model), iter,
+	ctk_tree_model_get (CTK_TREE_MODEL (model), iter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
 			    &flags,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
@@ -869,7 +869,7 @@ lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
 void
 lapiz_file_bookmarks_store_refresh (LapizFileBookmarksStore * model)
 {
-	ctk_tree_store_clear (GTK_TREE_STORE (model));
+	ctk_tree_store_clear (CTK_TREE_STORE (model));
 	initialize_fill (model);
 }
 
@@ -878,7 +878,7 @@ on_fs_changed (GVolumeMonitor 	      *monitor,
 	       GObject 		      *object,
 	       LapizFileBookmarksStore *model)
 {
-	GtkTreeModel *tree_model = GTK_TREE_MODEL (model);
+	GtkTreeModel *tree_model = CTK_TREE_MODEL (model);
 	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_IS_FS;
 	guint noflags = LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
 	GtkTreeIter iter;

@@ -131,14 +131,14 @@ lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
 	GtkRequisition requisition;
 	GtkAllocation allocation;
 
-	widget = GTK_WIDGET (user_data);
+	widget = CTK_WIDGET (user_data);
 	widget_get_origin (widget, x, y);
 
-	ctk_widget_get_preferred_size (GTK_WIDGET (menu), NULL, &requisition);
+	ctk_widget_get_preferred_size (CTK_WIDGET (menu), NULL, &requisition);
 
 	ctk_widget_get_allocation (widget, &allocation);
 
-	if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+	if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
 	{
 		*x += allocation.x + allocation.width - requisition.width;
 	}
@@ -161,16 +161,16 @@ menu_popup_at_treeview_selection (GtkWidget *menu,
 	GdkWindow *bin_window;
 	GdkRectangle rect;
 
-	ctk_tree_view_get_cursor (GTK_TREE_VIEW (treeview), &path, &column);
+	ctk_tree_view_get_cursor (CTK_TREE_VIEW (treeview), &path, &column);
 	g_return_if_fail (path != NULL);
 
 	if (column == NULL)
-		column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), 0);
+		column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), 0);
 
-	bin_window = ctk_tree_view_get_bin_window (GTK_TREE_VIEW (treeview));
-	ctk_tree_view_get_cell_area (GTK_TREE_VIEW (treeview), path, column, &rect);
+	bin_window = ctk_tree_view_get_bin_window (CTK_TREE_VIEW (treeview));
+	ctk_tree_view_get_cell_area (CTK_TREE_VIEW (treeview), path, column, &rect);
 
-	ctk_menu_popup_at_rect (GTK_MENU (menu), bin_window, &rect,
+	ctk_menu_popup_at_rect (CTK_MENU (menu), bin_window, &rect,
 				GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST,
 				NULL);
 
@@ -192,9 +192,9 @@ lapiz_ctk_button_new_with_icon (const gchar *label,
 	GtkWidget *button;
 
 	button = ctk_button_new_with_mnemonic (label);
-	ctk_button_set_image (GTK_BUTTON (button),
+	ctk_button_set_image (CTK_BUTTON (button),
 			      ctk_image_new_from_icon_name (icon_name,
-							    GTK_ICON_SIZE_BUTTON));
+							    CTK_ICON_SIZE_BUTTON));
 
         return button;
 }
@@ -216,7 +216,7 @@ lapiz_dialog_add_button (GtkDialog   *dialog,
 {
 	GtkWidget *button;
 
-	g_return_val_if_fail (GTK_IS_DIALOG (dialog), NULL);
+	g_return_val_if_fail (CTK_IS_DIALOG (dialog), NULL);
 	g_return_val_if_fail (text != NULL, NULL);
 	g_return_val_if_fail (icon_name != NULL, NULL);
 
@@ -291,7 +291,7 @@ lapiz_utils_set_atk_name_description (GtkWidget *widget,
 
 	aobj = ctk_widget_get_accessible (widget);
 
-	if (!(GTK_IS_ACCESSIBLE (aobj)))
+	if (!(CTK_IS_ACCESSIBLE (aobj)))
 		return;
 
 	if(name)
@@ -323,7 +323,7 @@ lapiz_utils_set_atk_relation (GtkWidget *obj1,
 	atk_obj1 = ctk_widget_get_accessible (obj1);
 	atk_obj2 = ctk_widget_get_accessible (obj2);
 
-	if (!(GTK_IS_ACCESSIBLE (atk_obj1)) || !(GTK_IS_ACCESSIBLE (atk_obj2)))
+	if (!(CTK_IS_ACCESSIBLE (atk_obj1)) || !(CTK_IS_ACCESSIBLE (atk_obj2)))
 		return;
 
 	relation_set = atk_object_ref_relation_set (atk_obj1);
@@ -504,19 +504,19 @@ lapiz_warning (GtkWindow *parent, const gchar *format, ...)
 
 	dialog = ctk_message_dialog_new_with_markup (
 			parent,
-			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-		   	GTK_MESSAGE_ERROR,
-		   	GTK_BUTTONS_OK,
+			CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
+		   	CTK_MESSAGE_ERROR,
+		   	CTK_BUTTONS_OK,
 			"%s", str);
 
 	g_free (str);
 
 	if (wg != NULL)
-		ctk_window_group_add_window (wg, GTK_WINDOW (dialog));
+		ctk_window_group_add_window (wg, CTK_WINDOW (dialog));
 
-	ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+	ctk_dialog_set_default_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
 
-	ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	ctk_window_set_resizable (CTK_WINDOW (dialog), FALSE);
 
 	g_signal_connect (G_OBJECT (dialog),
 			  "response",
@@ -908,10 +908,10 @@ lapiz_utils_get_window_workspace (GtkWindow *ctkwindow)
 	gint err, result;
 	guint ret = LAPIZ_ALL_WORKSPACES;
 
-	g_return_val_if_fail (GTK_IS_WINDOW (ctkwindow), 0);
-	g_return_val_if_fail (ctk_widget_get_realized (GTK_WIDGET (ctkwindow)), 0);
+	g_return_val_if_fail (CTK_IS_WINDOW (ctkwindow), 0);
+	g_return_val_if_fail (ctk_widget_get_realized (CTK_WIDGET (ctkwindow)), 0);
 
-	window = ctk_widget_get_window (GTK_WIDGET (ctkwindow));
+	window = ctk_widget_get_window (CTK_WIDGET (ctkwindow));
 	display = gdk_window_get_display (window);
 
 	gdk_x11_display_error_trap_push (display);
@@ -1067,14 +1067,14 @@ handle_builder_error (const gchar *message, ...)
 	va_end (args);
 
 	label = ctk_label_new (NULL);
-	ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	ctk_label_set_line_wrap (CTK_LABEL (label), TRUE);
 
 	msg = g_strconcat ("<span size=\"large\" weight=\"bold\">",
 			   msg_plain, "</span>\n\n",
 			   _("Please check your installation."),
 			   NULL);
 
-	ctk_label_set_markup (GTK_LABEL (label), msg);
+	ctk_label_set_markup (CTK_LABEL (label), msg);
 
 	g_free (msg_plain);
 	g_free (msg);
@@ -1576,7 +1576,7 @@ lapiz_ctk_text_iter_regex_search (const GtkTextIter *iter,
 	match_string = "";
 	compile_flags = 0;
 
-	if ((flags & GTK_TEXT_SEARCH_CASE_INSENSITIVE) != 0)
+	if ((flags & CTK_TEXT_SEARCH_CASE_INSENSITIVE) != 0)
 		compile_flags |= G_REGEX_CASELESS;
 
 	regex = g_regex_new (str,compile_flags,0,NULL);
@@ -1605,14 +1605,14 @@ lapiz_ctk_text_iter_regex_search (const GtkTextIter *iter,
 		end_iter = ctk_text_iter_copy (limit);
 	}
 
-	if ((flags & GTK_TEXT_SEARCH_TEXT_ONLY) != 0)
+	if ((flags & CTK_TEXT_SEARCH_TEXT_ONLY) != 0)
 	{
-		if ((flags & GTK_TEXT_SEARCH_VISIBLE_ONLY) != 0)
+		if ((flags & CTK_TEXT_SEARCH_VISIBLE_ONLY) != 0)
 			text = ctk_text_iter_get_visible_text (begin_iter, end_iter);
 		else
 			text = ctk_text_iter_get_text (begin_iter, end_iter);
 	}
-	else if ((flags & GTK_TEXT_SEARCH_VISIBLE_ONLY) != 0)
+	else if ((flags & CTK_TEXT_SEARCH_VISIBLE_ONLY) != 0)
 		text = ctk_text_iter_get_visible_slice (begin_iter, end_iter);
 	else
 		text = ctk_text_iter_get_slice (begin_iter, end_iter);
@@ -1671,7 +1671,7 @@ lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 {
 	gchar *concat;
 	GtkWidget *icon;
-	GtkWidget *box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+	GtkWidget *box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
 
 	if (icon_pixbuf)
 		icon = ctk_image_new_from_pixbuf (icon_pixbuf);
@@ -1683,10 +1683,10 @@ lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 	GtkWidget *label_menu = ctk_label_new (concat);
 	GtkWidget *menuitem = ctk_menu_item_new ();
 
-	ctk_container_add (GTK_CONTAINER (box), icon);
-	ctk_container_add (GTK_CONTAINER (box), label_menu);
+	ctk_container_add (CTK_CONTAINER (box), icon);
+	ctk_container_add (CTK_CONTAINER (box), label_menu);
 
-	ctk_container_add (GTK_CONTAINER (menuitem), box);
+	ctk_container_add (CTK_CONTAINER (menuitem), box);
 	ctk_widget_show_all (menuitem);
 
 	g_free (concat);

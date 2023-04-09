@@ -411,19 +411,19 @@ open_dialog_response_cb (LapizFileChooserDialog *dialog,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	if (response_id != GTK_RESPONSE_OK)
+	if (response_id != CTK_RESPONSE_OK)
 	{
-		ctk_widget_destroy (GTK_WIDGET (dialog));
+		ctk_widget_destroy (CTK_WIDGET (dialog));
 
 		return;
 	}
 
-	files = ctk_file_chooser_get_files (GTK_FILE_CHOOSER (dialog));
+	files = ctk_file_chooser_get_files (CTK_FILE_CHOOSER (dialog));
 	g_return_if_fail (files != NULL);
 
 	encoding = lapiz_file_chooser_dialog_get_encoding (dialog);
 
-	ctk_widget_destroy (GTK_WIDGET (dialog));
+	ctk_widget_destroy (CTK_WIDGET (dialog));
 
 	/* Remember the folder we navigated to */
 	 _lapiz_window_set_default_location (window, files->data);
@@ -454,18 +454,18 @@ _lapiz_cmd_file_open (GtkAction   *action,
 	{
 		g_return_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (data));
 
-		ctk_window_present (GTK_WINDOW (data));
+		ctk_window_present (CTK_WINDOW (data));
 
 		return;
 	}
 
 	/* Translators: "Open Files" is the title of the file chooser window */
 	open_dialog = lapiz_file_chooser_dialog_new (_("Open Files"),
-						     GTK_WINDOW (window),
-						     GTK_FILE_CHOOSER_ACTION_OPEN,
+						     CTK_WINDOW (window),
+						     CTK_FILE_CHOOSER_ACTION_OPEN,
 						     NULL,
-						     "process-stop", GTK_RESPONSE_CANCEL,
-						     "document-open", GTK_RESPONSE_OK,
+						     "process-stop", CTK_RESPONSE_CANCEL,
+						     "document-open", CTK_RESPONSE_OK,
 						     NULL);
 
 	g_object_set_data (G_OBJECT (window),
@@ -499,7 +499,7 @@ _lapiz_cmd_file_open (GtkAction   *action,
 		gchar *uri;
 
 		uri = g_file_get_uri (default_path);
-		ctk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (open_dialog),
+		ctk_file_chooser_set_current_folder_uri (CTK_FILE_CHOOSER (open_dialog),
 							 uri);
 
 		g_free (uri);
@@ -568,37 +568,37 @@ replace_read_only_file (GtkWindow *parent, GFile *file)
 	g_free (parse_name);
 
 	dialog = ctk_message_dialog_new (parent,
-					 GTK_DIALOG_DESTROY_WITH_PARENT,
-					 GTK_MESSAGE_QUESTION,
-					 GTK_BUTTONS_NONE,
+					 CTK_DIALOG_DESTROY_WITH_PARENT,
+					 CTK_MESSAGE_QUESTION,
+					 CTK_BUTTONS_NONE,
 					 _("The file \"%s\" is read-only."),
 				         name_for_display);
 	g_free (name_for_display);
 
-	ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+	ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
 						  _("Do you want to try to replace it "
 						    "with the one you are saving?"));
 
-	lapiz_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (CTK_DIALOG (dialog),
 				 _("_Cancel"),
 				 "process-stop",
-				 GTK_RESPONSE_CANCEL);
+				 CTK_RESPONSE_CANCEL);
 
-	lapiz_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (CTK_DIALOG (dialog),
 				 _("_Replace"),
 			  	 "document-save-as",
-			  	 GTK_RESPONSE_YES);
+			  	 CTK_RESPONSE_YES);
 
-	ctk_dialog_set_default_response	(GTK_DIALOG (dialog),
-					 GTK_RESPONSE_CANCEL);
+	ctk_dialog_set_default_response	(CTK_DIALOG (dialog),
+					 CTK_RESPONSE_CANCEL);
 
-	ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	ctk_window_set_resizable (CTK_WINDOW (dialog), FALSE);
 
-	ret = ctk_dialog_run (GTK_DIALOG (dialog));
+	ret = ctk_dialog_run (CTK_DIALOG (dialog));
 
 	ctk_widget_destroy (dialog);
 
-	return (ret == GTK_RESPONSE_YES);
+	return (ret == CTK_RESPONSE_YES);
 }
 
 static void
@@ -618,20 +618,20 @@ save_dialog_response_cb (LapizFileChooserDialog *dialog,
 	tab = LAPIZ_TAB (g_object_get_data (G_OBJECT (dialog),
 					    LAPIZ_TAB_TO_SAVE_AS));
 
-	if (response_id != GTK_RESPONSE_OK)
+	if (response_id != CTK_RESPONSE_OK)
 	{
-		ctk_widget_destroy (GTK_WIDGET (dialog));
+		ctk_widget_destroy (CTK_WIDGET (dialog));
 
 		goto save_next_tab;
 	}
 
-	file = ctk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+	file = ctk_file_chooser_get_file (CTK_FILE_CHOOSER (dialog));
 	g_return_if_fail (file != NULL);
 
 	encoding = lapiz_file_chooser_dialog_get_encoding (dialog);
 	newline_type = lapiz_file_chooser_dialog_get_newline_type (dialog);
 
-	ctk_widget_destroy (GTK_WIDGET (dialog));
+	ctk_widget_destroy (CTK_WIDGET (dialog));
 
 	if (tab != NULL)
 	{
@@ -721,15 +721,15 @@ confirm_overwrite_callback (GtkFileChooser *dialog,
 
 	if (is_read_only (file))
 	{
-		if (replace_read_only_file (GTK_WINDOW (dialog), file))
-			res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+		if (replace_read_only_file (CTK_WINDOW (dialog), file))
+			res = CTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
 		else
-			res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+			res = CTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
 	}
 	else
 	{
 		/* fall back to the default confirmation dialog */
-		res = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
+		res = CTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
 	}
 
 	g_object_unref (file);
@@ -755,14 +755,14 @@ file_save_as (LapizTab    *tab,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	save_dialog = lapiz_file_chooser_dialog_new (_("Save As\342\200\246"),
-						     GTK_WINDOW (window),
-						     GTK_FILE_CHOOSER_ACTION_SAVE,
+						     CTK_WINDOW (window),
+						     CTK_FILE_CHOOSER_ACTION_SAVE,
 						     NULL,
-						     "process-stop", GTK_RESPONSE_CANCEL,
-						     "document-save", GTK_RESPONSE_OK,
+						     "process-stop", CTK_RESPONSE_CANCEL,
+						     "document-save", CTK_RESPONSE_OK,
 						     NULL);
 
-	ctk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (save_dialog),
+	ctk_file_chooser_set_do_overwrite_confirmation (CTK_FILE_CHOOSER (save_dialog),
 							TRUE);
 	g_signal_connect (save_dialog,
 			  "confirm-overwrite",
@@ -772,10 +772,10 @@ file_save_as (LapizTab    *tab,
 	wg = lapiz_window_get_group (window);
 
 	ctk_window_group_add_window (wg,
-				     GTK_WINDOW (save_dialog));
+				     CTK_WINDOW (save_dialog));
 
 	/* Save As dialog is modal to its main window */
-	ctk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
+	ctk_window_set_modal (CTK_WINDOW (save_dialog), TRUE);
 
 	/* Set the suggested file name */
 	doc = lapiz_tab_get_document (tab);
@@ -783,7 +783,7 @@ file_save_as (LapizTab    *tab,
 
 	if (file != NULL)
 	{
-		uri_set = ctk_file_chooser_set_file (GTK_FILE_CHOOSER (save_dialog),
+		uri_set = ctk_file_chooser_set_file (CTK_FILE_CHOOSER (save_dialog),
 						     file,
 						     NULL);
 
@@ -804,14 +804,14 @@ file_save_as (LapizTab    *tab,
 			gchar *uri;
 
 			uri = g_file_get_uri (default_path);
-			ctk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (save_dialog),
+			ctk_file_chooser_set_current_folder_uri (CTK_FILE_CHOOSER (save_dialog),
 								 uri);
 
 			g_free (uri);
 			g_object_unref (default_path);
 		}
 
-		ctk_file_chooser_set_current_name (GTK_FILE_CHOOSER (save_dialog),
+		ctk_file_chooser_set_current_name (CTK_FILE_CHOOSER (save_dialog),
 						   docname);
 
 		g_free (docname);
@@ -910,7 +910,7 @@ _lapiz_cmd_file_save_as (GtkAction   *action,
 static gboolean
 document_needs_saving (LapizDocument *doc)
 {
-	if (ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	if (ctk_text_buffer_get_modified (CTK_TEXT_BUFFER (doc)))
 		return TRUE;
 
 	/* we check if it was deleted only for local files
@@ -1107,9 +1107,9 @@ revert_dialog_response_cb (GtkDialog   *dialog,
 	if (tab == NULL)
 		return;
 
-	ctk_widget_destroy (GTK_WIDGET (dialog));
+	ctk_widget_destroy (CTK_WIDGET (dialog));
 
-	if (response_id == GTK_RESPONSE_OK)
+	if (response_id == CTK_RESPONSE_OK)
 	{
 		do_revert (window, tab);
 	}
@@ -1206,31 +1206,31 @@ revert_dialog (LapizWindow   *window,
 					hours);
 	}
 
-	dialog = ctk_message_dialog_new (GTK_WINDOW (window),
-					 GTK_DIALOG_DESTROY_WITH_PARENT,
-					 GTK_MESSAGE_QUESTION,
-					 GTK_BUTTONS_NONE,
+	dialog = ctk_message_dialog_new (CTK_WINDOW (window),
+					 CTK_DIALOG_DESTROY_WITH_PARENT,
+					 CTK_MESSAGE_QUESTION,
+					 CTK_BUTTONS_NONE,
 					 "%s", primary_msg);
 
-	ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+	ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
 						  "%s", secondary_msg);
 	g_free (primary_msg);
 	g_free (secondary_msg);
 
-	ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	ctk_window_set_resizable (CTK_WINDOW (dialog), FALSE);
 
-	lapiz_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (CTK_DIALOG (dialog),
 				 _("_Cancel"),
 				 "process-stop",
-				 GTK_RESPONSE_CANCEL);
+				 CTK_RESPONSE_CANCEL);
 
-	lapiz_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (CTK_DIALOG (dialog),
 				 _("_Revert"),
 				 "document-revert",
-				 GTK_RESPONSE_OK);
+				 CTK_RESPONSE_OK);
 
-	ctk_dialog_set_default_response	(GTK_DIALOG (dialog),
-					 GTK_RESPONSE_CANCEL);
+	ctk_dialog_set_default_response	(CTK_DIALOG (dialog),
+					 CTK_RESPONSE_CANCEL);
 
 	return dialog;
 }
@@ -1266,9 +1266,9 @@ _lapiz_cmd_file_revert (GtkAction   *action,
 
 	wg = lapiz_window_get_group (window);
 
-	ctk_window_group_add_window (wg, GTK_WINDOW (dialog));
+	ctk_window_group_add_window (wg, CTK_WINDOW (dialog));
 
-	ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+	ctk_window_set_modal (CTK_WINDOW (dialog), TRUE);
 
 	g_signal_connect (dialog,
 			  "response",
@@ -1290,7 +1290,7 @@ really_close_tab (LapizTab *tab)
 	g_return_val_if_fail (lapiz_tab_get_state (tab) == LAPIZ_TAB_STATE_CLOSING,
 			      FALSE);
 
-	toplevel = ctk_widget_get_toplevel (GTK_WIDGET (tab));
+	toplevel = ctk_widget_get_toplevel (CTK_WIDGET (tab));
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (toplevel), FALSE);
 
 	window = LAPIZ_WINDOW (toplevel);
@@ -1305,7 +1305,7 @@ really_close_tab (LapizTab *tab)
 								      LAPIZ_IS_QUITTING));
 
 		if (is_quitting)
-			ctk_widget_destroy (GTK_WIDGET (window));
+			ctk_widget_destroy (CTK_WIDGET (window));
 	}
 
 	return FALSE;
@@ -1403,7 +1403,7 @@ save_and_close_all_documents (const GList  *docs,
 	g_return_if_fail (!(lapiz_window_get_state (window) & LAPIZ_WINDOW_STATE_PRINTING));
 
 	tabs = ctk_container_get_children (
-			GTK_CONTAINER (_lapiz_window_get_notebook (window)));
+			CTK_CONTAINER (_lapiz_window_get_notebook (window)));
 
 	tabs_to_save_as = NULL;
 	tabs_to_save_and_close = NULL;
@@ -1557,7 +1557,7 @@ close_all_tabs (LapizWindow *window)
 							      LAPIZ_IS_QUITTING));
 
 	if (is_quitting)
-		ctk_widget_destroy (GTK_WIDGET (window));
+		ctk_widget_destroy (CTK_WIDGET (window));
 
 	return;
 }
@@ -1589,11 +1589,11 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 	is_closing_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
 					    			 LAPIZ_IS_CLOSING_ALL));
 
-	ctk_widget_hide (GTK_WIDGET (dlg));
+	ctk_widget_hide (CTK_WIDGET (dlg));
 
 	switch (response_id)
 	{
-		case GTK_RESPONSE_YES: /* Save and Close */
+		case CTK_RESPONSE_YES: /* Save and Close */
 			selected_documents = lapiz_close_confirmation_dialog_get_selected_documents (dlg);
 			if (selected_documents == NULL)
 			{
@@ -1602,7 +1602,7 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 					/* There is no document to save -> close all tabs */
 					/* We call ctk_widget_destroy before close_all_tabs
 					 * because close_all_tabs could destroy the lapiz window */
-					ctk_widget_destroy (GTK_WIDGET (dlg));
+					ctk_widget_destroy (CTK_WIDGET (dlg));
 
 					close_all_tabs (window);
 
@@ -1629,12 +1629,12 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 
 			break;
 
-		case GTK_RESPONSE_NO: /* Close without Saving */
+		case CTK_RESPONSE_NO: /* Close without Saving */
 			if (is_closing_all)
 			{
 				/* We call ctk_widget_destroy before close_all_tabs
 				 * because close_all_tabs could destroy the lapiz window */
-				ctk_widget_destroy (GTK_WIDGET (dlg));
+				ctk_widget_destroy (CTK_WIDGET (dlg));
 
 				close_all_tabs (window);
 
@@ -1662,7 +1662,7 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 			break;
 	}
 
-	ctk_widget_destroy (GTK_WIDGET (dlg));
+	ctk_widget_destroy (CTK_WIDGET (dlg));
 }
 
 /* Returns TRUE if the tab can be immediately closed */
@@ -1710,7 +1710,7 @@ _lapiz_cmd_file_close_tab (LapizTab    *tab,
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (GTK_WIDGET (window) == ctk_widget_get_toplevel (GTK_WIDGET (tab)));
+	g_return_if_fail (CTK_WIDGET (window) == ctk_widget_get_toplevel (CTK_WIDGET (tab)));
 
 	g_object_set_data (G_OBJECT (window),
 			   LAPIZ_IS_CLOSING_ALL,
@@ -1725,7 +1725,7 @@ _lapiz_cmd_file_close_tab (LapizTab    *tab,
 	                   GINT_TO_POINTER (FALSE));
 
 
-	if (tab_can_close (tab, GTK_WINDOW (window)))
+	if (tab_can_close (tab, CTK_WINDOW (window)))
 		lapiz_window_close_tab (window, tab);
 }
 
@@ -1778,7 +1778,7 @@ file_close_all (LapizWindow *window,
 		lapiz_window_close_all_tabs (window);
 
 		if (is_quitting)
-			ctk_widget_destroy (GTK_WIDGET (window));
+			ctk_widget_destroy (CTK_WIDGET (window));
 
 		return;
 	}
@@ -1797,13 +1797,13 @@ file_close_all (LapizWindow *window,
 		lapiz_window_set_active_tab (window, tab);
 
 		dlg = lapiz_close_confirmation_dialog_new_single (
-						GTK_WINDOW (window),
+						CTK_WINDOW (window),
 						doc,
 						FALSE);
 	}
 	else
 	{
-		dlg = lapiz_close_confirmation_dialog_new (GTK_WINDOW (window),
+		dlg = lapiz_close_confirmation_dialog_new (CTK_WINDOW (window),
 							   unsaved_docs,
 							   FALSE);
 	}

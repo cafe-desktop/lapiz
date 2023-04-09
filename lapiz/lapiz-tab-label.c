@@ -57,7 +57,7 @@ struct _LapizTabLabelPrivate
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizTabLabel, lapiz_tab_label, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizTabLabel, lapiz_tab_label, CTK_TYPE_BOX)
 
 static void
 lapiz_tab_label_finalize (GObject *object)
@@ -134,7 +134,7 @@ sync_name (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
 	str = _lapiz_tab_get_name (tab);
 	g_return_if_fail (str != NULL);
 
-	ctk_label_set_text (GTK_LABEL (tab_label->priv->label), str);
+	ctk_label_set_text (CTK_LABEL (tab_label->priv->label), str);
 	g_free (str);
 
 	sync_tip (tab, tab_label);
@@ -163,14 +163,14 @@ sync_state (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
 		ctk_widget_hide (tab_label->priv->icon);
 
 		ctk_widget_show (tab_label->priv->spinner);
-		ctk_spinner_start (GTK_SPINNER (tab_label->priv->spinner));
+		ctk_spinner_start (CTK_SPINNER (tab_label->priv->spinner));
 	}
 	else
 	{
 		GdkPixbuf *pixbuf;
 
 		pixbuf = _lapiz_tab_get_icon (tab);
-		ctk_image_set_from_pixbuf (GTK_IMAGE (tab_label->priv->icon), pixbuf);
+		ctk_image_set_from_pixbuf (CTK_IMAGE (tab_label->priv->icon), pixbuf);
 
 		if (pixbuf != NULL)
 			g_object_unref (pixbuf);
@@ -178,7 +178,7 @@ sync_state (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
 		ctk_widget_show (tab_label->priv->icon);
 
 		ctk_widget_hide (tab_label->priv->spinner);
-		ctk_spinner_stop (GTK_SPINNER (tab_label->priv->spinner));
+		ctk_spinner_stop (CTK_SPINNER (tab_label->priv->spinner));
 	}
 
 	/* sync tip since encoding is known only after load/save end */
@@ -257,22 +257,22 @@ lapiz_tab_label_init (LapizTabLabel *tab_label)
 
 	tab_label->priv->close_button_sensitive = TRUE;
 
-	ctk_orientable_set_orientation (GTK_ORIENTABLE (tab_label),
-	                                GTK_ORIENTATION_HORIZONTAL);
+	ctk_orientable_set_orientation (CTK_ORIENTABLE (tab_label),
+	                                CTK_ORIENTATION_HORIZONTAL);
 
 	ebox = ctk_event_box_new ();
 	ctk_widget_add_events (ebox, GDK_SCROLL_MASK);
-	ctk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
-	ctk_box_pack_start (GTK_BOX (tab_label), ebox, TRUE, TRUE, 0);
+	ctk_event_box_set_visible_window (CTK_EVENT_BOX (ebox), FALSE);
+	ctk_box_pack_start (CTK_BOX (tab_label), ebox, TRUE, TRUE, 0);
 	tab_label->priv->ebox = ebox;
 
-	hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	ctk_container_add (GTK_CONTAINER (ebox), hbox);
+	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
+	ctk_container_add (CTK_CONTAINER (ebox), hbox);
 
 	close_button = lapiz_close_button_new ();
 	ctk_widget_add_events (close_button, GDK_SCROLL_MASK);
 	ctk_widget_set_tooltip_text (close_button, _("Close document"));
-	ctk_box_pack_start (GTK_BOX (tab_label), close_button, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (tab_label), close_button, FALSE, FALSE, 0);
 	tab_label->priv->close_button = close_button;
 
 	g_signal_connect (close_button,
@@ -281,25 +281,25 @@ lapiz_tab_label_init (LapizTabLabel *tab_label)
 			  tab_label);
 
 	spinner = ctk_spinner_new ();
-	ctk_box_pack_start (GTK_BOX (hbox), spinner, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (hbox), spinner, FALSE, FALSE, 0);
 	tab_label->priv->spinner = spinner;
 
 	/* setup icon, empty by default */
 	icon = ctk_image_new ();
-	ctk_box_pack_start (GTK_BOX (hbox), icon, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (hbox), icon, FALSE, FALSE, 0);
 	tab_label->priv->icon = icon;
 
 	label = ctk_label_new ("");
-	ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+	ctk_label_set_xalign (CTK_LABEL (label), 0.0);
 	ctk_widget_set_margin_start (label, 0);
 	ctk_widget_set_margin_end (label, 0);
 	ctk_widget_set_margin_top (label, 0);
 	ctk_widget_set_margin_bottom (label, 0);
-	ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
 	tab_label->priv->label = label;
 
 	dummy_label = ctk_label_new ("");
-	ctk_box_pack_start (GTK_BOX (hbox), dummy_label, TRUE, TRUE, 0);
+	ctk_box_pack_start (CTK_BOX (hbox), dummy_label, TRUE, TRUE, 0);
 
 	ctk_widget_show (ebox);
 	ctk_widget_show (hbox);
@@ -354,5 +354,5 @@ lapiz_tab_label_new (LapizTab *tab)
 				  "tab", tab,
 				  NULL);
 
-	return GTK_WIDGET (tab_label);
+	return CTK_WIDGET (tab_label);
 }

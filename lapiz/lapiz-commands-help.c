@@ -48,7 +48,7 @@ void _lapiz_cmd_help_contents(GtkAction* action, LapizWindow* window)
 {
 	lapiz_debug(DEBUG_COMMANDS);
 
-	lapiz_help_display(GTK_WINDOW(window), NULL, NULL);
+	lapiz_help_display(CTK_WINDOW(window), NULL, NULL);
 }
 
 #define ABOUT_GROUP "About"
@@ -108,7 +108,7 @@ void _lapiz_cmd_help_about(GtkAction* action, LapizWindow* window)
 	for (p = documenters; *p; ++p)
 		*p = _(*p);
 
-	ctk_show_about_dialog(GTK_WINDOW(window),
+	ctk_show_about_dialog(CTK_WINDOW(window),
 		"program-name", "Lapiz",
 		"title", _("About Lapiz"),
 		"authors", authors,

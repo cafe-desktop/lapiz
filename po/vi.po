@@ -158,15 +158,15 @@ msgstr "Chế độ ngắt dòng"
 
 #: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
-"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
+"for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
 "Xác định cuộn dòng dài như thế nào trong vùng biên soạn. Dùng "
-"\"GTK_WRAP_MODE\" nếu không cuộn, \"GTK_WRAP_WORD\" nếu cuốn theo biên từ, "
-"và \"GTK_WRAP_CHAR\" nếu cuộn theo các ký tự. Chú ý các giá trị này cần viết"
+"\"CTK_WRAP_MODE\" nếu không cuộn, \"CTK_WRAP_WORD\" nếu cuốn theo biên từ, "
+"và \"CTK_WRAP_CHAR\" nếu cuộn theo các ký tự. Chú ý các giá trị này cần viết"
 " hoa."
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
@@ -386,14 +386,14 @@ msgstr "Chế độ ngắt dòng in"
 
 #: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
-"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
+"wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"Xác định cuộn dòng dài như thế nào khi in. Dùng \"GTK_WRAP_MODE\" nếu không "
-"cuộn, \"GTK_WRAP_WORD\" nếu cuốn theo biên từ, và \"GTK_WRAP_CHAR\" nếu cuộn"
+"Xác định cuộn dòng dài như thế nào khi in. Dùng \"CTK_WRAP_MODE\" nếu không "
+"cuộn, \"CTK_WRAP_WORD\" nếu cuốn theo biên từ, và \"CTK_WRAP_CHAR\" nếu cuộn"
 " theo các ký tự. Chú ý các giá trị này cần viết hoa."
 
 #: data/org.cafe.lapiz.gschema.xml.in:181

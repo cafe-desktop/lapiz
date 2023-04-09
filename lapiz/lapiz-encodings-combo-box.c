@@ -68,7 +68,7 @@ enum
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizEncodingsComboBox, lapiz_encodings_combo_box, GTK_TYPE_COMBO_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizEncodingsComboBox, lapiz_encodings_combo_box, CTK_TYPE_COMBO_BOX)
 
 static void	  update_menu 		(LapizEncodingsComboBox       *combo_box);
 
@@ -153,12 +153,12 @@ dialog_response_cb (GtkDialog              *dialog,
                     gint                    response_id,
                     LapizEncodingsComboBox *menu)
 {
-	if (response_id == GTK_RESPONSE_OK)
+	if (response_id == CTK_RESPONSE_OK)
 	{
 		update_menu (menu);
 	}
 
-	ctk_widget_destroy (GTK_WIDGET (dialog));
+	ctk_widget_destroy (CTK_WIDGET (dialog));
 }
 
 static void
@@ -168,7 +168,7 @@ add_or_remove (LapizEncodingsComboBox *menu,
 	GtkTreeIter iter;
 	gboolean add_item = FALSE;
 
-	if (ctk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
+	if (ctk_combo_box_get_active_iter (CTK_COMBO_BOX (menu), &iter))
 	{
 		ctk_tree_model_get (model, &iter,
 				    ADD_COLUMN, &add_item,
@@ -177,19 +177,19 @@ add_or_remove (LapizEncodingsComboBox *menu,
 
 	if (!add_item)
 	{
-		menu->priv->activated_item = ctk_combo_box_get_active (GTK_COMBO_BOX (menu));
+		menu->priv->activated_item = ctk_combo_box_get_active (CTK_COMBO_BOX (menu));
 	}
 	else
 	{
 		GtkWidget *dialog;
 
-		GtkWidget *toplevel = ctk_widget_get_toplevel (GTK_WIDGET (menu));
+		GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (menu));
 
 		if (!ctk_widget_is_toplevel (toplevel))
 			toplevel = NULL;
 
 		g_signal_handler_block (menu, menu->priv->changed_id);
-		ctk_combo_box_set_active (GTK_COMBO_BOX (menu),
+		ctk_combo_box_set_active (CTK_COMBO_BOX (menu),
 					  menu->priv->activated_item);
 		g_signal_handler_unblock (menu, menu->priv->changed_id);
 
@@ -199,22 +199,22 @@ add_or_remove (LapizEncodingsComboBox *menu,
 		{
 			GtkWindowGroup *wg;
 
-			ctk_window_set_transient_for (GTK_WINDOW (dialog),
-						      GTK_WINDOW (toplevel));
+			ctk_window_set_transient_for (CTK_WINDOW (dialog),
+						      CTK_WINDOW (toplevel));
 
-			wg = ctk_window_get_group (GTK_WINDOW (toplevel));
+			wg = ctk_window_get_group (CTK_WINDOW (toplevel));
 			if (wg == NULL)
 			{
 				wg = ctk_window_group_new ();
 				ctk_window_group_add_window (wg,
-							     GTK_WINDOW (toplevel));
+							     CTK_WINDOW (toplevel));
 			}
 
 			ctk_window_group_add_window (wg,
-						     GTK_WINDOW (dialog));
+						     CTK_WINDOW (dialog));
 		}
 
-		ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+		ctk_window_set_modal (CTK_WINDOW (dialog), TRUE);
 
 		g_signal_connect (dialog,
 				  "response",
@@ -253,7 +253,7 @@ update_menu (LapizEncodingsComboBox *menu)
 	/* Unset the previous model */
 	g_signal_handler_block (menu, menu->priv->changed_id);
 	ctk_list_store_clear (store);
-	ctk_combo_box_set_model (GTK_COMBO_BOX (menu),
+	ctk_combo_box_set_model (CTK_COMBO_BOX (menu),
 				 NULL);
 
 	utf8_encoding = lapiz_encoding_get_utf8 ();
@@ -351,9 +351,9 @@ update_menu (LapizEncodingsComboBox *menu)
 	}
 
 	/* set the model back */
-	ctk_combo_box_set_model (GTK_COMBO_BOX (menu),
-				 GTK_TREE_MODEL (menu->priv->store));
-	ctk_combo_box_set_active (GTK_COMBO_BOX (menu), 0);
+	ctk_combo_box_set_model (CTK_COMBO_BOX (menu),
+				 CTK_TREE_MODEL (menu->priv->store));
+	ctk_combo_box_set_active (CTK_COMBO_BOX (menu), 0);
 
 	g_signal_handler_unblock (menu, menu->priv->changed_id);
 }
@@ -372,16 +372,16 @@ lapiz_encodings_combo_box_init (LapizEncodingsComboBox *menu)
 
 	/* Setup up the cells */
 	text_renderer = ctk_cell_renderer_text_new ();
-	ctk_cell_layout_pack_end (GTK_CELL_LAYOUT (menu),
+	ctk_cell_layout_pack_end (CTK_CELL_LAYOUT (menu),
 				  text_renderer, TRUE);
 
-	ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (menu),
+	ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (menu),
 					text_renderer,
 					"text",
 					NAME_COLUMN,
 					NULL);
 
-	ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (menu),
+	ctk_combo_box_set_row_separator_func (CTK_COMBO_BOX (menu),
 					      separator_func, NULL,
 					      NULL);
 
@@ -407,12 +407,12 @@ lapiz_encodings_combo_box_get_selected_encoding (LapizEncodingsComboBox *menu)
 
 	g_return_val_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (menu), NULL);
 
-	if (ctk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
+	if (ctk_combo_box_get_active_iter (CTK_COMBO_BOX (menu), &iter))
 	{
 		const LapizEncoding *ret;
 		GtkTreeModel *model;
 
-		model = ctk_combo_box_get_model (GTK_COMBO_BOX (menu));
+		model = ctk_combo_box_get_model (CTK_COMBO_BOX (menu));
 
 		ctk_tree_model_get (model, &iter,
 				    ENCODING_COLUMN, &ret,
@@ -437,9 +437,9 @@ lapiz_encodings_combo_box_set_selected_encoding (LapizEncodingsComboBox *menu,
 	GtkTreeModel *model;
 	gboolean b;
 	g_return_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (menu));
-	g_return_if_fail (GTK_IS_COMBO_BOX (menu));
+	g_return_if_fail (CTK_IS_COMBO_BOX (menu));
 
-	model = ctk_combo_box_get_model (GTK_COMBO_BOX (menu));
+	model = ctk_combo_box_get_model (CTK_COMBO_BOX (menu));
 	b = ctk_tree_model_get_iter_first (model, &iter);
 
 	while (b)
@@ -452,7 +452,7 @@ lapiz_encodings_combo_box_set_selected_encoding (LapizEncodingsComboBox *menu,
 
 		if (enc == encoding)
 		{
-			ctk_combo_box_set_active_iter (GTK_COMBO_BOX (menu),
+			ctk_combo_box_set_active_iter (CTK_COMBO_BOX (menu),
 						       &iter);
 
 			return;
