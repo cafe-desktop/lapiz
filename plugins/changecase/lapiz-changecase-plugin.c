@@ -181,33 +181,33 @@ change_case (LapizWindow      *window,
 	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
-	if (!ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+	if (!ctk_text_buffer_get_selection_bounds (CTK_TEXT_BUFFER (doc),
 						   &start, &end))
 	{
 		return;
 	}
 
-	ctk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (doc));
+	ctk_text_buffer_begin_user_action (CTK_TEXT_BUFFER (doc));
 
 	switch (choice)
 	{
 	case TO_UPPER_CASE:
-		do_upper_case (GTK_TEXT_BUFFER (doc), &start, &end);
+		do_upper_case (CTK_TEXT_BUFFER (doc), &start, &end);
 		break;
 	case TO_LOWER_CASE:
-		do_lower_case (GTK_TEXT_BUFFER (doc), &start, &end);
+		do_lower_case (CTK_TEXT_BUFFER (doc), &start, &end);
 		break;
 	case INVERT_CASE:
-		do_invert_case (GTK_TEXT_BUFFER (doc), &start, &end);
+		do_invert_case (CTK_TEXT_BUFFER (doc), &start, &end);
 		break;
 	case TO_TITLE_CASE:
-		do_title_case (GTK_TEXT_BUFFER (doc), &start, &end);
+		do_title_case (CTK_TEXT_BUFFER (doc), &start, &end);
 		break;
 	default:
 		g_return_if_reached ();
 	}
 
-	ctk_text_buffer_end_user_action (GTK_TEXT_BUFFER (doc));
+	ctk_text_buffer_end_user_action (CTK_TEXT_BUFFER (doc));
 }
 
 static void
@@ -313,7 +313,7 @@ lapiz_changecase_plugin_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_OBJECT:
-			plugin->priv->window = GTK_WIDGET (g_value_dup_object (value));
+			plugin->priv->window = CTK_WIDGET (g_value_dup_object (value));
 			break;
 
 		default:
@@ -353,7 +353,7 @@ update_ui (LapizChangecasePluginPrivate *data)
 	lapiz_debug (DEBUG_PLUGINS);
 
 	window = LAPIZ_WINDOW (data->window);
-	view = GTK_TEXT_VIEW (lapiz_window_get_active_view (window));
+	view = CTK_TEXT_VIEW (lapiz_window_get_active_view (window));
 
 	if (view != NULL)
 	{

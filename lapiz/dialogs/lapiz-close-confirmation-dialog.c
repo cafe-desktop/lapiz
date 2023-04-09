@@ -81,7 +81,7 @@ struct _LapizCloseConfirmationDialogPrivate
 			 (priv->unsaved_documents->next == NULL)) ? \
 			  SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizCloseConfirmationDialog, lapiz_close_confirmation_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizCloseConfirmationDialog, lapiz_close_confirmation_dialog, CTK_TYPE_DIALOG)
 
 static void 	 set_unsaved_document 		(LapizCloseConfirmationDialog *dlg,
 						 const GList                  *list);
@@ -105,7 +105,7 @@ response_cb (LapizCloseConfirmationDialog *dlg,
 	if (priv->selected_documents != NULL)
 		g_list_free (priv->selected_documents);
 
-	if (response_id == GTK_RESPONSE_YES)
+	if (response_id == CTK_RESPONSE_YES)
 	{
 		if (GET_MODE (priv) == SINGLE_DOC_MODE)
 		{
@@ -132,31 +132,31 @@ set_logout_mode (LapizCloseConfirmationDialog *dlg,
 
 	if (logout_mode)
 	{
-		ctk_dialog_add_button (GTK_DIALOG (dlg),
+		ctk_dialog_add_button (CTK_DIALOG (dlg),
 				       _("Log Out _without Saving"),
-				       GTK_RESPONSE_NO);
+				       CTK_RESPONSE_NO);
 
-		lapiz_dialog_add_button (GTK_DIALOG (dlg),
+		lapiz_dialog_add_button (CTK_DIALOG (dlg),
 					 _("_Cancel Logout"),
 					 "process-stop",
-					 GTK_RESPONSE_CANCEL);
+					 CTK_RESPONSE_CANCEL);
 	}
 	else
 	{
-		ctk_dialog_add_button (GTK_DIALOG (dlg),
+		ctk_dialog_add_button (CTK_DIALOG (dlg),
 				       _("Close _without Saving"),
-				       GTK_RESPONSE_NO);
+				       CTK_RESPONSE_NO);
 
-		lapiz_dialog_add_button (GTK_DIALOG (dlg),
+		lapiz_dialog_add_button (CTK_DIALOG (dlg),
 					 _("_Cancel"),
 					 "process-stop",
-					 GTK_RESPONSE_CANCEL);
+					 CTK_RESPONSE_CANCEL);
 	}
 
 	if (dlg->priv->disable_save_to_disk)
 	{
-		ctk_dialog_set_default_response	(GTK_DIALOG (dlg),
-						 GTK_RESPONSE_NO);
+		ctk_dialog_set_default_response	(CTK_DIALOG (dlg),
+						 CTK_RESPONSE_NO);
 	}
 	else
 	{
@@ -174,18 +174,18 @@ set_logout_mode (LapizCloseConfirmationDialog *dlg,
 		}
 
 		if (g_strcmp0 (icon_id, "document-save") == 0)
-			lapiz_dialog_add_button (GTK_DIALOG (dlg),
+			lapiz_dialog_add_button (CTK_DIALOG (dlg),
 						 _("_Save"),
 						 icon_id,
-						 GTK_RESPONSE_YES);
+						 CTK_RESPONSE_YES);
 		else
-			lapiz_dialog_add_button (GTK_DIALOG (dlg),
+			lapiz_dialog_add_button (CTK_DIALOG (dlg),
 						 _("Save _As"),
 						 icon_id,
-						 GTK_RESPONSE_YES);
+						 CTK_RESPONSE_YES);
 
-		ctk_dialog_set_default_response	(GTK_DIALOG (dlg),
-						 GTK_RESPONSE_YES);
+		ctk_dialog_set_default_response	(CTK_DIALOG (dlg),
+						 CTK_RESPONSE_YES);
 	}
 }
 
@@ -200,18 +200,18 @@ lapiz_close_confirmation_dialog_init (LapizCloseConfirmationDialog *dlg)
 			lapiz_app_get_lockdown (lapiz_app_get_default ())
 			& LAPIZ_LOCKDOWN_SAVE_TO_DISK;
 
-	ctk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	ctk_box_set_spacing (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_container_set_border_width (CTK_CONTAINER (dlg), 5);
+	ctk_box_set_spacing (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			     14);
-	ctk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
-	ctk_window_set_skip_taskbar_hint (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_resizable (CTK_WINDOW (dlg), FALSE);
+	ctk_window_set_skip_taskbar_hint (CTK_WINDOW (dlg), TRUE);
 
-	ctk_window_set_title (GTK_WINDOW (dlg), "");
+	ctk_window_set_title (CTK_WINDOW (dlg), "");
 
-	ctk_window_set_modal (GTK_WINDOW (dlg), TRUE);
-	ctk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_modal (CTK_WINDOW (dlg), TRUE);
+	ctk_window_set_destroy_with_parent (CTK_WINDOW (dlg), TRUE);
 
-	atk_obj = ctk_widget_get_accessible (GTK_WIDGET (dlg));
+	atk_obj = ctk_widget_get_accessible (CTK_WIDGET (dlg));
 	atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
 	atk_object_set_name (atk_obj, _("Question"));
 
@@ -363,7 +363,7 @@ lapiz_close_confirmation_dialog_new (GtkWindow *parent,
 	GtkWidget *dlg;
 	g_return_val_if_fail (unsaved_documents != NULL, NULL);
 
-	dlg = GTK_WIDGET (g_object_new (LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG,
+	dlg = CTK_WIDGET (g_object_new (LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG,
 				        "unsaved_documents", unsaved_documents,
 				        "logout_mode", logout_mode,
 				        NULL));
@@ -372,9 +372,9 @@ lapiz_close_confirmation_dialog_new (GtkWindow *parent,
 	if (parent != NULL)
 	{
 		ctk_window_group_add_window (lapiz_window_get_group (LAPIZ_WINDOW (parent)),
-					     GTK_WINDOW (dlg));
+					     CTK_WINDOW (dlg));
 
-		ctk_window_set_transient_for (GTK_WINDOW (dlg), parent);
+		ctk_window_set_transient_for (CTK_WINDOW (dlg), parent);
 	}
 
 	return dlg;
@@ -501,18 +501,18 @@ build_single_doc_dialog (LapizCloseConfirmationDialog *dlg)
 
 	/* Image */
 	image = ctk_image_new_from_icon_name ("dialog-warning",
-					  GTK_ICON_SIZE_DIALOG);
-	ctk_widget_set_halign (image, GTK_ALIGN_START);
-	ctk_widget_set_valign (image, GTK_ALIGN_END);
+					  CTK_ICON_SIZE_DIALOG);
+	ctk_widget_set_halign (image, CTK_ALIGN_START);
+	ctk_widget_set_valign (image, CTK_ALIGN_END);
 
 	/* Primary label */
 	primary_label = ctk_label_new (NULL);
-	ctk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	ctk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	ctk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
-	ctk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
-	ctk_widget_set_can_focus (GTK_WIDGET (primary_label), FALSE);
-	ctk_label_set_max_width_chars (GTK_LABEL (primary_label), 72);
+	ctk_label_set_line_wrap (CTK_LABEL (primary_label), TRUE);
+	ctk_label_set_use_markup (CTK_LABEL (primary_label), TRUE);
+	ctk_label_set_xalign (CTK_LABEL (primary_label), 0.0);
+	ctk_label_set_selectable (CTK_LABEL (primary_label), TRUE);
+	ctk_widget_set_can_focus (CTK_WIDGET (primary_label), FALSE);
+	ctk_label_set_max_width_chars (CTK_LABEL (primary_label), 72);
 
 	doc_name = lapiz_document_get_short_name_for_display (doc);
 
@@ -532,7 +532,7 @@ build_single_doc_dialog (LapizCloseConfirmationDialog *dlg)
 	markup_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
 	g_free (str);
 
-	ctk_label_set_markup (GTK_LABEL (primary_label), markup_str);
+	ctk_label_set_markup (CTK_LABEL (primary_label), markup_str);
 	g_free (markup_str);
 
 	/* Secondary label */
@@ -542,26 +542,26 @@ build_single_doc_dialog (LapizCloseConfirmationDialog *dlg)
 		str = get_text_secondary_label (doc);
 	secondary_label = ctk_label_new (str);
 	g_free (str);
-	ctk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	ctk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
-	ctk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-	ctk_widget_set_can_focus (GTK_WIDGET (secondary_label), FALSE);
-	ctk_label_set_max_width_chars (GTK_LABEL (secondary_label), 72);
+	ctk_label_set_line_wrap (CTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_xalign (CTK_LABEL (secondary_label), 0.0);
+	ctk_label_set_selectable (CTK_LABEL (secondary_label), TRUE);
+	ctk_widget_set_can_focus (CTK_WIDGET (secondary_label), FALSE);
+	ctk_label_set_max_width_chars (CTK_LABEL (secondary_label), 72);
 
-	hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-	ctk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+	ctk_container_set_border_width (CTK_CONTAINER (hbox), 5);
 
-	ctk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (hbox), image, FALSE, FALSE, 0);
 
-	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
+	vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
 
-	ctk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (hbox), vbox, FALSE, FALSE, 0);
 
-	ctk_box_pack_start (GTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
 
-	ctk_box_pack_start (GTK_BOX (vbox), secondary_label, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (vbox), secondary_label, FALSE, FALSE, 0);
 
-	ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			    hbox,
 	                    FALSE,
 			    FALSE,
@@ -584,8 +584,8 @@ populate_model (GtkTreeModel *store, GList *docs)
 
 		name = lapiz_document_get_short_name_for_display (doc);
 
-		ctk_list_store_append (GTK_LIST_STORE (store), &iter);
-		ctk_list_store_set (GTK_LIST_STORE (store), &iter,
+		ctk_list_store_append (CTK_LIST_STORE (store), &iter);
+		ctk_list_store_set (CTK_LIST_STORE (store), &iter,
 				    SAVE_COLUMN, TRUE,
 				    NAME_COLUMN, name,
 				    DOC_COLUMN, doc,
@@ -609,7 +609,7 @@ save_toggled (GtkCellRendererToggle *renderer, gchar *path_str, GtkTreeModel *st
 
 	active ^= 1;
 
-	ctk_list_store_set (GTK_LIST_STORE (store), &iter,
+	ctk_list_store_set (CTK_LIST_STORE (store), &iter,
 			    SAVE_COLUMN, active, -1);
 
 	ctk_tree_path_free (path);
@@ -625,18 +625,18 @@ create_treeview (LapizCloseConfirmationDialogPrivate *priv)
 
 	treeview = ctk_tree_view_new ();
 	ctk_widget_set_size_request (treeview, 260, 120);
-	ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
-	ctk_tree_view_set_enable_search (GTK_TREE_VIEW (treeview), FALSE);
+	ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (treeview), FALSE);
+	ctk_tree_view_set_enable_search (CTK_TREE_VIEW (treeview), FALSE);
 
 	/* Create and populate the model */
 	store = ctk_list_store_new (N_COLUMNS, G_TYPE_BOOLEAN, G_TYPE_STRING, G_TYPE_POINTER);
-	populate_model (GTK_TREE_MODEL (store), priv->unsaved_documents);
+	populate_model (CTK_TREE_MODEL (store), priv->unsaved_documents);
 
 	/* Set model to the treeview */
-	ctk_tree_view_set_model (GTK_TREE_VIEW (treeview), GTK_TREE_MODEL (store));
+	ctk_tree_view_set_model (CTK_TREE_VIEW (treeview), CTK_TREE_MODEL (store));
 	g_object_unref (store);
 
-	priv->list_store = GTK_TREE_MODEL (store);
+	priv->list_store = CTK_TREE_MODEL (store);
 
 	/* Add columns */
 	if (!priv->disable_save_to_disk)
@@ -650,7 +650,7 @@ create_treeview (LapizCloseConfirmationDialogPrivate *priv)
 								   "active",
 								   SAVE_COLUMN,
 								   NULL);
-		ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+		ctk_tree_view_append_column (CTK_TREE_VIEW (treeview), column);
 	}
 
 	renderer = ctk_cell_renderer_text_new ();
@@ -659,7 +659,7 @@ create_treeview (LapizCloseConfirmationDialogPrivate *priv)
 							   "text",
 							   NAME_COLUMN,
 							   NULL);
-	ctk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+	ctk_tree_view_append_column (CTK_TREE_VIEW (treeview), column);
 
 	return treeview;
 }
@@ -687,29 +687,29 @@ build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 
 	priv = dlg->priv;
 
-	hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-	ctk_container_set_border_width (GTK_CONTAINER (hbox), 5);
-	ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+	ctk_container_set_border_width (CTK_CONTAINER (hbox), 5);
+	ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			    hbox, TRUE, TRUE, 0);
 
 	/* Image */
 	image = ctk_image_new_from_icon_name ("dialog-warning",
-					  GTK_ICON_SIZE_DIALOG);
-	ctk_widget_set_halign (image, GTK_ALIGN_CENTER);
-	ctk_widget_set_valign (image, GTK_ALIGN_START);
-	ctk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+					  CTK_ICON_SIZE_DIALOG);
+	ctk_widget_set_halign (image, CTK_ALIGN_CENTER);
+	ctk_widget_set_valign (image, CTK_ALIGN_START);
+	ctk_box_pack_start (CTK_BOX (hbox), image, FALSE, FALSE, 0);
 
-	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-	ctk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+	vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
+	ctk_box_pack_start (CTK_BOX (hbox), vbox, TRUE, TRUE, 0);
 
 	/* Primary label */
 	primary_label = ctk_label_new (NULL);
-	ctk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	ctk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	ctk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
-	ctk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
-	ctk_widget_set_can_focus (GTK_WIDGET (primary_label), FALSE);
-	ctk_label_set_max_width_chars (GTK_LABEL (primary_label), 72);
+	ctk_label_set_line_wrap (CTK_LABEL (primary_label), TRUE);
+	ctk_label_set_use_markup (CTK_LABEL (primary_label), TRUE);
+	ctk_label_set_xalign (CTK_LABEL (primary_label), 0.0);
+	ctk_label_set_selectable (CTK_LABEL (primary_label), TRUE);
+	ctk_widget_set_can_focus (CTK_WIDGET (primary_label), FALSE);
+	ctk_label_set_max_width_chars (CTK_LABEL (primary_label), 72);
 
 	if (priv->disable_save_to_disk)
 		str = g_strdup_printf (
@@ -729,36 +729,36 @@ build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 	markup_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
 	g_free (str);
 
-	ctk_label_set_markup (GTK_LABEL (primary_label), markup_str);
+	ctk_label_set_markup (CTK_LABEL (primary_label), markup_str);
 	g_free (markup_str);
-	ctk_box_pack_start (GTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
 
-	vbox2 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-	ctk_box_pack_start (GTK_BOX (vbox), vbox2, FALSE, FALSE, 0);
+	vbox2 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+	ctk_box_pack_start (CTK_BOX (vbox), vbox2, FALSE, FALSE, 0);
 
 	if (priv->disable_save_to_disk)
 		select_label = ctk_label_new_with_mnemonic (_("Docum_ents with unsaved changes:"));
 	else
 		select_label = ctk_label_new_with_mnemonic (_("S_elect the documents you want to save:"));
 
-	ctk_box_pack_start (GTK_BOX (vbox2), select_label, FALSE, FALSE, 0);
-	ctk_label_set_line_wrap (GTK_LABEL (select_label), TRUE);
-	ctk_label_set_max_width_chars (GTK_LABEL (select_label), 72);
-	ctk_label_set_xalign (GTK_LABEL (select_label), 0.0);
-	ctk_label_set_selectable (GTK_LABEL (select_label), TRUE);
-	ctk_widget_set_can_focus (GTK_WIDGET (select_label), FALSE);
+	ctk_box_pack_start (CTK_BOX (vbox2), select_label, FALSE, FALSE, 0);
+	ctk_label_set_line_wrap (CTK_LABEL (select_label), TRUE);
+	ctk_label_set_max_width_chars (CTK_LABEL (select_label), 72);
+	ctk_label_set_xalign (CTK_LABEL (select_label), 0.0);
+	ctk_label_set_selectable (CTK_LABEL (select_label), TRUE);
+	ctk_widget_set_can_focus (CTK_WIDGET (select_label), FALSE);
 
 	scrolledwindow = ctk_scrolled_window_new (NULL, NULL);
-	ctk_scrolled_window_set_propagate_natural_height (GTK_SCROLLED_WINDOW (scrolledwindow), TRUE);
-	ctk_box_pack_start (GTK_BOX (vbox2), scrolledwindow, TRUE, TRUE, 0);
-	ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow),
-					GTK_POLICY_AUTOMATIC,
-					GTK_POLICY_AUTOMATIC);
-	ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow),
-					     GTK_SHADOW_IN);
+	ctk_scrolled_window_set_propagate_natural_height (CTK_SCROLLED_WINDOW (scrolledwindow), TRUE);
+	ctk_box_pack_start (CTK_BOX (vbox2), scrolledwindow, TRUE, TRUE, 0);
+	ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolledwindow),
+					CTK_POLICY_AUTOMATIC,
+					CTK_POLICY_AUTOMATIC);
+	ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolledwindow),
+					     CTK_SHADOW_IN);
 
 	treeview = create_treeview (priv);
-	ctk_container_add (GTK_CONTAINER (scrolledwindow), treeview);
+	ctk_container_add (CTK_CONTAINER (scrolledwindow), treeview);
 
 	/* Secondary label */
 	if (priv->disable_save_to_disk)
@@ -767,18 +767,18 @@ build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 		secondary_label = ctk_label_new (_("If you don't save, "
 						   "all your changes will be permanently lost."));
 
-	ctk_box_pack_start (GTK_BOX (vbox2), secondary_label, FALSE, FALSE, 0);
-	ctk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	ctk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
-	ctk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-	ctk_widget_set_can_focus (GTK_WIDGET (secondary_label), FALSE);
-	ctk_label_set_max_width_chars (GTK_LABEL (secondary_label), 72);
+	ctk_box_pack_start (CTK_BOX (vbox2), secondary_label, FALSE, FALSE, 0);
+	ctk_label_set_line_wrap (CTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_xalign (CTK_LABEL (secondary_label), 0.0);
+	ctk_label_set_selectable (CTK_LABEL (secondary_label), TRUE);
+	ctk_widget_set_can_focus (CTK_WIDGET (secondary_label), FALSE);
+	ctk_label_set_max_width_chars (CTK_LABEL (secondary_label), 72);
 
-	ctk_label_set_mnemonic_widget (GTK_LABEL (select_label), treeview);
+	ctk_label_set_mnemonic_widget (CTK_LABEL (select_label), treeview);
 
 	ctk_widget_show_all (hbox);
 
-	ctk_window_get_size (GTK_WINDOW (GTK_DIALOG (dlg)), &new_width, &new_height);
+	ctk_window_get_size (CTK_WINDOW (CTK_DIALOG (dlg)), &new_width, &new_height);
 
 	display = ctk_widget_get_display (scrolledwindow);
 
@@ -788,11 +788,11 @@ build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 
 	if (new_height > max_height)
 	{
-		ctk_window_set_resizable (GTK_WINDOW (GTK_DIALOG (dlg)), TRUE);
-		ctk_window_resize (GTK_WINDOW (GTK_DIALOG (dlg)), new_width, max_height);
+		ctk_window_set_resizable (CTK_WINDOW (CTK_DIALOG (dlg)), TRUE);
+		ctk_window_resize (CTK_WINDOW (CTK_DIALOG (dlg)), new_width, max_height);
 	}
 	else
-		ctk_window_set_default_size (GTK_WINDOW (GTK_DIALOG (dlg)), new_width, new_height);
+		ctk_window_set_default_size (CTK_WINDOW (CTK_DIALOG (dlg)), new_width, new_height);
 }
 
 static void

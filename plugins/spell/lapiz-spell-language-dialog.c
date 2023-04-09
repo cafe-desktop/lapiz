@@ -55,7 +55,7 @@ struct _LapizSpellLanguageDialog
 	GtkTreeModel *model;
 };
 
-G_DEFINE_TYPE(LapizSpellLanguageDialog, lapiz_spell_language_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE(LapizSpellLanguageDialog, lapiz_spell_language_dialog, CTK_TYPE_DIALOG)
 
 
 static void
@@ -68,9 +68,9 @@ static void
 dialog_response_handler (GtkDialog *dlg,
 			 gint       res_id)
 {
-	if (res_id == GTK_RESPONSE_HELP)
+	if (res_id == CTK_RESPONSE_HELP)
 	{
-		lapiz_help_display (GTK_WINDOW (dlg),
+		lapiz_help_display (CTK_WINDOW (dlg),
 				    NULL,
 				    "lapiz-spell-checker-plugin");
 
@@ -111,7 +111,7 @@ language_row_activated (GtkTreeView *tree_view,
 			GtkTreeViewColumn *column,
 			LapizSpellLanguageDialog *dialog)
 {
-	ctk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+	ctk_dialog_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
 }
 
 static void
@@ -129,17 +129,17 @@ create_dialog (LapizSpellLanguageDialog *dlg,
 		NULL
 	};
 
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), "process-stop", GTK_RESPONSE_CANCEL);
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "ctk-ok", GTK_RESPONSE_OK);
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_Cancel"), "process-stop", CTK_RESPONSE_CANCEL);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_OK"), "ctk-ok", CTK_RESPONSE_OK);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_Help"), "help-browser", CTK_RESPONSE_HELP);
 
-	ctk_window_set_title (GTK_WINDOW (dlg), _("Set language"));
-	ctk_window_set_modal (GTK_WINDOW (dlg), TRUE);
-	ctk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_title (CTK_WINDOW (dlg), _("Set language"));
+	ctk_window_set_modal (CTK_WINDOW (dlg), TRUE);
+	ctk_window_set_destroy_with_parent (CTK_WINDOW (dlg), TRUE);
 
 	/* HIG defaults */
-	ctk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	ctk_box_set_spacing (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_container_set_border_width (CTK_CONTAINER (dlg), 5);
+	ctk_box_set_spacing (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			     2); /* 2 * 5 + 2 = 12 */
 
 	g_signal_connect (dlg,
@@ -160,23 +160,23 @@ create_dialog (LapizSpellLanguageDialog *dlg,
 	{
 		ctk_widget_show (error_widget);
 
-		ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+		ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 		                    error_widget,
 		                    TRUE, TRUE, 0);
 
 		return;
 	}
 
-	ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			    content, TRUE, TRUE, 0);
 	g_object_unref (content);
-	ctk_container_set_border_width (GTK_CONTAINER (content), 5);
+	ctk_container_set_border_width (CTK_CONTAINER (content), 5);
 
-	dlg->model = GTK_TREE_MODEL (ctk_list_store_new (ENCODING_NUM_COLS,
+	dlg->model = CTK_TREE_MODEL (ctk_list_store_new (ENCODING_NUM_COLS,
 							 G_TYPE_STRING,
 							 G_TYPE_POINTER));
 
-	ctk_tree_view_set_model (GTK_TREE_VIEW (dlg->languages_treeview),
+	ctk_tree_view_set_model (CTK_TREE_VIEW (dlg->languages_treeview),
 				 dlg->model);
 
 	g_object_unref (dlg->model);
@@ -189,10 +189,10 @@ create_dialog (LapizSpellLanguageDialog *dlg,
 							   COLUMN_LANGUAGE_NAME,
 							   NULL);
 
-	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->languages_treeview),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (dlg->languages_treeview),
 				     column);
 
-	ctk_tree_view_set_search_column (GTK_TREE_VIEW (dlg->languages_treeview),
+	ctk_tree_view_set_search_column (CTK_TREE_VIEW (dlg->languages_treeview),
 					 COLUMN_LANGUAGE_NAME);
 
 	g_signal_connect (dlg->languages_treeview,
@@ -221,7 +221,7 @@ populate_language_list (LapizSpellLanguageDialog        *dlg,
 	const GSList* langs;
 
 	/* create list store */
-	store = GTK_LIST_STORE (dlg->model);
+	store = CTK_LIST_STORE (dlg->model);
 
 	langs = lapiz_spell_checker_get_available_languages ();
 
@@ -241,7 +241,7 @@ populate_language_list (LapizSpellLanguageDialog        *dlg,
 		{
 			GtkTreeSelection *selection;
 
-			selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->languages_treeview));
+			selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->languages_treeview));
 			g_return_if_fail (selection != NULL);
 
 			ctk_tree_selection_select_iter (selection, &iter);
@@ -258,7 +258,7 @@ lapiz_spell_language_dialog_new (GtkWindow                       *parent,
 {
 	LapizSpellLanguageDialog *dlg;
 
-	g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
+	g_return_val_if_fail (CTK_IS_WINDOW (parent), NULL);
 
 	dlg = g_object_new (LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, NULL);
 
@@ -266,10 +266,10 @@ lapiz_spell_language_dialog_new (GtkWindow                       *parent,
 
 	populate_language_list (dlg, cur_lang);
 
-	ctk_window_set_transient_for (GTK_WINDOW (dlg), parent);
+	ctk_window_set_transient_for (CTK_WINDOW (dlg), parent);
 	ctk_widget_grab_focus (dlg->languages_treeview);
 
-	return GTK_WIDGET (dlg);
+	return CTK_WIDGET (dlg);
 }
 
 const LapizSpellCheckerLanguage *
@@ -281,7 +281,7 @@ lapiz_spell_language_get_selected_language (LapizSpellLanguageDialog *dlg)
 	GtkTreeIter iter;
 	GtkTreeSelection *selection;
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->languages_treeview));
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->languages_treeview));
 	g_return_val_if_fail (selection != NULL, NULL);
 
 	if (!ctk_tree_selection_get_selected (selection, NULL, &iter))

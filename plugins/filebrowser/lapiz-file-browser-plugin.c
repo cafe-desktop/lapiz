@@ -155,7 +155,7 @@ lapiz_file_browser_plugin_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_OBJECT:
-			plugin->priv->window = GTK_WIDGET (g_value_dup_object (value));
+			plugin->priv->window = CTK_WIDGET (g_value_dup_object (value));
 			break;
 
 		default:
@@ -489,7 +489,7 @@ on_action_open_terminal (GtkAction * action,
 		return;
 
 	store = lapiz_file_browser_widget_get_browser_store (data->tree_widget);
-	ctk_tree_model_get (GTK_TREE_MODEL (store),
+	ctk_tree_model_get (CTK_TREE_MODEL (store),
 	                    &iter,
 	                    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 	                    &wd,
@@ -531,7 +531,7 @@ on_selection_changed_cb (GtkTreeSelection *selection,
 	gboolean sensitive;
 	gchar * uri;
 
-	tree_view = GTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget));
+	tree_view = CTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget));
 	model = ctk_tree_view_get_model (tree_view);
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
@@ -701,7 +701,7 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 	                  G_CALLBACK (on_confirm_no_trash_cb),
 	                  window);
 
-	g_signal_connect (ctk_tree_view_get_selection (GTK_TREE_VIEW
+	g_signal_connect (ctk_tree_view_get_selection (CTK_TREE_VIEW
 			  (lapiz_file_browser_widget_get_browser_view
 			  (data->tree_widget))),
 			  "changed",
@@ -710,21 +710,21 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 
 	panel = lapiz_window_get_side_panel (window);
 	pixbuf = lapiz_file_browser_utils_pixbuf_from_theme("system-file-manager",
-	                                                    GTK_ICON_SIZE_MENU);
+	                                                    CTK_ICON_SIZE_MENU);
 
 	if (pixbuf) {
 		image = ctk_image_new_from_pixbuf(pixbuf);
 		g_object_unref(pixbuf);
 	} else {
-		image = ctk_image_new_from_icon_name("ctk-index", GTK_ICON_SIZE_MENU);
+		image = ctk_image_new_from_icon_name("ctk-index", CTK_ICON_SIZE_MENU);
 	}
 
 	ctk_widget_show(image);
 	lapiz_panel_add_item (panel,
-	                      GTK_WIDGET (data->tree_widget),
+	                      CTK_WIDGET (data->tree_widget),
 	                      _("File Browser"),
 	                      image);
-	ctk_widget_show (GTK_WIDGET (data->tree_widget));
+	ctk_widget_show (CTK_WIDGET (data->tree_widget));
 
 	add_popup_ui (data);
 
@@ -801,7 +801,7 @@ lapiz_file_browser_plugin_deactivate (PeasActivatable *activatable)
 	remove_popup_ui (data);
 
 	panel = lapiz_window_get_side_panel (window);
-	lapiz_panel_remove_item (panel, GTK_WIDGET (data->tree_widget));
+	lapiz_panel_remove_item (panel, CTK_WIDGET (data->tree_widget));
 }
 
 static void
@@ -900,15 +900,15 @@ on_error_cb (LapizFileBrowserWidget * tree_widget,
 		break;
 	}
 
-	dlg = ctk_message_dialog_new (GTK_WINDOW (data->window),
-				      GTK_DIALOG_MODAL |
-				      GTK_DIALOG_DESTROY_WITH_PARENT,
-				      GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+	dlg = ctk_message_dialog_new (CTK_WINDOW (data->window),
+				      CTK_DIALOG_MODAL |
+				      CTK_DIALOG_DESTROY_WITH_PARENT,
+				      CTK_MESSAGE_ERROR, CTK_BUTTONS_OK,
 				      "%s", title);
-	ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dlg),
+	ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dlg),
 						  "%s", message);
 
-	ctk_dialog_run (GTK_DIALOG (dlg));
+	ctk_dialog_run (CTK_DIALOG (dlg));
 	ctk_widget_destroy (dlg);
 }
 
@@ -919,7 +919,7 @@ on_model_set_cb (LapizFileBrowserView * widget,
 {
 	GtkTreeModel * model;
 
-	model = ctk_tree_view_get_model (GTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget)));
+	model = ctk_tree_view_get_model (CTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget)));
 
 	if (model == NULL)
 		return;
@@ -1134,7 +1134,7 @@ on_confirm_no_trash_cb (LapizFileBrowserWidget * widget,
 	}
 
 	result = lapiz_file_browser_utils_confirmation_dialog (window,
-	                                                       GTK_MESSAGE_QUESTION,
+	                                                       CTK_MESSAGE_QUESTION,
 	                                                       message,
 	                                                       secondary);
 	g_free (secondary);
@@ -1157,7 +1157,7 @@ on_confirm_delete_cb (LapizFileBrowserWidget *widget,
 		return TRUE;
 
 	if (paths->next == NULL) {
-		normal = get_filename_from_path (GTK_TREE_MODEL (store), (GtkTreePath *)(paths->data));
+		normal = get_filename_from_path (CTK_TREE_MODEL (store), (GtkTreePath *)(paths->data));
 		message = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\"?"), normal);
 		g_free (normal);
 	} else {
@@ -1167,7 +1167,7 @@ on_confirm_delete_cb (LapizFileBrowserWidget *widget,
 	secondary = _("If you delete an item, it is permanently lost.");
 
 	result = lapiz_file_browser_utils_confirmation_dialog (LAPIZ_WINDOW (data->window),
-	                                                       GTK_MESSAGE_QUESTION,
+	                                                       CTK_MESSAGE_QUESTION,
 	                                                       message,
 	                                                       secondary);
 

@@ -151,7 +151,7 @@ static void	lapiz_view_delete_from_cursor 	(GtkTextView     *text_view,
 						 GtkDeleteType    type,
 						 gint             count);
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizView, lapiz_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizView, lapiz_view, CTK_SOURCE_TYPE_VIEW)
 
 /* Signals */
 enum
@@ -178,7 +178,7 @@ document_read_only_notify_handler (LapizDocument *document,
 {
 	lapiz_debug (DEBUG_VIEW);
 
-	ctk_text_view_set_editable (GTK_TEXT_VIEW (view),
+	ctk_text_view_set_editable (CTK_TEXT_VIEW (view),
 				    !lapiz_document_get_readonly (document));
 }
 
@@ -216,8 +216,8 @@ static void
 lapiz_view_class_init (LapizViewClass *klass)
 {
 	GObjectClass     *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass   *widget_class = GTK_WIDGET_CLASS (klass);
-	GtkTextViewClass *text_view_class = GTK_TEXT_VIEW_CLASS (klass);
+	GtkWidgetClass   *widget_class = CTK_WIDGET_CLASS (klass);
+	GtkTextViewClass *text_view_class = CTK_TEXT_VIEW_CLASS (klass);
 
 	GtkBindingSet    *binding_set;
 
@@ -320,7 +320,7 @@ lapiz_view_class_init (LapizViewClass *klass)
 				      GDK_KEY_d,
 				      GDK_CONTROL_MASK,
 				      "delete_from_cursor", 2,
-				      G_TYPE_ENUM, GTK_DELETE_PARAGRAPHS,
+				      G_TYPE_ENUM, CTK_DELETE_PARAGRAPHS,
 				      G_TYPE_INT, 1);
 }
 
@@ -349,7 +349,7 @@ on_notify_buffer_cb (LapizView  *view,
 	GtkTextBuffer *buffer;
 
 	current_buffer_removed (view);
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
 	if (buffer == NULL || !LAPIZ_IS_DOCUMENT (buffer))
 		return;
@@ -360,7 +360,7 @@ on_notify_buffer_cb (LapizView  *view,
 			  G_CALLBACK (document_read_only_notify_handler),
 			  view);
 
-	ctk_text_view_set_editable (GTK_TEXT_VIEW (view),
+	ctk_text_view_set_editable (CTK_TEXT_VIEW (view),
 				    !lapiz_document_get_readonly (LAPIZ_DOCUMENT (buffer)));
 
 	g_signal_connect (buffer,
@@ -369,22 +369,22 @@ on_notify_buffer_cb (LapizView  *view,
 			  view);
 }
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 void
 lapiz_set_source_space_drawer_by_level (GtkSourceView *view,
                                         gint level,
                                         GtkSourceSpaceTypeFlags type)
 {
-	GtkSourceSpaceLocationFlags locs[] = {GTK_SOURCE_SPACE_LOCATION_LEADING,
-	                                      GTK_SOURCE_SPACE_LOCATION_INSIDE_TEXT,
-	                                      GTK_SOURCE_SPACE_LOCATION_TRAILING};
+	GtkSourceSpaceLocationFlags locs[] = {CTK_SOURCE_SPACE_LOCATION_LEADING,
+	                                      CTK_SOURCE_SPACE_LOCATION_INSIDE_TEXT,
+	                                      CTK_SOURCE_SPACE_LOCATION_TRAILING};
 	/* this array links the level to the location */
 	GtkSourceSpaceLocationFlags levels[] = {
 	                                        0,
-	                                        GTK_SOURCE_SPACE_LOCATION_TRAILING,
-	                                        GTK_SOURCE_SPACE_LOCATION_INSIDE_TEXT |
-	                                        	GTK_SOURCE_SPACE_LOCATION_TRAILING |
-	                                        	GTK_SOURCE_SPACE_LOCATION_LEADING
+	                                        CTK_SOURCE_SPACE_LOCATION_TRAILING,
+	                                        CTK_SOURCE_SPACE_LOCATION_INSIDE_TEXT |
+	                                        	CTK_SOURCE_SPACE_LOCATION_TRAILING |
+	                                        	CTK_SOURCE_SPACE_LOCATION_LEADING
 	};
 
 	gint i;
@@ -407,22 +407,22 @@ lapiz_set_source_space_drawer_by_level (GtkSourceView *view,
 }
 #endif
 
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 static void
 lapiz_set_source_space_drawer (GtkSourceView *view)
 {
 	lapiz_set_source_space_drawer_by_level (view,
 	                                        lapiz_prefs_manager_get_draw_spaces (),
-	                                        GTK_SOURCE_SPACE_TYPE_SPACE);
+	                                        CTK_SOURCE_SPACE_TYPE_SPACE);
 	lapiz_set_source_space_drawer_by_level (view,
 	                                        lapiz_prefs_manager_get_draw_tabs (),
-	                                        GTK_SOURCE_SPACE_TYPE_TAB);
+	                                        CTK_SOURCE_SPACE_TYPE_TAB);
 	lapiz_set_source_space_drawer_by_level (view,
 	                                        lapiz_prefs_manager_get_draw_newlines () ? 2 : 0,
-	                                        GTK_SOURCE_SPACE_TYPE_NEWLINE);
+	                                        CTK_SOURCE_SPACE_TYPE_NEWLINE);
 	lapiz_set_source_space_drawer_by_level (view,
 	                                        lapiz_prefs_manager_get_draw_nbsp (),
-	                                        GTK_SOURCE_SPACE_TYPE_NBSP);
+	                                        CTK_SOURCE_SPACE_TYPE_NBSP);
 	ctk_source_space_drawer_set_enable_matrix (ctk_source_view_get_space_drawer (view),
 	                                           TRUE);
 
@@ -434,17 +434,17 @@ lapiz_set_source_space_drawer (GtkSourceView *view)
 	GtkSourceDrawSpacesFlags flags = 0;
 
 	if (lapiz_prefs_manager_get_draw_spaces () > 0)
-		flags |= GTK_SOURCE_DRAW_SPACES_SPACE;
+		flags |= CTK_SOURCE_DRAW_SPACES_SPACE;
 	if (lapiz_prefs_manager_get_draw_tabs () > 0)
-		flags |= GTK_SOURCE_DRAW_SPACES_TAB;
+		flags |= CTK_SOURCE_DRAW_SPACES_TAB;
 	if (lapiz_prefs_manager_get_draw_newlines ())
-		flags |= GTK_SOURCE_DRAW_SPACES_NEWLINE;
+		flags |= CTK_SOURCE_DRAW_SPACES_NEWLINE;
 	if (lapiz_prefs_manager_get_draw_nbsp () > 0)
-		flags |= GTK_SOURCE_DRAW_SPACES_NBSP;
+		flags |= CTK_SOURCE_DRAW_SPACES_NBSP;
 
-	flags |= GTK_SOURCE_DRAW_SPACES_TRAILING |
-		GTK_SOURCE_DRAW_SPACES_TEXT |
-		GTK_SOURCE_DRAW_SPACES_LEADING;
+	flags |= CTK_SOURCE_DRAW_SPACES_TRAILING |
+		CTK_SOURCE_DRAW_SPACES_TEXT |
+		CTK_SOURCE_DRAW_SPACES_LEADING;
 
 	ctk_source_view_set_draw_spaces (view, flags);
 }
@@ -491,13 +491,13 @@ lapiz_view_init (LapizView *view)
 		      "indent_on_tab", TRUE,
 		      NULL);
 
-	lapiz_set_source_space_drawer (GTK_SOURCE_VIEW (view));
+	lapiz_set_source_space_drawer (CTK_SOURCE_VIEW (view));
 
 	view->priv->typeselect_flush_timeout = 0;
 	view->priv->wrap_around = TRUE;
 
 	/* Drag and drop support */
-	tl = ctk_drag_dest_get_target_list (GTK_WIDGET (view));
+	tl = ctk_drag_dest_get_target_list (CTK_WIDGET (view));
 
 	if (tl != NULL)
 		ctk_target_list_add_uri_targets (tl, TARGET_URI_LIST);
@@ -563,7 +563,7 @@ lapiz_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
 	if (view->priv->search_window != NULL)
 		hide_search_window (view, FALSE);
 
-	(* GTK_WIDGET_CLASS (lapiz_view_parent_class)->focus_out_event) (widget, event);
+	(* CTK_WIDGET_CLASS (lapiz_view_parent_class)->focus_out_event) (widget, event);
 
 	return FALSE;
 }
@@ -586,7 +586,7 @@ lapiz_view_new (LapizDocument *doc)
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
 
-	view = GTK_WIDGET (g_object_new (LAPIZ_TYPE_VIEW, "buffer", doc, NULL));
+	view = CTK_WIDGET (g_object_new (LAPIZ_TYPE_VIEW, "buffer", doc, NULL));
 
 	lapiz_debug_message (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
 
@@ -605,10 +605,10 @@ lapiz_view_cut_clipboard (LapizView *view)
 
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
 
-	clipboard = ctk_widget_get_clipboard (GTK_WIDGET (view),
+	clipboard = ctk_widget_get_clipboard (CTK_WIDGET (view),
 					      GDK_SELECTION_CLIPBOARD);
 
 	/* FIXME: what is default editability of a buffer? */
@@ -617,7 +617,7 @@ lapiz_view_cut_clipboard (LapizView *view)
 				       !lapiz_document_get_readonly (
 				       		LAPIZ_DOCUMENT (buffer)));
 
-	ctk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
+	ctk_text_view_scroll_to_mark (CTK_TEXT_VIEW (view),
 				      ctk_text_buffer_get_insert (buffer),
 				      LAPIZ_VIEW_SCROLL_MARGIN,
 				      FALSE,
@@ -635,10 +635,10 @@ lapiz_view_copy_clipboard (LapizView *view)
 
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
 
-	clipboard = ctk_widget_get_clipboard (GTK_WIDGET (view),
+	clipboard = ctk_widget_get_clipboard (CTK_WIDGET (view),
 					      GDK_SELECTION_CLIPBOARD);
 
   	ctk_text_buffer_copy_clipboard (buffer, clipboard);
@@ -656,10 +656,10 @@ lapiz_view_paste_clipboard (LapizView *view)
 
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
 
-	clipboard = ctk_widget_get_clipboard (GTK_WIDGET (view),
+	clipboard = ctk_widget_get_clipboard (CTK_WIDGET (view),
 					      GDK_SELECTION_CLIPBOARD);
 
 	/* FIXME: what is default editability of a buffer? */
@@ -669,7 +669,7 @@ lapiz_view_paste_clipboard (LapizView *view)
 					 !lapiz_document_get_readonly (
 						LAPIZ_DOCUMENT (buffer)));
 
-	ctk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
+	ctk_text_view_scroll_to_mark (CTK_TEXT_VIEW (view),
 				      ctk_text_buffer_get_insert (buffer),
 				      LAPIZ_VIEW_SCROLL_MARGIN,
 				      FALSE,
@@ -693,7 +693,7 @@ lapiz_view_delete_selection (LapizView *view)
 
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
 
 	/* FIXME: what is default editability of a buffer? */
@@ -702,7 +702,7 @@ lapiz_view_delete_selection (LapizView *view)
 					  !lapiz_document_get_readonly (
 						LAPIZ_DOCUMENT (buffer)));
 
-	ctk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
+	ctk_text_view_scroll_to_mark (CTK_TEXT_VIEW (view),
 				      ctk_text_buffer_get_insert (buffer),
 				      LAPIZ_VIEW_SCROLL_MARGIN,
 				      FALSE,
@@ -726,7 +726,7 @@ lapiz_view_select_all (LapizView *view)
 
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
 
 	ctk_text_buffer_get_bounds (buffer, &start, &end);
@@ -748,10 +748,10 @@ lapiz_view_scroll_to_cursor (LapizView *view)
 
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
 
-	ctk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
+	ctk_text_view_scroll_to_mark (CTK_TEXT_VIEW (view),
 				      ctk_text_buffer_get_insert (buffer),
 				      0.25,
 				      FALSE,
@@ -826,8 +826,8 @@ lapiz_override_font (const gchar          *item,
 				  G_CALLBACK (system_font_changed_cb), NULL);
 
 		ctk_style_context_add_provider_for_screen (ctk_widget_get_screen (widget),
-							   GTK_STYLE_PROVIDER (provider),
-							   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+							   CTK_STYLE_PROVIDER (provider),
+							   CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 	}
 
 	prov_str = ctk_css_provider_to_string (provider);
@@ -895,11 +895,11 @@ lapiz_view_set_font (LapizView   *view,
 
 	g_return_if_fail (font_desc != NULL);
 
-	lapiz_override_font ("textview", GTK_WIDGET (view), font_desc);
+	lapiz_override_font ("textview", CTK_WIDGET (view), font_desc);
 
 	sys_font_desc = get_system_font ();
 	if (sys_font_desc) {
-		lapiz_override_font ("label", GTK_WIDGET (view), sys_font_desc);
+		lapiz_override_font ("label", CTK_WIDGET (view), sys_font_desc);
 		pango_font_description_free (sys_font_desc);
 	}
 
@@ -925,9 +925,9 @@ add_search_completion_entry (const gchar *str)
 		return;
 	}
 
-	g_return_if_fail (GTK_IS_TREE_MODEL (search_completion_model));
+	g_return_if_fail (CTK_IS_TREE_MODEL (search_completion_model));
 
-	model = GTK_TREE_MODEL (search_completion_model);
+	model = CTK_TREE_MODEL (search_completion_model);
 
 	/* Get the first iter in the list */
 	valid = ctk_tree_model_get_iter_first (model, &iter);
@@ -947,7 +947,7 @@ add_search_completion_entry (const gchar *str)
 		{
 			g_free (text);
 			g_free (str_data);
-			ctk_list_store_move_after (GTK_LIST_STORE (model),
+			ctk_list_store_move_after (CTK_LIST_STORE (model),
 						   &iter,
 						   NULL);
 
@@ -959,8 +959,8 @@ add_search_completion_entry (const gchar *str)
 		valid = ctk_tree_model_iter_next (model, &iter);
     	}
 
-	ctk_list_store_prepend (GTK_LIST_STORE (model), &iter);
-	ctk_list_store_set (GTK_LIST_STORE (model),
+	ctk_list_store_prepend (CTK_LIST_STORE (model), &iter);
+	ctk_list_store_set (CTK_LIST_STORE (model),
 			    &iter,
 			    0,
 			    text,
@@ -973,15 +973,15 @@ static void
 set_entry_state (GtkWidget             *entry,
                  LapizSearchEntryState  state)
 {
-	GtkStyleContext *context = ctk_widget_get_style_context (GTK_WIDGET (entry));
+	GtkStyleContext *context = ctk_widget_get_style_context (CTK_WIDGET (entry));
 
 	if (state == LAPIZ_SEARCH_ENTRY_NOT_FOUND)
 	{
-		ctk_style_context_add_class (context, GTK_STYLE_CLASS_ERROR);
+		ctk_style_context_add_class (context, CTK_STYLE_CLASS_ERROR);
 	}
 	else /* reset */
 	{
-		ctk_style_context_remove_class (context, GTK_STYLE_CLASS_ERROR);
+		ctk_style_context_remove_class (context, CTK_STYLE_CLASS_ERROR);
 	}
 }
 
@@ -1000,7 +1000,7 @@ run_search (LapizView        *view,
 
 	g_return_val_if_fail (view->priv->search_mode == SEARCH, FALSE);
 
-	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 
 	start_iter = view->priv->start_search_iter;
 
@@ -1011,7 +1011,7 @@ run_search (LapizView        *view,
 			if (!typing)
 			{
 				/* forward and _NOT_ typing */
-				ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+				ctk_text_buffer_get_selection_bounds (CTK_TEXT_BUFFER (doc),
 							      &start_iter,
 							      &match_end);
 
@@ -1028,7 +1028,7 @@ run_search (LapizView        *view,
 		else if (!typing)
 		{
 			/* backward and not typing */
-			ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_get_selection_bounds (CTK_TEXT_BUFFER (doc),
 							      &start_iter,
 							      &match_end);
 
@@ -1064,24 +1064,24 @@ run_search (LapizView        *view,
 	}
 	else
 	{
-		ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_selection_bounds (CTK_TEXT_BUFFER (doc),
 						      &start_iter,
 						      NULL);
 	}
 
 	if (found)
 	{
-		ctk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_place_cursor (CTK_TEXT_BUFFER (doc),
 					&match_start);
 
-		ctk_text_buffer_move_mark_by_name (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_move_mark_by_name (CTK_TEXT_BUFFER (doc),
 					"selection_bound", &match_end);
 	}
 	else
 	{
 		if (typing)
 		{
-			ctk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_place_cursor (CTK_TEXT_BUFFER (doc),
 						      &view->priv->start_search_iter);
 		}
 	}
@@ -1143,22 +1143,22 @@ hide_search_window (LapizView *view, gboolean cancel)
 	}
 
 	/* send focus-in event */
-	send_focus_change (GTK_WIDGET (view->priv->search_entry), FALSE);
-	ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (view), TRUE);
+	send_focus_change (CTK_WIDGET (view->priv->search_entry), FALSE);
+	ctk_text_view_set_cursor_visible (CTK_TEXT_VIEW (view), TRUE);
 	ctk_widget_hide (view->priv->search_window);
 
 	if (cancel)
 	{
 		GtkTextBuffer *buffer;
 
-		buffer = GTK_TEXT_BUFFER (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+		buffer = CTK_TEXT_BUFFER (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 		ctk_text_buffer_place_cursor (buffer, &view->priv->start_search_iter);
 
 		lapiz_view_scroll_to_cursor (view);
 	}
 
 	/* make sure a focus event is sent for the edit area */
-	send_focus_change (GTK_WIDGET (view), TRUE);
+	send_focus_change (CTK_WIDGET (view), TRUE);
 }
 
 static gboolean
@@ -1175,7 +1175,7 @@ update_search_window_position (LapizView *view)
 {
 	gint x, y;
 	gint view_x, view_y;
-	GdkWindow *view_window = ctk_widget_get_window (GTK_WIDGET (view));
+	GdkWindow *view_window = ctk_widget_get_window (CTK_WIDGET (view));
 
 	ctk_widget_realize (view->priv->search_window);
 
@@ -1184,7 +1184,7 @@ update_search_window_position (LapizView *view)
 	x = MAX (12, view_x + 12);
 	y = MAX (12, view_y - 12);
 
-	ctk_window_move (GTK_WINDOW (view->priv->search_window), x, y);
+	ctk_window_move (CTK_WINDOW (view->priv->search_window), x, y);
 }
 
 static gboolean
@@ -1204,7 +1204,7 @@ search_window_button_press_event (GtkWidget      *widget,
 {
 	hide_search_window (view, FALSE);
 
-	ctk_propagate_event (GTK_WIDGET (view), (GdkEvent *)event);
+	ctk_propagate_event (CTK_WIDGET (view), (GdkEvent *)event);
 
 	return FALSE;
 }
@@ -1228,7 +1228,7 @@ search_again (LapizView *view,
 		       		       view);
 	}
 
-	entry_text = ctk_entry_get_text (GTK_ENTRY (view->priv->search_entry));
+	entry_text = ctk_entry_get_text (CTK_ENTRY (view->priv->search_entry));
 
 	add_search_completion_entry (entry_text);
 
@@ -1289,7 +1289,7 @@ search_window_key_press_event (GtkWidget   *widget,
 			LapizDocument *doc;
 
 			/* restore document search so that Find Next does the right thing */
-			doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+			doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 			lapiz_document_set_search_text (doc,
 							view->priv->old_search_text,
 							view->priv->old_search_flags);
@@ -1416,7 +1416,7 @@ search_entry_populate_popup (GtkEntry  *entry,
 
 	/* separator */
 	menu_item = ctk_menu_item_new ();
-	ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+	ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), menu_item);
 	ctk_widget_show (menu_item);
 
 	/* create "Wrap Around" menu item. */
@@ -1424,8 +1424,8 @@ search_entry_populate_popup (GtkEntry  *entry,
 	g_signal_connect (G_OBJECT (menu_item), "toggled",
 			  G_CALLBACK (wrap_around_menu_item_toggled),
 			  view);
-	ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
+	ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), menu_item);
+	ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (menu_item),
 					view->priv->wrap_around);
 	ctk_widget_show (menu_item);
 
@@ -1434,8 +1434,8 @@ search_entry_populate_popup (GtkEntry  *entry,
 	g_signal_connect (G_OBJECT (menu_item), "toggled",
 			  G_CALLBACK (match_entire_word_menu_item_toggled),
 			  view);
-	ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
+	ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), menu_item);
+	ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (menu_item),
 					LAPIZ_SEARCH_IS_ENTIRE_WORD (view->priv->search_flags));
 	ctk_widget_show (menu_item);
 
@@ -1444,8 +1444,8 @@ search_entry_populate_popup (GtkEntry  *entry,
 	g_signal_connect (G_OBJECT (menu_item), "toggled",
 			  G_CALLBACK (match_case_menu_item_toggled),
 			  view);
-	ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
+	ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), menu_item);
+	ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (menu_item),
 					LAPIZ_SEARCH_IS_CASE_SENSITIVE (view->priv->search_flags));
 	ctk_widget_show (menu_item);
 
@@ -1454,8 +1454,8 @@ search_entry_populate_popup (GtkEntry  *entry,
 	g_signal_connect (G_OBJECT (menu_item), "toggled",
 			  G_CALLBACK (parse_escapes_menu_item_toggled),
 			  view);
-	ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
+	ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), menu_item);
+	ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (menu_item),
 					LAPIZ_SEARCH_IS_PARSE_ESCAPES (view->priv->search_flags));
 	ctk_widget_show (menu_item);
 }
@@ -1559,8 +1559,8 @@ customize_for_search_mode (LapizView *view)
 {
 	if (view->priv->search_mode == SEARCH)
 	{
-		ctk_entry_set_icon_from_icon_name (GTK_ENTRY (view->priv->search_entry),
-					       GTK_ENTRY_ICON_PRIMARY,
+		ctk_entry_set_icon_from_icon_name (CTK_ENTRY (view->priv->search_entry),
+					       CTK_ENTRY_ICON_PRIMARY,
 					       "edit-find");
 
 		ctk_widget_set_tooltip_text (view->priv->search_entry,
@@ -1568,8 +1568,8 @@ customize_for_search_mode (LapizView *view)
 	}
 	else
 	{
-		ctk_entry_set_icon_from_icon_name (GTK_ENTRY (view->priv->search_entry),
-					       GTK_ENTRY_ICON_PRIMARY,
+		ctk_entry_set_icon_from_icon_name (CTK_ENTRY (view->priv->search_entry),
+					       CTK_ENTRY_ICON_PRIMARY,
 					       "go-jump");
 
 		ctk_widget_set_tooltip_text (view->priv->search_entry,
@@ -1592,7 +1592,7 @@ completion_func (GtkEntryCompletion *completion,
 	if (priv->search_mode == GOTO_LINE)
 		return FALSE;
 
-	real_key = ctk_entry_get_text (GTK_ENTRY (ctk_entry_completion_get_entry (completion)));
+	real_key = ctk_entry_get_text (CTK_ENTRY (ctk_entry_completion_get_entry (completion)));
 
 	if (g_utf8_strlen (real_key, -1) <= MIN_SEARCH_COMPLETION_KEY_LEN)
 		return FALSE;
@@ -1646,32 +1646,32 @@ ensure_search_window (LapizView *view)
 	GtkWindowGroup     *group;
 	GtkWindowGroup     *search_group;
 
-	toplevel = ctk_widget_get_toplevel (GTK_WIDGET (view));
-	group = ctk_window_get_group (GTK_WINDOW (toplevel));
+	toplevel = ctk_widget_get_toplevel (CTK_WIDGET (view));
+	group = ctk_window_get_group (CTK_WINDOW (toplevel));
 	if (view->priv->search_window != NULL)
-		search_group = ctk_window_get_group (GTK_WINDOW (view->priv->search_window));
+		search_group = ctk_window_get_group (CTK_WINDOW (view->priv->search_window));
 
 	if (view->priv->search_window != NULL)
 	{
 		if (group)
 			ctk_window_group_add_window (group,
-						     GTK_WINDOW (view->priv->search_window));
+						     CTK_WINDOW (view->priv->search_window));
 		else if (search_group)
 	 		ctk_window_group_remove_window (search_group,
-					 		GTK_WINDOW (view->priv->search_window));
+					 		CTK_WINDOW (view->priv->search_window));
 
 		customize_for_search_mode (view);
 
 		return;
 	}
 
-	view->priv->search_window = ctk_window_new (GTK_WINDOW_POPUP);
+	view->priv->search_window = ctk_window_new (CTK_WINDOW_POPUP);
 
 	if (group)
 		ctk_window_group_add_window (group,
-					     GTK_WINDOW (view->priv->search_window));
+					     CTK_WINDOW (view->priv->search_window));
 
-	ctk_window_set_modal (GTK_WINDOW (view->priv->search_window), TRUE);
+	ctk_window_set_modal (CTK_WINDOW (view->priv->search_window), TRUE);
 
 	g_signal_connect (view->priv->search_window, "delete_event",
 			  G_CALLBACK (search_window_delete_event),
@@ -1687,14 +1687,14 @@ ensure_search_window (LapizView *view)
 			  view);
 
 	frame = ctk_frame_new (NULL);
-	ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
+	ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_ETCHED_IN);
 	ctk_widget_show (frame);
-	ctk_container_add (GTK_CONTAINER (view->priv->search_window), frame);
+	ctk_container_add (CTK_CONTAINER (view->priv->search_window), frame);
 
-	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
 	ctk_widget_show (vbox);
-	ctk_container_add (GTK_CONTAINER (frame), vbox);
-	ctk_container_set_border_width (GTK_CONTAINER (vbox), 3);
+	ctk_container_add (CTK_CONTAINER (frame), vbox);
+	ctk_container_set_border_width (CTK_CONTAINER (vbox), 3);
 
 	/* add entry */
 	view->priv->search_entry = ctk_entry_new ();
@@ -1711,7 +1711,7 @@ ensure_search_window (LapizView *view)
 			  G_CALLBACK (search_entry_insert_text),
 			  view);
 
-	ctk_container_add (GTK_CONTAINER (vbox),
+	ctk_container_add (CTK_CONTAINER (vbox),
 			   view->priv->search_entry);
 
 	if (search_completion_model == NULL)
@@ -1723,7 +1723,7 @@ ensure_search_window (LapizView *view)
 	/* Create the completion object for the search entry */
 	completion = ctk_entry_completion_new ();
 	ctk_entry_completion_set_model (completion,
-					GTK_TREE_MODEL (search_completion_model));
+					CTK_TREE_MODEL (search_completion_model));
 
 	/* Use model column 0 as the text column */
 	ctk_entry_completion_set_text_column (completion, 0);
@@ -1740,7 +1740,7 @@ ensure_search_window (LapizView *view)
 					     NULL);
 
 	/* Assign the completion to the entry */
-	ctk_entry_set_completion (GTK_ENTRY (view->priv->search_entry),
+	ctk_entry_set_completion (CTK_ENTRY (view->priv->search_entry),
 				  completion);
 	g_object_unref (completion);
 
@@ -1778,7 +1778,7 @@ init_search_entry (LapizView *view)
 {
 	GtkTextBuffer *buffer;
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
 	if (view->priv->search_mode == GOTO_LINE)
 	{
@@ -1789,7 +1789,7 @@ init_search_entry (LapizView *view)
 
 		line_str = g_strdup_printf ("%d", line + 1);
 
-		ctk_entry_set_text (GTK_ENTRY (view->priv->search_entry),
+		ctk_entry_set_text (CTK_ENTRY (view->priv->search_entry),
 				    line_str);
 
 		g_free (line_str);
@@ -1825,12 +1825,12 @@ init_search_entry (LapizView *view)
 
 		if (selection_exists  && (find_text != NULL) && (sel_len <= 160))
 		{
-			ctk_entry_set_text (GTK_ENTRY (view->priv->search_entry),
+			ctk_entry_set_text (CTK_ENTRY (view->priv->search_entry),
 					    find_text);
 		}
 		else
 		{
-			ctk_entry_set_text (GTK_ENTRY (view->priv->search_entry),
+			ctk_entry_set_text (CTK_ENTRY (view->priv->search_entry),
 					    "");
 		}
 
@@ -1855,9 +1855,9 @@ search_init (GtkWidget *entry,
 		       		       view);
 	}
 
-	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 
-	entry_text = ctk_entry_get_text (GTK_ENTRY (entry));
+	entry_text = ctk_entry_get_text (CTK_ENTRY (entry));
 
 	if (view->priv->search_mode == SEARCH)
 	{
@@ -1960,10 +1960,10 @@ start_interactive_search_real (LapizView *view)
 	    ctk_widget_get_visible (view->priv->search_window))
 		return TRUE;
 
-	if (!ctk_widget_has_focus (GTK_WIDGET (view)))
+	if (!ctk_widget_has_focus (CTK_WIDGET (view)))
 		return FALSE;
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
 	if (view->priv->search_mode == SEARCH)
 		ctk_text_buffer_get_selection_bounds (buffer, &view->priv->start_search_iter, NULL);
@@ -1994,7 +1994,7 @@ start_interactive_search_real (LapizView *view)
 		   	       (GSourceFunc) search_entry_flush_timeout,
 		   	       view);
 
-	ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (view), FALSE);
+	ctk_text_view_set_cursor_visible (CTK_TEXT_VIEW (view), FALSE);
 	ctk_widget_grab_focus (view->priv->search_entry);
 
 	send_focus_change (view->priv->search_entry, TRUE);
@@ -2007,7 +2007,7 @@ reset_searched_text (LapizView *view)
 {
 	LapizDocument *doc;
 
-	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 
 	lapiz_document_set_search_text (doc, "", LAPIZ_SEARCH_DONT_SET_FLAGS);
 
@@ -2038,10 +2038,10 @@ lapiz_view_draw (GtkWidget      *widget,
 	LapizDocument *doc;
 	GdkWindow *window;
 
-	text_view = GTK_TEXT_VIEW (widget);
+	text_view = CTK_TEXT_VIEW (widget);
 
 	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (text_view));
-	window = ctk_text_view_get_window (text_view, GTK_TEXT_WINDOW_TEXT);
+	window = ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT);
 	if (ctk_cairo_should_draw_window (cr, window) &&
 	    lapiz_document_get_enable_search_highlighting (doc))
 	{
@@ -2061,7 +2061,7 @@ lapiz_view_draw (GtkWidget      *widget,
 					       &iter2);
 	}
 
-	return GTK_WIDGET_CLASS (lapiz_view_parent_class)->draw (widget, cr);
+	return CTK_WIDGET_CLASS (lapiz_view_parent_class)->draw (widget, cr);
 }
 
 static GdkAtom
@@ -2092,7 +2092,7 @@ lapiz_view_drag_motion (GtkWidget      *widget,
 	/* Chain up to allow textview to scroll and position dnd mark, note
 	 * that this needs to be checked if ctksourceview or ctktextview
 	 * changes drag_motion behaviour */
-	result = GTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_motion (widget, context, x, y, timestamp);
+	result = CTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_motion (widget, context, x, y, timestamp);
 
 	/* If this is a URL, deal with it here */
 	if (drag_get_uri_target (widget, context) != GDK_NONE)
@@ -2132,7 +2132,7 @@ lapiz_view_drag_data_received (GtkWidget        *widget,
 	}
 	else
 	{
-		GTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_data_received (widget, context, x, y, selection_data, info, timestamp);
+		CTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_data_received (widget, context, x, y, selection_data, info, timestamp);
 	}
 }
 
@@ -2157,7 +2157,7 @@ lapiz_view_drag_drop (GtkWidget      *widget,
 	else
 	{
 		/* Chain up */
-		result = GTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_drop (widget, context, x, y, timestamp);
+		result = CTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_drop (widget, context, x, y, timestamp);
 	}
 
 	return result;
@@ -2169,7 +2169,7 @@ show_line_numbers_toggled (GtkMenu   *menu,
 {
 	gboolean show;
 
-	show = ctk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (menu));
+	show = ctk_check_menu_item_get_active (CTK_CHECK_MENU_ITEM (menu));
 
 	lapiz_prefs_manager_set_display_line_numbers (show);
 }
@@ -2183,11 +2183,11 @@ create_line_numbers_menu (GtkWidget *view)
 	menu = ctk_menu_new ();
 
 	item = ctk_check_menu_item_new_with_mnemonic (_("_Display line numbers"));
-	ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item),
-					ctk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW (view)));
+	ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (item),
+					ctk_source_view_get_show_line_numbers (CTK_SOURCE_VIEW (view)));
 	g_signal_connect (item, "toggled",
 			  G_CALLBACK (show_line_numbers_toggled), view);
-	ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+	ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
 	ctk_widget_show_all (menu);
 
@@ -2202,7 +2202,7 @@ show_line_numbers_menu (GtkWidget      *view,
 
 	menu = create_line_numbers_menu (view);
 
-	ctk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+	ctk_menu_popup_at_pointer (CTK_MENU (menu), NULL);
 }
 
 static gboolean
@@ -2221,8 +2221,8 @@ lapiz_view_button_press_event (GtkWidget *widget, GdkEventButton *event)
 		ctk_clipboard_set_text (ctk_clipboard_get (GDK_SELECTION_PRIMARY), primtxt, strlen (primtxt));
 
 	if ((event->type == GDK_BUTTON_PRESS) &&
-	    (event->window == ctk_text_view_get_window (GTK_TEXT_VIEW (widget),
-						        GTK_TEXT_WINDOW_LEFT)))
+	    (event->window == ctk_text_view_get_window (CTK_TEXT_VIEW (widget),
+						        CTK_TEXT_WINDOW_LEFT)))
 	{
 		if (event->button == 3)
 			show_line_numbers_menu (widget, event);
@@ -2242,10 +2242,10 @@ lapiz_view_button_press_event (GtkWidget *widget, GdkEventButton *event)
 	}
 
 	if ((event->type == GDK_2BUTTON_PRESS) && (event->button == 1) &&
-	    (event->window == ctk_text_view_get_window (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_TEXT)))
+	    (event->window == ctk_text_view_get_window (CTK_TEXT_VIEW (widget), CTK_TEXT_WINDOW_TEXT)))
 		return TRUE;
 
-	return GTK_WIDGET_CLASS (lapiz_view_parent_class)->button_press_event (widget, event);
+	return CTK_WIDGET_CLASS (lapiz_view_parent_class)->button_press_event (widget, event);
 }
 
 static gboolean
@@ -2254,7 +2254,7 @@ lapiz_view_button_release_event (GtkWidget *widget, GdkEventButton *event)
 	if (event->button == 2)
 		middle_or_right_down = FALSE;
 
-	return GTK_WIDGET_CLASS (lapiz_view_parent_class)->button_release_event (widget, event);
+	return CTK_WIDGET_CLASS (lapiz_view_parent_class)->button_release_event (widget, event);
 }
 
 static void
@@ -2276,7 +2276,7 @@ search_highlight_updated_cb (LapizDocument *doc,
 	gint height;
 	GtkTextView *text_view;
 
-	text_view = GTK_TEXT_VIEW (view);
+	text_view = CTK_TEXT_VIEW (view);
 
 	g_return_if_fail (lapiz_document_get_enable_search_highlighting (
 				LAPIZ_DOCUMENT (ctk_text_view_get_buffer (text_view))));
@@ -2298,7 +2298,7 @@ search_highlight_updated_cb (LapizDocument *doc,
 		GdkRectangle widget_rect;
 
 		ctk_text_view_buffer_to_window_coords (text_view,
-						       GTK_TEXT_WINDOW_WIDGET,
+						       CTK_TEXT_WINDOW_WIDGET,
 						       redraw_rect.x,
 						       redraw_rect.y,
 						       &widget_rect.x,
@@ -2307,7 +2307,7 @@ search_highlight_updated_cb (LapizDocument *doc,
 		widget_rect.width = redraw_rect.width;
 		widget_rect.height = redraw_rect.height;
 
-		ctk_widget_queue_draw_area (GTK_WIDGET (text_view),
+		ctk_widget_queue_draw_area (CTK_WIDGET (text_view),
 					    widget_rect.x,
 					    widget_rect.y,
 					    widget_rect.width,
@@ -2398,7 +2398,7 @@ delete_line (GtkTextView *text_view,
 	}
 	else
 	{
-		ctk_widget_error_bell (GTK_WIDGET (text_view));
+		ctk_widget_error_bell (CTK_WIDGET (text_view));
 	}
 }
 
@@ -2408,16 +2408,16 @@ lapiz_view_delete_from_cursor (GtkTextView   *text_view,
 			       gint           count)
 {
 	/* We override the standard handler for delete_from_cursor since
-	   the GTK_DELETE_PARAGRAPHS case is not implemented as we like (i.e. it
+	   the CTK_DELETE_PARAGRAPHS case is not implemented as we like (i.e. it
 	   does not remove the carriage return in the previous line)
 	 */
 	switch (type)
 	{
-		case GTK_DELETE_PARAGRAPHS:
+		case CTK_DELETE_PARAGRAPHS:
 			delete_line (text_view, count);
 			break;
 		default:
-			GTK_TEXT_VIEW_CLASS (lapiz_view_parent_class)->delete_from_cursor(text_view, type, count);
+			CTK_TEXT_VIEW_CLASS (lapiz_view_parent_class)->delete_from_cursor(text_view, type, count);
 			break;
 	}
 }

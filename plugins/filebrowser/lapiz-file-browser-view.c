@@ -83,7 +83,7 @@ static const GtkTargetEntry drag_source_targets[] = {
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserView,
                                 lapiz_file_browser_view,
-                                GTK_TYPE_TREE_VIEW,
+                                CTK_TYPE_TREE_VIEW,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserView))
 
@@ -171,8 +171,8 @@ row_expanded (GtkTreeView * tree_view,
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
 
-	if (GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_expanded)
-		GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_expanded (tree_view, iter, path);
+	if (CTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_expanded)
+		CTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_expanded (tree_view, iter, path);
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 		return;
@@ -201,8 +201,8 @@ row_collapsed (GtkTreeView * tree_view,
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
 
-	if (GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_collapsed)
-		GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_collapsed (tree_view, iter, path);
+	if (CTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_collapsed)
+		CTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_collapsed (tree_view, iter, path);
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 		return;
@@ -236,7 +236,7 @@ leave_notify_event (GtkWidget *widget,
 	}
 
 	// Chainup
-	return GTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->leave_notify_event (widget, event);
+	return CTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->leave_notify_event (widget, event);
 }
 
 static gboolean
@@ -249,7 +249,7 @@ enter_notify_event (GtkWidget *widget,
 		if (view->priv->hover_path != NULL)
 			ctk_tree_path_free (view->priv->hover_path);
 
-		ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
+		ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (widget),
 					       event->x, event->y,
 					       &view->priv->hover_path,
 					       NULL, NULL, NULL);
@@ -260,7 +260,7 @@ enter_notify_event (GtkWidget *widget,
 	}
 
 	// Chainup
-	return GTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->enter_notify_event (widget, event);
+	return CTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->enter_notify_event (widget, event);
 }
 
 static gboolean
@@ -272,7 +272,7 @@ motion_notify_event (GtkWidget * widget,
 
 	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		old_hover_path = view->priv->hover_path;
-		ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
+		ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (widget),
 					       event->x, event->y,
 					       &view->priv->hover_path,
 					       NULL, NULL, NULL);
@@ -291,7 +291,7 @@ motion_notify_event (GtkWidget * widget,
 	}
 
 	// Chainup
-	return GTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->motion_notify_event (widget, event);
+	return CTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->motion_notify_event (widget, event);
 }
 
 static void
@@ -302,7 +302,7 @@ set_click_policy_property (LapizFileBrowserView            *obj,
 	GdkDisplay *display;
 	GdkWindow *win;
 
-	display = ctk_widget_get_display (GTK_WIDGET (obj));
+	display = ctk_widget_get_display (CTK_WIDGET (obj));
 
 	obj->priv->click_policy = click_policy;
 
@@ -311,20 +311,20 @@ set_click_policy_property (LapizFileBrowserView            *obj,
 			obj->priv->hand_cursor = gdk_cursor_new_for_display (display, GDK_HAND2);
 	} else if (click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE) {
 		if (obj->priv->hover_path != NULL) {
-			if (ctk_tree_model_get_iter (GTK_TREE_MODEL (obj->priv->model),
+			if (ctk_tree_model_get_iter (CTK_TREE_MODEL (obj->priv->model),
 						     &iter, obj->priv->hover_path))
-				ctk_tree_model_row_changed (GTK_TREE_MODEL (obj->priv->model),
+				ctk_tree_model_row_changed (CTK_TREE_MODEL (obj->priv->model),
 							    obj->priv->hover_path, &iter);
 
 			ctk_tree_path_free (obj->priv->hover_path);
 			obj->priv->hover_path = NULL;
 		}
 
-		if (ctk_widget_get_realized (GTK_WIDGET (obj))) {
-			win = ctk_widget_get_window (GTK_WIDGET (obj));
+		if (ctk_widget_get_realized (CTK_WIDGET (obj))) {
+			win = ctk_widget_get_window (CTK_WIDGET (obj));
 			gdk_window_set_cursor (win, NULL);
 
-			display = ctk_widget_get_display (GTK_WIDGET (obj));
+			display = ctk_widget_get_display (CTK_WIDGET (obj));
 
 			if (display != NULL)
 				gdk_display_flush (display);
@@ -346,7 +346,7 @@ directory_activated (LapizFileBrowserView *view,
 
 static void
 activate_selected_files (LapizFileBrowserView *view) {
-	GtkTreeView *tree_view = GTK_TREE_VIEW (view);
+	GtkTreeView *tree_view = CTK_TREE_VIEW (view);
 	GtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
 	GList *rows, *row;
 	GtkTreePath *directory = NULL;
@@ -385,7 +385,7 @@ activate_selected_files (LapizFileBrowserView *view) {
 
 static void
 activate_selected_bookmark (LapizFileBrowserView *view) {
-	GtkTreeView *tree_view = GTK_TREE_VIEW (view);
+	GtkTreeView *tree_view = CTK_TREE_VIEW (view);
 	GtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
 	GtkTreeIter iter;
 
@@ -433,7 +433,7 @@ drag_begin (GtkWidget      *widget,
 	view->priv->drag_started = TRUE;
 
 	/* Chain up */
-	GTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->drag_begin (widget, context);
+	CTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->drag_begin (widget, context);
 }
 
 static void
@@ -444,7 +444,7 @@ did_not_drag (LapizFileBrowserView *view,
 	GtkTreeSelection *selection;
 	GtkTreePath *path;
 
-	tree_view = GTK_TREE_VIEW (view);
+	tree_view = CTK_TREE_VIEW (view);
 	selection = ctk_tree_view_get_selection (tree_view);
 
 	if (ctk_tree_view_get_path_at_pos (tree_view, event->x, event->y,
@@ -485,7 +485,7 @@ button_release_event (GtkWidget       *widget,
 	}
 
 	/* Chain up */
-	return GTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->button_release_event (widget, event);
+	return CTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->button_release_event (widget, event);
 }
 
 static gboolean
@@ -504,9 +504,9 @@ button_press_event (GtkWidget      *widget,
 	gboolean on_expander;
 	gboolean call_parent;
 	gboolean selected;
-	GtkWidgetClass *widget_parent = GTK_WIDGET_CLASS(lapiz_file_browser_view_parent_class);
+	GtkWidgetClass *widget_parent = CTK_WIDGET_CLASS(lapiz_file_browser_view_parent_class);
 
-	tree_view = GTK_TREE_VIEW (widget);
+	tree_view = CTK_TREE_VIEW (widget);
 	view = LAPIZ_FILE_BROWSER_VIEW (widget);
 	selection = ctk_tree_view_get_selection (tree_view);
 
@@ -667,7 +667,7 @@ key_press_event (GtkWidget   *widget,
 
 	/* Chain up */
 	if (!handled)
-		return GTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->key_press_event (widget, event);
+		return CTK_WIDGET_CLASS (lapiz_file_browser_view_parent_class)->key_press_event (widget, event);
 
 	return TRUE;
 }
@@ -684,7 +684,7 @@ fill_expand_state (LapizFileBrowserView * view, GtkTreeIter * iter)
 
 	path = ctk_tree_model_get_path (view->priv->model, iter);
 
-	if (ctk_tree_view_row_expanded (GTK_TREE_VIEW (view), path))
+	if (ctk_tree_view_row_expanded (CTK_TREE_VIEW (view), path))
 	{
 		ctk_tree_model_get (view->priv->model,
 				    iter,
@@ -835,8 +835,8 @@ static void
 lapiz_file_browser_view_class_init (LapizFileBrowserViewClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkTreeViewClass *tree_view_class = GTK_TREE_VIEW_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	GtkTreeViewClass *tree_view_class = CTK_TREE_VIEW_CLASS (klass);
+	GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = lapiz_file_browser_view_finalize;
 	object_class->get_property = get_property;
@@ -888,7 +888,7 @@ lapiz_file_browser_view_class_init (LapizFileBrowserViewClass * klass)
 			  G_STRUCT_OFFSET (LapizFileBrowserViewClass,
 					   file_activated), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED,
-			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+			  G_TYPE_NONE, 1, CTK_TYPE_TREE_ITER);
 	signals[DIRECTORY_ACTIVATED] =
 	    g_signal_new ("directory-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
@@ -896,7 +896,7 @@ lapiz_file_browser_view_class_init (LapizFileBrowserViewClass * klass)
 			  G_STRUCT_OFFSET (LapizFileBrowserViewClass,
 					   directory_activated), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED,
-			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+			  G_TYPE_NONE, 1, CTK_TYPE_TREE_ITER);
 	signals[BOOKMARK_ACTIVATED] =
 	    g_signal_new ("bookmark-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
@@ -904,7 +904,7 @@ lapiz_file_browser_view_class_init (LapizFileBrowserViewClass * klass)
 			  G_STRUCT_OFFSET (LapizFileBrowserViewClass,
 					   bookmark_activated), NULL, NULL,
 			  g_cclosure_marshal_VOID__BOXED,
-			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+			  G_TYPE_NONE, 1, CTK_TYPE_TREE_ITER);
 }
 
 static void
@@ -974,17 +974,17 @@ lapiz_file_browser_view_init (LapizFileBrowserView * obj)
 	g_signal_connect (obj->priv->text_renderer, "edited",
 			  G_CALLBACK (on_cell_edited), obj);
 
-	ctk_tree_view_append_column (GTK_TREE_VIEW (obj),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (obj),
 				     obj->priv->column);
-	ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (obj), FALSE);
+	ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (obj), FALSE);
 
-	ctk_tree_view_enable_model_drag_source (GTK_TREE_VIEW (obj),
+	ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (obj),
 						GDK_BUTTON1_MASK,
 						drag_source_targets,
 						G_N_ELEMENTS (drag_source_targets),
 						GDK_ACTION_COPY);
 
-	display = ctk_widget_get_display (GTK_WIDGET (obj));
+	display = ctk_widget_get_display (CTK_WIDGET (obj));
 	obj->priv->busy_cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
 }
 
@@ -1009,7 +1009,7 @@ lapiz_file_browser_view_new (void)
 	    LAPIZ_FILE_BROWSER_VIEW (g_object_new
 				     (LAPIZ_TYPE_FILE_BROWSER_VIEW, NULL));
 
-	return GTK_WIDGET (obj);
+	return CTK_WIDGET (obj);
 }
 
 void
@@ -1021,11 +1021,11 @@ lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
 	if (tree_view->priv->model == model)
 		return;
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view));
 
 	if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model)) {
-		ctk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
-		ctk_tree_view_set_row_separator_func (GTK_TREE_VIEW
+		ctk_tree_selection_set_mode (selection, CTK_SELECTION_BROWSE);
+		ctk_tree_view_set_row_separator_func (CTK_TREE_VIEW
 						      (tree_view),
 						      bookmarks_separator_func,
 						      NULL, NULL);
@@ -1037,8 +1037,8 @@ lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
 							 cell_data_cb,
 							 tree_view, NULL);
 	} else {
-		ctk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);
-		ctk_tree_view_set_row_separator_func (GTK_TREE_VIEW
+		ctk_tree_selection_set_mode (selection, CTK_SELECTION_MULTIPLE);
+		ctk_tree_view_set_row_separator_func (CTK_TREE_VIEW
 						      (tree_view), NULL,
 						      NULL, NULL);
 		ctk_tree_view_column_set_cell_data_func (tree_view->priv->
@@ -1066,7 +1066,7 @@ lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
 	}
 
 	tree_view->priv->model = model;
-	ctk_tree_view_set_model (GTK_TREE_VIEW (tree_view), model);
+	ctk_tree_view_set_model (CTK_TREE_VIEW (tree_view), model);
 }
 
 void
@@ -1093,20 +1093,20 @@ lapiz_file_browser_view_start_rename (LapizFileBrowserView * tree_view,
 	rowref = ctk_tree_row_reference_new (tree_view->priv->model, path);
 
 	/* Start editing */
-	ctk_widget_grab_focus (GTK_WIDGET (tree_view));
+	ctk_widget_grab_focus (CTK_WIDGET (tree_view));
 
 	if (ctk_tree_path_up (path))
-		ctk_tree_view_expand_to_path (GTK_TREE_VIEW (tree_view),
+		ctk_tree_view_expand_to_path (CTK_TREE_VIEW (tree_view),
 					      path);
 
 	ctk_tree_path_free (path);
 	tree_view->priv->editable = rowref;
 
-	ctk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view),
+	ctk_tree_view_set_cursor (CTK_TREE_VIEW (tree_view),
 				  ctk_tree_row_reference_get_path (tree_view->priv->editable),
 				  tree_view->priv->column, TRUE);
 
-	ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view),
+	ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (tree_view),
 				      ctk_tree_row_reference_get_path (tree_view->priv->editable),
 				      tree_view->priv->column,
 				      FALSE, 0.0, 0.0);
@@ -1150,14 +1150,14 @@ on_cell_edited (GtkCellRendererText * cell, gchar * path, gchar * new_text,
 		return;
 
 	treepath = ctk_tree_path_new_from_string (path);
-	ret = ctk_tree_model_get_iter (GTK_TREE_MODEL (tree_view->priv->model), &iter, treepath);
+	ret = ctk_tree_model_get_iter (CTK_TREE_MODEL (tree_view->priv->model), &iter, treepath);
 	ctk_tree_path_free (treepath);
 
 	if (ret) {
 		if (lapiz_file_browser_store_rename (LAPIZ_FILE_BROWSER_STORE (tree_view->priv->model),
 		    &iter, new_text, &error)) {
-			treepath = ctk_tree_model_get_path (GTK_TREE_MODEL (tree_view->priv->model), &iter);
-			ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view),
+			treepath = ctk_tree_model_get_path (CTK_TREE_MODEL (tree_view->priv->model), &iter);
+			ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (tree_view),
 						      treepath, NULL,
 						      FALSE, 0.0, 0.0);
 			ctk_tree_path_free (treepath);
@@ -1211,7 +1211,7 @@ restore_expand_state (LapizFileBrowserView * view,
 	GFile * file;
 	GtkTreePath * path;
 
-	ctk_tree_model_get (GTK_TREE_MODEL (model),
+	ctk_tree_model_get (CTK_TREE_MODEL (model),
 			    iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 			    &uri,
@@ -1221,11 +1221,11 @@ restore_expand_state (LapizFileBrowserView * view,
 		return;
 
 	file = g_file_new_for_uri (uri);
-	path = ctk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
+	path = ctk_tree_model_get_path (CTK_TREE_MODEL (model), iter);
 
 	if (g_hash_table_lookup (view->priv->expand_state, file))
 	{
-		ctk_tree_view_expand_row (GTK_TREE_VIEW (view),
+		ctk_tree_view_expand_row (CTK_TREE_VIEW (view),
 					  path,
 					  FALSE);
 	}
@@ -1245,14 +1245,14 @@ on_row_inserted (LapizFileBrowserStore * model,
 	GtkTreeIter parent;
 	GtkTreePath * copy;
 
-	if (ctk_tree_model_iter_has_child (GTK_TREE_MODEL (model), iter))
+	if (ctk_tree_model_iter_has_child (CTK_TREE_MODEL (model), iter))
 		restore_expand_state (view, model, iter);
 
 	copy = ctk_tree_path_copy (path);
 
 	if (ctk_tree_path_up (copy) &&
 	    (ctk_tree_path_get_depth (copy) != 0) &&
-	    ctk_tree_model_get_iter (GTK_TREE_MODEL (model), &parent, copy))
+	    ctk_tree_model_get_iter (CTK_TREE_MODEL (model), &parent, copy))
 	{
 		restore_expand_state (view, model, &parent);
 	}

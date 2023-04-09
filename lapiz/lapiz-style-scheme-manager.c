@@ -109,7 +109,7 @@ lapiz_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *man
 	const gchar * const * scheme_ids;
 	GSList *schemes = NULL;
 
-	g_return_val_if_fail (GTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), NULL);
+	g_return_val_if_fail (CTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), NULL);
 
 	scheme_ids = ctk_source_style_scheme_manager_get_scheme_ids (manager);
 
@@ -260,7 +260,7 @@ _lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 
 	const gchar* const *ids;
 
-	g_return_val_if_fail (GTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), NULL);
+	g_return_val_if_fail (CTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), NULL);
 	g_return_val_if_fail (fname != NULL, NULL);
 
 	dirname = g_path_get_dirname (fname);
@@ -351,7 +351,7 @@ _lapiz_style_scheme_manager_uninstall_scheme (GtkSourceStyleSchemeManager *manag
 	GtkSourceStyleScheme *scheme;
 	const gchar *filename;
 
-	g_return_val_if_fail (GTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), FALSE);
+	g_return_val_if_fail (CTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), FALSE);
 	g_return_val_if_fail (id != NULL, FALSE);
 
 	scheme = ctk_source_style_scheme_manager_get_scheme (manager, id);

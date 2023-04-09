@@ -238,7 +238,7 @@
 ### lapiz 1.20.0
 
   * Translations update
-  * require GTK+ 3.22 and GLib 2.50
+  * require CTK+ 3.22 and GLib 2.50
   * put 'peas_engine_enable_loader' in the correct place
   * update copyright year to 2018
   * Fix: make the list of recently used files working again
@@ -318,7 +318,7 @@
 
   * NEWS: use consistent, project wide, markdown-like formatting
     to make generating release announcements easier
-  * Move to GTK+3 (require GTK+ >= 3.14), drop GTK+2 code and
+  * Move to CTK+3 (require CTK+ >= 3.14), drop CTK+2 code and
     --with-ctk build option
   * Build: actually build GObject introspection data
   * Build: remove --enable-deprecations option - it actually
@@ -340,7 +340,7 @@
   * Use GtkAboutDialog instead of CafeAboutDialog
   * Drop dependency on libcafe-desktop and --without-cafedesktop
     build option
-  * GTK+3: fix lots of deprecations
+  * CTK+3: fix lots of deprecations
   * Some more fixes and cleanups
   * Translations update
 
@@ -351,7 +351,7 @@
   * Fix restoring cursor position when loading a document
   * Install externaltools plugin only with Python support enabled
   * Translations update
-  * Make distcheck use currently selected GTK+ version
+  * Make distcheck use currently selected CTK+ version
 
 ### lapiz 1.14.0
 
@@ -359,8 +359,8 @@
   * Implement middle-click tab closing
   * Add a new Configure dialog for the Spell Check plugin
   * Make switch-c tool in external tools work, fix security issue
-  * GTK+3: add style classes lapiz-window and lapiz-print-preview
-  * GTK+3: fix several deprecations
+  * CTK+3: add style classes lapiz-window and lapiz-print-preview
+  * CTK+3: fix several deprecations
   * Some more fixes and cleanups
   * Translations update
   * Add Changelog generation
@@ -369,7 +369,7 @@
 
   * Python console plugin: fix missing icon in plugin list
   * Fix possible use-after-free during incremental search
-  * GTK+3: fix incremental search entry color when text isn't found
+  * CTK+3: fix incremental search entry color when text isn't found
 
 ### lapiz 1.12.1
 
@@ -385,7 +385,7 @@
   * Drop support for win32/osx and checkupdate plugin
   * Retrieve strings directly from gschema (requires intltool 0.50.1)
   * Capitalize Lapiz in window titles and desktop file
-  * GTK3. fix print-preview
+  * CTK3. fix print-preview
   * Some annotation fixes
   * Some minor fixes and cleanups
 
@@ -394,13 +394,13 @@
   * Window title: display full path to files on mounted drives
   * Close confirmation dialog: make text unfocusable
   * Quickopen plugin: fix filebrowser plugin support
-  * Time plugin: GTK+3 fix
+  * Time plugin: CTK+3 fix
   * Multiple help fixes
 
 ### lapiz 1.10.1
 
   * Fix gschema translations
-  * GTK3 fixes
+  * CTK3 fixes
   * Fix man page formatting
   * Build system fixes
 
@@ -415,7 +415,7 @@
 
 ### lapiz 1.8.0
 
-  * Add GTK3 support
+  * Add CTK3 support
   * Use yelp-tools instead of cafe-doc-utils
   * Move user plugin dir from config_dir to data_dir. Plugins should have
     never been installed in the config dir as they are not part of the

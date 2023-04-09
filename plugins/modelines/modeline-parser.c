@@ -323,7 +323,7 @@ parse_vim_modeline (gchar           *s,
 		}
 		else if (strcmp (key->str, "wrap") == 0)
 		{
-			options->wrap_mode = neg ? GTK_WRAP_NONE : GTK_WRAP_WORD;
+			options->wrap_mode = neg ? CTK_WRAP_NONE : CTK_WRAP_WORD;
 
 			options->set |= MODELINE_SET_WRAP_MODE;
 		}
@@ -440,7 +440,7 @@ parse_emacs_modeline (gchar           *s,
 		else if (strcmp (key->str, "autowrap") == 0)
 		{
 			intval = strcmp (value->str, "nil") != 0;
-			options->wrap_mode = intval ? GTK_WRAP_WORD : GTK_WRAP_NONE;
+			options->wrap_mode = intval ? CTK_WRAP_WORD : CTK_WRAP_NONE;
 
 			options->set |= MODELINE_SET_WRAP_MODE;
 		}
@@ -538,7 +538,7 @@ parse_kate_modeline (gchar           *s,
 			         strcmp (value->str, "true") == 0 ||
 			         strcmp (value->str, "1") == 0;
 
-			options->wrap_mode = intval ? GTK_WRAP_WORD : GTK_WRAP_NONE;
+			options->wrap_mode = intval ? CTK_WRAP_WORD : CTK_WRAP_NONE;
 
 			options->set |= MODELINE_SET_WRAP_MODE;
 		}
@@ -611,7 +611,7 @@ check_previous (GtkSourceView   *view,
                 ModelineOptions *previous,
                 ModelineSet      set)
 {
-	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	GtkSourceBuffer *buffer = CTK_SOURCE_BUFFER (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 
 	/* Do not restore default when this is the first time */
 	if (!previous)
@@ -635,7 +635,7 @@ check_previous (GtkSourceView   *view,
 			return ctk_source_view_get_indent_width (view) == previous->indent_width;
 		break;
 		case MODELINE_SET_WRAP_MODE:
-			return ctk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view)) ==
+			return ctk_text_view_get_wrap_mode (CTK_TEXT_VIEW (view)) ==
 			       previous->wrap_mode;
 		break;
 		case MODELINE_SET_RIGHT_MARGIN_POSITION:
@@ -679,7 +679,7 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 	options.language_id = NULL;
 	options.set = MODELINE_SET_NONE;
 
-	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 	ctk_text_buffer_get_start_iter (buffer, &iter);
 
 	line_count = ctk_text_buffer_get_line_count (buffer);
@@ -753,7 +753,7 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 
 		if (language != NULL)
 		{
-			ctk_source_buffer_set_language (GTK_SOURCE_BUFFER (buffer),
+			ctk_source_buffer_set_language (CTK_SOURCE_BUFFER (buffer),
 							language);
 		}
 	}
@@ -796,11 +796,11 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 
 	if (has_option (&options, MODELINE_SET_WRAP_MODE))
 	{
-		ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), options.wrap_mode);
+		ctk_text_view_set_wrap_mode (CTK_TEXT_VIEW (view), options.wrap_mode);
 	}
 	else if (check_previous (view, previous, MODELINE_SET_WRAP_MODE))
 	{
-		ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view),
+		ctk_text_view_set_wrap_mode (CTK_TEXT_VIEW (view),
 		                             lapiz_prefs_manager_get_wrap_mode ());
 	}
 
@@ -847,7 +847,7 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 void
 modeline_parser_deactivate (GtkSourceView *view)
 {
-	g_object_set_data (G_OBJECT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view))),
+	g_object_set_data (G_OBJECT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view))),
 	                   MODELINE_OPTIONS_DATA_KEY,
 	                   NULL);
 }

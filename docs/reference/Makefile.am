@@ -20,7 +20,7 @@ DOC_SOURCE_DIR=../../lapiz
 SCANGOBJ_OPTIONS=
 
 # Extra options to supply to ctkdoc-scan.
-# e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED" 
+# e.g. SCAN_OPTIONS=--deprecated-guards="CTK_DISABLE_DEPRECATED" 
 SCAN_OPTIONS=
 
 # Extra options to supply to ctkdoc-mkdb.
@@ -83,14 +83,14 @@ expand_content_files=
 # CFLAGS and LDFLAGS for compiling ctkdoc-scangobj with your library.
 # Only needed if you are using ctkdoc-scangobj to dynamically query widget
 # signals and properties.
-GTKDOC_CFLAGS=	\
+CTKDOC_CFLAGS=	\
 	-I$(top_srcdir)/lapiz	\
 	-I$(top_builddir)/lapiz \
 	-I$(top_srcdir)		\
 	-I$(top_builddir)	\
 	$(LAPIZ_CFLAGS)
 
-GTKDOC_LIBS=	\
+CTKDOC_LIBS=	\
 	$(top_builddir)/lapiz/liblapiz.la	\
 	$(LAPIZ_LIBS)
 

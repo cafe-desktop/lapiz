@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 
-# Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
+# Parts from "Interactive Python-CTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
 #     Copyright (C), 2005 Adam Hooper <adamh@densi.com>
 # Bits from lapiz Python Console Plugin

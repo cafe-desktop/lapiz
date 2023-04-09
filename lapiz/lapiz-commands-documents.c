@@ -49,7 +49,7 @@ _lapiz_cmd_documents_previous_document (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
+	notebook = CTK_NOTEBOOK (_lapiz_window_get_notebook (window));
 	ctk_notebook_prev_page (notebook);
 }
 
@@ -61,7 +61,7 @@ _lapiz_cmd_documents_next_document (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
+	notebook = CTK_NOTEBOOK (_lapiz_window_get_notebook (window));
 	ctk_notebook_next_page (notebook);
 }
 
@@ -81,7 +81,7 @@ _lapiz_cmd_documents_move_to_new_window (GtkAction   *action,
 
 	old_notebook = LAPIZ_NOTEBOOK (_lapiz_window_get_notebook (window));
 
-	g_return_if_fail (ctk_notebook_get_n_pages (GTK_NOTEBOOK (old_notebook)) > 1);
+	g_return_if_fail (ctk_notebook_get_n_pages (CTK_NOTEBOOK (old_notebook)) > 1);
 
 	_lapiz_window_move_tab_to_new_window (window, tab);
 }

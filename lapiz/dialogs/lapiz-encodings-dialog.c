@@ -58,7 +58,7 @@ struct _LapizEncodingsDialogPrivate
 	GSList		*show_in_menu_list;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizEncodingsDialog, lapiz_encodings_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizEncodingsDialog, lapiz_encodings_dialog, CTK_TYPE_DIALOG)
 
 static void
 lapiz_encodings_dialog_finalize (GObject *object)
@@ -175,7 +175,7 @@ add_button_clicked_callback (GtkWidget            *button,
 	GSList *encodings;
 	GSList *tmp;
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dialog->priv->available_treeview));
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dialog->priv->available_treeview));
 
 	encodings = NULL;
 	ctk_tree_selection_selected_foreach (selection,
@@ -194,7 +194,7 @@ add_button_clicked_callback (GtkWidget            *button,
 
 	g_slist_free (encodings);
 
-	update_shown_in_menu_tree_model (GTK_LIST_STORE (dialog->priv->displayed_liststore),
+	update_shown_in_menu_tree_model (CTK_LIST_STORE (dialog->priv->displayed_liststore),
 					 dialog->priv->show_in_menu_list);
 }
 
@@ -206,7 +206,7 @@ remove_button_clicked_callback (GtkWidget            *button,
 	GSList *encodings;
 	GSList *tmp;
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dialog->priv->displayed_treeview));
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dialog->priv->displayed_treeview));
 
 	encodings = NULL;
 	ctk_tree_selection_selected_foreach (selection,
@@ -224,7 +224,7 @@ remove_button_clicked_callback (GtkWidget            *button,
 
 	g_slist_free (encodings);
 
-	update_shown_in_menu_tree_model (GTK_LIST_STORE (dialog->priv->displayed_liststore),
+	update_shown_in_menu_tree_model (CTK_LIST_STORE (dialog->priv->displayed_liststore),
 					 dialog->priv->show_in_menu_list);
 }
 
@@ -268,14 +268,14 @@ response_handler (GtkDialog            *dialog,
 		  gint                  response_id,
                   LapizEncodingsDialog *dlg)
 {
-	if (response_id == GTK_RESPONSE_HELP)
+	if (response_id == CTK_RESPONSE_HELP)
 	{
-		lapiz_help_display (GTK_WINDOW (dialog), "lapiz", NULL);
+		lapiz_help_display (CTK_WINDOW (dialog), "lapiz", NULL);
 		g_signal_stop_emission_by_name (dialog, "response");
 		return;
 	}
 
-	if (response_id == GTK_RESPONSE_OK)
+	if (response_id == CTK_RESPONSE_OK)
 	{
 		g_return_if_fail (lapiz_prefs_manager_shown_in_menu_encodings_can_set ());
 		lapiz_prefs_manager_set_shown_in_menu_encodings (dlg->priv->show_in_menu_list);
@@ -303,20 +303,20 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 
 	dlg->priv = lapiz_encodings_dialog_get_instance_private (dlg);
 
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), "process-stop", GTK_RESPONSE_CANCEL);
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "ctk-ok", GTK_RESPONSE_OK);
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_Cancel"), "process-stop", CTK_RESPONSE_CANCEL);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_OK"), "ctk-ok", CTK_RESPONSE_OK);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_Help"), "help-browser", CTK_RESPONSE_HELP);
 
-	ctk_window_set_title (GTK_WINDOW (dlg), _("Character Encodings"));
-	ctk_window_set_default_size (GTK_WINDOW (dlg), 650, 400);
+	ctk_window_set_title (CTK_WINDOW (dlg), _("Character Encodings"));
+	ctk_window_set_default_size (CTK_WINDOW (dlg), 650, 400);
 
 	/* HIG defaults */
-	ctk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	ctk_box_set_spacing (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_container_set_border_width (CTK_CONTAINER (dlg), 5);
+	ctk_box_set_spacing (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			     2); /* 2 * 5 + 2 = 12 */
 
-	ctk_dialog_set_default_response (GTK_DIALOG (dlg),
-					 GTK_RESPONSE_OK);
+	ctk_dialog_set_default_response (CTK_DIALOG (dlg),
+					 CTK_RESPONSE_OK);
 
 	g_signal_connect (dlg,
 			  "response",
@@ -339,21 +339,21 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 	{
 		ctk_widget_show (error_widget);
 
-		ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+		ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 		                    error_widget,
 		                    TRUE, TRUE, 0);
-		ctk_container_set_border_width (GTK_CONTAINER (error_widget), 5);
+		ctk_container_set_border_width (CTK_CONTAINER (error_widget), 5);
 
 		return;
 	}
 
-	ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			    content, TRUE, TRUE, 0);
 	g_object_unref (content);
-	ctk_container_set_border_width (GTK_CONTAINER (content), 5);
+	ctk_container_set_border_width (CTK_CONTAINER (content), 5);
 
-	ctk_button_set_image (GTK_BUTTON (dlg->priv->add_button), ctk_image_new_from_icon_name ("list-add", GTK_ICON_SIZE_BUTTON));
-	ctk_button_set_image (GTK_BUTTON (dlg->priv->remove_button), ctk_image_new_from_icon_name ("list-remove", GTK_ICON_SIZE_BUTTON));
+	ctk_button_set_image (CTK_BUTTON (dlg->priv->add_button), ctk_image_new_from_icon_name ("list-add", CTK_ICON_SIZE_BUTTON));
+	ctk_button_set_image (CTK_BUTTON (dlg->priv->remove_button), ctk_image_new_from_icon_name ("list-remove", CTK_ICON_SIZE_BUTTON));
 
 	g_signal_connect (dlg->priv->add_button,
 			  "clicked",
@@ -374,7 +374,7 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 							   cell_renderer,
 							   "text", COLUMN_NAME,
 							   NULL);
-	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->available_treeview),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (dlg->priv->available_treeview),
 				     column);
 	ctk_tree_view_column_set_sort_column_id (column, COLUMN_NAME);
 
@@ -384,7 +384,7 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 							   "text",
 							   COLUMN_CHARSET,
 							   NULL);
-	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->available_treeview),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (dlg->priv->available_treeview),
 				     column);
 	ctk_tree_view_column_set_sort_column_id (column, COLUMN_CHARSET);
 
@@ -405,19 +405,19 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 	}
 
 	/* Sort model */
-	sort_model = ctk_tree_model_sort_new_with_model (GTK_TREE_MODEL (dlg->priv->available_liststore));
-	ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_model),
+	sort_model = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (dlg->priv->available_liststore));
+	ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (sort_model),
 					      COLUMN_NAME,
-					      GTK_SORT_ASCENDING);
+					      CTK_SORT_ASCENDING);
 
-	ctk_tree_view_set_model (GTK_TREE_VIEW (dlg->priv->available_treeview),
+	ctk_tree_view_set_model (CTK_TREE_VIEW (dlg->priv->available_treeview),
 				 sort_model);
 	g_object_unref (G_OBJECT (dlg->priv->available_liststore));
 	g_object_unref (G_OBJECT (sort_model));
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->available_treeview));
-	ctk_tree_selection_set_mode (GTK_TREE_SELECTION (selection),
-				     GTK_SELECTION_MULTIPLE);
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->priv->available_treeview));
+	ctk_tree_selection_set_mode (CTK_TREE_SELECTION (selection),
+				     CTK_SELECTION_MULTIPLE);
 
 	available_selection_changed_callback (selection, dlg);
 	g_signal_connect (selection,
@@ -435,7 +435,7 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 							   cell_renderer,
 							   "text", COLUMN_NAME,
 							   NULL);
-	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->displayed_treeview),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (dlg->priv->displayed_treeview),
 				     column);
 	ctk_tree_view_column_set_sort_column_id (column, COLUMN_NAME);
 
@@ -445,7 +445,7 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 							   "text",
 							   COLUMN_CHARSET,
 							   NULL);
-	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->displayed_treeview),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (dlg->priv->displayed_treeview),
 				     column);
 	ctk_tree_view_column_set_sort_column_id (column, COLUMN_CHARSET);
 
@@ -453,20 +453,20 @@ lapiz_encodings_dialog_init (LapizEncodingsDialog *dlg)
 	init_shown_in_menu_tree_model (dlg);
 
 	/* Sort model */
-	sort_model = ctk_tree_model_sort_new_with_model (GTK_TREE_MODEL (dlg->priv->displayed_liststore));
+	sort_model = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (dlg->priv->displayed_liststore));
 
-	ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE
+	ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE
 					      (sort_model), COLUMN_NAME,
-					      GTK_SORT_ASCENDING);
+					      CTK_SORT_ASCENDING);
 
-	ctk_tree_view_set_model (GTK_TREE_VIEW (dlg->priv->displayed_treeview),
+	ctk_tree_view_set_model (CTK_TREE_VIEW (dlg->priv->displayed_treeview),
 				 sort_model);
 	g_object_unref (G_OBJECT (sort_model));
 	g_object_unref (G_OBJECT (dlg->priv->displayed_liststore));
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->displayed_treeview));
-	ctk_tree_selection_set_mode (GTK_TREE_SELECTION (selection),
-				     GTK_SELECTION_MULTIPLE);
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->priv->displayed_treeview));
+	ctk_tree_selection_set_mode (CTK_TREE_SELECTION (selection),
+				     CTK_SELECTION_MULTIPLE);
 
 	displayed_selection_changed_callback (selection, dlg);
 	g_signal_connect (selection,
@@ -480,7 +480,7 @@ lapiz_encodings_dialog_new (void)
 {
 	GtkWidget *dlg;
 
-	dlg = GTK_WIDGET (g_object_new (LAPIZ_TYPE_ENCODINGS_DIALOG, NULL));
+	dlg = CTK_WIDGET (g_object_new (LAPIZ_TYPE_ENCODINGS_DIALOG, NULL));
 
 	return dlg;
 }

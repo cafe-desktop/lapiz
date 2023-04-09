@@ -91,7 +91,7 @@ lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
 	info = ctk_icon_theme_lookup_by_gicon (theme,
 					       icon,
 					       width,
-					       GTK_ICON_LOOKUP_USE_BUILTIN);
+					       CTK_ICON_LOOKUP_USE_BUILTIN);
 
 	if (!info)
 		return NULL;
@@ -157,41 +157,41 @@ lapiz_file_browser_utils_confirmation_dialog (LapizWindow * window,
 	gint ret;
 	GtkWidget *button;
 
-	dlg = ctk_message_dialog_new (GTK_WINDOW (window),
-				      GTK_DIALOG_MODAL |
-				      GTK_DIALOG_DESTROY_WITH_PARENT,
+	dlg = ctk_message_dialog_new (CTK_WINDOW (window),
+				      CTK_DIALOG_MODAL |
+				      CTK_DIALOG_DESTROY_WITH_PARENT,
 				      type,
-				      GTK_BUTTONS_NONE, "%s", message);
+				      CTK_BUTTONS_NONE, "%s", message);
 
 	if (secondary)
 		ctk_message_dialog_format_secondary_text
-		    (GTK_MESSAGE_DIALOG (dlg), "%s", secondary);
+		    (CTK_MESSAGE_DIALOG (dlg), "%s", secondary);
 
 	/* Add a cancel button */
 	button = ctk_button_new_with_mnemonic (_("_Cancel"));
-	ctk_button_set_image (GTK_BUTTON (button), ctk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
+	ctk_button_set_image (CTK_BUTTON (button), ctk_image_new_from_icon_name ("process-stop", CTK_ICON_SIZE_BUTTON));
 
 	ctk_widget_show (button);
 
 	ctk_widget_set_can_default (button, TRUE);
-	ctk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	ctk_dialog_add_action_widget (CTK_DIALOG (dlg),
                                       button,
-                                      GTK_RESPONSE_CANCEL);
+                                      CTK_RESPONSE_CANCEL);
 
 	/* Add delete button */
 	button = ctk_button_new_with_mnemonic (_("_Delete"));
-	ctk_button_set_image (GTK_BUTTON (button), ctk_image_new_from_icon_name ("edit-delete", GTK_ICON_SIZE_BUTTON));
+	ctk_button_set_image (CTK_BUTTON (button), ctk_image_new_from_icon_name ("edit-delete", CTK_ICON_SIZE_BUTTON));
 
 	ctk_widget_show (button);
 	ctk_widget_set_can_default (button, TRUE);
-	ctk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	ctk_dialog_add_action_widget (CTK_DIALOG (dlg),
                                       button,
-                                      GTK_RESPONSE_OK);
+                                      CTK_RESPONSE_OK);
 
-	ret = ctk_dialog_run (GTK_DIALOG (dlg));
+	ret = ctk_dialog_run (CTK_DIALOG (dlg));
 	ctk_widget_destroy (dlg);
 
-	return (ret == GTK_RESPONSE_OK);
+	return (ret == CTK_RESPONSE_OK);
 }
 
 // ex:ts=8:noet:

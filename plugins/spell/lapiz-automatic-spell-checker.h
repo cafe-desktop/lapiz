@@ -28,7 +28,7 @@
  */
 
 /* This is a modified version of ctkspell 2.0.2  (ctkspell.sf.net) */
-/* ctkspell - a spell-checking addon for GTK's TextView widget
+/* ctkspell - a spell-checking addon for CTK's TextView widget
  * Copyright (c) 2002 Evan Martin.
  */
 

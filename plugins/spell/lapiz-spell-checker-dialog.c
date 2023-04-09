@@ -106,7 +106,7 @@ static void	suggestions_list_row_activated_handler		(GtkTreeView *view,
 
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(LapizSpellCheckerDialog, lapiz_spell_checker_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE(LapizSpellCheckerDialog, lapiz_spell_checker_dialog, CTK_TYPE_WINDOW)
 
 static void
 lapiz_spell_checker_dialog_dispose (GObject *object)
@@ -246,13 +246,13 @@ create_dialog (LapizSpellCheckerDialog *dlg,
 	{
 		ctk_widget_show (error_widget);
 
-		ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+		ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 				    error_widget, TRUE, TRUE, 0);
 
 		return;
 	}
 
-	ctk_label_set_label (GTK_LABEL (dlg->misspelled_word_label), "");
+	ctk_label_set_label (CTK_LABEL (dlg->misspelled_word_label), "");
 	ctk_widget_set_sensitive (dlg->word_entry, FALSE);
 	ctk_widget_set_sensitive (dlg->check_word_button, FALSE);
 	ctk_widget_set_sensitive (dlg->ignore_button, FALSE);
@@ -261,19 +261,19 @@ create_dialog (LapizSpellCheckerDialog *dlg,
 	ctk_widget_set_sensitive (dlg->change_all_button, FALSE);
 	ctk_widget_set_sensitive (dlg->add_word_button, FALSE);
 
-	ctk_label_set_label (GTK_LABEL (dlg->language_label), "");
+	ctk_label_set_label (CTK_LABEL (dlg->language_label), "");
 
-	ctk_container_add (GTK_CONTAINER (dlg), content);
+	ctk_container_add (CTK_CONTAINER (dlg), content);
 	g_object_unref (content);
 
-	ctk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
-	ctk_window_set_title (GTK_WINDOW (dlg), _("Check Spelling"));
+	ctk_window_set_resizable (CTK_WINDOW (dlg), FALSE);
+	ctk_window_set_title (CTK_WINDOW (dlg), _("Check Spelling"));
 
 	/* Suggestion list */
-	dlg->suggestions_list_model = GTK_TREE_MODEL (
+	dlg->suggestions_list_model = CTK_TREE_MODEL (
 			ctk_list_store_new (NUM_COLUMNS, G_TYPE_STRING));
 
-	ctk_tree_view_set_model (GTK_TREE_VIEW (dlg->suggestions_list),
+	ctk_tree_view_set_model (CTK_TREE_VIEW (dlg->suggestions_list),
 			dlg->suggestions_list_model);
 
 	/* Add the suggestions column */
@@ -281,23 +281,23 @@ create_dialog (LapizSpellCheckerDialog *dlg,
 	column = ctk_tree_view_column_new_with_attributes (_("Suggestions"), cell,
 			"text", COLUMN_SUGGESTIONS, NULL);
 
-	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->suggestions_list), column);
+	ctk_tree_view_append_column (CTK_TREE_VIEW (dlg->suggestions_list), column);
 
-	ctk_tree_view_set_search_column (GTK_TREE_VIEW (dlg->suggestions_list),
+	ctk_tree_view_set_search_column (CTK_TREE_VIEW (dlg->suggestions_list),
 					 COLUMN_SUGGESTIONS);
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->suggestions_list));
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->suggestions_list));
 
-	ctk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
+	ctk_tree_selection_set_mode (selection, CTK_SELECTION_SINGLE);
 
 	/* Set default button */
 	ctk_widget_set_can_default (dlg->change_button, TRUE);
 	ctk_widget_grab_default (dlg->change_button);
 
-	ctk_entry_set_activates_default (GTK_ENTRY (dlg->word_entry), TRUE);
+	ctk_entry_set_activates_default (CTK_ENTRY (dlg->word_entry), TRUE);
 
-	ctk_button_set_image (GTK_BUTTON (dlg->close_button),
-			      ctk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_BUTTON));
+	ctk_button_set_image (CTK_BUTTON (dlg->close_button),
+			      ctk_image_new_from_icon_name ("window-close", CTK_ICON_SIZE_BUTTON));
 
 	/* Connect signals */
 	g_signal_connect (dlg->word_entry, "changed",
@@ -340,7 +340,7 @@ lapiz_spell_checker_dialog_new (const gchar *data_dir)
 
 	create_dialog (dlg, data_dir);
 
-	return GTK_WIDGET (dlg);
+	return CTK_WIDGET (dlg);
 }
 
 GtkWidget *
@@ -360,7 +360,7 @@ lapiz_spell_checker_dialog_new_from_spell_checker (LapizSpellChecker *spell,
 
 	lapiz_spell_checker_dialog_set_spell_checker (dlg, spell);
 
-	return GTK_WIDGET (dlg);
+	return CTK_WIDGET (dlg);
 }
 
 void
@@ -384,13 +384,13 @@ lapiz_spell_checker_dialog_set_spell_checker (LapizSpellCheckerDialog *dlg, Lapi
 	lang = lapiz_spell_checker_language_to_string (language);
 	tmp = g_strdup_printf("<b>%s</b>", lang);
 
-	ctk_label_set_label (GTK_LABEL (dlg->language_label), tmp);
+	ctk_label_set_label (CTK_LABEL (dlg->language_label), tmp);
 	g_free (tmp);
 
 	if (dlg->misspelled_word != NULL)
 		lapiz_spell_checker_dialog_set_misspelled_word (dlg, dlg->misspelled_word, -1);
 	else
-		ctk_list_store_clear (GTK_LIST_STORE (dlg->suggestions_list_model));
+		ctk_list_store_clear (CTK_LIST_STORE (dlg->suggestions_list_model));
 
 	/* TODO: reset all widgets */
 }
@@ -416,7 +416,7 @@ lapiz_spell_checker_dialog_set_misspelled_word (LapizSpellCheckerDialog *dlg,
 	dlg->misspelled_word = g_strdup (word);
 
 	tmp = g_strdup_printf("<b>%s</b>", word);
-	ctk_label_set_label (GTK_LABEL (dlg->misspelled_word_label), tmp);
+	ctk_label_set_label (CTK_LABEL (dlg->misspelled_word_label), tmp);
 	g_free (tmp);
 
 	sug = lapiz_spell_checker_get_suggestions (dlg->spell_checker,
@@ -442,9 +442,9 @@ update_suggestions_list_model (LapizSpellCheckerDialog *dlg, GSList *suggestions
 	GtkTreeSelection *sel;
 
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
-	g_return_if_fail (GTK_IS_LIST_STORE (dlg->suggestions_list_model));
+	g_return_if_fail (CTK_IS_LIST_STORE (dlg->suggestions_list_model));
 
-	store = GTK_LIST_STORE (dlg->suggestions_list_model);
+	store = CTK_LIST_STORE (dlg->suggestions_list_model);
 	ctk_list_store_clear (store);
 
 	ctk_widget_set_sensitive (dlg->word_entry, TRUE);
@@ -458,7 +458,7 @@ update_suggestions_list_model (LapizSpellCheckerDialog *dlg, GSList *suggestions
 				    COLUMN_SUGGESTIONS, _("(no suggested words)"),
 				    -1);
 
-		ctk_entry_set_text (GTK_ENTRY (dlg->word_entry), "");
+		ctk_entry_set_text (CTK_ENTRY (dlg->word_entry), "");
 
 		ctk_widget_set_sensitive (dlg->suggestions_list, FALSE);
 
@@ -467,7 +467,7 @@ update_suggestions_list_model (LapizSpellCheckerDialog *dlg, GSList *suggestions
 
 	ctk_widget_set_sensitive (dlg->suggestions_list, TRUE);
 
-	ctk_entry_set_text (GTK_ENTRY (dlg->word_entry), (gchar*)suggestions->data);
+	ctk_entry_set_text (CTK_ENTRY (dlg->word_entry), (gchar*)suggestions->data);
 
 	while (suggestions != NULL)
 	{
@@ -479,7 +479,7 @@ update_suggestions_list_model (LapizSpellCheckerDialog *dlg, GSList *suggestions
 		suggestions = g_slist_next (suggestions);
 	}
 
-	sel = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->suggestions_list));
+	sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->suggestions_list));
 	ctk_tree_model_get_iter_first (dlg->suggestions_list_model, &iter);
 	ctk_tree_selection_select_iter (sel, &iter);
 }
@@ -491,7 +491,7 @@ word_entry_changed_handler (GtkEditable *editable, LapizSpellCheckerDialog *dlg)
 
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
-	text =  ctk_entry_get_text (GTK_ENTRY (dlg->word_entry));
+	text =  ctk_entry_get_text (CTK_ENTRY (dlg->word_entry));
 
 	if (g_utf8_strlen (text, -1) > 0)
 	{
@@ -512,7 +512,7 @@ close_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
-	ctk_widget_destroy (GTK_WIDGET (dlg));
+	ctk_widget_destroy (CTK_WIDGET (dlg));
 }
 
 static void
@@ -534,7 +534,7 @@ suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
 
 	text = g_value_get_string (&value);
 
-	ctk_entry_set_text (GTK_ENTRY (dlg->word_entry), text);
+	ctk_entry_set_text (CTK_ENTRY (dlg->word_entry), text);
 
 	g_value_unset (&value);
 }
@@ -547,7 +547,7 @@ check_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *d
 
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
-	word = ctk_entry_get_text (GTK_ENTRY (dlg->word_entry));
+	word = ctk_entry_get_text (CTK_ENTRY (dlg->word_entry));
 	len = strlen (word);
 	g_return_if_fail (len > 0);
 
@@ -556,7 +556,7 @@ check_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *d
 		GtkListStore *store;
 		GtkTreeIter iter;
 
-		store = GTK_LIST_STORE (dlg->suggestions_list_model);
+		store = CTK_LIST_STORE (dlg->suggestions_list_model);
 		ctk_list_store_clear (store);
 
 		ctk_list_store_append (store, &iter);
@@ -646,7 +646,7 @@ change_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
-	entry_text = ctk_entry_get_text (GTK_ENTRY (dlg->word_entry));
+	entry_text = ctk_entry_get_text (CTK_ENTRY (dlg->word_entry));
 	g_return_if_fail (entry_text != NULL);
 	g_return_if_fail (*entry_text != '\0');
 	change = g_strdup (entry_text);
@@ -672,7 +672,7 @@ suggestions_list_row_activated_handler (GtkTreeView *view,
 {
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
-	change_button_clicked_handler (GTK_BUTTON (dlg->change_button), dlg);
+	change_button_clicked_handler (CTK_BUTTON (dlg->change_button), dlg);
 }
 
 static void
@@ -685,7 +685,7 @@ change_all_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *d
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
-	entry_text = ctk_entry_get_text (GTK_ENTRY (dlg->word_entry));
+	entry_text = ctk_entry_get_text (CTK_ENTRY (dlg->word_entry));
 	g_return_if_fail (entry_text != NULL);
 	g_return_if_fail (*entry_text != '\0');
 	change = g_strdup (entry_text);
@@ -710,12 +710,12 @@ lapiz_spell_checker_dialog_set_completed (LapizSpellCheckerDialog *dlg)
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	tmp = g_strdup_printf("<b>%s</b>", _("Completed spell checking"));
-	ctk_label_set_label (GTK_LABEL (dlg->misspelled_word_label),
+	ctk_label_set_label (CTK_LABEL (dlg->misspelled_word_label),
 			     tmp);
 	g_free (tmp);
 
-	ctk_list_store_clear (GTK_LIST_STORE (dlg->suggestions_list_model));
-	ctk_entry_set_text (GTK_ENTRY (dlg->word_entry), "");
+	ctk_list_store_clear (CTK_LIST_STORE (dlg->suggestions_list_model));
+	ctk_entry_set_text (CTK_ENTRY (dlg->word_entry), "");
 
 	ctk_widget_set_sensitive (dlg->word_entry, FALSE);
 	ctk_widget_set_sensitive (dlg->check_word_button, FALSE);

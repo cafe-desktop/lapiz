@@ -143,13 +143,13 @@ msgstr "換行模式"
 
 #: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
-"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
+"for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"指定編輯區域如何換行。使用“GTK_WRAP_NONE”代表不會換行，“GTK_WRAP_WORD”代表在字詞間換行，及“GTK_WRAP_CHAR”代表在個別字符間換行。請注意，設定值是會分辨大小寫的，所以請確保設定值和上面所列出的完全一致。"
+"指定編輯區域如何換行。使用“CTK_WRAP_NONE”代表不會換行，“CTK_WRAP_WORD”代表在字詞間換行，及“CTK_WRAP_CHAR”代表在個別字符間換行。請注意，設定值是會分辨大小寫的，所以請確保設定值和上面所列出的完全一致。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
@@ -359,13 +359,13 @@ msgstr "打印換行模式"
 
 #: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
-"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
+"wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"指定打印時如何換行。使用“GTK_WRAP_NONE”代表不會換行，“GTK_WRAP_WORD”代表在字詞間換行，及“GTK_WRAP_CHAR”代表在個別字符間換行。請注意，設定值是會分辨大小寫的，所以請確保設定值和上面所列出的完全一致。"
+"指定打印時如何換行。使用“CTK_WRAP_NONE”代表不會換行，“CTK_WRAP_WORD”代表在字詞間換行，及“CTK_WRAP_CHAR”代表在個別字符間換行。請注意，設定值是會分辨大小寫的，所以請確保設定值和上面所列出的完全一致。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"

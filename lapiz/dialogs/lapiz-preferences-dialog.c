@@ -139,7 +139,7 @@ struct _LapizPreferencesDialogPrivate
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizPreferencesDialog, lapiz_preferences_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPreferencesDialog, lapiz_preferences_dialog, CTK_TYPE_DIALOG)
 
 
 static void
@@ -155,8 +155,8 @@ dialog_response_handler (GtkDialog *dlg,
 
 	switch (res_id)
 	{
-		case GTK_RESPONSE_HELP:
-			lapiz_help_display (GTK_WINDOW (dlg),
+		case CTK_RESPONSE_HELP:
+			lapiz_help_display (CTK_WINDOW (dlg),
 					    NULL,
 					    "lapiz-prefs");
 
@@ -165,7 +165,7 @@ dialog_response_handler (GtkDialog *dlg,
 			break;
 
 		default:
-			ctk_widget_destroy (GTK_WIDGET(dlg));
+			ctk_widget_destroy (CTK_WIDGET(dlg));
 	}
 }
 
@@ -175,7 +175,7 @@ tabs_width_spinbutton_value_changed (GtkSpinButton          *spin_button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->priv->tabs_width_spinbutton));
+	g_return_if_fail (spin_button == CTK_SPIN_BUTTON (dlg->priv->tabs_width_spinbutton));
 
 	lapiz_prefs_manager_set_tabs_size (ctk_spin_button_get_value_as_int (spin_button));
 }
@@ -186,7 +186,7 @@ insert_spaces_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->insert_spaces_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->insert_spaces_checkbutton));
 
 	lapiz_prefs_manager_set_insert_spaces (ctk_toggle_button_get_active (button));
 }
@@ -197,7 +197,7 @@ auto_indent_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->auto_indent_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->auto_indent_checkbutton));
 
 	lapiz_prefs_manager_set_auto_indent (ctk_toggle_button_get_active (button));
 }
@@ -209,7 +209,7 @@ draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
 	DrawSpacesSettings setting;
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_spaces_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->draw_spaces_checkbutton));
 
 	if (ctk_toggle_button_get_active (button))
 		setting = DRAW_ALL;
@@ -217,11 +217,11 @@ draw_spaces_checkbutton_toggled (GtkToggleButton        *button,
 		setting = DRAW_NONE;
 
 	lapiz_prefs_manager_set_draw_spaces (setting);
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 	if (setting == DRAW_NONE)
-		ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
-	ctk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton), setting > DRAW_NONE);
-	ctk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), setting == DRAW_NONE);
+		ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
+	ctk_widget_set_sensitive (CTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton), setting > DRAW_NONE);
+	ctk_toggle_button_set_inconsistent (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), setting == DRAW_NONE);
 #endif
 }
 
@@ -231,7 +231,7 @@ draw_trailing_spaces_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton));
 
 	if (ctk_toggle_button_get_active (button))
 		lapiz_prefs_manager_set_draw_spaces (DRAW_TRAILING);
@@ -251,7 +251,7 @@ draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
 	DrawSpacesSettings setting;
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON(dlg->priv->draw_tabs_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON(dlg->priv->draw_tabs_checkbutton));
 
 	if (ctk_toggle_button_get_active (button))
 		setting = DRAW_ALL;
@@ -259,11 +259,11 @@ draw_tabs_checkbutton_toggled (GtkToggleButton        *button,
 		setting = DRAW_NONE;
 
 	lapiz_prefs_manager_set_draw_tabs (setting);
-#ifdef GTK_SOURCE_VERSION_3_24
+#ifdef CTK_SOURCE_VERSION_3_24
 	if (setting == DRAW_NONE)
-		ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
-	ctk_widget_set_sensitive (GTK_WIDGET(dlg->priv->draw_trailing_tabs_checkbutton), setting > DRAW_NONE);
-	ctk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON(dlg->priv->draw_trailing_tabs_checkbutton), setting == DRAW_NONE);
+		ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
+	ctk_widget_set_sensitive (CTK_WIDGET(dlg->priv->draw_trailing_tabs_checkbutton), setting > DRAW_NONE);
+	ctk_toggle_button_set_inconsistent (CTK_TOGGLE_BUTTON(dlg->priv->draw_trailing_tabs_checkbutton), setting == DRAW_NONE);
 #endif
 }
 
@@ -273,7 +273,7 @@ draw_trailing_tabs_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton));
 
 	if (ctk_toggle_button_get_active (button))
 		lapiz_prefs_manager_set_draw_tabs (DRAW_TRAILING);
@@ -292,7 +292,7 @@ draw_newlines_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->draw_newlines_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->draw_newlines_checkbutton));
 
 	lapiz_prefs_manager_set_draw_newlines (ctk_toggle_button_get_active (button));
 }
@@ -303,7 +303,7 @@ auto_save_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->auto_save_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->auto_save_checkbutton));
 
 	if (ctk_toggle_button_get_active (button))
 	{
@@ -325,7 +325,7 @@ backup_copy_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->backup_copy_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->backup_copy_checkbutton));
 
 	lapiz_prefs_manager_set_create_backup_copy (ctk_toggle_button_get_active (button));
 }
@@ -334,7 +334,7 @@ static void
 auto_save_spinbutton_value_changed (GtkSpinButton          *spin_button,
 				    LapizPreferencesDialog *dlg)
 {
-	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->priv->auto_save_spinbutton));
+	g_return_if_fail (spin_button == CTK_SPIN_BUTTON (dlg->priv->auto_save_spinbutton));
 
 	lapiz_prefs_manager_set_auto_save_interval (
 			MAX (1, ctk_spin_button_get_value_as_int (spin_button)));
@@ -349,54 +349,54 @@ setup_editor_page (LapizPreferencesDialog *dlg)
 	lapiz_debug (DEBUG_PREFS);
 
 	/* Set initial state */
-	ctk_spin_button_set_value (GTK_SPIN_BUTTON (dlg->priv->tabs_width_spinbutton),
+	ctk_spin_button_set_value (CTK_SPIN_BUTTON (dlg->priv->tabs_width_spinbutton),
 				   (guint) lapiz_prefs_manager_get_tabs_size ());
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->insert_spaces_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->insert_spaces_checkbutton),
 				      lapiz_prefs_manager_get_insert_spaces ());
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->auto_indent_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->auto_indent_checkbutton),
 				      lapiz_prefs_manager_get_auto_indent ());
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_spaces_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_spaces_checkbutton),
 				      lapiz_prefs_manager_get_draw_spaces () > DRAW_NONE);
-#ifdef GTK_SOURCE_VERSION_3_24
-	ctk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton),
+#ifdef CTK_SOURCE_VERSION_3_24
+	ctk_widget_set_sensitive (CTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton),
 	                          lapiz_prefs_manager_get_draw_spaces () > DRAW_NONE);
-	ctk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton),
+	ctk_toggle_button_set_inconsistent (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton),
 	                                    lapiz_prefs_manager_get_draw_spaces () == DRAW_NONE);
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton),
 	                              lapiz_prefs_manager_get_draw_spaces () == DRAW_TRAILING);
 #else
-	ctk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
-	ctk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), TRUE);
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
+	ctk_widget_set_sensitive (CTK_WIDGET (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
+	ctk_toggle_button_set_inconsistent (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), TRUE);
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_spaces_checkbutton), FALSE);
 #endif
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_tabs_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_tabs_checkbutton),
 	                              lapiz_prefs_manager_get_draw_tabs () > DRAW_NONE);
-#ifdef GTK_SOURCE_VERSION_3_24
-	ctk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_tabs_checkbutton),
+#ifdef CTK_SOURCE_VERSION_3_24
+	ctk_widget_set_sensitive (CTK_WIDGET (dlg->priv->draw_trailing_tabs_checkbutton),
 	                          lapiz_prefs_manager_get_draw_tabs () > DRAW_NONE);
-	ctk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton),
+	ctk_toggle_button_set_inconsistent (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton),
 	                                    lapiz_prefs_manager_get_draw_tabs () == DRAW_NONE);
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton),
 	                              lapiz_prefs_manager_get_draw_tabs () == DRAW_TRAILING);
 #else
-	ctk_widget_set_sensitive (GTK_WIDGET (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
-	ctk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
+	ctk_widget_set_sensitive (CTK_WIDGET (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
+	ctk_toggle_button_set_inconsistent (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_trailing_tabs_checkbutton), FALSE);
 #endif
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->draw_newlines_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->draw_newlines_checkbutton),
 	                              lapiz_prefs_manager_get_draw_newlines ());
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->backup_copy_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->backup_copy_checkbutton),
 				      lapiz_prefs_manager_get_create_backup_copy ());
 
 	auto_save = lapiz_prefs_manager_get_auto_save ();
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->auto_save_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->auto_save_checkbutton),
 				      auto_save);
 
 	auto_save_interval = lapiz_prefs_manager_get_auto_save_interval ();
 	if (auto_save_interval <= 0)
 		auto_save_interval = GPM_DEFAULT_AUTO_SAVE_INTERVAL;
 
-	ctk_spin_button_set_value (GTK_SPIN_BUTTON (dlg->priv->auto_save_spinbutton),
+	ctk_spin_button_set_value (CTK_SPIN_BUTTON (dlg->priv->auto_save_spinbutton),
 				   auto_save_interval);
 
 	/* Set widget sensitivity */
@@ -472,7 +472,7 @@ display_line_numbers_checkbutton_toggled (GtkToggleButton        *button,
 					  LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
-			GTK_TOGGLE_BUTTON (dlg->priv->display_line_numbers_checkbutton));
+			CTK_TOGGLE_BUTTON (dlg->priv->display_line_numbers_checkbutton));
 
 	lapiz_prefs_manager_set_display_line_numbers (ctk_toggle_button_get_active (button));
 }
@@ -482,7 +482,7 @@ highlight_current_line_checkbutton_toggled (GtkToggleButton        *button,
 					    LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
-			GTK_TOGGLE_BUTTON (dlg->priv->highlight_current_line_checkbutton));
+			CTK_TOGGLE_BUTTON (dlg->priv->highlight_current_line_checkbutton));
 
 	lapiz_prefs_manager_set_highlight_current_line (ctk_toggle_button_get_active (button));
 }
@@ -492,7 +492,7 @@ bracket_matching_checkbutton_toggled (GtkToggleButton        *button,
 				      LapizPreferencesDialog *dlg)
 {
 	g_return_if_fail (button ==
-			GTK_TOGGLE_BUTTON (dlg->priv->bracket_matching_checkbutton));
+			CTK_TOGGLE_BUTTON (dlg->priv->bracket_matching_checkbutton));
 
 	lapiz_prefs_manager_set_bracket_matching (
 				ctk_toggle_button_get_active (button));
@@ -504,14 +504,14 @@ static void
 wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 			       LapizPreferencesDialog *dlg)
 {
-	if (!ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton)))
+	if (!ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton)))
 	{
-		lapiz_prefs_manager_set_wrap_mode (GTK_WRAP_NONE);
+		lapiz_prefs_manager_set_wrap_mode (CTK_WRAP_NONE);
 
 		ctk_widget_set_sensitive (dlg->priv->split_checkbutton,
 					  FALSE);
 		ctk_toggle_button_set_inconsistent (
-			GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
+			CTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
 	}
 	else
 	{
@@ -519,20 +519,20 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 					  TRUE);
 
 		ctk_toggle_button_set_inconsistent (
-			GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), FALSE);
+			CTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), FALSE);
 
 
-		if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton)))
+		if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton)))
 		{
 			split_button_state = TRUE;
 
-			lapiz_prefs_manager_set_wrap_mode (GTK_WRAP_WORD);
+			lapiz_prefs_manager_set_wrap_mode (CTK_WRAP_WORD);
 		}
 		else
 		{
 			split_button_state = FALSE;
 
-			lapiz_prefs_manager_set_wrap_mode (GTK_WRAP_CHAR);
+			lapiz_prefs_manager_set_wrap_mode (CTK_WRAP_CHAR);
 		}
 	}
 }
@@ -543,7 +543,7 @@ right_margin_checkbutton_toggled (GtkToggleButton        *button,
 {
 	gboolean active;
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton));
 
 	active = ctk_toggle_button_get_active (button);
 
@@ -560,7 +560,7 @@ right_margin_position_spinbutton_value_changed (GtkSpinButton          *spin_but
 {
 	gint value;
 
-	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->priv->right_margin_position_spinbutton));
+	g_return_if_fail (spin_button == CTK_SPIN_BUTTON (dlg->priv->right_margin_position_spinbutton));
 
 	value = CLAMP (ctk_spin_button_get_value_as_int (spin_button), 1, 160);
 
@@ -577,48 +577,48 @@ setup_view_page (LapizPreferencesDialog *dlg)
 	lapiz_debug (DEBUG_PREFS);
 
 	/* Set initial state */
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->display_line_numbers_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->display_line_numbers_checkbutton),
 				      lapiz_prefs_manager_get_display_line_numbers ());
 
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->highlight_current_line_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->highlight_current_line_checkbutton),
 				      lapiz_prefs_manager_get_highlight_current_line ());
 
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->bracket_matching_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->bracket_matching_checkbutton),
 				      lapiz_prefs_manager_get_bracket_matching ());
 
 	wrap_mode = lapiz_prefs_manager_get_wrap_mode ();
 	switch (wrap_mode )
 	{
-		case GTK_WRAP_WORD:
+		case CTK_WRAP_WORD:
 			ctk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
+				CTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
 			ctk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
+				CTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
 			break;
-		case GTK_WRAP_CHAR:
+		case CTK_WRAP_CHAR:
 			ctk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
+				CTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
 			ctk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), FALSE);
+				CTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), FALSE);
 			break;
 		default:
 			ctk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), FALSE);
+				CTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), FALSE);
 			ctk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), split_button_state);
+				CTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), split_button_state);
 			ctk_toggle_button_set_inconsistent (
-				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
+				CTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
 
 	}
 
 	display_right_margin = lapiz_prefs_manager_get_display_right_margin ();
 
 	ctk_toggle_button_set_active (
-		GTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton),
+		CTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton),
 		display_right_margin);
 
 	ctk_spin_button_set_value (
-		GTK_SPIN_BUTTON (dlg->priv->right_margin_position_spinbutton),
+		CTK_SPIN_BUTTON (dlg->priv->right_margin_position_spinbutton),
 		(guint)CLAMP (lapiz_prefs_manager_get_right_margin_position (), 1, 160));
 
 	/* Set widgets sensitivity */
@@ -633,7 +633,7 @@ setup_view_page (LapizPreferencesDialog *dlg)
 				  wrap_mode_can_set);
 	ctk_widget_set_sensitive (dlg->priv->split_checkbutton,
 				  wrap_mode_can_set &&
-				  (wrap_mode != GTK_WRAP_NONE));
+				  (wrap_mode != CTK_WRAP_NONE));
 	ctk_widget_set_sensitive (dlg->priv->right_margin_checkbutton,
 				  lapiz_prefs_manager_display_right_margin_can_set ());
 	ctk_widget_set_sensitive (dlg->priv->right_margin_position_hbox,
@@ -677,7 +677,7 @@ default_font_font_checkbutton_toggled (GtkToggleButton        *button,
 {
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton));
+	g_return_if_fail (button == CTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton));
 
 	if (ctk_toggle_button_get_active (button))
 	{
@@ -700,7 +700,7 @@ editor_font_button_font_set (GtkFontChooser         *font_button,
 
 	lapiz_debug (DEBUG_PREFS);
 
-	g_return_if_fail (font_button == GTK_FONT_CHOOSER (dlg->priv->font_button));
+	g_return_if_fail (font_button == CTK_FONT_CHOOSER (dlg->priv->font_button));
 
 	/* FIXME: Can this fail? Gtk docs are a bit terse... 21-02-2004 pbor */
 	font_name = ctk_font_chooser_get_font (font_button);
@@ -735,20 +735,20 @@ setup_font_colors_page_font_section (LapizPreferencesDialog *dlg)
 	editor_font = lapiz_prefs_manager_get_system_font ();
 	label = g_strdup_printf(_("_Use the system fixed width font (%s)"),
 				editor_font);
-	ctk_button_set_label (GTK_BUTTON (dlg->priv->default_font_checkbutton),
+	ctk_button_set_label (CTK_BUTTON (dlg->priv->default_font_checkbutton),
 			      label);
 	g_free (editor_font);
 	g_free (label);
 
 	/* read current config and setup initial state */
 	use_default_font = lapiz_prefs_manager_get_use_default_font ();
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton),
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton),
 				      use_default_font);
 
 	editor_font = lapiz_prefs_manager_get_editor_font ();
 	if (editor_font != NULL)
 	{
-		ctk_font_chooser_set_font (GTK_FONT_CHOOSER (dlg->priv->font_button),
+		ctk_font_chooser_set_font (CTK_FONT_CHOOSER (dlg->priv->font_button),
 					   editor_font);
 		g_free (editor_font);
 	}
@@ -797,11 +797,11 @@ style_scheme_changed (GtkWidget              *treeview,
 	GtkTreeIter iter;
 	gchar *id;
 
-	ctk_tree_view_get_cursor (GTK_TREE_VIEW (dlg->priv->schemes_treeview), &path, NULL);
-	ctk_tree_model_get_iter (GTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
+	ctk_tree_view_get_cursor (CTK_TREE_VIEW (dlg->priv->schemes_treeview), &path, NULL);
+	ctk_tree_model_get_iter (CTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
 				 &iter, path);
 	ctk_tree_path_free (path);
-	ctk_tree_model_get (GTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
+	ctk_tree_model_get (CTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
 			    &iter, ID_COLUMN, &id, -1);
 
 	lapiz_prefs_manager_set_source_style_scheme (id);
@@ -877,7 +877,7 @@ populate_color_scheme_list (LapizPreferencesDialog *dlg, const gchar *def_id)
 		const gchar *description;
 		GtkTreeIter iter;
 
-		scheme = GTK_SOURCE_STYLE_SCHEME (l->data);
+		scheme = CTK_SOURCE_STYLE_SCHEME (l->data);
 
 		id = ctk_source_style_scheme_get_id (scheme);
 		name = ctk_source_style_scheme_get_name (scheme);
@@ -896,7 +896,7 @@ populate_color_scheme_list (LapizPreferencesDialog *dlg, const gchar *def_id)
 		{
 			GtkTreeSelection *selection;
 
-			selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
+			selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->priv->schemes_treeview));
 			ctk_tree_selection_select_iter (selection, &iter);
 		}
 
@@ -916,17 +916,17 @@ add_scheme_chooser_response_cb (GtkDialog              *chooser,
 	gchar* filename;
 	const gchar *scheme_id;
 
-	if (res_id != GTK_RESPONSE_ACCEPT)
+	if (res_id != CTK_RESPONSE_ACCEPT)
 	{
-		ctk_widget_hide (GTK_WIDGET (chooser));
+		ctk_widget_hide (CTK_WIDGET (chooser));
 		return;
 	}
 
-	filename = ctk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
+	filename = ctk_file_chooser_get_filename (CTK_FILE_CHOOSER (chooser));
 	if (filename == NULL)
 		return;
 
-	ctk_widget_hide (GTK_WIDGET (chooser));
+	ctk_widget_hide (CTK_WIDGET (chooser));
 
 	scheme_id = _lapiz_style_scheme_manager_install_scheme (
 					lapiz_get_style_scheme_manager (),
@@ -935,7 +935,7 @@ add_scheme_chooser_response_cb (GtkDialog              *chooser,
 
 	if (scheme_id == NULL)
 	{
-		lapiz_warning (GTK_WINDOW (dlg),
+		lapiz_warning (CTK_WINDOW (dlg),
 			       _("The selected color scheme cannot be installed."));
 
 		return;
@@ -959,22 +959,22 @@ scheme_file_chooser_dialog_new_valist (const gchar          *title,
 	const char *button_text = first_button_text;
 	gint response_id;
 
-	result = g_object_new (GTK_TYPE_FILE_CHOOSER_DIALOG,
+	result = g_object_new (CTK_TYPE_FILE_CHOOSER_DIALOG,
 			       "title", title,
 			       "action", action,
 			       NULL);
 
 	if (parent)
-		ctk_window_set_transient_for (GTK_WINDOW (result), parent);
+		ctk_window_set_transient_for (CTK_WINDOW (result), parent);
 
 	while (button_text)
 		{
 			response_id = va_arg (varargs, gint);
 
 			if (g_strcmp0 (button_text, "process-stop") == 0)
-				lapiz_dialog_add_button (GTK_DIALOG (result), _("_Cancel"), button_text, response_id);
+				lapiz_dialog_add_button (CTK_DIALOG (result), _("_Cancel"), button_text, response_id);
 			else
-				ctk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
+				ctk_dialog_add_button (CTK_DIALOG (result), button_text, response_id);
 
 			button_text = va_arg (varargs, const gchar *);
 		}
@@ -1009,38 +1009,38 @@ install_scheme_clicked (GtkButton              *button,
 	GtkFileFilter  *filter;
 
 	if (dlg->priv->install_scheme_file_schooser != NULL) {
-		ctk_window_present (GTK_WINDOW (dlg->priv->install_scheme_file_schooser));
+		ctk_window_present (CTK_WINDOW (dlg->priv->install_scheme_file_schooser));
 		ctk_widget_grab_focus (dlg->priv->install_scheme_file_schooser);
 		return;
 	}
 
 	chooser = scheme_file_chooser_dialog_new (_("Add Scheme"),
-						  GTK_WINDOW (dlg),
-						  GTK_FILE_CHOOSER_ACTION_OPEN,
-						  "process-stop", GTK_RESPONSE_CANCEL,
+						  CTK_WINDOW (dlg),
+						  CTK_FILE_CHOOSER_ACTION_OPEN,
+						  "process-stop", CTK_RESPONSE_CANCEL,
 						  NULL);
 
-	lapiz_dialog_add_button (GTK_DIALOG (chooser),
+	lapiz_dialog_add_button (CTK_DIALOG (chooser),
 				 _("A_dd Scheme"),
 				 "list-add",
-				 GTK_RESPONSE_ACCEPT);
+				 CTK_RESPONSE_ACCEPT);
 
-	ctk_window_set_destroy_with_parent (GTK_WINDOW (chooser), TRUE);
+	ctk_window_set_destroy_with_parent (CTK_WINDOW (chooser), TRUE);
 
 	/* Filters */
 	filter = ctk_file_filter_new ();
 	ctk_file_filter_set_name (filter, _("Color Scheme Files"));
 	ctk_file_filter_add_pattern (filter, "*.xml");
-	ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+	ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (chooser), filter);
 
-	ctk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
+	ctk_file_chooser_set_filter (CTK_FILE_CHOOSER (chooser), filter);
 
 	filter = ctk_file_filter_new ();
 	ctk_file_filter_set_name (filter, _("All Files"));
 	ctk_file_filter_add_pattern (filter, "*");
-	ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+	ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (chooser), filter);
 
-	ctk_dialog_set_default_response (GTK_DIALOG (chooser), GTK_RESPONSE_ACCEPT);
+	ctk_dialog_set_default_response (CTK_DIALOG (chooser), CTK_RESPONSE_ACCEPT);
 
 	g_signal_connect (chooser,
 			  "response",
@@ -1063,8 +1063,8 @@ uninstall_scheme_clicked (GtkButton              *button,
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
-	model = GTK_TREE_MODEL (dlg->priv->schemes_treeview_model);
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->priv->schemes_treeview));
+	model = CTK_TREE_MODEL (dlg->priv->schemes_treeview_model);
 
 	if (ctk_tree_selection_get_selected (selection,
 					     &model,
@@ -1080,7 +1080,7 @@ uninstall_scheme_clicked (GtkButton              *button,
 
 		if (!_lapiz_style_scheme_manager_uninstall_scheme (lapiz_get_style_scheme_manager (), id))
 		{
-			lapiz_warning (GTK_WINDOW (dlg),
+			lapiz_warning (CTK_WINDOW (dlg),
 				       _("Could not remove color scheme \"%s\"."),
 				       name);
 		}
@@ -1197,11 +1197,11 @@ setup_font_colors_page_style_scheme_section (LapizPreferencesDialog *dlg)
 								G_TYPE_STRING,
 								G_TYPE_STRING);
 
-	ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dlg->priv->schemes_treeview_model),
+	ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (dlg->priv->schemes_treeview_model),
 					      0,
-					      GTK_SORT_ASCENDING);
-	ctk_tree_view_set_model (GTK_TREE_VIEW (dlg->priv->schemes_treeview),
-				 GTK_TREE_MODEL (dlg->priv->schemes_treeview_model));
+					      CTK_SORT_ASCENDING);
+	ctk_tree_view_set_model (CTK_TREE_VIEW (dlg->priv->schemes_treeview),
+				 CTK_TREE_MODEL (dlg->priv->schemes_treeview_model));
 
 	column = ctk_tree_view_column_new ();
 
@@ -1214,16 +1214,16 @@ setup_font_colors_page_style_scheme_section (LapizPreferencesDialog *dlg)
 						 dlg,
 						 NULL);
 
-	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->schemes_treeview),
+	ctk_tree_view_append_column (CTK_TREE_VIEW (dlg->priv->schemes_treeview),
 				     column);
 
-	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
-	ctk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->priv->schemes_treeview));
+	ctk_tree_selection_set_mode (selection, CTK_SELECTION_BROWSE);
 
 	def_id = populate_color_scheme_list (dlg, NULL);
 
-	ctk_button_set_image (GTK_BUTTON (dlg->priv->uninstall_scheme_button),
-			      ctk_image_new_from_icon_name ("list-remove", GTK_ICON_SIZE_BUTTON));
+	ctk_button_set_image (CTK_BUTTON (dlg->priv->uninstall_scheme_button),
+			      ctk_image_new_from_icon_name ("list-remove", CTK_ICON_SIZE_BUTTON));
 
 	/* Connect signals */
 	g_signal_connect (dlg->priv->schemes_treeview,
@@ -1260,7 +1260,7 @@ setup_plugins_page (LapizPreferencesDialog *dlg)
 	page_content = peas_ctk_plugin_manager_new (NULL);
 	g_return_if_fail (page_content != NULL);
 
-	ctk_box_pack_start (GTK_BOX (dlg->priv->plugin_manager_place_holder),
+	ctk_box_pack_start (CTK_BOX (dlg->priv->plugin_manager_place_holder),
 			    page_content,
 			    TRUE,
 			    TRUE,
@@ -1288,16 +1288,16 @@ lapiz_preferences_dialog_init (LapizPreferencesDialog *dlg)
 
 	dlg->priv = lapiz_preferences_dialog_get_instance_private (dlg);
 
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Close"), "window-close", GTK_RESPONSE_CLOSE);
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_Close"), "window-close", CTK_RESPONSE_CLOSE);
+	lapiz_dialog_add_button (CTK_DIALOG (dlg), _("_Help"), "help-browser", CTK_RESPONSE_HELP);
 
-	ctk_window_set_title (GTK_WINDOW (dlg), _("Lapiz Preferences"));
-	ctk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
-	ctk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_title (CTK_WINDOW (dlg), _("Lapiz Preferences"));
+	ctk_window_set_resizable (CTK_WINDOW (dlg), FALSE);
+	ctk_window_set_destroy_with_parent (CTK_WINDOW (dlg), TRUE);
 
 	/* HIG defaults */
-	ctk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	ctk_box_set_spacing (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))), 2); /* 2 * 5 + 2 = 12 */
+	ctk_container_set_border_width (CTK_CONTAINER (dlg), 5);
+	ctk_box_set_spacing (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))), 2); /* 2 * 5 + 2 = 12 */
 
 	g_signal_connect (dlg,
 			  "response",
@@ -1355,17 +1355,17 @@ lapiz_preferences_dialog_init (LapizPreferencesDialog *dlg)
 	{
 		ctk_widget_show (error_widget);
 
-		ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+		ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 		                    error_widget,
 		                    TRUE, TRUE, 0);
 
 		return;
 	}
 
-	ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_box_pack_start (CTK_BOX (ctk_dialog_get_content_area (CTK_DIALOG (dlg))),
 			    dlg->priv->notebook, FALSE, FALSE, 0);
 	g_object_unref (dlg->priv->notebook);
-	ctk_container_set_border_width (GTK_CONTAINER (dlg->priv->notebook), 5);
+	ctk_container_set_border_width (CTK_CONTAINER (dlg->priv->notebook), 5);
 
 	setup_editor_page (dlg);
 	setup_view_page (dlg);
@@ -1382,18 +1382,18 @@ lapiz_show_preferences_dialog (LapizWindow *parent)
 
 	if (preferences_dialog == NULL)
 	{
-		preferences_dialog = GTK_WIDGET (g_object_new (LAPIZ_TYPE_PREFERENCES_DIALOG, NULL));
+		preferences_dialog = CTK_WIDGET (g_object_new (LAPIZ_TYPE_PREFERENCES_DIALOG, NULL));
 		g_signal_connect (preferences_dialog,
 				  "destroy",
 				  G_CALLBACK (ctk_widget_destroyed),
 				  &preferences_dialog);
 	}
 
-	if (GTK_WINDOW (parent) != ctk_window_get_transient_for (GTK_WINDOW (preferences_dialog)))
+	if (CTK_WINDOW (parent) != ctk_window_get_transient_for (CTK_WINDOW (preferences_dialog)))
 	{
-		ctk_window_set_transient_for (GTK_WINDOW (preferences_dialog),
-					      GTK_WINDOW (parent));
+		ctk_window_set_transient_for (CTK_WINDOW (preferences_dialog),
+					      CTK_WINDOW (parent));
 	}
 
-	ctk_window_present (GTK_WINDOW (preferences_dialog));
+	ctk_window_present (CTK_WINDOW (preferences_dialog));
 }

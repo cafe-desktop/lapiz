@@ -79,19 +79,19 @@ save_window_session (GKeyFile    *state_file,
 
 	lapiz_debug (DEBUG_SESSION);
 
-	role = ctk_window_get_role (GTK_WINDOW (window));
+	role = ctk_window_get_role (CTK_WINDOW (window));
 	g_key_file_set_string (state_file, group_name, "role", role);
-	ctk_window_get_size (GTK_WINDOW (window), &width, &height);
+	ctk_window_get_size (CTK_WINDOW (window), &width, &height);
 	g_key_file_set_integer (state_file, group_name, "width", width);
 	g_key_file_set_integer (state_file, group_name, "height", height);
 
 	panel = lapiz_window_get_side_panel (window);
 	g_key_file_set_boolean (state_file, group_name, "side-panel-visible",
-				ctk_widget_get_visible (GTK_WIDGET (panel)));
+				ctk_widget_get_visible (CTK_WIDGET (panel)));
 
 	panel = lapiz_window_get_bottom_panel (window);
 	g_key_file_set_boolean (state_file, group_name, "bottom-panel-visible",
-				ctk_widget_get_visible (GTK_WIDGET (panel)));
+				ctk_widget_get_visible (CTK_WIDGET (panel)));
 
 	active_document = lapiz_window_get_active_document (window);
 	if (active_document)
@@ -223,7 +223,7 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 
 	switch (response_id)
 	{
-		case GTK_RESPONSE_YES:
+		case CTK_RESPONSE_YES:
 			/* save selected docs */
 
 			g_signal_connect (window,
@@ -246,7 +246,7 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 
 			break;
 
-		case GTK_RESPONSE_NO:
+		case CTK_RESPONSE_NO:
 			/* dont save */
 			window_handled (window);
 			break;
@@ -265,7 +265,7 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 			break;
 	}
 
-	ctk_widget_destroy (GTK_WIDGET (dlg));
+	ctk_widget_destroy (CTK_WIDGET (dlg));
 }
 
 static void
@@ -294,13 +294,13 @@ show_confirmation_dialog (LapizWindow *window)
 		lapiz_window_set_active_tab (window, tab);
 
 		dlg = lapiz_close_confirmation_dialog_new_single (
-						GTK_WINDOW (window),
+						CTK_WINDOW (window),
 						doc,
 						TRUE);
 	}
 	else
 	{
-		dlg = lapiz_close_confirmation_dialog_new (GTK_WINDOW (window),
+		dlg = lapiz_close_confirmation_dialog_new (CTK_WINDOW (window),
 							   unsaved_docs,
 							   TRUE);
 	}
@@ -487,7 +487,7 @@ parse_window (GKeyFile *state_file, const char *group_name)
 	        g_clear_error (&error);
 		height = -1;
 	}
-	ctk_window_set_default_size (GTK_WINDOW (window), width, height);
+	ctk_window_set_default_size (CTK_WINDOW (window), width, height);
 
 
 	visible = g_key_file_get_boolean (state_file, group_name,
@@ -503,12 +503,12 @@ parse_window (GKeyFile *state_file, const char *group_name)
 	if (visible)
 	{
 	        lapiz_debug_message (DEBUG_SESSION, "Side panel visible");
-		ctk_widget_show (GTK_WIDGET (panel));
+		ctk_widget_show (CTK_WIDGET (panel));
 	}
 	else
 	{
 	      lapiz_debug_message (DEBUG_SESSION, "Side panel _NOT_ visible");
-	      ctk_widget_hide (GTK_WIDGET (panel));
+	      ctk_widget_hide (CTK_WIDGET (panel));
 	}
 
 	visible = g_key_file_get_boolean (state_file, group_name,
@@ -523,12 +523,12 @@ parse_window (GKeyFile *state_file, const char *group_name)
 	if (visible)
 	{
 	        lapiz_debug_message (DEBUG_SESSION, "Bottom panel visible");
-		ctk_widget_show (GTK_WIDGET (panel));
+		ctk_widget_show (CTK_WIDGET (panel));
 	}
 	else
 	{
 	        lapiz_debug_message (DEBUG_SESSION, "Bottom panel _NOT_ visible");
-		ctk_widget_hide (GTK_WIDGET (panel));
+		ctk_widget_hide (CTK_WIDGET (panel));
 	}
 
 	active_document = g_key_file_get_string (state_file, group_name,
@@ -562,7 +562,7 @@ parse_window (GKeyFile *state_file, const char *group_name)
 
 	g_free (active_document);
 
-	ctk_widget_show (GTK_WIDGET (window));
+	ctk_widget_show (CTK_WIDGET (window));
 }
 
 /**

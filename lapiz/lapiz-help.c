@@ -47,7 +47,7 @@ lapiz_help_display (GtkWindow   *parent,
 	gboolean ret;
 	gchar *link;
 
-	g_return_val_if_fail ((parent == NULL) || GTK_IS_WINDOW (parent), FALSE);
+	g_return_val_if_fail ((parent == NULL) || CTK_IS_WINDOW (parent), FALSE);
 
 	if (name == NULL)
 		name = "lapiz";
@@ -75,12 +75,12 @@ lapiz_help_display (GtkWindow   *parent,
 		GtkWidget *dialog;
 
 		dialog = ctk_message_dialog_new (parent,
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CLOSE,
+						 CTK_DIALOG_DESTROY_WITH_PARENT,
+						 CTK_MESSAGE_ERROR,
+						 CTK_BUTTONS_CLOSE,
 						 _("There was an error displaying the help."));
 
-		ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+		ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
 							  "%s", error->message);
 
 		g_signal_connect (G_OBJECT (dialog),
@@ -88,7 +88,7 @@ lapiz_help_display (GtkWindow   *parent,
 				  G_CALLBACK (ctk_widget_destroy),
 				  NULL);
 
-		ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+		ctk_window_set_resizable (CTK_WINDOW (dialog), FALSE);
 
 		ctk_widget_show (dialog);
 

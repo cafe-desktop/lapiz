@@ -284,7 +284,7 @@
                             <property name="visible">True</property>
                             <property name="auto-indent">True</property>
                             <property name="insert-spaces-instead-of-tabs">False</property>
-                            <property name="smart-home-end">GTK_SOURCE_SMART_HOME_END_AFTER</property>
+                            <property name="smart-home-end">CTK_SOURCE_SMART_HOME_END_AFTER</property>
                             <property name="tab-width">2</property>
                             <property name="highlight-current-line">True</property>
                             <property name="show-right-margin">False</property>

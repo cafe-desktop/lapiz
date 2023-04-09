@@ -145,8 +145,8 @@ get_docinfo_dialog (LapizDocInfoPlugin *plugin)
 	{
 		const gchar *err_message;
 
-		err_message = ctk_label_get_label (GTK_LABEL (error_widget));
-		lapiz_warning (GTK_WINDOW (window), "%s", err_message);
+		err_message = ctk_label_get_label (CTK_LABEL (error_widget));
+		lapiz_warning (CTK_WINDOW (window), "%s", err_message);
 
 		g_free (dialog);
 		ctk_widget_destroy (error_widget);
@@ -154,10 +154,10 @@ get_docinfo_dialog (LapizDocInfoPlugin *plugin)
 		return NULL;
 	}
 
-	ctk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
-					 GTK_RESPONSE_OK);
-	ctk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
-				      GTK_WINDOW (window));
+	ctk_dialog_set_default_response (CTK_DIALOG (dialog->dialog),
+					 CTK_RESPONSE_OK);
+	ctk_window_set_transient_for (CTK_WINDOW (dialog->dialog),
+				      CTK_WINDOW (window));
 
 	g_signal_connect (dialog->dialog,
 			  "destroy",
@@ -185,7 +185,7 @@ calculate_info (LapizDocument *doc,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	text = ctk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc),
+	text = ctk_text_buffer_get_slice (CTK_TEXT_BUFFER (doc),
 					  start,
 					  end,
 					  TRUE);
@@ -242,11 +242,11 @@ docinfo_real (LapizDocument *doc,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 				    &start,
 				    &end);
 
-	lines = ctk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc));
+	lines = ctk_text_buffer_get_line_count (CTK_TEXT_BUFFER (doc));
 
 	calculate_info (doc,
 			&start, &end,
@@ -263,28 +263,28 @@ docinfo_real (LapizDocument *doc,
 
 	doc_name = lapiz_document_get_short_name_for_display (doc);
 	tmp_str = g_strdup_printf ("<span weight=\"bold\">%s</span>", doc_name);
-	ctk_label_set_markup (GTK_LABEL (dialog->file_name_label), tmp_str);
+	ctk_label_set_markup (CTK_LABEL (dialog->file_name_label), tmp_str);
 	g_free (doc_name);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", lines);
-	ctk_label_set_text (GTK_LABEL (dialog->lines_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->lines_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", words);
-	ctk_label_set_text (GTK_LABEL (dialog->words_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->words_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", chars);
-	ctk_label_set_text (GTK_LABEL (dialog->chars_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->chars_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", chars - white_chars);
-	ctk_label_set_text (GTK_LABEL (dialog->chars_ns_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->chars_ns_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", bytes);
-	ctk_label_set_text (GTK_LABEL (dialog->bytes_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->bytes_label), tmp_str);
 	g_free (tmp_str);
 }
 
@@ -303,7 +303,7 @@ selectioninfo_real (LapizDocument *doc,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	sel = ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+	sel = ctk_text_buffer_get_selection_bounds (CTK_TEXT_BUFFER (doc),
 						    &start,
 						    &end);
 
@@ -334,23 +334,23 @@ selectioninfo_real (LapizDocument *doc,
 		lines = 0;
 
 	tmp_str = g_strdup_printf("%d", lines);
-	ctk_label_set_text (GTK_LABEL (dialog->selected_lines_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->selected_lines_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", words);
-	ctk_label_set_text (GTK_LABEL (dialog->selected_words_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->selected_words_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", chars);
-	ctk_label_set_text (GTK_LABEL (dialog->selected_chars_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->selected_chars_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", chars - white_chars);
-	ctk_label_set_text (GTK_LABEL (dialog->selected_chars_ns_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->selected_chars_ns_label), tmp_str);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", bytes);
-	ctk_label_set_text (GTK_LABEL (dialog->selected_bytes_label), tmp_str);
+	ctk_label_set_text (CTK_LABEL (dialog->selected_bytes_label), tmp_str);
 	g_free (tmp_str);
 }
 
@@ -371,8 +371,8 @@ docinfo_cb (GtkAction	*action,
 
 	if (data->dialog != NULL)
 	{
-		ctk_window_present (GTK_WINDOW (data->dialog->dialog));
-		ctk_widget_grab_focus (GTK_WIDGET (data->dialog->dialog));
+		ctk_window_present (CTK_WINDOW (data->dialog->dialog));
+		ctk_widget_grab_focus (CTK_WIDGET (data->dialog->dialog));
 	}
 	else
 	{
@@ -383,7 +383,7 @@ docinfo_cb (GtkAction	*action,
 
 		data->dialog = dialog;
 
-		ctk_widget_show (GTK_WIDGET (dialog->dialog));
+		ctk_widget_show (CTK_WIDGET (dialog->dialog));
 	}
 
 	docinfo_real (doc,
@@ -405,19 +405,19 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 
 	switch (res_id)
 	{
-		case GTK_RESPONSE_CLOSE:
+		case CTK_RESPONSE_CLOSE:
 		{
-			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CLOSE");
+			lapiz_debug_message (DEBUG_PLUGINS, "CTK_RESPONSE_CLOSE");
 			ctk_widget_destroy (data->dialog->dialog);
 
 			break;
 		}
 
-		case GTK_RESPONSE_OK:
+		case CTK_RESPONSE_OK:
 		{
 			LapizDocument *doc;
 
-			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
+			lapiz_debug_message (DEBUG_PLUGINS, "CTK_RESPONSE_OK");
 
 			doc = lapiz_window_get_active_document (window);
 			g_return_if_fail (doc != NULL);
@@ -459,8 +459,8 @@ update_ui (LapizDocInfoPluginPrivate *data)
 
 	if (data->dialog != NULL)
 	{
-		ctk_dialog_set_response_sensitive (GTK_DIALOG (data->dialog->dialog),
-						   GTK_RESPONSE_OK,
+		ctk_dialog_set_response_sensitive (CTK_DIALOG (data->dialog->dialog),
+						   CTK_RESPONSE_OK,
 						   (view != NULL));
 	}
 }
@@ -506,7 +506,7 @@ lapiz_docinfo_plugin_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_OBJECT:
-			plugin->priv->window = GTK_WIDGET (g_value_dup_object (value));
+			plugin->priv->window = CTK_WIDGET (g_value_dup_object (value));
 			break;
 
 		default:
@@ -571,7 +571,7 @@ lapiz_docinfo_plugin_activate (PeasActivatable *activatable)
 			       MENU_PATH,
 			       "DocumentStatistics",
 			       "DocumentStatistics",
-			       GTK_UI_MANAGER_MENUITEM,
+			       CTK_UI_MANAGER_MENUITEM,
 			       FALSE);
 
 	update_ui (data);

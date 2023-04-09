@@ -160,15 +160,15 @@ msgstr "Reamurdmisrežiim"
 
 #: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
-"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
+"for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"Pikkade ridade murdmise määramine redigeerimisel. \"GTK_WRAP_NONE\" korral "
-"murdmist ei toimu, \"GTK_WRAP_WORD\" korral murtakse sõnavahedest ja "
-"\"GTK_WRAP_CHAR\" korral murtakse murdmispiiril asuvast märgist. NB! "
+"Pikkade ridade murdmise määramine redigeerimisel. \"CTK_WRAP_NONE\" korral "
+"murdmist ei toimu, \"CTK_WRAP_WORD\" korral murtakse sõnavahedest ja "
+"\"CTK_WRAP_CHAR\" korral murtakse murdmispiiril asuvast märgist. NB! "
 "Väärtused on tõstutundlikud."
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
@@ -386,15 +386,15 @@ msgstr "Reamurdmine printimisel"
 
 #: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
-"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
+"Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
+"wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
 " the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"Pikkade ridade murdmise määramine printimisel. \"GTK_WRAP_NONE\" korral "
-"murdmist ei toimu, \"GTK_WRAP_WORD\" korral murtakse sõnavahedest ja "
-"\"GTK_WRAP_CHAR\" korral murtakse murdmispiiril asuvast märgist. NB! "
+"Pikkade ridade murdmise määramine printimisel. \"CTK_WRAP_NONE\" korral "
+"murdmist ei toimu, \"CTK_WRAP_WORD\" korral murtakse sõnavahedest ja "
+"\"CTK_WRAP_CHAR\" korral murtakse murdmispiiril asuvast märgist. NB! "
 "Väärtused on tõstutundlikud."
 
 #: data/org.cafe.lapiz.gschema.xml.in:181

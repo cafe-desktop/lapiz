@@ -22,7 +22,7 @@
 
 #include "lapiz-close-button.h"
 
-G_DEFINE_TYPE (LapizCloseButton, lapiz_close_button, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE (LapizCloseButton, lapiz_close_button, CTK_TYPE_BUTTON)
 
 static void
 lapiz_close_button_class_init (LapizCloseButtonClass *klass)
@@ -41,10 +41,10 @@ lapiz_close_button_init (LapizCloseButton *button)
 		"}";
 
 	image = ctk_image_new_from_icon_name ("ctk-close",
-	                                      GTK_ICON_SIZE_MENU);
+	                                      CTK_ICON_SIZE_MENU);
 	ctk_widget_show (image);
 
-	ctk_container_add (GTK_CONTAINER (button), image);
+	ctk_container_add (CTK_CONTAINER (button), image);
 
 	/* make it as small as possible */
 	css = ctk_css_provider_new ();
@@ -53,9 +53,9 @@ lapiz_close_button_init (LapizCloseButton *button)
 	{
 		GtkStyleContext *context;
 
-		context = ctk_widget_get_style_context (GTK_WIDGET (button));
-		ctk_style_context_add_provider (context, GTK_STYLE_PROVIDER (css),
-			                        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+		context = ctk_widget_get_style_context (CTK_WIDGET (button));
+		ctk_style_context_add_provider (context, CTK_STYLE_PROVIDER (css),
+			                        CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 		g_object_unref (css);
 	}
 	else
@@ -68,8 +68,8 @@ lapiz_close_button_init (LapizCloseButton *button)
 GtkWidget *
 lapiz_close_button_new ()
 {
-	return GTK_WIDGET (g_object_new (LAPIZ_TYPE_CLOSE_BUTTON,
-	                                 "relief", GTK_RELIEF_NONE,
+	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_CLOSE_BUTTON,
+	                                 "relief", CTK_RELIEF_NONE,
 	                                 "focus-on-click", FALSE,
 	                                 NULL));
 }
