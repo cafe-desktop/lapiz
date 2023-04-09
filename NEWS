@@ -3,7 +3,7 @@
   * Translations update
   * build: silent build warnings for distcheck
   * help: Remove Open Location from shortcut keys table
-  * build: do not override the default value for MATE_COMPILE_WARNINGS
+  * build: do not override the default value for CAFE_COMPILE_WARNINGS
   * Use user page on github when user email is private
   * Update authors
 

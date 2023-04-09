@@ -29,8 +29,8 @@ msgstr "Panduan Lapiz"
 #. (itstool) path: author/orgname
 #. (itstool) path: revdescription/para
 #: C/index.docbook:42 C/index.docbook:52 C/index.docbook:207
-msgid "MATE Documentation Project"
-msgstr "Projek Dokumentasi MATE"
+msgid "CAFE Documentation Project"
+msgstr "Projek Dokumentasi CAFE"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -46,8 +46,8 @@ msgstr "Projek Dokumentasi GNOME"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:54
-msgid "MATE Desktop"
-msgstr "Desktop MATE"
+msgid "CAFE Desktop"
+msgstr "Desktop CAFE"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:66
@@ -144,8 +144,8 @@ msgstr "Pasukan Dokumentasi GNOME"
 
 #. (itstool) path: revdescription/para
 #: C/index.docbook:206
-msgid "MATE Documentation Team"
-msgstr "Pasukan Dokumentasi MATE"
+msgid "CAFE Documentation Team"
+msgstr "Pasukan Dokumentasi CAFE"
 
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
@@ -407,12 +407,12 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:337
 msgid ""
-"Like other MATE applications, actions in <application>lapiz</application> "
+"Like other CAFE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:cafe-user-guide/shortcuts-apps\">User Guide</link>."
 msgstr ""
-"Seperti lain-lain aplikasi MATE, tindakan di dalam "
+"Seperti lain-lain aplikasi CAFE, tindakan di dalam "
 "<application>lapiz</application> boleh dilakukan dengan beberapa cara: "
 "melalui menu, melalui palang alat, atau dengan kekunci pintasan. Kekunci "
 "pintasan umum untuk semua aplikasi tersenarai di dalam <link "
@@ -4449,12 +4449,12 @@ msgstr ""
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:14
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of CAFE manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in"
 " section 6 of the license."
 msgstr ""
-"Panduan ini adalah sebahagian dari koleksi panduan MATE yang diedar bawah "
+"Panduan ini adalah sebahagian dari koleksi panduan CAFE yang diedar bawah "
 "GFDL. Jika anda mahu edar panduan ini secara berasingan dari koleksi "
 "asalnya, anda boleh membuat sedemikian dengan menambah satu salinan lesen ke"
 " dalam panduan sepertimana yang dijelaskan dalam seksyen 6 lesen tersebut."
@@ -4463,14 +4463,14 @@ msgstr ""
 #: C/legal.xml:21
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any CAFE "
+"documentation, and the members of the CAFE Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""
 "Kebanyakan nama digunakan oleh syarikat untuk membezakan produk dan "
 "perkhidmatan mereka dituntut sebagai tanda dagangan. Jika nama tersebut ada "
-"di dalam dokumentasi MATE, dan ahli-ahli Projek Dokumentasi MATE sedar akan "
+"di dalam dokumentasi CAFE, dan ahli-ahli Projek Dokumentasi CAFE sedar akan "
 "tanda dagangan tersebut, kerana nama-nama tersebut telah di huruf besarkan "
 "atau huruf awalnya telah dihuruf besarkan."
 
@@ -4548,6 +4548,6 @@ msgstr "Maklumbalas"
 msgid ""
 "To report a bug or make a suggestion regarding the "
 "<application>lapiz</application> application or this manual, follow the "
-"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">MATE "
+"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE "
 "Feedback Page</link>."
 msgstr ""

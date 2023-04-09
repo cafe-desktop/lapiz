@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR MATE Desktop Environment team
+# Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
@@ -538,13 +538,13 @@ msgid "Lapiz"
 msgstr "플루마"
 
 #: data/lapiz.appdata.xml.in:8
-msgid "A Text Editor for the MATE desktop environment"
+msgid "A Text Editor for the CAFE desktop environment"
 msgstr "마테 데스크톱 환경용 텍스트 에디터"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
-"MATE desktop. It has most standard text editor functions and fully supports "
+"CAFE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
@@ -574,7 +574,7 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
-msgid "text;editor;MATE;tabs;highlighting;code;multiple;files;pluggable;"
+msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:136
@@ -1220,8 +1220,8 @@ msgid "_Revert"
 msgstr "되돌리기(_R)"
 
 #: lapiz/lapiz-commands-help.c:60
-msgid "MATE Documentation Team"
-msgstr "MATE 문서 팀"
+msgid "CAFE Documentation Team"
+msgstr "CAFE 문서 팀"
 
 #: lapiz/lapiz-commands-help.c:61
 msgid "GNOME Documentation Team"
@@ -1232,7 +1232,7 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr "플루마는 마테 데스크톱을 위한 작고 가벼운 텍스트 에디터입니다."
 
 #: lapiz/lapiz-commands-help.c:70
@@ -1277,7 +1277,7 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 MATE developers"
+"Copyright © 2012-2020 CAFE developers"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:126
@@ -1288,7 +1288,7 @@ msgstr ""
 "Yoo Duk Nam https://launchpad.net/~yoo2001818\n"
 "onlyeriko https://launchpad.net/~onlyeriko\n"
 "Seong-ho Cho <darkcircle.0426@gmail.com>\n"
-"MATE Desktop Environment Team <https://www.transifex.com/cafe/teams/13566/ko/>"
+"CAFE Desktop Environment Team <https://www.transifex.com/cafe/teams/13566/ko/>"
 
 #: lapiz/lapiz-commands-search.c:112
 #, c-format

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 MATE team <cafe-dev@ml.cafe-desktop.org> -->
+<!-- Copyright 2014 CAFE team <cafe-dev@ml.cafe-desktop.org> -->
 <component type="desktop">
  <id>lapiz.desktop</id>
  <metadata_license>CC0-1.0</metadata_license>
  <project_license>GPL-2.0+</project_license>
  <name>Lapiz</name>
- <summary>A Text Editor for the MATE desktop environment</summary>
+ <summary>A Text Editor for the CAFE desktop environment</summary>
  <description>
   <p>
    Lapiz is a small, but powerful text editor designed specifically for
-   the MATE desktop. It has most standard text editor functions and fully
+   the CAFE desktop. It has most standard text editor functions and fully
    supports international text in Unicode. Advanced features include syntax
    highlighting and automatic indentation of source code, printing and editing
    of multiple documents in one window.
@@ -39,5 +39,5 @@
  </screenshots>
  <url type="homepage">https://cafe-desktop.org</url>
  <updatecontact>cafe-dev@ml.cafe-desktop.org</updatecontact>
- <project_group>MATE</project_group>
+ <project_group>CAFE</project_group>
 </component>

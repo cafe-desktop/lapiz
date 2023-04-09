@@ -57,14 +57,14 @@ void _lapiz_cmd_help_contents(GtkAction* action, LapizWindow* window)
 void _lapiz_cmd_help_about(GtkAction* action, LapizWindow* window)
 {
 	static const gchar* documenters[] = {
-		N_("MATE Documentation Team"),
+		N_("CAFE Documentation Team"),
 		N_("GNOME Documentation Team"),
 		N_("Sun Microsystems"),
 		NULL
 	};
 
 	static const gchar comments[] = \
-		N_("Lapiz is a small and lightweight text editor for the MATE Desktop");
+		N_("Lapiz is a small and lightweight text editor for the CAFE Desktop");
 
 	static const gchar *license[] ={
 		N_("Lapiz is free software; you can redistribute it and/or modify "
@@ -118,7 +118,7 @@ void _lapiz_cmd_help_about(GtkAction* action, LapizWindow* window)
 		               "Copyright \xc2\xa9 2003-2006 Paolo Maggi\n"
 		               "Copyright \xc2\xa9 2004-2010 Paolo Borelli, Jesse van den Kieboom\nSteve Fr\303\251cinaux, Ignacio Casal Quinteiro\n"
 		               "Copyright \xc2\xa9 2011 Perberos\n"
-		               "Copyright \xc2\xa9 2012-2020 MATE developers"),
+		               "Copyright \xc2\xa9 2012-2020 CAFE developers"),
 		"license", license_trans,
 		"wrap-license", TRUE,
 		"documenters", documenters,

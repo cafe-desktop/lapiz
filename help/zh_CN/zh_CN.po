@@ -53,8 +53,8 @@ msgstr "Lapiz 手册"
 #. (itstool) path: author/orgname
 #. (itstool) path: revdescription/para
 #: C/index.docbook:42 C/index.docbook:52 C/index.docbook:207
-msgid "MATE Documentation Project"
-msgstr "MATE 文档项目"
+msgid "CAFE Documentation Project"
+msgstr "CAFE 文档项目"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -70,8 +70,8 @@ msgstr "GNOME 文档项目"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:54
-msgid "MATE Desktop"
-msgstr "MATE 桌面"
+msgid "CAFE Desktop"
+msgstr "CAFE 桌面"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:66
@@ -168,8 +168,8 @@ msgstr "GNOME 文档团队"
 
 #. (itstool) path: revdescription/para
 #: C/index.docbook:206
-msgid "MATE Documentation Team"
-msgstr "MATE 文档团队"
+msgid "CAFE Documentation Team"
+msgstr "CAFE 文档团队"
 
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
@@ -398,12 +398,12 @@ msgstr "当您右键单击lapiz窗口时，应用程序将弹出一个菜单。�
 #. (itstool) path: section/para
 #: C/index.docbook:337
 msgid ""
-"Like other MATE applications, actions in <application>lapiz</application> "
+"Like other CAFE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:cafe-user-guide/shortcuts-apps\">User Guide</link>."
 msgstr ""
-"与其他 MATE "
+"与其他 CAFE "
 "应用程序一样，<application>lapiz</application>中的操作可以通过多种方式执行：使用菜单、使用工具栏或快捷键。所有应用程序的通用快捷键都会列在<link"
 " xlink:href=\"help:cafe-user-guide/shortcuts-apps\">用户指南</link>中。"
 
@@ -4131,24 +4131,24 @@ msgstr ""
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:14
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of CAFE manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in"
 " section 6 of the license."
 msgstr ""
-"本手册是在 GFDL 许可之下分发的 MATE 手册集合的一部分。如果想要单独分发此手册，可以在手册中添加该许可证的一份副本然后分发，如该许可证的第 6"
+"本手册是在 GFDL 许可之下分发的 CAFE 手册集合的一部分。如果想要单独分发此手册，可以在手册中添加该许可证的一份副本然后分发，如该许可证的第 6"
 " 部分所述。"
 
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:21
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any CAFE "
+"documentation, and the members of the CAFE Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""
-"各个公司使用的许多用于区别它们产品和服务的名称都声明为商标。在所有的 MATE 文档以及 MATE "
+"各个公司使用的许多用于区别它们产品和服务的名称都声明为商标。在所有的 CAFE 文档以及 CAFE "
 "文档项目的成员中，这些名称都是以全大写字母或首字母大写显示，从而表明它们是商标。"
 
 #. (itstool) path: listitem/para
@@ -4202,6 +4202,6 @@ msgstr "反馈"
 msgid ""
 "To report a bug or make a suggestion regarding the "
 "<application>lapiz</application> application or this manual, follow the "
-"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">MATE "
+"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE "
 "Feedback Page</link>."
 msgstr ""

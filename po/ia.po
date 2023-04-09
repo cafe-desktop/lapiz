@@ -510,13 +510,13 @@ msgid ""
 msgstr ""
 
 #: ../data/lapiz.appdata.xml.in.h:1
-msgid "A Text Editor for the MATE desktop environment"
+msgid "A Text Editor for the CAFE desktop environment"
 msgstr ""
 
 #: ../data/lapiz.appdata.xml.in.h:2
 msgid ""
 "<p> Lapiz is a small, but powerful text editor designed specifically for the"
-" MATE desktop. It has most standard text editor functions and fully supports"
+" CAFE desktop. It has most standard text editor functions and fully supports"
 " international text in Unicode. Advanced features include syntax "
 "highlighting and automatic indentation of source code, printing and editing "
 "of multiple documents in one window. </p> <p> Lapiz is extensible through a "
@@ -1183,7 +1183,7 @@ msgid "_Revert"
 msgstr ""
 
 #: ../lapiz/lapiz-commands-help.c:60
-msgid "MATE Documentation Team"
+msgid "CAFE Documentation Team"
 msgstr ""
 
 #: ../lapiz/lapiz-commands-help.c:61
@@ -1195,7 +1195,7 @@ msgid "Sun Microsystems"
 msgstr ""
 
 #: ../lapiz/lapiz-commands-help.c:67
-msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr ""
 
 #: ../lapiz/lapiz-commands-help.c:70
@@ -1233,7 +1233,7 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2019 MATE developers"
+"Copyright © 2012-2019 CAFE developers"
 msgstr ""
 
 #: ../lapiz/lapiz-commands-help.c:126

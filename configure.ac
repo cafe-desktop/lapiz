@@ -26,7 +26,7 @@ AM_INIT_AUTOMAKE([1.10 dist-xz no-dist-gzip -Wno-portability check-news])
 AM_MAINTAINER_MODE
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
-MATE_COMPILE_WARNINGS
+CAFE_COMPILE_WARNINGS
 
 # Checks for programs
 AC_PROG_CC
@@ -67,7 +67,7 @@ AC_DEFUN([LAPIZ_FULLPATH], [
   $3=`eval echo [$]ac_expand`
 ])
 
-dnl FULL_LIBEXECDIR is used for X-MATE-Bugzilla-ExtraInfoScript expansion
+dnl FULL_LIBEXECDIR is used for X-CAFE-Bugzilla-ExtraInfoScript expansion
 dnl in data/lapiz.desktop.in.in
 LAPIZ_FULLPATH(libexecdir, NONE, FULL_LIBEXECDIR)
 AC_SUBST(FULL_LIBEXECDIR)

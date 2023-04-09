@@ -34,8 +34,8 @@ msgstr "Manual til Lapiz"
 #. (itstool) path: author/orgname
 #. (itstool) path: revdescription/para
 #: C/index.docbook:42 C/index.docbook:52 C/index.docbook:207
-msgid "MATE Documentation Project"
-msgstr "MATE-dokumentationsprojekt"
+msgid "CAFE Documentation Project"
+msgstr "CAFE-dokumentationsprojekt"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -51,8 +51,8 @@ msgstr "GNOME-dokumentationsprojekt"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:54
-msgid "MATE Desktop"
-msgstr "MATE-skrivebord"
+msgid "CAFE Desktop"
+msgstr "CAFE-skrivebord"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:66
@@ -149,8 +149,8 @@ msgstr "GNOME-dokumentationsholdet"
 
 #. (itstool) path: revdescription/para
 #: C/index.docbook:206
-msgid "MATE Documentation Team"
-msgstr "MATE-dokumentationsholdet"
+msgid "CAFE Documentation Team"
+msgstr "CAFE-dokumentationsholdet"
 
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
@@ -415,12 +415,12 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:337
 msgid ""
-"Like other MATE applications, actions in <application>lapiz</application> "
+"Like other CAFE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:cafe-user-guide/shortcuts-apps\">User Guide</link>."
 msgstr ""
-"Ligesom i andre MATE-programmer kan handlinger i "
+"Ligesom i andre CAFE-programmer kan handlinger i "
 "<application>Lapiz</application> udføres på flere forskellige måder: med "
 "menuen, med værktøjslinjen eller med genvejstasterne. Genvejstaster, som er "
 "generelle for alle programmer, er vist i <link xlink:href=\"help:cafe-user-"
@@ -4836,12 +4836,12 @@ msgstr ""
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:14
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of CAFE manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in"
 " section 6 of the license."
 msgstr ""
-"Denne manual er en del af MATE-manualsamlingen distribueret under GFDL. Hvis"
+"Denne manual er en del af CAFE-manualsamlingen distribueret under GFDL. Hvis"
 " du vil distribuere denne manual separat fra denne samling, kan du gøre det "
 "ved at tilføje en kopi af licensen til manualen, som beskrevet i sektion 6 "
 "af licensen."
@@ -4850,14 +4850,14 @@ msgstr ""
 #: C/legal.xml:21
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any CAFE "
+"documentation, and the members of the CAFE Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""
 "Mange af navnene brugt af firmaer til at skelne deres produkter og tjenester"
-" er registrerede varemærker. Der hvor disse navne optræder i MATE-"
-"dokumentationen, og medlemmerne af MATE-dokumentationsprojektet er blevet "
+" er registrerede varemærker. Der hvor disse navne optræder i CAFE-"
+"dokumentationen, og medlemmerne af CAFE-dokumentationsprojektet er blevet "
 "gjort opmærksomme på disse varemærker, er navnene skrevet med store "
 "bogstaver eller store forbogstaver."
 
@@ -4936,10 +4936,10 @@ msgstr "Tilbagemelding"
 msgid ""
 "To report a bug or make a suggestion regarding the "
 "<application>lapiz</application> application or this manual, follow the "
-"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">MATE "
+"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE "
 "Feedback Page</link>."
 msgstr ""
 "For at rapportere fejl eller foreslå forbedringer vedrørende programmet "
 "<application>Lapiz</application> eller denne manual, bør du følge "
-"instruktionerne på <link xlink:href=\"help:cafe-user-guide/feedback\">MATE-"
+"instruktionerne på <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE-"
 "tilbagemeldingssiden</link>."

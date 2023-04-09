@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.20.2 
 
 lapiz - search-dialog
-Copyright (C) MATE Developer
+Copyright (C) CAFE Developer
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@ Author: Wolfgang Ulbrich
   <!-- interface-license-type gplv2 -->
   <!-- interface-name lapiz -->
   <!-- interface-description search-dialog -->
-  <!-- interface-copyright MATE Developer -->
+  <!-- interface-copyright CAFE Developer -->
   <!-- interface-authors Wolfgang Ulbrich -->
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>

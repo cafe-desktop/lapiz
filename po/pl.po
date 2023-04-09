@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR MATE Desktop Environment team
+# Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
@@ -629,13 +629,13 @@ msgid "Lapiz"
 msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
-msgid "A Text Editor for the MATE desktop environment"
-msgstr "Edytor tekstu dla środowiska graficznego MATE"
+msgid "A Text Editor for the CAFE desktop environment"
+msgstr "Edytor tekstu dla środowiska graficznego CAFE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
-"MATE desktop. It has most standard text editor functions and fully supports "
+"CAFE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
@@ -665,7 +665,7 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
-msgid "text;editor;MATE;tabs;highlighting;code;multiple;files;pluggable;"
+msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:136
@@ -1360,8 +1360,8 @@ msgid "_Revert"
 msgstr "_Przywróć"
 
 #: lapiz/lapiz-commands-help.c:60
-msgid "MATE Documentation Team"
-msgstr "Zespół dokumentacji MATE"
+msgid "CAFE Documentation Team"
+msgstr "Zespół dokumentacji CAFE"
 
 #: lapiz/lapiz-commands-help.c:61
 msgid "GNOME Documentation Team"
@@ -1372,8 +1372,8 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
-msgstr "Lapiz to niewielki i lekki edytor tekstu dla środowiska MATE"
+msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
+msgstr "Lapiz to niewielki i lekki edytor tekstu dla środowiska CAFE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
@@ -1422,7 +1422,7 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 MATE developers"
+"Copyright © 2012-2020 CAFE developers"
 msgstr ""
 "Prawa Autorskie © 1998-2000 Evan Lawrence, Alex Robert\n"
 "Prawa Autorskie © 2000-2002 Chema Celorio, Paolo Maggi\n"
@@ -1430,12 +1430,12 @@ msgstr ""
 "Prawa Autorskie © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Prawa Autorskie © 2011 Perberos\n"
-"Prawa Autorskie © 2012-2020 Deweloperzy MATE"
+"Prawa Autorskie © 2012-2020 Deweloperzy CAFE"
 
 #: lapiz/lapiz-commands-help.c:126
 msgid "translator-credits"
 msgstr ""
-"Tłumacze środowiska MATE, 2014-2020\n"
+"Tłumacze środowiska CAFE, 2014-2020\n"
 "\n"
 "Zbigniew Chyla, 2002-2003\n"
 "Artur Flinta, 2003-2005\n"

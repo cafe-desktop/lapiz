@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR MATE Desktop Environment team
+# Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
@@ -537,18 +537,18 @@ msgid "Lapiz"
 msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
-msgid "A Text Editor for the MATE desktop environment"
-msgstr "用于 MATE 桌面环境的文本编辑器"
+msgid "A Text Editor for the CAFE desktop environment"
+msgstr "用于 CAFE 桌面环境的文本编辑器"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
-"MATE desktop. It has most standard text editor functions and fully supports "
+"CAFE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Lapiz 是一个小型但功能强大的文本编辑器，专门为 MATE 桌面设计。它具有大多数标准的文本编辑器功能，并且完全支持 Unicode "
+"Lapiz 是一个小型但功能强大的文本编辑器，专门为 CAFE 桌面设计。它具有大多数标准的文本编辑器功能，并且完全支持 Unicode "
 "中的国际文本。高级功能包括语法高亮显示和源代码自动缩进，在一个窗口中打印和编辑多个文档。"
 
 #: data/lapiz.appdata.xml.in:17
@@ -575,7 +575,7 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
-msgid "text;editor;MATE;tabs;highlighting;code;multiple;files;pluggable;"
+msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:136
@@ -1221,8 +1221,8 @@ msgid "_Revert"
 msgstr "还原(_R)"
 
 #: lapiz/lapiz-commands-help.c:60
-msgid "MATE Documentation Team"
-msgstr "MATE 文档团队"
+msgid "CAFE Documentation Team"
+msgstr "CAFE 文档团队"
 
 #: lapiz/lapiz-commands-help.c:61
 msgid "GNOME Documentation Team"
@@ -1233,8 +1233,8 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
-msgstr "Lapiz 是 MATE 桌面的小型文本编辑器"
+msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
+msgstr "Lapiz 是 CAFE 桌面的小型文本编辑器"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
@@ -1276,7 +1276,7 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 MATE developers"
+"Copyright © 2012-2020 CAFE developers"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:126
