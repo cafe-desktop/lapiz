@@ -216,18 +216,18 @@ get_startup_timestamp (void)
 	return (retval > 0) ? retval : 0;
 }
 
-static GdkDisplay *
+static CdkDisplay *
 display_open_if_needed (const gchar *name)
 {
 	GSList *displays;
 	GSList *l;
-	GdkDisplay *display = NULL;
+	CdkDisplay *display = NULL;
 
 	displays = cdk_display_manager_list_displays (cdk_display_manager_get ());
 
 	for (l = displays; l != NULL; l = l->next)
 	{
-		if (strcmp (cdk_display_get_name ((GdkDisplay *) l->data), name) == 0)
+		if (strcmp (cdk_display_get_name ((CdkDisplay *) l->data), name) == 0)
 		{
 			display = l->data;
 			break;
@@ -254,8 +254,8 @@ on_message_received (const char *message,
 	gint i;
 	LapizApp *app;
 	LapizWindow *window;
-	GdkDisplay *display;
-	GdkScreen *screen;
+	CdkDisplay *display;
+	CdkScreen *screen;
 
 	g_return_if_fail (message != NULL);
 
@@ -397,8 +397,8 @@ on_message_received (const char *message,
 static void
 send_bacon_message (void)
 {
-	GdkScreen *screen;
-	GdkDisplay *display;
+	CdkScreen *screen;
+	CdkDisplay *display;
 	const gchar *display_name;
 	gint screen_number;
 	gint ws;

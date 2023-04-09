@@ -613,7 +613,7 @@ clear_session_cb (LapizSpellChecker          *checker,
  */
 static gboolean
 button_press_event (CtkTextView *view,
-		    GdkEventButton *event,
+		    CdkEventButton *event,
 		    LapizAutomaticSpellChecker *spell)
 {
 	if (event->button == 3)

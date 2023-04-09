@@ -677,8 +677,8 @@ build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 	CtkWidget   *scrolledwindow;
 	CtkWidget   *treeview;
 	CtkWidget   *secondary_label;
-	GdkDisplay  *display;
-	GdkRectangle mon_geo;
+	CdkDisplay  *display;
+	CdkRectangle mon_geo;
 	gchar       *str;
 	gchar       *markup_str;
 	gint         new_width;

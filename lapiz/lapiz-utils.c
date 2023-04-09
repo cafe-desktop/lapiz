@@ -114,7 +114,7 @@ static void
 widget_get_origin (CtkWidget *widget, gint *x, gint *y)
 
 {
-	GdkWindow *window;
+	CdkWindow *window;
 
 	window = ctk_widget_get_window (widget);
 	cdk_window_get_origin (window, x, y);
@@ -158,8 +158,8 @@ menu_popup_at_treeview_selection (CtkWidget *menu,
 {
 	CtkTreePath *path;
 	CtkTreeViewColumn *column;
-	GdkWindow *bin_window;
-	GdkRectangle rect;
+	CdkWindow *bin_window;
+	CdkRectangle rect;
 
 	ctk_tree_view_get_cursor (CTK_TREE_VIEW (treeview), &path, &column);
 	g_return_if_fail (path != NULL);
@@ -839,17 +839,17 @@ lapiz_utils_replace_home_dir_with_tilde (const gchar *uri)
  *
  * Get the current workspace
  *
- * Get the currently visible workspace for the #GdkScreen.
+ * Get the currently visible workspace for the #CdkScreen.
  *
  * If the X11 window property isn't found, 0 (the first workspace)
  * is returned.
  */
 guint
-lapiz_utils_get_current_workspace (GdkScreen *screen)
+lapiz_utils_get_current_workspace (CdkScreen *screen)
 {
 #ifdef CDK_WINDOWING_X11
-	GdkWindow *root_win;
-	GdkDisplay *display;
+	CdkWindow *root_win;
+	CdkDisplay *display;
 	Atom type;
 	gint format;
 	gulong nitems;
@@ -898,8 +898,8 @@ guint
 lapiz_utils_get_window_workspace (CtkWindow *ctkwindow)
 {
 #ifdef CDK_WINDOWING_X11
-	GdkWindow *window;
-	GdkDisplay *display;
+	CdkWindow *window;
+	CdkDisplay *display;
 	Atom type;
 	gint format;
 	gulong nitems;
@@ -941,18 +941,18 @@ lapiz_utils_get_window_workspace (CtkWindow *ctkwindow)
  *
  * Get the current viewport origin
  *
- * Get the currently visible viewport origin for the #GdkScreen.
+ * Get the currently visible viewport origin for the #CdkScreen.
  *
  * If the X11 window property isn't found, (0, 0) is returned.
  */
 void
-lapiz_utils_get_current_viewport (GdkScreen    *screen,
+lapiz_utils_get_current_viewport (CdkScreen    *screen,
 				  gint         *x,
 				  gint         *y)
 {
 #ifdef CDK_WINDOWING_X11
-	GdkWindow *root_win;
-	GdkDisplay *display;
+	CdkWindow *root_win;
+	CdkDisplay *display;
 	Atom type;
 	gint format;
 	gulong nitems;
@@ -1666,7 +1666,7 @@ free_resources:
 }
 
 CtkWidget *
-lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
+lapiz_image_menu_item_new_from_pixbuf (CdkPixbuf   *icon_pixbuf,
 				       const gchar *label_name)
 {
 	gchar *concat;

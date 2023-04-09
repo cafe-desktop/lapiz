@@ -237,7 +237,7 @@ message_set_emblem_cb (LapizMessageBus *bus,
 	if (path != NULL)
 	{
 		GError *error = NULL;
-		GdkPixbuf *pixbuf;
+		CdkPixbuf *pixbuf;
 
 		pixbuf = ctk_icon_theme_load_icon (ctk_icon_theme_get_default (),
 						   emblem,

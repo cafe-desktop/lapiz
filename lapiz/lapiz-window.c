@@ -261,7 +261,7 @@ lapiz_window_finalize (GObject *object)
 
 static gboolean
 lapiz_window_window_state_event (CtkWidget           *widget,
-				 GdkEventWindowState *event)
+				 CdkEventWindowState *event)
 {
 	LapizWindow *window = LAPIZ_WINDOW (widget);
 
@@ -272,7 +272,7 @@ lapiz_window_window_state_event (CtkWidget           *widget,
 
 static gboolean
 lapiz_window_configure_event (CtkWidget         *widget,
-			      GdkEventConfigure *event)
+			      CdkEventConfigure *event)
 {
 	LapizWindow *window = LAPIZ_WINDOW (widget);
 
@@ -292,7 +292,7 @@ lapiz_window_configure_event (CtkWidget         *widget,
  */
 static gboolean
 lapiz_window_key_press_event (CtkWidget   *widget,
-			      GdkEventKey *event)
+			      CdkEventKey *event)
 {
 	static gpointer grand_parent_class = NULL;
 	CtkWindow *window = CTK_WINDOW (widget);
@@ -693,7 +693,7 @@ static void
 set_paste_sensitivity_according_to_clipboard (LapizWindow  *window,
 					      CtkClipboard *clipboard)
 {
-	GdkDisplay *display;
+	CdkDisplay *display;
 
 	display = ctk_clipboard_get_display (clipboard);
 
@@ -2049,7 +2049,7 @@ static LapizWindow *
 clone_window (LapizWindow *origin)
 {
 	LapizWindow *window;
-	GdkScreen *screen;
+	CdkScreen *screen;
 	LapizApp  *app;
 	gint panel_page;
 
@@ -2810,7 +2810,7 @@ load_uris_from_drop (LapizWindow  *window,
 /* Handle drops on the LapizWindow */
 static void
 drag_data_received_cb (CtkWidget        *widget,
-		       GdkDragContext   *context,
+		       CdkDragContext   *context,
 		       gint              x,
 		       gint              y,
 		       CtkSelectionData *selection_data,
@@ -2852,9 +2852,9 @@ drop_uris_cb (CtkWidget    *widget,
 static void
 fullscreen_controls_show (LapizWindow *window)
 {
-	GdkScreen *screen;
-	GdkDisplay *display;
-	GdkRectangle fs_rect;
+	CdkScreen *screen;
+	CdkDisplay *display;
+	CdkRectangle fs_rect;
 	gint w, h;
 
 	screen = ctk_window_get_screen (CTK_WINDOW (window));
@@ -2879,9 +2879,9 @@ static gboolean
 run_fullscreen_animation (gpointer data)
 {
 	LapizWindow *window = LAPIZ_WINDOW (data);
-	GdkScreen *screen;
-	GdkDisplay *display;
-	GdkRectangle fs_rect;
+	CdkScreen *screen;
+	CdkDisplay *display;
+	CdkRectangle fs_rect;
 	gint x, y;
 
 	screen = ctk_window_get_screen (CTK_WINDOW (window));
@@ -2957,9 +2957,9 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 	}
 	else
 	{
-		GdkRectangle fs_rect;
-		GdkScreen *screen;
-		GdkDisplay *display;
+		CdkRectangle fs_rect;
+		CdkScreen *screen;
+		CdkDisplay *display;
 
 		screen = ctk_window_get_screen (CTK_WINDOW (window));
 		display = cdk_screen_get_display (screen);
@@ -2980,7 +2980,7 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 
 static gboolean
 on_fullscreen_controls_enter_notify_event (CtkWidget        *widget,
-					   GdkEventCrossing *event,
+					   CdkEventCrossing *event,
 					   LapizWindow      *window)
 {
 	show_hide_fullscreen_toolbar (window, TRUE, 0);
@@ -2990,14 +2990,14 @@ on_fullscreen_controls_enter_notify_event (CtkWidget        *widget,
 
 static gboolean
 on_fullscreen_controls_leave_notify_event (CtkWidget        *widget,
-					   GdkEventCrossing *event,
+					   CdkEventCrossing *event,
 					   LapizWindow      *window)
 {
-	GdkDevice *device;
+	CdkDevice *device;
 	gint w, h;
 	gint x, y;
 
-	device = cdk_event_get_device ((GdkEvent *)event);
+	device = cdk_event_get_device ((CdkEvent *)event);
 
 	ctk_window_get_size (CTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
 	cdk_device_get_position (device, NULL, &x, &y);
@@ -3453,7 +3453,7 @@ notebook_tab_close_request (LapizNotebook *notebook,
 static gboolean
 show_notebook_popup_menu (CtkNotebook    *notebook,
 			  LapizWindow    *window,
-			  GdkEventButton *event)
+			  CdkEventButton *event)
 {
 	CtkWidget *menu;
 //	CtkAction *action;
@@ -3482,7 +3482,7 @@ show_notebook_popup_menu (CtkNotebook    *notebook,
 	                          tab_label,
 	                          CDK_GRAVITY_SOUTH_WEST,
 	                          CDK_GRAVITY_NORTH_WEST,
-	                          (const GdkEvent*) event);
+	                          (const CdkEvent*) event);
 
 	ctk_menu_shell_select_first (CTK_MENU_SHELL (menu), FALSE);
 
@@ -3491,7 +3491,7 @@ show_notebook_popup_menu (CtkNotebook    *notebook,
 
 static gboolean
 notebook_button_press_event (CtkNotebook    *notebook,
-			     GdkEventButton *event,
+			     CdkEventButton *event,
 			     LapizWindow    *window)
 {
 	if (event->type == CDK_BUTTON_PRESS)
@@ -3516,7 +3516,7 @@ notebook_button_press_event (CtkNotebook    *notebook,
 
 static gboolean
 notebook_scroll_event (CtkNotebook    *notebook,
-                       GdkEventScroll *event,
+                       CdkEventScroll *event,
                        LapizWindow    *window)
 {
 	if (event->direction == CDK_SCROLL_UP || event->direction == CDK_SCROLL_LEFT)
@@ -3815,7 +3815,7 @@ init_panels_visibility (LapizWindow *window)
 
 static void
 clipboard_owner_change (CtkClipboard        *clipboard,
-			GdkEventOwnerChange *event,
+			CdkEventOwnerChange *event,
 			LapizWindow         *window)
 {
 	set_paste_sensitivity_according_to_clipboard (window,

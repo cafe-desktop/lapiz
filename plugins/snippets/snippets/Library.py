@@ -22,7 +22,7 @@ import tempfile
 import re
 import codecs
 
-from gi.repository import Gdk, Ctk
+from gi.repository import Cdk, Ctk
 
 import xml.etree.ElementTree as et
 from .Helper import *
@@ -942,8 +942,8 @@ class Library(Singleton):
     def valid_accelerator(self, keyval, mod):
         mod &= Ctk.accelerator_get_default_mod_mask()
 
-        return mod and (Gdk.keyval_to_unicode(keyval) or \
-                re.match('^F(?:1[012]?|[2-9])$', Gdk.keyval_name(keyval)))
+        return mod and (Cdk.keyval_to_unicode(keyval) or \
+                re.match('^F(?:1[012]?|[2-9])$', Cdk.keyval_name(keyval)))
 
     def valid_tab_trigger(self, trigger):
         if not trigger:

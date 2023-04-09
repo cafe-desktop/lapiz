@@ -270,7 +270,7 @@ tag_list_row_activated_cb (CtkTreeView             *tag_list,
 
 static gboolean
 tag_list_key_press_event_cb (CtkTreeView             *tag_list,
-			     GdkEventKey             *event,
+			     CdkEventKey             *event,
 			     LapizTaglistPluginPanel *panel)
 {
 	gboolean grab_focus;

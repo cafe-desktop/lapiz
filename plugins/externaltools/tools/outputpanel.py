@@ -26,7 +26,7 @@ from weakref import WeakKeyDictionary
 from .capture import *
 from . import linkparsing
 from . import filelookup
-from gi.repository import GLib, Gdk, Ctk, Pango, Lapiz
+from gi.repository import GLib, Cdk, Ctk, Pango, Lapiz
 
 class UniqueById:
     __shared_state = WeakKeyDictionary()
@@ -80,8 +80,8 @@ class OutputPanel(UniqueById):
         self.link_tag = buffer.create_tag('link')
         self.link_tag.set_property('underline', Pango.Underline.SINGLE)
 
-        self.link_cursor = Gdk.Cursor.new(Gdk.CursorType.HAND2)
-        self.normal_cursor = Gdk.Cursor.new(Gdk.CursorType.XTERM)
+        self.link_cursor = Cdk.Cursor.new(Cdk.CursorType.HAND2)
+        self.normal_cursor = Cdk.Cursor.new(Cdk.CursorType.XTERM)
 
         self.process = None
 
@@ -211,7 +211,7 @@ class OutputPanel(UniqueById):
         return None
 
     def on_view_button_press_event(self, view, event):
-        if event.button != 1 or event.type != Gdk.EventType.BUTTON_PRESS or \
+        if event.button != 1 or event.type != Cdk.EventType.BUTTON_PRESS or \
            event.window != view.get_window(Ctk.TextWindowType.TEXT):
             return False
 

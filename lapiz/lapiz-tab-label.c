@@ -167,7 +167,7 @@ sync_state (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
 	}
 	else
 	{
-		GdkPixbuf *pixbuf;
+		CdkPixbuf *pixbuf;
 
 		pixbuf = _lapiz_tab_get_icon (tab);
 		ctk_image_set_from_pixbuf (CTK_IMAGE (tab_label->priv->icon), pixbuf);

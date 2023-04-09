@@ -662,7 +662,7 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 	LapizWindow *window;
 	LapizPanel * panel;
 	CtkWidget * image;
-	GdkPixbuf * pixbuf;
+	CdkPixbuf * pixbuf;
 	LapizFileBrowserStore * store;
 	gchar *data_dir;
 	GSettingsSchemaSource *schema_source;

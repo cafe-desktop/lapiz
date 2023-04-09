@@ -110,11 +110,11 @@ gchar		*lapiz_utils_location_get_dirname_for_display
 
 gchar		*lapiz_utils_replace_home_dir_with_tilde (const gchar *uri);
 
-guint		 lapiz_utils_get_current_workspace	(GdkScreen *screen);
+guint		 lapiz_utils_get_current_workspace	(CdkScreen *screen);
 
 guint		 lapiz_utils_get_window_workspace	(CtkWindow *ctkwindow);
 
-void		 lapiz_utils_get_current_viewport	(GdkScreen    *screen,
+void		 lapiz_utils_get_current_viewport	(CdkScreen    *screen,
 							 gint         *x,
 							 gint         *y);
 
@@ -157,7 +157,7 @@ lapiz_ctk_text_iter_regex_search (const CtkTextIter *iter,
 				  gchar            **replace_text);
 
 CtkWidget *
-lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
+lapiz_image_menu_item_new_from_pixbuf (CdkPixbuf   *icon_pixbuf,
 				       const gchar *label_name);
 
 G_END_DECLS

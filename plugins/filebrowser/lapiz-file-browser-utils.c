@@ -25,13 +25,13 @@
 #include <glib/gi18n.h>
 
 
-static GdkPixbuf *
-process_icon_pixbuf (GdkPixbuf * pixbuf,
+static CdkPixbuf *
+process_icon_pixbuf (CdkPixbuf * pixbuf,
 		     gchar const * name,
 		     gint size,
 		     GError * error)
 {
-	GdkPixbuf * scale;
+	CdkPixbuf * scale;
 
 	if (error != NULL) {
 		g_warning ("Could not load theme icon %s: %s",
@@ -52,13 +52,13 @@ process_icon_pixbuf (GdkPixbuf * pixbuf,
 	return pixbuf;
 }
 
-GdkPixbuf *
+CdkPixbuf *
 lapiz_file_browser_utils_pixbuf_from_theme (gchar const * name,
                                             CtkIconSize size)
 {
 	gint width;
 	GError *error = NULL;
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 
 	ctk_icon_size_lookup (size, &width, NULL);
 
@@ -73,11 +73,11 @@ lapiz_file_browser_utils_pixbuf_from_theme (gchar const * name,
 	return pixbuf;
 }
 
-GdkPixbuf *
+CdkPixbuf *
 lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
                                            CtkIconSize size)
 {
-	GdkPixbuf * ret = NULL;
+	CdkPixbuf * ret = NULL;
 	CtkIconTheme *theme;
 	CtkIconInfo *info;
 	gint width;
@@ -102,13 +102,13 @@ lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
 	return ret;
 }
 
-GdkPixbuf *
+CdkPixbuf *
 lapiz_file_browser_utils_pixbuf_from_file (GFile * file,
                                            CtkIconSize size)
 {
 	GIcon * icon;
 	GFileInfo * info;
-	GdkPixbuf * ret = NULL;
+	CdkPixbuf * ret = NULL;
 
 	info = g_file_query_info (file,
 				  G_FILE_ATTRIBUTE_STANDARD_ICON,

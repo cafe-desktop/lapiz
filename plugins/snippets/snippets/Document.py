@@ -18,7 +18,7 @@
 import os
 import re
 
-from gi.repository import GLib, Gio, Gdk, Ctk, Lapiz
+from gi.repository import GLib, Gio, Cdk, Ctk, Lapiz
 
 from .Library import Library
 from .Snippet import Snippet
@@ -797,12 +797,12 @@ class Document:
         library = Library()
 
         state = event.get_state()
-        keyname = Gdk.keyval_name(event.keyval)
+        keyname = Cdk.keyval_name(event.keyval)
 
-        if not (state & Gdk.ModifierType.CONTROL_MASK) and \
-                not (state & Gdk.ModifierType.MOD1_MASK) and \
+        if not (state & Cdk.ModifierType.CONTROL_MASK) and \
+                not (state & Cdk.ModifierType.MOD1_MASK) and \
                 keyname in self.TAB_KEY_VAL:
-            if not state & Gdk.ModifierType.SHIFT_MASK:
+            if not state & Cdk.ModifierType.SHIFT_MASK:
                 return self.run_snippet()
             else:
                 return self.skip_to_previous_placeholder()
@@ -1051,7 +1051,7 @@ class Document:
 
         col = self.view.get_style_context().get_color(Ctk.StateFlags.INSENSITIVE)
         col.alpha = 0.5
-        Gdk.cairo_set_source_rgba(ctx, col)
+        Cdk.cairo_set_source_rgba(ctx, col)
 
         if placeholder.tabstop > 0:
             ctx.set_dash([], 0)
@@ -1074,7 +1074,7 @@ class Document:
 
         ctx.set_line_width(1.0)
         Ctk.cairo_transform_to_window(ctx, view, window)
-        clipped, clip = Gdk.cairo_get_clip_rectangle(ctx)
+        clipped, clip = Cdk.cairo_get_clip_rectangle(ctx)
 
         if not clipped:
             return False

@@ -39,13 +39,13 @@ struct _LapizFileBrowserViewPrivate
 	CtkTreeModel *model;
 	CtkTreeRowReference *editable;
 
-	GdkCursor *busy_cursor;
+	CdkCursor *busy_cursor;
 
 	/* CLick policy */
 	LapizFileBrowserViewClickPolicy click_policy;
 	CtkTreePath *double_click_path[2]; /* Both clicks in a double click need to be on the same row */
 	CtkTreePath *hover_path;
-	GdkCursor *hand_cursor;
+	CdkCursor *hand_cursor;
 	gboolean ignore_release;
 	gboolean selected_on_button_down;
 	gint drag_button;
@@ -225,7 +225,7 @@ row_collapsed (CtkTreeView * tree_view,
 
 static gboolean
 leave_notify_event (CtkWidget *widget,
-		    GdkEventCrossing *event)
+		    CdkEventCrossing *event)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
@@ -241,7 +241,7 @@ leave_notify_event (CtkWidget *widget,
 
 static gboolean
 enter_notify_event (CtkWidget *widget,
-		    GdkEventCrossing *event)
+		    CdkEventCrossing *event)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
@@ -265,7 +265,7 @@ enter_notify_event (CtkWidget *widget,
 
 static gboolean
 motion_notify_event (CtkWidget * widget,
-		     GdkEventMotion * event)
+		     CdkEventMotion * event)
 {
 	CtkTreePath *old_hover_path;
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
@@ -299,8 +299,8 @@ set_click_policy_property (LapizFileBrowserView            *obj,
 			   LapizFileBrowserViewClickPolicy  click_policy)
 {
 	CtkTreeIter iter;
-	GdkDisplay *display;
-	GdkWindow *win;
+	CdkDisplay *display;
+	CdkWindow *win;
 
 	display = ctk_widget_get_display (CTK_WIDGET (obj));
 
@@ -418,14 +418,14 @@ toggle_hidden_filter (LapizFileBrowserView *view)
 }
 
 static gboolean
-button_event_modifies_selection (GdkEventButton *event)
+button_event_modifies_selection (CdkEventButton *event)
 {
 	return (event->state & (CDK_CONTROL_MASK | CDK_SHIFT_MASK)) != 0;
 }
 
 static void
 drag_begin (CtkWidget      *widget,
-	    GdkDragContext *context)
+	    CdkDragContext *context)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
@@ -438,7 +438,7 @@ drag_begin (CtkWidget      *widget,
 
 static void
 did_not_drag (LapizFileBrowserView *view,
-	      GdkEventButton       *event)
+	      CdkEventButton       *event)
 {
 	CtkTreeView *tree_view;
 	CtkTreeSelection *selection;
@@ -472,7 +472,7 @@ did_not_drag (LapizFileBrowserView *view,
 
 static gboolean
 button_release_event (CtkWidget       *widget,
-		      GdkEventButton *event)
+		      CdkEventButton *event)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
@@ -490,7 +490,7 @@ button_release_event (CtkWidget       *widget,
 
 static gboolean
 button_press_event (CtkWidget      *widget,
-		    GdkEventButton *event)
+		    CdkEventButton *event)
 {
 	int double_click_time;
 	static int click_count = 0;
@@ -622,7 +622,7 @@ button_press_event (CtkWidget      *widget,
 
 static gboolean
 key_press_event (CtkWidget   *widget,
-		 GdkEventKey *event)
+		 CdkEventKey *event)
 {
 	LapizFileBrowserView *view;
 	guint modifiers;
@@ -948,7 +948,7 @@ cell_data_cb (CtkTreeViewColumn * tree_column, CtkCellRenderer * cell,
 static void
 lapiz_file_browser_view_init (LapizFileBrowserView * obj)
 {
-	GdkDisplay *display;
+	CdkDisplay *display;
 
 	obj->priv = lapiz_file_browser_view_get_instance_private (obj);
 

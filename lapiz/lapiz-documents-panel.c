@@ -189,7 +189,7 @@ refresh_list (LapizDocumentsPanel *panel)
 
 	while (l != NULL)
 	{
-		GdkPixbuf *pixbuf;
+		CdkPixbuf *pixbuf;
 		gchar *name;
 		CtkTreeIter iter;
 
@@ -232,7 +232,7 @@ sync_name_and_icon (LapizTab            *tab,
 		    GParamSpec          *pspec,
 		    LapizDocumentsPanel *panel)
 {
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	gchar *name;
 	CtkTreeIter iter;
 
@@ -275,7 +275,7 @@ window_tab_added (LapizWindow         *window,
 {
 	CtkTreeIter iter;
 	CtkTreeIter sibling;
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	gchar *name;
 
 	g_signal_connect (tab,
@@ -487,7 +487,7 @@ lapiz_documents_panel_class_init (LapizDocumentsPanelClass *klass)
 
 static gboolean
 show_popup_menu (LapizDocumentsPanel *panel,
-		 GdkEventButton      *event)
+		 CdkEventButton      *event)
 {
 	CtkWidget *menu;
 
@@ -510,7 +510,7 @@ show_popup_menu (LapizDocumentsPanel *panel,
 
 static gboolean
 panel_button_press_event (CtkTreeView         *treeview,
-			  GdkEventButton      *event,
+			  CdkEventButton      *event,
 			  LapizDocumentsPanel *panel)
 {
 	if ((CDK_BUTTON_PRESS == event->type) && (3 == event->button))

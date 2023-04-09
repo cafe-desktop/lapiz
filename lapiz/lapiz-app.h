@@ -93,7 +93,7 @@ GType 		 lapiz_app_get_type 			(void) G_GNUC_CONST;
 LapizApp 	*lapiz_app_get_default			(void);
 
 LapizWindow	*lapiz_app_create_window		(LapizApp  *app,
-							 GdkScreen *screen);
+							 CdkScreen *screen);
 
 const GList	*lapiz_app_get_windows			(LapizApp *app);
 LapizWindow	*lapiz_app_get_active_window		(LapizApp *app);
@@ -113,7 +113,7 @@ LapizLockdownMask lapiz_app_get_lockdown		(LapizApp *app);
 LapizWindow	*_lapiz_app_restore_window		(LapizApp    *app,
 							 const gchar *role);
 LapizWindow	*_lapiz_app_get_window_in_viewport	(LapizApp     *app,
-							 GdkScreen    *screen,
+							 CdkScreen    *screen,
 							 gint          workspace,
 							 gint          viewport_x,
 							 gint          viewport_y);

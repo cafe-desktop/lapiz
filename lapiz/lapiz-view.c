@@ -105,31 +105,31 @@ CtkListStore *search_completion_model = NULL;
 static void	lapiz_view_dispose		(GObject          *object);
 static void	lapiz_view_finalize		(GObject          *object);
 static gint     lapiz_view_focus_out		(CtkWidget        *widget,
-						 GdkEventFocus    *event);
+						 CdkEventFocus    *event);
 static gboolean lapiz_view_scroll_event         (CtkWidget        *widget,
-                                                 GdkEventScroll   *event);
+                                                 CdkEventScroll   *event);
 static gboolean lapiz_view_drag_motion		(CtkWidget        *widget,
-						 GdkDragContext   *context,
+						 CdkDragContext   *context,
 						 gint              x,
 						 gint              y,
 						 guint             timestamp);
 static void     lapiz_view_drag_data_received   (CtkWidget        *widget,
-						 GdkDragContext   *context,
+						 CdkDragContext   *context,
 						 gint              x,
 						 gint              y,
 						 CtkSelectionData *selection_data,
 						 guint             info,
 						 guint             timestamp);
 static gboolean lapiz_view_drag_drop		(CtkWidget        *widget,
-	      					 GdkDragContext   *context,
+	      					 CdkDragContext   *context,
 	      					 gint              x,
 	      					 gint              y,
 	      					 guint             timestamp);
 
 static gboolean	lapiz_view_button_press_event	(CtkWidget        *widget,
-						 GdkEventButton   *event);
+						 CdkEventButton   *event);
 static gboolean	lapiz_view_button_release_event	(CtkWidget        *widget,
-						 GdkEventButton   *event);
+						 CdkEventButton   *event);
 static void	lapiz_view_populate_popup	(CtkTextView      *text_view,
 						 CtkWidget        *widget);
 
@@ -184,7 +184,7 @@ document_read_only_notify_handler (LapizDocument *document,
 
 static gboolean
 lapiz_view_scroll_event (CtkWidget      *widget,
-                         GdkEventScroll *event)
+                         CdkEventScroll *event)
 {
 	if (event->direction == CDK_SCROLL_UP)
 	{
@@ -553,7 +553,7 @@ lapiz_view_finalize (GObject *object)
 }
 
 static gint
-lapiz_view_focus_out (CtkWidget *widget, GdkEventFocus *event)
+lapiz_view_focus_out (CtkWidget *widget, CdkEventFocus *event)
 {
 	LapizView *view = LAPIZ_VIEW (widget);
 
@@ -1107,7 +1107,7 @@ static void
 send_focus_change (CtkWidget *widget,
 		   gboolean   in)
 {
-	GdkEvent *fevent = cdk_event_new (CDK_FOCUS_CHANGE);
+	CdkEvent *fevent = cdk_event_new (CDK_FOCUS_CHANGE);
 
 	g_object_ref (widget);
 
@@ -1175,7 +1175,7 @@ update_search_window_position (LapizView *view)
 {
 	gint x, y;
 	gint view_x, view_y;
-	GdkWindow *view_window = ctk_widget_get_window (CTK_WIDGET (view));
+	CdkWindow *view_window = ctk_widget_get_window (CTK_WIDGET (view));
 
 	ctk_widget_realize (view->priv->search_window);
 
@@ -1189,7 +1189,7 @@ update_search_window_position (LapizView *view)
 
 static gboolean
 search_window_delete_event (CtkWidget   *widget,
-			    GdkEventAny *event,
+			    CdkEventAny *event,
 			    LapizView   *view)
 {
 	hide_search_window (view, FALSE);
@@ -1199,12 +1199,12 @@ search_window_delete_event (CtkWidget   *widget,
 
 static gboolean
 search_window_button_press_event (CtkWidget      *widget,
-				  GdkEventButton *event,
+				  CdkEventButton *event,
 				  LapizView      *view)
 {
 	hide_search_window (view, FALSE);
 
-	ctk_propagate_event (CTK_WIDGET (view), (GdkEvent *)event);
+	ctk_propagate_event (CTK_WIDGET (view), (CdkEvent *)event);
 
 	return FALSE;
 }
@@ -1241,7 +1241,7 @@ search_again (LapizView *view,
 
 static gboolean
 search_window_scroll_event (CtkWidget      *widget,
-			    GdkEventScroll *event,
+			    CdkEventScroll *event,
 			    LapizView      *view)
 {
 	gboolean retval = FALSE;
@@ -1266,7 +1266,7 @@ search_window_scroll_event (CtkWidget      *widget,
 
 static gboolean
 search_window_key_press_event (CtkWidget   *widget,
-			       GdkEventKey *event,
+			       CdkEventKey *event,
 			       LapizView   *view)
 {
 	gboolean retval = FALSE;
@@ -2036,7 +2036,7 @@ lapiz_view_draw (CtkWidget      *widget,
 {
 	CtkTextView *text_view;
 	LapizDocument *doc;
-	GdkWindow *window;
+	CdkWindow *window;
 
 	text_view = CTK_TEXT_VIEW (widget);
 
@@ -2045,7 +2045,7 @@ lapiz_view_draw (CtkWidget      *widget,
 	if (ctk_cairo_should_draw_window (cr, window) &&
 	    lapiz_document_get_enable_search_highlighting (doc))
 	{
-		GdkRectangle visible_rect;
+		CdkRectangle visible_rect;
 		CtkTextIter iter1, iter2;
 
 		ctk_text_view_get_visible_rect (text_view, &visible_rect);
@@ -2064,11 +2064,11 @@ lapiz_view_draw (CtkWidget      *widget,
 	return CTK_WIDGET_CLASS (lapiz_view_parent_class)->draw (widget, cr);
 }
 
-static GdkAtom
+static CdkAtom
 drag_get_uri_target (CtkWidget      *widget,
-		     GdkDragContext *context)
+		     CdkDragContext *context)
 {
-	GdkAtom target;
+	CdkAtom target;
 	CtkTargetList *tl;
 
 	tl = ctk_target_list_new (NULL, 0);
@@ -2082,7 +2082,7 @@ drag_get_uri_target (CtkWidget      *widget,
 
 static gboolean
 lapiz_view_drag_motion (CtkWidget      *widget,
-			GdkDragContext *context,
+			CdkDragContext *context,
 			gint            x,
 			gint            y,
 			guint           timestamp)
@@ -2108,7 +2108,7 @@ lapiz_view_drag_motion (CtkWidget      *widget,
 
 static void
 lapiz_view_drag_data_received (CtkWidget        *widget,
-		       	       GdkDragContext   *context,
+		       	       CdkDragContext   *context,
 			       gint              x,
 			       gint              y,
 			       CtkSelectionData *selection_data,
@@ -2138,13 +2138,13 @@ lapiz_view_drag_data_received (CtkWidget        *widget,
 
 static gboolean
 lapiz_view_drag_drop (CtkWidget      *widget,
-		      GdkDragContext *context,
+		      CdkDragContext *context,
 		      gint            x,
 		      gint            y,
 		      guint           timestamp)
 {
 	gboolean result;
-	GdkAtom target;
+	CdkAtom target;
 
 	/* If this is a URL, just get the drag data */
 	target = drag_get_uri_target (widget, context);
@@ -2196,7 +2196,7 @@ create_line_numbers_menu (CtkWidget *view)
 
 static void
 show_line_numbers_menu (CtkWidget      *view,
-			GdkEventButton *event)
+			CdkEventButton *event)
 {
 	CtkWidget *menu;
 
@@ -2206,7 +2206,7 @@ show_line_numbers_menu (CtkWidget      *view,
 }
 
 static gboolean
-lapiz_view_button_press_event (CtkWidget *widget, GdkEventButton *event)
+lapiz_view_button_press_event (CtkWidget *widget, CdkEventButton *event)
 {
 	static gchar  *primtxt = "";
 
@@ -2249,7 +2249,7 @@ lapiz_view_button_press_event (CtkWidget *widget, GdkEventButton *event)
 }
 
 static gboolean
-lapiz_view_button_release_event (CtkWidget *widget, GdkEventButton *event)
+lapiz_view_button_release_event (CtkWidget *widget, CdkEventButton *event)
 {
 	if (event->button == 2)
 		middle_or_right_down = FALSE;
@@ -2269,9 +2269,9 @@ search_highlight_updated_cb (LapizDocument *doc,
 			     CtkTextIter   *end,
 			     LapizView     *view)
 {
-	GdkRectangle visible_rect;
-	GdkRectangle updated_rect;
-	GdkRectangle redraw_rect;
+	CdkRectangle visible_rect;
+	CdkRectangle updated_rect;
+	CdkRectangle redraw_rect;
 	gint y;
 	gint height;
 	CtkTextView *text_view;
@@ -2295,7 +2295,7 @@ search_highlight_updated_cb (LapizDocument *doc,
 	/* intersect both rectangles to see whether we need to queue a redraw */
 	if (cdk_rectangle_intersect (&updated_rect, &visible_rect, &redraw_rect))
 	{
-		GdkRectangle widget_rect;
+		CdkRectangle widget_rect;
 
 		ctk_text_view_buffer_to_window_coords (text_view,
 						       CTK_TEXT_WINDOW_WIDGET,
