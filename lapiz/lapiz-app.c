@@ -36,7 +36,7 @@
 #include <unistd.h>
 
 #include <glib/gi18n.h>
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 #include "lapiz-app.h"
 #include "lapiz-prefs-manager-app.h"
@@ -631,7 +631,7 @@ is_in_viewport (LapizWindow  *window,
 		gint          viewport_x,
 		gint          viewport_y)
 {
-	GdkWindow *gdkwindow;
+	GdkWindow *cdkwindow;
 	gint ws;
 	gint sc_width, sc_height;
 	gint x, y, width, height;
@@ -643,18 +643,18 @@ is_in_viewport (LapizWindow  *window,
 		return FALSE;
 
 	/* Check for viewport match */
-	gdkwindow = ctk_widget_get_window (CTK_WIDGET (window));
-	gdk_window_get_position (gdkwindow, &x, &y);
+	cdkwindow = ctk_widget_get_window (CTK_WIDGET (window));
+	cdk_window_get_position (cdkwindow, &x, &y);
 
-		width = gdk_window_get_width(gdkwindow);
-		height = gdk_window_get_height(gdkwindow);
+		width = cdk_window_get_width(cdkwindow);
+		height = cdk_window_get_height(cdkwindow);
 
 	lapiz_utils_get_current_viewport (screen, &vp_x, &vp_y);
 	x += vp_x;
 	y += vp_y;
 
-	sc_width = WidthOfScreen (gdk_x11_screen_get_xscreen (screen));
-	sc_height = HeightOfScreen (gdk_x11_screen_get_xscreen (screen));
+	sc_width = WidthOfScreen (cdk_x11_screen_get_xscreen (screen));
+	sc_height = HeightOfScreen (cdk_x11_screen_get_xscreen (screen));
 
 	return x + width * .25 >= viewport_x &&
 	       x + width * .75 <= viewport_x + sc_width &&

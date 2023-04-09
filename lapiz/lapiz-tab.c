@@ -326,27 +326,27 @@ set_cursor_according_to_state (CtkTextView   *view,
 	    (state == LAPIZ_TAB_STATE_PRINT_PREVIEWING) ||
 	    (state == LAPIZ_TAB_STATE_CLOSING))
 	{
-		cursor = gdk_cursor_new_for_display (
+		cursor = cdk_cursor_new_for_display (
 				ctk_widget_get_display (CTK_WIDGET (view)),
 				GDK_WATCH);
 
 		if (text_window != NULL)
-			gdk_window_set_cursor (text_window, cursor);
+			cdk_window_set_cursor (text_window, cursor);
 		if (left_window != NULL)
-			gdk_window_set_cursor (left_window, cursor);
+			cdk_window_set_cursor (left_window, cursor);
 
 		g_object_unref (cursor);
 	}
 	else
 	{
-		cursor = gdk_cursor_new_for_display (
+		cursor = cdk_cursor_new_for_display (
 				ctk_widget_get_display (CTK_WIDGET (view)),
 				GDK_XTERM);
 
 		if (text_window != NULL)
-			gdk_window_set_cursor (text_window, cursor);
+			cdk_window_set_cursor (text_window, cursor);
 		if (left_window != NULL)
-			gdk_window_set_cursor (left_window, NULL);
+			cdk_window_set_cursor (left_window, NULL);
 
 		g_object_unref (cursor);
 	}
@@ -1769,8 +1769,8 @@ resize_icon (GdkPixbuf *pixbuf,
 {
 	gint width, height;
 
-	width = gdk_pixbuf_get_width (pixbuf);
-	height = gdk_pixbuf_get_height (pixbuf);
+	width = cdk_pixbuf_get_width (pixbuf);
+	height = cdk_pixbuf_get_height (pixbuf);
 
 	/* if the icon is larger than the nominal size, scale down */
 	if (MAX (width, height) > size)
@@ -1788,7 +1788,7 @@ resize_icon (GdkPixbuf *pixbuf,
 			height = size;
 		}
 
-		scaled_pixbuf = gdk_pixbuf_scale_simple	(pixbuf,
+		scaled_pixbuf = cdk_pixbuf_scale_simple	(pixbuf,
 							 width,
 							 height,
 							 GDK_INTERP_BILINEAR);

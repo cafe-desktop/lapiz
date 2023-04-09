@@ -2356,7 +2356,7 @@ get_search_match_colors (LapizDocument *doc,
 	if (*foreground_set)
 	{
 		if (fg == NULL ||
-		    !gdk_rgba_parse (foreground, fg))
+		    !cdk_rgba_parse (foreground, fg))
 		{
 			*foreground_set = FALSE;
 		}
@@ -2365,7 +2365,7 @@ get_search_match_colors (LapizDocument *doc,
 	if (*background_set)
 	{
 		if (bg == NULL ||
-		    !gdk_rgba_parse (background, bg))
+		    !cdk_rgba_parse (background, bg))
 		{
 			*background_set = FALSE;
 		}
@@ -2381,7 +2381,7 @@ get_search_match_colors (LapizDocument *doc,
 			     "Falling back to hard-coded colors "
 			     "for the \"found\" text tag.");
 
-	gdk_rgba_parse (background, "#FFFF78");
+	cdk_rgba_parse (background, "#FFFF78");
 	*background_set = TRUE;
 	*foreground_set = FALSE;
 

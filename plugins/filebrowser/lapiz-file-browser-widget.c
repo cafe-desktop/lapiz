@@ -29,7 +29,7 @@
 #include <glib.h>
 #include <glib/gi18n-lib.h>
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 #include <lapiz/lapiz-utils.h>
 
@@ -1142,7 +1142,7 @@ on_begin_loading (LapizFileBrowserStore  *model,
 	if (!GDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
 		return;
 
-	gdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (obj)),
+	cdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (obj)),
 			       obj->priv->busy_cursor);
 }
 
@@ -1154,7 +1154,7 @@ on_end_loading (LapizFileBrowserStore  *model,
 	if (!GDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
 		return;
 
-	gdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (obj)), NULL);
+	cdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (obj)), NULL);
 }
 
 static void
@@ -1273,7 +1273,7 @@ lapiz_file_browser_widget_init (LapizFileBrowserWidget * obj)
 	                                CTK_ORIENTATION_VERTICAL);
 
 	display = ctk_widget_get_display (CTK_WIDGET (obj));
-	obj->priv->busy_cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
+	obj->priv->busy_cursor = cdk_cursor_new_for_display (display, GDK_WATCH);
 }
 
 /* Private */
@@ -2106,13 +2106,13 @@ set_busy (LapizFileBrowserWidget *obj, gboolean busy)
 		GdkCursor *cursor;
 
 		display = ctk_widget_get_display (CTK_WIDGET (obj));
-		cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
-		gdk_window_set_cursor (window, cursor);
+		cursor = cdk_cursor_new_for_display (display, GDK_WATCH);
+		cdk_window_set_cursor (window, cursor);
 		g_object_unref (obj->priv->busy_cursor);
 	}
 	else
 	{
-		gdk_window_set_cursor (window, NULL);
+		cdk_window_set_cursor (window, NULL);
 	}
 }
 

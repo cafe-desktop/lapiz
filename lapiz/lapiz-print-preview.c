@@ -35,7 +35,7 @@
 #include <stdlib.h>
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 #include <cairo-pdf.h>
 
 #include "lapiz-print-preview.h"
@@ -348,7 +348,7 @@ prev_button_clicked (CtkWidget         *button,
 
  	goto_page (preview, MAX (page, 0));
 
-	gdk_event_free (event);
+	cdk_event_free (event);
 }
 
 static void
@@ -367,7 +367,7 @@ next_button_clicked (CtkWidget         *button,
 
  	goto_page (preview, MIN (page, preview->priv->n_pages - 1));
 
-	gdk_event_free (event);
+	cdk_event_free (event);
 }
 
 static void
@@ -1185,7 +1185,7 @@ get_screen_dpi (LapizPrintPreview *preview)
 
 	screen = ctk_widget_get_screen (CTK_WIDGET (preview));
 
-	dpi = gdk_screen_get_resolution (screen);
+	dpi = cdk_screen_get_resolution (screen);
 	if (dpi < 30. || 600. < dpi)
 	{
 		g_warning ("Invalid the x-resolution for the screen, assuming 96dpi");

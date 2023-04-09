@@ -132,7 +132,7 @@ class Popup(Ctk.Dialog):
             style = self._treeview.get_style()
             bg = style.bg[Ctk.StateType.PRELIGHT]
 
-            cell.set_property('cell-background-gdk', bg)
+            cell.set_property('cell-background-cdk', bg)
             cell.set_property('style', Pango.Style.ITALIC)
         else:
             cell.set_property('cell-background-set', False)

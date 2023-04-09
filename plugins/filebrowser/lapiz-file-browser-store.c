@@ -1620,17 +1620,17 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 
 		if (icon == NULL) {
 			node->icon =
-			    gdk_pixbuf_new (gdk_pixbuf_get_colorspace (node->emblem),
-					    gdk_pixbuf_get_has_alpha (node->emblem),
-					    gdk_pixbuf_get_bits_per_sample (node->emblem),
+			    cdk_pixbuf_new (cdk_pixbuf_get_colorspace (node->emblem),
+					    cdk_pixbuf_get_has_alpha (node->emblem),
+					    cdk_pixbuf_get_bits_per_sample (node->emblem),
 					    icon_size,
 					    icon_size);
 		} else {
-			node->icon = gdk_pixbuf_copy (icon);
+			node->icon = cdk_pixbuf_copy (icon);
 			g_object_unref (icon);
 		}
 
-		gdk_pixbuf_composite (node->emblem, node->icon,
+		cdk_pixbuf_composite (node->emblem, node->icon,
 				      icon_size - 10, icon_size - 10, 10,
 				      10, icon_size - 10, icon_size - 10,
 				      1, 1, GDK_INTERP_NEAREST, 255);
