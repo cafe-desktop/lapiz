@@ -349,7 +349,7 @@
 
 ========== en_CA.po ==========
 # English/Canada translation of lapiz.
-# Copyright (C) 2004-2006 Adam Weinberger and the MATE Foundation
+# Copyright (C) 2004-2006 Adam Weinberger and the CAFE Foundation
 # This file is distributed under the same licence as the lapiz package.
 # Adam Weinberger <adamw@gnome.org>, 2004, 2005, 2006.
 #
@@ -405,7 +405,7 @@
 # Estonian translation of Lapiz.
 #
 # Copyright (C) 2002, 2003, 2005, 2006 Free Software Foundation, Inc.
-# Copyright (C) 2007-2010 The MATE Project.
+# Copyright (C) 2007-2010 The CAFE Project.
 # This file is distributed under the same license as the lapiz package.
 #
 # Ilmar Kerm <ikerm hot ee>, 2002.
@@ -740,7 +740,7 @@
 # Rajesh Ranjan <rranjan@redhat.com>, 2009.
 # Rajesh Ranjan <rajesh672@gmail.com>, 2009.
 # translation to lapiz to Maithili
-# Copyright (C) 2006 The MATE Foundation
+# Copyright (C) 2006 The CAFE Foundation
 # This file is distributed under the same license as the PACKAGE package.
 
 
@@ -1235,7 +1235,7 @@
 
 ========== vi.po ==========
 # Vietnamese translation for GEdit.
-# Copyright © 2009 MATE i18n Project for Vietnamese.
+# Copyright © 2009 CAFE i18n Project for Vietnamese.
 # Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002-2004,2007.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2009.
 #

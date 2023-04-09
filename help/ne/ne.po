@@ -33,7 +33,7 @@ msgstr ""
 #. (itstool) path: author/orgname
 #. (itstool) path: revdescription/para
 #: C/index.docbook:42 C/index.docbook:52 C/index.docbook:207
-msgid "MATE Documentation Project"
+msgid "CAFE Documentation Project"
 msgstr ""
 
 #. (itstool) path: publisher/publishername
@@ -50,7 +50,7 @@ msgstr ""
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:54
-msgid "MATE Desktop"
+msgid "CAFE Desktop"
 msgstr ""
 
 #. (itstool) path: affiliation/orgname
@@ -148,7 +148,7 @@ msgstr ""
 
 #. (itstool) path: revdescription/para
 #: C/index.docbook:206
-msgid "MATE Documentation Team"
+msgid "CAFE Documentation Team"
 msgstr ""
 
 #. (itstool) path: info/releaseinfo
@@ -372,7 +372,7 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:337
 msgid ""
-"Like other MATE applications, actions in <application>lapiz</application> "
+"Like other CAFE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:cafe-user-guide/shortcuts-apps\">User Guide</link>."
@@ -3999,7 +3999,7 @@ msgstr ""
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:14
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of CAFE manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in"
 " section 6 of the license."
@@ -4009,8 +4009,8 @@ msgstr ""
 #: C/legal.xml:21
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any CAFE "
+"documentation, and the members of the CAFE Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""
@@ -4064,6 +4064,6 @@ msgstr ""
 msgid ""
 "To report a bug or make a suggestion regarding the "
 "<application>lapiz</application> application or this manual, follow the "
-"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">MATE "
+"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE "
 "Feedback Page</link>."
 msgstr ""

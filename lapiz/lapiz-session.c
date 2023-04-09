@@ -377,7 +377,7 @@ client_quit_cb (EggSMClient *client, gpointer data)
 
 	lapiz_debug_message (DEBUG_FILE, "All files closed.");
 
-	cafecomponent_mdi_destroy (MATECOMPONENT_MDI (lapiz_mdi));
+	cafecomponent_mdi_destroy (CAFECOMPONENT_MDI (lapiz_mdi));
 
 	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_mdi.");
 

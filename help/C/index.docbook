@@ -2,7 +2,7 @@
 <?xml-model href="http://docbook.org/xml/5.0/rng/dbits.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <!--
       (Do not remove this comment block.)
-  Maintained by the MATE Documentation Project
+  Maintained by the CAFE Documentation Project
   http://wiki.cafe-desktop.org/dev-doc:doc-team-guide
   Template version: 2.0 beta
   Template last modified Jan 30, 2002
@@ -21,7 +21,7 @@
 
         <copyright its:translate="no">
             <year>2015-2020</year>
-            <holder>MATE Documentation Project</holder> 
+            <holder>CAFE Documentation Project</holder> 
         </copyright>
         <copyright its:translate="no">
             <year>2007</year>
@@ -39,7 +39,7 @@
         </copyright>
 
         <publisher>
-            <publishername>MATE Documentation Project</publishername>
+            <publishername>CAFE Documentation Project</publishername>
         </publisher>
         <publisher>
             <publishername>GNOME Documentation Project</publishername>
@@ -49,9 +49,9 @@
 
         <authorgroup its:translate="no">
             <author>
-                <orgname its:translate="yes">MATE Documentation Project</orgname>
+                <orgname its:translate="yes">CAFE Documentation Project</orgname>
                 <affiliation>
-                    <orgname its:translate="yes">MATE Desktop</orgname>
+                    <orgname its:translate="yes">CAFE Desktop</orgname>
                 </affiliation>
             </author>
             <author>
@@ -203,8 +203,8 @@
                 <revnumber>3.0</revnumber>
                 <date its:translate="yes">July 2015</date>
                 <revdescription>
-                    <para role="author" its:translate="yes">MATE Documentation Team</para>
-                    <para role="publisher" its:translate="yes">MATE Documentation Project</para>
+                    <para role="author" its:translate="yes">CAFE Documentation Team</para>
+                    <para role="publisher" its:translate="yes">CAFE Documentation Project</para>
                 </revdescription>
             </revision>
         </revhistory>
@@ -334,7 +334,7 @@
                 </varlistentry>
             </variablelist>
             <para>When you right-click in the <application>lapiz</application> window, the application displays a popup menu. The popup menu contains the most common text editing commands.</para>
-            <para>Like other MATE applications, actions in <application>lapiz</application> can be performed in several ways: with the menu, with the toolbar, or with shortcut keys. Shortcuts keys common to all applications are listed in the <link xlink:href="help:cafe-user-guide/shortcuts-apps">User Guide</link>.</para>
+            <para>Like other CAFE applications, actions in <application>lapiz</application> can be performed in several ways: with the menu, with the toolbar, or with shortcut keys. Shortcuts keys common to all applications are listed in the <link xlink:href="help:cafe-user-guide/shortcuts-apps">User Guide</link>.</para>
         </section>
 
         <!-- ============= To Open Multiple Files from the Command Line ====== -->

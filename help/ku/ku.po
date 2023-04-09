@@ -3,7 +3,7 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: CAFE Desktop Environment\n"
 "POT-Creation-Date: 2019-02-04 20:02+0100\n"
 "PO-Revision-Date: 2018-09-23 11:08+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2018\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. (itstool) path: articleinfo/copyright
 #: C/index.docbook:28
-msgid "<year>2015</year> <holder>MATE Documentation Project</holder>"
+msgid "<year>2015</year> <holder>CAFE Documentation Project</holder>"
 msgstr ""
 
 #. (itstool) path: articleinfo/copyright
@@ -49,7 +49,7 @@ msgstr ""
 #. (itstool) path: publisher/publishername
 #. (itstool) path: revdescription/para
 #: C/index.docbook:52 C/index.docbook:225
-msgid "MATE Documentation Project"
+msgid "CAFE Documentation Project"
 msgstr ""
 
 #. (itstool) path: publisher/publishername
@@ -64,8 +64,8 @@ msgstr ""
 #. (itstool) path: authorgroup/author
 #: C/index.docbook:61
 msgid ""
-"<firstname>MATE Documentation Project</firstname> <surname/> <affiliation> "
-"<orgname>MATE Desktop</orgname> </affiliation>"
+"<firstname>CAFE Documentation Project</firstname> <surname/> <affiliation> "
+"<orgname>CAFE Desktop</orgname> </affiliation>"
 msgstr ""
 
 #. (itstool) path: authorgroup/author
@@ -218,7 +218,7 @@ msgstr ""
 
 #. (itstool) path: revdescription/para
 #: C/index.docbook:224
-msgid "MATE Documentation Team"
+msgid "CAFE Documentation Team"
 msgstr ""
 
 #. (itstool) path: revhistory/revision
@@ -240,7 +240,7 @@ msgstr ""
 
 #. (itstool) path: para/ulink
 #: C/index.docbook:233
-msgid "MATE Feedback Page"
+msgid "CAFE Feedback Page"
 msgstr ""
 
 #. (itstool) path: legalnotice/para
@@ -254,7 +254,7 @@ msgstr ""
 #. (itstool) path: abstract/para
 #: C/index.docbook:238
 msgid ""
-"lapiz is a text editor for the MATE Desktop featuring basic yet robust "
+"lapiz is a text editor for the CAFE Desktop featuring basic yet robust "
 "capabilities such as printing, spell checking, find and replace, and syntax "
 "highlighting. More advanced features are available as plugins."
 msgstr ""
@@ -496,7 +496,7 @@ msgstr ""
 #. (itstool) path: sect2/para
 #: C/index.docbook:347
 msgid ""
-"Like other MATE applications, actions in <application>lapiz</application> "
+"Like other CAFE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<_:ulink-1/>."
@@ -4143,7 +4143,7 @@ msgstr ""
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:12
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of CAFE manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in"
 " section 6 of the license."
@@ -4153,8 +4153,8 @@ msgstr ""
 #: C/legal.xml:19
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any CAFE "
+"documentation, and the members of the CAFE Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""

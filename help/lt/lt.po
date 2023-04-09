@@ -43,8 +43,8 @@ msgstr ""
 #. (itstool) path: author/orgname
 #. (itstool) path: revdescription/para
 #: C/index.docbook:42 C/index.docbook:52 C/index.docbook:207
-msgid "MATE Documentation Project"
-msgstr "MATE dokumentacijos projektas"
+msgid "CAFE Documentation Project"
+msgstr "CAFE dokumentacijos projektas"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -60,8 +60,8 @@ msgstr "GNOME dokumentacijos projektas"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:54
-msgid "MATE Desktop"
-msgstr "MATE Darbastalis"
+msgid "CAFE Desktop"
+msgstr "CAFE Darbastalis"
 
 #. (itstool) path: affiliation/orgname
 #: C/index.docbook:66
@@ -158,8 +158,8 @@ msgstr "GNOME dokumentacijos komanda"
 
 #. (itstool) path: revdescription/para
 #: C/index.docbook:206
-msgid "MATE Documentation Team"
-msgstr "MATE dokumentacijos komanda"
+msgid "CAFE Documentation Team"
+msgstr "CAFE dokumentacijos komanda"
 
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
@@ -382,7 +382,7 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:337
 msgid ""
-"Like other MATE applications, actions in <application>lapiz</application> "
+"Like other CAFE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:cafe-user-guide/shortcuts-apps\">User Guide</link>."
@@ -4009,12 +4009,12 @@ msgstr ""
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:14
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of CAFE manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in"
 " section 6 of the license."
 msgstr ""
-"Šis žinynas yra MATE žinynų rinkinio, platinamo GFDL sąlygomis, dalis. Jeigu"
+"Šis žinynas yra CAFE žinynų rinkinio, platinamo GFDL sąlygomis, dalis. Jeigu"
 " norite dalintis šiuo žinynu atskirai nuo šio rinkinio, galite tą daryti "
 "pridėdami šios licencijos kopiją, kaip nurodyta 6 šios licencijos dalyje."
 
@@ -4022,13 +4022,13 @@ msgstr ""
 #: C/legal.xml:21
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any CAFE "
+"documentation, and the members of the CAFE Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""
 "Nemažai įmonių, jų produktų ir paslaugų pavadinimai laikomi prekės ženklais."
-" Kuomet šie pavadinimai pasirodo bet kur MATE dokumentacijoje, ir MATE "
+" Kuomet šie pavadinimai pasirodo bet kur CAFE dokumentacijoje, ir CAFE "
 "dokumentacijos projekto nariai atkreipia į juos dėmesį, šie pavadinimai "
 "radomi didžiosiomis raidėmis arba pradedami didžiąja raide."
 
@@ -4053,7 +4053,7 @@ msgstr ""
 " TIKRŲ TEISIŲ. VISA ŠIO DOKUMENTO  AR JO MODIFIKUOTOS VERSIJOS KOKYBĖS, "
 "TIKSLUMO IR VEIKIMO PRIKLAUSO JUMS. ESANT BET KOKIAM ŠIO DOKUMENTO AR JO "
 "MODIFIKUOTOS VERSIJOS TRŪKUMUI, JŪS (NE PIRMINIS RAŠYTOJAS, AUTORIUS AR "
-"KITAS PAGALBININKAS) PRISIIMATE REIKIAMO APTARNAVIMO, REMONTO AR TAISYMO "
+"KITAS PAGALBININKAS) PRISIICAFE REIKIAMO APTARNAVIMO, REMONTO AR TAISYMO "
 "IŠLAIDAS. ŠIS ATSAKOMYBĖS ATSISAKYMAS YRA ESMINĖ ŠIOS LICENCIJOS DALIS. "
 "TOLIAU NELEIDŽIAMAS JOKS ŠIO DOKUMENTO AR MODIFIKUOTOS VERSIJOS NAUDOJIMAS, "
 "IŠSKYRUS PAGAL ŠĮ ATSAKOMYBĖS ATSISAKYMĄ; IR"
@@ -4103,6 +4103,6 @@ msgstr "Atsiliepimai"
 msgid ""
 "To report a bug or make a suggestion regarding the "
 "<application>lapiz</application> application or this manual, follow the "
-"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">MATE "
+"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE "
 "Feedback Page</link>."
 msgstr ""

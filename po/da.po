@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR MATE Desktop Environment team
+# Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
@@ -583,19 +583,19 @@ msgid "Lapiz"
 msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
-msgid "A Text Editor for the MATE desktop environment"
-msgstr "Et tekstprogram for skrivebordsmiljøet MATE"
+msgid "A Text Editor for the CAFE desktop environment"
+msgstr "Et tekstprogram for skrivebordsmiljøet CAFE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
-"MATE desktop. It has most standard text editor functions and fully supports "
+"CAFE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 "Lapiz er et lille, men funktionsrigt tekstprogram designet specifikt for "
-"skrivebordet MATE. Det har de fleste standardfunktioner og understøtter i "
+"skrivebordet CAFE. Det har de fleste standardfunktioner og understøtter i "
 "fuld omfang international tekst i Unicode. Avancerede funktioner såsom "
 "syntaksfremhævelse og automatisk indrykning af kildekode, udskrivning og "
 "redigering af flere dokumenter i et vindue."
@@ -627,9 +627,9 @@ msgstr "accessories-text-editor"
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
-msgid "text;editor;MATE;tabs;highlighting;code;multiple;files;pluggable;"
+msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
-"text;editor;MATE;tabs;highlighting;code;multiple;files;pluggable;filer;"
+"text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;filer;"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:136
 msgid "Log Out _without Saving"
@@ -1322,8 +1322,8 @@ msgid "_Revert"
 msgstr "_Forkast"
 
 #: lapiz/lapiz-commands-help.c:60
-msgid "MATE Documentation Team"
-msgstr "MATE-dokumentationsholdet"
+msgid "CAFE Documentation Team"
+msgstr "CAFE-dokumentationsholdet"
 
 #: lapiz/lapiz-commands-help.c:61
 msgid "GNOME Documentation Team"
@@ -1334,7 +1334,7 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr "Lapiz er et lille redigeringsprogram til Mate-skrivebordet"
 
 #: lapiz/lapiz-commands-help.c:70
@@ -1382,7 +1382,7 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 MATE developers"
+"Copyright © 2012-2020 CAFE developers"
 msgstr ""
 "Ophavsret 1998-2000 Evan Lawrence, Alex Robert\n"
 "Ophavsret 2000-2002 Chema Celorio, Paolo Maggi\n"
@@ -1390,7 +1390,7 @@ msgstr ""
 "Ophavsret 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Ophavsret 2011 Perberos\n"
-"Ophavsret 2012-2020 MATE-udviklerne"
+"Ophavsret 2012-2020 CAFE-udviklerne"
 
 #: lapiz/lapiz-commands-help.c:126
 msgid "translator-credits"

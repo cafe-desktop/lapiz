@@ -1,13 +1,13 @@
 General Information
 ===================
 
-lapiz is a small and lightweight UTF-8 text editor for the MATE
+lapiz is a small and lightweight UTF-8 text editor for the CAFE
 environment. Based on gedit, the text editor for the GNOME2 environment.
 
-lapiz is part of MATE and uses the latest GTK+ and MATE libraries.
-Complete MATE integration is featured, with support for Drag and Drop (DnD)
-from Caja (the MATE file manager), the use of the MATE help system,
-the MATE Virtual File System and the MATE print framework.
+lapiz is part of CAFE and uses the latest GTK+ and CAFE libraries.
+Complete CAFE integration is featured, with support for Drag and Drop (DnD)
+from Caja (the CAFE file manager), the use of the CAFE help system,
+the CAFE Virtual File System and the CAFE print framework.
 
 lapiz uses a Multiple Document Interface (MDI), which lets you edit more than
 one document at the same time.
@@ -77,7 +77,7 @@ If test fail and you have setup the above correctly then please file a bug repor
 How to report bugs
 ==================
 
-Bugs should be reported to the MATE bug tracking system:
+Bugs should be reported to the CAFE bug tracking system:
 
   https://github.com/cafe-desktop/lapiz/issues 
   

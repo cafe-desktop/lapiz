@@ -776,7 +776,7 @@ lapiz_app_get_views (LapizApp *app)
  *
  * Gets the lockdown mask (see #LapizLockdownMask) for the application.
  * The lockdown mask determines which functions are locked down using
- * the MATE-wise lockdown GSettings keys.
+ * the CAFE-wise lockdown GSettings keys.
  **/
 LapizLockdownMask
 lapiz_app_get_lockdown (LapizApp *app)
