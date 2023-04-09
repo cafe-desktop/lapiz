@@ -35,18 +35,27 @@
 #endif
 
 #define DEFAULT_LOCAL_URI "/tmp/pluma-document-saver-test.txt"
+
+#ifdef ENABLE_SFTP_TESTS
 #define DEFAULT_REMOTE_URI "sftp://localhost/tmp/pluma-document-saver-test.txt"
+#endif
+
 #define DEFAULT_CONTENT "hello world!"
 #define DEFAULT_CONTENT_RESULT "hello world!\n"
 
 #define UNOWNED_LOCAL_DIRECTORY "/tmp/pluma-document-saver-unowned"
 #define UNOWNED_LOCAL_URI "/tmp/pluma-document-saver-unowned/pluma-document-saver-test.txt"
 
+#ifdef ENABLE_SFTP_TESTS
 #define UNOWNED_REMOTE_DIRECTORY "sftp://localhost/tmp/pluma-document-saver-unowned"
 #define UNOWNED_REMOTE_URI "sftp://localhost/tmp/pluma-document-saver-unowned/pluma-document-saver-test.txt"
+#endif
 
 #define UNOWNED_GROUP_LOCAL_URI "/tmp/pluma-document-saver-unowned-group.txt"
+
+#ifdef ENABLE_SFTP_TESTS
 #define UNOWNED_GROUP_REMOTE_URI "sftp://localhost/tmp/pluma-document-saver-unowned-group.txt"
+#endif
 
 static gboolean test_completed;
 static gboolean mount_completed;
@@ -704,6 +713,7 @@ int main (int   argc,
 		g_test_add_func ("/document-saver/local-unowned-directory", test_local_unowned_directory);
 	}
 
+#ifdef ENABLE_SFTP_TESTS
 	g_test_add_func ("/document-saver/remote", test_remote);
 	g_test_add_func ("/document-saver/remote-new-line", test_remote_newline);
 
@@ -718,6 +728,7 @@ int main (int   argc,
 		/* FIXME: there is a bug in gvfs sftp which doesn't pass this test */
 		/* g_test_add_func ("/document-saver/remote-unowned-group", test_remote_unowned_group); */
 	}
+#endif
 
 	g_test_add_func ("/document-saver/local-permissions", test_local_permissions);
 
@@ -726,7 +737,9 @@ int main (int   argc,
 		g_test_add_func ("/document-saver/local-unowned-group", test_local_unowned_group);
 	}
 
+#ifdef ENABLE_SFTP_TESTS
 	g_test_add_func ("/document-saver/remote-permissions", test_remote_permissions);
+#endif
 
 	return g_test_run ();
 }

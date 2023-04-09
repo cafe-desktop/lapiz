@@ -215,6 +215,17 @@ AC_ARG_ENABLE([tests],
 
 AM_CONDITIONAL(ENABLE_TESTS, test x$enable_tests = xyes)
 
+AC_ARG_ENABLE([sftp-tests],
+	AS_HELP_STRING([--enable-sftp-tests], [Enable sftp tests]),
+	[enable_sftp_tests=$enableval],
+	[enable_sftp_tests=yes])
+
+AM_CONDITIONAL(ENABLE_SFTP_TESTS, test "x$enable_sftp_tests" != "xno")
+
+if test "x$enable_sftp_tests" != "xno"; then
+	AC_DEFINE([ENABLE_SFTP_TESTS], [1], [Define to enable sftp tests])
+fi
+
 PLUGIN_LIBTOOL_FLAGS="-module -avoid-version"
 
 AC_SUBST(PLUGIN_LIBTOOL_FLAGS)
@@ -285,6 +296,7 @@ Configuration:
 	Gvfs metadata enabled:	$enable_gvfs_metadata
 	GObject Introspection:	${have_introspection}
 	Tests enabled:		$enable_tests
+	Enable sftp tests:	$enable_sftp_tests
 "
 
 if expr ${PLUMA_MINOR_VERSION} % 2 > /dev/null; then
