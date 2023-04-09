@@ -27,8 +27,8 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
-msgstr "Manual de Pluma"
+msgid "Lapiz Manual"
+msgstr "Manual de Lapiz"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -155,12 +155,12 @@ msgstr "Equip de documentació de MATE"
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
 msgid "This manual describes version 1.10 of lapiz."
-msgstr "Aquest manual descriu la versió 1.10 de Pluma."
+msgstr "Aquest manual descriu la versió 1.10 de Lapiz."
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:216
 msgid "<primary>lapiz</primary>"
-msgstr "<primary>Pluma</primary>"
+msgstr "<primary>Lapiz</primary>"
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:219
@@ -218,7 +218,7 @@ msgstr "Menú <guimenu>Aplicacions</guimenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 
@@ -244,7 +244,7 @@ msgstr ""
 #. (itstool) path: info/title
 #: C/index.docbook:267
 msgid "The lapiz Window"
-msgstr "La finestra de Pluma"
+msgstr "La finestra de Lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:269
@@ -263,7 +263,7 @@ msgstr "Finestra de lapiz"
 #. (itstool) path: textobject/phrase
 #: C/index.docbook:281
 msgid "Shows lapiz main window."
-msgstr "Mostra la finestra principal de Pluma"
+msgstr "Mostra la finestra principal de Lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:287
@@ -1794,8 +1794,8 @@ msgstr "Ctrl + Q"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
-msgstr "Surt de Pluma."
+msgid "Quit Lapiz."
+msgstr "Surt de Lapiz."
 
 #. (itstool) path: section/bridgehead
 #: C/index.docbook:1202
@@ -4194,6 +4194,6 @@ msgid ""
 "Feedback Page</link>."
 msgstr ""
 "Per informar d'un error o fer un suggeriment sobre l'aplicació "
-"<application>Pluma</application> o d'aquest manual, seguiu les instruccions "
+"<application>Lapiz</application> o d'aquest manual, seguiu les instruccions "
 "de la <link xlink:href=\"help:mate-user-guide/feedback\">pàgina de "
 "retroacció de MATE</link>."

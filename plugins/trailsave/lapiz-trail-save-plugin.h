@@ -32,34 +32,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_TRAIL_SAVE_PLUGIN		(lapiz_trail_save_plugin_get_type ())
-#define LAPIZ_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePlugin))
-#define LAPIZ_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePluginClass))
+#define LAPIZ_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, LapizTrailSavePlugin))
+#define LAPIZ_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, LapizTrailSavePluginClass))
 #define LAPIZ_IS_TRAIL_SAVE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN))
 #define LAPIZ_IS_TRAIL_SAVE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN))
-#define LAPIZ_TRAIL_SAVE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, PlumaTrailSavePluginClass))
+#define LAPIZ_TRAIL_SAVE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_TRAIL_SAVE_PLUGIN, LapizTrailSavePluginClass))
 
 /* Private structure type */
-typedef struct _PlumaTrailSavePluginPrivate	PlumaTrailSavePluginPrivate;
+typedef struct _LapizTrailSavePluginPrivate	LapizTrailSavePluginPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaTrailSavePlugin		PlumaTrailSavePlugin;
+typedef struct _LapizTrailSavePlugin		LapizTrailSavePlugin;
 
-struct _PlumaTrailSavePlugin
+struct _LapizTrailSavePlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	PlumaTrailSavePluginPrivate *priv;
+	LapizTrailSavePluginPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaTrailSavePluginClass	PlumaTrailSavePluginClass;
+typedef struct _LapizTrailSavePluginClass	LapizTrailSavePluginClass;
 
-struct _PlumaTrailSavePluginClass
+struct _LapizTrailSavePluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

@@ -17,7 +17,7 @@
     <!-- please do not change the id; for translations, change lang to -->
     <!-- appropriate code -->
     <info>
-        <title>Pluma Manual</title>
+        <title>Lapiz Manual</title>
 
         <copyright its:translate="no">
             <year>2015-2020</year>
@@ -249,7 +249,7 @@
                     <term>
                         <guimenu>Applications</guimenu> menu</term>
                     <listitem>
-                        <para>Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma Text Editor</guimenuitem> </menuchoice>.</para>
+                        <para>Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz Text Editor</guimenuitem> </menuchoice>.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -1183,7 +1183,7 @@
                             <para>Ctrl + Q</para>
                         </entry>
                         <entry>
-                            <para>Quit Pluma.</para>
+                            <para>Quit Lapiz.</para>
                         </entry>
                     </row>
                 </tbody>

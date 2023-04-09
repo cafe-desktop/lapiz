@@ -1,4 +1,4 @@
-#    Pluma snippets plugin
+#    Lapiz snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@ import os
 import tempfile
 import shutil
 
-from gi.repository import GObject, Gio, Gdk, Gtk, GtkSource, Pluma
+from gi.repository import GObject, Gio, Gdk, Gtk, GtkSource, Lapiz
 
 from .Snippet import Snippet
 from .Helper import *
@@ -90,7 +90,7 @@ class Manager:
             self.tree_view.expand_row(path, False)
 
     def build_model(self, force_reload = False):
-        window = Pluma.App.get_default().get_active_window()
+        window = Lapiz.App.get_default().get_active_window()
 
         if window:
             view = window.get_active_view()
@@ -610,7 +610,7 @@ class Manager:
         self.default_size = [alloc.width, alloc.height]
 
         if resp == Gtk.ResponseType.HELP:
-            Pluma.help_display(self.dlg, 'lapiz', 'lapiz-snippets-plugin')
+            Lapiz.help_display(self.dlg, 'lapiz', 'lapiz-snippets-plugin')
             return
 
         self.dlg.destroy()
@@ -757,7 +757,7 @@ class Manager:
         success = True
 
         for filename in filenames:
-            if not Pluma.utils_uri_has_file_scheme(filename):
+            if not Lapiz.utils_uri_has_file_scheme(filename):
                 continue
 
             # Remove file://

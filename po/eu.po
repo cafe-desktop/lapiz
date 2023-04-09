@@ -94,7 +94,7 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Pluma-ek gordetzen dituen fitxategien babeskopiak sortu behar dituen ala ez."
+"Lapiz-ek gordetzen dituen fitxategien babeskopiak sortu behar dituen ala ez."
 " Babeskopiaren luzapena ezar dezakezu \"Babeskopiaren luzapena\" aukeraren "
 "bidez."
 
@@ -108,7 +108,7 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"Pluma-ek aldatutako fitxategiak denbora-tarte baten ondoren automatikoki "
+"Lapiz-ek aldatutako fitxategiak denbora-tarte baten ondoren automatikoki "
 "gorde behar dituen ala ez. Denbora-tartea ezar dezakezu \"Automatikoki "
 "gordetzeko bitartea\" aukeraren bidez."
 
@@ -121,7 +121,7 @@ msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Pluma-ek aldatutako fitxategiak automatikoki gorde aurretik zenbat minutu "
+"Lapiz-ek aldatutako fitxategiak automatikoki gorde aurretik zenbat minutu "
 "itxaron behar duen. Eragina izan dezan, \"Gorde automatikoki\" aukerak "
 "aktibatuta egon behar du."
 
@@ -142,7 +142,7 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"Pluma-ek idazteko moduan onartzen dituen VFS eskemen zerrenda. 'fitxategia' "
+"Lapiz-ek idazteko moduan onartzen dituen VFS eskemen zerrenda. 'fitxategia' "
 "eskema idazgarria da lehenetsi gisa."
 
 #: data/org.mate.lapiz.gschema.xml.in:61
@@ -154,7 +154,7 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Pluma-ek desegin edo berregin ditzakeen ekintzen gehienezko kopurua. Erabili"
+"Lapiz-ek desegin edo berregin ditzakeen ekintzen gehienezko kopurua. Erabili"
 " \"-1\" ekintza kopurua ez mugatzeko."
 
 #: data/org.mate.lapiz.gschema.xml.in:66
@@ -193,7 +193,7 @@ msgstr "Txertatu zuriuneak"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Pluma-ek tabuladoreen ordez zuriuneak sartu behar dituen ala ez."
+msgstr "Lapiz-ek tabuladoreen ordez zuriuneak sartu behar dituen ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -201,7 +201,7 @@ msgstr "Koska automatikoa"
 
 #: data/org.mate.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
-msgstr "Pluma-ek koska automatikoa gaitu behar duen ala ez."
+msgstr "Lapiz-ek koska automatikoa gaitu behar duen ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
@@ -210,7 +210,7 @@ msgstr "Bistaratu lerro-zenbakiak"
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr ""
-"Pluma-ek editatzeko arean lerro-zenbakiak bistaratu behar dituen ala ez."
+"Lapiz-ek editatzeko arean lerro-zenbakiak bistaratu behar dituen ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -218,7 +218,7 @@ msgstr "Nabarmendu uneko lerroa"
 
 #: data/org.mate.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
-msgstr "Pluma-ek uneko lerroa nabarmendu behar duen ala ez."
+msgstr "Lapiz-ek uneko lerroa nabarmendu behar duen ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
@@ -227,7 +227,7 @@ msgstr "Nabarmendu bat-datorren parentesia"
 #: data/org.mate.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
-"Pluma-ek hautatutako parentesiari dagokion bikotea nabarmendu behar duen ala"
+"Lapiz-ek hautatutako parentesiari dagokion bikotea nabarmendu behar duen ala"
 " ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:101
@@ -237,7 +237,7 @@ msgstr "Bistaratu eskuineko marjinak"
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
 msgstr ""
-"Pluma-ek editatzeko arean eskuineko marjina bistaratu behar duen ala ez."
+"Lapiz-ek editatzeko arean eskuineko marjina bistaratu behar duen ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -280,7 +280,7 @@ msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Fitxategi bat kargatzean Pluma-ek kurtsorearen aurreko posizioa leheneratu "
+"Fitxategi bat kargatzean Lapiz-ek kurtsorearen aurreko posizioa leheneratu "
 "behar duen ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:121
@@ -291,7 +291,7 @@ msgstr "Gaitu bilaketaren nabarmentzea"
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr ""
-"Pluma-ek bilaketako testuaren gertaera guztiak nabarmendu behar dituen ala "
+"Lapiz-ek bilaketako testuaren gertaera guztiak nabarmendu behar dituen ala "
 "ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:126
@@ -300,7 +300,7 @@ msgstr "Gaitu sintaxiaren nabarmentzea"
 
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr "Pluma-ek sintaxiaren nabarmentzea gaitu behar duen ala ez."
+msgstr "Lapiz-ek sintaxiaren nabarmentzea gaitu behar duen ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -399,7 +399,7 @@ msgstr "Inprimatu goiburua"
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr ""
-"Pluma-ek dokumentuak inprimatzean dokumentuaren goiburua sartu behar duen "
+"Lapiz-ek dokumentuak inprimatzean dokumentuaren goiburua sartu behar duen "
 "ala ez."
 
 #: data/org.mate.lapiz.gschema.xml.in:176
@@ -500,7 +500,7 @@ msgid ""
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
 " recognized encodings are used."
 msgstr ""
-"Pluma-ek fitxategien kodeketa automatikoki detektatzeko erabiltzen dituen "
+"Lapiz-ek fitxategien kodeketa automatikoki detektatzeko erabiltzen dituen "
 "kodeketen zerrenda ordenatua. \"CURRENT\" uneko locale-aren kodeketa da. "
 "Kodeketa ezagunak bakarrik erabiltzen dira."
 
@@ -592,8 +592,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -601,7 +601,7 @@ msgstr "MATE mahaigain ingurunerako testu-editorea"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -610,7 +610,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -893,7 +893,7 @@ msgid "_Close"
 msgstr "_Itxi"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
+msgid "Lapiz Preferences"
 msgstr ""
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
@@ -1307,12 +1307,12 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma MATE mahaigainerako testu-editore txiki eta arina da"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz MATE mahaigainerako testu-editore txiki eta arina da"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1320,7 +1320,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1329,12 +1329,12 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
+msgid "About Lapiz"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:116
@@ -1788,7 +1788,7 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"Pluma-ek ezin ditu %s helbideak idazteko moduan kudeatu. Egiaztatu helbidea "
+"Lapiz-ek ezin ditu %s helbideak idazteko moduan kudeatu. Egiaztatu helbidea "
 "ondo idatzi duzula eta saiatu berriro."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
@@ -2182,7 +2182,7 @@ msgstr "_Edukia"
 
 #: lapiz/lapiz-ui.h:67
 msgid "Open the lapiz manual"
-msgstr "Pluma-en eskuliburua irekitzen du"
+msgstr "Lapiz-en eskuliburua irekitzen du"
 
 #: lapiz/lapiz-ui.h:68
 msgid "_About"
@@ -3256,7 +3256,7 @@ msgstr "Lerro-moduak"
 
 #: plugins/modelines/modelines.plugin.desktop.in:6
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
-msgstr "Emacs, Kate eta Vim estiloko lerro-moduen euskarria Pluma-entzat"
+msgstr "Emacs, Kate eta Vim estiloko lerro-moduen euskarria Lapiz-entzat"
 
 #: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 #: plugins/pythonconsole/pythonconsole/__init__.py:55

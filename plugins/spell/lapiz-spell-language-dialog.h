@@ -36,18 +36,18 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG              (lapiz_spell_language_dialog_get_type())
-#define LAPIZ_SPELL_LANGUAGE_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialog))
-#define LAPIZ_SPELL_LANGUAGE_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialogClass))
+#define LAPIZ_SPELL_LANGUAGE_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, LapizSpellLanguageDialog))
+#define LAPIZ_SPELL_LANGUAGE_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, LapizSpellLanguageDialogClass))
 #define LAPIZ_IS_SPELL_LANGUAGE_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG))
 #define LAPIZ_IS_SPELL_LANGUAGE_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG))
-#define LAPIZ_SPELL_LANGUAGE_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialogClass))
+#define LAPIZ_SPELL_LANGUAGE_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, LapizSpellLanguageDialogClass))
 
 
-typedef struct _PlumaSpellLanguageDialog PlumaSpellLanguageDialog;
+typedef struct _LapizSpellLanguageDialog LapizSpellLanguageDialog;
 
-typedef struct _PlumaSpellLanguageDialogClass PlumaSpellLanguageDialogClass;
+typedef struct _LapizSpellLanguageDialogClass LapizSpellLanguageDialogClass;
 
-struct _PlumaSpellLanguageDialogClass
+struct _LapizSpellLanguageDialogClass
 {
 	GtkDialogClass parent_class;
 };
@@ -55,11 +55,11 @@ struct _PlumaSpellLanguageDialogClass
 GType		 lapiz_spell_language_dialog_get_type		(void) G_GNUC_CONST;
 
 GtkWidget	*lapiz_spell_language_dialog_new		(GtkWindow			 *parent,
-								 const PlumaSpellCheckerLanguage *cur_lang,
+								 const LapizSpellCheckerLanguage *cur_lang,
 								 const gchar *data_dir);
 
-const PlumaSpellCheckerLanguage *
-		 lapiz_spell_language_get_selected_language	(PlumaSpellLanguageDialog *dlg);
+const LapizSpellCheckerLanguage *
+		 lapiz_spell_language_get_selected_language	(LapizSpellLanguageDialog *dlg);
 
 G_END_DECLS
 

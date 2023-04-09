@@ -807,7 +807,7 @@ lapiz_prefs_manager_editor_font_changed (GSettings *settings,
 
 	while (l != NULL)
 	{
-		/* Note: we use def=FALSE to avoid PlumaView to query GSettings */
+		/* Note: we use def=FALSE to avoid LapizView to query GSettings */
 		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE,  font);
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 
@@ -845,7 +845,7 @@ lapiz_prefs_manager_system_font_changed (GSettings *settings,
 
 	while (l != NULL)
 	{
-		/* Note: we use def=FALSE to avoid PlumaView to query GSettings */
+		/* Note: we use def=FALSE to avoid LapizView to query GSettings */
 		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE, font);
 
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
@@ -1372,7 +1372,7 @@ lapiz_prefs_manager_max_recents_changed (GSettings *settings,
 		windows = lapiz_app_get_windows (lapiz_app_get_default ());
 		while (windows != NULL)
 		{
-			PlumaWindow *w = windows->data;
+			LapizWindow *w = windows->data;
 
 			gtk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (w->priv->toolbar_recent_menu),
 						      max);
@@ -1406,8 +1406,8 @@ lapiz_prefs_manager_auto_save_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			PlumaDocument *doc = LAPIZ_DOCUMENT (l->data);
-			PlumaTab *tab = lapiz_tab_get_from_document (doc);
+			LapizDocument *doc = LAPIZ_DOCUMENT (l->data);
+			LapizTab *tab = lapiz_tab_get_from_document (doc);
 
 			lapiz_tab_set_auto_save_enabled (tab, auto_save);
 
@@ -1430,8 +1430,8 @@ lapiz_prefs_manager_auto_save_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			PlumaDocument *doc = LAPIZ_DOCUMENT (l->data);
-			PlumaTab *tab = lapiz_tab_get_from_document (doc);
+			LapizDocument *doc = LAPIZ_DOCUMENT (l->data);
+			LapizTab *tab = lapiz_tab_get_from_document (doc);
 
 			lapiz_tab_set_auto_save_interval (tab, auto_save_interval);
 
@@ -1447,7 +1447,7 @@ lapiz_prefs_manager_lockdown_changed (GSettings *settings,
 				      gchar       *key,
 				      gpointer     user_data)
 {
-	PlumaApp *app;
+	LapizApp *app;
 	gboolean locked;
 
 	lapiz_debug (DEBUG_PREFS);

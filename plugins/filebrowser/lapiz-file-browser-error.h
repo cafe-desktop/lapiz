@@ -1,5 +1,5 @@
 /*
- * lapiz-file-browser-error.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-error.h - Lapiz plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -34,7 +34,7 @@ typedef enum {
 	LAPIZ_FILE_BROWSER_ERROR_SET_ROOT,
 	LAPIZ_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
 	LAPIZ_FILE_BROWSER_ERROR_NUM
-} PlumaFileBrowserError;
+} LapizFileBrowserError;
 
 G_END_DECLS
 

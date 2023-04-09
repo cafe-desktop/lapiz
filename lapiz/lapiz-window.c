@@ -65,8 +65,8 @@
 
 #define LANGUAGE_NONE (const gchar *)"LangNone"
 #define LAPIZ_UIFILE "lapiz-ui.xml"
-#define TAB_WIDTH_DATA "PlumaWindowTabWidthData"
-#define LANGUAGE_DATA "PlumaWindowLanguageData"
+#define TAB_WIDTH_DATA "LapizWindowTabWidthData"
+#define LANGUAGE_DATA "LapizWindowLanguageData"
 #define FULLSCREEN_ANIMATION_SPEED 4
 
 /* Local variables */
@@ -96,10 +96,10 @@ enum
 	TARGET_URI_LIST = 100
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaWindow, lapiz_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizWindow, lapiz_window, GTK_TYPE_WINDOW)
 
 static void	recent_manager_changed	(GtkRecentManager *manager,
-					 PlumaWindow *window);
+					 LapizWindow *window);
 
 static void
 lapiz_window_get_property (GObject    *object,
@@ -107,7 +107,7 @@ lapiz_window_get_property (GObject    *object,
 			   GValue     *value,
 			   GParamSpec *pspec)
 {
-	PlumaWindow *window = LAPIZ_WINDOW (object);
+	LapizWindow *window = LAPIZ_WINDOW (object);
 
 	switch (prop_id)
 	{
@@ -122,7 +122,7 @@ lapiz_window_get_property (GObject    *object,
 }
 
 static void
-save_panes_state (PlumaWindow *window)
+save_panes_state (LapizWindow *window)
 {
 	gint pane_page;
 
@@ -159,7 +159,7 @@ save_panes_state (PlumaWindow *window)
 static void
 lapiz_window_dispose (GObject *object)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -247,7 +247,7 @@ lapiz_window_dispose (GObject *object)
 static void
 lapiz_window_finalize (GObject *object)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -263,7 +263,7 @@ static gboolean
 lapiz_window_window_state_event (GtkWidget           *widget,
 				 GdkEventWindowState *event)
 {
-	PlumaWindow *window = LAPIZ_WINDOW (widget);
+	LapizWindow *window = LAPIZ_WINDOW (widget);
 
 	window->priv->window_state = event->new_window_state;
 
@@ -274,7 +274,7 @@ static gboolean
 lapiz_window_configure_event (GtkWidget         *widget,
 			      GdkEventConfigure *event)
 {
-	PlumaWindow *window = LAPIZ_WINDOW (widget);
+	LapizWindow *window = LAPIZ_WINDOW (widget);
 
 	window->priv->width = event->width;
 	window->priv->height = event->height;
@@ -390,14 +390,14 @@ lapiz_window_key_press_event (GtkWidget   *widget,
 }
 
 static void
-lapiz_window_tab_removed (PlumaWindow *window,
-			  PlumaTab    *tab)
+lapiz_window_tab_removed (LapizWindow *window,
+			  LapizTab    *tab)
 {
 	peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 }
 
 static void
-lapiz_window_class_init (PlumaWindowClass *klass)
+lapiz_window_class_init (LapizWindowClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -416,7 +416,7 @@ lapiz_window_class_init (PlumaWindowClass *klass)
 		g_signal_new ("tab_added",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (PlumaWindowClass, tab_added),
+			      G_STRUCT_OFFSET (LapizWindowClass, tab_added),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
@@ -426,7 +426,7 @@ lapiz_window_class_init (PlumaWindowClass *klass)
 		g_signal_new ("tab_removed",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (PlumaWindowClass, tab_removed),
+			      G_STRUCT_OFFSET (LapizWindowClass, tab_removed),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
@@ -436,7 +436,7 @@ lapiz_window_class_init (PlumaWindowClass *klass)
 		g_signal_new ("tabs_reordered",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (PlumaWindowClass, tabs_reordered),
+			      G_STRUCT_OFFSET (LapizWindowClass, tabs_reordered),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE,
@@ -445,7 +445,7 @@ lapiz_window_class_init (PlumaWindowClass *klass)
 		g_signal_new ("active_tab_changed",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (PlumaWindowClass, active_tab_changed),
+			      G_STRUCT_OFFSET (LapizWindowClass, active_tab_changed),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
@@ -455,7 +455,7 @@ lapiz_window_class_init (PlumaWindowClass *klass)
 		g_signal_new ("active_tab_state_changed",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (PlumaWindowClass, active_tab_state_changed),
+			      G_STRUCT_OFFSET (LapizWindowClass, active_tab_state_changed),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE,
@@ -474,7 +474,7 @@ lapiz_window_class_init (PlumaWindowClass *klass)
 
 static void
 menu_item_select_cb (GtkMenuItem *proxy,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
 	GtkAction *action;
 	char *message;
@@ -493,7 +493,7 @@ menu_item_select_cb (GtkMenuItem *proxy,
 
 static void
 menu_item_deselect_cb (GtkMenuItem *proxy,
-                       PlumaWindow *window)
+                       LapizWindow *window)
 {
 	gtk_statusbar_pop (GTK_STATUSBAR (window->priv->statusbar),
 			   window->priv->tip_message_cid);
@@ -503,7 +503,7 @@ static void
 connect_proxy_cb (GtkUIManager *manager,
                   GtkAction *action,
                   GtkWidget *proxy,
-                  PlumaWindow *window)
+                  LapizWindow *window)
 {
 	if (GTK_IS_MENU_ITEM (proxy))
 	{
@@ -518,7 +518,7 @@ static void
 disconnect_proxy_cb (GtkUIManager *manager,
                      GtkAction *action,
                      GtkWidget *proxy,
-                     PlumaWindow *window)
+                     LapizWindow *window)
 {
 	if (GTK_IS_MENU_ITEM (proxy))
 	{
@@ -530,7 +530,7 @@ disconnect_proxy_cb (GtkUIManager *manager,
 }
 
 static void
-apply_toolbar_style (PlumaWindow *window,
+apply_toolbar_style (LapizWindow *window,
 		     GtkWidget *toolbar)
 {
 	switch (window->priv->toolbar_style)
@@ -566,11 +566,11 @@ apply_toolbar_style (PlumaWindow *window,
 
 /* Returns TRUE if toolbar is visible */
 static gboolean
-set_toolbar_style (PlumaWindow *window,
-		   PlumaWindow *origin)
+set_toolbar_style (LapizWindow *window,
+		   LapizWindow *origin)
 {
 	gboolean visible;
-	PlumaToolbarSetting style;
+	LapizToolbarSetting style;
 	GtkAction *action;
 
 	if (origin == NULL)
@@ -604,8 +604,8 @@ set_toolbar_style (PlumaWindow *window,
 }
 
 static void
-update_next_prev_doc_sensitivity (PlumaWindow *window,
-				  PlumaTab    *tab)
+update_next_prev_doc_sensitivity (LapizWindow *window,
+				  LapizTab    *tab)
 {
 	gint	     tab_number;
 	GtkNotebook *notebook;
@@ -629,9 +629,9 @@ update_next_prev_doc_sensitivity (PlumaWindow *window,
 }
 
 static void
-update_next_prev_doc_sensitivity_per_window (PlumaWindow *window)
+update_next_prev_doc_sensitivity_per_window (LapizWindow *window)
 {
-	PlumaTab  *tab;
+	LapizTab  *tab;
 	GtkAction *action;
 
 	lapiz_debug (DEBUG_WINDOW);
@@ -657,7 +657,7 @@ update_next_prev_doc_sensitivity_per_window (PlumaWindow *window)
 static void
 received_clipboard_contents (GtkClipboard     *clipboard,
 			     GtkSelectionData *selection_data,
-			     PlumaWindow      *window)
+			     LapizWindow      *window)
 {
 	gboolean sens;
 	GtkAction *action;
@@ -667,7 +667,7 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 
 	if (window->priv->active_tab != NULL)
 	{
-		PlumaTabState state;
+		LapizTabState state;
 		gboolean state_normal;
 
 		state = lapiz_tab_get_state (window->priv->active_tab);
@@ -690,7 +690,7 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 }
 
 static void
-set_paste_sensitivity_according_to_clipboard (PlumaWindow  *window,
+set_paste_sensitivity_according_to_clipboard (LapizWindow  *window,
 					      GtkClipboard *clipboard)
 {
 	GdkDisplay *display;
@@ -718,18 +718,18 @@ set_paste_sensitivity_according_to_clipboard (PlumaWindow  *window,
 }
 
 static void
-set_sensitivity_according_to_tab (PlumaWindow *window,
-				  PlumaTab    *tab)
+set_sensitivity_according_to_tab (LapizWindow *window,
+				  LapizTab    *tab)
 {
-	PlumaDocument *doc;
-	PlumaView     *view;
+	LapizDocument *doc;
+	LapizView     *view;
 	GtkAction     *action;
 	gboolean       b;
 	gboolean       state_normal;
 	gboolean       editable;
-	PlumaTabState  state;
+	LapizTabState  state;
 	GtkClipboard  *clipboard;
-	PlumaLockdownMask lockdown;
+	LapizLockdownMask lockdown;
 
 	g_return_if_fail (LAPIZ_TAB (tab));
 
@@ -905,9 +905,9 @@ set_sensitivity_according_to_tab (PlumaWindow *window,
 
 static void
 language_toggled (GtkToggleAction *action,
-		  PlumaWindow     *window)
+		  LapizWindow     *window)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GtkSourceLanguage *lang;
 	const gchar *lang_id;
 
@@ -956,7 +956,7 @@ static void
 create_language_menu_item (GtkSourceLanguage *lang,
 			   gint               index,
 			   guint              ui_id,
-			   PlumaWindow       *window)
+			   LapizWindow       *window)
 {
 	GtkAction *section_action;
 	GtkRadioAction *action;
@@ -1052,7 +1052,7 @@ create_language_menu_item (GtkSourceLanguage *lang,
 }
 
 static void
-create_languages_menu (PlumaWindow *window)
+create_languages_menu (LapizWindow *window)
 {
 	GtkRadioAction *action_none;
 	GSList *languages;
@@ -1109,9 +1109,9 @@ create_languages_menu (PlumaWindow *window)
 }
 
 static void
-update_languages_menu (PlumaWindow *window)
+update_languages_menu (LapizWindow *window)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GList *actions;
 	GList *l;
 	GtkAction *action;
@@ -1154,7 +1154,7 @@ update_languages_menu (PlumaWindow *window)
 }
 
 void
-_lapiz_recent_add (PlumaWindow *window,
+_lapiz_recent_add (LapizWindow *window,
 		   const gchar *uri,
 		   const gchar *mime)
 {
@@ -1184,7 +1184,7 @@ _lapiz_recent_add (PlumaWindow *window,
 }
 
 void
-_lapiz_recent_remove (PlumaWindow *window,
+_lapiz_recent_remove (LapizWindow *window,
 		      const gchar *uri)
 {
 	GtkRecentManager *recent_manager;
@@ -1196,7 +1196,7 @@ _lapiz_recent_remove (PlumaWindow *window,
 
 static void
 open_recent_file (const gchar *uri,
-		  PlumaWindow *window)
+		  LapizWindow *window)
 {
 	GSList *uris = NULL;
 
@@ -1212,7 +1212,7 @@ open_recent_file (const gchar *uri,
 
 static void
 recent_chooser_item_activated (GtkRecentChooser *chooser,
-			       PlumaWindow      *window)
+			       LapizWindow      *window)
 {
 	gchar *uri;
 
@@ -1225,7 +1225,7 @@ recent_chooser_item_activated (GtkRecentChooser *chooser,
 
 static void
 recents_menu_activate (GtkAction   *action,
-		       PlumaWindow *window)
+		       LapizWindow *window)
 {
 	GtkRecentInfo *info;
 	const gchar *uri;
@@ -1244,11 +1244,11 @@ sort_recents_mru (GtkRecentInfo *a, GtkRecentInfo *b)
 	return (gtk_recent_info_get_modified (b) - gtk_recent_info_get_modified (a));
 }
 
-static void	update_recent_files_menu (PlumaWindow *window);
+static void	update_recent_files_menu (LapizWindow *window);
 
 static void
 recent_manager_changed (GtkRecentManager *manager,
-			PlumaWindow      *window)
+			LapizWindow      *window)
 {
 	/* regenerate the menu when the model changes */
 	update_recent_files_menu (window);
@@ -1259,9 +1259,9 @@ recent_manager_changed (GtkRecentManager *manager,
  * Hopefully gtk 2.12 will add support for it.
  */
 static void
-update_recent_files_menu (PlumaWindow *window)
+update_recent_files_menu (LapizWindow *window)
 {
-	PlumaWindowPrivate *p = window->priv;
+	LapizWindowPrivate *p = window->priv;
 	GtkRecentManager *recent_manager;
 	gint max_recents;
 	GList *actions, *l, *items;
@@ -1398,7 +1398,7 @@ set_non_homogeneus (GtkWidget *widget, gpointer data)
 
 static void
 toolbar_visibility_changed (GtkWidget   *toolbar,
-			    PlumaWindow *window)
+			    LapizWindow *window)
 {
 	gboolean visible;
 	GtkAction *action;
@@ -1416,7 +1416,7 @@ toolbar_visibility_changed (GtkWidget   *toolbar,
 }
 
 static GtkWidget *
-setup_toolbar_open_button (PlumaWindow *window,
+setup_toolbar_open_button (LapizWindow *window,
 			   GtkWidget *toolbar)
 {
 	GtkRecentManager *recent_manager;
@@ -1475,7 +1475,7 @@ setup_toolbar_open_button (PlumaWindow *window,
 }
 
 static void
-create_menu_bar_and_toolbar (PlumaWindow *window,
+create_menu_bar_and_toolbar (LapizWindow *window,
 			     GtkWidget   *main_box)
 {
 	GtkActionGroup *action_group;
@@ -1493,7 +1493,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	gtk_window_add_accel_group (GTK_WINDOW (window),
 				    gtk_ui_manager_get_accel_group (manager));
 
-	action_group = gtk_action_group_new ("PlumaWindowAlwaysSensitiveActions");
+	action_group = gtk_action_group_new ("LapizWindowAlwaysSensitiveActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
 				      lapiz_always_sensitive_menu_entries,
@@ -1508,7 +1508,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	g_object_unref (action_group);
 	window->priv->always_sensitive_action_group = action_group;
 
-	action_group = gtk_action_group_new ("PlumaWindowActions");
+	action_group = gtk_action_group_new ("LapizWindowActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
 				      lapiz_menu_entries,
@@ -1534,7 +1534,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	action = gtk_action_group_get_action (action_group, "EditUndo");
 	g_object_set (action, "is_important", TRUE, NULL);
 
-	action_group = gtk_action_group_new ("PlumaQuitWindowActions");
+	action_group = gtk_action_group_new ("LapizQuitWindowActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
 				      lapiz_quit_menu_entries,
@@ -1545,7 +1545,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	g_object_unref (action_group);
 	window->priv->quit_action_group = action_group;
 
-	action_group = gtk_action_group_new ("PlumaCloseWindowActions");
+	action_group = gtk_action_group_new ("LapizCloseWindowActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
 	                              lapiz_close_menu_entries,
@@ -1556,7 +1556,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 	g_object_unref (action_group);
 	window->priv->close_action_group = action_group;
 
-	action_group = gtk_action_group_new ("PlumaWindowPanesActions");
+	action_group = gtk_action_group_new ("LapizWindowPanesActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_toggle_actions (action_group,
 					     lapiz_panes_toggle_menu_entries,
@@ -1653,7 +1653,7 @@ create_menu_bar_and_toolbar (PlumaWindow *window,
 
 static void
 documents_list_menu_activate (GtkToggleAction *action,
-			      PlumaWindow     *window)
+			      LapizWindow     *window)
 {
 	gint n;
 
@@ -1665,9 +1665,9 @@ documents_list_menu_activate (GtkToggleAction *action,
 }
 
 static gchar *
-get_menu_tip_for_tab (PlumaTab *tab)
+get_menu_tip_for_tab (LapizTab *tab)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar *uri;
 	gchar *ruri;
 	gchar *tip;
@@ -1686,9 +1686,9 @@ get_menu_tip_for_tab (PlumaTab *tab)
 }
 
 static void
-update_documents_list_menu (PlumaWindow *window)
+update_documents_list_menu (LapizWindow *window)
 {
-	PlumaWindowPrivate *p = window->priv;
+	LapizWindowPrivate *p = window->priv;
 	GList *actions, *l;
 	gint n, i;
 	guint id;
@@ -1789,8 +1789,8 @@ update_documents_list_menu (PlumaWindow *window)
 
 /* Returns TRUE if status bar is visible */
 static gboolean
-set_statusbar_style (PlumaWindow *window,
-		     PlumaWindow *origin)
+set_statusbar_style (LapizWindow *window,
+		     LapizWindow *origin)
 {
 	GtkAction *action;
 
@@ -1817,7 +1817,7 @@ set_statusbar_style (PlumaWindow *window,
 
 static void
 statusbar_visibility_changed (GtkWidget   *statusbar,
-			      PlumaWindow *window)
+			      LapizWindow *window)
 {
 	gboolean visible;
 	GtkAction *action;
@@ -1835,11 +1835,11 @@ statusbar_visibility_changed (GtkWidget   *statusbar,
 }
 
 static void
-tab_width_combo_changed (PlumaStatusComboBox *combo,
+tab_width_combo_changed (LapizStatusComboBox *combo,
 			 GtkMenuItem         *item,
-			 PlumaWindow         *window)
+			 LapizWindow         *window)
 {
-	PlumaView *view;
+	LapizView *view;
 	guint width_data = 0;
 
 	view = lapiz_window_get_active_view (window);
@@ -1859,9 +1859,9 @@ tab_width_combo_changed (PlumaStatusComboBox *combo,
 
 static void
 use_spaces_toggled (GtkCheckMenuItem *item,
-		    PlumaWindow      *window)
+		    LapizWindow      *window)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	view = lapiz_window_get_active_view (window);
 
@@ -1873,11 +1873,11 @@ use_spaces_toggled (GtkCheckMenuItem *item,
 }
 
 static void
-language_combo_changed (PlumaStatusComboBox *combo,
+language_combo_changed (LapizStatusComboBox *combo,
 			GtkMenuItem         *item,
-			PlumaWindow         *window)
+			LapizWindow         *window)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GtkSourceLanguage *language;
 
 	doc = lapiz_window_get_active_document (window);
@@ -1899,7 +1899,7 @@ typedef struct
 } TabWidthDefinition;
 
 static void
-fill_tab_width_combo (PlumaWindow *window)
+fill_tab_width_combo (LapizWindow *window)
 {
 	static TabWidthDefinition defs[] = {
 		{"2", 2},
@@ -1909,7 +1909,7 @@ fill_tab_width_combo (PlumaWindow *window)
 		{NULL, 0}
 	};
 
-	PlumaStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->tab_width_combo);
+	LapizStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->tab_width_combo);
 	guint i = 0;
 	GtkWidget *item;
 
@@ -1943,7 +1943,7 @@ fill_tab_width_combo (PlumaWindow *window)
 }
 
 static void
-fill_language_combo (PlumaWindow *window)
+fill_language_combo (LapizWindow *window)
 {
 	GtkSourceLanguageManager *manager;
 	GSList *languages;
@@ -1985,7 +1985,7 @@ fill_language_combo (PlumaWindow *window)
 }
 
 static void
-create_statusbar (PlumaWindow *window,
+create_statusbar (LapizWindow *window,
 		  GtkWidget   *main_box)
 {
 	lapiz_debug (DEBUG_WINDOW);
@@ -2045,12 +2045,12 @@ create_statusbar (PlumaWindow *window,
 	set_statusbar_style (window, NULL);
 }
 
-static PlumaWindow *
-clone_window (PlumaWindow *origin)
+static LapizWindow *
+clone_window (LapizWindow *origin)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 	GdkScreen *screen;
-	PlumaApp  *app;
+	LapizApp  *app;
 	gint panel_page;
 
 	lapiz_debug (DEBUG_WINDOW);
@@ -2113,13 +2113,13 @@ clone_window (PlumaWindow *origin)
 
 static void
 update_cursor_position_statusbar (GtkTextBuffer *buffer,
-				  PlumaWindow   *window)
+				  LapizWindow   *window)
 {
 	gint row, col;
 	GtkTextIter iter;
 	GtkTextIter start;
 	guint tab_size;
-	PlumaView *view;
+	LapizView *view;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -2160,7 +2160,7 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 
 static void
 update_overwrite_mode_statusbar (GtkTextView *view,
-				 PlumaWindow *window)
+				 LapizWindow *window)
 {
 	if (view != GTK_TEXT_VIEW (lapiz_window_get_active_view (window)))
 		return;
@@ -2177,9 +2177,9 @@ update_overwrite_mode_statusbar (GtkTextView *view,
 #define MAX_TITLE_LENGTH 100
 
 static void
-set_title (PlumaWindow *window)
+set_title (LapizWindow *window)
 {
-	PlumaDocument *doc = NULL;
+	LapizDocument *doc = NULL;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *title = NULL;
@@ -2188,7 +2188,7 @@ set_title (PlumaWindow *window)
 
 	if (window->priv->active_tab == NULL)
 	{
-		gtk_window_set_title (GTK_WINDOW (window), "Pluma");
+		gtk_window_set_title (GTK_WINDOW (window), "Lapiz");
 		return;
 	}
 
@@ -2251,23 +2251,23 @@ set_title (PlumaWindow *window)
 	if (lapiz_document_get_readonly (doc))
 	{
 		if (dirname != NULL)
-			title = g_strdup_printf ("%s [%s] (%s) - Pluma",
+			title = g_strdup_printf ("%s [%s] (%s) - Lapiz",
 						 name,
 						 _("Read-Only"),
 						 dirname);
 		else
-			title = g_strdup_printf ("%s [%s] - Pluma",
+			title = g_strdup_printf ("%s [%s] - Lapiz",
 						 name,
 						 _("Read-Only"));
 	}
 	else
 	{
 		if (dirname != NULL)
-			title = g_strdup_printf ("%s (%s) - Pluma",
+			title = g_strdup_printf ("%s (%s) - Lapiz",
 						 name,
 						 dirname);
 		else
-			title = g_strdup_printf ("%s - Pluma",
+			title = g_strdup_printf ("%s - Lapiz",
 						 name);
 	}
 
@@ -2285,7 +2285,7 @@ set_title (PlumaWindow *window)
 #undef MAX_TITLE_LENGTH
 
 static void
-set_tab_width_item_blocked (PlumaWindow *window,
+set_tab_width_item_blocked (LapizWindow *window,
 			    GtkMenuItem *item)
 {
 	g_signal_handlers_block_by_func (window->priv->tab_width_combo,
@@ -2303,9 +2303,9 @@ set_tab_width_item_blocked (PlumaWindow *window,
 static void
 spaces_instead_of_tabs_changed (GObject     *object,
 		   		GParamSpec  *pspec,
-		 		PlumaWindow *window)
+		 		LapizWindow *window)
 {
-	PlumaView *view = LAPIZ_VIEW (object);
+	LapizView *view = LAPIZ_VIEW (object);
 	gboolean active = gtk_source_view_get_insert_spaces_instead_of_tabs (
 			GTK_SOURCE_VIEW (view));
 	GList *children = lapiz_status_combo_box_get_items (
@@ -2322,11 +2322,11 @@ spaces_instead_of_tabs_changed (GObject     *object,
 static void
 tab_width_changed (GObject     *object,
 		   GParamSpec  *pspec,
-		   PlumaWindow *window)
+		   LapizWindow *window)
 {
 	GList *items;
 	GList *item;
-	PlumaStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->tab_width_combo);
+	LapizStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->tab_width_combo);
 	guint new_tab_width;
 	gboolean found = FALSE;
 
@@ -2377,11 +2377,11 @@ tab_width_changed (GObject     *object,
 static void
 language_changed (GObject     *object,
 		  GParamSpec  *pspec,
-		  PlumaWindow *window)
+		  LapizWindow *window)
 {
 	GList *items;
 	GList *item;
-	PlumaStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->language_combo);
+	LapizStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->language_combo);
 	GtkSourceLanguage *new_language;
 	const gchar *new_id;
 
@@ -2422,10 +2422,10 @@ static void
 notebook_switch_page (GtkNotebook     *book,
 		      GtkWidget       *pg,
 		      gint             page_num,
-		      PlumaWindow     *window)
+		      LapizWindow     *window)
 {
-	PlumaView *view;
-	PlumaTab *tab;
+	LapizView *view;
+	LapizTab *tab;
 	GtkAction *action;
 	gchar *action_name;
 
@@ -2515,10 +2515,10 @@ notebook_switch_page (GtkNotebook     *book,
 }
 
 static void
-set_sensitivity_according_to_window_state (PlumaWindow *window)
+set_sensitivity_according_to_window_state (LapizWindow *window)
 {
 	GtkAction *action;
-	PlumaLockdownMask lockdown;
+	LapizLockdownMask lockdown;
 
 	lockdown = lapiz_app_get_lockdown (lapiz_app_get_default ());
 
@@ -2597,17 +2597,17 @@ static void
 update_tab_autosave (GtkWidget *widget,
 		     gpointer   data)
 {
-	PlumaTab *tab = LAPIZ_TAB (widget);
+	LapizTab *tab = LAPIZ_TAB (widget);
 	gboolean *enabled = (gboolean *) data;
 
 	lapiz_tab_set_auto_save_enabled (tab, *enabled);
 }
 
 void
-_lapiz_window_set_lockdown (PlumaWindow       *window,
-			    PlumaLockdownMask  lockdown)
+_lapiz_window_set_lockdown (LapizWindow       *window,
+			    LapizLockdownMask  lockdown)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 	GtkAction *action;
 	gboolean autosave;
 
@@ -2631,10 +2631,10 @@ _lapiz_window_set_lockdown (PlumaWindow       *window,
 }
 
 static void
-analyze_tab_state (PlumaTab    *tab,
-		   PlumaWindow *window)
+analyze_tab_state (LapizTab    *tab,
+		   LapizWindow *window)
 {
-	PlumaTabState ts;
+	LapizTabState ts;
 
 	ts = lapiz_tab_get_state (tab);
 
@@ -2667,9 +2667,9 @@ analyze_tab_state (PlumaTab    *tab,
 }
 
 static void
-update_window_state (PlumaWindow *window)
+update_window_state (LapizWindow *window)
 {
-	PlumaWindowState old_ws;
+	LapizWindowState old_ws;
 	gint old_num_of_errors;
 
 	lapiz_debug_message (DEBUG_WINDOW, "Old state: %x", window->priv->state);
@@ -2706,9 +2706,9 @@ update_window_state (PlumaWindow *window)
 }
 
 static void
-sync_state (PlumaTab    *tab,
+sync_state (LapizTab    *tab,
 	    GParamSpec  *pspec,
-	    PlumaWindow *window)
+	    LapizWindow *window)
 {
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -2723,9 +2723,9 @@ sync_state (PlumaTab    *tab,
 }
 
 static void
-sync_name (PlumaTab    *tab,
+sync_name (LapizTab    *tab,
 	   GParamSpec  *pspec,
-	   PlumaWindow *window)
+	   LapizWindow *window)
 {
 	GtkAction *action;
 	gchar *action_name;
@@ -2733,7 +2733,7 @@ sync_name (PlumaTab    *tab,
 	gchar *escaped_name;
 	gchar *tip;
 	gint n;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	if (tab == window->priv->active_tab)
 	{
@@ -2769,7 +2769,7 @@ sync_name (PlumaTab    *tab,
 	peas_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
-static PlumaWindow *
+static LapizWindow *
 get_drop_window (GtkWidget *widget)
 {
 	GtkWidget *target_window;
@@ -2784,7 +2784,7 @@ get_drop_window (GtkWidget *widget)
 }
 
 static void
-load_uris_from_drop (PlumaWindow  *window,
+load_uris_from_drop (LapizWindow  *window,
 		     gchar       **uri_list)
 {
 	GSList *uris = NULL;
@@ -2807,7 +2807,7 @@ load_uris_from_drop (PlumaWindow  *window,
 	g_slist_free (uris);
 }
 
-/* Handle drops on the PlumaWindow */
+/* Handle drops on the LapizWindow */
 static void
 drag_data_received_cb (GtkWidget        *widget,
 		       GdkDragContext   *context,
@@ -2818,7 +2818,7 @@ drag_data_received_cb (GtkWidget        *widget,
 		       guint             timestamp,
 		       gpointer          data)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 	gchar **uri_list;
 
 	window = get_drop_window (widget);
@@ -2834,12 +2834,12 @@ drag_data_received_cb (GtkWidget        *widget,
 	}
 }
 
-/* Handle drops on the PlumaView */
+/* Handle drops on the LapizView */
 static void
 drop_uris_cb (GtkWidget    *widget,
 	      gchar       **uri_list)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 
 	window = get_drop_window (widget);
 
@@ -2850,7 +2850,7 @@ drop_uris_cb (GtkWidget    *widget,
 }
 
 static void
-fullscreen_controls_show (PlumaWindow *window)
+fullscreen_controls_show (LapizWindow *window)
 {
 	GdkScreen *screen;
 	GdkDisplay *display;
@@ -2878,7 +2878,7 @@ fullscreen_controls_show (PlumaWindow *window)
 static gboolean
 run_fullscreen_animation (gpointer data)
 {
-	PlumaWindow *window = LAPIZ_WINDOW (data);
+	LapizWindow *window = LAPIZ_WINDOW (data);
 	GdkScreen *screen;
 	GdkDisplay *display;
 	GdkRectangle fs_rect;
@@ -2930,7 +2930,7 @@ run_fullscreen_animation (gpointer data)
 }
 
 static void
-show_hide_fullscreen_toolbar (PlumaWindow *window,
+show_hide_fullscreen_toolbar (LapizWindow *window,
 			      gboolean     show,
 			      gint         height)
 {
@@ -2981,7 +2981,7 @@ show_hide_fullscreen_toolbar (PlumaWindow *window,
 static gboolean
 on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
 					   GdkEventCrossing *event,
-					   PlumaWindow      *window)
+					   LapizWindow      *window)
 {
 	show_hide_fullscreen_toolbar (window, TRUE, 0);
 
@@ -2991,7 +2991,7 @@ on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
 static gboolean
 on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
 					   GdkEventCrossing *event,
-					   PlumaWindow      *window)
+					   LapizWindow      *window)
 {
 	GdkDevice *device;
 	gint w, h;
@@ -3014,9 +3014,9 @@ on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
 }
 
 static void
-fullscreen_controls_build (PlumaWindow *window)
+fullscreen_controls_build (LapizWindow *window)
 {
-	PlumaWindowPrivate *priv = window->priv;
+	LapizWindowPrivate *priv = window->priv;
 	GtkWidget *toolbar;
 	GtkAction *action;
 
@@ -3056,9 +3056,9 @@ fullscreen_controls_build (PlumaWindow *window)
 }
 
 static void
-can_search_again (PlumaDocument *doc,
+can_search_again (LapizDocument *doc,
 		  GParamSpec    *pspec,
-		  PlumaWindow   *window)
+		  LapizWindow   *window)
 {
 	gboolean sensitive;
 	GtkAction *action;
@@ -3082,9 +3082,9 @@ can_search_again (PlumaDocument *doc,
 }
 
 static void
-can_undo (PlumaDocument *doc,
+can_undo (LapizDocument *doc,
 	  GParamSpec    *pspec,
-	  PlumaWindow   *window)
+	  LapizWindow   *window)
 {
 	GtkAction *action;
 	gboolean sensitive;
@@ -3100,9 +3100,9 @@ can_undo (PlumaDocument *doc,
 }
 
 static void
-can_redo (PlumaDocument *doc,
+can_redo (LapizDocument *doc,
 	  GParamSpec    *pspec,
-	  PlumaWindow   *window)
+	  LapizWindow   *window)
 {
 	GtkAction *action;
 	gboolean sensitive;
@@ -3118,14 +3118,14 @@ can_redo (PlumaDocument *doc,
 }
 
 static void
-selection_changed (PlumaDocument *doc,
+selection_changed (LapizDocument *doc,
 		   GParamSpec    *pspec,
-		   PlumaWindow   *window)
+		   LapizWindow   *window)
 {
-	PlumaTab *tab;
-	PlumaView *view;
+	LapizTab *tab;
+	LapizView *view;
 	GtkAction *action;
-	PlumaTabState state;
+	LapizTabState state;
 	gboolean state_normal;
 	gboolean editable;
 
@@ -3166,18 +3166,18 @@ selection_changed (PlumaDocument *doc,
 }
 
 static void
-sync_languages_menu (PlumaDocument *doc,
+sync_languages_menu (LapizDocument *doc,
 		     GParamSpec    *pspec,
-		     PlumaWindow   *window)
+		     LapizWindow   *window)
 {
 	update_languages_menu (window);
 	peas_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static void
-readonly_changed (PlumaDocument *doc,
+readonly_changed (LapizDocument *doc,
 		  GParamSpec    *pspec,
-		  PlumaWindow   *window)
+		  LapizWindow   *window)
 {
 	set_sensitivity_according_to_tab (window, window->priv->active_tab);
 
@@ -3187,15 +3187,15 @@ readonly_changed (PlumaDocument *doc,
 }
 
 static void
-editable_changed (PlumaView  *view,
+editable_changed (LapizView  *view,
                   GParamSpec  *arg1,
-                  PlumaWindow *window)
+                  LapizWindow *window)
 {
 	peas_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static void
-update_sensitivity_according_to_open_tabs (PlumaWindow *window)
+update_sensitivity_according_to_open_tabs (LapizWindow *window)
 {
 	GtkAction *action;
 
@@ -3213,12 +3213,12 @@ update_sensitivity_according_to_open_tabs (PlumaWindow *window)
 }
 
 static void
-notebook_tab_added (PlumaNotebook *notebook,
-		    PlumaTab      *tab,
-		    PlumaWindow   *window)
+notebook_tab_added (LapizNotebook *notebook,
+		    LapizTab      *tab,
+		    LapizWindow   *window)
 {
-	PlumaView *view;
-	PlumaDocument *doc;
+	LapizView *view;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -3293,12 +3293,12 @@ notebook_tab_added (PlumaNotebook *notebook,
 }
 
 static void
-notebook_tab_removed (PlumaNotebook *notebook,
-		      PlumaTab      *tab,
-		      PlumaWindow   *window)
+notebook_tab_removed (LapizNotebook *notebook,
+		      LapizTab      *tab,
+		      LapizWindow   *window)
 {
-	PlumaView     *view;
-	PlumaDocument *doc;
+	LapizView     *view;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -3412,8 +3412,8 @@ notebook_tab_removed (PlumaNotebook *notebook,
 }
 
 static void
-notebook_tabs_reordered (PlumaNotebook *notebook,
-			 PlumaWindow   *window)
+notebook_tabs_reordered (LapizNotebook *notebook,
+			 LapizWindow   *window)
 {
 	update_documents_list_menu (window);
 	update_next_prev_doc_sensitivity_per_window (window);
@@ -3422,11 +3422,11 @@ notebook_tabs_reordered (PlumaNotebook *notebook,
 }
 
 static void
-notebook_tab_detached (PlumaNotebook *notebook,
-		       PlumaTab      *tab,
-		       PlumaWindow   *window)
+notebook_tab_detached (LapizNotebook *notebook,
+		       LapizTab      *tab,
+		       LapizWindow   *window)
 {
-	PlumaWindow *new_window;
+	LapizWindow *new_window;
 
 	new_window = clone_window (window);
 
@@ -3441,8 +3441,8 @@ notebook_tab_detached (PlumaNotebook *notebook,
 }
 
 static void
-notebook_tab_close_request (PlumaNotebook *notebook,
-			    PlumaTab      *tab,
+notebook_tab_close_request (LapizNotebook *notebook,
+			    LapizTab      *tab,
 			    GtkWindow     *window)
 {
 	/* Note: we are destroying the tab before the default handler
@@ -3452,7 +3452,7 @@ notebook_tab_close_request (PlumaNotebook *notebook,
 
 static gboolean
 show_notebook_popup_menu (GtkNotebook    *notebook,
-			  PlumaWindow    *window,
+			  LapizWindow    *window,
 			  GdkEventButton *event)
 {
 	GtkWidget *menu;
@@ -3492,7 +3492,7 @@ show_notebook_popup_menu (GtkNotebook    *notebook,
 static gboolean
 notebook_button_press_event (GtkNotebook    *notebook,
 			     GdkEventButton *event,
-			     PlumaWindow    *window)
+			     LapizWindow    *window)
 {
 	if (event->type == GDK_BUTTON_PRESS)
 	{
@@ -3501,7 +3501,7 @@ notebook_button_press_event (GtkNotebook    *notebook,
 
 		else if (event->button == 2)
 		{
-			PlumaTab *tab;
+			LapizTab *tab;
 			tab = lapiz_window_get_active_tab (window);
 			notebook_tab_close_request (LAPIZ_NOTEBOOK (notebook), tab, GTK_WINDOW (window));
 		}
@@ -3517,7 +3517,7 @@ notebook_button_press_event (GtkNotebook    *notebook,
 static gboolean
 notebook_scroll_event (GtkNotebook    *notebook,
                        GdkEventScroll *event,
-                       PlumaWindow    *window)
+                       LapizWindow    *window)
 {
 	if (event->direction == GDK_SCROLL_UP || event->direction == GDK_SCROLL_LEFT)
 	{
@@ -3533,7 +3533,7 @@ notebook_scroll_event (GtkNotebook    *notebook,
 
 static gboolean
 notebook_popup_menu (GtkNotebook *notebook,
-		     PlumaWindow *window)
+		     LapizWindow *window)
 {
 	/* Only respond if the notebook is the actual focus */
 	if (LAPIZ_IS_NOTEBOOK (gtk_window_get_focus (GTK_WINDOW (window))))
@@ -3547,7 +3547,7 @@ notebook_popup_menu (GtkNotebook *notebook,
 static void
 side_panel_size_allocate (GtkWidget     *widget,
 			  GtkAllocation *allocation,
-			  PlumaWindow   *window)
+			  LapizWindow   *window)
 {
 	window->priv->side_panel_size = allocation->width;
 }
@@ -3555,14 +3555,14 @@ side_panel_size_allocate (GtkWidget     *widget,
 static void
 bottom_panel_size_allocate (GtkWidget     *widget,
 			    GtkAllocation *allocation,
-			    PlumaWindow   *window)
+			    LapizWindow   *window)
 {
 	window->priv->bottom_panel_size = allocation->height;
 }
 
 static void
 hpaned_restore_position (GtkWidget   *widget,
-			 PlumaWindow *window)
+			 LapizWindow *window)
 {
 	gint pos;
 
@@ -3585,7 +3585,7 @@ hpaned_restore_position (GtkWidget   *widget,
 
 static void
 vpaned_restore_position (GtkWidget   *widget,
-			 PlumaWindow *window)
+			 LapizWindow *window)
 {
 	GtkAllocation allocation;
 	gint pos;
@@ -3612,7 +3612,7 @@ vpaned_restore_position (GtkWidget   *widget,
 
 static void
 side_panel_visibility_changed (GtkWidget   *side_panel,
-			       PlumaWindow *window)
+			       LapizWindow *window)
 {
 	gboolean   visible;
 	GtkAction *action;
@@ -3649,7 +3649,7 @@ side_panel_visibility_changed (GtkWidget   *side_panel,
 }
 
 static void
-create_side_panel (PlumaWindow *window)
+create_side_panel (LapizWindow *window)
 {
 	GtkWidget *documents_panel;
 
@@ -3679,8 +3679,8 @@ create_side_panel (PlumaWindow *window)
 }
 
 static void
-bottom_panel_visibility_changed (PlumaPanel  *bottom_panel,
-				 PlumaWindow *window)
+bottom_panel_visibility_changed (LapizPanel  *bottom_panel,
+				 LapizWindow *window)
 {
 	gboolean visible;
 	GtkAction *action;
@@ -3703,9 +3703,9 @@ bottom_panel_visibility_changed (PlumaPanel  *bottom_panel,
 }
 
 static void
-bottom_panel_item_removed (PlumaPanel  *panel,
+bottom_panel_item_removed (LapizPanel  *panel,
 			   GtkWidget   *item,
-			   PlumaWindow *window)
+			   LapizWindow *window)
 {
 	if (lapiz_panel_get_n_items (panel) == 0)
 	{
@@ -3720,9 +3720,9 @@ bottom_panel_item_removed (PlumaPanel  *panel,
 }
 
 static void
-bottom_panel_item_added (PlumaPanel  *panel,
+bottom_panel_item_added (LapizPanel  *panel,
 			 GtkWidget   *item,
-			 PlumaWindow *window)
+			 LapizWindow *window)
 {
 	/* if it's the first item added, set the menu item
 	 * sensitive and if needed show the panel */
@@ -3742,7 +3742,7 @@ bottom_panel_item_added (PlumaPanel  *panel,
 }
 
 static void
-create_bottom_panel (PlumaWindow *window)
+create_bottom_panel (LapizWindow *window)
 {
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -3764,7 +3764,7 @@ create_bottom_panel (PlumaWindow *window)
 }
 
 static void
-init_panels_visibility (PlumaWindow *window)
+init_panels_visibility (LapizWindow *window)
 {
 	gint active_page;
 
@@ -3816,7 +3816,7 @@ init_panels_visibility (PlumaWindow *window)
 static void
 clipboard_owner_change (GtkClipboard        *clipboard,
 			GdkEventOwnerChange *event,
-			PlumaWindow         *window)
+			LapizWindow         *window)
 {
 	set_paste_sensitivity_according_to_clipboard (window,
 						      clipboard);
@@ -3852,7 +3852,7 @@ window_unrealized (GtkWidget *window,
 }
 
 static void
-check_window_is_active (PlumaWindow *window,
+check_window_is_active (LapizWindow *window,
 			GParamSpec *property,
 			gpointer useless)
 {
@@ -3870,7 +3870,7 @@ check_window_is_active (PlumaWindow *window,
 }
 
 static void
-connect_notebook_signals (PlumaWindow *window,
+connect_notebook_signals (LapizWindow *window,
 			  GtkWidget   *notebook)
 {
 	g_signal_connect (notebook,
@@ -3912,7 +3912,7 @@ connect_notebook_signals (PlumaWindow *window,
 }
 
 static void
-add_notebook (PlumaWindow *window,
+add_notebook (LapizWindow *window,
 	      GtkWidget   *notebook)
 {
 	gtk_paned_pack1 (GTK_PANED (window->priv->vpaned),
@@ -3930,7 +3930,7 @@ static void
 on_extension_added (PeasExtensionSet *extensions,
 		    PeasPluginInfo   *info,
 		    PeasExtension    *exten,
-		    PlumaWindow      *window)
+		    LapizWindow      *window)
 {
 	peas_extension_call (exten, "activate", window);
 }
@@ -3939,7 +3939,7 @@ static void
 on_extension_removed (PeasExtensionSet *extensions,
 		      PeasPluginInfo   *info,
 		      PeasExtension    *exten,
-		      PlumaWindow      *window)
+		      LapizWindow      *window)
 {
 	peas_extension_call (exten, "deactivate", window);
 
@@ -3951,7 +3951,7 @@ on_extension_removed (PeasExtensionSet *extensions,
 }
 
 static void
-lapiz_window_init (PlumaWindow *window)
+lapiz_window_init (LapizWindow *window)
 {
 	GtkWidget *main_box;
 	GtkTargetList *tl;
@@ -4100,16 +4100,16 @@ lapiz_window_init (PlumaWindow *window)
 
 /**
  * lapiz_window_get_active_view:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
- * Gets the active #PlumaView.
+ * Gets the active #LapizView.
  *
- * Returns: (transfer none): the active #PlumaView
+ * Returns: (transfer none): the active #LapizView
  */
-PlumaView *
-lapiz_window_get_active_view (PlumaWindow *window)
+LapizView *
+lapiz_window_get_active_view (LapizWindow *window)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4123,16 +4123,16 @@ lapiz_window_get_active_view (PlumaWindow *window)
 
 /**
  * lapiz_window_get_active_document:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
- * Gets the active #PlumaDocument.
+ * Gets the active #LapizDocument.
  *
- * Returns: (transfer none): the active #PlumaDocument
+ * Returns: (transfer none): the active #LapizDocument
  */
-PlumaDocument *
-lapiz_window_get_active_document (PlumaWindow *window)
+LapizDocument *
+lapiz_window_get_active_document (LapizWindow *window)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4144,7 +4144,7 @@ lapiz_window_get_active_document (PlumaWindow *window)
 }
 
 GtkWidget *
-_lapiz_window_get_notebook (PlumaWindow *window)
+_lapiz_window_get_notebook (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4153,19 +4153,19 @@ _lapiz_window_get_notebook (PlumaWindow *window)
 
 /**
  * lapiz_window_create_tab:
- * @window: a #PlumaWindow
- * @jump_to: %TRUE to set the new #PlumaTab as active
+ * @window: a #LapizWindow
+ * @jump_to: %TRUE to set the new #LapizTab as active
  *
- * Creates a new #PlumaTab and adds the new tab to the #PlumaNotebook.
- * In case @jump_to is %TRUE the #PlumaNotebook switches to that new #PlumaTab.
+ * Creates a new #LapizTab and adds the new tab to the #LapizNotebook.
+ * In case @jump_to is %TRUE the #LapizNotebook switches to that new #LapizTab.
  *
- * Returns: (transfer none): a new #PlumaTab
+ * Returns: (transfer none): a new #LapizTab
  */
-PlumaTab *
-lapiz_window_create_tab (PlumaWindow *window,
+LapizTab *
+lapiz_window_create_tab (LapizWindow *window,
 			 gboolean     jump_to)
 {
-	PlumaTab *tab;
+	LapizTab *tab;
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4187,24 +4187,24 @@ lapiz_window_create_tab (PlumaWindow *window,
 
 /**
  * lapiz_window_create_tab_from_uri:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  * @uri: the uri of the document
- * @encoding: a #PlumaEncoding
+ * @encoding: a #LapizEncoding
  * @line_pos: the line position to visualize
  * @create: %TRUE to create a new document in case @uri does exist
- * @jump_to: %TRUE to set the new #PlumaTab as active
+ * @jump_to: %TRUE to set the new #LapizTab as active
  *
- * Creates a new #PlumaTab loading the document specified by @uri.
- * In case @jump_to is %TRUE the #PlumaNotebook swithes to that new #PlumaTab.
+ * Creates a new #LapizTab loading the document specified by @uri.
+ * In case @jump_to is %TRUE the #LapizNotebook swithes to that new #LapizTab.
  * Whether @create is %TRUE, creates a new empty document if location does
  * not refer to an existing file
  *
- * Returns: (transfer none): a new #PlumaTab
+ * Returns: (transfer none): a new #LapizTab
  */
-PlumaTab *
-lapiz_window_create_tab_from_uri (PlumaWindow         *window,
+LapizTab *
+lapiz_window_create_tab_from_uri (LapizWindow         *window,
 				  const gchar         *uri,
-				  const PlumaEncoding *encoding,
+				  const LapizEncoding *encoding,
 				  gint                 line_pos,
 				  gboolean             create,
 				  gboolean             jump_to)
@@ -4239,14 +4239,14 @@ lapiz_window_create_tab_from_uri (PlumaWindow         *window,
 
 /**
  * lapiz_window_get_active_tab:
- * @window: a PlumaWindow
+ * @window: a LapizWindow
  *
- * Gets the active #PlumaTab in the @window.
+ * Gets the active #LapizTab in the @window.
  *
- * Returns: (transfer none): the active #PlumaTab in the @window.
+ * Returns: (transfer none): the active #LapizTab in the @window.
  */
-PlumaTab *
-lapiz_window_get_active_tab (PlumaWindow *window)
+LapizTab *
+lapiz_window_get_active_tab (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4255,9 +4255,9 @@ lapiz_window_get_active_tab (PlumaWindow *window)
 }
 
 static void
-add_document (PlumaTab *tab, GList **res)
+add_document (LapizTab *tab, GList **res)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	doc = lapiz_tab_get_document (tab);
 
@@ -4266,16 +4266,16 @@ add_document (PlumaTab *tab, GList **res)
 
 /**
  * lapiz_window_get_documents:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
  * Gets a newly allocated list with all the documents in the window.
  * This list must be freed.
  *
- * Returns: (element-type Pluma.Document) (transfer container): a newly
+ * Returns: (element-type Lapiz.Document) (transfer container): a newly
  * allocated list with all the documents in the window
  */
 GList *
-lapiz_window_get_documents (PlumaWindow *window)
+lapiz_window_get_documents (LapizWindow *window)
 {
 	GList *res = NULL;
 
@@ -4291,9 +4291,9 @@ lapiz_window_get_documents (PlumaWindow *window)
 }
 
 static void
-add_view (PlumaTab *tab, GList **res)
+add_view (LapizTab *tab, GList **res)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	view = lapiz_tab_get_view (tab);
 
@@ -4302,15 +4302,15 @@ add_view (PlumaTab *tab, GList **res)
 
 /**
  * lapiz_window_get_views:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
  * Gets a list with all the views in the window. This list must be freed.
  *
- * Returns: (element-type Pluma.View) (transfer container): a newly allocated
+ * Returns: (element-type Lapiz.View) (transfer container): a newly allocated
  * list with all the views in the window
  */
 GList *
-lapiz_window_get_views (PlumaWindow *window)
+lapiz_window_get_views (LapizWindow *window)
 {
 	GList *res = NULL;
 
@@ -4327,14 +4327,14 @@ lapiz_window_get_views (PlumaWindow *window)
 
 /**
  * lapiz_window_close_tab:
- * @window: a #PlumaWindow
- * @tab: the #PlumaTab to close
+ * @window: a #LapizWindow
+ * @tab: the #LapizTab to close
  *
  * Closes the @tab.
  */
 void
-lapiz_window_close_tab (PlumaWindow *window,
-			PlumaTab    *tab)
+lapiz_window_close_tab (LapizWindow *window,
+			LapizTab    *tab)
 {
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
@@ -4347,12 +4347,12 @@ lapiz_window_close_tab (PlumaWindow *window,
 
 /**
  * lapiz_window_close_all_tabs:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
  * Closes all opened tabs.
  */
 void
-lapiz_window_close_all_tabs (PlumaWindow *window)
+lapiz_window_close_all_tabs (LapizWindow *window)
 {
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 	g_return_if_fail (!(window->priv->state & LAPIZ_WINDOW_STATE_SAVING) &&
@@ -4367,13 +4367,13 @@ lapiz_window_close_all_tabs (PlumaWindow *window)
 
 /**
  * lapiz_window_close_tabs:
- * @window: a #PlumaWindow
- * @tabs: (element-type Pluma.Tab): a list of #PlumaTab
+ * @window: a #LapizWindow
+ * @tabs: (element-type Lapiz.Tab): a list of #LapizTab
  *
  * Closes all tabs specified by @tabs.
  */
 void
-lapiz_window_close_tabs (PlumaWindow *window,
+lapiz_window_close_tabs (LapizWindow *window,
 			 const GList *tabs)
 {
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
@@ -4399,11 +4399,11 @@ lapiz_window_close_tabs (PlumaWindow *window,
 	g_return_if_fail (window->priv->removing_tabs == FALSE);
 }
 
-PlumaWindow *
-_lapiz_window_move_tab_to_new_window (PlumaWindow *window,
-				      PlumaTab    *tab)
+LapizWindow *
+_lapiz_window_move_tab_to_new_window (LapizWindow *window,
+				      LapizTab    *tab)
 {
-	PlumaWindow *new_window;
+	LapizWindow *new_window;
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (LAPIZ_IS_TAB (tab), NULL);
@@ -4425,14 +4425,14 @@ _lapiz_window_move_tab_to_new_window (PlumaWindow *window,
 
 /**
  * lapiz_window_set_active_tab:
- * @window: a #PlumaWindow
- * @tab: a #PlumaTab
+ * @window: a #LapizWindow
+ * @tab: a #LapizTab
  *
  * Switches to the tab that matches with @tab.
  */
 void
-lapiz_window_set_active_tab (PlumaWindow *window,
-			     PlumaTab    *tab)
+lapiz_window_set_active_tab (LapizWindow *window,
+			     LapizTab    *tab)
 {
 	gint page_num;
 
@@ -4449,14 +4449,14 @@ lapiz_window_set_active_tab (PlumaWindow *window,
 
 /**
  * lapiz_window_get_group:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
  * Gets the #GtkWindowGroup in which @window resides.
  *
  * Returns: (transfer none): the #GtkWindowGroup
  */
 GtkWindowGroup *
-lapiz_window_get_group (PlumaWindow *window)
+lapiz_window_get_group (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4464,7 +4464,7 @@ lapiz_window_get_group (PlumaWindow *window)
 }
 
 gboolean
-_lapiz_window_is_removing_tabs (PlumaWindow *window)
+_lapiz_window_is_removing_tabs (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), FALSE);
 
@@ -4473,14 +4473,14 @@ _lapiz_window_is_removing_tabs (PlumaWindow *window)
 
 /**
  * lapiz_window_get_ui_manager:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
  * Gets the #GtkUIManager associated with the @window.
  *
  * Returns: (transfer none): the #GtkUIManager of the @window.
  */
 GtkUIManager *
-lapiz_window_get_ui_manager (PlumaWindow *window)
+lapiz_window_get_ui_manager (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4489,14 +4489,14 @@ lapiz_window_get_ui_manager (PlumaWindow *window)
 
 /**
  * lapiz_window_get_side_panel:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
- * Gets the side #PlumaPanel of the @window.
+ * Gets the side #LapizPanel of the @window.
  *
- * Returns: (transfer none): the side #PlumaPanel.
+ * Returns: (transfer none): the side #LapizPanel.
  */
-PlumaPanel *
-lapiz_window_get_side_panel (PlumaWindow *window)
+LapizPanel *
+lapiz_window_get_side_panel (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4505,14 +4505,14 @@ lapiz_window_get_side_panel (PlumaWindow *window)
 
 /**
  * lapiz_window_get_bottom_panel:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
- * Gets the bottom #PlumaPanel of the @window.
+ * Gets the bottom #LapizPanel of the @window.
  *
- * Returns: (transfer none): the bottom #PlumaPanel.
+ * Returns: (transfer none): the bottom #LapizPanel.
  */
-PlumaPanel *
-lapiz_window_get_bottom_panel (PlumaWindow *window)
+LapizPanel *
+lapiz_window_get_bottom_panel (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4521,14 +4521,14 @@ lapiz_window_get_bottom_panel (PlumaWindow *window)
 
 /**
  * lapiz_window_get_statusbar:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
- * Gets the #PlumaStatusbar of the @window.
+ * Gets the #LapizStatusbar of the @window.
  *
- * Returns: (transfer none): the #PlumaStatusbar of the @window.
+ * Returns: (transfer none): the #LapizStatusbar of the @window.
  */
 GtkWidget *
-lapiz_window_get_statusbar (PlumaWindow *window)
+lapiz_window_get_statusbar (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), 0);
 
@@ -4537,14 +4537,14 @@ lapiz_window_get_statusbar (PlumaWindow *window)
 
 /**
  * lapiz_window_get_state:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
  * Retrieves the state of the @window.
  *
- * Returns: the current #PlumaWindowState of the @window.
+ * Returns: the current #LapizWindowState of the @window.
  */
-PlumaWindowState
-lapiz_window_get_state (PlumaWindow *window)
+LapizWindowState
+lapiz_window_get_state (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), LAPIZ_WINDOW_STATE_NORMAL);
 
@@ -4552,7 +4552,7 @@ lapiz_window_get_state (PlumaWindow *window)
 }
 
 GFile *
-_lapiz_window_get_default_location (PlumaWindow *window)
+_lapiz_window_get_default_location (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
@@ -4561,7 +4561,7 @@ _lapiz_window_get_default_location (PlumaWindow *window)
 }
 
 void
-_lapiz_window_set_default_location (PlumaWindow *window,
+_lapiz_window_set_default_location (LapizWindow *window,
 				    GFile       *location)
 {
 	GFile *dir;
@@ -4580,15 +4580,15 @@ _lapiz_window_set_default_location (PlumaWindow *window,
 
 /**
  * lapiz_window_get_unsaved_documents:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
  * Gets the list of documents that need to be saved before closing the window.
  *
- * Returns: (element-type Pluma.Document) (transfer container): a list of
- * #PlumaDocument that need to be saved before closing the window
+ * Returns: (element-type Lapiz.Document) (transfer container): a list of
+ * #LapizDocument that need to be saved before closing the window
  */
 GList *
-lapiz_window_get_unsaved_documents (PlumaWindow *window)
+lapiz_window_get_unsaved_documents (LapizWindow *window)
 {
 	GList *unsaved_docs = NULL;
 	GList *tabs;
@@ -4601,13 +4601,13 @@ lapiz_window_get_unsaved_documents (PlumaWindow *window)
 	l = tabs;
 	while (l != NULL)
 	{
-		PlumaTab *tab;
+		LapizTab *tab;
 
 		tab = LAPIZ_TAB (l->data);
 
 		if (!_lapiz_tab_can_close (tab))
 		{
-			PlumaDocument *doc;
+			LapizDocument *doc;
 
 			doc = lapiz_tab_get_document (tab);
 			unsaved_docs = g_list_prepend (unsaved_docs, doc);
@@ -4622,10 +4622,10 @@ lapiz_window_get_unsaved_documents (PlumaWindow *window)
 }
 
 void
-_lapiz_window_set_saving_session_state (PlumaWindow *window,
+_lapiz_window_set_saving_session_state (LapizWindow *window,
 					gboolean     saving_session)
 {
-	PlumaWindowState old_state;
+	LapizWindowState old_state;
 
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 
@@ -4647,13 +4647,13 @@ _lapiz_window_set_saving_session_state (PlumaWindow *window,
 static void
 hide_notebook_tabs_on_fullscreen (GtkNotebook	*notebook,
 				  GParamSpec	*pspec,
-				  PlumaWindow	*window)
+				  LapizWindow	*window)
 {
 	gtk_notebook_set_show_tabs (notebook, FALSE);
 }
 
 void
-_lapiz_window_fullscreen (PlumaWindow *window)
+_lapiz_window_fullscreen (LapizWindow *window)
 {
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 
@@ -4683,7 +4683,7 @@ _lapiz_window_fullscreen (PlumaWindow *window)
 }
 
 void
-_lapiz_window_unfullscreen (PlumaWindow *window)
+_lapiz_window_unfullscreen (LapizWindow *window)
 {
 	gboolean visible;
 	GtkAction *action;
@@ -4723,7 +4723,7 @@ _lapiz_window_unfullscreen (PlumaWindow *window)
 }
 
 gboolean
-_lapiz_window_is_fullscreen (PlumaWindow *window)
+_lapiz_window_is_fullscreen (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), FALSE);
 
@@ -4732,20 +4732,20 @@ _lapiz_window_is_fullscreen (PlumaWindow *window)
 
 /**
  * lapiz_window_get_tab_from_location:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  * @location: a #GFile
  *
- * Gets the #PlumaTab that matches with the given @location.
+ * Gets the #LapizTab that matches with the given @location.
  *
- * Returns: (transfer none): the #PlumaTab that matches with the given @location.
+ * Returns: (transfer none): the #LapizTab that matches with the given @location.
  */
-PlumaTab *
-lapiz_window_get_tab_from_location (PlumaWindow *window,
+LapizTab *
+lapiz_window_get_tab_from_location (LapizWindow *window,
 				    GFile       *location)
 {
 	GList *tabs;
 	GList *l;
-	PlumaTab *ret = NULL;
+	LapizTab *ret = NULL;
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
@@ -4754,8 +4754,8 @@ lapiz_window_get_tab_from_location (PlumaWindow *window,
 
 	for (l = tabs; l != NULL; l = g_list_next (l))
 	{
-		PlumaDocument *d;
-		PlumaTab *t;
+		LapizDocument *d;
+		LapizTab *t;
 		GFile *f;
 
 		t = LAPIZ_TAB (l->data);
@@ -4784,15 +4784,15 @@ lapiz_window_get_tab_from_location (PlumaWindow *window,
 
 /**
  * lapiz_window_get_message_bus:
- * @window: a #PlumaWindow
+ * @window: a #LapizWindow
  *
- * Gets the #PlumaMessageBus associated with @window. The returned reference
+ * Gets the #LapizMessageBus associated with @window. The returned reference
  * is owned by the window and should not be unreffed.
  *
- * Return value: (transfer none): the #PlumaMessageBus associated with @window
+ * Return value: (transfer none): the #LapizMessageBus associated with @window
  */
-PlumaMessageBus	*
-lapiz_window_get_message_bus (PlumaWindow *window)
+LapizMessageBus	*
+lapiz_window_get_message_bus (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 

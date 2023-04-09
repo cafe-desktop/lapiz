@@ -67,14 +67,14 @@ static void	ask_next_confirmation	(void);
 static void
 save_window_session (GKeyFile    *state_file,
 		     const gchar *group_name,
-		     PlumaWindow      *window)
+		     LapizWindow      *window)
 {
 	const gchar *role;
 	int width, height;
-	PlumaPanel *panel;
+	LapizPanel *panel;
 	GList *docs, *l;
 	GPtrArray *doc_array;
-	PlumaDocument *active_document;
+	LapizDocument *active_document;
 	gchar *uri;
 
 	lapiz_debug (DEBUG_SESSION);
@@ -154,7 +154,7 @@ client_save_state_cb (EggSMClient *client,
 }
 
 static void
-window_handled (PlumaWindow *window)
+window_handled (LapizWindow *window)
 {
 	window_dirty_list = g_slist_remove (window_dirty_list, window);
 
@@ -166,11 +166,11 @@ window_handled (PlumaWindow *window)
 }
 
 static void
-window_state_change (PlumaWindow *window,
+window_state_change (LapizWindow *window,
 		     GParamSpec  *pspec,
 		     gpointer     data)
 {
-	PlumaWindowState state;
+	LapizWindowState state;
 	GList *unsaved_docs;
 	GList *docs_to_save;
 	GList *l;
@@ -212,9 +212,9 @@ window_state_change (PlumaWindow *window,
 }
 
 static void
-close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
+close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 					    gint                          response_id,
-					    PlumaWindow                  *window)
+					    LapizWindow                  *window)
 {
 	GList *selected_documents;
 	GSList *l;
@@ -269,7 +269,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 }
 
 static void
-show_confirmation_dialog (PlumaWindow *window)
+show_confirmation_dialog (LapizWindow *window)
 {
 	GList *unsaved_docs;
 	GtkWidget *dlg;
@@ -283,8 +283,8 @@ show_confirmation_dialog (PlumaWindow *window)
 	if (unsaved_docs->next == NULL)
 	{
 		/* There is only one unsaved document */
-		PlumaTab *tab;
-		PlumaDocument *doc;
+		LapizTab *tab;
+		LapizDocument *doc;
 
 		doc = LAPIZ_DOCUMENT (unsaved_docs->data);
 
@@ -331,7 +331,7 @@ ask_next_confirmation (void)
 static void
 client_quit_requested_cb (EggSMClient *client, gpointer data)
 {
-	PlumaApp *app;
+	LapizApp *app;
 	const GList *l;
 
 	lapiz_debug (DEBUG_SESSION);
@@ -453,11 +453,11 @@ lapiz_session_is_restored (void)
 static void
 parse_window (GKeyFile *state_file, const char *group_name)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 	gchar *role, *active_document, **documents;
 	int width, height;
 	gboolean visible;
-	PlumaPanel *panel;
+	LapizPanel *panel;
 	GError *error = NULL;
 
 	role = g_key_file_get_string (state_file, group_name, "role", NULL);

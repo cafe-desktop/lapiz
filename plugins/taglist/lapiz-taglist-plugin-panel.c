@@ -51,9 +51,9 @@ enum
 	NUM_COLUMNS
 };
 
-struct _PlumaTaglistPluginPanelPrivate
+struct _LapizTaglistPluginPanelPrivate
 {
-	PlumaWindow  *window;
+	LapizWindow  *window;
 
 	GtkWidget *tag_groups_combo;
 	GtkWidget *tags_list;
@@ -64,11 +64,11 @@ struct _PlumaTaglistPluginPanelPrivate
 	gchar *data_dir;
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaTaglistPluginPanel,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTaglistPluginPanel,
                                 lapiz_taglist_plugin_panel,
                                 GTK_TYPE_BOX,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC(PlumaTaglistPluginPanel))
+                                G_ADD_PRIVATE_DYNAMIC(LapizTaglistPluginPanel))
 
 enum
 {
@@ -77,8 +77,8 @@ enum
 };
 
 static void
-set_window (PlumaTaglistPluginPanel *panel,
-	    PlumaWindow             *window)
+set_window (LapizTaglistPluginPanel *panel,
+	    LapizWindow             *window)
 {
 	g_return_if_fail (panel->priv->window == NULL);
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
@@ -94,7 +94,7 @@ lapiz_taglist_plugin_panel_set_property (GObject      *object,
 					 const GValue *value,
 					 GParamSpec   *pspec)
 {
-	PlumaTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
+	LapizTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -114,7 +114,7 @@ lapiz_taglist_plugin_panel_get_property (GObject    *object,
 					 GValue     *value,
 					 GParamSpec *pspec)
 {
-	PlumaTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
+	LapizTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -131,7 +131,7 @@ lapiz_taglist_plugin_panel_get_property (GObject    *object,
 static void
 lapiz_taglist_plugin_panel_finalize (GObject *object)
 {
-	PlumaTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
+	LapizTaglistPluginPanel *panel = LAPIZ_TAGLIST_PLUGIN_PANEL (object);
 
 	g_free (panel->priv->data_dir);
 
@@ -139,7 +139,7 @@ lapiz_taglist_plugin_panel_finalize (GObject *object)
 }
 
 static void
-lapiz_taglist_plugin_panel_class_init (PlumaTaglistPluginPanelClass *klass)
+lapiz_taglist_plugin_panel_class_init (LapizTaglistPluginPanelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -151,24 +151,24 @@ lapiz_taglist_plugin_panel_class_init (PlumaTaglistPluginPanelClass *klass)
 					 PROP_WINDOW,
 					 g_param_spec_object ("window",
 							 "Window",
-							 "The PlumaWindow this PlumaTaglistPluginPanel is associated with",
+							 "The LapizWindow this LapizTaglistPluginPanel is associated with",
 							 LAPIZ_TYPE_WINDOW,
 							 G_PARAM_READWRITE |
 							 G_PARAM_CONSTRUCT_ONLY));
 }
 
 static void
-lapiz_taglist_plugin_panel_class_finalize (PlumaTaglistPluginPanelClass *klass)
+lapiz_taglist_plugin_panel_class_finalize (LapizTaglistPluginPanelClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
 
 static void
-insert_tag (PlumaTaglistPluginPanel *panel,
+insert_tag (LapizTaglistPluginPanel *panel,
 	    Tag                     *tag,
 	    gboolean                 grab_focus)
 {
-	PlumaView *view;
+	LapizView *view;
 	GtkTextBuffer *buffer;
 	GtkTextIter start, end;
 	GtkTextIter cursor;
@@ -246,7 +246,7 @@ static void
 tag_list_row_activated_cb (GtkTreeView             *tag_list,
 			   GtkTreePath             *path,
 			   GtkTreeViewColumn       *column,
-			   PlumaTaglistPluginPanel *panel)
+			   LapizTaglistPluginPanel *panel)
 {
 	GtkTreeIter iter;
 	GtkTreeModel *model;
@@ -271,7 +271,7 @@ tag_list_row_activated_cb (GtkTreeView             *tag_list,
 static gboolean
 tag_list_key_press_event_cb (GtkTreeView             *tag_list,
 			     GdkEventKey             *event,
-			     PlumaTaglistPluginPanel *panel)
+			     LapizTaglistPluginPanel *panel)
 {
 	gboolean grab_focus;
 
@@ -308,7 +308,7 @@ tag_list_key_press_event_cb (GtkTreeView             *tag_list,
 }
 
 static GtkTreeModel*
-create_model (PlumaTaglistPluginPanel *panel)
+create_model (LapizTaglistPluginPanel *panel)
 {
 	gint i = 0;
 	GtkListStore *store;
@@ -348,7 +348,7 @@ create_model (PlumaTaglistPluginPanel *panel)
 }
 
 static void
-populate_tags_list (PlumaTaglistPluginPanel *panel)
+populate_tags_list (LapizTaglistPluginPanel *panel)
 {
 	GtkTreeModel* model;
 
@@ -381,7 +381,7 @@ find_tag_group (const gchar *name)
 }
 
 static void
-populate_tag_groups_combo (PlumaTaglistPluginPanel *panel)
+populate_tag_groups_combo (LapizTaglistPluginPanel *panel)
 {
 	GList *l;
 	GtkComboBox *combo;
@@ -408,7 +408,7 @@ populate_tag_groups_combo (PlumaTaglistPluginPanel *panel)
 
 static void
 selected_group_changed (GtkComboBox             *combo,
-			PlumaTaglistPluginPanel *panel)
+			LapizTaglistPluginPanel *panel)
 {
 	gchar* group_name;
 
@@ -473,7 +473,7 @@ create_preview_string (Tag *tag)
 }
 
 static void
-update_preview (PlumaTaglistPluginPanel *panel,
+update_preview (LapizTaglistPluginPanel *panel,
 		Tag                     *tag)
 {
 	gchar *str;
@@ -495,7 +495,7 @@ tag_list_cursor_changed_cb (GtkTreeView *tag_list,
 	GtkTreeIter iter;
 	gint index;
 
-	PlumaTaglistPluginPanel *panel = (PlumaTaglistPluginPanel *)data;
+	LapizTaglistPluginPanel *panel = (LapizTaglistPluginPanel *)data;
 
 	model = gtk_tree_view_get_model (tag_list);
 
@@ -518,7 +518,7 @@ tags_list_query_tooltip_cb (GtkWidget               *widget,
 			    gint                     y,
 			    gboolean                 keyboard_tip,
 			    GtkTooltip              *tooltip,
-			    PlumaTaglistPluginPanel *panel)
+			    LapizTaglistPluginPanel *panel)
 {
 	GtkTreeIter iter;
 	GtkTreeModel *model;
@@ -584,7 +584,7 @@ draw_event_cb (GtkWidget      *panel,
                cairo_t        *cr,
                gpointer        user_data)
 {
-	PlumaTaglistPluginPanel *ppanel = LAPIZ_TAGLIST_PLUGIN_PANEL (panel);
+	LapizTaglistPluginPanel *ppanel = LAPIZ_TAGLIST_PLUGIN_PANEL (panel);
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -622,7 +622,7 @@ realize_tag_groups_combo (GtkWidget *combo,
 }
 
 static void
-add_preview_widget (PlumaTaglistPluginPanel *panel)
+add_preview_widget (LapizTaglistPluginPanel *panel)
 {
 	GtkWidget *expander;
 	GtkWidget *frame;
@@ -660,7 +660,7 @@ add_preview_widget (PlumaTaglistPluginPanel *panel)
 }
 
 static void
-lapiz_taglist_plugin_panel_init (PlumaTaglistPluginPanel *panel)
+lapiz_taglist_plugin_panel_init (LapizTaglistPluginPanel *panel)
 {
 	GtkWidget *sw;
 	GtkTreeViewColumn *column;
@@ -771,10 +771,10 @@ lapiz_taglist_plugin_panel_init (PlumaTaglistPluginPanel *panel)
 }
 
 GtkWidget *
-lapiz_taglist_plugin_panel_new (PlumaWindow *window,
+lapiz_taglist_plugin_panel_new (LapizWindow *window,
 				const gchar *data_dir)
 {
-	PlumaTaglistPluginPanel *panel;
+	LapizTaglistPluginPanel *panel;
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 

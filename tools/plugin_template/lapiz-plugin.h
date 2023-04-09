@@ -47,7 +47,7 @@ typedef struct _##(PLUGIN_ID.camel)Plugin		##(PLUGIN_ID.camel)Plugin;
 
 struct _##(PLUGIN_ID.camel)Plugin
 {
-	PlumaPlugin parent_instance;
+	LapizPlugin parent_instance;
 
 	/*< private >*/
 	##(PLUGIN_ID.camel)PluginPrivate *priv;
@@ -60,7 +60,7 @@ typedef struct _##(PLUGIN_ID.camel)PluginClass	##(PLUGIN_ID.camel)PluginClass;
 
 struct _##(PLUGIN_ID.camel)PluginClass
 {
-	PlumaPluginClass parent_class;
+	LapizPluginClass parent_class;
 };
 
 /*

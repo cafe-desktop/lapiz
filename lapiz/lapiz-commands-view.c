@@ -44,7 +44,7 @@
 
 void
 _lapiz_cmd_view_show_toolbar (GtkAction   *action,
-			     PlumaWindow *window)
+			     LapizWindow *window)
 {
 	gboolean visible;
 
@@ -60,7 +60,7 @@ _lapiz_cmd_view_show_toolbar (GtkAction   *action,
 
 void
 _lapiz_cmd_view_show_statusbar (GtkAction   *action,
-			       PlumaWindow *window)
+			       LapizWindow *window)
 {
 	gboolean visible;
 
@@ -76,10 +76,10 @@ _lapiz_cmd_view_show_statusbar (GtkAction   *action,
 
 void
 _lapiz_cmd_view_show_side_pane (GtkAction   *action,
-			       PlumaWindow *window)
+			       LapizWindow *window)
 {
 	gboolean visible;
-	PlumaPanel *panel;
+	LapizPanel *panel;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -100,10 +100,10 @@ _lapiz_cmd_view_show_side_pane (GtkAction   *action,
 
 void
 _lapiz_cmd_view_show_bottom_pane (GtkAction   *action,
-				 PlumaWindow *window)
+				 LapizWindow *window)
 {
 	gboolean visible;
-	PlumaPanel *panel;
+	LapizPanel *panel;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -124,7 +124,7 @@ _lapiz_cmd_view_show_bottom_pane (GtkAction   *action,
 
 void
 _lapiz_cmd_view_toggle_fullscreen_mode (GtkAction *action,
-					PlumaWindow *window)
+					LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -136,7 +136,7 @@ _lapiz_cmd_view_toggle_fullscreen_mode (GtkAction *action,
 
 void
 _lapiz_cmd_view_leave_fullscreen_mode (GtkAction *action,
-				       PlumaWindow *window)
+				       LapizWindow *window)
 {
 	GtkAction *view_action;
 

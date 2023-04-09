@@ -37,31 +37,31 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_PLUGINS_ENGINE              (lapiz_plugins_engine_get_type ())
-#define LAPIZ_PLUGINS_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PLUGINS_ENGINE, PlumaPluginsEngine))
-#define LAPIZ_PLUGINS_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PLUGINS_ENGINE, PlumaPluginsEngineClass))
+#define LAPIZ_PLUGINS_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PLUGINS_ENGINE, LapizPluginsEngine))
+#define LAPIZ_PLUGINS_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PLUGINS_ENGINE, LapizPluginsEngineClass))
 #define LAPIZ_IS_PLUGINS_ENGINE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PLUGINS_ENGINE))
 #define LAPIZ_IS_PLUGINS_ENGINE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PLUGINS_ENGINE))
-#define LAPIZ_PLUGINS_ENGINE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PLUGINS_ENGINE, PlumaPluginsEngineClass))
+#define LAPIZ_PLUGINS_ENGINE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PLUGINS_ENGINE, LapizPluginsEngineClass))
 
-typedef struct _PlumaPluginsEngine		PlumaPluginsEngine;
-typedef struct _PlumaPluginsEnginePrivate	PlumaPluginsEnginePrivate;
+typedef struct _LapizPluginsEngine		LapizPluginsEngine;
+typedef struct _LapizPluginsEnginePrivate	LapizPluginsEnginePrivate;
 
-struct _PlumaPluginsEngine
+struct _LapizPluginsEngine
 {
 	PeasEngine parent;
-	PlumaPluginsEnginePrivate *priv;
+	LapizPluginsEnginePrivate *priv;
 };
 
-typedef struct _PlumaPluginsEngineClass		PlumaPluginsEngineClass;
+typedef struct _LapizPluginsEngineClass		LapizPluginsEngineClass;
 
-struct _PlumaPluginsEngineClass
+struct _LapizPluginsEngineClass
 {
 	PeasEngineClass parent_class;
 };
 
 GType			 lapiz_plugins_engine_get_type		(void) G_GNUC_CONST;
 
-PlumaPluginsEngine	*lapiz_plugins_engine_get_default	(void);
+LapizPluginsEngine	*lapiz_plugins_engine_get_default	(void);
 
 G_END_DECLS
 

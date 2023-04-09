@@ -40,53 +40,53 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_DOCUMENT_LOADER              (lapiz_document_loader_get_type())
-#define LAPIZ_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENT_LOADER, PlumaDocumentLoader))
-#define LAPIZ_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENT_LOADER, PlumaDocumentLoaderClass))
+#define LAPIZ_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENT_LOADER, LapizDocumentLoader))
+#define LAPIZ_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENT_LOADER, LapizDocumentLoaderClass))
 #define LAPIZ_IS_DOCUMENT_LOADER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_DOCUMENT_LOADER))
 #define LAPIZ_IS_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT_LOADER))
-#define LAPIZ_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENT_LOADER, PlumaDocumentLoaderClass))
+#define LAPIZ_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENT_LOADER, LapizDocumentLoaderClass))
 
 /* Private structure type */
-typedef struct _PlumaDocumentLoaderPrivate PlumaDocumentLoaderPrivate;
+typedef struct _LapizDocumentLoaderPrivate LapizDocumentLoaderPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaDocumentLoader PlumaDocumentLoader;
+typedef struct _LapizDocumentLoader LapizDocumentLoader;
 
-struct _PlumaDocumentLoader
+struct _LapizDocumentLoader
 {
 	GObject object;
 
-	PlumaDocument		 *document;
+	LapizDocument		 *document;
 	gboolean		  used;
 
 	/* Info on the current file */
 	GFileInfo		 *info;
 	gchar			 *uri;
-	const PlumaEncoding	 *encoding;
-	const PlumaEncoding	 *auto_detected_encoding;
-	PlumaDocumentNewlineType  auto_detected_newline_type;
+	const LapizEncoding	 *encoding;
+	const LapizEncoding	 *auto_detected_encoding;
+	LapizDocumentNewlineType  auto_detected_newline_type;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaDocumentLoaderClass PlumaDocumentLoaderClass;
+typedef struct _LapizDocumentLoaderClass LapizDocumentLoaderClass;
 
-struct _PlumaDocumentLoaderClass
+struct _LapizDocumentLoaderClass
 {
 	GObjectClass parent_class;
 
 	/* Signals */
-	void (* loading) (PlumaDocumentLoader *loader,
+	void (* loading) (LapizDocumentLoader *loader,
 			  gboolean             completed,
 			  const GError        *error);
 
 	/* VTable */
-	void			(* load)		(PlumaDocumentLoader *loader);
-	gboolean		(* cancel)		(PlumaDocumentLoader *loader);
-	goffset			(* get_bytes_read)	(PlumaDocumentLoader *loader);
+	void			(* load)		(LapizDocumentLoader *loader);
+	gboolean		(* cancel)		(LapizDocumentLoader *loader);
+	goffset			(* get_bytes_read)	(LapizDocumentLoader *loader);
 };
 
 /*
@@ -95,35 +95,35 @@ struct _PlumaDocumentLoaderClass
 GType 		 	 lapiz_document_loader_get_type		(void) G_GNUC_CONST;
 
 /* If enconding == NULL, the encoding will be autodetected */
-PlumaDocumentLoader 	*lapiz_document_loader_new 		(PlumaDocument       *doc,
+LapizDocumentLoader 	*lapiz_document_loader_new 		(LapizDocument       *doc,
 								 const gchar         *uri,
-								 const PlumaEncoding *encoding);
+								 const LapizEncoding *encoding);
 
-void			 lapiz_document_loader_loading		(PlumaDocumentLoader *loader,
+void			 lapiz_document_loader_loading		(LapizDocumentLoader *loader,
 								 gboolean             completed,
 								 GError              *error);
 
-void			 lapiz_document_loader_load		(PlumaDocumentLoader *loader);
+void			 lapiz_document_loader_load		(LapizDocumentLoader *loader);
 #if 0
-gboolean		 lapiz_document_loader_load_from_stdin	(PlumaDocumentLoader *loader);
+gboolean		 lapiz_document_loader_load_from_stdin	(LapizDocumentLoader *loader);
 #endif
-gboolean		 lapiz_document_loader_cancel		(PlumaDocumentLoader *loader);
+gboolean		 lapiz_document_loader_cancel		(LapizDocumentLoader *loader);
 
-PlumaDocument		*lapiz_document_loader_get_document	(PlumaDocumentLoader *loader);
+LapizDocument		*lapiz_document_loader_get_document	(LapizDocumentLoader *loader);
 
 /* Returns STDIN_URI if loading from stdin */
 #define STDIN_URI "stdin:"
-const gchar		*lapiz_document_loader_get_uri		(PlumaDocumentLoader *loader);
+const gchar		*lapiz_document_loader_get_uri		(LapizDocumentLoader *loader);
 
-const PlumaEncoding	*lapiz_document_loader_get_encoding	(PlumaDocumentLoader *loader);
+const LapizEncoding	*lapiz_document_loader_get_encoding	(LapizDocumentLoader *loader);
 
-PlumaDocumentNewlineType lapiz_document_loader_get_newline_type (PlumaDocumentLoader *loader);
+LapizDocumentNewlineType lapiz_document_loader_get_newline_type (LapizDocumentLoader *loader);
 
-goffset			 lapiz_document_loader_get_bytes_read	(PlumaDocumentLoader *loader);
+goffset			 lapiz_document_loader_get_bytes_read	(LapizDocumentLoader *loader);
 
 /* You can get from the info: content_type, time_modified, standard_size, access_can_write
    and also the metadata*/
-GFileInfo		*lapiz_document_loader_get_info		(PlumaDocumentLoader *loader);
+GFileInfo		*lapiz_document_loader_get_info		(LapizDocumentLoader *loader);
 
 G_END_DECLS
 

@@ -52,7 +52,7 @@
 
 #define ISOCODESLOCALEDIR	ISO_CODES_PREFIX "/share/locale"
 
-struct _PlumaSpellCheckerLanguage
+struct _LapizSpellCheckerLanguage
 {
 	gchar *abrev;
 	gchar *name;
@@ -331,8 +331,8 @@ key_cmp (gconstpointer a, gconstpointer b, gpointer user_data)
 }
 
 static gint
-lang_cmp (const PlumaSpellCheckerLanguage *a,
-          const PlumaSpellCheckerLanguage *b)
+lang_cmp (const LapizSpellCheckerLanguage *a,
+          const LapizSpellCheckerLanguage *b)
 {
 	return g_utf8_collate (a->name, b->name);
 }
@@ -342,7 +342,7 @@ build_langs_list (const gchar *key,
 		  const gchar *value,
 		  gpointer     data)
 {
-	PlumaSpellCheckerLanguage *lang = g_new (PlumaSpellCheckerLanguage, 1);
+	LapizSpellCheckerLanguage *lang = g_new (LapizSpellCheckerLanguage, 1);
 
 	lang->abrev = g_strdup (key);
 	lang->name = g_strdup (value);
@@ -397,7 +397,7 @@ lapiz_spell_checker_get_available_languages (void)
 }
 
 const gchar *
-lapiz_spell_checker_language_to_string (const PlumaSpellCheckerLanguage *lang)
+lapiz_spell_checker_language_to_string (const LapizSpellCheckerLanguage *lang)
 {
 	if (lang == NULL)
 		/* Translators: this refers the Default language used by the
@@ -409,14 +409,14 @@ lapiz_spell_checker_language_to_string (const PlumaSpellCheckerLanguage *lang)
 }
 
 const gchar *
-lapiz_spell_checker_language_to_key (const PlumaSpellCheckerLanguage *lang)
+lapiz_spell_checker_language_to_key (const LapizSpellCheckerLanguage *lang)
 {
 	g_return_val_if_fail (lang != NULL, NULL);
 
 	return lang->abrev;
 }
 
-const PlumaSpellCheckerLanguage *
+const LapizSpellCheckerLanguage *
 lapiz_spell_checker_language_from_key (const gchar *key)
 {
 	const GSList *langs;
@@ -427,7 +427,7 @@ lapiz_spell_checker_language_from_key (const gchar *key)
 
 	while (langs != NULL)
 	{
-		const PlumaSpellCheckerLanguage *l = (const PlumaSpellCheckerLanguage *)langs->data;
+		const LapizSpellCheckerLanguage *l = (const LapizSpellCheckerLanguage *)langs->data;
 
 		if (g_ascii_strcasecmp (key, l->abrev) == 0)
 			return l;

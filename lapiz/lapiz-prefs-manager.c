@@ -149,7 +149,7 @@ lapiz_prefs_manager_ ## name ## _can_set (void)				\
 }
 
 
-PlumaPrefsManager *lapiz_prefs_manager = NULL;
+LapizPrefsManager *lapiz_prefs_manager = NULL;
 
 
 static GtkWrapMode 	 get_wrap_mode_from_string 		(const gchar* str);
@@ -170,7 +170,7 @@ lapiz_prefs_manager_init (void)
 
 	if (lapiz_prefs_manager == NULL)
 	{
-		lapiz_prefs_manager = g_new0 (PlumaPrefsManager, 1);
+		lapiz_prefs_manager = g_new0 (LapizPrefsManager, 1);
 		lapiz_prefs_manager->settings = g_settings_new (LAPIZ_SCHEMA);
 		lapiz_prefs_manager->lockdown_settings = g_settings_new (GPM_LOCKDOWN_SCHEMA);
 		lapiz_prefs_manager->interface_settings = g_settings_new (GPM_INTERFACE_SCHEMA);
@@ -412,11 +412,11 @@ DEFINE_BOOL_PREF (toolbar_visible,
 
 
 /* Toolbar suttons style */
-PlumaToolbarSetting
+LapizToolbarSetting
 lapiz_prefs_manager_get_toolbar_buttons_style (void)
 {
 	gchar *str;
-	PlumaToolbarSetting res;
+	LapizToolbarSetting res;
 
 	lapiz_debug (DEBUG_PREFS);
 
@@ -443,7 +443,7 @@ lapiz_prefs_manager_get_toolbar_buttons_style (void)
 }
 
 void
-lapiz_prefs_manager_set_toolbar_buttons_style (PlumaToolbarSetting tbs)
+lapiz_prefs_manager_set_toolbar_buttons_style (LapizToolbarSetting tbs)
 {
 	const gchar * str;
 
@@ -679,7 +679,7 @@ lapiz_prefs_manager_get_auto_detected_encodings (void)
 	if (strings != NULL)
 	{
 		GSList *tmp;
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 
 		tmp = strings;
 
@@ -730,7 +730,7 @@ lapiz_prefs_manager_get_shown_in_menu_encodings (void)
 	if (strings != NULL)
 	{
 		GSList *tmp;
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 
 		tmp = strings;
 
@@ -773,10 +773,10 @@ lapiz_prefs_manager_set_shown_in_menu_encodings (const GSList *encs)
 
 	while (encs != NULL)
 	{
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 		const gchar *charset;
 
-		enc = (const PlumaEncoding *)encs->data;
+		enc = (const LapizEncoding *)encs->data;
 
 		charset = lapiz_encoding_get_charset (enc);
 		g_return_if_fail (charset != NULL);
@@ -968,7 +968,7 @@ lapiz_prefs_manager_active_plugins_can_set (void)
 
 /* Global Lockdown */
 
-PlumaLockdownMask
+LapizLockdownMask
 lapiz_prefs_manager_get_lockdown (void)
 {
 	guint lockdown = 0;

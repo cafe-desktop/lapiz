@@ -146,9 +146,9 @@ typedef enum
 	PROMPT_CUSTOM_FORMAT,		/* Popup dialog with entry preselected */
 	USE_SELECTED_FORMAT,		/* Use selected format directly */
 	USE_CUSTOM_FORMAT		/* Use custom format directly */
-} PlumaTimePluginPromptType;
+} LapizTimePluginPromptType;
 
-struct _PlumaTimePluginPrivate
+struct _LapizTimePluginPrivate
 {
 	GtkWidget *window;
 
@@ -166,17 +166,17 @@ enum {
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 static void peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaTimePlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 lapiz_time_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaTimePlugin)
+                                G_ADD_PRIVATE_DYNAMIC (LapizTimePlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
                                                                peas_gtk_configurable_iface_init))
 
-static void time_cb (GtkAction *action, PlumaTimePlugin *plugin);
+static void time_cb (GtkAction *action, LapizTimePlugin *plugin);
 
 static const GtkActionEntry action_entries[] =
 {
@@ -191,9 +191,9 @@ static const GtkActionEntry action_entries[] =
 };
 
 static void
-lapiz_time_plugin_init (PlumaTimePlugin *plugin)
+lapiz_time_plugin_init (LapizTimePlugin *plugin)
 {
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTimePlugin initializing");
 
 	plugin->priv = lapiz_time_plugin_get_instance_private (plugin);
 
@@ -203,9 +203,9 @@ lapiz_time_plugin_init (PlumaTimePlugin *plugin)
 static void
 lapiz_time_plugin_finalize (GObject *object)
 {
-	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
+	LapizTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin finalizing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTimePlugin finalizing");
 
 	g_object_unref (G_OBJECT (plugin->priv->settings));
 
@@ -215,9 +215,9 @@ lapiz_time_plugin_finalize (GObject *object)
 static void
 lapiz_time_plugin_dispose (GObject *object)
 {
-	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
+	LapizTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTimePlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizTimePlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -235,10 +235,10 @@ lapiz_time_plugin_dispose (GObject *object)
 }
 
 static void
-update_ui (PlumaTimePluginPrivate *data)
+update_ui (LapizTimePluginPrivate *data)
 {
-	PlumaWindow *window;
-	PlumaView *view;
+	LapizWindow *window;
+	LapizView *view;
 	GtkAction *action;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -258,9 +258,9 @@ update_ui (PlumaTimePluginPrivate *data)
 static void
 lapiz_time_plugin_activate (PeasActivatable *activatable)
 {
-	PlumaTimePlugin *plugin;
-	PlumaTimePluginPrivate *data;
-	PlumaWindow *window;
+	LapizTimePlugin *plugin;
+	LapizTimePluginPrivate *data;
+	LapizWindow *window;
 	GtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -271,7 +271,7 @@ lapiz_time_plugin_activate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	data->action_group = gtk_action_group_new ("PlumaTimePluginActions");
+	data->action_group = gtk_action_group_new ("LapizTimePluginActions");
 	gtk_action_group_set_translation_domain (data->action_group,
 						 GETTEXT_PACKAGE);
 	gtk_action_group_add_actions (data->action_group,
@@ -297,8 +297,8 @@ lapiz_time_plugin_activate (PeasActivatable *activatable)
 static void
 lapiz_time_plugin_deactivate (PeasActivatable *activatable)
 {
-	PlumaTimePluginPrivate *data;
-	PlumaWindow *window;
+	LapizTimePluginPrivate *data;
+	LapizWindow *window;
 	GtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -321,10 +321,10 @@ lapiz_time_plugin_update_state (PeasActivatable *activatable)
 }
 
 /* whether we should prompt the user or use the specified format */
-static PlumaTimePluginPromptType
-get_prompt_type (PlumaTimePlugin *plugin)
+static LapizTimePluginPromptType
+get_prompt_type (LapizTimePlugin *plugin)
 {
-	PlumaTimePluginPromptType prompt_type;
+	LapizTimePluginPromptType prompt_type;
 
 	prompt_type = g_settings_get_enum (plugin->priv->settings,
 			        	       PROMPT_TYPE_KEY);
@@ -334,7 +334,7 @@ get_prompt_type (PlumaTimePlugin *plugin)
 
 static void
 set_prompt_type (GSettings *settings,
-		 PlumaTimePluginPromptType  prompt_type)
+		 LapizTimePluginPromptType  prompt_type)
 {
 	if (!g_settings_is_writable (settings,
 					   PROMPT_TYPE_KEY))
@@ -349,7 +349,7 @@ set_prompt_type (GSettings *settings,
 
 /* The selected format in the list */
 static gchar *
-get_selected_format (PlumaTimePlugin *plugin)
+get_selected_format (LapizTimePlugin *plugin)
 {
 	gchar *sel_format;
 
@@ -378,7 +378,7 @@ set_selected_format (GSettings *settings,
 
 /* the custom format in the entry */
 static gchar *
-get_custom_format (PlumaTimePlugin *plugin)
+get_custom_format (LapizTimePlugin *plugin)
 {
 	gchar *format;
 
@@ -476,7 +476,7 @@ choose_format_dialog_destroyed (GtkWidget *widget,
 static GtkTreeModel *
 create_model (GtkWidget       *listview,
 	      const gchar     *sel_format,
-	      PlumaTimePlugin *plugin)
+	      LapizTimePlugin *plugin)
 {
 	gint i = 0;
 	GtkListStore *store;
@@ -562,7 +562,7 @@ scroll_to_selected (GtkTreeView *tree_view)
 static void
 create_formats_list (GtkWidget       *listview,
 		     const gchar     *sel_format,
-		     PlumaTimePlugin *plugin)
+		     LapizTimePlugin *plugin)
 {
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
@@ -721,14 +721,14 @@ configure_dialog_selection_changed (GtkTreeSelection *selection,
 }
 
 static TimeConfigureDialog *
-get_configure_dialog (PlumaTimePlugin *plugin)
+get_configure_dialog (LapizTimePlugin *plugin)
 {
 	TimeConfigureDialog *dialog = NULL;
 	GtkTreeSelection *selection;
 	gchar *data_dir;
 	gchar *ui_file;
 	GtkWidget *viewport;
-	PlumaTimePluginPromptType prompt_type;
+	LapizTimePluginPromptType prompt_type;
 	gchar *sf;
 	GtkWidget *error_widget;
 	gboolean ret;
@@ -876,8 +876,8 @@ choose_format_dialog_row_activated (GtkTreeView        *list,
 
 static ChooseFormatDialog *
 get_choose_format_dialog (GtkWindow                 *parent,
-			  PlumaTimePluginPromptType  prompt_type,
-			  PlumaTimePlugin           *plugin)
+			  LapizTimePluginPromptType  prompt_type,
+			  LapizTimePlugin           *plugin)
 {
 	ChooseFormatDialog *dialog;
 	gchar *data_dir;
@@ -1066,12 +1066,12 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 
 static void
 time_cb (GtkAction  *action,
-	 PlumaTimePlugin *plugin)
+	 LapizTimePlugin *plugin)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 	GtkTextBuffer *buffer;
 	gchar *the_time = NULL;
-	PlumaTimePluginPromptType prompt_type;
+	LapizTimePluginPromptType prompt_type;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -1139,7 +1139,7 @@ lapiz_time_plugin_set_property (GObject      *object,
                                 const GValue *value,
                                 GParamSpec   *pspec)
 {
-	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
+	LapizTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -1159,7 +1159,7 @@ lapiz_time_plugin_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-	PlumaTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
+	LapizTimePlugin *plugin = LAPIZ_TIME_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -1174,7 +1174,7 @@ lapiz_time_plugin_get_property (GObject    *object,
 }
 
 static void
-lapiz_time_plugin_class_init (PlumaTimePluginClass *klass)
+lapiz_time_plugin_class_init (LapizTimePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -1187,7 +1187,7 @@ lapiz_time_plugin_class_init (PlumaTimePluginClass *klass)
 }
 
 static void
-lapiz_time_plugin_class_finalize (PlumaTimePluginClass *klass)
+lapiz_time_plugin_class_finalize (LapizTimePluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }

@@ -46,7 +46,7 @@
 
 #define MAX_ITEMS	50
 
-typedef struct _PlumaMetadataManager PlumaMetadataManager;
+typedef struct _LapizMetadataManager LapizMetadataManager;
 
 typedef struct _Item Item;
 
@@ -57,7 +57,7 @@ struct _Item
 	GHashTable	*values;
 };
 
-struct _PlumaMetadataManager
+struct _LapizMetadataManager
 {
 	gboolean	 values_loaded; /* It is true if the file
 					   has been read */
@@ -70,7 +70,7 @@ struct _PlumaMetadataManager
 static gboolean lapiz_metadata_manager_save (gpointer data);
 
 
-static PlumaMetadataManager *lapiz_metadata_manager = NULL;
+static LapizMetadataManager *lapiz_metadata_manager = NULL;
 
 static void
 item_free (gpointer data)
@@ -113,7 +113,7 @@ lapiz_metadata_manager_init (void)
 	if (lapiz_metadata_manager != NULL)
 		return TRUE;
 
-	lapiz_metadata_manager = g_new0 (PlumaMetadataManager, 1);
+	lapiz_metadata_manager = g_new0 (LapizMetadataManager, 1);
 
 	lapiz_metadata_manager->values_loaded = FALSE;
 

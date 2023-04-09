@@ -596,8 +596,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -605,7 +605,7 @@ msgstr "En textredigerare för MATE skrivbordsmiljön"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -614,7 +614,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -904,8 +904,8 @@ msgid "_Close"
 msgstr "_Stäng"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Pluma Inställningar"
+msgid "Lapiz Preferences"
+msgstr "Lapiz Inställningar"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1320,12 +1320,12 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma är en liten och enkel textredigerare för MATE-skrivbordet"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz är en liten och enkel textredigerare för MATE-skrivbordet"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1333,7 +1333,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1342,13 +1342,13 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Om Pluma"
+msgid "About Lapiz"
+msgstr "Om Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""
@@ -1747,7 +1747,7 @@ msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to"
 " edit it anyway?"
 msgstr ""
-"Pluma öppnade denna instans av filen på ett icke-redigerbart sätt. Vill du "
+"Lapiz öppnade denna instans av filen på ett icke-redigerbart sätt. Vill du "
 "redigera den ändå?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
@@ -1799,7 +1799,7 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"Pluma kan inte hantera %s-platser i skrivläget. Kontrollera att du angav "
+"Lapiz kan inte hantera %s-platser i skrivläget. Kontrollera att du angav "
 "platsen korrekt och försök igen."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
@@ -1807,7 +1807,7 @@ msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed"
 " the location correctly and try again."
 msgstr ""
-"Pluma kan inte hantera denna plats i skrivläget. Kontrollera att du har "
+"Lapiz kan inte hantera denna plats i skrivläget. Kontrollera att du har "
 "angivit platsen korrekt och försök igen."
 
 #: lapiz/lapiz-io-error-message-area.c:1078

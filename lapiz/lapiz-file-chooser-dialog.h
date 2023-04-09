@@ -40,27 +40,27 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_FILE_CHOOSER_DIALOG             (lapiz_file_chooser_dialog_get_type ())
-#define LAPIZ_FILE_CHOOSER_DIALOG(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialog))
-#define LAPIZ_FILE_CHOOSER_DIALOG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialogClass))
+#define LAPIZ_FILE_CHOOSER_DIALOG(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, LapizFileChooserDialog))
+#define LAPIZ_FILE_CHOOSER_DIALOG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, LapizFileChooserDialogClass))
 #define LAPIZ_IS_FILE_CHOOSER_DIALOG(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG))
 #define LAPIZ_IS_FILE_CHOOSER_DIALOG_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_FILE_CHOOSER_DIALOG))
-#define LAPIZ_FILE_CHOOSER_DIALOG_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, PlumaFileChooserDialogClass))
+#define LAPIZ_FILE_CHOOSER_DIALOG_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_CHOOSER_DIALOG, LapizFileChooserDialogClass))
 
-typedef struct _PlumaFileChooserDialog      PlumaFileChooserDialog;
-typedef struct _PlumaFileChooserDialogClass PlumaFileChooserDialogClass;
+typedef struct _LapizFileChooserDialog      LapizFileChooserDialog;
+typedef struct _LapizFileChooserDialogClass LapizFileChooserDialogClass;
 
-typedef struct _PlumaFileChooserDialogPrivate PlumaFileChooserDialogPrivate;
+typedef struct _LapizFileChooserDialogPrivate LapizFileChooserDialogPrivate;
 
-struct _PlumaFileChooserDialogClass
+struct _LapizFileChooserDialogClass
 {
 	GtkFileChooserDialogClass parent_class;
 };
 
-struct _PlumaFileChooserDialog
+struct _LapizFileChooserDialog
 {
 	GtkFileChooserDialog parent_instance;
 
-	PlumaFileChooserDialogPrivate *priv;
+	LapizFileChooserDialogPrivate *priv;
 };
 
 GType		 lapiz_file_chooser_dialog_get_type	(void) G_GNUC_CONST;
@@ -68,21 +68,21 @@ GType		 lapiz_file_chooser_dialog_get_type	(void) G_GNUC_CONST;
 GtkWidget	*lapiz_file_chooser_dialog_new		(const gchar            *title,
 							 GtkWindow              *parent,
 							 GtkFileChooserAction    action,
-							 const PlumaEncoding    *encoding,
+							 const LapizEncoding    *encoding,
 							 const gchar            *first_button_text,
 							 ...);
 
-void		 lapiz_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
-							 const PlumaEncoding    *encoding);
+void		 lapiz_file_chooser_dialog_set_encoding (LapizFileChooserDialog *dialog,
+							 const LapizEncoding    *encoding);
 
-const PlumaEncoding
-		*lapiz_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog);
+const LapizEncoding
+		*lapiz_file_chooser_dialog_get_encoding (LapizFileChooserDialog *dialog);
 
-void		 lapiz_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
-							     PlumaDocumentNewlineType newline_type);
+void		 lapiz_file_chooser_dialog_set_newline_type (LapizFileChooserDialog  *dialog,
+							     LapizDocumentNewlineType newline_type);
 
-PlumaDocumentNewlineType
-		 lapiz_file_chooser_dialog_get_newline_type (PlumaFileChooserDialog *dialog);
+LapizDocumentNewlineType
+		 lapiz_file_chooser_dialog_get_newline_type (LapizFileChooserDialog *dialog);
 
 G_END_DECLS
 

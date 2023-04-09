@@ -42,32 +42,32 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_GIO_DOCUMENT_LOADER              (lapiz_gio_document_loader_get_type())
-#define LAPIZ_GIO_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoader))
-#define LAPIZ_GIO_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoaderClass))
+#define LAPIZ_GIO_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, LapizGioDocumentLoader))
+#define LAPIZ_GIO_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, LapizGioDocumentLoaderClass))
 #define LAPIZ_IS_GIO_DOCUMENT_LOADER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER))
 #define LAPIZ_IS_GIO_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_GIO_DOCUMENT_LOADER))
-#define LAPIZ_GIO_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoaderClass))
+#define LAPIZ_GIO_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, LapizGioDocumentLoaderClass))
 
 /* Private structure type */
-typedef struct _PlumaGioDocumentLoaderPrivate PlumaGioDocumentLoaderPrivate;
+typedef struct _LapizGioDocumentLoaderPrivate LapizGioDocumentLoaderPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaGioDocumentLoader PlumaGioDocumentLoader;
+typedef struct _LapizGioDocumentLoader LapizGioDocumentLoader;
 
-struct _PlumaGioDocumentLoader
+struct _LapizGioDocumentLoader
 {
-	PlumaDocumentLoader loader;
+	LapizDocumentLoader loader;
 
 	/*< private > */
-	PlumaGioDocumentLoaderPrivate *priv;
+	LapizGioDocumentLoaderPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef PlumaDocumentLoaderClass PlumaGioDocumentLoaderClass;
+typedef LapizDocumentLoaderClass LapizGioDocumentLoaderClass;
 
 /*
  * Public methods

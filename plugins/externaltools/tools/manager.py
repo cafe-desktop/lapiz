@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#    Pluma External Tools plugin
+#    Lapiz External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@ from .library import *
 from .functions import *
 import hashlib
 from xml.sax import saxutils
-from gi.repository import GObject, Gio, Gdk, Gtk, GtkSource, Pluma
+from gi.repository import GObject, Gio, Gdk, Gtk, GtkSource, Lapiz
 
 class LanguagesPopup(Gtk.Popover):
     __gtype_name__ = "LanguagesPopup"
@@ -718,7 +718,7 @@ class Manager(GObject.Object):
 
     def on_tool_manager_dialog_response(self, dialog, response):
         if response == Gtk.ResponseType.HELP:
-            Pluma.help_display(self.dialog, 'lapiz', 'lapiz-external-tools-plugin')
+            Lapiz.help_display(self.dialog, 'lapiz', 'lapiz-external-tools-plugin')
             return
 
         self.on_tool_manager_dialog_focus_out(dialog, None)

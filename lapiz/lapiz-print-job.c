@@ -45,10 +45,10 @@
 #include "lapiz-dirs.h"
 
 
-struct _PlumaPrintJobPrivate
+struct _LapizPrintJobPrivate
 {
-	PlumaView                *view;
-	PlumaDocument            *doc;
+	LapizView                *view;
+	LapizDocument            *doc;
 
 	GtkPrintOperation        *operation;
 	GtkSourcePrintCompositor *compositor;
@@ -57,7 +57,7 @@ struct _PlumaPrintJobPrivate
 
 	GtkWidget                *preview;
 
-	PlumaPrintJobStatus       status;
+	LapizPrintJobStatus       status;
 
 	gchar                    *status_string;
 
@@ -100,10 +100,10 @@ enum
 
 static guint print_job_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPrintJob, lapiz_print_job, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPrintJob, lapiz_print_job, G_TYPE_OBJECT)
 
 static void
-set_view (PlumaPrintJob *job, PlumaView *view)
+set_view (LapizPrintJob *job, LapizView *view)
 {
 	job->priv->view = view;
 	job->priv->doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
@@ -115,7 +115,7 @@ lapiz_print_job_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-	PlumaPrintJob *job = LAPIZ_PRINT_JOB (object);
+	LapizPrintJob *job = LAPIZ_PRINT_JOB (object);
 
 	switch (prop_id)
 	{
@@ -134,7 +134,7 @@ lapiz_print_job_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-	PlumaPrintJob *job = LAPIZ_PRINT_JOB (object);
+	LapizPrintJob *job = LAPIZ_PRINT_JOB (object);
 
 	switch (prop_id)
 	{
@@ -150,7 +150,7 @@ lapiz_print_job_set_property (GObject      *object,
 static void
 lapiz_print_job_finalize (GObject *object)
 {
-	PlumaPrintJob *job = LAPIZ_PRINT_JOB (object);
+	LapizPrintJob *job = LAPIZ_PRINT_JOB (object);
 
 	g_free (job->priv->status_string);
 
@@ -164,7 +164,7 @@ lapiz_print_job_finalize (GObject *object)
 }
 
 static void
-lapiz_print_job_class_init (PlumaPrintJobClass *klass)
+lapiz_print_job_class_init (LapizPrintJobClass *klass)
 {
 	GObjectClass *object_class;
 
@@ -177,8 +177,8 @@ lapiz_print_job_class_init (PlumaPrintJobClass *klass)
 	g_object_class_install_property (object_class,
 					 PROP_VIEW,
 					 g_param_spec_object ("view",
-							      "Pluma View",
-							      "Pluma View to print",
+							      "Lapiz View",
+							      "Lapiz View to print",
 							      LAPIZ_TYPE_VIEW,
 							      G_PARAM_READWRITE |
 							      G_PARAM_STATIC_STRINGS |
@@ -188,7 +188,7 @@ lapiz_print_job_class_init (PlumaPrintJobClass *klass)
 		g_signal_new ("printing",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaPrintJobClass, printing),
+			      G_STRUCT_OFFSET (LapizPrintJobClass, printing),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__UINT,
 			      G_TYPE_NONE,
@@ -199,7 +199,7 @@ lapiz_print_job_class_init (PlumaPrintJobClass *klass)
 		g_signal_new ("show-preview",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaPrintJobClass, show_preview),
+			      G_STRUCT_OFFSET (LapizPrintJobClass, show_preview),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
@@ -210,7 +210,7 @@ lapiz_print_job_class_init (PlumaPrintJobClass *klass)
 		g_signal_new ("done",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (PlumaPrintJobClass, done),
+			      G_STRUCT_OFFSET (LapizPrintJobClass, done),
 			      NULL, NULL,
 			      lapiz_marshal_VOID__UINT_POINTER,
 			      G_TYPE_NONE,
@@ -221,7 +221,7 @@ lapiz_print_job_class_init (PlumaPrintJobClass *klass)
 
 static void
 line_numbers_checkbutton_toggled (GtkToggleButton *button,
-				  PlumaPrintJob   *job)
+				  LapizPrintJob   *job)
 {
 	if (gtk_toggle_button_get_active (button))
 	{
@@ -236,7 +236,7 @@ line_numbers_checkbutton_toggled (GtkToggleButton *button,
 
 static void
 wrap_mode_checkbutton_toggled (GtkToggleButton *button,
-			       PlumaPrintJob   *job)
+			       LapizPrintJob   *job)
 {
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
 	{
@@ -258,7 +258,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton *button,
 
 static void
 restore_button_clicked (GtkButton     *button,
-			PlumaPrintJob *job)
+			LapizPrintJob *job)
 
 {
 	if (lapiz_prefs_manager_print_font_body_can_set ())
@@ -300,7 +300,7 @@ restore_button_clicked (GtkButton     *button,
 
 static GObject *
 create_custom_widget_cb (GtkPrintOperation *operation,
-			 PlumaPrintJob     *job)
+			 LapizPrintJob     *job)
 {
 	gboolean ret;
 	GtkWidget *widget;
@@ -458,7 +458,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 static void
 custom_widget_apply_cb (GtkPrintOperation *operation,
 			GtkWidget         *widget,
-			PlumaPrintJob     *job)
+			LapizPrintJob     *job)
 {
 	lapiz_prefs_manager_set_print_syntax_hl (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton)));
 
@@ -496,7 +496,7 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 }
 
 static void
-create_compositor (PlumaPrintJob *job)
+create_compositor (LapizPrintJob *job)
 {
 	gchar *print_font_body;
 	gchar *print_font_header;
@@ -555,7 +555,7 @@ create_compositor (PlumaPrintJob *job)
 static void
 begin_print_cb (GtkPrintOperation *operation,
 	        GtkPrintContext   *context,
-	        PlumaPrintJob     *job)
+	        LapizPrintJob     *job)
 {
 	create_compositor (job);
 
@@ -569,7 +569,7 @@ begin_print_cb (GtkPrintOperation *operation,
 static void
 preview_ready (GtkPrintOperationPreview *gtk_preview,
 	       GtkPrintContext          *context,
-	       PlumaPrintJob            *job)
+	       LapizPrintJob            *job)
 {
 	job->priv->is_preview = TRUE;
 
@@ -588,7 +588,7 @@ preview_cb (GtkPrintOperation        *op,
 	    GtkPrintOperationPreview *gtk_preview,
 	    GtkPrintContext          *context,
 	    GtkWindow                *parent,
-	    PlumaPrintJob            *job)
+	    LapizPrintJob            *job)
 {
 	job->priv->preview = lapiz_print_preview_new (op, gtk_preview, context);
 
@@ -609,7 +609,7 @@ preview_cb (GtkPrintOperation        *op,
 static gboolean
 paginate_cb (GtkPrintOperation *operation,
 	     GtkPrintContext   *context,
-	     PlumaPrintJob     *job)
+	     LapizPrintJob     *job)
 {
 	gboolean res;
 
@@ -641,7 +641,7 @@ static void
 draw_page_cb (GtkPrintOperation *operation,
 	      GtkPrintContext   *context,
 	      gint               page_nr,
-	      PlumaPrintJob     *job)
+	      LapizPrintJob     *job)
 {
 	gint n_pages;
 
@@ -670,7 +670,7 @@ draw_page_cb (GtkPrintOperation *operation,
 static void
 end_print_cb (GtkPrintOperation *operation,
 	      GtkPrintContext   *context,
-	      PlumaPrintJob     *job)
+	      LapizPrintJob     *job)
 {
 	g_object_unref (job->priv->compositor);
 	job->priv->compositor = NULL;
@@ -679,10 +679,10 @@ end_print_cb (GtkPrintOperation *operation,
 static void
 done_cb (GtkPrintOperation       *operation,
 	 GtkPrintOperationResult  result,
-	 PlumaPrintJob           *job)
+	 LapizPrintJob           *job)
 {
 	GError *error = NULL;
-	PlumaPrintJobResult print_result;
+	LapizPrintJobResult print_result;
 
 	switch (result)
 	{
@@ -714,16 +714,16 @@ done_cb (GtkPrintOperation       *operation,
 	g_object_unref (job);
 }
 
-/* Note that lapiz_print_job_print can can only be called once on a given PlumaPrintJob */
+/* Note that lapiz_print_job_print can can only be called once on a given LapizPrintJob */
 GtkPrintOperationResult
-lapiz_print_job_print (PlumaPrintJob            *job,
+lapiz_print_job_print (LapizPrintJob            *job,
 		       GtkPrintOperationAction   action,
 		       GtkPageSetup             *page_setup,
 		       GtkPrintSettings         *settings,
 		       GtkWindow                *parent,
 		       GError                  **error)
 {
-	PlumaPrintJobPrivate *priv;
+	LapizPrintJobPrivate *priv;
 	gchar *job_name;
 
 	g_return_val_if_fail (job->priv->compositor == NULL, GTK_PRINT_OPERATION_RESULT_ERROR);
@@ -795,7 +795,7 @@ lapiz_print_job_print (PlumaPrintJob            *job,
 }
 
 static void
-lapiz_print_job_init (PlumaPrintJob *job)
+lapiz_print_job_init (LapizPrintJob *job)
 {
 	job->priv = lapiz_print_job_get_instance_private (job);
 
@@ -804,10 +804,10 @@ lapiz_print_job_init (PlumaPrintJob *job)
 	job->priv->status_string = g_strdup (_("Preparing..."));
 }
 
-PlumaPrintJob *
-lapiz_print_job_new (PlumaView *view)
+LapizPrintJob *
+lapiz_print_job_new (LapizView *view)
 {
-	PlumaPrintJob *job;
+	LapizPrintJob *job;
 
 	g_return_val_if_fail (LAPIZ_IS_VIEW (view), NULL);
 
@@ -819,7 +819,7 @@ lapiz_print_job_new (PlumaView *view)
 }
 
 void
-lapiz_print_job_cancel (PlumaPrintJob *job)
+lapiz_print_job_cancel (LapizPrintJob *job)
 {
 	g_return_if_fail (LAPIZ_IS_PRINT_JOB (job));
 
@@ -827,7 +827,7 @@ lapiz_print_job_cancel (PlumaPrintJob *job)
 }
 
 const gchar *
-lapiz_print_job_get_status_string (PlumaPrintJob *job)
+lapiz_print_job_get_status_string (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 	g_return_val_if_fail (job->priv->status_string != NULL, NULL);
@@ -836,7 +836,7 @@ lapiz_print_job_get_status_string (PlumaPrintJob *job)
 }
 
 gdouble
-lapiz_print_job_get_progress (PlumaPrintJob *job)
+lapiz_print_job_get_progress (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), 0.0);
 
@@ -844,7 +844,7 @@ lapiz_print_job_get_progress (PlumaPrintJob *job)
 }
 
 GtkPrintSettings *
-lapiz_print_job_get_print_settings (PlumaPrintJob *job)
+lapiz_print_job_get_print_settings (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 
@@ -852,7 +852,7 @@ lapiz_print_job_get_print_settings (PlumaPrintJob *job)
 }
 
 GtkPageSetup *
-lapiz_print_job_get_page_setup (PlumaPrintJob *job)
+lapiz_print_job_get_page_setup (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 

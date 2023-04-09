@@ -1,4 +1,4 @@
-#    Pluma snippets plugin
+#    Lapiz snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 import os
 import re
 
-from gi.repository import GLib, Gio, Gdk, Gtk, Pluma
+from gi.repository import GLib, Gio, Gdk, Gtk, Lapiz
 
 from .Library import Library
 from .Snippet import Snippet
@@ -425,7 +425,7 @@ class Document:
     def env_get_documents_uri(self, buf):
         toplevel = self.view.get_toplevel()
 
-        if isinstance(toplevel, Pluma.Window):
+        if isinstance(toplevel, Lapiz.Window):
             documents_uri = [doc.get_location().get_uri()
                      for doc in toplevel.get_documents()
                      if doc.get_location() is not None]
@@ -437,14 +437,14 @@ class Document:
     def env_get_documents_path(self, buf):
         toplevel = self.view.get_toplevel()
 
-        if isinstance(toplevel, Pluma.Window):
+        if isinstance(toplevel, Lapiz.Window):
             documents_location = [doc.get_location()
                           for doc in toplevel.get_documents()
                           if doc.get_location() is not None]
 
             documents_path = [location.get_path()
                       for location in documents_location
-                      if Pluma.utils_uri_has_file_scheme(location.get_uri())]
+                      if Lapiz.utils_uri_has_file_scheme(location.get_uri())]
         else:
             documents_path = []
 

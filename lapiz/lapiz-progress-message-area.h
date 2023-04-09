@@ -39,34 +39,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_PROGRESS_MESSAGE_AREA              (lapiz_progress_message_area_get_type())
-#define LAPIZ_PROGRESS_MESSAGE_AREA(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageArea))
-#define LAPIZ_PROGRESS_MESSAGE_AREA_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageAreaClass))
+#define LAPIZ_PROGRESS_MESSAGE_AREA(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, LapizProgressMessageArea))
+#define LAPIZ_PROGRESS_MESSAGE_AREA_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, LapizProgressMessageAreaClass))
 #define LAPIZ_IS_PROGRESS_MESSAGE_AREA(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA))
 #define LAPIZ_IS_PROGRESS_MESSAGE_AREA_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA))
-#define LAPIZ_PROGRESS_MESSAGE_AREA_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, PlumaProgressMessageAreaClass))
+#define LAPIZ_PROGRESS_MESSAGE_AREA_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PROGRESS_MESSAGE_AREA, LapizProgressMessageAreaClass))
 
 /* Private structure type */
-typedef struct _PlumaProgressMessageAreaPrivate PlumaProgressMessageAreaPrivate;
+typedef struct _LapizProgressMessageAreaPrivate LapizProgressMessageAreaPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaProgressMessageArea PlumaProgressMessageArea;
+typedef struct _LapizProgressMessageArea LapizProgressMessageArea;
 
-struct _PlumaProgressMessageArea
+struct _LapizProgressMessageArea
 {
 	GtkInfoBar parent;
 
 	/*< private > */
-	PlumaProgressMessageAreaPrivate *priv;
+	LapizProgressMessageAreaPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaProgressMessageAreaClass PlumaProgressMessageAreaClass;
+typedef struct _LapizProgressMessageAreaClass LapizProgressMessageAreaClass;
 
-struct _PlumaProgressMessageAreaClass
+struct _LapizProgressMessageAreaClass
 {
 	GtkInfoBarClass parent_class;
 };
@@ -80,19 +80,19 @@ GtkWidget	*lapiz_progress_message_area_new      		(const gchar              *ima
 								 const gchar              *markup,
 								 gboolean                  has_cancel);
 
-void		 lapiz_progress_message_area_set_image		(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_image		(LapizProgressMessageArea *area,
 								 const gchar              *image_id);
 
-void		 lapiz_progress_message_area_set_markup		(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_markup		(LapizProgressMessageArea *area,
 								 const gchar              *markup);
 
-void		 lapiz_progress_message_area_set_text		(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_text		(LapizProgressMessageArea *area,
 								 const gchar              *text);
 
-void		 lapiz_progress_message_area_set_fraction	(PlumaProgressMessageArea *area,
+void		 lapiz_progress_message_area_set_fraction	(LapizProgressMessageArea *area,
 								 gdouble                   fraction);
 
-void		 lapiz_progress_message_area_pulse		(PlumaProgressMessageArea *area);
+void		 lapiz_progress_message_area_pulse		(LapizProgressMessageArea *area);
 
 
 G_END_DECLS

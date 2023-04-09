@@ -36,33 +36,33 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_SPELL_CHECKER_DIALOG            (lapiz_spell_checker_dialog_get_type ())
-#define LAPIZ_SPELL_CHECKER_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
-#define LAPIZ_SPELL_CHECKER_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
+#define LAPIZ_SPELL_CHECKER_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, LapizSpellCheckerDialog))
+#define LAPIZ_SPELL_CHECKER_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, LapizSpellCheckerDialog))
 #define LAPIZ_IS_SPELL_CHECKER_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG))
 #define LAPIZ_IS_SPELL_CHECKER_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SPELL_CHECKER_DIALOG))
-#define LAPIZ_SPELL_CHECKER_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
+#define LAPIZ_SPELL_CHECKER_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, LapizSpellCheckerDialog))
 
 
-typedef struct _PlumaSpellCheckerDialog PlumaSpellCheckerDialog;
+typedef struct _LapizSpellCheckerDialog LapizSpellCheckerDialog;
 
-typedef struct _PlumaSpellCheckerDialogClass PlumaSpellCheckerDialogClass;
+typedef struct _LapizSpellCheckerDialogClass LapizSpellCheckerDialogClass;
 
-struct _PlumaSpellCheckerDialogClass
+struct _LapizSpellCheckerDialogClass
 {
 	GtkWindowClass parent_class;
 
 	/* Signals */
-	void		(*ignore)		(PlumaSpellCheckerDialog *dlg,
+	void		(*ignore)		(LapizSpellCheckerDialog *dlg,
 						 const gchar *word);
-	void		(*ignore_all)		(PlumaSpellCheckerDialog *dlg,
+	void		(*ignore_all)		(LapizSpellCheckerDialog *dlg,
 						 const gchar *word);
-	void		(*change)		(PlumaSpellCheckerDialog *dlg,
+	void		(*change)		(LapizSpellCheckerDialog *dlg,
 						 const gchar *word,
 						 const gchar *change_to);
-	void		(*change_all)		(PlumaSpellCheckerDialog *dlg,
+	void		(*change_all)		(LapizSpellCheckerDialog *dlg,
 						 const gchar *word,
 						 const gchar *change_to);
-	void		(*add_word_to_personal)	(PlumaSpellCheckerDialog *dlg,
+	void		(*add_word_to_personal)	(LapizSpellCheckerDialog *dlg,
 						 const gchar *word);
 
 };
@@ -72,19 +72,19 @@ GType        		 lapiz_spell_checker_dialog_get_type	(void) G_GNUC_CONST;
 /* Constructors */
 GtkWidget		*lapiz_spell_checker_dialog_new		(const gchar *data_dir);
 GtkWidget		*lapiz_spell_checker_dialog_new_from_spell_checker
-								(PlumaSpellChecker *spell,
+								(LapizSpellChecker *spell,
 								 const gchar *data_dir);
 
 void 			 lapiz_spell_checker_dialog_set_spell_checker
-								(PlumaSpellCheckerDialog *dlg,
-								 PlumaSpellChecker *spell);
+								(LapizSpellCheckerDialog *dlg,
+								 LapizSpellChecker *spell);
 void			 lapiz_spell_checker_dialog_set_misspelled_word
-								(PlumaSpellCheckerDialog *dlg,
+								(LapizSpellCheckerDialog *dlg,
 								 const gchar* word,
 								 gint len);
 
 void 			 lapiz_spell_checker_dialog_set_completed
-								(PlumaSpellCheckerDialog *dlg);
+								(LapizSpellCheckerDialog *dlg);
 
 G_END_DECLS
 

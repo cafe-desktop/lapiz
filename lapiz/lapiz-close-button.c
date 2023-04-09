@@ -22,15 +22,15 @@
 
 #include "lapiz-close-button.h"
 
-G_DEFINE_TYPE (PlumaCloseButton, lapiz_close_button, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE (LapizCloseButton, lapiz_close_button, GTK_TYPE_BUTTON)
 
 static void
-lapiz_close_button_class_init (PlumaCloseButtonClass *klass)
+lapiz_close_button_class_init (LapizCloseButtonClass *klass)
 {
 }
 
 static void
-lapiz_close_button_init (PlumaCloseButton *button)
+lapiz_close_button_init (LapizCloseButton *button)
 {
 	GtkWidget *image;
 	GtkCssProvider *css;

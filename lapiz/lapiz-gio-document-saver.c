@@ -45,7 +45,7 @@
 
 typedef struct
 {
-	PlumaGioDocumentSaver *saver;
+	LapizGioDocumentSaver *saver;
 	gchar 		       buffer[WRITE_CHUNK_SIZE];
 	GCancellable 	      *cancellable;
 	gboolean	       tried_mount;
@@ -57,15 +57,15 @@ typedef struct
 #define REMOTE_QUERY_ATTRIBUTES G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE "," \
 				G_FILE_ATTRIBUTE_TIME_MODIFIED
 
-static void	     lapiz_gio_document_saver_save		    (PlumaDocumentSaver *saver,
+static void	     lapiz_gio_document_saver_save		    (LapizDocumentSaver *saver,
 								     GTimeVal           *old_mtime);
-static goffset	     lapiz_gio_document_saver_get_file_size	    (PlumaDocumentSaver *saver);
-static goffset	     lapiz_gio_document_saver_get_bytes_written	    (PlumaDocumentSaver *saver);
+static goffset	     lapiz_gio_document_saver_get_file_size	    (LapizDocumentSaver *saver);
+static goffset	     lapiz_gio_document_saver_get_bytes_written	    (LapizDocumentSaver *saver);
 
 
 static void 	    check_modified_async 			    (AsyncData          *async);
 
-struct _PlumaGioDocumentSaverPrivate
+struct _LapizGioDocumentSaverPrivate
 {
 	GTimeVal		  old_mtime;
 
@@ -80,12 +80,12 @@ struct _PlumaGioDocumentSaverPrivate
 	GError                   *error;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaGioDocumentSaver, lapiz_gio_document_saver, LAPIZ_TYPE_DOCUMENT_SAVER)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizGioDocumentSaver, lapiz_gio_document_saver, LAPIZ_TYPE_DOCUMENT_SAVER)
 
 static void
 lapiz_gio_document_saver_dispose (GObject *object)
 {
-	PlumaGioDocumentSaverPrivate *priv = LAPIZ_GIO_DOCUMENT_SAVER (object)->priv;
+	LapizGioDocumentSaverPrivate *priv = LAPIZ_GIO_DOCUMENT_SAVER (object)->priv;
 
 	if (priv->cancellable != NULL)
 	{
@@ -122,7 +122,7 @@ lapiz_gio_document_saver_dispose (GObject *object)
 }
 
 static AsyncData *
-async_data_new (PlumaGioDocumentSaver *gvsaver)
+async_data_new (LapizGioDocumentSaver *gvsaver)
 {
 	AsyncData *async;
 
@@ -153,10 +153,10 @@ async_data_free (AsyncData *async)
 }
 
 static void
-lapiz_gio_document_saver_class_init (PlumaGioDocumentSaverClass *klass)
+lapiz_gio_document_saver_class_init (LapizGioDocumentSaverClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	PlumaDocumentSaverClass *saver_class = LAPIZ_DOCUMENT_SAVER_CLASS (klass);
+	LapizDocumentSaverClass *saver_class = LAPIZ_DOCUMENT_SAVER_CLASS (klass);
 
 	object_class->dispose = lapiz_gio_document_saver_dispose;
 
@@ -166,7 +166,7 @@ lapiz_gio_document_saver_class_init (PlumaGioDocumentSaverClass *klass)
 }
 
 static void
-lapiz_gio_document_saver_init (PlumaGioDocumentSaver *gvsaver)
+lapiz_gio_document_saver_init (LapizGioDocumentSaver *gvsaver)
 {
 	gvsaver->priv = lapiz_gio_document_saver_get_instance_private (gvsaver);
 
@@ -175,7 +175,7 @@ lapiz_gio_document_saver_init (PlumaGioDocumentSaver *gvsaver)
 }
 
 static void
-remote_save_completed_or_failed (PlumaGioDocumentSaver *gvsaver,
+remote_save_completed_or_failed (LapizGioDocumentSaver *gvsaver,
 				 AsyncData 	       *async)
 {
 	lapiz_document_saver_saving (LAPIZ_DOCUMENT_SAVER (gvsaver),
@@ -277,7 +277,7 @@ remote_get_info_cb (GFile        *source,
 		    GAsyncResult *res,
 		    AsyncData    *async)
 {
-	PlumaGioDocumentSaver *saver;
+	LapizGioDocumentSaver *saver;
 	GFileInfo *info;
 	GError *error = NULL;
 
@@ -386,7 +386,7 @@ async_write_cb (GOutputStream *stream,
 		GAsyncResult  *res,
 		AsyncData     *async)
 {
-	PlumaGioDocumentSaver *gvsaver;
+	LapizGioDocumentSaver *gvsaver;
 	gssize bytes_written;
 	GError *error = NULL;
 
@@ -433,7 +433,7 @@ async_write_cb (GOutputStream *stream,
 static void
 write_file_chunk (AsyncData *async)
 {
-	PlumaGioDocumentSaver *gvsaver;
+	LapizGioDocumentSaver *gvsaver;
 
 	lapiz_debug (DEBUG_SAVER);
 
@@ -451,8 +451,8 @@ write_file_chunk (AsyncData *async)
 static void
 read_file_chunk (AsyncData *async)
 {
-	PlumaGioDocumentSaver *gvsaver;
-	PlumaDocumentInputStream *dstream;
+	LapizGioDocumentSaver *gvsaver;
+	LapizDocumentInputStream *dstream;
 	GError *error = NULL;
 
 	lapiz_debug (DEBUG_SAVER);
@@ -493,8 +493,8 @@ async_replace_ready_callback (GFile        *source,
 			      GAsyncResult *res,
 			      AsyncData    *async)
 {
-	PlumaGioDocumentSaver *gvsaver;
-	PlumaDocumentSaver *saver;
+	LapizGioDocumentSaver *gvsaver;
+	LapizDocumentSaver *saver;
 	GCharsetConverter *converter;
 	GFileOutputStream *file_stream;
 	GError *error = NULL;
@@ -551,8 +551,8 @@ async_replace_ready_callback (GFile        *source,
 static void
 begin_write (AsyncData *async)
 {
-	PlumaGioDocumentSaver *gvsaver;
-	PlumaDocumentSaver *saver;
+	LapizGioDocumentSaver *gvsaver;
+	LapizDocumentSaver *saver;
 	gboolean backup;
 
 	lapiz_debug_message (DEBUG_SAVER, "Start replacing file contents");
@@ -613,7 +613,7 @@ mount_ready_callback (GFile        *file,
 static void
 recover_not_mounted (AsyncData *async)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GMountOperation *mount_operation;
 
 	lapiz_debug (DEBUG_LOADER);
@@ -637,7 +637,7 @@ check_modification_callback (GFile        *source,
 			     GAsyncResult *res,
 			     AsyncData    *async)
 {
-	PlumaGioDocumentSaver *gvsaver;
+	LapizGioDocumentSaver *gvsaver;
 	GError *error = NULL;
 	GFileInfo *info;
 
@@ -720,7 +720,7 @@ check_modified_async (AsyncData *async)
 }
 
 static gboolean
-save_remote_file_real (PlumaGioDocumentSaver *gvsaver)
+save_remote_file_real (LapizGioDocumentSaver *gvsaver)
 {
 	AsyncData *async;
 
@@ -738,10 +738,10 @@ save_remote_file_real (PlumaGioDocumentSaver *gvsaver)
 }
 
 static void
-lapiz_gio_document_saver_save (PlumaDocumentSaver *saver,
+lapiz_gio_document_saver_save (LapizDocumentSaver *saver,
 			       GTimeVal           *old_mtime)
 {
-	PlumaGioDocumentSaver *gvsaver = LAPIZ_GIO_DOCUMENT_SAVER (saver);
+	LapizGioDocumentSaver *gvsaver = LAPIZ_GIO_DOCUMENT_SAVER (saver);
 
 	gvsaver->priv->old_mtime = *old_mtime;
 	gvsaver->priv->gfile = g_file_new_for_uri (saver->uri);
@@ -757,13 +757,13 @@ lapiz_gio_document_saver_save (PlumaDocumentSaver *saver,
 }
 
 static goffset
-lapiz_gio_document_saver_get_file_size (PlumaDocumentSaver *saver)
+lapiz_gio_document_saver_get_file_size (LapizDocumentSaver *saver)
 {
 	return LAPIZ_GIO_DOCUMENT_SAVER (saver)->priv->size;
 }
 
 static goffset
-lapiz_gio_document_saver_get_bytes_written (PlumaDocumentSaver *saver)
+lapiz_gio_document_saver_get_bytes_written (LapizDocumentSaver *saver)
 {
 	return LAPIZ_GIO_DOCUMENT_SAVER (saver)->priv->bytes_written;
 }

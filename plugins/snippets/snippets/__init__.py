@@ -1,4 +1,4 @@
-#    Pluma snippets plugin
+#    Lapiz snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-from gi.repository import GObject, GLib, Gtk, Peas, Pluma
+from gi.repository import GObject, GLib, Gtk, Peas, Lapiz
 
 from .WindowHelper import WindowHelper
 from .Library import Library
@@ -73,7 +73,7 @@ class SnippetsPlugin(GObject.Object, Peas.Activatable):
         self._helper.update()
 
     def create_configure_dialog(self):
-        window = Pluma.App.get_default().get_active_window()
+        window = Lapiz.App.get_default().get_active_window()
 
         if not self.dlg:
             self.dlg = Manager(self.plugin_info.get_data_dir(), window)

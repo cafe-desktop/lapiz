@@ -41,35 +41,35 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL              (lapiz_taglist_plugin_panel_get_type())
-#define LAPIZ_TAGLIST_PLUGIN_PANEL(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, PlumaTaglistPluginPanel))
-#define LAPIZ_TAGLIST_PLUGIN_PANEL_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, PlumaTaglistPluginPanel const))
-#define LAPIZ_TAGLIST_PLUGIN_PANEL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, PlumaTaglistPluginPanelClass))
+#define LAPIZ_TAGLIST_PLUGIN_PANEL(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, LapizTaglistPluginPanel))
+#define LAPIZ_TAGLIST_PLUGIN_PANEL_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, LapizTaglistPluginPanel const))
+#define LAPIZ_TAGLIST_PLUGIN_PANEL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, LapizTaglistPluginPanelClass))
 #define LAPIZ_IS_TAGLIST_PLUGIN_PANEL(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL))
 #define LAPIZ_IS_TAGLIST_PLUGIN_PANEL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL))
-#define LAPIZ_TAGLIST_PLUGIN_PANEL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, PlumaTaglistPluginPanelClass))
+#define LAPIZ_TAGLIST_PLUGIN_PANEL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_TAGLIST_PLUGIN_PANEL, LapizTaglistPluginPanelClass))
 
 /* Private structure type */
-typedef struct _PlumaTaglistPluginPanelPrivate PlumaTaglistPluginPanelPrivate;
+typedef struct _LapizTaglistPluginPanelPrivate LapizTaglistPluginPanelPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaTaglistPluginPanel PlumaTaglistPluginPanel;
+typedef struct _LapizTaglistPluginPanel LapizTaglistPluginPanel;
 
-struct _PlumaTaglistPluginPanel
+struct _LapizTaglistPluginPanel
 {
 	GtkBox vbox;
 
 	/*< private > */
-	PlumaTaglistPluginPanelPrivate *priv;
+	LapizTaglistPluginPanelPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaTaglistPluginPanelClass PlumaTaglistPluginPanelClass;
+typedef struct _LapizTaglistPluginPanelClass LapizTaglistPluginPanelClass;
 
-struct _PlumaTaglistPluginPanelClass
+struct _LapizTaglistPluginPanelClass
 {
 	GtkBoxClass parent_class;
 };
@@ -81,7 +81,7 @@ void		 _lapiz_taglist_plugin_panel_register_type	(GTypeModule *module);
 
 GType 		 lapiz_taglist_plugin_panel_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_taglist_plugin_panel_new 		(PlumaWindow *window,
+GtkWidget	*lapiz_taglist_plugin_panel_new 		(LapizWindow *window,
 								 const gchar *data_dir);
 
 G_END_DECLS

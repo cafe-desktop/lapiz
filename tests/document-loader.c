@@ -65,7 +65,7 @@ delete_document (GFile *location)
 }
 
 static void
-on_document_loaded (PlumaDocument  *document,
+on_document_loaded (LapizDocument  *document,
                     GError         *error,
                     LoaderTestData *data)
 {
@@ -103,7 +103,7 @@ test_loader (const gchar *filename,
 {
 	GFile *file;
 	gchar *uri;
-	PlumaDocument *document;
+	LapizDocument *document;
 
 	file = create_document (filename, contents);
 

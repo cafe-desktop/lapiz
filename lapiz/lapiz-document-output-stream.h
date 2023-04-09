@@ -30,34 +30,34 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM		(lapiz_document_output_stream_get_type ())
-#define LAPIZ_DOCUMENT_OUTPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStream))
-#define LAPIZ_DOCUMENT_OUTPUT_STREAM_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStream const))
-#define LAPIZ_DOCUMENT_OUTPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStreamClass))
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, LapizDocumentOutputStream))
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, LapizDocumentOutputStream const))
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, LapizDocumentOutputStreamClass))
 #define LAPIZ_IS_DOCUMENT_OUTPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM))
 #define LAPIZ_IS_DOCUMENT_OUTPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM))
-#define LAPIZ_DOCUMENT_OUTPUT_STREAM_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStreamClass))
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, LapizDocumentOutputStreamClass))
 
-typedef struct _PlumaDocumentOutputStream		PlumaDocumentOutputStream;
-typedef struct _PlumaDocumentOutputStreamClass		PlumaDocumentOutputStreamClass;
-typedef struct _PlumaDocumentOutputStreamPrivate	PlumaDocumentOutputStreamPrivate;
+typedef struct _LapizDocumentOutputStream		LapizDocumentOutputStream;
+typedef struct _LapizDocumentOutputStreamClass		LapizDocumentOutputStreamClass;
+typedef struct _LapizDocumentOutputStreamPrivate	LapizDocumentOutputStreamPrivate;
 
-struct _PlumaDocumentOutputStream
+struct _LapizDocumentOutputStream
 {
 	GOutputStream parent;
 
-	PlumaDocumentOutputStreamPrivate *priv;
+	LapizDocumentOutputStreamPrivate *priv;
 };
 
-struct _PlumaDocumentOutputStreamClass
+struct _LapizDocumentOutputStreamClass
 {
 	GOutputStreamClass parent_class;
 };
 
 GType			 lapiz_document_output_stream_get_type		(void) G_GNUC_CONST;
 
-GOutputStream		*lapiz_document_output_stream_new		(PlumaDocument *doc);
+GOutputStream		*lapiz_document_output_stream_new		(LapizDocument *doc);
 
-PlumaDocumentNewlineType lapiz_document_output_stream_detect_newline_type (PlumaDocumentOutputStream *stream);
+LapizDocumentNewlineType lapiz_document_output_stream_detect_newline_type (LapizDocumentOutputStream *stream);
 
 G_END_DECLS
 

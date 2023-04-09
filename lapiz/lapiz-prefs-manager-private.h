@@ -32,15 +32,15 @@
 
 #include <gio/gio.h>
 
-typedef struct _PlumaPrefsManager 	PlumaPrefsManager;
+typedef struct _LapizPrefsManager 	LapizPrefsManager;
 
-struct _PlumaPrefsManager {
+struct _LapizPrefsManager {
 	GSettings *settings;
 	GSettings *lockdown_settings;
 	GSettings *interface_settings;
 };
 
-extern PlumaPrefsManager *lapiz_prefs_manager;
+extern LapizPrefsManager *lapiz_prefs_manager;
 
 #endif /* __LAPIZ_PREFS_MANAGER_PRIVATE_H__ */
 

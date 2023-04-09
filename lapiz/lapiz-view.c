@@ -69,7 +69,7 @@ enum
 	TARGET_URI_LIST = 100
 };
 
-struct _PlumaViewPrivate
+struct _LapizViewPrivate
 {
 	SearchMode   search_mode;
 
@@ -133,25 +133,25 @@ static gboolean	lapiz_view_button_release_event	(GtkWidget        *widget,
 static void	lapiz_view_populate_popup	(GtkTextView      *text_view,
 						 GtkWidget        *widget);
 
-static gboolean start_interactive_search	(PlumaView        *view);
-static gboolean start_interactive_goto_line	(PlumaView        *view);
-static gboolean reset_searched_text		(PlumaView        *view);
+static gboolean start_interactive_search	(LapizView        *view);
+static gboolean start_interactive_goto_line	(LapizView        *view);
+static gboolean reset_searched_text		(LapizView        *view);
 
-static void	hide_search_window 		(PlumaView        *view,
+static void	hide_search_window 		(LapizView        *view,
 						 gboolean          cancel);
 
 static gboolean	lapiz_view_draw		 	(GtkWidget        *widget,
 						 cairo_t          *cr);
-static void 	search_highlight_updated_cb	(PlumaDocument    *doc,
+static void 	search_highlight_updated_cb	(LapizDocument    *doc,
 						 GtkTextIter      *start,
 						 GtkTextIter      *end,
-						 PlumaView        *view);
+						 LapizView        *view);
 
 static void	lapiz_view_delete_from_cursor 	(GtkTextView     *text_view,
 						 GtkDeleteType    type,
 						 gint             count);
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaView, lapiz_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizView, lapiz_view, GTK_SOURCE_TYPE_VIEW)
 
 /* Signals */
 enum
@@ -169,12 +169,12 @@ typedef enum
 {
 	LAPIZ_SEARCH_ENTRY_NORMAL,
 	LAPIZ_SEARCH_ENTRY_NOT_FOUND
-} PlumaSearchEntryState;
+} LapizSearchEntryState;
 
 static void
-document_read_only_notify_handler (PlumaDocument *document,
+document_read_only_notify_handler (LapizDocument *document,
 			           GParamSpec    *pspec,
-				   PlumaView     *view)
+				   LapizView     *view)
 {
 	lapiz_debug (DEBUG_VIEW);
 
@@ -213,7 +213,7 @@ lapiz_view_scroll_event (GtkWidget      *widget,
 }
 
 static void
-lapiz_view_class_init (PlumaViewClass *klass)
+lapiz_view_class_init (LapizViewClass *klass)
 {
 	GObjectClass     *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass   *widget_class = GTK_WIDGET_CLASS (klass);
@@ -258,7 +258,7 @@ lapiz_view_class_init (PlumaViewClass *klass)
     		g_signal_new ("start_interactive_search",
 		  	      G_TYPE_FROM_CLASS (object_class),
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  	      G_STRUCT_OFFSET (PlumaViewClass, start_interactive_search),
+		  	      G_STRUCT_OFFSET (LapizViewClass, start_interactive_search),
 			      NULL, NULL,
 			      lapiz_marshal_BOOLEAN__VOID,
 			      G_TYPE_BOOLEAN, 0);
@@ -267,7 +267,7 @@ lapiz_view_class_init (PlumaViewClass *klass)
     		g_signal_new ("start_interactive_goto_line",
 		  	      G_TYPE_FROM_CLASS (object_class),
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  	      G_STRUCT_OFFSET (PlumaViewClass, start_interactive_goto_line),
+		  	      G_STRUCT_OFFSET (LapizViewClass, start_interactive_goto_line),
 			      NULL, NULL,
 			      lapiz_marshal_BOOLEAN__VOID,
 			      G_TYPE_BOOLEAN, 0);
@@ -276,13 +276,13 @@ lapiz_view_class_init (PlumaViewClass *klass)
     		g_signal_new ("reset_searched_text",
 		  	      G_TYPE_FROM_CLASS (object_class),
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  	      G_STRUCT_OFFSET (PlumaViewClass, reset_searched_text),
+		  	      G_STRUCT_OFFSET (LapizViewClass, reset_searched_text),
 			      NULL, NULL,
 			      lapiz_marshal_BOOLEAN__VOID,
 			      G_TYPE_BOOLEAN, 0);
 
 	/* A new signal DROP_URIS has been added to allow plugins to intercept
-	 * the default dnd behaviour of 'text/uri-list'. PlumaView now handles
+	 * the default dnd behaviour of 'text/uri-list'. LapizView now handles
 	 * dnd in the default handlers of drag_drop, drag_motion and
 	 * drag_data_received. The view emits drop_uris from drag_data_received
 	 * if valid uris have been dropped. Plugins should connect to
@@ -294,7 +294,7 @@ lapiz_view_class_init (PlumaViewClass *klass)
     		g_signal_new ("drop_uris",
 		  	      G_TYPE_FROM_CLASS (object_class),
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		  	      G_STRUCT_OFFSET (PlumaViewClass, drop_uris),
+		  	      G_STRUCT_OFFSET (LapizViewClass, drop_uris),
 			      NULL, NULL,
 			      g_cclosure_marshal_VOID__BOXED,
 			      G_TYPE_NONE, 1, G_TYPE_STRV);
@@ -325,7 +325,7 @@ lapiz_view_class_init (PlumaViewClass *klass)
 }
 
 static void
-current_buffer_removed (PlumaView *view)
+current_buffer_removed (LapizView *view)
 {
 	if (view->priv->current_buffer)
 	{
@@ -342,7 +342,7 @@ current_buffer_removed (PlumaView *view)
 }
 
 static void
-on_notify_buffer_cb (PlumaView  *view,
+on_notify_buffer_cb (LapizView  *view,
 		     GParamSpec *arg1,
 		     gpointer    userdata)
 {
@@ -451,7 +451,7 @@ lapiz_set_source_space_drawer (GtkSourceView *view)
 #endif
 
 static void
-lapiz_view_init (PlumaView *view)
+lapiz_view_init (LapizView *view)
 {
 	GtkTargetList *tl;
 
@@ -512,7 +512,7 @@ lapiz_view_init (PlumaView *view)
 static void
 lapiz_view_dispose (GObject *object)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	view = LAPIZ_VIEW (object);
 
@@ -541,7 +541,7 @@ lapiz_view_dispose (GObject *object)
 static void
 lapiz_view_finalize (GObject *object)
 {
-	PlumaView *view;
+	LapizView *view;
 
 	view = LAPIZ_VIEW (object);
 
@@ -555,7 +555,7 @@ lapiz_view_finalize (GObject *object)
 static gint
 lapiz_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
 {
-	PlumaView *view = LAPIZ_VIEW (widget);
+	LapizView *view = LAPIZ_VIEW (widget);
 
 	gtk_widget_queue_draw (widget);
 
@@ -570,15 +570,15 @@ lapiz_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
 
 /**
  * lapiz_view_new:
- * @doc: a #PlumaDocument
+ * @doc: a #LapizDocument
  *
- * Creates a new #PlumaView object displaying the @doc document.
+ * Creates a new #LapizView object displaying the @doc document.
  * @doc cannot be %NULL.
  *
- * Return value: a new #PlumaView
+ * Return value: a new #LapizView
  **/
 GtkWidget *
-lapiz_view_new (PlumaDocument *doc)
+lapiz_view_new (LapizDocument *doc)
 {
 	GtkWidget *view;
 
@@ -596,7 +596,7 @@ lapiz_view_new (PlumaDocument *doc)
 }
 
 void
-lapiz_view_cut_clipboard (PlumaView *view)
+lapiz_view_cut_clipboard (LapizView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
@@ -626,7 +626,7 @@ lapiz_view_cut_clipboard (PlumaView *view)
 }
 
 void
-lapiz_view_copy_clipboard (PlumaView *view)
+lapiz_view_copy_clipboard (LapizView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
@@ -647,7 +647,7 @@ lapiz_view_copy_clipboard (PlumaView *view)
 }
 
 void
-lapiz_view_paste_clipboard (PlumaView *view)
+lapiz_view_paste_clipboard (LapizView *view)
 {
   	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
@@ -679,13 +679,13 @@ lapiz_view_paste_clipboard (PlumaView *view)
 
 /**
  * lapiz_view_delete_selection:
- * @view: a #PlumaView
+ * @view: a #LapizView
  *
  * Deletes the text currently selected in the #GtkTextBuffer associated
  * to the view and scroll to the cursor position.
  **/
 void
-lapiz_view_delete_selection (PlumaView *view)
+lapiz_view_delete_selection (LapizView *view)
 {
   	GtkTextBuffer *buffer = NULL;
 
@@ -712,12 +712,12 @@ lapiz_view_delete_selection (PlumaView *view)
 
 /**
  * lapiz_view_select_all:
- * @view: a #PlumaView
+ * @view: a #LapizView
  *
  * Selects all the text displayed in the @view.
  **/
 void
-lapiz_view_select_all (PlumaView *view)
+lapiz_view_select_all (LapizView *view)
 {
 	GtkTextBuffer *buffer = NULL;
 	GtkTextIter start, end;
@@ -735,12 +735,12 @@ lapiz_view_select_all (PlumaView *view)
 
 /**
  * lapiz_view_scroll_to_cursor:
- * @view: a #PlumaView
+ * @view: a #LapizView
  *
  * Scrolls the @view to the cursor position.
  **/
 void
-lapiz_view_scroll_to_cursor (PlumaView *view)
+lapiz_view_scroll_to_cursor (LapizView *view)
 {
 	GtkTextBuffer* buffer = NULL;
 
@@ -794,7 +794,7 @@ lapiz_override_font (const gchar          *item,
 		     GtkWidget            *widget,
 		     PangoFontDescription *font)
 {
-	static GtkCssProvider *provider = NULL; /*We need to keep this as long as Pluma is running*/
+	static GtkCssProvider *provider = NULL; /*We need to keep this as long as Lapiz is running*/
 	gchar          *prov_str;
 	gchar          *css;
 	gchar          *family;
@@ -859,7 +859,7 @@ lapiz_override_font (const gchar          *item,
 /* FIXME this is an issue for introspection */
 /**
  * lapiz_view_set_font:
- * @view: a #PlumaView
+ * @view: a #LapizView
  * @def: whether to reset the default font
  * @font_name: the name of the font to use
  *
@@ -867,7 +867,7 @@ lapiz_override_font (const gchar          *item,
  * otherwise sets it to @font_name.
  **/
 void
-lapiz_view_set_font (PlumaView   *view,
+lapiz_view_set_font (LapizView   *view,
 		     gboolean     def,
 		     const gchar *font_name)
 {
@@ -971,7 +971,7 @@ add_search_completion_entry (const gchar *str)
 
 static void
 set_entry_state (GtkWidget             *entry,
-                 PlumaSearchEntryState  state)
+                 LapizSearchEntryState  state)
 {
 	GtkStyleContext *context = gtk_widget_get_style_context (GTK_WIDGET (entry));
 
@@ -986,7 +986,7 @@ set_entry_state (GtkWidget             *entry,
 }
 
 static gboolean
-run_search (PlumaView        *view,
+run_search (LapizView        *view,
             const gchar      *entry_text,
 	    gboolean          search_backward,
 	    gboolean          wrap_around,
@@ -996,7 +996,7 @@ run_search (PlumaView        *view,
 	GtkTextIter    match_start;
 	GtkTextIter    match_end;
 	gboolean       found = FALSE;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	g_return_val_if_fail (view->priv->search_mode == SEARCH, FALSE);
 
@@ -1124,7 +1124,7 @@ send_focus_change (GtkWidget *widget,
 }
 
 static void
-hide_search_window (PlumaView *view, gboolean cancel)
+hide_search_window (LapizView *view, gboolean cancel)
 {
 	if (view->priv->disable_popdown)
 		return;
@@ -1162,7 +1162,7 @@ hide_search_window (PlumaView *view, gboolean cancel)
 }
 
 static gboolean
-search_entry_flush_timeout (PlumaView *view)
+search_entry_flush_timeout (LapizView *view)
 {
   	view->priv->typeselect_flush_timeout = 0;
 	hide_search_window (view, FALSE);
@@ -1171,7 +1171,7 @@ search_entry_flush_timeout (PlumaView *view)
 }
 
 static void
-update_search_window_position (PlumaView *view)
+update_search_window_position (LapizView *view)
 {
 	gint x, y;
 	gint view_x, view_y;
@@ -1190,7 +1190,7 @@ update_search_window_position (PlumaView *view)
 static gboolean
 search_window_delete_event (GtkWidget   *widget,
 			    GdkEventAny *event,
-			    PlumaView   *view)
+			    LapizView   *view)
 {
 	hide_search_window (view, FALSE);
 
@@ -1200,7 +1200,7 @@ search_window_delete_event (GtkWidget   *widget,
 static gboolean
 search_window_button_press_event (GtkWidget      *widget,
 				  GdkEventButton *event,
-				  PlumaView      *view)
+				  LapizView      *view)
 {
 	hide_search_window (view, FALSE);
 
@@ -1210,7 +1210,7 @@ search_window_button_press_event (GtkWidget      *widget,
 }
 
 static void
-search_again (PlumaView *view,
+search_again (LapizView *view,
 	      gboolean   search_backward)
 {
 	const gchar *entry_text;
@@ -1242,7 +1242,7 @@ search_again (PlumaView *view,
 static gboolean
 search_window_scroll_event (GtkWidget      *widget,
 			    GdkEventScroll *event,
-			    PlumaView      *view)
+			    LapizView      *view)
 {
 	gboolean retval = FALSE;
 
@@ -1267,7 +1267,7 @@ search_window_scroll_event (GtkWidget      *widget,
 static gboolean
 search_window_key_press_event (GtkWidget   *widget,
 			       GdkEventKey *event,
-			       PlumaView   *view)
+			       LapizView   *view)
 {
 	gboolean retval = FALSE;
 	guint modifiers;
@@ -1286,7 +1286,7 @@ search_window_key_press_event (GtkWidget   *widget,
 	{
 		if (view->priv->search_mode == SEARCH)
 		{
-			PlumaDocument *doc;
+			LapizDocument *doc;
 
 			/* restore document search so that Find Next does the right thing */
 			doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
@@ -1338,21 +1338,21 @@ search_window_key_press_event (GtkWidget   *widget,
 
 static void
 search_entry_activate (GtkEntry  *entry,
-		       PlumaView *view)
+		       LapizView *view)
 {
 	hide_search_window (view, FALSE);
 }
 
 static void
 wrap_around_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
-			       PlumaView        *view)
+			       LapizView        *view)
 {
 	view->priv->wrap_around = gtk_check_menu_item_get_active (checkmenuitem);
 }
 
 static void
 match_entire_word_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
-				     PlumaView        *view)
+				     LapizView        *view)
 {
 	LAPIZ_SEARCH_SET_ENTIRE_WORD (view->priv->search_flags,
 				      gtk_check_menu_item_get_active (checkmenuitem));
@@ -1360,7 +1360,7 @@ match_entire_word_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 
 static void
 match_case_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
-			      PlumaView        *view)
+			      LapizView        *view)
 {
 	LAPIZ_SEARCH_SET_CASE_SENSITIVE (view->priv->search_flags,
 					 gtk_check_menu_item_get_active (checkmenuitem));
@@ -1368,7 +1368,7 @@ match_case_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 
 static void
 parse_escapes_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
-			         PlumaView        *view)
+			         LapizView        *view)
 {
 	LAPIZ_SEARCH_SET_PARSE_ESCAPES (view->priv->search_flags,
 					gtk_check_menu_item_get_active (checkmenuitem));
@@ -1377,7 +1377,7 @@ parse_escapes_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 static gboolean
 real_search_enable_popdown (gpointer data)
 {
-	PlumaView *view = (PlumaView *)data;
+	LapizView *view = (LapizView *)data;
 
 	view->priv->disable_popdown = FALSE;
 
@@ -1386,7 +1386,7 @@ real_search_enable_popdown (gpointer data)
 
 static void
 search_enable_popdown (GtkWidget *widget,
-		       PlumaView *view)
+		       LapizView *view)
 {
 	g_timeout_add (200, real_search_enable_popdown, view);
 
@@ -1403,7 +1403,7 @@ search_enable_popdown (GtkWidget *widget,
 static void
 search_entry_populate_popup (GtkEntry  *entry,
 			     GtkMenu   *menu,
-			     PlumaView *view)
+			     LapizView *view)
 {
 	GtkWidget *menu_item;
 
@@ -1465,7 +1465,7 @@ search_entry_insert_text (GtkEditable *editable,
 			  const gchar *text,
 			  gint         length,
 			  gint        *position,
-			  PlumaView   *view)
+			  LapizView   *view)
 {
 	if (view->priv->search_mode == GOTO_LINE)
 	{
@@ -1555,7 +1555,7 @@ search_entry_insert_text (GtkEditable *editable,
 }
 
 static void
-customize_for_search_mode (PlumaView *view)
+customize_for_search_mode (LapizView *view)
 {
 	if (view->priv->search_mode == SEARCH)
 	{
@@ -1586,7 +1586,7 @@ completion_func (GtkEntryCompletion *completion,
 	gchar *item = NULL;
 	gboolean ret = FALSE;
 	GtkTreeModel *model;
-	PlumaViewPrivate *priv = (PlumaViewPrivate *)data;
+	LapizViewPrivate *priv = (LapizViewPrivate *)data;
 	const gchar *real_key;
 
 	if (priv->search_mode == GOTO_LINE)
@@ -1637,7 +1637,7 @@ completion_func (GtkEntryCompletion *completion,
 }
 
 static void
-ensure_search_window (PlumaView *view)
+ensure_search_window (LapizView *view)
 {
 	GtkWidget          *frame;
 	GtkWidget          *vbox;
@@ -1774,7 +1774,7 @@ get_selected_text (GtkTextBuffer *doc, gchar **selected_text, gint *len)
 }
 
 static void
-init_search_entry (PlumaView *view)
+init_search_entry (LapizView *view)
 {
 	GtkTextBuffer *buffer;
 
@@ -1840,9 +1840,9 @@ init_search_entry (PlumaView *view)
 
 static void
 search_init (GtkWidget *entry,
-	     PlumaView *view)
+	     LapizView *view)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	const gchar *entry_text;
 
 	/* renew the flush timeout */
@@ -1952,7 +1952,7 @@ search_init (GtkWidget *entry,
 }
 
 static gboolean
-start_interactive_search_real (PlumaView *view)
+start_interactive_search_real (LapizView *view)
 {
 	GtkTextBuffer *buffer;
 
@@ -2003,9 +2003,9 @@ start_interactive_search_real (PlumaView *view)
 }
 
 static gboolean
-reset_searched_text (PlumaView *view)
+reset_searched_text (LapizView *view)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
@@ -2015,7 +2015,7 @@ reset_searched_text (PlumaView *view)
 }
 
 static gboolean
-start_interactive_search (PlumaView *view)
+start_interactive_search (LapizView *view)
 {
 	view->priv->search_mode = SEARCH;
 
@@ -2023,7 +2023,7 @@ start_interactive_search (PlumaView *view)
 }
 
 static gboolean
-start_interactive_goto_line (PlumaView *view)
+start_interactive_goto_line (LapizView *view)
 {
 	view->priv->search_mode = GOTO_LINE;
 
@@ -2035,7 +2035,7 @@ lapiz_view_draw (GtkWidget      *widget,
                  cairo_t        *cr)
 {
 	GtkTextView *text_view;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GdkWindow *window;
 
 	text_view = GTK_TEXT_VIEW (widget);
@@ -2165,7 +2165,7 @@ lapiz_view_drag_drop (GtkWidget      *widget,
 
 static void
 show_line_numbers_toggled (GtkMenu   *menu,
-			   PlumaView *view)
+			   LapizView *view)
 {
 	gboolean show;
 
@@ -2264,10 +2264,10 @@ lapiz_view_populate_popup (GtkTextView *text_view, GtkWidget *widget)
 }
 
 static void
-search_highlight_updated_cb (PlumaDocument *doc,
+search_highlight_updated_cb (LapizDocument *doc,
 			     GtkTextIter   *start,
 			     GtkTextIter   *end,
-			     PlumaView     *view)
+			     LapizView     *view)
 {
 	GdkRectangle visible_rect;
 	GdkRectangle updated_rect;

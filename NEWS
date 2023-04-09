@@ -132,7 +132,7 @@
   * Make translatable the documenters in the about dialog
   * Ensure proper translation of the about dialog title
   * initial travis support
-  * Add License button in About Pluma dialog
+  * Add License button in About Lapiz dialog
   * Make translatable the copyright in about dialog
   * Update Documenters
   * remove type & url attr of ulink in translation
@@ -200,7 +200,7 @@
   * lapiz-utils: remove unused 'lapiz_utils_menu_position_under_tree_view'
   * avoid deprecated 'gtk_menu_popup'
   * lapiz-print-preview: Fix weird behavior with mouse buttons
-  * Fix: Pluma crashes with mouse wheel over a tab
+  * Fix: Lapiz crashes with mouse wheel over a tab
   * lapiz-notebook.c: avoid deprecated 'gdk_pointer_ ...' functions
   * lapiz-notebook.c: avoid deprecated 'gdk_window_at_pointer'
   * avoid deprecated 'gtk_dialog_get_action_area'
@@ -304,7 +304,7 @@
   * double click to the right of the last open tab to open a new tab
   * Support new location of gtk bookmarks file
   * docs: we have encodings combobox, not option menu
-  * remove references to PlumaStatus
+  * remove references to LapizStatus
   * docs: remove some references to nonexistent stuff
   * filebrowser: don't parse .hidden files - GIO does it since 2.36
   * update copyright year to 2017
@@ -312,7 +312,7 @@
   * close confirm dialog: set max width for labels
   * fix typo in code comments
   * fix running under wayland
-  * modelines: fix random crash on closing one of several Pluma windows
+  * modelines: fix random crash on closing one of several Lapiz windows
 
 ### lapiz 1.18.0
 
@@ -326,7 +326,7 @@
   * Add ability to search/replace text using regular expressions
   * Drop Python bindings and --enable-python build option
   * Port plugin system and both C and Python plugins to libpeas
-  * Snippets plugin: stop exposing functions on Pluma message bus
+  * Snippets plugin: stop exposing functions on Lapiz message bus
     (doesn't work with GObject introspection)
   * Snippets plugin: fix snippet parts staying after Ctrl-Z
   * Fix unexpected closing of the first tab with middle-click
@@ -384,7 +384,7 @@
   * Bring back active plugins listing in bugreport script
   * Drop support for win32/osx and checkupdate plugin
   * Retrieve strings directly from gschema (requires intltool 0.50.1)
-  * Capitalize Pluma in window titles and desktop file
+  * Capitalize Lapiz in window titles and desktop file
   * GTK3. fix print-preview
   * Some annotation fixes
   * Some minor fixes and cleanups

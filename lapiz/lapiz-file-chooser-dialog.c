@@ -52,7 +52,7 @@
 #define ALL_FILES		_("All Files")
 #define ALL_TEXT_FILES		_("All Text Files")
 
-struct _PlumaFileChooserDialogPrivate
+struct _LapizFileChooserDialogPrivate
 {
 	GtkWidget *option_menu;
 	GtkWidget *extra_widget;
@@ -62,15 +62,15 @@ struct _PlumaFileChooserDialogPrivate
 	GtkListStore *newline_store;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaFileChooserDialog, lapiz_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizFileChooserDialog, lapiz_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
 
 static void
-lapiz_file_chooser_dialog_class_init (PlumaFileChooserDialogClass *klass)
+lapiz_file_chooser_dialog_class_init (LapizFileChooserDialogClass *klass)
 {
 }
 
 static void
-create_option_menu (PlumaFileChooserDialog *dialog)
+create_option_menu (LapizFileChooserDialog *dialog)
 {
 	GtkWidget *label;
 	GtkWidget *menu;
@@ -102,7 +102,7 @@ create_option_menu (PlumaFileChooserDialog *dialog)
 }
 
 static void
-update_newline_visibility (PlumaFileChooserDialog *dialog)
+update_newline_visibility (LapizFileChooserDialog *dialog)
 {
 	if (gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE)
 	{
@@ -121,7 +121,7 @@ newline_combo_append (GtkComboBox              *combo,
                       GtkListStore             *store,
                       GtkTreeIter              *iter,
                       const gchar              *label,
-                      PlumaDocumentNewlineType  newline_type)
+                      LapizDocumentNewlineType  newline_type)
 {
 	gtk_list_store_append (store, iter);
 	gtk_list_store_set (store, iter, 0, label, 1, newline_type, -1);
@@ -133,7 +133,7 @@ newline_combo_append (GtkComboBox              *combo,
 }
 
 static void
-create_newline_combo (PlumaFileChooserDialog *dialog)
+create_newline_combo (LapizFileChooserDialog *dialog)
 {
 	GtkWidget *label, *combo;
 	GtkListStore *store;
@@ -196,7 +196,7 @@ create_newline_combo (PlumaFileChooserDialog *dialog)
 }
 
 static void
-create_extra_widget (PlumaFileChooserDialog *dialog)
+create_extra_widget (LapizFileChooserDialog *dialog)
 {
 	dialog->priv->extra_widget = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 
@@ -211,7 +211,7 @@ create_extra_widget (PlumaFileChooserDialog *dialog)
 }
 
 static void
-action_changed (PlumaFileChooserDialog *dialog,
+action_changed (LapizFileChooserDialog *dialog,
 		GParamSpec	       *pspec,
 		gpointer		data)
 {
@@ -241,7 +241,7 @@ action_changed (PlumaFileChooserDialog *dialog,
 }
 
 static void
-filter_changed (PlumaFileChooserDialog *dialog,
+filter_changed (LapizFileChooserDialog *dialog,
 		GParamSpec	       *pspec,
 		gpointer		data)
 {
@@ -347,7 +347,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 }
 
 static void
-lapiz_file_chooser_dialog_init (PlumaFileChooserDialog *dialog)
+lapiz_file_chooser_dialog_init (LapizFileChooserDialog *dialog)
 {
 	dialog->priv = lapiz_file_chooser_dialog_get_instance_private (dialog);
 }
@@ -356,7 +356,7 @@ static GtkWidget *
 lapiz_file_chooser_dialog_new_valist (const gchar          *title,
 				      GtkWindow            *parent,
 				      GtkFileChooserAction  action,
-				      const PlumaEncoding  *encoding,
+				      const LapizEncoding  *encoding,
 				      const gchar          *first_button_text,
 				      va_list               varargs)
 {
@@ -462,17 +462,17 @@ lapiz_file_chooser_dialog_new_valist (const gchar          *title,
  * @...: (allow-none): response ID for the first button, then
  * additional (button, id) pairs, ending with %NULL
  *
- * Creates a new #PlumaFileChooserDialog.  This function is analogous to
+ * Creates a new #LapizFileChooserDialog.  This function is analogous to
  * gtk_dialog_new_with_buttons().
  *
- * Return value: a new #PlumaFileChooserDialog
+ * Return value: a new #LapizFileChooserDialog
  *
  **/
 GtkWidget *
 lapiz_file_chooser_dialog_new (const gchar          *title,
 			       GtkWindow            *parent,
 			       GtkFileChooserAction  action,
-			       const PlumaEncoding  *encoding,
+			       const LapizEncoding  *encoding,
 			       const gchar          *first_button_text,
 			       ...)
 {
@@ -489,8 +489,8 @@ lapiz_file_chooser_dialog_new (const gchar          *title,
 }
 
 void
-lapiz_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
-					const PlumaEncoding    *encoding)
+lapiz_file_chooser_dialog_set_encoding (LapizFileChooserDialog *dialog,
+					const LapizEncoding    *encoding)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog));
 	g_return_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
@@ -500,8 +500,8 @@ lapiz_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
 				encoding);
 }
 
-const PlumaEncoding *
-lapiz_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog)
+const LapizEncoding *
+lapiz_file_chooser_dialog_get_encoding (LapizFileChooserDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
 	g_return_val_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu), NULL);
@@ -513,8 +513,8 @@ lapiz_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog)
 }
 
 void
-lapiz_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
-					    PlumaDocumentNewlineType newline_type)
+lapiz_file_chooser_dialog_set_newline_type (LapizFileChooserDialog  *dialog,
+					    LapizDocumentNewlineType newline_type)
 {
 	GtkTreeIter iter;
 	GtkTreeModel *model;
@@ -531,7 +531,7 @@ lapiz_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
 
 	do
 	{
-		PlumaDocumentNewlineType nt;
+		LapizDocumentNewlineType nt;
 
 		gtk_tree_model_get (model, &iter, 1, &nt, -1);
 
@@ -544,11 +544,11 @@ lapiz_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
 	} while (gtk_tree_model_iter_next (model, &iter));
 }
 
-PlumaDocumentNewlineType
-lapiz_file_chooser_dialog_get_newline_type (PlumaFileChooserDialog *dialog)
+LapizDocumentNewlineType
+lapiz_file_chooser_dialog_get_newline_type (LapizFileChooserDialog *dialog)
 {
 	GtkTreeIter iter;
-	PlumaDocumentNewlineType newline_type;
+	LapizDocumentNewlineType newline_type;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog), LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
 	g_return_val_if_fail (gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE,

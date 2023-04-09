@@ -34,34 +34,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_DOCINFO_PLUGIN		(lapiz_docinfo_plugin_get_type ())
-#define LAPIZ_DOCINFO_PLUGIN(o)			(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_DOCINFO_PLUGIN, PlumaDocInfoPlugin))
-#define LAPIZ_DOCINFO_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_DOCINFO_PLUGIN, PlumaDocInfoPluginClass))
+#define LAPIZ_DOCINFO_PLUGIN(o)			(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_DOCINFO_PLUGIN, LapizDocInfoPlugin))
+#define LAPIZ_DOCINFO_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_DOCINFO_PLUGIN, LapizDocInfoPluginClass))
 #define LAPIZ_IS_DOCINFO_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_DOCINFO_PLUGIN))
 #define LAPIZ_IS_DOCINFO_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_DOCINFO_PLUGIN))
-#define LAPIZ_DOCINFO_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_DOCINFO_PLUGIN, PlumaDocInfoPluginClass))
+#define LAPIZ_DOCINFO_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_DOCINFO_PLUGIN, LapizDocInfoPluginClass))
 
 /* Private structure type */
-typedef struct _PlumaDocInfoPluginPrivate	PlumaDocInfoPluginPrivate;
+typedef struct _LapizDocInfoPluginPrivate	LapizDocInfoPluginPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaDocInfoPlugin		PlumaDocInfoPlugin;
+typedef struct _LapizDocInfoPlugin		LapizDocInfoPlugin;
 
-struct _PlumaDocInfoPlugin
+struct _LapizDocInfoPlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	PlumaDocInfoPluginPrivate *priv;
+	LapizDocInfoPluginPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaDocInfoPluginClass	PlumaDocInfoPluginClass;
+typedef struct _LapizDocInfoPluginClass	LapizDocInfoPluginClass;
 
-struct _PlumaDocInfoPluginClass
+struct _LapizDocInfoPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

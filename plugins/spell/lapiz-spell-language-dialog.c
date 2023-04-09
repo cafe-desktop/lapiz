@@ -47,7 +47,7 @@ enum
 };
 
 
-struct _PlumaSpellLanguageDialog
+struct _LapizSpellLanguageDialog
 {
 	GtkDialog dialog;
 
@@ -55,11 +55,11 @@ struct _PlumaSpellLanguageDialog
 	GtkTreeModel *model;
 };
 
-G_DEFINE_TYPE(PlumaSpellLanguageDialog, lapiz_spell_language_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE(LapizSpellLanguageDialog, lapiz_spell_language_dialog, GTK_TYPE_DIALOG)
 
 
 static void
-lapiz_spell_language_dialog_class_init (PlumaSpellLanguageDialogClass *klass)
+lapiz_spell_language_dialog_class_init (LapizSpellLanguageDialogClass *klass)
 {
 	/* GObjectClass *object_class = G_OBJECT_CLASS (klass); */
 }
@@ -109,13 +109,13 @@ static void
 language_row_activated (GtkTreeView *tree_view,
 			GtkTreePath *path,
 			GtkTreeViewColumn *column,
-			PlumaSpellLanguageDialog *dialog)
+			LapizSpellLanguageDialog *dialog)
 {
 	gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 }
 
 static void
-create_dialog (PlumaSpellLanguageDialog *dlg,
+create_dialog (LapizSpellLanguageDialog *dlg,
 	       const gchar *data_dir)
 {
 	GtkWidget *error_widget;
@@ -206,14 +206,14 @@ create_dialog (PlumaSpellLanguageDialog *dlg,
 }
 
 static void
-lapiz_spell_language_dialog_init (PlumaSpellLanguageDialog *dlg)
+lapiz_spell_language_dialog_init (LapizSpellLanguageDialog *dlg)
 {
 
 }
 
 static void
-populate_language_list (PlumaSpellLanguageDialog        *dlg,
-			const PlumaSpellCheckerLanguage *cur_lang)
+populate_language_list (LapizSpellLanguageDialog        *dlg,
+			const LapizSpellCheckerLanguage *cur_lang)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
@@ -229,7 +229,7 @@ populate_language_list (PlumaSpellLanguageDialog        *dlg,
 	{
 		const gchar *name;
 
-		name = lapiz_spell_checker_language_to_string ((const PlumaSpellCheckerLanguage*)langs->data);
+		name = lapiz_spell_checker_language_to_string ((const LapizSpellCheckerLanguage*)langs->data);
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -253,10 +253,10 @@ populate_language_list (PlumaSpellLanguageDialog        *dlg,
 
 GtkWidget *
 lapiz_spell_language_dialog_new (GtkWindow                       *parent,
-				 const PlumaSpellCheckerLanguage *cur_lang,
+				 const LapizSpellCheckerLanguage *cur_lang,
 				 const gchar *data_dir)
 {
-	PlumaSpellLanguageDialog *dlg;
+	LapizSpellLanguageDialog *dlg;
 
 	g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
 
@@ -272,11 +272,11 @@ lapiz_spell_language_dialog_new (GtkWindow                       *parent,
 	return GTK_WIDGET (dlg);
 }
 
-const PlumaSpellCheckerLanguage *
-lapiz_spell_language_get_selected_language (PlumaSpellLanguageDialog *dlg)
+const LapizSpellCheckerLanguage *
+lapiz_spell_language_get_selected_language (LapizSpellLanguageDialog *dlg)
 {
 	GValue value = {0, };
-	const PlumaSpellCheckerLanguage* lang;
+	const LapizSpellCheckerLanguage* lang;
 
 	GtkTreeIter iter;
 	GtkTreeSelection *selection;
@@ -292,7 +292,7 @@ lapiz_spell_language_get_selected_language (PlumaSpellLanguageDialog *dlg)
 				  COLUMN_LANGUAGE_POINTER,
 				  &value);
 
-	lang = (const PlumaSpellCheckerLanguage* ) g_value_get_pointer (&value);
+	lang = (const LapizSpellCheckerLanguage* ) g_value_get_pointer (&value);
 
 	return lang;
 }

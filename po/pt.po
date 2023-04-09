@@ -596,8 +596,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -605,7 +605,7 @@ msgstr "Um editor de texto para o ambiente de área de trabalho MATE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -614,7 +614,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -902,8 +902,8 @@ msgid "_Close"
 msgstr "Fe_char"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Preferências do Pluma"
+msgid "Lapiz Preferences"
+msgstr "Preferências do Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1318,30 +1318,30 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
 msgstr ""
-"O Pluma é um pequeno e leve editor de texto para o ambiente de trabalho MATE"
+"O Lapiz é um pequeno e leve editor de texto para o ambiente de trabalho MATE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma é uma aplicação livre; pode redistribuí-la e/ou alterá-la sob os "
+"Lapiz é uma aplicação livre; pode redistribuí-la e/ou alterá-la sob os "
 "termos da Licença Pública Geral GNU tal como publicada pela Free Software "
 "Foundation; ou a versão 2 da Licença ou (à sua discrição) qualquer versão "
 "posterior."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma é distribuído na expetativa de que possa ser útil, mas SEM QUALQUER "
+"Lapiz é distribuído na expetativa de que possa ser útil, mas SEM QUALQUER "
 "GARANTIA; sem sequer a garantia implícita de COMERCIABILIDADE ou ADEQUAÇÃO A"
 " UM DETERMINADO FIM.  Consulte a Licença Pública Geral GNU para mais "
 "detalhes."
@@ -1349,16 +1349,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 "Deverá ter recebido uma cópia da Licença Pública Genérica GNU juntamente com"
-" o Pluma; caso contrário, escreva para a Free Software Foundation, Inc., 51 "
+" o Lapiz; caso contrário, escreva para a Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA (em inglês)"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Sobre o Pluma"
+msgid "About Lapiz"
+msgstr "Sobre o Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

@@ -38,67 +38,67 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_SPELL_CHECKER            (lapiz_spell_checker_get_type ())
-#define LAPIZ_SPELL_CHECKER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SPELL_CHECKER, PlumaSpellChecker))
-#define LAPIZ_SPELL_CHECKER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SPELL_CHECKER, PlumaSpellChecker))
+#define LAPIZ_SPELL_CHECKER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SPELL_CHECKER, LapizSpellChecker))
+#define LAPIZ_SPELL_CHECKER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SPELL_CHECKER, LapizSpellChecker))
 #define LAPIZ_IS_SPELL_CHECKER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_SPELL_CHECKER))
 #define LAPIZ_IS_SPELL_CHECKER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SPELL_CHECKER))
-#define LAPIZ_SPELL_CHECKER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SPELL_CHECKER, PlumaSpellChecker))
+#define LAPIZ_SPELL_CHECKER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SPELL_CHECKER, LapizSpellChecker))
 
-typedef struct _PlumaSpellChecker PlumaSpellChecker;
+typedef struct _LapizSpellChecker LapizSpellChecker;
 
-typedef struct _PlumaSpellCheckerClass PlumaSpellCheckerClass;
+typedef struct _LapizSpellCheckerClass LapizSpellCheckerClass;
 
-struct _PlumaSpellCheckerClass
+struct _LapizSpellCheckerClass
 {
 	GObjectClass parent_class;
 
 	/* Signals */
-	void (*add_word_to_personal) (PlumaSpellChecker               *spell,
+	void (*add_word_to_personal) (LapizSpellChecker               *spell,
 				      const gchar                     *word,
 				      gint                             len);
 
-	void (*add_word_to_session)  (PlumaSpellChecker               *spell,
+	void (*add_word_to_session)  (LapizSpellChecker               *spell,
 				      const gchar                     *word,
 				      gint                             len);
 
-	void (*set_language)         (PlumaSpellChecker               *spell,
-				      const PlumaSpellCheckerLanguage *lang);
+	void (*set_language)         (LapizSpellChecker               *spell,
+				      const LapizSpellCheckerLanguage *lang);
 
-	void (*clear_session)	     (PlumaSpellChecker               *spell);
+	void (*clear_session)	     (LapizSpellChecker               *spell);
 };
 
 
 GType        		 lapiz_spell_checker_get_type		(void) G_GNUC_CONST;
 
 /* Constructors */
-PlumaSpellChecker	*lapiz_spell_checker_new		(void);
+LapizSpellChecker	*lapiz_spell_checker_new		(void);
 
-gboolean		 lapiz_spell_checker_set_language 	(PlumaSpellChecker               *spell,
-								 const PlumaSpellCheckerLanguage *lang);
-const PlumaSpellCheckerLanguage
-			*lapiz_spell_checker_get_language 	(PlumaSpellChecker               *spell);
+gboolean		 lapiz_spell_checker_set_language 	(LapizSpellChecker               *spell,
+								 const LapizSpellCheckerLanguage *lang);
+const LapizSpellCheckerLanguage
+			*lapiz_spell_checker_get_language 	(LapizSpellChecker               *spell);
 
-gboolean		 lapiz_spell_checker_check_word 	(PlumaSpellChecker               *spell,
+gboolean		 lapiz_spell_checker_check_word 	(LapizSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
-GSList 			*lapiz_spell_checker_get_suggestions 	(PlumaSpellChecker               *spell,
+GSList 			*lapiz_spell_checker_get_suggestions 	(LapizSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
 gboolean		 lapiz_spell_checker_add_word_to_personal
-								(PlumaSpellChecker               *spell,
+								(LapizSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
 gboolean		 lapiz_spell_checker_add_word_to_session
-								(PlumaSpellChecker               *spell,
+								(LapizSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
-gboolean		 lapiz_spell_checker_clear_session 	(PlumaSpellChecker               *spell);
+gboolean		 lapiz_spell_checker_clear_session 	(LapizSpellChecker               *spell);
 
-gboolean		 lapiz_spell_checker_set_correction 	(PlumaSpellChecker               *spell,
+gboolean		 lapiz_spell_checker_set_correction 	(LapizSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           w_len,
 								 const gchar                     *replacement,

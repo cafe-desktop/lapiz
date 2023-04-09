@@ -585,8 +585,8 @@ msgstr ""
 "'show-all' tunjuk semua jarak."
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -594,13 +594,13 @@ msgstr "Penyunting Teks untuk persekitaran desktop MATE"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Pluma ialah penyuntingan teks yang kecil tetapi hebat direka khas untuk "
+"Lapiz ialah penyuntingan teks yang kecil tetapi hebat direka khas untuk "
 "desktop MATE. Ia mempunyai fungsi penyuntingan asas dan menyokong sepenuhnya"
 " teks antarabangsa dalam Unikod. Fitur lanjutan termasuklah penyorotan "
 "sintaks dan indentasi kod sumber automatik, percetakan dan penyuntingan "
@@ -608,11 +608,11 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
-"Pluma boleh ditambahbaik menerusi sistem pemalam, yang mana buat masa ini "
+"Lapiz boleh ditambahbaik menerusi sistem pemalam, yang mana buat masa ini "
 "ada sokongan untuk penyemak ejaan, pembandingan fail, keupayaan melihat Log "
 "Perubahan CVS, dan pelarasan aras indentasi."
 
@@ -901,8 +901,8 @@ msgid "_Close"
 msgstr "_Tutup"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Keutamaan Pluma"
+msgid "Lapiz Preferences"
+msgstr "Keutamaan Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1318,29 +1318,29 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma adalah penyunting teks kecil dan ringan untuk Desktop MATE"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz adalah penyunting teks kecil dan ringan untuk Desktop MATE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma merupakan perisian bebas; anda boleh mengedarkannya dan/atau "
+"Lapiz merupakan perisian bebas; anda boleh mengedarkannya dan/atau "
 "mengubahsuainya dibawah terma GNU General Public License sebagaimana yang "
 "telah dikeluarkan oleh Free Software Foundation; sama ada versi ke-2 lesen, "
 "atau (mengikut pilihan anda) sebarang versi terkemudian."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma ini diedarkan dengan harapan ianya berguna tetapi TANPA SEBARANG "
+"Lapiz ini diedarkan dengan harapan ianya berguna tetapi TANPA SEBARANG "
 "JAMINAN; tanpa sebarang implakasi jaminan KEBOLEHDAGANGAN atau KESESUAIAN "
 "UNTUK SESUATU TUJUAN. Sila rujuk GNU General Public LIcense untuk keterangan"
 " lanjut."
@@ -1348,16 +1348,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"Anda seharusnya menerima salinan Lesen Awam Am GNU bersama-sama Pluma; jika "
+"Anda seharusnya menerima salinan Lesen Awam Am GNU bersama-sama Lapiz; jika "
 "tiada, laporkan ke Free Software Foundation, Inc., 51 Franklin Street, Fifth"
 " Floor, Boston, MA 02110-1301, USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Perihal Pluma"
+msgid "About Lapiz"
+msgstr "Perihal Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

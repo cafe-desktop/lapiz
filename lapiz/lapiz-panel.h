@@ -39,45 +39,45 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_PANEL		(lapiz_panel_get_type())
-#define LAPIZ_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PANEL, PlumaPanel))
-#define LAPIZ_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PANEL, PlumaPanelClass))
+#define LAPIZ_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PANEL, LapizPanel))
+#define LAPIZ_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PANEL, LapizPanelClass))
 #define LAPIZ_IS_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PANEL))
 #define LAPIZ_IS_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PANEL))
-#define LAPIZ_PANEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PANEL, PlumaPanelClass))
+#define LAPIZ_PANEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PANEL, LapizPanelClass))
 
 /* Private structure type */
-typedef struct _PlumaPanelPrivate PlumaPanelPrivate;
+typedef struct _LapizPanelPrivate LapizPanelPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaPanel PlumaPanel;
+typedef struct _LapizPanel LapizPanel;
 
-struct _PlumaPanel
+struct _LapizPanel
 {
 	GtkBox vbox;
 
 	/*< private > */
-	PlumaPanelPrivate *priv;
+	LapizPanelPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaPanelClass PlumaPanelClass;
+typedef struct _LapizPanelClass LapizPanelClass;
 
-struct _PlumaPanelClass
+struct _LapizPanelClass
 {
 	GtkBoxClass parent_class;
 
-	void (* item_added)     (PlumaPanel     *panel,
+	void (* item_added)     (LapizPanel     *panel,
 				 GtkWidget      *item);
-	void (* item_removed)   (PlumaPanel     *panel,
+	void (* item_removed)   (LapizPanel     *panel,
 				 GtkWidget      *item);
 
 	/* Keybinding signals */
-	void (* close)          (PlumaPanel     *panel);
-	void (* focus_document) (PlumaPanel     *panel);
+	void (* close)          (LapizPanel     *panel);
+	void (* focus_document) (LapizPanel     *panel);
 
 	/* Padding for future expansion */
 	void (*_lapiz_reserved1) (void);
@@ -93,36 +93,36 @@ GType 		 lapiz_panel_get_type 			(void) G_GNUC_CONST;
 
 GtkWidget 	*lapiz_panel_new 			(GtkOrientation	 orientation);
 
-void		 lapiz_panel_add_item			(PlumaPanel     *panel,
+void		 lapiz_panel_add_item			(LapizPanel     *panel,
 						      	 GtkWidget      *item,
 						      	 const gchar    *name,
 							 GtkWidget      *image);
 
-void		 lapiz_panel_add_item_with_icon	(PlumaPanel     *panel,
+void		 lapiz_panel_add_item_with_icon	(LapizPanel     *panel,
 						 GtkWidget      *item,
 						 const gchar    *name,
 						 const gchar    *icon_name);
 
-gboolean	 lapiz_panel_remove_item	(PlumaPanel     *panel,
+gboolean	 lapiz_panel_remove_item	(LapizPanel     *panel,
 					  	 GtkWidget      *item);
 
-gboolean	 lapiz_panel_activate_item 	(PlumaPanel     *panel,
+gboolean	 lapiz_panel_activate_item 	(LapizPanel     *panel,
 					    	 GtkWidget      *item);
 
-gboolean	 lapiz_panel_item_is_active 	(PlumaPanel     *panel,
+gboolean	 lapiz_panel_item_is_active 	(LapizPanel     *panel,
 					    	 GtkWidget      *item);
 
-GtkOrientation	 lapiz_panel_get_orientation	(PlumaPanel	*panel);
+GtkOrientation	 lapiz_panel_get_orientation	(LapizPanel	*panel);
 
-gint		 lapiz_panel_get_n_items	(PlumaPanel	*panel);
+gint		 lapiz_panel_get_n_items	(LapizPanel	*panel);
 
 
 /*
  * Non exported functions
  */
-gint		 _lapiz_panel_get_active_item_id	(PlumaPanel	*panel);
+gint		 _lapiz_panel_get_active_item_id	(LapizPanel	*panel);
 
-void		 _lapiz_panel_set_active_item_by_id	(PlumaPanel	*panel,
+void		 _lapiz_panel_set_active_item_by_id	(LapizPanel	*panel,
 							 gint		 id);
 
 G_END_DECLS

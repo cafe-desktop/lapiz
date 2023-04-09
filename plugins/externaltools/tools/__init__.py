@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-#    Pluma External Tools plugin
+#    Lapiz External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 
 __all__ = ('ExternalToolsPlugin', )
 
-from gi.repository import GObject, Gtk, Peas, Pluma
+from gi.repository import GObject, Gtk, Peas, Lapiz
 from .manager import Manager
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
@@ -243,7 +243,7 @@ class ExternalToolsPlugin(GObject.Object, Peas.Activatable):
             self._manager.dialog.connect('destroy', self.on_manager_destroy)
             self._manager.connect('tools-updated', self.on_manager_tools_updated)
 
-        window = Pluma.App.get_default().get_active_window()
+        window = Lapiz.App.get_default().get_active_window()
         self._manager.run(window)
 
         return self._manager.dialog

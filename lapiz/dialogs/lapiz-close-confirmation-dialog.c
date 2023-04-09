@@ -64,7 +64,7 @@ enum
 	N_COLUMNS
 };
 
-struct _PlumaCloseConfirmationDialogPrivate
+struct _LapizCloseConfirmationDialogPrivate
 {
 	gboolean     logout_mode;
 
@@ -81,9 +81,9 @@ struct _PlumaCloseConfirmationDialogPrivate
 			 (priv->unsaved_documents->next == NULL)) ? \
 			  SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaCloseConfirmationDialog, lapiz_close_confirmation_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizCloseConfirmationDialog, lapiz_close_confirmation_dialog, GTK_TYPE_DIALOG)
 
-static void 	 set_unsaved_document 		(PlumaCloseConfirmationDialog *dlg,
+static void 	 set_unsaved_document 		(LapizCloseConfirmationDialog *dlg,
 						 const GList                  *list);
 
 static GList 	*get_selected_docs 		(GtkTreeModel                 *store);
@@ -92,11 +92,11 @@ static GList 	*get_selected_docs 		(GtkTreeModel                 *store);
  *  before the user ones
  */
 static void
-response_cb (PlumaCloseConfirmationDialog *dlg,
+response_cb (LapizCloseConfirmationDialog *dlg,
              gint                          response_id,
              gpointer                      data)
 {
-	PlumaCloseConfirmationDialogPrivate *priv;
+	LapizCloseConfirmationDialogPrivate *priv;
 
 	g_return_if_fail (LAPIZ_IS_CLOSE_CONFIRMATION_DIALOG (dlg));
 
@@ -125,7 +125,7 @@ response_cb (PlumaCloseConfirmationDialog *dlg,
 }
 
 static void
-set_logout_mode (PlumaCloseConfirmationDialog *dlg,
+set_logout_mode (LapizCloseConfirmationDialog *dlg,
 		 gboolean                      logout_mode)
 {
 	dlg->priv->logout_mode = logout_mode;
@@ -164,7 +164,7 @@ set_logout_mode (PlumaCloseConfirmationDialog *dlg,
 
 		if (GET_MODE (dlg->priv) == SINGLE_DOC_MODE)
 		{
-			PlumaDocument *doc;
+			LapizDocument *doc;
 
 			doc = LAPIZ_DOCUMENT (dlg->priv->unsaved_documents->data);
 
@@ -190,7 +190,7 @@ set_logout_mode (PlumaCloseConfirmationDialog *dlg,
 }
 
 static void
-lapiz_close_confirmation_dialog_init (PlumaCloseConfirmationDialog *dlg)
+lapiz_close_confirmation_dialog_init (LapizCloseConfirmationDialog *dlg)
 {
 	AtkObject *atk_obj;
 
@@ -224,7 +224,7 @@ lapiz_close_confirmation_dialog_init (PlumaCloseConfirmationDialog *dlg)
 static void
 lapiz_close_confirmation_dialog_finalize (GObject *object)
 {
-	PlumaCloseConfirmationDialogPrivate *priv;
+	LapizCloseConfirmationDialogPrivate *priv;
 
 	priv = LAPIZ_CLOSE_CONFIRMATION_DIALOG (object)->priv;
 
@@ -244,7 +244,7 @@ lapiz_close_confirmation_dialog_set_property (GObject      *object,
 					      const GValue *value,
 					      GParamSpec   *pspec)
 {
-	PlumaCloseConfirmationDialog *dlg;
+	LapizCloseConfirmationDialog *dlg;
 
 	dlg = LAPIZ_CLOSE_CONFIRMATION_DIALOG (object);
 
@@ -270,7 +270,7 @@ lapiz_close_confirmation_dialog_get_property (GObject    *object,
 					      GValue     *value,
 					      GParamSpec *pspec)
 {
-	PlumaCloseConfirmationDialogPrivate *priv;
+	LapizCloseConfirmationDialogPrivate *priv;
 
 	priv = LAPIZ_CLOSE_CONFIRMATION_DIALOG (object)->priv;
 
@@ -291,7 +291,7 @@ lapiz_close_confirmation_dialog_get_property (GObject    *object,
 }
 
 static void
-lapiz_close_confirmation_dialog_class_init (PlumaCloseConfirmationDialogClass *klass)
+lapiz_close_confirmation_dialog_class_init (LapizCloseConfirmationDialogClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -330,7 +330,7 @@ get_selected_docs (GtkTreeModel *store)
 	while (valid)
 	{
 		gboolean       to_save;
-		PlumaDocument *doc;
+		LapizDocument *doc;
 
 		gtk_tree_model_get (store, &iter,
 				    SAVE_COLUMN, &to_save,
@@ -348,7 +348,7 @@ get_selected_docs (GtkTreeModel *store)
 }
 
 GList *
-lapiz_close_confirmation_dialog_get_selected_documents (PlumaCloseConfirmationDialog *dlg)
+lapiz_close_confirmation_dialog_get_selected_documents (LapizCloseConfirmationDialog *dlg)
 {
 	g_return_val_if_fail (LAPIZ_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 
@@ -382,7 +382,7 @@ lapiz_close_confirmation_dialog_new (GtkWindow *parent,
 
 GtkWidget *
 lapiz_close_confirmation_dialog_new_single (GtkWindow     *parent,
-					    PlumaDocument *doc,
+					    LapizDocument *doc,
 					    gboolean       logout_mode)
 {
 	GtkWidget *dlg;
@@ -401,7 +401,7 @@ lapiz_close_confirmation_dialog_new_single (GtkWindow     *parent,
 }
 
 static gchar *
-get_text_secondary_label (PlumaDocument *doc)
+get_text_secondary_label (LapizDocument *doc)
 {
 	glong  seconds;
 	gchar *secondary_msg;
@@ -484,14 +484,14 @@ get_text_secondary_label (PlumaDocument *doc)
 }
 
 static void
-build_single_doc_dialog (PlumaCloseConfirmationDialog *dlg)
+build_single_doc_dialog (LapizCloseConfirmationDialog *dlg)
 {
 	GtkWidget     *hbox;
 	GtkWidget     *vbox;
 	GtkWidget     *primary_label;
 	GtkWidget     *secondary_label;
 	GtkWidget     *image;
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	gchar         *doc_name;
 	gchar         *str;
 	gchar         *markup_str;
@@ -577,7 +577,7 @@ populate_model (GtkTreeModel *store, GList *docs)
 
 	while (docs != NULL)
 	{
-		PlumaDocument *doc;
+		LapizDocument *doc;
 		gchar *name;
 
 		doc = LAPIZ_DOCUMENT (docs->data);
@@ -616,7 +616,7 @@ save_toggled (GtkCellRendererToggle *renderer, gchar *path_str, GtkTreeModel *st
 }
 
 static GtkWidget *
-create_treeview (PlumaCloseConfirmationDialogPrivate *priv)
+create_treeview (LapizCloseConfirmationDialogPrivate *priv)
 {
 	GtkListStore *store;
 	GtkWidget *treeview;
@@ -665,9 +665,9 @@ create_treeview (PlumaCloseConfirmationDialogPrivate *priv)
 }
 
 static void
-build_multiple_docs_dialog (PlumaCloseConfirmationDialog *dlg)
+build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 {
-	PlumaCloseConfirmationDialogPrivate *priv;
+	LapizCloseConfirmationDialogPrivate *priv;
 	GtkWidget   *hbox;
 	GtkWidget   *image;
 	GtkWidget   *vbox;
@@ -796,10 +796,10 @@ build_multiple_docs_dialog (PlumaCloseConfirmationDialog *dlg)
 }
 
 static void
-set_unsaved_document (PlumaCloseConfirmationDialog *dlg,
+set_unsaved_document (LapizCloseConfirmationDialog *dlg,
 		      const GList                  *list)
 {
-	PlumaCloseConfirmationDialogPrivate *priv;
+	LapizCloseConfirmationDialogPrivate *priv;
 
 	g_return_if_fail (list != NULL);
 
@@ -819,7 +819,7 @@ set_unsaved_document (PlumaCloseConfirmationDialog *dlg,
 }
 
 const GList *
-lapiz_close_confirmation_dialog_get_unsaved_documents (PlumaCloseConfirmationDialog *dlg)
+lapiz_close_confirmation_dialog_get_unsaved_documents (LapizCloseConfirmationDialog *dlg)
 {
 	g_return_val_if_fail (LAPIZ_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 

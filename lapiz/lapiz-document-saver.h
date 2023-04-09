@@ -40,31 +40,31 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_DOCUMENT_SAVER              (lapiz_document_saver_get_type())
-#define LAPIZ_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENT_SAVER, PlumaDocumentSaver))
-#define LAPIZ_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENT_SAVER, PlumaDocumentSaverClass))
+#define LAPIZ_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENT_SAVER, LapizDocumentSaver))
+#define LAPIZ_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENT_SAVER, LapizDocumentSaverClass))
 #define LAPIZ_IS_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_DOCUMENT_SAVER))
 #define LAPIZ_IS_DOCUMENT_SAVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT_SAVER))
-#define LAPIZ_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENT_SAVER, PlumaDocumentSaverClass))
+#define LAPIZ_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENT_SAVER, LapizDocumentSaverClass))
 
 /*
  * Main object structure
  */
-typedef struct _PlumaDocumentSaver PlumaDocumentSaver;
+typedef struct _LapizDocumentSaver LapizDocumentSaver;
 
-struct _PlumaDocumentSaver
+struct _LapizDocumentSaver
 {
 	GObject object;
 
 	/*< private >*/
 	GFileInfo		 *info;
-	PlumaDocument		 *document;
+	LapizDocument		 *document;
 	gboolean		  used;
 
 	gchar			 *uri;
-	const PlumaEncoding      *encoding;
-	PlumaDocumentNewlineType  newline_type;
+	const LapizEncoding      *encoding;
+	LapizDocumentNewlineType  newline_type;
 
-	PlumaDocumentSaveFlags    flags;
+	LapizDocumentSaveFlags    flags;
 
 	gboolean		  keep_backup;
 };
@@ -72,22 +72,22 @@ struct _PlumaDocumentSaver
 /*
  * Class definition
  */
-typedef struct _PlumaDocumentSaverClass PlumaDocumentSaverClass;
+typedef struct _LapizDocumentSaverClass LapizDocumentSaverClass;
 
-struct _PlumaDocumentSaverClass
+struct _LapizDocumentSaverClass
 {
 	GObjectClass parent_class;
 
 	/* Signals */
-	void (* saving) (PlumaDocumentSaver *saver,
+	void (* saving) (LapizDocumentSaver *saver,
 			 gboolean             completed,
 			 const GError        *error);
 
 	/* VTable */
-	void			(* save)		(PlumaDocumentSaver *saver,
+	void			(* save)		(LapizDocumentSaver *saver,
 							 GTimeVal           *old_mtime);
-	goffset			(* get_file_size)	(PlumaDocumentSaver *saver);
-	goffset			(* get_bytes_written)	(PlumaDocumentSaver *saver);
+	goffset			(* get_file_size)	(LapizDocumentSaver *saver);
+	goffset			(* get_bytes_written)	(LapizDocumentSaver *saver);
 };
 
 /*
@@ -96,37 +96,37 @@ struct _PlumaDocumentSaverClass
 GType 		 	 lapiz_document_saver_get_type		(void) G_GNUC_CONST;
 
 /* If enconding == NULL, the encoding will be autodetected */
-PlumaDocumentSaver 	*lapiz_document_saver_new 		(PlumaDocument           *doc,
+LapizDocumentSaver 	*lapiz_document_saver_new 		(LapizDocument           *doc,
 								 const gchar             *uri,
-								 const PlumaEncoding     *encoding,
-								 PlumaDocumentNewlineType newline_type,
-								 PlumaDocumentSaveFlags   flags);
+								 const LapizEncoding     *encoding,
+								 LapizDocumentNewlineType newline_type,
+								 LapizDocumentSaveFlags   flags);
 
-void			 lapiz_document_saver_saving		(PlumaDocumentSaver *saver,
+void			 lapiz_document_saver_saving		(LapizDocumentSaver *saver,
 								 gboolean            completed,
 								 GError             *error);
-void			 lapiz_document_saver_save		(PlumaDocumentSaver  *saver,
+void			 lapiz_document_saver_save		(LapizDocumentSaver  *saver,
 								 GTimeVal            *old_mtime);
 
 #if 0
-void			 lapiz_document_saver_cancel		(PlumaDocumentSaver  *saver);
+void			 lapiz_document_saver_cancel		(LapizDocumentSaver  *saver);
 #endif
 
-PlumaDocument		*lapiz_document_saver_get_document	(PlumaDocumentSaver  *saver);
+LapizDocument		*lapiz_document_saver_get_document	(LapizDocumentSaver  *saver);
 
-const gchar		*lapiz_document_saver_get_uri		(PlumaDocumentSaver  *saver);
+const gchar		*lapiz_document_saver_get_uri		(LapizDocumentSaver  *saver);
 
 /* If backup_uri is NULL no backup will be made */
-const gchar		*lapiz_document_saver_get_backup_uri	(PlumaDocumentSaver  *saver);
-void			*lapiz_document_saver_set_backup_uri	(PlumaDocumentSaver  *saver,
+const gchar		*lapiz_document_saver_get_backup_uri	(LapizDocumentSaver  *saver);
+void			*lapiz_document_saver_set_backup_uri	(LapizDocumentSaver  *saver,
 							 	 const gchar         *backup_uri);
 
 /* Returns 0 if file size is unknown */
-goffset			 lapiz_document_saver_get_file_size	(PlumaDocumentSaver  *saver);
+goffset			 lapiz_document_saver_get_file_size	(LapizDocumentSaver  *saver);
 
-goffset			 lapiz_document_saver_get_bytes_written	(PlumaDocumentSaver  *saver);
+goffset			 lapiz_document_saver_get_bytes_written	(LapizDocumentSaver  *saver);
 
-GFileInfo		*lapiz_document_saver_get_info		(PlumaDocumentSaver  *saver);
+GFileInfo		*lapiz_document_saver_get_info		(LapizDocumentSaver  *saver);
 
 G_END_DECLS
 

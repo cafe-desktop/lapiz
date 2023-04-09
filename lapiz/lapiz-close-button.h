@@ -28,22 +28,22 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_CLOSE_BUTTON			(lapiz_close_button_get_type ())
-#define LAPIZ_CLOSE_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButton))
-#define LAPIZ_CLOSE_BUTTON_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButton const))
-#define LAPIZ_CLOSE_BUTTON_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButtonClass))
+#define LAPIZ_CLOSE_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_BUTTON, LapizCloseButton))
+#define LAPIZ_CLOSE_BUTTON_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_CLOSE_BUTTON, LapizCloseButton const))
+#define LAPIZ_CLOSE_BUTTON_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_CLOSE_BUTTON, LapizCloseButtonClass))
 #define LAPIZ_IS_CLOSE_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_CLOSE_BUTTON))
 #define LAPIZ_IS_CLOSE_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_CLOSE_BUTTON))
-#define LAPIZ_CLOSE_BUTTON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_CLOSE_BUTTON, PlumaCloseButtonClass))
+#define LAPIZ_CLOSE_BUTTON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_CLOSE_BUTTON, LapizCloseButtonClass))
 
-typedef struct _PlumaCloseButton	PlumaCloseButton;
-typedef struct _PlumaCloseButtonClass	PlumaCloseButtonClass;
-typedef struct _PlumaCloseButtonPrivate	PlumaCloseButtonPrivate;
+typedef struct _LapizCloseButton	LapizCloseButton;
+typedef struct _LapizCloseButtonClass	LapizCloseButtonClass;
+typedef struct _LapizCloseButtonPrivate	LapizCloseButtonPrivate;
 
-struct _PlumaCloseButton {
+struct _LapizCloseButton {
 	GtkButton parent;
 };
 
-struct _PlumaCloseButtonClass {
+struct _LapizCloseButtonClass {
 	GtkButtonClass parent_class;
 };
 

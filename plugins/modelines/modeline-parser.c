@@ -33,7 +33,7 @@
 /* base dir to lookup configuration files */
 static gchar *modelines_data_dir;
 
-/* Mappings: language name -> Pluma language ID */
+/* Mappings: language name -> Lapiz language ID */
 static GHashTable *vim_languages;
 static GHashTable *emacs_languages;
 static GHashTable *kate_languages;

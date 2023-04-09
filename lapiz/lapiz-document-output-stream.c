@@ -36,9 +36,9 @@
 
 #define MAX_UNICHAR_LEN 6
 
-struct _PlumaDocumentOutputStreamPrivate
+struct _LapizDocumentOutputStreamPrivate
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GtkTextIter    pos;
 
 	gchar *buffer;
@@ -54,7 +54,7 @@ enum
 	PROP_DOCUMENT
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentOutputStream, lapiz_document_output_stream, G_TYPE_OUTPUT_STREAM)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizDocumentOutputStream, lapiz_document_output_stream, G_TYPE_OUTPUT_STREAM)
 
 static gssize	lapiz_document_output_stream_write (GOutputStream            *stream,
 						    const void               *buffer,
@@ -76,7 +76,7 @@ lapiz_document_output_stream_set_property (GObject      *object,
 					   const GValue *value,
 					   GParamSpec   *pspec)
 {
-	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
+	LapizDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	switch (prop_id)
 	{
@@ -96,7 +96,7 @@ lapiz_document_output_stream_get_property (GObject    *object,
 					   GValue     *value,
 					   GParamSpec *pspec)
 {
-	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
+	LapizDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	switch (prop_id)
 	{
@@ -113,7 +113,7 @@ lapiz_document_output_stream_get_property (GObject    *object,
 static void
 lapiz_document_output_stream_finalize (GObject *object)
 {
-	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
+	LapizDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	g_free (stream->priv->buffer);
 
@@ -123,7 +123,7 @@ lapiz_document_output_stream_finalize (GObject *object)
 static void
 lapiz_document_output_stream_constructed (GObject *object)
 {
-	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
+	LapizDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	if (!stream->priv->doc)
 	{
@@ -143,7 +143,7 @@ lapiz_document_output_stream_constructed (GObject *object)
 }
 
 static void
-lapiz_document_output_stream_class_init (PlumaDocumentOutputStreamClass *klass)
+lapiz_document_output_stream_class_init (LapizDocumentOutputStreamClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GOutputStreamClass *stream_class = G_OUTPUT_STREAM_CLASS (klass);
@@ -168,7 +168,7 @@ lapiz_document_output_stream_class_init (PlumaDocumentOutputStreamClass *klass)
 }
 
 static void
-lapiz_document_output_stream_init (PlumaDocumentOutputStream *stream)
+lapiz_document_output_stream_init (LapizDocumentOutputStream *stream)
 {
 	stream->priv = lapiz_document_output_stream_get_instance_private (stream);
 
@@ -179,10 +179,10 @@ lapiz_document_output_stream_init (PlumaDocumentOutputStream *stream)
 	stream->priv->is_closed = FALSE;
 }
 
-static PlumaDocumentNewlineType
+static LapizDocumentNewlineType
 get_newline_type (GtkTextIter *end)
 {
-	PlumaDocumentNewlineType res;
+	LapizDocumentNewlineType res;
 	GtkTextIter copy;
 	gunichar c;
 
@@ -210,16 +210,16 @@ get_newline_type (GtkTextIter *end)
 }
 
 GOutputStream *
-lapiz_document_output_stream_new (PlumaDocument *doc)
+lapiz_document_output_stream_new (LapizDocument *doc)
 {
 	return G_OUTPUT_STREAM (g_object_new (LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM,
 					      "document", doc, NULL));
 }
 
-PlumaDocumentNewlineType
-lapiz_document_output_stream_detect_newline_type (PlumaDocumentOutputStream *stream)
+LapizDocumentNewlineType
+lapiz_document_output_stream_detect_newline_type (LapizDocumentOutputStream *stream)
 {
-	PlumaDocumentNewlineType type;
+	LapizDocumentNewlineType type;
 	GtkTextIter iter;
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_OUTPUT_STREAM (stream),
@@ -241,7 +241,7 @@ lapiz_document_output_stream_detect_newline_type (PlumaDocumentOutputStream *str
 /* If the last char is a newline, remove it from the buffer (otherwise
    GtkTextView shows it as an empty line). See bug #324942. */
 static void
-remove_ending_newline (PlumaDocumentOutputStream *stream)
+remove_ending_newline (LapizDocumentOutputStream *stream)
 {
 	GtkTextIter end;
 	GtkTextIter start;
@@ -267,7 +267,7 @@ remove_ending_newline (PlumaDocumentOutputStream *stream)
 }
 
 static void
-end_append_text_to_document (PlumaDocumentOutputStream *stream)
+end_append_text_to_document (LapizDocumentOutputStream *stream)
 {
 	remove_ending_newline (stream);
 
@@ -284,7 +284,7 @@ lapiz_document_output_stream_write (GOutputStream            *stream,
 				    GCancellable             *cancellable,
 				    GError                  **error)
 {
-	PlumaDocumentOutputStream *ostream;
+	LapizDocumentOutputStream *ostream;
 	gchar *text;
 	gsize len;
 	gboolean freetext = FALSE;
@@ -377,7 +377,7 @@ lapiz_document_output_stream_flush (GOutputStream *stream,
                                     GCancellable  *cancellable,
                                     GError        **error)
 {
-	PlumaDocumentOutputStream *ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
+	LapizDocumentOutputStream *ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
 
 	/* Flush deferred data if some. */
 	if (!ostream->priv->is_closed && ostream->priv->is_initialized &&
@@ -394,7 +394,7 @@ lapiz_document_output_stream_close (GOutputStream     *stream,
 				    GCancellable      *cancellable,
 				    GError           **error)
 {
-	PlumaDocumentOutputStream *ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
+	LapizDocumentOutputStream *ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
 
 	if (!ostream->priv->is_closed && ostream->priv->is_initialized)
 	{

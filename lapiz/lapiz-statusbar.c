@@ -38,7 +38,7 @@
 
 #include "lapiz-statusbar.h"
 
-struct _PlumaStatusbarPrivate
+struct _LapizStatusbarPrivate
 {
 	GtkWidget     *overwrite_mode_label;
 	GtkWidget     *cursor_position_label;
@@ -57,7 +57,7 @@ struct _PlumaStatusbarPrivate
 	guint          flash_message_id;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaStatusbar, lapiz_statusbar, GTK_TYPE_STATUSBAR)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizStatusbar, lapiz_statusbar, GTK_TYPE_STATUSBAR)
 
 
 static gchar *
@@ -75,7 +75,7 @@ get_overwrite_mode_length (void)
 static void
 lapiz_statusbar_dispose (GObject *object)
 {
-	PlumaStatusbar *statusbar = LAPIZ_STATUSBAR (object);
+	LapizStatusbar *statusbar = LAPIZ_STATUSBAR (object);
 
 	if (statusbar->priv->flash_timeout > 0)
 	{
@@ -87,7 +87,7 @@ lapiz_statusbar_dispose (GObject *object)
 }
 
 static void
-lapiz_statusbar_class_init (PlumaStatusbarClass *klass)
+lapiz_statusbar_class_init (LapizStatusbarClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -97,7 +97,7 @@ lapiz_statusbar_class_init (PlumaStatusbarClass *klass)
 #define CURSOR_POSITION_LABEL_WIDTH_CHARS 18
 
 static void
-lapiz_statusbar_init (PlumaStatusbar *statusbar)
+lapiz_statusbar_init (LapizStatusbar *statusbar)
 {
 	GtkWidget *hbox;
 	GtkWidget *error_image;
@@ -181,9 +181,9 @@ lapiz_statusbar_init (PlumaStatusbar *statusbar)
 /**
  * lapiz_statusbar_new:
  *
- * Creates a new #PlumaStatusbar.
+ * Creates a new #LapizStatusbar.
  *
- * Return value: the new #PlumaStatusbar object
+ * Return value: the new #LapizStatusbar object
  **/
 GtkWidget *
 lapiz_statusbar_new (void)
@@ -193,13 +193,13 @@ lapiz_statusbar_new (void)
 
 /**
  * lapiz_statusbar_set_overwrite:
- * @statusbar: a #PlumaStatusbar
+ * @statusbar: a #LapizStatusbar
  * @overwrite: if the overwrite mode is set
  *
  * Sets the overwrite mode on the statusbar.
  **/
 void
-lapiz_statusbar_set_overwrite (PlumaStatusbar *statusbar,
+lapiz_statusbar_set_overwrite (LapizStatusbar *statusbar,
                                gboolean        overwrite)
 {
 	gchar *msg;
@@ -214,7 +214,7 @@ lapiz_statusbar_set_overwrite (PlumaStatusbar *statusbar,
 }
 
 void
-lapiz_statusbar_clear_overwrite (PlumaStatusbar *statusbar)
+lapiz_statusbar_clear_overwrite (LapizStatusbar *statusbar)
 {
 	g_return_if_fail (LAPIZ_IS_STATUSBAR (statusbar));
 
@@ -223,14 +223,14 @@ lapiz_statusbar_clear_overwrite (PlumaStatusbar *statusbar)
 
 /**
  * lapiz_statusbar_cursor_position:
- * @statusbar: an #PlumaStatusbar
+ * @statusbar: an #LapizStatusbar
  * @line: line position
  * @col: column position
  *
  * Sets the cursor position on the statusbar.
  **/
 void
-lapiz_statusbar_set_cursor_position (PlumaStatusbar *statusbar,
+lapiz_statusbar_set_cursor_position (LapizStatusbar *statusbar,
 				     gint            line,
 				     gint            col)
 {
@@ -251,7 +251,7 @@ lapiz_statusbar_set_cursor_position (PlumaStatusbar *statusbar,
 }
 
 static gboolean
-remove_message_timeout (PlumaStatusbar *statusbar)
+remove_message_timeout (LapizStatusbar *statusbar)
 {
 	gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
 			      statusbar->priv->flash_context_id,
@@ -265,14 +265,14 @@ remove_message_timeout (PlumaStatusbar *statusbar)
 /* FIXME this is an issue for introspection */
 /**
  * lapiz_statusbar_flash_message:
- * @statusbar: a #PlumaStatusbar
+ * @statusbar: a #LapizStatusbar
  * @context_id: message context_id
  * @format: message to flash on the statusbar
  *
  * Flash a temporary message on the statusbar.
  */
 void
-lapiz_statusbar_flash_message (PlumaStatusbar *statusbar,
+lapiz_statusbar_flash_message (LapizStatusbar *statusbar,
 			       guint           context_id,
 			       const gchar    *format, ...)
 {
@@ -311,8 +311,8 @@ lapiz_statusbar_flash_message (PlumaStatusbar *statusbar,
 }
 
 void
-lapiz_statusbar_set_window_state (PlumaStatusbar   *statusbar,
-				  PlumaWindowState  state,
+lapiz_statusbar_set_window_state (LapizStatusbar   *statusbar,
+				  LapizWindowState  state,
 				  gint              num_of_errors)
 {
 	g_return_if_fail (LAPIZ_IS_STATUSBAR (statusbar));

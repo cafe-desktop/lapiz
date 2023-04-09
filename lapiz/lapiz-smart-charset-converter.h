@@ -30,36 +30,36 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_SMART_CHARSET_CONVERTER		(lapiz_smart_charset_converter_get_type ())
-#define LAPIZ_SMART_CHARSET_CONVERTER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, PlumaSmartCharsetConverter))
-#define LAPIZ_SMART_CHARSET_CONVERTER_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, PlumaSmartCharsetConverter const))
-#define LAPIZ_SMART_CHARSET_CONVERTER_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, PlumaSmartCharsetConverterClass))
+#define LAPIZ_SMART_CHARSET_CONVERTER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, LapizSmartCharsetConverter))
+#define LAPIZ_SMART_CHARSET_CONVERTER_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, LapizSmartCharsetConverter const))
+#define LAPIZ_SMART_CHARSET_CONVERTER_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, LapizSmartCharsetConverterClass))
 #define LAPIZ_IS_SMART_CHARSET_CONVERTER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_SMART_CHARSET_CONVERTER))
 #define LAPIZ_IS_SMART_CHARSET_CONVERTER_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SMART_CHARSET_CONVERTER))
-#define LAPIZ_SMART_CHARSET_CONVERTER_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, PlumaSmartCharsetConverterClass))
+#define LAPIZ_SMART_CHARSET_CONVERTER_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SMART_CHARSET_CONVERTER, LapizSmartCharsetConverterClass))
 
-typedef struct _PlumaSmartCharsetConverter		PlumaSmartCharsetConverter;
-typedef struct _PlumaSmartCharsetConverterClass		PlumaSmartCharsetConverterClass;
-typedef struct _PlumaSmartCharsetConverterPrivate	PlumaSmartCharsetConverterPrivate;
+typedef struct _LapizSmartCharsetConverter		LapizSmartCharsetConverter;
+typedef struct _LapizSmartCharsetConverterClass		LapizSmartCharsetConverterClass;
+typedef struct _LapizSmartCharsetConverterPrivate	LapizSmartCharsetConverterPrivate;
 
-struct _PlumaSmartCharsetConverter
+struct _LapizSmartCharsetConverter
 {
 	GObject parent;
 
-	PlumaSmartCharsetConverterPrivate *priv;
+	LapizSmartCharsetConverterPrivate *priv;
 };
 
-struct _PlumaSmartCharsetConverterClass
+struct _LapizSmartCharsetConverterClass
 {
 	GObjectClass parent_class;
 };
 
 GType lapiz_smart_charset_converter_get_type (void) G_GNUC_CONST;
 
-PlumaSmartCharsetConverter	*lapiz_smart_charset_converter_new		(GSList *candidate_encodings);
+LapizSmartCharsetConverter	*lapiz_smart_charset_converter_new		(GSList *candidate_encodings);
 
-const PlumaEncoding		*lapiz_smart_charset_converter_get_guessed	(PlumaSmartCharsetConverter *smart);
+const LapizEncoding		*lapiz_smart_charset_converter_get_guessed	(LapizSmartCharsetConverter *smart);
 
-guint				 lapiz_smart_charset_converter_get_num_fallbacks(PlumaSmartCharsetConverter *smart);
+guint				 lapiz_smart_charset_converter_get_num_fallbacks(LapizSmartCharsetConverter *smart);
 
 G_END_DECLS
 

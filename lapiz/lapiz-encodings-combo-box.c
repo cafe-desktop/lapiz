@@ -42,7 +42,7 @@
 
 #define ENCODING_KEY "Enconding"
 
-struct _PlumaEncodingsComboBoxPrivate
+struct _LapizEncodingsComboBoxPrivate
 {
 	GtkListStore *store;
 	glong changed_id;
@@ -68,9 +68,9 @@ enum
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaEncodingsComboBox, lapiz_encodings_combo_box, GTK_TYPE_COMBO_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizEncodingsComboBox, lapiz_encodings_combo_box, GTK_TYPE_COMBO_BOX)
 
-static void	  update_menu 		(PlumaEncodingsComboBox       *combo_box);
+static void	  update_menu 		(LapizEncodingsComboBox       *combo_box);
 
 static void
 lapiz_encodings_combo_box_set_property (GObject    *object,
@@ -78,7 +78,7 @@ lapiz_encodings_combo_box_set_property (GObject    *object,
 					const       GValue *value,
 					GParamSpec *pspec)
 {
-	PlumaEncodingsComboBox *combo;
+	LapizEncodingsComboBox *combo;
 
 	combo = LAPIZ_ENCODINGS_COMBO_BOX (object);
 
@@ -99,7 +99,7 @@ lapiz_encodings_combo_box_get_property (GObject    *object,
 					GValue 	   *value,
 					GParamSpec *pspec)
 {
-	PlumaEncodingsComboBox *combo;
+	LapizEncodingsComboBox *combo;
 
 	combo = LAPIZ_ENCODINGS_COMBO_BOX (object);
 
@@ -117,7 +117,7 @@ lapiz_encodings_combo_box_get_property (GObject    *object,
 static void
 lapiz_encodings_combo_box_dispose (GObject *object)
 {
-	PlumaEncodingsComboBox *combo = LAPIZ_ENCODINGS_COMBO_BOX (object);
+	LapizEncodingsComboBox *combo = LAPIZ_ENCODINGS_COMBO_BOX (object);
 
 	if (combo->priv->store != NULL)
 	{
@@ -129,7 +129,7 @@ lapiz_encodings_combo_box_dispose (GObject *object)
 }
 
 static void
-lapiz_encodings_combo_box_class_init (PlumaEncodingsComboBoxClass *klass)
+lapiz_encodings_combo_box_class_init (LapizEncodingsComboBoxClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -151,7 +151,7 @@ lapiz_encodings_combo_box_class_init (PlumaEncodingsComboBoxClass *klass)
 static void
 dialog_response_cb (GtkDialog              *dialog,
                     gint                    response_id,
-                    PlumaEncodingsComboBox *menu)
+                    LapizEncodingsComboBox *menu)
 {
 	if (response_id == GTK_RESPONSE_OK)
 	{
@@ -162,7 +162,7 @@ dialog_response_cb (GtkDialog              *dialog,
 }
 
 static void
-add_or_remove (PlumaEncodingsComboBox *menu,
+add_or_remove (LapizEncodingsComboBox *menu,
 	       GtkTreeModel           *model)
 {
 	GtkTreeIter iter;
@@ -239,14 +239,14 @@ separator_func (GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
 }
 
 static void
-update_menu (PlumaEncodingsComboBox *menu)
+update_menu (LapizEncodingsComboBox *menu)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
 	GSList *encodings, *l;
 	gchar *str;
-	const PlumaEncoding *utf8_encoding;
-	const PlumaEncoding *current_encoding;
+	const LapizEncoding *utf8_encoding;
+	const LapizEncoding *current_encoding;
 
 	store = menu->priv->store;
 
@@ -311,7 +311,7 @@ update_menu (PlumaEncodingsComboBox *menu)
 
 	for (l = encodings; l != NULL; l = g_slist_next (l))
 	{
-		const PlumaEncoding *enc = (const PlumaEncoding *)l->data;
+		const LapizEncoding *enc = (const LapizEncoding *)l->data;
 
 		if ((enc != current_encoding) &&
 		    (enc != utf8_encoding) &&
@@ -359,7 +359,7 @@ update_menu (PlumaEncodingsComboBox *menu)
 }
 
 static void
-lapiz_encodings_combo_box_init (PlumaEncodingsComboBox *menu)
+lapiz_encodings_combo_box_init (LapizEncodingsComboBox *menu)
 {
 	GtkCellRenderer *text_renderer;
 
@@ -400,8 +400,8 @@ lapiz_encodings_combo_box_new (gboolean save_mode)
 			     NULL);
 }
 
-const PlumaEncoding *
-lapiz_encodings_combo_box_get_selected_encoding (PlumaEncodingsComboBox *menu)
+const LapizEncoding *
+lapiz_encodings_combo_box_get_selected_encoding (LapizEncodingsComboBox *menu)
 {
 	GtkTreeIter iter;
 
@@ -409,7 +409,7 @@ lapiz_encodings_combo_box_get_selected_encoding (PlumaEncodingsComboBox *menu)
 
 	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
 	{
-		const PlumaEncoding *ret;
+		const LapizEncoding *ret;
 		GtkTreeModel *model;
 
 		model = gtk_combo_box_get_model (GTK_COMBO_BOX (menu));
@@ -430,8 +430,8 @@ lapiz_encodings_combo_box_get_selected_encoding (PlumaEncodingsComboBox *menu)
  * @encoding: (allow-none):
  **/
 void
-lapiz_encodings_combo_box_set_selected_encoding (PlumaEncodingsComboBox *menu,
-						 const PlumaEncoding    *encoding)
+lapiz_encodings_combo_box_set_selected_encoding (LapizEncodingsComboBox *menu,
+						 const LapizEncoding    *encoding)
 {
 	GtkTreeIter iter;
 	GtkTreeModel *model;
@@ -444,7 +444,7 @@ lapiz_encodings_combo_box_set_selected_encoding (PlumaEncodingsComboBox *menu,
 
 	while (b)
 	{
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 
 		gtk_tree_model_get (model, &iter,
 				    ENCODING_COLUMN, &enc,

@@ -8,116 +8,116 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_MESSAGE_BUS			(lapiz_message_bus_get_type ())
-#define LAPIZ_MESSAGE_BUS(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_MESSAGE_BUS, PlumaMessageBus))
-#define LAPIZ_MESSAGE_BUS_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_MESSAGE_BUS, PlumaMessageBus const))
-#define LAPIZ_MESSAGE_BUS_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_MESSAGE_BUS, PlumaMessageBusClass))
+#define LAPIZ_MESSAGE_BUS(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_MESSAGE_BUS, LapizMessageBus))
+#define LAPIZ_MESSAGE_BUS_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_MESSAGE_BUS, LapizMessageBus const))
+#define LAPIZ_MESSAGE_BUS_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_MESSAGE_BUS, LapizMessageBusClass))
 #define LAPIZ_IS_MESSAGE_BUS(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_MESSAGE_BUS))
 #define LAPIZ_IS_MESSAGE_BUS_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_MESSAGE_BUS))
-#define LAPIZ_MESSAGE_BUS_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_MESSAGE_BUS, PlumaMessageBusClass))
+#define LAPIZ_MESSAGE_BUS_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_MESSAGE_BUS, LapizMessageBusClass))
 
-typedef struct _PlumaMessageBus		PlumaMessageBus;
-typedef struct _PlumaMessageBusClass	PlumaMessageBusClass;
-typedef struct _PlumaMessageBusPrivate	PlumaMessageBusPrivate;
+typedef struct _LapizMessageBus		LapizMessageBus;
+typedef struct _LapizMessageBusClass	LapizMessageBusClass;
+typedef struct _LapizMessageBusPrivate	LapizMessageBusPrivate;
 
-struct _PlumaMessageBus {
+struct _LapizMessageBus {
 	GObject parent;
 
-	PlumaMessageBusPrivate *priv;
+	LapizMessageBusPrivate *priv;
 };
 
-struct _PlumaMessageBusClass {
+struct _LapizMessageBusClass {
 	GObjectClass parent_class;
 
-	void (*dispatch)		(PlumaMessageBus  *bus,
-					 PlumaMessage     *message);
-	void (*registered)		(PlumaMessageBus  *bus,
-					 PlumaMessageType *message_type);
-	void (*unregistered)		(PlumaMessageBus  *bus,
-					 PlumaMessageType *message_type);
+	void (*dispatch)		(LapizMessageBus  *bus,
+					 LapizMessage     *message);
+	void (*registered)		(LapizMessageBus  *bus,
+					 LapizMessageType *message_type);
+	void (*unregistered)		(LapizMessageBus  *bus,
+					 LapizMessageType *message_type);
 };
 
-typedef void (* PlumaMessageCallback) 	(PlumaMessageBus *bus,
-					 PlumaMessage	 *message,
+typedef void (* LapizMessageCallback) 	(LapizMessageBus *bus,
+					 LapizMessage	 *message,
 					 gpointer	  userdata);
 
-typedef void (* PlumaMessageBusForeach) (PlumaMessageType *message_type,
+typedef void (* LapizMessageBusForeach) (LapizMessageType *message_type,
 					 gpointer	   userdata);
 
 GType lapiz_message_bus_get_type (void) G_GNUC_CONST;
 
-PlumaMessageBus *lapiz_message_bus_get_default	(void);
-PlumaMessageBus *lapiz_message_bus_new		(void);
+LapizMessageBus *lapiz_message_bus_get_default	(void);
+LapizMessageBus *lapiz_message_bus_new		(void);
 
 /* registering messages */
-PlumaMessageType *lapiz_message_bus_lookup	(PlumaMessageBus 	*bus,
+LapizMessageType *lapiz_message_bus_lookup	(LapizMessageBus 	*bus,
 						 const gchar		*object_path,
 						 const gchar		*method);
-PlumaMessageType *lapiz_message_bus_register	(PlumaMessageBus		*bus,
+LapizMessageType *lapiz_message_bus_register	(LapizMessageBus		*bus,
 					   	 const gchar 		*object_path,
 					  	 const gchar		*method,
 					  	 guint		 	 num_optional,
 					  	 ...) G_GNUC_NULL_TERMINATED;
 
-void lapiz_message_bus_unregister	  (PlumaMessageBus	*bus,
-					   PlumaMessageType	*message_type);
+void lapiz_message_bus_unregister	  (LapizMessageBus	*bus,
+					   LapizMessageType	*message_type);
 
-void lapiz_message_bus_unregister_all	  (PlumaMessageBus	*bus,
+void lapiz_message_bus_unregister_all	  (LapizMessageBus	*bus,
 					   const gchar		*object_path);
 
-gboolean lapiz_message_bus_is_registered  (PlumaMessageBus	*bus,
+gboolean lapiz_message_bus_is_registered  (LapizMessageBus	*bus,
 					   const gchar		*object_path,
 					   const gchar		*method);
 
-void lapiz_message_bus_foreach		  (PlumaMessageBus        *bus,
-					   PlumaMessageBusForeach  func,
+void lapiz_message_bus_foreach		  (LapizMessageBus        *bus,
+					   LapizMessageBusForeach  func,
 					   gpointer		   userdata);
 
 
 /* connecting to message events */
-guint lapiz_message_bus_connect	 	  (PlumaMessageBus	*bus,
+guint lapiz_message_bus_connect	 	  (LapizMessageBus	*bus,
 					   const gchar		*object_path,
 					   const gchar		*method,
-					   PlumaMessageCallback	 callback,
+					   LapizMessageCallback	 callback,
 					   gpointer		 userdata,
 					   GDestroyNotify        destroy_data);
 
-void lapiz_message_bus_disconnect	  (PlumaMessageBus	*bus,
+void lapiz_message_bus_disconnect	  (LapizMessageBus	*bus,
 					   guint		 id);
 
-void lapiz_message_bus_disconnect_by_func (PlumaMessageBus	*bus,
+void lapiz_message_bus_disconnect_by_func (LapizMessageBus	*bus,
 					   const gchar		*object_path,
 					   const gchar		*method,
-					   PlumaMessageCallback	 callback,
+					   LapizMessageCallback	 callback,
 					   gpointer		 userdata);
 
 /* blocking message event callbacks */
-void lapiz_message_bus_block		  (PlumaMessageBus	*bus,
+void lapiz_message_bus_block		  (LapizMessageBus	*bus,
 					   guint		 id);
-void lapiz_message_bus_block_by_func	  (PlumaMessageBus	*bus,
+void lapiz_message_bus_block_by_func	  (LapizMessageBus	*bus,
 					   const gchar		*object_path,
 					   const gchar		*method,
-					   PlumaMessageCallback	 callback,
+					   LapizMessageCallback	 callback,
 					   gpointer		 userdata);
 
-void lapiz_message_bus_unblock		  (PlumaMessageBus	*bus,
+void lapiz_message_bus_unblock		  (LapizMessageBus	*bus,
 					   guint		 id);
-void lapiz_message_bus_unblock_by_func	  (PlumaMessageBus	*bus,
+void lapiz_message_bus_unblock_by_func	  (LapizMessageBus	*bus,
 					   const gchar		*object_path,
 					   const gchar		*method,
-					   PlumaMessageCallback	 callback,
+					   LapizMessageCallback	 callback,
 					   gpointer		 userdata);
 
 /* sending messages */
-void lapiz_message_bus_send_message	  (PlumaMessageBus	*bus,
-					   PlumaMessage		*message);
-void lapiz_message_bus_send_message_sync  (PlumaMessageBus	*bus,
-					   PlumaMessage		*message);
+void lapiz_message_bus_send_message	  (LapizMessageBus	*bus,
+					   LapizMessage		*message);
+void lapiz_message_bus_send_message_sync  (LapizMessageBus	*bus,
+					   LapizMessage		*message);
 
-void lapiz_message_bus_send		  (PlumaMessageBus	*bus,
+void lapiz_message_bus_send		  (LapizMessageBus	*bus,
 					   const gchar		*object_path,
 					   const gchar		*method,
 					   ...) G_GNUC_NULL_TERMINATED;
-PlumaMessage *lapiz_message_bus_send_sync (PlumaMessageBus	*bus,
+LapizMessage *lapiz_message_bus_send_sync (LapizMessageBus	*bus,
 					   const gchar		*object_path,
 					   const gchar		*method,
 					   ...) G_GNUC_NULL_TERMINATED;

@@ -22,7 +22,7 @@ msgstr "tarjimonlar"
 
 #. (itstool) path: articleinfo/title
 #: C/index.docbook:27
-msgid "Pluma Manual"
+msgid "Lapiz Manual"
 msgstr ""
 
 #. (itstool) path: articleinfo/copyright
@@ -1856,7 +1856,7 @@ msgstr ""
 
 #. (itstool) path: entry/para
 #: C/index.docbook:954
-msgid "Quit Pluma."
+msgid "Quit Lapiz."
 msgstr ""
 
 #. (itstool) path: sect1/bridgehead

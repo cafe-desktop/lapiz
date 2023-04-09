@@ -22,9 +22,9 @@
 
 #include "lapiz-status-combo-box.h"
 
-#define COMBO_BOX_TEXT_DATA "PlumaStatusComboBoxTextData"
+#define COMBO_BOX_TEXT_DATA "LapizStatusComboBoxTextData"
 
-struct _PlumaStatusComboBoxPrivate
+struct _LapizStatusComboBoxPrivate
 {
 	GtkWidget *frame;
 	GtkWidget *button;
@@ -54,7 +54,7 @@ enum
 
 static guint signals[NUM_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaStatusComboBox, lapiz_status_combo_box, GTK_TYPE_EVENT_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizStatusComboBox, lapiz_status_combo_box, GTK_TYPE_EVENT_BOX)
 
 static void
 lapiz_status_combo_box_finalize (GObject *object)
@@ -68,7 +68,7 @@ lapiz_status_combo_box_get_property (GObject    *object,
 			             GValue     *value,
 			             GParamSpec *pspec)
 {
-	PlumaStatusComboBox *obj = LAPIZ_STATUS_COMBO_BOX (object);
+	LapizStatusComboBox *obj = LAPIZ_STATUS_COMBO_BOX (object);
 
 	switch (prop_id)
 	{
@@ -87,7 +87,7 @@ lapiz_status_combo_box_set_property (GObject      *object,
 			             const GValue *value,
 			             GParamSpec   *pspec)
 {
-	PlumaStatusComboBox *obj = LAPIZ_STATUS_COMBO_BOX (object);
+	LapizStatusComboBox *obj = LAPIZ_STATUS_COMBO_BOX (object);
 
 	switch (prop_id)
 	{
@@ -103,7 +103,7 @@ lapiz_status_combo_box_set_property (GObject      *object,
 static void
 lapiz_status_combo_box_constructed (GObject *object)
 {
-	PlumaStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (object);
+	LapizStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (object);
 	GtkStyleContext *context;
 	GtkCssProvider *css;
 	GError *error = NULL;
@@ -128,7 +128,7 @@ lapiz_status_combo_box_constructed (GObject *object)
 }
 
 static void
-lapiz_status_combo_box_changed (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_changed (LapizStatusComboBox *combo,
 				GtkMenuItem         *item)
 {
 	const gchar *text;
@@ -143,7 +143,7 @@ lapiz_status_combo_box_changed (PlumaStatusComboBox *combo,
 }
 
 static void
-lapiz_status_combo_box_class_init (PlumaStatusComboBoxClass *klass)
+lapiz_status_combo_box_class_init (LapizStatusComboBoxClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -158,7 +158,7 @@ lapiz_status_combo_box_class_init (PlumaStatusComboBoxClass *klass)
 	    g_signal_new ("changed",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (PlumaStatusComboBoxClass,
+			  G_STRUCT_OFFSET (LapizStatusComboBoxClass,
 					   changed), NULL, NULL,
 			  g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1,
 			  GTK_TYPE_MENU_ITEM);
@@ -173,7 +173,7 @@ lapiz_status_combo_box_class_init (PlumaStatusComboBoxClass *klass)
 
 static void
 menu_deactivate (GtkMenu             *menu,
-		 PlumaStatusComboBox *combo)
+		 LapizStatusComboBox *combo)
 {
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (combo->priv->button), FALSE);
 }
@@ -181,7 +181,7 @@ menu_deactivate (GtkMenu             *menu,
 static void
 button_press_event (GtkWidget           *widget,
 		    GdkEventButton      *event,
-		    PlumaStatusComboBox *combo)
+		    LapizStatusComboBox *combo)
 {
 	GtkRequisition request;
 	GtkAllocation allocation;
@@ -215,7 +215,7 @@ button_press_event (GtkWidget           *widget,
 }
 
 static void
-set_shadow_type (PlumaStatusComboBox *combo)
+set_shadow_type (LapizStatusComboBox *combo)
 {
 	GtkStyleContext *context;
 	GtkShadowType shadow_type;
@@ -232,7 +232,7 @@ set_shadow_type (PlumaStatusComboBox *combo)
 }
 
 static void
-lapiz_status_combo_box_init (PlumaStatusComboBox *self)
+lapiz_status_combo_box_init (LapizStatusComboBox *self)
 {
 	self->priv = lapiz_status_combo_box_get_instance_private (self);
 
@@ -309,7 +309,7 @@ lapiz_status_combo_box_new (const gchar *label)
  * @label: (allow-none):
  */
 void
-lapiz_status_combo_box_set_label (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_set_label (LapizStatusComboBox *combo,
 				  const gchar         *label)
 {
 	gchar *text;
@@ -322,7 +322,7 @@ lapiz_status_combo_box_set_label (PlumaStatusComboBox *combo,
 }
 
 const gchar *
-lapiz_status_combo_box_get_label (PlumaStatusComboBox *combo)
+lapiz_status_combo_box_get_label (LapizStatusComboBox *combo)
 {
 	g_return_val_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo), NULL);
 
@@ -331,7 +331,7 @@ lapiz_status_combo_box_get_label (PlumaStatusComboBox *combo)
 
 static void
 item_activated (GtkMenuItem         *item,
-		PlumaStatusComboBox *combo)
+		LapizStatusComboBox *combo)
 {
 	lapiz_status_combo_box_set_item (combo, item);
 }
@@ -343,7 +343,7 @@ item_activated (GtkMenuItem         *item,
  * @text: (allow-none):
  */
 void
-lapiz_status_combo_box_add_item (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_add_item (LapizStatusComboBox *combo,
 				 GtkMenuItem         *item,
 				 const gchar         *text)
 {
@@ -357,7 +357,7 @@ lapiz_status_combo_box_add_item (PlumaStatusComboBox *combo,
 }
 
 void
-lapiz_status_combo_box_remove_item (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_remove_item (LapizStatusComboBox *combo,
 				    GtkMenuItem         *item)
 {
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
@@ -374,7 +374,7 @@ lapiz_status_combo_box_remove_item (PlumaStatusComboBox *combo,
  * Returns: (element-type Gtk.Widget) (transfer container):
  */
 GList *
-lapiz_status_combo_box_get_items (PlumaStatusComboBox *combo)
+lapiz_status_combo_box_get_items (LapizStatusComboBox *combo)
 {
 	g_return_val_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo), NULL);
 
@@ -382,7 +382,7 @@ lapiz_status_combo_box_get_items (PlumaStatusComboBox *combo)
 }
 
 const gchar *
-lapiz_status_combo_box_get_item_text (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_get_item_text (LapizStatusComboBox *combo,
 				      GtkMenuItem	  *item)
 {
 	const gchar *ret = NULL;
@@ -402,7 +402,7 @@ lapiz_status_combo_box_get_item_text (PlumaStatusComboBox *combo,
  * @text: (allow-none):
  */
 void
-lapiz_status_combo_box_set_item_text (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_set_item_text (LapizStatusComboBox *combo,
 				      GtkMenuItem	  *item,
 				      const gchar         *text)
 {
@@ -416,7 +416,7 @@ lapiz_status_combo_box_set_item_text (PlumaStatusComboBox *combo,
 }
 
 void
-lapiz_status_combo_box_set_item (PlumaStatusComboBox *combo,
+lapiz_status_combo_box_set_item (LapizStatusComboBox *combo,
 				 GtkMenuItem         *item)
 {
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
@@ -426,7 +426,7 @@ lapiz_status_combo_box_set_item (PlumaStatusComboBox *combo,
 }
 
 GtkLabel *
-lapiz_status_combo_box_get_item_label (PlumaStatusComboBox *combo)
+lapiz_status_combo_box_get_item_label (LapizStatusComboBox *combo)
 {
 	g_return_val_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo), NULL);
 

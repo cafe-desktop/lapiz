@@ -32,34 +32,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_SORT_PLUGIN		(lapiz_sort_plugin_get_type ())
-#define LAPIZ_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_SORT_PLUGIN, PlumaSortPlugin))
-#define LAPIZ_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_SORT_PLUGIN, PlumaSortPluginClass))
+#define LAPIZ_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_SORT_PLUGIN, LapizSortPlugin))
+#define LAPIZ_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_SORT_PLUGIN, LapizSortPluginClass))
 #define LAPIZ_IS_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_SORT_PLUGIN))
 #define LAPIZ_IS_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_SORT_PLUGIN))
-#define LAPIZ_SORT_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_SORT_PLUGIN, PlumaSortPluginClass))
+#define LAPIZ_SORT_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_SORT_PLUGIN, LapizSortPluginClass))
 
 /* Private structure type */
-typedef struct _PlumaSortPluginPrivate	PlumaSortPluginPrivate;
+typedef struct _LapizSortPluginPrivate	LapizSortPluginPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaSortPlugin		PlumaSortPlugin;
+typedef struct _LapizSortPlugin		LapizSortPlugin;
 
-struct _PlumaSortPlugin
+struct _LapizSortPlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	PlumaSortPluginPrivate *priv;
+	LapizSortPluginPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaSortPluginClass	PlumaSortPluginClass;
+typedef struct _LapizSortPluginClass	LapizSortPluginClass;
 
-struct _PlumaSortPluginClass
+struct _LapizSortPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

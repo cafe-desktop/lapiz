@@ -34,7 +34,7 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
+msgid "Lapiz Manual"
 msgstr ""
 
 #. (itstool) path: publisher/publishername
@@ -218,7 +218,7 @@ msgstr "<guimenu>프로그램</guimenu> 메뉴"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 
@@ -242,7 +242,7 @@ msgstr ""
 #. (itstool) path: info/title
 #: C/index.docbook:267
 msgid "The lapiz Window"
-msgstr "Pluma 창"
+msgstr "Lapiz 창"
 
 #. (itstool) path: section/para
 #: C/index.docbook:269
@@ -1726,7 +1726,7 @@ msgstr ""
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
+msgid "Quit Lapiz."
 msgstr ""
 
 #. (itstool) path: section/bridgehead

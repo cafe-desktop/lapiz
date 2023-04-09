@@ -40,28 +40,28 @@
 
 #include "lapiz-spell-checker.h"
 
-typedef struct _PlumaAutomaticSpellChecker PlumaAutomaticSpellChecker;
+typedef struct _LapizAutomaticSpellChecker LapizAutomaticSpellChecker;
 
-PlumaAutomaticSpellChecker	*lapiz_automatic_spell_checker_new (
-							PlumaDocument 			*doc,
-							PlumaSpellChecker		*checker);
+LapizAutomaticSpellChecker	*lapiz_automatic_spell_checker_new (
+							LapizDocument 			*doc,
+							LapizSpellChecker		*checker);
 
-PlumaAutomaticSpellChecker	*lapiz_automatic_spell_checker_get_from_document (
-							const PlumaDocument 		*doc);
+LapizAutomaticSpellChecker	*lapiz_automatic_spell_checker_get_from_document (
+							const LapizDocument 		*doc);
 
 void				 lapiz_automatic_spell_checker_free (
-							PlumaAutomaticSpellChecker 	*spell);
+							LapizAutomaticSpellChecker 	*spell);
 
 void 				 lapiz_automatic_spell_checker_attach_view (
-							PlumaAutomaticSpellChecker 	*spell,
-							PlumaView 			*view);
+							LapizAutomaticSpellChecker 	*spell,
+							LapizView 			*view);
 
 void 				 lapiz_automatic_spell_checker_detach_view (
-							PlumaAutomaticSpellChecker 	*spell,
-							PlumaView 			*view);
+							LapizAutomaticSpellChecker 	*spell,
+							LapizView 			*view);
 
 void				 lapiz_automatic_spell_checker_recheck_all (
-							PlumaAutomaticSpellChecker 	*spell);
+							LapizAutomaticSpellChecker 	*spell);
 
 #endif  /* __LAPIZ_AUTOMATIC_SPELL_CHECKER_H__ */
 

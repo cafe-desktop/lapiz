@@ -21,7 +21,7 @@ import os
 import sys
 import fnmatch
 import xml.sax.saxutils
-from gi.repository import GObject, Gio, GLib, Gdk, Gtk, Pango, Pluma
+from gi.repository import GObject, Gio, GLib, Gdk, Gtk, Pango, Lapiz
 from .virtualdirs import VirtualDirectory
 
 class Popup(Gtk.Dialog):
@@ -449,7 +449,7 @@ class Popup(Gtk.Dialog):
         uri = self._entry.get_text()
         gfile = None
 
-        if Pluma.utils_is_valid_uri(uri):
+        if Lapiz.utils_is_valid_uri(uri):
             gfile = Gio.file_new_for_uri(uri)
         elif os.path.isabs(uri):
             f = Gio.file_new_for_uri(uri)

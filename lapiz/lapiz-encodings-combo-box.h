@@ -38,26 +38,26 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_ENCODINGS_COMBO_BOX             (lapiz_encodings_combo_box_get_type ())
-#define LAPIZ_ENCODINGS_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBox))
-#define LAPIZ_ENCODINGS_COMBO_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBoxClass))
+#define LAPIZ_ENCODINGS_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, LapizEncodingsComboBox))
+#define LAPIZ_ENCODINGS_COMBO_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, LapizEncodingsComboBoxClass))
 #define LAPIZ_IS_ENCODINGS_COMBO_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX))
 #define LAPIZ_IS_ENCODINGS_COMBO_BOX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_ENCODINGS_COMBO_BOX))
-#define LAPIZ_ENCODINGS_COMBO_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBoxClass))
+#define LAPIZ_ENCODINGS_COMBO_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_ENCODINGS_COMBO_BOX, LapizEncodingsComboBoxClass))
 
 
-typedef struct _PlumaEncodingsComboBox 	PlumaEncodingsComboBox;
-typedef struct _PlumaEncodingsComboBoxClass 	PlumaEncodingsComboBoxClass;
+typedef struct _LapizEncodingsComboBox 	LapizEncodingsComboBox;
+typedef struct _LapizEncodingsComboBoxClass 	LapizEncodingsComboBoxClass;
 
-typedef struct _PlumaEncodingsComboBoxPrivate	PlumaEncodingsComboBoxPrivate;
+typedef struct _LapizEncodingsComboBoxPrivate	LapizEncodingsComboBoxPrivate;
 
-struct _PlumaEncodingsComboBox
+struct _LapizEncodingsComboBox
 {
 	GtkComboBox			 parent;
 
-	PlumaEncodingsComboBoxPrivate	*priv;
+	LapizEncodingsComboBoxPrivate	*priv;
 };
 
-struct _PlumaEncodingsComboBoxClass
+struct _LapizEncodingsComboBoxClass
 {
 	GtkComboBoxClass		 parent_class;
 };
@@ -67,9 +67,9 @@ GType		     lapiz_encodings_combo_box_get_type		(void) G_GNUC_CONST;
 /* Constructor */
 GtkWidget 	    *lapiz_encodings_combo_box_new 			(gboolean save_mode);
 
-const PlumaEncoding *lapiz_encodings_combo_box_get_selected_encoding	(PlumaEncodingsComboBox *menu);
-void		     lapiz_encodings_combo_box_set_selected_encoding	(PlumaEncodingsComboBox *menu,
-									 const PlumaEncoding      *encoding);
+const LapizEncoding *lapiz_encodings_combo_box_get_selected_encoding	(LapizEncodingsComboBox *menu);
+void		     lapiz_encodings_combo_box_set_selected_encoding	(LapizEncodingsComboBox *menu,
+									 const LapizEncoding      *encoding);
 
 G_END_DECLS
 

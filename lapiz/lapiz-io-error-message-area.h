@@ -36,17 +36,17 @@
 G_BEGIN_DECLS
 
 GtkWidget	*lapiz_io_loading_error_message_area_new		 (const gchar         *uri,
-									  const PlumaEncoding *encoding,
+									  const LapizEncoding *encoding,
 									  const GError        *error);
 
 GtkWidget	*lapiz_unrecoverable_reverting_error_message_area_new	 (const gchar         *uri,
 									  const GError        *error);
 
 GtkWidget	*lapiz_conversion_error_while_saving_message_area_new	 (const gchar         *uri,
-									  const PlumaEncoding *encoding,
+									  const LapizEncoding *encoding,
 									  const GError        *error);
 
-const PlumaEncoding
+const LapizEncoding
 		*lapiz_conversion_error_message_area_get_encoding	 (GtkWidget           *message_area);
 
 GtkWidget	*lapiz_file_already_open_warning_message_area_new	 (const gchar         *uri);

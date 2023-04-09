@@ -574,8 +574,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -583,7 +583,7 @@ msgstr "Tekstų redaktorius, skirtas MATE darbalaukio aplinkai"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -592,7 +592,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -892,8 +892,8 @@ msgid "_Close"
 msgstr "_Užverti"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Pluma nustatymai"
+msgid "Lapiz Preferences"
+msgstr "Lapiz nustatymai"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1316,31 +1316,31 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
 msgstr ""
-"Pluma yra mažas ir supaprastintas tekstų redaktorius, skirtas MATE "
+"Lapiz yra mažas ir supaprastintas tekstų redaktorius, skirtas MATE "
 "darbalaukiui"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Pluma yra laisva programinė įranga; galite ją platinti ir / arba modifikuoti"
+"Lapiz yra laisva programinė įranga; galite ją platinti ir / arba modifikuoti"
 " GNU bendrosios viešosios licencijos sąlygomis, paskelbtomis Laisvosios "
 "programinės įrangos fondo; 2-osios arba (Jūsų pasirinkimu) bet kurios "
 "vėlesnės licencijos versijos sąlygomis."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Pluma yra platinama tikintis, kad ji bus naudinga, tačiau BE JOKIŲ "
+"Lapiz yra platinama tikintis, kad ji bus naudinga, tačiau BE JOKIŲ "
 "GARANTIJŲ; netgi be numanomų PARDAVIMO ar TINKAMUMO TAM TIKRAM TIKSLUI "
 "garantijų. Daugiau informacijos galite rasti GNU bendrojoje viešojoje "
 "licencijoje."
@@ -1348,16 +1348,16 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"Turėjote gauti GNU bendrosios viešosios licencijos kopiją kartu su Pluma; "
+"Turėjote gauti GNU bendrosios viešosios licencijos kopiją kartu su Lapiz; "
 "jeigu negavote, rašykite Free Software Foundation, Inc., 51 Franklin Street,"
 " Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "Apie Pluma"
+msgid "About Lapiz"
+msgstr "Apie Lapiz"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""
@@ -1831,7 +1831,7 @@ msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed"
 " the location correctly and try again."
 msgstr ""
-"Pluma negali rašyti į šią vietą. Patikrinkite, ar teisingai nurodėte vietą, "
+"Lapiz negali rašyti į šią vietą. Patikrinkite, ar teisingai nurodėte vietą, "
 "ir bandykite dar kartą."
 
 #: lapiz/lapiz-io-error-message-area.c:1078

@@ -47,8 +47,8 @@ print_hex (gchar *ptr, gint len)
 static gchar *
 get_encoded_text (const gchar         *text,
                   gsize                nread,
-		  const PlumaEncoding *to,
-		  const PlumaEncoding *from,
+		  const LapizEncoding *to,
+		  const LapizEncoding *from,
 		  gsize               *bytes_written_aux,
 		  gboolean             care_about_error)
 {
@@ -128,7 +128,7 @@ get_all_encodings ()
 
 	while (TRUE)
 	{
-		const PlumaEncoding *enc;
+		const LapizEncoding *enc;
 
 		enc = lapiz_encoding_get_from_index (i);
 
@@ -147,9 +147,9 @@ do_test (const gchar *test_in,
          const gchar *enc,
          GSList      *encodings,
          gsize        nread,
-         const PlumaEncoding **guessed)
+         const LapizEncoding **guessed)
 {
-	PlumaSmartCharsetConverter *converter;
+	LapizSmartCharsetConverter *converter;
 	gchar *out, *out_aux;
 	gsize bytes_read, bytes_read_aux;
 	gsize bytes_written, bytes_written_aux;
@@ -203,7 +203,7 @@ do_test_roundtrip (const char *str, const char *charset)
 	gchar *buf, *p;
 	GInputStream *in, *tmp;
 	GCharsetConverter *c1;
-	PlumaSmartCharsetConverter *c2;
+	LapizSmartCharsetConverter *c2;
 	gsize n, tot;
 	GError *err;
 	GSList *enc = NULL;
@@ -283,7 +283,7 @@ test_xxx_xxx ()
 	   are done ok */
 	for (l = encs; l != NULL; l = g_slist_next (l))
 	{
-		do_test_roundtrip (TEXT_TO_CONVERT, lapiz_encoding_get_charset ((const PlumaEncoding *)l->data));
+		do_test_roundtrip (TEXT_TO_CONVERT, lapiz_encoding_get_charset ((const LapizEncoding *)l->data));
 	}
 
 	g_slist_free (encs);
@@ -292,7 +292,7 @@ test_xxx_xxx ()
 static void
 test_empty ()
 {
-	const PlumaEncoding *guessed;
+	const LapizEncoding *guessed;
 	gchar *out;
 	GSList *encodings = NULL;
 
@@ -316,7 +316,7 @@ test_guessed ()
 	GSList *encs = NULL;
 	gchar *aux, *aux2, *fail;
 	gsize aux_len, fail_len;
-	const PlumaEncoding *guessed;
+	const LapizEncoding *guessed;
 
 	aux = get_encoded_text (TEXT_TO_GUESS, -1,
 	                        lapiz_encoding_get_from_charset ("UTF-16"),

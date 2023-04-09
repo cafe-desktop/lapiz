@@ -96,7 +96,7 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Pluma nên tạo bản sao các tập tin khi lưu. Bạn có thể đặt phần mở rộng tập "
+"Lapiz nên tạo bản sao các tập tin khi lưu. Bạn có thể đặt phần mở rộng tập "
 "tin bằng tùy chọn « Phần mở rộng bản sao lưu »."
 
 #: data/org.mate.lapiz.gschema.xml.in:41
@@ -185,7 +185,7 @@ msgstr "Chèn dấu cách"
 
 #: data/org.mate.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
-msgstr "Cho Pluma chèn các dấu cách thay cho các tab hay không."
+msgstr "Cho Lapiz chèn các dấu cách thay cho các tab hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
@@ -201,7 +201,7 @@ msgstr "Hiện số hiệu dòng"
 
 #: data/org.mate.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
-msgstr "Pluma nên hiển thị số hiệu dòng trong vùng biên soạn hay không."
+msgstr "Lapiz nên hiển thị số hiệu dòng trong vùng biên soạn hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
@@ -209,7 +209,7 @@ msgstr "Tô sáng dòng hiện có"
 
 #: data/org.mate.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
-msgstr "Pluma có nên tô sáng dòng hiện có hay không."
+msgstr "Lapiz có nên tô sáng dòng hiện có hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
@@ -225,7 +225,7 @@ msgstr "Hiện lề phải"
 
 #: data/org.mate.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
-msgstr "Pluma nên hiển thị lề phải trong vùng biên soạn hay không."
+msgstr "Lapiz nên hiển thị lề phải trong vùng biên soạn hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
@@ -267,7 +267,7 @@ msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Pluma có nên phục hồi vị trí con trỏ trước khi tập tin được tải hay không."
+"Lapiz có nên phục hồi vị trí con trỏ trước khi tập tin được tải hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -276,7 +276,7 @@ msgstr "Bật tô sáng tìm kiếm"
 #: data/org.mate.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
-msgstr "Pluma có nên tô sáng mọi lần gặp đoạn đã tìm kiếm hay không."
+msgstr "Lapiz có nên tô sáng mọi lần gặp đoạn đã tìm kiếm hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
@@ -284,7 +284,7 @@ msgstr "Bật tô sáng cú pháp"
 
 #: data/org.mate.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr "Pluma nên bật tô sáng cú pháp hay không."
+msgstr "Lapiz nên bật tô sáng cú pháp hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -369,7 +369,7 @@ msgstr "In tô sáng cú pháp"
 #: data/org.mate.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
-msgstr "Pluma có nên in cú pháp được tô sáng khi in tài liệu hay không."
+msgstr "Lapiz có nên in cú pháp được tô sáng khi in tài liệu hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:171
 msgid "Print Header"
@@ -378,7 +378,7 @@ msgstr "In đầu trang"
 #: data/org.mate.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
-msgstr "Pluma sẽ in đầu trang khi in tài liệu hay không."
+msgstr "Lapiz sẽ in đầu trang khi in tài liệu hay không."
 
 #: data/org.mate.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
@@ -558,7 +558,7 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
+msgid "Lapiz"
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:8
@@ -567,7 +567,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -576,7 +576,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -855,7 +855,7 @@ msgid "_Close"
 msgstr "Đón_g"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
+msgid "Lapiz Preferences"
 msgstr ""
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
@@ -1260,12 +1260,12 @@ msgid "Sun Microsystems"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1273,7 +1273,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1282,12 +1282,12 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
+msgid "About Lapiz"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:116

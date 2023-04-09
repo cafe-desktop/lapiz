@@ -17,7 +17,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-from gi.repository import Gio, Pluma
+from gi.repository import Gio, Lapiz
 
 class FileLookup:
     """
@@ -109,7 +109,7 @@ class OpenDocumentRelPathFileLookupProvider(FileLookupProvider):
         if path.startswith('/'):
             return None
 
-        for doc in Pluma.App.get_default().get_documents():
+        for doc in Lapiz.App.get_default().get_documents():
             if doc.is_local():
                 location = doc.get_location()
                 if location:
@@ -134,7 +134,7 @@ class OpenDocumentFileLookupProvider(FileLookupProvider):
         if path.startswith('/'):
             return None
 
-        for doc in Pluma.App.get_default().get_documents():
+        for doc in Lapiz.App.get_default().get_documents():
             if doc.is_local():
                 location = doc.get_location()
                 if location and location.get_uri().endswith(path):

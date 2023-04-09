@@ -34,34 +34,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_CHANGECASE_PLUGIN		(lapiz_changecase_plugin_get_type ())
-#define LAPIZ_CHANGECASE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_CHANGECASE_PLUGIN, PlumaChangecasePlugin))
-#define LAPIZ_CHANGECASE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_CHANGECASE_PLUGIN, PlumaChangecasePluginClass))
+#define LAPIZ_CHANGECASE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_CHANGECASE_PLUGIN, LapizChangecasePlugin))
+#define LAPIZ_CHANGECASE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_CHANGECASE_PLUGIN, LapizChangecasePluginClass))
 #define LAPIZ_IS_CHANGECASE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_CHANGECASE_PLUGIN))
 #define LAPIZ_IS_CHANGECASE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_CHANGECASE_PLUGIN))
-#define LAPIZ_CHANGECASE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_CHANGECASE_PLUGIN, PlumaChangecasePluginClass))
+#define LAPIZ_CHANGECASE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_CHANGECASE_PLUGIN, LapizChangecasePluginClass))
 
 /* Private structure type */
-typedef struct _PlumaChangecasePluginPrivate	PlumaChangecasePluginPrivate;
+typedef struct _LapizChangecasePluginPrivate	LapizChangecasePluginPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaChangecasePlugin		PlumaChangecasePlugin;
+typedef struct _LapizChangecasePlugin		LapizChangecasePlugin;
 
-struct _PlumaChangecasePlugin
+struct _LapizChangecasePlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	PlumaChangecasePluginPrivate *priv;
+	LapizChangecasePluginPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaChangecasePluginClass	PlumaChangecasePluginClass;
+typedef struct _LapizChangecasePluginClass	LapizChangecasePluginClass;
 
-struct _PlumaChangecasePluginClass
+struct _LapizChangecasePluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

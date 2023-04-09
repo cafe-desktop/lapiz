@@ -24,7 +24,7 @@
 # Bits from lapiz Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
-from gi.repository import GObject, Gtk, Peas, PeasGtk, Pluma
+from gi.repository import GObject, Gtk, Peas, PeasGtk, Lapiz
 
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
@@ -45,7 +45,7 @@ class PythonConsolePlugin(GObject.Object, Peas.Activatable, PeasGtk.Configurable
         window = self.object
 
         self._console = PythonConsole(namespace = {'__builtins__' : __builtins__,
-                                             'lapiz' : Pluma,
+                                             'lapiz' : Lapiz,
                                              'window' : window})
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)

@@ -31,25 +31,25 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_DOCUMENT_INPUT_STREAM		(lapiz_document_input_stream_get_type ())
-#define LAPIZ_DOCUMENT_INPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, PlumaDocumentInputStream))
-#define LAPIZ_DOCUMENT_INPUT_STREAM_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, PlumaDocumentInputStream const))
-#define LAPIZ_DOCUMENT_INPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, PlumaDocumentInputStreamClass))
+#define LAPIZ_DOCUMENT_INPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, LapizDocumentInputStream))
+#define LAPIZ_DOCUMENT_INPUT_STREAM_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, LapizDocumentInputStream const))
+#define LAPIZ_DOCUMENT_INPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, LapizDocumentInputStreamClass))
 #define LAPIZ_IS_DOCUMENT_INPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM))
 #define LAPIZ_IS_DOCUMENT_INPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM))
-#define LAPIZ_DOCUMENT_INPUT_STREAM_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, PlumaDocumentInputStreamClass))
+#define LAPIZ_DOCUMENT_INPUT_STREAM_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_DOCUMENT_INPUT_STREAM, LapizDocumentInputStreamClass))
 
-typedef struct _PlumaDocumentInputStream	PlumaDocumentInputStream;
-typedef struct _PlumaDocumentInputStreamClass	PlumaDocumentInputStreamClass;
-typedef struct _PlumaDocumentInputStreamPrivate	PlumaDocumentInputStreamPrivate;
+typedef struct _LapizDocumentInputStream	LapizDocumentInputStream;
+typedef struct _LapizDocumentInputStreamClass	LapizDocumentInputStreamClass;
+typedef struct _LapizDocumentInputStreamPrivate	LapizDocumentInputStreamPrivate;
 
-struct _PlumaDocumentInputStream
+struct _LapizDocumentInputStream
 {
 	GInputStream parent;
 
-	PlumaDocumentInputStreamPrivate *priv;
+	LapizDocumentInputStreamPrivate *priv;
 };
 
-struct _PlumaDocumentInputStreamClass
+struct _LapizDocumentInputStreamClass
 {
 	GInputStreamClass parent_class;
 };
@@ -57,11 +57,11 @@ struct _PlumaDocumentInputStreamClass
 GType				 lapiz_document_input_stream_get_type		(void) G_GNUC_CONST;
 
 GInputStream			*lapiz_document_input_stream_new		(GtkTextBuffer           *buffer,
-										 PlumaDocumentNewlineType type);
+										 LapizDocumentNewlineType type);
 
-gsize				 lapiz_document_input_stream_get_total_size	(PlumaDocumentInputStream *stream);
+gsize				 lapiz_document_input_stream_get_total_size	(LapizDocumentInputStream *stream);
 
-gsize				 lapiz_document_input_stream_tell		(PlumaDocumentInputStream *stream);
+gsize				 lapiz_document_input_stream_tell		(LapizDocumentInputStream *stream);
 
 G_END_DECLS
 

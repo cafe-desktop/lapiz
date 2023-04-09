@@ -43,17 +43,17 @@
 #include "lapiz-prefs-manager.h"
 #include "lapiz-dirs.h"
 
-struct _PlumaPluginsEnginePrivate
+struct _LapizPluginsEnginePrivate
 {
 	GSettings *plugin_settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPluginsEngine, lapiz_plugins_engine, PEAS_TYPE_ENGINE)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPluginsEngine, lapiz_plugins_engine, PEAS_TYPE_ENGINE)
 
-PlumaPluginsEngine *default_engine = NULL;
+LapizPluginsEngine *default_engine = NULL;
 
 static void
-lapiz_plugins_engine_init (PlumaPluginsEngine *engine)
+lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 {
 	gchar *private_path;
 	GError *error = NULL;
@@ -86,9 +86,9 @@ lapiz_plugins_engine_init (PlumaPluginsEngine *engine)
 	private_path = g_build_filename (LIBDIR, "girepository-1.0", NULL);
 
 	if (!g_irepository_require_private (g_irepository_get_default (),
-	                                    private_path, "Pluma", "1.0", 0, &error))
+	                                    private_path, "Lapiz", "1.0", 0, &error))
 	{
-		g_warning ("Could not load Pluma repository: %s", error->message);
+		g_warning ("Could not load Lapiz repository: %s", error->message);
 		g_error_free (error);
 		error = NULL;
 	}
@@ -113,7 +113,7 @@ lapiz_plugins_engine_init (PlumaPluginsEngine *engine)
 static void
 lapiz_plugins_engine_dispose (GObject *object)
 {
-	PlumaPluginsEngine *engine = LAPIZ_PLUGINS_ENGINE (object);
+	LapizPluginsEngine *engine = LAPIZ_PLUGINS_ENGINE (object);
 
 	if (engine->priv->plugin_settings != NULL)
 	{
@@ -125,14 +125,14 @@ lapiz_plugins_engine_dispose (GObject *object)
 }
 
 static void
-lapiz_plugins_engine_class_init (PlumaPluginsEngineClass *klass)
+lapiz_plugins_engine_class_init (LapizPluginsEngineClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = lapiz_plugins_engine_dispose;
 }
 
-PlumaPluginsEngine *
+LapizPluginsEngine *
 lapiz_plugins_engine_get_default (void)
 {
 	if (default_engine != NULL)

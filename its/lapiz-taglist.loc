@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <locatingRules>
-	<locatingRule name="PlumaTaglist" pattern="*.xml">
+	<locatingRule name="LapizTaglist" pattern="*.xml">
 		<documentRule localName="TagList" target="lapiz-taglist.its"/>
 	</locatingRule>
 </locatingRules>

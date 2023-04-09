@@ -44,7 +44,7 @@
 #include "lapiz-help.h"
 #include "lapiz-dirs.h"
 
-void _lapiz_cmd_help_contents(GtkAction* action, PlumaWindow* window)
+void _lapiz_cmd_help_contents(GtkAction* action, LapizWindow* window)
 {
 	lapiz_debug(DEBUG_COMMANDS);
 
@@ -54,7 +54,7 @@ void _lapiz_cmd_help_contents(GtkAction* action, PlumaWindow* window)
 #define ABOUT_GROUP "About"
 #define EMAILIFY(string) (g_strdelimit ((string), "%", '@'))
 
-void _lapiz_cmd_help_about(GtkAction* action, PlumaWindow* window)
+void _lapiz_cmd_help_about(GtkAction* action, LapizWindow* window)
 {
 	static const gchar* documenters[] = {
 		N_("MATE Documentation Team"),
@@ -64,19 +64,19 @@ void _lapiz_cmd_help_about(GtkAction* action, PlumaWindow* window)
 	};
 
 	static const gchar comments[] = \
-		N_("Pluma is a small and lightweight text editor for the MATE Desktop");
+		N_("Lapiz is a small and lightweight text editor for the MATE Desktop");
 
 	static const gchar *license[] ={
-		N_("Pluma is free software; you can redistribute it and/or modify "
+		N_("Lapiz is free software; you can redistribute it and/or modify "
 		"it under the terms of the GNU General Public License as published by "
 		"the Free Software Foundation; either version 2 of the License, or "
 		"(at your option) any later version."),
-		N_("Pluma is distributed in the hope that it will be useful, "
+		N_("Lapiz is distributed in the hope that it will be useful, "
 		"but WITHOUT ANY WARRANTY; without even the implied warranty of "
 		"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
 		"GNU General Public License for more details."),
 		N_("You should have received a copy of the GNU General Public License "
-		"along with Pluma; if not, write to the Free Software Foundation, Inc., "
+		"along with Lapiz; if not, write to the Free Software Foundation, Inc., "
 		"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA")
 	};
 
@@ -109,8 +109,8 @@ void _lapiz_cmd_help_about(GtkAction* action, PlumaWindow* window)
 		*p = _(*p);
 
 	gtk_show_about_dialog(GTK_WINDOW(window),
-		"program-name", "Pluma",
-		"title", _("About Pluma"),
+		"program-name", "Lapiz",
+		"title", _("About Lapiz"),
 		"authors", authors,
 		"comments", _(comments),
 		"copyright", _("Copyright \xc2\xa9 1998-2000 Evan Lawrence, Alex Robert\n"

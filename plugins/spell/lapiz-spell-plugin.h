@@ -34,34 +34,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_SPELL_PLUGIN		(lapiz_spell_plugin_get_type ())
-#define LAPIZ_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_SPELL_PLUGIN, PlumaSpellPlugin))
-#define LAPIZ_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_SPELL_PLUGIN, PlumaSpellPluginClass))
+#define LAPIZ_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_SPELL_PLUGIN, LapizSpellPlugin))
+#define LAPIZ_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_SPELL_PLUGIN, LapizSpellPluginClass))
 #define LAPIZ_IS_SPELL_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_SPELL_PLUGIN))
 #define LAPIZ_IS_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_SPELL_PLUGIN))
-#define LAPIZ_SPELL_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_SPELL_PLUGIN, PlumaSpellPluginClass))
+#define LAPIZ_SPELL_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_SPELL_PLUGIN, LapizSpellPluginClass))
 
 /* Private structure type */
-typedef struct _PlumaSpellPluginPrivate	PlumaSpellPluginPrivate;
+typedef struct _LapizSpellPluginPrivate	LapizSpellPluginPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaSpellPlugin	PlumaSpellPlugin;
+typedef struct _LapizSpellPlugin	LapizSpellPlugin;
 
-struct _PlumaSpellPlugin
+struct _LapizSpellPlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	PlumaSpellPluginPrivate *priv;
+	LapizSpellPluginPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaSpellPluginClass	PlumaSpellPluginClass;
+typedef struct _LapizSpellPluginClass	LapizSpellPluginClass;
 
-struct _PlumaSpellPluginClass
+struct _LapizSpellPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

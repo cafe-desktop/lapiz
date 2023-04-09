@@ -19,7 +19,7 @@
 
 import os
 import codecs
-from gi.repository import Gio, GLib, Gtk, Pluma
+from gi.repository import Gio, GLib, Gtk, Lapiz
 from .popup import Popup
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
@@ -66,7 +66,7 @@ class WindowHelper:
                                 _("Quickly open documents"))
         action.set_icon_name("document-open")
         action.connect("activate", self.on_quick_open_activate)
-        self._action_group = Gtk.ActionGroup("PlumaQuickOpenPluginActions")
+        self._action_group = Gtk.ActionGroup("LapizQuickOpenPluginActions")
         self._action_group.add_action_with_accel(action, "<Ctrl><Alt>O")
 
         manager.insert_action_group(self._action_group, -1)
@@ -187,7 +187,7 @@ class WindowHelper:
         self._popup = None
 
     def on_activated(self, gfile):
-        Pluma.commands_load_uri(self._window, gfile.get_uri(), None, -1)
+        Lapiz.commands_load_uri(self._window, gfile.get_uri(), None, -1)
         return True
 
 # ex:ts=4:et:

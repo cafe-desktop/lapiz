@@ -32,15 +32,15 @@ static void
 test_consecutive_write (const gchar *inbuf,
 			const gchar *outbuf,
 			gsize write_chunk_len,
-			PlumaDocumentNewlineType newline_type)
+			LapizDocumentNewlineType newline_type)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GOutputStream *out;
 	gsize len;
 	gssize n, w;
 	GError *err = NULL;
 	gchar *b;
-	PlumaDocumentNewlineType type;
+	LapizDocumentNewlineType type;
 
 	doc = lapiz_document_new ();
 	out = lapiz_document_output_stream_new (doc);

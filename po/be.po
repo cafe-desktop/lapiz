@@ -128,7 +128,7 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"Спіс схем VFS, якія падтрымлівае Pluma у рэжыме запісу. Схема 'file' "
+"Спіс схем VFS, якія падтрымлівае Lapiz у рэжыме запісу. Схема 'file' "
 "падтрымлівае запіс адразу."
 
 #: data/org.mate.lapiz.gschema.xml.in:61
@@ -186,7 +186,7 @@ msgstr "Аўтаводступы"
 
 #: data/org.mate.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
-msgstr "Ці мусіць Pluma задзейнічаць аўтаматычную падстаноўку водступаў."
+msgstr "Ці мусіць Lapiz задзейнічаць аўтаматычную падстаноўку водступаў."
 
 #: data/org.mate.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
@@ -210,7 +210,7 @@ msgstr "Падсвятляць адпаведныя дужкі"
 
 #: data/org.mate.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
-msgstr "Ці мусіць Pluma падсвятляць дужку, якая адпавядае вылучанай."
+msgstr "Ці мусіць Lapiz падсвятляць дужку, якая адпавядае вылучанай."
 
 #: data/org.mate.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
@@ -391,7 +391,7 @@ msgid ""
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
 msgstr ""
-"Калі значэнне 0, нумараванне будзе адключана пры друку. Інакш Pluma будзе "
+"Калі значэнне 0, нумараванне будзе адключана пры друку. Інакш Lapiz будзе "
 "друкаваць нумары радкоў."
 
 #: data/org.mate.lapiz.gschema.xml.in:185
@@ -457,7 +457,7 @@ msgid ""
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
 " recognized encodings are used."
 msgstr ""
-"Упарадкаваны спіс кадаванняў, якія Pluma выкарыстоўвае для аўтавызначэння "
+"Упарадкаваны спіс кадаванняў, якія Lapiz выкарыстоўвае для аўтавызначэння "
 "кадавання файла. \"CURRENT\" азначае кадаванне дзейнай лакалі. "
 "Выкарыстоўваюцца толькі тыя кадаванні, якія можна распазнаць."
 
@@ -549,8 +549,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -558,7 +558,7 @@ msgstr "Тэкставы рэдактар для працоўнага асяро
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -567,7 +567,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -866,8 +866,8 @@ msgid "_Close"
 msgstr "_Закрыць"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "Настáўленні Pluma"
+msgid "Lapiz Preferences"
+msgstr "Настáўленні Lapiz"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1125,11 +1125,11 @@ msgstr "Паказаць спіс магчымых значэнняў для к�
 
 #: lapiz/lapiz.c:117
 msgid "Create a new top-level window in an existing instance of lapiz"
-msgstr "Стварыць новае акно верхняга ўзроўню ў дзейным экзэмпляры Pluma"
+msgstr "Стварыць новае акно верхняга ўзроўню ў дзейным экзэмпляры Lapiz"
 
 #: lapiz/lapiz.c:120
 msgid "Create a new document in an existing instance of lapiz"
-msgstr "Стварыць новы дакумент ва ўжо адкрытым акне Pluma"
+msgstr "Стварыць новы дакумент ва ўжо адкрытым акне Lapiz"
 
 #: lapiz/lapiz.c:123
 msgid "[FILE...]"
@@ -1292,12 +1292,12 @@ msgid "Sun Microsystems"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
-msgstr "Pluma - малы і лёгкі тэкставы рэдактар для асяроддзя MATE"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
+msgstr "Lapiz - малы і лёгкі тэкставы рэдактар для асяроддзя MATE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
@@ -1305,7 +1305,7 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
@@ -1314,12 +1314,12 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
+msgid "About Lapiz"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:116
@@ -1557,11 +1557,11 @@ msgstr "Праверце, ці карэктна вы ўвялі размяшчэ
 #: lapiz/lapiz-io-error-message-area.c:221
 #, c-format
 msgid "lapiz cannot handle %s locations."
-msgstr "Pluma не можа працаваць з размяшчэннямі кшталту %s."
+msgstr "Lapiz не можа працаваць з размяшчэннямі кшталту %s."
 
 #: lapiz/lapiz-io-error-message-area.c:227
 msgid "lapiz cannot handle this location."
-msgstr "Pluma не можа працаваць з гэтым размяшчэннем."
+msgstr "Lapiz не можа працаваць з гэтым размяшчэннем."
 
 #: lapiz/lapiz-io-error-message-area.c:235
 msgid "The location of the file cannot be mounted."
@@ -1655,7 +1655,7 @@ msgstr "Вам не дазволена адкрываць гэты файл."
 
 #: lapiz/lapiz-io-error-message-area.c:607
 msgid "lapiz has not been able to detect the character encoding."
-msgstr "Pluma не змог вызначыць кадаванне знакаў."
+msgstr "Lapiz не змог вызначыць кадаванне знакаў."
 
 #: lapiz/lapiz-io-error-message-area.c:609
 #: lapiz/lapiz-io-error-message-area.c:631
@@ -1721,7 +1721,7 @@ msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to"
 " edit it anyway?"
 msgstr ""
-"Pluma адкрыў гэты файл толькі на чытанне. Вы ўсё адно жадаеце рэдагаваць "
+"Lapiz адкрыў гэты файл толькі на чытанне. Вы ўсё адно жадаеце рэдагаваць "
 "яго?"
 
 #: lapiz/lapiz-io-error-message-area.c:864

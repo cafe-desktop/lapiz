@@ -35,19 +35,19 @@
  * thread */
 
 
-struct _PlumaDocumentInputStreamPrivate
+struct _LapizDocumentInputStreamPrivate
 {
 	GtkTextBuffer *buffer;
 	GtkTextMark   *pos;
 	gint           bytes_partial;
 
-	PlumaDocumentNewlineType newline_type;
+	LapizDocumentNewlineType newline_type;
 
 	guint newline_added : 1;
 	guint is_initialized : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentInputStream, lapiz_document_input_stream, G_TYPE_INPUT_STREAM);
+G_DEFINE_TYPE_WITH_PRIVATE (LapizDocumentInputStream, lapiz_document_input_stream, G_TYPE_INPUT_STREAM);
 
 enum
 {
@@ -71,7 +71,7 @@ lapiz_document_input_stream_set_property (GObject      *object,
 					  const GValue *value,
 					  GParamSpec   *pspec)
 {
-	PlumaDocumentInputStream *stream = LAPIZ_DOCUMENT_INPUT_STREAM (object);
+	LapizDocumentInputStream *stream = LAPIZ_DOCUMENT_INPUT_STREAM (object);
 
 	switch (prop_id)
 	{
@@ -95,7 +95,7 @@ lapiz_document_input_stream_get_property (GObject    *object,
 					  GValue     *value,
 					  GParamSpec *pspec)
 {
-	PlumaDocumentInputStream *stream = LAPIZ_DOCUMENT_INPUT_STREAM (object);
+	LapizDocumentInputStream *stream = LAPIZ_DOCUMENT_INPUT_STREAM (object);
 
 	switch (prop_id)
 	{
@@ -114,7 +114,7 @@ lapiz_document_input_stream_get_property (GObject    *object,
 }
 
 static void
-lapiz_document_input_stream_class_init (PlumaDocumentInputStreamClass *klass)
+lapiz_document_input_stream_class_init (LapizDocumentInputStreamClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GInputStreamClass *stream_class = G_INPUT_STREAM_CLASS (klass);
@@ -135,7 +135,7 @@ lapiz_document_input_stream_class_init (PlumaDocumentInputStreamClass *klass)
 							      G_PARAM_CONSTRUCT_ONLY));
 
 	/**
-	 * PlumaDocumentInputStream:newline-type:
+	 * LapizDocumentInputStream:newline-type:
 	 *
 	 * The :newline-type property determines what is considered
 	 * as a line ending when reading complete lines from the stream.
@@ -154,13 +154,13 @@ lapiz_document_input_stream_class_init (PlumaDocumentInputStreamClass *klass)
 }
 
 static void
-lapiz_document_input_stream_init (PlumaDocumentInputStream *stream)
+lapiz_document_input_stream_init (LapizDocumentInputStream *stream)
 {
 	stream->priv = lapiz_document_input_stream_get_instance_private (stream);
 }
 
 static gsize
-get_new_line_size (PlumaDocumentInputStream *stream)
+get_new_line_size (LapizDocumentInputStream *stream)
 {
 	gsize ret;
 
@@ -194,9 +194,9 @@ get_new_line_size (PlumaDocumentInputStream *stream)
  */
 GInputStream *
 lapiz_document_input_stream_new (GtkTextBuffer           *buffer,
-				 PlumaDocumentNewlineType type)
+				 LapizDocumentNewlineType type)
 {
-	PlumaDocumentInputStream *stream;
+	LapizDocumentInputStream *stream;
 
 	g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
 
@@ -209,7 +209,7 @@ lapiz_document_input_stream_new (GtkTextBuffer           *buffer,
 }
 
 gsize
-lapiz_document_input_stream_get_total_size (PlumaDocumentInputStream *stream)
+lapiz_document_input_stream_get_total_size (LapizDocumentInputStream *stream)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_INPUT_STREAM (stream), 0);
 
@@ -217,7 +217,7 @@ lapiz_document_input_stream_get_total_size (PlumaDocumentInputStream *stream)
 }
 
 gsize
-lapiz_document_input_stream_tell (PlumaDocumentInputStream *stream)
+lapiz_document_input_stream_tell (LapizDocumentInputStream *stream)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_INPUT_STREAM (stream), 0);
 
@@ -240,7 +240,7 @@ lapiz_document_input_stream_tell (PlumaDocumentInputStream *stream)
 }
 
 static const gchar *
-get_new_line (PlumaDocumentInputStream *stream)
+get_new_line (LapizDocumentInputStream *stream)
 {
 	const gchar *ret;
 
@@ -268,7 +268,7 @@ get_new_line (PlumaDocumentInputStream *stream)
 }
 
 static gsize
-read_line (PlumaDocumentInputStream *stream,
+read_line (LapizDocumentInputStream *stream,
 	   gchar                    *outbuf,
 	   gsize                     space_left)
 {
@@ -389,7 +389,7 @@ lapiz_document_input_stream_read (GInputStream  *stream,
 				  GCancellable  *cancellable,
 				  GError       **error)
 {
-	PlumaDocumentInputStream *dstream;
+	LapizDocumentInputStream *dstream;
 	GtkTextIter iter;
 	gssize space_left, read, n;
 
@@ -462,7 +462,7 @@ lapiz_document_input_stream_close (GInputStream  *stream,
 				   GCancellable  *cancellable,
 				   GError       **error)
 {
-	PlumaDocumentInputStream *dstream = LAPIZ_DOCUMENT_INPUT_STREAM (stream);
+	LapizDocumentInputStream *dstream = LAPIZ_DOCUMENT_INPUT_STREAM (stream);
 
 	dstream->priv->newline_added = FALSE;
 

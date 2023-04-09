@@ -2,7 +2,7 @@
  * lapiz-sort-plugin.c
  *
  * Original author: Carlo Borreo <borreo@softhome.net>
- * Ported to Pluma2 by Lee Mallabone <mate@fonicmonkey.net>
+ * Ported to Lapiz2 by Lee Mallabone <mate@fonicmonkey.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,12 +54,12 @@ typedef struct
 	GtkWidget *ignore_case_checkbutton;
 	GtkWidget *remove_dups_checkbutton;
 
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	GtkTextIter start, end; /* selection */
 } SortDialog;
 
-struct _PlumaSortPluginPrivate
+struct _LapizSortPluginPrivate
 {
 	GtkWidget *window;
 
@@ -75,15 +75,15 @@ typedef struct
 	gint starting_column;
 } SortInfo;
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaSortPlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSortPlugin,
                                 lapiz_sort_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
-                                G_ADD_PRIVATE_DYNAMIC (PlumaSortPlugin)
+                                G_ADD_PRIVATE_DYNAMIC (LapizSortPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init))
 
-static void sort_cb (GtkAction *action, PlumaSortPlugin *plugin);
+static void sort_cb (GtkAction *action, LapizSortPlugin *plugin);
 static void sort_real (SortDialog *dialog);
 
 static const GtkActionEntry action_entries[] =
@@ -135,9 +135,9 @@ sort_dialog_response_handler (GtkDialog  *widget,
  * the text field (like the combo box) looses the documnent selection.
  * Storing the selection ONLY works because the dialog is modal */
 static void
-get_current_selection (PlumaWindow *window, SortDialog *dialog)
+get_current_selection (LapizWindow *window, SortDialog *dialog)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -155,9 +155,9 @@ get_current_selection (PlumaWindow *window, SortDialog *dialog)
 }
 
 static SortDialog *
-get_sort_dialog (PlumaSortPlugin *plugin)
+get_sort_dialog (LapizSortPlugin *plugin)
 {
-	PlumaWindow *window;
+	LapizWindow *window;
 	SortDialog *dialog;
 	GtkWidget *error_widget;
 	gboolean ret;
@@ -218,10 +218,10 @@ get_sort_dialog (PlumaSortPlugin *plugin)
 
 static void
 sort_cb (GtkAction  *action,
-	 PlumaSortPlugin *plugin)
+	 LapizSortPlugin *plugin)
 {
-	PlumaWindow *window;
-	PlumaDocument *doc;
+	LapizWindow *window;
+	LapizDocument *doc;
 	GtkWindowGroup *wg;
 	SortDialog *dialog;
 
@@ -361,7 +361,7 @@ get_line_slice (GtkTextBuffer *buf,
 static void
 sort_real (SortDialog *dialog)
 {
-	PlumaDocument *doc;
+	LapizDocument *doc;
 	GtkTextIter start, end;
 	gint start_line, end_line;
 	gint i;
@@ -457,7 +457,7 @@ lapiz_sort_plugin_set_property (GObject      *object,
                                 const GValue *value,
                                 GParamSpec   *pspec)
 {
-	PlumaSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
+	LapizSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -477,7 +477,7 @@ lapiz_sort_plugin_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-	PlumaSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
+	LapizSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -492,10 +492,10 @@ lapiz_sort_plugin_get_property (GObject    *object,
 }
 
 static void
-update_ui (PlumaSortPluginPrivate *data)
+update_ui (LapizSortPluginPrivate *data)
 {
-	PlumaWindow *window;
-	PlumaView *view;
+	LapizWindow *window;
+	LapizView *view;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -510,9 +510,9 @@ update_ui (PlumaSortPluginPrivate *data)
 static void
 lapiz_sort_plugin_activate (PeasActivatable *activatable)
 {
-	PlumaSortPlugin *plugin;
-	PlumaSortPluginPrivate *data;
-	PlumaWindow *window;
+	LapizSortPlugin *plugin;
+	LapizSortPluginPrivate *data;
+	LapizWindow *window;
 	GtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -523,7 +523,7 @@ lapiz_sort_plugin_activate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	data->ui_action_group = gtk_action_group_new ("PlumaSortPluginActions");
+	data->ui_action_group = gtk_action_group_new ("LapizSortPluginActions");
 	gtk_action_group_set_translation_domain (data->ui_action_group,
 						 GETTEXT_PACKAGE);
 	gtk_action_group_add_actions (data->ui_action_group,
@@ -551,8 +551,8 @@ lapiz_sort_plugin_activate (PeasActivatable *activatable)
 static void
 lapiz_sort_plugin_deactivate (PeasActivatable *activatable)
 {
-	PlumaSortPluginPrivate *data;
-	PlumaWindow *window;
+	LapizSortPluginPrivate *data;
+	LapizWindow *window;
 	GtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -577,9 +577,9 @@ lapiz_sort_plugin_update_state (PeasActivatable *activatable)
 }
 
 static void
-lapiz_sort_plugin_init (PlumaSortPlugin *plugin)
+lapiz_sort_plugin_init (LapizSortPlugin *plugin)
 {
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaSortPlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizSortPlugin initializing");
 
 	plugin->priv = lapiz_sort_plugin_get_instance_private (plugin);
 }
@@ -587,9 +587,9 @@ lapiz_sort_plugin_init (PlumaSortPlugin *plugin)
 static void
 lapiz_sort_plugin_dispose (GObject *object)
 {
-	PlumaSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
+	LapizSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
 
-	lapiz_debug_message (DEBUG_PLUGINS, "PlumaSortPlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "LapizSortPlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -607,7 +607,7 @@ lapiz_sort_plugin_dispose (GObject *object)
 }
 
 static void
-lapiz_sort_plugin_class_init (PlumaSortPluginClass *klass)
+lapiz_sort_plugin_class_init (LapizSortPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -619,7 +619,7 @@ lapiz_sort_plugin_class_init (PlumaSortPluginClass *klass)
 }
 
 static void
-lapiz_sort_plugin_class_finalize (PlumaSortPluginClass *klass)
+lapiz_sort_plugin_class_finalize (LapizSortPluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }

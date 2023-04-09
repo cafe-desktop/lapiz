@@ -34,34 +34,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define LAPIZ_TYPE_TIME_PLUGIN		(lapiz_time_plugin_get_type ())
-#define LAPIZ_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_TIME_PLUGIN, PlumaTimePlugin))
-#define LAPIZ_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_TIME_PLUGIN, PlumaTimePluginClass))
+#define LAPIZ_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_TIME_PLUGIN, LapizTimePlugin))
+#define LAPIZ_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_TIME_PLUGIN, LapizTimePluginClass))
 #define LAPIZ_IS_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_TIME_PLUGIN))
 #define LAPIZ_IS_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_TIME_PLUGIN))
-#define LAPIZ_TIME_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_TIME_PLUGIN, PlumaTimePluginClass))
+#define LAPIZ_TIME_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_TIME_PLUGIN, LapizTimePluginClass))
 
 /* Private structure type */
-typedef struct _PlumaTimePluginPrivate	PlumaTimePluginPrivate;
+typedef struct _LapizTimePluginPrivate	LapizTimePluginPrivate;
 
 /*
  * Main object structure
  */
-typedef struct _PlumaTimePlugin		PlumaTimePlugin;
+typedef struct _LapizTimePlugin		LapizTimePlugin;
 
-struct _PlumaTimePlugin
+struct _LapizTimePlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	PlumaTimePluginPrivate *priv;
+	LapizTimePluginPrivate *priv;
 };
 
 /*
  * Class definition
  */
-typedef struct _PlumaTimePluginClass	PlumaTimePluginClass;
+typedef struct _LapizTimePluginClass	LapizTimePluginClass;
 
-struct _PlumaTimePluginClass
+struct _LapizTimePluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

@@ -350,7 +350,7 @@ msgstr "Fülek megjelenítése az oldalsávval"
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
-"Ha hamis, a Pluma nem mutatja a füleket notebook-okban aktív oldalsávval."
+"Ha hamis, a Lapiz nem mutatja a füleket notebook-okban aktív oldalsávval."
 
 #: data/org.mate.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
@@ -577,8 +577,8 @@ msgid ""
 msgstr ""
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
-msgid "Pluma"
-msgstr "Pluma"
+msgid "Lapiz"
+msgstr "Lapiz"
 
 #: data/lapiz.appdata.xml.in:8
 msgid "A Text Editor for the MATE desktop environment"
@@ -586,7 +586,7 @@ msgstr "Egy szövegszerkesztő a MATE asztali környezethez"
 
 #: data/lapiz.appdata.xml.in:10
 msgid ""
-"Pluma is a small, but powerful text editor designed specifically for the "
+"Lapiz is a small, but powerful text editor designed specifically for the "
 "MATE desktop. It has most standard text editor functions and fully supports "
 "international text in Unicode. Advanced features include syntax highlighting"
 " and automatic indentation of source code, printing and editing of multiple "
@@ -595,7 +595,7 @@ msgstr ""
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
-"Pluma is extensible through a plugin system, which currently includes "
+"Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
@@ -883,8 +883,8 @@ msgid "_Close"
 msgstr "_Bezárás"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:1294
-msgid "Pluma Preferences"
-msgstr "A Pluma beállításai"
+msgid "Lapiz Preferences"
+msgstr "A Lapiz beállításai"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.ui:42
 msgid "Preferences"
@@ -1295,29 +1295,29 @@ msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
-msgid "Pluma is a small and lightweight text editor for the MATE Desktop"
+msgid "Lapiz is a small and lightweight text editor for the MATE Desktop"
 msgstr ""
-"A Pluma egy kicsi és könnyű szövegszerkesztő a MATE asztali környezethez"
+"A Lapiz egy kicsi és könnyű szövegszerkesztő a MATE asztali környezethez"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
-"Pluma is free software; you can redistribute it and/or modify it under the "
+"Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"A Pluma szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software "
+"A Lapiz szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software "
 "Foundation által kiadott GNU General Public License második (vagy bármely "
 "későbbi) változatában foglaltak alapján."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
-"Pluma is distributed in the hope that it will be useful, but WITHOUT ANY "
+"Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"A Pluma abban a reményben kerül közreadásra, hogy hasznos lesz, de minden "
+"A Lapiz abban a reményben kerül közreadásra, hogy hasznos lesz, de minden "
 "egyéb GARANCIA NÉLKÜL, az ELADHATÓSÁGRA vagy VALAMELY CÉLRA VALÓ "
 "ALKALMAZHATÓSÁGRA való származtatott garanciát is beleértve. További "
 "részleteket a GNU General Public License tartalmaz."
@@ -1325,17 +1325,17 @@ msgstr ""
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
 "You should have received a copy of the GNU General Public License along with"
-" Pluma; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"A felhasználónak a Pluma programmal együtt meg kell kapnia a GNU General "
+"A felhasználónak a Lapiz programmal együtt meg kell kapnia a GNU General "
 "Public License egy példányát; ha mégsem kapta meg, akkor ezt a Free Software"
 " Foundationnak küldött levélben jelezze (cím: Free Software Foundation Inc.,"
 " 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.)"
 
 #: lapiz/lapiz-commands-help.c:113
-msgid "About Pluma"
-msgstr "A Pluma névjegye"
+msgid "About Lapiz"
+msgstr "A Lapiz névjegye"
 
 #: lapiz/lapiz-commands-help.c:116
 msgid ""

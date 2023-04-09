@@ -30,26 +30,26 @@
 G_BEGIN_DECLS
 
 #define LAPIZ_TYPE_MODELINE_PLUGIN		(lapiz_modeline_plugin_get_type ())
-#define LAPIZ_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_MODELINE_PLUGIN, PlumaModelinePlugin))
-#define LAPIZ_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_MODELINE_PLUGIN, PlumaModelinePluginClass))
+#define LAPIZ_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_MODELINE_PLUGIN, LapizModelinePlugin))
+#define LAPIZ_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_MODELINE_PLUGIN, LapizModelinePluginClass))
 #define LAPIZ_IS_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_MODELINE_PLUGIN))
 #define LAPIZ_IS_MODELINE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_MODELINE_PLUGIN))
-#define LAPIZ_MODELINE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_MODELINE_PLUGIN, PlumaModelinePluginClass))
+#define LAPIZ_MODELINE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_MODELINE_PLUGIN, LapizModelinePluginClass))
 
-typedef struct _PlumaModelinePlugin         PlumaModelinePlugin;
-typedef struct _PlumaModelinePluginPrivate  PlumaModelinePluginPrivate;
+typedef struct _LapizModelinePlugin         LapizModelinePlugin;
+typedef struct _LapizModelinePluginPrivate  LapizModelinePluginPrivate;
 
-struct _PlumaModelinePlugin
+struct _LapizModelinePlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	PlumaModelinePluginPrivate *priv;
+	LapizModelinePluginPrivate *priv;
 };
 
-typedef struct _PlumaModelinePluginClass    PlumaModelinePluginClass;
+typedef struct _LapizModelinePluginClass    LapizModelinePluginClass;
 
-struct _PlumaModelinePluginClass
+struct _LapizModelinePluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

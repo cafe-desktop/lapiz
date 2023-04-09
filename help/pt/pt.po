@@ -32,8 +32,8 @@ msgstr "Hugo Carvalho <hugokarvalho@gmail.com>, 2018"
 
 #. (itstool) path: info/title
 #: C/index.docbook:20
-msgid "Pluma Manual"
-msgstr "Manual do Pluma"
+msgid "Lapiz Manual"
+msgstr "Manual do Lapiz"
 
 #. (itstool) path: publisher/publishername
 #. (itstool) path: author/orgname
@@ -160,7 +160,7 @@ msgstr "Equipa de Documentação do MATE"
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
 msgid "This manual describes version 1.10 of lapiz."
-msgstr "Este manual descreve a versão1.10 do Pluma."
+msgstr "Este manual descreve a versão1.10 do Lapiz."
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:216
@@ -183,7 +183,7 @@ msgid ""
 "The <application>lapiz</application> application enables you to create and "
 "edit text files."
 msgstr ""
-"A aplicação <application>Pluma</application> permite editar e criar "
+"A aplicação <application>Lapiz</application> permite editar e criar "
 "ficheiros de texto."
 
 #. (itstool) path: section/para
@@ -194,7 +194,7 @@ msgid ""
 "<firstterm>plugins</firstterm>, allowing a variety of tasks related to text-"
 "editing."
 msgstr ""
-"O objetivo do <application>Pluma</application> é ser um editor de texto "
+"O objetivo do <application>Lapiz</application> é ser um editor de texto "
 "simples e fácil de utilizar. Podem ser adicionadas mais funcionalidades "
 "através de diferentes<firstterm>suplementos</firstterm>, que permitem várias"
 " tarefas relacionadas com edição de texto."
@@ -207,12 +207,12 @@ msgstr "Iniciação"
 #. (itstool) path: info/title
 #: C/index.docbook:244
 msgid "Starting lapiz"
-msgstr "Iniciar o Pluma"
+msgstr "Iniciar o Lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:246
 msgid "You can start <application>lapiz</application> in the following ways:"
-msgstr "Pode iniciar o <application>Pluma</application> das seguintes formas:"
+msgstr "Pode iniciar o <application>Lapiz</application> das seguintes formas:"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:249
@@ -222,7 +222,7 @@ msgstr "Menu de <guimenu>Aplicações</guimenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:252
 msgid ""
-"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Pluma "
+"Choose <menuchoice> <guisubmenu>Accessories</guisubmenu> <guimenuitem>Lapiz "
 "Text Editor</guimenuitem> </menuchoice>."
 msgstr ""
 
@@ -234,7 +234,7 @@ msgstr "Linha de comando"
 #. (itstool) path: listitem/para
 #: C/index.docbook:258
 msgid "Execute the following command: <command>lapiz</command>"
-msgstr "Execute o seguinte comando: <command>Pluma</command>"
+msgstr "Execute o seguinte comando: <command>Lapiz</command>"
 
 #. (itstool) path: section/para
 #: C/index.docbook:262
@@ -243,12 +243,12 @@ msgid ""
 "start, and display the document."
 msgstr ""
 "Por predefinição, quando abre um documento de texto no gestor de ficheiros, "
-"o Pluma irá abrir e mostrar o documento."
+"o Lapiz irá abrir e mostrar o documento."
 
 #. (itstool) path: info/title
 #: C/index.docbook:267
 msgid "The lapiz Window"
-msgstr "A janela Pluma"
+msgstr "A janela Lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:269
@@ -256,12 +256,12 @@ msgid ""
 "When you start <application>lapiz</application>, the following window is "
 "displayed:"
 msgstr ""
-"Quando inicia o <application>Pluma</application>, aparece a seguinte janela:"
+"Quando inicia o <application>Lapiz</application>, aparece a seguinte janela:"
 
 #. (itstool) path: info/title
 #: C/index.docbook:273
 msgid "lapiz Window"
-msgstr "janela Pluma"
+msgstr "janela Lapiz"
 
 #. (itstool) path: textobject/phrase
 #: C/index.docbook:281
@@ -273,7 +273,7 @@ msgstr ""
 msgid ""
 "The <application>lapiz</application> window contains the following elements:"
 msgstr ""
-"A janela <application>Pluma</application> contém os seguintes elementos:"
+"A janela <application>Lapiz</application> contém os seguintes elementos:"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:290
@@ -287,7 +287,7 @@ msgid ""
 "files in <application>lapiz</application>."
 msgstr ""
 "Os menus na barra de menus contêm todos os comandos que precisa para "
-"trabalhar com ficheiros no <application>Pluma</application>."
+"trabalhar com ficheiros no <application>Lapiz</application>."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:296
@@ -326,7 +326,7 @@ msgid ""
 "the menu items. The statusbar also displays the following information:"
 msgstr ""
 "A barra de estado mostra informação sobre a atividade e informação "
-"contextual atual do <application>Pluma</application> sobre os itens do menu."
+"contextual atual do <application>Lapiz</application> sobre os itens do menu."
 " A barra de estado também mostra a seguinte informação:"
 
 #. (itstool) path: listitem/para
@@ -403,7 +403,7 @@ msgid ""
 "text editing commands."
 msgstr ""
 "Quando clica com o botão direito do rato na janela do "
-"<application>Pluma</application> a aplicação mostra um menu popup. Este menu"
+"<application>Lapiz</application> a aplicação mostra um menu popup. Este menu"
 " contém os comandos de edição mais comuns."
 
 #. (itstool) path: section/para
@@ -418,7 +418,7 @@ msgstr ""
 #. (itstool) path: info/title
 #: C/index.docbook:343
 msgid "Running lapiz from a Command Line"
-msgstr "Executar o Pluma de uma linha de comandos"
+msgstr "Executar o Lapiz de uma linha de comandos"
 
 #. (itstool) path: section/para
 #: C/index.docbook:345
@@ -427,7 +427,7 @@ msgid ""
 "single file or multiple files. To open multiple files from a command line, "
 "type the following command, then press <keycap>Return</keycap>:"
 msgstr ""
-"Pode executar o <application>Pluma</application> através de uma linha de "
+"Pode executar o <application>Lapiz</application> através de uma linha de "
 "comandos e abrir um ou vários ficheiros.Para abrir vários ficheiros na linha"
 " de comandos escreva o seguinte comando e pressione a tecla "
 "<keycap>Return</keycap> (↵):"
@@ -1755,7 +1755,7 @@ msgstr ""
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1194
-msgid "Quit Pluma."
+msgid "Quit Lapiz."
 msgstr ""
 
 #. (itstool) path: section/bridgehead
