@@ -19,12 +19,12 @@ AM_CPPFLAGS = 							\
 plugin_LTLIBRARIES = libtaglist.la
 
 libtaglist_la_SOURCES = \
-	pluma-taglist-plugin-parser.c	\
-	pluma-taglist-plugin-parser.h	\
-	pluma-taglist-plugin-panel.c	\
-	pluma-taglist-plugin-panel.h	\
-	pluma-taglist-plugin.c		\
-	pluma-taglist-plugin.h
+	lapiz-taglist-plugin-parser.c	\
+	lapiz-taglist-plugin-parser.h	\
+	lapiz-taglist-plugin-panel.c	\
+	lapiz-taglist-plugin-panel.h	\
+	lapiz-taglist-plugin.c		\
+	lapiz-taglist-plugin.h
 
 libtaglist_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 libtaglist_la_LIBADD  = $(PLUMA_LIBS)

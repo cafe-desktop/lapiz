@@ -35,4 +35,4 @@ if ext == '.h':
     nxt = '.c'
 
 if nxt:
-    subprocess.call(['/usr/bin/pluma', f+nxt])
+    subprocess.call(['/usr/bin/lapiz', f+nxt])

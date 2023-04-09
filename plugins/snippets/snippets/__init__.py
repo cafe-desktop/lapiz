@@ -42,7 +42,7 @@ class SnippetsPlugin(GObject.Object, Peas.Activatable):
         dirs = []
 
         for d in datadirs.split(os.pathsep):
-            d = os.path.join(d, 'pluma', 'plugins', 'snippets')
+            d = os.path.join(d, 'lapiz', 'plugins', 'snippets')
 
             if os.path.isdir(d):
                 dirs.append(d)
@@ -54,7 +54,7 @@ class SnippetsPlugin(GObject.Object, Peas.Activatable):
         library = Library()
         library.add_accelerator_callback(self.accelerator_activated)
 
-        snippetsdir = os.path.join(GLib.get_user_config_dir(), 'pluma/snippets')
+        snippetsdir = os.path.join(GLib.get_user_config_dir(), 'lapiz/snippets')
         library.set_dirs(snippetsdir, self.system_dirs())
 
         self._helper = WindowHelper(self)

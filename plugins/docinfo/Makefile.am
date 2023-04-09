@@ -9,8 +9,8 @@ AM_CPPFLAGS = \
 plugin_LTLIBRARIES = libdocinfo.la
 
 libdocinfo_la_SOURCES = \
-	pluma-docinfo-plugin.h	\
-	pluma-docinfo-plugin.c
+	lapiz-docinfo-plugin.h	\
+	lapiz-docinfo-plugin.c
 
 libdocinfo_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 libdocinfo_la_LIBADD  = $(PLUMA_LIBS)

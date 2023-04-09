@@ -1,6 +1,6 @@
 /*
- * pluma-gio-document-saver.h
- * This file is part of pluma
+ * lapiz-gio-document-saver.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyrhing (C) 2007 - Paolo Maggi, Steve Frécinaux
@@ -23,22 +23,22 @@
  */
 
 /*
- * Modified by the pluma Team, 2005-2007. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005-2007. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
 #ifndef __PLUMA_GIO_DOCUMENT_SAVER_H__
 #define __PLUMA_GIO_DOCUMENT_SAVER_H__
 
-#include <pluma/pluma-document-saver.h>
+#include <lapiz/lapiz-document-saver.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_GIO_DOCUMENT_SAVER              (pluma_gio_document_saver_get_type())
+#define PLUMA_TYPE_GIO_DOCUMENT_SAVER              (lapiz_gio_document_saver_get_type())
 #define PLUMA_GIO_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaver))
 #define PLUMA_GIO_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_GIO_DOCUMENT_SAVER, PlumaGioDocumentSaverClass))
 #define PLUMA_IS_GIO_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_GIO_DOCUMENT_SAVER))
@@ -69,7 +69,7 @@ typedef PlumaDocumentSaverClass PlumaGioDocumentSaverClass;
 /*
  * Public methods
  */
-GType 		 	 pluma_gio_document_saver_get_type	(void) G_GNUC_CONST;
+GType 		 	 lapiz_gio_document_saver_get_type	(void) G_GNUC_CONST;
 
 G_END_DECLS
 

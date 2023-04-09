@@ -96,8 +96,8 @@ msgstr "Sun Microsystems"
 
 #. (itstool) path: othercredit/contrib
 #: C/index.docbook:98
-msgid "Provided information from earlier revisions of the pluma application."
-msgstr "提供有关 pluma 应用程序早期版本的修订信息。"
+msgid "Provided information from earlier revisions of the lapiz application."
+msgstr "提供有关 lapiz 应用程序早期版本的修订信息。"
 
 #. (itstool) path: othercredit/contrib
 #: C/index.docbook:105
@@ -173,13 +173,13 @@ msgstr "MATE 文档团队"
 
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
-msgid "This manual describes version 1.10 of pluma."
+msgid "This manual describes version 1.10 of lapiz."
 msgstr "本手册涉及了 Pluma 的 1.10 版本"
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:216
-msgid "<primary>pluma</primary>"
-msgstr "<primary>pluma</primary>"
+msgid "<primary>lapiz</primary>"
+msgstr "<primary>lapiz</primary>"
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:219
@@ -194,19 +194,19 @@ msgstr "介绍"
 #. (itstool) path: section/para
 #: C/index.docbook:231
 msgid ""
-"The <application>pluma</application> application enables you to create and "
+"The <application>lapiz</application> application enables you to create and "
 "edit text files."
-msgstr "<application>pluma</application>应用程序可以让你创建并编辑文本文件。"
+msgstr "<application>lapiz</application>应用程序可以让你创建并编辑文本文件。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:232
 msgid ""
-"The aim of <application>pluma</application> is to be a simple and easy to "
+"The aim of <application>lapiz</application> is to be a simple and easy to "
 "use text editor. More powerful features can be enabled with different "
 "<firstterm>plugins</firstterm>, allowing a variety of tasks related to text-"
 "editing."
 msgstr ""
-"<application>pluma</application>的目标是做一个简单且容易的文本编辑器。更多强大的功能可以被不同的<firstterm>plugins</firstterm>，它们允许在文本编辑时执行更多的任务。"
+"<application>lapiz</application>的目标是做一个简单且容易的文本编辑器。更多强大的功能可以被不同的<firstterm>plugins</firstterm>，它们允许在文本编辑时执行更多的任务。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:238
@@ -215,13 +215,13 @@ msgstr "入门"
 
 #. (itstool) path: info/title
 #: C/index.docbook:244
-msgid "Starting pluma"
-msgstr "启动 pluma"
+msgid "Starting lapiz"
+msgstr "启动 lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:246
-msgid "You can start <application>pluma</application> in the following ways:"
-msgstr "你可以用以下方法启动<application>pluma</application>："
+msgid "You can start <application>lapiz</application> in the following ways:"
+msgstr "你可以用以下方法启动<application>lapiz</application>："
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:249
@@ -244,43 +244,43 @@ msgstr "命令行"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:258
-msgid "Execute the following command: <command>pluma</command>"
-msgstr "执行以下命令：<command>pluma</command>"
+msgid "Execute the following command: <command>lapiz</command>"
+msgstr "执行以下命令：<command>lapiz</command>"
 
 #. (itstool) path: section/para
 #: C/index.docbook:262
 msgid ""
-"By default, when you open a text document in the file manager, pluma will "
+"By default, when you open a text document in the file manager, lapiz will "
 "start, and display the document."
-msgstr "默认状态下，当在文件管理器中你打开一个文本文档时，pluma 将会启动，并展示该文档。"
+msgstr "默认状态下，当在文件管理器中你打开一个文本文档时，lapiz 将会启动，并展示该文档。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:267
-msgid "The pluma Window"
-msgstr "pluma 窗口"
+msgid "The lapiz Window"
+msgstr "lapiz 窗口"
 
 #. (itstool) path: section/para
 #: C/index.docbook:269
 msgid ""
-"When you start <application>pluma</application>, the following window is "
+"When you start <application>lapiz</application>, the following window is "
 "displayed:"
 msgstr "当你启动<application>puma</application>时，以下窗口会被展示："
 
 #. (itstool) path: info/title
 #: C/index.docbook:273
-msgid "pluma Window"
-msgstr "pluma 窗口"
+msgid "lapiz Window"
+msgstr "lapiz 窗口"
 
 #. (itstool) path: textobject/phrase
 #: C/index.docbook:281
-msgid "Shows pluma main window."
-msgstr "显示 pluma 主窗口。"
+msgid "Shows lapiz main window."
+msgstr "显示 lapiz 主窗口。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:287
 msgid ""
-"The <application>pluma</application> window contains the following elements:"
-msgstr "<application>pluma</application>窗口包含以下元素："
+"The <application>lapiz</application> window contains the following elements:"
+msgstr "<application>lapiz</application>窗口包含以下元素："
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:290
@@ -291,8 +291,8 @@ msgstr "菜单栏"
 #: C/index.docbook:292
 msgid ""
 "The menus on the menubar contain all the commands you need to work with "
-"files in <application>pluma</application>."
-msgstr "菜单栏上的菜单包含处理<application>pluma</application>文件所需的所有命令。"
+"files in <application>lapiz</application>."
+msgstr "菜单栏上的菜单包含处理<application>lapiz</application>文件所需的所有命令。"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:296
@@ -325,9 +325,9 @@ msgstr "状态栏"
 #: C/index.docbook:310
 msgid ""
 "The statusbar displays information about current "
-"<application>pluma</application> activity and contextual information about "
+"<application>lapiz</application> activity and contextual information about "
 "the menu items. The statusbar also displays the following information:"
-msgstr "状态栏显示当前<application>pluma</application>活动的信息和菜单项的上有关信息。状态栏还显示以下信息:"
+msgstr "状态栏显示当前<application>lapiz</application>活动的信息和菜单项的上有关信息。状态栏还显示以下信息:"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:313
@@ -390,44 +390,44 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:336
 msgid ""
-"When you right-click in the <application>pluma</application> window, the "
+"When you right-click in the <application>lapiz</application> window, the "
 "application displays a popup menu. The popup menu contains the most common "
 "text editing commands."
-msgstr "当您右键单击pluma窗口时，应用程序将弹出一个菜单。它包含最常见的文本编辑命令。"
+msgstr "当您右键单击lapiz窗口时，应用程序将弹出一个菜单。它包含最常见的文本编辑命令。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:337
 msgid ""
-"Like other MATE applications, actions in <application>pluma</application> "
+"Like other MATE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:mate-user-guide/shortcuts-apps\">User Guide</link>."
 msgstr ""
 "与其他 MATE "
-"应用程序一样，<application>pluma</application>中的操作可以通过多种方式执行：使用菜单、使用工具栏或快捷键。所有应用程序的通用快捷键都会列在<link"
+"应用程序一样，<application>lapiz</application>中的操作可以通过多种方式执行：使用菜单、使用工具栏或快捷键。所有应用程序的通用快捷键都会列在<link"
 " xlink:href=\"help:mate-user-guide/shortcuts-apps\">用户指南</link>中。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:343
-msgid "Running pluma from a Command Line"
-msgstr "命令行里运行 pluma"
+msgid "Running lapiz from a Command Line"
+msgstr "命令行里运行 lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:345
 msgid ""
-"You can run <application>pluma</application> from a command line and open a "
+"You can run <application>lapiz</application> from a command line and open a "
 "single file or multiple files. To open multiple files from a command line, "
 "type the following command, then press <keycap>Return</keycap>:"
 msgstr ""
-"您可以从命令行运行<application>pluma</application>并打开一个或多个文件。要从命令行打开多个文件，请输入以下命令，然后按<keycap>回车（Return）</keycap>："
+"您可以从命令行运行<application>lapiz</application>并打开一个或多个文件。要从命令行打开多个文件，请输入以下命令，然后按<keycap>回车（Return）</keycap>："
 
 #. (itstool) path: section/para
 #: C/index.docbook:346
 msgid ""
-"<command>pluma <replaceable>file1.txt file2.txt "
+"<command>lapiz <replaceable>file1.txt file2.txt "
 "file3.txt</replaceable></command>"
 msgstr ""
-"<command>pluma <replaceable>文件1.txt 文件2.txt 文件3.txt</replaceable></command>"
+"<command>lapiz <replaceable>文件1.txt 文件2.txt 文件3.txt</replaceable></command>"
 
 #. (itstool) path: section/para
 #: C/index.docbook:349
@@ -437,14 +437,14 @@ msgstr "或者，您也可以指定一个URI而不是文件名。"
 #. (itstool) path: section/para
 #: C/index.docbook:350
 msgid ""
-"Refer to the <link xlink:href=\"man:pluma\"> <citerefentry> "
-"<refentrytitle>pluma</refentrytitle> <manvolnum>1</manvolnum> "
+"Refer to the <link xlink:href=\"man:lapiz\"> <citerefentry> "
+"<refentrytitle>lapiz</refentrytitle> <manvolnum>1</manvolnum> "
 "</citerefentry> </link> man page for more information on how to run "
-"<application>pluma</application> from a command line."
+"<application>lapiz</application> from a command line."
 msgstr ""
 "请参阅<link "
-"xlink:href=\"man:pluma\"><citerefentry><refentrytitle>pluma</refentrytitle> "
-"<manvolnum>1</manvolnum></citerefentry></link>手册页来获取有关如何从命令行运行<application>pluma</application>的更多信息。"
+"xlink:href=\"man:lapiz\"><citerefentry><refentrytitle>lapiz</refentrytitle> "
+"<manvolnum>1</manvolnum></citerefentry></link>手册页来获取有关如何从命令行运行<application>lapiz</application>的更多信息。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:357
@@ -461,10 +461,10 @@ msgstr "创建新文档"
 msgid ""
 "To create a new document, choose <menuchoice> <guimenu>File</guimenu> "
 "<guimenuitem>New</guimenuitem> </menuchoice>. The application displays a new"
-" blank document in the <application>pluma</application> window."
+" blank document in the <application>lapiz</application> window."
 msgstr ""
 "要创建新文档，请选择<menuchoice><guimenu>文件</guimenu> "
-"<guimenuitem>新建</guimenuitem></menuchoice>。pluma窗口中会显示一个新的空白文档。"
+"<guimenuitem>新建</guimenuitem></menuchoice>。lapiz窗口中会显示一个新的空白文档。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:371 C/index.docbook:2098
@@ -478,10 +478,10 @@ msgid ""
 "<guimenuitem>Open</guimenuitem> </menuchoice> to display the <guilabel>Open "
 "File</guilabel> dialog. Select the file that you want to open, then click "
 "<guibutton>Open</guibutton>. The file is displayed in the "
-"<application>pluma</application> window."
+"<application>lapiz</application> window."
 msgstr ""
 "若要打开文件，请选择<menuchoice><guimenu>文件</guimenu> "
-"<guimenuitem>打开</guimenuitem></menuchoice>以显示<guilabel>打开文件</guilabel>对话框。选择要打开的文件，然后单击<guibutton>打开</guibutton>。文件会显示在<application>pluma</application>的窗口中。"
+"<guimenuitem>打开</guimenuitem></menuchoice>以显示<guilabel>打开文件</guilabel>对话框。选择要打开的文件，然后单击<guibutton>打开</guibutton>。文件会显示在<application>lapiz</application>的窗口中。"
 
 #. (itstool) path: textobject/phrase
 #: C/index.docbook:379
@@ -502,12 +502,12 @@ msgstr ""
 #. (itstool) path: note/para
 #: C/index.docbook:383
 msgid ""
-"You can open multiple files in <application>pluma</application>. The "
+"You can open multiple files in <application>lapiz</application>. The "
 "application adds a tab for each open file to the window. For more on this "
-"see <xref linkend=\"pluma-tabs\"/>."
+"see <xref linkend=\"lapiz-tabs\"/>."
 msgstr ""
-"您可以在<application>pluma</application>中打开多个文件。应用程序会为每个打开的文件而向窗口添加一个标签页。点击<xref"
-" linkend=\"pluma-tabs\"/>获取更多信息。"
+"您可以在<application>lapiz</application>中打开多个文件。应用程序会为每个打开的文件而向窗口添加一个标签页。点击<xref"
+" linkend=\"lapiz-tabs\"/>获取更多信息。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:390
@@ -544,22 +544,22 @@ msgstr ""
 #: C/index.docbook:401
 msgid ""
 "To save all the files that are currently open in "
-"<application>pluma</application>, choose <menuchoice> "
+"<application>lapiz</application>, choose <menuchoice> "
 "<guimenu>Documents</guimenu> <guimenuitem>Save All</guimenuitem> "
 "</menuchoice>."
 msgstr ""
-"若要保存当前在<application>pluma</application>中打开的所有文件，请选择<menuchoice> "
+"若要保存当前在<application>lapiz</application>中打开的所有文件，请选择<menuchoice> "
 "<guimenu>文档</guimenu> <guimenuitem>保存所有</guimenuitem> </menuchoice>。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:404
 msgid ""
 "To close all the files that are currently open in "
-"<application>pluma</application>, choose <menuchoice> "
+"<application>lapiz</application>, choose <menuchoice> "
 "<guimenu>Documents</guimenu> <guimenuitem>Close All</guimenuitem> "
 "</menuchoice>."
 msgstr ""
-"要关闭当前在<application>pluma</application>中打开的所有文件，请选择<menuchoice> "
+"要关闭当前在<application>lapiz</application>中打开的所有文件，请选择<menuchoice> "
 "<guimenu>文档</guimenu> <guimenuitem>全部关闭</guimenuitem> </menuchoice>。"
 
 #. (itstool) path: info/title
@@ -570,28 +570,28 @@ msgstr "使用标签页"
 #. (itstool) path: section/para
 #: C/index.docbook:412
 msgid ""
-"When more than one file is open, <application>pluma</application> shows a "
+"When more than one file is open, <application>lapiz</application> shows a "
 "<firstterm>tab</firstterm> for each document above the display area. To "
 "switch to another document, click on its tab."
 msgstr ""
-"当打开多个文件时，<application>pluma</application>将在显示区域上方显示每个文档的<firstterm>标签页</firstterm>。要切换到另一个文档，单击它的标签页。"
+"当打开多个文件时，<application>lapiz</application>将在显示区域上方显示每个文档的<firstterm>标签页</firstterm>。要切换到另一个文档，单击它的标签页。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:413
 msgid ""
-"To move a document to another <application> pluma</application> window, drag"
+"To move a document to another <application> lapiz</application> window, drag"
 " the tab corresponding to the file to the window you want to move it to."
-msgstr "要将文档移动到另一个<application>pluma</application>窗口，请将文件对应标签页拖动到您要移动到的窗口。"
+msgstr "要将文档移动到另一个<application>lapiz</application>窗口，请将文件对应标签页拖动到您要移动到的窗口。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:414
 msgid ""
-"To move a document to a new <application> pluma</application> window, either"
+"To move a document to a new <application> lapiz</application> window, either"
 " drag its tab to the desktop, or choose <menuchoice> "
 "<guimenu>Documents</guimenu> <guimenuitem>Move to New Window</guimenuitem> "
 "</menuchoice>."
 msgstr ""
-"要将文档移动到新的<application>pluma</application>窗口，可将其标签页拖到桌面上，或选择<menuchoice> "
+"要将文档移动到新的<application>lapiz</application>窗口，可将其标签页拖到桌面上，或选择<menuchoice> "
 "<guimenu>文档</guimenu> <guimenuitem>移动到新窗口</guimenuitem> </menuchoice>。"
 
 #. (itstool) path: info/title
@@ -652,11 +652,11 @@ msgid ""
 "To insert the contents of the clipboard at the cursor position, choose "
 "<menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> "
 "</menuchoice>. You must cut or copy text before you can paste text into the "
-"file, either from pluma or another application."
+"file, either from lapiz or another application."
 msgstr ""
 "要在光标位置插入剪贴板里的内容，请选择<menuchoice> <guimenu>编辑</guimenu> "
 "<guimenuitem>粘贴</guimenuitem> "
-"</menuchoice>。无论是从pluma还是其他应用程序中粘贴，您都必须要先剪切或复制文本，然后才能将文本粘贴到文件中。"
+"</menuchoice>。无论是从lapiz还是其他应用程序中粘贴，您都必须要先剪切或复制文本，然后才能将文本粘贴到文件中。"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:447
@@ -692,12 +692,12 @@ msgstr "查找和替换"
 #. (itstool) path: section/para
 #: C/index.docbook:465
 msgid ""
-"In <application>pluma</application>, there are two ways of searching for "
+"In <application>lapiz</application>, there are two ways of searching for "
 "text. You can use the <guilabel>Find</guilabel> dialog to search for a "
 "specific piece of text, or <guilabel>Incremental Search</guilabel> to "
 "highlight matching text as you type it."
 msgstr ""
-"在<application>pluma</application>中，有两种搜索文本的方法。您可以使用<guilabel>查找</guilabel>对话框来搜索特定的文本，或者使用<guilabel>增量搜索</guilabel>来突出显示匹配的文本。"
+"在<application>lapiz</application>中，有两种搜索文本的方法。您可以使用<guilabel>查找</guilabel>对话框来搜索特定的文本，或者使用<guilabel>增量搜索</guilabel>来突出显示匹配的文本。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:470
@@ -724,21 +724,21 @@ msgstr ""
 msgid ""
 "Type the string that you want to find in the <guilabel>Search for</guilabel>"
 " field. You can include special characters such as a new line or tab: see "
-"<xref linkend=\"pluma-find-escapes\"/>."
+"<xref linkend=\"lapiz-find-escapes\"/>."
 msgstr ""
 "在<guilabel>搜索</guilabel>输入框中键入您想要查找的字符串。您可以包含特殊字符，例如新行或制表符：请参见<xref linkend"
-"=\"pluma-find-escapes\"/>。"
+"=\"lapiz-find-escapes\"/>。"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:485
 msgid ""
 "Click <guibutton>Find</guibutton> to search the file for the first "
 "occurrence of the string after your current cursor position. If "
-"<application>pluma</application> finds the string, the application selects "
+"<application>lapiz</application> finds the string, the application selects "
 "first occurrence of the string. Other occurrences of the string are "
 "highlighted."
 msgstr ""
-"单击<guibutton>查找</guibutton>以在文件中搜索当前光标后第一个匹配的字符串。如果<application>pluma</application>找到了匹配的字符串，该应用会选择将该字符串的第一个展现在您眼前。其他的匹配字符串也会被高亮显示。"
+"单击<guibutton>查找</guibutton>以在文件中搜索当前光标后第一个匹配的字符串。如果<application>lapiz</application>找到了匹配的字符串，该应用会选择将该字符串的第一个展现在您眼前。其他的匹配字符串也会被高亮显示。"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:488
@@ -854,10 +854,10 @@ msgstr ""
 msgid ""
 "Type the string that you want to find, in the <guilabel>Search "
 "for</guilabel> field. You can include special characters such as a new line "
-"or tab: see <xref linkend=\"pluma-find-escapes\"/>."
+"or tab: see <xref linkend=\"lapiz-find-escapes\"/>."
 msgstr ""
 "在<guilabel>搜索</guilabel>输入框中输入您要查找的字符串。您可以包含特殊字符，例如换行或制表符：参见<xref linkend"
-"=\"pluma-find-escapes\"/>。"
+"=\"lapiz-find-escapes\"/>。"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:552
@@ -870,13 +870,13 @@ msgstr "在<guilabel>替换为</guilabel>输入框中键入你需要的字符串
 #: C/index.docbook:556
 msgid ""
 "To examine each occurrence of the string before replacing it, click "
-"<guibutton>Find</guibutton>. If <application>pluma</application> finds the "
+"<guibutton>Find</guibutton>. If <application>lapiz</application> finds the "
 "string, the application selects the string. Click "
 "<guibutton>Replace</guibutton> to replace the selected occurrence of the "
 "string. To find the next occurrence of the string, click "
 "<guibutton>Find</guibutton> again."
 msgstr ""
-"要在替换字符串之前检查该每一个匹配字符串出现的位置，请点击<guibutton>查找</guibutton>。如果<application>pluma</application>找到了该字符串，该应用程序会选择该字符串。点击<guibutton>替换</guibutton>以替换选中的字符串的出现。要查找下一个匹配字符串出现的位置，请再次点击<guibutton>查找</guibutton>。"
+"要在替换字符串之前检查该每一个匹配字符串出现的位置，请点击<guibutton>查找</guibutton>。如果<application>lapiz</application>找到了该字符串，该应用程序会选择该字符串。点击<guibutton>替换</guibutton>以替换选中的字符串的出现。要查找下一个匹配字符串出现的位置，请再次点击<guibutton>查找</guibutton>。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:557
@@ -1060,9 +1060,9 @@ msgstr "<guilabel>打印语法高亮显示</guilabel>"
 #: C/index.docbook:666
 msgid ""
 "Select this option to print syntax highlighting. For more information about "
-"syntax highlighting, see <xref linkend=\"pluma-set-highlightmode\"/>."
+"syntax highlighting, see <xref linkend=\"lapiz-set-highlightmode\"/>."
 msgstr ""
-"选择此选项可打印语法突出显示。更多有关语法突出显示的信息，请参阅<xref linkend=\"pluma-set-highlightmode\"/>。"
+"选择此选项可打印语法突出显示。更多有关语法突出显示的信息，请参阅<xref linkend=\"lapiz-set-highlightmode\"/>。"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:670
@@ -1160,9 +1160,9 @@ msgstr "电机此按钮，选择要打印文件中的页眉和页脚的字体。
 #: C/index.docbook:728
 msgid ""
 "To reset the fonts to the default fonts for printing a file from "
-"<application>pluma</application>, click <guibutton>Restore Default "
+"<application>lapiz</application>, click <guibutton>Restore Default "
 "Fonts</guibutton>."
-msgstr "要将字体重置为从pluma打印文件时默认的字体，请点击<application>恢复为默认字体<guibutton>。"
+msgstr "要将字体重置为从lapiz打印文件时默认的字体，请点击<application>恢复为默认字体<guibutton>。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:735
@@ -1172,9 +1172,9 @@ msgstr "打印一个文档"
 #. (itstool) path: section/para
 #: C/index.docbook:737
 msgid ""
-"You can use <application>pluma</application> to perform the following print "
+"You can use <application>lapiz</application> to perform the following print "
 "operations:"
-msgstr "您可以使用<application>pluma</application>执行以下打印操作。"
+msgstr "您可以使用<application>lapiz</application>执行以下打印操作。"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:740
@@ -1189,11 +1189,11 @@ msgstr "使打印命令输出到文件中。"
 #. (itstool) path: section/para
 #: C/index.docbook:746
 msgid ""
-"If you print to a file, <application>pluma</application> sends the output of"
+"If you print to a file, <application>lapiz</application> sends the output of"
 " the file to a pre-press format file. The most common pre-press formats are "
 "PostScript and Portable Document Format (PDF)."
 msgstr ""
-"如果您打印一个文件，<application>pluma</application>会将该文件的输出发送到一个印前格式文件。最常见的印前格式是PostScript和便携式文档格式（PDF）。"
+"如果您打印一个文件，<application>lapiz</application>会将该文件的输出发送到一个印前格式文件。最常见的印前格式是PostScript和便携式文档格式（PDF）。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:747
@@ -1408,8 +1408,8 @@ msgstr "<guilabel>状态</guilabel>"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:871 C/index.docbook:879 C/index.docbook:887
-msgid "This functionality is not supported in this version of pluma."
-msgstr "此版本的pluma不支持该功能。"
+msgid "This functionality is not supported in this version of lapiz."
+msgstr "此版本的lapiz不支持该功能。"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:875
@@ -1512,13 +1512,13 @@ msgstr "编程辅助"
 #. (itstool) path: section/para
 #: C/index.docbook:964
 msgid ""
-"Several of <application>pluma</application>'s features for programming are "
+"Several of <application>lapiz</application>'s features for programming are "
 "provided with plugins. For example, the Tag List plugin provides a list of "
 "commonly-used tags for different markup languages: see <xref linkend"
-"=\"pluma-tag-list-plugin\"/>."
+"=\"lapiz-tag-list-plugin\"/>."
 msgstr ""
-"<application>pluma</application>的一些编程辅助功能是通过插件提供的。例如，Tag "
-"List插件为不同的语言提供了一个常用的标记列表：见<xref linkend=\"pluma-tag-list-plugin\"/>"
+"<application>lapiz</application>的一些编程辅助功能是通过插件提供的。例如，Tag "
+"List插件为不同的语言提供了一个常用的标记列表：见<xref linkend=\"lapiz-tag-list-plugin\"/>"
 
 #. (itstool) path: info/title
 #: C/index.docbook:969
@@ -1535,13 +1535,13 @@ msgstr "语法高亮显示可以通过不同的颜色以显示文本的不同部
 #. (itstool) path: section/para
 #: C/index.docbook:973
 msgid ""
-"<application>pluma</application> chooses an appropriate syntax highlighting "
+"<application>lapiz</application> chooses an appropriate syntax highlighting "
 "mode based on a document's type. To override the syntax highlighting mode, "
 "choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Highlight "
 "Mode</guimenuitem> </menuchoice>, then choose one of the following menu "
 "items:"
 msgstr ""
-"<application>pluma</application>会根据文档的类型选择合适的突出显示模式。要重新设置语法高亮模式，选择<menuchoice>"
+"<application>lapiz</application>会根据文档的类型选择合适的突出显示模式。要重新设置语法高亮模式，选择<menuchoice>"
 " <guimenu>视图</guimenu> <guimenuitem>突出显示模式</guimenuitem> "
 "</menuchoice>，然后选择以下菜单项之一："
 
@@ -1611,21 +1611,21 @@ msgstr "将命令输出传输到文件"
 #. (itstool) path: section/para
 #: C/index.docbook:1023
 msgid ""
-"You can use <application>pluma</application> to pipe the output of a command"
+"You can use <application>lapiz</application> to pipe the output of a command"
 " to a text file. For example, to pipe the output of an <command>ls</command>"
-" command to a text file, type <command>ls | pluma</command>, then press "
+" command to a text file, type <command>ls | lapiz</command>, then press "
 "<keycap>Return</keycap>."
 msgstr ""
-"可以使用<application>pluma</application>将命令的输出通过管道传输（pipe）到文本文件。例如，要将ls命令的输出通过管道传输到文本文件，只需要输入<command>ls"
-" | pluma</command>，然后按<keycap>Return</keycap>键。"
+"可以使用<application>lapiz</application>将命令的输出通过管道传输（pipe）到文本文件。例如，要将ls命令的输出通过管道传输到文本文件，只需要输入<command>ls"
+" | lapiz</command>，然后按<keycap>Return</keycap>键。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:1024
 msgid ""
 "The output of the <command>ls</command> command is displayed in a new text "
-"file in the <application>pluma</application> window."
+"file in the <application>lapiz</application> window."
 msgstr ""
-"<command>ls</command>命令的输出将呈现在<application>pluma</application>窗口中新建的文本文件里。"
+"<command>ls</command>命令的输出将呈现在<application>lapiz</application>窗口中新建的文本文件里。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:1025
@@ -1644,9 +1644,9 @@ msgstr "快捷键"
 msgid ""
 "Use shortcut keys to perform common tasks more quickly than with the mouse "
 "and menus. The following tables list all of "
-"<application>pluma</application>'s shortcut keys."
+"<application>lapiz</application>'s shortcut keys."
 msgstr ""
-"使用快捷键可以比使用鼠标和菜单更快速地执行普通任务。下表列出了所有<application>pluma</application>的快捷键。"
+"使用快捷键可以比使用鼠标和菜单更快速地执行普通任务。下表列出了所有<application>lapiz</application>的快捷键。"
 
 #. (itstool) path: section/para
 #: C/index.docbook:1035
@@ -2133,8 +2133,8 @@ msgstr "F1"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1504
-msgid "Open <application>pluma</application>'s user manual."
-msgstr "打开<application>pluma</application>的用户手册。"
+msgid "Open <application>lapiz</application>'s user manual."
+msgstr "打开<application>lapiz</application>的用户手册。"
 
 #. (itstool) path: info/title
 #: C/index.docbook:1515
@@ -2144,12 +2144,12 @@ msgstr "首选项"
 #. (itstool) path: section/para
 #: C/index.docbook:1517
 msgid ""
-"To configure <application>pluma</application>, choose <menuchoice> "
+"To configure <application>lapiz</application>, choose <menuchoice> "
 "<guimenu>Edit</guimenu> <guimenuitem>Preferences</guimenuitem> "
 "</menuchoice>. The <guilabel>Preferences</guilabel> dialog contains the "
 "following categories:"
 msgstr ""
-"若要配置<application>pluma</application>，请选择<menuchoice> <guimenu>编辑</guimenu> "
+"若要配置<application>lapiz</application>，请选择<menuchoice> <guimenu>编辑</guimenu> "
 "<guimenuitem>首选项</guimenuitem> "
 "</menuchoice>。<guilabel>首选项</guilabel>对话框包含有以下内容："
 
@@ -2178,9 +2178,9 @@ msgstr "选择<guilabel>不将一个单词拆在两行</guilabel>选项以使文
 #: C/index.docbook:1560
 msgid ""
 "Select the <guilabel>Display line numbers</guilabel> option to display line "
-"numbers on the left side of the <application>pluma</application> window."
+"numbers on the left side of the <application>lapiz</application> window."
 msgstr ""
-"选择<guilabel>显示行号</guilabel>选项以在<application>pluma</application>窗口的左侧显示行号。"
+"选择<guilabel>显示行号</guilabel>选项以在<application>lapiz</application>窗口的左侧显示行号。"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:1564
@@ -2240,7 +2240,7 @@ msgstr ""
 #: C/index.docbook:1601
 msgid ""
 "Use the <guilabel>Tab width</guilabel> spin box to specify the width of the "
-"space that <application> pluma</application> inserts when you press the "
+"space that <application> lapiz</application> inserts when you press the "
 "<keycap>Tab</keycap> key."
 msgstr ""
 
@@ -2248,7 +2248,7 @@ msgstr ""
 #: C/index.docbook:1602
 msgid ""
 "Select the <guilabel>Insert spaces instead of tabs</guilabel> option to "
-"specify that <application> pluma</application> inserts spaces instead of a "
+"specify that <application> lapiz</application> inserts spaces instead of a "
 "tab character when you press the <keycap>Tab</keycap> key."
 msgstr ""
 
@@ -2299,7 +2299,7 @@ msgstr ""
 #: C/index.docbook:1636
 msgid ""
 "Select the <guilabel>Use default theme font</guilabel> option to use the "
-"default system font for the text in the <application>pluma</application> "
+"default system font for the text in the <application>lapiz</application> "
 "text window."
 msgstr ""
 
@@ -2307,7 +2307,7 @@ msgstr ""
 #: C/index.docbook:1637
 msgid ""
 "The <guilabel>Editor font</guilabel> field displays the font that "
-"<application>pluma</application> uses to display text. Click on the button "
+"<application>lapiz</application> uses to display text. Click on the button "
 "to specify the font type, style, and size to use for text."
 msgstr ""
 
@@ -2395,9 +2395,9 @@ msgstr "插件首选项"
 #. (itstool) path: section/para
 #: C/index.docbook:1699
 msgid ""
-"Plugins add extra features to <application>pluma</application>. For more "
+"Plugins add extra features to <application>lapiz</application>. For more "
 "information on plugins and how to use the built-in plugins, see <xref "
-"linkend=\"pluma-plugins-overview\"/>."
+"linkend=\"lapiz-plugins-overview\"/>."
 msgstr ""
 
 #. (itstool) path: info/title
@@ -2408,7 +2408,7 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:1706
 msgid ""
-"To enable a <application>pluma</application> plugin, perform the following "
+"To enable a <application>lapiz</application> plugin, perform the following "
 "steps:"
 msgstr ""
 
@@ -2445,13 +2445,13 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:1729
 msgid ""
-"A plugin remains enabled when you quit <application>pluma</application>."
+"A plugin remains enabled when you quit <application>lapiz</application>."
 msgstr ""
 
 #. (itstool) path: section/para
 #: C/index.docbook:1730
 msgid ""
-"To disable a <application>pluma</application> plugin, perform the following "
+"To disable a <application>lapiz</application> plugin, perform the following "
 "steps:"
 msgstr ""
 
@@ -2475,76 +2475,76 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:1759
 msgid ""
-"You can add extra features to <application>pluma</application> by enabling "
+"You can add extra features to <application>lapiz</application> by enabling "
 "<firstterm>plugins</firstterm>. A plugin is a supplementary program that "
 "enhances the functionality of an application. Plugins add new items to the "
-"<application>pluma</application> menus for the new features they provide."
+"<application>lapiz</application> menus for the new features they provide."
 msgstr ""
 
 #. (itstool) path: section/para
 #: C/index.docbook:1761
-msgid "Several plugins come built-in with <application>pluma</application>."
+msgid "Several plugins come built-in with <application>lapiz</application>."
 msgstr ""
 
 #. (itstool) path: section/para
 #: C/index.docbook:1762
 msgid ""
 "To enable and disable plugins, or see which plugins are currently enabled, "
-"use the <xref linkend=\"pluma-prefs-plugins\"/>."
+"use the <xref linkend=\"lapiz-prefs-plugins\"/>."
 msgstr ""
 
 #. (itstool) path: section/para
 #: C/index.docbook:1763
 msgid ""
-"The following plugins come built-in with <application>pluma</application>:"
+"The following plugins come built-in with <application>lapiz</application>:"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1769
 msgid ""
-"<xref linkend=\"pluma-change-case-plugin\"/> allows you to change the case "
+"<xref linkend=\"lapiz-change-case-plugin\"/> allows you to change the case "
 "of the selected text."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1774
 msgid ""
-"<xref linkend=\"pluma-document-statistics-plugin\"/> shows the number of "
+"<xref linkend=\"lapiz-document-statistics-plugin\"/> shows the number of "
 "lines, words, and characters in the document."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1779
 msgid ""
-"<xref linkend=\"pluma-external-tools-plugin\"/> allows you to execute "
-"external commands from <application>pluma</application>."
+"<xref linkend=\"lapiz-external-tools-plugin\"/> allows you to execute "
+"external commands from <application>lapiz</application>."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1784
 msgid ""
-"<xref linkend=\"pluma-file-browser-plugin\"/> allows you to browse your "
+"<xref linkend=\"lapiz-file-browser-plugin\"/> allows you to browse your "
 "files and folders in the side pane."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1788
 msgid ""
-"<xref linkend=\"pluma-indent-lines-plugin\"/> adds or removes indentation "
+"<xref linkend=\"lapiz-indent-lines-plugin\"/> adds or removes indentation "
 "from the selected lines."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1793
 msgid ""
-"<xref linkend=\"pluma-insert-date-time-plugin\"/> adds the current date and "
+"<xref linkend=\"lapiz-insert-date-time-plugin\"/> adds the current date and "
 "time into a document."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1798
 msgid ""
-"<xref linkend=\"pluma-modelines-plugin\"/> allows you to set editing "
+"<xref linkend=\"lapiz-modelines-plugin\"/> allows you to set editing "
 "preferences for individual documents, and supports "
 "<application>Emacs</application>, <application>Kate</application> and "
 "<application>Vim</application>-style modelines."
@@ -2553,51 +2553,51 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:1803
 msgid ""
-"<xref linkend=\"pluma-python-console-plugin\"/> allows you to run commands "
+"<xref linkend=\"lapiz-python-console-plugin\"/> allows you to run commands "
 "in the python programming language."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1808
 msgid ""
-"<xref linkend=\"pluma-trailsave-plugin\"/> allows you to strip trailing "
+"<xref linkend=\"lapiz-trailsave-plugin\"/> allows you to strip trailing "
 "whitespaces in your document after saving."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1813
 msgid ""
-"<xref linkend=\"pluma-snippets-plugin\"/> allows you to store frequently-"
+"<xref linkend=\"lapiz-snippets-plugin\"/> allows you to store frequently-"
 "used pieces of text and insert them quickly into a document."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1818
 msgid ""
-"<xref linkend=\"pluma-sort-plugin\"/> arranges selected lines of text into "
+"<xref linkend=\"lapiz-sort-plugin\"/> arranges selected lines of text into "
 "alphabetical order."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1823
 msgid ""
-"<xref linkend=\"pluma-spell-checker-plugin\"/> corrects the spelling in the "
+"<xref linkend=\"lapiz-spell-checker-plugin\"/> corrects the spelling in the "
 "selected text, or marks errors automatically in the document."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1828
 msgid ""
-"<xref linkend=\"pluma-tag-list-plugin\"/> lets you insert commonly-used tags"
+"<xref linkend=\"lapiz-tag-list-plugin\"/> lets you insert commonly-used tags"
 " for HTML and other languages from a list in the side pane."
 msgstr ""
-"<xref linkend=\"pluma-tag-list-plugin\"/>允许您从侧边栏中的列表中插入用于 HTML 和其他语言的常用标记。"
+"<xref linkend=\"lapiz-tag-list-plugin\"/>允许您从侧边栏中的列表中插入用于 HTML 和其他语言的常用标记。"
 
 #. (itstool) path: note/para
 #: C/index.docbook:1835
 msgid ""
 "For more information on creating plugins, see <link "
-"xlink:href=\"https://github.com/mate-desktop/pluma/tree/master/plugins\"/>."
+"xlink:href=\"https://github.com/mate-desktop/lapiz/tree/master/plugins\"/>."
 msgstr ""
 
 #. (itstool) path: info/title
@@ -2756,7 +2756,7 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:1942
 msgid ""
-"You can continue to update the <application>pluma</application> file while "
+"You can continue to update the <application>lapiz</application> file while "
 "the <guilabel>Document Statistics</guilabel> dialog is open. To refresh the "
 "contents of the <guilabel>Document Statistics</guilabel> dialog, click "
 "<guibutton>Update</guibutton>."
@@ -2771,7 +2771,7 @@ msgstr ""
 #: C/index.docbook:1951
 msgid ""
 "The <application>External Tools</application> plugin allows you to execute "
-"external commands from <application>pluma</application>. You can pipe some "
+"external commands from <application>lapiz</application>. You can pipe some "
 "content into a command and exploit its output (for example, "
 "<application>sed</application>), or launch a predefined command (for "
 "example, <application>make</application>)."
@@ -2900,9 +2900,9 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:2015
 msgid ""
-"The actual commands to be run. Several <application>pluma</application> "
+"The actual commands to be run. Several <application>lapiz</application> "
 "environment variables can be used to pass content to these commands: see "
-"<xref linkend=\"pluma-external-tools-plugin-variables\"/>."
+"<xref linkend=\"lapiz-external-tools-plugin-variables\"/>."
 msgstr ""
 
 #. (itstool) path: varlistentry/term
@@ -3071,7 +3071,7 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:2100
 msgid ""
-"To open a file in <application>pluma</application>, double-click it in the "
+"To open a file in <application>lapiz</application>, double-click it in the "
 "file list."
 msgstr ""
 
@@ -3138,7 +3138,7 @@ msgstr ""
 msgid ""
 "The amount of space used, and whether tab character or space characters are "
 "used, depends on the <guilabel>Tab Stops</guilabel> settings in the Editor "
-"Preferences: see <xref linkend=\"pluma-prefs-editor\"/>."
+"Preferences: see <xref linkend=\"lapiz-prefs-editor\"/>."
 msgstr ""
 
 #. (itstool) path: info/title
@@ -3166,17 +3166,17 @@ msgstr ""
 msgid ""
 "If you have not configured the Insert Date/Time plugin to automatically "
 "insert the date/time without prompting you for the format, "
-"<application>pluma</application> displays the <guilabel>Insert Date and "
+"<application>lapiz</application> displays the <guilabel>Insert Date and "
 "Time</guilabel> dialog. Select the appropriate date/time format from the "
 "list. Click <guibutton>Insert</guibutton> to close the <guilabel>Insert Date"
-" and Time</guilabel> dialog. <application>pluma</application> inserts the "
+" and Time</guilabel> dialog. <application>lapiz</application> inserts the "
 "date/time at the cursor position in the current file."
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2145
 msgid ""
-"If you have configured <application>pluma</application> to use one "
+"If you have configured <application>lapiz</application> to use one "
 "particular date/time format, the <guilabel>Insert Date and Time</guilabel> "
 "dialog is not displayed. The date/time is automatically entered at the "
 "cursor position in the current file."
@@ -3219,10 +3219,10 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:2174
 msgid ""
-"To use the same <application>pluma</application>-provided date/time format "
+"To use the same <application>lapiz</application>-provided date/time format "
 "each time you insert the date/time, select the <guilabel>Use the selected "
 "format</guilabel> option, then select the appropriate format from the list. "
-"When you select this option, <application>pluma</application> does not "
+"When you select this option, <application>lapiz</application> does not "
 "prompt you for the date/time format when you choose <menuchoice> "
 "<guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</guimenuitem> "
 "</menuchoice>."
@@ -3237,7 +3237,7 @@ msgid ""
 "xlink:href=\"man:strftime\"> <citerefentry> "
 "<refentrytitle>strftime</refentrytitle> <manvolnum>3</manvolnum> "
 "</citerefentry> </link> for more information on how to specify a custom "
-"format. When you select this option, <application>pluma</application> does "
+"format. When you select this option, <application>lapiz</application> does "
 "not prompt you for the date/time format when you choose <menuchoice> "
 "<guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</guimenuitem> "
 "</menuchoice>."
@@ -3268,7 +3268,7 @@ msgid ""
 "The <application>Modelines</application> plugin allows you to set "
 "preferences for individual documents. A <firstterm>modeline</firstterm> is a"
 " line of text at the start or end of the document with settings that "
-"<application>pluma</application> recognizes."
+"<application>lapiz</application> recognizes."
 msgstr ""
 
 #. (itstool) path: section/para
@@ -3391,7 +3391,7 @@ msgstr ""
 msgid ""
 "The <application>Python Console</application> Plugin allows you to run "
 "commands in the python programming language from "
-"<application>pluma</application>. Enabling the plugin adds a tab to the "
+"<application>lapiz</application>. Enabling the plugin adds a tab to the "
 "bottom pane. This shows recent output and a command prompt field."
 msgstr ""
 
@@ -3399,7 +3399,7 @@ msgstr ""
 #: C/index.docbook:2255
 msgid ""
 "Commands entered into the python console are not checked before they are "
-"run. It is therefore possible to hang <application>pluma</application>, for "
+"run. It is therefore possible to hang <application>lapiz</application>, for "
 "example by entering an infinite loop."
 msgstr ""
 
@@ -3420,7 +3420,7 @@ msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2266
-msgid "Enable the plugin as described in <xref linkend=\"pluma-prefs-plugins\"/>."
+msgid "Enable the plugin as described in <xref linkend=\"lapiz-prefs-plugins\"/>."
 msgstr ""
 
 #. (itstool) path: listitem/para
@@ -3461,7 +3461,7 @@ msgstr ""
 #: C/index.docbook:2283
 msgid ""
 "A number of built-in snippets are installed with "
-"<application>pluma</application>, which can be modified."
+"<application>lapiz</application>, which can be modified."
 msgstr ""
 
 #. (itstool) path: info/title
@@ -3544,7 +3544,7 @@ msgstr ""
 #: C/index.docbook:2320
 msgid ""
 "Enter the text of the snippet in the <guilabel>Edit snippet</guilabel> text "
-"box. For special codes you can use, see <xref linkend=\"pluma-snippets-"
+"box. For special codes you can use, see <xref linkend=\"lapiz-snippets-"
 "plugin-syntax\"/>."
 msgstr ""
 
@@ -3715,7 +3715,7 @@ msgstr ""
 msgid ""
 "Environmental variable such as <literal>$PATH</literal> and "
 "<literal>$HOME</literal> are substituted in snippet text. The following "
-"variables specific to <application>pluma</application> can also be used:"
+"variables specific to <application>lapiz</application> can also be used:"
 msgstr ""
 
 #. (itstool) path: varlistentry/term
@@ -3900,7 +3900,7 @@ msgstr ""
 #: C/index.docbook:2477
 msgid ""
 "The <application>Spell Checker</application> plugin checks the spelling in "
-"the selected text. You can configure <application>pluma</application> to "
+"the selected text. You can configure <application>lapiz</application> to "
 "check the spelling automatically, or you can check the spelling manually, in"
 " the specified language. The language setting, and the autocheck spelling "
 "properties, apply per document. To use the Spell checker plugin, perform the"
@@ -3927,7 +3927,7 @@ msgid ""
 "</menuchoice> again. When automatic spell checking is set, an icon is "
 "displayed beside the <guimenuitem>Autocheck Spelling</guimenuitem> menu "
 "item. Automatic spell checking is unset by default, each time "
-"<application>pluma</application> starts."
+"<application>lapiz</application> starts."
 msgstr ""
 
 #. (itstool) path: listitem/para
@@ -3961,7 +3961,7 @@ msgid ""
 "longer flagged as unknown but are not added to your personal dictionary, "
 "select <menuchoice> <guimenu>Spelling Suggestions</guimenu> "
 "<guimenuitem>Ignore All</guimenuitem> </menuchoice>. The unknown word is "
-"ignored in the current <application>pluma</application> session only."
+"ignored in the current <application>lapiz</application> session only."
 msgstr ""
 
 #. (itstool) path: listitem/para
@@ -4019,7 +4019,7 @@ msgid ""
 "To ignore the current occurrence of the unknown word, click "
 "<guibutton>Ignore</guibutton>. To ignore all occurrences of the unknown "
 "word, click <guibutton>Ignore All</guibutton>. The unknown word is ignored "
-"in the current <application>pluma</application> session only."
+"in the current <application>lapiz</application> session only."
 msgstr ""
 
 #. (itstool) path: listitem/para
@@ -4201,7 +4201,7 @@ msgstr "反馈"
 #: C/legal.xml:79
 msgid ""
 "To report a bug or make a suggestion regarding the "
-"<application>pluma</application> application or this manual, follow the "
+"<application>lapiz</application> application or this manual, follow the "
 "directions in the <link xlink:href=\"help:mate-user-guide/feedback\">MATE "
 "Feedback Page</link>."
 msgstr ""

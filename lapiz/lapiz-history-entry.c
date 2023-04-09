@@ -1,6 +1,6 @@
 /*
- * pluma-history-entry.c
- * This file is part of pluma
+ * lapiz-history-entry.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2006 - Paolo Borelli
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -37,8 +37,8 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
-#include "pluma-history-entry.h"
-#include "pluma-prefs-manager.h"
+#include "lapiz-history-entry.h"
+#include "lapiz-prefs-manager.h"
 
 enum {
 	PROP_0,
@@ -60,10 +60,10 @@ struct _PlumaHistoryEntryPrivate
 	GSettings          *settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaHistoryEntry, pluma_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaHistoryEntry, lapiz_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
 static void
-pluma_history_entry_set_property (GObject      *object,
+lapiz_history_entry_set_property (GObject      *object,
 				  guint         prop_id,
 				  const GValue *value,
 				  GParamSpec   *spec)
@@ -79,7 +79,7 @@ pluma_history_entry_set_property (GObject      *object,
 		entry->priv->history_id = g_value_dup_string (value);
 		break;
 	case PROP_HISTORY_LENGTH:
-		pluma_history_entry_set_history_length (entry,
+		lapiz_history_entry_set_history_length (entry,
 						     g_value_get_uint (value));
 		break;
 	default:
@@ -88,7 +88,7 @@ pluma_history_entry_set_property (GObject      *object,
 }
 
 static void
-pluma_history_entry_get_property (GObject    *object,
+lapiz_history_entry_get_property (GObject    *object,
 				  guint       prop_id,
 				  GValue     *value,
 				  GParamSpec *spec)
@@ -112,16 +112,16 @@ pluma_history_entry_get_property (GObject    *object,
 }
 
 static void
-pluma_history_entry_dispose (GObject *object)
+lapiz_history_entry_dispose (GObject *object)
 {
-	pluma_history_entry_set_enable_completion (PLUMA_HISTORY_ENTRY (object),
+	lapiz_history_entry_set_enable_completion (PLUMA_HISTORY_ENTRY (object),
 						   FALSE);
 
-	G_OBJECT_CLASS (pluma_history_entry_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_history_entry_parent_class)->dispose (object);
 }
 
 static void
-pluma_history_entry_finalize (GObject *object)
+lapiz_history_entry_finalize (GObject *object)
 {
 	PlumaHistoryEntryPrivate *priv;
 
@@ -135,18 +135,18 @@ pluma_history_entry_finalize (GObject *object)
 		priv->settings = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_history_entry_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_history_entry_parent_class)->finalize (object);
 }
 
 static void
-pluma_history_entry_class_init (PlumaHistoryEntryClass *klass)
+lapiz_history_entry_class_init (PlumaHistoryEntryClass *klass)
 {
 	GObjectClass   *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->set_property = pluma_history_entry_set_property;
-	object_class->get_property = pluma_history_entry_get_property;
-	object_class->finalize = pluma_history_entry_finalize;
-	object_class->dispose = pluma_history_entry_dispose;
+	object_class->set_property = lapiz_history_entry_set_property;
+	object_class->get_property = lapiz_history_entry_get_property;
+	object_class->finalize = lapiz_history_entry_finalize;
+	object_class->dispose = lapiz_history_entry_dispose;
 
 	g_object_class_install_property (object_class,
 					 PROP_HISTORY_ID,
@@ -214,7 +214,7 @@ get_history_list (PlumaHistoryEntry *entry)
 }
 
 static void
-pluma_history_entry_save_history (PlumaHistoryEntry *entry)
+lapiz_history_entry_save_history (PlumaHistoryEntry *entry)
 {
 	GSList *settings_items;
 
@@ -222,7 +222,7 @@ pluma_history_entry_save_history (PlumaHistoryEntry *entry)
 
 	settings_items = get_history_list (entry);
 
-	pluma_prefs_manager_set_gslist (entry->priv->settings,
+	lapiz_prefs_manager_set_gslist (entry->priv->settings,
 			      entry->priv->history_id,
 			      settings_items);
 
@@ -321,11 +321,11 @@ insert_history_item (PlumaHistoryEntry *entry,
 			    text,
 			    -1);
 
-	pluma_history_entry_save_history (entry);
+	lapiz_history_entry_save_history (entry);
 }
 
 void
-pluma_history_entry_prepend_text (PlumaHistoryEntry *entry,
+lapiz_history_entry_prepend_text (PlumaHistoryEntry *entry,
 				  const gchar       *text)
 {
 	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
@@ -335,7 +335,7 @@ pluma_history_entry_prepend_text (PlumaHistoryEntry *entry,
 }
 
 void
-pluma_history_entry_append_text (PlumaHistoryEntry *entry,
+lapiz_history_entry_append_text (PlumaHistoryEntry *entry,
 				 const gchar       *text)
 {
 	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
@@ -345,7 +345,7 @@ pluma_history_entry_append_text (PlumaHistoryEntry *entry,
 }
 
 static void
-pluma_history_entry_load_history (PlumaHistoryEntry *entry)
+lapiz_history_entry_load_history (PlumaHistoryEntry *entry)
 {
 	GSList *settings_items, *l;
 	GtkListStore *store;
@@ -356,7 +356,7 @@ pluma_history_entry_load_history (PlumaHistoryEntry *entry)
 
 	store = get_history_store (entry);
 
-	settings_items = pluma_prefs_manager_get_gslist (entry->priv->settings,
+	settings_items = lapiz_prefs_manager_get_gslist (entry->priv->settings,
 					     entry->priv->history_id);
 
 	gtk_list_store_clear (store);
@@ -378,7 +378,7 @@ pluma_history_entry_load_history (PlumaHistoryEntry *entry)
 }
 
 void
-pluma_history_entry_clear (PlumaHistoryEntry *entry)
+lapiz_history_entry_clear (PlumaHistoryEntry *entry)
 {
 	GtkListStore *store;
 
@@ -387,15 +387,15 @@ pluma_history_entry_clear (PlumaHistoryEntry *entry)
 	store = get_history_store (entry);
 	gtk_list_store_clear (store);
 
-	pluma_history_entry_save_history (entry);
+	lapiz_history_entry_save_history (entry);
 }
 
 static void
-pluma_history_entry_init (PlumaHistoryEntry *entry)
+lapiz_history_entry_init (PlumaHistoryEntry *entry)
 {
 	PlumaHistoryEntryPrivate *priv;
 
-	priv = pluma_history_entry_get_instance_private (entry);
+	priv = lapiz_history_entry_get_instance_private (entry);
 	entry->priv = priv;
 
 	priv->history_id = NULL;
@@ -407,7 +407,7 @@ pluma_history_entry_init (PlumaHistoryEntry *entry)
 }
 
 void
-pluma_history_entry_set_history_length (PlumaHistoryEntry *entry,
+lapiz_history_entry_set_history_length (PlumaHistoryEntry *entry,
 					guint              history_length)
 {
 	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
@@ -419,7 +419,7 @@ pluma_history_entry_set_history_length (PlumaHistoryEntry *entry,
 }
 
 guint
-pluma_history_entry_get_history_length (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_history_length (PlumaHistoryEntry *entry)
 {
 	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), 0);
 
@@ -427,7 +427,7 @@ pluma_history_entry_get_history_length (PlumaHistoryEntry *entry)
 }
 
 gchar *
-pluma_history_entry_get_history_id (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_history_id (PlumaHistoryEntry *entry)
 {
 	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), NULL);
 
@@ -435,7 +435,7 @@ pluma_history_entry_get_history_id (PlumaHistoryEntry *entry)
 }
 
 void
-pluma_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
+lapiz_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
 					   gboolean           enable)
 {
 	g_return_if_fail (PLUMA_IS_HISTORY_ENTRY (entry));
@@ -459,7 +459,7 @@ pluma_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
 		gtk_entry_completion_set_inline_completion (entry->priv->completion, TRUE);
 
 		/* Assign the completion to the entry */
-		gtk_entry_set_completion (GTK_ENTRY (pluma_history_entry_get_entry(entry)),
+		gtk_entry_set_completion (GTK_ENTRY (lapiz_history_entry_get_entry(entry)),
 					  entry->priv->completion);
 	}
 	else
@@ -467,7 +467,7 @@ pluma_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
 		if (entry->priv->completion == NULL)
 			return;
 
-		gtk_entry_set_completion (GTK_ENTRY (pluma_history_entry_get_entry (entry)),
+		gtk_entry_set_completion (GTK_ENTRY (lapiz_history_entry_get_entry (entry)),
 					  NULL);
 
 		g_object_unref (entry->priv->completion);
@@ -477,7 +477,7 @@ pluma_history_entry_set_enable_completion (PlumaHistoryEntry *entry,
 }
 
 gboolean
-pluma_history_entry_get_enable_completion (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_enable_completion (PlumaHistoryEntry *entry)
 {
 	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), FALSE);
 
@@ -485,7 +485,7 @@ pluma_history_entry_get_enable_completion (PlumaHistoryEntry *entry)
 }
 
 GtkWidget *
-pluma_history_entry_new (const gchar *history_id,
+lapiz_history_entry_new (const gchar *history_id,
 			 gboolean     enable_completion)
 {
 	GtkWidget *ret;
@@ -495,7 +495,7 @@ pluma_history_entry_new (const gchar *history_id,
 
 	/* Note that we are setting the model, so
 	 * user must be careful to always manipulate
-	 * data in the history through pluma_history_entry_
+	 * data in the history through lapiz_history_entry_
 	 * functions.
 	 */
 
@@ -521,9 +521,9 @@ pluma_history_entry_new (const gchar *history_id,
 	 * This would also ensure that the model cannot be
 	 * set explicitely at a later time.
 	 */
-	pluma_history_entry_load_history (PLUMA_HISTORY_ENTRY (ret));
+	lapiz_history_entry_load_history (PLUMA_HISTORY_ENTRY (ret));
 
-	pluma_history_entry_set_enable_completion (PLUMA_HISTORY_ENTRY (ret),
+	lapiz_history_entry_set_enable_completion (PLUMA_HISTORY_ENTRY (ret),
 						   enable_completion);
 
 	return ret;
@@ -538,7 +538,7 @@ pluma_history_entry_new (const gchar *history_id,
  * handle the conflict.
  */
 GtkWidget *
-pluma_history_entry_get_entry (PlumaHistoryEntry *entry)
+lapiz_history_entry_get_entry (PlumaHistoryEntry *entry)
 {
 	g_return_val_if_fail (PLUMA_IS_HISTORY_ENTRY (entry), NULL);
 
@@ -564,7 +564,7 @@ escape_cell_data_func (GtkTreeViewColumn           *col,
 }
 
 void
-pluma_history_entry_set_escape_func (PlumaHistoryEntry           *entry,
+lapiz_history_entry_set_escape_func (PlumaHistoryEntry           *entry,
 				     PlumaHistoryEntryEscapeFunc  escape_func)
 {
 	GList *cells;

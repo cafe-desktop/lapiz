@@ -21,8 +21,8 @@ lib##(PLUGIN_MODULE)_la_LIBADD  = $(PLUMA_LIBS)
 uidir = $(PLUMA_PLUGINS_DATA_DIR)/##(PLUGIN_MODULE)
 ui_DATA =
 
-plugin_in_files = ##(PLUGIN_MODULE).pluma-plugin.desktop.in
-plugin_DATA = $(plugin_in_files:.pluma-plugin.desktop.in=.pluma-plugin)
+plugin_in_files = ##(PLUGIN_MODULE).lapiz-plugin.desktop.in
+plugin_DATA = $(plugin_in_files:.lapiz-plugin.desktop.in=.lapiz-plugin)
 
 $(plugin_DATA): $(plugin_in_files)
 	$(AM_V_GEN) $(MSGFMT) --keyword=Description --desktop --template $< -d $(top_srcdir)/po -o $@

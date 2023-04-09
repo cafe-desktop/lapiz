@@ -1,6 +1,6 @@
 /*
- * pluma-close-button.c
- * This file is part of pluma
+ * lapiz-close-button.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Paolo Borelli
  *
@@ -20,17 +20,17 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "pluma-close-button.h"
+#include "lapiz-close-button.h"
 
-G_DEFINE_TYPE (PlumaCloseButton, pluma_close_button, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE (PlumaCloseButton, lapiz_close_button, GTK_TYPE_BUTTON)
 
 static void
-pluma_close_button_class_init (PlumaCloseButtonClass *klass)
+lapiz_close_button_class_init (PlumaCloseButtonClass *klass)
 {
 }
 
 static void
-pluma_close_button_init (PlumaCloseButton *button)
+lapiz_close_button_init (PlumaCloseButton *button)
 {
 	GtkWidget *image;
 	GtkCssProvider *css;
@@ -66,7 +66,7 @@ pluma_close_button_init (PlumaCloseButton *button)
 }
 
 GtkWidget *
-pluma_close_button_new ()
+lapiz_close_button_new ()
 {
 	return GTK_WIDGET (g_object_new (PLUMA_TYPE_CLOSE_BUTTON,
 	                                 "relief", GTK_RELIEF_NONE,

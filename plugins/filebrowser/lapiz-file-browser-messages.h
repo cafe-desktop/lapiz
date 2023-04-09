@@ -1,5 +1,5 @@
 /*
- * pluma-file-browser-messages.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-messages.h - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2008 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -22,13 +22,13 @@
 #ifndef __PLUMA_FILE_BROWSER_MESSAGES_H__
 #define __PLUMA_FILE_BROWSER_MESSAGES_H__
 
-#include <pluma/pluma-window.h>
-#include <pluma/pluma-message-bus.h>
-#include "pluma-file-browser-widget.h"
+#include <lapiz/lapiz-window.h>
+#include <lapiz/lapiz-message-bus.h>
+#include "lapiz-file-browser-widget.h"
 
-void pluma_file_browser_messages_register   (PlumaWindow *window,
+void lapiz_file_browser_messages_register   (PlumaWindow *window,
 					     PlumaFileBrowserWidget *widget);
-void pluma_file_browser_messages_unregister (PlumaWindow *window);
+void lapiz_file_browser_messages_unregister (PlumaWindow *window);
 
 #endif /* __PLUMA_FILE_BROWSER_MESSAGES_H__ */
 

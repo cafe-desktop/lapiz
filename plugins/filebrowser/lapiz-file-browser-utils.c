@@ -1,5 +1,5 @@
 /*
- * pluma-file-bookmarks-store.c - Pluma plugin providing easy file access
+ * lapiz-file-bookmarks-store.c - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#include "pluma-file-browser-utils.h"
-#include <pluma/pluma-utils.h>
+#include "lapiz-file-browser-utils.h"
+#include <lapiz/lapiz-utils.h>
 
 #include <glib/gi18n.h>
 
@@ -53,7 +53,7 @@ process_icon_pixbuf (GdkPixbuf * pixbuf,
 }
 
 GdkPixbuf *
-pluma_file_browser_utils_pixbuf_from_theme (gchar const * name,
+lapiz_file_browser_utils_pixbuf_from_theme (gchar const * name,
                                             GtkIconSize size)
 {
 	gint width;
@@ -74,7 +74,7 @@ pluma_file_browser_utils_pixbuf_from_theme (gchar const * name,
 }
 
 GdkPixbuf *
-pluma_file_browser_utils_pixbuf_from_icon (GIcon * icon,
+lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
                                            GtkIconSize size)
 {
 	GdkPixbuf * ret = NULL;
@@ -103,7 +103,7 @@ pluma_file_browser_utils_pixbuf_from_icon (GIcon * icon,
 }
 
 GdkPixbuf *
-pluma_file_browser_utils_pixbuf_from_file (GFile * file,
+lapiz_file_browser_utils_pixbuf_from_file (GFile * file,
                                            GtkIconSize size)
 {
 	GIcon * icon;
@@ -121,7 +121,7 @@ pluma_file_browser_utils_pixbuf_from_file (GFile * file,
 
 	icon = g_file_info_get_icon (info);
 	if (icon != NULL)
-		ret = pluma_file_browser_utils_pixbuf_from_icon (icon, size);
+		ret = lapiz_file_browser_utils_pixbuf_from_icon (icon, size);
 
 	g_object_unref (info);
 
@@ -129,26 +129,26 @@ pluma_file_browser_utils_pixbuf_from_file (GFile * file,
 }
 
 gchar *
-pluma_file_browser_utils_file_basename (GFile * file)
+lapiz_file_browser_utils_file_basename (GFile * file)
 {
 	gchar *uri;
 	gchar *ret;
 
 	uri = g_file_get_uri (file);
-	ret = pluma_file_browser_utils_uri_basename (uri);
+	ret = lapiz_file_browser_utils_uri_basename (uri);
 	g_free (uri);
 
 	return ret;
 }
 
 gchar *
-pluma_file_browser_utils_uri_basename (gchar const * uri)
+lapiz_file_browser_utils_uri_basename (gchar const * uri)
 {
-	return pluma_utils_basename_for_display (uri);
+	return lapiz_utils_basename_for_display (uri);
 }
 
 gboolean
-pluma_file_browser_utils_confirmation_dialog (PlumaWindow * window,
+lapiz_file_browser_utils_confirmation_dialog (PlumaWindow * window,
                                               GtkMessageType type,
                                               gchar const *message,
                                               gchar const *secondary)

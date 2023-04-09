@@ -1,5 +1,5 @@
 /*
- * pluma-trail-save-plugin.c
+ * lapiz-trail-save-plugin.c
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,10 +24,10 @@
 
 #include <libpeas/peas-activatable.h>
 
-#include <pluma/pluma-window.h>
-#include <pluma/pluma-debug.h>
+#include <lapiz/lapiz-window.h>
+#include <lapiz/lapiz-debug.h>
 
-#include "pluma-trail-save-plugin.h"
+#include "lapiz-trail-save-plugin.h"
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
@@ -42,7 +42,7 @@ enum {
 };
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaTrailSavePlugin,
-                                pluma_trail_save_plugin,
+                                lapiz_trail_save_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaTrailSavePlugin)
@@ -144,7 +144,7 @@ on_tab_added (PlumaWindow *window,
 {
 	PlumaDocument *document;
 
-	document = pluma_tab_get_document (tab);
+	document = lapiz_tab_get_document (tab);
 	g_signal_connect (document, "save", G_CALLBACK (on_save), plugin);
 }
 
@@ -155,12 +155,12 @@ on_tab_removed (PlumaWindow *window,
 {
 	PlumaDocument *document;
 
-	document = pluma_tab_get_document (tab);
+	document = lapiz_tab_get_document (tab);
 	g_signal_handlers_disconnect_by_data (document, plugin);
 }
 
 static void
-pluma_trail_save_plugin_activate (PeasActivatable *activatable)
+lapiz_trail_save_plugin_activate (PeasActivatable *activatable)
 {
 	PlumaTrailSavePlugin *plugin;
 	PlumaWindow *window;
@@ -168,7 +168,7 @@ pluma_trail_save_plugin_activate (PeasActivatable *activatable)
 	GList *documents_iter;
 	PlumaDocument *document;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	plugin = PLUMA_TRAIL_SAVE_PLUGIN (activatable);
 	window = PLUMA_WINDOW (plugin->priv->window);
@@ -176,7 +176,7 @@ pluma_trail_save_plugin_activate (PeasActivatable *activatable)
 	g_signal_connect (window, "tab_added", G_CALLBACK (on_tab_added), plugin);
 	g_signal_connect (window, "tab_removed", G_CALLBACK (on_tab_removed), plugin);
 
-	documents = pluma_window_get_documents (window);
+	documents = lapiz_window_get_documents (window);
 
 	for (documents_iter = documents;
 	     documents_iter && documents_iter->data;
@@ -190,7 +190,7 @@ pluma_trail_save_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-pluma_trail_save_plugin_deactivate (PeasActivatable *activatable)
+lapiz_trail_save_plugin_deactivate (PeasActivatable *activatable)
 {
 	PlumaTrailSavePlugin *plugin;
 	PlumaWindow *window;
@@ -198,14 +198,14 @@ pluma_trail_save_plugin_deactivate (PeasActivatable *activatable)
 	GList *documents_iter;
 	PlumaDocument *document;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	plugin = PLUMA_TRAIL_SAVE_PLUGIN (activatable);
 	window = PLUMA_WINDOW (plugin->priv->window);
 
 	g_signal_handlers_disconnect_by_data (window, plugin);
 
-	documents = pluma_window_get_documents (window);
+	documents = lapiz_window_get_documents (window);
 
 	for (documents_iter = documents;
 	     documents_iter && documents_iter->data;
@@ -219,19 +219,19 @@ pluma_trail_save_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-pluma_trail_save_plugin_init (PlumaTrailSavePlugin *plugin)
+lapiz_trail_save_plugin_init (PlumaTrailSavePlugin *plugin)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTrailSavePlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTrailSavePlugin initializing");
 
-	plugin->priv = pluma_trail_save_plugin_get_instance_private (plugin);
+	plugin->priv = lapiz_trail_save_plugin_get_instance_private (plugin);
 }
 
 static void
-pluma_trail_save_plugin_dispose (GObject *object)
+lapiz_trail_save_plugin_dispose (GObject *object)
 {
 	PlumaTrailSavePlugin *plugin = PLUMA_TRAIL_SAVE_PLUGIN (object);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaTrailSavePlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTrailSavePlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -239,11 +239,11 @@ pluma_trail_save_plugin_dispose (GObject *object)
 		plugin->priv->window = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_trail_save_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_trail_save_plugin_parent_class)->dispose (object);
 }
 
 static void
-pluma_trail_save_plugin_set_property (GObject      *object,
+lapiz_trail_save_plugin_set_property (GObject      *object,
                                       guint         prop_id,
                                       const GValue *value,
                                       GParamSpec   *pspec)
@@ -263,7 +263,7 @@ pluma_trail_save_plugin_set_property (GObject      *object,
 }
 
 static void
-pluma_trail_save_plugin_get_property (GObject    *object,
+lapiz_trail_save_plugin_get_property (GObject    *object,
                                       guint       prop_id,
                                       GValue     *value,
                                       GParamSpec *pspec)
@@ -283,19 +283,19 @@ pluma_trail_save_plugin_get_property (GObject    *object,
 }
 
 static void
-pluma_trail_save_plugin_class_init (PlumaTrailSavePluginClass *klass)
+lapiz_trail_save_plugin_class_init (PlumaTrailSavePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = pluma_trail_save_plugin_dispose;
-	object_class->set_property = pluma_trail_save_plugin_set_property;
-	object_class->get_property = pluma_trail_save_plugin_get_property;
+	object_class->dispose = lapiz_trail_save_plugin_dispose;
+	object_class->set_property = lapiz_trail_save_plugin_set_property;
+	object_class->get_property = lapiz_trail_save_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_OBJECT, "object");
 }
 
 static void
-pluma_trail_save_plugin_class_finalize (PlumaTrailSavePluginClass *klass)
+lapiz_trail_save_plugin_class_finalize (PlumaTrailSavePluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -303,14 +303,14 @@ pluma_trail_save_plugin_class_finalize (PlumaTrailSavePluginClass *klass)
 static void
 peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-	iface->activate = pluma_trail_save_plugin_activate;
-	iface->deactivate = pluma_trail_save_plugin_deactivate;
+	iface->activate = lapiz_trail_save_plugin_activate;
+	iface->deactivate = lapiz_trail_save_plugin_deactivate;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	pluma_trail_save_plugin_register_type (G_TYPE_MODULE (module));
+	lapiz_trail_save_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,

@@ -1,6 +1,6 @@
 /*
- * pluma-debug.h
- * This file is part of pluma
+ * lapiz-debug.h
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -77,14 +77,14 @@ typedef enum {
 #define	DEBUG_LOADER	PLUMA_DEBUG_LOADER,  __FILE__, __LINE__, G_STRFUNC
 #define	DEBUG_SAVER	PLUMA_DEBUG_SAVER,   __FILE__, __LINE__, G_STRFUNC
 
-void pluma_debug_init (void);
+void lapiz_debug_init (void);
 
-void pluma_debug (PlumaDebugSection  section,
+void lapiz_debug (PlumaDebugSection  section,
 		  const gchar       *file,
 		  gint               line,
 		  const gchar       *function);
 
-void pluma_debug_message (PlumaDebugSection  section,
+void lapiz_debug_message (PlumaDebugSection  section,
 			  const gchar       *file,
 			  gint               line,
 			  const gchar       *function,

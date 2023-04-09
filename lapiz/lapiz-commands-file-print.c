@@ -1,6 +1,6 @@
 /*
- * pluma-commands-file-print.c
- * This file is part of pluma
+ * lapiz-commands-file-print.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -37,38 +37,38 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "pluma-commands.h"
-#include "pluma-window.h"
-#include "pluma-tab.h"
-#include "pluma-debug.h"
+#include "lapiz-commands.h"
+#include "lapiz-window.h"
+#include "lapiz-tab.h"
+#include "lapiz-debug.h"
 
 void
-_pluma_cmd_file_print_preview (GtkAction   *action,
+_lapiz_cmd_file_print_preview (GtkAction   *action,
 			       PlumaWindow *window)
 {
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	if (tab == NULL)
 		return;
 
-	_pluma_tab_print_preview (tab);
+	_lapiz_tab_print_preview (tab);
 }
 
 void
-_pluma_cmd_file_print (GtkAction   *action,
+_lapiz_cmd_file_print (GtkAction   *action,
 		       PlumaWindow *window)
 {
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	if (tab == NULL)
 		return;
 
-	_pluma_tab_print (tab);
+	_lapiz_tab_print (tab);
 }
 

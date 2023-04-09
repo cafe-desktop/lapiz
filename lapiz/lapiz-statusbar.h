@@ -1,6 +1,6 @@
 /*
- * pluma-statusbar.h
- * This file is part of pluma
+ * lapiz-statusbar.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Borelli
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -30,11 +30,11 @@
 #define PLUMA_STATUSBAR_H
 
 #include <gtk/gtk.h>
-#include <pluma/pluma-window.h>
+#include <lapiz/lapiz-window.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_STATUSBAR		(pluma_statusbar_get_type ())
+#define PLUMA_TYPE_STATUSBAR		(lapiz_statusbar_get_type ())
 #define PLUMA_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_STATUSBAR, PlumaStatusbar))
 #define PLUMA_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_STATUSBAR, PlumaStatusbarClass))
 #define PLUMA_IS_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_STATUSBAR))
@@ -58,24 +58,24 @@ struct _PlumaStatusbarClass
         GtkStatusbarClass parent_class;
 };
 
-GType		 pluma_statusbar_get_type		(void) G_GNUC_CONST;
+GType		 lapiz_statusbar_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_statusbar_new			(void);
+GtkWidget	*lapiz_statusbar_new			(void);
 
-void		 pluma_statusbar_set_window_state	(PlumaStatusbar   *statusbar,
+void		 lapiz_statusbar_set_window_state	(PlumaStatusbar   *statusbar,
 							 PlumaWindowState  state,
 							 gint              num_of_errors);
 
-void		 pluma_statusbar_set_overwrite		(PlumaStatusbar   *statusbar,
+void		 lapiz_statusbar_set_overwrite		(PlumaStatusbar   *statusbar,
 							 gboolean          overwrite);
 
-void		 pluma_statusbar_set_cursor_position	(PlumaStatusbar   *statusbar,
+void		 lapiz_statusbar_set_cursor_position	(PlumaStatusbar   *statusbar,
 							 gint              line,
 							 gint              col);
 
-void		 pluma_statusbar_clear_overwrite 	(PlumaStatusbar   *statusbar);
+void		 lapiz_statusbar_clear_overwrite 	(PlumaStatusbar   *statusbar);
 
-void		 pluma_statusbar_flash_message		(PlumaStatusbar   *statusbar,
+void		 lapiz_statusbar_flash_message		(PlumaStatusbar   *statusbar,
 							 guint             context_id,
 							 const gchar      *format,
 							 ...) G_GNUC_PRINTF(3, 4);

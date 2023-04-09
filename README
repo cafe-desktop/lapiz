@@ -1,21 +1,21 @@
 General Information
 ===================
 
-pluma is a small and lightweight UTF-8 text editor for the MATE
+lapiz is a small and lightweight UTF-8 text editor for the MATE
 environment. Based on gedit, the text editor for the GNOME2 environment.
 
-pluma is part of MATE and uses the latest GTK+ and MATE libraries.
+lapiz is part of MATE and uses the latest GTK+ and MATE libraries.
 Complete MATE integration is featured, with support for Drag and Drop (DnD)
 from Caja (the MATE file manager), the use of the MATE help system,
 the MATE Virtual File System and the MATE print framework.
 
-pluma uses a Multiple Document Interface (MDI), which lets you edit more than
+lapiz uses a Multiple Document Interface (MDI), which lets you edit more than
 one document at the same time.
 
-pluma supports most standard editing features, plus several not found in your
+lapiz supports most standard editing features, plus several not found in your
 average text editor (plugins being the most notable of these).
 
-Although new features are always under development, currently pluma has:
+Although new features are always under development, currently lapiz has:
 
     * Complete support for UTF-8 text
     * Syntax highlighting
@@ -27,7 +27,7 @@ Although new features are always under development, currently pluma has:
     * Configurable Plugin system
 
 
-Some of the plugins, packaged and installed with pluma include, among others:
+Some of the plugins, packaged and installed with lapiz include, among others:
 
     * Word count
     * Spell checker
@@ -40,7 +40,7 @@ Some of the plugins, packaged and installed with pluma include, among others:
 Other external plugins are also available.
 
 
-pluma is released under the GNU General Public License (GPL) version 2, see
+lapiz is released under the GNU General Public License (GPL) version 2, see
 the file 'COPYING' for more information.
 
 
@@ -48,21 +48,21 @@ The official web site is:
 
     https://mate-desktop.org/
 
-You can download the latest pluma tarball from:
+You can download the latest lapiz tarball from:
 
     https://pub.mate-desktop.org/releases/
 
 Installation
 ============
 
-pluma requires GTK+-3.14.x and GtkSourceView 3.0.x.
+lapiz requires GTK+-3.14.x and GtkSourceView 3.0.x.
 
 Simple install procedure:
 
   % ./autogen.sh				# run the `configure' script
-  % make					# build pluma
+  % make					# build lapiz
   [ Become root if necessary ]
-  % make install				# install pluma
+  % make install				# install lapiz
 
 
 Running Tests
@@ -79,7 +79,7 @@ How to report bugs
 
 Bugs should be reported to the MATE bug tracking system:
 
-  https://github.com/mate-desktop/pluma/issues 
+  https://github.com/mate-desktop/lapiz/issues 
   
 You will need to create an account for yourself.
 
@@ -108,9 +108,9 @@ In the bug report please include:
 Patches
 =======
 
-Patches should also be submitted to https://github.com/mate-desktop/pluma,
+Patches should also be submitted to https://github.com/mate-desktop/lapiz,
 preferably via pull requests.
 
 
-  The pluma team.
+  The lapiz team.
 

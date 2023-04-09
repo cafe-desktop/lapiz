@@ -1,6 +1,6 @@
 /*
- * pluma-utils.h
- * This file is part of pluma
+ * lapiz-utils.h
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -36,7 +36,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <atk/atk.h>
-#include <pluma/pluma-encodings.h>
+#include <lapiz/lapiz-encodings.h>
 
 G_BEGIN_DECLS
 
@@ -48,10 +48,10 @@ G_BEGIN_DECLS
 
 enum { PLUMA_ALL_WORKSPACES = 0xffffffff };
 
-gboolean	 pluma_utils_uri_has_writable_scheme	(const gchar *uri);
-gboolean	 pluma_utils_uri_has_file_scheme	(const gchar *uri);
+gboolean	 lapiz_utils_uri_has_writable_scheme	(const gchar *uri);
+gboolean	 lapiz_utils_uri_has_file_scheme	(const gchar *uri);
 
-void		 pluma_utils_menu_position_under_widget (GtkMenu  *menu,
+void		 lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
 							 gint     *x,
 							 gint     *y,
 							 gboolean *push_in,
@@ -60,21 +60,21 @@ void		 pluma_utils_menu_position_under_widget (GtkMenu  *menu,
 void		 menu_popup_at_treeview_selection	(GtkWidget *menu,
 							 GtkWidget *treeview);
 
-GtkWidget	*pluma_gtk_button_new_with_icon		(const gchar *label,
+GtkWidget	*lapiz_gtk_button_new_with_icon		(const gchar *label,
 							 const gchar *icon_name);
 
-GtkWidget	*pluma_dialog_add_button		(GtkDialog   *dialog,
+GtkWidget	*lapiz_dialog_add_button		(GtkDialog   *dialog,
 							 const gchar *text,
 							 const gchar *icon_name,
 							 gint         response_id);
 
-gchar		*pluma_utils_escape_underscores		(const gchar *text,
+gchar		*lapiz_utils_escape_underscores		(const gchar *text,
 							 gssize       length);
 
-gchar		*pluma_utils_str_middle_truncate	(const gchar *string,
+gchar		*lapiz_utils_str_middle_truncate	(const gchar *string,
 							 guint        truncate_length);
 
-gchar		*pluma_utils_str_end_truncate		(const gchar *string,
+gchar		*lapiz_utils_str_end_truncate		(const gchar *string,
 							 guint        truncate_length);
 
 gboolean	 g_utf8_caselessnmatch			(const char *s1,
@@ -82,59 +82,59 @@ gboolean	 g_utf8_caselessnmatch			(const char *s1,
 							 gssize n1,
 							 gssize n2);
 
-void		 pluma_utils_set_atk_name_description	(GtkWidget  *widget,
+void		 lapiz_utils_set_atk_name_description	(GtkWidget  *widget,
 							 const gchar *name,
 							 const gchar *description);
 
-void		 pluma_utils_set_atk_relation		(GtkWidget       *obj1,
+void		 lapiz_utils_set_atk_relation		(GtkWidget       *obj1,
 							 GtkWidget       *obj2,
 							 AtkRelationType  rel_type);
 
-gboolean	 pluma_utils_uri_exists			(const gchar* text_uri);
+gboolean	 lapiz_utils_uri_exists			(const gchar* text_uri);
 
-gchar		*pluma_utils_escape_search_text		(const gchar *text);
+gchar		*lapiz_utils_escape_search_text		(const gchar *text);
 
-gchar		*pluma_utils_unescape_search_text	(const gchar *text);
+gchar		*lapiz_utils_unescape_search_text	(const gchar *text);
 
-void		 pluma_warning				(GtkWindow  *parent,
+void		 lapiz_warning				(GtkWindow  *parent,
 							 const gchar *format,
 							 ...) G_GNUC_PRINTF(2, 3);
 
-gchar		*pluma_utils_make_valid_utf8		(const char *name);
+gchar		*lapiz_utils_make_valid_utf8		(const char *name);
 
 /* Note that this function replace home dir with ~ */
-gchar		*pluma_utils_uri_get_dirname		(const char *uri);
+gchar		*lapiz_utils_uri_get_dirname		(const char *uri);
 
-gchar		*pluma_utils_location_get_dirname_for_display
+gchar		*lapiz_utils_location_get_dirname_for_display
 							(GFile *location);
 
-gchar		*pluma_utils_replace_home_dir_with_tilde (const gchar *uri);
+gchar		*lapiz_utils_replace_home_dir_with_tilde (const gchar *uri);
 
-guint		 pluma_utils_get_current_workspace	(GdkScreen *screen);
+guint		 lapiz_utils_get_current_workspace	(GdkScreen *screen);
 
-guint		 pluma_utils_get_window_workspace	(GtkWindow *gtkwindow);
+guint		 lapiz_utils_get_window_workspace	(GtkWindow *gtkwindow);
 
-void		 pluma_utils_get_current_viewport	(GdkScreen    *screen,
+void		 lapiz_utils_get_current_viewport	(GdkScreen    *screen,
 							 gint         *x,
 							 gint         *y);
 
-gboolean	 pluma_utils_is_valid_uri		(const gchar *uri);
+gboolean	 lapiz_utils_is_valid_uri		(const gchar *uri);
 
-gboolean	 pluma_utils_get_ui_objects		(const gchar  *filename,
+gboolean	 lapiz_utils_get_ui_objects		(const gchar  *filename,
                                                          gchar       **root_objects,
 							 GtkWidget   **error_widget,
 							 const gchar  *object_name,
 							 ...) G_GNUC_NULL_TERMINATED;
 
-gboolean         pluma_utils_file_has_parent            (GFile *gfile);
+gboolean         lapiz_utils_file_has_parent            (GFile *gfile);
 
 /* Return NULL if str is not a valid URI and/or filename */
-gchar		*pluma_utils_make_canonical_uri_from_shell_arg
+gchar		*lapiz_utils_make_canonical_uri_from_shell_arg
 							(const gchar *str);
 
-gchar		*pluma_utils_uri_for_display 	        (const gchar *uri);
-gchar           *pluma_utils_basename_for_display	(const gchar *uri);
-gboolean	 pluma_utils_decode_uri 		(const gchar *uri,
+gchar		*lapiz_utils_uri_for_display 	        (const gchar *uri);
+gchar           *lapiz_utils_basename_for_display	(const gchar *uri);
+gboolean	 lapiz_utils_decode_uri 		(const gchar *uri,
 							 gchar **scheme,
 							 gchar **user,
 							 gchar **port,
@@ -143,11 +143,11 @@ gboolean	 pluma_utils_decode_uri 		(const gchar *uri,
 
 
 /* Turns data from a drop into a list of well formatted uris */
-gchar 	       **pluma_utils_drop_get_uris		(GtkSelectionData *selection_data);
+gchar 	       **lapiz_utils_drop_get_uris		(GtkSelectionData *selection_data);
 
 /* Provides regexp forward search */
 gboolean
-pluma_gtk_text_iter_regex_search (const GtkTextIter *iter,
+lapiz_gtk_text_iter_regex_search (const GtkTextIter *iter,
 				  const gchar       *str,
 				  GtkTextSearchFlags flags,
 				  GtkTextIter       *match_start,
@@ -157,7 +157,7 @@ pluma_gtk_text_iter_regex_search (const GtkTextIter *iter,
 				  gchar            **replace_text);
 
 GtkWidget *
-pluma_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
+lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 				       const gchar *label_name);
 
 G_END_DECLS

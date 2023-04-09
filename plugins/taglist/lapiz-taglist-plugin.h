@@ -1,5 +1,5 @@
 /*
- * pluma-taglist-plugin.h
+ * lapiz-taglist-plugin.h
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -20,8 +20,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -40,7 +40,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_TAGLIST_PLUGIN		(pluma_taglist_plugin_get_type ())
+#define PLUMA_TYPE_TAGLIST_PLUGIN		(lapiz_taglist_plugin_get_type ())
 #define PLUMA_TAGLIST_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_TAGLIST_PLUGIN, PlumaTaglistPlugin))
 #define PLUMA_TAGLIST_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_TAGLIST_PLUGIN, PlumaTaglistPluginClass))
 #define PLUMA_IS_TAGLIST_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_TAGLIST_PLUGIN))
@@ -76,7 +76,7 @@ struct _PlumaTaglistPluginClass
 /*
  * Public methods
  */
-GType	pluma_taglist_plugin_get_type		(void) G_GNUC_CONST;
+GType	lapiz_taglist_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);

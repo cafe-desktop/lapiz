@@ -67,7 +67,7 @@ class WindowHelper:
         manager = self.window.get_ui_manager()
 
         self.action_group = Gtk.ActionGroup("PlumaSnippetPluginActions")
-        self.action_group.set_translation_domain('pluma')
+        self.action_group.set_translation_domain('lapiz')
         self.action_group.add_actions([('ManageSnippets', None,
                 _('Manage _Snippets...'), \
                 None, _('Manage snippets'), \
@@ -134,7 +134,7 @@ class WindowHelper:
     # Callbacks
 
     def on_tab_added(self, window, tab):
-        # Create a new controller for this tab if it has a standard pluma view
+        # Create a new controller for this tab if it has a standard lapiz view
         view = tab.get_view()
 
         if isinstance(view, Pluma.View) and not self.has_controller(view):

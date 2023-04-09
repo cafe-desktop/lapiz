@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-prefs-manager-private.h
- * This file is part of pluma
+ * lapiz-prefs-manager-private.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002  Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -40,7 +40,7 @@ struct _PlumaPrefsManager {
 	GSettings *interface_settings;
 };
 
-extern PlumaPrefsManager *pluma_prefs_manager;
+extern PlumaPrefsManager *lapiz_prefs_manager;
 
 #endif /* __PLUMA_PREFS_MANAGER_PRIVATE_H__ */
 

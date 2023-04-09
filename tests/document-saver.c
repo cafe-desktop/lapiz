@@ -1,27 +1,27 @@
 /*
  * document-saver.c
- * This file is part of pluma
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Jesse van den Kieboom
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-#include "pluma-gio-document-loader.h"
-#include "pluma-prefs-manager-app.h"
+#include "lapiz-gio-document-loader.h"
+#include "lapiz-prefs-manager-app.h"
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <glib.h>
@@ -34,19 +34,19 @@
 #define ACCESSPERMS (S_IRWXU|S_IRWXG|S_IRWXO)
 #endif
 
-#define DEFAULT_LOCAL_URI "/tmp/pluma-document-saver-test.txt"
-#define DEFAULT_REMOTE_URI "sftp://localhost/tmp/pluma-document-saver-test.txt"
+#define DEFAULT_LOCAL_URI "/tmp/lapiz-document-saver-test.txt"
+#define DEFAULT_REMOTE_URI "sftp://localhost/tmp/lapiz-document-saver-test.txt"
 #define DEFAULT_CONTENT "hello world!"
 #define DEFAULT_CONTENT_RESULT "hello world!\n"
 
-#define UNOWNED_LOCAL_DIRECTORY "/tmp/pluma-document-saver-unowned"
-#define UNOWNED_LOCAL_URI "/tmp/pluma-document-saver-unowned/pluma-document-saver-test.txt"
+#define UNOWNED_LOCAL_DIRECTORY "/tmp/lapiz-document-saver-unowned"
+#define UNOWNED_LOCAL_URI "/tmp/lapiz-document-saver-unowned/lapiz-document-saver-test.txt"
 
-#define UNOWNED_REMOTE_DIRECTORY "sftp://localhost/tmp/pluma-document-saver-unowned"
-#define UNOWNED_REMOTE_URI "sftp://localhost/tmp/pluma-document-saver-unowned/pluma-document-saver-test.txt"
+#define UNOWNED_REMOTE_DIRECTORY "sftp://localhost/tmp/lapiz-document-saver-unowned"
+#define UNOWNED_REMOTE_URI "sftp://localhost/tmp/lapiz-document-saver-unowned/lapiz-document-saver-test.txt"
 
-#define UNOWNED_GROUP_LOCAL_URI "/tmp/pluma-document-saver-unowned-group.txt"
-#define UNOWNED_GROUP_REMOTE_URI "sftp://localhost/tmp/pluma-document-saver-unowned-group.txt"
+#define UNOWNED_GROUP_LOCAL_URI "/tmp/lapiz-document-saver-unowned-group.txt"
+#define UNOWNED_GROUP_REMOTE_URI "sftp://localhost/tmp/lapiz-document-saver-unowned-group.txt"
 
 static gboolean test_completed;
 static gboolean mount_completed;
@@ -86,7 +86,7 @@ saver_test_data_free (SaverTestData *data)
 static PlumaDocument *
 create_document (const gchar *contents)
 {
-	PlumaDocument *document = pluma_document_new ();
+	PlumaDocument *document = lapiz_document_new ();
 
 	gtk_text_buffer_set_text (GTK_TEXT_BUFFER (document), contents, -1);
 	return document;
@@ -207,7 +207,7 @@ test_saver (const gchar              *filename_or_uri,
 	gboolean existed;
 
 	document = create_document (contents);
-	pluma_document_set_newline_type (document, newline_type);
+	lapiz_document_set_newline_type (document, newline_type);
 
 	g_signal_connect (document, "saved", G_CALLBACK (complete_test_error), data);
 
@@ -226,7 +226,7 @@ test_saver (const gchar              *filename_or_uri,
 
 	ensure_mounted (file);
 
-	pluma_document_save_as (document, uri, pluma_encoding_get_utf8 (), save_flags);
+	lapiz_document_save_as (document, uri, lapiz_encoding_get_utf8 (), save_flags);
 
 	while (!test_completed)
 	{
@@ -392,7 +392,7 @@ check_permissions_saved (PlumaDocument *document,
                          SaverTestData *data)
 {
 	guint permissions = (guint)GPOINTER_TO_INT (data->data);
-	GFile *file = pluma_document_get_location (document);
+	GFile *file = lapiz_document_get_location (document);
 
 	check_permissions (file, permissions);
 
@@ -689,7 +689,7 @@ int main (int   argc,
 
 	g_test_init (&argc, &argv, NULL);
 
-	pluma_prefs_manager_app_init ();
+	lapiz_prefs_manager_app_init ();
 
 	g_printf ("\n***\n");
 	have_unowned = check_unowned_directory ();

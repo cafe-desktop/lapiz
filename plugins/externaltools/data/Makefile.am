@@ -1,4 +1,4 @@
-TOOL_MERGE=$(top_srcdir)/plugins/externaltools/scripts/pluma-tool-merge.pl
+TOOL_MERGE=$(top_srcdir)/plugins/externaltools/scripts/lapiz-tool-merge.pl
 
 tools_in_files = \
 	build.tool.in \

@@ -1,6 +1,6 @@
 /*
- * pluma-file-chooser-dialog.c
- * This file is part of pluma
+ * lapiz-file-chooser-dialog.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005-2007 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005-2007. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005-2007. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -41,13 +41,13 @@
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
 
-#include "pluma-file-chooser-dialog.h"
-#include "pluma-encodings-combo-box.h"
-#include "pluma-language-manager.h"
-#include "pluma-prefs-manager-app.h"
-#include "pluma-debug.h"
-#include "pluma-enum-types.h"
-#include "pluma-utils.h"
+#include "lapiz-file-chooser-dialog.h"
+#include "lapiz-encodings-combo-box.h"
+#include "lapiz-language-manager.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-debug.h"
+#include "lapiz-enum-types.h"
+#include "lapiz-utils.h"
 
 #define ALL_FILES		_("All Files")
 #define ALL_TEXT_FILES		_("All Text Files")
@@ -62,10 +62,10 @@ struct _PlumaFileChooserDialogPrivate
 	GtkListStore *newline_store;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaFileChooserDialog, pluma_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaFileChooserDialog, lapiz_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
 
 static void
-pluma_file_chooser_dialog_class_init (PlumaFileChooserDialogClass *klass)
+lapiz_file_chooser_dialog_class_init (PlumaFileChooserDialogClass *klass)
 {
 }
 
@@ -78,7 +78,7 @@ create_option_menu (PlumaFileChooserDialog *dialog)
 	label = gtk_label_new_with_mnemonic (_("C_haracter Encoding:"));
 	gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 
-	menu = pluma_encodings_combo_box_new (
+	menu = lapiz_encodings_combo_box_new (
 		gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
@@ -247,7 +247,7 @@ filter_changed (PlumaFileChooserDialog *dialog,
 {
 	GtkFileFilter *filter;
 
-	if (!pluma_prefs_manager_active_file_filter_can_set ())
+	if (!lapiz_prefs_manager_active_file_filter_can_set ())
 		return;
 
 	filter = gtk_file_chooser_get_filter (GTK_FILE_CHOOSER (dialog));
@@ -262,9 +262,9 @@ filter_changed (PlumaFileChooserDialog *dialog,
 		if (strcmp (name, ALL_TEXT_FILES) == 0)
 			id = 1;
 
-		pluma_debug_message (DEBUG_COMMANDS, "Active filter: %s (%d)", name, id);
+		lapiz_debug_message (DEBUG_COMMANDS, "Active filter: %s (%d)", name, id);
 
-		pluma_prefs_manager_set_active_file_filter (id);
+		lapiz_prefs_manager_set_active_file_filter (id);
 	}
 }
 
@@ -281,7 +281,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 		GtkSourceLanguageManager *lm;
 		const gchar * const *languages;
 
-		lm = pluma_get_language_manager ();
+		lm = lapiz_get_language_manager ();
 		languages = gtk_source_language_manager_get_language_ids (lm);
 
 		while ((languages != NULL) && (*languages != NULL))
@@ -302,7 +302,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 			{
 				if (!g_content_type_is_a (mime_types[i], "text/plain"))
 				{
-					pluma_debug_message (DEBUG_COMMANDS,
+					lapiz_debug_message (DEBUG_COMMANDS,
 							     "Mime-type %s is not related to text/plain",
 							     mime_types[i]);
 
@@ -319,7 +319,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 	}
 
 	/* known mime_types contains "text/plain" and then the list of mime-types unrelated to "text/plain"
-	 * that pluma recognizes */
+	 * that lapiz recognizes */
 
 	if (filter_info->mime_type == NULL)
 		return FALSE;
@@ -347,13 +347,13 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 }
 
 static void
-pluma_file_chooser_dialog_init (PlumaFileChooserDialog *dialog)
+lapiz_file_chooser_dialog_init (PlumaFileChooserDialog *dialog)
 {
-	dialog->priv = pluma_file_chooser_dialog_get_instance_private (dialog);
+	dialog->priv = lapiz_file_chooser_dialog_get_instance_private (dialog);
 }
 
 static GtkWidget *
-pluma_file_chooser_dialog_new_valist (const gchar          *title,
+lapiz_file_chooser_dialog_new_valist (const gchar          *title,
 				      GtkWindow            *parent,
 				      GtkFileChooserAction  action,
 				      const PlumaEncoding  *encoding,
@@ -383,12 +383,12 @@ pluma_file_chooser_dialog_new_valist (const gchar          *title,
 			  NULL);
 
 	if (encoding != NULL)
-		pluma_encodings_combo_box_set_selected_encoding (
+		lapiz_encodings_combo_box_set_selected_encoding (
 				PLUMA_ENCODINGS_COMBO_BOX (PLUMA_FILE_CHOOSER_DIALOG (result)->priv->option_menu),
 				encoding);
 
-	active_filter = pluma_prefs_manager_get_active_file_filter ();
-	pluma_debug_message (DEBUG_COMMANDS, "Active filter: %d", active_filter);
+	active_filter = lapiz_prefs_manager_get_active_file_filter ();
+	lapiz_debug_message (DEBUG_COMMANDS, "Active filter: %d", active_filter);
 
 	/* Filters */
 	filter = gtk_file_filter_new ();
@@ -432,11 +432,11 @@ pluma_file_chooser_dialog_new_valist (const gchar          *title,
 		response_id = va_arg (varargs, gint);
 
 		if (g_strcmp0 (button_text, "process-stop") == 0)
-			pluma_dialog_add_button (GTK_DIALOG (result), _("_Cancel"), button_text, response_id);
+			lapiz_dialog_add_button (GTK_DIALOG (result), _("_Cancel"), button_text, response_id);
 		else if (g_strcmp0 (button_text, "document-open") == 0)
-			pluma_dialog_add_button (GTK_DIALOG (result), _("_Open"), button_text, response_id);
+			lapiz_dialog_add_button (GTK_DIALOG (result), _("_Open"), button_text, response_id);
 		else if (g_strcmp0 (button_text, "document-save") == 0)
-			pluma_dialog_add_button (GTK_DIALOG (result), _("_Save"), button_text, response_id);
+			lapiz_dialog_add_button (GTK_DIALOG (result), _("_Save"), button_text, response_id);
 		else
 			gtk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
 
@@ -453,7 +453,7 @@ pluma_file_chooser_dialog_new_valist (const gchar          *title,
 }
 
 /**
- * pluma_file_chooser_dialog_new:
+ * lapiz_file_chooser_dialog_new:
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL
  * @action: Open or save mode for the dialog
@@ -469,7 +469,7 @@ pluma_file_chooser_dialog_new_valist (const gchar          *title,
  *
  **/
 GtkWidget *
-pluma_file_chooser_dialog_new (const gchar          *title,
+lapiz_file_chooser_dialog_new (const gchar          *title,
 			       GtkWindow            *parent,
 			       GtkFileChooserAction  action,
 			       const PlumaEncoding  *encoding,
@@ -480,7 +480,7 @@ pluma_file_chooser_dialog_new (const gchar          *title,
 	va_list varargs;
 
 	va_start (varargs, first_button_text);
-	result = pluma_file_chooser_dialog_new_valist (title, parent, action,
+	result = lapiz_file_chooser_dialog_new_valist (title, parent, action,
 						       encoding, first_button_text,
 						       varargs);
 	va_end (varargs);
@@ -489,31 +489,31 @@ pluma_file_chooser_dialog_new (const gchar          *title,
 }
 
 void
-pluma_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
+lapiz_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
 					const PlumaEncoding    *encoding)
 {
 	g_return_if_fail (PLUMA_IS_FILE_CHOOSER_DIALOG (dialog));
 	g_return_if_fail (PLUMA_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
 
-	pluma_encodings_combo_box_set_selected_encoding (
+	lapiz_encodings_combo_box_set_selected_encoding (
 				PLUMA_ENCODINGS_COMBO_BOX (dialog->priv->option_menu),
 				encoding);
 }
 
 const PlumaEncoding *
-pluma_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog)
+lapiz_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
 	g_return_val_if_fail (PLUMA_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu), NULL);
 	g_return_val_if_fail ((gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_OPEN ||
 			       gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE), NULL);
 
-	return pluma_encodings_combo_box_get_selected_encoding (
+	return lapiz_encodings_combo_box_get_selected_encoding (
 				PLUMA_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
 }
 
 void
-pluma_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
+lapiz_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
 					    PlumaDocumentNewlineType newline_type)
 {
 	GtkTreeIter iter;
@@ -545,7 +545,7 @@ pluma_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
 }
 
 PlumaDocumentNewlineType
-pluma_file_chooser_dialog_get_newline_type (PlumaFileChooserDialog *dialog)
+lapiz_file_chooser_dialog_get_newline_type (PlumaFileChooserDialog *dialog)
 {
 	GtkTreeIter iter;
 	PlumaDocumentNewlineType newline_type;

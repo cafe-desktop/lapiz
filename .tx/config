@@ -1,16 +1,16 @@
 [main]
 host = https://www.transifex.com
  
-[MATE.1-24--pluma]
+[MATE.1-24--lapiz]
 file_filter = po/<lang>.po
-source_file = pluma.pot
+source_file = lapiz.pot
 source_lang = en
 type = PO
 minimum_perc = 2
 
-[MATE.1-24--pluma-user-guide]
+[MATE.1-24--lapiz-user-guide]
 file_filter = help/<lang>/<lang>.po
-source_file = help/pluma.pot
+source_file = help/lapiz.pot
 source_lang = en
 type = PO
 minimum_perc = 2

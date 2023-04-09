@@ -1,6 +1,6 @@
 /*
- * pluma-app.c
- * This file is part of pluma
+ * lapiz-app.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005-2006 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,17 +38,17 @@
 #include <glib/gi18n.h>
 #include <gdk/gdkx.h>
 
-#include "pluma-app.h"
-#include "pluma-prefs-manager-app.h"
-#include "pluma-commands.h"
-#include "pluma-notebook.h"
-#include "pluma-debug.h"
-#include "pluma-utils.h"
-#include "pluma-enum-types.h"
-#include "pluma-dirs.h"
+#include "lapiz-app.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-commands.h"
+#include "lapiz-notebook.h"
+#include "lapiz-debug.h"
+#include "lapiz-utils.h"
+#include "lapiz-enum-types.h"
+#include "lapiz-dirs.h"
 
-#define PLUMA_PAGE_SETUP_FILE		"pluma-page-setup"
-#define PLUMA_PRINT_SETTINGS_FILE	"pluma-print-settings"
+#define PLUMA_PAGE_SETUP_FILE		"lapiz-page-setup"
+#define PLUMA_PRINT_SETTINGS_FILE	"lapiz-print-settings"
 
 /* Properties */
 enum
@@ -68,10 +68,10 @@ struct _PlumaAppPrivate
 	GtkPrintSettings  *print_settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaApp, pluma_app, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaApp, lapiz_app, G_TYPE_OBJECT)
 
 static void
-pluma_app_finalize (GObject *object)
+lapiz_app_finalize (GObject *object)
 {
 	PlumaApp *app = PLUMA_APP (object);
 
@@ -82,11 +82,11 @@ pluma_app_finalize (GObject *object)
 	if (app->priv->print_settings)
 		g_object_unref (app->priv->print_settings);
 
-	G_OBJECT_CLASS (pluma_app_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_app_parent_class)->finalize (object);
 }
 
 static void
-pluma_app_get_property (GObject    *object,
+lapiz_app_get_property (GObject    *object,
 			guint       prop_id,
 			GValue     *value,
 			GParamSpec *pspec)
@@ -96,7 +96,7 @@ pluma_app_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_LOCKDOWN:
-			g_value_set_flags (value, pluma_app_get_lockdown (app));
+			g_value_set_flags (value, lapiz_app_get_lockdown (app));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -105,12 +105,12 @@ pluma_app_get_property (GObject    *object,
 }
 
 static void
-pluma_app_class_init (PlumaAppClass *klass)
+lapiz_app_class_init (PlumaAppClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_app_finalize;
-	object_class->get_property = pluma_app_get_property;
+	object_class->finalize = lapiz_app_finalize;
+	object_class->get_property = lapiz_app_get_property;
 
 	g_object_class_install_property (object_class,
 					 PROP_LOCKDOWN,
@@ -130,7 +130,7 @@ ensure_user_config_dir (void)
 	gboolean ret = TRUE;
 	gint res;
 
-	config_dir = pluma_dirs_get_user_config_dir ();
+	config_dir = lapiz_dirs_get_user_config_dir ();
 	if (config_dir == NULL)
 	{
 		g_warning ("Could not get config directory\n");
@@ -154,10 +154,10 @@ load_accels (void)
 {
 	gchar *filename;
 
-	filename = pluma_dirs_get_user_accels_file ();
+	filename = lapiz_dirs_get_user_accels_file ();
 	if (filename != NULL)
 	{
-		pluma_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
+		lapiz_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
 		gtk_accel_map_load (filename);
 		g_free (filename);
 	}
@@ -168,10 +168,10 @@ save_accels (void)
 {
 	gchar *filename;
 
-	filename = pluma_dirs_get_user_accels_file ();
+	filename = lapiz_dirs_get_user_accels_file ();
 	if (filename != NULL)
 	{
-		pluma_debug_message (DEBUG_APP, "Saving keybindings in %s\n", filename);
+		lapiz_debug_message (DEBUG_APP, "Saving keybindings in %s\n", filename);
 		gtk_accel_map_save (filename);
 		g_free (filename);
 	}
@@ -183,7 +183,7 @@ get_page_setup_file (void)
 	gchar *config_dir;
 	gchar *setup = NULL;
 
-	config_dir = pluma_dirs_get_user_config_dir ();
+	config_dir = lapiz_dirs_get_user_config_dir ();
 
 	if (config_dir != NULL)
 	{
@@ -256,7 +256,7 @@ get_print_settings_file (void)
 	gchar *config_dir;
 	gchar *settings = NULL;
 
-	config_dir = pluma_dirs_get_user_config_dir ();
+	config_dir = lapiz_dirs_get_user_config_dir ();
 
 	if (config_dir != NULL)
 	{
@@ -324,14 +324,14 @@ save_print_settings (PlumaApp *app)
 }
 
 static void
-pluma_app_init (PlumaApp *app)
+lapiz_app_init (PlumaApp *app)
 {
-	app->priv = pluma_app_get_instance_private (app);
+	app->priv = lapiz_app_get_instance_private (app);
 
 	load_accels ();
 
 	/* initial lockdown state */
-	app->priv->lockdown = pluma_prefs_manager_get_lockdown ();
+	app->priv->lockdown = lapiz_prefs_manager_get_lockdown ();
 }
 
 static void
@@ -342,15 +342,15 @@ app_weak_notify (gpointer data,
 }
 
 /**
- * pluma_app_get_default:
+ * lapiz_app_get_default:
  *
  * Returns the #PlumaApp object. This object is a singleton and
- * represents the running pluma instance.
+ * represents the running lapiz instance.
  *
  * Return value: (transfer none): the #PlumaApp pointer
  */
 PlumaApp *
-pluma_app_get_default (void)
+lapiz_app_get_default (void)
 {
 	static PlumaApp *app = NULL;
 
@@ -395,7 +395,7 @@ window_delete_event (PlumaWindow *window,
 {
 	PlumaWindowState ws;
 
-	ws = pluma_window_get_state (window);
+	ws = lapiz_window_get_state (window);
 
 	if (ws &
 	    (PLUMA_WINDOW_STATE_SAVING |
@@ -403,7 +403,7 @@ window_delete_event (PlumaWindow *window,
 	     PLUMA_WINDOW_STATE_SAVING_SESSION))
 	    	return TRUE;
 
-	_pluma_cmd_file_quit (NULL, window);
+	_lapiz_cmd_file_quit (NULL, window);
 
 	/* Do not destroy the window */
 	return TRUE;
@@ -453,7 +453,7 @@ gen_role (void)
 
 	g_get_current_time (&result);
 
-	return g_strdup_printf ("pluma-window-%ld-%ld-%d-%s",
+	return g_strdup_printf ("lapiz-window-%ld-%ld-%d-%s",
 				result.tv_sec,
 				result.tv_usec,
 				serial++,
@@ -461,17 +461,17 @@ gen_role (void)
 }
 
 static PlumaWindow *
-pluma_app_create_window_real (PlumaApp    *app,
+lapiz_app_create_window_real (PlumaApp    *app,
 			      gboolean     set_geometry,
 			      const gchar *role)
 {
 	PlumaWindow *window;
 
-	pluma_debug (DEBUG_APP);
+	lapiz_debug (DEBUG_APP);
 
 	/*
 	 * We need to be careful here, there is a race condition:
-	 * when another pluma is launched it checks active_window,
+	 * when another lapiz is launched it checks active_window,
 	 * so we must do our best to ensure that active_window
 	 * is never NULL when at least a window exists.
 	 */
@@ -488,7 +488,7 @@ pluma_app_create_window_real (PlumaApp    *app,
 	app->priv->windows = g_list_prepend (app->priv->windows,
 					     window);
 
-	pluma_debug_message (DEBUG_APP, "Window created");
+	lapiz_debug_message (DEBUG_APP, "Window created");
 
 	if (role != NULL)
 	{
@@ -508,17 +508,17 @@ pluma_app_create_window_real (PlumaApp    *app,
 		GdkWindowState state;
 		gint w, h;
 
-		state = pluma_prefs_manager_get_window_state ();
+		state = lapiz_prefs_manager_get_window_state ();
 
 		if ((state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
 		{
-			pluma_prefs_manager_get_default_window_size (&w, &h);
+			lapiz_prefs_manager_get_default_window_size (&w, &h);
 			gtk_window_set_default_size (GTK_WINDOW (window), w, h);
 			gtk_window_maximize (GTK_WINDOW (window));
 		}
 		else
 		{
-			pluma_prefs_manager_get_window_size (&w, &h);
+			lapiz_prefs_manager_get_window_size (&w, &h);
 			gtk_window_set_default_size (GTK_WINDOW (window), w, h);
 			gtk_window_unmaximize (GTK_WINDOW (window));
 		}
@@ -546,7 +546,7 @@ pluma_app_create_window_real (PlumaApp    *app,
 }
 
 /**
- * pluma_app_create_window:
+ * lapiz_app_create_window:
  * @app: the #PlumaApp
  * @screen: (allow-none):
  *
@@ -555,12 +555,12 @@ pluma_app_create_window_real (PlumaApp    *app,
  * Return value: (transfer none): the new #PlumaWindow
  */
 PlumaWindow *
-pluma_app_create_window (PlumaApp  *app,
+lapiz_app_create_window (PlumaApp  *app,
 			 GdkScreen *screen)
 {
 	PlumaWindow *window;
 
-	window = pluma_app_create_window_real (app, TRUE, NULL);
+	window = lapiz_app_create_window_real (app, TRUE, NULL);
 
 	if (screen != NULL)
 		gtk_window_set_screen (GTK_WINDOW (window), screen);
@@ -573,18 +573,18 @@ pluma_app_create_window (PlumaApp  *app,
  * The session manager takes care of it. Used in mate-session.
  */
 PlumaWindow *
-_pluma_app_restore_window (PlumaApp    *app,
+_lapiz_app_restore_window (PlumaApp    *app,
 			   const gchar *role)
 {
 	PlumaWindow *window;
 
-	window = pluma_app_create_window_real (app, FALSE, role);
+	window = lapiz_app_create_window_real (app, FALSE, role);
 
 	return window;
 }
 
 /**
- * pluma_app_get_windows:
+ * lapiz_app_get_windows:
  * @app: the #PlumaApp
  *
  * Returns all the windows currently present in #PlumaApp.
@@ -593,7 +593,7 @@ _pluma_app_restore_window (PlumaApp    *app,
  * The list should not be freed
  */
 const GList *
-pluma_app_get_windows (PlumaApp *app)
+lapiz_app_get_windows (PlumaApp *app)
 {
 	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
 
@@ -601,7 +601,7 @@ pluma_app_get_windows (PlumaApp *app)
 }
 
 /**
- * pluma_app_get_active_window:
+ * lapiz_app_get_active_window:
  * @app: the #PlumaApp
  *
  * Retrives the #PlumaWindow currently active.
@@ -609,12 +609,12 @@ pluma_app_get_windows (PlumaApp *app)
  * Return value: (transfer none): the active #PlumaWindow
  */
 PlumaWindow *
-pluma_app_get_active_window (PlumaApp *app)
+lapiz_app_get_active_window (PlumaApp *app)
 {
 	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
 
 	/* make sure our active window is always realized:
-	 * this is needed on startup if we launch two pluma fast
+	 * this is needed on startup if we launch two lapiz fast
 	 * enough that the second instance comes up before the
 	 * first one shows its window.
 	 */
@@ -638,7 +638,7 @@ is_in_viewport (PlumaWindow  *window,
 	gint vp_x, vp_y;
 
 	/* Check for workspace match */
-	ws = pluma_utils_get_window_workspace (GTK_WINDOW (window));
+	ws = lapiz_utils_get_window_workspace (GTK_WINDOW (window));
 	if (ws != workspace && ws != PLUMA_ALL_WORKSPACES)
 		return FALSE;
 
@@ -649,7 +649,7 @@ is_in_viewport (PlumaWindow  *window,
 		width = gdk_window_get_width(gdkwindow);
 		height = gdk_window_get_height(gdkwindow);
 
-	pluma_utils_get_current_viewport (screen, &vp_x, &vp_y);
+	lapiz_utils_get_current_viewport (screen, &vp_x, &vp_y);
 	x += vp_x;
 	y += vp_y;
 
@@ -663,7 +663,7 @@ is_in_viewport (PlumaWindow  *window,
 }
 
 /**
- * _pluma_app_get_window_in_viewport:
+ * _lapiz_app_get_window_in_viewport:
  * @app: the #PlumaApp
  * @screen: the #GdkScreen
  * @workspace: the workspace number
@@ -677,7 +677,7 @@ is_in_viewport (PlumaWindow  *window,
  * Return value: the #PlumaWindow in the given viewport of the given workspace.
  */
 PlumaWindow *
-_pluma_app_get_window_in_viewport (PlumaApp  *app,
+_lapiz_app_get_window_in_viewport (PlumaApp  *app,
 				   GdkScreen *screen,
 				   gint       workspace,
 				   gint       viewport_x,
@@ -707,11 +707,11 @@ _pluma_app_get_window_in_viewport (PlumaApp  *app,
 	}
 
 	/* no window on this workspace... create a new one */
-	return pluma_app_create_window (app, screen);
+	return lapiz_app_create_window (app, screen);
 }
 
 /**
- * pluma_app_get_documents:
+ * lapiz_app_get_documents:
  * @app: the #PlumaApp
  *
  * Returns all the documents currently open in #PlumaApp.
@@ -720,7 +720,7 @@ _pluma_app_get_window_in_viewport (PlumaApp  *app,
  * a newly allocated list of #PlumaDocument objects
  */
 GList *
-pluma_app_get_documents	(PlumaApp *app)
+lapiz_app_get_documents	(PlumaApp *app)
 {
 	GList *res = NULL;
 	GList *windows;
@@ -732,7 +732,7 @@ pluma_app_get_documents	(PlumaApp *app)
 	while (windows != NULL)
 	{
 		res = g_list_concat (res,
-				     pluma_window_get_documents (PLUMA_WINDOW (windows->data)));
+				     lapiz_window_get_documents (PLUMA_WINDOW (windows->data)));
 
 		windows = g_list_next (windows);
 	}
@@ -741,7 +741,7 @@ pluma_app_get_documents	(PlumaApp *app)
 }
 
 /**
- * pluma_app_get_views:
+ * lapiz_app_get_views:
  * @app: the #PlumaApp
  *
  * Returns all the views currently present in #PlumaApp.
@@ -750,7 +750,7 @@ pluma_app_get_documents	(PlumaApp *app)
  * a newly allocated list of #PlumaView objects
  */
 GList *
-pluma_app_get_views (PlumaApp *app)
+lapiz_app_get_views (PlumaApp *app)
 {
 	GList *res = NULL;
 	GList *windows;
@@ -762,7 +762,7 @@ pluma_app_get_views (PlumaApp *app)
 	while (windows != NULL)
 	{
 		res = g_list_concat (res,
-				     pluma_window_get_views (PLUMA_WINDOW (windows->data)));
+				     lapiz_window_get_views (PLUMA_WINDOW (windows->data)));
 
 		windows = g_list_next (windows);
 	}
@@ -771,7 +771,7 @@ pluma_app_get_views (PlumaApp *app)
 }
 
 /**
- * pluma_app_get_lockdown:
+ * lapiz_app_get_lockdown:
  * @app: a #PlumaApp
  *
  * Gets the lockdown mask (see #PlumaLockdownMask) for the application.
@@ -779,7 +779,7 @@ pluma_app_get_views (PlumaApp *app)
  * the MATE-wise lockdown GSettings keys.
  **/
 PlumaLockdownMask
-pluma_app_get_lockdown (PlumaApp *app)
+lapiz_app_get_lockdown (PlumaApp *app)
 {
 	g_return_val_if_fail (PLUMA_IS_APP (app), PLUMA_LOCKDOWN_ALL);
 
@@ -792,14 +792,14 @@ app_lockdown_changed (PlumaApp *app)
 	GList *l;
 
 	for (l = app->priv->windows; l != NULL; l = l->next)
-		_pluma_window_set_lockdown (PLUMA_WINDOW (l->data),
+		_lapiz_window_set_lockdown (PLUMA_WINDOW (l->data),
 					    app->priv->lockdown);
 
 	g_object_notify (G_OBJECT (app), "lockdown");
 }
 
 void
-_pluma_app_set_lockdown (PlumaApp          *app,
+_lapiz_app_set_lockdown (PlumaApp          *app,
 			 PlumaLockdownMask  lockdown)
 {
 	g_return_if_fail (PLUMA_IS_APP (app));
@@ -810,7 +810,7 @@ _pluma_app_set_lockdown (PlumaApp          *app,
 }
 
 void
-_pluma_app_set_lockdown_bit (PlumaApp          *app,
+_lapiz_app_set_lockdown_bit (PlumaApp          *app,
 			     PlumaLockdownMask  bit,
 			     gboolean           value)
 {
@@ -826,7 +826,7 @@ _pluma_app_set_lockdown_bit (PlumaApp          *app,
 
 /* Returns a copy */
 GtkPageSetup *
-_pluma_app_get_default_page_setup (PlumaApp *app)
+_lapiz_app_get_default_page_setup (PlumaApp *app)
 {
 	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
 
@@ -837,7 +837,7 @@ _pluma_app_get_default_page_setup (PlumaApp *app)
 }
 
 void
-_pluma_app_set_default_page_setup (PlumaApp     *app,
+_lapiz_app_set_default_page_setup (PlumaApp     *app,
 				   GtkPageSetup *page_setup)
 {
 	g_return_if_fail (PLUMA_IS_APP (app));
@@ -851,7 +851,7 @@ _pluma_app_set_default_page_setup (PlumaApp     *app,
 
 /* Returns a copy */
 GtkPrintSettings *
-_pluma_app_get_default_print_settings (PlumaApp *app)
+_lapiz_app_get_default_print_settings (PlumaApp *app)
 {
 	g_return_val_if_fail (PLUMA_IS_APP (app), NULL);
 
@@ -862,7 +862,7 @@ _pluma_app_get_default_print_settings (PlumaApp *app)
 }
 
 void
-_pluma_app_set_default_print_settings (PlumaApp         *app,
+_lapiz_app_set_default_print_settings (PlumaApp         *app,
 				       GtkPrintSettings *settings)
 {
 	g_return_if_fail (PLUMA_IS_APP (app));

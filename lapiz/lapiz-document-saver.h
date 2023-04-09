@@ -1,6 +1,6 @@
 /*
- * pluma-document-saver.h
- * This file is part of pluma
+ * lapiz-document-saver.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyrhing (C) 2007 - Paolo Maggi, Steve Frécinaux
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -32,14 +32,14 @@
 #ifndef __PLUMA_DOCUMENT_SAVER_H__
 #define __PLUMA_DOCUMENT_SAVER_H__
 
-#include <pluma/pluma-document.h>
+#include <lapiz/lapiz-document.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_DOCUMENT_SAVER              (pluma_document_saver_get_type())
+#define PLUMA_TYPE_DOCUMENT_SAVER              (lapiz_document_saver_get_type())
 #define PLUMA_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_DOCUMENT_SAVER, PlumaDocumentSaver))
 #define PLUMA_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_DOCUMENT_SAVER, PlumaDocumentSaverClass))
 #define PLUMA_IS_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_DOCUMENT_SAVER))
@@ -93,40 +93,40 @@ struct _PlumaDocumentSaverClass
 /*
  * Public methods
  */
-GType 		 	 pluma_document_saver_get_type		(void) G_GNUC_CONST;
+GType 		 	 lapiz_document_saver_get_type		(void) G_GNUC_CONST;
 
 /* If enconding == NULL, the encoding will be autodetected */
-PlumaDocumentSaver 	*pluma_document_saver_new 		(PlumaDocument           *doc,
+PlumaDocumentSaver 	*lapiz_document_saver_new 		(PlumaDocument           *doc,
 								 const gchar             *uri,
 								 const PlumaEncoding     *encoding,
 								 PlumaDocumentNewlineType newline_type,
 								 PlumaDocumentSaveFlags   flags);
 
-void			 pluma_document_saver_saving		(PlumaDocumentSaver *saver,
+void			 lapiz_document_saver_saving		(PlumaDocumentSaver *saver,
 								 gboolean            completed,
 								 GError             *error);
-void			 pluma_document_saver_save		(PlumaDocumentSaver  *saver,
+void			 lapiz_document_saver_save		(PlumaDocumentSaver  *saver,
 								 GTimeVal            *old_mtime);
 
 #if 0
-void			 pluma_document_saver_cancel		(PlumaDocumentSaver  *saver);
+void			 lapiz_document_saver_cancel		(PlumaDocumentSaver  *saver);
 #endif
 
-PlumaDocument		*pluma_document_saver_get_document	(PlumaDocumentSaver  *saver);
+PlumaDocument		*lapiz_document_saver_get_document	(PlumaDocumentSaver  *saver);
 
-const gchar		*pluma_document_saver_get_uri		(PlumaDocumentSaver  *saver);
+const gchar		*lapiz_document_saver_get_uri		(PlumaDocumentSaver  *saver);
 
 /* If backup_uri is NULL no backup will be made */
-const gchar		*pluma_document_saver_get_backup_uri	(PlumaDocumentSaver  *saver);
-void			*pluma_document_saver_set_backup_uri	(PlumaDocumentSaver  *saver,
+const gchar		*lapiz_document_saver_get_backup_uri	(PlumaDocumentSaver  *saver);
+void			*lapiz_document_saver_set_backup_uri	(PlumaDocumentSaver  *saver,
 							 	 const gchar         *backup_uri);
 
 /* Returns 0 if file size is unknown */
-goffset			 pluma_document_saver_get_file_size	(PlumaDocumentSaver  *saver);
+goffset			 lapiz_document_saver_get_file_size	(PlumaDocumentSaver  *saver);
 
-goffset			 pluma_document_saver_get_bytes_written	(PlumaDocumentSaver  *saver);
+goffset			 lapiz_document_saver_get_bytes_written	(PlumaDocumentSaver  *saver);
 
-GFileInfo		*pluma_document_saver_get_info		(PlumaDocumentSaver  *saver);
+GFileInfo		*lapiz_document_saver_get_info		(PlumaDocumentSaver  *saver);
 
 G_END_DECLS
 

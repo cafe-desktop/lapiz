@@ -6,7 +6,7 @@
 AUTOMAKE_OPTIONS = 1.6
 
 # The name of the module, e.g. 'glib'.
-DOC_MODULE=pluma
+DOC_MODULE=lapiz
 
 # The top-level SGML file. You can change this if you want to.
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
@@ -14,7 +14,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 # The directory containing the source code. Relative to $(srcdir).
 # gtk-doc will search all .c & .h files beneath here for inline comments
 # documenting the functions and macros.
-DOC_SOURCE_DIR=../../pluma
+DOC_SOURCE_DIR=../../lapiz
 
 # Extra options to pass to gtkdoc-scangobj. Not normally needed.
 SCANGOBJ_OPTIONS=
@@ -35,37 +35,37 @@ MKTMPL_OPTIONS=
 FIXXREF_OPTIONS=
 
 # Used for dependencies. The docs will be rebuilt if any of these change.
-HFILE_GLOB=$(top_srcdir)/pluma/*.h
-CFILE_GLOB=$(top_srcdir)/pluma/*.c
+HFILE_GLOB=$(top_srcdir)/lapiz/*.h
+CFILE_GLOB=$(top_srcdir)/lapiz/*.c
 
-# Header files to ignore when scanning (These are internal to pluma).
+# Header files to ignore when scanning (These are internal to lapiz).
 IGNORE_HFILES=		\
-	pluma-commands.h			\
-	pluma-document-loader.h			\
-	pluma-document-saver.h			\
-	pluma-documents-panel.h			\
-	pluma-io-error-message-area.h		\
-	pluma-languages-manager.h		\
-	pluma-plugins-engine.h			\
-	pluma-prefs-manager-private.h		\
-	pluma-session.h				\
-	pluma-ui.h				\
-	pluma-window-private.h			\
-	pluma-output-window.h			\
-	pluma-close-confirmation-dialog.h	\
-	pluma-encodings-dialog.h		\
-	pluma-open-location-dialog.h		\
-	pluma-page-setup-dialog.h		\
-	pluma-preferences-dialog.h		\
-	pluma-search-dialog.h			\
-	pluma-marshal.h				\
-	pluma-enum-types.h
+	lapiz-commands.h			\
+	lapiz-document-loader.h			\
+	lapiz-document-saver.h			\
+	lapiz-documents-panel.h			\
+	lapiz-io-error-message-area.h		\
+	lapiz-languages-manager.h		\
+	lapiz-plugins-engine.h			\
+	lapiz-prefs-manager-private.h		\
+	lapiz-session.h				\
+	lapiz-ui.h				\
+	lapiz-window-private.h			\
+	lapiz-output-window.h			\
+	lapiz-close-confirmation-dialog.h	\
+	lapiz-encodings-dialog.h		\
+	lapiz-open-location-dialog.h		\
+	lapiz-page-setup-dialog.h		\
+	lapiz-preferences-dialog.h		\
+	lapiz-search-dialog.h			\
+	lapiz-marshal.h				\
+	lapiz-enum-types.h
 
-# These files are not part of pluma but were copied into it for some reason.
+# These files are not part of lapiz but were copied into it for some reason.
 # Do not parse them to make the docs.
 IGNORE_HFILES +=	\
 	bacon-message-connection.h		\
-	plumatextregion.h			\
+	lapiztextregion.h			\
 	sexy-icon-entry.h
 
 # Images to copy into HTML directory.
@@ -84,14 +84,14 @@ expand_content_files=
 # Only needed if you are using gtkdoc-scangobj to dynamically query widget
 # signals and properties.
 GTKDOC_CFLAGS=	\
-	-I$(top_srcdir)/pluma	\
-	-I$(top_builddir)/pluma \
+	-I$(top_srcdir)/lapiz	\
+	-I$(top_builddir)/lapiz \
 	-I$(top_srcdir)		\
 	-I$(top_builddir)	\
 	$(PLUMA_CFLAGS)
 
 GTKDOC_LIBS=	\
-	$(top_builddir)/pluma/libpluma.la	\
+	$(top_builddir)/lapiz/liblapiz.la	\
 	$(PLUMA_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
@@ -101,7 +101,7 @@ include $(top_srcdir)/gtk-doc.make
 # e.g. EXTRA_DIST += version.xml.in
 
 regenerate-types:
-	grep _get_type $(DOC_SOURCE_DIR)/pluma-*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > pluma.types
-	grep _get_type $(DOC_SOURCE_DIR)/pluma-*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> pluma.types.new
+	grep _get_type $(DOC_SOURCE_DIR)/lapiz-*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > lapiz.types
+	grep _get_type $(DOC_SOURCE_DIR)/lapiz-*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> lapiz.types.new
 
 -include $(top_srcdir)/git.mk

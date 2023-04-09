@@ -1,9 +1,9 @@
 ## Process this file with automake to produce Makefile.in
 SUBDIRS = dialogs smclient
 
-bin_PROGRAMS = pluma
+bin_PROGRAMS = lapiz
 
-noinst_LTLIBRARIES = libpluma.la
+noinst_LTLIBRARIES = liblapiz.la
 
 AM_CPPFLAGS =								\
 	-I$(top_srcdir)							\
@@ -13,143 +13,143 @@ AM_CPPFLAGS =								\
 	$(WARN_CFLAGS)							\
 	$(INTROSPECTION_CFLAGS)						\
 	-DDATADIR=\""$(datadir)"\"					\
-	-DPLUMA_DATADIR=\""$(datadir)/pluma"\"				\
+	-DPLUMA_DATADIR=\""$(datadir)/lapiz"\"				\
 	-DLIBDIR=\""$(libdir)"\"
 
-pluma_SOURCES = \
-	pluma.c
+lapiz_SOURCES = \
+	lapiz.c
 
-pluma_LDADD = libpluma.la $(PLUMA_LIBS) $(EGG_SMCLIENT_LIBS) $(INTROSPECTION_LIBS)
+lapiz_LDADD = liblapiz.la $(PLUMA_LIBS) $(EGG_SMCLIENT_LIBS) $(INTROSPECTION_LIBS)
 
-pluma_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
+lapiz_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
 
-libpluma_la_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
+liblapiz_la_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
 
-libpluma_la_LIBADD = \
+liblapiz_la_LIBADD = \
 	dialogs/libdialogs.la		\
 	smclient/libeggsmclient.la
 
 # PLUMA_LIBS must be the last to ensure correct order on some platforms
-libpluma_la_LIBADD += $(PLUMA_LIBS) -lICE
+liblapiz_la_LIBADD += $(PLUMA_LIBS) -lICE
 
 BUILT_SOURCES = 			\
-	pluma-enum-types.c		\
-	pluma-enum-types.h		\
-	pluma-marshal.c			\
-	pluma-marshal.h
+	lapiz-enum-types.c		\
+	lapiz-enum-types.h		\
+	lapiz-marshal.c			\
+	lapiz-marshal.h
 
 
 NOINST_H_FILES =			\
-	pluma-close-button.h		\
-	pluma-dirs.h			\
-	pluma-document-input-stream.h	\
-	pluma-document-loader.h		\
-	pluma-document-output-stream.h	\
-	pluma-document-saver.h		\
-	pluma-documents-panel.h		\
-	pluma-file-chooser-dialog.h	\
-	pluma-gio-document-loader.h	\
-	pluma-gio-document-saver.h	\
-	pluma-history-entry.h		\
-	pluma-io-error-message-area.h	\
-	pluma-language-manager.h	\
-	pluma-plugins-engine.h		\
-	pluma-prefs-manager-private.h	\
-	pluma-print-job.h		\
-	pluma-print-preview.h		\
-	pluma-session.h			\
-	pluma-smart-charset-converter.h	\
-	pluma-style-scheme-manager.h	\
-	pluma-tab-label.h		\
-	plumatextregion.h		\
-	pluma-ui.h			\
-	pluma-window-private.h
+	lapiz-close-button.h		\
+	lapiz-dirs.h			\
+	lapiz-document-input-stream.h	\
+	lapiz-document-loader.h		\
+	lapiz-document-output-stream.h	\
+	lapiz-document-saver.h		\
+	lapiz-documents-panel.h		\
+	lapiz-file-chooser-dialog.h	\
+	lapiz-gio-document-loader.h	\
+	lapiz-gio-document-saver.h	\
+	lapiz-history-entry.h		\
+	lapiz-io-error-message-area.h	\
+	lapiz-language-manager.h	\
+	lapiz-plugins-engine.h		\
+	lapiz-prefs-manager-private.h	\
+	lapiz-print-job.h		\
+	lapiz-print-preview.h		\
+	lapiz-session.h			\
+	lapiz-smart-charset-converter.h	\
+	lapiz-style-scheme-manager.h	\
+	lapiz-tab-label.h		\
+	lapiztextregion.h		\
+	lapiz-ui.h			\
+	lapiz-window-private.h
 
 INST_H_FILES =				\
-	pluma-app.h			\
-	pluma-commands.h		\
-	pluma-debug.h			\
-	pluma-document.h 		\
-	pluma-encodings.h		\
-	pluma-encodings-combo-box.h	\
-	pluma-help.h 			\
-	pluma-message-bus.h		\
-	pluma-message-type.h		\
-	pluma-message.h			\
-	pluma-notebook.h		\
-	pluma-panel.h			\
-	pluma-prefs-manager-app.h	\
-	pluma-prefs-manager.h		\
-	pluma-progress-message-area.h	\
-	pluma-statusbar.h		\
-	pluma-status-combo-box.h	\
-	pluma-tab.h 			\
-	pluma-utils.h 			\
-	pluma-view.h 			\
-	pluma-window.h
+	lapiz-app.h			\
+	lapiz-commands.h		\
+	lapiz-debug.h			\
+	lapiz-document.h 		\
+	lapiz-encodings.h		\
+	lapiz-encodings-combo-box.h	\
+	lapiz-help.h 			\
+	lapiz-message-bus.h		\
+	lapiz-message-type.h		\
+	lapiz-message.h			\
+	lapiz-notebook.h		\
+	lapiz-panel.h			\
+	lapiz-prefs-manager-app.h	\
+	lapiz-prefs-manager.h		\
+	lapiz-progress-message-area.h	\
+	lapiz-statusbar.h		\
+	lapiz-status-combo-box.h	\
+	lapiz-tab.h 			\
+	lapiz-utils.h 			\
+	lapiz-view.h 			\
+	lapiz-window.h
 
 if !ENABLE_GVFS_METADATA
-INST_H_FILES += pluma-metadata-manager.h
+INST_H_FILES += lapiz-metadata-manager.h
 endif
 
-headerdir = $(prefix)/include/pluma
+headerdir = $(prefix)/include/lapiz
 
 header_DATA = 				\
 	$(INST_H_FILES)
 
-libpluma_c_files = 			\
-	pluma-app.c			\
-	pluma-close-button.c		\
-	pluma-commands-documents.c	\
-	pluma-commands-edit.c		\
-	pluma-commands-file.c		\
-	pluma-commands-file-print.c	\
-	pluma-commands-help.c		\
-	pluma-commands-search.c		\
-	pluma-commands-view.c		\
-	pluma-debug.c			\
-	pluma-dirs.c			\
-	pluma-document.c 		\
-	pluma-document-input-stream.c	\
-	pluma-document-loader.c		\
-	pluma-document-output-stream.c	\
-	pluma-gio-document-loader.c	\
-	pluma-document-saver.c		\
-	pluma-gio-document-saver.c	\
-	pluma-documents-panel.c		\
-	pluma-encodings.c		\
-	pluma-encodings-combo-box.c	\
-	pluma-file-chooser-dialog.c	\
-	pluma-help.c			\
-	pluma-history-entry.c		\
-	pluma-io-error-message-area.c	\
-	pluma-language-manager.c	\
-	pluma-message-bus.c		\
-	pluma-message-type.c		\
-	pluma-message.c			\
-	pluma-notebook.c		\
-	pluma-panel.c			\
-	pluma-plugins-engine.c		\
-	pluma-prefs-manager-app.c	\
-	pluma-prefs-manager.c		\
-	pluma-prefs-manager-private.h	\
-	pluma-print-job.c		\
-	pluma-print-preview.c		\
-	pluma-progress-message-area.c	\
-	pluma-session.c			\
-	pluma-smart-charset-converter.c	\
-	pluma-statusbar.c		\
-	pluma-status-combo-box.c	\
-	pluma-style-scheme-manager.c	\
-	pluma-tab.c 			\
-	pluma-tab-label.c		\
-	pluma-utils.c 			\
-	pluma-view.c 			\
-	pluma-window.c			\
-	plumatextregion.c
+liblapiz_c_files = 			\
+	lapiz-app.c			\
+	lapiz-close-button.c		\
+	lapiz-commands-documents.c	\
+	lapiz-commands-edit.c		\
+	lapiz-commands-file.c		\
+	lapiz-commands-file-print.c	\
+	lapiz-commands-help.c		\
+	lapiz-commands-search.c		\
+	lapiz-commands-view.c		\
+	lapiz-debug.c			\
+	lapiz-dirs.c			\
+	lapiz-document.c 		\
+	lapiz-document-input-stream.c	\
+	lapiz-document-loader.c		\
+	lapiz-document-output-stream.c	\
+	lapiz-gio-document-loader.c	\
+	lapiz-document-saver.c		\
+	lapiz-gio-document-saver.c	\
+	lapiz-documents-panel.c		\
+	lapiz-encodings.c		\
+	lapiz-encodings-combo-box.c	\
+	lapiz-file-chooser-dialog.c	\
+	lapiz-help.c			\
+	lapiz-history-entry.c		\
+	lapiz-io-error-message-area.c	\
+	lapiz-language-manager.c	\
+	lapiz-message-bus.c		\
+	lapiz-message-type.c		\
+	lapiz-message.c			\
+	lapiz-notebook.c		\
+	lapiz-panel.c			\
+	lapiz-plugins-engine.c		\
+	lapiz-prefs-manager-app.c	\
+	lapiz-prefs-manager.c		\
+	lapiz-prefs-manager-private.h	\
+	lapiz-print-job.c		\
+	lapiz-print-preview.c		\
+	lapiz-progress-message-area.c	\
+	lapiz-session.c			\
+	lapiz-smart-charset-converter.c	\
+	lapiz-statusbar.c		\
+	lapiz-status-combo-box.c	\
+	lapiz-style-scheme-manager.c	\
+	lapiz-tab.c 			\
+	lapiz-tab-label.c		\
+	lapiz-utils.c 			\
+	lapiz-view.c 			\
+	lapiz-window.c			\
+	lapiztextregion.c
 
-libpluma_la_SOURCES = 			\
-	$(libpluma_c_files)		\
+liblapiz_la_SOURCES = 			\
+	$(liblapiz_c_files)		\
 	$(BUILT_SOURCES)		\
 	$(BACON_FILES)			\
 	$(POSIXIO_FILES)		\
@@ -157,41 +157,41 @@ libpluma_la_SOURCES = 			\
 	$(INST_H_FILES)
 
 if !ENABLE_GVFS_METADATA
-libpluma_la_SOURCES += pluma-metadata-manager.c
+liblapiz_la_SOURCES += lapiz-metadata-manager.c
 endif
 
-pluma-enum-types.h: pluma-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
-	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template pluma-enum-types.h.template $(INST_H_FILES)) > $@
+lapiz-enum-types.h: lapiz-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
+	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lapiz-enum-types.h.template $(INST_H_FILES)) > $@
 
-pluma-enum-types.c: pluma-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
-	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template pluma-enum-types.c.template $(INST_H_FILES)) > $@
+lapiz-enum-types.c: lapiz-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
+	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lapiz-enum-types.c.template $(INST_H_FILES)) > $@
 
-pluma-marshal.h: pluma-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=pluma_marshal > $@
+lapiz-marshal.h: lapiz-marshal.list $(GLIB_GENMARSHAL)
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=lapiz_marshal > $@
 
-pluma-marshal.c: pluma-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) echo "#include \"pluma-marshal.h\"" > $@ && \
-	$(GLIB_GENMARSHAL) $< --body --prefix=pluma_marshal >> $@
+lapiz-marshal.c: lapiz-marshal.list $(GLIB_GENMARSHAL)
+	$(AM_V_GEN) echo "#include \"lapiz-marshal.h\"" > $@ && \
+	$(GLIB_GENMARSHAL) $< --body --prefix=lapiz_marshal >> $@
 
-aboutdir = $(datadir)/pluma/
+aboutdir = $(datadir)/lapiz/
 about_DATA =				\
-	pluma.about			\
+	lapiz.about			\
 	$(NULL)
 
-uidir = $(datadir)/pluma/ui/
-ui_files = pluma-print-preferences.ui
+uidir = $(datadir)/lapiz/ui/
+ui_files = lapiz-print-preferences.ui
 include $(top_srcdir)/gla11y.mk
 ui_DATA = 				\
-	pluma-ui.xml			\
+	lapiz-ui.xml			\
 	$(ui_files)
 
 EXTRA_DIST = 				\
 	$(ui_DATA)			\
 	$(about_DATA)			\
-	pluma-enum-types.h.template	\
-	pluma-enum-types.c.template	\
-	pluma-marshal.list		\
-	pluma.rc			\
+	lapiz-enum-types.h.template	\
+	lapiz-enum-types.c.template	\
+	lapiz-marshal.list		\
+	lapiz.rc			\
 	ui-a11y.suppr
 
 CLEANFILES = $(BUILT_SOURCES)
@@ -201,11 +201,11 @@ if HAVE_INTROSPECTION
 INTROSPECTION_GIRS = Pluma-1.0.gir
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) --warn-all
 
-Pluma-1.0.gir: pluma
+Pluma-1.0.gir: lapiz
 Pluma_1_0_gir_INCLUDES = Gtk-3.0 GtkSource-3.0
-Pluma_1_0_gir_FILES = $(INST_H_FILES) $(libpluma_c_files) $(BUILT_SOURCES)
+Pluma_1_0_gir_FILES = $(INST_H_FILES) $(liblapiz_c_files) $(BUILT_SOURCES)
 Pluma_1_0_gir_VERSION = 1.0
-Pluma_1_0_gir_PROGRAM = $(builddir)/pluma
+Pluma_1_0_gir_PROGRAM = $(builddir)/lapiz
 Pluma_1_0_gir_NAMESPACE = Pluma
 
 girdir = $(datadir)/gir-1.0
@@ -224,6 +224,6 @@ BACON_DIR=$(srcdir)/../../libbacon/src/
 BACON_FILES=bacon-message-connection.h bacon-message-connection.c
 
 regenerate-built-sources:
-	BACONFILES="$(BACON_FILES)" BACONDIR="$(BACON_DIR)" $(top_srcdir)/pluma/update-from-bacon.sh
+	BACONFILES="$(BACON_FILES)" BACONDIR="$(BACON_DIR)" $(top_srcdir)/lapiz/update-from-bacon.sh
 
 -include $(top_srcdir)/git.mk

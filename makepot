@@ -1,6 +1,6 @@
 #! /bin/sh
 
-PACKAGE=pluma;
+PACKAGE=lapiz;
 
 # normal translations
 make -C po $PACKAGE.pot && mv po/$PACKAGE.pot .

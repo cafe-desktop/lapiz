@@ -1,5 +1,5 @@
 /*
- * pluma-file-browser-plugin.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-plugin.h - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -32,7 +32,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_FILE_BROWSER_PLUGIN		(pluma_file_browser_plugin_get_type ())
+#define PLUMA_TYPE_FILE_BROWSER_PLUGIN		(lapiz_file_browser_plugin_get_type ())
 #define PLUMA_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPlugin))
 #define PLUMA_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPluginClass))
 #define PLUMA_IS_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_FILE_BROWSER_PLUGIN))
@@ -60,7 +60,7 @@ struct _PlumaFileBrowserPluginClass
 /*
  * Public methods
  */
-GType pluma_file_browser_plugin_get_type              (void) G_GNUC_CONST;
+GType lapiz_file_browser_plugin_get_type              (void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);

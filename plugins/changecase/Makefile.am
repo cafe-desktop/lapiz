@@ -9,8 +9,8 @@ AM_CPPFLAGS = \
 plugin_LTLIBRARIES = libchangecase.la
 
 libchangecase_la_SOURCES = \
-	pluma-changecase-plugin.h	\
-	pluma-changecase-plugin.c
+	lapiz-changecase-plugin.h	\
+	lapiz-changecase-plugin.c
 
 libchangecase_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 libchangecase_la_LIBADD = $(PLUMA_LIBS)

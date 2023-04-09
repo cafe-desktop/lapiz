@@ -1,8 +1,8 @@
-icondir = $(datadir)/pluma/icons
-icon_DATA = pluma-plugin.png
+icondir = $(datadir)/lapiz/icons
+icon_DATA = lapiz-plugin.png
 
 EXTRA_DIST = \
 	$(icon_DATA) \
-	pluma.ico
+	lapiz.ico
 
 -include $(top_srcdir)/git.mk

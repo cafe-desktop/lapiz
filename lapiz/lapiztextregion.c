@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
- * plumatextregion.h - GtkTextMark based region utility functions
+ * lapiztextregion.h - GtkTextMark based region utility functions
  *
  * This file is part of the GtkSourceView widget
  *
@@ -28,7 +28,7 @@
 
 #include <glib.h>
 
-#include "plumatextregion.h"
+#include "lapiztextregion.h"
 
 
 #undef ENABLE_DEBUG
@@ -120,7 +120,7 @@ find_nearest_subregion (PlumaTextRegion     *region,
    ---------------------------------------------------------------------- */
 
 PlumaTextRegion *
-pluma_text_region_new (GtkTextBuffer *buffer)
+lapiz_text_region_new (GtkTextBuffer *buffer)
 {
 	PlumaTextRegion *region;
 
@@ -135,7 +135,7 @@ pluma_text_region_new (GtkTextBuffer *buffer)
 }
 
 void
-pluma_text_region_destroy (PlumaTextRegion *region, gboolean delete_marks)
+lapiz_text_region_destroy (PlumaTextRegion *region, gboolean delete_marks)
 {
 	g_return_if_fail (region != NULL);
 
@@ -156,7 +156,7 @@ pluma_text_region_destroy (PlumaTextRegion *region, gboolean delete_marks)
 }
 
 GtkTextBuffer *
-pluma_text_region_get_buffer (PlumaTextRegion *region)
+lapiz_text_region_get_buffer (PlumaTextRegion *region)
 {
 	g_return_val_if_fail (region != NULL, NULL);
 
@@ -164,7 +164,7 @@ pluma_text_region_get_buffer (PlumaTextRegion *region)
 }
 
 static void
-pluma_text_region_clear_zero_length_subregions (PlumaTextRegion *region)
+lapiz_text_region_clear_zero_length_subregions (PlumaTextRegion *region)
 {
 	GtkTextIter start, end;
 	GList *node;
@@ -193,7 +193,7 @@ pluma_text_region_clear_zero_length_subregions (PlumaTextRegion *region)
 }
 
 void
-pluma_text_region_add (PlumaTextRegion     *region,
+lapiz_text_region_add (PlumaTextRegion     *region,
 		     const GtkTextIter *_start,
 		     const GtkTextIter *_end)
 {
@@ -206,7 +206,7 @@ pluma_text_region_add (PlumaTextRegion     *region,
 	end = *_end;
 
 	DEBUG (g_print ("---\n"));
-	DEBUG (pluma_text_region_debug_print (region));
+	DEBUG (lapiz_text_region_debug_print (region));
 	DEBUG (g_message ("region_add (%d, %d)",
 			  gtk_text_iter_get_offset (&start),
 			  gtk_text_iter_get_offset (&end)));
@@ -274,11 +274,11 @@ pluma_text_region_add (PlumaTextRegion     *region,
 
 	++region->time_stamp;
 
-	DEBUG (pluma_text_region_debug_print (region));
+	DEBUG (lapiz_text_region_debug_print (region));
 }
 
 void
-pluma_text_region_subtract (PlumaTextRegion     *region,
+lapiz_text_region_subtract (PlumaTextRegion     *region,
 			  const GtkTextIter *_start,
 			  const GtkTextIter *_end)
 {
@@ -295,7 +295,7 @@ pluma_text_region_subtract (PlumaTextRegion     *region,
 	end = *_end;
 
 	DEBUG (g_print ("---\n"));
-	DEBUG (pluma_text_region_debug_print (region));
+	DEBUG (lapiz_text_region_debug_print (region));
 	DEBUG (g_message ("region_substract (%d, %d)",
 			  gtk_text_iter_get_offset (&start),
 			  gtk_text_iter_get_offset (&end)));
@@ -394,16 +394,16 @@ pluma_text_region_subtract (PlumaTextRegion     *region,
 
 	++region->time_stamp;
 
-	DEBUG (pluma_text_region_debug_print (region));
+	DEBUG (lapiz_text_region_debug_print (region));
 
 	/* now get rid of empty subregions */
-	pluma_text_region_clear_zero_length_subregions (region);
+	lapiz_text_region_clear_zero_length_subregions (region);
 
-	DEBUG (pluma_text_region_debug_print (region));
+	DEBUG (lapiz_text_region_debug_print (region));
 }
 
 gint
-pluma_text_region_subregions (PlumaTextRegion *region)
+lapiz_text_region_subregions (PlumaTextRegion *region)
 {
 	g_return_val_if_fail (region != NULL, 0);
 
@@ -411,7 +411,7 @@ pluma_text_region_subregions (PlumaTextRegion *region)
 }
 
 gboolean
-pluma_text_region_nth_subregion (PlumaTextRegion *region,
+lapiz_text_region_nth_subregion (PlumaTextRegion *region,
 			       guint          subregion,
 			       GtkTextIter   *start,
 			       GtkTextIter   *end)
@@ -433,7 +433,7 @@ pluma_text_region_nth_subregion (PlumaTextRegion *region,
 }
 
 PlumaTextRegion *
-pluma_text_region_intersect (PlumaTextRegion     *region,
+lapiz_text_region_intersect (PlumaTextRegion     *region,
 			   const GtkTextIter *_start,
 			   const GtkTextIter *_end)
 {
@@ -459,7 +459,7 @@ pluma_text_region_intersect (PlumaTextRegion     *region,
 	if (start_node == NULL || end_node == NULL || end_node == start_node->prev)
 		return NULL;
 
-	new_region = pluma_text_region_new (region->buffer);
+	new_region = lapiz_text_region_new (region->buffer);
 	done = FALSE;
 
 	sr = start_node->data;
@@ -552,7 +552,7 @@ check_iterator (PlumaTextRegionIteratorReal *real)
 }
 
 void
-pluma_text_region_get_iterator (PlumaTextRegion         *region,
+lapiz_text_region_get_iterator (PlumaTextRegion         *region,
                               PlumaTextRegionIterator *iter,
                               guint                  start)
 {
@@ -571,7 +571,7 @@ pluma_text_region_get_iterator (PlumaTextRegion         *region,
 }
 
 gboolean
-pluma_text_region_iterator_is_end (PlumaTextRegionIterator *iter)
+lapiz_text_region_iterator_is_end (PlumaTextRegionIterator *iter)
 {
 	PlumaTextRegionIteratorReal *real;
 
@@ -584,7 +584,7 @@ pluma_text_region_iterator_is_end (PlumaTextRegionIterator *iter)
 }
 
 gboolean
-pluma_text_region_iterator_next (PlumaTextRegionIterator *iter)
+lapiz_text_region_iterator_next (PlumaTextRegionIterator *iter)
 {
 	PlumaTextRegionIteratorReal *real;
 
@@ -602,7 +602,7 @@ pluma_text_region_iterator_next (PlumaTextRegionIterator *iter)
 }
 
 void
-pluma_text_region_iterator_get_subregion (PlumaTextRegionIterator *iter,
+lapiz_text_region_iterator_get_subregion (PlumaTextRegionIterator *iter,
 					GtkTextIter           *start,
 					GtkTextIter           *end)
 {
@@ -625,7 +625,7 @@ pluma_text_region_iterator_get_subregion (PlumaTextRegionIterator *iter,
 }
 
 void
-pluma_text_region_debug_print (PlumaTextRegion *region)
+lapiz_text_region_debug_print (PlumaTextRegion *region)
 {
 	GList *l;
 

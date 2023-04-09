@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-style-scheme-manager.h
+ * lapiz-style-scheme-manager.h
  *
  * Copyright (C) 2007 - Paolo Borelli
  *
@@ -19,7 +19,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  *
- * $Id: pluma-source-style-manager.h 5598 2007-04-15 13:16:24Z pborelli $
+ * $Id: lapiz-source-style-manager.h 5598 2007-04-15 13:16:24Z pborelli $
  */
 
 #ifndef __PLUMA_STYLE_SCHEME_MANAGER_H__
@@ -30,24 +30,24 @@
 G_BEGIN_DECLS
 
 GtkSourceStyleSchemeManager *
-		 pluma_get_style_scheme_manager		(void);
+		 lapiz_get_style_scheme_manager		(void);
 
 /* Returns a sorted list of style schemes */
-GSList		*pluma_style_scheme_manager_list_schemes_sorted
+GSList		*lapiz_style_scheme_manager_list_schemes_sorted
 							(GtkSourceStyleSchemeManager *manager);
 
 /*
  * Non exported functions
  */
-gboolean	 _pluma_style_scheme_manager_scheme_is_pluma_user_scheme
+gboolean	 _lapiz_style_scheme_manager_scheme_is_lapiz_user_scheme
 							(GtkSourceStyleSchemeManager *manager,
 							 const gchar                 *scheme_id);
 
-const gchar	*_pluma_style_scheme_manager_install_scheme
+const gchar	*_lapiz_style_scheme_manager_install_scheme
 							(GtkSourceStyleSchemeManager *manager,
 							 const gchar                 *fname);
 
-gboolean	 _pluma_style_scheme_manager_uninstall_scheme
+gboolean	 _lapiz_style_scheme_manager_uninstall_scheme
 							(GtkSourceStyleSchemeManager *manager,
 							 const gchar                 *id);
 

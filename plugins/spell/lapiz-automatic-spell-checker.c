@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-automatic-spell-checker.c
- * This file is part of pluma
+ * lapiz-automatic-spell-checker.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -40,8 +40,8 @@
 
 #include <glib/gi18n.h>
 
-#include "pluma-automatic-spell-checker.h"
-#include "pluma-spell-utils.h"
+#include "lapiz-automatic-spell-checker.h"
+#include "lapiz-spell-utils.h"
 
 struct _PlumaAutomaticSpellChecker {
 	PlumaDocument		*doc;
@@ -60,12 +60,12 @@ struct _PlumaAutomaticSpellChecker {
 static GQuark automatic_spell_checker_id = 0;
 static GQuark suggestion_id = 0;
 
-static void pluma_automatic_spell_checker_free_internal (PlumaAutomaticSpellChecker *spell);
+static void lapiz_automatic_spell_checker_free_internal (PlumaAutomaticSpellChecker *spell);
 
 static void
 view_destroy (PlumaView *view, PlumaAutomaticSpellChecker *spell)
 {
-	pluma_automatic_spell_checker_detach_view (spell, view);
+	lapiz_automatic_spell_checker_detach_view (spell, view);
 }
 
 static void
@@ -80,7 +80,7 @@ check_word (PlumaAutomaticSpellChecker *spell, GtkTextIter *start, GtkTextIter *
 						gtk_text_iter_get_offset (end));
 	*/
 
-	if (!pluma_spell_checker_check_word (spell->spell_checker, word, -1))
+	if (!lapiz_spell_checker_check_word (spell->spell_checker, word, -1))
 	{
 		/*
 		g_print ("Apply tag: [%d - %d]\n", gtk_text_iter_get_offset (start),
@@ -164,7 +164,7 @@ check_range (PlumaAutomaticSpellChecker *spell,
 
 	wstart = start;
 
-	while (pluma_spell_utils_skip_no_spell_check (&wstart, &end) &&
+	while (lapiz_spell_utils_skip_no_spell_check (&wstart, &end) &&
 	       gtk_text_iter_compare (&wstart, &end) < 0)
 	{
 		gboolean inword;
@@ -344,7 +344,7 @@ add_to_dictionary (GtkWidget *menuitem, PlumaAutomaticSpellChecker *spell)
 					 &end,
 					 FALSE);
 
-	pluma_spell_checker_add_word_to_personal (spell->spell_checker, word, -1);
+	lapiz_spell_checker_add_word_to_personal (spell->spell_checker, word, -1);
 
 	g_free (word);
 }
@@ -363,7 +363,7 @@ ignore_all (GtkWidget *menuitem, PlumaAutomaticSpellChecker *spell)
 					 &end,
 					 FALSE);
 
-	pluma_spell_checker_add_word_to_session (spell->spell_checker, word, -1);
+	lapiz_spell_checker_add_word_to_session (spell->spell_checker, word, -1);
 
 	g_free (word);
 }
@@ -390,7 +390,7 @@ replace_word (GtkWidget *menuitem, PlumaAutomaticSpellChecker *spell)
 
 	gtk_text_buffer_end_user_action (GTK_TEXT_BUFFER (spell->doc));
 
-	pluma_spell_checker_set_correction (spell->spell_checker,
+	lapiz_spell_checker_set_correction (spell->spell_checker,
 				oldword, strlen (oldword),
 				newword, strlen (newword));
 
@@ -408,7 +408,7 @@ build_suggestion_menu (PlumaAutomaticSpellChecker *spell, const gchar *word)
 
 	topmenu = menu = gtk_menu_new();
 
-	suggestions = pluma_spell_checker_get_suggestions (spell->spell_checker, word, -1);
+	suggestions = lapiz_spell_checker_get_suggestions (spell->spell_checker, word, -1);
 
 	list = suggestions;
 
@@ -563,7 +563,7 @@ populate_popup (GtkTextView *textview, GtkMenu *menu, PlumaAutomaticSpellChecker
 }
 
 void
-pluma_automatic_spell_checker_recheck_all (PlumaAutomaticSpellChecker *spell)
+lapiz_automatic_spell_checker_recheck_all (PlumaAutomaticSpellChecker *spell)
 {
 	GtkTextIter start, end;
 
@@ -597,14 +597,14 @@ set_language_cb (PlumaSpellChecker               *checker,
 		 const PlumaSpellCheckerLanguage *lang,
 		 PlumaAutomaticSpellChecker      *spell)
 {
-	pluma_automatic_spell_checker_recheck_all (spell);
+	lapiz_automatic_spell_checker_recheck_all (spell);
 }
 
 static void
 clear_session_cb (PlumaSpellChecker          *checker,
 		  PlumaAutomaticSpellChecker *spell)
 {
-	pluma_automatic_spell_checker_recheck_all (spell);
+	lapiz_automatic_spell_checker_recheck_all (spell);
 }
 
 /* When the user right-clicks on a word, they want to check that word.
@@ -707,7 +707,7 @@ spell_tag_destroyed (PlumaAutomaticSpellChecker *spell,
 }
 
 PlumaAutomaticSpellChecker *
-pluma_automatic_spell_checker_new (PlumaDocument     *doc,
+lapiz_automatic_spell_checker_new (PlumaDocument     *doc,
 				   PlumaSpellChecker *checker)
 {
 	PlumaAutomaticSpellChecker *spell;
@@ -716,7 +716,7 @@ pluma_automatic_spell_checker_new (PlumaDocument     *doc,
 
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (checker), NULL);
-	g_return_val_if_fail ((spell = pluma_automatic_spell_checker_get_from_document (doc)) == NULL,
+	g_return_val_if_fail ((spell = lapiz_automatic_spell_checker_get_from_document (doc)) == NULL,
 			      spell);
 
 	/* attach to the widget */
@@ -738,7 +738,7 @@ pluma_automatic_spell_checker_new (PlumaDocument     *doc,
 	g_object_set_qdata_full (G_OBJECT (doc),
 				 automatic_spell_checker_id,
 				 spell,
-				 (GDestroyNotify)pluma_automatic_spell_checker_free_internal);
+				 (GDestroyNotify)lapiz_automatic_spell_checker_free_internal);
 
 	g_signal_connect (doc,
 			  "insert-text",
@@ -812,13 +812,13 @@ pluma_automatic_spell_checker_new (PlumaDocument     *doc,
 	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc), &start, &end);
 
 	spell->mark_insert_start = gtk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
-					"pluma-automatic-spell-checker-insert-start");
+					"lapiz-automatic-spell-checker-insert-start");
 
 	if (spell->mark_insert_start == NULL)
 	{
 		spell->mark_insert_start =
 			gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
-						     "pluma-automatic-spell-checker-insert-start",
+						     "lapiz-automatic-spell-checker-insert-start",
 						     &start,
 						     TRUE);
 	}
@@ -830,13 +830,13 @@ pluma_automatic_spell_checker_new (PlumaDocument     *doc,
 	}
 
 	spell->mark_insert_end = gtk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
-					"pluma-automatic-spell-checker-insert-end");
+					"lapiz-automatic-spell-checker-insert-end");
 
 	if (spell->mark_insert_end == NULL)
 	{
 		spell->mark_insert_end =
 			gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
-						     "pluma-automatic-spell-checker-insert-end",
+						     "lapiz-automatic-spell-checker-insert-end",
 						     &start,
 						     TRUE);
 	}
@@ -848,13 +848,13 @@ pluma_automatic_spell_checker_new (PlumaDocument     *doc,
 	}
 
 	spell->mark_click = gtk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
-					"pluma-automatic-spell-checker-click");
+					"lapiz-automatic-spell-checker-click");
 
 	if (spell->mark_click == NULL)
 	{
 		spell->mark_click =
 			gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
-						     "pluma-automatic-spell-checker-click",
+						     "lapiz-automatic-spell-checker-click",
 						     &start,
 						     TRUE);
 	}
@@ -871,7 +871,7 @@ pluma_automatic_spell_checker_new (PlumaDocument     *doc,
 }
 
 PlumaAutomaticSpellChecker *
-pluma_automatic_spell_checker_get_from_document (const PlumaDocument *doc)
+lapiz_automatic_spell_checker_get_from_document (const PlumaDocument *doc)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
@@ -882,10 +882,10 @@ pluma_automatic_spell_checker_get_from_document (const PlumaDocument *doc)
 }
 
 void
-pluma_automatic_spell_checker_free (PlumaAutomaticSpellChecker *spell)
+lapiz_automatic_spell_checker_free (PlumaAutomaticSpellChecker *spell)
 {
 	g_return_if_fail (spell != NULL);
-	g_return_if_fail (pluma_automatic_spell_checker_get_from_document (spell->doc) == spell);
+	g_return_if_fail (lapiz_automatic_spell_checker_get_from_document (spell->doc) == spell);
 
 	if (automatic_spell_checker_id == 0)
 		return;
@@ -894,7 +894,7 @@ pluma_automatic_spell_checker_free (PlumaAutomaticSpellChecker *spell)
 }
 
 static void
-pluma_automatic_spell_checker_free_internal (PlumaAutomaticSpellChecker *spell)
+lapiz_automatic_spell_checker_free_internal (PlumaAutomaticSpellChecker *spell)
 {
 	GtkTextTagTable *table;
 	GtkTextIter start, end;
@@ -958,7 +958,7 @@ pluma_automatic_spell_checker_free_internal (PlumaAutomaticSpellChecker *spell)
 }
 
 void
-pluma_automatic_spell_checker_attach_view (
+lapiz_automatic_spell_checker_attach_view (
 		PlumaAutomaticSpellChecker *spell,
 		PlumaView *view)
 {
@@ -989,7 +989,7 @@ pluma_automatic_spell_checker_attach_view (
 }
 
 void
-pluma_automatic_spell_checker_detach_view (
+lapiz_automatic_spell_checker_detach_view (
 		PlumaAutomaticSpellChecker *spell,
 		PlumaView *view)
 {

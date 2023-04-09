@@ -1,27 +1,27 @@
 /*
  * document-loader.c
- * This file is part of pluma
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Jesse van den Kieboom
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-#include "pluma-gio-document-loader.h"
-#include "pluma-prefs-manager-app.h"
+#include "lapiz-gio-document-loader.h"
+#include "lapiz-prefs-manager-app.h"
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <glib.h>
@@ -87,7 +87,7 @@ on_document_loaded (PlumaDocument  *document,
 
 	if (data->newline_type != -1)
 	{
-		g_assert_cmpint (pluma_document_get_newline_type (document),
+		g_assert_cmpint (lapiz_document_get_newline_type (document),
 		                 ==,
 		                 data->newline_type);
 	}
@@ -107,7 +107,7 @@ test_loader (const gchar *filename,
 
 	file = create_document (filename, contents);
 
-	document = pluma_document_new ();
+	document = lapiz_document_new ();
 
 	LoaderTestData *data = g_slice_new (LoaderTestData);
 	data->in_buffer = in_buffer;
@@ -123,7 +123,7 @@ test_loader (const gchar *filename,
 
 	uri = g_file_get_uri (file);
 
-	pluma_document_load (document, uri, pluma_encoding_get_utf8 (), 0, FALSE);
+	lapiz_document_load (document, uri, lapiz_encoding_get_utf8 (), 0, FALSE);
 
 	g_free (uri);
 
@@ -239,7 +239,7 @@ int main (int   argc,
 {
 	g_test_init (&argc, &argv, NULL);
 
-	pluma_prefs_manager_app_init ();
+	lapiz_prefs_manager_app_init ();
 
 	g_test_add_func ("/document-loader/end-line-stripping", test_end_line_stripping);
 	g_test_add_func ("/document-loader/end-new-line-detection", test_end_new_line_detection);

@@ -1,5 +1,5 @@
 /*
- * pluma-file-bookmarks-store.h - Pluma plugin providing easy file access
+ * lapiz-file-bookmarks-store.h - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -25,7 +25,7 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define PLUMA_TYPE_FILE_BOOKMARKS_STORE			(pluma_file_bookmarks_store_get_type ())
+#define PLUMA_TYPE_FILE_BOOKMARKS_STORE			(lapiz_file_bookmarks_store_get_type ())
 #define PLUMA_FILE_BOOKMARKS_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BOOKMARKS_STORE, PlumaFileBookmarksStore))
 #define PLUMA_FILE_BOOKMARKS_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BOOKMARKS_STORE, PlumaFileBookmarksStore const))
 #define PLUMA_FILE_BOOKMARKS_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_BOOKMARKS_STORE, PlumaFileBookmarksStoreClass))
@@ -76,13 +76,13 @@ struct _PlumaFileBookmarksStoreClass
 	GtkTreeStoreClass parent_class;
 };
 
-GType pluma_file_bookmarks_store_get_type               (void) G_GNUC_CONST;
-void _pluma_file_bookmarks_store_register_type          (GTypeModule * module);
+GType lapiz_file_bookmarks_store_get_type               (void) G_GNUC_CONST;
+void _lapiz_file_bookmarks_store_register_type          (GTypeModule * module);
 
-PlumaFileBookmarksStore *pluma_file_bookmarks_store_new (void);
-gchar *pluma_file_bookmarks_store_get_uri               (PlumaFileBookmarksStore * model,
+PlumaFileBookmarksStore *lapiz_file_bookmarks_store_new (void);
+gchar *lapiz_file_bookmarks_store_get_uri               (PlumaFileBookmarksStore * model,
 					                 GtkTreeIter * iter);
-void pluma_file_bookmarks_store_refresh                 (PlumaFileBookmarksStore * model);
+void lapiz_file_bookmarks_store_refresh                 (PlumaFileBookmarksStore * model);
 
 G_END_DECLS
 #endif				/* __PLUMA_FILE_BOOKMARKS_STORE_H__ */

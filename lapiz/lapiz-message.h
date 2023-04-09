@@ -6,7 +6,7 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_MESSAGE			(pluma_message_get_type ())
+#define PLUMA_TYPE_MESSAGE			(lapiz_message_get_type ())
 #define PLUMA_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_MESSAGE, PlumaMessage))
 #define PLUMA_MESSAGE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_MESSAGE, PlumaMessage const))
 #define PLUMA_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_MESSAGE, PlumaMessageClass))
@@ -28,40 +28,40 @@ struct _PlumaMessageClass {
 	GObjectClass parent_class;
 };
 
-GType pluma_message_get_type (void) G_GNUC_CONST;
+GType lapiz_message_get_type (void) G_GNUC_CONST;
 
-struct _PlumaMessageType pluma_message_get_message_type (PlumaMessage *message);
+struct _PlumaMessageType lapiz_message_get_message_type (PlumaMessage *message);
 
-void pluma_message_get			(PlumaMessage	 *message,
+void lapiz_message_get			(PlumaMessage	 *message,
 					 ...) G_GNUC_NULL_TERMINATED;
-void pluma_message_get_valist		(PlumaMessage	 *message,
+void lapiz_message_get_valist		(PlumaMessage	 *message,
 					 va_list 	  var_args);
-void pluma_message_get_value		(PlumaMessage	 *message,
+void lapiz_message_get_value		(PlumaMessage	 *message,
 					 const gchar	 *key,
 					 GValue		 *value);
 
-void pluma_message_set			(PlumaMessage	 *message,
+void lapiz_message_set			(PlumaMessage	 *message,
 					 ...) G_GNUC_NULL_TERMINATED;
-void pluma_message_set_valist		(PlumaMessage	 *message,
+void lapiz_message_set_valist		(PlumaMessage	 *message,
 					 va_list	  	  var_args);
-void pluma_message_set_value		(PlumaMessage	 *message,
+void lapiz_message_set_value		(PlumaMessage	 *message,
 					 const gchar 	 *key,
 					 GValue		 *value);
-void pluma_message_set_valuesv		(PlumaMessage	 *message,
+void lapiz_message_set_valuesv		(PlumaMessage	 *message,
 					 const gchar	**keys,
 					 GValue		 *values,
 					 gint		  n_values);
 
-const gchar *pluma_message_get_object_path (PlumaMessage	*message);
-const gchar *pluma_message_get_method	(PlumaMessage	 *message);
+const gchar *lapiz_message_get_object_path (PlumaMessage	*message);
+const gchar *lapiz_message_get_method	(PlumaMessage	 *message);
 
-gboolean pluma_message_has_key		(PlumaMessage	 *message,
+gboolean lapiz_message_has_key		(PlumaMessage	 *message,
 					 const gchar     *key);
 
-GType pluma_message_get_key_type 	(PlumaMessage    *message,
+GType lapiz_message_get_key_type 	(PlumaMessage    *message,
 			    		 const gchar     *key);
 
-gboolean pluma_message_validate		(PlumaMessage	 *message);
+gboolean lapiz_message_validate		(PlumaMessage	 *message);
 
 
 G_END_DECLS

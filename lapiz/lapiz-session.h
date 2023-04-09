@@ -1,6 +1,6 @@
 /*
- * pluma-session.h - Basic session management for pluma
- * This file is part of pluma
+ * lapiz-session.h - Basic session management for lapiz
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Ximian, Inc.
  * Copyright (C) 2005 - Paolo Maggi
@@ -24,8 +24,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id
@@ -38,9 +38,9 @@
 
 G_BEGIN_DECLS
 
-void		pluma_session_init 		(void);
-gboolean	pluma_session_is_restored 	(void);
-gboolean 	pluma_session_load 		(void);
+void		lapiz_session_init 		(void);
+gboolean	lapiz_session_is_restored 	(void);
+gboolean 	lapiz_session_load 		(void);
 
 G_END_DECLS
 

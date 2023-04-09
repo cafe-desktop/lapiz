@@ -2,25 +2,25 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.63.2)
 
-m4_define(pluma_major_version, 1)
-m4_define(pluma_minor_version, 24)
-m4_define(pluma_micro_version, 1)
-m4_define(pluma_version, pluma_major_version.pluma_minor_version.pluma_micro_version)
+m4_define(lapiz_major_version, 1)
+m4_define(lapiz_minor_version, 24)
+m4_define(lapiz_micro_version, 1)
+m4_define(lapiz_version, lapiz_major_version.lapiz_minor_version.lapiz_micro_version)
 
-AC_INIT([pluma], [pluma_version],
-    [https://github.com/mate-desktop/pluma/issues],
-    [pluma], [http://mate-desktop.org])
+AC_INIT([lapiz], [lapiz_version],
+    [https://github.com/mate-desktop/lapiz/issues],
+    [lapiz], [http://mate-desktop.org])
 
 AC_CONFIG_HEADERS(config.h)
-AC_CONFIG_SRCDIR(pluma/pluma.c)
+AC_CONFIG_SRCDIR(lapiz/lapiz.c)
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_DEFINE(PLUMA_MAJOR_VERSION, pluma_major_version, [Pluma major version])
-AC_SUBST(PLUMA_MAJOR_VERSION, pluma_major_version)
-AC_DEFINE(PLUMA_MINOR_VERSION, pluma_minor_version, [Pluma minor version])
-AC_SUBST(PLUMA_MINOR_VERSION, pluma_minor_version)
-AC_DEFINE(PLUMA_MICRO_VERSION, pluma_micro_version, [Pluma micro version])
-AC_SUBST(PLUMA_MICRO_VERSION, pluma_micro_version)
+AC_DEFINE(PLUMA_MAJOR_VERSION, lapiz_major_version, [Pluma major version])
+AC_SUBST(PLUMA_MAJOR_VERSION, lapiz_major_version)
+AC_DEFINE(PLUMA_MINOR_VERSION, lapiz_minor_version, [Pluma minor version])
+AC_SUBST(PLUMA_MINOR_VERSION, lapiz_minor_version)
+AC_DEFINE(PLUMA_MICRO_VERSION, lapiz_micro_version, [Pluma micro version])
+AC_SUBST(PLUMA_MICRO_VERSION, lapiz_micro_version)
 
 AM_INIT_AUTOMAKE([1.10 dist-xz no-dist-gzip -Wno-portability check-news])
 AM_MAINTAINER_MODE
@@ -68,7 +68,7 @@ AC_DEFUN([PLUMA_FULLPATH], [
 ])
 
 dnl FULL_LIBEXECDIR is used for X-MATE-Bugzilla-ExtraInfoScript expansion
-dnl in data/pluma.desktop.in.in
+dnl in data/lapiz.desktop.in.in
 PLUMA_FULLPATH(libexecdir, NONE, FULL_LIBEXECDIR)
 AC_SUBST(FULL_LIBEXECDIR)
 
@@ -80,7 +80,7 @@ AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
 
 
-GETTEXT_PACKAGE=pluma
+GETTEXT_PACKAGE=lapiz
 AC_SUBST([GETTEXT_PACKAGE])
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define to the Gettext package name])
 
@@ -219,26 +219,26 @@ PLUGIN_LIBTOOL_FLAGS="-module -avoid-version"
 
 AC_SUBST(PLUGIN_LIBTOOL_FLAGS)
 
-PLUMA_PLUGINS_DATA_DIR="$datadir/pluma/plugins"
+PLUMA_PLUGINS_DATA_DIR="$datadir/lapiz/plugins"
 AC_SUBST(PLUMA_PLUGINS_DATA_DIR)
 
-PLUMA_PLUGINS_LIBS_DIR="$libdir/pluma/plugins"
+PLUMA_PLUGINS_LIBS_DIR="$libdir/lapiz/plugins"
 AC_SUBST(PLUMA_PLUGINS_LIBS_DIR)
 
 YELP_HELP_INIT
 
 AC_CONFIG_FILES([
 Makefile
-data/pluma.desktop.in
-data/pluma-bugreport.sh
-data/pluma.pc
-data/org.mate.pluma.gschema.xml
+data/lapiz.desktop.in
+data/lapiz-bugreport.sh
+data/lapiz.pc
+data/org.mate.lapiz.gschema.xml
 data/Makefile
 docs/Makefile
 docs/reference/Makefile
-pluma/dialogs/Makefile
-pluma/smclient/Makefile
-pluma/Makefile
+lapiz/dialogs/Makefile
+lapiz/smclient/Makefile
+lapiz/Makefile
 help/Makefile
 pixmaps/Makefile
 plugins/Makefile
@@ -249,11 +249,11 @@ plugins/externaltools/Makefile
 plugins/externaltools/scripts/Makefile
 plugins/externaltools/tools/Makefile
 plugins/filebrowser/Makefile
-plugins/filebrowser/org.mate.pluma.plugins.filebrowser.gschema.xml
+plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml
 plugins/modelines/Makefile
 plugins/pythonconsole/Makefile
 plugins/pythonconsole/pythonconsole/Makefile
-plugins/pythonconsole/org.mate.pluma.plugins.pythonconsole.gschema.xml
+plugins/pythonconsole/org.mate.lapiz.plugins.pythonconsole.gschema.xml
 plugins/quickopen/Makefile
 plugins/quickopen/quickopen/Makefile
 plugins/snippets/data/lang/Makefile
@@ -262,10 +262,10 @@ plugins/snippets/Makefile
 plugins/snippets/snippets/Makefile
 plugins/sort/Makefile
 plugins/spell/Makefile
-plugins/spell/org.mate.pluma.plugins.spell.gschema.xml
+plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml
 plugins/taglist/Makefile
 plugins/time/Makefile
-plugins/time/org.mate.pluma.plugins.time.gschema.xml
+plugins/time/org.mate.lapiz.plugins.time.gschema.xml
 plugins/trailsave/Makefile
 po/Makefile.in
 tests/Makefile
@@ -293,23 +293,23 @@ if expr ${PLUMA_MINOR_VERSION} % 2 > /dev/null; then
 cat << EOF
  *** IMPORTANT ***
 
-This is an unstable version of pluma.
+This is an unstable version of lapiz.
 It is for test purposes only.
 
 Please, DO NOT use it in a production environment.
 It will probably crash and you will lose your data.
 
-If you are looking for a stable release of pluma, either download
+If you are looking for a stable release of lapiz, either download
 it from:
 
   http://pub.mate-desktop.org/release/1.${stable_version}/
 
-Or checkout the 1.${stable_version} branch of the pluma module from:
+Or checkout the 1.${stable_version} branch of the lapiz module from:
 
-  git://github.com/mate-desktop/pluma.git
+  git://github.com/mate-desktop/lapiz.git
 
 Thanks,
-The pluma team
+The lapiz team
 
  *** END OF WARNING ***
 EOF

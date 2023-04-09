@@ -9,8 +9,8 @@ AM_CPPFLAGS = \
 plugin_LTLIBRARIES = libtrailsave.la
 
 libtrailsave_la_SOURCES = \
-	pluma-trail-save-plugin.h	\
-	pluma-trail-save-plugin.c
+	lapiz-trail-save-plugin.h	\
+	lapiz-trail-save-plugin.c
 
 libtrailsave_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 libtrailsave_la_LIBADD  = $(PLUMA_LIBS)

@@ -1,5 +1,5 @@
 /*
- * pluma-docinfo-plugin.c
+ * lapiz-docinfo-plugin.c
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  *
@@ -24,7 +24,7 @@
 #include <config.h>
 #endif
 
-#include "pluma-docinfo-plugin.h"
+#include "lapiz-docinfo-plugin.h"
 
 #include <string.h> /* For strlen (...) */
 
@@ -33,9 +33,9 @@
 #include <gmodule.h>
 #include <libpeas/peas-activatable.h>
 
-#include <pluma/pluma-window.h>
-#include <pluma/pluma-debug.h>
-#include <pluma/pluma-utils.h>
+#include <lapiz/lapiz-window.h>
+#include <lapiz/lapiz-debug.h>
+#include <lapiz/lapiz-utils.h>
 
 #define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_2"
 
@@ -69,7 +69,7 @@ struct _PlumaDocInfoPluginPrivate
 };
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaDocInfoPlugin,
-                                pluma_docinfo_plugin,
+                                lapiz_docinfo_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaDocInfoPlugin)
@@ -89,7 +89,7 @@ static void
 docinfo_dialog_destroy_cb (GObject  *obj,
 			   PlumaDocInfoPluginPrivate *data)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	if (data != NULL)
 	{
@@ -110,7 +110,7 @@ get_docinfo_dialog (PlumaDocInfoPlugin *plugin)
 	GtkWidget *error_widget;
 	gboolean ret;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	data = plugin->priv;
 	window = PLUMA_WINDOW (data->window);
@@ -119,7 +119,7 @@ get_docinfo_dialog (PlumaDocInfoPlugin *plugin)
 
 	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "docinfo.ui", NULL);
-	ret = pluma_utils_get_ui_objects (ui_file,
+	ret = lapiz_utils_get_ui_objects (ui_file,
 					  NULL,
 					  &error_widget,
 					  "dialog", &dialog->dialog,
@@ -146,7 +146,7 @@ get_docinfo_dialog (PlumaDocInfoPlugin *plugin)
 		const gchar *err_message;
 
 		err_message = gtk_label_get_label (GTK_LABEL (error_widget));
-		pluma_warning (GTK_WINDOW (window), "%s", err_message);
+		lapiz_warning (GTK_WINDOW (window), "%s", err_message);
 
 		g_free (dialog);
 		gtk_widget_destroy (error_widget);
@@ -183,7 +183,7 @@ calculate_info (PlumaDocument *doc,
 {
 	gchar *text;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	text = gtk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc),
 					  start,
@@ -240,7 +240,7 @@ docinfo_real (PlumaDocument *doc,
 	gchar *tmp_str;
 	gchar *doc_name;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
 				    &start,
@@ -255,13 +255,13 @@ docinfo_real (PlumaDocument *doc,
 	if (chars == 0)
 		lines = 0;
 
-	pluma_debug_message (DEBUG_PLUGINS, "Chars: %d", chars);
-	pluma_debug_message (DEBUG_PLUGINS, "Lines: %d", lines);
-	pluma_debug_message (DEBUG_PLUGINS, "Words: %d", words);
-	pluma_debug_message (DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars);
-	pluma_debug_message (DEBUG_PLUGINS, "Bytes: %d", bytes);
+	lapiz_debug_message (DEBUG_PLUGINS, "Chars: %d", chars);
+	lapiz_debug_message (DEBUG_PLUGINS, "Lines: %d", lines);
+	lapiz_debug_message (DEBUG_PLUGINS, "Words: %d", words);
+	lapiz_debug_message (DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars);
+	lapiz_debug_message (DEBUG_PLUGINS, "Bytes: %d", bytes);
 
-	doc_name = pluma_document_get_short_name_for_display (doc);
+	doc_name = lapiz_document_get_short_name_for_display (doc);
 	tmp_str = g_strdup_printf ("<span weight=\"bold\">%s</span>", doc_name);
 	gtk_label_set_markup (GTK_LABEL (dialog->file_name_label), tmp_str);
 	g_free (doc_name);
@@ -301,7 +301,7 @@ selectioninfo_real (PlumaDocument *doc,
 	gint bytes = 0;
 	gchar *tmp_str;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	sel = gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
 						    &start,
@@ -315,11 +315,11 @@ selectioninfo_real (PlumaDocument *doc,
 				&start, &end,
 				&chars, &words, &white_chars, &bytes);
 
-		pluma_debug_message (DEBUG_PLUGINS, "Selected chars: %d", chars);
-		pluma_debug_message (DEBUG_PLUGINS, "Selected lines: %d", lines);
-		pluma_debug_message (DEBUG_PLUGINS, "Selected words: %d", words);
-		pluma_debug_message (DEBUG_PLUGINS, "Selected chars non-space: %d", chars - white_chars);
-		pluma_debug_message (DEBUG_PLUGINS, "Selected bytes: %d", bytes);
+		lapiz_debug_message (DEBUG_PLUGINS, "Selected chars: %d", chars);
+		lapiz_debug_message (DEBUG_PLUGINS, "Selected lines: %d", lines);
+		lapiz_debug_message (DEBUG_PLUGINS, "Selected words: %d", words);
+		lapiz_debug_message (DEBUG_PLUGINS, "Selected chars non-space: %d", chars - white_chars);
+		lapiz_debug_message (DEBUG_PLUGINS, "Selected bytes: %d", bytes);
 
 		gtk_widget_set_sensitive (dialog->selection_vbox, TRUE);
 	}
@@ -327,7 +327,7 @@ selectioninfo_real (PlumaDocument *doc,
 	{
 		gtk_widget_set_sensitive (dialog->selection_vbox, FALSE);
 
-		pluma_debug_message (DEBUG_PLUGINS, "Selection empty");
+		lapiz_debug_message (DEBUG_PLUGINS, "Selection empty");
 	}
 
 	if (chars == 0)
@@ -362,11 +362,11 @@ docinfo_cb (GtkAction	*action,
 	PlumaWindow *window;
 	PlumaDocument *doc;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	data = plugin->priv;
 	window = PLUMA_WINDOW (data->window);
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
 	if (data->dialog != NULL)
@@ -399,7 +399,7 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 {
 	PlumaWindow *window;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	window = PLUMA_WINDOW (data->window);
 
@@ -407,7 +407,7 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 	{
 		case GTK_RESPONSE_CLOSE:
 		{
-			pluma_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CLOSE");
+			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CLOSE");
 			gtk_widget_destroy (data->dialog->dialog);
 
 			break;
@@ -417,9 +417,9 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 		{
 			PlumaDocument *doc;
 
-			pluma_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
+			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
 
-			doc = pluma_window_get_active_document (window);
+			doc = lapiz_window_get_active_document (window);
 			g_return_if_fail (doc != NULL);
 
 			docinfo_real (doc,
@@ -449,10 +449,10 @@ update_ui (PlumaDocInfoPluginPrivate *data)
 	PlumaWindow *window;
 	PlumaView *view;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	window = PLUMA_WINDOW (data->window);
-	view = pluma_window_get_active_view (window);
+	view = lapiz_window_get_active_view (window);
 
 	gtk_action_group_set_sensitive (data->ui_action_group,
 					(view != NULL));
@@ -466,19 +466,19 @@ update_ui (PlumaDocInfoPluginPrivate *data)
 }
 
 static void
-pluma_docinfo_plugin_init (PlumaDocInfoPlugin *plugin)
+lapiz_docinfo_plugin_init (PlumaDocInfoPlugin *plugin)
 {
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaDocInfoPlugin initializing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaDocInfoPlugin initializing");
 
-	plugin->priv = pluma_docinfo_plugin_get_instance_private (plugin);
+	plugin->priv = lapiz_docinfo_plugin_get_instance_private (plugin);
 }
 
 static void
-pluma_docinfo_plugin_dispose (GObject *object)
+lapiz_docinfo_plugin_dispose (GObject *object)
 {
 	PlumaDocInfoPlugin *plugin = PLUMA_DOCINFO_PLUGIN (object);
 
-	pluma_debug_message (DEBUG_PLUGINS, "PlumaDocInfoPlugin disposing");
+	lapiz_debug_message (DEBUG_PLUGINS, "PlumaDocInfoPlugin disposing");
 
 	if (plugin->priv->window != NULL)
 	{
@@ -492,11 +492,11 @@ pluma_docinfo_plugin_dispose (GObject *object)
 		plugin->priv->ui_action_group = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_docinfo_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_docinfo_plugin_parent_class)->dispose (object);
 }
 
 static void
-pluma_docinfo_plugin_set_property (GObject      *object,
+lapiz_docinfo_plugin_set_property (GObject      *object,
                                    guint         prop_id,
                                    const GValue *value,
                                    GParamSpec   *pspec)
@@ -516,7 +516,7 @@ pluma_docinfo_plugin_set_property (GObject      *object,
 }
 
 static void
-pluma_docinfo_plugin_get_property (GObject    *object,
+lapiz_docinfo_plugin_get_property (GObject    *object,
                                    guint       prop_id,
                                    GValue     *value,
                                    GParamSpec *pspec)
@@ -536,14 +536,14 @@ pluma_docinfo_plugin_get_property (GObject    *object,
 }
 
 static void
-pluma_docinfo_plugin_activate (PeasActivatable *activatable)
+lapiz_docinfo_plugin_activate (PeasActivatable *activatable)
 {
 	PlumaDocInfoPlugin *plugin;
 	PlumaDocInfoPluginPrivate *data;
 	PlumaWindow *window;
 	GtkUIManager *manager;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	plugin = PLUMA_DOCINFO_PLUGIN (activatable);
 	data = plugin->priv;
@@ -559,7 +559,7 @@ pluma_docinfo_plugin_activate (PeasActivatable *activatable)
 				      G_N_ELEMENTS (action_entries),
 				      plugin);
 
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 	gtk_ui_manager_insert_action_group (manager,
 					    data->ui_action_group,
 					    -1);
@@ -578,18 +578,18 @@ pluma_docinfo_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-pluma_docinfo_plugin_deactivate (PeasActivatable *activatable)
+lapiz_docinfo_plugin_deactivate (PeasActivatable *activatable)
 {
 	PlumaDocInfoPluginPrivate *data;
 	PlumaWindow *window;
 	GtkUIManager *manager;
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	data = PLUMA_DOCINFO_PLUGIN (activatable)->priv;
 	window = PLUMA_WINDOW (data->window);
 
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 
 	gtk_ui_manager_remove_ui (manager,
 				  data->ui_id);
@@ -598,27 +598,27 @@ pluma_docinfo_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-pluma_docinfo_plugin_update_state (PeasActivatable *activatable)
+lapiz_docinfo_plugin_update_state (PeasActivatable *activatable)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 	update_ui (PLUMA_DOCINFO_PLUGIN (activatable)->priv);
 }
 
 static void
-pluma_docinfo_plugin_class_init (PlumaDocInfoPluginClass *klass)
+lapiz_docinfo_plugin_class_init (PlumaDocInfoPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = pluma_docinfo_plugin_dispose;
-	object_class->set_property = pluma_docinfo_plugin_set_property;
-	object_class->get_property = pluma_docinfo_plugin_get_property;
+	object_class->dispose = lapiz_docinfo_plugin_dispose;
+	object_class->set_property = lapiz_docinfo_plugin_set_property;
+	object_class->get_property = lapiz_docinfo_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_OBJECT, "object");
 }
 
 static void
-pluma_docinfo_plugin_class_finalize (PlumaDocInfoPluginClass *klass)
+lapiz_docinfo_plugin_class_finalize (PlumaDocInfoPluginClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -626,15 +626,15 @@ pluma_docinfo_plugin_class_finalize (PlumaDocInfoPluginClass *klass)
 static void
 peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-	iface->activate = pluma_docinfo_plugin_activate;
-	iface->deactivate = pluma_docinfo_plugin_deactivate;
-	iface->update_state = pluma_docinfo_plugin_update_state;
+	iface->activate = lapiz_docinfo_plugin_activate;
+	iface->deactivate = lapiz_docinfo_plugin_deactivate;
+	iface->update_state = lapiz_docinfo_plugin_update_state;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	pluma_docinfo_plugin_register_type (G_TYPE_MODULE (module));
+	lapiz_docinfo_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,

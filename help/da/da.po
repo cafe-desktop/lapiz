@@ -77,7 +77,7 @@ msgstr "Sun Microsystems"
 
 #. (itstool) path: othercredit/contrib
 #: C/index.docbook:98
-msgid "Provided information from earlier revisions of the pluma application."
+msgid "Provided information from earlier revisions of the lapiz application."
 msgstr "Tilbudt information fra tidligere revisioner af programmet Pluma."
 
 #. (itstool) path: othercredit/contrib
@@ -154,13 +154,13 @@ msgstr "MATE-dokumentationsholdet"
 
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
-msgid "This manual describes version 1.10 of pluma."
-msgstr "Denne manual beskriver version 1.10 af pluma."
+msgid "This manual describes version 1.10 of lapiz."
+msgstr "Denne manual beskriver version 1.10 af lapiz."
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:216
-msgid "<primary>pluma</primary>"
-msgstr "<primary>pluma</primary>"
+msgid "<primary>lapiz</primary>"
+msgstr "<primary>lapiz</primary>"
 
 #. (itstool) path: article/indexterm
 #: C/index.docbook:219
@@ -175,21 +175,21 @@ msgstr "Indledning"
 #. (itstool) path: section/para
 #: C/index.docbook:231
 msgid ""
-"The <application>pluma</application> application enables you to create and "
+"The <application>lapiz</application> application enables you to create and "
 "edit text files."
 msgstr ""
-"Programmet <application>pluma</application> gør dig i stand til at oprette "
+"Programmet <application>lapiz</application> gør dig i stand til at oprette "
 "og redigere tekstfiler."
 
 #. (itstool) path: section/para
 #: C/index.docbook:232
 msgid ""
-"The aim of <application>pluma</application> is to be a simple and easy to "
+"The aim of <application>lapiz</application> is to be a simple and easy to "
 "use text editor. More powerful features can be enabled with different "
 "<firstterm>plugins</firstterm>, allowing a variety of tasks related to text-"
 "editing."
 msgstr ""
-"Målet med <application>pluma</application> er, at det skal være et simpelt "
+"Målet med <application>lapiz</application> er, at det skal være et simpelt "
 "tekstredigeringsprogram, som er let at bruge. Mere avancerede funktioner kan"
 " aktiveres ved hjælp af diverse <firstterm>udvidelsesmoduler</firstterm>, "
 "som kan give programmet mange nye tekstredigeringsrelaterede funktioner."
@@ -201,13 +201,13 @@ msgstr "Kom godt i gang"
 
 #. (itstool) path: info/title
 #: C/index.docbook:244
-msgid "Starting pluma"
-msgstr "Opstart af pluma"
+msgid "Starting lapiz"
+msgstr "Opstart af lapiz"
 
 #. (itstool) path: section/para
 #: C/index.docbook:246
-msgid "You can start <application>pluma</application> in the following ways:"
-msgstr "Du kan starte <application>pluma</application> på følgende måder:"
+msgid "You can start <application>lapiz</application> in the following ways:"
+msgstr "Du kan starte <application>lapiz</application> på følgende måder:"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:249
@@ -230,46 +230,46 @@ msgstr "Kommandolinje"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:258
-msgid "Execute the following command: <command>pluma</command>"
-msgstr "Udfør den følgende kommando: <command>pluma</command>"
+msgid "Execute the following command: <command>lapiz</command>"
+msgstr "Udfør den følgende kommando: <command>lapiz</command>"
 
 #. (itstool) path: section/para
 #: C/index.docbook:262
 msgid ""
-"By default, when you open a text document in the file manager, pluma will "
+"By default, when you open a text document in the file manager, lapiz will "
 "start, and display the document."
 msgstr ""
-"Som standard, når du åbner et tekstdokument, vil pluma starte op og vise "
+"Som standard, når du åbner et tekstdokument, vil lapiz starte op og vise "
 "dokumentets indhold."
 
 #. (itstool) path: info/title
 #: C/index.docbook:267
-msgid "The pluma Window"
+msgid "The lapiz Window"
 msgstr "Pluma-vinduet"
 
 #. (itstool) path: section/para
 #: C/index.docbook:269
 msgid ""
-"When you start <application>pluma</application>, the following window is "
+"When you start <application>lapiz</application>, the following window is "
 "displayed:"
 msgstr ""
-"Når du starter <application>pluma</application>, vil det følgende vindue "
+"Når du starter <application>lapiz</application>, vil det følgende vindue "
 "blive vist:"
 
 #. (itstool) path: info/title
 #: C/index.docbook:273
-msgid "pluma Window"
+msgid "lapiz Window"
 msgstr "Pluma-vindue"
 
 #. (itstool) path: textobject/phrase
 #: C/index.docbook:281
-msgid "Shows pluma main window."
+msgid "Shows lapiz main window."
 msgstr "Viser hovedvinduet for Pluma"
 
 #. (itstool) path: section/para
 #: C/index.docbook:287
 msgid ""
-"The <application>pluma</application> window contains the following elements:"
+"The <application>lapiz</application> window contains the following elements:"
 msgstr ""
 "<application>Pluma</application>-vinduet indeholder følgende elementer:"
 
@@ -282,10 +282,10 @@ msgstr "Menubjælke"
 #: C/index.docbook:292
 msgid ""
 "The menus on the menubar contain all the commands you need to work with "
-"files in <application>pluma</application>."
+"files in <application>lapiz</application>."
 msgstr ""
 "Menuerne på menulinjen indeholder alle de kommandoer du behøver for at kunne"
-" arbejde med filer i <application>pluma</application>."
+" arbejde med filer i <application>lapiz</application>."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:296
@@ -320,11 +320,11 @@ msgstr "Statusbjælke"
 #: C/index.docbook:310
 msgid ""
 "The statusbar displays information about current "
-"<application>pluma</application> activity and contextual information about "
+"<application>lapiz</application> activity and contextual information about "
 "the menu items. The statusbar also displays the following information:"
 msgstr ""
 "Statuslinjen viser information om nuværende aktivitet i "
-"<application>pluma</application> samt kontekstuel information om "
+"<application>lapiz</application> samt kontekstuel information om "
 "menuobjekterne. Statuslinjen viser også den følgende information:"
 
 #. (itstool) path: listitem/para
@@ -404,18 +404,18 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:336
 msgid ""
-"When you right-click in the <application>pluma</application> window, the "
+"When you right-click in the <application>lapiz</application> window, the "
 "application displays a popup menu. The popup menu contains the most common "
 "text editing commands."
 msgstr ""
-"Når du højreklikker i <application>pluma</application>-vinduet, viser "
+"Når du højreklikker i <application>lapiz</application>-vinduet, viser "
 "programmet en pop op-menu. Pop op-menuen indeholder de oftest brugte "
 "tekstredigeringskommandoer."
 
 #. (itstool) path: section/para
 #: C/index.docbook:337
 msgid ""
-"Like other MATE applications, actions in <application>pluma</application> "
+"Like other MATE applications, actions in <application>lapiz</application> "
 "can be performed in several ways: with the menu, with the toolbar, or with "
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:mate-user-guide/shortcuts-apps\">User Guide</link>."
@@ -428,17 +428,17 @@ msgstr ""
 
 #. (itstool) path: info/title
 #: C/index.docbook:343
-msgid "Running pluma from a Command Line"
-msgstr "Opstart af pluma fra en kommandolinje"
+msgid "Running lapiz from a Command Line"
+msgstr "Opstart af lapiz fra en kommandolinje"
 
 #. (itstool) path: section/para
 #: C/index.docbook:345
 msgid ""
-"You can run <application>pluma</application> from a command line and open a "
+"You can run <application>lapiz</application> from a command line and open a "
 "single file or multiple files. To open multiple files from a command line, "
 "type the following command, then press <keycap>Return</keycap>:"
 msgstr ""
-"Du kan køre <application>pluma</application> fra en kommandolinje og åbne en"
+"Du kan køre <application>lapiz</application> fra en kommandolinje og åbne en"
 " enkelt eller flere filer. For at åbne flere filer fra en kommandolinje skal"
 " du skrive den følgende kommando og afslutte med et tryk på "
 "<keycap>Retur</keycap>:"
@@ -446,10 +446,10 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:346
 msgid ""
-"<command>pluma <replaceable>file1.txt file2.txt "
+"<command>lapiz <replaceable>file1.txt file2.txt "
 "file3.txt</replaceable></command>"
 msgstr ""
-"<command>pluma <replaceable>fil1.txt fil2.txt "
+"<command>lapiz <replaceable>fil1.txt fil2.txt "
 "fil3.txt</replaceable></command>"
 
 #. (itstool) path: section/para
@@ -460,12 +460,12 @@ msgstr "Alternativt kan du angive en URI i stedet for et filnavn."
 #. (itstool) path: section/para
 #: C/index.docbook:350
 msgid ""
-"Refer to the <link xlink:href=\"man:pluma\"> <citerefentry> "
-"<refentrytitle>pluma</refentrytitle> <manvolnum>1</manvolnum> "
+"Refer to the <link xlink:href=\"man:lapiz\"> <citerefentry> "
+"<refentrytitle>lapiz</refentrytitle> <manvolnum>1</manvolnum> "
 "</citerefentry> </link> man page for more information on how to run "
-"<application>pluma</application> from a command line."
+"<application>lapiz</application> from a command line."
 msgstr ""
-"Se manualsiden for <link xlink:href=\"man:pluma\"> <citerefentry> "
+"Se manualsiden for <link xlink:href=\"man:lapiz\"> <citerefentry> "
 "<refentrytitle>Pluma</refentrytitle> <manvolnum>1</manvolnum> "
 "</citerefentry> </link> for yderligere information om hvordan "
 "<application>Pluma</application> startes fra kommandolinjen."
@@ -485,7 +485,7 @@ msgstr "Opret et nyt dokument"
 msgid ""
 "To create a new document, choose <menuchoice> <guimenu>File</guimenu> "
 "<guimenuitem>New</guimenuitem> </menuchoice>. The application displays a new"
-" blank document in the <application>pluma</application> window."
+" blank document in the <application>lapiz</application> window."
 msgstr ""
 "For at oprette et nyt dokument skal du vælge <menuchoice> "
 "<guimenu>Fil</guimenu> <guimenuitem>Ny</guimenuitem> </menuchoice>. "
@@ -504,7 +504,7 @@ msgid ""
 "<guimenuitem>Open</guimenuitem> </menuchoice> to display the <guilabel>Open "
 "File</guilabel> dialog. Select the file that you want to open, then click "
 "<guibutton>Open</guibutton>. The file is displayed in the "
-"<application>pluma</application> window."
+"<application>lapiz</application> window."
 msgstr ""
 "Hvis du vil åbne en eksisterende fil skal du vælge <menuchoice> "
 "<guimenu>Fil</guimenu> <guimenuitem>Åbn</guimenuitem> </menuchoice> for at "
@@ -535,13 +535,13 @@ msgstr ""
 #. (itstool) path: note/para
 #: C/index.docbook:383
 msgid ""
-"You can open multiple files in <application>pluma</application>. The "
+"You can open multiple files in <application>lapiz</application>. The "
 "application adds a tab for each open file to the window. For more on this "
-"see <xref linkend=\"pluma-tabs\"/>."
+"see <xref linkend=\"lapiz-tabs\"/>."
 msgstr ""
-"Du kan åbne flere filer i <application>pluma</application>. Programmet "
+"Du kan åbne flere filer i <application>lapiz</application>. Programmet "
 "tilføjer et ekstra faneblad i vinduet for hver åben fil. Se <xref linkend"
-"=\"pluma-tabs\"/> for yderligere information."
+"=\"lapiz-tabs\"/> for yderligere information."
 
 #. (itstool) path: info/title
 #: C/index.docbook:390
@@ -580,12 +580,12 @@ msgstr ""
 #: C/index.docbook:401
 msgid ""
 "To save all the files that are currently open in "
-"<application>pluma</application>, choose <menuchoice> "
+"<application>lapiz</application>, choose <menuchoice> "
 "<guimenu>Documents</guimenu> <guimenuitem>Save All</guimenuitem> "
 "</menuchoice>."
 msgstr ""
 "Hvis du ønsker at gemme alle de filer, som du i øjeblikket har åbne i "
-"<application>pluma</application>, skal du vælge "
+"<application>lapiz</application>, skal du vælge "
 "<menuchoice><guimenu>Dokumenter</guimenu><guimenuitem>Gem "
 "alle</guimenuitem></menuchoice>."
 
@@ -593,12 +593,12 @@ msgstr ""
 #: C/index.docbook:404
 msgid ""
 "To close all the files that are currently open in "
-"<application>pluma</application>, choose <menuchoice> "
+"<application>lapiz</application>, choose <menuchoice> "
 "<guimenu>Documents</guimenu> <guimenuitem>Close All</guimenuitem> "
 "</menuchoice>."
 msgstr ""
 "For at lukke alle de filer, som du i øjeblikket har åbne i "
-"<application>pluma</application>, skal du vælge "
+"<application>lapiz</application>, skal du vælge "
 "<menuchoice><guimenu>Dokumenter</guimenu><guimenuitem>Luk "
 "alle</guimenuitem></menuchoice>."
 
@@ -610,33 +610,33 @@ msgstr "Arbejde med faneblade"
 #. (itstool) path: section/para
 #: C/index.docbook:412
 msgid ""
-"When more than one file is open, <application>pluma</application> shows a "
+"When more than one file is open, <application>lapiz</application> shows a "
 "<firstterm>tab</firstterm> for each document above the display area. To "
 "switch to another document, click on its tab."
 msgstr ""
-"Når du har mere end en fil åben, viser <application>pluma</application> et "
+"Når du har mere end en fil åben, viser <application>lapiz</application> et "
 "<firstterm>faneblad</firstterm> for hvert dokument over visningsområdet. For"
 " at skifte til et andet dokument skal du blot klikke på dets faneblad."
 
 #. (itstool) path: section/para
 #: C/index.docbook:413
 msgid ""
-"To move a document to another <application> pluma</application> window, drag"
+"To move a document to another <application> lapiz</application> window, drag"
 " the tab corresponding to the file to the window you want to move it to."
 msgstr ""
 "For at flytte et dokument til et andet "
-"<application>pluma</application>-vindue skal du trække filens faneblad til "
+"<application>lapiz</application>-vindue skal du trække filens faneblad til "
 "det vindue du vil flytte den til."
 
 #. (itstool) path: section/para
 #: C/index.docbook:414
 msgid ""
-"To move a document to a new <application> pluma</application> window, either"
+"To move a document to a new <application> lapiz</application> window, either"
 " drag its tab to the desktop, or choose <menuchoice> "
 "<guimenu>Documents</guimenu> <guimenuitem>Move to New Window</guimenuitem> "
 "</menuchoice>."
 msgstr ""
-"For at flytte et dokument til et nyt <application>pluma</application>-vindue"
+"For at flytte et dokument til et nyt <application>lapiz</application>-vindue"
 " kan du enten trække dets faneblad ud på skrivebordet eller vælge "
 "<menuchoice><guimenu>Dokumenter</guimenu><guimenuitem>Flyt til nyt "
 "vindue</guimenuitem></menuchoice>."
@@ -703,12 +703,12 @@ msgid ""
 "To insert the contents of the clipboard at the cursor position, choose "
 "<menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> "
 "</menuchoice>. You must cut or copy text before you can paste text into the "
-"file, either from pluma or another application."
+"file, either from lapiz or another application."
 msgstr ""
 "For at indsætte indholdet af udklipsholderen på det punkt, hvor markøren er "
 "placeret, skal du vælge "
 "<menuchoice><guimenu>Rediger</guimenu><guimenuitem>Indsæt</guimenuitem></menuchoice>."
-" Du skal klippe eller kopiere teksten du vil indsætte, enten fra pluma eller"
+" Du skal klippe eller kopiere teksten du vil indsætte, enten fra lapiz eller"
 " fra et andet program, før du kan indsætte den i filen."
 
 #. (itstool) path: listitem/para
@@ -747,12 +747,12 @@ msgstr "Find og erstat"
 #. (itstool) path: section/para
 #: C/index.docbook:465
 msgid ""
-"In <application>pluma</application>, there are two ways of searching for "
+"In <application>lapiz</application>, there are two ways of searching for "
 "text. You can use the <guilabel>Find</guilabel> dialog to search for a "
 "specific piece of text, or <guilabel>Incremental Search</guilabel> to "
 "highlight matching text as you type it."
 msgstr ""
-"I <application>pluma</application> er der to måder at kunne søge efter tekst"
+"I <application>lapiz</application> er der to måder at kunne søge efter tekst"
 " på. Du kan bruge dialogen <guilabel>Find</guilabel> til at søge efter et "
 "specifikt stykke tekst, eller <guilabel>Løbende søgning</guilabel> til at "
 "fremhæve matchende tekst efterhånden som du skriver den."
@@ -784,24 +784,24 @@ msgstr ""
 msgid ""
 "Type the string that you want to find in the <guilabel>Search for</guilabel>"
 " field. You can include special characters such as a new line or tab: see "
-"<xref linkend=\"pluma-find-escapes\"/>."
+"<xref linkend=\"lapiz-find-escapes\"/>."
 msgstr ""
 "Skriv det tekststykke, som du ønsker at finde, i feltet <guilabel>Søg "
 "efter</guilabel>. Din søgning kan godt indeholde specielle tegn såsom en ny "
-"linje eller indryk: se <xref linkend=\"pluma-find-escapes\"/>."
+"linje eller indryk: se <xref linkend=\"lapiz-find-escapes\"/>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:485
 msgid ""
 "Click <guibutton>Find</guibutton> to search the file for the first "
 "occurrence of the string after your current cursor position. If "
-"<application>pluma</application> finds the string, the application selects "
+"<application>lapiz</application> finds the string, the application selects "
 "first occurrence of the string. Other occurrences of the string are "
 "highlighted."
 msgstr ""
 "Klik <guibutton>Find</guibutton> for at søge i filen efter første sted efter"
 " den nuværende markørposition hvor den ønskede tekst figurerer. Hvis "
-"<application>pluma</application> finder teksten, vælger programmet det "
+"<application>lapiz</application> finder teksten, vælger programmet det "
 "første sted hvor teksten forekommer. Andre forekomster af teksten fremhæves."
 
 #. (itstool) path: listitem/para
@@ -934,11 +934,11 @@ msgstr ""
 msgid ""
 "Type the string that you want to find, in the <guilabel>Search "
 "for</guilabel> field. You can include special characters such as a new line "
-"or tab: see <xref linkend=\"pluma-find-escapes\"/>."
+"or tab: see <xref linkend=\"lapiz-find-escapes\"/>."
 msgstr ""
 "Indtast den tekststreng, som du ønsker at finde, i feltet <guilabel>Søg "
 "efter</guilabel>. Du kan godt bruge specielle tegn såsom ny linje eller "
-"indryk: se <xref linkend=\"pluma-find-escapes\"/>."
+"indryk: se <xref linkend=\"lapiz-find-escapes\"/>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:552
@@ -953,7 +953,7 @@ msgstr ""
 #: C/index.docbook:556
 msgid ""
 "To examine each occurrence of the string before replacing it, click "
-"<guibutton>Find</guibutton>. If <application>pluma</application> finds the "
+"<guibutton>Find</guibutton>. If <application>lapiz</application> finds the "
 "string, the application selects the string. Click "
 "<guibutton>Replace</guibutton> to replace the selected occurrence of the "
 "string. To find the next occurrence of the string, click "
@@ -961,7 +961,7 @@ msgid ""
 msgstr ""
 "For at undersøge hver enkelt forekomst af tekststrengen før du erstatter den"
 " skal du klikke på <guibutton>Find</guibutton>. Hvis "
-"<application>pluma</application> finder teksten markerer programmet den "
+"<application>lapiz</application> finder teksten markerer programmet den "
 "automatisk. Klik på <guibutton>Erstat</guibutton> for at erstatte den "
 "markerede forekomst af tekststrengen. For at finde den næste forekomst "
 "klikker du blot <guibutton>Find</guibutton> igen."
@@ -1176,10 +1176,10 @@ msgstr "<guilabel>Udskriv syntaksfremhævning</guilabel>"
 #: C/index.docbook:666
 msgid ""
 "Select this option to print syntax highlighting. For more information about "
-"syntax highlighting, see <xref linkend=\"pluma-set-highlightmode\"/>."
+"syntax highlighting, see <xref linkend=\"lapiz-set-highlightmode\"/>."
 msgstr ""
 "Vælg denne mulighed for at udskrive syntaksfremhævning. Se <xref linkend"
-"=\"pluma-set-highlightmode\"/> for yderligere information."
+"=\"lapiz-set-highlightmode\"/> for yderligere information."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:670
@@ -1297,11 +1297,11 @@ msgstr ""
 #: C/index.docbook:728
 msgid ""
 "To reset the fonts to the default fonts for printing a file from "
-"<application>pluma</application>, click <guibutton>Restore Default "
+"<application>lapiz</application>, click <guibutton>Restore Default "
 "Fonts</guibutton>."
 msgstr ""
 "For at gendanne standardskrifttyperne for udskrifter i "
-"<application>pluma</application> skal du klikke på <guibutton>Gendan "
+"<application>lapiz</application> skal du klikke på <guibutton>Gendan "
 "standardskrifttyper</guibutton>."
 
 #. (itstool) path: info/title
@@ -1312,10 +1312,10 @@ msgstr "Udskriv et dokument"
 #. (itstool) path: section/para
 #: C/index.docbook:737
 msgid ""
-"You can use <application>pluma</application> to perform the following print "
+"You can use <application>lapiz</application> to perform the following print "
 "operations:"
 msgstr ""
-"Du kan bruge <application>pluma</application> til at udføre følgende "
+"Du kan bruge <application>lapiz</application> til at udføre følgende "
 "udskrivningsfunktioner:"
 
 #. (itstool) path: listitem/para
@@ -1331,11 +1331,11 @@ msgstr "Udskriv output fra udskrivningskommandoen til en fil."
 #. (itstool) path: section/para
 #: C/index.docbook:746
 msgid ""
-"If you print to a file, <application>pluma</application> sends the output of"
+"If you print to a file, <application>lapiz</application> sends the output of"
 " the file to a pre-press format file. The most common pre-press formats are "
 "PostScript and Portable Document Format (PDF)."
 msgstr ""
-"Hvis du udskriver til en fil vil <application>pluma</application> sende "
+"Hvis du udskriver til en fil vil <application>lapiz</application> sende "
 "filens output til en præ-pres-formatfil. De mest brugte præ-pres-formater er"
 " PostScript og Portable Document Format (PDF)."
 
@@ -1579,8 +1579,8 @@ msgstr "<guilabel>Tilstand</guilabel>"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:871 C/index.docbook:879 C/index.docbook:887
-msgid "This functionality is not supported in this version of pluma."
-msgstr "Denne funktionalitet er ikke understøttet i denne version af pluma."
+msgid "This functionality is not supported in this version of lapiz."
+msgstr "Denne funktionalitet er ikke understøttet i denne version af lapiz."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:875
@@ -1691,15 +1691,15 @@ msgstr "Programmeringsfaciliteter"
 #. (itstool) path: section/para
 #: C/index.docbook:964
 msgid ""
-"Several of <application>pluma</application>'s features for programming are "
+"Several of <application>lapiz</application>'s features for programming are "
 "provided with plugins. For example, the Tag List plugin provides a list of "
 "commonly-used tags for different markup languages: see <xref linkend"
-"=\"pluma-tag-list-plugin\"/>."
+"=\"lapiz-tag-list-plugin\"/>."
 msgstr ""
-"Flere af <application>pluma</application>s programmeringsfaciliteter ydes "
+"Flere af <application>lapiz</application>s programmeringsfaciliteter ydes "
 "via udvidelsesmoduler. For eksempel giver Mærkeliste-modulet en liste over "
 "de oftest brugte mærker for diverse opmærkningssprog: se <xref linkend"
-"=\"pluma-tag-list-plugin\"/>."
+"=\"lapiz-tag-list-plugin\"/>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:969
@@ -1718,13 +1718,13 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:973
 msgid ""
-"<application>pluma</application> chooses an appropriate syntax highlighting "
+"<application>lapiz</application> chooses an appropriate syntax highlighting "
 "mode based on a document's type. To override the syntax highlighting mode, "
 "choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Highlight "
 "Mode</guimenuitem> </menuchoice>, then choose one of the following menu "
 "items:"
 msgstr ""
-"<application>pluma</application> vælger en passende syntaksfremhævning "
+"<application>lapiz</application> vælger en passende syntaksfremhævning "
 "baseret på et dokuments type. For at tvinge en bestemt syntaksfremhævning "
 "igennem skal du vælge <menuchoice> <guimenu>Vis</guimenu> "
 "<guimenuitem>Fremhævningstilstand</guimenuitem> </menuchoice>, og vælg "
@@ -1804,24 +1804,24 @@ msgstr "Videreled et kommandooutput til en fil"
 #. (itstool) path: section/para
 #: C/index.docbook:1023
 msgid ""
-"You can use <application>pluma</application> to pipe the output of a command"
+"You can use <application>lapiz</application> to pipe the output of a command"
 " to a text file. For example, to pipe the output of an <command>ls</command>"
-" command to a text file, type <command>ls | pluma</command>, then press "
+" command to a text file, type <command>ls | lapiz</command>, then press "
 "<keycap>Return</keycap>."
 msgstr ""
-"Du kan bruge <application>pluma</application> til at sende resultatet af en "
+"Du kan bruge <application>lapiz</application> til at sende resultatet af en "
 "kommando til en tekstfil. Hvis du for eksempel vil sende resultatet af en "
 "<command>ls</command>-kommando til en tekstfil skal du skrive <command>ls | "
-"pluma</command>, og derefter trykke <keycap>Retur</keycap>."
+"lapiz</command>, og derefter trykke <keycap>Retur</keycap>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:1024
 msgid ""
 "The output of the <command>ls</command> command is displayed in a new text "
-"file in the <application>pluma</application> window."
+"file in the <application>lapiz</application> window."
 msgstr ""
 "Resultatet af kommandoen <command>ls</command> vises i en ny tekstfil i "
-"<application>pluma</application>-vinduet."
+"<application>lapiz</application>-vinduet."
 
 #. (itstool) path: section/para
 #: C/index.docbook:1025
@@ -1843,11 +1843,11 @@ msgstr "Genvejstaster"
 msgid ""
 "Use shortcut keys to perform common tasks more quickly than with the mouse "
 "and menus. The following tables list all of "
-"<application>pluma</application>'s shortcut keys."
+"<application>lapiz</application>'s shortcut keys."
 msgstr ""
 "Brug genvejstaster til at udføre almindelige opgaver hurtigere end med musen"
 " og menuerne. De følgende tabeller viser alle tastekombinationerne i "
-"<application>pluma</application>."
+"<application>lapiz</application>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:1035
@@ -2335,8 +2335,8 @@ msgstr "F1"
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1504
-msgid "Open <application>pluma</application>'s user manual."
-msgstr "Åbn <application>pluma</application>s brugermanual."
+msgid "Open <application>lapiz</application>'s user manual."
+msgstr "Åbn <application>lapiz</application>s brugermanual."
 
 #. (itstool) path: info/title
 #: C/index.docbook:1515
@@ -2346,12 +2346,12 @@ msgstr "Indstillinger"
 #. (itstool) path: section/para
 #: C/index.docbook:1517
 msgid ""
-"To configure <application>pluma</application>, choose <menuchoice> "
+"To configure <application>lapiz</application>, choose <menuchoice> "
 "<guimenu>Edit</guimenu> <guimenuitem>Preferences</guimenuitem> "
 "</menuchoice>. The <guilabel>Preferences</guilabel> dialog contains the "
 "following categories:"
 msgstr ""
-"For at konfigurere <application>pluma</application> skal du vælge "
+"For at konfigurere <application>lapiz</application> skal du vælge "
 "<menuchoice> <guimenu>Rediger</guimenu> "
 "<guimenuitem>Indstillinger</guimenuitem> </menuchoice>. Dialogen "
 "<guilabel>Indstillinger</guilabel> indeholder de følgende kategorier:"
@@ -2387,10 +2387,10 @@ msgstr ""
 #: C/index.docbook:1560
 msgid ""
 "Select the <guilabel>Display line numbers</guilabel> option to display line "
-"numbers on the left side of the <application>pluma</application> window."
+"numbers on the left side of the <application>lapiz</application> window."
 msgstr ""
 "Vælg <guilabel>Vis linjenumre</guilabel> for at få vist linjenumre i venstre"
-" side af <application>pluma</application>-vinduet."
+" side af <application>lapiz</application>-vinduet."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:1564
@@ -2458,22 +2458,22 @@ msgstr "<guilabel>Indryk</guilabel>"
 #: C/index.docbook:1601
 msgid ""
 "Use the <guilabel>Tab width</guilabel> spin box to specify the width of the "
-"space that <application> pluma</application> inserts when you press the "
+"space that <application> lapiz</application> inserts when you press the "
 "<keycap>Tab</keycap> key."
 msgstr ""
 "Brug rulleboksen <guilabel>Indrykbredde</guilabel> til at angive bredde på "
-"det mellemrum, som <application> pluma</application> indsætter, når du "
+"det mellemrum, som <application> lapiz</application> indsætter, når du "
 "trykker på tasten <keycap>Indryk</keycap>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1602
 msgid ""
 "Select the <guilabel>Insert spaces instead of tabs</guilabel> option to "
-"specify that <application> pluma</application> inserts spaces instead of a "
+"specify that <application> lapiz</application> inserts spaces instead of a "
 "tab character when you press the <keycap>Tab</keycap> key."
 msgstr ""
 "Vælg <guilabel>Indsæt mellemrum i stedet for indryk</guilabel> for at angive"
-" at <application>pluma</application> skal indsætte mellemrumstegn i stedet "
+" at <application>lapiz</application> skal indsætte mellemrumstegn i stedet "
 "for et enkelt indryktegn, når du trykker på knappen <keycap>Indryk</keycap>."
 
 #. (itstool) path: varlistentry/term
@@ -2531,22 +2531,22 @@ msgstr "<guilabel>Skrifttype</guilabel>"
 #: C/index.docbook:1636
 msgid ""
 "Select the <guilabel>Use default theme font</guilabel> option to use the "
-"default system font for the text in the <application>pluma</application> "
+"default system font for the text in the <application>lapiz</application> "
 "text window."
 msgstr ""
 "Vælg <guilabel>Benyt standardskrifttype</guilabel> for at bruge systemets "
-"standardskrifttype til teksten i <application>pluma</application>s "
+"standardskrifttype til teksten i <application>lapiz</application>s "
 "tekstvindue."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1637
 msgid ""
 "The <guilabel>Editor font</guilabel> field displays the font that "
-"<application>pluma</application> uses to display text. Click on the button "
+"<application>lapiz</application> uses to display text. Click on the button "
 "to specify the font type, style, and size to use for text."
 msgstr ""
 "Feltet <guilabel>Skrifttype for tekst</guilabel> viser den skrifttype som "
-"<application>pluma</application> bruger til at vise tekst. Klik på knappen "
+"<application>lapiz</application> bruger til at vise tekst. Klik på knappen "
 "for at angive skrifttype, stil og størrelse til brug på tekst."
 
 #. (itstool) path: varlistentry/term
@@ -2639,14 +2639,14 @@ msgstr "Udvidelsesmoduler"
 #. (itstool) path: section/para
 #: C/index.docbook:1699
 msgid ""
-"Plugins add extra features to <application>pluma</application>. For more "
+"Plugins add extra features to <application>lapiz</application>. For more "
 "information on plugins and how to use the built-in plugins, see <xref "
-"linkend=\"pluma-plugins-overview\"/>."
+"linkend=\"lapiz-plugins-overview\"/>."
 msgstr ""
 "Udvidelsesmoduler tilføjer ekstra funktioner til "
-"<application>pluma</application>. For yderligere information om "
+"<application>lapiz</application>. For yderligere information om "
 "udvidelsesmoduler og hvordan man bruger de indbyggede udvidelsesmoduler kan "
-"du læse <xref linkend=\"pluma-plugins-overview\"/>."
+"du læse <xref linkend=\"lapiz-plugins-overview\"/>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:1704
@@ -2656,10 +2656,10 @@ msgstr "Aktiver et udvidelsesmodul"
 #. (itstool) path: section/para
 #: C/index.docbook:1706
 msgid ""
-"To enable a <application>pluma</application> plugin, perform the following "
+"To enable a <application>lapiz</application> plugin, perform the following "
 "steps:"
 msgstr ""
-"For at aktivere et udvidelsesmodul til <application>pluma</application> skal"
+"For at aktivere et udvidelsesmodul til <application>lapiz</application> skal"
 " du gøre følgende:"
 
 #. (itstool) path: listitem/para
@@ -2701,18 +2701,18 @@ msgstr "Deaktiver et udvidelsesmodul"
 #. (itstool) path: section/para
 #: C/index.docbook:1729
 msgid ""
-"A plugin remains enabled when you quit <application>pluma</application>."
+"A plugin remains enabled when you quit <application>lapiz</application>."
 msgstr ""
 "Et udvidelsesmodul forbliver aktiveret når du lukker "
-"<application>pluma</application>."
+"<application>lapiz</application>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:1730
 msgid ""
-"To disable a <application>pluma</application> plugin, perform the following "
+"To disable a <application>lapiz</application> plugin, perform the following "
 "steps:"
 msgstr ""
-"For at deaktivere et udvidelsesmodul til <application>pluma</application> "
+"For at deaktivere et udvidelsesmodul til <application>lapiz</application> "
 "skal du gøre følgende:"
 
 #. (itstool) path: listitem/para
@@ -2737,20 +2737,20 @@ msgstr "Arbejde med udvidelsesmoduler"
 #. (itstool) path: section/para
 #: C/index.docbook:1759
 msgid ""
-"You can add extra features to <application>pluma</application> by enabling "
+"You can add extra features to <application>lapiz</application> by enabling "
 "<firstterm>plugins</firstterm>. A plugin is a supplementary program that "
 "enhances the functionality of an application. Plugins add new items to the "
-"<application>pluma</application> menus for the new features they provide."
+"<application>lapiz</application> menus for the new features they provide."
 msgstr ""
-"Du kan tilføje ekstra funktioner til <application>pluma</application> ved at"
+"Du kan tilføje ekstra funktioner til <application>lapiz</application> ved at"
 " aktivere <firstterm>udvidelsesmoduler</firstterm>. Et udvidelsesmodul kan "
 "ses som et supplementprogram som forbedrer et programs funktionalitet. "
 "Udvidelsesmoduler tilføjer nye elementer til menuerne i "
-"<application>pluma</application> for de nye funktioner som de yder."
+"<application>lapiz</application> for de nye funktioner som de yder."
 
 #. (itstool) path: section/para
 #: C/index.docbook:1761
-msgid "Several plugins come built-in with <application>pluma</application>."
+msgid "Several plugins come built-in with <application>lapiz</application>."
 msgstr ""
 "Flere udvidelsesmoduler er indbygget med <application>Pluma</application>."
 
@@ -2758,83 +2758,83 @@ msgstr ""
 #: C/index.docbook:1762
 msgid ""
 "To enable and disable plugins, or see which plugins are currently enabled, "
-"use the <xref linkend=\"pluma-prefs-plugins\"/>."
+"use the <xref linkend=\"lapiz-prefs-plugins\"/>."
 msgstr ""
 "For at aktivere og deaktivere udvidelsesmoduler, eller se hvilke "
 "udvidelsesmoduler der aktuelt er aktiverede, kan du bruge <xref linkend"
-"=\"pluma-prefs-plugins\"/>."
+"=\"lapiz-prefs-plugins\"/>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:1763
 msgid ""
-"The following plugins come built-in with <application>pluma</application>:"
+"The following plugins come built-in with <application>lapiz</application>:"
 msgstr ""
 "De følgende udvidelsesmoduler er indbygget i "
-"<application>pluma</application>:"
+"<application>lapiz</application>:"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1769
 msgid ""
-"<xref linkend=\"pluma-change-case-plugin\"/> allows you to change the case "
+"<xref linkend=\"lapiz-change-case-plugin\"/> allows you to change the case "
 "of the selected text."
 msgstr ""
-"<xref linkend=\"pluma-change-case-plugin\"/> lader dig skifte mellem "
+"<xref linkend=\"lapiz-change-case-plugin\"/> lader dig skifte mellem "
 "store/små bogstaver i den markerede tekst."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1774
 msgid ""
-"<xref linkend=\"pluma-document-statistics-plugin\"/> shows the number of "
+"<xref linkend=\"lapiz-document-statistics-plugin\"/> shows the number of "
 "lines, words, and characters in the document."
 msgstr ""
-"<xref linkend=\"pluma-document-statistics-plugin\"/> viser antallet af "
+"<xref linkend=\"lapiz-document-statistics-plugin\"/> viser antallet af "
 "linjer, ord og tegn i dokumentet."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1779
 msgid ""
-"<xref linkend=\"pluma-external-tools-plugin\"/> allows you to execute "
-"external commands from <application>pluma</application>."
+"<xref linkend=\"lapiz-external-tools-plugin\"/> allows you to execute "
+"external commands from <application>lapiz</application>."
 msgstr ""
-"<xref linkend=\"pluma-external-tools-plugin\"/> lader dig udføre eksterne "
-"kommandoer fra <application>pluma</application>."
+"<xref linkend=\"lapiz-external-tools-plugin\"/> lader dig udføre eksterne "
+"kommandoer fra <application>lapiz</application>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1784
 msgid ""
-"<xref linkend=\"pluma-file-browser-plugin\"/> allows you to browse your "
+"<xref linkend=\"lapiz-file-browser-plugin\"/> allows you to browse your "
 "files and folders in the side pane."
 msgstr ""
-"<xref linkend=\"pluma-file-browser-plugin\"/> gør det muligt at gennemse "
+"<xref linkend=\"lapiz-file-browser-plugin\"/> gør det muligt at gennemse "
 "dine filer og mapper i sidepanelet."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1788
 msgid ""
-"<xref linkend=\"pluma-indent-lines-plugin\"/> adds or removes indentation "
+"<xref linkend=\"lapiz-indent-lines-plugin\"/> adds or removes indentation "
 "from the selected lines."
 msgstr ""
-"<xref linkend=\"pluma-indent-lines-plugin\"/> tilføjer eller fjerner "
+"<xref linkend=\"lapiz-indent-lines-plugin\"/> tilføjer eller fjerner "
 "indrykning af markerede linjer."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1793
 msgid ""
-"<xref linkend=\"pluma-insert-date-time-plugin\"/> adds the current date and "
+"<xref linkend=\"lapiz-insert-date-time-plugin\"/> adds the current date and "
 "time into a document."
 msgstr ""
-"<xref linkend=\"pluma-insert-date-time-plugin\"/> tilføjer den aktuelle dato"
+"<xref linkend=\"lapiz-insert-date-time-plugin\"/> tilføjer den aktuelle dato"
 " og tid til et dokument."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1798
 msgid ""
-"<xref linkend=\"pluma-modelines-plugin\"/> allows you to set editing "
+"<xref linkend=\"lapiz-modelines-plugin\"/> allows you to set editing "
 "preferences for individual documents, and supports "
 "<application>Emacs</application>, <application>Kate</application> and "
 "<application>Vim</application>-style modelines."
 msgstr ""
-"<xref linkend=\"pluma-modelines-plugin\"/> lader dig sætte "
+"<xref linkend=\"lapiz-modelines-plugin\"/> lader dig sætte "
 "redigeringsindstillinger for individuelle dokumenter, og understøtter "
 "tilstandslinjer i stil med <application>Emacs</application>, "
 "<application>Kate</application> og <application>Vim</application>."
@@ -2842,65 +2842,65 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:1803
 msgid ""
-"<xref linkend=\"pluma-python-console-plugin\"/> allows you to run commands "
+"<xref linkend=\"lapiz-python-console-plugin\"/> allows you to run commands "
 "in the python programming language."
 msgstr ""
-"<xref linkend=\"pluma-python-console-plugin\"/> lader dig køre kommandoer i "
+"<xref linkend=\"lapiz-python-console-plugin\"/> lader dig køre kommandoer i "
 "programmeringssproget Python."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1808
 msgid ""
-"<xref linkend=\"pluma-trailsave-plugin\"/> allows you to strip trailing "
+"<xref linkend=\"lapiz-trailsave-plugin\"/> allows you to strip trailing "
 "whitespaces in your document after saving."
 msgstr ""
-"<xref linkend=\"pluma-trailsave-plugin\"/> gør det muligt at fjerne "
+"<xref linkend=\"lapiz-trailsave-plugin\"/> gør det muligt at fjerne "
 "efterfølgende mellemrum i dit dokument efter det er gemt."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1813
 msgid ""
-"<xref linkend=\"pluma-snippets-plugin\"/> allows you to store frequently-"
+"<xref linkend=\"lapiz-snippets-plugin\"/> allows you to store frequently-"
 "used pieces of text and insert them quickly into a document."
 msgstr ""
-"<xref linkend=\"pluma-snippets-plugin\"/> lader dig opbevare ofte-brugte "
+"<xref linkend=\"lapiz-snippets-plugin\"/> lader dig opbevare ofte-brugte "
 "stykker af tekst og indsætte dem nemt og hurtigt i et dokument."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1818
 msgid ""
-"<xref linkend=\"pluma-sort-plugin\"/> arranges selected lines of text into "
+"<xref linkend=\"lapiz-sort-plugin\"/> arranges selected lines of text into "
 "alphabetical order."
 msgstr ""
-"<xref linkend=\"pluma-sort-plugin\"/> arrangerer markerede tekstlinjer i "
+"<xref linkend=\"lapiz-sort-plugin\"/> arrangerer markerede tekstlinjer i "
 "alfabetisk orden."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1823
 msgid ""
-"<xref linkend=\"pluma-spell-checker-plugin\"/> corrects the spelling in the "
+"<xref linkend=\"lapiz-spell-checker-plugin\"/> corrects the spelling in the "
 "selected text, or marks errors automatically in the document."
 msgstr ""
-"<xref linkend=\"pluma-spell-checker-plugin\"/> retter stavningen i den "
+"<xref linkend=\"lapiz-spell-checker-plugin\"/> retter stavningen i den "
 "markerede tekst, eller markerer automatisk fejl i dokumentet."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:1828
 msgid ""
-"<xref linkend=\"pluma-tag-list-plugin\"/> lets you insert commonly-used tags"
+"<xref linkend=\"lapiz-tag-list-plugin\"/> lets you insert commonly-used tags"
 " for HTML and other languages from a list in the side pane."
 msgstr ""
-"<xref linkend=\"pluma-tag-list-plugin\"/> lader dig indsætte ofte-brugte "
+"<xref linkend=\"lapiz-tag-list-plugin\"/> lader dig indsætte ofte-brugte "
 "mærker for HTML og andre sprog fra en liste i sidepanelet."
 
 #. (itstool) path: note/para
 #: C/index.docbook:1835
 msgid ""
 "For more information on creating plugins, see <link "
-"xlink:href=\"https://github.com/mate-desktop/pluma/tree/master/plugins\"/>."
+"xlink:href=\"https://github.com/mate-desktop/lapiz/tree/master/plugins\"/>."
 msgstr ""
 "For yderligere information om oprettelse af udvidelsesmoduler, se <link "
-"xlink:href=\"https://github.com/mate-desktop/pluma/tree/master/plugins\"/>."
+"xlink:href=\"https://github.com/mate-desktop/lapiz/tree/master/plugins\"/>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:1841
@@ -3089,13 +3089,13 @@ msgstr "Antal bytes i det aktuelle dokument."
 #. (itstool) path: listitem/para
 #: C/index.docbook:1942
 msgid ""
-"You can continue to update the <application>pluma</application> file while "
+"You can continue to update the <application>lapiz</application> file while "
 "the <guilabel>Document Statistics</guilabel> dialog is open. To refresh the "
 "contents of the <guilabel>Document Statistics</guilabel> dialog, click "
 "<guibutton>Update</guibutton>."
 msgstr ""
 "Du kan fortsætte med at opdatere den aktuelle tekstfil i "
-"<application>pluma</application> samtidig med at dialogen "
+"<application>lapiz</application> samtidig med at dialogen "
 "<guilabel>Dokumentstatistik</guilabel> er åben. For at opdatere indholdet i "
 "dialogen <guilabel>Dokumentstatistik</guilabel> skal du klikke "
 "på<guibutton>Opdater</guibutton>."
@@ -3109,13 +3109,13 @@ msgstr "Udvidelsesmodulet Eksterne værktøjer"
 #: C/index.docbook:1951
 msgid ""
 "The <application>External Tools</application> plugin allows you to execute "
-"external commands from <application>pluma</application>. You can pipe some "
+"external commands from <application>lapiz</application>. You can pipe some "
 "content into a command and exploit its output (for example, "
 "<application>sed</application>), or launch a predefined command (for "
 "example, <application>make</application>)."
 msgstr ""
 "Udvidelsesmodulet <application>Eksterne værktøjer</application> lader dig "
-"køre eksterne kommandoer fra <application>pluma</application>. Du kan sende "
+"køre eksterne kommandoer fra <application>lapiz</application>. Du kan sende "
 "noget indhold ind i en kommando og benytte dig af resultatet (for eksempel, "
 "<application>sed</application>), eller køre en på forhånd kommando (for "
 "eksempel, <application>make</application>)."
@@ -3257,13 +3257,13 @@ msgstr "Kommandoer"
 #. (itstool) path: listitem/para
 #: C/index.docbook:2015
 msgid ""
-"The actual commands to be run. Several <application>pluma</application> "
+"The actual commands to be run. Several <application>lapiz</application> "
 "environment variables can be used to pass content to these commands: see "
-"<xref linkend=\"pluma-external-tools-plugin-variables\"/>."
+"<xref linkend=\"lapiz-external-tools-plugin-variables\"/>."
 msgstr ""
 "De faktiske kommandoer som skal køres. Flere miljøvariabler i "
-"<application>pluma</application> kan bruges til at videresende data til "
-"disse kommandoer: se <xref linkend=\"pluma-external-tools-plugin-"
+"<application>lapiz</application> kan bruges til at videresende data til "
+"disse kommandoer: se <xref linkend=\"lapiz-external-tools-plugin-"
 "variables\"/>."
 
 #. (itstool) path: varlistentry/term
@@ -3462,10 +3462,10 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:2100
 msgid ""
-"To open a file in <application>pluma</application>, double-click it in the "
+"To open a file in <application>lapiz</application>, double-click it in the "
 "file list."
 msgstr ""
-"For at åbne en fil i <application>pluma</application> skal du dobbeltklikke "
+"For at åbne en fil i <application>lapiz</application> skal du dobbeltklikke "
 "på den i fillisten."
 
 #. (itstool) path: info/title
@@ -3546,12 +3546,12 @@ msgstr ""
 msgid ""
 "The amount of space used, and whether tab character or space characters are "
 "used, depends on the <guilabel>Tab Stops</guilabel> settings in the Editor "
-"Preferences: see <xref linkend=\"pluma-prefs-editor\"/>."
+"Preferences: see <xref linkend=\"lapiz-prefs-editor\"/>."
 msgstr ""
 "Mængden af mellemrum der bruges, og hvorvidt der anvendes tabulatortegn "
 "eller mellemrumstegn, afhænger af indstillingerne "
 "<guilabel>Tabulatorstop</guilabel> i indstillingerne: se <xref linkend"
-"=\"pluma-prefs-editor\"/>."
+"=\"lapiz-prefs-editor\"/>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:2138
@@ -3583,29 +3583,29 @@ msgstr ""
 msgid ""
 "If you have not configured the Insert Date/Time plugin to automatically "
 "insert the date/time without prompting you for the format, "
-"<application>pluma</application> displays the <guilabel>Insert Date and "
+"<application>lapiz</application> displays the <guilabel>Insert Date and "
 "Time</guilabel> dialog. Select the appropriate date/time format from the "
 "list. Click <guibutton>Insert</guibutton> to close the <guilabel>Insert Date"
-" and Time</guilabel> dialog. <application>pluma</application> inserts the "
+" and Time</guilabel> dialog. <application>lapiz</application> inserts the "
 "date/time at the cursor position in the current file."
 msgstr ""
 "Hvis du ikke har konfigureret Indsæt dato/tid til automatisk at indsætte "
-"dato/tid uden at spørge dig om format, vil <application>pluma</application> "
+"dato/tid uden at spørge dig om format, vil <application>lapiz</application> "
 "vise dialogen <guilabel>Indsæt dato og tid</guilabel>. Vælg det passende "
 "dato/tid-format fra listen. Klik på <guibutton>Indsæt</guibutton> for at "
 "lukke dialogen <guilabel>Indsæt dato og tid</guilabel>. "
-"<application>pluma</application> indsætter dato/tid ved markørens placering "
+"<application>lapiz</application> indsætter dato/tid ved markørens placering "
 "i den aktuelle fil."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2145
 msgid ""
-"If you have configured <application>pluma</application> to use one "
+"If you have configured <application>lapiz</application> to use one "
 "particular date/time format, the <guilabel>Insert Date and Time</guilabel> "
 "dialog is not displayed. The date/time is automatically entered at the "
 "cursor position in the current file."
 msgstr ""
-"Hvis du har konfigureret <application>pluma</application> til at bruge et "
+"Hvis du har konfigureret <application>lapiz</application> til at bruge et "
 "bestemt dato/tid-format, vises dialogen <guilabel>Indsæt dato og "
 "tid</guilabel> ikke. Dato/tid indsættes automatisk ved markørens placering i"
 " den aktuelle fil."
@@ -3652,18 +3652,18 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:2174
 msgid ""
-"To use the same <application>pluma</application>-provided date/time format "
+"To use the same <application>lapiz</application>-provided date/time format "
 "each time you insert the date/time, select the <guilabel>Use the selected "
 "format</guilabel> option, then select the appropriate format from the list. "
-"When you select this option, <application>pluma</application> does not "
+"When you select this option, <application>lapiz</application> does not "
 "prompt you for the date/time format when you choose <menuchoice> "
 "<guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</guimenuitem> "
 "</menuchoice>."
 msgstr ""
-"For at bruge det samme <application>pluma</application>-leverede dato/tid-"
+"For at bruge det samme <application>lapiz</application>-leverede dato/tid-"
 "format hver gang du indsætter dato/tid, skal du vælge <guilabel>Benyt det "
 "valgte format</guilabel> og derefter vælge det ønskede format fra listen. "
-"Når du benytter dig af denne mulighed vil  <application>pluma</application> "
+"Når du benytter dig af denne mulighed vil  <application>lapiz</application> "
 "ikke spørge efter dato/tid-format når du vælger "
 "<menuchoice><guimenu>Rediger</guimenu><guimenuitem>Indsæt dato og "
 "tid...</guimenuitem></menuchoice>."
@@ -3677,7 +3677,7 @@ msgid ""
 "xlink:href=\"man:strftime\"> <citerefentry> "
 "<refentrytitle>strftime</refentrytitle> <manvolnum>3</manvolnum> "
 "</citerefentry> </link> for more information on how to specify a custom "
-"format. When you select this option, <application>pluma</application> does "
+"format. When you select this option, <application>lapiz</application> does "
 "not prompt you for the date/time format when you choose <menuchoice> "
 "<guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</guimenuitem> "
 "</menuchoice>."
@@ -3722,12 +3722,12 @@ msgid ""
 "The <application>Modelines</application> plugin allows you to set "
 "preferences for individual documents. A <firstterm>modeline</firstterm> is a"
 " line of text at the start or end of the document with settings that "
-"<application>pluma</application> recognizes."
+"<application>lapiz</application> recognizes."
 msgstr ""
 "Udvidelsesmodulet <application>Tilstandslinjer</application> lader dig "
 "redigere indstillinger for enkelte dokumenter. En "
 "<firstterm>tilstandslinje</firstterm> er en linje af tekst i begyndelsen af "
-"dokumentet med indstillinger, som <application>pluma</application> "
+"dokumentet med indstillinger, som <application>lapiz</application> "
 "genkender."
 
 #. (itstool) path: section/para
@@ -3879,12 +3879,12 @@ msgstr "Udvidelsesmodulet Python-konsol"
 msgid ""
 "The <application>Python Console</application> Plugin allows you to run "
 "commands in the python programming language from "
-"<application>pluma</application>. Enabling the plugin adds a tab to the "
+"<application>lapiz</application>. Enabling the plugin adds a tab to the "
 "bottom pane. This shows recent output and a command prompt field."
 msgstr ""
 "Udvidelsesmodulet <application>Python-konsol</application> lader dig køre "
 "kommandoer i programmeringssproget Python fra "
-"<application>pluma</application>. Når dette udvidelsesmodul aktiveres, føjes"
+"<application>lapiz</application>. Når dette udvidelsesmodul aktiveres, føjes"
 " et faneblad til bundpanelet. Dette viser den seneste udskrift og et "
 "kommandoindtastningsfelt."
 
@@ -3892,11 +3892,11 @@ msgstr ""
 #: C/index.docbook:2255
 msgid ""
 "Commands entered into the python console are not checked before they are "
-"run. It is therefore possible to hang <application>pluma</application>, for "
+"run. It is therefore possible to hang <application>lapiz</application>, for "
 "example by entering an infinite loop."
 msgstr ""
 "Kommandoer, som indtastes i Pythonkonsollen, kontrolleres ikke før de køres."
-" Det er derfor muligt at få <application>pluma</application> til at gå i stå"
+" Det er derfor muligt at få <application>lapiz</application> til at gå i stå"
 " ved, for eksempel, at indtaste en uendelig løkke."
 
 #. (itstool) path: info/title
@@ -3921,9 +3921,9 @@ msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2266
-msgid "Enable the plugin as described in <xref linkend=\"pluma-prefs-plugins\"/>."
+msgid "Enable the plugin as described in <xref linkend=\"lapiz-prefs-plugins\"/>."
 msgstr ""
-"Aktiver udvidelsesmodulet som beskrevet i <xref linkend=\"pluma-prefs-"
+"Aktiver udvidelsesmodulet som beskrevet i <xref linkend=\"lapiz-prefs-"
 "plugins\"/>."
 
 #. (itstool) path: listitem/para
@@ -3973,10 +3973,10 @@ msgstr ""
 #: C/index.docbook:2283
 msgid ""
 "A number of built-in snippets are installed with "
-"<application>pluma</application>, which can be modified."
+"<application>lapiz</application>, which can be modified."
 msgstr ""
 "En samling af indbyggede tekststumper installeres sammen med "
-"<application>pluma</application>, og kan redigeres."
+"<application>lapiz</application>, og kan redigeres."
 
 #. (itstool) path: info/title
 #: C/index.docbook:2287
@@ -4077,11 +4077,11 @@ msgstr "Tekststump"
 #: C/index.docbook:2320
 msgid ""
 "Enter the text of the snippet in the <guilabel>Edit snippet</guilabel> text "
-"box. For special codes you can use, see <xref linkend=\"pluma-snippets-"
+"box. For special codes you can use, see <xref linkend=\"lapiz-snippets-"
 "plugin-syntax\"/>."
 msgstr ""
 "Indtast selve stumpen af tekst i tekstfeltet <guilabel>Rediger</guilabel>. "
-"Du kan her anvende specielle koder - se <xref linkend=\"pluma-snippets-"
+"Du kan her anvende specielle koder - se <xref linkend=\"lapiz-snippets-"
 "plugin-syntax\"/>."
 
 #. (itstool) path: tip/para
@@ -4291,11 +4291,11 @@ msgstr "Miljøvariable"
 msgid ""
 "Environmental variable such as <literal>$PATH</literal> and "
 "<literal>$HOME</literal> are substituted in snippet text. The following "
-"variables specific to <application>pluma</application> can also be used:"
+"variables specific to <application>lapiz</application> can also be used:"
 msgstr ""
 "Miljøvariable såsom <literal>$PATH</literal> og <literal>$HOME</literal> "
 "substitueres i tekststumpen. Specielt kan der i "
-"<application>pluma</application> også anvendes følgende variable:"
+"<application>lapiz</application> også anvendes følgende variable:"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:2389
@@ -4522,7 +4522,7 @@ msgstr "Udvidelsesmodulet Stavekontrol"
 #: C/index.docbook:2477
 msgid ""
 "The <application>Spell Checker</application> plugin checks the spelling in "
-"the selected text. You can configure <application>pluma</application> to "
+"the selected text. You can configure <application>lapiz</application> to "
 "check the spelling automatically, or you can check the spelling manually, in"
 " the specified language. The language setting, and the autocheck spelling "
 "properties, apply per document. To use the Spell checker plugin, perform the"
@@ -4530,7 +4530,7 @@ msgid ""
 msgstr ""
 "Udvidelsesmodulet <application>Stavekontrol</application> kontrollerer "
 "stavningen i den valgte tekst. Du kan konfigurere "
-"<application>pluma</application> til at kontrollere stavningen automatisk, "
+"<application>lapiz</application> til at kontrollere stavningen automatisk, "
 "eller du kan køre stavekontrol manuelt på det angivne sprog. "
 "Sprogindstillingen og autokontrolegenskaberne gælder dokumentvis. For at "
 "bruge udvidelsesmodulet Stavekontrol, skal du gøre følgende:"
@@ -4559,7 +4559,7 @@ msgid ""
 "</menuchoice> again. When automatic spell checking is set, an icon is "
 "displayed beside the <guimenuitem>Autocheck Spelling</guimenuitem> menu "
 "item. Automatic spell checking is unset by default, each time "
-"<application>pluma</application> starts."
+"<application>lapiz</application> starts."
 msgstr ""
 "Hvis du vil anvende automatisk stavekontrol, så vælg "
 "<menuchoice><guimenu>Værktøjer</guimenu><guimenuitem>Kontroller stavning "
@@ -4568,7 +4568,7 @@ msgstr ""
 "stavning</guimenuitem></menuchoice> igen. Når automatisk stavekontrol er "
 "slået til, vil et ikon vises ved siden af menuelementet "
 "<guimenuitem>Kontroller automatisk stavning</guimenuitem>. Automatisk "
-"stavekontrol er som standard slået fra når <application>pluma</application> "
+"stavekontrol er som standard slået fra når <application>lapiz</application> "
 "startes."
 
 #. (itstool) path: listitem/para
@@ -4610,14 +4610,14 @@ msgid ""
 "longer flagged as unknown but are not added to your personal dictionary, "
 "select <menuchoice> <guimenu>Spelling Suggestions</guimenu> "
 "<guimenuitem>Ignore All</guimenuitem> </menuchoice>. The unknown word is "
-"ignored in the current <application>pluma</application> session only."
+"ignored in the current <application>lapiz</application> session only."
 msgstr ""
 "Hvis du vil ignorere alle forekomster af den ukendte stavemåde, således at "
 "de ikke længere bliver markeret som ukendt, men heller ikke føjes til din "
 "personlige ordbog, så vælg <menuchoice> <guimenu>Stavningsforslag</guimenu> "
 "<guimenuitem>Ignorer alle</guimenuitem> </menuchoice>. Det ukendte ord vil "
 "så kun blive ignoreret i den aktuelle "
-"<application>pluma</application>-session."
+"<application>lapiz</application>-session."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2498
@@ -4692,12 +4692,12 @@ msgid ""
 "To ignore the current occurrence of the unknown word, click "
 "<guibutton>Ignore</guibutton>. To ignore all occurrences of the unknown "
 "word, click <guibutton>Ignore All</guibutton>. The unknown word is ignored "
-"in the current <application>pluma</application> session only."
+"in the current <application>lapiz</application> session only."
 msgstr ""
 "Klik på <guibutton>Ignorer</guibutton> for at ignorere den aktuelle "
 "forekomst af det ukendte ord. Klik på <guibutton>Ignorer alle</guibutton> "
 "for at ignorere alle forekomster af det ukendte ord. Det ukendte ord vil så "
-"blive ignoreret i den aktuelle <application>pluma</application>-session."
+"blive ignoreret i den aktuelle <application>lapiz</application>-session."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2515
@@ -4935,7 +4935,7 @@ msgstr "Tilbagemelding"
 #: C/legal.xml:79
 msgid ""
 "To report a bug or make a suggestion regarding the "
-"<application>pluma</application> application or this manual, follow the "
+"<application>lapiz</application> application or this manual, follow the "
 "directions in the <link xlink:href=\"help:mate-user-guide/feedback\">MATE "
 "Feedback Page</link>."
 msgstr ""

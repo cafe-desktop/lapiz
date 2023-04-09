@@ -1,6 +1,6 @@
 /*
- * pluma-encodings.h
- * This file is part of pluma
+ * lapiz-encodings.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,24 +38,24 @@ G_BEGIN_DECLS
 
 typedef struct _PlumaEncoding PlumaEncoding;
 
-#define PLUMA_TYPE_ENCODING     (pluma_encoding_get_type ())
+#define PLUMA_TYPE_ENCODING     (lapiz_encoding_get_type ())
 
-GType              	 pluma_encoding_get_type (void) G_GNUC_CONST;
+GType              	 lapiz_encoding_get_type (void) G_GNUC_CONST;
 
-const PlumaEncoding	*pluma_encoding_get_from_charset (const gchar         *charset);
-const PlumaEncoding	*pluma_encoding_get_from_index	 (gint                 index);
+const PlumaEncoding	*lapiz_encoding_get_from_charset (const gchar         *charset);
+const PlumaEncoding	*lapiz_encoding_get_from_index	 (gint                 index);
 
-gchar 			*pluma_encoding_to_string	 (const PlumaEncoding *enc);
+gchar 			*lapiz_encoding_to_string	 (const PlumaEncoding *enc);
 
-const gchar		*pluma_encoding_get_name	 (const PlumaEncoding *enc);
-const gchar		*pluma_encoding_get_charset	 (const PlumaEncoding *enc);
+const gchar		*lapiz_encoding_get_name	 (const PlumaEncoding *enc);
+const gchar		*lapiz_encoding_get_charset	 (const PlumaEncoding *enc);
 
-const PlumaEncoding 	*pluma_encoding_get_utf8	 (void);
-const PlumaEncoding 	*pluma_encoding_get_current	 (void);
+const PlumaEncoding 	*lapiz_encoding_get_utf8	 (void);
+const PlumaEncoding 	*lapiz_encoding_get_current	 (void);
 
 /* These should not be used, they are just to make python bindings happy */
-PlumaEncoding		*pluma_encoding_copy		 (const PlumaEncoding *enc);
-void               	 pluma_encoding_free		 (PlumaEncoding       *enc);
+PlumaEncoding		*lapiz_encoding_copy		 (const PlumaEncoding *enc);
+void               	 lapiz_encoding_free		 (PlumaEncoding       *enc);
 
 G_END_DECLS
 

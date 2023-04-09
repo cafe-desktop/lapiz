@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-languages-manager.c
- * This file is part of pluma
+ * lapiz-languages-manager.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2003-2006 - Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2003-2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2003-2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -31,15 +31,15 @@
 
 #include <string.h>
 #include <gtk/gtk.h>
-#include "pluma-language-manager.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-utils.h"
-#include "pluma-debug.h"
+#include "lapiz-language-manager.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-utils.h"
+#include "lapiz-debug.h"
 
 static GtkSourceLanguageManager *language_manager = NULL;
 
 GtkSourceLanguageManager *
-pluma_get_language_manager (void)
+lapiz_get_language_manager (void)
 {
 	if (language_manager == NULL)
 	{
@@ -61,7 +61,7 @@ language_compare (gconstpointer a, gconstpointer b)
 }
 
 GSList *
-pluma_language_manager_list_languages_sorted (GtkSourceLanguageManager *lm,
+lapiz_language_manager_list_languages_sorted (GtkSourceLanguageManager *lm,
 					      gboolean                  include_hidden)
 {
 	GSList *languages = NULL;

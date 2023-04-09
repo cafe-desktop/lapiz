@@ -1,6 +1,6 @@
 /*
- * pluma-panel.c
- * This file is part of pluma
+ * lapiz-panel.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,23 +21,23 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
 
-#include "pluma-panel.h"
+#include "lapiz-panel.h"
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "pluma-close-button.h"
-#include "pluma-window.h"
-#include "pluma-debug.h"
+#include "lapiz-close-button.h"
+#include "lapiz-window.h"
+#include "lapiz-debug.h"
 
 #define PANEL_ITEM_KEY "PlumaPanelItemKey"
 
@@ -78,22 +78,22 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static GObject	*pluma_panel_constructor	(GType type,
+static GObject	*lapiz_panel_constructor	(GType type,
 						 guint n_construct_properties,
 						 GObjectConstructParam *construct_properties);
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPanel, pluma_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaPanel, lapiz_panel, GTK_TYPE_BOX)
 
 static void
-pluma_panel_finalize (GObject *obj)
+lapiz_panel_finalize (GObject *obj)
 {
-	if (G_OBJECT_CLASS (pluma_panel_parent_class)->finalize)
-		(*G_OBJECT_CLASS (pluma_panel_parent_class)->finalize) (obj);
+	if (G_OBJECT_CLASS (lapiz_panel_parent_class)->finalize)
+		(*G_OBJECT_CLASS (lapiz_panel_parent_class)->finalize) (obj);
 }
 
 static void
-pluma_panel_get_property (GObject    *object,
+lapiz_panel_get_property (GObject    *object,
 			  guint       prop_id,
 			  GValue     *value,
 			  GParamSpec *pspec)
@@ -112,7 +112,7 @@ pluma_panel_get_property (GObject    *object,
 }
 
 static void
-pluma_panel_set_property (GObject      *object,
+lapiz_panel_set_property (GObject      *object,
 			  guint         prop_id,
 			  const GValue *value,
 			  GParamSpec   *pspec)
@@ -131,27 +131,27 @@ pluma_panel_set_property (GObject      *object,
 }
 
 static void
-pluma_panel_close (PlumaPanel *panel)
+lapiz_panel_close (PlumaPanel *panel)
 {
 	gtk_widget_hide (GTK_WIDGET (panel));
 }
 
 static void
-pluma_panel_focus_document (PlumaPanel *panel)
+lapiz_panel_focus_document (PlumaPanel *panel)
 {
 	GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (panel));
 	if (gtk_widget_is_toplevel (toplevel) && PLUMA_IS_WINDOW (toplevel))
 	{
 		PlumaView *view;
 
-		view = pluma_window_get_active_view (PLUMA_WINDOW (toplevel));
+		view = lapiz_window_get_active_view (PLUMA_WINDOW (toplevel));
 		if (view != NULL)
 			gtk_widget_grab_focus (GTK_WIDGET (view));
 	}
 }
 
 static void
-pluma_panel_grab_focus (GtkWidget *w)
+lapiz_panel_grab_focus (GtkWidget *w)
 {
 	gint n;
 	GtkWidget *tab;
@@ -169,16 +169,16 @@ pluma_panel_grab_focus (GtkWidget *w)
 }
 
 static void
-pluma_panel_class_init (PlumaPanelClass *klass)
+lapiz_panel_class_init (PlumaPanelClass *klass)
 {
 	GtkBindingSet *binding_set;
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->constructor = pluma_panel_constructor;
-	object_class->finalize = pluma_panel_finalize;
-	object_class->get_property = pluma_panel_get_property;
-	object_class->set_property = pluma_panel_set_property;
+	object_class->constructor = lapiz_panel_constructor;
+	object_class->finalize = lapiz_panel_finalize;
+	object_class->get_property = lapiz_panel_get_property;
+	object_class->set_property = lapiz_panel_set_property;
 
 	g_object_class_install_property (object_class,
 					 PROP_ORIENTATION,
@@ -192,10 +192,10 @@ pluma_panel_class_init (PlumaPanelClass *klass)
 							    G_PARAM_CONSTRUCT_ONLY |
 							    G_PARAM_STATIC_STRINGS));
 
-	widget_class->grab_focus = pluma_panel_grab_focus;
+	widget_class->grab_focus = lapiz_panel_grab_focus;
 
-	klass->close = pluma_panel_close;
-	klass->focus_document = pluma_panel_focus_document;
+	klass->close = lapiz_panel_close;
+	klass->focus_document = lapiz_panel_focus_document;
 
 	signals[ITEM_ADDED] =
 		g_signal_new ("item_added",
@@ -356,9 +356,9 @@ panel_show (PlumaPanel *panel,
 }
 
 static void
-pluma_panel_init (PlumaPanel *panel)
+lapiz_panel_init (PlumaPanel *panel)
 {
-	panel->priv = pluma_panel_get_instance_private (panel);
+	panel->priv = lapiz_panel_get_instance_private (panel);
 
 	gtk_orientable_set_orientation (GTK_ORIENTABLE (panel), GTK_ORIENTATION_VERTICAL);
 }
@@ -375,7 +375,7 @@ create_close_button (PlumaPanel *panel)
 {
 	GtkWidget *button;
 
-	button = pluma_close_button_new ();
+	button = lapiz_close_button_new ();
 
 	gtk_widget_set_tooltip_text (button, _("Hide panel"));
 
@@ -515,7 +515,7 @@ build_vertical_panel (PlumaPanel *panel)
 }
 
 static GObject *
-pluma_panel_constructor (GType type,
+lapiz_panel_constructor (GType type,
 			 guint n_construct_properties,
 			 GObjectConstructParam *construct_properties)
 {
@@ -546,17 +546,17 @@ pluma_panel_constructor (GType type,
 }
 
 /**
- * pluma_panel_new:
+ * lapiz_panel_new:
  * @orientation: a #GtkOrientation
  *
  * Creates a new #PlumaPanel with the given @orientation. You shouldn't create
- * a new panel use pluma_window_get_side_panel() or pluma_window_get_bottom_panel()
+ * a new panel use lapiz_window_get_side_panel() or lapiz_window_get_bottom_panel()
  * instead.
  *
  * Returns: a new #PlumaPanel object.
  */
 GtkWidget *
-pluma_panel_new (GtkOrientation orientation)
+lapiz_panel_new (GtkOrientation orientation)
 {
 	return GTK_WIDGET (g_object_new (PLUMA_TYPE_PANEL, "panel-orientation", orientation, NULL));
 }
@@ -607,7 +607,7 @@ build_tab_label (PlumaPanel  *panel,
 }
 
 /**
- * pluma_panel_add_item:
+ * lapiz_panel_add_item:
  * @panel: a #PlumaPanel
  * @item: the #GtkWidget to add to the @panel
  * @name: the name to be shown in the @panel
@@ -616,7 +616,7 @@ build_tab_label (PlumaPanel  *panel,
  * Adds a new item to the @panel.
  */
 void
-pluma_panel_add_item (PlumaPanel  *panel,
+lapiz_panel_add_item (PlumaPanel  *panel,
 		      GtkWidget   *item,
 		      const gchar *name,
 		      GtkWidget   *image)
@@ -670,16 +670,16 @@ pluma_panel_add_item (PlumaPanel  *panel,
 }
 
 /**
- * pluma_panel_add_item_with_icon:
+ * lapiz_panel_add_item_with_icon:
  * @panel: a #PlumaPanel
  * @item: the #GtkWidget to add to the @panel
  * @name: the name to be shown in the @panel
  * @icon_name: a icon name
  *
- * Same as pluma_panel_add_item() but using an image from icon name.
+ * Same as lapiz_panel_add_item() but using an image from icon name.
  */
 void
-pluma_panel_add_item_with_icon (PlumaPanel  *panel,
+lapiz_panel_add_item_with_icon (PlumaPanel  *panel,
 				GtkWidget   *item,
 				const gchar *name,
 				const gchar *icon_name)
@@ -692,11 +692,11 @@ pluma_panel_add_item_with_icon (PlumaPanel  *panel,
 		                                     GTK_ICON_SIZE_MENU);
 	}
 
-	pluma_panel_add_item (panel, item, name, icon);
+	lapiz_panel_add_item (panel, item, name, icon);
 }
 
 /**
- * pluma_panel_remove_item:
+ * lapiz_panel_remove_item:
  * @panel: a #PlumaPanel
  * @item: the item to be removed from the panel
  *
@@ -706,7 +706,7 @@ pluma_panel_add_item_with_icon (PlumaPanel  *panel,
  * Returns: %TRUE if it was well removed.
  */
 gboolean
-pluma_panel_remove_item (PlumaPanel *panel,
+lapiz_panel_remove_item (PlumaPanel *panel,
 			 GtkWidget  *item)
 {
 	PlumaPanelItem *data;
@@ -750,7 +750,7 @@ pluma_panel_remove_item (PlumaPanel *panel,
 }
 
 /**
- * pluma_panel_activate_item:
+ * lapiz_panel_activate_item:
  * @panel: a #PlumaPanel
  * @item: the item to be activated
  *
@@ -759,7 +759,7 @@ pluma_panel_remove_item (PlumaPanel *panel,
  * Returns: %TRUE if it was activated
  */
 gboolean
-pluma_panel_activate_item (PlumaPanel *panel,
+lapiz_panel_activate_item (PlumaPanel *panel,
 			   GtkWidget  *item)
 {
 	gint page_num;
@@ -780,7 +780,7 @@ pluma_panel_activate_item (PlumaPanel *panel,
 }
 
 /**
- * pluma_panel_item_is_active:
+ * lapiz_panel_item_is_active:
  * @panel: a #PlumaPanel
  * @item: a #GtkWidget
  *
@@ -789,7 +789,7 @@ pluma_panel_activate_item (PlumaPanel *panel,
  * Returns: %TRUE if @item is the active widget
  */
 gboolean
-pluma_panel_item_is_active (PlumaPanel *panel,
+lapiz_panel_item_is_active (PlumaPanel *panel,
 			    GtkWidget  *item)
 {
 	gint cur_page;
@@ -811,7 +811,7 @@ pluma_panel_item_is_active (PlumaPanel *panel,
 }
 
 /**
- * pluma_panel_get_orientation:
+ * lapiz_panel_get_orientation:
  * @panel: a #PlumaPanel
  *
  * Gets the orientation of the @panel.
@@ -819,7 +819,7 @@ pluma_panel_item_is_active (PlumaPanel *panel,
  * Returns: the #GtkOrientation of #PlumaPanel
  */
 GtkOrientation
-pluma_panel_get_orientation (PlumaPanel *panel)
+lapiz_panel_get_orientation (PlumaPanel *panel)
 {
 	g_return_val_if_fail (PLUMA_IS_PANEL (panel), GTK_ORIENTATION_VERTICAL);
 
@@ -827,7 +827,7 @@ pluma_panel_get_orientation (PlumaPanel *panel)
 }
 
 /**
- * pluma_panel_get_n_items:
+ * lapiz_panel_get_n_items:
  * @panel: a #PlumaPanel
  *
  * Gets the number of items in a @panel.
@@ -835,7 +835,7 @@ pluma_panel_get_orientation (PlumaPanel *panel)
  * Returns: the number of items contained in #PlumaPanel
  */
 gint
-pluma_panel_get_n_items (PlumaPanel *panel)
+lapiz_panel_get_n_items (PlumaPanel *panel)
 {
 	g_return_val_if_fail (PLUMA_IS_PANEL (panel), -1);
 
@@ -843,7 +843,7 @@ pluma_panel_get_n_items (PlumaPanel *panel)
 }
 
 gint
-_pluma_panel_get_active_item_id (PlumaPanel *panel)
+_lapiz_panel_get_active_item_id (PlumaPanel *panel)
 {
 	gint cur_page;
 	GtkWidget *item;
@@ -875,7 +875,7 @@ _pluma_panel_get_active_item_id (PlumaPanel *panel)
 }
 
 void
-_pluma_panel_set_active_item_by_id (PlumaPanel *panel,
+_lapiz_panel_set_active_item_by_id (PlumaPanel *panel,
 				    gint        id)
 {
 	gint n, i;

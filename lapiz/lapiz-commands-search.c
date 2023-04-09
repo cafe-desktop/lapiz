@@ -1,6 +1,6 @@
 /*
- * pluma-search-commands.c
- * This file is part of pluma
+ * lapiz-search-commands.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -39,16 +39,16 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "pluma-commands.h"
-#include "pluma-debug.h"
-#include "pluma-statusbar.h"
-#include "pluma-window.h"
-#include "pluma-window-private.h"
-#include "pluma-utils.h"
-#include "dialogs/pluma-search-dialog.h"
+#include "lapiz-commands.h"
+#include "lapiz-debug.h"
+#include "lapiz-statusbar.h"
+#include "lapiz-window.h"
+#include "lapiz-window-private.h"
+#include "lapiz-utils.h"
+#include "dialogs/lapiz-search-dialog.h"
 
-#define PLUMA_SEARCH_DIALOG_KEY		"pluma-search-dialog-key"
-#define PLUMA_LAST_SEARCH_DATA_KEY	"pluma-last-search-data-key"
+#define PLUMA_SEARCH_DIALOG_KEY		"lapiz-search-dialog-key"
+#define PLUMA_LAST_SEARCH_DATA_KEY	"lapiz-last-search-data-key"
 
 typedef struct _LastSearchData LastSearchData;
 struct _LastSearchData
@@ -107,7 +107,7 @@ text_found (PlumaWindow *window,
 {
 	if (occurrences > 1)
 	{
-		pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
 					       ngettext("Found and replaced %d occurrence",
 					     	        "Found and replaced %d occurrences",
@@ -117,11 +117,11 @@ text_found (PlumaWindow *window,
 	else
 	{
 		if (occurrences == 1)
-			pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+			lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 						       window->priv->generic_message_cid,
 						       _("Found and replaced one occurrence"));
 		else
-			pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+			lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 						       window->priv->generic_message_cid,
 						       " ");
 	}
@@ -134,9 +134,9 @@ text_not_found (PlumaWindow *window,
 {
 	gchar *searched;
 
-	searched = pluma_utils_str_end_truncate (text, MAX_MSG_LENGTH);
+	searched = lapiz_utils_str_end_truncate (text, MAX_MSG_LENGTH);
 
-	pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+	lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 				       window->priv->generic_message_cid,
 				       /* Translators: %s is replaced by the text
 				          entered by the user in the search box */
@@ -163,7 +163,7 @@ run_search (PlumaView   *view,
 						      NULL,
 						      &start_iter);
 
-		found = pluma_document_search_forward (doc,
+		found = lapiz_document_search_forward (doc,
 						       &start_iter,
 						       NULL,
 						       &match_start,
@@ -175,7 +175,7 @@ run_search (PlumaView   *view,
 						      &start_iter,
 						      NULL);
 
-		found = pluma_document_search_backward (doc,
+		found = lapiz_document_search_backward (doc,
 							NULL,
 							&start_iter,
 							&match_start,
@@ -185,13 +185,13 @@ run_search (PlumaView   *view,
 	if (!found && wrap_around)
 	{
 		if (!search_backwards)
-			found = pluma_document_search_forward (doc,
+			found = lapiz_document_search_forward (doc,
 							       NULL,
 							       NULL, /* FIXME: set the end_inter */
 							       &match_start,
 							       &match_end);
 		else
-			found = pluma_document_search_backward (doc,
+			found = lapiz_document_search_backward (doc,
 								NULL, /* FIXME: set the start_inter */
 								NULL,
 								&match_start,
@@ -207,7 +207,7 @@ run_search (PlumaView   *view,
 						   "selection_bound",
 						   &match_end);
 
-		pluma_view_scroll_to_cursor (view);
+		lapiz_view_scroll_to_cursor (view);
 	}
 	else
 	{
@@ -238,42 +238,42 @@ do_find (PlumaSearchDialog *dialog,
 
 	/* TODO: make the dialog insensitive when all the tabs are closed
 	 * and assert here that the view is not NULL */
-	active_view = pluma_window_get_active_view (window);
+	active_view = lapiz_window_get_active_view (window);
 	if (active_view == NULL)
 		return;
 
 	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
-	match_case = pluma_search_dialog_get_match_case (dialog);
-        match_regex = pluma_search_dialog_get_match_regex(dialog);
-	entire_word = pluma_search_dialog_get_entire_word (dialog);
-	search_backwards = pluma_search_dialog_get_backwards (dialog);
-	wrap_around = pluma_search_dialog_get_wrap_around (dialog);
-	parse_escapes = pluma_search_dialog_get_parse_escapes (dialog);
+	match_case = lapiz_search_dialog_get_match_case (dialog);
+        match_regex = lapiz_search_dialog_get_match_regex(dialog);
+	entire_word = lapiz_search_dialog_get_entire_word (dialog);
+	search_backwards = lapiz_search_dialog_get_backwards (dialog);
+	wrap_around = lapiz_search_dialog_get_wrap_around (dialog);
+	parse_escapes = lapiz_search_dialog_get_parse_escapes (dialog);
 
 	if (!parse_escapes) {
-		entry_text = pluma_utils_escape_search_text (pluma_search_dialog_get_search_text (dialog));
+		entry_text = lapiz_utils_escape_search_text (lapiz_search_dialog_get_search_text (dialog));
 	} else {
-		entry_text = pluma_search_dialog_get_search_text (dialog);
+		entry_text = lapiz_search_dialog_get_search_text (dialog);
 	}
 
 	PLUMA_SEARCH_SET_CASE_SENSITIVE (flags, match_case);
 	PLUMA_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
         PLUMA_SEARCH_SET_MATCH_REGEX (flags, match_regex);
 
-	search_text = pluma_document_get_search_text (doc, &old_flags);
+	search_text = lapiz_document_get_search_text (doc, &old_flags);
 
 	if ((search_text == NULL) ||
 	    (strcmp (search_text, entry_text) != 0) ||
 	    (flags != old_flags))
 	{
-		pluma_document_set_search_text (doc, entry_text, flags);
+		lapiz_document_set_search_text (doc, entry_text, flags);
 	}
 
 	g_free (search_text);
 	if (match_regex)
 	{
-		pluma_document_set_last_replace_text (doc, pluma_search_dialog_get_replace_text (dialog));
+		lapiz_document_set_last_replace_text (doc, lapiz_search_dialog_get_replace_text (dialog));
 	}
 
 	found = run_search (active_view,
@@ -284,7 +284,7 @@ do_find (PlumaSearchDialog *dialog,
 		text_found (window, 0);
 	else {
 		if (!parse_escapes) {
-			text_not_found (window, pluma_utils_unescape_search_text (entry_text));
+			text_not_found (window, lapiz_utils_unescape_search_text (entry_text));
 		} else {
 			text_not_found (window, entry_text);
 		}
@@ -295,7 +295,7 @@ do_find (PlumaSearchDialog *dialog,
 					   found);
 }
 
-/* FIXME: move in pluma-document.c and share it with pluma-view */
+/* FIXME: move in lapiz-document.c and share it with lapiz-view */
 static gboolean
 get_selected_text (GtkTextBuffer  *doc,
 		   gchar         **selected_text,
@@ -353,35 +353,35 @@ do_replace (PlumaSearchDialog *dialog,
 	gboolean parse_escapes;
         gboolean need_refind;
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	if (doc == NULL)
 		return;
 
-	parse_escapes = pluma_search_dialog_get_parse_escapes (dialog);
+	parse_escapes = lapiz_search_dialog_get_parse_escapes (dialog);
 	if (!parse_escapes) {
-		search_entry_text = pluma_utils_escape_search_text (pluma_search_dialog_get_search_text (dialog));
+		search_entry_text = lapiz_utils_escape_search_text (lapiz_search_dialog_get_search_text (dialog));
 	} else {
-		search_entry_text = pluma_search_dialog_get_search_text (dialog);
+		search_entry_text = lapiz_search_dialog_get_search_text (dialog);
 	}
 	g_return_if_fail ((search_entry_text) != NULL);
 	g_return_if_fail ((*search_entry_text) != '\0');
 
 	/* replace text may be "", we just delete */
 	if (!parse_escapes) {
-		replace_entry_text = pluma_utils_escape_search_text (pluma_search_dialog_get_replace_text (dialog));
+		replace_entry_text = lapiz_utils_escape_search_text (lapiz_search_dialog_get_replace_text (dialog));
 	} else {
-		replace_entry_text = pluma_search_dialog_get_replace_text (dialog);
+		replace_entry_text = lapiz_search_dialog_get_replace_text (dialog);
 	}
 	g_return_if_fail ((replace_entry_text) != NULL);
 
-	unescaped_search_text = pluma_utils_unescape_search_text (search_entry_text);
+	unescaped_search_text = lapiz_utils_unescape_search_text (search_entry_text);
 
 	get_selected_text (GTK_TEXT_BUFFER (doc),
 			   &selected_text,
 			   NULL);
 
-	match_case = pluma_search_dialog_get_match_case (dialog);
-        match_regex = pluma_search_dialog_get_match_regex(dialog);
+	match_case = lapiz_search_dialog_get_match_case (dialog);
+        match_regex = lapiz_search_dialog_get_match_regex(dialog);
 
         if (selected_text != NULL)
         {
@@ -408,7 +408,7 @@ do_replace (PlumaSearchDialog *dialog,
 
 	if (need_refind)
 	{
-		pluma_document_set_last_replace_text (doc, replace_entry_text);
+		lapiz_document_set_last_replace_text (doc, replace_entry_text);
 		do_find (dialog, window);
 		g_free (unescaped_search_text);
 		g_free (selected_text);
@@ -417,9 +417,9 @@ do_replace (PlumaSearchDialog *dialog,
 	}
 
 	if(!match_regex)
-		unescaped_replace_text = pluma_utils_unescape_search_text (replace_entry_text);
+		unescaped_replace_text = lapiz_utils_unescape_search_text (replace_entry_text);
 	else
-		unescaped_replace_text = g_strdup (pluma_document_get_last_replace_text (doc));
+		unescaped_replace_text = g_strdup (lapiz_document_get_last_replace_text (doc));
 
 	replace_selected_text (GTK_TEXT_BUFFER (doc), unescaped_replace_text);
 
@@ -445,38 +445,38 @@ do_replace_all (PlumaSearchDialog *dialog,
 	guint flags = 0;
 	gint count;
 
-	active_view = pluma_window_get_active_view (window);
+	active_view = lapiz_window_get_active_view (window);
 	if (active_view == NULL)
 		return;
 
 	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
-	parse_escapes = pluma_search_dialog_get_parse_escapes (dialog);
+	parse_escapes = lapiz_search_dialog_get_parse_escapes (dialog);
 	if (!parse_escapes) {
-		search_entry_text = pluma_utils_escape_search_text(pluma_search_dialog_get_search_text (dialog));
+		search_entry_text = lapiz_utils_escape_search_text(lapiz_search_dialog_get_search_text (dialog));
 	} else {
-		search_entry_text = pluma_search_dialog_get_search_text (dialog);
+		search_entry_text = lapiz_search_dialog_get_search_text (dialog);
 	}
 	g_return_if_fail ((search_entry_text) != NULL);
 	g_return_if_fail ((*search_entry_text) != '\0');
 
 	/* replace text may be "", we just delete all occurrencies */
 	if (!parse_escapes) {
-		replace_entry_text = pluma_utils_escape_search_text (pluma_search_dialog_get_replace_text (dialog));
+		replace_entry_text = lapiz_utils_escape_search_text (lapiz_search_dialog_get_replace_text (dialog));
 	} else {
-		replace_entry_text = pluma_search_dialog_get_replace_text (dialog);
+		replace_entry_text = lapiz_search_dialog_get_replace_text (dialog);
 	}
 	g_return_if_fail ((replace_entry_text) != NULL);
 
-	match_case = pluma_search_dialog_get_match_case (dialog);
-    match_regex = pluma_search_dialog_get_match_regex(dialog);
-	entire_word = pluma_search_dialog_get_entire_word (dialog);
+	match_case = lapiz_search_dialog_get_match_case (dialog);
+    match_regex = lapiz_search_dialog_get_match_regex(dialog);
+	entire_word = lapiz_search_dialog_get_entire_word (dialog);
 
 	PLUMA_SEARCH_SET_CASE_SENSITIVE (flags, match_case);
 	PLUMA_SEARCH_SET_MATCH_REGEX (flags, match_regex);
 	PLUMA_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
 
-	count = pluma_document_replace_all (doc,
+	count = lapiz_document_replace_all (doc,
 					    search_entry_text,
 					    replace_entry_text,
 					    flags);
@@ -488,7 +488,7 @@ do_replace_all (PlumaSearchDialog *dialog,
 	else
 	{
 		if (!parse_escapes) {
-			text_not_found (window, pluma_utils_unescape_search_text (search_entry_text));
+			text_not_found (window, lapiz_utils_unescape_search_text (search_entry_text));
 		} else {
 			text_not_found (window, search_entry_text);
 		}
@@ -504,7 +504,7 @@ search_dialog_response_cb (PlumaSearchDialog *dialog,
 			   gint               response_id,
 			   PlumaWindow       *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	switch (response_id)
 	{
@@ -528,7 +528,7 @@ search_dialog_delete_event_cb (GtkWidget   *widget,
 			       GdkEventAny *event,
 			       gpointer     user_data)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	/* prevent destruction */
 	return TRUE;
@@ -538,7 +538,7 @@ static void
 search_dialog_destroyed (PlumaWindow       *window,
 			 PlumaSearchDialog *dialog)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	g_object_set_data (G_OBJECT (window),
 			   PLUMA_SEARCH_DIALOG_KEY,
@@ -553,7 +553,7 @@ create_dialog (PlumaWindow *window, gboolean show_replace)
 {
 	GtkWidget *dialog;
 
-	dialog = pluma_search_dialog_new (GTK_WINDOW (window), show_replace);
+	dialog = lapiz_search_dialog_new (GTK_WINDOW (window), show_replace);
 
 	g_signal_connect (dialog,
 			  "response",
@@ -576,7 +576,7 @@ create_dialog (PlumaWindow *window, gboolean show_replace)
 }
 
 void
-_pluma_cmd_search_find (GtkAction   *action,
+_lapiz_cmd_search_find (GtkAction   *action,
 			PlumaWindow *window)
 {
 	gpointer data;
@@ -588,7 +588,7 @@ _pluma_cmd_search_find (GtkAction   *action,
 	const gchar *search_text = NULL;
 	gint sel_len;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	data = g_object_get_data (G_OBJECT (window), PLUMA_SEARCH_DIALOG_KEY);
 
@@ -603,12 +603,12 @@ _pluma_cmd_search_find (GtkAction   *action,
 		search_dialog = GTK_WIDGET (data);
 
 		/* turn the dialog into a find dialog if needed */
-		if (pluma_search_dialog_get_show_replace (PLUMA_SEARCH_DIALOG (search_dialog)))
-			pluma_search_dialog_set_show_replace (PLUMA_SEARCH_DIALOG (search_dialog),
+		if (lapiz_search_dialog_get_show_replace (PLUMA_SEARCH_DIALOG (search_dialog)))
+			lapiz_search_dialog_set_show_replace (PLUMA_SEARCH_DIALOG (search_dialog),
 							      FALSE);
 	}
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
 	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc),
@@ -627,13 +627,13 @@ _pluma_cmd_search_find (GtkAction   *action,
 		 * single-character literal '\n' in the "search for"
 		 * box).
 		 */
-		parse_escapes = pluma_search_dialog_get_parse_escapes (PLUMA_SEARCH_DIALOG (search_dialog));
-		search_text = pluma_search_dialog_get_search_text (PLUMA_SEARCH_DIALOG (search_dialog));
+		parse_escapes = lapiz_search_dialog_get_parse_escapes (PLUMA_SEARCH_DIALOG (search_dialog));
+		search_text = lapiz_search_dialog_get_search_text (PLUMA_SEARCH_DIALOG (search_dialog));
 		if (!(search_text != NULL
-		      && !strcmp(pluma_utils_unescape_search_text(search_text), find_text)
+		      && !strcmp(lapiz_utils_unescape_search_text(search_text), find_text)
 		      && parse_escapes)) {
 			/* General case */
-			pluma_search_dialog_set_search_text (PLUMA_SEARCH_DIALOG (search_dialog),
+			lapiz_search_dialog_set_search_text (PLUMA_SEARCH_DIALOG (search_dialog),
 							     find_text);
 		}
 		g_free (find_text);
@@ -645,12 +645,12 @@ _pluma_cmd_search_find (GtkAction   *action,
 
 	gtk_widget_show (search_dialog);
 	last_search_data_restore_position (PLUMA_SEARCH_DIALOG (search_dialog));
-	pluma_search_dialog_present_with_time (PLUMA_SEARCH_DIALOG (search_dialog),
+	lapiz_search_dialog_present_with_time (PLUMA_SEARCH_DIALOG (search_dialog),
 					       GDK_CURRENT_TIME);
 }
 
 void
-_pluma_cmd_search_replace (GtkAction   *action,
+_lapiz_cmd_search_replace (GtkAction   *action,
 			   PlumaWindow *window)
 {
 	gpointer data;
@@ -662,7 +662,7 @@ _pluma_cmd_search_replace (GtkAction   *action,
 	const gchar *search_text = NULL;
 	gint sel_len;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	data = g_object_get_data (G_OBJECT (window), PLUMA_SEARCH_DIALOG_KEY);
 
@@ -677,12 +677,12 @@ _pluma_cmd_search_replace (GtkAction   *action,
 		replace_dialog = GTK_WIDGET (data);
 
 		/* turn the dialog into a find dialog if needed */
-		if (!pluma_search_dialog_get_show_replace (PLUMA_SEARCH_DIALOG (replace_dialog)))
-			pluma_search_dialog_set_show_replace (PLUMA_SEARCH_DIALOG (replace_dialog),
+		if (!lapiz_search_dialog_get_show_replace (PLUMA_SEARCH_DIALOG (replace_dialog)))
+			lapiz_search_dialog_set_show_replace (PLUMA_SEARCH_DIALOG (replace_dialog),
 							      TRUE);
 	}
 
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
 	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc),
@@ -701,13 +701,13 @@ _pluma_cmd_search_replace (GtkAction   *action,
 		 * single-character literal '\n' in the "search for"
 		 * box).
 		 */
-		parse_escapes = pluma_search_dialog_get_parse_escapes (PLUMA_SEARCH_DIALOG (replace_dialog));
-		search_text = pluma_search_dialog_get_search_text (PLUMA_SEARCH_DIALOG (replace_dialog));
+		parse_escapes = lapiz_search_dialog_get_parse_escapes (PLUMA_SEARCH_DIALOG (replace_dialog));
+		search_text = lapiz_search_dialog_get_search_text (PLUMA_SEARCH_DIALOG (replace_dialog));
 		if (!(search_text != NULL
-		      && !strcmp(pluma_utils_unescape_search_text(search_text), find_text)
+		      && !strcmp(lapiz_utils_unescape_search_text(search_text), find_text)
 		      && parse_escapes)) {
 			/* General case */
-			pluma_search_dialog_set_search_text (PLUMA_SEARCH_DIALOG (replace_dialog),
+			lapiz_search_dialog_set_search_text (PLUMA_SEARCH_DIALOG (replace_dialog),
 							     find_text);
 		}
 		g_free (find_text);
@@ -719,7 +719,7 @@ _pluma_cmd_search_replace (GtkAction   *action,
 
 	gtk_widget_show (replace_dialog);
 	last_search_data_restore_position (PLUMA_SEARCH_DIALOG (replace_dialog));
-	pluma_search_dialog_present_with_time (PLUMA_SEARCH_DIALOG (replace_dialog),
+	lapiz_search_dialog_present_with_time (PLUMA_SEARCH_DIALOG (replace_dialog),
 					       GDK_CURRENT_TIME);
 }
 
@@ -731,13 +731,13 @@ do_find_again (PlumaWindow *window,
 	gboolean wrap_around = TRUE;
 	gpointer data;
 
-	active_view = pluma_window_get_active_view (window);
+	active_view = lapiz_window_get_active_view (window);
 	g_return_if_fail (active_view != NULL);
 
 	data = g_object_get_data (G_OBJECT (window), PLUMA_SEARCH_DIALOG_KEY);
 
 	if (data != NULL)
-		wrap_around = pluma_search_dialog_get_wrap_around (PLUMA_SEARCH_DIALOG (data));
+		wrap_around = lapiz_search_dialog_get_wrap_around (PLUMA_SEARCH_DIALOG (data));
 
 	run_search (active_view,
 		    wrap_around,
@@ -745,46 +745,46 @@ do_find_again (PlumaWindow *window,
 }
 
 void
-_pluma_cmd_search_find_next (GtkAction   *action,
+_lapiz_cmd_search_find_next (GtkAction   *action,
 			     PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	do_find_again (window, FALSE);
 }
 
 void
-_pluma_cmd_search_find_prev (GtkAction   *action,
+_lapiz_cmd_search_find_prev (GtkAction   *action,
 			     PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	do_find_again (window, TRUE);
 }
 
 void
-_pluma_cmd_search_clear_highlight (GtkAction   *action,
+_lapiz_cmd_search_clear_highlight (GtkAction   *action,
 				   PlumaWindow *window)
 {
 	PlumaDocument *doc;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	doc = pluma_window_get_active_document (window);
-	pluma_document_set_search_text (PLUMA_DOCUMENT (doc),
+	doc = lapiz_window_get_active_document (window);
+	lapiz_document_set_search_text (PLUMA_DOCUMENT (doc),
 					"",
 					PLUMA_SEARCH_DONT_SET_FLAGS);
 }
 
 void
-_pluma_cmd_search_goto_line (GtkAction   *action,
+_lapiz_cmd_search_goto_line (GtkAction   *action,
 			     PlumaWindow *window)
 {
 	PlumaView *active_view;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	active_view = pluma_window_get_active_view (window);
+	active_view = lapiz_window_get_active_view (window);
 	if (active_view == NULL)
 		return;
 
@@ -802,14 +802,14 @@ _pluma_cmd_search_goto_line (GtkAction   *action,
 }
 
 void
-_pluma_cmd_search_incremental_search (GtkAction   *action,
+_lapiz_cmd_search_incremental_search (GtkAction   *action,
 				      PlumaWindow *window)
 {
 	PlumaView *active_view;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	active_view = pluma_window_get_active_view (window);
+	active_view = lapiz_window_get_active_view (window);
 	if (active_view == NULL)
 		return;
 

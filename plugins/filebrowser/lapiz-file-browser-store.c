@@ -1,5 +1,5 @@
 /*
- * pluma-file-browser-store.c - Pluma plugin providing easy file access
+ * lapiz-file-browser-store.c - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -27,11 +27,11 @@
 #include <glib/gi18n-lib.h>
 #include <gio/gio.h>
 
-#include "pluma-file-browser-store.h"
-#include "pluma-file-browser-marshal.h"
-#include "pluma-file-browser-enum-types.h"
-#include "pluma-file-browser-error.h"
-#include "pluma-file-browser-utils.h"
+#include "lapiz-file-browser-store.h"
+#include "lapiz-file-browser-marshal.h"
+#include "lapiz-file-browser-enum-types.h"
+#include "lapiz-file-browser-error.h"
+#include "lapiz-file-browser-utils.h"
 
 #define NODE_IS_DIR(node)		(FILE_IS_DIR((node)->flags))
 #define NODE_IS_HIDDEN(node)		(FILE_IS_HIDDEN((node)->flags))
@@ -133,46 +133,46 @@ static void model_remove_node                               (PlumaFileBrowserSto
 static void set_virtual_root_from_node                      (PlumaFileBrowserStore * model,
 				                             FileBrowserNode * node);
 
-static void pluma_file_browser_store_iface_init             (GtkTreeModelIface * iface);
-static GtkTreeModelFlags pluma_file_browser_store_get_flags (GtkTreeModel * tree_model);
-static gint pluma_file_browser_store_get_n_columns          (GtkTreeModel * tree_model);
-static GType pluma_file_browser_store_get_column_type       (GtkTreeModel * tree_model,
+static void lapiz_file_browser_store_iface_init             (GtkTreeModelIface * iface);
+static GtkTreeModelFlags lapiz_file_browser_store_get_flags (GtkTreeModel * tree_model);
+static gint lapiz_file_browser_store_get_n_columns          (GtkTreeModel * tree_model);
+static GType lapiz_file_browser_store_get_column_type       (GtkTreeModel * tree_model,
 							     gint index);
-static gboolean pluma_file_browser_store_get_iter           (GtkTreeModel * tree_model,
+static gboolean lapiz_file_browser_store_get_iter           (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter,
 							     GtkTreePath * path);
-static GtkTreePath *pluma_file_browser_store_get_path       (GtkTreeModel * tree_model,
+static GtkTreePath *lapiz_file_browser_store_get_path       (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter);
-static void pluma_file_browser_store_get_value              (GtkTreeModel * tree_model,
+static void lapiz_file_browser_store_get_value              (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter,
 							     gint column,
 							     GValue * value);
-static gboolean pluma_file_browser_store_iter_next          (GtkTreeModel * tree_model,
+static gboolean lapiz_file_browser_store_iter_next          (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter);
-static gboolean pluma_file_browser_store_iter_children      (GtkTreeModel * tree_model,
+static gboolean lapiz_file_browser_store_iter_children      (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter,
 							     GtkTreeIter * parent);
-static gboolean pluma_file_browser_store_iter_has_child     (GtkTreeModel * tree_model,
+static gboolean lapiz_file_browser_store_iter_has_child     (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter);
-static gint pluma_file_browser_store_iter_n_children        (GtkTreeModel * tree_model,
+static gint lapiz_file_browser_store_iter_n_children        (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter);
-static gboolean pluma_file_browser_store_iter_nth_child     (GtkTreeModel * tree_model,
+static gboolean lapiz_file_browser_store_iter_nth_child     (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter,
 							     GtkTreeIter * parent,
 							     gint n);
-static gboolean pluma_file_browser_store_iter_parent        (GtkTreeModel * tree_model,
+static gboolean lapiz_file_browser_store_iter_parent        (GtkTreeModel * tree_model,
 							     GtkTreeIter * iter,
 							     GtkTreeIter * child);
-static void pluma_file_browser_store_row_inserted	    (GtkTreeModel * tree_model,
+static void lapiz_file_browser_store_row_inserted	    (GtkTreeModel * tree_model,
 							     GtkTreePath * path,
 							     GtkTreeIter * iter);
 
-static void pluma_file_browser_store_drag_source_init       (GtkTreeDragSourceIface * iface);
-static gboolean pluma_file_browser_store_row_draggable      (GtkTreeDragSource * drag_source,
+static void lapiz_file_browser_store_drag_source_init       (GtkTreeDragSourceIface * iface);
+static gboolean lapiz_file_browser_store_row_draggable      (GtkTreeDragSource * drag_source,
 							     GtkTreePath       * path);
-static gboolean pluma_file_browser_store_drag_data_delete   (GtkTreeDragSource * drag_source,
+static gboolean lapiz_file_browser_store_drag_data_delete   (GtkTreeDragSource * drag_source,
 							     GtkTreePath       * path);
-static gboolean pluma_file_browser_store_drag_data_get      (GtkTreeDragSource * drag_source,
+static gboolean lapiz_file_browser_store_drag_data_get      (GtkTreeDragSource * drag_source,
 							     GtkTreePath       * path,
 							     GtkSelectionData  * selection_data);
 
@@ -192,14 +192,14 @@ static void next_files_async 				    (GFileEnumerator * enumerator,
 
 static void delete_files                                    (AsyncData              *data);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBrowserStore, pluma_file_browser_store,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBrowserStore, lapiz_file_browser_store,
                                 G_TYPE_OBJECT,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaFileBrowserStore)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_MODEL,
-                                                               pluma_file_browser_store_iface_init)
+                                                               lapiz_file_browser_store_iface_init)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_DRAG_SOURCE,
-                                                               pluma_file_browser_store_drag_source_init))
+                                                               lapiz_file_browser_store_drag_source_init))
 
 /* Properties */
 enum {
@@ -238,7 +238,7 @@ cancel_mount_operation (PlumaFileBrowserStore *obj)
 }
 
 static void
-pluma_file_browser_store_finalize (GObject * object)
+lapiz_file_browser_store_finalize (GObject * object)
 {
 	PlumaFileBrowserStore *obj = PLUMA_FILE_BROWSER_STORE (object);
 	GSList *item;
@@ -258,7 +258,7 @@ pluma_file_browser_store_finalize (GObject * object)
 	cancel_mount_operation (obj);
 
 	g_slist_free (obj->priv->async_handles);
-	G_OBJECT_CLASS (pluma_file_browser_store_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_file_browser_store_parent_class)->finalize (object);
 }
 
 static void
@@ -276,7 +276,7 @@ set_gvalue_from_node (GValue          *value,
 }
 
 static void
-pluma_file_browser_store_get_property (GObject    *object,
+lapiz_file_browser_store_get_property (GObject    *object,
 			               guint       prop_id,
 			               GValue     *value,
 			               GParamSpec *pspec)
@@ -301,7 +301,7 @@ pluma_file_browser_store_get_property (GObject    *object,
 }
 
 static void
-pluma_file_browser_store_set_property (GObject      *object,
+lapiz_file_browser_store_set_property (GObject      *object,
 			               guint         prop_id,
 			               const GValue *value,
 			               GParamSpec   *pspec)
@@ -311,7 +311,7 @@ pluma_file_browser_store_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_FILTER_MODE:
-			pluma_file_browser_store_set_filter_mode (obj,
+			lapiz_file_browser_store_set_filter_mode (obj,
 			                                          g_value_get_flags (value));
 			break;
 		default:
@@ -321,14 +321,14 @@ pluma_file_browser_store_set_property (GObject      *object,
 }
 
 static void
-pluma_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
+lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_file_browser_store_finalize;
+	object_class->finalize = lapiz_file_browser_store_finalize;
 
-	object_class->get_property = pluma_file_browser_store_get_property;
-	object_class->set_property = pluma_file_browser_store_set_property;
+	object_class->get_property = lapiz_file_browser_store_get_property;
+	object_class->set_property = lapiz_file_browser_store_set_property;
 
 	g_object_class_install_property (object_class, PROP_ROOT,
 					 g_param_spec_string ("root",
@@ -349,7 +349,7 @@ pluma_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 					 		      "Filter Mode",
 					 		      "The filter mode",
 					 		      PLUMA_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
-					 		      pluma_file_browser_store_filter_mode_get_default (),
+					 		      lapiz_file_browser_store_filter_mode_get_default (),
 					 		      G_PARAM_READWRITE));
 
 	model_signals[BEGIN_LOADING] =
@@ -373,14 +373,14 @@ pluma_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
 					   error), NULL, NULL,
-			  pluma_file_browser_marshal_VOID__UINT_STRING,
+			  lapiz_file_browser_marshal_VOID__UINT_STRING,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	model_signals[NO_TRASH] =
 	    g_signal_new ("no-trash", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
 					   no_trash), g_signal_accumulator_true_handled, NULL,
-			  pluma_file_browser_marshal_BOOLEAN__POINTER,
+			  lapiz_file_browser_marshal_BOOLEAN__POINTER,
 			  G_TYPE_BOOLEAN, 1, G_TYPE_POINTER);
 	model_signals[RENAME] =
 	    g_signal_new ("rename",
@@ -388,7 +388,7 @@ pluma_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaFileBrowserStoreClass,
 					   rename), NULL, NULL,
-			  pluma_file_browser_marshal_VOID__STRING_STRING,
+			  lapiz_file_browser_marshal_VOID__STRING_STRING,
 			  G_TYPE_NONE, 2,
 			  G_TYPE_STRING,
 			  G_TYPE_STRING);
@@ -420,41 +420,41 @@ pluma_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 }
 
 static void
-pluma_file_browser_store_class_finalize (PlumaFileBrowserStoreClass *klass)
+lapiz_file_browser_store_class_finalize (PlumaFileBrowserStoreClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
 
 static void
-pluma_file_browser_store_iface_init (GtkTreeModelIface * iface)
+lapiz_file_browser_store_iface_init (GtkTreeModelIface * iface)
 {
-	iface->get_flags = pluma_file_browser_store_get_flags;
-	iface->get_n_columns = pluma_file_browser_store_get_n_columns;
-	iface->get_column_type = pluma_file_browser_store_get_column_type;
-	iface->get_iter = pluma_file_browser_store_get_iter;
-	iface->get_path = pluma_file_browser_store_get_path;
-	iface->get_value = pluma_file_browser_store_get_value;
-	iface->iter_next = pluma_file_browser_store_iter_next;
-	iface->iter_children = pluma_file_browser_store_iter_children;
-	iface->iter_has_child = pluma_file_browser_store_iter_has_child;
-	iface->iter_n_children = pluma_file_browser_store_iter_n_children;
-	iface->iter_nth_child = pluma_file_browser_store_iter_nth_child;
-	iface->iter_parent = pluma_file_browser_store_iter_parent;
-	iface->row_inserted = pluma_file_browser_store_row_inserted;
+	iface->get_flags = lapiz_file_browser_store_get_flags;
+	iface->get_n_columns = lapiz_file_browser_store_get_n_columns;
+	iface->get_column_type = lapiz_file_browser_store_get_column_type;
+	iface->get_iter = lapiz_file_browser_store_get_iter;
+	iface->get_path = lapiz_file_browser_store_get_path;
+	iface->get_value = lapiz_file_browser_store_get_value;
+	iface->iter_next = lapiz_file_browser_store_iter_next;
+	iface->iter_children = lapiz_file_browser_store_iter_children;
+	iface->iter_has_child = lapiz_file_browser_store_iter_has_child;
+	iface->iter_n_children = lapiz_file_browser_store_iter_n_children;
+	iface->iter_nth_child = lapiz_file_browser_store_iter_nth_child;
+	iface->iter_parent = lapiz_file_browser_store_iter_parent;
+	iface->row_inserted = lapiz_file_browser_store_row_inserted;
 }
 
 static void
-pluma_file_browser_store_drag_source_init (GtkTreeDragSourceIface * iface)
+lapiz_file_browser_store_drag_source_init (GtkTreeDragSourceIface * iface)
 {
-	iface->row_draggable = pluma_file_browser_store_row_draggable;
-	iface->drag_data_delete = pluma_file_browser_store_drag_data_delete;
-	iface->drag_data_get = pluma_file_browser_store_drag_data_get;
+	iface->row_draggable = lapiz_file_browser_store_row_draggable;
+	iface->drag_data_delete = lapiz_file_browser_store_drag_data_delete;
+	iface->drag_data_get = lapiz_file_browser_store_drag_data_get;
 }
 
 static void
-pluma_file_browser_store_init (PlumaFileBrowserStore * obj)
+lapiz_file_browser_store_init (PlumaFileBrowserStore * obj)
 {
-	obj->priv = pluma_file_browser_store_get_instance_private (obj);
+	obj->priv = lapiz_file_browser_store_get_instance_private (obj);
 
 	obj->priv->column_types[PLUMA_FILE_BROWSER_STORE_COLUMN_URI] =
 	    G_TYPE_STRING;
@@ -468,7 +468,7 @@ pluma_file_browser_store_init (PlumaFileBrowserStore * obj)
 	    GDK_TYPE_PIXBUF;
 
 	// Default filter mode is hiding the hidden files
-	obj->priv->filter_mode = pluma_file_browser_store_filter_mode_get_default ();
+	obj->priv->filter_mode = lapiz_file_browser_store_filter_mode_get_default ();
 	obj->priv->sort_func = model_sort_default;
 }
 
@@ -519,7 +519,7 @@ model_node_inserted (PlumaFileBrowserStore * model,
 /* Interface implementation */
 
 static GtkTreeModelFlags
-pluma_file_browser_store_get_flags (GtkTreeModel * tree_model)
+lapiz_file_browser_store_get_flags (GtkTreeModel * tree_model)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
 			      (GtkTreeModelFlags) 0);
@@ -528,7 +528,7 @@ pluma_file_browser_store_get_flags (GtkTreeModel * tree_model)
 }
 
 static gint
-pluma_file_browser_store_get_n_columns (GtkTreeModel * tree_model)
+lapiz_file_browser_store_get_n_columns (GtkTreeModel * tree_model)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model), 0);
 
@@ -536,7 +536,7 @@ pluma_file_browser_store_get_n_columns (GtkTreeModel * tree_model)
 }
 
 static GType
-pluma_file_browser_store_get_column_type (GtkTreeModel * tree_model, gint idx)
+lapiz_file_browser_store_get_column_type (GtkTreeModel * tree_model, gint idx)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
 			      G_TYPE_INVALID);
@@ -547,7 +547,7 @@ pluma_file_browser_store_get_column_type (GtkTreeModel * tree_model, gint idx)
 }
 
 static gboolean
-pluma_file_browser_store_get_iter (GtkTreeModel * tree_model,
+lapiz_file_browser_store_get_iter (GtkTreeModel * tree_model,
 				   GtkTreeIter * iter, GtkTreePath * path)
 {
 	gint * indices, depth, i;
@@ -603,7 +603,7 @@ pluma_file_browser_store_get_iter (GtkTreeModel * tree_model,
 }
 
 static GtkTreePath *
-pluma_file_browser_store_get_path_real (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_get_path_real (PlumaFileBrowserStore * model,
 					FileBrowserNode * node)
 {
 	GtkTreePath *path;
@@ -650,19 +650,19 @@ pluma_file_browser_store_get_path_real (PlumaFileBrowserStore * model,
 }
 
 static GtkTreePath *
-pluma_file_browser_store_get_path (GtkTreeModel * tree_model,
+lapiz_file_browser_store_get_path (GtkTreeModel * tree_model,
 				   GtkTreeIter * iter)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
 	g_return_val_if_fail (iter->user_data != NULL, NULL);
 
-	return pluma_file_browser_store_get_path_real (PLUMA_FILE_BROWSER_STORE (tree_model),
+	return lapiz_file_browser_store_get_path_real (PLUMA_FILE_BROWSER_STORE (tree_model),
 						       (FileBrowserNode *) (iter->user_data));
 }
 
 static void
-pluma_file_browser_store_get_value (GtkTreeModel * tree_model,
+lapiz_file_browser_store_get_value (GtkTreeModel * tree_model,
 				    GtkTreeIter * iter,
 				    gint column,
 				    GValue * value)
@@ -699,7 +699,7 @@ pluma_file_browser_store_get_value (GtkTreeModel * tree_model,
 }
 
 static gboolean
-pluma_file_browser_store_iter_next (GtkTreeModel * tree_model,
+lapiz_file_browser_store_iter_next (GtkTreeModel * tree_model,
 				    GtkTreeIter * iter)
 {
 	PlumaFileBrowserStore * model;
@@ -731,7 +731,7 @@ pluma_file_browser_store_iter_next (GtkTreeModel * tree_model,
 }
 
 static gboolean
-pluma_file_browser_store_iter_children (GtkTreeModel * tree_model,
+lapiz_file_browser_store_iter_children (GtkTreeModel * tree_model,
 					GtkTreeIter * iter,
 					GtkTreeIter * parent)
 {
@@ -785,7 +785,7 @@ filter_tree_model_iter_has_child_real (PlumaFileBrowserStore * model,
 }
 
 static gboolean
-pluma_file_browser_store_iter_has_child (GtkTreeModel * tree_model,
+lapiz_file_browser_store_iter_has_child (GtkTreeModel * tree_model,
 					 GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
@@ -807,7 +807,7 @@ pluma_file_browser_store_iter_has_child (GtkTreeModel * tree_model,
 }
 
 static gint
-pluma_file_browser_store_iter_n_children (GtkTreeModel * tree_model,
+lapiz_file_browser_store_iter_n_children (GtkTreeModel * tree_model,
 					  GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
@@ -838,7 +838,7 @@ pluma_file_browser_store_iter_n_children (GtkTreeModel * tree_model,
 }
 
 static gboolean
-pluma_file_browser_store_iter_nth_child (GtkTreeModel * tree_model,
+lapiz_file_browser_store_iter_nth_child (GtkTreeModel * tree_model,
 					 GtkTreeIter * iter,
 					 GtkTreeIter * parent, gint n)
 {
@@ -878,7 +878,7 @@ pluma_file_browser_store_iter_nth_child (GtkTreeModel * tree_model,
 }
 
 static gboolean
-pluma_file_browser_store_iter_parent (GtkTreeModel * tree_model,
+lapiz_file_browser_store_iter_parent (GtkTreeModel * tree_model,
 				      GtkTreeIter * iter,
 				      GtkTreeIter * child)
 {
@@ -903,7 +903,7 @@ pluma_file_browser_store_iter_parent (GtkTreeModel * tree_model,
 }
 
 static void
-pluma_file_browser_store_row_inserted (GtkTreeModel * tree_model,
+lapiz_file_browser_store_row_inserted (GtkTreeModel * tree_model,
 				       GtkTreePath * path,
 				       GtkTreeIter * iter)
 {
@@ -913,7 +913,7 @@ pluma_file_browser_store_row_inserted (GtkTreeModel * tree_model,
 }
 
 static gboolean
-pluma_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
+lapiz_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
 					GtkTreePath       * path)
 {
 	GtkTreeIter iter;
@@ -933,14 +933,14 @@ pluma_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
 }
 
 static gboolean
-pluma_file_browser_store_drag_data_delete (GtkTreeDragSource * drag_source,
+lapiz_file_browser_store_drag_data_delete (GtkTreeDragSource * drag_source,
 					   GtkTreePath       * path)
 {
 	return FALSE;
 }
 
 static gboolean
-pluma_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
+lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
 					GtkTreePath       * path,
 					GtkSelectionData  * selection_data)
 {
@@ -1119,7 +1119,7 @@ model_resort_node (PlumaFileBrowserStore * model, FileBrowserNode * node)
 
 		iter.user_data = node->parent;
 		path =
-		    pluma_file_browser_store_get_path_real (model,
+		    lapiz_file_browser_store_get_path_real (model,
 							    node->parent);
 
 		gtk_tree_model_rows_reordered (GTK_TREE_MODEL (model),
@@ -1213,7 +1213,7 @@ model_refilter_node (PlumaFileBrowserStore * model,
 	if (path == NULL)
 	{
 		if (in_tree)
-			tmppath = pluma_file_browser_store_get_path_real (model,
+			tmppath = lapiz_file_browser_store_get_path_real (model,
 								       node);
 		else
 			tmppath = gtk_tree_path_new_first ();
@@ -1272,7 +1272,7 @@ file_browser_node_set_name (FileBrowserNode * node)
 	g_free (node->name);
 
 	if (node->file) {
-		node->name = pluma_file_browser_utils_file_basename (node->file);
+		node->name = lapiz_file_browser_utils_file_basename (node->file);
 	} else {
 		node->name = NULL;
 	}
@@ -1433,7 +1433,7 @@ model_remove_node_children (PlumaFileBrowserStore * model,
 
 	if (path == NULL)
 		path_child =
-		    pluma_file_browser_store_get_path_real (model, node);
+		    lapiz_file_browser_store_get_path_real (model, node);
 	else
 		path_child = gtk_tree_path_copy (path);
 
@@ -1473,7 +1473,7 @@ model_remove_node (PlumaFileBrowserStore * model,
 
 	if (path == NULL) {
 		path =
-		    pluma_file_browser_store_get_path_real (model, node);
+		    lapiz_file_browser_store_get_path_real (model, node);
 		free_path = TRUE;
 	}
 
@@ -1603,11 +1603,11 @@ model_recomposite_icon_real (PlumaFileBrowserStore * tree_model,
 	if (info) {
 		GIcon *gicon = g_file_info_get_icon (info);
 		if (gicon != NULL)
-			icon = pluma_file_browser_utils_pixbuf_from_icon (gicon, GTK_ICON_SIZE_MENU);
+			icon = lapiz_file_browser_utils_pixbuf_from_icon (gicon, GTK_ICON_SIZE_MENU);
 		else
 			icon = NULL;
 	} else {
-		icon = pluma_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU);
+		icon = lapiz_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU);
 	}
 
 	if (node->icon)
@@ -1727,7 +1727,7 @@ model_check_dummy (PlumaFileBrowserStore * model, FileBrowserNode * node)
 				// Was hidden, needs to be inserted
 				iter.user_data = dummy;
 				path =
-				    pluma_file_browser_store_get_path_real
+				    lapiz_file_browser_store_get_path_real
 				    (model, dummy);
 
 				row_inserted (model, &path, &iter);
@@ -1741,7 +1741,7 @@ model_check_dummy (PlumaFileBrowserStore * model, FileBrowserNode * node)
 				dummy->flags &=
 				    ~PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 				path =
-				    pluma_file_browser_store_get_path_real
+				    lapiz_file_browser_store_get_path_real
 				    (model, dummy);
 				dummy->flags |=
 				    PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
@@ -1786,7 +1786,7 @@ model_add_node (PlumaFileBrowserStore * model, FileBrowserNode * child,
 		GtkTreePath *path;
 
 		iter.user_data = child;
-		path = pluma_file_browser_store_get_path_real (model, child);
+		path = lapiz_file_browser_store_get_path_real (model, child);
 
 		/* Emit row inserted */
 		row_inserted (model, &path, &iter);
@@ -1832,7 +1832,7 @@ model_add_nodes_batch (PlumaFileBrowserStore * model,
 				if (model_node_visibility (model, parent) &&
 				    model_node_visibility (model, l->data)) {
 					iter.user_data = l->data;
-					path = pluma_file_browser_store_get_path_real (model, l->data);
+					path = lapiz_file_browser_store_get_path_real (model, l->data);
 
 					// Emit row inserted
 					row_inserted (model, &path, &iter);
@@ -1863,7 +1863,7 @@ model_add_nodes_batch (PlumaFileBrowserStore * model,
 			if (model_node_visibility (model, parent) &&
 			    model_node_visibility (model, node)) {
 				iter.user_data = node;
-				path = pluma_file_browser_store_get_path_real (model, node);
+				path = lapiz_file_browser_store_get_path_real (model, node);
 
 				// Emit row inserted
 				row_inserted (model, &path, &iter);
@@ -1953,7 +1953,7 @@ file_browser_node_set_from_info (PlumaFileBrowserStore * model,
 		g_object_unref (info);
 
 	if (isadded) {
-		path = pluma_file_browser_store_get_path_real (model, node);
+		path = lapiz_file_browser_store_get_path_real (model, node);
 		model_refilter_node (model, node, &path);
 		gtk_tree_path_free (path);
 
@@ -2101,7 +2101,7 @@ model_add_node_from_dir (PlumaFileBrowserStore * model,
 		}
 
 		if (node->icon == NULL) {
-			node->icon = pluma_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
+			node->icon = lapiz_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
 		}
 
 		model_add_node (model, node, parent);
@@ -2335,7 +2335,7 @@ model_fill (PlumaFileBrowserStore * model, FileBrowserNode * node,
 
 	if (*path == NULL) {
 		*path =
-		    pluma_file_browser_store_get_path_real (model, node);
+		    lapiz_file_browser_store_get_path_real (model, node);
 		free_path = TRUE;
 	}
 
@@ -2539,12 +2539,12 @@ model_find_node (PlumaFileBrowserStore * model,
 }
 
 static GQuark
-pluma_file_browser_store_error_quark (void)
+lapiz_file_browser_store_error_quark (void)
 {
 	static GQuark quark = 0;
 
 	if (G_UNLIKELY (quark == 0)) {
-		quark = g_quark_from_string ("pluma_file_browser_store_error");
+		quark = g_quark_from_string ("lapiz_file_browser_store_error");
 	}
 
 	return quark;
@@ -2583,7 +2583,7 @@ model_root_mounted (PlumaFileBrowserStore * model, gchar const * virtual_root)
 
 	if (virtual_root != NULL)
 		return
-		    pluma_file_browser_store_set_virtual_root_from_string
+		    lapiz_file_browser_store_set_virtual_root_from_string
 		    (model, virtual_root);
 	else
 		set_virtual_root_from_node (model,
@@ -2712,19 +2712,19 @@ model_mount_root (PlumaFileBrowserStore * model, gchar const * virtual_root)
 
 /* Public */
 PlumaFileBrowserStore *
-pluma_file_browser_store_new (gchar const *root)
+lapiz_file_browser_store_new (gchar const *root)
 {
 	PlumaFileBrowserStore *obj =
 	    PLUMA_FILE_BROWSER_STORE (g_object_new
 				      (PLUMA_TYPE_FILE_BROWSER_STORE,
 				       NULL));
 
-	pluma_file_browser_store_set_root (obj, root);
+	lapiz_file_browser_store_set_root (obj, root);
 	return obj;
 }
 
 void
-pluma_file_browser_store_set_value (PlumaFileBrowserStore * tree_model,
+lapiz_file_browser_store_set_value (PlumaFileBrowserStore * tree_model,
 				    GtkTreeIter * iter, gint column,
 				    GValue * value)
 {
@@ -2757,7 +2757,7 @@ pluma_file_browser_store_set_value (PlumaFileBrowserStore * tree_model,
 	model_recomposite_icon (tree_model, iter);
 
 	if (model_node_visibility (tree_model, node)) {
-		path = pluma_file_browser_store_get_path (GTK_TREE_MODEL (tree_model),
+		path = lapiz_file_browser_store_get_path (GTK_TREE_MODEL (tree_model),
 							  iter);
 		row_changed (tree_model, &path, iter);
 		gtk_tree_path_free (path);
@@ -2765,7 +2765,7 @@ pluma_file_browser_store_set_value (PlumaFileBrowserStore * tree_model,
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_virtual_root (PlumaFileBrowserStore * model,
 					   GtkTreeIter * iter)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
@@ -2783,7 +2783,7 @@ pluma_file_browser_store_set_virtual_root (PlumaFileBrowserStore * model,
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root_from_string
+lapiz_file_browser_store_set_virtual_root_from_string
     (PlumaFileBrowserStore * model, gchar const *root) {
 	GFile *file;
 
@@ -2837,7 +2837,7 @@ pluma_file_browser_store_set_virtual_root_from_string
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root_top (PlumaFileBrowserStore *
+lapiz_file_browser_store_set_virtual_root_top (PlumaFileBrowserStore *
 					       model)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
@@ -2853,7 +2853,7 @@ pluma_file_browser_store_set_virtual_root_top (PlumaFileBrowserStore *
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root_up (PlumaFileBrowserStore *
+lapiz_file_browser_store_set_virtual_root_up (PlumaFileBrowserStore *
 					      model)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
@@ -2870,7 +2870,7 @@ pluma_file_browser_store_set_virtual_root_up (PlumaFileBrowserStore *
 }
 
 gboolean
-pluma_file_browser_store_get_iter_virtual_root (PlumaFileBrowserStore *
+lapiz_file_browser_store_get_iter_virtual_root (PlumaFileBrowserStore *
 						model, GtkTreeIter * iter)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
@@ -2884,7 +2884,7 @@ pluma_file_browser_store_get_iter_virtual_root (PlumaFileBrowserStore *
 }
 
 gboolean
-pluma_file_browser_store_get_iter_root (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_get_iter_root (PlumaFileBrowserStore * model,
 					GtkTreeIter * iter)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
@@ -2898,7 +2898,7 @@ pluma_file_browser_store_get_iter_root (PlumaFileBrowserStore * model,
 }
 
 gboolean
-pluma_file_browser_store_iter_equal (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_iter_equal (PlumaFileBrowserStore * model,
 				     GtkTreeIter * iter1,
 				     GtkTreeIter * iter2)
 {
@@ -2912,7 +2912,7 @@ pluma_file_browser_store_iter_equal (PlumaFileBrowserStore * model,
 }
 
 void
-pluma_file_browser_store_cancel_mount_operation (PlumaFileBrowserStore *store)
+lapiz_file_browser_store_cancel_mount_operation (PlumaFileBrowserStore *store)
 {
 	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (store));
 
@@ -2920,7 +2920,7 @@ pluma_file_browser_store_cancel_mount_operation (PlumaFileBrowserStore *store)
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
+lapiz_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
 						    model,
 						    gchar const *root,
 						    gchar const *virtual_root)
@@ -2990,18 +2990,18 @@ pluma_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_root (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_root (PlumaFileBrowserStore * model,
 				   gchar const *root)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
 			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
-	return pluma_file_browser_store_set_root_and_virtual_root (model,
+	return lapiz_file_browser_store_set_root_and_virtual_root (model,
 								   root,
 								   NULL);
 }
 
 gchar *
-pluma_file_browser_store_get_root (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_get_root (PlumaFileBrowserStore * model)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), NULL);
 
@@ -3012,7 +3012,7 @@ pluma_file_browser_store_get_root (PlumaFileBrowserStore * model)
 }
 
 gchar *
-pluma_file_browser_store_get_virtual_root (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_get_virtual_root (PlumaFileBrowserStore * model)
 {
 	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), NULL);
 
@@ -3023,7 +3023,7 @@ pluma_file_browser_store_get_virtual_root (PlumaFileBrowserStore * model)
 }
 
 void
-_pluma_file_browser_store_iter_expanded (PlumaFileBrowserStore * model,
+_lapiz_file_browser_store_iter_expanded (PlumaFileBrowserStore * model,
 					 GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
@@ -3041,7 +3041,7 @@ _pluma_file_browser_store_iter_expanded (PlumaFileBrowserStore * model,
 }
 
 void
-_pluma_file_browser_store_iter_collapsed (PlumaFileBrowserStore * model,
+_lapiz_file_browser_store_iter_collapsed (PlumaFileBrowserStore * model,
 					  GtkTreeIter * iter)
 {
 	FileBrowserNode *node;
@@ -3070,13 +3070,13 @@ _pluma_file_browser_store_iter_collapsed (PlumaFileBrowserStore * model,
 }
 
 PlumaFileBrowserStoreFilterMode
-pluma_file_browser_store_get_filter_mode (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_get_filter_mode (PlumaFileBrowserStore * model)
 {
 	return model->priv->filter_mode;
 }
 
 void
-pluma_file_browser_store_set_filter_mode (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_filter_mode (PlumaFileBrowserStore * model,
 					  PlumaFileBrowserStoreFilterMode
 					  mode)
 {
@@ -3092,7 +3092,7 @@ pluma_file_browser_store_set_filter_mode (PlumaFileBrowserStore * model,
 }
 
 void
-pluma_file_browser_store_set_filter_func (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_filter_func (PlumaFileBrowserStore * model,
 					  PlumaFileBrowserStoreFilterFunc
 					  func, gpointer user_data)
 {
@@ -3104,19 +3104,19 @@ pluma_file_browser_store_set_filter_func (PlumaFileBrowserStore * model,
 }
 
 void
-pluma_file_browser_store_refilter (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_refilter (PlumaFileBrowserStore * model)
 {
 	model_refilter (model);
 }
 
 PlumaFileBrowserStoreFilterMode
-pluma_file_browser_store_filter_mode_get_default (void)
+lapiz_file_browser_store_filter_mode_get_default (void)
 {
 	return PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 }
 
 void
-pluma_file_browser_store_refresh (PlumaFileBrowserStore * model)
+lapiz_file_browser_store_refresh (PlumaFileBrowserStore * model)
 {
 	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model));
 
@@ -3161,7 +3161,7 @@ reparent_node (FileBrowserNode * node, gboolean reparent)
 }
 
 gboolean
-pluma_file_browser_store_rename (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_rename (PlumaFileBrowserStore * model,
 				 GtkTreeIter * iter,
 				 const gchar * new_name,
 				 GError ** error)
@@ -3203,7 +3203,7 @@ pluma_file_browser_store_rename (PlumaFileBrowserStore * model,
 		reparent_node (node, FALSE);
 
 		if (model_node_visibility (model, node)) {
-			path = pluma_file_browser_store_get_path_real (model, node);
+			path = lapiz_file_browser_store_get_path_real (model, node);
 			row_changed (model, &path, iter);
 			gtk_tree_path_free (path);
 
@@ -3213,7 +3213,7 @@ pluma_file_browser_store_rename (PlumaFileBrowserStore * model,
 			g_object_unref (previous);
 
 			if (error != NULL)
-				*error = g_error_new_literal (pluma_file_browser_store_error_quark (),
+				*error = g_error_new_literal (lapiz_file_browser_store_error_quark (),
 							      PLUMA_FILE_BROWSER_ERROR_RENAME,
 				       			      _("The renamed file is currently filtered out. You need to adjust your filter settings to make the file visible"));
 			return FALSE;
@@ -3236,7 +3236,7 @@ pluma_file_browser_store_rename (PlumaFileBrowserStore * model,
 			if (error != NULL) {
 				*error =
 				    g_error_new_literal
-				    (pluma_file_browser_store_error_quark (),
+				    (lapiz_file_browser_store_error_quark (),
 				     PLUMA_FILE_BROWSER_ERROR_RENAME,
 				     err->message);
 			}
@@ -3369,7 +3369,7 @@ delete_files (AsyncData *data)
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_delete_all (PlumaFileBrowserStore *model,
+lapiz_file_browser_store_delete_all (PlumaFileBrowserStore *model,
 				     GList *rows, gboolean trash)
 {
 	FileBrowserNode * node;
@@ -3425,7 +3425,7 @@ pluma_file_browser_store_delete_all (PlumaFileBrowserStore *model,
 }
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_delete (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_delete (PlumaFileBrowserStore * model,
 				 GtkTreeIter * iter, gboolean trash)
 {
 	FileBrowserNode *node;
@@ -3441,8 +3441,8 @@ pluma_file_browser_store_delete (PlumaFileBrowserStore * model,
 	if (NODE_IS_DUMMY (node))
 		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 
-	rows = g_list_append(NULL, pluma_file_browser_store_get_path_real (model, node));
-	result = pluma_file_browser_store_delete_all (model, rows, trash);
+	rows = g_list_append(NULL, lapiz_file_browser_store_get_path_real (model, node));
+	result = lapiz_file_browser_store_delete_all (model, rows, trash);
 
 	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
 	g_list_free (rows);
@@ -3451,7 +3451,7 @@ pluma_file_browser_store_delete (PlumaFileBrowserStore * model,
 }
 
 gboolean
-pluma_file_browser_store_new_file (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_new_file (PlumaFileBrowserStore * model,
 				   GtkTreeIter * parent,
 				   GtkTreeIter * iter)
 {
@@ -3505,7 +3505,7 @@ pluma_file_browser_store_new_file (PlumaFileBrowserStore * model,
 }
 
 gboolean
-pluma_file_browser_store_new_directory (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_new_directory (PlumaFileBrowserStore * model,
 					GtkTreeIter * parent,
 					GtkTreeIter * iter)
 {
@@ -3554,9 +3554,9 @@ pluma_file_browser_store_new_directory (PlumaFileBrowserStore * model,
 }
 
 void
-_pluma_file_browser_store_register_type (GTypeModule *type_module)
+_lapiz_file_browser_store_register_type (GTypeModule *type_module)
 {
-	pluma_file_browser_store_register_type (type_module);
+	lapiz_file_browser_store_register_type (type_module);
 }
 
 // ex:ts=8:noet:

@@ -1,6 +1,6 @@
 /*
- * pluma-search-dialog.h
- * This file is part of pluma
+ * lapiz-search-dialog.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,7 +38,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_SEARCH_DIALOG              (pluma_search_dialog_get_type())
+#define PLUMA_TYPE_SEARCH_DIALOG              (lapiz_search_dialog_get_type())
 #define PLUMA_SEARCH_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_SEARCH_DIALOG, PlumaSearchDialog))
 #define PLUMA_SEARCH_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_SEARCH_DIALOG, PlumaSearchDialog const))
 #define PLUMA_SEARCH_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_SEARCH_DIALOG, PlumaSearchDialogClass))
@@ -85,52 +85,52 @@ enum
 /*
  * Public methods
  */
-GType 		 pluma_search_dialog_get_type 		(void) G_GNUC_CONST;
+GType 		 lapiz_search_dialog_get_type 		(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_search_dialog_new		(GtkWindow         *parent,
+GtkWidget	*lapiz_search_dialog_new		(GtkWindow         *parent,
 							 gboolean           show_replace);
 
-void		 pluma_search_dialog_present_with_time	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_present_with_time	(PlumaSearchDialog *dialog,
 							 guint32 timestamp);
 
-gboolean	 pluma_search_dialog_get_show_replace	(PlumaSearchDialog *dialog);
+gboolean	 lapiz_search_dialog_get_show_replace	(PlumaSearchDialog *dialog);
 
-void		 pluma_search_dialog_set_show_replace	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_show_replace	(PlumaSearchDialog *dialog,
 							 gboolean           show_replace);
 
 
-void		 pluma_search_dialog_set_search_text	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_search_text	(PlumaSearchDialog *dialog,
 							 const gchar       *text);
-const gchar	*pluma_search_dialog_get_search_text	(PlumaSearchDialog *dialog);
+const gchar	*lapiz_search_dialog_get_search_text	(PlumaSearchDialog *dialog);
 
-void		 pluma_search_dialog_set_replace_text	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_replace_text	(PlumaSearchDialog *dialog,
 							 const gchar       *text);
-const gchar	*pluma_search_dialog_get_replace_text	(PlumaSearchDialog *dialog);
+const gchar	*lapiz_search_dialog_get_replace_text	(PlumaSearchDialog *dialog);
 
-void		 pluma_search_dialog_set_match_case	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_match_case	(PlumaSearchDialog *dialog,
 							 gboolean           match_case);
-gboolean	 pluma_search_dialog_get_match_case	(PlumaSearchDialog *dialog);
+gboolean	 lapiz_search_dialog_get_match_case	(PlumaSearchDialog *dialog);
 
-void		 pluma_search_dialog_set_match_regex (PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_match_regex (PlumaSearchDialog *dialog,
                              gboolean           match_case);
-gboolean	 pluma_search_dialog_get_match_regex (PlumaSearchDialog *dialog);
+gboolean	 lapiz_search_dialog_get_match_regex (PlumaSearchDialog *dialog);
 
-void		 pluma_search_dialog_set_entire_word	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_entire_word	(PlumaSearchDialog *dialog,
 							 gboolean           entire_word);
-gboolean	 pluma_search_dialog_get_entire_word	(PlumaSearchDialog *dialog);
+gboolean	 lapiz_search_dialog_get_entire_word	(PlumaSearchDialog *dialog);
 
-void		 pluma_search_dialog_set_backwards	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_backwards	(PlumaSearchDialog *dialog,
 							 gboolean           backwards);
-gboolean	 pluma_search_dialog_get_backwards	(PlumaSearchDialog *dialog);
+gboolean	 lapiz_search_dialog_get_backwards	(PlumaSearchDialog *dialog);
 
-void		 pluma_search_dialog_set_wrap_around	(PlumaSearchDialog *dialog,
+void		 lapiz_search_dialog_set_wrap_around	(PlumaSearchDialog *dialog,
 							 gboolean           wrap_around);
-gboolean	 pluma_search_dialog_get_wrap_around	(PlumaSearchDialog *dialog);
+gboolean	 lapiz_search_dialog_get_wrap_around	(PlumaSearchDialog *dialog);
 
 
-void		pluma_search_dialog_set_parse_escapes (PlumaSearchDialog *dialog,
+void		lapiz_search_dialog_set_parse_escapes (PlumaSearchDialog *dialog,
                                     		       gboolean           parse_escapes);
-gboolean	pluma_search_dialog_get_parse_escapes (PlumaSearchDialog *dialog);
+gboolean	lapiz_search_dialog_get_parse_escapes (PlumaSearchDialog *dialog);
 
 G_END_DECLS
 

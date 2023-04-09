@@ -1,8 +1,8 @@
 # List of source files that should *not* be translated.
 # Please keep this file sorted alphabetically.
-data/pluma.desktop.in
-pluma/pluma-document-output-stream.c
-pluma/smclient/eggdesktopfile.c
-pluma/smclient/eggsmclient.c
+data/lapiz.desktop.in
+lapiz/lapiz-document-output-stream.c
+lapiz/smclient/eggdesktopfile.c
+lapiz/smclient/eggsmclient.c
 tools/generate-plugin.py
-tools/plugin_template/pluma-plugin.desktop.in
+tools/plugin_template/lapiz-plugin.desktop.in

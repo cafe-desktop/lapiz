@@ -1,6 +1,6 @@
 /*
- * pluma-encodings-dialog.h
- * This file is part of pluma
+ * lapiz-encodings-dialog.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2003-2005 Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2003-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2003-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,7 +38,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_ENCODINGS_DIALOG              (pluma_encodings_dialog_get_type())
+#define PLUMA_TYPE_ENCODINGS_DIALOG              (lapiz_encodings_dialog_get_type())
 #define PLUMA_ENCODINGS_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog))
 #define PLUMA_ENCODINGS_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog const))
 #define PLUMA_ENCODINGS_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialogClass))
@@ -76,9 +76,9 @@ struct _PlumaEncodingsDialogClass
 /*
  * Public methods
  */
-GType		 pluma_encodings_dialog_get_type	(void) G_GNUC_CONST;
+GType		 lapiz_encodings_dialog_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_encodings_dialog_new		(void);
+GtkWidget	*lapiz_encodings_dialog_new		(void);
 
 G_END_DECLS
 

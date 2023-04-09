@@ -1,5 +1,5 @@
 /*
- * pluma-file-browser-store.h - Pluma plugin providing easy file access
+ * lapiz-file-browser-store.h - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -25,7 +25,7 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define PLUMA_TYPE_FILE_BROWSER_STORE			(pluma_file_browser_store_get_type ())
+#define PLUMA_TYPE_FILE_BROWSER_STORE			(lapiz_file_browser_store_get_type ())
 #define PLUMA_FILE_BROWSER_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_STORE, PlumaFileBrowserStore))
 #define PLUMA_FILE_BROWSER_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_STORE, PlumaFileBrowserStore const))
 #define PLUMA_FILE_BROWSER_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_BROWSER_STORE, PlumaFileBrowserStoreClass))
@@ -115,84 +115,84 @@ struct _PlumaFileBrowserStoreClass {
 				      const gchar * uri);
 };
 
-GType pluma_file_browser_store_get_type               (void) G_GNUC_CONST;
-void _pluma_file_browser_store_register_type          (GTypeModule * module);
+GType lapiz_file_browser_store_get_type               (void) G_GNUC_CONST;
+void _lapiz_file_browser_store_register_type          (GTypeModule * module);
 
-PlumaFileBrowserStore *pluma_file_browser_store_new   (gchar const *root);
+PlumaFileBrowserStore *lapiz_file_browser_store_new   (gchar const *root);
 
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_root_and_virtual_root    (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_root_and_virtual_root    (PlumaFileBrowserStore * model,
 						       gchar const *root,
 			  			       gchar const *virtual_root);
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_root                     (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_root                     (PlumaFileBrowserStore * model,
 				                       gchar const *root);
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root             (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_virtual_root             (PlumaFileBrowserStore * model,
 					               GtkTreeIter * iter);
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root_from_string (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_set_virtual_root_from_string (PlumaFileBrowserStore * model,
                                                        gchar const *root);
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root_up          (PlumaFileBrowserStore * model);
+lapiz_file_browser_store_set_virtual_root_up          (PlumaFileBrowserStore * model);
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_set_virtual_root_top         (PlumaFileBrowserStore * model);
+lapiz_file_browser_store_set_virtual_root_top         (PlumaFileBrowserStore * model);
 
 gboolean
-pluma_file_browser_store_get_iter_virtual_root        (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_get_iter_virtual_root        (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * iter);
-gboolean pluma_file_browser_store_get_iter_root       (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_get_iter_root       (PlumaFileBrowserStore * model,
 						       GtkTreeIter * iter);
-gchar * pluma_file_browser_store_get_root             (PlumaFileBrowserStore * model);
-gchar * pluma_file_browser_store_get_virtual_root     (PlumaFileBrowserStore * model);
+gchar * lapiz_file_browser_store_get_root             (PlumaFileBrowserStore * model);
+gchar * lapiz_file_browser_store_get_virtual_root     (PlumaFileBrowserStore * model);
 
-gboolean pluma_file_browser_store_iter_equal          (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_iter_equal          (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * iter1,
 					               GtkTreeIter * iter2);
 
-void pluma_file_browser_store_set_value               (PlumaFileBrowserStore * tree_model,
+void lapiz_file_browser_store_set_value               (PlumaFileBrowserStore * tree_model,
                                                        GtkTreeIter * iter,
                                                        gint column,
                                                        GValue * value);
 
-void _pluma_file_browser_store_iter_expanded          (PlumaFileBrowserStore * model,
+void _lapiz_file_browser_store_iter_expanded          (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * iter);
-void _pluma_file_browser_store_iter_collapsed         (PlumaFileBrowserStore * model,
+void _lapiz_file_browser_store_iter_collapsed         (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * iter);
 
 PlumaFileBrowserStoreFilterMode
-pluma_file_browser_store_get_filter_mode              (PlumaFileBrowserStore * model);
-void pluma_file_browser_store_set_filter_mode         (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_get_filter_mode              (PlumaFileBrowserStore * model);
+void lapiz_file_browser_store_set_filter_mode         (PlumaFileBrowserStore * model,
                                                        PlumaFileBrowserStoreFilterMode mode);
-void pluma_file_browser_store_set_filter_func         (PlumaFileBrowserStore * model,
+void lapiz_file_browser_store_set_filter_func         (PlumaFileBrowserStore * model,
                                                        PlumaFileBrowserStoreFilterFunc func,
                                                        gpointer user_data);
-void pluma_file_browser_store_refilter                (PlumaFileBrowserStore * model);
+void lapiz_file_browser_store_refilter                (PlumaFileBrowserStore * model);
 PlumaFileBrowserStoreFilterMode
-pluma_file_browser_store_filter_mode_get_default      (void);
+lapiz_file_browser_store_filter_mode_get_default      (void);
 
-void pluma_file_browser_store_refresh                 (PlumaFileBrowserStore * model);
-gboolean pluma_file_browser_store_rename              (PlumaFileBrowserStore * model,
+void lapiz_file_browser_store_refresh                 (PlumaFileBrowserStore * model);
+gboolean lapiz_file_browser_store_rename              (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * iter,
                                                        gchar const *new_name,
                                                        GError ** error);
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_delete                       (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_delete                       (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * iter,
                                                        gboolean trash);
 PlumaFileBrowserStoreResult
-pluma_file_browser_store_delete_all                   (PlumaFileBrowserStore * model,
+lapiz_file_browser_store_delete_all                   (PlumaFileBrowserStore * model,
                                                        GList *rows,
                                                        gboolean trash);
 
-gboolean pluma_file_browser_store_new_file            (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_new_file            (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * parent,
                                                        GtkTreeIter * iter);
-gboolean pluma_file_browser_store_new_directory       (PlumaFileBrowserStore * model,
+gboolean lapiz_file_browser_store_new_directory       (PlumaFileBrowserStore * model,
                                                        GtkTreeIter * parent,
                                                        GtkTreeIter * iter);
 
-void pluma_file_browser_store_cancel_mount_operation  (PlumaFileBrowserStore *store);
+void lapiz_file_browser_store_cancel_mount_operation  (PlumaFileBrowserStore *store);
 
 G_END_DECLS
 #endif				/* __PLUMA_FILE_BROWSER_STORE_H__ */

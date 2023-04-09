@@ -1,4 +1,4 @@
-pluma-spell-setup-dialog.ui://GtkLabel[@id='label1'] orphan-label
+lapiz-spell-setup-dialog.ui://GtkLabel[@id='label1'] orphan-label
 spell-checker.ui://GtkLabel[@id='label1'] orphan-label
 spell-checker.ui://GtkLabel[@id='misspelled_word_label'] orphan-label
 spell-checker.ui://GtkLabel[@id='label6'] orphan-label

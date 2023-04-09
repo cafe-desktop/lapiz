@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-encodings-combo-box.h
- * This file is part of pluma
+ * lapiz-encodings-combo-box.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2003-2005 - Paolo Maggi
  *
@@ -22,22 +22,22 @@
  */
 
 /*
- * Modified by the pluma Team, 2003-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2003-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
- * $Id: pluma-encodings-option-menu.h 4429 2005-12-12 17:28:04Z pborelli $
+ * $Id: lapiz-encodings-option-menu.h 4429 2005-12-12 17:28:04Z pborelli $
  */
 
 #ifndef __PLUMA_ENCODINGS_COMBO_BOX_H__
 #define __PLUMA_ENCODINGS_COMBO_BOX_H__
 
 #include <gtk/gtk.h>
-#include <pluma/pluma-encodings.h>
+#include <lapiz/lapiz-encodings.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_ENCODINGS_COMBO_BOX             (pluma_encodings_combo_box_get_type ())
+#define PLUMA_TYPE_ENCODINGS_COMBO_BOX             (lapiz_encodings_combo_box_get_type ())
 #define PLUMA_ENCODINGS_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBox))
 #define PLUMA_ENCODINGS_COMBO_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_ENCODINGS_COMBO_BOX, PlumaEncodingsComboBoxClass))
 #define PLUMA_IS_ENCODINGS_COMBO_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_ENCODINGS_COMBO_BOX))
@@ -62,13 +62,13 @@ struct _PlumaEncodingsComboBoxClass
 	GtkComboBoxClass		 parent_class;
 };
 
-GType		     pluma_encodings_combo_box_get_type		(void) G_GNUC_CONST;
+GType		     lapiz_encodings_combo_box_get_type		(void) G_GNUC_CONST;
 
 /* Constructor */
-GtkWidget 	    *pluma_encodings_combo_box_new 			(gboolean save_mode);
+GtkWidget 	    *lapiz_encodings_combo_box_new 			(gboolean save_mode);
 
-const PlumaEncoding *pluma_encodings_combo_box_get_selected_encoding	(PlumaEncodingsComboBox *menu);
-void		     pluma_encodings_combo_box_set_selected_encoding	(PlumaEncodingsComboBox *menu,
+const PlumaEncoding *lapiz_encodings_combo_box_get_selected_encoding	(PlumaEncodingsComboBox *menu);
+void		     lapiz_encodings_combo_box_set_selected_encoding	(PlumaEncodingsComboBox *menu,
 									 const PlumaEncoding      *encoding);
 
 G_END_DECLS

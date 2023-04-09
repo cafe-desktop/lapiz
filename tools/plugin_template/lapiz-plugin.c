@@ -25,7 +25,7 @@
 #include "##(PLUGIN_MODULE)-plugin.h"
 
 #include <glib/gi18n-lib.h>
-#include <pluma/pluma-debug.h>
+#include <lapiz/lapiz-debug.h>
 
 #define WINDOW_DATA_KEY	"##(PLUGIN_ID.camel)PluginWindowData"
 
@@ -39,7 +39,7 @@ struct _##(PLUGIN_ID.camel)PluginPrivate
 PLUMA_PLUGIN_REGISTER_TYPE (##(PLUGIN_ID.camel)Plugin, ##(PLUGIN_ID.lower)_plugin)
 
 ##ifdef WITH_MENU
-/* UI string. See pluma-ui.xml for reference */
+/* UI string. See lapiz-ui.xml for reference */
 static const gchar ui_str =
 	"<ui>"
 	"  <menubar name='MenuBar'>"
@@ -65,14 +65,14 @@ static void
 {
 	plugin->priv = ##(PLUGIN_ID.upper)_PLUGIN_GET_PRIVATE (plugin);
 
-	pluma_debug_message (DEBUG_PLUGINS,
+	lapiz_debug_message (DEBUG_PLUGINS,
 			     "##(PLUGIN_ID.camel)Plugin initializing");
 }
 
 static void
 ##(PLUGIN_ID.lower)_plugin_finalize (GObject *object)
 {
-	pluma_debug_message (DEBUG_PLUGINS,
+	lapiz_debug_message (DEBUG_PLUGINS,
 			     "##(PLUGIN_ID.camel)Plugin finalizing");
 
 	G_OBJECT_CLASS (##(PLUGIN_ID.lower)_plugin_parent_class)->finalize (object);
@@ -98,11 +98,11 @@ impl_activate (PlumaPlugin *plugin,
 	WindowData *data;
 ##endif
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 ##ifdef WITH_MENU
 	data = g_new (WindowData, 1);
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 
 	data->action_group = gtk_action_group_new ("##(PLUGIN_ID.camel)PluginActions");
 	gtk_action_group_set_translation_domain (data->action_group,
@@ -133,10 +133,10 @@ impl_deactivate (PlumaPlugin *plugin,
 	WindowData *data;
 ##endif
 
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 
 ##ifdef WITH_MENU
-	manager = pluma_window_get_ui_manager (window);
+	manager = lapiz_window_get_ui_manager (window);
 
 	data = (WindowData *) g_object_get_data (G_OBJECT (window),
 						 WINDOW_DATA_KEY);
@@ -153,14 +153,14 @@ static void
 impl_update_ui (PlumaPlugin *plugin,
 		PlumaWindow *window)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 }
 
 ##ifdef WITH_CONFIGURE_DIALOG
 static GtkWidget *
 impl_create_configure_dialog (PlumaPlugin *plugin)
 {
-	pluma_debug (DEBUG_PLUGINS);
+	lapiz_debug (DEBUG_PLUGINS);
 }
 ##endif
 

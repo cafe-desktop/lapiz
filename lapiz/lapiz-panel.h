@@ -1,6 +1,6 @@
 /*
- * pluma-panel.h
- * This file is part of pluma
+ * lapiz-panel.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -38,7 +38,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PANEL		(pluma_panel_get_type())
+#define PLUMA_TYPE_PANEL		(lapiz_panel_get_type())
 #define PLUMA_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PANEL, PlumaPanel))
 #define PLUMA_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PANEL, PlumaPanelClass))
 #define PLUMA_IS_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PANEL))
@@ -80,49 +80,49 @@ struct _PlumaPanelClass
 	void (* focus_document) (PlumaPanel     *panel);
 
 	/* Padding for future expansion */
-	void (*_pluma_reserved1) (void);
-	void (*_pluma_reserved2) (void);
-	void (*_pluma_reserved3) (void);
-	void (*_pluma_reserved4) (void);
+	void (*_lapiz_reserved1) (void);
+	void (*_lapiz_reserved2) (void);
+	void (*_lapiz_reserved3) (void);
+	void (*_lapiz_reserved4) (void);
 };
 
 /*
  * Public methods
  */
-GType 		 pluma_panel_get_type 			(void) G_GNUC_CONST;
+GType 		 lapiz_panel_get_type 			(void) G_GNUC_CONST;
 
-GtkWidget 	*pluma_panel_new 			(GtkOrientation	 orientation);
+GtkWidget 	*lapiz_panel_new 			(GtkOrientation	 orientation);
 
-void		 pluma_panel_add_item			(PlumaPanel     *panel,
+void		 lapiz_panel_add_item			(PlumaPanel     *panel,
 						      	 GtkWidget      *item,
 						      	 const gchar    *name,
 							 GtkWidget      *image);
 
-void		 pluma_panel_add_item_with_icon	(PlumaPanel     *panel,
+void		 lapiz_panel_add_item_with_icon	(PlumaPanel     *panel,
 						 GtkWidget      *item,
 						 const gchar    *name,
 						 const gchar    *icon_name);
 
-gboolean	 pluma_panel_remove_item	(PlumaPanel     *panel,
+gboolean	 lapiz_panel_remove_item	(PlumaPanel     *panel,
 					  	 GtkWidget      *item);
 
-gboolean	 pluma_panel_activate_item 	(PlumaPanel     *panel,
+gboolean	 lapiz_panel_activate_item 	(PlumaPanel     *panel,
 					    	 GtkWidget      *item);
 
-gboolean	 pluma_panel_item_is_active 	(PlumaPanel     *panel,
+gboolean	 lapiz_panel_item_is_active 	(PlumaPanel     *panel,
 					    	 GtkWidget      *item);
 
-GtkOrientation	 pluma_panel_get_orientation	(PlumaPanel	*panel);
+GtkOrientation	 lapiz_panel_get_orientation	(PlumaPanel	*panel);
 
-gint		 pluma_panel_get_n_items	(PlumaPanel	*panel);
+gint		 lapiz_panel_get_n_items	(PlumaPanel	*panel);
 
 
 /*
  * Non exported functions
  */
-gint		 _pluma_panel_get_active_item_id	(PlumaPanel	*panel);
+gint		 _lapiz_panel_get_active_item_id	(PlumaPanel	*panel);
 
-void		 _pluma_panel_set_active_item_by_id	(PlumaPanel	*panel,
+void		 _lapiz_panel_set_active_item_by_id	(PlumaPanel	*panel,
 							 gint		 id);
 
 G_END_DECLS

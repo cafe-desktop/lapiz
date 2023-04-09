@@ -1,6 +1,6 @@
 /*
- * pluma-print.c
- * This file is part of pluma
+ * lapiz-print.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2000-2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2008 Paolo Maggi
@@ -22,11 +22,11 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
- * $Id: pluma-print.c 6022 2007-12-09 14:38:57Z pborelli $
+ * $Id: lapiz-print.c 6022 2007-12-09 14:38:57Z pborelli $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -36,13 +36,13 @@
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksource.h>
 
-#include "pluma-print-job.h"
-#include "pluma-debug.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-print-preview.h"
-#include "pluma-marshal.h"
-#include "pluma-utils.h"
-#include "pluma-dirs.h"
+#include "lapiz-print-job.h"
+#include "lapiz-debug.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-print-preview.h"
+#include "lapiz-marshal.h"
+#include "lapiz-utils.h"
+#include "lapiz-dirs.h"
 
 
 struct _PlumaPrintJobPrivate
@@ -100,7 +100,7 @@ enum
 
 static guint print_job_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaPrintJob, pluma_print_job, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaPrintJob, lapiz_print_job, G_TYPE_OBJECT)
 
 static void
 set_view (PlumaPrintJob *job, PlumaView *view)
@@ -110,7 +110,7 @@ set_view (PlumaPrintJob *job, PlumaView *view)
 }
 
 static void
-pluma_print_job_get_property (GObject    *object,
+lapiz_print_job_get_property (GObject    *object,
 			      guint       prop_id,
 			      GValue     *value,
 			      GParamSpec *pspec)
@@ -129,7 +129,7 @@ pluma_print_job_get_property (GObject    *object,
 }
 
 static void
-pluma_print_job_set_property (GObject      *object,
+lapiz_print_job_set_property (GObject      *object,
 			      guint         prop_id,
 			      const GValue *value,
 			      GParamSpec   *pspec)
@@ -148,7 +148,7 @@ pluma_print_job_set_property (GObject      *object,
 }
 
 static void
-pluma_print_job_finalize (GObject *object)
+lapiz_print_job_finalize (GObject *object)
 {
 	PlumaPrintJob *job = PLUMA_PRINT_JOB (object);
 
@@ -160,19 +160,19 @@ pluma_print_job_finalize (GObject *object)
 	if (job->priv->operation != NULL)
 		g_object_unref (job->priv->operation);
 
-	G_OBJECT_CLASS (pluma_print_job_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_print_job_parent_class)->finalize (object);
 }
 
 static void
-pluma_print_job_class_init (PlumaPrintJobClass *klass)
+lapiz_print_job_class_init (PlumaPrintJobClass *klass)
 {
 	GObjectClass *object_class;
 
 	object_class = G_OBJECT_CLASS (klass);
 
-	object_class->get_property = pluma_print_job_get_property;
-	object_class->set_property = pluma_print_job_set_property;
-	object_class->finalize = pluma_print_job_finalize;
+	object_class->get_property = lapiz_print_job_get_property;
+	object_class->set_property = lapiz_print_job_set_property;
+	object_class->finalize = lapiz_print_job_finalize;
 
 	g_object_class_install_property (object_class,
 					 PROP_VIEW,
@@ -212,7 +212,7 @@ pluma_print_job_class_init (PlumaPrintJobClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (PlumaPrintJobClass, done),
 			      NULL, NULL,
-			      pluma_marshal_VOID__UINT_POINTER,
+			      lapiz_marshal_VOID__UINT_POINTER,
 			      G_TYPE_NONE,
 			      2,
 			      G_TYPE_UINT,
@@ -226,7 +226,7 @@ line_numbers_checkbutton_toggled (GtkToggleButton *button,
 	if (gtk_toggle_button_get_active (button))
 	{
 		gtk_widget_set_sensitive (job->priv->line_numbers_hbox,
-					  pluma_prefs_manager_print_line_numbers_can_set ());
+					  lapiz_prefs_manager_print_line_numbers_can_set ());
 	}
 	else
 	{
@@ -261,11 +261,11 @@ restore_button_clicked (GtkButton     *button,
 			PlumaPrintJob *job)
 
 {
-	if (pluma_prefs_manager_print_font_body_can_set ())
+	if (lapiz_prefs_manager_print_font_body_can_set ())
 	{
 		gchar *font;
 
-		font = pluma_prefs_manager_get_default_print_font_body ();
+		font = lapiz_prefs_manager_get_default_print_font_body ();
 
 		gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton),
 					   font);
@@ -273,11 +273,11 @@ restore_button_clicked (GtkButton     *button,
 		g_free (font);
 	}
 
-	if (pluma_prefs_manager_print_font_header_can_set ())
+	if (lapiz_prefs_manager_print_font_header_can_set ())
 	{
 		gchar *font;
 
-		font = pluma_prefs_manager_get_default_print_font_header ();
+		font = lapiz_prefs_manager_get_default_print_font_header ();
 
 		gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton),
 					   font);
@@ -285,11 +285,11 @@ restore_button_clicked (GtkButton     *button,
 		g_free (font);
 	}
 
-	if (pluma_prefs_manager_print_font_numbers_can_set ())
+	if (lapiz_prefs_manager_print_font_numbers_can_set ())
 	{
 		gchar *font;
 
-		font = pluma_prefs_manager_get_default_print_font_numbers ();
+		font = lapiz_prefs_manager_get_default_print_font_numbers ();
 
 		gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton),
 					   font);
@@ -316,8 +316,8 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 		NULL
 	};
 
-	file = pluma_dirs_get_ui_file ("pluma-print-preferences.ui");
-	ret = pluma_utils_get_ui_objects (file,
+	file = lapiz_dirs_get_ui_file ("lapiz-print-preferences.ui");
+	ret = lapiz_utils_get_ui_objects (file,
 					  root_objects,
 					  &error_widget,
 					  "contents", &widget,
@@ -346,19 +346,19 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 
 	/* Print syntax */
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton),
-				      pluma_prefs_manager_get_print_syntax_hl ());
+				      lapiz_prefs_manager_get_print_syntax_hl ());
 	gtk_widget_set_sensitive (job->priv->syntax_checkbutton,
-				  pluma_prefs_manager_print_syntax_hl_can_set ());
+				  lapiz_prefs_manager_print_syntax_hl_can_set ());
 
 	/* Print page headers */
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton),
-				      pluma_prefs_manager_get_print_header ());
+				      lapiz_prefs_manager_get_print_header ());
 	gtk_widget_set_sensitive (job->priv->page_header_checkbutton,
-				  pluma_prefs_manager_print_header_can_set ());
+				  lapiz_prefs_manager_print_header_can_set ());
 
 	/* Line numbers */
-	line_numbers =  pluma_prefs_manager_get_print_line_numbers ();
-	can_set = pluma_prefs_manager_print_line_numbers_can_set ();
+	line_numbers =  lapiz_prefs_manager_get_print_line_numbers ();
+	can_set = lapiz_prefs_manager_print_line_numbers_can_set ();
 
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->line_numbers_checkbutton),
 				      line_numbers > 0);
@@ -378,7 +378,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	}
 
 	/* Text wrapping */
-	wrap_mode = pluma_prefs_manager_get_print_wrap_mode ();
+	wrap_mode = lapiz_prefs_manager_get_print_wrap_mode ();
 
 	switch (wrap_mode)
 	{
@@ -401,37 +401,37 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 				GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton), TRUE);
 	}
 
-	can_set = pluma_prefs_manager_print_wrap_mode_can_set ();
+	can_set = lapiz_prefs_manager_print_wrap_mode_can_set ();
 
 	gtk_widget_set_sensitive (job->priv->text_wrapping_checkbutton, can_set);
 	gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
 				  can_set && (wrap_mode != GTK_WRAP_NONE));
 
 	/* Set initial values */
-	font = pluma_prefs_manager_get_print_font_body ();
+	font = lapiz_prefs_manager_get_print_font_body ();
 	gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton),
 				   font);
 	g_free (font);
 
-	font = pluma_prefs_manager_get_print_font_header ();
+	font = lapiz_prefs_manager_get_print_font_header ();
 	gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton),
 				   font);
 	g_free (font);
 
-	font = pluma_prefs_manager_get_print_font_numbers ();
+	font = lapiz_prefs_manager_get_print_font_numbers ();
 	gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton),
 				   font);
 	g_free (font);
 
-	can_set = pluma_prefs_manager_print_font_body_can_set ();
+	can_set = lapiz_prefs_manager_print_font_body_can_set ();
 	gtk_widget_set_sensitive (job->priv->body_fontbutton, can_set);
 	gtk_widget_set_sensitive (job->priv->body_font_label, can_set);
 
-	can_set = pluma_prefs_manager_print_font_header_can_set ();
+	can_set = lapiz_prefs_manager_print_font_header_can_set ();
 	gtk_widget_set_sensitive (job->priv->headers_fontbutton, can_set);
 	gtk_widget_set_sensitive (job->priv->headers_font_label, can_set);
 
-	can_set = pluma_prefs_manager_print_font_numbers_can_set ();
+	can_set = lapiz_prefs_manager_print_font_numbers_can_set ();
 	gtk_widget_set_sensitive (job->priv->numbers_fontbutton, can_set);
 	gtk_widget_set_sensitive (job->priv->numbers_font_label, can_set);
 
@@ -460,39 +460,39 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 			GtkWidget         *widget,
 			PlumaPrintJob     *job)
 {
-	pluma_prefs_manager_set_print_syntax_hl (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton)));
+	lapiz_prefs_manager_set_print_syntax_hl (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton)));
 
-	pluma_prefs_manager_set_print_header (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton)));
+	lapiz_prefs_manager_set_print_header (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton)));
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->line_numbers_checkbutton)))
 	{
-		pluma_prefs_manager_set_print_line_numbers (
+		lapiz_prefs_manager_set_print_line_numbers (
 			MAX (1, gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton))));
 	}
 	else
 	{
-		pluma_prefs_manager_set_print_line_numbers (0);
+		lapiz_prefs_manager_set_print_line_numbers (0);
 	}
 
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
 	{
-		pluma_prefs_manager_set_print_wrap_mode (GTK_WRAP_NONE);
+		lapiz_prefs_manager_set_print_wrap_mode (GTK_WRAP_NONE);
 	}
 	else
 	{
 		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton)))
 		{
-			pluma_prefs_manager_set_print_wrap_mode (GTK_WRAP_WORD);
+			lapiz_prefs_manager_set_print_wrap_mode (GTK_WRAP_WORD);
 		}
 		else
 		{
-			pluma_prefs_manager_set_print_wrap_mode (GTK_WRAP_CHAR);
+			lapiz_prefs_manager_set_print_wrap_mode (GTK_WRAP_CHAR);
 		}
 	}
 
-	pluma_prefs_manager_set_print_font_body (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton)));
-	pluma_prefs_manager_set_print_font_header (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton)));
-	pluma_prefs_manager_set_print_font_numbers (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton)));
+	lapiz_prefs_manager_set_print_font_body (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton)));
+	lapiz_prefs_manager_set_print_font_header (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton)));
+	lapiz_prefs_manager_set_print_font_numbers (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton)));
 }
 
 static void
@@ -503,19 +503,19 @@ create_compositor (PlumaPrintJob *job)
 	gchar *print_font_numbers;
 
 	/* Create and initialize print compositor */
-	print_font_body = pluma_prefs_manager_get_print_font_body ();
-	print_font_header = pluma_prefs_manager_get_print_font_header ();
-	print_font_numbers = pluma_prefs_manager_get_print_font_numbers ();
+	print_font_body = lapiz_prefs_manager_get_print_font_body ();
+	print_font_header = lapiz_prefs_manager_get_print_font_header ();
+	print_font_numbers = lapiz_prefs_manager_get_print_font_numbers ();
 
 	job->priv->compositor = GTK_SOURCE_PRINT_COMPOSITOR (
 					g_object_new (GTK_SOURCE_TYPE_PRINT_COMPOSITOR,
 						     "buffer", GTK_SOURCE_BUFFER (job->priv->doc),
 						     "tab-width", gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (job->priv->view)),
 						     "highlight-syntax", gtk_source_buffer_get_highlight_syntax (GTK_SOURCE_BUFFER (job->priv->doc)) &&
-					   				 pluma_prefs_manager_get_print_syntax_hl (),
-						     "wrap-mode", pluma_prefs_manager_get_print_wrap_mode (),
-						     "print-line-numbers", pluma_prefs_manager_get_print_line_numbers (),
-						     "print-header", pluma_prefs_manager_get_print_header (),
+					   				 lapiz_prefs_manager_get_print_syntax_hl (),
+						     "wrap-mode", lapiz_prefs_manager_get_print_wrap_mode (),
+						     "print-line-numbers", lapiz_prefs_manager_get_print_line_numbers (),
+						     "print-header", lapiz_prefs_manager_get_print_header (),
 						     "print-footer", FALSE,
 						     "body-font-name", print_font_body,
 						     "line-numbers-font-name", print_font_numbers,
@@ -526,14 +526,14 @@ create_compositor (PlumaPrintJob *job)
 	g_free (print_font_header);
 	g_free (print_font_numbers);
 
-	if (pluma_prefs_manager_get_print_header ())
+	if (lapiz_prefs_manager_get_print_header ())
 	{
 		gchar *doc_name;
 		gchar *name_to_display;
 		gchar *left;
 
-		doc_name = pluma_document_get_uri_for_display (job->priv->doc);
-		name_to_display = pluma_utils_str_middle_truncate (doc_name, 60);
+		doc_name = lapiz_document_get_uri_for_display (job->priv->doc);
+		name_to_display = lapiz_utils_str_middle_truncate (doc_name, 60);
 
 		left = g_strdup_printf (_("File: %s"), name_to_display);
 
@@ -590,7 +590,7 @@ preview_cb (GtkPrintOperation        *op,
 	    GtkWindow                *parent,
 	    PlumaPrintJob            *job)
 {
-	job->priv->preview = pluma_print_preview_new (op, gtk_preview, context);
+	job->priv->preview = lapiz_print_preview_new (op, gtk_preview, context);
 
 	g_signal_connect_after (gtk_preview,
 			        "ready",
@@ -714,9 +714,9 @@ done_cb (GtkPrintOperation       *operation,
 	g_object_unref (job);
 }
 
-/* Note that pluma_print_job_print can can only be called once on a given PlumaPrintJob */
+/* Note that lapiz_print_job_print can can only be called once on a given PlumaPrintJob */
 GtkPrintOperationResult
-pluma_print_job_print (PlumaPrintJob            *job,
+lapiz_print_job_print (PlumaPrintJob            *job,
 		       GtkPrintOperationAction   action,
 		       GtkPageSetup             *page_setup,
 		       GtkPrintSettings         *settings,
@@ -744,7 +744,7 @@ pluma_print_job_print (PlumaPrintJob            *job,
 		gtk_print_operation_set_default_page_setup (priv->operation,
 							    page_setup);
 
-	job_name = pluma_document_get_short_name_for_display (priv->doc);
+	job_name = lapiz_document_get_short_name_for_display (priv->doc);
 	gtk_print_operation_set_job_name (priv->operation, job_name);
 	g_free (job_name);
 
@@ -795,9 +795,9 @@ pluma_print_job_print (PlumaPrintJob            *job,
 }
 
 static void
-pluma_print_job_init (PlumaPrintJob *job)
+lapiz_print_job_init (PlumaPrintJob *job)
 {
-	job->priv = pluma_print_job_get_instance_private (job);
+	job->priv = lapiz_print_job_get_instance_private (job);
 
 	job->priv->status = PLUMA_PRINT_JOB_STATUS_INIT;
 
@@ -805,7 +805,7 @@ pluma_print_job_init (PlumaPrintJob *job)
 }
 
 PlumaPrintJob *
-pluma_print_job_new (PlumaView *view)
+lapiz_print_job_new (PlumaView *view)
 {
 	PlumaPrintJob *job;
 
@@ -819,7 +819,7 @@ pluma_print_job_new (PlumaView *view)
 }
 
 void
-pluma_print_job_cancel (PlumaPrintJob *job)
+lapiz_print_job_cancel (PlumaPrintJob *job)
 {
 	g_return_if_fail (PLUMA_IS_PRINT_JOB (job));
 
@@ -827,7 +827,7 @@ pluma_print_job_cancel (PlumaPrintJob *job)
 }
 
 const gchar *
-pluma_print_job_get_status_string (PlumaPrintJob *job)
+lapiz_print_job_get_status_string (PlumaPrintJob *job)
 {
 	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), NULL);
 	g_return_val_if_fail (job->priv->status_string != NULL, NULL);
@@ -836,7 +836,7 @@ pluma_print_job_get_status_string (PlumaPrintJob *job)
 }
 
 gdouble
-pluma_print_job_get_progress (PlumaPrintJob *job)
+lapiz_print_job_get_progress (PlumaPrintJob *job)
 {
 	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), 0.0);
 
@@ -844,7 +844,7 @@ pluma_print_job_get_progress (PlumaPrintJob *job)
 }
 
 GtkPrintSettings *
-pluma_print_job_get_print_settings (PlumaPrintJob *job)
+lapiz_print_job_get_print_settings (PlumaPrintJob *job)
 {
 	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), NULL);
 
@@ -852,7 +852,7 @@ pluma_print_job_get_print_settings (PlumaPrintJob *job)
 }
 
 GtkPageSetup *
-pluma_print_job_get_page_setup (PlumaPrintJob *job)
+lapiz_print_job_get_page_setup (PlumaPrintJob *job)
 {
 	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), NULL);
 

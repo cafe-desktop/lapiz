@@ -13,8 +13,8 @@ modelines_DATA = \
 plugin_LTLIBRARIES = libmodelines.la
 
 libmodelines_la_SOURCES = \
-	pluma-modeline-plugin.h				\
-	pluma-modeline-plugin.c				\
+	lapiz-modeline-plugin.h				\
+	lapiz-modeline-plugin.c				\
 	modeline-parser.h				\
 	modeline-parser.c
 

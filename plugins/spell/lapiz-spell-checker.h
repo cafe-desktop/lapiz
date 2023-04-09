@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-checker.h
- * This file is part of pluma
+ * lapiz-spell-checker.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2006 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -33,11 +33,11 @@
 #include <glib.h>
 #include <glib-object.h>
 
-#include "pluma-spell-checker-language.h"
+#include "lapiz-spell-checker-language.h"
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_SPELL_CHECKER            (pluma_spell_checker_get_type ())
+#define PLUMA_TYPE_SPELL_CHECKER            (lapiz_spell_checker_get_type ())
 #define PLUMA_SPELL_CHECKER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_SPELL_CHECKER, PlumaSpellChecker))
 #define PLUMA_SPELL_CHECKER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_SPELL_CHECKER, PlumaSpellChecker))
 #define PLUMA_IS_SPELL_CHECKER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_SPELL_CHECKER))
@@ -68,37 +68,37 @@ struct _PlumaSpellCheckerClass
 };
 
 
-GType        		 pluma_spell_checker_get_type		(void) G_GNUC_CONST;
+GType        		 lapiz_spell_checker_get_type		(void) G_GNUC_CONST;
 
 /* Constructors */
-PlumaSpellChecker	*pluma_spell_checker_new		(void);
+PlumaSpellChecker	*lapiz_spell_checker_new		(void);
 
-gboolean		 pluma_spell_checker_set_language 	(PlumaSpellChecker               *spell,
+gboolean		 lapiz_spell_checker_set_language 	(PlumaSpellChecker               *spell,
 								 const PlumaSpellCheckerLanguage *lang);
 const PlumaSpellCheckerLanguage
-			*pluma_spell_checker_get_language 	(PlumaSpellChecker               *spell);
+			*lapiz_spell_checker_get_language 	(PlumaSpellChecker               *spell);
 
-gboolean		 pluma_spell_checker_check_word 	(PlumaSpellChecker               *spell,
+gboolean		 lapiz_spell_checker_check_word 	(PlumaSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
-GSList 			*pluma_spell_checker_get_suggestions 	(PlumaSpellChecker               *spell,
+GSList 			*lapiz_spell_checker_get_suggestions 	(PlumaSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
-gboolean		 pluma_spell_checker_add_word_to_personal
+gboolean		 lapiz_spell_checker_add_word_to_personal
 								(PlumaSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
-gboolean		 pluma_spell_checker_add_word_to_session
+gboolean		 lapiz_spell_checker_add_word_to_session
 								(PlumaSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           len);
 
-gboolean		 pluma_spell_checker_clear_session 	(PlumaSpellChecker               *spell);
+gboolean		 lapiz_spell_checker_clear_session 	(PlumaSpellChecker               *spell);
 
-gboolean		 pluma_spell_checker_set_correction 	(PlumaSpellChecker               *spell,
+gboolean		 lapiz_spell_checker_set_correction 	(PlumaSpellChecker               *spell,
 								 const gchar                     *word,
 								 gssize                           w_len,
 								 const gchar                     *replacement,

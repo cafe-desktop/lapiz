@@ -1,6 +1,6 @@
 /*
- * pluma-gio-document-loader.h
- * This file is part of pluma
+ * lapiz-gio-document-loader.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyright (C) 2007 - Paolo Maggi, Steve Frécinaux
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005-2008. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005-2008. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,15 +33,15 @@
 #ifndef __PLUMA_GIO_DOCUMENT_LOADER_H__
 #define __PLUMA_GIO_DOCUMENT_LOADER_H__
 
-#include <pluma/pluma-document.h>
-#include "pluma-document-loader.h"
+#include <lapiz/lapiz-document.h>
+#include "lapiz-document-loader.h"
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_GIO_DOCUMENT_LOADER              (pluma_gio_document_loader_get_type())
+#define PLUMA_TYPE_GIO_DOCUMENT_LOADER              (lapiz_gio_document_loader_get_type())
 #define PLUMA_GIO_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoader))
 #define PLUMA_GIO_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoaderClass))
 #define PLUMA_IS_GIO_DOCUMENT_LOADER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_GIO_DOCUMENT_LOADER))
@@ -72,7 +72,7 @@ typedef PlumaDocumentLoaderClass PlumaGioDocumentLoaderClass;
 /*
  * Public methods
  */
-GType 		 	 pluma_gio_document_loader_get_type	(void) G_GNUC_CONST;
+GType 		 	 lapiz_gio_document_loader_get_type	(void) G_GNUC_CONST;
 
 G_END_DECLS
 

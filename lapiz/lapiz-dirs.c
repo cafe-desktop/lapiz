@@ -1,6 +1,6 @@
 /*
- * pluma-dirs.c
- * This file is part of pluma
+ * lapiz-dirs.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2008 Ignacio Casal Quinteiro
  * Copyright (C) 2011 Perberos
@@ -25,41 +25,41 @@
 #include <config.h>
 #endif
 
-#include "pluma-dirs.h"
+#include "lapiz-dirs.h"
 
-gchar* pluma_dirs_get_user_config_dir(void)
+gchar* lapiz_dirs_get_user_config_dir(void)
 {
 	gchar* config_dir = NULL;
 
-	config_dir = g_build_filename(g_get_user_config_dir(), "pluma", NULL);
+	config_dir = g_build_filename(g_get_user_config_dir(), "lapiz", NULL);
 
 	return config_dir;
 }
 
-gchar* pluma_dirs_get_user_cache_dir(void)
+gchar* lapiz_dirs_get_user_cache_dir(void)
 {
 	const gchar* cache_dir;
 
 	cache_dir = g_get_user_cache_dir();
 
-	return g_build_filename(cache_dir, "pluma", NULL);
+	return g_build_filename(cache_dir, "lapiz", NULL);
 }
 
-gchar* pluma_dirs_get_user_plugins_dir(void)
+gchar* lapiz_dirs_get_user_plugins_dir(void)
 {
 	gchar* plugin_dir;
 
-	plugin_dir = g_build_filename(g_get_user_data_dir(), "pluma", "plugins", NULL);
+	plugin_dir = g_build_filename(g_get_user_data_dir(), "lapiz", "plugins", NULL);
 
 	return plugin_dir;
 }
 
-gchar* pluma_dirs_get_user_accels_file(void)
+gchar* lapiz_dirs_get_user_accels_file(void)
 {
 	gchar* accels = NULL;
 	gchar *config_dir = NULL;
 
-	config_dir = pluma_dirs_get_user_config_dir();
+	config_dir = lapiz_dirs_get_user_config_dir();
 	accels = g_build_filename(config_dir, "accels", NULL);
 
 	g_free(config_dir);
@@ -67,27 +67,27 @@ gchar* pluma_dirs_get_user_accels_file(void)
 	return accels;
 }
 
-gchar* pluma_dirs_get_pluma_data_dir(void)
+gchar* lapiz_dirs_get_lapiz_data_dir(void)
 {
 	return g_build_filename(PLUMA_DATADIR, NULL);
 }
 
-gchar* pluma_dirs_get_pluma_locale_dir(void)
+gchar* lapiz_dirs_get_lapiz_locale_dir(void)
 {
 	return g_build_filename(DATADIR, "locale", NULL);
 }
 
-gchar* pluma_dirs_get_pluma_lib_dir(void)
+gchar* lapiz_dirs_get_lapiz_lib_dir(void)
 {
-	return g_build_filename(LIBDIR, "pluma", NULL);
+	return g_build_filename(LIBDIR, "lapiz", NULL);
 }
 
-gchar* pluma_dirs_get_pluma_plugins_dir(void)
+gchar* lapiz_dirs_get_lapiz_plugins_dir(void)
 {
 	gchar* lib_dir;
 	gchar* plugin_dir;
 
-	lib_dir = pluma_dirs_get_pluma_lib_dir();
+	lib_dir = lapiz_dirs_get_lapiz_lib_dir();
 
 	plugin_dir = g_build_filename(lib_dir, "plugins", NULL);
 	g_free(lib_dir);
@@ -95,12 +95,12 @@ gchar* pluma_dirs_get_pluma_plugins_dir(void)
 	return plugin_dir;
 }
 
-gchar* pluma_dirs_get_pluma_plugins_data_dir(void)
+gchar* lapiz_dirs_get_lapiz_plugins_data_dir(void)
 {
 	gchar* data_dir;
 	gchar* plugin_data_dir;
 
-	data_dir = pluma_dirs_get_pluma_data_dir();
+	data_dir = lapiz_dirs_get_lapiz_data_dir();
 
 	plugin_data_dir = g_build_filename(data_dir, "plugins", NULL);
 	g_free(data_dir);
@@ -108,14 +108,14 @@ gchar* pluma_dirs_get_pluma_plugins_data_dir(void)
 	return plugin_data_dir;
 }
 
-gchar* pluma_dirs_get_ui_file(const gchar* file)
+gchar* lapiz_dirs_get_ui_file(const gchar* file)
 {
 	gchar* datadir;
 	gchar* ui_file;
 
 	g_return_val_if_fail(file != NULL, NULL);
 
-	datadir = pluma_dirs_get_pluma_data_dir();
+	datadir = lapiz_dirs_get_lapiz_data_dir();
 	ui_file = g_build_filename(datadir, "ui", file, NULL);
 	g_free(datadir);
 

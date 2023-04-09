@@ -1,5 +1,5 @@
 /*
- * pluma-sort-plugin.h
+ * lapiz-sort-plugin.h
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_SORT_PLUGIN		(pluma_sort_plugin_get_type ())
+#define PLUMA_TYPE_SORT_PLUGIN		(lapiz_sort_plugin_get_type ())
 #define PLUMA_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_SORT_PLUGIN, PlumaSortPlugin))
 #define PLUMA_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_SORT_PLUGIN, PlumaSortPluginClass))
 #define PLUMA_IS_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_SORT_PLUGIN))
@@ -67,7 +67,7 @@ struct _PlumaSortPluginClass
 /*
  * Public methods
  */
-GType	pluma_sort_plugin_get_type		(void) G_GNUC_CONST;
+GType	lapiz_sort_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);

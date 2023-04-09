@@ -1,6 +1,6 @@
 /*
- * pluma-close-button.h
- * This file is part of pluma
+ * lapiz-close-button.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Paolo Borelli
  *
@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_CLOSE_BUTTON			(pluma_close_button_get_type ())
+#define PLUMA_TYPE_CLOSE_BUTTON			(lapiz_close_button_get_type ())
 #define PLUMA_CLOSE_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_CLOSE_BUTTON, PlumaCloseButton))
 #define PLUMA_CLOSE_BUTTON_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_CLOSE_BUTTON, PlumaCloseButton const))
 #define PLUMA_CLOSE_BUTTON_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_CLOSE_BUTTON, PlumaCloseButtonClass))
@@ -47,9 +47,9 @@ struct _PlumaCloseButtonClass {
 	GtkButtonClass parent_class;
 };
 
-GType		  pluma_close_button_get_type (void) G_GNUC_CONST;
+GType		  lapiz_close_button_get_type (void) G_GNUC_CONST;
 
-GtkWidget	 *pluma_close_button_new (void);
+GtkWidget	 *lapiz_close_button_new (void);
 
 G_END_DECLS
 

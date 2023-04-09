@@ -1,6 +1,6 @@
 /*
- * pluma.c
- * This file is part of pluma
+ * lapiz.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -46,22 +46,22 @@
 #include <girepository.h>
 #endif
 
-#include "pluma-app.h"
-#include "pluma-commands.h"
-#include "pluma-debug.h"
-#include "pluma-dirs.h"
-#include "pluma-encodings.h"
-#include "pluma-plugins-engine.h"
-#include "pluma-prefs-manager-app.h"
-#include "pluma-session.h"
-#include "pluma-utils.h"
-#include "pluma-window.h"
+#include "lapiz-app.h"
+#include "lapiz-commands.h"
+#include "lapiz-debug.h"
+#include "lapiz-dirs.h"
+#include "lapiz-encodings.h"
+#include "lapiz-plugins-engine.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-session.h"
+#include "lapiz-utils.h"
+#include "lapiz-window.h"
 
 #include "eggsmclient.h"
 #include "eggdesktopfile.h"
 
 #ifndef ENABLE_GVFS_METADATA
-#include "pluma-metadata-manager.h"
+#include "lapiz-metadata-manager.h"
 #endif
 
 #include "bacon-message-connection.h"
@@ -92,9 +92,9 @@ list_encodings_and_quit (void)
 	gint i = 0;
 	const PlumaEncoding *enc;
 
-	while ((enc = pluma_encoding_get_from_index (i)) != NULL)
+	while ((enc = lapiz_encoding_get_from_index (i)) != NULL)
 	{
-		g_print ("%s\n", pluma_encoding_get_charset (enc));
+		g_print ("%s\n", lapiz_encoding_get_charset (enc));
 
 		++i;
 	}
@@ -114,10 +114,10 @@ static const GOptionEntry options [] =
 	  list_encodings_and_quit, N_("Display list of possible values for the encoding option"), NULL},
 
 	{ "new-window", '\0', 0, G_OPTION_ARG_NONE, &new_window_option,
-	  N_("Create a new top-level window in an existing instance of pluma"), NULL },
+	  N_("Create a new top-level window in an existing instance of lapiz"), NULL },
 
 	{ "new-document", '\0', 0, G_OPTION_ARG_NONE, &new_document_option,
-	  N_("Create a new document in an existing instance of pluma"), NULL },
+	  N_("Create a new document in an existing instance of lapiz"), NULL },
 
 	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &remaining_args,
 	  NULL, N_("[FILE...]") }, /* collects file arguments */
@@ -144,7 +144,7 @@ free_command_line_data (void)
 }
 
 static void
-pluma_get_command_line_data (void)
+lapiz_get_command_line_data (void)
 {
 	if (remaining_args)
 	{
@@ -173,7 +173,7 @@ pluma_get_command_line_data (void)
 	}
 
 	if (encoding_charset &&
-	    (pluma_encoding_get_from_charset (encoding_charset) == NULL))
+	    (lapiz_encoding_get_from_charset (encoding_charset) == NULL))
 	{
 		g_print (_("%s: invalid encoding.\n"),
 			 encoding_charset);
@@ -259,7 +259,7 @@ on_message_received (const char *message,
 
 	g_return_if_fail (message != NULL);
 
-	pluma_debug_message (DEBUG_APP, "Received message:\n%s\n", message);
+	lapiz_debug_message (DEBUG_APP, "Received message:\n%s\n", message);
 
 	commands = g_strsplit (message, "\v", -1);
 
@@ -304,7 +304,7 @@ on_message_received (const char *message,
 			line_position = atoi (params[1]);
 
 			if (*params[2] != '\0')
-				encoding = pluma_encoding_get_from_charset (params[2]);
+				encoding = lapiz_encoding_get_from_charset (params[2]);
 
 			n_uris = atoi (params[3]);
 			uris = g_strsplit (params[4], " ", n_uris);
@@ -333,16 +333,16 @@ on_message_received (const char *message,
 
 	/* execute the commands */
 
-	app = pluma_app_get_default ();
+	app = lapiz_app_get_default ();
 
 	if (new_window_option)
 	{
-		window = pluma_app_create_window (app, screen);
+		window = lapiz_app_create_window (app, screen);
 	}
 	else
 	{
 		/* get a window in the current workspace (if exists) and raise it */
-		window = _pluma_app_get_window_in_viewport (app,
+		window = _lapiz_app_get_window_in_viewport (app,
 							    screen,
 							    workspace,
 							    viewport_x,
@@ -351,23 +351,23 @@ on_message_received (const char *message,
 
 	if (file_list != NULL)
 	{
-		_pluma_cmd_load_files_from_prompt (window,
+		_lapiz_cmd_load_files_from_prompt (window,
 						   file_list,
 						   encoding,
 						   line_position);
 
 		if (new_document_option)
-			pluma_window_create_tab (window, TRUE);
+			lapiz_window_create_tab (window, TRUE);
 	}
 	else
 	{
 		PlumaDocument *doc;
-		doc = pluma_window_get_active_document (window);
+		doc = lapiz_window_get_active_document (window);
 
 		if (doc == NULL ||
-		    !pluma_document_is_untouched (doc) ||
+		    !lapiz_document_is_untouched (doc) ||
 		    new_document_option)
-			pluma_window_create_tab (window, TRUE);
+			lapiz_window_create_tab (window, TRUE);
 	}
 
 	/* set the proper interaction time on the window.
@@ -416,7 +416,7 @@ send_bacon_message (void)
 	 * be part of an uri, this way parsing is easier.
 	 */
 
-	pluma_debug (DEBUG_APP);
+	lapiz_debug (DEBUG_APP);
 
 	screen = gdk_screen_get_default ();
 	display = gdk_screen_get_display (screen);
@@ -424,11 +424,11 @@ send_bacon_message (void)
 	display_name = gdk_display_get_name (display);
 	screen_number = gdk_x11_screen_get_screen_number (screen);
 
-	pluma_debug_message (DEBUG_APP, "Display: %s", display_name);
-	pluma_debug_message (DEBUG_APP, "Screen: %d", screen_number);
+	lapiz_debug_message (DEBUG_APP, "Display: %s", display_name);
+	lapiz_debug_message (DEBUG_APP, "Screen: %d", screen_number);
 
-	ws = pluma_utils_get_current_workspace (screen);
-	pluma_utils_get_current_viewport (screen, &viewport_x, &viewport_y);
+	ws = lapiz_utils_get_current_workspace (screen);
+	lapiz_utils_get_current_viewport (screen, &viewport_x, &viewport_y);
 
 	command = g_string_new (NULL);
 
@@ -483,7 +483,7 @@ send_bacon_message (void)
 		}
 	}
 
-	pluma_debug_message (DEBUG_APP, "Bacon Message: %s", command->str);
+	lapiz_debug_message (DEBUG_APP, "Bacon Message: %s", command->str);
 
 	bacon_message_connection_send (connection,
 				       command->str);
@@ -505,12 +505,12 @@ main (int argc, char *argv[])
 
 
 	/* Setup debugging */
-	pluma_debug_init ();
-	pluma_debug_message (DEBUG_APP, "Startup");
+	lapiz_debug_init ();
+	lapiz_debug_message (DEBUG_APP, "Startup");
 
 	setlocale (LC_ALL, "");
 
-	dir = pluma_dirs_get_pluma_locale_dir ();
+	dir = lapiz_dirs_get_lapiz_locale_dir ();
 	bindtextdomain (GETTEXT_PACKAGE, dir);
 	g_free (dir);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -541,17 +541,17 @@ main (int argc, char *argv[])
 
 	g_option_context_free (context);
 
-	pluma_debug_message (DEBUG_APP, "Create bacon connection");
+	lapiz_debug_message (DEBUG_APP, "Create bacon connection");
 
-	connection = bacon_message_connection_new ("pluma");
+	connection = bacon_message_connection_new ("lapiz");
 
 	if (connection != NULL)
 	{
 		if (!bacon_message_connection_get_is_server (connection))
 		{
-			pluma_debug_message (DEBUG_APP, "I'm a client");
+			lapiz_debug_message (DEBUG_APP, "I'm a client");
 
-			pluma_get_command_line_data ();
+			lapiz_get_command_line_data ();
 
 			send_bacon_message ();
 
@@ -568,7 +568,7 @@ main (int argc, char *argv[])
 		}
 		else
 		{
-		  	pluma_debug_message (DEBUG_APP, "I'm a server");
+		  	lapiz_debug_message (DEBUG_APP, "I'm a server");
 
 			bacon_message_connection_set_callback (connection,
 							       on_message_received,
@@ -577,12 +577,12 @@ main (int argc, char *argv[])
 	}
 	else
 	{
-		g_warning ("Cannot create the 'pluma' connection.");
+		g_warning ("Cannot create the 'lapiz' connection.");
 	}
 
-	pluma_debug_message (DEBUG_APP, "Set icon");
+	lapiz_debug_message (DEBUG_APP, "Set icon");
 
-	dir = pluma_dirs_get_pluma_data_dir ();
+	dir = lapiz_dirs_get_lapiz_data_dir ();
 	icon_dir = g_build_filename (dir,
 				     "icons",
 				     NULL);
@@ -593,60 +593,60 @@ main (int argc, char *argv[])
 	g_free (icon_dir);
 
 	/* Set the associated .desktop file */
-	egg_set_desktop_file (DATADIR "/applications/pluma.desktop");
+	egg_set_desktop_file (DATADIR "/applications/lapiz.desktop");
 
 	/* Load user preferences */
-	pluma_debug_message (DEBUG_APP, "Init prefs manager");
-	pluma_prefs_manager_app_init ();
+	lapiz_debug_message (DEBUG_APP, "Init prefs manager");
+	lapiz_prefs_manager_app_init ();
 
 	/* Init plugins engine */
-	pluma_debug_message (DEBUG_APP, "Init plugins");
-	engine = pluma_plugins_engine_get_default ();
+	lapiz_debug_message (DEBUG_APP, "Init plugins");
+	engine = lapiz_plugins_engine_get_default ();
 
 	/* Initialize session management */
-	pluma_debug_message (DEBUG_APP, "Init session manager");
-	pluma_session_init ();
+	lapiz_debug_message (DEBUG_APP, "Init session manager");
+	lapiz_session_init ();
 
-	if (pluma_session_is_restored ())
-		restored = pluma_session_load ();
+	if (lapiz_session_is_restored ())
+		restored = lapiz_session_load ();
 
 	if (!restored)
 	{
-		pluma_debug_message (DEBUG_APP, "Analyze command line data");
-		pluma_get_command_line_data ();
+		lapiz_debug_message (DEBUG_APP, "Analyze command line data");
+		lapiz_get_command_line_data ();
 
-		pluma_debug_message (DEBUG_APP, "Get default app");
-		app = pluma_app_get_default ();
+		lapiz_debug_message (DEBUG_APP, "Get default app");
+		app = lapiz_app_get_default ();
 
-		pluma_debug_message (DEBUG_APP, "Create main window");
-		window = pluma_app_create_window (app, NULL);
+		lapiz_debug_message (DEBUG_APP, "Create main window");
+		window = lapiz_app_create_window (app, NULL);
 
 		if (file_list != NULL)
 		{
 			const PlumaEncoding *encoding = NULL;
 
 			if (encoding_charset)
-				encoding = pluma_encoding_get_from_charset (encoding_charset);
+				encoding = lapiz_encoding_get_from_charset (encoding_charset);
 
-			pluma_debug_message (DEBUG_APP, "Load files");
-			_pluma_cmd_load_files_from_prompt (window,
+			lapiz_debug_message (DEBUG_APP, "Load files");
+			_lapiz_cmd_load_files_from_prompt (window,
 							   file_list,
 							   encoding,
 							   line_position);
 		}
 		else
 		{
-			pluma_debug_message (DEBUG_APP, "Create tab");
-			pluma_window_create_tab (window, TRUE);
+			lapiz_debug_message (DEBUG_APP, "Create tab");
+			lapiz_window_create_tab (window, TRUE);
 		}
 
-		pluma_debug_message (DEBUG_APP, "Show window");
+		lapiz_debug_message (DEBUG_APP, "Show window");
 		gtk_widget_show (GTK_WIDGET (window));
 
 		free_command_line_data ();
 	}
 
-	pluma_debug_message (DEBUG_APP, "Start gtk-main");
+	lapiz_debug_message (DEBUG_APP, "Start gtk-main");
 
 	gtk_main();
 
@@ -656,10 +656,10 @@ main (int argc, char *argv[])
 	 * finalize it properly.
 	 */
 	g_object_unref (engine);
-	pluma_prefs_manager_app_shutdown ();
+	lapiz_prefs_manager_app_shutdown ();
 
 #ifndef ENABLE_GVFS_METADATA
-	pluma_metadata_manager_shutdown ();
+	lapiz_metadata_manager_shutdown ();
 #endif
 
 	return 0;

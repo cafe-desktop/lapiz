@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-encodings-combo-box.c
- * This file is part of pluma
+ * lapiz-encodings-combo-box.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2003-2005 - Paolo Maggi
  *
@@ -22,11 +22,11 @@
  */
 
 /*
- * Modified by the pluma Team, 2003-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2003-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
- * $Id: pluma-encodings-combo-box.c 6112 2008-01-23 08:26:24Z sfre $
+ * $Id: lapiz-encodings-combo-box.c 6112 2008-01-23 08:26:24Z sfre $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -36,9 +36,9 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-encodings-combo-box.h>
-#include <pluma/pluma-prefs-manager.h>
-#include <pluma/dialogs/pluma-encodings-dialog.h>
+#include <lapiz/lapiz-encodings-combo-box.h>
+#include <lapiz/lapiz-prefs-manager.h>
+#include <lapiz/dialogs/lapiz-encodings-dialog.h>
 
 #define ENCODING_KEY "Enconding"
 
@@ -68,12 +68,12 @@ enum
 };
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaEncodingsComboBox, pluma_encodings_combo_box, GTK_TYPE_COMBO_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaEncodingsComboBox, lapiz_encodings_combo_box, GTK_TYPE_COMBO_BOX)
 
 static void	  update_menu 		(PlumaEncodingsComboBox       *combo_box);
 
 static void
-pluma_encodings_combo_box_set_property (GObject    *object,
+lapiz_encodings_combo_box_set_property (GObject    *object,
 					guint       prop_id,
 					const       GValue *value,
 					GParamSpec *pspec)
@@ -94,7 +94,7 @@ pluma_encodings_combo_box_set_property (GObject    *object,
 }
 
 static void
-pluma_encodings_combo_box_get_property (GObject    *object,
+lapiz_encodings_combo_box_get_property (GObject    *object,
 					guint       prop_id,
 					GValue 	   *value,
 					GParamSpec *pspec)
@@ -115,7 +115,7 @@ pluma_encodings_combo_box_get_property (GObject    *object,
 }
 
 static void
-pluma_encodings_combo_box_dispose (GObject *object)
+lapiz_encodings_combo_box_dispose (GObject *object)
 {
 	PlumaEncodingsComboBox *combo = PLUMA_ENCODINGS_COMBO_BOX (object);
 
@@ -125,17 +125,17 @@ pluma_encodings_combo_box_dispose (GObject *object)
 		combo->priv->store = NULL;
 	}
 
-	G_OBJECT_CLASS (pluma_encodings_combo_box_parent_class)->dispose (object);
+	G_OBJECT_CLASS (lapiz_encodings_combo_box_parent_class)->dispose (object);
 }
 
 static void
-pluma_encodings_combo_box_class_init (PlumaEncodingsComboBoxClass *klass)
+lapiz_encodings_combo_box_class_init (PlumaEncodingsComboBoxClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->set_property = pluma_encodings_combo_box_set_property;
-	object_class->get_property = pluma_encodings_combo_box_get_property;
-	object_class->dispose = pluma_encodings_combo_box_dispose;
+	object_class->set_property = lapiz_encodings_combo_box_set_property;
+	object_class->get_property = lapiz_encodings_combo_box_get_property;
+	object_class->dispose = lapiz_encodings_combo_box_dispose;
 
 	g_object_class_install_property (object_class,
 					 PROP_SAVE_MODE,
@@ -193,7 +193,7 @@ add_or_remove (PlumaEncodingsComboBox *menu,
 					  menu->priv->activated_item);
 		g_signal_handler_unblock (menu, menu->priv->changed_id);
 
-		dialog = pluma_encodings_dialog_new();
+		dialog = lapiz_encodings_dialog_new();
 
 		if (toplevel != NULL)
 		{
@@ -256,8 +256,8 @@ update_menu (PlumaEncodingsComboBox *menu)
 	gtk_combo_box_set_model (GTK_COMBO_BOX (menu),
 				 NULL);
 
-	utf8_encoding = pluma_encoding_get_utf8 ();
-	current_encoding = pluma_encoding_get_current ();
+	utf8_encoding = lapiz_encoding_get_utf8 ();
+	current_encoding = lapiz_encoding_get_current ();
 
 	if (!menu->priv->save_mode)
 	{
@@ -277,10 +277,10 @@ update_menu (PlumaEncodingsComboBox *menu)
 	}
 
 	if (current_encoding != utf8_encoding)
-		str = pluma_encoding_to_string (utf8_encoding);
+		str = lapiz_encoding_to_string (utf8_encoding);
 	else
 		str = g_strdup_printf (_("Current Locale (%s)"),
-				       pluma_encoding_get_charset (utf8_encoding));
+				       lapiz_encoding_get_charset (utf8_encoding));
 
 	gtk_list_store_append (store, &iter);
 	gtk_list_store_set (store, &iter,
@@ -295,7 +295,7 @@ update_menu (PlumaEncodingsComboBox *menu)
 	    (current_encoding != NULL))
 	{
 		str = g_strdup_printf (_("Current Locale (%s)"),
-				       pluma_encoding_get_charset (current_encoding));
+				       lapiz_encoding_get_charset (current_encoding));
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -307,7 +307,7 @@ update_menu (PlumaEncodingsComboBox *menu)
 		g_free (str);
 	}
 
-	encodings = pluma_prefs_manager_get_shown_in_menu_encodings ();
+	encodings = lapiz_prefs_manager_get_shown_in_menu_encodings ();
 
 	for (l = encodings; l != NULL; l = g_slist_next (l))
 	{
@@ -317,7 +317,7 @@ update_menu (PlumaEncodingsComboBox *menu)
 		    (enc != utf8_encoding) &&
 		    (enc != NULL))
 		{
-			str = pluma_encoding_to_string (enc);
+			str = lapiz_encoding_to_string (enc);
 
 			gtk_list_store_append (store, &iter);
 			gtk_list_store_set (store, &iter,
@@ -332,7 +332,7 @@ update_menu (PlumaEncodingsComboBox *menu)
 
 	g_slist_free (encodings);
 
-	if (pluma_prefs_manager_shown_in_menu_encodings_can_set ())
+	if (lapiz_prefs_manager_shown_in_menu_encodings_can_set ())
 	{
 		gtk_list_store_append (store, &iter);
 		/* separator */
@@ -359,11 +359,11 @@ update_menu (PlumaEncodingsComboBox *menu)
 }
 
 static void
-pluma_encodings_combo_box_init (PlumaEncodingsComboBox *menu)
+lapiz_encodings_combo_box_init (PlumaEncodingsComboBox *menu)
 {
 	GtkCellRenderer *text_renderer;
 
-	menu->priv = pluma_encodings_combo_box_get_instance_private (menu);
+	menu->priv = lapiz_encodings_combo_box_get_instance_private (menu);
 
 	menu->priv->store = gtk_list_store_new (N_COLUMNS,
 						G_TYPE_STRING,
@@ -393,7 +393,7 @@ pluma_encodings_combo_box_init (PlumaEncodingsComboBox *menu)
 }
 
 GtkWidget *
-pluma_encodings_combo_box_new (gboolean save_mode)
+lapiz_encodings_combo_box_new (gboolean save_mode)
 {
 	return g_object_new (PLUMA_TYPE_ENCODINGS_COMBO_BOX,
 			     "save_mode", save_mode,
@@ -401,7 +401,7 @@ pluma_encodings_combo_box_new (gboolean save_mode)
 }
 
 const PlumaEncoding *
-pluma_encodings_combo_box_get_selected_encoding (PlumaEncodingsComboBox *menu)
+lapiz_encodings_combo_box_get_selected_encoding (PlumaEncodingsComboBox *menu)
 {
 	GtkTreeIter iter;
 
@@ -425,12 +425,12 @@ pluma_encodings_combo_box_get_selected_encoding (PlumaEncodingsComboBox *menu)
 }
 
 /**
- * pluma_encodings_combo_box_set_selected_encoding:
+ * lapiz_encodings_combo_box_set_selected_encoding:
  * @menu:
  * @encoding: (allow-none):
  **/
 void
-pluma_encodings_combo_box_set_selected_encoding (PlumaEncodingsComboBox *menu,
+lapiz_encodings_combo_box_set_selected_encoding (PlumaEncodingsComboBox *menu,
 						 const PlumaEncoding    *encoding)
 {
 	GtkTreeIter iter;

@@ -1,21 +1,21 @@
 /*
- * pluma-document-input-stream.c
- * This file is part of pluma
+ * lapiz-document-input-stream.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Ignacio Casal Quinteiro
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -25,8 +25,8 @@
 #include <glib.h>
 #include <gio/gio.h>
 #include <string.h>
-#include "pluma-document-input-stream.h"
-#include "pluma-enum-types.h"
+#include "lapiz-document-input-stream.h"
+#include "lapiz-enum-types.h"
 
 /* NOTE: never use async methods on this stream, the stream is just
  * a wrapper around GtkTextBuffer api so that we can use GIO Stream
@@ -47,7 +47,7 @@ struct _PlumaDocumentInputStreamPrivate
 	guint is_initialized : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentInputStream, pluma_document_input_stream, G_TYPE_INPUT_STREAM);
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaDocumentInputStream, lapiz_document_input_stream, G_TYPE_INPUT_STREAM);
 
 enum
 {
@@ -56,17 +56,17 @@ enum
 	PROP_NEWLINE_TYPE
 };
 
-static gssize     pluma_document_input_stream_read     (GInputStream      *stream,
+static gssize     lapiz_document_input_stream_read     (GInputStream      *stream,
 							void              *buffer,
 							gsize              count,
 							GCancellable      *cancellable,
 							GError           **error);
-static gboolean   pluma_document_input_stream_close    (GInputStream      *stream,
+static gboolean   lapiz_document_input_stream_close    (GInputStream      *stream,
 							GCancellable      *cancellable,
 							GError           **error);
 
 static void
-pluma_document_input_stream_set_property (GObject      *object,
+lapiz_document_input_stream_set_property (GObject      *object,
 					  guint         prop_id,
 					  const GValue *value,
 					  GParamSpec   *pspec)
@@ -90,7 +90,7 @@ pluma_document_input_stream_set_property (GObject      *object,
 }
 
 static void
-pluma_document_input_stream_get_property (GObject    *object,
+lapiz_document_input_stream_get_property (GObject    *object,
 					  guint       prop_id,
 					  GValue     *value,
 					  GParamSpec *pspec)
@@ -114,16 +114,16 @@ pluma_document_input_stream_get_property (GObject    *object,
 }
 
 static void
-pluma_document_input_stream_class_init (PlumaDocumentInputStreamClass *klass)
+lapiz_document_input_stream_class_init (PlumaDocumentInputStreamClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GInputStreamClass *stream_class = G_INPUT_STREAM_CLASS (klass);
 
-	gobject_class->get_property = pluma_document_input_stream_get_property;
-	gobject_class->set_property = pluma_document_input_stream_set_property;
+	gobject_class->get_property = lapiz_document_input_stream_get_property;
+	gobject_class->set_property = lapiz_document_input_stream_set_property;
 
-	stream_class->read_fn = pluma_document_input_stream_read;
-	stream_class->close_fn = pluma_document_input_stream_close;
+	stream_class->read_fn = lapiz_document_input_stream_read;
+	stream_class->close_fn = lapiz_document_input_stream_close;
 
 	g_object_class_install_property (gobject_class,
 					 PROP_BUFFER,
@@ -154,9 +154,9 @@ pluma_document_input_stream_class_init (PlumaDocumentInputStreamClass *klass)
 }
 
 static void
-pluma_document_input_stream_init (PlumaDocumentInputStream *stream)
+lapiz_document_input_stream_init (PlumaDocumentInputStream *stream)
 {
-	stream->priv = pluma_document_input_stream_get_instance_private (stream);
+	stream->priv = lapiz_document_input_stream_get_instance_private (stream);
 }
 
 static gsize
@@ -185,7 +185,7 @@ get_new_line_size (PlumaDocumentInputStream *stream)
 }
 
 /**
- * pluma_document_input_stream_new:
+ * lapiz_document_input_stream_new:
  * @buffer: a #GtkTextBuffer
  *
  * Reads the data from @buffer.
@@ -193,7 +193,7 @@ get_new_line_size (PlumaDocumentInputStream *stream)
  * Returns: a new #GInputStream to read @buffer
  */
 GInputStream *
-pluma_document_input_stream_new (GtkTextBuffer           *buffer,
+lapiz_document_input_stream_new (GtkTextBuffer           *buffer,
 				 PlumaDocumentNewlineType type)
 {
 	PlumaDocumentInputStream *stream;
@@ -209,7 +209,7 @@ pluma_document_input_stream_new (GtkTextBuffer           *buffer,
 }
 
 gsize
-pluma_document_input_stream_get_total_size (PlumaDocumentInputStream *stream)
+lapiz_document_input_stream_get_total_size (PlumaDocumentInputStream *stream)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT_INPUT_STREAM (stream), 0);
 
@@ -217,7 +217,7 @@ pluma_document_input_stream_get_total_size (PlumaDocumentInputStream *stream)
 }
 
 gsize
-pluma_document_input_stream_tell (PlumaDocumentInputStream *stream)
+lapiz_document_input_stream_tell (PlumaDocumentInputStream *stream)
 {
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT_INPUT_STREAM (stream), 0);
 
@@ -383,7 +383,7 @@ read_line (PlumaDocumentInputStream *stream,
 }
 
 static gssize
-pluma_document_input_stream_read (GInputStream  *stream,
+lapiz_document_input_stream_read (GInputStream  *stream,
 				  void          *buffer,
 				  gsize          count,
 				  GCancellable  *cancellable,
@@ -458,7 +458,7 @@ pluma_document_input_stream_read (GInputStream  *stream,
 }
 
 static gboolean
-pluma_document_input_stream_close (GInputStream  *stream,
+lapiz_document_input_stream_close (GInputStream  *stream,
 				   GCancellable  *cancellable,
 				   GError       **error)
 {

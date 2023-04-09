@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-checker-language.c
- * This file is part of pluma
+ * lapiz-spell-checker-language.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2006 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2006. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2006. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -43,9 +43,9 @@
 #include <glib/gi18n.h>
 #include <libxml/xmlreader.h>
 
-#include "pluma-spell-checker-language.h"
+#include "lapiz-spell-checker-language.h"
 
-#include <pluma/pluma-debug.h>
+#include <lapiz/lapiz-debug.h>
 
 #define ISO_639_DOMAIN	"iso_639"
 #define ISO_3166_DOMAIN	"iso_3166"
@@ -154,7 +154,7 @@ load_iso_entries (int iso,
 	char *filename;
 	int ret = -1;
 
-	pluma_debug_message (DEBUG_PLUGINS, "Loading ISO-%d codes", iso);
+	lapiz_debug_message (DEBUG_PLUGINS, "Loading ISO-%d codes", iso);
 
 	filename = g_strdup_printf (ISO_CODES_PREFIX "/share/xml/iso-codes/iso_%d.xml", iso);
 	reader = xmlNewTextReaderFilename (filename);
@@ -355,7 +355,7 @@ build_langs_list (const gchar *key,
 }
 
 const GSList *
-pluma_spell_checker_get_available_languages (void)
+lapiz_spell_checker_get_available_languages (void)
 {
 	EnchantBroker *broker;
 	GTree *dicts;
@@ -397,7 +397,7 @@ pluma_spell_checker_get_available_languages (void)
 }
 
 const gchar *
-pluma_spell_checker_language_to_string (const PlumaSpellCheckerLanguage *lang)
+lapiz_spell_checker_language_to_string (const PlumaSpellCheckerLanguage *lang)
 {
 	if (lang == NULL)
 		/* Translators: this refers the Default language used by the
@@ -409,7 +409,7 @@ pluma_spell_checker_language_to_string (const PlumaSpellCheckerLanguage *lang)
 }
 
 const gchar *
-pluma_spell_checker_language_to_key (const PlumaSpellCheckerLanguage *lang)
+lapiz_spell_checker_language_to_key (const PlumaSpellCheckerLanguage *lang)
 {
 	g_return_val_if_fail (lang != NULL, NULL);
 
@@ -417,13 +417,13 @@ pluma_spell_checker_language_to_key (const PlumaSpellCheckerLanguage *lang)
 }
 
 const PlumaSpellCheckerLanguage *
-pluma_spell_checker_language_from_key (const gchar *key)
+lapiz_spell_checker_language_from_key (const gchar *key)
 {
 	const GSList *langs;
 
 	g_return_val_if_fail (key != NULL, NULL);
 
-	langs = pluma_spell_checker_get_available_languages ();
+	langs = lapiz_spell_checker_get_available_languages ();
 
 	while (langs != NULL)
 	{

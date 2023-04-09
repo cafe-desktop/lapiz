@@ -1,5 +1,5 @@
 /*
- * pluma-file-browser-widget.c - Pluma plugin providing easy file access
+ * lapiz-file-browser-widget.c - Pluma plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -31,19 +31,19 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include <pluma/pluma-utils.h>
+#include <lapiz/lapiz-utils.h>
 
-#include "pluma-file-browser-utils.h"
-#include "pluma-file-browser-error.h"
-#include "pluma-file-browser-widget.h"
-#include "pluma-file-browser-view.h"
-#include "pluma-file-browser-store.h"
-#include "pluma-file-bookmarks-store.h"
-#include "pluma-file-browser-marshal.h"
-#include "pluma-file-browser-enum-types.h"
+#include "lapiz-file-browser-utils.h"
+#include "lapiz-file-browser-error.h"
+#include "lapiz-file-browser-widget.h"
+#include "lapiz-file-browser-view.h"
+#include "lapiz-file-browser-store.h"
+#include "lapiz-file-bookmarks-store.h"
+#include "lapiz-file-browser-marshal.h"
+#include "lapiz-file-browser-enum-types.h"
 
-#define XML_UI_FILE "pluma-file-browser-widget-ui.xml"
-#define LOCATION_DATA_KEY "pluma-file-browser-widget-location"
+#define XML_UI_FILE "lapiz-file-browser-widget-ui.xml"
+#define LOCATION_DATA_KEY "lapiz-file-browser-widget-location"
 
 enum
 {
@@ -232,7 +232,7 @@ static void on_action_bookmark_open            (GtkAction * action,
 						PlumaFileBrowserWidget * obj);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBrowserWidget,
-                                pluma_file_browser_widget,
+                                lapiz_file_browser_widget,
                                 GTK_TYPE_BOX,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (PlumaFileBrowserWidget))
@@ -329,13 +329,13 @@ cancel_async_operation (PlumaFileBrowserWidget *widget)
 }
 
 static void
-pluma_file_browser_widget_finalize (GObject * object)
+lapiz_file_browser_widget_finalize (GObject * object)
 {
 	PlumaFileBrowserWidget *obj = PLUMA_FILE_BROWSER_WIDGET (object);
 	GList *loc;
 
 	remove_path_items (obj);
-	pluma_file_browser_store_set_filter_func (obj->priv->file_store,
+	lapiz_file_browser_store_set_filter_func (obj->priv->file_store,
 						  NULL, NULL);
 
 	g_object_unref (obj->priv->manager);
@@ -360,11 +360,11 @@ pluma_file_browser_widget_finalize (GObject * object)
 
 	g_object_unref (obj->priv->busy_cursor);
 
-	G_OBJECT_CLASS (pluma_file_browser_widget_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_file_browser_widget_parent_class)->finalize (object);
 }
 
 static void
-pluma_file_browser_widget_get_property (GObject    *object,
+lapiz_file_browser_widget_get_property (GObject    *object,
 			               guint       prop_id,
 			               GValue     *value,
 			               GParamSpec *pspec)
@@ -386,7 +386,7 @@ pluma_file_browser_widget_get_property (GObject    *object,
 }
 
 static void
-pluma_file_browser_widget_set_property (GObject      *object,
+lapiz_file_browser_widget_set_property (GObject      *object,
 			               guint         prop_id,
 			               const GValue *value,
 			               GParamSpec   *pspec)
@@ -396,7 +396,7 @@ pluma_file_browser_widget_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_FILTER_PATTERN:
-			pluma_file_browser_widget_set_filter_pattern (obj,
+			lapiz_file_browser_widget_set_filter_pattern (obj,
 			                                              g_value_get_string (value));
 			break;
 		case PROP_ENABLE_DELETE:
@@ -409,14 +409,14 @@ pluma_file_browser_widget_set_property (GObject      *object,
 }
 
 static void
-pluma_file_browser_widget_class_init (PlumaFileBrowserWidgetClass * klass)
+lapiz_file_browser_widget_class_init (PlumaFileBrowserWidgetClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = pluma_file_browser_widget_finalize;
+	object_class->finalize = lapiz_file_browser_widget_finalize;
 
-	object_class->get_property = pluma_file_browser_widget_get_property;
-	object_class->set_property = pluma_file_browser_widget_set_property;
+	object_class->get_property = lapiz_file_browser_widget_get_property;
+	object_class->set_property = lapiz_file_browser_widget_set_property;
 
 	g_object_class_install_property (object_class, PROP_FILTER_PATTERN,
 					 g_param_spec_string ("filter-pattern",
@@ -445,7 +445,7 @@ pluma_file_browser_widget_class_init (PlumaFileBrowserWidgetClass * klass)
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (PlumaFileBrowserWidgetClass,
 					   error), NULL, NULL,
-			  pluma_file_browser_marshal_VOID__UINT_STRING,
+			  lapiz_file_browser_marshal_VOID__UINT_STRING,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 
 	signals[CONFIRM_DELETE] =
@@ -455,7 +455,7 @@ pluma_file_browser_widget_class_init (PlumaFileBrowserWidgetClass * klass)
 	                                   confirm_delete),
 	                  g_signal_accumulator_true_handled,
 	                  NULL,
-	                  pluma_file_browser_marshal_BOOLEAN__OBJECT_POINTER,
+	                  lapiz_file_browser_marshal_BOOLEAN__OBJECT_POINTER,
 	                  G_TYPE_BOOLEAN,
 	                  2,
 	                  G_TYPE_OBJECT,
@@ -468,14 +468,14 @@ pluma_file_browser_widget_class_init (PlumaFileBrowserWidgetClass * klass)
 	                                   confirm_no_trash),
 	                  g_signal_accumulator_true_handled,
 	                  NULL,
-	                  pluma_file_browser_marshal_BOOLEAN__POINTER,
+	                  lapiz_file_browser_marshal_BOOLEAN__POINTER,
 	                  G_TYPE_BOOLEAN,
 	                  1,
 	                  G_TYPE_POINTER);
 }
 
 static void
-pluma_file_browser_widget_class_finalize (PlumaFileBrowserWidgetClass *klass)
+lapiz_file_browser_widget_class_finalize (PlumaFileBrowserWidgetClass *klass)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -557,10 +557,10 @@ insert_path_item (PlumaFileBrowserWidget * obj,
 	/* Try to get the icon and name from the bookmarks hash */
 	if (!get_from_bookmark_file (obj, file, &unescape, &icon)) {
 		/* It's not a bookmark, fetch the name and the icon ourselves */
-		unescape = pluma_file_browser_utils_file_basename (file);
+		unescape = lapiz_file_browser_utils_file_basename (file);
 
 		/* Get the icon */
-		icon = pluma_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
+		icon = lapiz_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
 	}
 
 	gtk_tree_store_insert_after (obj->priv->combo_model, iter, NULL,
@@ -664,7 +664,7 @@ insert_location_path (PlumaFileBrowserWidget * obj)
 							   obj);
 		}
 
-		if (g_file_equal (current, loc->root) || !pluma_utils_file_has_parent (current)) {
+		if (g_file_equal (current, loc->root) || !lapiz_utils_file_has_parent (current)) {
 			if (current != loc->virtual_root)
 				g_object_unref (current);
 			break;
@@ -704,7 +704,7 @@ fill_combo_model (PlumaFileBrowserWidget * obj)
 	GtkTreeIter iter;
 	GdkPixbuf *icon;
 
-	icon = pluma_file_browser_utils_pixbuf_from_theme ("go-home", GTK_ICON_SIZE_MENU);
+	icon = lapiz_file_browser_utils_pixbuf_from_theme ("go-home", GTK_ICON_SIZE_MENU);
 
 	gtk_tree_store_append (store, &iter, NULL);
 	gtk_tree_store_set (store, &iter,
@@ -1083,7 +1083,7 @@ add_bookmark_hash (PlumaFileBrowserWidget * obj,
 
 	model = GTK_TREE_MODEL (obj->priv->bookmarks_store);
 
-	uri = pluma_file_bookmarks_store_get_uri (obj->priv->
+	uri = lapiz_file_bookmarks_store_get_uri (obj->priv->
 						  bookmarks_store,
 						  iter);
 
@@ -1162,18 +1162,18 @@ create_tree (PlumaFileBrowserWidget * obj)
 {
 	GtkWidget *sw;
 
-	obj->priv->file_store = pluma_file_browser_store_new (NULL);
-	obj->priv->bookmarks_store = pluma_file_bookmarks_store_new ();
+	obj->priv->file_store = lapiz_file_browser_store_new (NULL);
+	obj->priv->bookmarks_store = lapiz_file_bookmarks_store_new ();
 	obj->priv->treeview =
-	    PLUMA_FILE_BROWSER_VIEW (pluma_file_browser_view_new ());
+	    PLUMA_FILE_BROWSER_VIEW (lapiz_file_browser_view_new ());
 
-	pluma_file_browser_view_set_restore_expand_state (obj->priv->treeview, TRUE);
+	lapiz_file_browser_view_set_restore_expand_state (obj->priv->treeview, TRUE);
 
-	pluma_file_browser_store_set_filter_mode (obj->priv->file_store,
+	lapiz_file_browser_store_set_filter_mode (obj->priv->file_store,
 						  PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN
 						  |
 						  PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
-	pluma_file_browser_store_set_filter_func (obj->priv->file_store,
+	lapiz_file_browser_store_set_filter_func (obj->priv->file_store,
 						  (PlumaFileBrowserStoreFilterFunc)
 						  filter_real, obj);
 
@@ -1257,11 +1257,11 @@ create_filter (PlumaFileBrowserWidget * obj)
 }
 
 static void
-pluma_file_browser_widget_init (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_init (PlumaFileBrowserWidget * obj)
 {
 	GdkDisplay *display;
 
-	obj->priv = pluma_file_browser_widget_get_instance_private (obj);
+	obj->priv = lapiz_file_browser_widget_get_instance_private (obj);
 
 	obj->priv->bookmarks_hash = g_hash_table_new_full (g_file_hash,
 			                                   (GEqualFunc)g_file_equal,
@@ -1293,7 +1293,7 @@ update_sensitivity (PlumaFileBrowserWidget * obj)
 						FALSE);
 
 		mode =
-		    pluma_file_browser_store_get_filter_mode
+		    lapiz_file_browser_store_get_filter_mode
 		    (PLUMA_FILE_BROWSER_STORE (model));
 
 		action =
@@ -1321,7 +1321,7 @@ update_sensitivity (PlumaFileBrowserWidget * obj)
 }
 
 static gboolean
-pluma_file_browser_widget_get_first_selected (PlumaFileBrowserWidget *obj,
+lapiz_file_browser_widget_get_first_selected (PlumaFileBrowserWidget *obj,
 					      GtkTreeIter *iter)
 {
 	GtkTreeSelection *selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
@@ -1419,8 +1419,8 @@ rename_selected_file (PlumaFileBrowserWidget * obj)
 	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
 		return;
 
-	if (pluma_file_browser_widget_get_first_selected (obj, &iter))
-		pluma_file_browser_view_start_rename (obj->priv->treeview,
+	if (lapiz_file_browser_widget_get_first_selected (obj, &iter))
+		lapiz_file_browser_view_start_rename (obj->priv->treeview,
 						      &iter);
 }
 
@@ -1488,7 +1488,7 @@ delete_selected_files (PlumaFileBrowserWidget * obj, gboolean trash)
 			return FALSE;
 	}
 
-	result = pluma_file_browser_store_delete_all (PLUMA_FILE_BROWSER_STORE (model),
+	result = lapiz_file_browser_store_delete_all (PLUMA_FILE_BROWSER_STORE (model),
 						      rows, trash);
 
 	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
@@ -1537,14 +1537,14 @@ create_goto_menu_item (PlumaFileBrowserWidget * obj, GList * item,
 	loc = (Location *) (item->data);
 
 	if (!get_from_bookmark_file (obj, loc->virtual_root, &unescape, &pixbuf)) {
-		unescape = pluma_file_browser_utils_file_basename (loc->virtual_root);
+		unescape = lapiz_file_browser_utils_file_basename (loc->virtual_root);
 
 		if (icon)
 			pixbuf = g_object_ref (icon);
 	}
 
 	if (pixbuf) {
-		result = pluma_image_menu_item_new_from_pixbuf (pixbuf, unescape);
+		result = lapiz_image_menu_item_new_from_pixbuf (pixbuf, unescape);
 		g_object_unref (pixbuf);
 	} else {
 		result = gtk_menu_item_new_with_label (unescape);
@@ -1655,7 +1655,7 @@ jump_to_location (PlumaFileBrowserWidget * obj, GList * item,
 	root = g_file_get_uri (loc->root);
 	virtual_root = g_file_get_uri (loc->virtual_root);
 
-	pluma_file_browser_widget_set_root_and_virtual_root (obj,
+	lapiz_file_browser_widget_set_root_and_virtual_root (obj,
 							     root,
 							     virtual_root);
 
@@ -1712,7 +1712,7 @@ update_filter_mode (PlumaFileBrowserWidget * obj,
 
 	if (PLUMA_IS_FILE_BROWSER_STORE (model)) {
 		now =
-		    pluma_file_browser_store_get_filter_mode
+		    lapiz_file_browser_store_get_filter_mode
 		    (PLUMA_FILE_BROWSER_STORE (model));
 
 		if (active)
@@ -1720,7 +1720,7 @@ update_filter_mode (PlumaFileBrowserWidget * obj,
 		else
 			now |= mode;
 
-		pluma_file_browser_store_set_filter_mode
+		lapiz_file_browser_store_set_filter_mode
 		    (PLUMA_FILE_BROWSER_STORE (model), now);
 	}
 }
@@ -1756,7 +1756,7 @@ set_filter_pattern_real (PlumaFileBrowserWidget * obj,
 
 	if (pattern == NULL) {
 		if (obj->priv->glob_filter_id != 0) {
-			pluma_file_browser_widget_remove_filter (obj,
+			lapiz_file_browser_widget_remove_filter (obj,
 								 obj->
 								 priv->
 								 glob_filter_id);
@@ -1767,7 +1767,7 @@ set_filter_pattern_real (PlumaFileBrowserWidget * obj,
 
 		if (obj->priv->glob_filter_id == 0)
 			obj->priv->glob_filter_id =
-			    pluma_file_browser_widget_add_filter (obj,
+			    lapiz_file_browser_widget_add_filter (obj,
 								  filter_glob,
 								  NULL,
 								  NULL);
@@ -1787,7 +1787,7 @@ set_filter_pattern_real (PlumaFileBrowserWidget * obj,
 	}
 
 	if (PLUMA_IS_FILE_BROWSER_STORE (model))
-		pluma_file_browser_store_refilter (PLUMA_FILE_BROWSER_STORE
+		lapiz_file_browser_store_refilter (PLUMA_FILE_BROWSER_STORE
 						   (model));
 
 	g_object_notify (G_OBJECT (obj), "filter-pattern");
@@ -1797,7 +1797,7 @@ set_filter_pattern_real (PlumaFileBrowserWidget * obj,
 /* Public */
 
 GtkWidget *
-pluma_file_browser_widget_new (const gchar *data_dir)
+lapiz_file_browser_widget_new (const gchar *data_dir)
 {
 	PlumaFileBrowserWidget *obj =
 	    g_object_new (PLUMA_TYPE_FILE_BROWSER_WIDGET, NULL);
@@ -1807,13 +1807,13 @@ pluma_file_browser_widget_new (const gchar *data_dir)
 	create_tree (obj);
 	create_filter (obj);
 
-	pluma_file_browser_widget_show_bookmarks (obj);
+	lapiz_file_browser_widget_show_bookmarks (obj);
 
 	return GTK_WIDGET (obj);
 }
 
 void
-pluma_file_browser_widget_show_bookmarks (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_show_bookmarks (PlumaFileBrowserWidget * obj)
 {
 	/* Select bookmarks in the combo box */
 	g_signal_handlers_block_by_func (obj->priv->combo,
@@ -1824,7 +1824,7 @@ pluma_file_browser_widget_show_bookmarks (PlumaFileBrowserWidget * obj)
 
 	check_current_item (obj, FALSE);
 
-	pluma_file_browser_view_set_model (obj->priv->treeview,
+	lapiz_file_browser_view_set_model (obj->priv->treeview,
 					   GTK_TREE_MODEL (obj->priv->
 							   bookmarks_store));
 }
@@ -1833,7 +1833,7 @@ static void
 show_files_real (PlumaFileBrowserWidget *obj,
 		 gboolean                do_root_changed)
 {
-	pluma_file_browser_view_set_model (obj->priv->treeview,
+	lapiz_file_browser_view_set_model (obj->priv->treeview,
 					   GTK_TREE_MODEL (obj->priv->
 							   file_store));
 
@@ -1842,13 +1842,13 @@ show_files_real (PlumaFileBrowserWidget *obj,
 }
 
 void
-pluma_file_browser_widget_show_files (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_show_files (PlumaFileBrowserWidget * obj)
 {
 	show_files_real (obj, TRUE);
 }
 
 void
-pluma_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget *obj,
+lapiz_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget *obj,
 						     gchar const *root,
 						     gchar const *virtual_root)
 {
@@ -1856,11 +1856,11 @@ pluma_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget *obj
 
 	if (!virtual_root)
 		result =
-		    pluma_file_browser_store_set_root_and_virtual_root
+		    lapiz_file_browser_store_set_root_and_virtual_root
 		    (obj->priv->file_store, root, root);
 	else
 		result =
-		    pluma_file_browser_store_set_root_and_virtual_root
+		    lapiz_file_browser_store_set_root_and_virtual_root
 		    (obj->priv->file_store, root, virtual_root);
 
 	if (result == PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE)
@@ -1868,7 +1868,7 @@ pluma_file_browser_widget_set_root_and_virtual_root (PlumaFileBrowserWidget *obj
 }
 
 void
-pluma_file_browser_widget_set_root (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_set_root (PlumaFileBrowserWidget * obj,
 				    gchar const *root,
 				    gboolean virtual_root)
 {
@@ -1877,7 +1877,7 @@ pluma_file_browser_widget_set_root (PlumaFileBrowserWidget * obj,
 	gchar *str;
 
 	if (!virtual_root) {
-		pluma_file_browser_widget_set_root_and_virtual_root (obj,
+		lapiz_file_browser_widget_set_root_and_virtual_root (obj,
 								     root,
 								     NULL);
 		return;
@@ -1890,7 +1890,7 @@ pluma_file_browser_widget_set_root (PlumaFileBrowserWidget * obj,
 	parent = get_topmost_file (file);
 	str = g_file_get_uri (parent);
 
-	pluma_file_browser_widget_set_root_and_virtual_root
+	lapiz_file_browser_widget_set_root_and_virtual_root
 	    (obj, str, root);
 
 	g_free (str);
@@ -1900,37 +1900,37 @@ pluma_file_browser_widget_set_root (PlumaFileBrowserWidget * obj,
 }
 
 PlumaFileBrowserStore *
-pluma_file_browser_widget_get_browser_store (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_get_browser_store (PlumaFileBrowserWidget * obj)
 {
 	return obj->priv->file_store;
 }
 
 PlumaFileBookmarksStore *
-pluma_file_browser_widget_get_bookmarks_store (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_get_bookmarks_store (PlumaFileBrowserWidget * obj)
 {
 	return obj->priv->bookmarks_store;
 }
 
 PlumaFileBrowserView *
-pluma_file_browser_widget_get_browser_view (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_get_browser_view (PlumaFileBrowserWidget * obj)
 {
 	return obj->priv->treeview;
 }
 
 GtkUIManager *
-pluma_file_browser_widget_get_ui_manager (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_get_ui_manager (PlumaFileBrowserWidget * obj)
 {
 	return obj->priv->manager;
 }
 
 GtkWidget *
-pluma_file_browser_widget_get_filter_entry (PlumaFileBrowserWidget * obj)
+lapiz_file_browser_widget_get_filter_entry (PlumaFileBrowserWidget * obj)
 {
 	return obj->priv->filter_entry;
 }
 
 gulong
-pluma_file_browser_widget_add_filter (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_add_filter (PlumaFileBrowserWidget * obj,
 				      PlumaFileBrowserWidgetFilterFunc func,
 				      gpointer user_data,
 				      GDestroyNotify notify)
@@ -1944,14 +1944,14 @@ pluma_file_browser_widget_add_filter (PlumaFileBrowserWidget * obj,
 	    g_slist_append (obj->priv->filter_funcs, f);
 
 	if (PLUMA_IS_FILE_BROWSER_STORE (model))
-		pluma_file_browser_store_refilter (PLUMA_FILE_BROWSER_STORE
+		lapiz_file_browser_store_refilter (PLUMA_FILE_BROWSER_STORE
 						   (model));
 
 	return f->id;
 }
 
 void
-pluma_file_browser_widget_remove_filter (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_remove_filter (PlumaFileBrowserWidget * obj,
 					 gulong id)
 {
 	GSList *item;
@@ -1976,14 +1976,14 @@ pluma_file_browser_widget_remove_filter (PlumaFileBrowserWidget * obj,
 }
 
 void
-pluma_file_browser_widget_set_filter_pattern (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_set_filter_pattern (PlumaFileBrowserWidget * obj,
                                               gchar const *pattern)
 {
 	set_filter_pattern_real (obj, pattern, TRUE);
 }
 
 gboolean
-pluma_file_browser_widget_get_selected_directory (PlumaFileBrowserWidget * obj,
+lapiz_file_browser_widget_get_selected_directory (PlumaFileBrowserWidget * obj,
 						  GtkTreeIter * iter)
 {
 	GtkTreeModel *model =
@@ -1994,8 +1994,8 @@ pluma_file_browser_widget_get_selected_directory (PlumaFileBrowserWidget * obj,
 	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
 		return FALSE;
 
-	if (!pluma_file_browser_widget_get_first_selected (obj, iter)) {
-		if (!pluma_file_browser_store_get_iter_virtual_root
+	if (!lapiz_file_browser_widget_get_first_selected (obj, iter)) {
+		if (!lapiz_file_browser_store_get_iter_virtual_root
 		    (PLUMA_FILE_BROWSER_STORE (model), iter))
 			return FALSE;
 	}
@@ -2014,7 +2014,7 @@ pluma_file_browser_widget_get_selected_directory (PlumaFileBrowserWidget * obj,
 }
 
 static guint
-pluma_file_browser_widget_get_num_selected_files_or_directories (PlumaFileBrowserWidget *obj,
+lapiz_file_browser_widget_get_num_selected_files_or_directories (PlumaFileBrowserWidget *obj,
 								 guint                  *files,
 								 guint                  *dirs)
 {
@@ -2148,7 +2148,7 @@ activate_mount (PlumaFileBrowserWidget *widget,
 	root = g_mount_get_root (mount);
 	uri = g_file_get_uri (root);
 
-	pluma_file_browser_widget_set_root (widget, uri, FALSE);
+	lapiz_file_browser_widget_set_root (widget, uri, FALSE);
 
 	g_free (uri);
 	g_object_unref (root);
@@ -2337,25 +2337,25 @@ activate_volume (PlumaFileBrowserWidget *obj,
 }
 
 void
-pluma_file_browser_widget_refresh (PlumaFileBrowserWidget *obj)
+lapiz_file_browser_widget_refresh (PlumaFileBrowserWidget *obj)
 {
 	GtkTreeModel *model =
 	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (PLUMA_IS_FILE_BROWSER_STORE (model))
-		pluma_file_browser_store_refresh (PLUMA_FILE_BROWSER_STORE
+		lapiz_file_browser_store_refresh (PLUMA_FILE_BROWSER_STORE
 						  (model));
 	else if (PLUMA_IS_FILE_BOOKMARKS_STORE (model)) {
 		g_hash_table_ref (obj->priv->bookmarks_hash);
 		g_hash_table_destroy (obj->priv->bookmarks_hash);
 
-		pluma_file_bookmarks_store_refresh
+		lapiz_file_bookmarks_store_refresh
 		    (PLUMA_FILE_BOOKMARKS_STORE (model));
 	}
 }
 
 void
-pluma_file_browser_widget_history_back (PlumaFileBrowserWidget *obj)
+lapiz_file_browser_widget_history_back (PlumaFileBrowserWidget *obj)
 {
 	if (obj->priv->locations) {
 		if (obj->priv->current_location)
@@ -2369,7 +2369,7 @@ pluma_file_browser_widget_history_back (PlumaFileBrowserWidget *obj)
 }
 
 void
-pluma_file_browser_widget_history_forward (PlumaFileBrowserWidget *obj)
+lapiz_file_browser_widget_history_forward (PlumaFileBrowserWidget *obj)
 {
 	if (obj->priv->locations)
 		jump_to_location (obj, obj->priv->current_location->prev,
@@ -2391,20 +2391,20 @@ bookmark_open (PlumaFileBrowserWidget *obj,
 	if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_DRIVE)
 	{
 		/* handle a drive node */
-		pluma_file_browser_store_cancel_mount_operation (obj->priv->file_store);
+		lapiz_file_browser_store_cancel_mount_operation (obj->priv->file_store);
 		activate_drive (obj, iter);
 		return;
 	}
 	else if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_VOLUME)
 	{
 		/* handle a volume node */
-		pluma_file_browser_store_cancel_mount_operation (obj->priv->file_store);
+		lapiz_file_browser_store_cancel_mount_operation (obj->priv->file_store);
 		activate_volume (obj, iter);
 		return;
 	}
 
 	uri =
-	    pluma_file_bookmarks_store_get_uri
+	    lapiz_file_bookmarks_store_get_uri
 	    (PLUMA_FILE_BOOKMARKS_STORE (model), iter);
 
 	if (uri) {
@@ -2415,11 +2415,11 @@ bookmark_open (PlumaFileBrowserWidget *obj,
 		   mount point anymore) */
 		if ((flags & PLUMA_FILE_BOOKMARKS_STORE_IS_MOUNT) ||
 		    (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)) {
-			pluma_file_browser_widget_set_root (obj,
+			lapiz_file_browser_widget_set_root (obj,
 							    uri,
 							    FALSE);
 		} else {
-			pluma_file_browser_widget_set_root (obj,
+			lapiz_file_browser_widget_set_root (obj,
 							    uri,
 							    TRUE);
 		}
@@ -2510,13 +2510,13 @@ virtual_root_is_root (PlumaFileBrowserWidget * obj,
 	GtkTreeIter root;
 	GtkTreeIter virtual_root;
 
-	if (!pluma_file_browser_store_get_iter_root (model, &root))
+	if (!lapiz_file_browser_store_get_iter_root (model, &root))
 		return TRUE;
 
-	if (!pluma_file_browser_store_get_iter_virtual_root (model, &virtual_root))
+	if (!lapiz_file_browser_store_get_iter_virtual_root (model, &virtual_root))
 		return TRUE;
 
-	return pluma_file_browser_store_iter_equal (model, &root, &virtual_root);
+	return lapiz_file_browser_store_iter_equal (model, &root, &virtual_root);
 }
 
 static void
@@ -2538,19 +2538,19 @@ on_virtual_root_changed (PlumaFileBrowserStore * model,
 		show_files_real (obj, FALSE);
 	}
 
-	if (pluma_file_browser_store_get_iter_virtual_root (model, &iter)) {
+	if (lapiz_file_browser_store_get_iter_virtual_root (model, &iter)) {
 		gtk_tree_model_get (GTK_TREE_MODEL (model), &iter,
 				    PLUMA_FILE_BROWSER_STORE_COLUMN_URI,
 				    &uri, -1);
 
-		if (pluma_file_browser_store_get_iter_root (model, &root)) {
+		if (lapiz_file_browser_store_get_iter_root (model, &root)) {
 			if (!obj->priv->changing_location) {
 				/* Remove all items from obj->priv->current_location on */
 				if (obj->priv->current_location)
 					clear_next_locations (obj);
 
 				root_uri =
-				    pluma_file_browser_store_get_root
+				    lapiz_file_browser_store_get_root
 				    (model);
 
 				loc = g_new (Location, 1);
@@ -2716,7 +2716,7 @@ on_combo_changed (GtkComboBox * combo, PlumaFileBrowserWidget * obj)
 
 	switch (id) {
 	case BOOKMARKS_ID:
-		pluma_file_browser_widget_show_bookmarks (obj);
+		lapiz_file_browser_widget_show_bookmarks (obj);
 		break;
 
 	case PATH_ID:
@@ -2725,7 +2725,7 @@ on_combo_changed (GtkComboBox * combo, PlumaFileBrowserWidget * obj)
 				    COLUMN_FILE, &file, -1);
 
 		uri = g_file_get_uri (file);
-		pluma_file_browser_store_set_virtual_root_from_string
+		lapiz_file_browser_store_set_virtual_root_from_string
 		    (obj->priv->file_store, uri);
 
 		g_free (uri);
@@ -2851,7 +2851,7 @@ on_selection_changed (GtkTreeSelection * selection,
 
 	if (PLUMA_IS_FILE_BROWSER_STORE (model))
 	{
-		selected = pluma_file_browser_widget_get_num_selected_files_or_directories (obj,
+		selected = lapiz_file_browser_widget_get_num_selected_files_or_directories (obj,
 											    &files,
 											    &dirs);
 	}
@@ -2919,7 +2919,7 @@ on_bookmarks_row_deleted (GtkTreeModel * model,
 	if (!gtk_tree_model_get_iter (model, &iter, path))
 		return;
 
-	uri = pluma_file_bookmarks_store_get_uri (obj->priv->bookmarks_store, &iter);
+	uri = lapiz_file_bookmarks_store_get_uri (obj->priv->bookmarks_store, &iter);
 
 	if (!uri)
 		return;
@@ -2940,7 +2940,7 @@ on_filter_mode_changed (PlumaFileBrowserStore * model,
 	GtkToggleAction * action;
 	gboolean active;
 
-	mode = pluma_file_browser_store_get_filter_mode (model);
+	mode = lapiz_file_browser_store_get_filter_mode (model);
 
 	action = GTK_TOGGLE_ACTION (gtk_action_group_get_action (obj->priv->action_group,
 	                                                         "FilterHidden"));
@@ -2960,14 +2960,14 @@ on_filter_mode_changed (PlumaFileBrowserStore * model,
 static void
 on_action_directory_next (GtkAction * action, PlumaFileBrowserWidget * obj)
 {
-	pluma_file_browser_widget_history_forward (obj);
+	lapiz_file_browser_widget_history_forward (obj);
 }
 
 static void
 on_action_directory_previous (GtkAction * action,
 			      PlumaFileBrowserWidget * obj)
 {
-	pluma_file_browser_widget_history_back (obj);
+	lapiz_file_browser_widget_history_back (obj);
 }
 
 static void
@@ -2981,7 +2981,7 @@ on_action_directory_up (GtkAction              * action,
 	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
 		return;
 
-	pluma_file_browser_store_set_virtual_root_up (PLUMA_FILE_BROWSER_STORE (model));
+	lapiz_file_browser_store_set_virtual_root_up (PLUMA_FILE_BROWSER_STORE (model));
 }
 
 static void
@@ -2996,12 +2996,12 @@ on_action_directory_new (GtkAction * action, PlumaFileBrowserWidget * obj)
 	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
 		return;
 
-	if (!pluma_file_browser_widget_get_selected_directory (obj, &parent))
+	if (!lapiz_file_browser_widget_get_selected_directory (obj, &parent))
 		return;
 
-	if (pluma_file_browser_store_new_directory
+	if (lapiz_file_browser_store_new_directory
 	    (PLUMA_FILE_BROWSER_STORE (model), &parent, &iter)) {
-		pluma_file_browser_view_start_rename (obj->priv->treeview,
+		lapiz_file_browser_view_start_rename (obj->priv->treeview,
 						      &iter);
 	}
 }
@@ -3048,12 +3048,12 @@ on_action_file_new (GtkAction * action, PlumaFileBrowserWidget * obj)
 	if (!PLUMA_IS_FILE_BROWSER_STORE (model))
 		return;
 
-	if (!pluma_file_browser_widget_get_selected_directory (obj, &parent))
+	if (!lapiz_file_browser_widget_get_selected_directory (obj, &parent))
 		return;
 
-	if (pluma_file_browser_store_new_file
+	if (lapiz_file_browser_store_new_file
 	    (PLUMA_FILE_BROWSER_STORE (model), &parent, &iter)) {
-		pluma_file_browser_view_start_rename (obj->priv->treeview,
+		lapiz_file_browser_view_start_rename (obj->priv->treeview,
 						      &iter);
 	}
 }
@@ -3080,7 +3080,7 @@ static void
 on_action_directory_refresh (GtkAction * action,
 			     PlumaFileBrowserWidget * obj)
 {
-	pluma_file_browser_widget_refresh (obj);
+	lapiz_file_browser_widget_refresh (obj);
 }
 
 static void
@@ -3112,7 +3112,7 @@ on_action_directory_open (GtkAction * action, PlumaFileBrowserWidget * obj)
 	}
 
 	if (!directory_opened) {
-		if (pluma_file_browser_widget_get_selected_directory (obj, &iter))
+		if (lapiz_file_browser_widget_get_selected_directory (obj, &iter))
 			directory_open (obj, model, &iter);
 	}
 
@@ -3153,9 +3153,9 @@ on_action_bookmark_open (GtkAction * action, PlumaFileBrowserWidget * obj)
 }
 
 void
-_pluma_file_browser_widget_register_type (GTypeModule *type_module)
+_lapiz_file_browser_widget_register_type (GTypeModule *type_module)
 {
-	pluma_file_browser_widget_register_type (type_module);
+	lapiz_file_browser_widget_register_type (type_module);
 }
 
 // ex:ts=8:noet:

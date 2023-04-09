@@ -1,1 +1,1 @@
-## This is the plugins directory for pluma. If you want to write a plugin, you have to put the plugin folder here. Each plugin folder must contain a README file having a brief description of the plugin. See the other folders for better understanding.
+## This is the plugins directory for lapiz. If you want to write a plugin, you have to put the plugin folder here. Each plugin folder must contain a README file having a brief description of the plugin. See the other folders for better understanding.

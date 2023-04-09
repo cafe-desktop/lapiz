@@ -1,6 +1,6 @@
 /*
- * pluma-taglist-plugin-parser.h
- * This file is part of pluma
+ * lapiz-taglist-plugin-parser.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$

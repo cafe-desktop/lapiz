@@ -1,6 +1,6 @@
 /*
- * pluma-commands-file.c
- * This file is part of pluma
+ * lapiz-commands-file.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -40,36 +40,36 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include "pluma-commands.h"
-#include "pluma-window.h"
-#include "pluma-window-private.h"
-#include "pluma-statusbar.h"
-#include "pluma-debug.h"
-#include "pluma-utils.h"
-#include "pluma-file-chooser-dialog.h"
-#include "dialogs/pluma-close-confirmation-dialog.h"
+#include "lapiz-commands.h"
+#include "lapiz-window.h"
+#include "lapiz-window-private.h"
+#include "lapiz-statusbar.h"
+#include "lapiz-debug.h"
+#include "lapiz-utils.h"
+#include "lapiz-file-chooser-dialog.h"
+#include "dialogs/lapiz-close-confirmation-dialog.h"
 
 
 /* Defined constants */
-#define PLUMA_OPEN_DIALOG_KEY 		"pluma-open-dialog-key"
-#define PLUMA_TAB_TO_SAVE_AS  		"pluma-tab-to-save-as"
-#define PLUMA_LIST_OF_TABS_TO_SAVE_AS   "pluma-list-of-tabs-to-save-as"
-#define PLUMA_IS_CLOSING_ALL            "pluma-is-closing-all"
-#define PLUMA_IS_QUITTING 	        "pluma-is-quitting"
-#define PLUMA_IS_CLOSING_TAB		"pluma-is-closing-tab"
-#define PLUMA_IS_QUITTING_ALL		"pluma-is-quitting-all"
+#define PLUMA_OPEN_DIALOG_KEY 		"lapiz-open-dialog-key"
+#define PLUMA_TAB_TO_SAVE_AS  		"lapiz-tab-to-save-as"
+#define PLUMA_LIST_OF_TABS_TO_SAVE_AS   "lapiz-list-of-tabs-to-save-as"
+#define PLUMA_IS_CLOSING_ALL            "lapiz-is-closing-all"
+#define PLUMA_IS_QUITTING 	        "lapiz-is-quitting"
+#define PLUMA_IS_CLOSING_TAB		"lapiz-is-closing-tab"
+#define PLUMA_IS_QUITTING_ALL		"lapiz-is-quitting-all"
 
 static void tab_state_changed_while_saving (PlumaTab    *tab,
 					    GParamSpec  *pspec,
 					    PlumaWindow *window);
 
 void
-_pluma_cmd_file_new (GtkAction   *action,
+_lapiz_cmd_file_new (GtkAction   *action,
 		     PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	pluma_window_create_tab (window, TRUE);
+	lapiz_window_create_tab (window, TRUE);
 }
 
 static PlumaTab *
@@ -84,12 +84,12 @@ get_tab_from_file (GList *docs, GFile *file)
 
 		d = PLUMA_DOCUMENT (docs->data);
 
-		l = pluma_document_get_location (d);
+		l = lapiz_document_get_location (d);
 		if (l != NULL)
 		{
 			if (g_file_equal (l, file))
 			{
-				tab = pluma_tab_get_from_document (d);
+				tab = lapiz_tab_get_from_document (d);
 				g_object_unref (l);
 				break;
 			}
@@ -132,9 +132,9 @@ load_file_list (PlumaWindow         *window,
 	GSList        *files_to_load = NULL;
 	GSList        *l;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	win_docs = pluma_window_get_documents (window);
+	win_docs = lapiz_window_get_documents (window);
 
 	/* Remove the uris corresponding to documents already open
 	 * in "window" and remove duplicates from "uris" list */
@@ -147,7 +147,7 @@ load_file_list (PlumaWindow         *window,
 			{
 				if (l == files)
 				{
-					pluma_window_set_active_tab (window, tab);
+					lapiz_window_set_active_tab (window, tab);
 					jump_to = FALSE;
 
 					if (line_pos > 0)
@@ -155,12 +155,12 @@ load_file_list (PlumaWindow         *window,
 						PlumaDocument *doc;
 						PlumaView *view;
 
-						doc = pluma_tab_get_document (tab);
-						view = pluma_tab_get_view (tab);
+						doc = lapiz_tab_get_document (tab);
+						view = lapiz_tab_get_view (tab);
 
 						/* document counts lines starting from 0 */
-						pluma_document_goto_line (doc, line_pos - 1);
-						pluma_view_scroll_to_cursor (view);
+						lapiz_document_goto_line (doc, line_pos - 1);
+						lapiz_view_scroll_to_cursor (view);
 					}
 				}
 
@@ -182,21 +182,21 @@ load_file_list (PlumaWindow         *window,
 	files_to_load = g_slist_reverse (files_to_load);
 	l = files_to_load;
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	if (tab != NULL)
 	{
 		PlumaDocument *doc;
 
-		doc = pluma_tab_get_document (tab);
+		doc = lapiz_tab_get_document (tab);
 
-		if (pluma_document_is_untouched (doc) &&
-		    (pluma_tab_get_state (tab) == PLUMA_TAB_STATE_NORMAL))
+		if (lapiz_document_is_untouched (doc) &&
+		    (lapiz_tab_get_state (tab) == PLUMA_TAB_STATE_NORMAL))
 		{
 			gchar *uri;
 
 			// FIXME: pass the GFile to tab when api is there
 			uri = g_file_get_uri (l->data);
-			_pluma_tab_load (tab,
+			_lapiz_tab_load (tab,
 					 uri,
 					 encoding,
 					 line_pos,
@@ -218,7 +218,7 @@ load_file_list (PlumaWindow         *window,
 
 		// FIXME: pass the GFile to tab when api is there
 		uri = g_file_get_uri (l->data);
-		tab = pluma_window_create_tab_from_uri (window,
+		tab = lapiz_window_create_tab_from_uri (window,
 							uri,
 							encoding,
 							line_pos,
@@ -242,10 +242,10 @@ load_file_list (PlumaWindow         *window,
 
 		g_return_val_if_fail (tab != NULL, loaded_files);
 
-		doc = pluma_tab_get_document (tab);
-		uri_for_display = pluma_document_get_uri_for_display (doc);
+		doc = lapiz_tab_get_document (tab);
+		uri_for_display = lapiz_document_get_uri_for_display (doc);
 
-		pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
 					       _("Loading file '%s'\342\200\246"),
 					       uri_for_display);
@@ -254,7 +254,7 @@ load_file_list (PlumaWindow         *window,
 	}
 	else
 	{
-		pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
 					       ngettext("Loading %d file\342\200\246",
 							"Loading %d files\342\200\246",
@@ -287,7 +287,7 @@ load_uri_list (PlumaWindow         *window,
 	{
 		gchar *uri = u->data;
 
-		if (pluma_utils_is_valid_uri (uri))
+		if (lapiz_utils_is_valid_uri (uri))
 			files = g_slist_prepend (files, g_file_new_for_uri (uri));
 		else
 			g_warning ("invalid uri: %s", uri);
@@ -303,7 +303,7 @@ load_uri_list (PlumaWindow         *window,
 }
 
 /**
- * pluma_commands_load_uri:
+ * lapiz_commands_load_uri:
  * @window:
  * @uri:
  * @encoding: (allow-none):
@@ -312,7 +312,7 @@ load_uri_list (PlumaWindow         *window,
  * Do nothing if uri does not exist
  */
 void
-pluma_commands_load_uri (PlumaWindow         *window,
+lapiz_commands_load_uri (PlumaWindow         *window,
 			 const gchar         *uri,
 			 const PlumaEncoding *encoding,
 			 gint                 line_pos)
@@ -321,9 +321,9 @@ pluma_commands_load_uri (PlumaWindow         *window,
 
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 	g_return_if_fail (uri != NULL);
-	g_return_if_fail (pluma_utils_is_valid_uri (uri));
+	g_return_if_fail (lapiz_utils_is_valid_uri (uri));
 
-	pluma_debug_message (DEBUG_COMMANDS, "Loading URI '%s'", uri);
+	lapiz_debug_message (DEBUG_COMMANDS, "Loading URI '%s'", uri);
 
 	uris = g_slist_prepend (uris, (gchar *)uri);
 
@@ -333,7 +333,7 @@ pluma_commands_load_uri (PlumaWindow         *window,
 }
 
 /**
- * pluma_commands_load_uris:
+ * lapiz_commands_load_uris:
  * @window:
  * @uris:
  * @encoding:
@@ -344,7 +344,7 @@ pluma_commands_load_uri (PlumaWindow         *window,
  * Returns:
  */
 gint
-pluma_commands_load_uris (PlumaWindow         *window,
+lapiz_commands_load_uris (PlumaWindow         *window,
 			  const GSList        *uris,
 			  const PlumaEncoding *encoding,
 			  gint                 line_pos)
@@ -352,7 +352,7 @@ pluma_commands_load_uris (PlumaWindow         *window,
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), 0);
 	g_return_val_if_fail ((uris != NULL) && (uris->data != NULL), 0);
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	return load_uri_list (window, uris, encoding, line_pos, FALSE);
 }
@@ -361,7 +361,7 @@ pluma_commands_load_uris (PlumaWindow         *window,
  * This should become public once we convert all api to GFile:
  */
 static gint
-pluma_commands_load_files (PlumaWindow         *window,
+lapiz_commands_load_files (PlumaWindow         *window,
 			   GSList              *files,
 			   const PlumaEncoding *encoding,
 			   gint                 line_pos)
@@ -369,7 +369,7 @@ pluma_commands_load_files (PlumaWindow         *window,
 	g_return_val_if_fail (PLUMA_IS_WINDOW (window), 0);
 	g_return_val_if_fail ((files != NULL) && (files->data != NULL), 0);
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	return load_file_list (window, files, encoding, line_pos, FALSE);
 }
@@ -380,12 +380,12 @@ pluma_commands_load_files (PlumaWindow         *window,
  * titled document.
  */
 gint
-_pluma_cmd_load_files_from_prompt (PlumaWindow         *window,
+_lapiz_cmd_load_files_from_prompt (PlumaWindow         *window,
 				   GSList              *files,
 				   const PlumaEncoding *encoding,
 				   gint                 line_pos)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	return load_file_list (window, files, encoding, line_pos, TRUE);
 }
@@ -394,7 +394,7 @@ static void
 open_dialog_destroyed (PlumaWindow            *window,
 		       PlumaFileChooserDialog *dialog)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	g_object_set_data (G_OBJECT (window),
 			   PLUMA_OPEN_DIALOG_KEY,
@@ -409,7 +409,7 @@ open_dialog_response_cb (PlumaFileChooserDialog *dialog,
 	GSList *files;
 	const PlumaEncoding *encoding;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	if (response_id != GTK_RESPONSE_OK)
 	{
@@ -421,14 +421,14 @@ open_dialog_response_cb (PlumaFileChooserDialog *dialog,
 	files = gtk_file_chooser_get_files (GTK_FILE_CHOOSER (dialog));
 	g_return_if_fail (files != NULL);
 
-	encoding = pluma_file_chooser_dialog_get_encoding (dialog);
+	encoding = lapiz_file_chooser_dialog_get_encoding (dialog);
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
 	/* Remember the folder we navigated to */
-	 _pluma_window_set_default_location (window, files->data);
+	 _lapiz_window_set_default_location (window, files->data);
 
-	pluma_commands_load_files (window,
+	lapiz_commands_load_files (window,
 				   files,
 				   encoding,
 				   0);
@@ -438,7 +438,7 @@ open_dialog_response_cb (PlumaFileChooserDialog *dialog,
 }
 
 void
-_pluma_cmd_file_open (GtkAction   *action,
+_lapiz_cmd_file_open (GtkAction   *action,
 		      PlumaWindow *window)
 {
 	GtkWidget *open_dialog;
@@ -446,7 +446,7 @@ _pluma_cmd_file_open (GtkAction   *action,
 	PlumaDocument *doc;
 	GFile *default_path = NULL;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	data = g_object_get_data (G_OBJECT (window), PLUMA_OPEN_DIALOG_KEY);
 
@@ -460,7 +460,7 @@ _pluma_cmd_file_open (GtkAction   *action,
 	}
 
 	/* Translators: "Open Files" is the title of the file chooser window */
-	open_dialog = pluma_file_chooser_dialog_new (_("Open Files"),
+	open_dialog = lapiz_file_chooser_dialog_new (_("Open Files"),
 						     GTK_WINDOW (window),
 						     GTK_FILE_CHOOSER_ACTION_OPEN,
 						     NULL,
@@ -477,12 +477,12 @@ _pluma_cmd_file_open (GtkAction   *action,
 			   window);
 
 	/* Set the curret folder uri */
-	doc = pluma_window_get_active_document (window);
+	doc = lapiz_window_get_active_document (window);
 	if (doc != NULL)
 	{
 		GFile *file;
 
-		file = pluma_document_get_location (doc);
+		file = lapiz_document_get_location (doc);
 
 		if (file != NULL)
 		{
@@ -492,7 +492,7 @@ _pluma_cmd_file_open (GtkAction   *action,
 	}
 
 	if (default_path == NULL)
-		default_path = _pluma_window_get_default_location (window);
+		default_path = _lapiz_window_get_default_location (window);
 
 	if (default_path != NULL)
 	{
@@ -523,7 +523,7 @@ is_read_only (GFile *location)
 	gboolean ret = TRUE; /* default to read only */
 	GFileInfo *info;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	info = g_file_query_info (location,
 				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
@@ -556,7 +556,7 @@ replace_read_only_file (GtkWindow *parent, GFile *file)
 	gchar *parse_name;
 	gchar *name_for_display;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	parse_name = g_file_get_parse_name (file);
 
@@ -564,7 +564,7 @@ replace_read_only_file (GtkWindow *parent, GFile *file)
 	 * though the dialog uses wrapped text, if the name doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	name_for_display = pluma_utils_str_middle_truncate (parse_name, 50);
+	name_for_display = lapiz_utils_str_middle_truncate (parse_name, 50);
 	g_free (parse_name);
 
 	dialog = gtk_message_dialog_new (parent,
@@ -579,12 +579,12 @@ replace_read_only_file (GtkWindow *parent, GFile *file)
 						  _("Do you want to try to replace it "
 						    "with the one you are saving?"));
 
-	pluma_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (GTK_DIALOG (dialog),
 				 _("_Cancel"),
 				 "process-stop",
 				 GTK_RESPONSE_CANCEL);
 
-	pluma_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (GTK_DIALOG (dialog),
 				 _("_Replace"),
 			  	 "document-save-as",
 			  	 GTK_RESPONSE_YES);
@@ -613,7 +613,7 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 	GSList *tabs_to_save_as;
 	PlumaDocumentNewlineType newline_type;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	tab = PLUMA_TAB (g_object_get_data (G_OBJECT (dialog),
 					    PLUMA_TAB_TO_SAVE_AS));
@@ -628,8 +628,8 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 	file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
 	g_return_if_fail (file != NULL);
 
-	encoding = pluma_file_chooser_dialog_get_encoding (dialog);
-	newline_type = pluma_file_chooser_dialog_get_newline_type (dialog);
+	encoding = lapiz_file_chooser_dialog_get_encoding (dialog);
+	newline_type = lapiz_file_chooser_dialog_get_newline_type (dialog);
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
@@ -639,12 +639,12 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 		gchar *parse_name;
 		gchar *uri;
 
-		doc = pluma_tab_get_document (tab);
+		doc = lapiz_tab_get_document (tab);
 		g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
 
 		parse_name = g_file_get_parse_name (file);
 
-		pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 					        window->priv->generic_message_cid,
 					       _("Saving file '%s'\342\200\246"),
 					       parse_name);
@@ -653,11 +653,11 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 
 		/* let's remember the dir we navigated too,
 		 * even if the saving fails... */
-		 _pluma_window_set_default_location (window, file);
+		 _lapiz_window_set_default_location (window, file);
 
 		// FIXME: pass the GFile to tab when api is there
 		uri = g_file_get_uri (file);
-		_pluma_tab_save_as (tab, uri, encoding, newline_type);
+		_lapiz_tab_save_as (tab, uri, encoding, newline_type);
 		g_free (uri);
 	}
 
@@ -700,7 +700,7 @@ save_next_tab:
 					  window);
 		}
 
-		pluma_window_set_active_tab (window, tab);
+		lapiz_window_set_active_tab (window, tab);
 		file_save_as (tab, window);
 	}
 }
@@ -713,7 +713,7 @@ confirm_overwrite_callback (GtkFileChooser *dialog,
 	GFile *file;
 	GtkFileChooserConfirmation res;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	uri = gtk_file_chooser_get_uri (dialog);
 	file = g_file_new_for_uri (uri);
@@ -752,9 +752,9 @@ file_save_as (PlumaTab    *tab,
 	g_return_if_fail (PLUMA_IS_TAB (tab));
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	save_dialog = pluma_file_chooser_dialog_new (_("Save As\342\200\246"),
+	save_dialog = lapiz_file_chooser_dialog_new (_("Save As\342\200\246"),
 						     GTK_WINDOW (window),
 						     GTK_FILE_CHOOSER_ACTION_SAVE,
 						     NULL,
@@ -769,7 +769,7 @@ file_save_as (PlumaTab    *tab,
 			  G_CALLBACK (confirm_overwrite_callback),
 			  NULL);
 
-	wg = pluma_window_get_group (window);
+	wg = lapiz_window_get_group (window);
 
 	gtk_window_group_add_window (wg,
 				     GTK_WINDOW (save_dialog));
@@ -778,8 +778,8 @@ file_save_as (PlumaTab    *tab,
 	gtk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
 
 	/* Set the suggested file name */
-	doc = pluma_tab_get_document (tab);
-	file = pluma_document_get_location (doc);
+	doc = lapiz_tab_get_document (tab);
+	file = lapiz_document_get_location (doc);
 
 	if (file != NULL)
 	{
@@ -796,8 +796,8 @@ file_save_as (PlumaTab    *tab,
 		GFile *default_path;
 		gchar *docname;
 
-		default_path = _pluma_window_get_default_location (window);
-		docname = pluma_document_get_short_name_for_display (doc);
+		default_path = _lapiz_window_get_default_location (window);
+		docname = lapiz_document_get_short_name_for_display (doc);
 
 		if (default_path != NULL)
 		{
@@ -818,15 +818,15 @@ file_save_as (PlumaTab    *tab,
 	}
 
 	/* Set suggested encoding */
-	encoding = pluma_document_get_encoding (doc);
+	encoding = lapiz_document_get_encoding (doc);
 	g_return_if_fail (encoding != NULL);
 
-	newline_type = pluma_document_get_newline_type (doc);
+	newline_type = lapiz_document_get_newline_type (doc);
 
-	pluma_file_chooser_dialog_set_encoding (PLUMA_FILE_CHOOSER_DIALOG (save_dialog),
+	lapiz_file_chooser_dialog_set_encoding (PLUMA_FILE_CHOOSER_DIALOG (save_dialog),
 						encoding);
 
-	pluma_file_chooser_dialog_set_newline_type (PLUMA_FILE_CHOOSER_DIALOG (save_dialog),
+	lapiz_file_chooser_dialog_set_newline_type (PLUMA_FILE_CHOOSER_DIALOG (save_dialog),
 	                                            newline_type);
 
 	g_object_set_data (G_OBJECT (save_dialog),
@@ -848,44 +848,44 @@ file_save (PlumaTab    *tab,
 	PlumaDocument *doc;
 	gchar *uri_for_display;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (PLUMA_IS_TAB (tab));
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 
-	doc = pluma_tab_get_document (tab);
+	doc = lapiz_tab_get_document (tab);
 	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
 
-	if (pluma_document_is_untitled (doc) ||
-	    pluma_document_get_readonly (doc))
+	if (lapiz_document_is_untitled (doc) ||
+	    lapiz_document_get_readonly (doc))
 	{
-		pluma_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
+		lapiz_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
 
 		file_save_as (tab, window);
 
 		return;
 	}
 
-	uri_for_display = pluma_document_get_uri_for_display (doc);
-	pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+	uri_for_display = lapiz_document_get_uri_for_display (doc);
+	lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 				        window->priv->generic_message_cid,
 				       _("Saving file '%s'\342\200\246"),
 				       uri_for_display);
 
 	g_free (uri_for_display);
 
-	_pluma_tab_save (tab);
+	_lapiz_tab_save (tab);
 }
 
 void
-_pluma_cmd_file_save (GtkAction   *action,
+_lapiz_cmd_file_save (GtkAction   *action,
 		     PlumaWindow *window)
 {
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	if (tab == NULL)
 		return;
 
@@ -893,14 +893,14 @@ _pluma_cmd_file_save (GtkAction   *action,
 }
 
 void
-_pluma_cmd_file_save_as (GtkAction   *action,
+_lapiz_cmd_file_save_as (GtkAction   *action,
 			PlumaWindow *window)
 {
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	if (tab == NULL)
 		return;
 
@@ -915,7 +915,7 @@ document_needs_saving (PlumaDocument *doc)
 
 	/* we check if it was deleted only for local files
 	 * since for remote files it may hang */
-	if (pluma_document_is_local (doc) && pluma_document_get_deleted (doc))
+	if (lapiz_document_is_local (doc) && lapiz_document_get_deleted (doc))
 		return TRUE;
 
 	return FALSE;
@@ -925,15 +925,15 @@ document_needs_saving (PlumaDocument *doc)
  * The docs in the list must belong to the same PlumaWindow.
  */
 void
-_pluma_cmd_file_save_documents_list (PlumaWindow *window,
+_lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 				     GList       *docs)
 {
 	GList *l;
 	GSList *tabs_to_save_as = NULL;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (!(pluma_window_get_state (window) &
+	g_return_if_fail (!(lapiz_window_get_state (window) &
 			    (PLUMA_WINDOW_STATE_PRINTING |
 			     PLUMA_WINDOW_STATE_SAVING_SESSION)));
 
@@ -947,8 +947,8 @@ _pluma_cmd_file_save_documents_list (PlumaWindow *window,
 		g_return_if_fail (PLUMA_IS_DOCUMENT (l->data));
 
 		doc = PLUMA_DOCUMENT (l->data);
-		t = pluma_tab_get_from_document (doc);
-		state = pluma_tab_get_state (t);
+		t = lapiz_tab_get_from_document (doc);
+		state = lapiz_tab_get_state (t);
 
 		g_return_if_fail (state != PLUMA_TAB_STATE_PRINTING);
 		g_return_if_fail (state != PLUMA_TAB_STATE_PRINT_PREVIEWING);
@@ -959,9 +959,9 @@ _pluma_cmd_file_save_documents_list (PlumaWindow *window,
 		    (state == PLUMA_TAB_STATE_GENERIC_NOT_EDITABLE))
 		{
 			/* FIXME: manage the case of local readonly files owned by the
-			   user is running pluma - Paolo (Dec. 8, 2005) */
-			if (pluma_document_is_untitled (doc) ||
-			    pluma_document_get_readonly (doc))
+			   user is running lapiz - Paolo (Dec. 8, 2005) */
+			if (lapiz_document_is_untitled (doc) ||
+			    lapiz_document_get_readonly (doc))
 			{
 				if (document_needs_saving (doc))
 			     	{
@@ -999,8 +999,8 @@ _pluma_cmd_file_save_documents_list (PlumaWindow *window,
 
 			gchar *uri_for_display;
 
-			uri_for_display = pluma_document_get_uri_for_display (doc);
-			pluma_debug_message (DEBUG_COMMANDS,
+			uri_for_display = lapiz_document_get_uri_for_display (doc);
+			lapiz_debug_message (DEBUG_COMMANDS,
 					     "File '%s' not saved. State: %d",
 					     uri_for_display,
 					     state);
@@ -1025,36 +1025,36 @@ _pluma_cmd_file_save_documents_list (PlumaWindow *window,
 
 		tab = PLUMA_TAB (tabs_to_save_as->data);
 
-		pluma_window_set_active_tab (window, tab);
+		lapiz_window_set_active_tab (window, tab);
 		file_save_as (tab, window);
 	}
 }
 
 void
-pluma_commands_save_all_documents (PlumaWindow *window)
+lapiz_commands_save_all_documents (PlumaWindow *window)
 {
 	GList *docs;
 
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	docs = pluma_window_get_documents (window);
+	docs = lapiz_window_get_documents (window);
 
-	_pluma_cmd_file_save_documents_list (window, docs);
+	_lapiz_cmd_file_save_documents_list (window, docs);
 
 	g_list_free (docs);
 }
 
 void
-_pluma_cmd_file_save_all (GtkAction   *action,
+_lapiz_cmd_file_save_all (GtkAction   *action,
 			 PlumaWindow *window)
 {
-	pluma_commands_save_all_documents (window);
+	lapiz_commands_save_all_documents (window);
 }
 
 void
-pluma_commands_save_document (PlumaWindow   *window,
+lapiz_commands_save_document (PlumaWindow   *window,
                               PlumaDocument *document)
 {
 	PlumaTab *tab;
@@ -1062,9 +1062,9 @@ pluma_commands_save_document (PlumaWindow   *window,
 	g_return_if_fail (PLUMA_IS_WINDOW (window));
 	g_return_if_fail (PLUMA_IS_DOCUMENT (document));
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_tab_get_from_document (document);
+	tab = lapiz_tab_get_from_document (document);
 	file_save (tab, window);
 }
 
@@ -1076,19 +1076,19 @@ do_revert (PlumaWindow *window,
 	PlumaDocument *doc;
 	gchar *docname;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	doc = pluma_tab_get_document (tab);
-	docname = pluma_document_get_short_name_for_display (doc);
+	doc = lapiz_tab_get_document (tab);
+	docname = lapiz_document_get_short_name_for_display (doc);
 
-	pluma_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+	lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
 				        window->priv->generic_message_cid,
 				       _("Reverting the document '%s'\342\200\246"),
 				       docname);
 
 	g_free (docname);
 
-	_pluma_tab_revert (tab);
+	_lapiz_tab_revert (tab);
 }
 
 static void
@@ -1098,12 +1098,12 @@ revert_dialog_response_cb (GtkDialog   *dialog,
 {
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	/* FIXME: we are relying on the fact that the dialog is
 	   modal so the active tab can't be changed...
 	   not very nice - Paolo (Oct 11, 2005) */
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	if (tab == NULL)
 		return;
 
@@ -1125,14 +1125,14 @@ revert_dialog (PlumaWindow   *window,
 	gchar *secondary_msg;
 	glong seconds;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	docname = pluma_document_get_short_name_for_display (doc);
+	docname = lapiz_document_get_short_name_for_display (doc);
 	primary_msg = g_strdup_printf (_("Revert unsaved changes to document '%s'?"),
 	                               docname);
 	g_free (docname);
 
-	seconds = MAX (1, _pluma_document_get_seconds_since_last_save_or_load (doc));
+	seconds = MAX (1, _lapiz_document_get_seconds_since_last_save_or_load (doc));
 
 	if (seconds < 55)
 	{
@@ -1219,12 +1219,12 @@ revert_dialog (PlumaWindow   *window,
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-	pluma_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (GTK_DIALOG (dialog),
 				 _("_Cancel"),
 				 "process-stop",
 				 GTK_RESPONSE_CANCEL);
 
-	pluma_dialog_add_button (GTK_DIALOG (dialog),
+	lapiz_dialog_add_button (GTK_DIALOG (dialog),
 				 _("_Revert"),
 				 "document-revert",
 				 GTK_RESPONSE_OK);
@@ -1236,7 +1236,7 @@ revert_dialog (PlumaWindow   *window,
 }
 
 void
-_pluma_cmd_file_revert (GtkAction   *action,
+_lapiz_cmd_file_revert (GtkAction   *action,
 		       PlumaWindow *window)
 {
 	PlumaTab       *tab;
@@ -1244,27 +1244,27 @@ _pluma_cmd_file_revert (GtkAction   *action,
 	GtkWidget      *dialog;
 	GtkWindowGroup *wg;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_window_get_active_tab (window);
+	tab = lapiz_window_get_active_tab (window);
 	g_return_if_fail (tab != NULL);
 
 	/* If we are already displaying a notification
 	 * reverting will drop local modifications, do
 	 * not bug the user further */
-	if (pluma_tab_get_state (tab) == PLUMA_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+	if (lapiz_tab_get_state (tab) == PLUMA_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
 	{
 		do_revert (window, tab);
 		return;
 	}
 
-	doc = pluma_tab_get_document (tab);
+	doc = lapiz_tab_get_document (tab);
 	g_return_if_fail (doc != NULL);
-	g_return_if_fail (!pluma_document_is_untitled (doc));
+	g_return_if_fail (!lapiz_document_is_untitled (doc));
 
 	dialog = revert_dialog (window, doc);
 
-	wg = pluma_window_get_group (window);
+	wg = lapiz_window_get_group (window);
 
 	gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
 
@@ -1285,9 +1285,9 @@ really_close_tab (PlumaTab *tab)
 	GtkWidget *toplevel;
 	PlumaWindow *window;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_val_if_fail (pluma_tab_get_state (tab) == PLUMA_TAB_STATE_CLOSING,
+	g_return_val_if_fail (lapiz_tab_get_state (tab) == PLUMA_TAB_STATE_CLOSING,
 			      FALSE);
 
 	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
@@ -1295,9 +1295,9 @@ really_close_tab (PlumaTab *tab)
 
 	window = PLUMA_WINDOW (toplevel);
 
-	pluma_window_close_tab (window, tab);
+	lapiz_window_close_tab (window, tab);
 
-	if (pluma_window_get_active_tab (window) == NULL)
+	if (lapiz_window_get_active_tab (window) == NULL)
 	{
 		gboolean is_quitting;
 
@@ -1318,9 +1318,9 @@ tab_state_changed_while_saving (PlumaTab    *tab,
 {
 	PlumaTabState ts;
 
-	ts = pluma_tab_get_state (tab);
+	ts = lapiz_tab_get_state (tab);
 
-	pluma_debug_message (DEBUG_COMMANDS, "State while saving: %d\n", ts);
+	lapiz_debug_message (DEBUG_COMMANDS, "State while saving: %d\n", ts);
 
 	/* When the state become NORMAL, it means the saving operation is
 	   finished */
@@ -1332,7 +1332,7 @@ tab_state_changed_while_saving (PlumaTab    *tab,
 						      G_CALLBACK (tab_state_changed_while_saving),
 					      	      window);
 
-		doc = pluma_tab_get_document (tab);
+		doc = lapiz_tab_get_document (tab);
 		g_return_if_fail (doc != NULL);
 
 		/* If the saving operation failed or was interrupted, then the
@@ -1343,7 +1343,7 @@ tab_state_changed_while_saving (PlumaTab    *tab,
 		/* Close the document only if it has been succesfully saved.
 		   Tab state is set to CLOSING (it is a state without exiting
 		   transitions) and the tab is closed in a idle handler */
-		_pluma_tab_mark_for_closing (tab);
+		_lapiz_tab_mark_for_closing (tab);
 
 		g_idle_add_full (G_PRIORITY_HIGH_IDLE,
 				 (GSourceFunc)really_close_tab,
@@ -1356,7 +1356,7 @@ static void
 save_and_close (PlumaTab    *tab,
 		PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	/* Trace tab state changes */
 	g_signal_connect (tab,
@@ -1371,7 +1371,7 @@ static void
 save_as_and_close (PlumaTab    *tab,
 		   PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	g_object_set_data (G_OBJECT (tab),
 			   PLUMA_IS_CLOSING_TAB,
@@ -1383,7 +1383,7 @@ save_as_and_close (PlumaTab    *tab,
 			  G_CALLBACK (tab_state_changed_while_saving),
 			  window);
 
-	pluma_window_set_active_tab (window, tab);
+	lapiz_window_set_active_tab (window, tab);
 	file_save_as (tab, window);
 }
 
@@ -1398,12 +1398,12 @@ save_and_close_all_documents (const GList  *docs,
 	GSList *tabs_to_save_and_close;
 	GList  *tabs_to_close;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (!(pluma_window_get_state (window) & PLUMA_WINDOW_STATE_PRINTING));
+	g_return_if_fail (!(lapiz_window_get_state (window) & PLUMA_WINDOW_STATE_PRINTING));
 
 	tabs = gtk_container_get_children (
-			GTK_CONTAINER (_pluma_window_get_notebook (window)));
+			GTK_CONTAINER (_lapiz_window_get_notebook (window)));
 
 	tabs_to_save_as = NULL;
 	tabs_to_save_and_close = NULL;
@@ -1418,8 +1418,8 @@ save_and_close_all_documents (const GList  *docs,
 
 		t = PLUMA_TAB (l->data);
 
-		state = pluma_tab_get_state (t);
-		doc = pluma_tab_get_document (t);
+		state = lapiz_tab_get_state (t);
+		doc = lapiz_tab_get_document (t);
 
 		/* If the state is: ([*] invalid states)
 		   - PLUMA_TAB_STATE_NORMAL: close (and if needed save)
@@ -1463,9 +1463,9 @@ save_and_close_all_documents (const GList  *docs,
 				g_return_if_fail (document_needs_saving (doc));
 
 				/* FIXME: manage the case of local readonly files owned by the
-				   user is running pluma - Paolo (Dec. 8, 2005) */
-				if (pluma_document_is_untitled (doc) ||
-				    pluma_document_get_readonly (doc))
+				   user is running lapiz - Paolo (Dec. 8, 2005) */
+				if (lapiz_document_is_untitled (doc) ||
+				    lapiz_document_get_readonly (doc))
 				{
 					g_object_set_data (G_OBJECT (t),
 							   PLUMA_IS_CLOSING_TAB,
@@ -1494,7 +1494,7 @@ save_and_close_all_documents (const GList  *docs,
 	g_list_free (tabs);
 
 	/* Close all tabs to close (in a sync way) */
-	pluma_window_close_tabs (window, tabs_to_close);
+	lapiz_window_close_tabs (window, tabs_to_close);
 	g_list_free (tabs_to_close);
 
 	/* Save and close all the files in tabs_to_save_and_close */
@@ -1533,11 +1533,11 @@ save_and_close_document (const GList  *docs,
 {
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (docs->next == NULL);
 
-	tab = pluma_tab_get_from_document (PLUMA_DOCUMENT (docs->data));
+	tab = lapiz_tab_get_from_document (PLUMA_DOCUMENT (docs->data));
 	g_return_if_fail (tab != NULL);
 
 	save_and_close (tab, window);
@@ -1548,10 +1548,10 @@ close_all_tabs (PlumaWindow *window)
 {
 	gboolean is_quitting;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	/* There is no document to save -> close all tabs */
-	pluma_window_close_all_tabs (window);
+	lapiz_window_close_all_tabs (window);
 
 	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
 							      PLUMA_IS_QUITTING));
@@ -1568,12 +1568,12 @@ close_document (PlumaWindow   *window,
 {
 	PlumaTab *tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = pluma_tab_get_from_document (doc);
+	tab = lapiz_tab_get_from_document (doc);
 	g_return_if_fail (tab != NULL);
 
-	pluma_window_close_tab (window, tab);
+	lapiz_window_close_tab (window, tab);
 }
 
 static void
@@ -1584,7 +1584,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 	GList *selected_documents;
 	gboolean is_closing_all;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	is_closing_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
 					    			 PLUMA_IS_CLOSING_ALL));
@@ -1594,14 +1594,14 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 	switch (response_id)
 	{
 		case GTK_RESPONSE_YES: /* Save and Close */
-			selected_documents = pluma_close_confirmation_dialog_get_selected_documents (dlg);
+			selected_documents = lapiz_close_confirmation_dialog_get_selected_documents (dlg);
 			if (selected_documents == NULL)
 			{
 				if (is_closing_all)
 				{
 					/* There is no document to save -> close all tabs */
 					/* We call gtk_widget_destroy before close_all_tabs
-					 * because close_all_tabs could destroy the pluma window */
+					 * because close_all_tabs could destroy the lapiz window */
 					gtk_widget_destroy (GTK_WIDGET (dlg));
 
 					close_all_tabs (window);
@@ -1633,7 +1633,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 			if (is_closing_all)
 			{
 				/* We call gtk_widget_destroy before close_all_tabs
-				 * because close_all_tabs could destroy the pluma window */
+				 * because close_all_tabs could destroy the lapiz window */
 				gtk_widget_destroy (GTK_WIDGET (dlg));
 
 				close_all_tabs (window);
@@ -1644,7 +1644,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 			{
 				const GList *unsaved_documents;
 
-				unsaved_documents = pluma_close_confirmation_dialog_get_unsaved_documents (dlg);
+				unsaved_documents = lapiz_close_confirmation_dialog_get_unsaved_documents (dlg);
 				g_return_if_fail (unsaved_documents->next == NULL);
 
 				close_document (window,
@@ -1672,15 +1672,15 @@ tab_can_close (PlumaTab  *tab,
 {
 	PlumaDocument *doc;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	doc = pluma_tab_get_document (tab);
+	doc = lapiz_tab_get_document (tab);
 
-	if (!_pluma_tab_can_close (tab))
+	if (!_lapiz_tab_can_close (tab))
 	{
 		GtkWidget     *dlg;
 
-		dlg = pluma_close_confirmation_dialog_new_single (
+		dlg = lapiz_close_confirmation_dialog_new_single (
 						window,
 						doc,
 						FALSE);
@@ -1700,15 +1700,15 @@ tab_can_close (PlumaTab  *tab,
 
 /* CHECK: we probably need this one public for plugins...
  * maybe even a _list variant. Or maybe it's better make
- * pluma_window_close_tab always run the confirm dialog?
+ * lapiz_window_close_tab always run the confirm dialog?
  * we should not allow closing a tab without resetting the
  * PLUMA_IS_CLOSING_ALL flag!
  */
 void
-_pluma_cmd_file_close_tab (PlumaTab    *tab,
+_lapiz_cmd_file_close_tab (PlumaTab    *tab,
 			   PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (GTK_WIDGET (window) == gtk_widget_get_toplevel (GTK_WIDGET (tab)));
 
@@ -1726,25 +1726,25 @@ _pluma_cmd_file_close_tab (PlumaTab    *tab,
 
 
 	if (tab_can_close (tab, GTK_WINDOW (window)))
-		pluma_window_close_tab (window, tab);
+		lapiz_window_close_tab (window, tab);
 }
 
 void
-_pluma_cmd_file_close (GtkAction   *action,
+_lapiz_cmd_file_close (GtkAction   *action,
 		      PlumaWindow *window)
 {
 	PlumaTab *active_tab;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	active_tab = pluma_window_get_active_tab (window);
+	active_tab = lapiz_window_get_active_tab (window);
 
 	if (active_tab == NULL)
 	{
 		return;
 	}
 
-	_pluma_cmd_file_close_tab (active_tab, window);
+	_lapiz_cmd_file_close_tab (active_tab, window);
 }
 
 /* Close all tabs */
@@ -1755,9 +1755,9 @@ file_close_all (PlumaWindow *window,
 	GList     *unsaved_docs;
 	GtkWidget *dlg;
 
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (!(pluma_window_get_state (window) &
+	g_return_if_fail (!(lapiz_window_get_state (window) &
 	                    (PLUMA_WINDOW_STATE_SAVING |
 	                     PLUMA_WINDOW_STATE_PRINTING |
 	                     PLUMA_WINDOW_STATE_SAVING_SESSION)));
@@ -1770,12 +1770,12 @@ file_close_all (PlumaWindow *window,
 			   PLUMA_IS_QUITTING,
 			   GBOOLEAN_TO_POINTER (is_quitting));
 
-	unsaved_docs = pluma_window_get_unsaved_documents (window);
+	unsaved_docs = lapiz_window_get_unsaved_documents (window);
 
 	if (unsaved_docs == NULL)
 	{
 		/* There is no document to save -> close all tabs */
-		pluma_window_close_all_tabs (window);
+		lapiz_window_close_all_tabs (window);
 
 		if (is_quitting)
 			gtk_widget_destroy (GTK_WIDGET (window));
@@ -1791,19 +1791,19 @@ file_close_all (PlumaWindow *window,
 
 		doc = PLUMA_DOCUMENT (unsaved_docs->data);
 
-		tab = pluma_tab_get_from_document (doc);
+		tab = lapiz_tab_get_from_document (doc);
 		g_return_if_fail (tab != NULL);
 
-		pluma_window_set_active_tab (window, tab);
+		lapiz_window_set_active_tab (window, tab);
 
-		dlg = pluma_close_confirmation_dialog_new_single (
+		dlg = lapiz_close_confirmation_dialog_new_single (
 						GTK_WINDOW (window),
 						doc,
 						FALSE);
 	}
 	else
 	{
-		dlg = pluma_close_confirmation_dialog_new (GTK_WINDOW (window),
+		dlg = lapiz_close_confirmation_dialog_new (GTK_WINDOW (window),
 							   unsaved_docs,
 							   FALSE);
 	}
@@ -1819,12 +1819,12 @@ file_close_all (PlumaWindow *window,
 }
 
 void
-_pluma_cmd_file_close_all (GtkAction   *action,
+_lapiz_cmd_file_close_all (GtkAction   *action,
 			  PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (!(pluma_window_get_state (window) &
+	g_return_if_fail (!(lapiz_window_get_state (window) &
 	                    (PLUMA_WINDOW_STATE_SAVING |
 	                    PLUMA_WINDOW_STATE_PRINTING |
 	                    PLUMA_WINDOW_STATE_SAVING_SESSION)));
@@ -1833,12 +1833,12 @@ _pluma_cmd_file_close_all (GtkAction   *action,
 }
 
 void
-_pluma_cmd_file_quit (GtkAction   *action,
+_lapiz_cmd_file_quit (GtkAction   *action,
 		     PlumaWindow *window)
 {
-	pluma_debug (DEBUG_COMMANDS);
+	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (!(pluma_window_get_state (window) &
+	g_return_if_fail (!(lapiz_window_get_state (window) &
 	                    (PLUMA_WINDOW_STATE_SAVING |
 	                     PLUMA_WINDOW_STATE_PRINTING |
 	                     PLUMA_WINDOW_STATE_SAVING_SESSION)));

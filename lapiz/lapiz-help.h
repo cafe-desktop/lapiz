@@ -1,6 +1,6 @@
 /*
- * pluma-help.h
- * This file is part of pluma
+ * lapiz-help.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -35,8 +35,8 @@
 
 G_BEGIN_DECLS
 
-gboolean	pluma_help_display (GtkWindow   *parent,
-				    const gchar *name, /* "pluma" if NULL */
+gboolean	lapiz_help_display (GtkWindow   *parent,
+				    const gchar *name, /* "lapiz" if NULL */
 				    const gchar *link_id);
 
 G_END_DECLS

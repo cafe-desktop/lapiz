@@ -1,28 +1,28 @@
 /*
  * document-output-stream.c
- * This file is part of pluma
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Ignacio Casal Quinteiro
  *
- * pluma is free software; you can redistribute it and/or modify
+ * lapiz is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * pluma is distributed in the hope that it will be useful,
+ * lapiz is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with pluma; if not, write to the Free Software
+ * along with lapiz; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
 
-#include "pluma-document-output-stream.h"
-#include "pluma-prefs-manager-app.h"
+#include "lapiz-document-output-stream.h"
+#include "lapiz-prefs-manager-app.h"
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <glib.h>
@@ -42,8 +42,8 @@ test_consecutive_write (const gchar *inbuf,
 	gchar *b;
 	PlumaDocumentNewlineType type;
 
-	doc = pluma_document_new ();
-	out = pluma_document_output_stream_new (doc);
+	doc = lapiz_document_new ();
+	out = lapiz_document_output_stream_new (doc);
 
 	n = 0;
 
@@ -65,7 +65,7 @@ test_consecutive_write (const gchar *inbuf,
 	g_assert_cmpstr (inbuf, ==, b);
 	g_free (b);
 
-	type = pluma_document_output_stream_detect_newline_type (PLUMA_DOCUMENT_OUTPUT_STREAM (out));
+	type = lapiz_document_output_stream_detect_newline_type (PLUMA_DOCUMENT_OUTPUT_STREAM (out));
 	g_assert (type == newline_type);
 
 	g_output_stream_close (out, NULL, &err);
@@ -125,7 +125,7 @@ int main (int   argc,
 {
 	g_test_init (&argc, &argv, NULL);
 
-	pluma_prefs_manager_app_init ();
+	lapiz_prefs_manager_app_init ();
 
 	g_test_add_func ("/document-output-stream/empty", test_empty);
 

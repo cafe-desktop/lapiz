@@ -16,22 +16,22 @@ echo_padded ()
 if (which gsettings >/dev/null)
 then
 	echo "GSettings configuration dump:"
-	gsettings list-recursively org.mate.pluma
+	gsettings list-recursively org.mate.lapiz
 	echo
 fi
 
 echo "Active plugins:"
-gsettings get org.mate.pluma active-plugins 				\
+gsettings get org.mate.lapiz active-plugins 				\
 	| sed -r -e 's/^\[(.*)\]$/\1/' -e 's/, /\n/g'			\
 	| sed -e 's/^.*$/  - \0/'
 echo
 
 # Manually installed plugins (in $HOME)
-if [ -d $HOME/.config/pluma/plugins ]
+if [ -d $HOME/.config/lapiz/plugins ]
 then
 	echo "Plugins in \$HOME:"
-	ls $HOME/.config/pluma/plugins/*.pluma-plugin			\
-		| sed -r -e 's#.*/([^/]*)\.pluma-plugin$#  - \1#'
+	ls $HOME/.config/lapiz/plugins/*.lapiz-plugin			\
+		| sed -r -e 's#.*/([^/]*)\.lapiz-plugin$#  - \1#'
 else
 	echo "No plugin installed in \$HOME."
 fi

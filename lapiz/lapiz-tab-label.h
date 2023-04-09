@@ -1,6 +1,6 @@
 /*
- * pluma-tab-label.h
- * This file is part of pluma
+ * lapiz-tab-label.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2010 - Paolo Borelli
  *
@@ -24,11 +24,11 @@
 #define __PLUMA_TAB_LABEL_H__
 
 #include <gtk/gtk.h>
-#include <pluma/pluma-tab.h>
+#include <lapiz/lapiz-tab.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_TAB_LABEL		(pluma_tab_label_get_type ())
+#define PLUMA_TYPE_TAB_LABEL		(lapiz_tab_label_get_type ())
 #define PLUMA_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_TAB_LABEL, PlumaTabLabel))
 #define PLUMA_TAB_LABEL_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_TAB_LABEL, PlumaTabLabel const))
 #define PLUMA_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_TAB_LABEL, PlumaTabLabelClass))
@@ -52,13 +52,13 @@ struct _PlumaTabLabelClass {
 	void (* close_clicked)  (PlumaTabLabel *tab_label);
 };
 
-GType		 pluma_tab_label_get_type (void) G_GNUC_CONST;
+GType		 lapiz_tab_label_get_type (void) G_GNUC_CONST;
 
-GtkWidget 	*pluma_tab_label_new (PlumaTab *tab);
+GtkWidget 	*lapiz_tab_label_new (PlumaTab *tab);
 
-PlumaTab	*pluma_tab_label_get_tab (PlumaTabLabel *tab_label);
+PlumaTab	*lapiz_tab_label_get_tab (PlumaTabLabel *tab_label);
 
-void		pluma_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
+void		lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 							    gboolean       sensitive);
 
 G_END_DECLS

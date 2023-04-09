@@ -1,6 +1,6 @@
 /*
- * pluma-help.c
- * This file is part of pluma
+ * lapiz-help.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -32,15 +32,15 @@
 #include <config.h>
 #endif
 
-#include "pluma-help.h"
+#include "lapiz-help.h"
 
 #include <glib/gi18n.h>
 #include <string.h>
 #include <gtk/gtk.h>
 
 gboolean
-pluma_help_display (GtkWindow   *parent,
-		    const gchar *name, /* "pluma" if NULL */
+lapiz_help_display (GtkWindow   *parent,
+		    const gchar *name, /* "lapiz" if NULL */
 		    const gchar *link_id)
 {
 	GError *error = NULL;
@@ -50,12 +50,12 @@ pluma_help_display (GtkWindow   *parent,
 	g_return_val_if_fail ((parent == NULL) || GTK_IS_WINDOW (parent), FALSE);
 
 	if (name == NULL)
-		name = "pluma";
-	else if (strcmp (name, "pluma.xml") == 0)
+		name = "lapiz";
+	else if (strcmp (name, "lapiz.xml") == 0)
 	{
-		g_warning ("%s: Using \"pluma.xml\" for the help name is deprecated, use \"pluma\" or simply NULL instead", G_STRFUNC);
+		g_warning ("%s: Using \"lapiz.xml\" for the help name is deprecated, use \"lapiz\" or simply NULL instead", G_STRFUNC);
 
-		name = "pluma";
+		name = "lapiz";
 	}
 
 	if (link_id)

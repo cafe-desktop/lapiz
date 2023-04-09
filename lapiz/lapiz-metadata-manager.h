@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-metadata-manager.h
- * This file is part of pluma
+ * lapiz-metadata-manager.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2003  Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2003. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2003. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -35,13 +35,13 @@
 G_BEGIN_DECLS
 
 
-/* This function must be called before exiting pluma */
-void		 pluma_metadata_manager_shutdown 	(void);
+/* This function must be called before exiting lapiz */
+void		 lapiz_metadata_manager_shutdown 	(void);
 
 
-gchar		*pluma_metadata_manager_get 		(const gchar *uri,
+gchar		*lapiz_metadata_manager_get 		(const gchar *uri,
 					     		 const gchar *key);
-void		 pluma_metadata_manager_set		(const gchar *uri,
+void		 lapiz_metadata_manager_set		(const gchar *uri,
 							 const gchar *key,
 							 const gchar *value);
 

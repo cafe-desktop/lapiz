@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <schemalist gettext-domain="@GETTEXT_PACKAGE@">
-  <enum id="org.mate.pluma.SpaceDrawer">
+  <enum id="org.mate.lapiz.SpaceDrawer">
     <value nick="show-none" value="0"/>
     <value nick="show-trailing" value="1"/>
     <value nick="show-all" value="2"/>
   </enum>
-  <schema id="org.mate.pluma" path="/org/mate/pluma/">
+  <schema id="org.mate.lapiz" path="/org/mate/lapiz/">
     <key name="use-default-font" type="b">
       <default>true</default>
       <summary>Use Default Font</summary>
-      <description>Whether to use the system's default fixed width font for editing text instead of a font specific to pluma.  If this option is turned off, then the font named in the "Editor Font" option will be used instead of the system font.</description>
+      <description>Whether to use the system's default fixed width font for editing text instead of a font specific to lapiz.  If this option is turned off, then the font named in the "Editor Font" option will be used instead of the system font.</description>
     </key>
     <key name="editor-font" type="s">
       <default context="editor-font" l10n="messages">'Monospace 12'</default>
@@ -34,17 +34,17 @@
     <key name="create-backup-copy" type="b">
       <default>false</default>
       <summary>Create Backup Copies</summary>
-      <description>Whether pluma should create backup copies for the files it saves.  You can set the backup file extension with the "Backup Copy Extension" option.</description>
+      <description>Whether lapiz should create backup copies for the files it saves.  You can set the backup file extension with the "Backup Copy Extension" option.</description>
     </key>
     <key name="auto-save" type="b">
       <default>false</default>
       <summary>Autosave</summary>
-      <description>Whether pluma should automatically save modified files after a time interval.  You can set the time interval with the "Autosave Interval" option.</description>
+      <description>Whether lapiz should automatically save modified files after a time interval.  You can set the time interval with the "Autosave Interval" option.</description>
     </key>
     <key name="auto-save-interval" type="i">
       <default>10</default>
       <summary>Autosave Interval</summary>
-      <description>Number of minutes after which pluma will automatically save modified files.  This will only take effect if the "Autosave" option is turned on.</description>
+      <description>Number of minutes after which lapiz will automatically save modified files.  This will only take effect if the "Autosave" option is turned on.</description>
     </key>
     <key name="show-save-confirmation" type="b">
       <default>true</default>
@@ -54,12 +54,12 @@
     <key name="writable-vfs-schemes" type="as">
       <default>[ 'dav', 'davs', 'ftp', 'sftp', 'smb', 'ssh' ]</default>
       <summary>Writable VFS schemes</summary>
-      <description>List of VFS schemes pluma supports in write mode. The 'file' scheme is writable by default.</description>
+      <description>List of VFS schemes lapiz supports in write mode. The 'file' scheme is writable by default.</description>
     </key>
     <key name="max-undo-actions" type="i">
       <default>2000</default>
       <summary>Maximum Number of Undo Actions</summary>
-      <description>Maximum number of actions that pluma will be able to undo or redo. Use "-1" for unlimited number of actions.</description>
+      <description>Maximum number of actions that lapiz will be able to undo or redo. Use "-1" for unlimited number of actions.</description>
     </key>
     <key name="wrap-mode" type="s">
       <default>'GTK_WRAP_WORD'</default>
@@ -74,32 +74,32 @@
     <key name="insert-spaces" type="b">
       <default>false</default>
       <summary>Insert spaces</summary>
-      <description>Whether pluma should insert spaces instead of tabs.</description>
+      <description>Whether lapiz should insert spaces instead of tabs.</description>
     </key>
     <key name="auto-indent" type="b">
       <default>false</default>
       <summary>Automatic indent</summary>
-      <description>Whether pluma should enable automatic indentation.</description>
+      <description>Whether lapiz should enable automatic indentation.</description>
     </key>
     <key name="display-line-numbers" type="b">
       <default>false</default>
       <summary>Display Line Numbers</summary>
-      <description>Whether pluma should display line numbers in the editing area.</description>
+      <description>Whether lapiz should display line numbers in the editing area.</description>
     </key>
     <key name="highlight-current-line" type="b">
       <default>false</default>
       <summary>Highlight Current Line</summary>
-      <description>Whether pluma should highlight the current line.</description>
+      <description>Whether lapiz should highlight the current line.</description>
     </key>
     <key name="bracket-matching" type="b">
       <default>false</default>
       <summary>Highlight Matching Bracket</summary>
-      <description>Whether pluma should highlight the bracket matching the selected one.</description>
+      <description>Whether lapiz should highlight the bracket matching the selected one.</description>
     </key>
     <key name="display-right-margin" type="b">
       <default>false</default>
       <summary>Display Right Margin</summary>
-      <description>Whether pluma should display the right margin in the editing area.</description>
+      <description>Whether lapiz should display the right margin in the editing area.</description>
     </key>
     <key name="right-margin-position" type="i">
       <default>80</default>
@@ -114,17 +114,17 @@
     <key name="restore-cursor-position" type="b">
       <default>true</default>
       <summary>Restore Previous Cursor Position</summary>
-      <description>Whether pluma should restore the previous cursor position when a file is loaded.</description>
+      <description>Whether lapiz should restore the previous cursor position when a file is loaded.</description>
     </key>
     <key name="enable-search-highlighting" type="b">
       <default>true</default>
       <summary>Enable Search Highlighting</summary>
-      <description>Whether pluma should highlight all the occurrences of the searched text.</description>
+      <description>Whether lapiz should highlight all the occurrences of the searched text.</description>
     </key>
     <key name="enable-syntax-highlighting" type="b">
       <default>true</default>
       <summary>Enable Syntax Highlighting</summary>
-      <description>Whether pluma should enable syntax highlighting.</description>
+      <description>Whether lapiz should enable syntax highlighting.</description>
     </key>
     <key name="toolbar-visible" type="b">
       <default>true</default>
@@ -149,7 +149,7 @@
     <key name="show-tabs-with-side-pane" type="b">
       <default>true</default>
       <summary>Show tabs with side pane</summary>
-      <description>If false, pluma doesn't show tabs in the notebook with the side pane active.</description>
+      <description>If false, lapiz doesn't show tabs in the notebook with the side pane active.</description>
     </key>
     <key name="bottom-panel-visible" type="b">
       <default>false</default>
@@ -164,12 +164,12 @@
     <key name="print-syntax-highlighting" type="b">
       <default>true</default>
       <summary>Print Syntax Highlighting</summary>
-      <description>Whether pluma should print syntax highlighting when printing documents.</description>
+      <description>Whether lapiz should print syntax highlighting when printing documents.</description>
     </key>
     <key name="print-header" type="b">
       <default>true</default>
       <summary>Print Header</summary>
-      <description>Whether pluma should include a document header when printing documents.</description>
+      <description>Whether lapiz should include a document header when printing documents.</description>
     </key>
     <key name="print-wrap-mode" type="s">
       <default>'GTK_WRAP_WORD'</default>
@@ -179,7 +179,7 @@
     <key name="print-line-numbers" type="i">
       <default>0</default>
       <summary>Print Line Numbers</summary>
-      <description>If this value is 0, then no line numbers will be inserted when printing a document.  Otherwise, pluma will print line numbers every such number of lines.</description>
+      <description>If this value is 0, then no line numbers will be inserted when printing a document.  Otherwise, lapiz will print line numbers every such number of lines.</description>
     </key>
     <key name="print-font-body-pango" type="s">
       <default context="print-font-body-pango" l10n="messages">'Monospace 9'</default>
@@ -199,7 +199,7 @@
     <key name="auto-detected-encodings" type="as">
       <default context="auto-detected" l10n="messages">[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]</default>
       <summary>Automatically Detected Encodings</summary>
-      <description>Sorted list of encodings used by pluma for automatically detecting the encoding of a file. "CURRENT" represents the current locale encoding. Only recognized encodings are used.</description>
+      <description>Sorted list of encodings used by lapiz for automatically detecting the encoding of a file. "CURRENT" represents the current locale encoding. Only recognized encodings are used.</description>
     </key>
     <key name="shown-in-menu-encodings" type="as">
       <default context="shown-in-menu" l10n="messages">[ 'ISO-8859-15' ]</default>
@@ -219,27 +219,27 @@
     <key name="active-plugins" type="as">
       <default>[ 'docinfo', 'modelines', 'filebrowser', 'spell', 'time' ]</default>
       <summary>Active plugins</summary>
-      <description>List of active plugins. It contains the "Location" of the active plugins. See the .pluma-plugin file for obtaining the "Location" of a given plugin.</description>
+      <description>List of active plugins. It contains the "Location" of the active plugins. See the .lapiz-plugin file for obtaining the "Location" of a given plugin.</description>
     </key>
     <key name="enable-space-drawer-newline" type="b">
       <default>false</default>
       <summary>Show newline</summary>
-      <description>Whether pluma should show newlines in the editor window.</description>
+      <description>Whether lapiz should show newlines in the editor window.</description>
     </key>
-    <key name="enable-space-drawer-nbsp" enum="org.mate.pluma.SpaceDrawer">
+    <key name="enable-space-drawer-nbsp" enum="org.mate.lapiz.SpaceDrawer">
       <default>'show-none'</default>
       <summary>Show nbsp</summary>
-      <description>Whether pluma should show not breaking spaces in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
+      <description>Whether lapiz should show not breaking spaces in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
     </key>
-    <key name="enable-space-drawer-tab" enum="org.mate.pluma.SpaceDrawer">
+    <key name="enable-space-drawer-tab" enum="org.mate.lapiz.SpaceDrawer">
       <default>'show-none'</default>
       <summary>Show tabs</summary>
-      <description>Whether pluma should show tabs in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
+      <description>Whether lapiz should show tabs in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
     </key>
-    <key name="enable-space-drawer-space" enum="org.mate.pluma.SpaceDrawer">
+    <key name="enable-space-drawer-space" enum="org.mate.lapiz.SpaceDrawer">
       <default>'show-none'</default>
       <summary>Show spaces</summary>
-      <description>Whether pluma should show spaces in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
+      <description>Whether lapiz should show spaces in the editor window: 'show-none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' showing all spaces.</description>
     </key>
   </schema>
 </schemalist>

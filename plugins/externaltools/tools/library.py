@@ -42,12 +42,12 @@ class ToolLibrary(Singleton):
         self.locations = []
 
         for d in self.get_xdg_data_dirs():
-            self.locations.append(os.path.join(d, 'pluma', 'plugins', 'externaltools', 'tools'))
+            self.locations.append(os.path.join(d, 'lapiz', 'plugins', 'externaltools', 'tools'))
 
         self.locations.append(datadir)
 
         # self.locations[0] is where we save the custom scripts
-        toolsdir = os.path.join(GLib.get_user_config_dir(), 'pluma/tools')
+        toolsdir = os.path.join(GLib.get_user_config_dir(), 'lapiz/tools')
         self.locations.insert(0, toolsdir)
 
         if not os.path.isdir(self.locations[0]):
@@ -71,7 +71,7 @@ class ToolLibrary(Singleton):
     # storage file.
     def import_old_xml_store(self):
         import xml.etree.ElementTree as et
-        filename = os.path.join(GLib.get_user_config_dir(), 'pluma/pluma-tools.xml')
+        filename = os.path.join(GLib.get_user_config_dir(), 'lapiz/lapiz-tools.xml')
 
         if not os.path.isfile(filename):
             return
@@ -487,7 +487,7 @@ class Tool(object):
 
 if __name__ == '__main__':
     library = ToolLibrary()
-    library.set_locations(os.path.expanduser("~/.config/pluma/tools"))
+    library.set_locations(os.path.expanduser("~/.config/lapiz/tools"))
 
     def print_tool(t, indent):
         print(indent * "  " + "%s: %s" % (t.filename, t.name))

@@ -1,13 +1,13 @@
-#include "pluma-message.h"
-#include "pluma-message-type.h"
+#include "lapiz-message.h"
+#include "lapiz-message-type.h"
 
 #include <string.h>
 #include <gobject/gvaluecollector.h>
 
 /**
- * SECTION:pluma-message
+ * SECTION:lapiz-message
  * @short_description: message bus message object
- * @include: pluma/pluma-message.h
+ * @include: lapiz/lapiz-message.h
  *
  * Communication on a #PlumaMessageBus is done through messages. Messages are
  * sent over the bus and received by connecting callbacks on the message bus.
@@ -35,21 +35,21 @@ struct _PlumaMessagePrivate
 	GHashTable *values;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaMessage, pluma_message, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaMessage, lapiz_message, G_TYPE_OBJECT)
 
 static void
-pluma_message_finalize (GObject *object)
+lapiz_message_finalize (GObject *object)
 {
 	PlumaMessage *message = PLUMA_MESSAGE (object);
 
-	pluma_message_type_unref (message->priv->type);
+	lapiz_message_type_unref (message->priv->type);
 	g_hash_table_destroy (message->priv->values);
 
-	G_OBJECT_CLASS (pluma_message_parent_class)->finalize (object);
+	G_OBJECT_CLASS (lapiz_message_parent_class)->finalize (object);
 }
 
 static void
-pluma_message_get_property (GObject    *object,
+lapiz_message_get_property (GObject    *object,
 			    guint       prop_id,
 			    GValue     *value,
 			    GParamSpec *pspec)
@@ -59,10 +59,10 @@ pluma_message_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_OBJECT_PATH:
-			g_value_set_string (value, pluma_message_type_get_object_path (msg->priv->type));
+			g_value_set_string (value, lapiz_message_type_get_object_path (msg->priv->type));
 			break;
 		case PROP_METHOD:
-			g_value_set_string (value, pluma_message_type_get_method (msg->priv->type));
+			g_value_set_string (value, lapiz_message_type_get_method (msg->priv->type));
 			break;
 		case PROP_TYPE:
 			g_value_set_boxed (value, msg->priv->type);
@@ -74,7 +74,7 @@ pluma_message_get_property (GObject    *object,
 }
 
 static void
-pluma_message_set_property (GObject      *object,
+lapiz_message_set_property (GObject      *object,
 			    guint         prop_id,
 			    const GValue *value,
 			    GParamSpec   *pspec)
@@ -97,7 +97,7 @@ add_value (PlumaMessage *message,
 	   const gchar  *key)
 {
 	GValue *value;
-	GType type = pluma_message_type_lookup (message->priv->type, key);
+	GType type = lapiz_message_type_lookup (message->priv->type, key);
 
 	if (type == G_TYPE_INVALID)
 		return NULL;
@@ -112,18 +112,18 @@ add_value (PlumaMessage *message,
 }
 
 static void
-pluma_message_class_init (PlumaMessageClass *klass)
+lapiz_message_class_init (PlumaMessageClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->finalize = pluma_message_finalize;
-	object_class->get_property = pluma_message_get_property;
-	object_class->set_property = pluma_message_set_property;
+	object_class->finalize = lapiz_message_finalize;
+	object_class->get_property = lapiz_message_get_property;
+	object_class->set_property = lapiz_message_set_property;
 
 	/**
 	 * PlumaMessage:object_path:
 	 *
-	 * The messages object path (e.g. /pluma/object/path).
+	 * The messages object path (e.g. /lapiz/object/path).
 	 *
 	 */
 	g_object_class_install_property (object_class, PROP_OBJECT_PATH,
@@ -172,9 +172,9 @@ destroy_value (GValue *value)
 }
 
 static void
-pluma_message_init (PlumaMessage *self)
+lapiz_message_init (PlumaMessage *self)
 {
-	self->priv = pluma_message_get_instance_private (self);
+	self->priv = lapiz_message_get_instance_private (self);
 
 	self->priv->values = g_hash_table_new_full (g_str_hash,
 						    g_str_equal,
@@ -224,7 +224,7 @@ value_lookup (PlumaMessage *message,
 }
 
 /**
- * pluma_message_get_method:
+ * lapiz_message_get_method:
  * @message: the #PlumaMessage
  *
  * Get the message method.
@@ -233,15 +233,15 @@ value_lookup (PlumaMessage *message,
  *
  */
 const gchar *
-pluma_message_get_method (PlumaMessage *message)
+lapiz_message_get_method (PlumaMessage *message)
 {
 	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), NULL);
 
-	return pluma_message_type_get_method (message->priv->type);
+	return lapiz_message_type_get_method (message->priv->type);
 }
 
 /**
- * pluma_message_get_object_path:
+ * lapiz_message_get_object_path:
  * @message: the #PlumaMessage
  *
  * Get the message object path.
@@ -250,15 +250,15 @@ pluma_message_get_method (PlumaMessage *message)
  *
  */
 const gchar *
-pluma_message_get_object_path (PlumaMessage *message)
+lapiz_message_get_object_path (PlumaMessage *message)
 {
 	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), NULL);
 
-	return pluma_message_type_get_object_path (message->priv->type);
+	return lapiz_message_type_get_object_path (message->priv->type);
 }
 
 /**
- * pluma_message_set:
+ * lapiz_message_set:
  * @message: the #PlumaMessage
  * @...: a %NULL terminated variable list of key/value pairs
  *
@@ -267,7 +267,7 @@ pluma_message_get_object_path (PlumaMessage *message)
  *
  */
 void
-pluma_message_set (PlumaMessage *message,
+lapiz_message_set (PlumaMessage *message,
 		   ...)
 {
 	va_list ap;
@@ -275,12 +275,12 @@ pluma_message_set (PlumaMessage *message,
 	g_return_if_fail (PLUMA_IS_MESSAGE (message));
 
 	va_start (ap, message);
-	pluma_message_set_valist (message, ap);
+	lapiz_message_set_valist (message, ap);
 	va_end (ap);
 }
 
 /**
- * pluma_message_set_valist:
+ * lapiz_message_set_valist:
  * @message: the #PlumaMessage
  * @var_args: a %NULL terminated variable list of key/value pairs
  *
@@ -289,7 +289,7 @@ pluma_message_set (PlumaMessage *message,
  *
  */
 void
-pluma_message_set_valist (PlumaMessage *message,
+lapiz_message_set_valist (PlumaMessage *message,
 			  va_list	var_args)
 {
 	const gchar *key;
@@ -329,7 +329,7 @@ pluma_message_set_valist (PlumaMessage *message,
 }
 
 /**
- * pluma_message_set_value:
+ * lapiz_message_set_value:
  * @message: the #PlumaMessage
  * @key: the argument key
  * @value: (out): the argument value
@@ -338,7 +338,7 @@ pluma_message_set_valist (PlumaMessage *message,
  *
  */
 void
-pluma_message_set_value (PlumaMessage *message,
+lapiz_message_set_value (PlumaMessage *message,
 			 const gchar  *key,
 			 GValue	      *value)
 {
@@ -359,7 +359,7 @@ pluma_message_set_value (PlumaMessage *message,
 }
 
 /**
- * pluma_message_set_valuesv:
+ * lapiz_message_set_valuesv:
  * @message: the #PlumaMessage
  * @keys: (array length=n_values): keys to set values for
  * @values: (array length=n_values): values to set
@@ -369,7 +369,7 @@ pluma_message_set_value (PlumaMessage *message,
  *
  */
 void
-pluma_message_set_valuesv (PlumaMessage	 *message,
+lapiz_message_set_valuesv (PlumaMessage	 *message,
 			   const gchar	**keys,
 			   GValue        *values,
 			   gint		  n_values)
@@ -380,13 +380,13 @@ pluma_message_set_valuesv (PlumaMessage	 *message,
 
 	for (i = 0; i < n_values; i++)
 	{
-		pluma_message_set_value (message, keys[i], &values[i]);
+		lapiz_message_set_value (message, keys[i], &values[i]);
 	}
 }
 
 /* FIXME this is an issue for introspection */
 /**
- * pluma_message_get:
+ * lapiz_message_get:
  * @message: the #PlumaMessage
  * @...: a %NULL variable argument list of key/value container pairs
  *
@@ -396,7 +396,7 @@ pluma_message_set_valuesv (PlumaMessage	 *message,
  *
  */
 void
-pluma_message_get (PlumaMessage	*message,
+lapiz_message_get (PlumaMessage	*message,
 		   ...)
 {
 	va_list ap;
@@ -404,12 +404,12 @@ pluma_message_get (PlumaMessage	*message,
 	g_return_if_fail (PLUMA_IS_MESSAGE (message));
 
 	va_start (ap, message);
-	pluma_message_get_valist (message, ap);
+	lapiz_message_get_valist (message, ap);
 	va_end (ap);
 }
 
 /**
- * pluma_message_get_valist:
+ * lapiz_message_get_valist:
  * @message: the #PlumaMessage
  * @var_args: a %NULL variable argument list of key/value container pairs
  *
@@ -419,7 +419,7 @@ pluma_message_get (PlumaMessage	*message,
  *
  */
 void
-pluma_message_get_valist (PlumaMessage *message,
+lapiz_message_get_valist (PlumaMessage *message,
 			  va_list 	var_args)
 {
 	const gchar *key;
@@ -462,7 +462,7 @@ pluma_message_get_valist (PlumaMessage *message,
 }
 
 /**
- * pluma_message_get_value:
+ * lapiz_message_get_value:
  * @message: the #PlumaMessage
  * @key: the argument key
  * @value: (out): value return container
@@ -472,7 +472,7 @@ pluma_message_get_valist (PlumaMessage *message,
  *
  */
 void
-pluma_message_get_value (PlumaMessage *message,
+lapiz_message_get_value (PlumaMessage *message,
 			 const gchar  *key,
 			 GValue	      *value)
 {
@@ -495,7 +495,7 @@ pluma_message_get_value (PlumaMessage *message,
 }
 
 /**
- * pluma_message_get_key_type:
+ * lapiz_message_get_key_type:
  * @message: the #PlumaMessage
  * @key: the argument key
  *
@@ -505,17 +505,17 @@ pluma_message_get_value (PlumaMessage *message,
  *
  */
 GType
-pluma_message_get_key_type (PlumaMessage    *message,
+lapiz_message_get_key_type (PlumaMessage    *message,
 			    const gchar	    *key)
 {
 	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), G_TYPE_INVALID);
 	g_return_val_if_fail (message->priv->type != NULL, G_TYPE_INVALID);
 
-	return pluma_message_type_lookup (message->priv->type, key);
+	return lapiz_message_type_lookup (message->priv->type, key);
 }
 
 /**
- * pluma_message_has_key:
+ * lapiz_message_has_key:
  * @message: the #PlumaMessage
  * @key: the argument key
  *
@@ -525,7 +525,7 @@ pluma_message_get_key_type (PlumaMessage    *message,
  *
  */
 gboolean
-pluma_message_has_key (PlumaMessage *message,
+lapiz_message_has_key (PlumaMessage *message,
 		       const gchar  *key)
 {
 	g_return_val_if_fail (PLUMA_IS_MESSAGE (message), FALSE);
@@ -557,7 +557,7 @@ validate_key (const gchar  *key,
 }
 
 /**
- * pluma_message_validate:
+ * lapiz_message_validate:
  * @message: the #PlumaMessage
  *
  * Validates the message arguments according to the message type.
@@ -566,7 +566,7 @@ validate_key (const gchar  *key,
  *
  */
 gboolean
-pluma_message_validate (PlumaMessage *message)
+lapiz_message_validate (PlumaMessage *message)
 {
 	ValidateInfo info = {message, TRUE};
 
@@ -575,7 +575,7 @@ pluma_message_validate (PlumaMessage *message)
 
 	if (!message->priv->valid)
 	{
-		pluma_message_type_foreach (message->priv->type,
+		lapiz_message_type_foreach (message->priv->type,
 					    (PlumaMessageTypeForeach)validate_key,
 					    &info);
 

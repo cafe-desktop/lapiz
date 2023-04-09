@@ -1,6 +1,6 @@
 /*
- * pluma-tab.h
- * This file is part of pluma
+ * lapiz-tab.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,8 +33,8 @@
 
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-view.h>
-#include <pluma/pluma-document.h>
+#include <lapiz/lapiz-view.h>
+#include <lapiz/lapiz-document.h>
 
 G_BEGIN_DECLS
 
@@ -60,7 +60,7 @@ typedef enum
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_TAB              (pluma_tab_get_type())
+#define PLUMA_TYPE_TAB              (lapiz_tab_get_type())
 #define PLUMA_TAB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_TAB, PlumaTab))
 #define PLUMA_TAB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_TAB, PlumaTabClass))
 #define PLUMA_IS_TAB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_TAB))
@@ -96,65 +96,65 @@ struct _PlumaTabClass
 /*
  * Public methods
  */
-GType 		 pluma_tab_get_type 		(void) G_GNUC_CONST;
+GType 		 lapiz_tab_get_type 		(void) G_GNUC_CONST;
 
-PlumaView	*pluma_tab_get_view		(PlumaTab            *tab);
+PlumaView	*lapiz_tab_get_view		(PlumaTab            *tab);
 
 /* This is only an helper function */
-PlumaDocument	*pluma_tab_get_document		(PlumaTab            *tab);
+PlumaDocument	*lapiz_tab_get_document		(PlumaTab            *tab);
 
-PlumaTab	*pluma_tab_get_from_document	(PlumaDocument       *doc);
+PlumaTab	*lapiz_tab_get_from_document	(PlumaDocument       *doc);
 
-PlumaTabState	 pluma_tab_get_state		(PlumaTab	     *tab);
+PlumaTabState	 lapiz_tab_get_state		(PlumaTab	     *tab);
 
-gboolean	 pluma_tab_get_auto_save_enabled
+gboolean	 lapiz_tab_get_auto_save_enabled
 						(PlumaTab            *tab);
 
-void		 pluma_tab_set_auto_save_enabled
+void		 lapiz_tab_set_auto_save_enabled
 						(PlumaTab            *tab,
 						 gboolean            enable);
 
-gint		 pluma_tab_get_auto_save_interval
+gint		 lapiz_tab_get_auto_save_interval
 						(PlumaTab            *tab);
 
-void		 pluma_tab_set_auto_save_interval
+void		 lapiz_tab_set_auto_save_interval
 						(PlumaTab            *tab,
 						 gint                interval);
 
-void		 pluma_tab_set_info_bar		(PlumaTab            *tab,
+void		 lapiz_tab_set_info_bar		(PlumaTab            *tab,
 						 GtkWidget           *info_bar);
 /*
  * Non exported methods
  */
-GtkWidget 	*_pluma_tab_new 		(void);
+GtkWidget 	*_lapiz_tab_new 		(void);
 
 /* Whether create is TRUE, creates a new empty document if location does
    not refer to an existing file */
-GtkWidget	*_pluma_tab_new_from_uri	(const gchar         *uri,
+GtkWidget	*_lapiz_tab_new_from_uri	(const gchar         *uri,
 						 const PlumaEncoding *encoding,
 						 gint                 line_pos,
 						 gboolean             create);
-gchar 		*_pluma_tab_get_name		(PlumaTab            *tab);
-gchar 		*_pluma_tab_get_tooltips	(PlumaTab            *tab);
-GdkPixbuf 	*_pluma_tab_get_icon		(PlumaTab            *tab);
-void		 _pluma_tab_load		(PlumaTab            *tab,
+gchar 		*_lapiz_tab_get_name		(PlumaTab            *tab);
+gchar 		*_lapiz_tab_get_tooltips	(PlumaTab            *tab);
+GdkPixbuf 	*_lapiz_tab_get_icon		(PlumaTab            *tab);
+void		 _lapiz_tab_load		(PlumaTab            *tab,
 						 const gchar         *uri,
 						 const PlumaEncoding *encoding,
 						 gint                 line_pos,
 						 gboolean             create);
-void		 _pluma_tab_revert		(PlumaTab            *tab);
-void		 _pluma_tab_save		(PlumaTab            *tab);
-void		 _pluma_tab_save_as		(PlumaTab            *tab,
+void		 _lapiz_tab_revert		(PlumaTab            *tab);
+void		 _lapiz_tab_save		(PlumaTab            *tab);
+void		 _lapiz_tab_save_as		(PlumaTab            *tab,
 						 const gchar         *uri,
 						 const PlumaEncoding *encoding,
 						 PlumaDocumentNewlineType newline_type);
 
-void		 _pluma_tab_print		(PlumaTab            *tab);
-void		 _pluma_tab_print_preview	(PlumaTab            *tab);
+void		 _lapiz_tab_print		(PlumaTab            *tab);
+void		 _lapiz_tab_print_preview	(PlumaTab            *tab);
 
-void		 _pluma_tab_mark_for_closing	(PlumaTab	     *tab);
+void		 _lapiz_tab_mark_for_closing	(PlumaTab	     *tab);
 
-gboolean	 _pluma_tab_can_close		(PlumaTab	     *tab);
+gboolean	 _lapiz_tab_can_close		(PlumaTab	     *tab);
 
 G_END_DECLS
 

@@ -1,6 +1,6 @@
 /*
- * pluma-view.c
- * This file is part of pluma
+ * lapiz-view.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2002 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -42,13 +42,13 @@
 
 #include <glib/gi18n.h>
 
-#include "pluma-view.h"
-#include "pluma-debug.h"
-#include "pluma-prefs-manager.h"
-#include "pluma-prefs-manager-app.h"
-#include "pluma-prefs-manager-private.h"
-#include "pluma-marshal.h"
-#include "pluma-utils.h"
+#include "lapiz-view.h"
+#include "lapiz-debug.h"
+#include "lapiz-prefs-manager.h"
+#include "lapiz-prefs-manager-app.h"
+#include "lapiz-prefs-manager-private.h"
+#include "lapiz-marshal.h"
+#include "lapiz-utils.h"
 
 #define PLUMA_VIEW_SCROLL_MARGIN 0.02
 #define PLUMA_VIEW_SEARCH_DIALOG_TIMEOUT (30*1000) /* 30 seconds */
@@ -102,35 +102,35 @@ struct _PlumaViewPrivate
 /* The search entry completion is shared among all the views */
 GtkListStore *search_completion_model = NULL;
 
-static void	pluma_view_dispose		(GObject          *object);
-static void	pluma_view_finalize		(GObject          *object);
-static gint     pluma_view_focus_out		(GtkWidget        *widget,
+static void	lapiz_view_dispose		(GObject          *object);
+static void	lapiz_view_finalize		(GObject          *object);
+static gint     lapiz_view_focus_out		(GtkWidget        *widget,
 						 GdkEventFocus    *event);
-static gboolean pluma_view_scroll_event         (GtkWidget        *widget,
+static gboolean lapiz_view_scroll_event         (GtkWidget        *widget,
                                                  GdkEventScroll   *event);
-static gboolean pluma_view_drag_motion		(GtkWidget        *widget,
+static gboolean lapiz_view_drag_motion		(GtkWidget        *widget,
 						 GdkDragContext   *context,
 						 gint              x,
 						 gint              y,
 						 guint             timestamp);
-static void     pluma_view_drag_data_received   (GtkWidget        *widget,
+static void     lapiz_view_drag_data_received   (GtkWidget        *widget,
 						 GdkDragContext   *context,
 						 gint              x,
 						 gint              y,
 						 GtkSelectionData *selection_data,
 						 guint             info,
 						 guint             timestamp);
-static gboolean pluma_view_drag_drop		(GtkWidget        *widget,
+static gboolean lapiz_view_drag_drop		(GtkWidget        *widget,
 	      					 GdkDragContext   *context,
 	      					 gint              x,
 	      					 gint              y,
 	      					 guint             timestamp);
 
-static gboolean	pluma_view_button_press_event	(GtkWidget        *widget,
+static gboolean	lapiz_view_button_press_event	(GtkWidget        *widget,
 						 GdkEventButton   *event);
-static gboolean	pluma_view_button_release_event	(GtkWidget        *widget,
+static gboolean	lapiz_view_button_release_event	(GtkWidget        *widget,
 						 GdkEventButton   *event);
-static void	pluma_view_populate_popup	(GtkTextView      *text_view,
+static void	lapiz_view_populate_popup	(GtkTextView      *text_view,
 						 GtkWidget        *widget);
 
 static gboolean start_interactive_search	(PlumaView        *view);
@@ -140,18 +140,18 @@ static gboolean reset_searched_text		(PlumaView        *view);
 static void	hide_search_window 		(PlumaView        *view,
 						 gboolean          cancel);
 
-static gboolean	pluma_view_draw		 	(GtkWidget        *widget,
+static gboolean	lapiz_view_draw		 	(GtkWidget        *widget,
 						 cairo_t          *cr);
 static void 	search_highlight_updated_cb	(PlumaDocument    *doc,
 						 GtkTextIter      *start,
 						 GtkTextIter      *end,
 						 PlumaView        *view);
 
-static void	pluma_view_delete_from_cursor 	(GtkTextView     *text_view,
+static void	lapiz_view_delete_from_cursor 	(GtkTextView     *text_view,
 						 GtkDeleteType    type,
 						 gint             count);
 
-G_DEFINE_TYPE_WITH_PRIVATE (PlumaView, pluma_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE_WITH_PRIVATE (PlumaView, lapiz_view, GTK_SOURCE_TYPE_VIEW)
 
 /* Signals */
 enum
@@ -176,14 +176,14 @@ document_read_only_notify_handler (PlumaDocument *document,
 			           GParamSpec    *pspec,
 				   PlumaView     *view)
 {
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-				    !pluma_document_get_readonly (document));
+				    !lapiz_document_get_readonly (document));
 }
 
 static gboolean
-pluma_view_scroll_event (GtkWidget      *widget,
+lapiz_view_scroll_event (GtkWidget      *widget,
                          GdkEventScroll *event)
 {
 	if (event->direction == GDK_SCROLL_UP)
@@ -213,7 +213,7 @@ pluma_view_scroll_event (GtkWidget      *widget,
 }
 
 static void
-pluma_view_class_init (PlumaViewClass *klass)
+lapiz_view_class_init (PlumaViewClass *klass)
 {
 	GObjectClass     *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass   *widget_class = GTK_WIDGET_CLASS (klass);
@@ -221,12 +221,12 @@ pluma_view_class_init (PlumaViewClass *klass)
 
 	GtkBindingSet    *binding_set;
 
-	object_class->dispose = pluma_view_dispose;
-	object_class->finalize = pluma_view_finalize;
+	object_class->dispose = lapiz_view_dispose;
+	object_class->finalize = lapiz_view_finalize;
 
-	widget_class->focus_out_event = pluma_view_focus_out;
-	widget_class->draw = pluma_view_draw;
-	widget_class->scroll_event = pluma_view_scroll_event;
+	widget_class->focus_out_event = lapiz_view_focus_out;
+	widget_class->draw = lapiz_view_draw;
+	widget_class->scroll_event = lapiz_view_scroll_event;
 
 	/*
 	 * Override the gtk_text_view_drag_motion and drag_drop
@@ -242,17 +242,17 @@ pluma_view_class_init (PlumaViewClass *klass)
 	 *
 	 * See bug #89881 for details
 	 */
-	widget_class->drag_motion = pluma_view_drag_motion;
-	widget_class->drag_data_received = pluma_view_drag_data_received;
-	widget_class->drag_drop = pluma_view_drag_drop;
-	widget_class->button_press_event = pluma_view_button_press_event;
-	widget_class->button_release_event = pluma_view_button_release_event;
-	text_view_class->populate_popup = pluma_view_populate_popup;
+	widget_class->drag_motion = lapiz_view_drag_motion;
+	widget_class->drag_data_received = lapiz_view_drag_data_received;
+	widget_class->drag_drop = lapiz_view_drag_drop;
+	widget_class->button_press_event = lapiz_view_button_press_event;
+	widget_class->button_release_event = lapiz_view_button_release_event;
+	text_view_class->populate_popup = lapiz_view_populate_popup;
 	klass->start_interactive_search = start_interactive_search;
 	klass->start_interactive_goto_line = start_interactive_goto_line;
 	klass->reset_searched_text = reset_searched_text;
 
-	text_view_class->delete_from_cursor = pluma_view_delete_from_cursor;
+	text_view_class->delete_from_cursor = lapiz_view_delete_from_cursor;
 
 	view_signals[START_INTERACTIVE_SEARCH] =
     		g_signal_new ("start_interactive_search",
@@ -260,7 +260,7 @@ pluma_view_class_init (PlumaViewClass *klass)
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  	      G_STRUCT_OFFSET (PlumaViewClass, start_interactive_search),
 			      NULL, NULL,
-			      pluma_marshal_BOOLEAN__VOID,
+			      lapiz_marshal_BOOLEAN__VOID,
 			      G_TYPE_BOOLEAN, 0);
 
 	view_signals[START_INTERACTIVE_GOTO_LINE] =
@@ -269,7 +269,7 @@ pluma_view_class_init (PlumaViewClass *klass)
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  	      G_STRUCT_OFFSET (PlumaViewClass, start_interactive_goto_line),
 			      NULL, NULL,
-			      pluma_marshal_BOOLEAN__VOID,
+			      lapiz_marshal_BOOLEAN__VOID,
 			      G_TYPE_BOOLEAN, 0);
 
 	view_signals[RESET_SEARCHED_TEXT] =
@@ -278,7 +278,7 @@ pluma_view_class_init (PlumaViewClass *klass)
 		  	      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  	      G_STRUCT_OFFSET (PlumaViewClass, reset_searched_text),
 			      NULL, NULL,
-			      pluma_marshal_BOOLEAN__VOID,
+			      lapiz_marshal_BOOLEAN__VOID,
 			      G_TYPE_BOOLEAN, 0);
 
 	/* A new signal DROP_URIS has been added to allow plugins to intercept
@@ -288,7 +288,7 @@ pluma_view_class_init (PlumaViewClass *klass)
 	 * if valid uris have been dropped. Plugins should connect to
 	 * drag_motion, drag_drop and drag_data_received to change this
 	 * default behaviour. They should _NOT_ use this signal because this
-	 * will not prevent pluma from loading the uri
+	 * will not prevent lapiz from loading the uri
 	 */
 	view_signals[DROP_URIS] =
     		g_signal_new ("drop_uris",
@@ -361,7 +361,7 @@ on_notify_buffer_cb (PlumaView  *view,
 			  view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-				    !pluma_document_get_readonly (PLUMA_DOCUMENT (buffer)));
+				    !lapiz_document_get_readonly (PLUMA_DOCUMENT (buffer)));
 
 	g_signal_connect (buffer,
 			  "search_highlight_updated",
@@ -371,7 +371,7 @@ on_notify_buffer_cb (PlumaView  *view,
 
 #ifdef GTK_SOURCE_VERSION_3_24
 void
-pluma_set_source_space_drawer_by_level (GtkSourceView *view,
+lapiz_set_source_space_drawer_by_level (GtkSourceView *view,
                                         gint level,
                                         GtkSourceSpaceTypeFlags type)
 {
@@ -409,19 +409,19 @@ pluma_set_source_space_drawer_by_level (GtkSourceView *view,
 
 #ifdef GTK_SOURCE_VERSION_3_24
 static void
-pluma_set_source_space_drawer (GtkSourceView *view)
+lapiz_set_source_space_drawer (GtkSourceView *view)
 {
-	pluma_set_source_space_drawer_by_level (view,
-	                                        pluma_prefs_manager_get_draw_spaces (),
+	lapiz_set_source_space_drawer_by_level (view,
+	                                        lapiz_prefs_manager_get_draw_spaces (),
 	                                        GTK_SOURCE_SPACE_TYPE_SPACE);
-	pluma_set_source_space_drawer_by_level (view,
-	                                        pluma_prefs_manager_get_draw_tabs (),
+	lapiz_set_source_space_drawer_by_level (view,
+	                                        lapiz_prefs_manager_get_draw_tabs (),
 	                                        GTK_SOURCE_SPACE_TYPE_TAB);
-	pluma_set_source_space_drawer_by_level (view,
-	                                        pluma_prefs_manager_get_draw_newlines () ? 2 : 0,
+	lapiz_set_source_space_drawer_by_level (view,
+	                                        lapiz_prefs_manager_get_draw_newlines () ? 2 : 0,
 	                                        GTK_SOURCE_SPACE_TYPE_NEWLINE);
-	pluma_set_source_space_drawer_by_level (view,
-	                                        pluma_prefs_manager_get_draw_nbsp (),
+	lapiz_set_source_space_drawer_by_level (view,
+	                                        lapiz_prefs_manager_get_draw_nbsp (),
 	                                        GTK_SOURCE_SPACE_TYPE_NBSP);
 	gtk_source_space_drawer_set_enable_matrix (gtk_source_view_get_space_drawer (view),
 	                                           TRUE);
@@ -429,17 +429,17 @@ pluma_set_source_space_drawer (GtkSourceView *view)
 }
 #else
 static void
-pluma_set_source_space_drawer (GtkSourceView *view)
+lapiz_set_source_space_drawer (GtkSourceView *view)
 {
 	GtkSourceDrawSpacesFlags flags = 0;
 
-	if (pluma_prefs_manager_get_draw_spaces () > 0)
+	if (lapiz_prefs_manager_get_draw_spaces () > 0)
 		flags |= GTK_SOURCE_DRAW_SPACES_SPACE;
-	if (pluma_prefs_manager_get_draw_tabs () > 0)
+	if (lapiz_prefs_manager_get_draw_tabs () > 0)
 		flags |= GTK_SOURCE_DRAW_SPACES_TAB;
-	if (pluma_prefs_manager_get_draw_newlines ())
+	if (lapiz_prefs_manager_get_draw_newlines ())
 		flags |= GTK_SOURCE_DRAW_SPACES_NEWLINE;
-	if (pluma_prefs_manager_get_draw_nbsp () > 0)
+	if (lapiz_prefs_manager_get_draw_nbsp () > 0)
 		flags |= GTK_SOURCE_DRAW_SPACES_NBSP;
 
 	flags |= GTK_SOURCE_DRAW_SPACES_TRAILING |
@@ -451,47 +451,47 @@ pluma_set_source_space_drawer (GtkSourceView *view)
 #endif
 
 static void
-pluma_view_init (PlumaView *view)
+lapiz_view_init (PlumaView *view)
 {
 	GtkTargetList *tl;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
-	view->priv = pluma_view_get_instance_private (view);
+	view->priv = lapiz_view_get_instance_private (view);
 
 	/*
 	 *  Set tab, fonts, wrap mode, colors, etc. according
 	 *  to preferences
 	 */
-	if (!pluma_prefs_manager_get_use_default_font ())
+	if (!lapiz_prefs_manager_get_use_default_font ())
 	{
 		gchar *editor_font;
 
-		editor_font = pluma_prefs_manager_get_editor_font ();
+		editor_font = lapiz_prefs_manager_get_editor_font ();
 
-		pluma_view_set_font (view, FALSE, editor_font);
+		lapiz_view_set_font (view, FALSE, editor_font);
 
 		g_free (editor_font);
 	}
 	else
 	{
-		pluma_view_set_font (view, TRUE, NULL);
+		lapiz_view_set_font (view, TRUE, NULL);
 	}
 
 	g_object_set (G_OBJECT (view),
-		      "wrap_mode", pluma_prefs_manager_get_wrap_mode (),
-		      "show_line_numbers", pluma_prefs_manager_get_display_line_numbers (),
-		      "auto_indent", pluma_prefs_manager_get_auto_indent (),
-		      "tab_width", pluma_prefs_manager_get_tabs_size (),
-		      "insert_spaces_instead_of_tabs", pluma_prefs_manager_get_insert_spaces (),
-		      "show_right_margin", pluma_prefs_manager_get_display_right_margin (),
-		      "right_margin_position", pluma_prefs_manager_get_right_margin_position (),
-		      "highlight_current_line", pluma_prefs_manager_get_highlight_current_line (),
-		      "smart_home_end", pluma_prefs_manager_get_smart_home_end (),
+		      "wrap_mode", lapiz_prefs_manager_get_wrap_mode (),
+		      "show_line_numbers", lapiz_prefs_manager_get_display_line_numbers (),
+		      "auto_indent", lapiz_prefs_manager_get_auto_indent (),
+		      "tab_width", lapiz_prefs_manager_get_tabs_size (),
+		      "insert_spaces_instead_of_tabs", lapiz_prefs_manager_get_insert_spaces (),
+		      "show_right_margin", lapiz_prefs_manager_get_display_right_margin (),
+		      "right_margin_position", lapiz_prefs_manager_get_right_margin_position (),
+		      "highlight_current_line", lapiz_prefs_manager_get_highlight_current_line (),
+		      "smart_home_end", lapiz_prefs_manager_get_smart_home_end (),
 		      "indent_on_tab", TRUE,
 		      NULL);
 
-	pluma_set_source_space_drawer (GTK_SOURCE_VIEW (view));
+	lapiz_set_source_space_drawer (GTK_SOURCE_VIEW (view));
 
 	view->priv->typeselect_flush_timeout = 0;
 	view->priv->wrap_around = TRUE;
@@ -510,7 +510,7 @@ pluma_view_init (PlumaView *view)
 }
 
 static void
-pluma_view_dispose (GObject *object)
+lapiz_view_dispose (GObject *object)
 {
 	PlumaView *view;
 
@@ -535,11 +535,11 @@ pluma_view_dispose (GObject *object)
 	current_buffer_removed (view);
 	g_signal_handlers_disconnect_by_func (view, on_notify_buffer_cb, NULL);
 
-	(* G_OBJECT_CLASS (pluma_view_parent_class)->dispose) (object);
+	(* G_OBJECT_CLASS (lapiz_view_parent_class)->dispose) (object);
 }
 
 static void
-pluma_view_finalize (GObject *object)
+lapiz_view_finalize (GObject *object)
 {
 	PlumaView *view;
 
@@ -549,11 +549,11 @@ pluma_view_finalize (GObject *object)
 
 	g_free (view->priv->old_search_text);
 
-	(* G_OBJECT_CLASS (pluma_view_parent_class)->finalize) (object);
+	(* G_OBJECT_CLASS (lapiz_view_parent_class)->finalize) (object);
 }
 
 static gint
-pluma_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
+lapiz_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
 {
 	PlumaView *view = PLUMA_VIEW (widget);
 
@@ -563,13 +563,13 @@ pluma_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
 	if (view->priv->search_window != NULL)
 		hide_search_window (view, FALSE);
 
-	(* GTK_WIDGET_CLASS (pluma_view_parent_class)->focus_out_event) (widget, event);
+	(* GTK_WIDGET_CLASS (lapiz_view_parent_class)->focus_out_event) (widget, event);
 
 	return FALSE;
 }
 
 /**
- * pluma_view_new:
+ * lapiz_view_new:
  * @doc: a #PlumaDocument
  *
  * Creates a new #PlumaView object displaying the @doc document.
@@ -578,17 +578,17 @@ pluma_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
  * Return value: a new #PlumaView
  **/
 GtkWidget *
-pluma_view_new (PlumaDocument *doc)
+lapiz_view_new (PlumaDocument *doc)
 {
 	GtkWidget *view;
 
-	pluma_debug_message (DEBUG_VIEW, "START");
+	lapiz_debug_message (DEBUG_VIEW, "START");
 
 	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
 
 	view = GTK_WIDGET (g_object_new (PLUMA_TYPE_VIEW, "buffer", doc, NULL));
 
-	pluma_debug_message (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
+	lapiz_debug_message (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
 
 	gtk_widget_show_all (view);
 
@@ -596,12 +596,12 @@ pluma_view_new (PlumaDocument *doc)
 }
 
 void
-pluma_view_cut_clipboard (PlumaView *view)
+lapiz_view_cut_clipboard (PlumaView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	g_return_if_fail (PLUMA_IS_VIEW (view));
 
@@ -614,7 +614,7 @@ pluma_view_cut_clipboard (PlumaView *view)
 	/* FIXME: what is default editability of a buffer? */
   	gtk_text_buffer_cut_clipboard (buffer,
   				       clipboard,
-				       !pluma_document_get_readonly (
+				       !lapiz_document_get_readonly (
 				       		PLUMA_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
@@ -626,12 +626,12 @@ pluma_view_cut_clipboard (PlumaView *view)
 }
 
 void
-pluma_view_copy_clipboard (PlumaView *view)
+lapiz_view_copy_clipboard (PlumaView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	g_return_if_fail (PLUMA_IS_VIEW (view));
 
@@ -647,12 +647,12 @@ pluma_view_copy_clipboard (PlumaView *view)
 }
 
 void
-pluma_view_paste_clipboard (PlumaView *view)
+lapiz_view_paste_clipboard (PlumaView *view)
 {
   	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	g_return_if_fail (PLUMA_IS_VIEW (view));
 
@@ -666,7 +666,7 @@ pluma_view_paste_clipboard (PlumaView *view)
   	gtk_text_buffer_paste_clipboard (buffer,
 					 clipboard,
 					 NULL,
-					 !pluma_document_get_readonly (
+					 !lapiz_document_get_readonly (
 						PLUMA_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
@@ -678,18 +678,18 @@ pluma_view_paste_clipboard (PlumaView *view)
 }
 
 /**
- * pluma_view_delete_selection:
+ * lapiz_view_delete_selection:
  * @view: a #PlumaView
  *
  * Deletes the text currently selected in the #GtkTextBuffer associated
  * to the view and scroll to the cursor position.
  **/
 void
-pluma_view_delete_selection (PlumaView *view)
+lapiz_view_delete_selection (PlumaView *view)
 {
   	GtkTextBuffer *buffer = NULL;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	g_return_if_fail (PLUMA_IS_VIEW (view));
 
@@ -699,7 +699,7 @@ pluma_view_delete_selection (PlumaView *view)
 	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_delete_selection (buffer,
 					  TRUE,
-					  !pluma_document_get_readonly (
+					  !lapiz_document_get_readonly (
 						PLUMA_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
@@ -711,18 +711,18 @@ pluma_view_delete_selection (PlumaView *view)
 }
 
 /**
- * pluma_view_select_all:
+ * lapiz_view_select_all:
  * @view: a #PlumaView
  *
  * Selects all the text displayed in the @view.
  **/
 void
-pluma_view_select_all (PlumaView *view)
+lapiz_view_select_all (PlumaView *view)
 {
 	GtkTextBuffer *buffer = NULL;
 	GtkTextIter start, end;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	g_return_if_fail (PLUMA_IS_VIEW (view));
 
@@ -734,17 +734,17 @@ pluma_view_select_all (PlumaView *view)
 }
 
 /**
- * pluma_view_scroll_to_cursor:
+ * lapiz_view_scroll_to_cursor:
  * @view: a #PlumaView
  *
  * Scrolls the @view to the cursor position.
  **/
 void
-pluma_view_scroll_to_cursor (PlumaView *view)
+lapiz_view_scroll_to_cursor (PlumaView *view)
 {
 	GtkTextBuffer* buffer = NULL;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	g_return_if_fail (PLUMA_IS_VIEW (view));
 
@@ -764,7 +764,7 @@ static PangoFontDescription* get_system_font (void)
 	PangoFontDescription *desc = NULL;
 	char *name;
 
-	name = g_settings_get_string (pluma_prefs_manager->interface_settings, "font-name");
+	name = g_settings_get_string (lapiz_prefs_manager->interface_settings, "font-name");
 
 	if (name)
 	{
@@ -784,13 +784,13 @@ system_font_changed_cb (GSettings *settings,
 	sys_font_desc = get_system_font ();
 	if (sys_font_desc)
 	{
-		pluma_override_font ("label", NULL, sys_font_desc);
+		lapiz_override_font ("label", NULL, sys_font_desc);
 		pango_font_description_free (sys_font_desc);
 	}
 }
 
 void
-pluma_override_font (const gchar          *item,
+lapiz_override_font (const gchar          *item,
 		     GtkWidget            *widget,
 		     PangoFontDescription *font)
 {
@@ -821,7 +821,7 @@ pluma_override_font (const gchar          *item,
 	{
 		provider = gtk_css_provider_new ();
 
-		g_signal_connect (pluma_prefs_manager->interface_settings,
+		g_signal_connect (lapiz_prefs_manager->interface_settings,
 				  "changed::" "font-name",
 				  G_CALLBACK (system_font_changed_cb), NULL);
 
@@ -858,7 +858,7 @@ pluma_override_font (const gchar          *item,
 
 /* FIXME this is an issue for introspection */
 /**
- * pluma_view_set_font:
+ * lapiz_view_set_font:
  * @view: a #PlumaView
  * @def: whether to reset the default font
  * @font_name: the name of the font to use
@@ -867,14 +867,14 @@ pluma_override_font (const gchar          *item,
  * otherwise sets it to @font_name.
  **/
 void
-pluma_view_set_font (PlumaView   *view,
+lapiz_view_set_font (PlumaView   *view,
 		     gboolean     def,
 		     const gchar *font_name)
 {
 	PangoFontDescription *font_desc = NULL;
 	PangoFontDescription *sys_font_desc = NULL;
 
-	pluma_debug (DEBUG_VIEW);
+	lapiz_debug (DEBUG_VIEW);
 
 	g_return_if_fail (PLUMA_IS_VIEW (view));
 
@@ -882,7 +882,7 @@ pluma_view_set_font (PlumaView   *view,
 	{
 		gchar *font;
 
-		font = pluma_prefs_manager_get_system_font ();
+		font = lapiz_prefs_manager_get_system_font ();
 		font_desc = pango_font_description_from_string (font);
 		g_free (font);
 	}
@@ -895,11 +895,11 @@ pluma_view_set_font (PlumaView   *view,
 
 	g_return_if_fail (font_desc != NULL);
 
-	pluma_override_font ("textview", GTK_WIDGET (view), font_desc);
+	lapiz_override_font ("textview", GTK_WIDGET (view), font_desc);
 
 	sys_font_desc = get_system_font ();
 	if (sys_font_desc) {
-		pluma_override_font ("label", GTK_WIDGET (view), sys_font_desc);
+		lapiz_override_font ("label", GTK_WIDGET (view), sys_font_desc);
 		pango_font_description_free (sys_font_desc);
 	}
 
@@ -917,7 +917,7 @@ add_search_completion_entry (const gchar *str)
 	if (str == NULL)
 		return;
 
-	text = pluma_utils_unescape_search_text (str);
+	text = lapiz_utils_unescape_search_text (str);
 
 	if (g_utf8_strlen (text, -1) < MIN_SEARCH_COMPLETION_KEY_LEN)
 	{
@@ -1019,7 +1019,7 @@ run_search (PlumaView        *view,
 			}
 
 			/* run search */
-			found = pluma_document_search_forward (doc,
+			found = lapiz_document_search_forward (doc,
 							       &start_iter,
 							       NULL,
 							       &match_start,
@@ -1033,7 +1033,7 @@ run_search (PlumaView        *view,
 							      &match_end);
 
 			/* run search */
-			found = pluma_document_search_backward (doc,
+			found = lapiz_document_search_backward (doc,
 							        NULL,
 							        &start_iter,
 							        &match_start,
@@ -1049,13 +1049,13 @@ run_search (PlumaView        *view,
 		if (!found && wrap_around)
 		{
 			if (!search_backward)
-				found = pluma_document_search_forward (doc,
+				found = lapiz_document_search_forward (doc,
 								       NULL,
 								       NULL, /* FIXME: set the end_inter */
 								       &match_start,
 								       &match_end);
 			else
-				found = pluma_document_search_backward (doc,
+				found = lapiz_document_search_backward (doc,
 								        NULL, /* FIXME: set the start_inter */
 								        NULL,
 								        &match_start,
@@ -1088,7 +1088,7 @@ run_search (PlumaView        *view,
 
 	if (found || (*entry_text == '\0'))
 	{
-		pluma_view_scroll_to_cursor (view);
+		lapiz_view_scroll_to_cursor (view);
 
 		set_entry_state (view->priv->search_entry,
 		                 PLUMA_SEARCH_ENTRY_NORMAL);
@@ -1154,7 +1154,7 @@ hide_search_window (PlumaView *view, gboolean cancel)
 		buffer = GTK_TEXT_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 		gtk_text_buffer_place_cursor (buffer, &view->priv->start_search_iter);
 
-		pluma_view_scroll_to_cursor (view);
+		lapiz_view_scroll_to_cursor (view);
 	}
 
 	/* make sure a focus event is sent for the edit area */
@@ -1290,7 +1290,7 @@ search_window_key_press_event (GtkWidget   *widget,
 
 			/* restore document search so that Find Next does the right thing */
 			doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-			pluma_document_set_search_text (doc,
+			lapiz_document_set_search_text (doc,
 							view->priv->old_search_text,
 							view->priv->old_search_flags);
 
@@ -1524,15 +1524,15 @@ search_entry_insert_text (GtkEditable *editable,
 		gchar           *escaped_text;
 		gint             new_len;
 
-		pluma_debug_message (DEBUG_SEARCH, "Text: %s", text);
+		lapiz_debug_message (DEBUG_SEARCH, "Text: %s", text);
 
 		/* To avoid recursive behavior */
 		if (insert_text)
 			return;
 
-		escaped_text = pluma_utils_escape_search_text (text);
+		escaped_text = lapiz_utils_escape_search_text (text);
 
-		pluma_debug_message (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
+		lapiz_debug_message (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
 
 		new_len = strlen (escaped_text);
 
@@ -1805,7 +1805,7 @@ init_search_entry (PlumaView *view)
 		guint     old_find_flags = 0;
 		gint      sel_len = 0;
 
-		old_find_text = pluma_document_get_search_text (PLUMA_DOCUMENT (buffer),
+		old_find_text = lapiz_document_get_search_text (PLUMA_DOCUMENT (buffer),
 								&old_find_flags);
 		if (old_find_text != NULL)
 		{
@@ -1864,13 +1864,13 @@ search_init (GtkWidget *entry,
 		gchar *search_text;
 		guint  search_flags;
 
-		search_text = pluma_document_get_search_text (doc, &search_flags);
+		search_text = lapiz_document_get_search_text (doc, &search_flags);
 
 		if ((search_text == NULL) ||
 		    (strcmp (search_text, entry_text) != 0) ||
 		     search_flags != view->priv->search_flags)
 		{
-			pluma_document_set_search_text (doc,
+			lapiz_document_set_search_text (doc,
 							entry_text,
 							view->priv->search_flags);
 		}
@@ -1935,11 +1935,11 @@ search_init (GtkWidget *entry,
 
 			g_strfreev (split_text);
 
-			moved = pluma_document_goto_line (doc, line);
-			moved_offset = pluma_document_goto_line_offset (doc, line,
+			moved = lapiz_document_goto_line (doc, line);
+			moved_offset = lapiz_document_goto_line_offset (doc, line,
 									line_offset);
 
-			pluma_view_scroll_to_cursor (view);
+			lapiz_view_scroll_to_cursor (view);
 
 			if (!moved || !moved_offset)
 				set_entry_state (view->priv->search_entry,
@@ -2009,7 +2009,7 @@ reset_searched_text (PlumaView *view)
 
 	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
-	pluma_document_set_search_text (doc, "", PLUMA_SEARCH_DONT_SET_FLAGS);
+	lapiz_document_set_search_text (doc, "", PLUMA_SEARCH_DONT_SET_FLAGS);
 
 	return TRUE;
 }
@@ -2031,7 +2031,7 @@ start_interactive_goto_line (PlumaView *view)
 }
 
 static gboolean
-pluma_view_draw (GtkWidget      *widget,
+lapiz_view_draw (GtkWidget      *widget,
                  cairo_t        *cr)
 {
 	GtkTextView *text_view;
@@ -2043,7 +2043,7 @@ pluma_view_draw (GtkWidget      *widget,
 	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (text_view));
 	window = gtk_text_view_get_window (text_view, GTK_TEXT_WINDOW_TEXT);
 	if (gtk_cairo_should_draw_window (cr, window) &&
-	    pluma_document_get_enable_search_highlighting (doc))
+	    lapiz_document_get_enable_search_highlighting (doc))
 	{
 		GdkRectangle visible_rect;
 		GtkTextIter iter1, iter2;
@@ -2056,12 +2056,12 @@ pluma_view_draw (GtkWidget      *widget,
 					     + visible_rect.height, NULL);
 		gtk_text_iter_forward_line (&iter2);
 
-		_pluma_document_search_region (doc,
+		_lapiz_document_search_region (doc,
 					       &iter1,
 					       &iter2);
 	}
 
-	return GTK_WIDGET_CLASS (pluma_view_parent_class)->draw (widget, cr);
+	return GTK_WIDGET_CLASS (lapiz_view_parent_class)->draw (widget, cr);
 }
 
 static GdkAtom
@@ -2081,7 +2081,7 @@ drag_get_uri_target (GtkWidget      *widget,
 }
 
 static gboolean
-pluma_view_drag_motion (GtkWidget      *widget,
+lapiz_view_drag_motion (GtkWidget      *widget,
 			GdkDragContext *context,
 			gint            x,
 			gint            y,
@@ -2092,7 +2092,7 @@ pluma_view_drag_motion (GtkWidget      *widget,
 	/* Chain up to allow textview to scroll and position dnd mark, note
 	 * that this needs to be checked if gtksourceview or gtktextview
 	 * changes drag_motion behaviour */
-	result = GTK_WIDGET_CLASS (pluma_view_parent_class)->drag_motion (widget, context, x, y, timestamp);
+	result = GTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_motion (widget, context, x, y, timestamp);
 
 	/* If this is a URL, deal with it here */
 	if (drag_get_uri_target (widget, context) != GDK_NONE)
@@ -2107,7 +2107,7 @@ pluma_view_drag_motion (GtkWidget      *widget,
 }
 
 static void
-pluma_view_drag_data_received (GtkWidget        *widget,
+lapiz_view_drag_data_received (GtkWidget        *widget,
 		       	       GdkDragContext   *context,
 			       gint              x,
 			       gint              y,
@@ -2120,7 +2120,7 @@ pluma_view_drag_data_received (GtkWidget        *widget,
 	/* If this is an URL emit DROP_URIS, otherwise chain up the signal */
 	if (info == TARGET_URI_LIST)
 	{
-		uri_list = pluma_utils_drop_get_uris (selection_data);
+		uri_list = lapiz_utils_drop_get_uris (selection_data);
 
 		if (uri_list != NULL)
 		{
@@ -2132,12 +2132,12 @@ pluma_view_drag_data_received (GtkWidget        *widget,
 	}
 	else
 	{
-		GTK_WIDGET_CLASS (pluma_view_parent_class)->drag_data_received (widget, context, x, y, selection_data, info, timestamp);
+		GTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_data_received (widget, context, x, y, selection_data, info, timestamp);
 	}
 }
 
 static gboolean
-pluma_view_drag_drop (GtkWidget      *widget,
+lapiz_view_drag_drop (GtkWidget      *widget,
 		      GdkDragContext *context,
 		      gint            x,
 		      gint            y,
@@ -2157,7 +2157,7 @@ pluma_view_drag_drop (GtkWidget      *widget,
 	else
 	{
 		/* Chain up */
-		result = GTK_WIDGET_CLASS (pluma_view_parent_class)->drag_drop (widget, context, x, y, timestamp);
+		result = GTK_WIDGET_CLASS (lapiz_view_parent_class)->drag_drop (widget, context, x, y, timestamp);
 	}
 
 	return result;
@@ -2171,7 +2171,7 @@ show_line_numbers_toggled (GtkMenu   *menu,
 
 	show = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (menu));
 
-	pluma_prefs_manager_set_display_line_numbers (show);
+	lapiz_prefs_manager_set_display_line_numbers (show);
 }
 
 static GtkWidget *
@@ -2206,7 +2206,7 @@ show_line_numbers_menu (GtkWidget      *view,
 }
 
 static gboolean
-pluma_view_button_press_event (GtkWidget *widget, GdkEventButton *event)
+lapiz_view_button_press_event (GtkWidget *widget, GdkEventButton *event)
 {
 	static gchar  *primtxt = "";
 
@@ -2245,20 +2245,20 @@ pluma_view_button_press_event (GtkWidget *widget, GdkEventButton *event)
 	    (event->window == gtk_text_view_get_window (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_TEXT)))
 		return TRUE;
 
-	return GTK_WIDGET_CLASS (pluma_view_parent_class)->button_press_event (widget, event);
+	return GTK_WIDGET_CLASS (lapiz_view_parent_class)->button_press_event (widget, event);
 }
 
 static gboolean
-pluma_view_button_release_event (GtkWidget *widget, GdkEventButton *event)
+lapiz_view_button_release_event (GtkWidget *widget, GdkEventButton *event)
 {
 	if (event->button == 2)
 		middle_or_right_down = FALSE;
 
-	return GTK_WIDGET_CLASS (pluma_view_parent_class)->button_release_event (widget, event);
+	return GTK_WIDGET_CLASS (lapiz_view_parent_class)->button_release_event (widget, event);
 }
 
 static void
-pluma_view_populate_popup (GtkTextView *text_view, GtkWidget *widget)
+lapiz_view_populate_popup (GtkTextView *text_view, GtkWidget *widget)
 {
 	middle_or_right_down = FALSE;
 }
@@ -2278,7 +2278,7 @@ search_highlight_updated_cb (PlumaDocument *doc,
 
 	text_view = GTK_TEXT_VIEW (view);
 
-	g_return_if_fail (pluma_document_get_enable_search_highlighting (
+	g_return_if_fail (lapiz_document_get_enable_search_highlighting (
 				PLUMA_DOCUMENT (gtk_text_view_get_buffer (text_view))));
 
 	/* get visible area */
@@ -2403,7 +2403,7 @@ delete_line (GtkTextView *text_view,
 }
 
 static void
-pluma_view_delete_from_cursor (GtkTextView   *text_view,
+lapiz_view_delete_from_cursor (GtkTextView   *text_view,
 			       GtkDeleteType  type,
 			       gint           count)
 {
@@ -2417,7 +2417,7 @@ pluma_view_delete_from_cursor (GtkTextView   *text_view,
 			delete_line (text_view, count);
 			break;
 		default:
-			GTK_TEXT_VIEW_CLASS (pluma_view_parent_class)->delete_from_cursor(text_view, type, count);
+			GTK_TEXT_VIEW_CLASS (lapiz_view_parent_class)->delete_from_cursor(text_view, type, count);
 			break;
 	}
 }

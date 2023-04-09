@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-language-dialog.c
- * This file is part of pluma
+ * lapiz-spell-language-dialog.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -33,10 +33,10 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <pluma/pluma-utils.h>
-#include <pluma/pluma-help.h>
-#include "pluma-spell-language-dialog.h"
-#include "pluma-spell-checker-language.h"
+#include <lapiz/lapiz-utils.h>
+#include <lapiz/lapiz-help.h>
+#include "lapiz-spell-language-dialog.h"
+#include "lapiz-spell-checker-language.h"
 
 
 enum
@@ -55,11 +55,11 @@ struct _PlumaSpellLanguageDialog
 	GtkTreeModel *model;
 };
 
-G_DEFINE_TYPE(PlumaSpellLanguageDialog, pluma_spell_language_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE(PlumaSpellLanguageDialog, lapiz_spell_language_dialog, GTK_TYPE_DIALOG)
 
 
 static void
-pluma_spell_language_dialog_class_init (PlumaSpellLanguageDialogClass *klass)
+lapiz_spell_language_dialog_class_init (PlumaSpellLanguageDialogClass *klass)
 {
 	/* GObjectClass *object_class = G_OBJECT_CLASS (klass); */
 }
@@ -70,9 +70,9 @@ dialog_response_handler (GtkDialog *dlg,
 {
 	if (res_id == GTK_RESPONSE_HELP)
 	{
-		pluma_help_display (GTK_WINDOW (dlg),
+		lapiz_help_display (GTK_WINDOW (dlg),
 				    NULL,
-				    "pluma-spell-checker-plugin");
+				    "lapiz-spell-checker-plugin");
 
 		g_signal_stop_emission_by_name (dlg, "response");
 	}
@@ -129,9 +129,9 @@ create_dialog (PlumaSpellLanguageDialog *dlg,
 		NULL
 	};
 
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), "process-stop", GTK_RESPONSE_CANCEL);
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "gtk-ok", GTK_RESPONSE_OK);
-	pluma_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), "process-stop", GTK_RESPONSE_CANCEL);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "gtk-ok", GTK_RESPONSE_OK);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
 
 	gtk_window_set_title (GTK_WINDOW (dlg), _("Set language"));
 	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
@@ -148,7 +148,7 @@ create_dialog (PlumaSpellLanguageDialog *dlg,
 			  NULL);
 
 	ui_file = g_build_filename (data_dir, "languages-dialog.ui", NULL);
-	ret = pluma_utils_get_ui_objects (ui_file,
+	ret = lapiz_utils_get_ui_objects (ui_file,
 					  root_objects,
 					  &error_widget,
 					  "content", &content,
@@ -206,7 +206,7 @@ create_dialog (PlumaSpellLanguageDialog *dlg,
 }
 
 static void
-pluma_spell_language_dialog_init (PlumaSpellLanguageDialog *dlg)
+lapiz_spell_language_dialog_init (PlumaSpellLanguageDialog *dlg)
 {
 
 }
@@ -223,13 +223,13 @@ populate_language_list (PlumaSpellLanguageDialog        *dlg,
 	/* create list store */
 	store = GTK_LIST_STORE (dlg->model);
 
-	langs = pluma_spell_checker_get_available_languages ();
+	langs = lapiz_spell_checker_get_available_languages ();
 
 	while (langs)
 	{
 		const gchar *name;
 
-		name = pluma_spell_checker_language_to_string ((const PlumaSpellCheckerLanguage*)langs->data);
+		name = lapiz_spell_checker_language_to_string ((const PlumaSpellCheckerLanguage*)langs->data);
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -252,7 +252,7 @@ populate_language_list (PlumaSpellLanguageDialog        *dlg,
 }
 
 GtkWidget *
-pluma_spell_language_dialog_new (GtkWindow                       *parent,
+lapiz_spell_language_dialog_new (GtkWindow                       *parent,
 				 const PlumaSpellCheckerLanguage *cur_lang,
 				 const gchar *data_dir)
 {
@@ -273,7 +273,7 @@ pluma_spell_language_dialog_new (GtkWindow                       *parent,
 }
 
 const PlumaSpellCheckerLanguage *
-pluma_spell_language_get_selected_language (PlumaSpellLanguageDialog *dlg)
+lapiz_spell_language_get_selected_language (PlumaSpellLanguageDialog *dlg)
 {
 	GValue value = {0, };
 	const PlumaSpellCheckerLanguage* lang;

@@ -1,6 +1,6 @@
 /*
- * pluma-debug.c
- * This file is part of pluma
+ * lapiz-debug.c
+ * This file is part of lapiz
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -23,8 +23,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -35,7 +35,7 @@
 #endif
 
 #include <stdio.h>
-#include "pluma-debug.h"
+#include "lapiz-debug.h"
 
 #define ENABLE_PROFILING
 
@@ -47,7 +47,7 @@ static gdouble last = 0.0;
 static PlumaDebugSection debug = PLUMA_NO_DEBUG;
 
 void
-pluma_debug_init (void)
+lapiz_debug_init (void)
 {
 	if (g_getenv ("PLUMA_DEBUG") != NULL)
 	{
@@ -97,7 +97,7 @@ out:
 }
 
 void
-pluma_debug_message (PlumaDebugSection  section,
+lapiz_debug_message (PlumaDebugSection  section,
 		     const gchar       *file,
 		     gint               line,
 		     const gchar       *function,
@@ -134,7 +134,7 @@ pluma_debug_message (PlumaDebugSection  section,
 	}
 }
 
-void pluma_debug (PlumaDebugSection  section,
+void lapiz_debug (PlumaDebugSection  section,
 		  const gchar       *file,
 		  gint               line,
 		  const gchar       *function)

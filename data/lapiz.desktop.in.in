@@ -2,7 +2,7 @@
 Name=Pluma
 GenericName=Text Editor
 Comment=Edit text files
-Exec=pluma %U
+Exec=lapiz %U
 Terminal=false
 Type=Application
 StartupNotify=true
@@ -12,10 +12,10 @@ Icon=accessories-text-editor
 Categories=GTK;Utility;TextEditor;
 # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 Keywords=text;editor;MATE;tabs;highlighting;code;multiple;files;pluggable;
-X-MATE-DocPath=pluma/pluma.xml
+X-MATE-DocPath=lapiz/lapiz.xml
 X-MATE-FullName=Pluma Text Editor
 X-MATE-Bugzilla-Bugzilla=MATE
 X-MATE-Bugzilla-Product=Pluma
 X-MATE-Bugzilla-Component=general
 X-MATE-Bugzilla-Version=@VERSION@
-X-MATE-Bugzilla-ExtraInfoScript=@FULL_LIBEXECDIR@/pluma/pluma-bugreport.sh
+X-MATE-Bugzilla-ExtraInfoScript=@FULL_LIBEXECDIR@/lapiz/lapiz-bugreport.sh

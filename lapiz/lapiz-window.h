@@ -1,6 +1,6 @@
 /*
- * pluma-window.h
- * This file is part of pluma
+ * lapiz-window.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -34,9 +34,9 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include <pluma/pluma-tab.h>
-#include <pluma/pluma-panel.h>
-#include <pluma/pluma-message-bus.h>
+#include <lapiz/lapiz-tab.h>
+#include <lapiz/lapiz-panel.h>
+#include <lapiz/lapiz-message-bus.h>
 
 G_BEGIN_DECLS
 
@@ -53,7 +53,7 @@ typedef enum
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_WINDOW              (pluma_window_get_type())
+#define PLUMA_TYPE_WINDOW              (lapiz_window_get_type())
 #define PLUMA_WINDOW(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_WINDOW, PlumaWindow))
 #define PLUMA_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_WINDOW, PlumaWindowClass))
 #define PLUMA_IS_WINDOW(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_WINDOW))
@@ -100,91 +100,91 @@ struct _PlumaWindowClass
 /*
  * Public methods
  */
-GType 		 pluma_window_get_type 			(void) G_GNUC_CONST;
+GType 		 lapiz_window_get_type 			(void) G_GNUC_CONST;
 
-PlumaTab	*pluma_window_create_tab		(PlumaWindow         *window,
+PlumaTab	*lapiz_window_create_tab		(PlumaWindow         *window,
 							 gboolean             jump_to);
 
-PlumaTab	*pluma_window_create_tab_from_uri	(PlumaWindow         *window,
+PlumaTab	*lapiz_window_create_tab_from_uri	(PlumaWindow         *window,
 							 const gchar         *uri,
 							 const PlumaEncoding *encoding,
 							 gint                 line_pos,
 							 gboolean             create,
 							 gboolean             jump_to);
 
-void		 pluma_window_close_tab			(PlumaWindow         *window,
+void		 lapiz_window_close_tab			(PlumaWindow         *window,
 							 PlumaTab            *tab);
 
-void		 pluma_window_close_all_tabs		(PlumaWindow         *window);
+void		 lapiz_window_close_all_tabs		(PlumaWindow         *window);
 
-void		 pluma_window_close_tabs		(PlumaWindow         *window,
+void		 lapiz_window_close_tabs		(PlumaWindow         *window,
 							 const GList         *tabs);
 
-PlumaTab	*pluma_window_get_active_tab		(PlumaWindow         *window);
+PlumaTab	*lapiz_window_get_active_tab		(PlumaWindow         *window);
 
-void		 pluma_window_set_active_tab		(PlumaWindow         *window,
+void		 lapiz_window_set_active_tab		(PlumaWindow         *window,
 							 PlumaTab            *tab);
 
 /* Helper functions */
-PlumaView	*pluma_window_get_active_view		(PlumaWindow         *window);
-PlumaDocument	*pluma_window_get_active_document	(PlumaWindow         *window);
+PlumaView	*lapiz_window_get_active_view		(PlumaWindow         *window);
+PlumaDocument	*lapiz_window_get_active_document	(PlumaWindow         *window);
 
 /* Returns a newly allocated list with all the documents in the window */
-GList		*pluma_window_get_documents		(PlumaWindow         *window);
+GList		*lapiz_window_get_documents		(PlumaWindow         *window);
 
 /* Returns a newly allocated list with all the documents that need to be
    saved before closing the window */
-GList		*pluma_window_get_unsaved_documents 	(PlumaWindow         *window);
+GList		*lapiz_window_get_unsaved_documents 	(PlumaWindow         *window);
 
 /* Returns a newly allocated list with all the views in the window */
-GList		*pluma_window_get_views			(PlumaWindow         *window);
+GList		*lapiz_window_get_views			(PlumaWindow         *window);
 
-GtkWindowGroup  *pluma_window_get_group			(PlumaWindow         *window);
+GtkWindowGroup  *lapiz_window_get_group			(PlumaWindow         *window);
 
-PlumaPanel	*pluma_window_get_side_panel		(PlumaWindow         *window);
+PlumaPanel	*lapiz_window_get_side_panel		(PlumaWindow         *window);
 
-PlumaPanel	*pluma_window_get_bottom_panel		(PlumaWindow         *window);
+PlumaPanel	*lapiz_window_get_bottom_panel		(PlumaWindow         *window);
 
-GtkWidget	*pluma_window_get_statusbar		(PlumaWindow         *window);
+GtkWidget	*lapiz_window_get_statusbar		(PlumaWindow         *window);
 
-GtkUIManager	*pluma_window_get_ui_manager		(PlumaWindow         *window);
+GtkUIManager	*lapiz_window_get_ui_manager		(PlumaWindow         *window);
 
-PlumaWindowState pluma_window_get_state 		(PlumaWindow         *window);
+PlumaWindowState lapiz_window_get_state 		(PlumaWindow         *window);
 
-PlumaTab        *pluma_window_get_tab_from_location	(PlumaWindow         *window,
+PlumaTab        *lapiz_window_get_tab_from_location	(PlumaWindow         *window,
 							 GFile               *location);
 
 /* Message bus */
-PlumaMessageBus	*pluma_window_get_message_bus		(PlumaWindow         *window);
+PlumaMessageBus	*lapiz_window_get_message_bus		(PlumaWindow         *window);
 
 /*
  * Non exported functions
  */
-GtkWidget	*_pluma_window_get_notebook		(PlumaWindow         *window);
+GtkWidget	*_lapiz_window_get_notebook		(PlumaWindow         *window);
 
-PlumaWindow	*_pluma_window_move_tab_to_new_window	(PlumaWindow         *window,
+PlumaWindow	*_lapiz_window_move_tab_to_new_window	(PlumaWindow         *window,
 							 PlumaTab            *tab);
-gboolean	 _pluma_window_is_removing_tabs		(PlumaWindow         *window);
+gboolean	 _lapiz_window_is_removing_tabs		(PlumaWindow         *window);
 
-GFile		*_pluma_window_get_default_location 	(PlumaWindow         *window);
+GFile		*_lapiz_window_get_default_location 	(PlumaWindow         *window);
 
-void		 _pluma_window_set_default_location 	(PlumaWindow         *window,
+void		 _lapiz_window_set_default_location 	(PlumaWindow         *window,
 							 GFile               *location);
 
-void		 _pluma_window_set_saving_session_state	(PlumaWindow         *window,
+void		 _lapiz_window_set_saving_session_state	(PlumaWindow         *window,
 							 gboolean             saving_session);
 
-void		 _pluma_window_fullscreen		(PlumaWindow         *window);
+void		 _lapiz_window_fullscreen		(PlumaWindow         *window);
 
-void		 _pluma_window_unfullscreen		(PlumaWindow         *window);
+void		 _lapiz_window_unfullscreen		(PlumaWindow         *window);
 
-gboolean	 _pluma_window_is_fullscreen		(PlumaWindow         *window);
+gboolean	 _lapiz_window_is_fullscreen		(PlumaWindow         *window);
 
-/* these are in pluma-window because of screen safety */
-void		 _pluma_recent_add			(PlumaWindow	     *window,
+/* these are in lapiz-window because of screen safety */
+void		 _lapiz_recent_add			(PlumaWindow	     *window,
 							 const gchar         *uri,
 							 const gchar         *mime);
-void		 _pluma_recent_remove			(PlumaWindow         *window,
+void		 _lapiz_recent_remove			(PlumaWindow         *window,
 							 const gchar         *uri);
 
 G_END_DECLS

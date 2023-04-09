@@ -1,6 +1,6 @@
 /*
- * pluma-io-error-message-area.c
- * This file is part of pluma
+ * lapiz-io-error-message-area.c
+ * This file is part of lapiz
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -21,8 +21,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -42,11 +42,11 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
-#include "pluma-utils.h"
-#include "pluma-document.h"
-#include "pluma-io-error-message-area.h"
-#include "pluma-prefs-manager.h"
-#include <pluma/pluma-encodings-combo-box.h>
+#include "lapiz-utils.h"
+#include "lapiz-document.h"
+#include "lapiz-io-error-message-area.h"
+#include "lapiz-prefs-manager.h"
+#include <lapiz/lapiz-encodings-combo-box.h>
 
 #define MAX_URI_IN_DIALOG_LENGTH 50
 
@@ -218,13 +218,13 @@ parse_gio_error (gint          code,
 				scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 				/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-				*message_details = g_strdup_printf (_("pluma cannot handle %s locations."),
+				*message_details = g_strdup_printf (_("lapiz cannot handle %s locations."),
 								   scheme_markup);
 				g_free (scheme_markup);
 			}
 			else
 			{
-				*message_details = g_strdup (_("pluma cannot handle this location."));
+				*message_details = g_strdup (_("lapiz cannot handle this location."));
 			}
 
 			g_free (scheme_string);
@@ -262,14 +262,14 @@ parse_gio_error (gint          code,
 		{
 			gchar *hn = NULL;
 
-			if (pluma_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
+			if (lapiz_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
 			{
 				if (hn != NULL)
 				{
 					gchar *host_markup;
 					gchar *host_name;
 
-					host_name = pluma_utils_make_valid_utf8 (hn);
+					host_name = lapiz_utils_make_valid_utf8 (hn);
 					g_free (hn);
 
 					host_markup = g_markup_printf_escaped ("<i>%s</i>", host_name);
@@ -315,7 +315,7 @@ parse_gio_error (gint          code,
 }
 
 static gboolean
-parse_pluma_error (gint          code,
+parse_lapiz_error (gint          code,
 	           gchar       **error_message,
 	           gchar       **message_details,
 	           const gchar  *uri,
@@ -356,7 +356,7 @@ parse_error (const GError *error,
 	}
 	else if (error->domain == PLUMA_DOCUMENT_ERROR)
 	{
-		ret = parse_pluma_error (error->code,
+		ret = parse_lapiz_error (error->code,
 					 error_message,
 					 message_details,
 					 uri,
@@ -373,7 +373,7 @@ parse_error (const GError *error,
 }
 
 GtkWidget *
-pluma_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
+lapiz_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
 						      const GError *error)
 {
 	gchar *error_message = NULL;
@@ -388,13 +388,13 @@ pluma_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
 	g_return_val_if_fail ((error->domain == PLUMA_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -403,7 +403,7 @@ pluma_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_FOUND))
 	{
-		message_details = g_strdup (_("pluma cannot find the file. "
+		message_details = g_strdup (_("lapiz cannot find the file. "
 					      "Perhaps it has recently been deleted."));
 	}
 	else
@@ -443,9 +443,9 @@ create_combo_box (GtkWidget *message_area, GtkWidget *vbox)
 	label = gtk_label_new_with_mnemonic (label_markup);
 	g_free (label_markup);
 	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-	menu = pluma_encodings_combo_box_new (TRUE);
+	menu = lapiz_encodings_combo_box_new (TRUE);
 	g_object_set_data (G_OBJECT (message_area),
-			   "pluma-message-area-encoding-menu",
+			   "lapiz-message-area-encoding-menu",
 			   menu);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
@@ -554,7 +554,7 @@ create_conversion_error_message_area (const gchar *primary_text,
 }
 
 GtkWidget *
-pluma_io_loading_error_message_area_new (const gchar         *uri,
+lapiz_io_loading_error_message_area_new (const gchar         *uri,
 					 const PlumaEncoding *encoding,
 					 const GError        *error)
 {
@@ -574,13 +574,13 @@ pluma_io_loading_error_message_area_new (const gchar         *uri,
 			      (error->domain == PLUMA_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -588,7 +588,7 @@ pluma_io_loading_error_message_area_new (const gchar         *uri,
 	g_free (temp_uri_for_display);
 
 	if (encoding != NULL)
-		encoding_name = pluma_encoding_to_string (encoding);
+		encoding_name = lapiz_encoding_to_string (encoding);
 	else
 		encoding_name = g_strdup ("UTF-8");
 
@@ -604,7 +604,7 @@ pluma_io_loading_error_message_area_new (const gchar         *uri,
 	         (error->domain == PLUMA_DOCUMENT_ERROR &&
 	         error->code == PLUMA_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED))
 	{
-		message_details = g_strconcat (_("pluma has not been able to detect "
+		message_details = g_strconcat (_("lapiz has not been able to detect "
 					         "the character encoding."), "\n",
 					       _("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a character encoding from the menu and try again."), NULL);
@@ -665,7 +665,7 @@ pluma_io_loading_error_message_area_new (const gchar         *uri,
 }
 
 GtkWidget *
-pluma_conversion_error_while_saving_message_area_new (
+lapiz_conversion_error_while_saving_message_area_new (
 						const gchar         *uri,
 						const PlumaEncoding *encoding,
 				    		const GError        *error)
@@ -684,20 +684,20 @@ pluma_conversion_error_while_saving_message_area_new (
 	                      error->domain == G_IO_ERROR, NULL);
 	g_return_val_if_fail (encoding != NULL, NULL);
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
-	encoding_name = pluma_encoding_to_string (encoding);
+	encoding_name = lapiz_encoding_to_string (encoding);
 
 	error_message = g_strdup_printf (_("Could not save the file %s using the %s character encoding."),
 					 uri_for_display,
@@ -720,22 +720,22 @@ pluma_conversion_error_while_saving_message_area_new (
 }
 
 const PlumaEncoding *
-pluma_conversion_error_message_area_get_encoding (GtkWidget *message_area)
+lapiz_conversion_error_message_area_get_encoding (GtkWidget *message_area)
 {
 	gpointer menu;
 
 	g_return_val_if_fail (GTK_IS_INFO_BAR (message_area), NULL);
 
 	menu = g_object_get_data (G_OBJECT (message_area),
-				  "pluma-message-area-encoding-menu");
+				  "lapiz-message-area-encoding-menu");
 	g_return_val_if_fail (menu, NULL);
 
-	return pluma_encodings_combo_box_get_selected_encoding
+	return lapiz_encodings_combo_box_get_selected_encoding
 					(PLUMA_ENCODINGS_COMBO_BOX (menu));
 }
 
 GtkWidget *
-pluma_file_already_open_warning_message_area_new (const gchar *uri)
+lapiz_file_already_open_warning_message_area_new (const gchar *uri)
 {
 	GtkWidget *message_area;
 	GtkWidget *hbox_content;
@@ -751,13 +751,13 @@ pluma_file_already_open_warning_message_area_new (const gchar *uri)
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -788,7 +788,7 @@ pluma_file_already_open_warning_message_area_new (const gchar *uri)
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
-	primary_text = g_strdup_printf (_("This file (%s) is already open in another pluma window."), uri_for_display);
+	primary_text = g_strdup_printf (_("This file (%s) is already open in another lapiz window."), uri_for_display);
 	g_free (uri_for_display);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
@@ -802,7 +802,7 @@ pluma_file_already_open_warning_message_area_new (const gchar *uri)
 	gtk_widget_set_can_focus (primary_label, TRUE);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
-	secondary_text = _("pluma opened this instance of the file in a non-editable way. "
+	secondary_text = _("lapiz opened this instance of the file in a non-editable way. "
 			   "Do you want to edit it anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
 					    secondary_text);
@@ -822,7 +822,7 @@ pluma_file_already_open_warning_message_area_new (const gchar *uri)
 }
 
 GtkWidget *
-pluma_externally_modified_saving_error_message_area_new (
+lapiz_externally_modified_saving_error_message_area_new (
 						const gchar  *uri,
 						const GError *error)
 {
@@ -845,13 +845,13 @@ pluma_externally_modified_saving_error_message_area_new (
 	g_return_val_if_fail (error->domain == PLUMA_DOCUMENT_ERROR, NULL);
 	g_return_val_if_fail (error->code == PLUMA_DOCUMENT_ERROR_EXTERNALLY_MODIFIED, NULL);
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -917,7 +917,7 @@ pluma_externally_modified_saving_error_message_area_new (
 }
 
 GtkWidget *
-pluma_no_backup_saving_error_message_area_new (const gchar  *uri,
+lapiz_no_backup_saving_error_message_area_new (const gchar  *uri,
 					       const GError *error)
 {
 	GtkWidget *message_area;
@@ -941,13 +941,13 @@ pluma_no_backup_saving_error_message_area_new (const gchar  *uri,
 			       (error->domain == G_IO_ERROR &&
 			        error->code == G_IO_ERROR_CANT_CREATE_BACKUP)), NULL);
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -978,7 +978,7 @@ pluma_no_backup_saving_error_message_area_new (const gchar  *uri,
 
 	// FIXME: review this messages
 
-	if (pluma_prefs_manager_get_create_backup_copy ())
+	if (lapiz_prefs_manager_get_create_backup_copy ())
 		primary_text = g_strdup_printf (_("Could not create a backup file while saving %s"),
 						uri_for_display);
 	else
@@ -998,7 +998,7 @@ pluma_no_backup_saving_error_message_area_new (const gchar  *uri,
 	gtk_widget_set_can_focus (primary_label, TRUE);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
-	secondary_text = _("pluma could not back up the old copy of the file before saving the new one. "
+	secondary_text = _("lapiz could not back up the old copy of the file before saving the new one. "
 			   "You can ignore this warning and save the file anyway, but if an error "
 			   "occurs while saving, you could lose the old copy of the file. Save anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
@@ -1019,7 +1019,7 @@ pluma_no_backup_saving_error_message_area_new (const gchar  *uri,
 }
 
 GtkWidget *
-pluma_unrecoverable_saving_error_message_area_new (const gchar  *uri,
+lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 						   const GError *error)
 {
 	gchar *error_message = NULL;
@@ -1036,13 +1036,13 @@ pluma_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 	g_return_val_if_fail ((error->domain == PLUMA_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -1058,7 +1058,7 @@ pluma_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 			scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 			/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-			message_details = g_strdup_printf (_("pluma cannot handle %s locations in write mode. "
+			message_details = g_strdup_printf (_("lapiz cannot handle %s locations in write mode. "
 							     "Please check that you typed the "
 							     "location correctly and try again."),
 							   scheme_markup);
@@ -1066,7 +1066,7 @@ pluma_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 		}
 		else
 		{
-			message_details = g_strdup (_("pluma cannot handle this location in write mode. "
+			message_details = g_strdup (_("lapiz cannot handle this location in write mode. "
 						      "Please check that you typed the "
 						      "location correctly and try again."));
 		}
@@ -1142,7 +1142,7 @@ pluma_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 }
 
 GtkWidget *
-pluma_externally_modified_message_area_new (const gchar *uri,
+lapiz_externally_modified_message_area_new (const gchar *uri,
 					    gboolean     document_modified)
 {
 	gchar *full_formatted_uri;
@@ -1154,13 +1154,13 @@ pluma_externally_modified_message_area_new (const gchar *uri,
 
 	g_return_val_if_fail (uri != NULL, NULL);
 
-	full_formatted_uri = pluma_utils_uri_for_display (uri);
+	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = pluma_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = lapiz_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 

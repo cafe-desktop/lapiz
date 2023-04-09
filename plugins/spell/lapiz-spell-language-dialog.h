@@ -1,7 +1,7 @@
 /* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * pluma-spell-language-dialog.h
- * This file is part of pluma
+ * lapiz-spell-language-dialog.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2002 Paolo Maggi
  *
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 2002. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 2002. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  */
 
@@ -31,11 +31,11 @@
 #define __PLUMA_SPELL_LANGUAGE_DIALOG_H__
 
 #include <gtk/gtk.h>
-#include "pluma-spell-checker-language.h"
+#include "lapiz-spell-checker-language.h"
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_SPELL_LANGUAGE_DIALOG              (pluma_spell_language_dialog_get_type())
+#define PLUMA_TYPE_SPELL_LANGUAGE_DIALOG              (lapiz_spell_language_dialog_get_type())
 #define PLUMA_SPELL_LANGUAGE_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialog))
 #define PLUMA_SPELL_LANGUAGE_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG, PlumaSpellLanguageDialogClass))
 #define PLUMA_IS_SPELL_LANGUAGE_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_SPELL_LANGUAGE_DIALOG))
@@ -52,14 +52,14 @@ struct _PlumaSpellLanguageDialogClass
 	GtkDialogClass parent_class;
 };
 
-GType		 pluma_spell_language_dialog_get_type		(void) G_GNUC_CONST;
+GType		 lapiz_spell_language_dialog_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*pluma_spell_language_dialog_new		(GtkWindow			 *parent,
+GtkWidget	*lapiz_spell_language_dialog_new		(GtkWindow			 *parent,
 								 const PlumaSpellCheckerLanguage *cur_lang,
 								 const gchar *data_dir);
 
 const PlumaSpellCheckerLanguage *
-		 pluma_spell_language_get_selected_language	(PlumaSpellLanguageDialog *dlg);
+		 lapiz_spell_language_get_selected_language	(PlumaSpellLanguageDialog *dlg);
 
 G_END_DECLS
 

@@ -1,6 +1,6 @@
 /*
- * pluma-print-job.h
- * This file is part of pluma
+ * lapiz-print-job.h
+ * This file is part of lapiz
  *
  * Copyright (C) 2000-2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2008 Paolo Maggi
@@ -22,8 +22,8 @@
  */
 
 /*
- * Modified by the pluma Team, 1998-2005. See the AUTHORS file for a
- * list of people on the pluma Team.
+ * Modified by the lapiz Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the lapiz Team.
  * See the ChangeLog files for a list of changes.
  *
  * $Id$
@@ -33,14 +33,14 @@
 #define __PLUMA_PRINT_JOB_H__
 
 #include <gtk/gtk.h>
-#include <pluma/pluma-view.h>
+#include <lapiz/lapiz-view.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PRINT_JOB              (pluma_print_job_get_type())
+#define PLUMA_TYPE_PRINT_JOB              (lapiz_print_job_get_type())
 #define PLUMA_PRINT_JOB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PRINT_JOB, PlumaPrintJob))
 #define PLUMA_PRINT_JOB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PRINT_JOB, PlumaPrintJobClass))
 #define PLUMA_IS_PRINT_JOB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PRINT_JOB))
@@ -104,29 +104,29 @@ struct _PlumaPrintJobClass
 /*
  * Public methods
  */
-GType			 pluma_print_job_get_type		(void) G_GNUC_CONST;
+GType			 lapiz_print_job_get_type		(void) G_GNUC_CONST;
 
-PlumaPrintJob		*pluma_print_job_new			(PlumaView                *view);
+PlumaPrintJob		*lapiz_print_job_new			(PlumaView                *view);
 
-void			 pluma_print_job_set_export_filename	(PlumaPrintJob            *job,
+void			 lapiz_print_job_set_export_filename	(PlumaPrintJob            *job,
 								 const gchar              *filename);
 
-GtkPrintOperationResult	 pluma_print_job_print			(PlumaPrintJob            *job,
+GtkPrintOperationResult	 lapiz_print_job_print			(PlumaPrintJob            *job,
 								 GtkPrintOperationAction   action,
 								 GtkPageSetup             *page_setup,
 								 GtkPrintSettings         *settings,
 								 GtkWindow                *parent,
 								 GError                  **error);
 
-void			 pluma_print_job_cancel			(PlumaPrintJob            *job);
+void			 lapiz_print_job_cancel			(PlumaPrintJob            *job);
 
-const gchar		*pluma_print_job_get_status_string	(PlumaPrintJob            *job);
+const gchar		*lapiz_print_job_get_status_string	(PlumaPrintJob            *job);
 
-gdouble			 pluma_print_job_get_progress		(PlumaPrintJob            *job);
+gdouble			 lapiz_print_job_get_progress		(PlumaPrintJob            *job);
 
-GtkPrintSettings	*pluma_print_job_get_print_settings	(PlumaPrintJob            *job);
+GtkPrintSettings	*lapiz_print_job_get_print_settings	(PlumaPrintJob            *job);
 
-GtkPageSetup		*pluma_print_job_get_page_setup		(PlumaPrintJob            *job);
+GtkPageSetup		*lapiz_print_job_get_page_setup		(PlumaPrintJob            *job);
 
 G_END_DECLS
 

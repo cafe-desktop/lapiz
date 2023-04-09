@@ -21,7 +21,7 @@
 # Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
 #     Copyright (C), 2005 Adam Hooper <adamh@densi.com>
-# Bits from pluma Python Console Plugin
+# Bits from lapiz Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
 from gi.repository import GObject, Gtk, Peas, PeasGtk, Pluma
@@ -45,7 +45,7 @@ class PythonConsolePlugin(GObject.Object, Peas.Activatable, PeasGtk.Configurable
         window = self.object
 
         self._console = PythonConsole(namespace = {'__builtins__' : __builtins__,
-                                             'pluma' : Pluma,
+                                             'lapiz' : Pluma,
                                              'window' : window})
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)
