@@ -19,9 +19,11 @@ TEST_PROGS			+= document-loader
 document_loader_SOURCES		= document-loader.c
 document_loader_LDADD		= $(progs_ldadd)
 
-TEST_PROGS			+= document-saver
-document_saver_SOURCES		= document-saver.c
-document_saver_LDADD		= $(progs_ldadd)
+if ENABLE_SFTP_TESTS
+    TEST_PROGS			+= document-saver
+    document_saver_SOURCES		= document-saver.c
+    document_saver_LDADD		= $(progs_ldadd)
+endif
 
 TESTS = $(TEST_PROGS)
 
