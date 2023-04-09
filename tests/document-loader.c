@@ -202,17 +202,17 @@ test_end_new_line_detection ()
 	test_loader ("document-loader.txt",
 	             "hello world\n",
 	             NULL,
-	             PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+	             LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 
 	test_loader ("document-loader.txt",
 	             "hello world\r\n",
 	             NULL,
-	             PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF);
+	             LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF);
 
 	test_loader ("document-loader.txt",
 	             "hello world\r",
 	             NULL,
-	             PLUMA_DOCUMENT_NEWLINE_TYPE_CR);
+	             LAPIZ_DOCUMENT_NEWLINE_TYPE_CR);
 }
 
 static void
@@ -221,17 +221,17 @@ test_begin_new_line_detection ()
 	test_loader ("document-loader.txt",
 	             "\nhello world",
 	             NULL,
-	             PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+	             LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 
 	test_loader ("document-loader.txt",
 	             "\r\nhello world",
 	             NULL,
-	             PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF);
+	             LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF);
 
 	test_loader ("document-loader.txt",
 	             "\rhello world",
 	             NULL,
-	             PLUMA_DOCUMENT_NEWLINE_TYPE_CR);
+	             LAPIZ_DOCUMENT_NEWLINE_TYPE_CR);
 }
 
 int main (int   argc,

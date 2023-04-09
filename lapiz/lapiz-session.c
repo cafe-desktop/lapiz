@@ -62,7 +62,7 @@ static GSList *window_dirty_list;
 
 static void	ask_next_confirmation	(void);
 
-#define PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE "lapiz-session-list-of-docs-to-save-key"
+#define LAPIZ_SESSION_LIST_OF_DOCS_TO_SAVE "lapiz-session-list-of-docs-to-save-key"
 
 static void
 save_window_session (GKeyFile    *state_file,
@@ -106,7 +106,7 @@ save_window_session (GKeyFile    *state_file,
 	doc_array = g_ptr_array_new ();
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
-		uri = lapiz_document_get_uri (PLUMA_DOCUMENT (l->data));
+		uri = lapiz_document_get_uri (LAPIZ_DOCUMENT (l->data));
 
 		if (uri != NULL)
 		        g_ptr_array_add (doc_array, uri);
@@ -145,7 +145,7 @@ client_save_state_cb (EggSMClient *client,
 	        group_name = g_strdup_printf ("lapiz window %d", n);
 		save_window_session (state_file,
 				     group_name,
-				     PLUMA_WINDOW (windows->data));
+				     LAPIZ_WINDOW (windows->data));
 		g_free (group_name);
 
 		windows = g_list_next (windows);
@@ -179,13 +179,13 @@ window_state_change (PlumaWindow *window,
 	state = lapiz_window_get_state (window);
 
 	/* we are still saving */
-	if (state & PLUMA_WINDOW_STATE_SAVING)
+	if (state & LAPIZ_WINDOW_STATE_SAVING)
 		return;
 
 	unsaved_docs = lapiz_window_get_unsaved_documents (window);
 
 	docs_to_save =	g_object_get_data (G_OBJECT (window),
-					   PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE);
+					   LAPIZ_SESSION_LIST_OF_DOCS_TO_SAVE);
 
 
 	for (l = docs_to_save; l != NULL; l = l->next)
@@ -202,7 +202,7 @@ window_state_change (PlumaWindow *window,
 		g_signal_handlers_disconnect_by_func (window, window_state_change, data);
 		g_list_free (docs_to_save);
 		g_object_set_data (G_OBJECT (window),
-				   PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE,
+				   LAPIZ_SESSION_LIST_OF_DOCS_TO_SAVE,
 				   NULL);
 
 		window_handled (window);
@@ -234,10 +234,10 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 			selected_documents = lapiz_close_confirmation_dialog_get_selected_documents (dlg);
 
 			g_return_if_fail (g_object_get_data (G_OBJECT (window),
-							     PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE) == NULL);
+							     LAPIZ_SESSION_LIST_OF_DOCS_TO_SAVE) == NULL);
 
 			g_object_set_data (G_OBJECT (window),
-					   PLUMA_SESSION_LIST_OF_DOCS_TO_SAVE,
+					   LAPIZ_SESSION_LIST_OF_DOCS_TO_SAVE,
 					   selected_documents);
 
 			_lapiz_cmd_file_save_documents_list (window, selected_documents);
@@ -286,7 +286,7 @@ show_confirmation_dialog (PlumaWindow *window)
 		PlumaTab *tab;
 		PlumaDocument *doc;
 
-		doc = PLUMA_DOCUMENT (unsaved_docs->data);
+		doc = LAPIZ_DOCUMENT (unsaved_docs->data);
 
 		tab = lapiz_tab_get_from_document (doc);
 		g_return_if_fail (tab != NULL);
@@ -324,7 +324,7 @@ ask_next_confirmation (void)
 	 * in the dirty list. The next confirmation is asked once
 	 * this one has been handled.
 	 */
-	show_confirmation_dialog (PLUMA_WINDOW (window_dirty_list->data));
+	show_confirmation_dialog (LAPIZ_WINDOW (window_dirty_list->data));
 }
 
 /* quit_requested handler for the master client */
@@ -346,7 +346,7 @@ client_quit_requested_cb (EggSMClient *client, gpointer data)
 
 	for (l = lapiz_app_get_windows (app); l != NULL; l = l->next)
 	{
-		if (lapiz_window_get_unsaved_documents (PLUMA_WINDOW (l->data)) != NULL)
+		if (lapiz_window_get_unsaved_documents (LAPIZ_WINDOW (l->data)) != NULL)
 		{
 			window_dirty_list = g_slist_prepend (window_dirty_list, l->data);
 		}

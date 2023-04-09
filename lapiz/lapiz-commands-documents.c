@@ -79,7 +79,7 @@ _lapiz_cmd_documents_move_to_new_window (GtkAction   *action,
 	if (tab == NULL)
 		return;
 
-	old_notebook = PLUMA_NOTEBOOK (_lapiz_window_get_notebook (window));
+	old_notebook = LAPIZ_NOTEBOOK (_lapiz_window_get_notebook (window));
 
 	g_return_if_fail (gtk_notebook_get_n_pages (GTK_NOTEBOOK (old_notebook)) > 1);
 

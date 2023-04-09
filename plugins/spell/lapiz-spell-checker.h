@@ -27,8 +27,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_SPELL_CHECKER_H__
-#define __PLUMA_SPELL_CHECKER_H__
+#ifndef __LAPIZ_SPELL_CHECKER_H__
+#define __LAPIZ_SPELL_CHECKER_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -37,12 +37,12 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_SPELL_CHECKER            (lapiz_spell_checker_get_type ())
-#define PLUMA_SPELL_CHECKER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_SPELL_CHECKER, PlumaSpellChecker))
-#define PLUMA_SPELL_CHECKER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_SPELL_CHECKER, PlumaSpellChecker))
-#define PLUMA_IS_SPELL_CHECKER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_SPELL_CHECKER))
-#define PLUMA_IS_SPELL_CHECKER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_SPELL_CHECKER))
-#define PLUMA_SPELL_CHECKER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_SPELL_CHECKER, PlumaSpellChecker))
+#define LAPIZ_TYPE_SPELL_CHECKER            (lapiz_spell_checker_get_type ())
+#define LAPIZ_SPELL_CHECKER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SPELL_CHECKER, PlumaSpellChecker))
+#define LAPIZ_SPELL_CHECKER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SPELL_CHECKER, PlumaSpellChecker))
+#define LAPIZ_IS_SPELL_CHECKER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_SPELL_CHECKER))
+#define LAPIZ_IS_SPELL_CHECKER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SPELL_CHECKER))
+#define LAPIZ_SPELL_CHECKER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SPELL_CHECKER, PlumaSpellChecker))
 
 typedef struct _PlumaSpellChecker PlumaSpellChecker;
 
@@ -105,5 +105,5 @@ gboolean		 lapiz_spell_checker_set_correction 	(PlumaSpellChecker               
 								 gssize                           r_len);
 G_END_DECLS
 
-#endif  /* __PLUMA_SPELL_CHECKER_H__ */
+#endif  /* __LAPIZ_SPELL_CHECKER_H__ */
 

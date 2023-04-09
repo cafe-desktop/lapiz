@@ -260,7 +260,7 @@ lapiz_spell_language_dialog_new (GtkWindow                       *parent,
 
 	g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
 
-	dlg = g_object_new (PLUMA_TYPE_SPELL_LANGUAGE_DIALOG, NULL);
+	dlg = g_object_new (LAPIZ_TYPE_SPELL_LANGUAGE_DIALOG, NULL);
 
 	create_dialog (dlg, data_dir);
 

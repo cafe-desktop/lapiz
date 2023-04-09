@@ -1,6 +1,6 @@
 # Quick Open Plugin
 SUBDIRS = quickopen
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 plugin_in_files = quickopen.plugin.desktop.in
 plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)

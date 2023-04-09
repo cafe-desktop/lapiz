@@ -29,8 +29,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_PRINT_JOB_H__
-#define __PLUMA_PRINT_JOB_H__
+#ifndef __LAPIZ_PRINT_JOB_H__
+#define __LAPIZ_PRINT_JOB_H__
 
 #include <gtk/gtk.h>
 #include <lapiz/lapiz-view.h>
@@ -40,27 +40,27 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PRINT_JOB              (lapiz_print_job_get_type())
-#define PLUMA_PRINT_JOB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PRINT_JOB, PlumaPrintJob))
-#define PLUMA_PRINT_JOB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PRINT_JOB, PlumaPrintJobClass))
-#define PLUMA_IS_PRINT_JOB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PRINT_JOB))
-#define PLUMA_IS_PRINT_JOB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_PRINT_JOB))
-#define PLUMA_PRINT_JOB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_PRINT_JOB, PlumaPrintJobClass))
+#define LAPIZ_TYPE_PRINT_JOB              (lapiz_print_job_get_type())
+#define LAPIZ_PRINT_JOB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PRINT_JOB, PlumaPrintJob))
+#define LAPIZ_PRINT_JOB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PRINT_JOB, PlumaPrintJobClass))
+#define LAPIZ_IS_PRINT_JOB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PRINT_JOB))
+#define LAPIZ_IS_PRINT_JOB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PRINT_JOB))
+#define LAPIZ_PRINT_JOB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PRINT_JOB, PlumaPrintJobClass))
 
 
 typedef enum
 {
-	PLUMA_PRINT_JOB_STATUS_INIT,
-	PLUMA_PRINT_JOB_STATUS_PAGINATING,
-	PLUMA_PRINT_JOB_STATUS_DRAWING,
-	PLUMA_PRINT_JOB_STATUS_DONE
+	LAPIZ_PRINT_JOB_STATUS_INIT,
+	LAPIZ_PRINT_JOB_STATUS_PAGINATING,
+	LAPIZ_PRINT_JOB_STATUS_DRAWING,
+	LAPIZ_PRINT_JOB_STATUS_DONE
 } PlumaPrintJobStatus;
 
 typedef enum
 {
-	PLUMA_PRINT_JOB_RESULT_OK,
-	PLUMA_PRINT_JOB_RESULT_CANCEL,
-	PLUMA_PRINT_JOB_RESULT_ERROR
+	LAPIZ_PRINT_JOB_RESULT_OK,
+	LAPIZ_PRINT_JOB_RESULT_CANCEL,
+	LAPIZ_PRINT_JOB_RESULT_ERROR
 } PlumaPrintJobResult;
 
 /* Private structure type */
@@ -130,4 +130,4 @@ GtkPageSetup		*lapiz_print_job_get_page_setup		(PlumaPrintJob            *job);
 
 G_END_DECLS
 
-#endif /* __PLUMA_PRINT_JOB_H__ */
+#endif /* __LAPIZ_PRINT_JOB_H__ */

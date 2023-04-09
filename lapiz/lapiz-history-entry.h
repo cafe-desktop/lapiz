@@ -28,18 +28,18 @@
  * $Id$
  */
 
-#ifndef __PLUMA_HISTORY_ENTRY_H__
-#define __PLUMA_HISTORY_ENTRY_H__
+#ifndef __LAPIZ_HISTORY_ENTRY_H__
+#define __LAPIZ_HISTORY_ENTRY_H__
 
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_HISTORY_ENTRY             (lapiz_history_entry_get_type ())
-#define PLUMA_HISTORY_ENTRY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_HISTORY_ENTRY, PlumaHistoryEntry))
-#define PLUMA_HISTORY_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_HISTORY_ENTRY, PlumaHistoryEntryClass))
-#define PLUMA_IS_HISTORY_ENTRY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_HISTORY_ENTRY))
-#define PLUMA_IS_HISTORY_ENTRY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_HISTORY_ENTRY))
-#define PLUMA_HISTORY_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_HISTORY_ENTRY, PlumaHistoryEntryClass))
+#define LAPIZ_TYPE_HISTORY_ENTRY             (lapiz_history_entry_get_type ())
+#define LAPIZ_HISTORY_ENTRY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_HISTORY_ENTRY, PlumaHistoryEntry))
+#define LAPIZ_HISTORY_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_HISTORY_ENTRY, PlumaHistoryEntryClass))
+#define LAPIZ_IS_HISTORY_ENTRY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_HISTORY_ENTRY))
+#define LAPIZ_IS_HISTORY_ENTRY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_HISTORY_ENTRY))
+#define LAPIZ_HISTORY_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_HISTORY_ENTRY, PlumaHistoryEntryClass))
 
 
 typedef struct _PlumaHistoryEntry        PlumaHistoryEntry;
@@ -93,4 +93,4 @@ void		lapiz_history_entry_set_escape_func	(PlumaHistoryEntry *entry,
 
 G_END_DECLS
 
-#endif /* __PLUMA_HISTORY_ENTRY_H__ */
+#endif /* __LAPIZ_HISTORY_ENTRY_H__ */

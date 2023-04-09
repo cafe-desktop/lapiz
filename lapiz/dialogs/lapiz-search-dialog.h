@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_SEARCH_DIALOG_H__
-#define __PLUMA_SEARCH_DIALOG_H__
+#ifndef __LAPIZ_SEARCH_DIALOG_H__
+#define __LAPIZ_SEARCH_DIALOG_H__
 
 #include <gtk/gtk.h>
 
@@ -38,13 +38,13 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_SEARCH_DIALOG              (lapiz_search_dialog_get_type())
-#define PLUMA_SEARCH_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_SEARCH_DIALOG, PlumaSearchDialog))
-#define PLUMA_SEARCH_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_SEARCH_DIALOG, PlumaSearchDialog const))
-#define PLUMA_SEARCH_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_SEARCH_DIALOG, PlumaSearchDialogClass))
-#define PLUMA_IS_SEARCH_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_SEARCH_DIALOG))
-#define PLUMA_IS_SEARCH_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_SEARCH_DIALOG))
-#define PLUMA_SEARCH_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_SEARCH_DIALOG, PlumaSearchDialogClass))
+#define LAPIZ_TYPE_SEARCH_DIALOG              (lapiz_search_dialog_get_type())
+#define LAPIZ_SEARCH_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_SEARCH_DIALOG, PlumaSearchDialog))
+#define LAPIZ_SEARCH_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_SEARCH_DIALOG, PlumaSearchDialog const))
+#define LAPIZ_SEARCH_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_SEARCH_DIALOG, PlumaSearchDialogClass))
+#define LAPIZ_IS_SEARCH_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_SEARCH_DIALOG))
+#define LAPIZ_IS_SEARCH_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SEARCH_DIALOG))
+#define LAPIZ_SEARCH_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_SEARCH_DIALOG, PlumaSearchDialogClass))
 
 /* Private structure type */
 typedef struct _PlumaSearchDialogPrivate PlumaSearchDialogPrivate;
@@ -77,9 +77,9 @@ struct _PlumaSearchDialogClass
 
 enum
 {
-	PLUMA_SEARCH_DIALOG_FIND_RESPONSE = 100,
-	PLUMA_SEARCH_DIALOG_REPLACE_RESPONSE,
-	PLUMA_SEARCH_DIALOG_REPLACE_ALL_RESPONSE
+	LAPIZ_SEARCH_DIALOG_FIND_RESPONSE = 100,
+	LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE,
+	LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE
 };
 
 /*
@@ -134,4 +134,4 @@ gboolean	lapiz_search_dialog_get_parse_escapes (PlumaSearchDialog *dialog);
 
 G_END_DECLS
 
-#endif  /* __PLUMA_SEARCH_DIALOG_H__  */
+#endif  /* __LAPIZ_SEARCH_DIALOG_H__  */

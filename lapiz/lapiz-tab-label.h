@@ -20,21 +20,21 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_TAB_LABEL_H__
-#define __PLUMA_TAB_LABEL_H__
+#ifndef __LAPIZ_TAB_LABEL_H__
+#define __LAPIZ_TAB_LABEL_H__
 
 #include <gtk/gtk.h>
 #include <lapiz/lapiz-tab.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_TAB_LABEL		(lapiz_tab_label_get_type ())
-#define PLUMA_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_TAB_LABEL, PlumaTabLabel))
-#define PLUMA_TAB_LABEL_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_TAB_LABEL, PlumaTabLabel const))
-#define PLUMA_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_TAB_LABEL, PlumaTabLabelClass))
-#define PLUMA_IS_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_TAB_LABEL))
-#define PLUMA_IS_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_TAB_LABEL))
-#define PLUMA_TAB_LABEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_TAB_LABEL, PlumaTabLabelClass))
+#define LAPIZ_TYPE_TAB_LABEL		(lapiz_tab_label_get_type ())
+#define LAPIZ_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabel))
+#define LAPIZ_TAB_LABEL_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabel const))
+#define LAPIZ_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabelClass))
+#define LAPIZ_IS_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_TAB_LABEL))
+#define LAPIZ_IS_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_TAB_LABEL))
+#define LAPIZ_TAB_LABEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_TAB_LABEL, PlumaTabLabelClass))
 
 typedef struct _PlumaTabLabel		PlumaTabLabel;
 typedef struct _PlumaTabLabelClass	PlumaTabLabelClass;
@@ -63,4 +63,4 @@ void		lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 
 G_END_DECLS
 
-#endif /* __PLUMA_TAB_LABEL_H__ */
+#endif /* __LAPIZ_TAB_LABEL_H__ */

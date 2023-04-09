@@ -126,7 +126,7 @@ newline_combo_append (GtkComboBox              *combo,
 	gtk_list_store_append (store, iter);
 	gtk_list_store_set (store, iter, 0, label, 1, newline_type, -1);
 
-	if (newline_type == PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT)
+	if (newline_type == LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT)
 	{
 		gtk_combo_box_set_active_iter (combo, iter);
 	}
@@ -143,7 +143,7 @@ create_newline_combo (PlumaFileChooserDialog *dialog)
 	label = gtk_label_new_with_mnemonic (_("L_ine Ending:"));
 	gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 
-	store = gtk_list_store_new (2, G_TYPE_STRING, PLUMA_TYPE_DOCUMENT_NEWLINE_TYPE);
+	store = gtk_list_store_new (2, G_TYPE_STRING, LAPIZ_TYPE_DOCUMENT_NEWLINE_TYPE);
 	combo = gtk_combo_box_new_with_model (GTK_TREE_MODEL (store));
 	renderer = gtk_cell_renderer_text_new ();
 
@@ -160,19 +160,19 @@ create_newline_combo (PlumaFileChooserDialog *dialog)
 	                      store,
 	                      &iter,
 	                      _("Unix/Linux"),
-	                      PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 
 	newline_combo_append (GTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
 	                      _("Mac OS Classic"),
-	                      PLUMA_DOCUMENT_NEWLINE_TYPE_CR);
+	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_CR);
 
 	newline_combo_append (GTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
 	                      _("Windows"),
-	                      PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF);
+	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
 
@@ -368,14 +368,14 @@ lapiz_file_chooser_dialog_new_valist (const gchar          *title,
 
 	g_return_val_if_fail (parent != NULL, NULL);
 
-	result = g_object_new (PLUMA_TYPE_FILE_CHOOSER_DIALOG,
+	result = g_object_new (LAPIZ_TYPE_FILE_CHOOSER_DIALOG,
 			       "title", title,
 			       "local-only", FALSE,
 			       "action", action,
 			       "select-multiple", action == GTK_FILE_CHOOSER_ACTION_OPEN,
 			       NULL);
 
-	create_extra_widget (PLUMA_FILE_CHOOSER_DIALOG (result));
+	create_extra_widget (LAPIZ_FILE_CHOOSER_DIALOG (result));
 
 	g_signal_connect (result,
 			  "notify::action",
@@ -384,7 +384,7 @@ lapiz_file_chooser_dialog_new_valist (const gchar          *title,
 
 	if (encoding != NULL)
 		lapiz_encodings_combo_box_set_selected_encoding (
-				PLUMA_ENCODINGS_COMBO_BOX (PLUMA_FILE_CHOOSER_DIALOG (result)->priv->option_menu),
+				LAPIZ_ENCODINGS_COMBO_BOX (LAPIZ_FILE_CHOOSER_DIALOG (result)->priv->option_menu),
 				encoding);
 
 	active_filter = lapiz_prefs_manager_get_active_file_filter ();
@@ -492,24 +492,24 @@ void
 lapiz_file_chooser_dialog_set_encoding (PlumaFileChooserDialog *dialog,
 					const PlumaEncoding    *encoding)
 {
-	g_return_if_fail (PLUMA_IS_FILE_CHOOSER_DIALOG (dialog));
-	g_return_if_fail (PLUMA_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
+	g_return_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog));
+	g_return_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
 
 	lapiz_encodings_combo_box_set_selected_encoding (
-				PLUMA_ENCODINGS_COMBO_BOX (dialog->priv->option_menu),
+				LAPIZ_ENCODINGS_COMBO_BOX (dialog->priv->option_menu),
 				encoding);
 }
 
 const PlumaEncoding *
 lapiz_file_chooser_dialog_get_encoding (PlumaFileChooserDialog *dialog)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
-	g_return_val_if_fail (PLUMA_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu), NULL);
+	g_return_val_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
+	g_return_val_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu), NULL);
 	g_return_val_if_fail ((gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_OPEN ||
 			       gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE), NULL);
 
 	return lapiz_encodings_combo_box_get_selected_encoding (
-				PLUMA_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
+				LAPIZ_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
 }
 
 void
@@ -519,7 +519,7 @@ lapiz_file_chooser_dialog_set_newline_type (PlumaFileChooserDialog  *dialog,
 	GtkTreeIter iter;
 	GtkTreeModel *model;
 
-	g_return_if_fail (PLUMA_IS_FILE_CHOOSER_DIALOG (dialog));
+	g_return_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog));
 	g_return_if_fail (gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE);
 
 	model = GTK_TREE_MODEL (dialog->priv->newline_store);
@@ -550,9 +550,9 @@ lapiz_file_chooser_dialog_get_newline_type (PlumaFileChooserDialog *dialog)
 	GtkTreeIter iter;
 	PlumaDocumentNewlineType newline_type;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_CHOOSER_DIALOG (dialog), PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+	g_return_val_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog), LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
 	g_return_val_if_fail (gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE,
-	                      PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+	                      LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
 
 	gtk_combo_box_get_active_iter (GTK_COMBO_BOX (dialog->priv->newline_combo),
 	                               &iter);

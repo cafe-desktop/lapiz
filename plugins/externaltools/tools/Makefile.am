@@ -1,6 +1,6 @@
 # Python snippets plugin
 
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)/externaltools
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)/externaltools
 plugin_PYTHON =		\
 	__init__.py	\
 	capture.py	\
@@ -11,7 +11,7 @@ plugin_PYTHON =		\
 	filelookup.py	\
 	linkparsing.py
 
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/externaltools/ui
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/externaltools/ui
 ui_files = tools.ui \
 	outputpanel.ui
 include $(top_srcdir)/gla11y.mk

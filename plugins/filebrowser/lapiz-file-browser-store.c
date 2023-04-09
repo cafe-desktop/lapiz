@@ -110,7 +110,7 @@ struct _PlumaFileBrowserStorePrivate
 {
 	FileBrowserNode *root;
 	FileBrowserNode *virtual_root;
-	GType column_types[PLUMA_FILE_BROWSER_STORE_COLUMN_NUM];
+	GType column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_NUM];
 
 	PlumaFileBrowserStoreFilterMode filter_mode;
 	PlumaFileBrowserStoreFilterFunc filter_func;
@@ -240,7 +240,7 @@ cancel_mount_operation (PlumaFileBrowserStore *obj)
 static void
 lapiz_file_browser_store_finalize (GObject * object)
 {
-	PlumaFileBrowserStore *obj = PLUMA_FILE_BROWSER_STORE (object);
+	PlumaFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
 	GSList *item;
 
 	/* Free all the nodes */
@@ -281,7 +281,7 @@ lapiz_file_browser_store_get_property (GObject    *object,
 			               GValue     *value,
 			               GParamSpec *pspec)
 {
-	PlumaFileBrowserStore *obj = PLUMA_FILE_BROWSER_STORE (object);
+	PlumaFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
 
 	switch (prop_id)
 	{
@@ -306,7 +306,7 @@ lapiz_file_browser_store_set_property (GObject      *object,
 			               const GValue *value,
 			               GParamSpec   *pspec)
 {
-	PlumaFileBrowserStore *obj = PLUMA_FILE_BROWSER_STORE (object);
+	PlumaFileBrowserStore *obj = LAPIZ_FILE_BROWSER_STORE (object);
 
 	switch (prop_id)
 	{
@@ -348,7 +348,7 @@ lapiz_file_browser_store_class_init (PlumaFileBrowserStoreClass * klass)
 					 g_param_spec_flags ("filter-mode",
 					 		      "Filter Mode",
 					 		      "The filter mode",
-					 		      PLUMA_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
+					 		      LAPIZ_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
 					 		      lapiz_file_browser_store_filter_mode_get_default (),
 					 		      G_PARAM_READWRITE));
 
@@ -456,15 +456,15 @@ lapiz_file_browser_store_init (PlumaFileBrowserStore * obj)
 {
 	obj->priv = lapiz_file_browser_store_get_instance_private (obj);
 
-	obj->priv->column_types[PLUMA_FILE_BROWSER_STORE_COLUMN_URI] =
+	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_URI] =
 	    G_TYPE_STRING;
-	obj->priv->column_types[PLUMA_FILE_BROWSER_STORE_COLUMN_NAME] =
+	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_NAME] =
 	    G_TYPE_STRING;
-	obj->priv->column_types[PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS] =
+	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS] =
 	    G_TYPE_UINT;
-	obj->priv->column_types[PLUMA_FILE_BROWSER_STORE_COLUMN_ICON] =
+	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_ICON] =
 	    GDK_TYPE_PIXBUF;
-	obj->priv->column_types[PLUMA_FILE_BROWSER_STORE_COLUMN_EMBLEM] =
+	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_EMBLEM] =
 	    GDK_TYPE_PIXBUF;
 
 	// Default filter mode is hiding the hidden files
@@ -521,7 +521,7 @@ model_node_inserted (PlumaFileBrowserStore * model,
 static GtkTreeModelFlags
 lapiz_file_browser_store_get_flags (GtkTreeModel * tree_model)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      (GtkTreeModelFlags) 0);
 
 	return GTK_TREE_MODEL_ITERS_PERSIST;
@@ -530,20 +530,20 @@ lapiz_file_browser_store_get_flags (GtkTreeModel * tree_model)
 static gint
 lapiz_file_browser_store_get_n_columns (GtkTreeModel * tree_model)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model), 0);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model), 0);
 
-	return PLUMA_FILE_BROWSER_STORE_COLUMN_NUM;
+	return LAPIZ_FILE_BROWSER_STORE_COLUMN_NUM;
 }
 
 static GType
 lapiz_file_browser_store_get_column_type (GtkTreeModel * tree_model, gint idx)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      G_TYPE_INVALID);
-	g_return_val_if_fail (idx < PLUMA_FILE_BROWSER_STORE_COLUMN_NUM &&
+	g_return_val_if_fail (idx < LAPIZ_FILE_BROWSER_STORE_COLUMN_NUM &&
 			      idx >= 0, G_TYPE_INVALID);
 
-	return PLUMA_FILE_BROWSER_STORE (tree_model)->priv->column_types[idx];
+	return LAPIZ_FILE_BROWSER_STORE (tree_model)->priv->column_types[idx];
 }
 
 static gboolean
@@ -555,10 +555,10 @@ lapiz_file_browser_store_get_iter (GtkTreeModel * tree_model,
 	PlumaFileBrowserStore * model;
 	gint num;
 
-	g_assert (PLUMA_IS_FILE_BROWSER_STORE (tree_model));
+	g_assert (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_assert (path != NULL);
 
-	model = PLUMA_FILE_BROWSER_STORE (tree_model);
+	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
 	indices = gtk_tree_path_get_indices (path);
 	depth = gtk_tree_path_get_depth (path);
 	node = model->priv->virtual_root;
@@ -653,11 +653,11 @@ static GtkTreePath *
 lapiz_file_browser_store_get_path (GtkTreeModel * tree_model,
 				   GtkTreeIter * iter)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model), NULL);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
 	g_return_val_if_fail (iter->user_data != NULL, NULL);
 
-	return lapiz_file_browser_store_get_path_real (PLUMA_FILE_BROWSER_STORE (tree_model),
+	return lapiz_file_browser_store_get_path_real (LAPIZ_FILE_BROWSER_STORE (tree_model),
 						       (FileBrowserNode *) (iter->user_data));
 }
 
@@ -669,28 +669,28 @@ lapiz_file_browser_store_get_value (GtkTreeModel * tree_model,
 {
 	FileBrowserNode *node;
 
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_return_if_fail (iter != NULL);
 	g_return_if_fail (iter->user_data != NULL);
 
 	node = (FileBrowserNode *) (iter->user_data);
 
-	g_value_init (value, PLUMA_FILE_BROWSER_STORE (tree_model)->priv->column_types[column]);
+	g_value_init (value, LAPIZ_FILE_BROWSER_STORE (tree_model)->priv->column_types[column]);
 
 	switch (column) {
-	case PLUMA_FILE_BROWSER_STORE_COLUMN_URI:
+	case LAPIZ_FILE_BROWSER_STORE_COLUMN_URI:
 		set_gvalue_from_node (value, node);
 		break;
-	case PLUMA_FILE_BROWSER_STORE_COLUMN_NAME:
+	case LAPIZ_FILE_BROWSER_STORE_COLUMN_NAME:
 		g_value_set_string (value, node->name);
 		break;
-	case PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS:
+	case LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS:
 		g_value_set_uint (value, node->flags);
 		break;
-	case PLUMA_FILE_BROWSER_STORE_COLUMN_ICON:
+	case LAPIZ_FILE_BROWSER_STORE_COLUMN_ICON:
 		g_value_set_object (value, node->icon);
 		break;
-	case PLUMA_FILE_BROWSER_STORE_COLUMN_EMBLEM:
+	case LAPIZ_FILE_BROWSER_STORE_COLUMN_EMBLEM:
 		g_value_set_object (value, node->emblem);
 		break;
 	default:
@@ -707,12 +707,12 @@ lapiz_file_browser_store_iter_next (GtkTreeModel * tree_model,
 	GSList * item;
 	GSList * first;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
 	g_return_val_if_fail (iter->user_data != NULL, FALSE);
 
-	model = PLUMA_FILE_BROWSER_STORE (tree_model);
+	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
 	node = (FileBrowserNode *) (iter->user_data);
 
 	if (node->parent == NULL)
@@ -739,12 +739,12 @@ lapiz_file_browser_store_iter_children (GtkTreeModel * tree_model,
 	PlumaFileBrowserStore * model;
 	GSList * item;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      FALSE);
 	g_return_val_if_fail (parent == NULL
 			      || parent->user_data != NULL, FALSE);
 
-	model = PLUMA_FILE_BROWSER_STORE (tree_model);
+	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
 
 	if (parent == NULL)
 		node = model->priv->virtual_root;
@@ -791,12 +791,12 @@ lapiz_file_browser_store_iter_has_child (GtkTreeModel * tree_model,
 	FileBrowserNode *node;
 	PlumaFileBrowserStore *model;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      FALSE);
 	g_return_val_if_fail (iter == NULL
 			      || iter->user_data != NULL, FALSE);
 
-	model = PLUMA_FILE_BROWSER_STORE (tree_model);
+	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
 
 	if (iter == NULL)
 		node = model->priv->virtual_root;
@@ -815,12 +815,12 @@ lapiz_file_browser_store_iter_n_children (GtkTreeModel * tree_model,
 	GSList *item;
 	gint num = 0;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      FALSE);
 	g_return_val_if_fail (iter == NULL
 			      || iter->user_data != NULL, FALSE);
 
-	model = PLUMA_FILE_BROWSER_STORE (tree_model);
+	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
 
 	if (iter == NULL)
 		node = model->priv->virtual_root;
@@ -847,12 +847,12 @@ lapiz_file_browser_store_iter_nth_child (GtkTreeModel * tree_model,
 	GSList *item;
 	gint num = 0;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model),
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      FALSE);
 	g_return_val_if_fail (parent == NULL
 			      || parent->user_data != NULL, FALSE);
 
-	model = PLUMA_FILE_BROWSER_STORE (tree_model);
+	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
 
 	if (parent == NULL)
 		node = model->priv->virtual_root;
@@ -885,12 +885,12 @@ lapiz_file_browser_store_iter_parent (GtkTreeModel * tree_model,
 	FileBrowserNode *node;
 	PlumaFileBrowserStore *model;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model), FALSE);
 	g_return_val_if_fail (child != NULL, FALSE);
 	g_return_val_if_fail (child->user_data != NULL, FALSE);
 
 	node = (FileBrowserNode *) (child->user_data);
-	model = PLUMA_FILE_BROWSER_STORE (tree_model);
+	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
 
 	if (!node_in_tree (model, node))
 		return FALSE;
@@ -926,7 +926,7 @@ lapiz_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
 	}
 
 	gtk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	return !FILE_IS_DUMMY(flags);
@@ -956,7 +956,7 @@ lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
 	}
 
 	gtk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI, &uri,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
 
 	g_assert (uri);
@@ -969,8 +969,8 @@ lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
 	return ret;
 }
 
-#define FILTER_HIDDEN(mode) (mode & PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)
-#define FILTER_BINARY(mode) (mode & PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY)
+#define FILTER_HIDDEN(mode) (mode & LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)
+#define FILTER_BINARY(mode) (mode & LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY)
 
 /* Private */
 static void
@@ -997,14 +997,14 @@ model_node_update_visibility (PlumaFileBrowserStore * model,
 {
 	GtkTreeIter iter;
 
-	node->flags &= ~PLUMA_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+	node->flags &= ~LAPIZ_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 
 	if (FILTER_HIDDEN (model->priv->filter_mode) &&
 	    NODE_IS_HIDDEN (node))
-		node->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+		node->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 	else if (FILTER_BINARY (model->priv->filter_mode) &&
 		 (!NODE_IS_TEXT (node) && !NODE_IS_DIR (node)))
-		node->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+		node->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 	else if (model->priv->filter_func) {
 		iter.user_data = node;
 
@@ -1012,7 +1012,7 @@ model_node_update_visibility (PlumaFileBrowserStore * model,
 		    filter_func (model, &iter,
 				 model->priv->filter_user_data))
 			node->flags |=
-			    PLUMA_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+			    LAPIZ_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 	}
 }
 
@@ -1308,7 +1308,7 @@ file_browser_node_dir_new (PlumaFileBrowserStore * model,
 
 	file_browser_node_init (node, file, parent);
 
-	node->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY;
+	node->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY;
 
 	FILE_BROWSER_NODE_DIR (node)->model = model;
 
@@ -1335,7 +1335,7 @@ file_browser_node_free_children (PlumaFileBrowserStore * model,
 		FILE_BROWSER_NODE_DIR (node)->children = NULL;
 
 		/* This node is no longer loaded */
-		node->flags &= ~PLUMA_FILE_BROWSER_STORE_FLAG_LOADED;
+		node->flags &= ~LAPIZ_FILE_BROWSER_STORE_FLAG_LOADED;
 	}
 }
 
@@ -1584,7 +1584,7 @@ file_browser_node_unload (PlumaFileBrowserStore * model,
 		dir->monitor = NULL;
 	}
 
-	node->flags &= ~PLUMA_FILE_BROWSER_STORE_FLAG_LOADED;
+	node->flags &= ~LAPIZ_FILE_BROWSER_STORE_FLAG_LOADED;
 }
 
 static void
@@ -1594,7 +1594,7 @@ model_recomposite_icon_real (PlumaFileBrowserStore * tree_model,
 {
 	GdkPixbuf *icon;
 
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_return_if_fail (node != NULL);
 
 	if (node->file == NULL)
@@ -1643,7 +1643,7 @@ static void
 model_recomposite_icon (PlumaFileBrowserStore * tree_model,
 			GtkTreeIter * iter)
 {
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_return_if_fail (iter != NULL);
 	g_return_if_fail (iter->user_data != NULL);
 
@@ -1661,8 +1661,8 @@ model_create_dummy_node (PlumaFileBrowserStore * model,
 	dummy = file_browser_node_new (NULL, parent);
 	dummy->name = g_strdup (_("(Empty)"));
 
-	dummy->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_DUMMY;
-	dummy->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+	dummy->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_DUMMY;
+	dummy->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
 	return dummy;
 }
@@ -1676,7 +1676,7 @@ model_add_dummy_node (PlumaFileBrowserStore * model,
 	dummy = model_create_dummy_node (model, parent);
 
 	if (model_node_visibility (model, parent))
-		dummy->flags &= ~PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+		dummy->flags &= ~LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
 	model_add_node (model, dummy, parent);
 
@@ -1710,18 +1710,18 @@ model_check_dummy (PlumaFileBrowserStore * model, FileBrowserNode * node)
 
 		if (!model_node_visibility (model, node)) {
 			dummy->flags |=
-			    PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+			    LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 			return;
 		}
 
 		/* Temporarily set the node to invisible to check
 		 * for real children */
 		flags = dummy->flags;
-		dummy->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+		dummy->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
 		if (!filter_tree_model_iter_has_child_real (model, node)) {
 			dummy->flags &=
-			    ~PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+			    ~LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
 			if (FILE_IS_HIDDEN (flags)) {
 				// Was hidden, needs to be inserted
@@ -1739,12 +1739,12 @@ model_check_dummy (PlumaFileBrowserStore * model, FileBrowserNode * node)
 
 				// To get the path we need to set it to visible temporarily
 				dummy->flags &=
-				    ~PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+				    ~LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 				path =
 				    lapiz_file_browser_store_get_path_real
 				    (model, dummy);
 				dummy->flags |=
-				    PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+				    LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
 				dummy->inserted = FALSE;
 				row_deleted (model, path);
@@ -1933,10 +1933,10 @@ file_browser_node_set_from_info (PlumaFileBrowserStore * model,
 	}
 
 	if (g_file_info_get_is_hidden (info) || g_file_info_get_is_backup (info))
-		node->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+		node->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
 	if (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY)
-		node->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY;
+		node->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY;
 	else {
 		if (!(content = backup_content_type (info)))
 			content = g_file_info_get_content_type (info);
@@ -1944,7 +1944,7 @@ file_browser_node_set_from_info (PlumaFileBrowserStore * model,
 		if (!content ||
 		    g_content_type_is_unknown (content) ||
 		    g_content_type_is_a (content, "text/plain"))
-			node->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_IS_TEXT;
+			node->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_IS_TEXT;
 	}
 
 	model_recomposite_icon_real (model, node, info);
@@ -2198,7 +2198,7 @@ model_iterate_next_files_cb (GFileEnumerator * enumerator,
 			g_signal_emit (dir->model,
 				       model_signals[ERROR],
 				       0,
-				       PLUMA_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
+				       LAPIZ_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
 				       error->message);
 
 			file_browser_node_unload (dir->model, (FileBrowserNode *)parent, TRUE);
@@ -2252,7 +2252,7 @@ model_iterate_children_cb (GFile * file,
 		g_signal_emit (dir->model,
 			       model_signals[ERROR],
 			       0,
-			       PLUMA_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
+			       LAPIZ_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
 			       error->message);
 
 		file_browser_node_unload (dir->model, (FileBrowserNode *)dir, TRUE);
@@ -2279,7 +2279,7 @@ model_load_directory (PlumaFileBrowserStore * model,
 		file_browser_node_unload (dir->model, node, TRUE);
 	}
 
-	node->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_LOADED;
+	node->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_LOADED;
 	model_begin_loading (model, node);
 
 	dir->cancellable = g_cancellable_new ();
@@ -2450,7 +2450,7 @@ set_virtual_root_from_node (PlumaFileBrowserStore * model,
 			}
 		} else if (NODE_IS_DUMMY (check)) {
 			check->flags |=
-			    PLUMA_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+			    LAPIZ_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 		}
 	}
 
@@ -2589,7 +2589,7 @@ model_root_mounted (PlumaFileBrowserStore * model, gchar const * virtual_root)
 		set_virtual_root_from_node (model,
 					    model->priv->root);
 
-	return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 static void
@@ -2600,7 +2600,7 @@ handle_root_error (PlumaFileBrowserStore * model, GError *error)
 	g_signal_emit (model,
 		       model_signals[ERROR],
 		       0,
-		       PLUMA_FILE_BROWSER_ERROR_SET_ROOT,
+		       LAPIZ_FILE_BROWSER_ERROR_SET_ROOT,
 		       error->message);
 
 	/* Set the virtual root to the root */
@@ -2608,7 +2608,7 @@ handle_root_error (PlumaFileBrowserStore * model, GError *error)
 	model->priv->virtual_root = root;
 
 	/* Set the root to be loaded */
-	root->flags |= PLUMA_FILE_BROWSER_STORE_FLAG_LOADED;
+	root->flags |= LAPIZ_FILE_BROWSER_STORE_FLAG_LOADED;
 
 	/* Check the dummy */
 	model_check_dummy (model, root);
@@ -2693,7 +2693,7 @@ model_mount_root (PlumaFileBrowserStore * model, gchar const * virtual_root)
 						       mount_info);
 
 			model->priv->mount_info = mount_info;
-			return PLUMA_FILE_BROWSER_STORE_RESULT_MOUNTING;
+			return LAPIZ_FILE_BROWSER_STORE_RESULT_MOUNTING;
 		}
 		else
 		{
@@ -2707,7 +2707,7 @@ model_mount_root (PlumaFileBrowserStore * model, gchar const * virtual_root)
 		return model_root_mounted (model, virtual_root);
 	}
 
-	return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 /* Public */
@@ -2715,8 +2715,8 @@ PlumaFileBrowserStore *
 lapiz_file_browser_store_new (gchar const *root)
 {
 	PlumaFileBrowserStore *obj =
-	    PLUMA_FILE_BROWSER_STORE (g_object_new
-				      (PLUMA_TYPE_FILE_BROWSER_STORE,
+	    LAPIZ_FILE_BROWSER_STORE (g_object_new
+				      (LAPIZ_TYPE_FILE_BROWSER_STORE,
 				       NULL));
 
 	lapiz_file_browser_store_set_root (obj, root);
@@ -2732,9 +2732,9 @@ lapiz_file_browser_store_set_value (PlumaFileBrowserStore * tree_model,
 	FileBrowserNode *node;
 	GtkTreePath *path;
 
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (tree_model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_return_if_fail (column ==
-			  PLUMA_FILE_BROWSER_STORE_COLUMN_EMBLEM);
+			  LAPIZ_FILE_BROWSER_STORE_COLUMN_EMBLEM);
 	g_return_if_fail (G_VALUE_HOLDS_OBJECT (value));
 	g_return_if_fail (iter != NULL);
 	g_return_if_fail (iter->user_data != NULL);
@@ -2768,12 +2768,12 @@ PlumaFileBrowserStoreResult
 lapiz_file_browser_store_set_virtual_root (PlumaFileBrowserStore * model,
 					   GtkTreeIter * iter)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 	g_return_val_if_fail (iter != NULL,
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 	g_return_val_if_fail (iter->user_data != NULL,
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
 	model_clear (model, FALSE);
 	set_virtual_root_from_node (model,
@@ -2787,20 +2787,20 @@ lapiz_file_browser_store_set_virtual_root_from_string
     (PlumaFileBrowserStore * model, gchar const *root) {
 	GFile *file;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
 	file = g_file_new_for_uri (root);
 	if (file == NULL) {
 		g_warning ("Invalid uri (%s)", root);
-		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 	}
 
 	/* Check if uri is already the virtual root */
 	if (model->priv->virtual_root &&
 	    g_file_equal (model->priv->virtual_root->file, file)) {
 		g_object_unref (file);
-		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 	}
 
 	/* Check if uri is the root itself */
@@ -2810,7 +2810,7 @@ lapiz_file_browser_store_set_virtual_root_from_string
 		/* Always clear the model before altering the nodes */
 		model_clear (model, FALSE);
 		set_virtual_root_from_node (model, model->priv->root);
-		return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 	}
 
 	if (!g_file_has_prefix (file, model->priv->root->file)) {
@@ -2827,53 +2827,53 @@ lapiz_file_browser_store_set_virtual_root_from_string
 		g_free (str1);
 
 		g_object_unref (file);
-		return PLUMA_FILE_BROWSER_STORE_RESULT_ERROR;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_ERROR;
 	}
 
 	set_virtual_root_from_file (model, file);
 	g_object_unref (file);
 
-	return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 PlumaFileBrowserStoreResult
 lapiz_file_browser_store_set_virtual_root_top (PlumaFileBrowserStore *
 					       model)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
 	if (model->priv->virtual_root == model->priv->root)
-		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 
 	model_clear (model, FALSE);
 	set_virtual_root_from_node (model, model->priv->root);
 
-	return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 PlumaFileBrowserStoreResult
 lapiz_file_browser_store_set_virtual_root_up (PlumaFileBrowserStore *
 					      model)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
 	if (model->priv->virtual_root == model->priv->root)
-		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 
 	model_clear (model, FALSE);
 	set_virtual_root_from_node (model,
 				    model->priv->virtual_root->parent);
 
-	return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 gboolean
 lapiz_file_browser_store_get_iter_virtual_root (PlumaFileBrowserStore *
 						model, GtkTreeIter * iter)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
 
 	if (model->priv->virtual_root == NULL)
@@ -2887,7 +2887,7 @@ gboolean
 lapiz_file_browser_store_get_iter_root (PlumaFileBrowserStore * model,
 					GtkTreeIter * iter)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
 
 	if (model->priv->root == NULL)
@@ -2902,7 +2902,7 @@ lapiz_file_browser_store_iter_equal (PlumaFileBrowserStore * model,
 				     GtkTreeIter * iter1,
 				     GtkTreeIter * iter2)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter1 != NULL, FALSE);
 	g_return_val_if_fail (iter2 != NULL, FALSE);
 	g_return_val_if_fail (iter1->user_data != NULL, FALSE);
@@ -2914,7 +2914,7 @@ lapiz_file_browser_store_iter_equal (PlumaFileBrowserStore * model,
 void
 lapiz_file_browser_store_cancel_mount_operation (PlumaFileBrowserStore *store)
 {
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (store));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (store));
 
 	cancel_mount_operation (store);
 }
@@ -2930,11 +2930,11 @@ lapiz_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
 	FileBrowserNode * node;
 	gboolean equal = FALSE;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
 	if (root == NULL && model->priv->root == NULL)
-		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 
 	if (root != NULL) {
 		file = g_file_new_for_uri (root);
@@ -2945,7 +2945,7 @@ lapiz_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
 
 		if (equal && virtual_root == NULL) {
 			g_object_unref (file);
-			return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+			return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 		}
 	}
 
@@ -2957,7 +2957,7 @@ lapiz_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
 				g_object_unref (file);
 
 			g_object_unref (vfile);
-			return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+			return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 		}
 
 		g_object_unref (vfile);
@@ -2986,15 +2986,15 @@ lapiz_file_browser_store_set_root_and_virtual_root (PlumaFileBrowserStore *
 		g_object_notify (G_OBJECT (model), "virtual-root");
 	}
 
-	return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 PlumaFileBrowserStoreResult
 lapiz_file_browser_store_set_root (PlumaFileBrowserStore * model,
 				   gchar const *root)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model),
-			      PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
+			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 	return lapiz_file_browser_store_set_root_and_virtual_root (model,
 								   root,
 								   NULL);
@@ -3003,7 +3003,7 @@ lapiz_file_browser_store_set_root (PlumaFileBrowserStore * model,
 gchar *
 lapiz_file_browser_store_get_root (PlumaFileBrowserStore * model)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), NULL);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), NULL);
 
 	if (model->priv->root == NULL || model->priv->root->file == NULL)
 		return NULL;
@@ -3014,7 +3014,7 @@ lapiz_file_browser_store_get_root (PlumaFileBrowserStore * model)
 gchar *
 lapiz_file_browser_store_get_virtual_root (PlumaFileBrowserStore * model)
 {
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), NULL);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), NULL);
 
 	if (model->priv->virtual_root == NULL || model->priv->virtual_root->file == NULL)
 		return NULL;
@@ -3028,7 +3028,7 @@ _lapiz_file_browser_store_iter_expanded (PlumaFileBrowserStore * model,
 {
 	FileBrowserNode *node;
 
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
 	g_return_if_fail (iter != NULL);
 	g_return_if_fail (iter->user_data != NULL);
 
@@ -3047,7 +3047,7 @@ _lapiz_file_browser_store_iter_collapsed (PlumaFileBrowserStore * model,
 	FileBrowserNode *node;
 	GSList *item;
 
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
 	g_return_if_fail (iter != NULL);
 	g_return_if_fail (iter->user_data != NULL);
 
@@ -3080,7 +3080,7 @@ lapiz_file_browser_store_set_filter_mode (PlumaFileBrowserStore * model,
 					  PlumaFileBrowserStoreFilterMode
 					  mode)
 {
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
 
 	if (model->priv->filter_mode == mode)
 		return;
@@ -3096,7 +3096,7 @@ lapiz_file_browser_store_set_filter_func (PlumaFileBrowserStore * model,
 					  PlumaFileBrowserStoreFilterFunc
 					  func, gpointer user_data)
 {
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
 
 	model->priv->filter_func = func;
 	model->priv->filter_user_data = user_data;
@@ -3112,13 +3112,13 @@ lapiz_file_browser_store_refilter (PlumaFileBrowserStore * model)
 PlumaFileBrowserStoreFilterMode
 lapiz_file_browser_store_filter_mode_get_default (void)
 {
-	return PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
+	return LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 }
 
 void
 lapiz_file_browser_store_refresh (PlumaFileBrowserStore * model)
 {
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model));
 
 	if (model->priv->root == NULL || model->priv->virtual_root == NULL)
 		return;
@@ -3175,7 +3175,7 @@ lapiz_file_browser_store_rename (PlumaFileBrowserStore * model,
 	gchar * newuri;
 	GtkTreePath *path;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
 	g_return_val_if_fail (iter->user_data != NULL, FALSE);
 
@@ -3214,7 +3214,7 @@ lapiz_file_browser_store_rename (PlumaFileBrowserStore * model,
 
 			if (error != NULL)
 				*error = g_error_new_literal (lapiz_file_browser_store_error_quark (),
-							      PLUMA_FILE_BROWSER_ERROR_RENAME,
+							      LAPIZ_FILE_BROWSER_ERROR_RENAME,
 				       			      _("The renamed file is currently filtered out. You need to adjust your filter settings to make the file visible"));
 			return FALSE;
 		}
@@ -3237,7 +3237,7 @@ lapiz_file_browser_store_rename (PlumaFileBrowserStore * model,
 				*error =
 				    g_error_new_literal
 				    (lapiz_file_browser_store_error_quark (),
-				     PLUMA_FILE_BROWSER_ERROR_RENAME,
+				     LAPIZ_FILE_BROWSER_ERROR_RENAME,
 				     err->message);
 			}
 
@@ -3380,10 +3380,10 @@ lapiz_file_browser_store_delete_all (PlumaFileBrowserStore *model,
 	GtkTreePath * prev = NULL;
 	GtkTreePath * path;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
 	if (rows == NULL)
-		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 
 	/* First we sort the paths so that we can later on remove any
 	   files/directories that are actually subfiles/directories of
@@ -3421,7 +3421,7 @@ lapiz_file_browser_store_delete_all (PlumaFileBrowserStore *model,
 	delete_files (data);
 	g_list_free (rows);
 
-	return PLUMA_FILE_BROWSER_STORE_RESULT_OK;
+	return LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 PlumaFileBrowserStoreResult
@@ -3432,14 +3432,14 @@ lapiz_file_browser_store_delete (PlumaFileBrowserStore * model,
 	GList *rows = NULL;
 	PlumaFileBrowserStoreResult result;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
-	g_return_val_if_fail (iter != NULL, PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
-	g_return_val_if_fail (iter->user_data != NULL, PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (iter != NULL, LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+	g_return_val_if_fail (iter->user_data != NULL, LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
 	node = (FileBrowserNode *) (iter->user_data);
 
 	if (NODE_IS_DUMMY (node))
-		return PLUMA_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+		return LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 
 	rows = g_list_append(NULL, lapiz_file_browser_store_get_path_real (model, node));
 	result = lapiz_file_browser_store_delete_all (model, rows, trash);
@@ -3462,7 +3462,7 @@ lapiz_file_browser_store_new_file (PlumaFileBrowserStore * model,
 	FileBrowserNode *node;
 	GError * error = NULL;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (parent != NULL, FALSE);
 	g_return_val_if_fail (parent->user_data != NULL, FALSE);
 	g_return_val_if_fail (NODE_IS_DIR
@@ -3479,7 +3479,7 @@ lapiz_file_browser_store_new_file (PlumaFileBrowserStore * model,
 	if (!stream)
 	{
 		g_signal_emit (model, model_signals[ERROR], 0,
-			       PLUMA_FILE_BROWSER_ERROR_NEW_FILE,
+			       LAPIZ_FILE_BROWSER_ERROR_NEW_FILE,
 			       error->message);
 		g_error_free (error);
 	} else {
@@ -3494,7 +3494,7 @@ lapiz_file_browser_store_new_file (PlumaFileBrowserStore * model,
 			result = TRUE;
 		} else {
 			g_signal_emit (model, model_signals[ERROR], 0,
-				       PLUMA_FILE_BROWSER_ERROR_NEW_FILE,
+				       LAPIZ_FILE_BROWSER_ERROR_NEW_FILE,
 				       _
 				       ("The new file is currently filtered out. You need to adjust your filter settings to make the file visible"));
 		}
@@ -3515,7 +3515,7 @@ lapiz_file_browser_store_new_directory (PlumaFileBrowserStore * model,
 	FileBrowserNode *node;
 	gboolean result = FALSE;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BROWSER_STORE (model), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (parent != NULL, FALSE);
 	g_return_val_if_fail (parent->user_data != NULL, FALSE);
 	g_return_val_if_fail (NODE_IS_DIR
@@ -3529,7 +3529,7 @@ lapiz_file_browser_store_new_directory (PlumaFileBrowserStore * model,
 
 	if (!g_file_make_directory (file, NULL, &error)) {
 		g_signal_emit (model, model_signals[ERROR], 0,
-			       PLUMA_FILE_BROWSER_ERROR_NEW_DIRECTORY,
+			       LAPIZ_FILE_BROWSER_ERROR_NEW_DIRECTORY,
 			       error->message);
 		g_error_free (error);
 	} else {
@@ -3543,7 +3543,7 @@ lapiz_file_browser_store_new_directory (PlumaFileBrowserStore * model,
 			result = TRUE;
 		} else {
 			g_signal_emit (model, model_signals[ERROR], 0,
-				       PLUMA_FILE_BROWSER_ERROR_NEW_FILE,
+				       LAPIZ_FILE_BROWSER_ERROR_NEW_FILE,
 				       _
 				       ("The new directory is currently filtered out. You need to adjust your filter settings to make the directory visible"));
 		}

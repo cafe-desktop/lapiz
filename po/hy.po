@@ -305,14 +305,14 @@ msgstr "Գործիքադարակի Կոճակների Ոճը"
 
 #: data/org.mate.lapiz.gschema.xml.in:137
 msgid ""
-"Style for the toolbar buttons. Possible values are \"PLUMA_TOOLBAR_SYSTEM\" "
-"to use the system's default style, \"PLUMA_TOOLBAR_ICONS\" to display icons "
-"only, \"PLUMA_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"PLUMA_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
+"Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
+"to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
+"only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
 " Note that the values are case-sensitive, so make sure they appear exactly "
 "as mentioned here."
 msgstr ""
-"Ոճ գործիքադարակի կոճակի համար։ Հնարավոր արժեքներն են՝ \"PLUMA_TOOLBAR_SYSTEM\" օգտագործել համակարգի նախնական ոճը, \"PLUMA_TOOLBAR_ICONS\" ցուցադրել միայն պատկերանշանները, \"PLUMA_TOOLBAR_ICONS_AND_TEXT\" ցուցադրել պատկերանշանները և տեքստը երկուսը միասին և \"PLUMA_TOOLBAR_ICONS_BOTH_HORIZ\" ցուցադրել առաջինը տեքստը, կողքին պատկերանշանները։ \n"
+"Ոճ գործիքադարակի կոճակի համար։ Հնարավոր արժեքներն են՝ \"LAPIZ_TOOLBAR_SYSTEM\" օգտագործել համակարգի նախնական ոճը, \"LAPIZ_TOOLBAR_ICONS\" ցուցադրել միայն պատկերանշանները, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" ցուցադրել պատկերանշանները և տեքստը երկուսը միասին և \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" ցուցադրել առաջինը տեքստը, կողքին պատկերանշանները։ \n"
 "Նշենք, որ արժեքներն տառաշարազգայուն են, համոզվեք, որ նրանք հայտնվում են այնպես, ինչպես նշված են այստեղ։"
 
 #: data/org.mate.lapiz.gschema.xml.in:141

@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_APP_H__
-#define __PLUMA_APP_H__
+#ifndef __LAPIZ_APP_H__
+#define __LAPIZ_APP_H__
 
 #include <gtk/gtk.h>
 
@@ -40,12 +40,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_APP              (lapiz_app_get_type())
-#define PLUMA_APP(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_APP, PlumaApp))
-#define PLUMA_APP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_APP, PlumaAppClass))
-#define PLUMA_IS_APP(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_APP))
-#define PLUMA_IS_APP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_APP))
-#define PLUMA_APP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_APP, PlumaAppClass))
+#define LAPIZ_TYPE_APP              (lapiz_app_get_type())
+#define LAPIZ_APP(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_APP, PlumaApp))
+#define LAPIZ_APP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_APP, PlumaAppClass))
+#define LAPIZ_IS_APP(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_APP))
+#define LAPIZ_IS_APP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_APP))
+#define LAPIZ_APP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_APP, PlumaAppClass))
 
 /* Private structure type */
 typedef struct _PlumaAppPrivate PlumaAppPrivate;
@@ -78,11 +78,11 @@ struct _PlumaAppClass
  */
 typedef enum
 {
-	PLUMA_LOCKDOWN_COMMAND_LINE	= 1 << 0,
-	PLUMA_LOCKDOWN_PRINTING		= 1 << 1,
-	PLUMA_LOCKDOWN_PRINT_SETUP	= 1 << 2,
-	PLUMA_LOCKDOWN_SAVE_TO_DISK	= 1 << 3,
-	PLUMA_LOCKDOWN_ALL		= 0xF
+	LAPIZ_LOCKDOWN_COMMAND_LINE	= 1 << 0,
+	LAPIZ_LOCKDOWN_PRINTING		= 1 << 1,
+	LAPIZ_LOCKDOWN_PRINT_SETUP	= 1 << 2,
+	LAPIZ_LOCKDOWN_SAVE_TO_DISK	= 1 << 3,
+	LAPIZ_LOCKDOWN_ALL		= 0xF
 } PlumaLockdownMask;
 
 /*
@@ -139,4 +139,4 @@ void			 _lapiz_app_set_default_print_settings	(PlumaApp         *app,
 
 G_END_DECLS
 
-#endif  /* __PLUMA_APP_H__  */
+#endif  /* __LAPIZ_APP_H__  */

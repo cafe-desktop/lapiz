@@ -22,8 +22,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_TEXT_REGION_H__
-#define __PLUMA_TEXT_REGION_H__
+#ifndef __LAPIZ_TEXT_REGION_H__
+#define __LAPIZ_TEXT_REGION_H__
 
 #include <gtk/gtk.h>
 
@@ -85,4 +85,4 @@ void           lapiz_text_region_debug_print                  (PlumaTextRegion *
 
 G_END_DECLS
 
-#endif /* __PLUMA_TEXT_REGION_H__ */
+#endif /* __LAPIZ_TEXT_REGION_H__ */

@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_WINDOW_H__
-#define __PLUMA_WINDOW_H__
+#ifndef __LAPIZ_WINDOW_H__
+#define __LAPIZ_WINDOW_H__
 
 #include <gio/gio.h>
 #include <gtk/gtk.h>
@@ -42,23 +42,23 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-	PLUMA_WINDOW_STATE_NORMAL		= 0,
-	PLUMA_WINDOW_STATE_SAVING		= 1 << 1,
-	PLUMA_WINDOW_STATE_PRINTING		= 1 << 2,
-	PLUMA_WINDOW_STATE_LOADING		= 1 << 3,
-	PLUMA_WINDOW_STATE_ERROR		= 1 << 4,
-	PLUMA_WINDOW_STATE_SAVING_SESSION	= 1 << 5
+	LAPIZ_WINDOW_STATE_NORMAL		= 0,
+	LAPIZ_WINDOW_STATE_SAVING		= 1 << 1,
+	LAPIZ_WINDOW_STATE_PRINTING		= 1 << 2,
+	LAPIZ_WINDOW_STATE_LOADING		= 1 << 3,
+	LAPIZ_WINDOW_STATE_ERROR		= 1 << 4,
+	LAPIZ_WINDOW_STATE_SAVING_SESSION	= 1 << 5
 } PlumaWindowState;
 
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_WINDOW              (lapiz_window_get_type())
-#define PLUMA_WINDOW(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_WINDOW, PlumaWindow))
-#define PLUMA_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_WINDOW, PlumaWindowClass))
-#define PLUMA_IS_WINDOW(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_WINDOW))
-#define PLUMA_IS_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_WINDOW))
-#define PLUMA_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_WINDOW, PlumaWindowClass))
+#define LAPIZ_TYPE_WINDOW              (lapiz_window_get_type())
+#define LAPIZ_WINDOW(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_WINDOW, PlumaWindow))
+#define LAPIZ_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_WINDOW, PlumaWindowClass))
+#define LAPIZ_IS_WINDOW(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_WINDOW))
+#define LAPIZ_IS_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_WINDOW))
+#define LAPIZ_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_WINDOW, PlumaWindowClass))
 
 /* Private structure type */
 typedef struct _PlumaWindowPrivate PlumaWindowPrivate;
@@ -189,4 +189,4 @@ void		 _lapiz_recent_remove			(PlumaWindow         *window,
 
 G_END_DECLS
 
-#endif  /* __PLUMA_WINDOW_H__  */
+#endif  /* __LAPIZ_WINDOW_H__  */

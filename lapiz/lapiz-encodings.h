@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_ENCODINGS_H__
-#define __PLUMA_ENCODINGS_H__
+#ifndef __LAPIZ_ENCODINGS_H__
+#define __LAPIZ_ENCODINGS_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -38,7 +38,7 @@ G_BEGIN_DECLS
 
 typedef struct _PlumaEncoding PlumaEncoding;
 
-#define PLUMA_TYPE_ENCODING     (lapiz_encoding_get_type ())
+#define LAPIZ_TYPE_ENCODING     (lapiz_encoding_get_type ())
 
 GType              	 lapiz_encoding_get_type (void) G_GNUC_CONST;
 
@@ -59,4 +59,4 @@ void               	 lapiz_encoding_free		 (PlumaEncoding       *enc);
 
 G_END_DECLS
 
-#endif  /* __PLUMA_ENCODINGS_H__ */
+#endif  /* __LAPIZ_ENCODINGS_H__ */

@@ -166,7 +166,7 @@ get_sort_dialog (PlumaSortPlugin *plugin)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (plugin->priv->window);
+	window = LAPIZ_WINDOW (plugin->priv->window);
 
 	dialog = g_slice_new (SortDialog);
 
@@ -227,7 +227,7 @@ sort_cb (GtkAction  *action,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (plugin->priv->window);
+	window = LAPIZ_WINDOW (plugin->priv->window);
 
 	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
@@ -457,7 +457,7 @@ lapiz_sort_plugin_set_property (GObject      *object,
                                 const GValue *value,
                                 GParamSpec   *pspec)
 {
-	PlumaSortPlugin *plugin = PLUMA_SORT_PLUGIN (object);
+	PlumaSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -477,7 +477,7 @@ lapiz_sort_plugin_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-	PlumaSortPlugin *plugin = PLUMA_SORT_PLUGIN (object);
+	PlumaSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -499,7 +499,7 @@ update_ui (PlumaSortPluginPrivate *data)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 	view = lapiz_window_get_active_view (window);
 
 	gtk_action_group_set_sensitive (data->ui_action_group,
@@ -517,9 +517,9 @@ lapiz_sort_plugin_activate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	plugin = PLUMA_SORT_PLUGIN (activatable);
+	plugin = LAPIZ_SORT_PLUGIN (activatable);
 	data = plugin->priv;
-	window = PLUMA_WINDOW (data->window);
+	window = LAPIZ_WINDOW (data->window);
 
 	manager = lapiz_window_get_ui_manager (window);
 
@@ -557,8 +557,8 @@ lapiz_sort_plugin_deactivate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	data = PLUMA_SORT_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (data->window);
+	data = LAPIZ_SORT_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (data->window);
 
 	manager = lapiz_window_get_ui_manager (window);
 
@@ -573,7 +573,7 @@ lapiz_sort_plugin_update_state (PeasActivatable *activatable)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
-	update_ui (PLUMA_SORT_PLUGIN (activatable)->priv);
+	update_ui (LAPIZ_SORT_PLUGIN (activatable)->priv);
 }
 
 static void
@@ -587,7 +587,7 @@ lapiz_sort_plugin_init (PlumaSortPlugin *plugin)
 static void
 lapiz_sort_plugin_dispose (GObject *object)
 {
-	PlumaSortPlugin *plugin = PLUMA_SORT_PLUGIN (object);
+	PlumaSortPlugin *plugin = LAPIZ_SORT_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaSortPlugin disposing");
 
@@ -639,5 +639,5 @@ peas_register_types (PeasObjectModule *module)
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
-	                                            PLUMA_TYPE_SORT_PLUGIN);
+	                                            LAPIZ_TYPE_SORT_PLUGIN);
 }

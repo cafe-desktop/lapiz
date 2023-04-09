@@ -111,7 +111,7 @@ G_DEFINE_TYPE(PlumaSpellCheckerDialog, lapiz_spell_checker_dialog, GTK_TYPE_WIND
 static void
 lapiz_spell_checker_dialog_dispose (GObject *object)
 {
-	PlumaSpellCheckerDialog *dlg = PLUMA_SPELL_CHECKER_DIALOG (object);
+	PlumaSpellCheckerDialog *dlg = LAPIZ_SPELL_CHECKER_DIALOG (object);
 
 	if (dlg->spell_checker != NULL)
 	{
@@ -333,8 +333,8 @@ lapiz_spell_checker_dialog_new (const gchar *data_dir)
 {
 	PlumaSpellCheckerDialog *dlg;
 
-	dlg = PLUMA_SPELL_CHECKER_DIALOG (
-			g_object_new (PLUMA_TYPE_SPELL_CHECKER_DIALOG, NULL));
+	dlg = LAPIZ_SPELL_CHECKER_DIALOG (
+			g_object_new (LAPIZ_TYPE_SPELL_CHECKER_DIALOG, NULL));
 
 	g_return_val_if_fail (dlg != NULL, NULL);
 
@@ -351,8 +351,8 @@ lapiz_spell_checker_dialog_new_from_spell_checker (PlumaSpellChecker *spell,
 
 	g_return_val_if_fail (spell != NULL, NULL);
 
-	dlg = PLUMA_SPELL_CHECKER_DIALOG (
-			g_object_new (PLUMA_TYPE_SPELL_CHECKER_DIALOG, NULL));
+	dlg = LAPIZ_SPELL_CHECKER_DIALOG (
+			g_object_new (LAPIZ_TYPE_SPELL_CHECKER_DIALOG, NULL));
 
 	g_return_val_if_fail (dlg != NULL, NULL);
 
@@ -370,7 +370,7 @@ lapiz_spell_checker_dialog_set_spell_checker (PlumaSpellCheckerDialog *dlg, Plum
 	const gchar *lang;
 	gchar *tmp;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (spell != NULL);
 
 	if (dlg->spell_checker != NULL)
@@ -403,7 +403,7 @@ lapiz_spell_checker_dialog_set_misspelled_word (PlumaSpellCheckerDialog *dlg,
 	gchar *tmp;
 	GSList *sug;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (word != NULL);
 
 	g_return_if_fail (dlg->spell_checker != NULL);
@@ -441,7 +441,7 @@ update_suggestions_list_model (PlumaSpellCheckerDialog *dlg, GSList *suggestions
 	GtkTreeIter iter;
 	GtkTreeSelection *sel;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (GTK_IS_LIST_STORE (dlg->suggestions_list_model));
 
 	store = GTK_LIST_STORE (dlg->suggestions_list_model);
@@ -489,7 +489,7 @@ word_entry_changed_handler (GtkEditable *editable, PlumaSpellCheckerDialog *dlg)
 {
 	const gchar *text;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	text =  gtk_entry_get_text (GTK_ENTRY (dlg->word_entry));
 
@@ -510,7 +510,7 @@ word_entry_changed_handler (GtkEditable *editable, PlumaSpellCheckerDialog *dlg)
 static void
 close_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
 {
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
@@ -523,7 +523,7 @@ suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
 	GValue value = {0, };
 	const gchar *text;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	if (! gtk_tree_selection_get_selected (selection, NULL, &iter))
 		return;
@@ -545,7 +545,7 @@ check_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 	const gchar *word;
 	gssize len;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	word = gtk_entry_get_text (GTK_ENTRY (dlg->word_entry));
 	len = strlen (word);
@@ -588,7 +588,7 @@ add_word_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg
 {
 	gchar *word;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
 	lapiz_spell_checker_add_word_to_personal (dlg->spell_checker,
@@ -607,7 +607,7 @@ ignore_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
 {
 	gchar *word;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
 	word = g_strdup (dlg->misspelled_word);
@@ -622,7 +622,7 @@ ignore_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 {
 	gchar *word;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
 	lapiz_spell_checker_add_word_to_session (dlg->spell_checker,
@@ -643,7 +643,7 @@ change_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *dlg)
 	gchar *change;
 	gchar *word;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
 	entry_text = gtk_entry_get_text (GTK_ENTRY (dlg->word_entry));
@@ -670,7 +670,7 @@ suggestions_list_row_activated_handler (GtkTreeView *view,
 		GtkTreeViewColumn *column,
 		PlumaSpellCheckerDialog *dlg)
 {
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	change_button_clicked_handler (GTK_BUTTON (dlg->change_button), dlg);
 }
@@ -682,7 +682,7 @@ change_all_button_clicked_handler (GtkButton *button, PlumaSpellCheckerDialog *d
 	gchar *change;
 	gchar *word;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (dlg->misspelled_word != NULL);
 
 	entry_text = gtk_entry_get_text (GTK_ENTRY (dlg->word_entry));
@@ -707,7 +707,7 @@ lapiz_spell_checker_dialog_set_completed (PlumaSpellCheckerDialog *dlg)
 {
 	gchar *tmp;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER_DIALOG (dlg));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	tmp = g_strdup_printf("<b>%s</b>", _("Completed spell checking"));
 	gtk_label_set_label (GTK_LABEL (dlg->misspelled_word_label),

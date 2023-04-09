@@ -74,12 +74,12 @@ $0]]></text>
     <description>while loop</description>
   </snippet>
   <snippet id="insert">
-    <text><![CDATA["${1:$PLUMA_SELECTED_TEXT}"]]></text>
+    <text><![CDATA["${1:$LAPIZ_SELECTED_TEXT}"]]></text>
     <accelerator><![CDATA[<Control>2]]></accelerator>
     <description>Inside String: Insert "…"</description>
   </snippet>
   <snippet id="insert-1">
-    <text><![CDATA['${1:$PLUMA_SELECTED_TEXT}']]></text>
+    <text><![CDATA['${1:$LAPIZ_SELECTED_TEXT}']]></text>
     <accelerator><![CDATA[<Control>apostrophe]]></accelerator>
     <description>Inside String: Insert '…'</description>
   </snippet>
@@ -113,7 +113,7 @@ $0]]></text>
   <snippet id="Toggle comments">
     <text><![CDATA[$<
 from snippets import toggle_lines
-lines = $PLUMA_SELECTED_TEXT or $PLUMA_CURRENT_LINE
+lines = $LAPIZ_SELECTED_TEXT or $LAPIZ_CURRENT_LINE
 return toggle_lines(lines, comment="#", after_leading_space=True, comment_empty=False)
 >]]></text>
     <description>Toggle comment</description>

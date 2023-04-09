@@ -106,7 +106,7 @@ static void
 set_view (PlumaPrintJob *job, PlumaView *view)
 {
 	job->priv->view = view;
-	job->priv->doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	job->priv->doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 }
 
 static void
@@ -115,7 +115,7 @@ lapiz_print_job_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-	PlumaPrintJob *job = PLUMA_PRINT_JOB (object);
+	PlumaPrintJob *job = LAPIZ_PRINT_JOB (object);
 
 	switch (prop_id)
 	{
@@ -134,7 +134,7 @@ lapiz_print_job_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-	PlumaPrintJob *job = PLUMA_PRINT_JOB (object);
+	PlumaPrintJob *job = LAPIZ_PRINT_JOB (object);
 
 	switch (prop_id)
 	{
@@ -150,7 +150,7 @@ lapiz_print_job_set_property (GObject      *object,
 static void
 lapiz_print_job_finalize (GObject *object)
 {
-	PlumaPrintJob *job = PLUMA_PRINT_JOB (object);
+	PlumaPrintJob *job = LAPIZ_PRINT_JOB (object);
 
 	g_free (job->priv->status_string);
 
@@ -179,7 +179,7 @@ lapiz_print_job_class_init (PlumaPrintJobClass *klass)
 					 g_param_spec_object ("view",
 							      "Pluma View",
 							      "Pluma View to print",
-							      PLUMA_TYPE_VIEW,
+							      LAPIZ_TYPE_VIEW,
 							      G_PARAM_READWRITE |
 							      G_PARAM_STATIC_STRINGS |
 							      G_PARAM_CONSTRUCT_ONLY));
@@ -559,7 +559,7 @@ begin_print_cb (GtkPrintOperation *operation,
 {
 	create_compositor (job);
 
-	job->priv->status = PLUMA_PRINT_JOB_STATUS_PAGINATING;
+	job->priv->status = LAPIZ_PRINT_JOB_STATUS_PAGINATING;
 
 	job->priv->progress = 0.0;
 
@@ -613,7 +613,7 @@ paginate_cb (GtkPrintOperation *operation,
 {
 	gboolean res;
 
-	job->priv->status = PLUMA_PRINT_JOB_STATUS_PAGINATING;
+	job->priv->status = LAPIZ_PRINT_JOB_STATUS_PAGINATING;
 
 	res = gtk_source_print_compositor_paginate (job->priv->compositor, context);
 
@@ -653,7 +653,7 @@ draw_page_cb (GtkPrintOperation *operation,
 
 		n_pages = gtk_source_print_compositor_get_n_pages (job->priv->compositor);
 
-		job->priv->status = PLUMA_PRINT_JOB_STATUS_DRAWING;
+		job->priv->status = LAPIZ_PRINT_JOB_STATUS_DRAWING;
 
 		job->priv->status_string = g_strdup_printf ("Rendering page %d of %d...",
 							    page_nr + 1,
@@ -687,15 +687,15 @@ done_cb (GtkPrintOperation       *operation,
 	switch (result)
 	{
 		case GTK_PRINT_OPERATION_RESULT_CANCEL:
-			print_result = PLUMA_PRINT_JOB_RESULT_CANCEL;
+			print_result = LAPIZ_PRINT_JOB_RESULT_CANCEL;
 			break;
 
 		case GTK_PRINT_OPERATION_RESULT_APPLY:
-			print_result = PLUMA_PRINT_JOB_RESULT_OK;
+			print_result = LAPIZ_PRINT_JOB_RESULT_OK;
 			break;
 
 		case GTK_PRINT_OPERATION_RESULT_ERROR:
-			print_result = PLUMA_PRINT_JOB_RESULT_ERROR;
+			print_result = LAPIZ_PRINT_JOB_RESULT_ERROR;
 			gtk_print_operation_get_error (operation, &error);
 			break;
 
@@ -799,7 +799,7 @@ lapiz_print_job_init (PlumaPrintJob *job)
 {
 	job->priv = lapiz_print_job_get_instance_private (job);
 
-	job->priv->status = PLUMA_PRINT_JOB_STATUS_INIT;
+	job->priv->status = LAPIZ_PRINT_JOB_STATUS_INIT;
 
 	job->priv->status_string = g_strdup (_("Preparing..."));
 }
@@ -809,9 +809,9 @@ lapiz_print_job_new (PlumaView *view)
 {
 	PlumaPrintJob *job;
 
-	g_return_val_if_fail (PLUMA_IS_VIEW (view), NULL);
+	g_return_val_if_fail (LAPIZ_IS_VIEW (view), NULL);
 
-	job = PLUMA_PRINT_JOB (g_object_new (PLUMA_TYPE_PRINT_JOB,
+	job = LAPIZ_PRINT_JOB (g_object_new (LAPIZ_TYPE_PRINT_JOB,
 					     "view", view,
 					      NULL));
 
@@ -821,7 +821,7 @@ lapiz_print_job_new (PlumaView *view)
 void
 lapiz_print_job_cancel (PlumaPrintJob *job)
 {
-	g_return_if_fail (PLUMA_IS_PRINT_JOB (job));
+	g_return_if_fail (LAPIZ_IS_PRINT_JOB (job));
 
 	gtk_print_operation_cancel (job->priv->operation);
 }
@@ -829,7 +829,7 @@ lapiz_print_job_cancel (PlumaPrintJob *job)
 const gchar *
 lapiz_print_job_get_status_string (PlumaPrintJob *job)
 {
-	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), NULL);
+	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 	g_return_val_if_fail (job->priv->status_string != NULL, NULL);
 
 	return job->priv->status_string;
@@ -838,7 +838,7 @@ lapiz_print_job_get_status_string (PlumaPrintJob *job)
 gdouble
 lapiz_print_job_get_progress (PlumaPrintJob *job)
 {
-	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), 0.0);
+	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), 0.0);
 
 	return job->priv->progress;
 }
@@ -846,7 +846,7 @@ lapiz_print_job_get_progress (PlumaPrintJob *job)
 GtkPrintSettings *
 lapiz_print_job_get_print_settings (PlumaPrintJob *job)
 {
-	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), NULL);
+	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 
 	return gtk_print_operation_get_print_settings (job->priv->operation);
 }
@@ -854,7 +854,7 @@ lapiz_print_job_get_print_settings (PlumaPrintJob *job)
 GtkPageSetup *
 lapiz_print_job_get_page_setup (PlumaPrintJob *job)
 {
-	g_return_val_if_fail (PLUMA_IS_PRINT_JOB (job), NULL);
+	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 
 	return gtk_print_operation_get_default_page_setup (job->priv->operation);
 }

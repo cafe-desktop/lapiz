@@ -80,7 +80,7 @@ lapiz_encodings_combo_box_set_property (GObject    *object,
 {
 	PlumaEncodingsComboBox *combo;
 
-	combo = PLUMA_ENCODINGS_COMBO_BOX (object);
+	combo = LAPIZ_ENCODINGS_COMBO_BOX (object);
 
 	switch (prop_id)
 	{
@@ -101,7 +101,7 @@ lapiz_encodings_combo_box_get_property (GObject    *object,
 {
 	PlumaEncodingsComboBox *combo;
 
-	combo = PLUMA_ENCODINGS_COMBO_BOX (object);
+	combo = LAPIZ_ENCODINGS_COMBO_BOX (object);
 
 	switch (prop_id)
 	{
@@ -117,7 +117,7 @@ lapiz_encodings_combo_box_get_property (GObject    *object,
 static void
 lapiz_encodings_combo_box_dispose (GObject *object)
 {
-	PlumaEncodingsComboBox *combo = PLUMA_ENCODINGS_COMBO_BOX (object);
+	PlumaEncodingsComboBox *combo = LAPIZ_ENCODINGS_COMBO_BOX (object);
 
 	if (combo->priv->store != NULL)
 	{
@@ -395,7 +395,7 @@ lapiz_encodings_combo_box_init (PlumaEncodingsComboBox *menu)
 GtkWidget *
 lapiz_encodings_combo_box_new (gboolean save_mode)
 {
-	return g_object_new (PLUMA_TYPE_ENCODINGS_COMBO_BOX,
+	return g_object_new (LAPIZ_TYPE_ENCODINGS_COMBO_BOX,
 			     "save_mode", save_mode,
 			     NULL);
 }
@@ -405,7 +405,7 @@ lapiz_encodings_combo_box_get_selected_encoding (PlumaEncodingsComboBox *menu)
 {
 	GtkTreeIter iter;
 
-	g_return_val_if_fail (PLUMA_IS_ENCODINGS_COMBO_BOX (menu), NULL);
+	g_return_val_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (menu), NULL);
 
 	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
 	{
@@ -436,7 +436,7 @@ lapiz_encodings_combo_box_set_selected_encoding (PlumaEncodingsComboBox *menu,
 	GtkTreeIter iter;
 	GtkTreeModel *model;
 	gboolean b;
-	g_return_if_fail (PLUMA_IS_ENCODINGS_COMBO_BOX (menu));
+	g_return_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (menu));
 	g_return_if_fail (GTK_IS_COMBO_BOX (menu));
 
 	model = gtk_combo_box_get_model (GTK_COMBO_BOX (menu));

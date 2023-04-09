@@ -1,10 +1,10 @@
 # filebrowser
 
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 						\
-	$(PLUMA_CFLAGS) 						\
+	$(LAPIZ_CFLAGS) 						\
 	$(WARN_CFLAGS)
 
 BUILT_SOURCES = \
@@ -37,10 +37,10 @@ libfilebrowser_la_SOURCES = \
 	$(NOINST_H_FILES)
 
 libfilebrowser_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libfilebrowser_la_LIBADD = $(PLUMA_LIBS)
+libfilebrowser_la_LIBADD = $(LAPIZ_LIBS)
 
 # UI files (if you use ui for your plugin, list those files here)
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/filebrowser
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/filebrowser
 ui_DATA = lapiz-file-browser-widget-ui.xml
 
 plugin_in_files = filebrowser.plugin.desktop.in

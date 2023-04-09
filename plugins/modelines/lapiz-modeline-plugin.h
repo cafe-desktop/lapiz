@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_MODELINE_PLUGIN_H__
-#define __PLUMA_MODELINE_PLUGIN_H__
+#ifndef __LAPIZ_MODELINE_PLUGIN_H__
+#define __LAPIZ_MODELINE_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_MODELINE_PLUGIN		(lapiz_modeline_plugin_get_type ())
-#define PLUMA_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_MODELINE_PLUGIN, PlumaModelinePlugin))
-#define PLUMA_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_MODELINE_PLUGIN, PlumaModelinePluginClass))
-#define PLUMA_IS_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_MODELINE_PLUGIN))
-#define PLUMA_IS_MODELINE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_MODELINE_PLUGIN))
-#define PLUMA_MODELINE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_MODELINE_PLUGIN, PlumaModelinePluginClass))
+#define LAPIZ_TYPE_MODELINE_PLUGIN		(lapiz_modeline_plugin_get_type ())
+#define LAPIZ_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_MODELINE_PLUGIN, PlumaModelinePlugin))
+#define LAPIZ_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_MODELINE_PLUGIN, PlumaModelinePluginClass))
+#define LAPIZ_IS_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_MODELINE_PLUGIN))
+#define LAPIZ_IS_MODELINE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_MODELINE_PLUGIN))
+#define LAPIZ_MODELINE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_MODELINE_PLUGIN, PlumaModelinePluginClass))
 
 typedef struct _PlumaModelinePlugin         PlumaModelinePlugin;
 typedef struct _PlumaModelinePluginPrivate  PlumaModelinePluginPrivate;
@@ -60,4 +60,4 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __PLUMA_MODELINE_PLUGIN_H__ */
+#endif /* __LAPIZ_MODELINE_PLUGIN_H__ */

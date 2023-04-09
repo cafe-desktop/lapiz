@@ -1,9 +1,9 @@
 # docinfo plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	$(PLUMA_CFLAGS) 				\
+	$(LAPIZ_CFLAGS) 				\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libdocinfo.la
@@ -13,9 +13,9 @@ libdocinfo_la_SOURCES = \
 	lapiz-docinfo-plugin.c
 
 libdocinfo_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libdocinfo_la_LIBADD  = $(PLUMA_LIBS)
+libdocinfo_la_LIBADD  = $(LAPIZ_LIBS)
 
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/docinfo
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/docinfo
 ui_files = docinfo.ui
 include $(top_srcdir)/gla11y.mk
 ui_DATA = $(ui_files)

@@ -75,7 +75,7 @@ lapiz_progress_message_area_set_property (GObject      *object,
 {
 	PlumaProgressMessageArea *area;
 
-	area = PLUMA_PROGRESS_MESSAGE_AREA (object);
+	area = LAPIZ_PROGRESS_MESSAGE_AREA (object);
 
 	switch (prop_id)
 	{
@@ -173,7 +173,7 @@ lapiz_progress_message_area_new (const gchar *image_id,
 	g_return_val_if_fail (image_id != NULL, NULL);
 	g_return_val_if_fail (markup != NULL, NULL);
 
-	area = PLUMA_PROGRESS_MESSAGE_AREA (g_object_new (PLUMA_TYPE_PROGRESS_MESSAGE_AREA,
+	area = LAPIZ_PROGRESS_MESSAGE_AREA (g_object_new (LAPIZ_TYPE_PROGRESS_MESSAGE_AREA,
 							  "has-cancel-button", has_cancel,
 							  NULL));
 
@@ -190,7 +190,7 @@ void
 lapiz_progress_message_area_set_image (PlumaProgressMessageArea *area,
 				       const gchar              *image_id)
 {
-	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
+	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 	g_return_if_fail (image_id != NULL);
 
 	gtk_image_set_from_icon_name (GTK_IMAGE (area->priv->image),
@@ -202,7 +202,7 @@ void
 lapiz_progress_message_area_set_markup (PlumaProgressMessageArea *area,
 					const gchar              *markup)
 {
-	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
+	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 	g_return_if_fail (markup != NULL);
 
 	gtk_label_set_markup (GTK_LABEL (area->priv->label),
@@ -213,7 +213,7 @@ void
 lapiz_progress_message_area_set_text (PlumaProgressMessageArea *area,
 				      const gchar              *text)
 {
-	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
+	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 	g_return_if_fail (text != NULL);
 
 	gtk_label_set_text (GTK_LABEL (area->priv->label),
@@ -224,7 +224,7 @@ void
 lapiz_progress_message_area_set_fraction (PlumaProgressMessageArea *area,
 					  gdouble                   fraction)
 {
-	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
+	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 
 	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (area->priv->progress),
 				       fraction);
@@ -233,7 +233,7 @@ lapiz_progress_message_area_set_fraction (PlumaProgressMessageArea *area,
 void
 lapiz_progress_message_area_pulse (PlumaProgressMessageArea *area)
 {
-	g_return_if_fail (PLUMA_IS_PROGRESS_MESSAGE_AREA (area));
+	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (area));
 
 	gtk_progress_bar_pulse (GTK_PROGRESS_BAR (area->priv->progress));
 }

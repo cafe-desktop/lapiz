@@ -30,8 +30,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_DOCUMENT_H__
-#define __PLUMA_DOCUMENT_H__
+#ifndef __LAPIZ_DOCUMENT_H__
+#define __LAPIZ_DOCUMENT_H__
 
 #include <gio/gio.h>
 #include <gtk/gtk.h>
@@ -44,47 +44,47 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_DOCUMENT              (lapiz_document_get_type())
-#define PLUMA_DOCUMENT(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_DOCUMENT, PlumaDocument))
-#define PLUMA_DOCUMENT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_DOCUMENT, PlumaDocumentClass))
-#define PLUMA_IS_DOCUMENT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_DOCUMENT))
-#define PLUMA_IS_DOCUMENT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_DOCUMENT))
-#define PLUMA_DOCUMENT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_DOCUMENT, PlumaDocumentClass))
+#define LAPIZ_TYPE_DOCUMENT              (lapiz_document_get_type())
+#define LAPIZ_DOCUMENT(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENT, PlumaDocument))
+#define LAPIZ_DOCUMENT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENT, PlumaDocumentClass))
+#define LAPIZ_IS_DOCUMENT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_DOCUMENT))
+#define LAPIZ_IS_DOCUMENT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT))
+#define LAPIZ_DOCUMENT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENT, PlumaDocumentClass))
 
-#define PLUMA_METADATA_ATTRIBUTE_POSITION "metadata::lapiz-position"
-#define PLUMA_METADATA_ATTRIBUTE_ENCODING "metadata::lapiz-encoding"
-#define PLUMA_METADATA_ATTRIBUTE_LANGUAGE "metadata::lapiz-language"
+#define LAPIZ_METADATA_ATTRIBUTE_POSITION "metadata::lapiz-position"
+#define LAPIZ_METADATA_ATTRIBUTE_ENCODING "metadata::lapiz-encoding"
+#define LAPIZ_METADATA_ATTRIBUTE_LANGUAGE "metadata::lapiz-language"
 
 typedef enum
 {
-	PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
-	PLUMA_DOCUMENT_NEWLINE_TYPE_CR,
-	PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF
+	LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
+	LAPIZ_DOCUMENT_NEWLINE_TYPE_CR,
+	LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF
 } PlumaDocumentNewlineType;
 
-#define PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT PLUMA_DOCUMENT_NEWLINE_TYPE_LF
+#define LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT LAPIZ_DOCUMENT_NEWLINE_TYPE_LF
 
 typedef enum
 {
-	PLUMA_SEARCH_DONT_SET_FLAGS	= 1 << 0,
-	PLUMA_SEARCH_ENTIRE_WORD	= 1 << 1,
-	PLUMA_SEARCH_CASE_SENSITIVE	= 1 << 2,
-	PLUMA_SEARCH_PARSE_ESCAPES	= 1 << 3,
-	PLUMA_SEARCH_MATCH_REGEX	= 1 << 4,
+	LAPIZ_SEARCH_DONT_SET_FLAGS	= 1 << 0,
+	LAPIZ_SEARCH_ENTIRE_WORD	= 1 << 1,
+	LAPIZ_SEARCH_CASE_SENSITIVE	= 1 << 2,
+	LAPIZ_SEARCH_PARSE_ESCAPES	= 1 << 3,
+	LAPIZ_SEARCH_MATCH_REGEX	= 1 << 4,
 
 } PlumaSearchFlags;
 
 /**
  * PlumaDocumentSaveFlags:
- * @PLUMA_DOCUMENT_SAVE_IGNORE_MTIME: save file despite external modifications.
- * @PLUMA_DOCUMENT_SAVE_IGNORE_BACKUP: write the file directly without attempting to backup.
- * @PLUMA_DOCUMENT_SAVE_PRESERVE_BACKUP: preserve previous backup file, needed to support autosaving.
+ * @LAPIZ_DOCUMENT_SAVE_IGNORE_MTIME: save file despite external modifications.
+ * @LAPIZ_DOCUMENT_SAVE_IGNORE_BACKUP: write the file directly without attempting to backup.
+ * @LAPIZ_DOCUMENT_SAVE_PRESERVE_BACKUP: preserve previous backup file, needed to support autosaving.
  */
 typedef enum
 {
-	PLUMA_DOCUMENT_SAVE_IGNORE_MTIME 	= 1 << 0,
-	PLUMA_DOCUMENT_SAVE_IGNORE_BACKUP	= 1 << 1,
-	PLUMA_DOCUMENT_SAVE_PRESERVE_BACKUP	= 1 << 2
+	LAPIZ_DOCUMENT_SAVE_IGNORE_MTIME 	= 1 << 0,
+	LAPIZ_DOCUMENT_SAVE_IGNORE_BACKUP	= 1 << 1,
+	LAPIZ_DOCUMENT_SAVE_PRESERVE_BACKUP	= 1 << 2
 } PlumaDocumentSaveFlags;
 
 /* Private structure type */
@@ -150,16 +150,16 @@ struct _PlumaDocumentClass
 };
 
 
-#define PLUMA_DOCUMENT_ERROR lapiz_document_error_quark ()
+#define LAPIZ_DOCUMENT_ERROR lapiz_document_error_quark ()
 
 enum
 {
-	PLUMA_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
-	PLUMA_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
-	PLUMA_DOCUMENT_ERROR_TOO_BIG,
-	PLUMA_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED,
-	PLUMA_DOCUMENT_ERROR_CONVERSION_FALLBACK,
-	PLUMA_DOCUMENT_NUM_ERRORS
+	LAPIZ_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
+	LAPIZ_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
+	LAPIZ_DOCUMENT_ERROR_TOO_BIG,
+	LAPIZ_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED,
+	LAPIZ_DOCUMENT_ERROR_CONVERSION_FALLBACK,
+	LAPIZ_DOCUMENT_NUM_ERRORS
 };
 
 GQuark		 lapiz_document_error_quark	(void);
@@ -309,25 +309,25 @@ void		_lapiz_document_search_region   (PlumaDocument       *doc,
 						 const GtkTextIter   *end);
 
 /* Search macros */
-#define PLUMA_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & PLUMA_SEARCH_DONT_SET_FLAGS) != 0)
-#define PLUMA_SEARCH_SET_DONT_SET_FLAGS(sflags,state) ((state == TRUE) ? \
-(sflags |= PLUMA_SEARCH_DONT_SET_FLAGS) : (sflags &= ~PLUMA_SEARCH_DONT_SET_FLAGS))
+#define LAPIZ_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & LAPIZ_SEARCH_DONT_SET_FLAGS) != 0)
+#define LAPIZ_SEARCH_SET_DONT_SET_FLAGS(sflags,state) ((state == TRUE) ? \
+(sflags |= LAPIZ_SEARCH_DONT_SET_FLAGS) : (sflags &= ~LAPIZ_SEARCH_DONT_SET_FLAGS))
 
-#define PLUMA_SEARCH_IS_ENTIRE_WORD(sflags) ((sflags & PLUMA_SEARCH_ENTIRE_WORD) != 0)
-#define PLUMA_SEARCH_SET_ENTIRE_WORD(sflags,state) ((state == TRUE) ? \
-(sflags |= PLUMA_SEARCH_ENTIRE_WORD) : (sflags &= ~PLUMA_SEARCH_ENTIRE_WORD))
+#define LAPIZ_SEARCH_IS_ENTIRE_WORD(sflags) ((sflags & LAPIZ_SEARCH_ENTIRE_WORD) != 0)
+#define LAPIZ_SEARCH_SET_ENTIRE_WORD(sflags,state) ((state == TRUE) ? \
+(sflags |= LAPIZ_SEARCH_ENTIRE_WORD) : (sflags &= ~LAPIZ_SEARCH_ENTIRE_WORD))
 
-#define PLUMA_SEARCH_IS_CASE_SENSITIVE(sflags) ((sflags &  PLUMA_SEARCH_CASE_SENSITIVE) != 0)
-#define PLUMA_SEARCH_SET_CASE_SENSITIVE(sflags,state) ((state == TRUE) ? \
-(sflags |= PLUMA_SEARCH_CASE_SENSITIVE) : (sflags &= ~PLUMA_SEARCH_CASE_SENSITIVE))
+#define LAPIZ_SEARCH_IS_CASE_SENSITIVE(sflags) ((sflags &  LAPIZ_SEARCH_CASE_SENSITIVE) != 0)
+#define LAPIZ_SEARCH_SET_CASE_SENSITIVE(sflags,state) ((state == TRUE) ? \
+(sflags |= LAPIZ_SEARCH_CASE_SENSITIVE) : (sflags &= ~LAPIZ_SEARCH_CASE_SENSITIVE))
 
-#define PLUMA_SEARCH_IS_PARSE_ESCAPES(sflags) ((sflags &  PLUMA_SEARCH_PARSE_ESCAPES) != 0)
-#define PLUMA_SEARCH_SET_PARSE_ESCAPES(sflags,state) ((state == TRUE) ? \
-(sflags |= PLUMA_SEARCH_PARSE_ESCAPES) : (sflags &= ~PLUMA_SEARCH_PARSE_ESCAPES))
+#define LAPIZ_SEARCH_IS_PARSE_ESCAPES(sflags) ((sflags &  LAPIZ_SEARCH_PARSE_ESCAPES) != 0)
+#define LAPIZ_SEARCH_SET_PARSE_ESCAPES(sflags,state) ((state == TRUE) ? \
+(sflags |= LAPIZ_SEARCH_PARSE_ESCAPES) : (sflags &= ~LAPIZ_SEARCH_PARSE_ESCAPES))
 
-#define PLUMA_SEARCH_IS_MATCH_REGEX(sflags) ((sflags &  PLUMA_SEARCH_MATCH_REGEX) != 0)
-#define PLUMA_SEARCH_SET_MATCH_REGEX(sflags,state) ((state == TRUE) ? \
-(sflags |= PLUMA_SEARCH_MATCH_REGEX) : (sflags &= ~PLUMA_SEARCH_MATCH_REGEX))
+#define LAPIZ_SEARCH_IS_MATCH_REGEX(sflags) ((sflags &  LAPIZ_SEARCH_MATCH_REGEX) != 0)
+#define LAPIZ_SEARCH_SET_MATCH_REGEX(sflags,state) ((state == TRUE) ? \
+(sflags |= LAPIZ_SEARCH_MATCH_REGEX) : (sflags &= ~LAPIZ_SEARCH_MATCH_REGEX))
 
 
 typedef GMountOperation *(*PlumaMountOperationFactory)(PlumaDocument *doc,
@@ -343,4 +343,4 @@ GMountOperation
 
 G_END_DECLS
 
-#endif /* __PLUMA_DOCUMENT_H__ */
+#endif /* __LAPIZ_DOCUMENT_H__ */

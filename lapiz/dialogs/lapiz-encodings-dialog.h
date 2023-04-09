@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_ENCODINGS_DIALOG_H__
-#define __PLUMA_ENCODINGS_DIALOG_H__
+#ifndef __LAPIZ_ENCODINGS_DIALOG_H__
+#define __LAPIZ_ENCODINGS_DIALOG_H__
 
 #include <gtk/gtk.h>
 
@@ -38,13 +38,13 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_ENCODINGS_DIALOG              (lapiz_encodings_dialog_get_type())
-#define PLUMA_ENCODINGS_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog))
-#define PLUMA_ENCODINGS_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog const))
-#define PLUMA_ENCODINGS_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialogClass))
-#define PLUMA_IS_ENCODINGS_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_ENCODINGS_DIALOG))
-#define PLUMA_IS_ENCODINGS_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_ENCODINGS_DIALOG))
-#define PLUMA_ENCODINGS_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialogClass))
+#define LAPIZ_TYPE_ENCODINGS_DIALOG              (lapiz_encodings_dialog_get_type())
+#define LAPIZ_ENCODINGS_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog))
+#define LAPIZ_ENCODINGS_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialog const))
+#define LAPIZ_ENCODINGS_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialogClass))
+#define LAPIZ_IS_ENCODINGS_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_ENCODINGS_DIALOG))
+#define LAPIZ_IS_ENCODINGS_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_ENCODINGS_DIALOG))
+#define LAPIZ_ENCODINGS_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_ENCODINGS_DIALOG, PlumaEncodingsDialogClass))
 
 
 /* Private structure type */
@@ -82,5 +82,5 @@ GtkWidget	*lapiz_encodings_dialog_new		(void);
 
 G_END_DECLS
 
-#endif /* __PLUMA_ENCODINGS_DIALOG_H__ */
+#endif /* __LAPIZ_ENCODINGS_DIALOG_H__ */
 

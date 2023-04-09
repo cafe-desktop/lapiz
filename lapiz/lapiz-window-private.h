@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_WINDOW_PRIVATE_H__
-#define __PLUMA_WINDOW_PRIVATE_H__
+#ifndef __LAPIZ_WINDOW_PRIVATE_H__
+#define __LAPIZ_WINDOW_PRIVATE_H__
 
 #include <libpeas/peas-extension-set.h>
 
@@ -116,4 +116,4 @@ struct _PlumaWindowPrivate
 
 G_END_DECLS
 
-#endif  /* __PLUMA_WINDOW_PRIVATE_H__  */
+#endif  /* __LAPIZ_WINDOW_PRIVATE_H__  */

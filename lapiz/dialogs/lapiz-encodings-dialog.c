@@ -63,7 +63,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (PlumaEncodingsDialog, lapiz_encodings_dialog, GTK_TY
 static void
 lapiz_encodings_dialog_finalize (GObject *object)
 {
-	PlumaEncodingsDialogPrivate *priv = PLUMA_ENCODINGS_DIALOG (object)->priv;
+	PlumaEncodingsDialogPrivate *priv = LAPIZ_ENCODINGS_DIALOG (object)->priv;
 
 	g_slist_free (priv->show_in_menu_list);
 
@@ -480,7 +480,7 @@ lapiz_encodings_dialog_new (void)
 {
 	GtkWidget *dlg;
 
-	dlg = GTK_WIDGET (g_object_new (PLUMA_TYPE_ENCODINGS_DIALOG, NULL));
+	dlg = GTK_WIDGET (g_object_new (LAPIZ_TYPE_ENCODINGS_DIALOG, NULL));
 
 	return dlg;
 }

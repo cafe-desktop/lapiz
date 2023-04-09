@@ -170,8 +170,8 @@ lapiz_trail_save_plugin_activate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	plugin = PLUMA_TRAIL_SAVE_PLUGIN (activatable);
-	window = PLUMA_WINDOW (plugin->priv->window);
+	plugin = LAPIZ_TRAIL_SAVE_PLUGIN (activatable);
+	window = LAPIZ_WINDOW (plugin->priv->window);
 
 	g_signal_connect (window, "tab_added", G_CALLBACK (on_tab_added), plugin);
 	g_signal_connect (window, "tab_removed", G_CALLBACK (on_tab_removed), plugin);
@@ -200,8 +200,8 @@ lapiz_trail_save_plugin_deactivate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	plugin = PLUMA_TRAIL_SAVE_PLUGIN (activatable);
-	window = PLUMA_WINDOW (plugin->priv->window);
+	plugin = LAPIZ_TRAIL_SAVE_PLUGIN (activatable);
+	window = LAPIZ_WINDOW (plugin->priv->window);
 
 	g_signal_handlers_disconnect_by_data (window, plugin);
 
@@ -229,7 +229,7 @@ lapiz_trail_save_plugin_init (PlumaTrailSavePlugin *plugin)
 static void
 lapiz_trail_save_plugin_dispose (GObject *object)
 {
-	PlumaTrailSavePlugin *plugin = PLUMA_TRAIL_SAVE_PLUGIN (object);
+	PlumaTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTrailSavePlugin disposing");
 
@@ -248,7 +248,7 @@ lapiz_trail_save_plugin_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-	PlumaTrailSavePlugin *plugin = PLUMA_TRAIL_SAVE_PLUGIN (object);
+	PlumaTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -268,7 +268,7 @@ lapiz_trail_save_plugin_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-	PlumaTrailSavePlugin *plugin = PLUMA_TRAIL_SAVE_PLUGIN (object);
+	PlumaTrailSavePlugin *plugin = LAPIZ_TRAIL_SAVE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -314,5 +314,5 @@ peas_register_types (PeasObjectModule *module)
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
-	                                            PLUMA_TYPE_TRAIL_SAVE_PLUGIN);
+	                                            LAPIZ_TYPE_TRAIL_SAVE_PLUGIN);
 }

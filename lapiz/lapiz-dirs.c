@@ -69,7 +69,7 @@ gchar* lapiz_dirs_get_user_accels_file(void)
 
 gchar* lapiz_dirs_get_lapiz_data_dir(void)
 {
-	return g_build_filename(PLUMA_DATADIR, NULL);
+	return g_build_filename(LAPIZ_DATADIR, NULL);
 }
 
 gchar* lapiz_dirs_get_lapiz_locale_dir(void)

@@ -29,8 +29,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_DOCUMENT_SAVER_H__
-#define __PLUMA_DOCUMENT_SAVER_H__
+#ifndef __LAPIZ_DOCUMENT_SAVER_H__
+#define __LAPIZ_DOCUMENT_SAVER_H__
 
 #include <lapiz/lapiz-document.h>
 
@@ -39,12 +39,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_DOCUMENT_SAVER              (lapiz_document_saver_get_type())
-#define PLUMA_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_DOCUMENT_SAVER, PlumaDocumentSaver))
-#define PLUMA_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_DOCUMENT_SAVER, PlumaDocumentSaverClass))
-#define PLUMA_IS_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_DOCUMENT_SAVER))
-#define PLUMA_IS_DOCUMENT_SAVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_DOCUMENT_SAVER))
-#define PLUMA_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_DOCUMENT_SAVER, PlumaDocumentSaverClass))
+#define LAPIZ_TYPE_DOCUMENT_SAVER              (lapiz_document_saver_get_type())
+#define LAPIZ_DOCUMENT_SAVER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_DOCUMENT_SAVER, PlumaDocumentSaver))
+#define LAPIZ_DOCUMENT_SAVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_DOCUMENT_SAVER, PlumaDocumentSaverClass))
+#define LAPIZ_IS_DOCUMENT_SAVER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_DOCUMENT_SAVER))
+#define LAPIZ_IS_DOCUMENT_SAVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT_SAVER))
+#define LAPIZ_DOCUMENT_SAVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_DOCUMENT_SAVER, PlumaDocumentSaverClass))
 
 /*
  * Main object structure
@@ -130,4 +130,4 @@ GFileInfo		*lapiz_document_saver_get_info		(PlumaDocumentSaver  *saver);
 
 G_END_DECLS
 
-#endif  /* __PLUMA_DOCUMENT_SAVER_H__  */
+#endif  /* __LAPIZ_DOCUMENT_SAVER_H__  */

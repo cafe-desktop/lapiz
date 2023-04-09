@@ -71,12 +71,12 @@ lapiz_tab_label_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-	PlumaTabLabel *tab_label = PLUMA_TAB_LABEL (object);
+	PlumaTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
 
 	switch (prop_id)
 	{
 		case PROP_TAB:
-			tab_label->priv->tab = PLUMA_TAB (g_value_get_object (value));
+			tab_label->priv->tab = LAPIZ_TAB (g_value_get_object (value));
 			break;
 
 		default:
@@ -91,7 +91,7 @@ lapiz_tab_label_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-	PlumaTabLabel *tab_label = PLUMA_TAB_LABEL (object);
+	PlumaTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
 
 	switch (prop_id)
 	{
@@ -151,14 +151,14 @@ sync_state (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 
 	gtk_widget_set_sensitive (tab_label->priv->close_button,
 				  tab_label->priv->close_button_sensitive &&
-				  (state != PLUMA_TAB_STATE_CLOSING) &&
-				  (state != PLUMA_TAB_STATE_SAVING)  &&
-				  (state != PLUMA_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-				  (state != PLUMA_TAB_STATE_SAVING_ERROR));
+				  (state != LAPIZ_TAB_STATE_CLOSING) &&
+				  (state != LAPIZ_TAB_STATE_SAVING)  &&
+				  (state != LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+				  (state != LAPIZ_TAB_STATE_SAVING_ERROR));
 
-	if ((state == PLUMA_TAB_STATE_LOADING)   ||
-	    (state == PLUMA_TAB_STATE_SAVING)    ||
-	    (state == PLUMA_TAB_STATE_REVERTING))
+	if ((state == LAPIZ_TAB_STATE_LOADING)   ||
+	    (state == LAPIZ_TAB_STATE_SAVING)    ||
+	    (state == LAPIZ_TAB_STATE_REVERTING))
 	{
 		gtk_widget_hide (tab_label->priv->icon);
 
@@ -188,7 +188,7 @@ sync_state (PlumaTab *tab, GParamSpec *pspec, PlumaTabLabel *tab_label)
 static void
 lapiz_tab_label_constructed (GObject *object)
 {
-	PlumaTabLabel *tab_label = PLUMA_TAB_LABEL (object);
+	PlumaTabLabel *tab_label = LAPIZ_TAB_LABEL (object);
 
 	if (!tab_label->priv->tab)
 	{
@@ -237,7 +237,7 @@ lapiz_tab_label_class_init (PlumaTabLabelClass *klass)
 					 g_param_spec_object ("tab",
 							      "Tab",
 							      "The PlumaTab",
-							      PLUMA_TYPE_TAB,
+							      LAPIZ_TYPE_TAB,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY));
 }
@@ -315,7 +315,7 @@ lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 {
 	PlumaTabState state;
 
-	g_return_if_fail (PLUMA_IS_TAB_LABEL (tab_label));
+	g_return_if_fail (LAPIZ_IS_TAB_LABEL (tab_label));
 
 	sensitive = (sensitive != FALSE);
 
@@ -328,18 +328,18 @@ lapiz_tab_label_set_close_button_sensitive (PlumaTabLabel *tab_label,
 
 	gtk_widget_set_sensitive (tab_label->priv->close_button,
 				  tab_label->priv->close_button_sensitive &&
-				  (state != PLUMA_TAB_STATE_CLOSING) &&
-				  (state != PLUMA_TAB_STATE_SAVING)  &&
-				  (state != PLUMA_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-				  (state != PLUMA_TAB_STATE_PRINTING) &&
-				  (state != PLUMA_TAB_STATE_PRINT_PREVIEWING) &&
-				  (state != PLUMA_TAB_STATE_SAVING_ERROR));
+				  (state != LAPIZ_TAB_STATE_CLOSING) &&
+				  (state != LAPIZ_TAB_STATE_SAVING)  &&
+				  (state != LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+				  (state != LAPIZ_TAB_STATE_PRINTING) &&
+				  (state != LAPIZ_TAB_STATE_PRINT_PREVIEWING) &&
+				  (state != LAPIZ_TAB_STATE_SAVING_ERROR));
 }
 
 PlumaTab *
 lapiz_tab_label_get_tab (PlumaTabLabel *tab_label)
 {
-	g_return_val_if_fail (PLUMA_IS_TAB_LABEL (tab_label), NULL);
+	g_return_val_if_fail (LAPIZ_IS_TAB_LABEL (tab_label), NULL);
 
 	return tab_label->priv->tab;
 }
@@ -349,7 +349,7 @@ lapiz_tab_label_new (PlumaTab *tab)
 {
 	PlumaTabLabel *tab_label;
 
-	tab_label = g_object_new (PLUMA_TYPE_TAB_LABEL,
+	tab_label = g_object_new (LAPIZ_TYPE_TAB_LABEL,
 				  "homogeneous", FALSE,
 				  "tab", tab,
 				  NULL);

@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_FILE_BROWSER_WIDGET_H__
-#define __PLUMA_FILE_BROWSER_WIDGET_H__
+#ifndef __LAPIZ_FILE_BROWSER_WIDGET_H__
+#define __LAPIZ_FILE_BROWSER_WIDGET_H__
 
 #include <gtk/gtk.h>
 #include "lapiz-file-browser-store.h"
@@ -28,13 +28,13 @@
 #include "lapiz-file-browser-view.h"
 
 G_BEGIN_DECLS
-#define PLUMA_TYPE_FILE_BROWSER_WIDGET			(lapiz_file_browser_widget_get_type ())
-#define PLUMA_FILE_BROWSER_WIDGET(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget))
-#define PLUMA_FILE_BROWSER_WIDGET_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget const))
-#define PLUMA_FILE_BROWSER_WIDGET_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidgetClass))
-#define PLUMA_IS_FILE_BROWSER_WIDGET(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_FILE_BROWSER_WIDGET))
-#define PLUMA_IS_FILE_BROWSER_WIDGET_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_FILE_BROWSER_WIDGET))
-#define PLUMA_FILE_BROWSER_WIDGET_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidgetClass))
+#define LAPIZ_TYPE_FILE_BROWSER_WIDGET			(lapiz_file_browser_widget_get_type ())
+#define LAPIZ_FILE_BROWSER_WIDGET(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget))
+#define LAPIZ_FILE_BROWSER_WIDGET_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidget const))
+#define LAPIZ_FILE_BROWSER_WIDGET_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidgetClass))
+#define LAPIZ_IS_FILE_BROWSER_WIDGET(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET))
+#define LAPIZ_IS_FILE_BROWSER_WIDGET_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_FILE_BROWSER_WIDGET))
+#define LAPIZ_FILE_BROWSER_WIDGET_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BROWSER_WIDGET, PlumaFileBrowserWidgetClass))
 
 typedef struct _PlumaFileBrowserWidget        PlumaFileBrowserWidget;
 typedef struct _PlumaFileBrowserWidgetClass   PlumaFileBrowserWidgetClass;
@@ -116,6 +116,6 @@ void lapiz_file_browser_widget_history_back	    (PlumaFileBrowserWidget * obj);
 void lapiz_file_browser_widget_history_forward	    (PlumaFileBrowserWidget * obj);
 
 G_END_DECLS
-#endif /* __PLUMA_FILE_BROWSER_WIDGET_H__ */
+#endif /* __LAPIZ_FILE_BROWSER_WIDGET_H__ */
 
 // ex:ts=8:noet:

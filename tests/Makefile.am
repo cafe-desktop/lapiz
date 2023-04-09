@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -g -I$(top_srcdir) -I$(top_srcdir)/lapiz $(PLUMA_DEBUG_FLAGS) $(PLUMA_CFLAGS)
+AM_CPPFLAGS = -g -I$(top_srcdir) -I$(top_srcdir)/lapiz $(LAPIZ_DEBUG_FLAGS) $(LAPIZ_CFLAGS)
 
 noinst_PROGRAMS = $(TEST_PROGS)
 progs_ldadd     = $(top_builddir)/lapiz/liblapiz.la

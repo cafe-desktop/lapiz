@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_FILE_BROWSER_PLUGIN_H__
-#define __PLUMA_FILE_BROWSER_PLUGIN_H__
+#ifndef __LAPIZ_FILE_BROWSER_PLUGIN_H__
+#define __LAPIZ_FILE_BROWSER_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -32,12 +32,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_FILE_BROWSER_PLUGIN		(lapiz_file_browser_plugin_get_type ())
-#define PLUMA_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), PLUMA_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPlugin))
-#define PLUMA_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), PLUMA_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPluginClass))
-#define PLUMA_IS_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), PLUMA_TYPE_FILE_BROWSER_PLUGIN))
-#define PLUMA_IS_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), PLUMA_TYPE_FILE_BROWSER_PLUGIN))
-#define PLUMA_FILE_BROWSER_GET_CLASS(o)		(G_TYPE_INSTANCE_GET_CLASS ((o), PLUMA_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPluginClass))
+#define LAPIZ_TYPE_FILE_BROWSER_PLUGIN		(lapiz_file_browser_plugin_get_type ())
+#define LAPIZ_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPlugin))
+#define LAPIZ_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPluginClass))
+#define LAPIZ_IS_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN))
+#define LAPIZ_IS_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), LAPIZ_TYPE_FILE_BROWSER_PLUGIN))
+#define LAPIZ_FILE_BROWSER_GET_CLASS(o)		(G_TYPE_INSTANCE_GET_CLASS ((o), LAPIZ_TYPE_FILE_BROWSER_PLUGIN, PlumaFileBrowserPluginClass))
 
 /* Private structure type */
 typedef struct _PlumaFileBrowserPluginPrivate PlumaFileBrowserPluginPrivate;
@@ -67,6 +67,6 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __PLUMA_FILE_BROWSER_PLUGIN_H__ */
+#endif /* __LAPIZ_FILE_BROWSER_PLUGIN_H__ */
 
 // ex:ts=8:noet:

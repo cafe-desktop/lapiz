@@ -73,7 +73,7 @@ lapiz_document_loader_set_property (GObject      *object,
 				    const GValue *value,
 				    GParamSpec   *pspec)
 {
-	PlumaDocumentLoader *loader = PLUMA_DOCUMENT_LOADER (object);
+	PlumaDocumentLoader *loader = LAPIZ_DOCUMENT_LOADER (object);
 
 	switch (prop_id)
 	{
@@ -104,7 +104,7 @@ lapiz_document_loader_get_property (GObject    *object,
 				    GValue     *value,
 				    GParamSpec *pspec)
 {
-	PlumaDocumentLoader *loader = PLUMA_DOCUMENT_LOADER (object);
+	PlumaDocumentLoader *loader = LAPIZ_DOCUMENT_LOADER (object);
 
 	switch (prop_id)
 	{
@@ -129,7 +129,7 @@ lapiz_document_loader_get_property (GObject    *object,
 static void
 lapiz_document_loader_finalize (GObject *object)
 {
-	PlumaDocumentLoader *loader = PLUMA_DOCUMENT_LOADER (object);
+	PlumaDocumentLoader *loader = LAPIZ_DOCUMENT_LOADER (object);
 
 	g_free (loader->uri);
 
@@ -142,7 +142,7 @@ lapiz_document_loader_finalize (GObject *object)
 static void
 lapiz_document_loader_dispose (GObject *object)
 {
-	PlumaDocumentLoader *loader = PLUMA_DOCUMENT_LOADER (object);
+	PlumaDocumentLoader *loader = LAPIZ_DOCUMENT_LOADER (object);
 
 	if (loader->info != NULL)
 	{
@@ -168,7 +168,7 @@ lapiz_document_loader_class_init (PlumaDocumentLoaderClass *klass)
 					 g_param_spec_object ("document",
 							      "Document",
 							      "The PlumaDocument this PlumaDocumentLoader is associated with",
-							      PLUMA_TYPE_DOCUMENT,
+							      LAPIZ_TYPE_DOCUMENT,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY |
 							      G_PARAM_STATIC_STRINGS));
@@ -187,7 +187,7 @@ lapiz_document_loader_class_init (PlumaDocumentLoaderClass *klass)
 					 g_param_spec_boxed ("encoding",
 							     "Encoding",
 							     "The encoding of the saved file",
-							     PLUMA_TYPE_ENCODING,
+							     LAPIZ_TYPE_ENCODING,
 							     G_PARAM_READWRITE |
 							     G_PARAM_CONSTRUCT_ONLY |
 							     G_PARAM_STATIC_STRINGS));
@@ -196,8 +196,8 @@ lapiz_document_loader_class_init (PlumaDocumentLoaderClass *klass)
 	                                 g_param_spec_enum ("newline-type",
 	                                                    "Newline type",
 	                                                    "The accepted types of line ending",
-	                                                    PLUMA_TYPE_DOCUMENT_NEWLINE_TYPE,
-	                                                    PLUMA_DOCUMENT_NEWLINE_TYPE_LF,
+	                                                    LAPIZ_TYPE_DOCUMENT_NEWLINE_TYPE,
+	                                                    LAPIZ_DOCUMENT_NEWLINE_TYPE_LF,
 	                                                    G_PARAM_READWRITE |
 	                                                    G_PARAM_STATIC_NAME |
 	                                                    G_PARAM_STATIC_BLURB));
@@ -219,7 +219,7 @@ static void
 lapiz_document_loader_init (PlumaDocumentLoader *loader)
 {
 	loader->used = FALSE;
-	loader->auto_detected_newline_type = PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT;
+	loader->auto_detected_newline_type = LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 }
 
 void
@@ -259,14 +259,14 @@ lapiz_document_loader_new (PlumaDocument       *doc,
 	PlumaDocumentLoader *loader;
 	GType loader_type;
 
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
 
 	/* At the moment we just use gio loader in all cases...
 	 * In the future it would be great to have a PolicyKit
 	 * loader to get permission to save systen files etc */
-	loader_type = PLUMA_TYPE_GIO_DOCUMENT_LOADER;
+	loader_type = LAPIZ_TYPE_GIO_DOCUMENT_LOADER;
 
-	loader = PLUMA_DOCUMENT_LOADER (g_object_new (loader_type,
+	loader = LAPIZ_DOCUMENT_LOADER (g_object_new (loader_type,
 						      "document", doc,
 						      "uri", uri,
 						      "encoding", encoding,
@@ -281,13 +281,13 @@ lapiz_document_loader_load (PlumaDocumentLoader *loader)
 {
 	lapiz_debug (DEBUG_LOADER);
 
-	g_return_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader));
+	g_return_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader));
 
 	/* the loader can be used just once, then it must be thrown away */
 	g_return_if_fail (loader->used == FALSE);
 	loader->used = TRUE;
 
-	PLUMA_DOCUMENT_LOADER_GET_CLASS (loader)->load (loader);
+	LAPIZ_DOCUMENT_LOADER_GET_CLASS (loader)->load (loader);
 }
 
 gboolean
@@ -295,15 +295,15 @@ lapiz_document_loader_cancel (PlumaDocumentLoader *loader)
 {
 	lapiz_debug (DEBUG_LOADER);
 
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader), FALSE);
 
-	return PLUMA_DOCUMENT_LOADER_GET_CLASS (loader)->cancel (loader);
+	return LAPIZ_DOCUMENT_LOADER_GET_CLASS (loader)->cancel (loader);
 }
 
 PlumaDocument *
 lapiz_document_loader_get_document (PlumaDocumentLoader *loader)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader), NULL);
 
 	return loader->document;
 }
@@ -312,7 +312,7 @@ lapiz_document_loader_get_document (PlumaDocumentLoader *loader)
 const gchar *
 lapiz_document_loader_get_uri (PlumaDocumentLoader *loader)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader), NULL);
 
 	return loader->uri;
 }
@@ -320,15 +320,15 @@ lapiz_document_loader_get_uri (PlumaDocumentLoader *loader)
 goffset
 lapiz_document_loader_get_bytes_read (PlumaDocumentLoader *loader)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader), 0);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader), 0);
 
-	return PLUMA_DOCUMENT_LOADER_GET_CLASS (loader)->get_bytes_read (loader);
+	return LAPIZ_DOCUMENT_LOADER_GET_CLASS (loader)->get_bytes_read (loader);
 }
 
 const PlumaEncoding *
 lapiz_document_loader_get_encoding (PlumaDocumentLoader *loader)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader), NULL);
 
 	if (loader->encoding != NULL)
 		return loader->encoding;
@@ -342,8 +342,8 @@ lapiz_document_loader_get_encoding (PlumaDocumentLoader *loader)
 PlumaDocumentNewlineType
 lapiz_document_loader_get_newline_type (PlumaDocumentLoader *loader)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader),
-			      PLUMA_DOCUMENT_NEWLINE_TYPE_LF);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader),
+			      LAPIZ_DOCUMENT_NEWLINE_TYPE_LF);
 
 	return loader->auto_detected_newline_type;
 }
@@ -351,7 +351,7 @@ lapiz_document_loader_get_newline_type (PlumaDocumentLoader *loader)
 GFileInfo *
 lapiz_document_loader_get_info (PlumaDocumentLoader *loader)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_LOADER (loader), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_LOADER (loader), NULL);
 
 	return loader->info;
 }

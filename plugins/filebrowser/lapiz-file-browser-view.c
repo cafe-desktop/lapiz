@@ -109,7 +109,7 @@ static void on_row_inserted		(PlumaFileBrowserStore 	* model,
 static void
 lapiz_file_browser_view_finalize (GObject * object)
 {
-	PlumaFileBrowserView *obj = PLUMA_FILE_BROWSER_VIEW(object);
+	PlumaFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW(object);
 
 	if (obj->priv->hand_cursor)
 		g_object_unref (obj->priv->hand_cursor);
@@ -168,20 +168,20 @@ row_expanded (GtkTreeView * tree_view,
 	      GtkTreeIter * iter,
 	      GtkTreePath * path)
 {
-	PlumaFileBrowserView *view = PLUMA_FILE_BROWSER_VIEW (tree_view);
+	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
 
 	if (GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_expanded)
 		GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_expanded (tree_view, iter, path);
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (view->priv->model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 		return;
 
 	if (view->priv->restore_expand_state)
 	{
 		gtk_tree_model_get (view->priv->model,
 				    iter,
-				    PLUMA_FILE_BROWSER_STORE_COLUMN_URI,
+				    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 				    &uri,
 				    -1);
 
@@ -189,7 +189,7 @@ row_expanded (GtkTreeView * tree_view,
 		g_free (uri);
 	}
 
-	_lapiz_file_browser_store_iter_expanded (PLUMA_FILE_BROWSER_STORE (view->priv->model),
+	_lapiz_file_browser_store_iter_expanded (LAPIZ_FILE_BROWSER_STORE (view->priv->model),
 						 iter);
 }
 
@@ -198,20 +198,20 @@ row_collapsed (GtkTreeView * tree_view,
 	       GtkTreeIter * iter,
 	       GtkTreePath * path)
 {
-	PlumaFileBrowserView *view = PLUMA_FILE_BROWSER_VIEW (tree_view);
+	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
 
 	if (GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_collapsed)
 		GTK_TREE_VIEW_CLASS (lapiz_file_browser_view_parent_class)->row_collapsed (tree_view, iter, path);
 
-	if (!PLUMA_IS_FILE_BROWSER_STORE (view->priv->model))
+	if (!LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 		return;
 
 	if (view->priv->restore_expand_state)
 	{
 		gtk_tree_model_get (view->priv->model,
 				    iter,
-				    PLUMA_FILE_BROWSER_STORE_COLUMN_URI,
+				    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 				    &uri,
 				    -1);
 
@@ -219,7 +219,7 @@ row_collapsed (GtkTreeView * tree_view,
 		g_free (uri);
 	}
 
-	_lapiz_file_browser_store_iter_collapsed (PLUMA_FILE_BROWSER_STORE (view->priv->model),
+	_lapiz_file_browser_store_iter_collapsed (LAPIZ_FILE_BROWSER_STORE (view->priv->model),
 						  iter);
 }
 
@@ -227,9 +227,9 @@ static gboolean
 leave_notify_event (GtkWidget *widget,
 		    GdkEventCrossing *event)
 {
-	PlumaFileBrowserView *view = PLUMA_FILE_BROWSER_VIEW (widget);
+	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
-	if (view->priv->click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
+	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
 	    view->priv->hover_path != NULL) {
 		gtk_tree_path_free (view->priv->hover_path);
 		view->priv->hover_path = NULL;
@@ -243,9 +243,9 @@ static gboolean
 enter_notify_event (GtkWidget *widget,
 		    GdkEventCrossing *event)
 {
-	PlumaFileBrowserView *view = PLUMA_FILE_BROWSER_VIEW (widget);
+	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
-	if (view->priv->click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
+	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		if (view->priv->hover_path != NULL)
 			gtk_tree_path_free (view->priv->hover_path);
 
@@ -268,9 +268,9 @@ motion_notify_event (GtkWidget * widget,
 		     GdkEventMotion * event)
 {
 	GtkTreePath *old_hover_path;
-	PlumaFileBrowserView *view = PLUMA_FILE_BROWSER_VIEW (widget);
+	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
-	if (view->priv->click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
+	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		old_hover_path = view->priv->hover_path;
 		gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
 					       event->x, event->y,
@@ -306,10 +306,10 @@ set_click_policy_property (PlumaFileBrowserView            *obj,
 
 	obj->priv->click_policy = click_policy;
 
-	if (click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
+	if (click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		if (obj->priv->hand_cursor == NULL)
 			obj->priv->hand_cursor = gdk_cursor_new_for_display (display, GDK_HAND2);
-	} else if (click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE) {
+	} else if (click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE) {
 		if (obj->priv->hover_path != NULL) {
 			if (gtk_tree_model_get_iter (GTK_TREE_MODEL (obj->priv->model),
 						     &iter, obj->priv->hover_path))
@@ -341,7 +341,7 @@ static void
 directory_activated (PlumaFileBrowserView *view,
 		     GtkTreeIter          *iter)
 {
-	lapiz_file_browser_store_set_virtual_root (PLUMA_FILE_BROWSER_STORE (view->priv->model), iter);
+	lapiz_file_browser_store_set_virtual_root (LAPIZ_FILE_BROWSER_STORE (view->priv->model), iter);
 }
 
 static void
@@ -363,7 +363,7 @@ activate_selected_files (PlumaFileBrowserView *view) {
 		if (!gtk_tree_model_get_iter (view->priv->model, &iter, path))
 			continue;
 
-		gtk_tree_model_get (view->priv->model, &iter, PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+		gtk_tree_model_get (view->priv->model, &iter, LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
 
 		if (FILE_IS_DIR (flags)) {
 			if (directory == NULL)
@@ -396,9 +396,9 @@ activate_selected_bookmark (PlumaFileBrowserView *view) {
 static void
 activate_selected_items (PlumaFileBrowserView *view)
 {
-	if (PLUMA_IS_FILE_BROWSER_STORE (view->priv->model))
+	if (LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 		activate_selected_files (view);
-	else if (PLUMA_IS_FILE_BOOKMARKS_STORE (view->priv->model))
+	else if (LAPIZ_IS_FILE_BOOKMARKS_STORE (view->priv->model))
 		activate_selected_bookmark (view);
 }
 
@@ -407,13 +407,13 @@ toggle_hidden_filter (PlumaFileBrowserView *view)
 {
 	PlumaFileBrowserStoreFilterMode mode;
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (view->priv->model))
+	if (LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 	{
 		mode = lapiz_file_browser_store_get_filter_mode
-			(PLUMA_FILE_BROWSER_STORE (view->priv->model));
-		mode ^=	PLUMA_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
+			(LAPIZ_FILE_BROWSER_STORE (view->priv->model));
+		mode ^=	LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 		lapiz_file_browser_store_set_filter_mode
-			(PLUMA_FILE_BROWSER_STORE (view->priv->model), mode);
+			(LAPIZ_FILE_BROWSER_STORE (view->priv->model), mode);
 	}
 }
 
@@ -427,7 +427,7 @@ static void
 drag_begin (GtkWidget      *widget,
 	    GdkDragContext *context)
 {
-	PlumaFileBrowserView *view = PLUMA_FILE_BROWSER_VIEW (widget);
+	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	view->priv->drag_button = 0;
 	view->priv->drag_started = TRUE;
@@ -449,7 +449,7 @@ did_not_drag (PlumaFileBrowserView *view,
 
 	if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y,
 					   &path, NULL, NULL, NULL)) {
-		if ((view->priv->click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE)
+		if ((view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE)
 		    && !button_event_modifies_selection(event)
 		    && (event->button == 1 || event->button == 2)) {
 		    	/* Activate all selected items, and leave them selected */
@@ -474,7 +474,7 @@ static gboolean
 button_release_event (GtkWidget       *widget,
 		      GdkEventButton *event)
 {
-	PlumaFileBrowserView *view = PLUMA_FILE_BROWSER_VIEW (widget);
+	PlumaFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	if (event->button == view->priv->drag_button) {
 		view->priv->drag_button = 0;
@@ -507,7 +507,7 @@ button_press_event (GtkWidget      *widget,
 	GtkWidgetClass *widget_parent = GTK_WIDGET_CLASS(lapiz_file_browser_view_parent_class);
 
 	tree_view = GTK_TREE_VIEW (widget);
-	view = PLUMA_FILE_BROWSER_VIEW (widget);
+	view = LAPIZ_FILE_BROWSER_VIEW (widget);
 	selection = gtk_tree_view_get_selection (tree_view);
 
 	/* Get double click time */
@@ -524,7 +524,7 @@ button_press_event (GtkWidget      *widget,
 	last_click_time = event->time;
 
 	/* Ignore double click if we are in single click mode */
-	if (view->priv->click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
+	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
 	    click_count >= 2) {
 		return TRUE;
 	}
@@ -577,7 +577,7 @@ button_press_event (GtkWidget      *widget,
 
 				if (selected) {
 					call_parent = on_expander || gtk_tree_selection_count_selected_rows (selection) == 1;
-					view->priv->ignore_release = call_parent && view->priv->click_policy != PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE;
+					view->priv->ignore_release = call_parent && view->priv->click_policy != LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE;
 				} else if  ((event->state & GDK_CONTROL_MASK) != 0) {
 					call_parent = FALSE;
 					gtk_tree_selection_select_path (selection, path);
@@ -628,7 +628,7 @@ key_press_event (GtkWidget   *widget,
 	guint modifiers;
 	gboolean handled;
 
-	view = PLUMA_FILE_BROWSER_VIEW (widget);
+	view = LAPIZ_FILE_BROWSER_VIEW (widget);
 	handled = FALSE;
 
 	modifiers = gtk_accelerator_get_default_mod_mask ();
@@ -688,7 +688,7 @@ fill_expand_state (PlumaFileBrowserView * view, GtkTreeIter * iter)
 	{
 		gtk_tree_model_get (view->priv->model,
 				    iter,
-				    PLUMA_FILE_BROWSER_STORE_COLUMN_URI,
+				    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 				    &uri,
 				    -1);
 
@@ -772,14 +772,14 @@ set_restore_expand_state (PlumaFileBrowserView * view,
 								  g_object_unref,
 								  NULL);
 
-		if (view->priv->model && PLUMA_IS_FILE_BROWSER_STORE (view->priv->model))
+		if (view->priv->model && LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 		{
 			fill_expand_state (view, NULL);
 
 			install_restore_signals (view, view->priv->model);
 		}
 	}
-	else if (view->priv->model && PLUMA_IS_FILE_BROWSER_STORE (view->priv->model))
+	else if (view->priv->model && LAPIZ_IS_FILE_BROWSER_STORE (view->priv->model))
 	{
 		uninstall_restore_signals (view, view->priv->model);
 	}
@@ -793,7 +793,7 @@ get_property (GObject    *object,
 	      GValue     *value,
 	      GParamSpec *pspec)
 {
-	PlumaFileBrowserView *obj = PLUMA_FILE_BROWSER_VIEW (object);
+	PlumaFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW (object);
 
 	switch (prop_id)
 	{
@@ -815,7 +815,7 @@ set_property (GObject      *object,
 	      const GValue *value,
 	      GParamSpec   *pspec)
 {
-	PlumaFileBrowserView *obj = PLUMA_FILE_BROWSER_VIEW (object);
+	PlumaFileBrowserView *obj = LAPIZ_FILE_BROWSER_VIEW (object);
 
 	switch (prop_id)
 	{
@@ -862,8 +862,8 @@ lapiz_file_browser_view_class_init (PlumaFileBrowserViewClass * klass)
 					 g_param_spec_enum ("click-policy",
 					 		    "Click Policy",
 					 		    "The click policy",
-					 		     PLUMA_TYPE_FILE_BROWSER_VIEW_CLICK_POLICY,
-					 		     PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE,
+					 		     LAPIZ_TYPE_FILE_BROWSER_VIEW_CLICK_POLICY,
+					 		     LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE,
 					 		     G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 
 	g_object_class_install_property (object_class, PROP_RESTORE_EXPAND_STATE,
@@ -924,13 +924,13 @@ cell_data_cb (GtkTreeViewColumn * tree_column, GtkCellRenderer * cell,
 
 	path = gtk_tree_model_get_path (tree_model, iter);
 
-	if (obj->priv->click_policy == PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
+	if (obj->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		if (obj->priv->hover_path != NULL &&
 		    gtk_tree_path_compare (path, obj->priv->hover_path) == 0)
 			underline = PANGO_UNDERLINE_SINGLE;
 	}
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (tree_model))
+	if (LAPIZ_IS_FILE_BROWSER_STORE (tree_model))
 	{
 		if (obj->priv->editable != NULL &&
 		    gtk_tree_row_reference_valid (obj->priv->editable))
@@ -961,7 +961,7 @@ lapiz_file_browser_view_init (PlumaFileBrowserView * obj)
 	gtk_tree_view_column_add_attribute (obj->priv->column,
 					    obj->priv->pixbuf_renderer,
 					    "pixbuf",
-					    PLUMA_FILE_BROWSER_STORE_COLUMN_ICON);
+					    LAPIZ_FILE_BROWSER_STORE_COLUMN_ICON);
 
 	obj->priv->text_renderer = gtk_cell_renderer_text_new ();
 	gtk_tree_view_column_pack_start (obj->priv->column,
@@ -969,7 +969,7 @@ lapiz_file_browser_view_init (PlumaFileBrowserView * obj)
 	gtk_tree_view_column_add_attribute (obj->priv->column,
 					    obj->priv->text_renderer,
 					    "text",
-					    PLUMA_FILE_BROWSER_STORE_COLUMN_NAME);
+					    LAPIZ_FILE_BROWSER_STORE_COLUMN_NAME);
 
 	g_signal_connect (obj->priv->text_renderer, "edited",
 			  G_CALLBACK (on_cell_edited), obj);
@@ -995,10 +995,10 @@ bookmarks_separator_func (GtkTreeModel * model, GtkTreeIter * iter,
 	guint flags;
 
 	gtk_tree_model_get (model, iter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
 			    &flags, -1);
 
-	return (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_SEPARATOR);
+	return (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR);
 }
 
 /* Public */
@@ -1006,8 +1006,8 @@ GtkWidget *
 lapiz_file_browser_view_new (void)
 {
 	PlumaFileBrowserView *obj =
-	    PLUMA_FILE_BROWSER_VIEW (g_object_new
-				     (PLUMA_TYPE_FILE_BROWSER_VIEW, NULL));
+	    LAPIZ_FILE_BROWSER_VIEW (g_object_new
+				     (LAPIZ_TYPE_FILE_BROWSER_VIEW, NULL));
 
 	return GTK_WIDGET (obj);
 }
@@ -1023,7 +1023,7 @@ lapiz_file_browser_view_set_model (PlumaFileBrowserView * tree_view,
 
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
 
-	if (PLUMA_IS_FILE_BOOKMARKS_STORE (model)) {
+	if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model)) {
 		gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 		gtk_tree_view_set_row_separator_func (GTK_TREE_VIEW
 						      (tree_view),
@@ -1059,7 +1059,7 @@ lapiz_file_browser_view_set_model (PlumaFileBrowserView * tree_view,
 		tree_view->priv->hover_path = NULL;
 	}
 
-	if (PLUMA_IS_FILE_BROWSER_STORE (tree_view->priv->model)) {
+	if (LAPIZ_IS_FILE_BROWSER_STORE (tree_view->priv->model)) {
 		if (tree_view->priv->restore_expand_state)
 			uninstall_restore_signals (tree_view,
 						   tree_view->priv->model);
@@ -1077,13 +1077,13 @@ lapiz_file_browser_view_start_rename (PlumaFileBrowserView * tree_view,
 	GtkTreeRowReference *rowref;
 	GtkTreePath *path;
 
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_VIEW (tree_view));
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_STORE
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_VIEW (tree_view));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE
 			  (tree_view->priv->model));
 	g_return_if_fail (iter != NULL);
 
 	gtk_tree_model_get (tree_view->priv->model, iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (!(FILE_IS_DIR (flags) || !FILE_IS_DUMMY (flags)))
@@ -1116,7 +1116,7 @@ void
 lapiz_file_browser_view_set_click_policy (PlumaFileBrowserView *tree_view,
 					  PlumaFileBrowserViewClickPolicy policy)
 {
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_VIEW (tree_view));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_VIEW (tree_view));
 
 	set_click_policy_property (tree_view, policy);
 
@@ -1127,7 +1127,7 @@ void
 lapiz_file_browser_view_set_restore_expand_state (PlumaFileBrowserView * tree_view,
 						  gboolean restore_expand_state)
 {
-	g_return_if_fail (PLUMA_IS_FILE_BROWSER_VIEW (tree_view));
+	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_VIEW (tree_view));
 
 	set_restore_expand_state (tree_view, restore_expand_state);
 	g_object_notify (G_OBJECT (tree_view), "restore-expand-state");
@@ -1154,7 +1154,7 @@ on_cell_edited (GtkCellRendererText * cell, gchar * path, gchar * new_text,
 	gtk_tree_path_free (treepath);
 
 	if (ret) {
-		if (lapiz_file_browser_store_rename (PLUMA_FILE_BROWSER_STORE (tree_view->priv->model),
+		if (lapiz_file_browser_store_rename (LAPIZ_FILE_BROWSER_STORE (tree_view->priv->model),
 		    &iter, new_text, &error)) {
 			treepath = gtk_tree_model_get_path (GTK_TREE_MODEL (tree_view->priv->model), &iter);
 			gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view),
@@ -1213,7 +1213,7 @@ restore_expand_state (PlumaFileBrowserView * view,
 
 	gtk_tree_model_get (GTK_TREE_MODEL (model),
 			    iter,
-			    PLUMA_FILE_BROWSER_STORE_COLUMN_URI,
+			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 			    &uri,
 			    -1);
 

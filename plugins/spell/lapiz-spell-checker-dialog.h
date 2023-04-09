@@ -27,20 +27,20 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_SPELL_CHECKER_DIALOG_H__
-#define __PLUMA_SPELL_CHECKER_DIALOG_H__
+#ifndef __LAPIZ_SPELL_CHECKER_DIALOG_H__
+#define __LAPIZ_SPELL_CHECKER_DIALOG_H__
 
 #include <gtk/gtk.h>
 #include "lapiz-spell-checker.h"
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_SPELL_CHECKER_DIALOG            (lapiz_spell_checker_dialog_get_type ())
-#define PLUMA_SPELL_CHECKER_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
-#define PLUMA_SPELL_CHECKER_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
-#define PLUMA_IS_SPELL_CHECKER_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_SPELL_CHECKER_DIALOG))
-#define PLUMA_IS_SPELL_CHECKER_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_SPELL_CHECKER_DIALOG))
-#define PLUMA_SPELL_CHECKER_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
+#define LAPIZ_TYPE_SPELL_CHECKER_DIALOG            (lapiz_spell_checker_dialog_get_type ())
+#define LAPIZ_SPELL_CHECKER_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
+#define LAPIZ_SPELL_CHECKER_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
+#define LAPIZ_IS_SPELL_CHECKER_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG))
+#define LAPIZ_IS_SPELL_CHECKER_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_SPELL_CHECKER_DIALOG))
+#define LAPIZ_SPELL_CHECKER_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_SPELL_CHECKER_DIALOG, PlumaSpellCheckerDialog))
 
 
 typedef struct _PlumaSpellCheckerDialog PlumaSpellCheckerDialog;
@@ -88,5 +88,5 @@ void 			 lapiz_spell_checker_dialog_set_completed
 
 G_END_DECLS
 
-#endif  /* __PLUMA_SPELL_CHECKER_DIALOG_H__ */
+#endif  /* __LAPIZ_SPELL_CHECKER_DIALOG_H__ */
 

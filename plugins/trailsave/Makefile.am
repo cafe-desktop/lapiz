@@ -1,9 +1,9 @@
 # trailsave plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	$(PLUMA_CFLAGS) 				\
+	$(LAPIZ_CFLAGS) 				\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libtrailsave.la
@@ -13,7 +13,7 @@ libtrailsave_la_SOURCES = \
 	lapiz-trail-save-plugin.c
 
 libtrailsave_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libtrailsave_la_LIBADD  = $(PLUMA_LIBS)
+libtrailsave_la_LIBADD  = $(LAPIZ_LIBS)
 
 plugin_in_files = trailsave.plugin.desktop.in
 plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)

@@ -51,13 +51,13 @@
 
 
 /* Defined constants */
-#define PLUMA_OPEN_DIALOG_KEY 		"lapiz-open-dialog-key"
-#define PLUMA_TAB_TO_SAVE_AS  		"lapiz-tab-to-save-as"
-#define PLUMA_LIST_OF_TABS_TO_SAVE_AS   "lapiz-list-of-tabs-to-save-as"
-#define PLUMA_IS_CLOSING_ALL            "lapiz-is-closing-all"
-#define PLUMA_IS_QUITTING 	        "lapiz-is-quitting"
-#define PLUMA_IS_CLOSING_TAB		"lapiz-is-closing-tab"
-#define PLUMA_IS_QUITTING_ALL		"lapiz-is-quitting-all"
+#define LAPIZ_OPEN_DIALOG_KEY 		"lapiz-open-dialog-key"
+#define LAPIZ_TAB_TO_SAVE_AS  		"lapiz-tab-to-save-as"
+#define LAPIZ_LIST_OF_TABS_TO_SAVE_AS   "lapiz-list-of-tabs-to-save-as"
+#define LAPIZ_IS_CLOSING_ALL            "lapiz-is-closing-all"
+#define LAPIZ_IS_QUITTING 	        "lapiz-is-quitting"
+#define LAPIZ_IS_CLOSING_TAB		"lapiz-is-closing-tab"
+#define LAPIZ_IS_QUITTING_ALL		"lapiz-is-quitting-all"
 
 static void tab_state_changed_while_saving (PlumaTab    *tab,
 					    GParamSpec  *pspec,
@@ -82,7 +82,7 @@ get_tab_from_file (GList *docs, GFile *file)
 		PlumaDocument *d;
 		GFile *l;
 
-		d = PLUMA_DOCUMENT (docs->data);
+		d = LAPIZ_DOCUMENT (docs->data);
 
 		l = lapiz_document_get_location (d);
 		if (l != NULL)
@@ -190,7 +190,7 @@ load_file_list (PlumaWindow         *window,
 		doc = lapiz_tab_get_document (tab);
 
 		if (lapiz_document_is_untouched (doc) &&
-		    (lapiz_tab_get_state (tab) == PLUMA_TAB_STATE_NORMAL))
+		    (lapiz_tab_get_state (tab) == LAPIZ_TAB_STATE_NORMAL))
 		{
 			gchar *uri;
 
@@ -245,7 +245,7 @@ load_file_list (PlumaWindow         *window,
 		doc = lapiz_tab_get_document (tab);
 		uri_for_display = lapiz_document_get_uri_for_display (doc);
 
-		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
 					       _("Loading file '%s'\342\200\246"),
 					       uri_for_display);
@@ -254,7 +254,7 @@ load_file_list (PlumaWindow         *window,
 	}
 	else
 	{
-		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
 					       ngettext("Loading %d file\342\200\246",
 							"Loading %d files\342\200\246",
@@ -319,7 +319,7 @@ lapiz_commands_load_uri (PlumaWindow         *window,
 {
 	GSList *uris = NULL;
 
-	g_return_if_fail (PLUMA_IS_WINDOW (window));
+	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 	g_return_if_fail (uri != NULL);
 	g_return_if_fail (lapiz_utils_is_valid_uri (uri));
 
@@ -349,7 +349,7 @@ lapiz_commands_load_uris (PlumaWindow         *window,
 			  const PlumaEncoding *encoding,
 			  gint                 line_pos)
 {
-	g_return_val_if_fail (PLUMA_IS_WINDOW (window), 0);
+	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), 0);
 	g_return_val_if_fail ((uris != NULL) && (uris->data != NULL), 0);
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -366,7 +366,7 @@ lapiz_commands_load_files (PlumaWindow         *window,
 			   const PlumaEncoding *encoding,
 			   gint                 line_pos)
 {
-	g_return_val_if_fail (PLUMA_IS_WINDOW (window), 0);
+	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), 0);
 	g_return_val_if_fail ((files != NULL) && (files->data != NULL), 0);
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -397,7 +397,7 @@ open_dialog_destroyed (PlumaWindow            *window,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_OPEN_DIALOG_KEY,
+			   LAPIZ_OPEN_DIALOG_KEY,
 			   NULL);
 }
 
@@ -448,11 +448,11 @@ _lapiz_cmd_file_open (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	data = g_object_get_data (G_OBJECT (window), PLUMA_OPEN_DIALOG_KEY);
+	data = g_object_get_data (G_OBJECT (window), LAPIZ_OPEN_DIALOG_KEY);
 
 	if (data != NULL)
 	{
-		g_return_if_fail (PLUMA_IS_FILE_CHOOSER_DIALOG (data));
+		g_return_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (data));
 
 		gtk_window_present (GTK_WINDOW (data));
 
@@ -469,7 +469,7 @@ _lapiz_cmd_file_open (GtkAction   *action,
 						     NULL);
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_OPEN_DIALOG_KEY,
+			   LAPIZ_OPEN_DIALOG_KEY,
 			   open_dialog);
 
 	g_object_weak_ref (G_OBJECT (open_dialog),
@@ -615,8 +615,8 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	tab = PLUMA_TAB (g_object_get_data (G_OBJECT (dialog),
-					    PLUMA_TAB_TO_SAVE_AS));
+	tab = LAPIZ_TAB (g_object_get_data (G_OBJECT (dialog),
+					    LAPIZ_TAB_TO_SAVE_AS));
 
 	if (response_id != GTK_RESPONSE_OK)
 	{
@@ -640,11 +640,11 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 		gchar *uri;
 
 		doc = lapiz_tab_get_document (tab);
-		g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
+		g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
 
 		parse_name = g_file_get_parse_name (file);
 
-		lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+		lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 					        window->priv->generic_message_cid,
 					       _("Saving file '%s'\342\200\246"),
 					       parse_name);
@@ -666,31 +666,31 @@ save_dialog_response_cb (PlumaFileChooserDialog *dialog,
 save_next_tab:
 
 	data = g_object_get_data (G_OBJECT (window),
-				  PLUMA_LIST_OF_TABS_TO_SAVE_AS);
+				  LAPIZ_LIST_OF_TABS_TO_SAVE_AS);
 	if (data == NULL)
 		return;
 
 	/* Save As the next tab of the list (we are Saving All files) */
 	tabs_to_save_as = (GSList *)data;
-	g_return_if_fail (tab == PLUMA_TAB (tabs_to_save_as->data));
+	g_return_if_fail (tab == LAPIZ_TAB (tabs_to_save_as->data));
 
 	/* Remove the first item of the list */
 	tabs_to_save_as = g_slist_delete_link (tabs_to_save_as,
 					       tabs_to_save_as);
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_LIST_OF_TABS_TO_SAVE_AS,
+			   LAPIZ_LIST_OF_TABS_TO_SAVE_AS,
 			   tabs_to_save_as);
 
 	if (tabs_to_save_as != NULL)
 	{
-		tab = PLUMA_TAB (tabs_to_save_as->data);
+		tab = LAPIZ_TAB (tabs_to_save_as->data);
 
 		if (GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (tab),
-							    PLUMA_IS_CLOSING_TAB)) == TRUE)
+							    LAPIZ_IS_CLOSING_TAB)) == TRUE)
 		{
 			g_object_set_data (G_OBJECT (tab),
-					   PLUMA_IS_CLOSING_TAB,
+					   LAPIZ_IS_CLOSING_TAB,
 					   NULL);
 
 			/* Trace tab state changes */
@@ -749,8 +749,8 @@ file_save_as (PlumaTab    *tab,
 	const PlumaEncoding *encoding;
 	PlumaDocumentNewlineType newline_type;
 
-	g_return_if_fail (PLUMA_IS_TAB (tab));
-	g_return_if_fail (PLUMA_IS_WINDOW (window));
+	g_return_if_fail (LAPIZ_IS_TAB (tab));
+	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -823,14 +823,14 @@ file_save_as (PlumaTab    *tab,
 
 	newline_type = lapiz_document_get_newline_type (doc);
 
-	lapiz_file_chooser_dialog_set_encoding (PLUMA_FILE_CHOOSER_DIALOG (save_dialog),
+	lapiz_file_chooser_dialog_set_encoding (LAPIZ_FILE_CHOOSER_DIALOG (save_dialog),
 						encoding);
 
-	lapiz_file_chooser_dialog_set_newline_type (PLUMA_FILE_CHOOSER_DIALOG (save_dialog),
+	lapiz_file_chooser_dialog_set_newline_type (LAPIZ_FILE_CHOOSER_DIALOG (save_dialog),
 	                                            newline_type);
 
 	g_object_set_data (G_OBJECT (save_dialog),
-			   PLUMA_TAB_TO_SAVE_AS,
+			   LAPIZ_TAB_TO_SAVE_AS,
 			   tab);
 
 	g_signal_connect (save_dialog,
@@ -850,11 +850,11 @@ file_save (PlumaTab    *tab,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (PLUMA_IS_TAB (tab));
-	g_return_if_fail (PLUMA_IS_WINDOW (window));
+	g_return_if_fail (LAPIZ_IS_TAB (tab));
+	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 
 	doc = lapiz_tab_get_document (tab);
-	g_return_if_fail (PLUMA_IS_DOCUMENT (doc));
+	g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
 
 	if (lapiz_document_is_untitled (doc) ||
 	    lapiz_document_get_readonly (doc))
@@ -867,7 +867,7 @@ file_save (PlumaTab    *tab,
 	}
 
 	uri_for_display = lapiz_document_get_uri_for_display (doc);
-	lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+	lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 				        window->priv->generic_message_cid,
 				       _("Saving file '%s'\342\200\246"),
 				       uri_for_display);
@@ -934,8 +934,8 @@ _lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (!(lapiz_window_get_state (window) &
-			    (PLUMA_WINDOW_STATE_PRINTING |
-			     PLUMA_WINDOW_STATE_SAVING_SESSION)));
+			    (LAPIZ_WINDOW_STATE_PRINTING |
+			     LAPIZ_WINDOW_STATE_SAVING_SESSION)));
 
 	l = docs;
 	while (l != NULL)
@@ -944,19 +944,19 @@ _lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 		PlumaTab *t;
 		PlumaTabState state;
 
-		g_return_if_fail (PLUMA_IS_DOCUMENT (l->data));
+		g_return_if_fail (LAPIZ_IS_DOCUMENT (l->data));
 
-		doc = PLUMA_DOCUMENT (l->data);
+		doc = LAPIZ_DOCUMENT (l->data);
 		t = lapiz_tab_get_from_document (doc);
 		state = lapiz_tab_get_state (t);
 
-		g_return_if_fail (state != PLUMA_TAB_STATE_PRINTING);
-		g_return_if_fail (state != PLUMA_TAB_STATE_PRINT_PREVIEWING);
-		g_return_if_fail (state != PLUMA_TAB_STATE_CLOSING);
+		g_return_if_fail (state != LAPIZ_TAB_STATE_PRINTING);
+		g_return_if_fail (state != LAPIZ_TAB_STATE_PRINT_PREVIEWING);
+		g_return_if_fail (state != LAPIZ_TAB_STATE_CLOSING);
 
-		if ((state == PLUMA_TAB_STATE_NORMAL) ||
-		    (state == PLUMA_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
-		    (state == PLUMA_TAB_STATE_GENERIC_NOT_EDITABLE))
+		if ((state == LAPIZ_TAB_STATE_NORMAL) ||
+		    (state == LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
+		    (state == LAPIZ_TAB_STATE_GENERIC_NOT_EDITABLE))
 		{
 			/* FIXME: manage the case of local readonly files owned by the
 			   user is running lapiz - Paolo (Dec. 8, 2005) */
@@ -977,24 +977,24 @@ _lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 		else
 		{
 			/* If the state is:
-			   - PLUMA_TAB_STATE_LOADING: we do not save since we are sure the file is unmodified
-			   - PLUMA_TAB_STATE_REVERTING: we do not save since the user wants
+			   - LAPIZ_TAB_STATE_LOADING: we do not save since we are sure the file is unmodified
+			   - LAPIZ_TAB_STATE_REVERTING: we do not save since the user wants
 			     to return back to the version of the file she previously saved
-			   - PLUMA_TAB_STATE_SAVING: well, we are already saving (no need to save again)
-			   - PLUMA_TAB_STATE_PRINTING, PLUMA_TAB_STATE_PRINT_PREVIEWING: there is not a
+			   - LAPIZ_TAB_STATE_SAVING: well, we are already saving (no need to save again)
+			   - LAPIZ_TAB_STATE_PRINTING, LAPIZ_TAB_STATE_PRINT_PREVIEWING: there is not a
 			     real reason for not saving in this case, we do not save to avoid to run
 			     two operations using the message area at the same time (may be we can remove
 			     this limitation in the future). Note that SaveAll, ClosAll
 			     and Quit are unsensitive if the window state is PRINTING.
-			   - PLUMA_TAB_STATE_GENERIC_ERROR: we do not save since the document contains
+			   - LAPIZ_TAB_STATE_GENERIC_ERROR: we do not save since the document contains
 			     errors (I don't think this is a very frequent case, we should probably remove
 			     this state)
-			   - PLUMA_TAB_STATE_LOADING_ERROR: there is nothing to save
-			   - PLUMA_TAB_STATE_REVERTING_ERROR: there is nothing to save and saving the current
+			   - LAPIZ_TAB_STATE_LOADING_ERROR: there is nothing to save
+			   - LAPIZ_TAB_STATE_REVERTING_ERROR: there is nothing to save and saving the current
 			     document will overwrite the copy of the file the user wants to go back to
-			   - PLUMA_TAB_STATE_SAVING_ERROR: we do not save since we just failed to save, so there is
+			   - LAPIZ_TAB_STATE_SAVING_ERROR: we do not save since we just failed to save, so there is
 			     no reason to automatically retry... we wait for user intervention
-			   - PLUMA_TAB_STATE_CLOSING: this state is invalid in this case
+			   - LAPIZ_TAB_STATE_CLOSING: this state is invalid in this case
 			*/
 
 			gchar *uri_for_display;
@@ -1017,13 +1017,13 @@ _lapiz_cmd_file_save_documents_list (PlumaWindow *window,
 		tabs_to_save_as = g_slist_reverse (tabs_to_save_as );
 
 		g_return_if_fail (g_object_get_data (G_OBJECT (window),
-						     PLUMA_LIST_OF_TABS_TO_SAVE_AS) == NULL);
+						     LAPIZ_LIST_OF_TABS_TO_SAVE_AS) == NULL);
 
 		g_object_set_data (G_OBJECT (window),
-				   PLUMA_LIST_OF_TABS_TO_SAVE_AS,
+				   LAPIZ_LIST_OF_TABS_TO_SAVE_AS,
 				   tabs_to_save_as);
 
-		tab = PLUMA_TAB (tabs_to_save_as->data);
+		tab = LAPIZ_TAB (tabs_to_save_as->data);
 
 		lapiz_window_set_active_tab (window, tab);
 		file_save_as (tab, window);
@@ -1035,7 +1035,7 @@ lapiz_commands_save_all_documents (PlumaWindow *window)
 {
 	GList *docs;
 
-	g_return_if_fail (PLUMA_IS_WINDOW (window));
+	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1059,8 +1059,8 @@ lapiz_commands_save_document (PlumaWindow   *window,
 {
 	PlumaTab *tab;
 
-	g_return_if_fail (PLUMA_IS_WINDOW (window));
-	g_return_if_fail (PLUMA_IS_DOCUMENT (document));
+	g_return_if_fail (LAPIZ_IS_WINDOW (window));
+	g_return_if_fail (LAPIZ_IS_DOCUMENT (document));
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1081,7 +1081,7 @@ do_revert (PlumaWindow *window,
 	doc = lapiz_tab_get_document (tab);
 	docname = lapiz_document_get_short_name_for_display (doc);
 
-	lapiz_statusbar_flash_message (PLUMA_STATUSBAR (window->priv->statusbar),
+	lapiz_statusbar_flash_message (LAPIZ_STATUSBAR (window->priv->statusbar),
 				        window->priv->generic_message_cid,
 				       _("Reverting the document '%s'\342\200\246"),
 				       docname);
@@ -1252,7 +1252,7 @@ _lapiz_cmd_file_revert (GtkAction   *action,
 	/* If we are already displaying a notification
 	 * reverting will drop local modifications, do
 	 * not bug the user further */
-	if (lapiz_tab_get_state (tab) == PLUMA_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+	if (lapiz_tab_get_state (tab) == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
 	{
 		do_revert (window, tab);
 		return;
@@ -1287,13 +1287,13 @@ really_close_tab (PlumaTab *tab)
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_val_if_fail (lapiz_tab_get_state (tab) == PLUMA_TAB_STATE_CLOSING,
+	g_return_val_if_fail (lapiz_tab_get_state (tab) == LAPIZ_TAB_STATE_CLOSING,
 			      FALSE);
 
 	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
-	g_return_val_if_fail (PLUMA_IS_WINDOW (toplevel), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_WINDOW (toplevel), FALSE);
 
-	window = PLUMA_WINDOW (toplevel);
+	window = LAPIZ_WINDOW (toplevel);
 
 	lapiz_window_close_tab (window, tab);
 
@@ -1302,7 +1302,7 @@ really_close_tab (PlumaTab *tab)
 		gboolean is_quitting;
 
 		is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-								      PLUMA_IS_QUITTING));
+								      LAPIZ_IS_QUITTING));
 
 		if (is_quitting)
 			gtk_widget_destroy (GTK_WIDGET (window));
@@ -1324,7 +1324,7 @@ tab_state_changed_while_saving (PlumaTab    *tab,
 
 	/* When the state become NORMAL, it means the saving operation is
 	   finished */
-	if (ts == PLUMA_TAB_STATE_NORMAL)
+	if (ts == LAPIZ_TAB_STATE_NORMAL)
 	{
 		PlumaDocument *doc;
 
@@ -1374,7 +1374,7 @@ save_as_and_close (PlumaTab    *tab,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	g_object_set_data (G_OBJECT (tab),
-			   PLUMA_IS_CLOSING_TAB,
+			   LAPIZ_IS_CLOSING_TAB,
 			   NULL);
 
 	/* Trace tab state changes */
@@ -1400,7 +1400,7 @@ save_and_close_all_documents (const GList  *docs,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (!(lapiz_window_get_state (window) & PLUMA_WINDOW_STATE_PRINTING));
+	g_return_if_fail (!(lapiz_window_get_state (window) & LAPIZ_WINDOW_STATE_PRINTING));
 
 	tabs = gtk_container_get_children (
 			GTK_CONTAINER (_lapiz_window_get_notebook (window)));
@@ -1416,48 +1416,48 @@ save_and_close_all_documents (const GList  *docs,
 		PlumaTabState state;
 		PlumaDocument *doc;
 
-		t = PLUMA_TAB (l->data);
+		t = LAPIZ_TAB (l->data);
 
 		state = lapiz_tab_get_state (t);
 		doc = lapiz_tab_get_document (t);
 
 		/* If the state is: ([*] invalid states)
-		   - PLUMA_TAB_STATE_NORMAL: close (and if needed save)
-		   - PLUMA_TAB_STATE_LOADING: close, we are sure the file is unmodified
-		   - PLUMA_TAB_STATE_REVERTING: since the user wants
+		   - LAPIZ_TAB_STATE_NORMAL: close (and if needed save)
+		   - LAPIZ_TAB_STATE_LOADING: close, we are sure the file is unmodified
+		   - LAPIZ_TAB_STATE_REVERTING: since the user wants
 		     to return back to the version of the file she previously saved, we can close
 		     without saving (CHECK: are we sure this is the right behavior, suppose the case
 		     the original file has been deleted)
-		   - [*] PLUMA_TAB_STATE_SAVING: invalid, ClosAll
+		   - [*] LAPIZ_TAB_STATE_SAVING: invalid, ClosAll
 		     and Quit are unsensitive if the window state is SAVING.
-		   - [*] PLUMA_TAB_STATE_PRINTING, PLUMA_TAB_STATE_PRINT_PREVIEWING: there is not a
+		   - [*] LAPIZ_TAB_STATE_PRINTING, LAPIZ_TAB_STATE_PRINT_PREVIEWING: there is not a
 		     real reason for not closing in this case, we do not save to avoid to run
 		     two operations using the message area at the same time (may be we can remove
 		     this limitation in the future). Note that ClosAll
 		     and Quit are unsensitive if the window state is PRINTING.
-		   - PLUMA_TAB_STATE_SHOWING_PRINT_PREVIEW: close (and if needed save)
-		   - PLUMA_TAB_STATE_LOADING_ERROR: close without saving (if the state is LOADING_ERROR then the
+		   - LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW: close (and if needed save)
+		   - LAPIZ_TAB_STATE_LOADING_ERROR: close without saving (if the state is LOADING_ERROR then the
 		     document is not modified)
-		   - PLUMA_TAB_STATE_REVERTING_ERROR: we do not close since the document contains errors
-		   - PLUMA_TAB_STATE_SAVING_ERROR: we do not close since the document contains errors
-		   - PLUMA_TAB_STATE_GENERIC_ERROR: we do not close since the document contains
+		   - LAPIZ_TAB_STATE_REVERTING_ERROR: we do not close since the document contains errors
+		   - LAPIZ_TAB_STATE_SAVING_ERROR: we do not close since the document contains errors
+		   - LAPIZ_TAB_STATE_GENERIC_ERROR: we do not close since the document contains
 		     errors (CHECK: we should problably remove this state)
-		   - [*] PLUMA_TAB_STATE_CLOSING: this state is invalid in this case
+		   - [*] LAPIZ_TAB_STATE_CLOSING: this state is invalid in this case
 		*/
 
-		g_return_if_fail (state != PLUMA_TAB_STATE_PRINTING);
-		g_return_if_fail (state != PLUMA_TAB_STATE_PRINT_PREVIEWING);
-		g_return_if_fail (state != PLUMA_TAB_STATE_CLOSING);
-		g_return_if_fail (state != PLUMA_TAB_STATE_SAVING);
+		g_return_if_fail (state != LAPIZ_TAB_STATE_PRINTING);
+		g_return_if_fail (state != LAPIZ_TAB_STATE_PRINT_PREVIEWING);
+		g_return_if_fail (state != LAPIZ_TAB_STATE_CLOSING);
+		g_return_if_fail (state != LAPIZ_TAB_STATE_SAVING);
 
-		if ((state != PLUMA_TAB_STATE_SAVING_ERROR) &&
-		    (state != PLUMA_TAB_STATE_GENERIC_ERROR) &&
-		    (state != PLUMA_TAB_STATE_REVERTING_ERROR))
+		if ((state != LAPIZ_TAB_STATE_SAVING_ERROR) &&
+		    (state != LAPIZ_TAB_STATE_GENERIC_ERROR) &&
+		    (state != LAPIZ_TAB_STATE_REVERTING_ERROR))
 		{
 			if ((g_list_index ((GList *)docs, doc) >= 0) &&
-			    (state != PLUMA_TAB_STATE_LOADING) &&
-			    (state != PLUMA_TAB_STATE_LOADING_ERROR) &&
-			    (state != PLUMA_TAB_STATE_REVERTING)) /* CHECK: is this the right behavior with REVERTING ?*/
+			    (state != LAPIZ_TAB_STATE_LOADING) &&
+			    (state != LAPIZ_TAB_STATE_LOADING_ERROR) &&
+			    (state != LAPIZ_TAB_STATE_REVERTING)) /* CHECK: is this the right behavior with REVERTING ?*/
 			{
 				/* The document must be saved before closing */
 				g_return_if_fail (document_needs_saving (doc));
@@ -1468,7 +1468,7 @@ save_and_close_all_documents (const GList  *docs,
 				    lapiz_document_get_readonly (doc))
 				{
 					g_object_set_data (G_OBJECT (t),
-							   PLUMA_IS_CLOSING_TAB,
+							   LAPIZ_IS_CLOSING_TAB,
 							   GBOOLEAN_TO_POINTER (TRUE));
 
 					tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
@@ -1501,7 +1501,7 @@ save_and_close_all_documents (const GList  *docs,
 	sl = tabs_to_save_and_close;
 	while (sl != NULL)
 	{
-		save_and_close (PLUMA_TAB (sl->data),
+		save_and_close (LAPIZ_TAB (sl->data),
 				window);
 		sl = g_slist_next (sl);
 	}
@@ -1515,13 +1515,13 @@ save_and_close_all_documents (const GList  *docs,
 		tabs_to_save_as = g_slist_reverse (tabs_to_save_as );
 
 		g_return_if_fail (g_object_get_data (G_OBJECT (window),
-						     PLUMA_LIST_OF_TABS_TO_SAVE_AS) == NULL);
+						     LAPIZ_LIST_OF_TABS_TO_SAVE_AS) == NULL);
 
 		g_object_set_data (G_OBJECT (window),
-				   PLUMA_LIST_OF_TABS_TO_SAVE_AS,
+				   LAPIZ_LIST_OF_TABS_TO_SAVE_AS,
 				   tabs_to_save_as);
 
-		tab = PLUMA_TAB (tabs_to_save_as->data);
+		tab = LAPIZ_TAB (tabs_to_save_as->data);
 
 		save_as_and_close (tab, window);
 	}
@@ -1537,7 +1537,7 @@ save_and_close_document (const GList  *docs,
 
 	g_return_if_fail (docs->next == NULL);
 
-	tab = lapiz_tab_get_from_document (PLUMA_DOCUMENT (docs->data));
+	tab = lapiz_tab_get_from_document (LAPIZ_DOCUMENT (docs->data));
 	g_return_if_fail (tab != NULL);
 
 	save_and_close (tab, window);
@@ -1554,7 +1554,7 @@ close_all_tabs (PlumaWindow *window)
 	lapiz_window_close_all_tabs (window);
 
 	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-							      PLUMA_IS_QUITTING));
+							      LAPIZ_IS_QUITTING));
 
 	if (is_quitting)
 		gtk_widget_destroy (GTK_WIDGET (window));
@@ -1587,7 +1587,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	is_closing_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-					    			 PLUMA_IS_CLOSING_ALL));
+					    			 LAPIZ_IS_CLOSING_ALL));
 
 	gtk_widget_hide (GTK_WIDGET (dlg));
 
@@ -1648,7 +1648,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 				g_return_if_fail (unsaved_documents->next == NULL);
 
 				close_document (window,
-						PLUMA_DOCUMENT (unsaved_documents->data));
+						LAPIZ_DOCUMENT (unsaved_documents->data));
 			}
 
 			break;
@@ -1656,7 +1656,7 @@ close_confirmation_dialog_response_handler (PlumaCloseConfirmationDialog *dlg,
 
 			/* Reset is_quitting flag */
 			g_object_set_data (G_OBJECT (window),
-					   PLUMA_IS_QUITTING,
+					   LAPIZ_IS_QUITTING,
 					   GBOOLEAN_TO_POINTER (FALSE));
 
 			break;
@@ -1702,7 +1702,7 @@ tab_can_close (PlumaTab  *tab,
  * maybe even a _list variant. Or maybe it's better make
  * lapiz_window_close_tab always run the confirm dialog?
  * we should not allow closing a tab without resetting the
- * PLUMA_IS_CLOSING_ALL flag!
+ * LAPIZ_IS_CLOSING_ALL flag!
  */
 void
 _lapiz_cmd_file_close_tab (PlumaTab    *tab,
@@ -1713,15 +1713,15 @@ _lapiz_cmd_file_close_tab (PlumaTab    *tab,
 	g_return_if_fail (GTK_WIDGET (window) == gtk_widget_get_toplevel (GTK_WIDGET (tab)));
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_IS_CLOSING_ALL,
+			   LAPIZ_IS_CLOSING_ALL,
 			   GBOOLEAN_TO_POINTER (FALSE));
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_IS_QUITTING,
+			   LAPIZ_IS_QUITTING,
 			   GBOOLEAN_TO_POINTER (FALSE));
 
 	g_object_set_data (G_OBJECT (window),
-	                   PLUMA_IS_QUITTING_ALL,
+	                   LAPIZ_IS_QUITTING_ALL,
 	                   GINT_TO_POINTER (FALSE));
 
 
@@ -1758,16 +1758,16 @@ file_close_all (PlumaWindow *window,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (!(lapiz_window_get_state (window) &
-	                    (PLUMA_WINDOW_STATE_SAVING |
-	                     PLUMA_WINDOW_STATE_PRINTING |
-	                     PLUMA_WINDOW_STATE_SAVING_SESSION)));
+	                    (LAPIZ_WINDOW_STATE_SAVING |
+	                     LAPIZ_WINDOW_STATE_PRINTING |
+	                     LAPIZ_WINDOW_STATE_SAVING_SESSION)));
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_IS_CLOSING_ALL,
+			   LAPIZ_IS_CLOSING_ALL,
 			   GBOOLEAN_TO_POINTER (TRUE));
 
 	g_object_set_data (G_OBJECT (window),
-			   PLUMA_IS_QUITTING,
+			   LAPIZ_IS_QUITTING,
 			   GBOOLEAN_TO_POINTER (is_quitting));
 
 	unsaved_docs = lapiz_window_get_unsaved_documents (window);
@@ -1789,7 +1789,7 @@ file_close_all (PlumaWindow *window,
 		PlumaTab      *tab;
 		PlumaDocument *doc;
 
-		doc = PLUMA_DOCUMENT (unsaved_docs->data);
+		doc = LAPIZ_DOCUMENT (unsaved_docs->data);
 
 		tab = lapiz_tab_get_from_document (doc);
 		g_return_if_fail (tab != NULL);
@@ -1825,9 +1825,9 @@ _lapiz_cmd_file_close_all (GtkAction   *action,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (!(lapiz_window_get_state (window) &
-	                    (PLUMA_WINDOW_STATE_SAVING |
-	                    PLUMA_WINDOW_STATE_PRINTING |
-	                    PLUMA_WINDOW_STATE_SAVING_SESSION)));
+	                    (LAPIZ_WINDOW_STATE_SAVING |
+	                    LAPIZ_WINDOW_STATE_PRINTING |
+	                    LAPIZ_WINDOW_STATE_SAVING_SESSION)));
 
 	file_close_all (window, FALSE);
 }
@@ -1839,9 +1839,9 @@ _lapiz_cmd_file_quit (GtkAction   *action,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (!(lapiz_window_get_state (window) &
-	                    (PLUMA_WINDOW_STATE_SAVING |
-	                     PLUMA_WINDOW_STATE_PRINTING |
-	                     PLUMA_WINDOW_STATE_SAVING_SESSION)));
+	                    (LAPIZ_WINDOW_STATE_SAVING |
+	                     LAPIZ_WINDOW_STATE_PRINTING |
+	                     LAPIZ_WINDOW_STATE_SAVING_SESSION)));
 
 	file_close_all (window, TRUE);
 }

@@ -60,7 +60,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlumaFileBookmarksStore,
 static void
 lapiz_file_bookmarks_store_dispose (GObject * object)
 {
-	PlumaFileBookmarksStore *obj = PLUMA_FILE_BOOKMARKS_STORE (object);
+	PlumaFileBookmarksStore *obj = LAPIZ_FILE_BOOKMARKS_STORE (object);
 
 	if (obj->priv->volume_monitor != NULL) {
 		g_signal_handlers_disconnect_by_func (obj->priv->volume_monitor,
@@ -120,10 +120,10 @@ add_node (PlumaFileBookmarksStore *model,
 	gtk_tree_store_append (GTK_TREE_STORE (model), &newiter, NULL);
 
 	gtk_tree_store_set (GTK_TREE_STORE (model), &newiter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_ICON, pixbuf,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_NAME, name,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, obj,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, flags,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_ICON, pixbuf,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME, name,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, obj,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, flags,
 			    -1);
 
 	if (iter != NULL)
@@ -147,11 +147,11 @@ add_file (PlumaFileBookmarksStore *model,
 		return FALSE;
 	}
 
-	if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_HOME)
+	if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_HOME)
 		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-home", GTK_ICON_SIZE_MENU);
-	else if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_DESKTOP)
+	else if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_DESKTOP)
 		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("user-desktop", GTK_ICON_SIZE_MENU);
-	else if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_ROOT)
+	else if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_ROOT)
 		pixbuf = lapiz_file_browser_utils_pixbuf_from_theme ("drive-harddisk", GTK_ICON_SIZE_MENU);
 
 	if (pixbuf == NULL) {
@@ -189,12 +189,12 @@ check_mount_separator (PlumaFileBookmarksStore * model, guint flags,
 	found =
 	    find_with_flags (GTK_TREE_MODEL (model), &iter, NULL,
 			     flags |
-			     PLUMA_FILE_BOOKMARKS_STORE_IS_SEPARATOR, 0);
+			     LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR, 0);
 
 	if (added && !found) {
 		/* Add the separator */
 		add_node (model, NULL, NULL, NULL,
-			  flags | PLUMA_FILE_BOOKMARKS_STORE_IS_SEPARATOR,
+			  flags | LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR,
 			  NULL);
 	} else if (!added && found) {
 		remove_node (GTK_TREE_MODEL (model), &iter);
@@ -211,8 +211,8 @@ init_special_directories (PlumaFileBookmarksStore * model)
 	if (path != NULL)
 	{
 		file = g_file_new_for_path (path);
-		add_file (model, file, NULL, PLUMA_FILE_BOOKMARKS_STORE_IS_HOME |
-			 PLUMA_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
+		add_file (model, file, NULL, LAPIZ_FILE_BOOKMARKS_STORE_IS_HOME |
+			 LAPIZ_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
 		g_object_unref (file);
 	}
 
@@ -220,8 +220,8 @@ init_special_directories (PlumaFileBookmarksStore * model)
 	if (path != NULL)
 	{
 		file = g_file_new_for_path (path);
-		add_file (model, file, NULL, PLUMA_FILE_BOOKMARKS_STORE_IS_DESKTOP |
-			  PLUMA_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
+		add_file (model, file, NULL, LAPIZ_FILE_BOOKMARKS_STORE_IS_DESKTOP |
+			  LAPIZ_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
 		g_object_unref (file);
 	}
 
@@ -229,16 +229,16 @@ init_special_directories (PlumaFileBookmarksStore * model)
 	if (path != NULL)
 	{
 		file = g_file_new_for_path (path);
-		add_file (model, file, NULL, PLUMA_FILE_BOOKMARKS_STORE_IS_DOCUMENTS |
-			 PLUMA_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
+		add_file (model, file, NULL, LAPIZ_FILE_BOOKMARKS_STORE_IS_DOCUMENTS |
+			 LAPIZ_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
 		g_object_unref (file);
 	}
 
 	file = g_file_new_for_uri ("file:///");
-	add_file (model, file, _("File System"), PLUMA_FILE_BOOKMARKS_STORE_IS_ROOT, NULL);
+	add_file (model, file, _("File System"), LAPIZ_FILE_BOOKMARKS_STORE_IS_ROOT, NULL);
 	g_object_unref (file);
 
-	check_mount_separator (model, PLUMA_FILE_BOOKMARKS_STORE_IS_ROOT, TRUE);
+	check_mount_separator (model, LAPIZ_FILE_BOOKMARKS_STORE_IS_ROOT, TRUE);
 }
 
 static void
@@ -249,7 +249,7 @@ get_fs_properties (gpointer    fs,
 {
 	GIcon *icon = NULL;
 
-	*flags = PLUMA_FILE_BOOKMARKS_STORE_IS_FS;
+	*flags = LAPIZ_FILE_BOOKMARKS_STORE_IS_FS;
 	*name = NULL;
 	*pixbuf = NULL;
 
@@ -258,21 +258,21 @@ get_fs_properties (gpointer    fs,
 		icon = g_drive_get_icon (G_DRIVE (fs));
 		*name = g_drive_get_name (G_DRIVE (fs));
 
-		*flags |= PLUMA_FILE_BOOKMARKS_STORE_IS_DRIVE;
+		*flags |= LAPIZ_FILE_BOOKMARKS_STORE_IS_DRIVE;
 	}
 	else if (G_IS_VOLUME (fs))
 	{
 		icon = g_volume_get_icon (G_VOLUME (fs));
 		*name = g_volume_get_name (G_VOLUME (fs));
 
-		*flags |= PLUMA_FILE_BOOKMARKS_STORE_IS_VOLUME;
+		*flags |= LAPIZ_FILE_BOOKMARKS_STORE_IS_VOLUME;
 	}
 	else if (G_IS_MOUNT (fs))
 	{
 		icon = g_mount_get_icon (G_MOUNT (fs));
 		*name = g_mount_get_name (G_MOUNT (fs));
 
-		*flags |= PLUMA_FILE_BOOKMARKS_STORE_IS_MOUNT;
+		*flags |= LAPIZ_FILE_BOOKMARKS_STORE_IS_MOUNT;
 	}
 
 	if (icon)
@@ -300,7 +300,7 @@ add_fs (PlumaFileBookmarksStore *model,
 		g_object_unref (pixbuf);
 
 	g_free (name);
-	check_mount_separator (model, PLUMA_FILE_BOOKMARKS_STORE_IS_FS, TRUE);
+	check_mount_separator (model, LAPIZ_FILE_BOOKMARKS_STORE_IS_FS, TRUE);
 }
 
 static void
@@ -308,7 +308,7 @@ process_volume_cb (GVolume 		   *volume,
 		   PlumaFileBookmarksStore *model)
 {
 	GMount *mount;
-	guint flags = PLUMA_FILE_BOOKMARKS_STORE_NONE;
+	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_NONE;
 	mount = g_volume_get_mount (volume);
 
 	/* CHECK: should we use the LOCAL/REMOTE thing still? */
@@ -338,7 +338,7 @@ process_drive_novolumes (PlumaFileBookmarksStore *model,
 		   drives where media detection fails. We show the
 		   drive and poll for media when the user activates
 		   it */
-		add_fs (model, drive, PLUMA_FILE_BOOKMARKS_STORE_NONE, NULL);
+		add_fs (model, drive, LAPIZ_FILE_BOOKMARKS_STORE_NONE, NULL);
 	}
 }
 
@@ -418,7 +418,7 @@ process_mount_novolume_cb (GMount 		   *mount,
 	else if (!g_mount_is_shadowed (mount))
 	{
 		/* Add the mount */
-		add_fs (model, mount, PLUMA_FILE_BOOKMARKS_STORE_NONE, NULL);
+		add_fs (model, mount, LAPIZ_FILE_BOOKMARKS_STORE_NONE, NULL);
 	}
 }
 
@@ -474,15 +474,15 @@ add_bookmark (PlumaFileBookmarksStore * model,
 {
 	GFile * file;
 	gboolean ret;
-	guint flags = PLUMA_FILE_BOOKMARKS_STORE_IS_BOOKMARK;
+	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK;
 	GtkTreeIter iter;
 
 	file = g_file_new_for_uri (uri);
 
 	if (g_file_is_native (file)) {
-		flags |= PLUMA_FILE_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK;
+		flags |= LAPIZ_FILE_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK;
 	} else {
-		flags |= PLUMA_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK;
+		flags |= LAPIZ_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK;
 	}
 
 	ret = add_file (model, file, name, flags, &iter);
@@ -594,20 +594,20 @@ init_bookmarks (PlumaFileBookmarksStore *model)
 	if (added) {
 		/* Bookmarks separator */
 		add_node (model, NULL, NULL, NULL,
-			  PLUMA_FILE_BOOKMARKS_STORE_IS_BOOKMARK |
-			  PLUMA_FILE_BOOKMARKS_STORE_IS_SEPARATOR, NULL);
+			  LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK |
+			  LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR, NULL);
 	}
 
 	g_free (bookmarks);
 }
 
 static gint flags_order[] = {
-	PLUMA_FILE_BOOKMARKS_STORE_IS_HOME,
-	PLUMA_FILE_BOOKMARKS_STORE_IS_DESKTOP,
-	PLUMA_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR,
-	PLUMA_FILE_BOOKMARKS_STORE_IS_ROOT,
-	PLUMA_FILE_BOOKMARKS_STORE_IS_FS,
-	PLUMA_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_HOME,
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_DESKTOP,
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR,
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_ROOT,
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_FS,
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
 	-1
 };
 
@@ -640,17 +640,17 @@ bookmarks_compare_names (GtkTreeModel * model, GtkTreeIter * a,
 	guint f2;
 
 	gtk_tree_model_get (model, a,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n1,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n1,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
 			    -1);
 	gtk_tree_model_get (model, b,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n2,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n2,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
 			    -1);
 
 	/* do not sort actual bookmarks to keep same order as in caja */
-	if ((f1 & PLUMA_FILE_BOOKMARKS_STORE_IS_BOOKMARK) &&
-	    (f2 & PLUMA_FILE_BOOKMARKS_STORE_IS_BOOKMARK))
+	if ((f1 & LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK) &&
+	    (f2 & LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK))
 		result = 0;
 	else if (n1 == NULL && n2 == NULL)
 		result = 0;
@@ -676,13 +676,13 @@ bookmarks_compare_flags (GtkTreeModel * model, GtkTreeIter * a,
 	gint *flags;
 	guint sep;
 
-	sep = PLUMA_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
+	sep = LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
 
 	gtk_tree_model_get (model, a,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
 			    -1);
 	gtk_tree_model_get (model, b,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
 			    -1);
 
 	for (flags = flags_order; *flags != -1; ++flags) {
@@ -731,9 +731,9 @@ find_with_flags (GtkTreeModel * model, GtkTreeIter * iter, gpointer obj,
 
 	do {
 		gtk_tree_model_get (model, &child,
-				    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
+				    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
 				    &childobj,
-				    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
+				    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
 				    &childflags, -1);
 
 		fequal = (obj == childobj);
@@ -758,13 +758,13 @@ remove_node (GtkTreeModel * model, GtkTreeIter * iter)
 	guint flags;
 
 	gtk_tree_model_get (model, iter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
-	if (!(flags & PLUMA_FILE_BOOKMARKS_STORE_IS_SEPARATOR)) {
-		if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_FS) {
-			check_mount_separator (PLUMA_FILE_BOOKMARKS_STORE (model),
-			     		       flags & PLUMA_FILE_BOOKMARKS_STORE_IS_FS,
+	if (!(flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR)) {
+		if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_FS) {
+			check_mount_separator (LAPIZ_FILE_BOOKMARKS_STORE (model),
+			     		       flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_FS,
 					       FALSE);
 		}
 	}
@@ -778,7 +778,7 @@ remove_bookmarks (PlumaFileBookmarksStore * model)
 	GtkTreeIter iter;
 
 	while (find_with_flags (GTK_TREE_MODEL (model), &iter, NULL,
-				PLUMA_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
+				LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
 				0)) {
 		remove_node (GTK_TREE_MODEL (model), &iter);
 	}
@@ -804,9 +804,9 @@ lapiz_file_bookmarks_store_new (void)
 		G_TYPE_UINT
 	};
 
-	model = g_object_new (PLUMA_TYPE_FILE_BOOKMARKS_STORE, NULL);
+	model = g_object_new (LAPIZ_TYPE_FILE_BOOKMARKS_STORE, NULL);
 	gtk_tree_store_set_column_types (GTK_TREE_STORE (model),
-					 PLUMA_FILE_BOOKMARKS_STORE_N_COLUMNS,
+					 LAPIZ_FILE_BOOKMARKS_STORE_N_COLUMNS,
 					 column_types);
 
 	gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model),
@@ -831,22 +831,22 @@ lapiz_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
 	gchar * ret = NULL;
 	gboolean isfs;
 
-	g_return_val_if_fail (PLUMA_IS_FILE_BOOKMARKS_STORE (model), NULL);
+	g_return_val_if_fail (LAPIZ_IS_FILE_BOOKMARKS_STORE (model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
 
 	gtk_tree_model_get (GTK_TREE_MODEL (model), iter,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
 			    &flags,
-			    PLUMA_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
+			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
 			    &obj,
 			    -1);
 
 	if (obj == NULL)
 		return NULL;
 
-	isfs = (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_FS);
+	isfs = (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_FS);
 
-	if (isfs && (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_MOUNT))
+	if (isfs && (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_MOUNT))
 	{
 		file = g_mount_get_root (G_MOUNT (obj));
 	}
@@ -879,8 +879,8 @@ on_fs_changed (GVolumeMonitor 	      *monitor,
 	       PlumaFileBookmarksStore *model)
 {
 	GtkTreeModel *tree_model = GTK_TREE_MODEL (model);
-	guint flags = PLUMA_FILE_BOOKMARKS_STORE_IS_FS;
-	guint noflags = PLUMA_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
+	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_IS_FS;
+	guint noflags = LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
 	GtkTreeIter iter;
 
 	/* clear all fs items */

@@ -30,8 +30,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_GIO_DOCUMENT_LOADER_H__
-#define __PLUMA_GIO_DOCUMENT_LOADER_H__
+#ifndef __LAPIZ_GIO_DOCUMENT_LOADER_H__
+#define __LAPIZ_GIO_DOCUMENT_LOADER_H__
 
 #include <lapiz/lapiz-document.h>
 #include "lapiz-document-loader.h"
@@ -41,12 +41,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_GIO_DOCUMENT_LOADER              (lapiz_gio_document_loader_get_type())
-#define PLUMA_GIO_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoader))
-#define PLUMA_GIO_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoaderClass))
-#define PLUMA_IS_GIO_DOCUMENT_LOADER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_GIO_DOCUMENT_LOADER))
-#define PLUMA_IS_GIO_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_GIO_DOCUMENT_LOADER))
-#define PLUMA_GIO_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoaderClass))
+#define LAPIZ_TYPE_GIO_DOCUMENT_LOADER              (lapiz_gio_document_loader_get_type())
+#define LAPIZ_GIO_DOCUMENT_LOADER(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoader))
+#define LAPIZ_GIO_DOCUMENT_LOADER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoaderClass))
+#define LAPIZ_IS_GIO_DOCUMENT_LOADER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER))
+#define LAPIZ_IS_GIO_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_GIO_DOCUMENT_LOADER))
+#define LAPIZ_GIO_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_GIO_DOCUMENT_LOADER, PlumaGioDocumentLoaderClass))
 
 /* Private structure type */
 typedef struct _PlumaGioDocumentLoaderPrivate PlumaGioDocumentLoaderPrivate;
@@ -76,4 +76,4 @@ GType 		 	 lapiz_gio_document_loader_get_type	(void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif  /* __PLUMA_GIO_DOCUMENT_LOADER_H__  */
+#endif  /* __LAPIZ_GIO_DOCUMENT_LOADER_H__  */

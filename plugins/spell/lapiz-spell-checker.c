@@ -78,7 +78,7 @@ lapiz_spell_checker_set_property (GObject *object,
 			   GParamSpec *pspec)
 {
 	/*
-	PlumaSpellChecker *spell = PLUMA_SPELL_CHECKER (object);
+	PlumaSpellChecker *spell = LAPIZ_SPELL_CHECKER (object);
 	*/
 
 	switch (prop_id)
@@ -98,7 +98,7 @@ lapiz_spell_checker_get_property (GObject *object,
 			   GParamSpec *pspec)
 {
 	/*
-	PlumaSpellChecker *spell = PLUMA_SPELL_CHECKER (object);
+	PlumaSpellChecker *spell = LAPIZ_SPELL_CHECKER (object);
 	*/
 
 	switch (prop_id)
@@ -115,9 +115,9 @@ lapiz_spell_checker_finalize (GObject *object)
 {
 	PlumaSpellChecker *spell_checker;
 
-	g_return_if_fail (PLUMA_IS_SPELL_CHECKER (object));
+	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER (object));
 
-	spell_checker = PLUMA_SPELL_CHECKER (object);
+	spell_checker = LAPIZ_SPELL_CHECKER (object);
 
 	if (spell_checker->dict != NULL)
 		enchant_broker_free_dict (spell_checker->broker, spell_checker->dict);
@@ -206,8 +206,8 @@ lapiz_spell_checker_new	(void)
 {
 	PlumaSpellChecker *spell;
 
-	spell = PLUMA_SPELL_CHECKER (
-			g_object_new (PLUMA_TYPE_SPELL_CHECKER, NULL));
+	spell = LAPIZ_SPELL_CHECKER (
+			g_object_new (LAPIZ_TYPE_SPELL_CHECKER, NULL));
 
 	g_return_val_if_fail (spell != NULL, NULL);
 
@@ -292,7 +292,7 @@ lapiz_spell_checker_set_language (PlumaSpellChecker               *spell,
 {
 	gboolean ret;
 
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), FALSE);
 
 	if (spell->dict != NULL)
 	{
@@ -314,7 +314,7 @@ lapiz_spell_checker_set_language (PlumaSpellChecker               *spell,
 const PlumaSpellCheckerLanguage *
 lapiz_spell_checker_get_language (PlumaSpellChecker *spell)
 {
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), NULL);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), NULL);
 
 	if (!lazy_init (spell, spell->active_lang))
 		return NULL;
@@ -330,7 +330,7 @@ lapiz_spell_checker_check_word (PlumaSpellChecker *spell,
 	gint enchant_result;
 	gboolean res = FALSE;
 
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 
 	if (!lazy_init (spell, spell->active_lang))
@@ -385,7 +385,7 @@ lapiz_spell_checker_get_suggestions (PlumaSpellChecker *spell,
 	GSList *suggestions_list = NULL;
 	gint i;
 
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), NULL);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), NULL);
 	g_return_val_if_fail (word != NULL, NULL);
 
 	if (!lazy_init (spell, spell->active_lang))
@@ -422,7 +422,7 @@ lapiz_spell_checker_add_word_to_personal (PlumaSpellChecker *spell,
 					  const gchar       *word,
 					  gssize             len)
 {
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 
 	if (!lazy_init (spell, spell->active_lang))
@@ -446,7 +446,7 @@ lapiz_spell_checker_add_word_to_session (PlumaSpellChecker *spell,
 					 const gchar       *word,
 					 gssize             len)
 {
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 
 	if (!lazy_init (spell, spell->active_lang))
@@ -467,7 +467,7 @@ lapiz_spell_checker_add_word_to_session (PlumaSpellChecker *spell,
 gboolean
 lapiz_spell_checker_clear_session (PlumaSpellChecker *spell)
 {
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), FALSE);
 
 	/* free and re-request dictionary */
 	if (spell->dict != NULL)
@@ -495,7 +495,7 @@ lapiz_spell_checker_set_correction (PlumaSpellChecker *spell,
 				    const gchar       *replacement,
 				    gssize             r_len)
 {
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (spell), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 	g_return_val_if_fail (replacement != NULL, FALSE);
 

@@ -68,7 +68,7 @@ lapiz_close_button_init (PlumaCloseButton *button)
 GtkWidget *
 lapiz_close_button_new ()
 {
-	return GTK_WIDGET (g_object_new (PLUMA_TYPE_CLOSE_BUTTON,
+	return GTK_WIDGET (g_object_new (LAPIZ_TYPE_CLOSE_BUTTON,
 	                                 "relief", GTK_RELIEF_NONE,
 	                                 "focus-on-click", FALSE,
 	                                 NULL));

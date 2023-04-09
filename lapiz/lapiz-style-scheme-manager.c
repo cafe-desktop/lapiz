@@ -239,7 +239,7 @@ file_copy (const gchar  *name,
  * @fname: the file name of the style scheme to be installed
  *
  * Install a new user scheme.
- * This function copies @fname in #PLUMA_STYLES_DIR and ask the style manager to
+ * This function copies @fname in #LAPIZ_STYLES_DIR and ask the style manager to
  * recompute the list of available style schemes. It then checks if a style
  * scheme with the right file name exists.
  *
@@ -274,7 +274,7 @@ _lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 		new_file_name = g_build_filename (styles_dir, basename, NULL);
 		g_free (basename);
 
-		/* Copy the style scheme file into PLUMA_STYLES_DIR */
+		/* Copy the style scheme file into LAPIZ_STYLES_DIR */
 		if (!file_copy (fname, new_file_name, &error))
 		{
 			g_free (new_file_name);

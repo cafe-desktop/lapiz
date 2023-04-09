@@ -28,19 +28,19 @@
  */
 
 
-#ifndef __PLUMA_PRINT_PREVIEW_H__
-#define __PLUMA_PRINT_PREVIEW_H__
+#ifndef __LAPIZ_PRINT_PREVIEW_H__
+#define __LAPIZ_PRINT_PREVIEW_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_PRINT_PREVIEW            (lapiz_print_preview_get_type ())
-#define PLUMA_PRINT_PREVIEW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), PLUMA_TYPE_PRINT_PREVIEW, PlumaPrintPreview))
-#define PLUMA_PRINT_PREVIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_PRINT_PREVIEW, PlumaPrintPreviewClass))
-#define PLUMA_IS_PRINT_PREVIEW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), PLUMA_TYPE_PRINT_PREVIEW))
-#define PLUMA_IS_PRINT_PREVIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_PRINT_PREVIEW))
-#define PLUMA_PRINT_PREVIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_PRINT_PREVIEW, PlumaPrintPreviewClass))
+#define LAPIZ_TYPE_PRINT_PREVIEW            (lapiz_print_preview_get_type ())
+#define LAPIZ_PRINT_PREVIEW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), LAPIZ_TYPE_PRINT_PREVIEW, PlumaPrintPreview))
+#define LAPIZ_PRINT_PREVIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_PRINT_PREVIEW, PlumaPrintPreviewClass))
+#define LAPIZ_IS_PRINT_PREVIEW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), LAPIZ_TYPE_PRINT_PREVIEW))
+#define LAPIZ_IS_PRINT_PREVIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PRINT_PREVIEW))
+#define LAPIZ_PRINT_PREVIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_PRINT_PREVIEW, PlumaPrintPreviewClass))
 
 typedef struct _PlumaPrintPreview        PlumaPrintPreview;
 typedef struct _PlumaPrintPreviewPrivate PlumaPrintPreviewPrivate;
@@ -69,4 +69,4 @@ GtkWidget	*lapiz_print_preview_new	(GtkPrintOperation		*op,
 
 G_END_DECLS
 
-#endif /* __PLUMA_PRINT_PREVIEW_H__ */
+#endif /* __LAPIZ_PRINT_PREVIEW_H__ */

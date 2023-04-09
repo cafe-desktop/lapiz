@@ -21,21 +21,21 @@
  */
 
 
-#ifndef __PLUMA_DOCUMENT_OUTPUT_STREAM_H__
-#define __PLUMA_DOCUMENT_OUTPUT_STREAM_H__
+#ifndef __LAPIZ_DOCUMENT_OUTPUT_STREAM_H__
+#define __LAPIZ_DOCUMENT_OUTPUT_STREAM_H__
 
 #include <gio/gio.h>
 #include "lapiz-document.h"
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM		(lapiz_document_output_stream_get_type ())
-#define PLUMA_DOCUMENT_OUTPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStream))
-#define PLUMA_DOCUMENT_OUTPUT_STREAM_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStream const))
-#define PLUMA_DOCUMENT_OUTPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStreamClass))
-#define PLUMA_IS_DOCUMENT_OUTPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM))
-#define PLUMA_IS_DOCUMENT_OUTPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM))
-#define PLUMA_DOCUMENT_OUTPUT_STREAM_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStreamClass))
+#define LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM		(lapiz_document_output_stream_get_type ())
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStream))
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStream const))
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStreamClass))
+#define LAPIZ_IS_DOCUMENT_OUTPUT_STREAM(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM))
+#define LAPIZ_IS_DOCUMENT_OUTPUT_STREAM_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM))
+#define LAPIZ_DOCUMENT_OUTPUT_STREAM_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM, PlumaDocumentOutputStreamClass))
 
 typedef struct _PlumaDocumentOutputStream		PlumaDocumentOutputStream;
 typedef struct _PlumaDocumentOutputStreamClass		PlumaDocumentOutputStreamClass;
@@ -61,4 +61,4 @@ PlumaDocumentNewlineType lapiz_document_output_stream_detect_newline_type (Pluma
 
 G_END_DECLS
 
-#endif /* __PLUMA_DOCUMENT_OUTPUT_STREAM_H__ */
+#endif /* __LAPIZ_DOCUMENT_OUTPUT_STREAM_H__ */

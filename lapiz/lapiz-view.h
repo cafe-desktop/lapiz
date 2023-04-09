@@ -28,8 +28,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_VIEW_H__
-#define __PLUMA_VIEW_H__
+#ifndef __LAPIZ_VIEW_H__
+#define __LAPIZ_VIEW_H__
 
 #include <gtk/gtk.h>
 
@@ -41,12 +41,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_VIEW            (lapiz_view_get_type ())
-#define PLUMA_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_VIEW, PlumaView))
-#define PLUMA_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_VIEW, PlumaViewClass))
-#define PLUMA_IS_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_VIEW))
-#define PLUMA_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_VIEW))
-#define PLUMA_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_VIEW, PlumaViewClass))
+#define LAPIZ_TYPE_VIEW            (lapiz_view_get_type ())
+#define LAPIZ_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_VIEW, PlumaView))
+#define LAPIZ_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_VIEW, PlumaViewClass))
+#define LAPIZ_IS_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_VIEW))
+#define LAPIZ_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_VIEW))
+#define LAPIZ_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_VIEW, PlumaViewClass))
 
 /* Private structure type */
 typedef struct _PlumaViewPrivate	PlumaViewPrivate;
@@ -117,4 +117,4 @@ lapiz_set_source_space_drawer_by_level (GtkSourceView          *view,
 
 G_END_DECLS
 
-#endif /* __PLUMA_VIEW_H__ */
+#endif /* __LAPIZ_VIEW_H__ */

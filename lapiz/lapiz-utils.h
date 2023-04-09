@@ -30,8 +30,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_UTILS_H__
-#define __PLUMA_UTILS_H__
+#ifndef __LAPIZ_UTILS_H__
+#define __LAPIZ_UTILS_H__
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -46,7 +46,7 @@ G_BEGIN_DECLS
 
 #define IS_VALID_BOOLEAN(v) (((v == TRUE) || (v == FALSE)) ? TRUE : FALSE)
 
-enum { PLUMA_ALL_WORKSPACES = 0xffffffff };
+enum { LAPIZ_ALL_WORKSPACES = 0xffffffff };
 
 gboolean	 lapiz_utils_uri_has_writable_scheme	(const gchar *uri);
 gboolean	 lapiz_utils_uri_has_file_scheme	(const gchar *uri);
@@ -162,5 +162,5 @@ lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 
 G_END_DECLS
 
-#endif /* __PLUMA_UTILS_H__ */
+#endif /* __LAPIZ_UTILS_H__ */
 

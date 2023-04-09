@@ -27,8 +27,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-#ifndef __PLUMA_SPELL_CHECKER_LANGUAGE_H__
-#define __PLUMA_SPELL_CHECKER_LANGUAGE_H__
+#ifndef __LAPIZ_SPELL_CHECKER_LANGUAGE_H__
+#define __LAPIZ_SPELL_CHECKER_LANGUAGE_H__
 
 #include <glib.h>
 
@@ -48,4 +48,4 @@ const GSList 			*lapiz_spell_checker_get_available_languages
 
 G_END_DECLS
 
-#endif /* __PLUMA_SPELL_CHECKER_LANGUAGE_H__ */
+#endif /* __LAPIZ_SPELL_CHECKER_LANGUAGE_H__ */

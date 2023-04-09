@@ -78,7 +78,7 @@ lapiz_taglist_plugin_init (PlumaTaglistPlugin *plugin)
 static void
 lapiz_taglist_plugin_dispose (GObject *object)
 {
-	PlumaTaglistPlugin *plugin = PLUMA_TAGLIST_PLUGIN (object);
+	PlumaTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaTaglistPlugin disposing");
 
@@ -111,8 +111,8 @@ lapiz_taglist_plugin_activate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	priv = PLUMA_TAGLIST_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (priv->window);
+	priv = LAPIZ_TAGLIST_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (priv->window);
 	side_panel = lapiz_window_get_side_panel (window);
 
 	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
@@ -134,8 +134,8 @@ lapiz_taglist_plugin_deactivate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	priv = PLUMA_TAGLIST_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (priv->window);
+	priv = LAPIZ_TAGLIST_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (priv->window);
 	side_panel = lapiz_window_get_side_panel (window);
 
 	lapiz_panel_remove_item (side_panel,
@@ -151,8 +151,8 @@ lapiz_taglist_plugin_update_state (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	priv = PLUMA_TAGLIST_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (priv->window);
+	priv = LAPIZ_TAGLIST_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (priv->window);
 	view = lapiz_window_get_active_view (window);
 
 	gtk_widget_set_sensitive (priv->taglist_panel,
@@ -166,7 +166,7 @@ lapiz_taglist_plugin_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-	PlumaTaglistPlugin *plugin = PLUMA_TAGLIST_PLUGIN (object);
+	PlumaTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -186,7 +186,7 @@ lapiz_taglist_plugin_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-	PlumaTaglistPlugin *plugin = PLUMA_TAGLIST_PLUGIN (object);
+	PlumaTaglistPlugin *plugin = LAPIZ_TAGLIST_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -234,5 +234,5 @@ peas_register_types (PeasObjectModule *module)
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
-	                                            PLUMA_TYPE_TAGLIST_PLUGIN);
+	                                            LAPIZ_TYPE_TAGLIST_PLUGIN);
 }

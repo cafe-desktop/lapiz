@@ -50,8 +50,8 @@
 #include "lapiz-marshal.h"
 #include "lapiz-utils.h"
 
-#define PLUMA_VIEW_SCROLL_MARGIN 0.02
-#define PLUMA_VIEW_SEARCH_DIALOG_TIMEOUT (30*1000) /* 30 seconds */
+#define LAPIZ_VIEW_SCROLL_MARGIN 0.02
+#define LAPIZ_VIEW_SEARCH_DIALOG_TIMEOUT (30*1000) /* 30 seconds */
 
 #define MIN_SEARCH_COMPLETION_KEY_LEN	3
 
@@ -167,8 +167,8 @@ static guint view_signals [LAST_SIGNAL] = { 0 };
 
 typedef enum
 {
-	PLUMA_SEARCH_ENTRY_NORMAL,
-	PLUMA_SEARCH_ENTRY_NOT_FOUND
+	LAPIZ_SEARCH_ENTRY_NORMAL,
+	LAPIZ_SEARCH_ENTRY_NOT_FOUND
 } PlumaSearchEntryState;
 
 static void
@@ -351,7 +351,7 @@ on_notify_buffer_cb (PlumaView  *view,
 	current_buffer_removed (view);
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
-	if (buffer == NULL || !PLUMA_IS_DOCUMENT (buffer))
+	if (buffer == NULL || !LAPIZ_IS_DOCUMENT (buffer))
 		return;
 
 	view->priv->current_buffer = g_object_ref (buffer);
@@ -361,7 +361,7 @@ on_notify_buffer_cb (PlumaView  *view,
 			  view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-				    !lapiz_document_get_readonly (PLUMA_DOCUMENT (buffer)));
+				    !lapiz_document_get_readonly (LAPIZ_DOCUMENT (buffer)));
 
 	g_signal_connect (buffer,
 			  "search_highlight_updated",
@@ -514,7 +514,7 @@ lapiz_view_dispose (GObject *object)
 {
 	PlumaView *view;
 
-	view = PLUMA_VIEW (object);
+	view = LAPIZ_VIEW (object);
 
 	if (view->priv->search_window != NULL)
 	{
@@ -543,7 +543,7 @@ lapiz_view_finalize (GObject *object)
 {
 	PlumaView *view;
 
-	view = PLUMA_VIEW (object);
+	view = LAPIZ_VIEW (object);
 
 	current_buffer_removed (view);
 
@@ -555,7 +555,7 @@ lapiz_view_finalize (GObject *object)
 static gint
 lapiz_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
 {
-	PlumaView *view = PLUMA_VIEW (widget);
+	PlumaView *view = LAPIZ_VIEW (widget);
 
 	gtk_widget_queue_draw (widget);
 
@@ -584,9 +584,9 @@ lapiz_view_new (PlumaDocument *doc)
 
 	lapiz_debug_message (DEBUG_VIEW, "START");
 
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
 
-	view = GTK_WIDGET (g_object_new (PLUMA_TYPE_VIEW, "buffer", doc, NULL));
+	view = GTK_WIDGET (g_object_new (LAPIZ_TYPE_VIEW, "buffer", doc, NULL));
 
 	lapiz_debug_message (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
 
@@ -603,7 +603,7 @@ lapiz_view_cut_clipboard (PlumaView *view)
 
 	lapiz_debug (DEBUG_VIEW);
 
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -615,11 +615,11 @@ lapiz_view_cut_clipboard (PlumaView *view)
   	gtk_text_buffer_cut_clipboard (buffer,
   				       clipboard,
 				       !lapiz_document_get_readonly (
-				       		PLUMA_DOCUMENT (buffer)));
+				       		LAPIZ_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 				      gtk_text_buffer_get_insert (buffer),
-				      PLUMA_VIEW_SCROLL_MARGIN,
+				      LAPIZ_VIEW_SCROLL_MARGIN,
 				      FALSE,
 				      0.0,
 				      0.0);
@@ -633,7 +633,7 @@ lapiz_view_copy_clipboard (PlumaView *view)
 
 	lapiz_debug (DEBUG_VIEW);
 
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -654,7 +654,7 @@ lapiz_view_paste_clipboard (PlumaView *view)
 
 	lapiz_debug (DEBUG_VIEW);
 
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -667,11 +667,11 @@ lapiz_view_paste_clipboard (PlumaView *view)
 					 clipboard,
 					 NULL,
 					 !lapiz_document_get_readonly (
-						PLUMA_DOCUMENT (buffer)));
+						LAPIZ_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 				      gtk_text_buffer_get_insert (buffer),
-				      PLUMA_VIEW_SCROLL_MARGIN,
+				      LAPIZ_VIEW_SCROLL_MARGIN,
 				      FALSE,
 				      0.0,
 				      0.0);
@@ -691,7 +691,7 @@ lapiz_view_delete_selection (PlumaView *view)
 
 	lapiz_debug (DEBUG_VIEW);
 
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -700,11 +700,11 @@ lapiz_view_delete_selection (PlumaView *view)
 	gtk_text_buffer_delete_selection (buffer,
 					  TRUE,
 					  !lapiz_document_get_readonly (
-						PLUMA_DOCUMENT (buffer)));
+						LAPIZ_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 				      gtk_text_buffer_get_insert (buffer),
-				      PLUMA_VIEW_SCROLL_MARGIN,
+				      LAPIZ_VIEW_SCROLL_MARGIN,
 				      FALSE,
 				      0.0,
 				      0.0);
@@ -724,7 +724,7 @@ lapiz_view_select_all (PlumaView *view)
 
 	lapiz_debug (DEBUG_VIEW);
 
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -746,7 +746,7 @@ lapiz_view_scroll_to_cursor (PlumaView *view)
 
 	lapiz_debug (DEBUG_VIEW);
 
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -876,7 +876,7 @@ lapiz_view_set_font (PlumaView   *view,
 
 	lapiz_debug (DEBUG_VIEW);
 
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	if (def)
 	{
@@ -975,7 +975,7 @@ set_entry_state (GtkWidget             *entry,
 {
 	GtkStyleContext *context = gtk_widget_get_style_context (GTK_WIDGET (entry));
 
-	if (state == PLUMA_SEARCH_ENTRY_NOT_FOUND)
+	if (state == LAPIZ_SEARCH_ENTRY_NOT_FOUND)
 	{
 		gtk_style_context_add_class (context, GTK_STYLE_CLASS_ERROR);
 	}
@@ -1000,7 +1000,7 @@ run_search (PlumaView        *view,
 
 	g_return_val_if_fail (view->priv->search_mode == SEARCH, FALSE);
 
-	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
 	start_iter = view->priv->start_search_iter;
 
@@ -1091,12 +1091,12 @@ run_search (PlumaView        *view,
 		lapiz_view_scroll_to_cursor (view);
 
 		set_entry_state (view->priv->search_entry,
-		                 PLUMA_SEARCH_ENTRY_NORMAL);
+		                 LAPIZ_SEARCH_ENTRY_NORMAL);
 	}
 	else
 	{
 		set_entry_state (view->priv->search_entry,
-		                 PLUMA_SEARCH_ENTRY_NOT_FOUND);
+		                 LAPIZ_SEARCH_ENTRY_NOT_FOUND);
 	}
 
 	return found;
@@ -1223,7 +1223,7 @@ search_again (PlumaView *view,
 	{
 		g_source_remove (view->priv->typeselect_flush_timeout);
 		view->priv->typeselect_flush_timeout =
-			g_timeout_add (PLUMA_VIEW_SEARCH_DIALOG_TIMEOUT,
+			g_timeout_add (LAPIZ_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       		       (GSourceFunc)search_entry_flush_timeout,
 		       		       view);
 	}
@@ -1289,7 +1289,7 @@ search_window_key_press_event (GtkWidget   *widget,
 			PlumaDocument *doc;
 
 			/* restore document search so that Find Next does the right thing */
-			doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+			doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 			lapiz_document_set_search_text (doc,
 							view->priv->old_search_text,
 							view->priv->old_search_flags);
@@ -1354,7 +1354,7 @@ static void
 match_entire_word_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 				     PlumaView        *view)
 {
-	PLUMA_SEARCH_SET_ENTIRE_WORD (view->priv->search_flags,
+	LAPIZ_SEARCH_SET_ENTIRE_WORD (view->priv->search_flags,
 				      gtk_check_menu_item_get_active (checkmenuitem));
 }
 
@@ -1362,7 +1362,7 @@ static void
 match_case_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 			      PlumaView        *view)
 {
-	PLUMA_SEARCH_SET_CASE_SENSITIVE (view->priv->search_flags,
+	LAPIZ_SEARCH_SET_CASE_SENSITIVE (view->priv->search_flags,
 					 gtk_check_menu_item_get_active (checkmenuitem));
 }
 
@@ -1370,7 +1370,7 @@ static void
 parse_escapes_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 			         PlumaView        *view)
 {
-	PLUMA_SEARCH_SET_PARSE_ESCAPES (view->priv->search_flags,
+	LAPIZ_SEARCH_SET_PARSE_ESCAPES (view->priv->search_flags,
 					gtk_check_menu_item_get_active (checkmenuitem));
 }
 
@@ -1395,7 +1395,7 @@ search_enable_popdown (GtkWidget *widget,
 		g_source_remove (view->priv->typeselect_flush_timeout);
 
 	view->priv->typeselect_flush_timeout =
-		g_timeout_add (PLUMA_VIEW_SEARCH_DIALOG_TIMEOUT,
+		g_timeout_add (LAPIZ_VIEW_SEARCH_DIALOG_TIMEOUT,
 	       		       (GSourceFunc)search_entry_flush_timeout,
 	       		       view);
 }
@@ -1436,7 +1436,7 @@ search_entry_populate_popup (GtkEntry  *entry,
 			  view);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					PLUMA_SEARCH_IS_ENTIRE_WORD (view->priv->search_flags));
+					LAPIZ_SEARCH_IS_ENTIRE_WORD (view->priv->search_flags));
 	gtk_widget_show (menu_item);
 
 	/* create "Match Case" menu item. */
@@ -1446,7 +1446,7 @@ search_entry_populate_popup (GtkEntry  *entry,
 			  view);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					PLUMA_SEARCH_IS_CASE_SENSITIVE (view->priv->search_flags));
+					LAPIZ_SEARCH_IS_CASE_SENSITIVE (view->priv->search_flags));
 	gtk_widget_show (menu_item);
 
 	/* create "Parse escapes" menu item. */
@@ -1456,7 +1456,7 @@ search_entry_populate_popup (GtkEntry  *entry,
 			  view);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					PLUMA_SEARCH_IS_PARSE_ESCAPES (view->priv->search_flags));
+					LAPIZ_SEARCH_IS_PARSE_ESCAPES (view->priv->search_flags));
 	gtk_widget_show (menu_item);
 }
 
@@ -1610,7 +1610,7 @@ completion_func (GtkEntryCompletion *completion,
 	if (item == NULL)
 		return FALSE;
 
-	if (PLUMA_SEARCH_IS_CASE_SENSITIVE (priv->search_flags))
+	if (LAPIZ_SEARCH_IS_CASE_SENSITIVE (priv->search_flags))
 	{
 		if (!strncmp (real_key, item, strlen (real_key)))
 			ret = TRUE;
@@ -1805,7 +1805,7 @@ init_search_entry (PlumaView *view)
 		guint     old_find_flags = 0;
 		gint      sel_len = 0;
 
-		old_find_text = lapiz_document_get_search_text (PLUMA_DOCUMENT (buffer),
+		old_find_text = lapiz_document_get_search_text (LAPIZ_DOCUMENT (buffer),
 								&old_find_flags);
 		if (old_find_text != NULL)
 		{
@@ -1850,12 +1850,12 @@ search_init (GtkWidget *entry,
 	{
 		g_source_remove (view->priv->typeselect_flush_timeout);
 		view->priv->typeselect_flush_timeout =
-			g_timeout_add (PLUMA_VIEW_SEARCH_DIALOG_TIMEOUT,
+			g_timeout_add (LAPIZ_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       		       (GSourceFunc)search_entry_flush_timeout,
 		       		       view);
 	}
 
-	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
 	entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
 
@@ -1943,10 +1943,10 @@ search_init (GtkWidget *entry,
 
 			if (!moved || !moved_offset)
 				set_entry_state (view->priv->search_entry,
-				                 PLUMA_SEARCH_ENTRY_NOT_FOUND);
+				                 LAPIZ_SEARCH_ENTRY_NOT_FOUND);
 			else
 				set_entry_state (view->priv->search_entry,
-				                 PLUMA_SEARCH_ENTRY_NORMAL);
+				                 LAPIZ_SEARCH_ENTRY_NORMAL);
 		}
 	}
 }
@@ -1990,7 +1990,7 @@ start_interactive_search_real (PlumaView *view)
 	init_search_entry (view);
 
 	view->priv->typeselect_flush_timeout =
-		g_timeout_add (PLUMA_VIEW_SEARCH_DIALOG_TIMEOUT,
+		g_timeout_add (LAPIZ_VIEW_SEARCH_DIALOG_TIMEOUT,
 		   	       (GSourceFunc) search_entry_flush_timeout,
 		   	       view);
 
@@ -2007,9 +2007,9 @@ reset_searched_text (PlumaView *view)
 {
 	PlumaDocument *doc;
 
-	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
-	lapiz_document_set_search_text (doc, "", PLUMA_SEARCH_DONT_SET_FLAGS);
+	lapiz_document_set_search_text (doc, "", LAPIZ_SEARCH_DONT_SET_FLAGS);
 
 	return TRUE;
 }
@@ -2040,7 +2040,7 @@ lapiz_view_draw (GtkWidget      *widget,
 
 	text_view = GTK_TEXT_VIEW (widget);
 
-	doc = PLUMA_DOCUMENT (gtk_text_view_get_buffer (text_view));
+	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (text_view));
 	window = gtk_text_view_get_window (text_view, GTK_TEXT_WINDOW_TEXT);
 	if (gtk_cairo_should_draw_window (cr, window) &&
 	    lapiz_document_get_enable_search_highlighting (doc))
@@ -2279,7 +2279,7 @@ search_highlight_updated_cb (PlumaDocument *doc,
 	text_view = GTK_TEXT_VIEW (view);
 
 	g_return_if_fail (lapiz_document_get_enable_search_highlighting (
-				PLUMA_DOCUMENT (gtk_text_view_get_buffer (text_view))));
+				LAPIZ_DOCUMENT (gtk_text_view_get_buffer (text_view))));
 
 	/* get visible area */
 	gtk_text_view_get_visible_rect (text_view, &visible_rect);

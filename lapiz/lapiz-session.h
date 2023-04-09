@@ -31,8 +31,8 @@
  * $Id
  */
 
-#ifndef __PLUMA_SESSION_H__
-#define __PLUMA_SESSION_H__
+#ifndef __LAPIZ_SESSION_H__
+#define __LAPIZ_SESSION_H__
 
 #include <glib.h>
 
@@ -44,4 +44,4 @@ gboolean 	lapiz_session_load 		(void);
 
 G_END_DECLS
 
-#endif /* __PLUMA_SESSION_H__ */
+#endif /* __LAPIZ_SESSION_H__ */

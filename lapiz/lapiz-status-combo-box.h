@@ -20,20 +20,20 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_STATUS_COMBO_BOX_H__
-#define __PLUMA_STATUS_COMBO_BOX_H__
+#ifndef __LAPIZ_STATUS_COMBO_BOX_H__
+#define __LAPIZ_STATUS_COMBO_BOX_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_STATUS_COMBO_BOX		(lapiz_status_combo_box_get_type ())
-#define PLUMA_STATUS_COMBO_BOX(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBox))
-#define PLUMA_STATUS_COMBO_BOX_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBox const))
-#define PLUMA_STATUS_COMBO_BOX_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBoxClass))
-#define PLUMA_IS_STATUS_COMBO_BOX(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_STATUS_COMBO_BOX))
-#define PLUMA_IS_STATUS_COMBO_BOX_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_STATUS_COMBO_BOX))
-#define PLUMA_STATUS_COMBO_BOX_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBoxClass))
+#define LAPIZ_TYPE_STATUS_COMBO_BOX		(lapiz_status_combo_box_get_type ())
+#define LAPIZ_STATUS_COMBO_BOX(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBox))
+#define LAPIZ_STATUS_COMBO_BOX_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBox const))
+#define LAPIZ_STATUS_COMBO_BOX_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBoxClass))
+#define LAPIZ_IS_STATUS_COMBO_BOX(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX))
+#define LAPIZ_IS_STATUS_COMBO_BOX_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_STATUS_COMBO_BOX))
+#define LAPIZ_STATUS_COMBO_BOX_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_STATUS_COMBO_BOX, PlumaStatusComboBoxClass))
 
 typedef struct _PlumaStatusComboBox		PlumaStatusComboBox;
 typedef struct _PlumaStatusComboBoxClass	PlumaStatusComboBoxClass;
@@ -79,4 +79,4 @@ GtkLabel *lapiz_status_combo_box_get_item_label		(PlumaStatusComboBox	*combo);
 
 G_END_DECLS
 
-#endif /* __PLUMA_STATUS_COMBO_BOX_H__ */
+#endif /* __LAPIZ_STATUS_COMBO_BOX_H__ */

@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_HELP_H__
-#define __PLUMA_HELP_H__
+#ifndef __LAPIZ_HELP_H__
+#define __LAPIZ_HELP_H__
 
 #include <gtk/gtk.h>
 
@@ -41,4 +41,4 @@ gboolean	lapiz_help_display (GtkWindow   *parent,
 
 G_END_DECLS
 
-#endif /* __PLUMA_HELP_H__ */
+#endif /* __LAPIZ_HELP_H__ */

@@ -104,7 +104,7 @@ lapiz_modeline_plugin_finalize (GObject *object)
 static void
 lapiz_modeline_plugin_dispose (GObject *object)
 {
-	PlumaModelinePlugin *plugin = PLUMA_MODELINE_PLUGIN (object);
+	PlumaModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "PlumaModelinePlugin disposing");
 
@@ -123,7 +123,7 @@ lapiz_modeline_plugin_set_property (GObject      *object,
                                     const GValue *value,
                                     GParamSpec   *pspec)
 {
-	PlumaModelinePlugin *plugin = PLUMA_MODELINE_PLUGIN (object);
+	PlumaModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -143,7 +143,7 @@ lapiz_modeline_plugin_get_property (GObject    *object,
                                     GValue     *value,
                                     GParamSpec *pspec)
 {
-	PlumaModelinePlugin *plugin = PLUMA_MODELINE_PLUGIN (object);
+	PlumaModelinePlugin *plugin = LAPIZ_MODELINE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -237,13 +237,13 @@ lapiz_modeline_plugin_activate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	data = PLUMA_MODELINE_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (data->window);
+	data = LAPIZ_MODELINE_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (data->window);
 
 	views = lapiz_window_get_views (window);
 	for (l = views; l != NULL; l = l->next)
 	{
-		connect_handlers (PLUMA_VIEW (l->data));
+		connect_handlers (LAPIZ_VIEW (l->data));
 		modeline_parser_apply_modeline (GTK_SOURCE_VIEW (l->data));
 	}
 	g_list_free (views);
@@ -267,8 +267,8 @@ lapiz_modeline_plugin_deactivate (PeasActivatable *activatable)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	data = PLUMA_MODELINE_PLUGIN (activatable)->priv;
-	window = PLUMA_WINDOW (data->window);
+	data = LAPIZ_MODELINE_PLUGIN (activatable)->priv;
+	window = LAPIZ_WINDOW (data->window);
 
 	g_signal_handler_disconnect (window, data->tab_added_handler_id);
 	g_signal_handler_disconnect (window, data->tab_removed_handler_id);
@@ -277,7 +277,7 @@ lapiz_modeline_plugin_deactivate (PeasActivatable *activatable)
 
 	for (l = views; l != NULL; l = l->next)
 	{
-		disconnect_handlers (PLUMA_VIEW (l->data));
+		disconnect_handlers (LAPIZ_VIEW (l->data));
 
 		modeline_parser_deactivate (GTK_SOURCE_VIEW (l->data));
 	}
@@ -319,5 +319,5 @@ peas_register_types (PeasObjectModule *module)
 
 	peas_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
-	                                            PLUMA_TYPE_MODELINE_PLUGIN);
+	                                            LAPIZ_TYPE_MODELINE_PLUGIN);
 }

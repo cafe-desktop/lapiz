@@ -714,8 +714,8 @@ lapiz_automatic_spell_checker_new (PlumaDocument     *doc,
 	GtkTextTagTable *tag_table;
 	GtkTextIter start, end;
 
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
-	g_return_val_if_fail (PLUMA_IS_SPELL_CHECKER (checker), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
+	g_return_val_if_fail (LAPIZ_IS_SPELL_CHECKER (checker), NULL);
 	g_return_val_if_fail ((spell = lapiz_automatic_spell_checker_get_from_document (doc)) == NULL,
 			      spell);
 
@@ -873,7 +873,7 @@ lapiz_automatic_spell_checker_new (PlumaDocument     *doc,
 PlumaAutomaticSpellChecker *
 lapiz_automatic_spell_checker_get_from_document (const PlumaDocument *doc)
 {
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT (doc), NULL);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
 
 	if (automatic_spell_checker_id == 0)
 		return NULL;
@@ -937,7 +937,7 @@ lapiz_automatic_spell_checker_free_internal (PlumaAutomaticSpellChecker *spell)
 	list = spell->views;
 	while (list != NULL)
 	{
-		PlumaView *view = PLUMA_VIEW (list->data);
+		PlumaView *view = LAPIZ_VIEW (list->data);
 
 		g_signal_handlers_disconnect_matched (G_OBJECT (view),
 				G_SIGNAL_MATCH_DATA,
@@ -963,7 +963,7 @@ lapiz_automatic_spell_checker_attach_view (
 		PlumaView *view)
 {
 	g_return_if_fail (spell != NULL);
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	g_return_if_fail (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
 			  GTK_TEXT_BUFFER (spell->doc));
@@ -994,7 +994,7 @@ lapiz_automatic_spell_checker_detach_view (
 		PlumaView *view)
 {
 	g_return_if_fail (spell != NULL);
-	g_return_if_fail (PLUMA_IS_VIEW (view));
+	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
 	g_return_if_fail (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
 			  GTK_TEXT_BUFFER (spell->doc));

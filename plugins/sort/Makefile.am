@@ -1,9 +1,9 @@
 # sort plugin
-plugindir = $(PLUMA_PLUGINS_LIBS_DIR)
+plugindir = $(LAPIZ_PLUGINS_LIBS_DIR)
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	$(PLUMA_CFLAGS) 				\
+	$(LAPIZ_CFLAGS) 				\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libsort.la
@@ -13,9 +13,9 @@ libsort_la_SOURCES = \
 	lapiz-sort-plugin.c
 
 libsort_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libsort_la_LIBADD  = $(PLUMA_LIBS)
+libsort_la_LIBADD  = $(LAPIZ_LIBS)
 
-uidir = $(PLUMA_PLUGINS_DATA_DIR)/sort
+uidir = $(LAPIZ_PLUGINS_DATA_DIR)/sort
 ui_files = sort.ui
 include $(top_srcdir)/gla11y.mk
 ui_DATA = $(ui_files)

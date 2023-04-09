@@ -2871,37 +2871,37 @@ msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2056
-msgid "PLUMA_CURRENT_DOCUMENT_URI"
+msgid "LAPIZ_CURRENT_DOCUMENT_URI"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2059
-msgid "PLUMA_CURRENT_DOCUMENT_NAME"
+msgid "LAPIZ_CURRENT_DOCUMENT_NAME"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2062
-msgid "PLUMA_CURRENT_DOCUMENT_SCHEME"
+msgid "LAPIZ_CURRENT_DOCUMENT_SCHEME"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2065
-msgid "PLUMA_CURRENT_DOCUMENT_PATH"
+msgid "LAPIZ_CURRENT_DOCUMENT_PATH"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2068
-msgid "PLUMA_CURRENT_DOCUMENT_DIR"
+msgid "LAPIZ_CURRENT_DOCUMENT_DIR"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2071
-msgid "PLUMA_DOCUMENTS_URI"
+msgid "LAPIZ_DOCUMENTS_URI"
 msgstr ""
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2074
-msgid "PLUMA_DOCUMENTS_PATH"
+msgid "LAPIZ_DOCUMENTS_PATH"
 msgstr ""
 
 #. (itstool) path: info/title
@@ -3603,8 +3603,8 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:2389
-msgid "$PLUMA_SELECTED_TEXT"
-msgstr "$PLUMA_SELECTED_TEXT"
+msgid "$LAPIZ_SELECTED_TEXT"
+msgstr "$LAPIZ_SELECTED_TEXT"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2391
@@ -3613,8 +3613,8 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:2395
-msgid "$PLUMA_FILENAME"
-msgstr "$PLUMA_FILENAME"
+msgid "$LAPIZ_FILENAME"
+msgstr "$LAPIZ_FILENAME"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2397
@@ -3625,8 +3625,8 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:2401
-msgid "$PLUMA_BASENAME"
-msgstr "$PLUMA_BASENAME"
+msgid "$LAPIZ_BASENAME"
+msgstr "$LAPIZ_BASENAME"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2403
@@ -3637,8 +3637,8 @@ msgstr ""
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:2407
-msgid "$PLUMA_CURRENT_WORD"
-msgstr "$PLUMA_CURRENT_WORD"
+msgid "$LAPIZ_CURRENT_WORD"
+msgstr "$LAPIZ_CURRENT_WORD"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:2409

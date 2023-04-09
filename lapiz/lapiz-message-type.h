@@ -1,5 +1,5 @@
-#ifndef __PLUMA_MESSAGE_TYPE_H__
-#define __PLUMA_MESSAGE_TYPE_H__
+#ifndef __LAPIZ_MESSAGE_TYPE_H__
+#define __LAPIZ_MESSAGE_TYPE_H__
 
 #include <glib-object.h>
 #include <stdarg.h>
@@ -8,8 +8,8 @@
 
 G_BEGIN_DECLS
 
-#define PLUMA_TYPE_MESSAGE_TYPE			(lapiz_message_type_get_type ())
-#define PLUMA_MESSAGE_TYPE(x)			((PlumaMessageType *)(x))
+#define LAPIZ_TYPE_MESSAGE_TYPE			(lapiz_message_type_get_type ())
+#define LAPIZ_MESSAGE_TYPE(x)			((PlumaMessageType *)(x))
 
 typedef void (*PlumaMessageTypeForeach)		(const gchar *key,
 						 GType 	      type,
@@ -62,6 +62,6 @@ void lapiz_message_type_foreach 		 (PlumaMessageType 	  *message_type,
 
 G_END_DECLS
 
-#endif /* __PLUMA_MESSAGE_TYPE_H__ */
+#endif /* __LAPIZ_MESSAGE_TYPE_H__ */
 
 // ex:ts=8:noet:

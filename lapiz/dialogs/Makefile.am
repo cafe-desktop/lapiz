@@ -5,7 +5,7 @@ AM_CPPFLAGS = 							\
 	-I$(top_builddir)					\
 	-I$(top_srcdir)/lapiz 					\
 	-I$(top_builddir)/lapiz					\
-	$(PLUMA_CFLAGS) 					\
+	$(LAPIZ_CFLAGS) 					\
 	$(WARN_CFLAGS)
 
 noinst_LTLIBRARIES = libdialogs.la

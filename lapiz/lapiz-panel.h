@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_PANEL_H__
-#define __PLUMA_PANEL_H__
+#ifndef __LAPIZ_PANEL_H__
+#define __LAPIZ_PANEL_H__
 
 #include <gtk/gtk.h>
 
@@ -38,12 +38,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PLUMA_TYPE_PANEL		(lapiz_panel_get_type())
-#define PLUMA_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST((obj), PLUMA_TYPE_PANEL, PlumaPanel))
-#define PLUMA_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST((klass), PLUMA_TYPE_PANEL, PlumaPanelClass))
-#define PLUMA_IS_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE((obj), PLUMA_TYPE_PANEL))
-#define PLUMA_IS_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_PANEL))
-#define PLUMA_PANEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS((obj), PLUMA_TYPE_PANEL, PlumaPanelClass))
+#define LAPIZ_TYPE_PANEL		(lapiz_panel_get_type())
+#define LAPIZ_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST((obj), LAPIZ_TYPE_PANEL, PlumaPanel))
+#define LAPIZ_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST((klass), LAPIZ_TYPE_PANEL, PlumaPanelClass))
+#define LAPIZ_IS_PANEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE((obj), LAPIZ_TYPE_PANEL))
+#define LAPIZ_IS_PANEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_PANEL))
+#define LAPIZ_PANEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS((obj), LAPIZ_TYPE_PANEL, PlumaPanelClass))
 
 /* Private structure type */
 typedef struct _PlumaPanelPrivate PlumaPanelPrivate;
@@ -127,4 +127,4 @@ void		 _lapiz_panel_set_active_item_by_id	(PlumaPanel	*panel,
 
 G_END_DECLS
 
-#endif  /* __PLUMA_PANEL_H__  */
+#endif  /* __LAPIZ_PANEL_H__  */

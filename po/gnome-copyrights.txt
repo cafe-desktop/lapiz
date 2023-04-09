@@ -747,9 +747,9 @@
 
 
 ========== mg.po ==========
-# Malagasy translation of PLUMA
-# Copyright (C) 2006 THE PLUMA'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PLUMA package.
+# Malagasy translation of LAPIZ
+# Copyright (C) 2006 THE LAPIZ'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the LAPIZ package.
 # Fanomezana Rajaonarisoa <rajfanhar@yahoo.fr>, 2006.
 # Thierry Randrianiriana <randrianiriana@gmail.com>, 2006.
 #

@@ -28,8 +28,8 @@
  * $Id$
  */
 
-#ifndef __PLUMA_UI_H__
-#define __PLUMA_UI_H__
+#ifndef __LAPIZ_UI_H__
+#define __LAPIZ_UI_H__
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -176,4 +176,4 @@ static const GtkToggleActionEntry lapiz_panes_toggle_menu_entries[] =
 
 G_END_DECLS
 
-#endif  /* __PLUMA_UI_H__  */
+#endif  /* __LAPIZ_UI_H__  */

@@ -5,7 +5,7 @@ platform_sources = eggsmclient-xsmp.c
 
 AM_CPPFLAGS =                               \
 	-DG_LOG_DOMAIN=\""EggSMClient"\" \
-	$(PLUMA_CFLAGS)			 \
+	$(LAPIZ_CFLAGS)			 \
 	$(platform_defines)              \
 	$(EGG_SMCLIENT_CFLAGS)
 

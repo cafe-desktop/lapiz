@@ -19,27 +19,27 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __PLUMA_FILE_BROWSER_VIEW_H__
-#define __PLUMA_FILE_BROWSER_VIEW_H__
+#ifndef __LAPIZ_FILE_BROWSER_VIEW_H__
+#define __LAPIZ_FILE_BROWSER_VIEW_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define PLUMA_TYPE_FILE_BROWSER_VIEW			(lapiz_file_browser_view_get_type ())
-#define PLUMA_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserView))
-#define PLUMA_FILE_BROWSER_VIEW_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), PLUMA_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserView const))
-#define PLUMA_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), PLUMA_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserViewClass))
-#define PLUMA_IS_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLUMA_TYPE_FILE_BROWSER_VIEW))
-#define PLUMA_IS_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), PLUMA_TYPE_FILE_BROWSER_VIEW))
-#define PLUMA_FILE_BROWSER_VIEW_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), PLUMA_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserViewClass))
+#define LAPIZ_TYPE_FILE_BROWSER_VIEW			(lapiz_file_browser_view_get_type ())
+#define LAPIZ_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserView))
+#define LAPIZ_FILE_BROWSER_VIEW_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), LAPIZ_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserView const))
+#define LAPIZ_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), LAPIZ_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserViewClass))
+#define LAPIZ_IS_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), LAPIZ_TYPE_FILE_BROWSER_VIEW))
+#define LAPIZ_IS_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), LAPIZ_TYPE_FILE_BROWSER_VIEW))
+#define LAPIZ_FILE_BROWSER_VIEW_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), LAPIZ_TYPE_FILE_BROWSER_VIEW, PlumaFileBrowserViewClass))
 
 typedef struct _PlumaFileBrowserView        PlumaFileBrowserView;
 typedef struct _PlumaFileBrowserViewClass   PlumaFileBrowserViewClass;
 typedef struct _PlumaFileBrowserViewPrivate PlumaFileBrowserViewPrivate;
 
 typedef enum {
-	PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE,
-	PLUMA_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE
+	LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE,
+	LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE
 } PlumaFileBrowserViewClickPolicy;
 
 struct _PlumaFileBrowserView
@@ -79,6 +79,6 @@ void lapiz_file_browser_view_set_restore_expand_state	(PlumaFileBrowserView 		* 
 							 gboolean 			  restore_expand_state);
 
 G_END_DECLS
-#endif				/* __PLUMA_FILE_BROWSER_VIEW_H__ */
+#endif				/* __LAPIZ_FILE_BROWSER_VIEW_H__ */
 
 // ex:ts=8:noet:

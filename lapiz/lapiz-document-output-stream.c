@@ -76,12 +76,12 @@ lapiz_document_output_stream_set_property (GObject      *object,
 					   const GValue *value,
 					   GParamSpec   *pspec)
 {
-	PlumaDocumentOutputStream *stream = PLUMA_DOCUMENT_OUTPUT_STREAM (object);
+	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	switch (prop_id)
 	{
 		case PROP_DOCUMENT:
-			stream->priv->doc = PLUMA_DOCUMENT (g_value_get_object (value));
+			stream->priv->doc = LAPIZ_DOCUMENT (g_value_get_object (value));
 			break;
 
 		default:
@@ -96,7 +96,7 @@ lapiz_document_output_stream_get_property (GObject    *object,
 					   GValue     *value,
 					   GParamSpec *pspec)
 {
-	PlumaDocumentOutputStream *stream = PLUMA_DOCUMENT_OUTPUT_STREAM (object);
+	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	switch (prop_id)
 	{
@@ -113,7 +113,7 @@ lapiz_document_output_stream_get_property (GObject    *object,
 static void
 lapiz_document_output_stream_finalize (GObject *object)
 {
-	PlumaDocumentOutputStream *stream = PLUMA_DOCUMENT_OUTPUT_STREAM (object);
+	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	g_free (stream->priv->buffer);
 
@@ -123,7 +123,7 @@ lapiz_document_output_stream_finalize (GObject *object)
 static void
 lapiz_document_output_stream_constructed (GObject *object)
 {
-	PlumaDocumentOutputStream *stream = PLUMA_DOCUMENT_OUTPUT_STREAM (object);
+	PlumaDocumentOutputStream *stream = LAPIZ_DOCUMENT_OUTPUT_STREAM (object);
 
 	if (!stream->priv->doc)
 	{
@@ -162,7 +162,7 @@ lapiz_document_output_stream_class_init (PlumaDocumentOutputStreamClass *klass)
 					 g_param_spec_object ("document",
 							      "Document",
 							      "The document which is written",
-							      PLUMA_TYPE_DOCUMENT,
+							      LAPIZ_TYPE_DOCUMENT,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY));
 }
@@ -194,16 +194,16 @@ get_newline_type (GtkTextIter *end)
 		if (gtk_text_iter_forward_char (&copy) &&
 		    g_unichar_break_type (gtk_text_iter_get_char (&copy)) == G_UNICODE_BREAK_LINE_FEED)
 		{
-			res = PLUMA_DOCUMENT_NEWLINE_TYPE_CR_LF;
+			res = LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF;
 		}
 		else
 		{
-			res = PLUMA_DOCUMENT_NEWLINE_TYPE_CR;
+			res = LAPIZ_DOCUMENT_NEWLINE_TYPE_CR;
 		}
 	}
 	else
 	{
-		res = PLUMA_DOCUMENT_NEWLINE_TYPE_LF;
+		res = LAPIZ_DOCUMENT_NEWLINE_TYPE_LF;
 	}
 
 	return res;
@@ -212,7 +212,7 @@ get_newline_type (GtkTextIter *end)
 GOutputStream *
 lapiz_document_output_stream_new (PlumaDocument *doc)
 {
-	return G_OUTPUT_STREAM (g_object_new (PLUMA_TYPE_DOCUMENT_OUTPUT_STREAM,
+	return G_OUTPUT_STREAM (g_object_new (LAPIZ_TYPE_DOCUMENT_OUTPUT_STREAM,
 					      "document", doc, NULL));
 }
 
@@ -222,10 +222,10 @@ lapiz_document_output_stream_detect_newline_type (PlumaDocumentOutputStream *str
 	PlumaDocumentNewlineType type;
 	GtkTextIter iter;
 
-	g_return_val_if_fail (PLUMA_IS_DOCUMENT_OUTPUT_STREAM (stream),
-			      PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_OUTPUT_STREAM (stream),
+			      LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);
 
-	type = PLUMA_DOCUMENT_NEWLINE_TYPE_DEFAULT;
+	type = LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 
 	gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (stream->priv->doc),
 					&iter);
@@ -294,7 +294,7 @@ lapiz_document_output_stream_write (GOutputStream            *stream,
 	if (g_cancellable_set_error_if_cancelled (cancellable, error))
 		return -1;
 
-	ostream = PLUMA_DOCUMENT_OUTPUT_STREAM (stream);
+	ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
 
 	if (!ostream->priv->is_initialized)
 	{
@@ -377,7 +377,7 @@ lapiz_document_output_stream_flush (GOutputStream *stream,
                                     GCancellable  *cancellable,
                                     GError        **error)
 {
-	PlumaDocumentOutputStream *ostream = PLUMA_DOCUMENT_OUTPUT_STREAM (stream);
+	PlumaDocumentOutputStream *ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
 
 	/* Flush deferred data if some. */
 	if (!ostream->priv->is_closed && ostream->priv->is_initialized &&
@@ -394,7 +394,7 @@ lapiz_document_output_stream_close (GOutputStream     *stream,
 				    GCancellable      *cancellable,
 				    GError           **error)
 {
-	PlumaDocumentOutputStream *ostream = PLUMA_DOCUMENT_OUTPUT_STREAM (stream);
+	PlumaDocumentOutputStream *ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
 
 	if (!ostream->priv->is_closed && ostream->priv->is_initialized)
 	{

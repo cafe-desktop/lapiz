@@ -325,7 +325,7 @@ parse_lapiz_error (gint          code,
 
 	switch (code)
 	{
-	case PLUMA_DOCUMENT_ERROR_TOO_BIG:
+	case LAPIZ_DOCUMENT_ERROR_TOO_BIG:
 		*message_details = g_strdup (_("The file is too big."));
 		break;
 
@@ -354,7 +354,7 @@ parse_error (const GError *error,
 				       uri,
 				       uri_for_display);
 	}
-	else if (error->domain == PLUMA_DOCUMENT_ERROR)
+	else if (error->domain == LAPIZ_DOCUMENT_ERROR)
 	{
 		ret = parse_lapiz_error (error->code,
 					 error_message,
@@ -385,7 +385,7 @@ lapiz_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail ((error->domain == PLUMA_DOCUMENT_ERROR) ||
+	g_return_val_if_fail ((error->domain == LAPIZ_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
 	full_formatted_uri = lapiz_utils_uri_for_display (uri);
@@ -571,7 +571,7 @@ lapiz_io_loading_error_message_area_new (const gchar         *uri,
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
 	g_return_val_if_fail ((error->domain == G_CONVERT_ERROR) ||
-			      (error->domain == PLUMA_DOCUMENT_ERROR) ||
+			      (error->domain == LAPIZ_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
 	full_formatted_uri = lapiz_utils_uri_for_display (uri);
@@ -601,8 +601,8 @@ lapiz_io_loading_error_message_area_new (const gchar         *uri,
 		message_details = g_strdup (_("You do not have the permissions necessary to open the file."));
 	}
 	else if ((is_gio_error (error, G_IO_ERROR_INVALID_DATA) && encoding == NULL) ||
-	         (error->domain == PLUMA_DOCUMENT_ERROR &&
-	         error->code == PLUMA_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED))
+	         (error->domain == LAPIZ_DOCUMENT_ERROR &&
+	         error->code == LAPIZ_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED))
 	{
 		message_details = g_strconcat (_("lapiz has not been able to detect "
 					         "the character encoding."), "\n",
@@ -610,8 +610,8 @@ lapiz_io_loading_error_message_area_new (const gchar         *uri,
 					       _("Select a character encoding from the menu and try again."), NULL);
 		convert_error = TRUE;
 	}
-	else if (error->domain == PLUMA_DOCUMENT_ERROR &&
-	         error->code == PLUMA_DOCUMENT_ERROR_CONVERSION_FALLBACK)
+	else if (error->domain == LAPIZ_DOCUMENT_ERROR &&
+	         error->code == LAPIZ_DOCUMENT_ERROR_CONVERSION_FALLBACK)
 	{
 		error_message = g_strdup_printf (_("There was a problem opening the file %s."),
 						 uri_for_display);
@@ -731,7 +731,7 @@ lapiz_conversion_error_message_area_get_encoding (GtkWidget *message_area)
 	g_return_val_if_fail (menu, NULL);
 
 	return lapiz_encodings_combo_box_get_selected_encoding
-					(PLUMA_ENCODINGS_COMBO_BOX (menu));
+					(LAPIZ_ENCODINGS_COMBO_BOX (menu));
 }
 
 GtkWidget *
@@ -842,8 +842,8 @@ lapiz_externally_modified_saving_error_message_area_new (
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (error->domain == PLUMA_DOCUMENT_ERROR, NULL);
-	g_return_val_if_fail (error->code == PLUMA_DOCUMENT_ERROR_EXTERNALLY_MODIFIED, NULL);
+	g_return_val_if_fail (error->domain == LAPIZ_DOCUMENT_ERROR, NULL);
+	g_return_val_if_fail (error->code == LAPIZ_DOCUMENT_ERROR_EXTERNALLY_MODIFIED, NULL);
 
 	full_formatted_uri = lapiz_utils_uri_for_display (uri);
 
@@ -936,8 +936,8 @@ lapiz_no_backup_saving_error_message_area_new (const gchar  *uri,
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (((error->domain == PLUMA_DOCUMENT_ERROR &&
-			        error->code == PLUMA_DOCUMENT_ERROR_CANT_CREATE_BACKUP) ||
+	g_return_val_if_fail (((error->domain == LAPIZ_DOCUMENT_ERROR &&
+			        error->code == LAPIZ_DOCUMENT_ERROR_CANT_CREATE_BACKUP) ||
 			       (error->domain == G_IO_ERROR &&
 			        error->code == G_IO_ERROR_CANT_CREATE_BACKUP)), NULL);
 
@@ -1033,7 +1033,7 @@ lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail ((error->domain == PLUMA_DOCUMENT_ERROR) ||
+	g_return_val_if_fail ((error->domain == LAPIZ_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
 	full_formatted_uri = lapiz_utils_uri_for_display (uri);
@@ -1107,8 +1107,8 @@ lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 					      "a limitation on length of the file names. "
 					      "Please use a shorter name."));
 	}
-	else if (error->domain == PLUMA_DOCUMENT_ERROR &&
-		 error->code == PLUMA_DOCUMENT_ERROR_TOO_BIG)
+	else if (error->domain == LAPIZ_DOCUMENT_ERROR &&
+		 error->code == LAPIZ_DOCUMENT_ERROR_TOO_BIG)
 	{
 		message_details = g_strdup (_("The disk where you are trying to save the file has "
 					      "a limitation on file sizes. Please try saving "

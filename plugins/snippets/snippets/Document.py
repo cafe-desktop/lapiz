@@ -460,23 +460,23 @@ class Document:
             environ[k] = v
 
         variables = {
-                 'PLUMA_SELECTED_TEXT': self.env_get_selected_text,
-                 'PLUMA_CURRENT_WORD': self.env_get_current_word,
-                 'PLUMA_CURRENT_LINE': self.env_get_current_line,
-                 'PLUMA_CURRENT_LINE_NUMBER': self.env_get_current_line_number,
-                 'PLUMA_CURRENT_DOCUMENT_TYPE': self.env_get_document_type,
-                 'PLUMA_DOCUMENTS_URI': self.env_get_documents_uri,
-                 'PLUMA_DOCUMENTS_PATH': self.env_get_documents_path,
+                 'LAPIZ_SELECTED_TEXT': self.env_get_selected_text,
+                 'LAPIZ_CURRENT_WORD': self.env_get_current_word,
+                 'LAPIZ_CURRENT_LINE': self.env_get_current_line,
+                 'LAPIZ_CURRENT_LINE_NUMBER': self.env_get_current_line_number,
+                 'LAPIZ_CURRENT_DOCUMENT_TYPE': self.env_get_document_type,
+                 'LAPIZ_DOCUMENTS_URI': self.env_get_documents_uri,
+                 'LAPIZ_DOCUMENTS_PATH': self.env_get_documents_path,
             }
 
         for var in variables:
             environ[var] = variables[var](buf)
 
-        self.env_add_for_location(environ, buf.get_location(), 'PLUMA_CURRENT_DOCUMENT')
+        self.env_add_for_location(environ, buf.get_location(), 'LAPIZ_CURRENT_DOCUMENT')
         return environ
 
     def uses_current_word(self, snippet):
-        matches = re.findall('(\\\\*)\\$PLUMA_CURRENT_WORD', snippet['text'])
+        matches = re.findall('(\\\\*)\\$LAPIZ_CURRENT_WORD', snippet['text'])
 
         for match in matches:
             if len(match) % 2 == 0:
@@ -485,7 +485,7 @@ class Document:
         return False
 
     def uses_current_line(self, snippet):
-        matches = re.findall('(\\\\*)\\$PLUMA_CURRENT_LINE', snippet['text'])
+        matches = re.findall('(\\\\*)\\$LAPIZ_CURRENT_LINE', snippet['text'])
 
         for match in matches:
             if len(match) % 2 == 0:
@@ -874,9 +874,9 @@ class Document:
         pathname = ''
         dirname = ''
         ruri = ''
-        environ = {'PLUMA_DROP_DOCUMENT_TYPE': mime}
+        environ = {'LAPIZ_DROP_DOCUMENT_TYPE': mime}
 
-        self.env_add_for_location(environ, gfile, 'PLUMA_DROP_DOCUMENT')
+        self.env_add_for_location(environ, gfile, 'LAPIZ_DROP_DOCUMENT')
 
         buf = self.view.get_buffer()
         location = buf.get_location()
@@ -885,7 +885,7 @@ class Document:
 
         relpath = self.relative_path(ruri, uri, mime)
 
-        environ['PLUMA_DROP_DOCUMENT_RELATIVE_PATH'] = relpath
+        environ['LAPIZ_DROP_DOCUMENT_RELATIVE_PATH'] = relpath
 
         mark = buf.get_mark('gtk_drag_target')
 
