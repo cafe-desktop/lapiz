@@ -3802,7 +3802,7 @@ msgstr "URI fototra"
 
 #: plugins/taglist/HTML.tags.xml.in:93 plugins/taglist/HTML.tags.xml.in:1213
 msgid "Bold"
-msgstr "Matevina"
+msgstr "Cafevina"
 
 #: plugins/taglist/HTML.tags.xml.in:99
 msgid "Border (deprecated)"
@@ -5423,11 +5423,11 @@ msgstr "Singa"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematika (seho)"
+msgstr "Cafematika (seho)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematika (inline)"
+msgstr "Cafematika (inline)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

@@ -5513,11 +5513,11 @@ msgstr "Položka"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematika (zobraziť)"
+msgstr "Cafematika (zobraziť)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematika (včleniť)"
+msgstr "Cafematika (včleniť)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"
@@ -5605,19 +5605,19 @@ msgstr "Symbol nekonečno"
 
 #: plugins/taglist/Latex.tags.xml.in:284
 msgid "Symbol mathspace ,"
-msgstr "Matematický symbol ,"
+msgstr "Cafematický symbol ,"
 
 #: plugins/taglist/Latex.tags.xml.in:288
 msgid "Symbol mathspace ."
-msgstr "Matematický symbol ."
+msgstr "Cafematický symbol ."
 
 #: plugins/taglist/Latex.tags.xml.in:292
 msgid "Symbol mathspace _"
-msgstr "Matematický symbol _"
+msgstr "Cafematický symbol _"
 
 #: plugins/taglist/Latex.tags.xml.in:296
 msgid "Symbol mathspace __"
-msgstr "Matematický symbol __"
+msgstr "Cafematický symbol __"
 
 #: plugins/taglist/Latex.tags.xml.in:300
 msgid "Symbol simeq"

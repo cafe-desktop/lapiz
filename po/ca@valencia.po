@@ -4649,7 +4649,7 @@ msgstr "Objectiu - Pare"
 
 #: plugins/taglist/HTML.tags.xml.in:1039 plugins/taglist/HTML.tags.xml.in:2176
 msgid "Target - Self"
-msgstr "Objectiu - Mateixa finestra"
+msgstr "Objectiu - Cafeixa finestra"
 
 #: plugins/taglist/HTML.tags.xml.in:1044 plugins/taglist/HTML.tags.xml.in:2181
 msgid "Target - Top"
@@ -5529,11 +5529,11 @@ msgstr "Element"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matemàtiques (visualització)"
+msgstr "Cafemàtiques (visualització)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matemàtiques (inserit)"
+msgstr "Cafemàtiques (inserit)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

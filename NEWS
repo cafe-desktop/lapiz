@@ -337,7 +337,7 @@
 
 ### lapiz 1.16.0
 
-  * Use GtkAboutDialog instead of MateAboutDialog
+  * Use GtkAboutDialog instead of CafeAboutDialog
   * Drop dependency on libcafe-desktop and --without-cafedesktop
     build option
   * GTK+3: fix lots of deprecations
@@ -355,7 +355,7 @@
 
 ### lapiz 1.14.0
 
-  * Drop MateConf migration script
+  * Drop CafeConf migration script
   * Implement middle-click tab closing
   * Add a new Configure dialog for the Spell Check plugin
   * Make switch-c tool in external tools work, fix security issue
@@ -406,7 +406,7 @@
 
 ### lapiz 1.10.0
 
-  * Use MateAboutDialog from libcafe-desktop
+  * Use CafeAboutDialog from libcafe-desktop
 
 ### lapiz 1.8.1
 

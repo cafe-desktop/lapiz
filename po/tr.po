@@ -5518,11 +5518,11 @@ msgstr "Öğe"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematik (görüntü)"
+msgstr "Cafematik (görüntü)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematik (satır arası)"
+msgstr "Cafematik (satır arası)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

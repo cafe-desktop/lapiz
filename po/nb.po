@@ -5538,11 +5538,11 @@ msgstr "Oppføring"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematikk (blokk)"
+msgstr "Cafematikk (blokk)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematikk (i linja)"
+msgstr "Cafematikk (i linja)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

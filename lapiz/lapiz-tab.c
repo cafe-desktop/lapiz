@@ -2445,7 +2445,7 @@ set_print_preview (LapizTab  *tab,
 static void
 preview_finished_cb (GtkSourcePrintJob *pjob, LapizTab *tab)
 {
-	MatePrintJob *gjob;
+	CafePrintJob *gjob;
 	GtkWidget *preview = NULL;
 
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
