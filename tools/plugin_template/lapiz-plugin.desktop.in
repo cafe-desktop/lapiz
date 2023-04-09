@@ -6,4 +6,4 @@ _Description=##(DESCRIPTION)
 Icon=lapiz-plugin
 Authors=##(AUTHOR_FULLNAME) <##(AUTHOR_EMAIL.lower)>
 Copyright=Copyright © ##(DATE_YEAR) ##(AUTHOR_FULLNAME)
-Website=https://mate-desktop.org
+Website=https://cafe-desktop.org

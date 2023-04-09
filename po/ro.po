@@ -16,22 +16,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/lapiz/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
 "POT-Creation-Date: 2020-01-13 17:23+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Daniel <danny3@tutanota.com>, 2020\n"
-"Language-Team: Romanian (https://www.transifex.com/mate/teams/13566/ro/)\n"
+"Language-Team: Romanian (https://www.transifex.com/cafe/teams/13566/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: data/org.mate.lapiz.gschema.xml.in:11
+#: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
 msgstr "Utilizează fontul implicit"
 
-#: data/org.mate.lapiz.gschema.xml.in:12
+#: data/org.cafe.lapiz.gschema.xml.in:12
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to lapiz. If this option is turned off, then the "
@@ -43,16 +43,16 @@ msgstr ""
 "Dacă această opțiune este dezactivată, atunci fontul specificat în opțiunea "
 "„Font editare” va fi utilizat în locul fontului de sistem."
 
-#: data/org.mate.lapiz.gschema.xml.in:15
+#: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
 msgid "'Monospace 12'"
 msgstr "„Monospațiat 12”"
 
-#: data/org.mate.lapiz.gschema.xml.in:16
+#: data/org.cafe.lapiz.gschema.xml.in:16
 msgid "Editor Font"
 msgstr "Font editor"
 
-#: data/org.mate.lapiz.gschema.xml.in:17
+#: data/org.cafe.lapiz.gschema.xml.in:17
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -60,11 +60,11 @@ msgstr ""
 "Un font personalizat care va fi utilizat la editare. Această configurare va "
 "avea efect doar dacă opțiunea „Utilizează fontul implicit” este dezactivată."
 
-#: data/org.mate.lapiz.gschema.xml.in:21
+#: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
 msgstr "Comută taburile folosind combinația de taste [ctrl] + [tab]"
 
-#: data/org.mate.lapiz.gschema.xml.in:22
+#: data/org.cafe.lapiz.gschema.xml.in:22
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
@@ -72,29 +72,29 @@ msgstr ""
 "Dacă este activat, permite schimbarea taburilor folosind combinațiile de "
 "taste [ctrl + tab] și [ctrl + shift + tab]."
 
-#: data/org.mate.lapiz.gschema.xml.in:26
+#: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:27
+#: data/org.cafe.lapiz.gschema.xml.in:27
 msgid "If false, it hides the first tab if there is only one tab."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:31
+#: data/org.cafe.lapiz.gschema.xml.in:31
 msgid "Style Scheme"
 msgstr "Schemă de stil"
 
-#: data/org.mate.lapiz.gschema.xml.in:32
+#: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "Identificatorul unei scheme de stil GtkSourceView utilizată pentru a colora "
 "textul."
 
-#: data/org.mate.lapiz.gschema.xml.in:36
+#: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
 msgstr "Creează copii de siguranță"
 
-#: data/org.mate.lapiz.gschema.xml.in:37
+#: data/org.cafe.lapiz.gschema.xml.in:37
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -103,11 +103,11 @@ msgstr ""
 " pe care le salvează. Puteți defini extensia pentru fișierele de siguranță "
 "cu ajutorul opțiunii „Extensia copiei de siguranță”."
 
-#: data/org.mate.lapiz.gschema.xml.in:41
+#: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
 msgstr "Salvare automată"
 
-#: data/org.mate.lapiz.gschema.xml.in:42
+#: data/org.cafe.lapiz.gschema.xml.in:42
 msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -117,11 +117,11 @@ msgstr ""
 "un anumit interval de timp. Puteți stabili intervalul de timp cu ajutorul "
 "opțiunii „Interval de salvare automată”."
 
-#: data/org.mate.lapiz.gschema.xml.in:46
+#: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
 msgstr "Interval de salvare automată"
 
-#: data/org.mate.lapiz.gschema.xml.in:47
+#: data/org.cafe.lapiz.gschema.xml.in:47
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -130,19 +130,19 @@ msgstr ""
 "Această acțiune va avea efect doar dacă opțiunea „Salvează automat” este "
 "activată."
 
-#: data/org.mate.lapiz.gschema.xml.in:51
+#: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
 msgstr "Arată confirmarea pentru salvare"
 
-#: data/org.mate.lapiz.gschema.xml.in:52
+#: data/org.cafe.lapiz.gschema.xml.in:52
 msgid "Show save confirmation if the files have changes."
 msgstr "Arată confirmarea pentru salvare dacă fișierele s-au modificat."
 
-#: data/org.mate.lapiz.gschema.xml.in:56
+#: data/org.cafe.lapiz.gschema.xml.in:56
 msgid "Writable VFS schemes"
 msgstr "Scheme VFS disponibile pentru scriere"
 
-#: data/org.mate.lapiz.gschema.xml.in:57
+#: data/org.cafe.lapiz.gschema.xml.in:57
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
@@ -150,11 +150,11 @@ msgstr ""
 "Lista schemelor VFS pe care lapiz le suportă la scriere. Schema „file” este "
 "disponibilă implicit pentru scriere."
 
-#: data/org.mate.lapiz.gschema.xml.in:61
+#: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
 msgstr "Numărul maxim al acțiunilor de anulare"
 
-#: data/org.mate.lapiz.gschema.xml.in:62
+#: data/org.cafe.lapiz.gschema.xml.in:62
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -162,11 +162,11 @@ msgstr ""
 "Numărul maxim de acțiuni pe care lapiz le va putea anula sau reface. "
 "Utilizați „-1” pentru un număr nelimitat de acțiuni."
 
-#: data/org.mate.lapiz.gschema.xml.in:66
+#: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
 msgstr "Mod de rupere rânduri"
 
-#: data/org.mate.lapiz.gschema.xml.in:67
+#: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
 "for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -180,11 +180,11 @@ msgstr ""
 "Majusculele sunt semnificative, așa că vă rugăm să vă asigurați că apar "
 "exact așa cum sunt menționate aici."
 
-#: data/org.mate.lapiz.gschema.xml.in:71
+#: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
 msgstr "Lungime tab"
 
-#: data/org.mate.lapiz.gschema.xml.in:72
+#: data/org.cafe.lapiz.gschema.xml.in:72
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
@@ -192,71 +192,71 @@ msgstr ""
 "Specifică numărul de spații care ar trebui să fie afișate în locul "
 "caracterelor tab."
 
-#: data/org.mate.lapiz.gschema.xml.in:76
+#: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
 msgstr "Inserează spații"
 
-#: data/org.mate.lapiz.gschema.xml.in:77
+#: data/org.cafe.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
 msgstr "Specifică dacă lapiz ar trebui să insereze spații în loc de taburi."
 
-#: data/org.mate.lapiz.gschema.xml.in:81
+#: data/org.cafe.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
 msgstr "Indentare automată"
 
-#: data/org.mate.lapiz.gschema.xml.in:82
+#: data/org.cafe.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
 msgstr "Specifică dacă lapiz ar trebui să activeze indentarea automată."
 
-#: data/org.mate.lapiz.gschema.xml.in:86
+#: data/org.cafe.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
 msgstr "Afișează numerotarea rândurilor"
 
-#: data/org.mate.lapiz.gschema.xml.in:87
+#: data/org.cafe.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr ""
 "Specifică dacă lapiz ar trebui să numeroteze rândurile în zona de editare."
 
-#: data/org.mate.lapiz.gschema.xml.in:91
+#: data/org.cafe.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
 msgstr "Evidențiază rândul actual"
 
-#: data/org.mate.lapiz.gschema.xml.in:92
+#: data/org.cafe.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
 msgstr "Specifică dacă lapiz ar trebui să evidențieze rândul actual."
 
-#: data/org.mate.lapiz.gschema.xml.in:96
+#: data/org.cafe.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
 msgstr "Evidențiază paranteza pereche"
 
-#: data/org.mate.lapiz.gschema.xml.in:97
+#: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
 "Specifică dacă lapiz ar trebui să evidențieze perechea parantezei selectate."
 
-#: data/org.mate.lapiz.gschema.xml.in:101
+#: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
 msgstr "Arată marginea dreaptă"
 
-#: data/org.mate.lapiz.gschema.xml.in:102
+#: data/org.cafe.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
 msgstr ""
 "Specifică dacă lapiz ar trebui să afișeze marginea dreaptă în zona de "
 "editare."
 
-#: data/org.mate.lapiz.gschema.xml.in:106
+#: data/org.cafe.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
 msgstr "Poziția marginii din dreapta"
 
-#: data/org.mate.lapiz.gschema.xml.in:107
+#: data/org.cafe.lapiz.gschema.xml.in:107
 msgid "Specifies the position of the right margin."
 msgstr "Specifică poziția marginii din dreapta."
 
-#: data/org.mate.lapiz.gschema.xml.in:111
+#: data/org.cafe.lapiz.gschema.xml.in:111
 msgid "Smart Home End"
 msgstr "Taste inteligente Home/End"
 
-#: data/org.mate.lapiz.gschema.xml.in:112
+#: data/org.cafe.lapiz.gschema.xml.in:112
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
@@ -275,11 +275,11 @@ msgstr ""
 "și „ALWAYS” pentru a sări întotdeauna la sfârșitul ori începutul textului, "
 "în loc de sfârșitul ori începutul rândului."
 
-#: data/org.mate.lapiz.gschema.xml.in:116
+#: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
 msgstr "Restaurează poziția precedentă a cursorului"
 
-#: data/org.mate.lapiz.gschema.xml.in:117
+#: data/org.cafe.lapiz.gschema.xml.in:117
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
@@ -287,40 +287,40 @@ msgstr ""
 "Specifică dacă lapiz ar trebui să restaureze poziția precedentă a cursorului"
 " atunci când se încarcă un fișier."
 
-#: data/org.mate.lapiz.gschema.xml.in:121
+#: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
 msgstr "Activează evidențierea la căutare"
 
-#: data/org.mate.lapiz.gschema.xml.in:122
+#: data/org.cafe.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr ""
 "Specifică dacă lapiz ar trebui să evidențieze toate aparițiile textului "
 "căutat."
 
-#: data/org.mate.lapiz.gschema.xml.in:126
+#: data/org.cafe.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
 msgstr "Activează evidențierea sintaxei"
 
-#: data/org.mate.lapiz.gschema.xml.in:127
+#: data/org.cafe.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
 msgstr "Specifică dacă lapiz ar trebui să activeze evidențierea sintaxei."
 
-#: data/org.mate.lapiz.gschema.xml.in:131
+#: data/org.cafe.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
 msgstr "Bara de unelte este vizibilă"
 
-#: data/org.mate.lapiz.gschema.xml.in:132
+#: data/org.cafe.lapiz.gschema.xml.in:132
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr ""
 "Specifică dacă bara de unelte ar trebui să fie vizibilă în ferestrele de "
 "editare."
 
-#: data/org.mate.lapiz.gschema.xml.in:136
+#: data/org.cafe.lapiz.gschema.xml.in:136
 msgid "Toolbar Buttons Style"
 msgstr "Stil butoane bară de unelte"
 
-#: data/org.mate.lapiz.gschema.xml.in:137
+#: data/org.cafe.lapiz.gschema.xml.in:137
 msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
@@ -337,53 +337,53 @@ msgstr ""
 "iconuri. Majusculele sunt semnificative, așa că e recomandat să fie "
 "utilizate exact așa cum au fost menționate aici."
 
-#: data/org.mate.lapiz.gschema.xml.in:141
+#: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
 msgstr "Bara de stare este vizibilă"
 
-#: data/org.mate.lapiz.gschema.xml.in:142
+#: data/org.cafe.lapiz.gschema.xml.in:142
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Specifică dacă bara de stare de la baza ferestrei de editare ar trebui să "
 "fie vizibilă."
 
-#: data/org.mate.lapiz.gschema.xml.in:146
+#: data/org.cafe.lapiz.gschema.xml.in:146
 msgid "Side Pane is Visible"
 msgstr "Panoul lateral este vizibil"
 
-#: data/org.mate.lapiz.gschema.xml.in:147
+#: data/org.cafe.lapiz.gschema.xml.in:147
 msgid ""
 "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "Specifică dacă panoul lateral din stânga ferestrei de editare ar trebui să "
 "fie vizibil."
 
-#: data/org.mate.lapiz.gschema.xml.in:151
+#: data/org.cafe.lapiz.gschema.xml.in:151
 msgid "Show tabs with side pane"
 msgstr "Arată taburi cu panoul lateral"
 
-#: data/org.mate.lapiz.gschema.xml.in:152
+#: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:156
+#: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
 msgstr "Panoul de jos este vizibil"
 
-#: data/org.mate.lapiz.gschema.xml.in:157
+#: data/org.cafe.lapiz.gschema.xml.in:157
 msgid ""
 "Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr ""
 "Specifică dacă panoul de la baza ferestrei de editare ar trebui să fie "
 "vizibil."
 
-#: data/org.mate.lapiz.gschema.xml.in:161
+#: data/org.cafe.lapiz.gschema.xml.in:161
 msgid "Maximum Recent Files"
 msgstr "Numărul maxim de fișiere recente"
 
-#: data/org.mate.lapiz.gschema.xml.in:162
+#: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed"
 " in the \"Recent Files\" submenu."
@@ -391,32 +391,32 @@ msgstr ""
 "Specifică numărul maxim de fișiere deschise recent care vor fi afișate în "
 "submeniul „Fișiere recente”."
 
-#: data/org.mate.lapiz.gschema.xml.in:166
+#: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "Tipărește sintaxa evidențiată"
 
-#: data/org.mate.lapiz.gschema.xml.in:167
+#: data/org.cafe.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "Specifică dacă lapiz ar trebui să tipărească evidențierea sintaxei pentru "
 "documente."
 
-#: data/org.mate.lapiz.gschema.xml.in:171
+#: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "Tipărește antetul"
 
-#: data/org.mate.lapiz.gschema.xml.in:172
+#: data/org.cafe.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Specifică dacă lapiz ar trebui să includă antetul la tipărirea documentelor."
 
-#: data/org.mate.lapiz.gschema.xml.in:176
+#: data/org.cafe.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
 msgstr "Mod de rupere a rândurilor la tipărire"
 
-#: data/org.mate.lapiz.gschema.xml.in:177
+#: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
 "wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -430,11 +430,11 @@ msgstr ""
 "Valorile sunt sensibile la majuscule, așa că vă rugăm să vă asigurați că "
 "apar exact așa cum sunt menționate aici."
 
-#: data/org.mate.lapiz.gschema.xml.in:181
+#: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
 msgstr "Numerotează rândurile la tipărire"
 
-#: data/org.mate.lapiz.gschema.xml.in:182
+#: data/org.cafe.lapiz.gschema.xml.in:182
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
@@ -444,30 +444,30 @@ msgstr ""
 " tipărirea unui document. Pentru o valoare „n”, lapiz va tipări numărul "
 "rândului la fiecare „n” număr de rânduri."
 
-#: data/org.mate.lapiz.gschema.xml.in:185
+#: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
 msgid "'Monospace 9'"
 msgstr "„Monospațiat 9”"
 
-#: data/org.mate.lapiz.gschema.xml.in:186
+#: data/org.cafe.lapiz.gschema.xml.in:186
 msgid "Body Font for Printing"
 msgstr "Font utilizat la tipărirea textului"
 
-#: data/org.mate.lapiz.gschema.xml.in:187
+#: data/org.cafe.lapiz.gschema.xml.in:187
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "Specifică fontul utilizat pentru corpul documentului la tipărire."
 
-#: data/org.mate.lapiz.gschema.xml.in:190
+#: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
 msgid "'Sans 11'"
 msgstr "„Fără serife 11”"
 
-#: data/org.mate.lapiz.gschema.xml.in:191
+#: data/org.cafe.lapiz.gschema.xml.in:191
 msgid "Header Font for Printing"
 msgstr "Font utilizat la tipărirea antetului"
 
-#: data/org.mate.lapiz.gschema.xml.in:192
+#: data/org.cafe.lapiz.gschema.xml.in:192
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -476,16 +476,16 @@ msgstr ""
 "documentului. Această opțiune are efect doar dacă opțiunea „Tipărește "
 "antetul” este activată."
 
-#: data/org.mate.lapiz.gschema.xml.in:195
+#: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
 msgid "'Sans 8'"
 msgstr "„Fără serife 8”"
 
-#: data/org.mate.lapiz.gschema.xml.in:196
+#: data/org.cafe.lapiz.gschema.xml.in:196
 msgid "Line Number Font for Printing"
 msgstr "Font pentru numerotarea rândurilor la tipărire"
 
-#: data/org.mate.lapiz.gschema.xml.in:197
+#: data/org.cafe.lapiz.gschema.xml.in:197
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -494,16 +494,16 @@ msgstr ""
 " opțiune are efect doar dacă opțiunea „Numerotează rândurile la tipărire” "
 "este diferită de zero."
 
-#: data/org.mate.lapiz.gschema.xml.in:200
+#: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
 msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr "[ „UTF-8”, „ACTUAL”, „ISO-8859-15”, „UTF-16” ]"
 
-#: data/org.mate.lapiz.gschema.xml.in:201
+#: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
 msgstr "Codificări detectate automat"
 
-#: data/org.mate.lapiz.gschema.xml.in:202
+#: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
@@ -513,16 +513,16 @@ msgstr ""
 "fișier. „CURRENT” este codificarea locală actuală. Sunt utilizate doar "
 "codificările recunoscute."
 
-#: data/org.mate.lapiz.gschema.xml.in:205
+#: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
 msgid "[ 'ISO-8859-15' ]"
 msgstr "[ „ISO-8859-15” ]"
 
-#: data/org.mate.lapiz.gschema.xml.in:206
+#: data/org.cafe.lapiz.gschema.xml.in:206
 msgid "Encodings shown in menu"
 msgstr "Codificări afișate în meniu"
 
-#: data/org.mate.lapiz.gschema.xml.in:207
+#: data/org.cafe.lapiz.gschema.xml.in:207
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -531,27 +531,27 @@ msgstr ""
 "selectare Deschide/Salvează fișier. Sunt utilizate numai codificările "
 "recunoscute."
 
-#: data/org.mate.lapiz.gschema.xml.in:211
+#: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
 msgstr "Istoricul intrarilor \"cautare pentru\""
 
-#: data/org.mate.lapiz.gschema.xml.in:212
+#: data/org.cafe.lapiz.gschema.xml.in:212
 msgid "List of entries in \"search for\" textbox."
 msgstr "Listra intrarilor \"cautare pentru\" in textbox "
 
-#: data/org.mate.lapiz.gschema.xml.in:216
+#: data/org.cafe.lapiz.gschema.xml.in:216
 msgid "History for \"replace with\" entries"
 msgstr "istoricul intrarilor pentru \"inlocuieste cu\""
 
-#: data/org.mate.lapiz.gschema.xml.in:217
+#: data/org.cafe.lapiz.gschema.xml.in:217
 msgid "List of entries in \"replace with\" textbox."
 msgstr "Lista intrarilor \"inlocuieste cu\" in textbox "
 
-#: data/org.mate.lapiz.gschema.xml.in:221
+#: data/org.cafe.lapiz.gschema.xml.in:221
 msgid "Active plugins"
 msgstr "Module active"
 
-#: data/org.mate.lapiz.gschema.xml.in:222
+#: data/org.cafe.lapiz.gschema.xml.in:222
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
@@ -559,41 +559,41 @@ msgstr ""
 "Lista modulelor active. Conține „Locația” modulelor active. Pentru a obține "
 "„Locația” unui anumit modul, consultați fișierul de module .lapiz-plugin."
 
-#: data/org.mate.lapiz.gschema.xml.in:226
+#: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:227
+#: data/org.cafe.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:231
+#: data/org.cafe.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:232
+#: data/org.cafe.lapiz.gschema.xml.in:232
 msgid ""
 "Whether lapiz should show not breaking spaces in the editor window: 'show-"
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:236
+#: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:237
+#: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
 "Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
 "spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:241
+#: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:242
+#: data/org.cafe.lapiz.gschema.xml.in:242
 msgid ""
 "Whether lapiz should show spaces in the editor window: 'show-none' no "
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
@@ -2920,11 +2920,11 @@ msgstr "Acces facil la fișiere din panoul lateral"
 msgid "system-file-manager"
 msgstr ""
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Definește locația la primul document"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:7
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:7
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2936,11 +2936,11 @@ msgstr ""
 " fost încă utilizat. (Aceasta se aplică, în general, la deschiderea unui "
 "document din linia de comandă sau cu Caja etc.)"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
 msgstr "Mod filtrare navigator fișiere"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:12
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hidden (filter hidden files), binary "
@@ -2952,11 +2952,11 @@ msgstr ""
 "(filtrează fișierele ascunse), „binary” (filtrează fișierele binare) și "
 "„hidden_and_binary” (filtrează fișierele ascunse și binare)."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
 msgstr "Model filtrare navigator fișiere"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:17
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top"
 " of the filter_mode."
@@ -2964,11 +2964,11 @@ msgstr ""
 "Modelul pentru filtrarea din navigatorul de fișiere. Acest filtru acționează"
 " peste filter_mode."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:24
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
 msgstr "Deschide cu vizualizarea arbore"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:25
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2976,11 +2976,11 @@ msgstr ""
 "Deschide vizualizarea arbore când este încărcat modulul de navigare în "
 "fișiere, în locul vizualizării favoritelor"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:29
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
 msgstr "Dosar rădăcină al navigatorului de fișiere"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:30
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2989,11 +2989,11 @@ msgstr ""
 " modulului de navigare în fișiere când onload/tree_view este definit la "
 "TRUE."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:34
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
 msgstr "Dosar rădăcină virtual al navigatorului de fișiere"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
 "The file browser virtual root directory to use when loading the file browser"
 " plugin when onload/tree_view is TRUE. The virtual root must always be below"
@@ -3004,11 +3004,11 @@ msgstr ""
 "definit la TRUE. Dosarul rădăcină virtual trebuie să fie tot timpul sub "
 "rădăcina actuală."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:39
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
 msgstr "Activează restaurarea adreselor de la distanță"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:40
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Stabilește activarea restaurării locațiilor de la distanță."
 
@@ -3624,7 +3624,7 @@ msgstr "Î_ncepe de la coloana:"
 msgid "You cannot undo a sort operation"
 msgstr "Nu puteți anula o operație de sortare"
 
-#: plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml.in:11
+#: plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml.in:11
 msgid "Autocheck Type"
 msgstr "Tip verificare automată"
 
@@ -5633,19 +5633,19 @@ msgstr "Simbol infinit"
 
 #: plugins/taglist/Latex.tags.xml.in:284
 msgid "Symbol mathspace ,"
-msgstr "Simbol spațiu matematic ,"
+msgstr "Simbol spațiu cafematic ,"
 
 #: plugins/taglist/Latex.tags.xml.in:288
 msgid "Symbol mathspace ."
-msgstr "Simbol spațiu matematic ."
+msgstr "Simbol spațiu cafematic ."
 
 #: plugins/taglist/Latex.tags.xml.in:292
 msgid "Symbol mathspace _"
-msgstr "Simbol spațiu matematic _"
+msgstr "Simbol spațiu cafematic _"
 
 #: plugins/taglist/Latex.tags.xml.in:296
 msgid "Symbol mathspace __"
-msgstr "Simbol spațiu matematic __"
+msgstr "Simbol spațiu cafematic __"
 
 #: plugins/taglist/Latex.tags.xml.in:300
 msgid "Symbol simeq"
@@ -6468,15 +6468,15 @@ msgstr ""
 msgid "wizardpage"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:12
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:12
 msgid "Prompt type"
 msgstr "Mesaj de înștiințare"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:16
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:16
 msgid "Selected format"
 msgstr "Format selectat"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:20
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:20
 msgid "Custom format"
 msgstr "Format personalizat"
 
@@ -6490,7 +6490,7 @@ msgstr "Inserează data și ora actuală la poziția cursorului"
 
 #: plugins/time/lapiz-time-plugin.c:578
 msgid "Available formats"
-msgstr "Formate disponibile"
+msgstr "Forcafe disponibile"
 
 #: plugins/time/time.plugin.desktop.in:5
 msgid "Insert Date/Time"

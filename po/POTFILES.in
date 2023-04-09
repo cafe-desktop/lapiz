@@ -1,6 +1,6 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/org.mate.lapiz.gschema.xml.in
+data/org.cafe.lapiz.gschema.xml.in
 data/lapiz.appdata.xml.in
 data/lapiz.desktop.in.in
 lapiz/dialogs/lapiz-close-confirmation-dialog.c
@@ -63,7 +63,7 @@ plugins/externaltools/data/run-command.desktop.in
 plugins/externaltools/data/search-recursive.desktop.in
 plugins/externaltools/data/switch-c.desktop.in
 plugins/filebrowser/filebrowser.plugin.desktop.in
-plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in
+plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in
 plugins/filebrowser/lapiz-file-bookmarks-store.c
 plugins/filebrowser/lapiz-file-browser-plugin.c
 plugins/filebrowser/lapiz-file-browser-store.c
@@ -88,7 +88,7 @@ plugins/snippets/snippets/Placeholder.py
 plugins/sort/lapiz-sort-plugin.c
 plugins/sort/sort.plugin.desktop.in
 plugins/sort/sort.ui
-plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml.in
+plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml.in
 plugins/spell/lapiz-automatic-spell-checker.c
 plugins/spell/lapiz-spell-checker.c
 plugins/spell/lapiz-spell-checker-dialog.c
@@ -107,7 +107,7 @@ plugins/taglist/Latex.tags.xml.in
 plugins/taglist/taglist.plugin.desktop.in
 plugins/taglist/XSLT.tags.xml.in
 plugins/taglist/XUL.tags.xml.in
-plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in
+plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in
 plugins/time/lapiz-time-plugin.c
 plugins/time/time.plugin.desktop.in
 plugins/trailsave/trailsave.plugin.desktop.in

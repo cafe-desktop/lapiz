@@ -31,13 +31,13 @@ __all__ = ('PythonConsoleConfig', 'PythonConsoleConfigWidget')
 
 class PythonConsoleConfig(object):
 
-    CONSOLE_KEY_BASE = 'org.mate.lapiz.plugins.pythonconsole'
+    CONSOLE_KEY_BASE = 'org.cafe.lapiz.plugins.pythonconsole'
     CONSOLE_KEY_COMMAND_COLOR = 'command-color'
     CONSOLE_KEY_ERROR_COLOR = 'error-color'
     CONSOLE_KEY_USE_SYSTEM_FONT = 'use-system-font'
     CONSOLE_KEY_FONT = 'font'
 
-    INTERFACE_KEY_BASE = 'org.mate.interface'
+    INTERFACE_KEY_BASE = 'org.cafe.interface'
     INTERFACE_KEY_MONOSPACE_FONT_NAME = 'monospace-font-name'
 
     color_command = property(
@@ -82,7 +82,7 @@ class PythonConsoleConfig(object):
 
 class PythonConsoleConfigWidget(object):
 
-    CONSOLE_KEY_BASE = 'org.mate.lapiz.plugins.pythonconsole'
+    CONSOLE_KEY_BASE = 'org.cafe.lapiz.plugins.pythonconsole'
     CONSOLE_KEY_COMMAND_COLOR = 'command-color'
     CONSOLE_KEY_ERROR_COLOR = 'error-color'
 

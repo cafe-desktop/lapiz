@@ -10,7 +10,7 @@ appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 $(appdata_DATA): $(appdata_in_files)
 	$(AM_V_GEN) GETTEXTDATADIRS=$(top_srcdir) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
-gsettings_SCHEMAS = org.mate.lapiz.gschema.xml
+gsettings_SCHEMAS = org.cafe.lapiz.gschema.xml
 @GSETTINGS_RULES@
 
 man_MANS = lapiz.1

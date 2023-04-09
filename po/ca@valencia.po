@@ -12,22 +12,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/lapiz/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
 "POT-Creation-Date: 2020-01-13 17:23+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Pilar Embid <embid.mar@gmail.com>, 2020\n"
-"Language-Team: Catalan (Valencian) (https://www.transifex.com/mate/teams/13566/ca@valencia/)\n"
+"Language-Team: Catalan (Valencian) (https://www.transifex.com/cafe/teams/13566/ca@valencia/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca@valencia\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.mate.lapiz.gschema.xml.in:11
+#: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
 msgstr "Utilitza el tipus de lletra predeterminat"
 
-#: data/org.mate.lapiz.gschema.xml.in:12
+#: data/org.cafe.lapiz.gschema.xml.in:12
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to lapiz. If this option is turned off, then the "
@@ -39,16 +39,16 @@ msgstr ""
 "s'inhabilita, s'utilitzarà el tipus de lletra especificat a l'opció «Tipus "
 "de lletra de l'editor» en comptes del tipus de lletra del sistema."
 
-#: data/org.mate.lapiz.gschema.xml.in:15
+#: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.mate.lapiz.gschema.xml.in:16
+#: data/org.cafe.lapiz.gschema.xml.in:16
 msgid "Editor Font"
 msgstr "Tipus de lletra de l'editor"
 
-#: data/org.mate.lapiz.gschema.xml.in:17
+#: data/org.cafe.lapiz.gschema.xml.in:17
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -57,11 +57,11 @@ msgstr ""
 "afectarà si l'opció «Utilitza el tipus de lletra predeterminat» està "
 "inhabilitada."
 
-#: data/org.mate.lapiz.gschema.xml.in:21
+#: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
 msgstr "Canvia de pestanya amb [ctrl] + [tab]"
 
-#: data/org.mate.lapiz.gschema.xml.in:22
+#: data/org.cafe.lapiz.gschema.xml.in:22
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
@@ -69,29 +69,29 @@ msgstr ""
 "Si s'estableix a cert, s'habilita el canvi de pestanya amb [ctrl + tab] i "
 "[ctrl + maj + tab]."
 
-#: data/org.mate.lapiz.gschema.xml.in:26
+#: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:27
+#: data/org.cafe.lapiz.gschema.xml.in:27
 msgid "If false, it hides the first tab if there is only one tab."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:31
+#: data/org.cafe.lapiz.gschema.xml.in:31
 msgid "Style Scheme"
 msgstr "Esquema d'estil"
 
-#: data/org.mate.lapiz.gschema.xml.in:32
+#: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "L'identificador de l'esquema d'estil del GtkSourceView que s'utilitza per a "
 "acolorir el text."
 
-#: data/org.mate.lapiz.gschema.xml.in:36
+#: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
 msgstr "Crea còpies de seguretat"
 
-#: data/org.mate.lapiz.gschema.xml.in:37
+#: data/org.cafe.lapiz.gschema.xml.in:37
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -100,11 +100,11 @@ msgstr ""
 "Podeu establir l'extensió del fitxer de còpia de seguretat a l'opció "
 "«Extensió de les còpies de seguretat»."
 
-#: data/org.mate.lapiz.gschema.xml.in:41
+#: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
 msgstr "Guarda automàticament"
 
-#: data/org.mate.lapiz.gschema.xml.in:42
+#: data/org.cafe.lapiz.gschema.xml.in:42
 msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -114,11 +114,11 @@ msgstr ""
 " interval de temps. Podeu establir l'interval de temps a l'opció «Interval "
 "per a guardar automàticament»."
 
-#: data/org.mate.lapiz.gschema.xml.in:46
+#: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
 msgstr "Interval per a guardar automàticament"
 
-#: data/org.mate.lapiz.gschema.xml.in:47
+#: data/org.cafe.lapiz.gschema.xml.in:47
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -127,20 +127,20 @@ msgstr ""
 "els fitxers modificats. Només afectarà si l'opció «Guarda automàticament» "
 "està habilitada."
 
-#: data/org.mate.lapiz.gschema.xml.in:51
+#: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
 msgstr "Mostra la confirmació de l'acció de guardar"
 
-#: data/org.mate.lapiz.gschema.xml.in:52
+#: data/org.cafe.lapiz.gschema.xml.in:52
 msgid "Show save confirmation if the files have changes."
 msgstr ""
 "Mostra la confirmació de l'acció de guardar si els fitxers tenen canvis."
 
-#: data/org.mate.lapiz.gschema.xml.in:56
+#: data/org.cafe.lapiz.gschema.xml.in:56
 msgid "Writable VFS schemes"
 msgstr "Esquemes VFS d'escriptura"
 
-#: data/org.mate.lapiz.gschema.xml.in:57
+#: data/org.cafe.lapiz.gschema.xml.in:57
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
@@ -148,11 +148,11 @@ msgstr ""
 "Llista d'esquemes VFS que el Lapiz permet en mode d'escriptura. Per defecte,"
 " es permet l'escriptura de l'esquema «file»."
 
-#: data/org.mate.lapiz.gschema.xml.in:61
+#: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
 msgstr "Nombre màxim d'accions per desfer"
 
-#: data/org.mate.lapiz.gschema.xml.in:62
+#: data/org.cafe.lapiz.gschema.xml.in:62
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -160,11 +160,11 @@ msgstr ""
 "El nombre màxim d'accions que el Lapiz podrà desfer o refer. Utilitzeu «-1» "
 "per a un nombre il·limitat d'accions."
 
-#: data/org.mate.lapiz.gschema.xml.in:66
+#: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
 msgstr "Mode d'ajustament de línia"
 
-#: data/org.mate.lapiz.gschema.xml.in:67
+#: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
 "for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -179,11 +179,11 @@ msgstr ""
 "minúscules, així doncs assegureu-vos que apareixen exactament com es "
 "mencionen ací."
 
-#: data/org.mate.lapiz.gschema.xml.in:71
+#: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
 msgstr "Mida de la pestanya"
 
-#: data/org.mate.lapiz.gschema.xml.in:72
+#: data/org.cafe.lapiz.gschema.xml.in:72
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
@@ -191,69 +191,69 @@ msgstr ""
 "Especifica el nombre d'espais que s'han de mostrar en comptes de caràcters "
 "de tabulació."
 
-#: data/org.mate.lapiz.gschema.xml.in:76
+#: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
 msgstr "Insereix espais"
 
-#: data/org.mate.lapiz.gschema.xml.in:77
+#: data/org.cafe.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
 msgstr "Si el Lapiz ha d'inserir espais en comptes de tabuladors."
 
-#: data/org.mate.lapiz.gschema.xml.in:81
+#: data/org.cafe.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
 msgstr "Sagna automàticament"
 
-#: data/org.mate.lapiz.gschema.xml.in:82
+#: data/org.cafe.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
 msgstr "Si el Lapiz ha d'habilitar el sagnat automàtic."
 
-#: data/org.mate.lapiz.gschema.xml.in:86
+#: data/org.cafe.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
 msgstr "Mostra els números de línia"
 
-#: data/org.mate.lapiz.gschema.xml.in:87
+#: data/org.cafe.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr "Si el Lapiz ha de mostrar números de línia en l'àrea d'edició."
 
-#: data/org.mate.lapiz.gschema.xml.in:91
+#: data/org.cafe.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
 msgstr "Ressalta la línia actual"
 
-#: data/org.mate.lapiz.gschema.xml.in:92
+#: data/org.cafe.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
 msgstr "Si el Lapiz ha de ressaltar la línia actual."
 
-#: data/org.mate.lapiz.gschema.xml.in:96
+#: data/org.cafe.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
 msgstr "Ressalta el claudàtor concordant"
 
-#: data/org.mate.lapiz.gschema.xml.in:97
+#: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
 "Si el Lapiz ha de ressaltar el claudàtor que es correspon amb el "
 "seleccionat."
 
-#: data/org.mate.lapiz.gschema.xml.in:101
+#: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
 msgstr "Mostra el marge dret"
 
-#: data/org.mate.lapiz.gschema.xml.in:102
+#: data/org.cafe.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
 msgstr "Si el Lapiz ha de mostrar el marge dret en l'àrea d'edició."
 
-#: data/org.mate.lapiz.gschema.xml.in:106
+#: data/org.cafe.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
 msgstr "Posició del marge dret"
 
-#: data/org.mate.lapiz.gschema.xml.in:107
+#: data/org.cafe.lapiz.gschema.xml.in:107
 msgid "Specifies the position of the right margin."
 msgstr "Especifica la posició del marge dret."
 
-#: data/org.mate.lapiz.gschema.xml.in:111
+#: data/org.cafe.lapiz.gschema.xml.in:111
 msgid "Smart Home End"
 msgstr "Tecles d'inici i final intel·ligents"
 
-#: data/org.mate.lapiz.gschema.xml.in:112
+#: data/org.cafe.lapiz.gschema.xml.in:112
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
@@ -273,11 +273,11 @@ msgstr ""
 "per a moure el cursor sempre al principi o al final del text en lloc de "
 "moure'l al principi o al final de la línia."
 
-#: data/org.mate.lapiz.gschema.xml.in:116
+#: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
 msgstr "Restableix la posició prèvia del cursor"
 
-#: data/org.mate.lapiz.gschema.xml.in:117
+#: data/org.cafe.lapiz.gschema.xml.in:117
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
@@ -285,36 +285,36 @@ msgstr ""
 "Si el Lapiz ha de restablir la posició prèvia del cursor quan es carregue un"
 " fitxer."
 
-#: data/org.mate.lapiz.gschema.xml.in:121
+#: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
 msgstr "Habilita el ressaltat de la cerca"
 
-#: data/org.mate.lapiz.gschema.xml.in:122
+#: data/org.cafe.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr "Si el Lapiz ha de ressaltar totes les ocurrències del text cercat."
 
-#: data/org.mate.lapiz.gschema.xml.in:126
+#: data/org.cafe.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
 msgstr "Habilita el ressaltat de la sintaxi"
 
-#: data/org.mate.lapiz.gschema.xml.in:127
+#: data/org.cafe.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
 msgstr "Si el Lapiz ha d'habilitar el ressaltat de la sintaxi."
 
-#: data/org.mate.lapiz.gschema.xml.in:131
+#: data/org.cafe.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
 msgstr "La barra d'eines és visible"
 
-#: data/org.mate.lapiz.gschema.xml.in:132
+#: data/org.cafe.lapiz.gschema.xml.in:132
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Si la barra d'eines ha de ser visible en les finestres d'edició."
 
-#: data/org.mate.lapiz.gschema.xml.in:136
+#: data/org.cafe.lapiz.gschema.xml.in:136
 msgid "Toolbar Buttons Style"
 msgstr "Estil dels botons de la barra d'eines"
 
-#: data/org.mate.lapiz.gschema.xml.in:137
+#: data/org.cafe.lapiz.gschema.xml.in:137
 msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
@@ -332,53 +332,53 @@ msgstr ""
 "minúscules, així doncs assegureu-vos que apareixen exactament com es "
 "mencionen ací."
 
-#: data/org.mate.lapiz.gschema.xml.in:141
+#: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
 msgstr "La barra d'estat és visible"
 
-#: data/org.mate.lapiz.gschema.xml.in:142
+#: data/org.cafe.lapiz.gschema.xml.in:142
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Si la barra d'estat a la part inferior de les finestres d'edició ha de ser "
 "visible."
 
-#: data/org.mate.lapiz.gschema.xml.in:146
+#: data/org.cafe.lapiz.gschema.xml.in:146
 msgid "Side Pane is Visible"
 msgstr "El quadre del costat és visible"
 
-#: data/org.mate.lapiz.gschema.xml.in:147
+#: data/org.cafe.lapiz.gschema.xml.in:147
 msgid ""
 "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "Si ha de ser visible el quadre lateral de l'esquerra de la finestra "
 "d'edició."
 
-#: data/org.mate.lapiz.gschema.xml.in:151
+#: data/org.cafe.lapiz.gschema.xml.in:151
 msgid "Show tabs with side pane"
 msgstr "Mostra les pestanyes amb el quadre lateral"
 
-#: data/org.mate.lapiz.gschema.xml.in:152
+#: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
 "Si és fals, el Lapiz no mostra les pestanyes a la llibreta amb el quadre "
 "lateral actiu."
 
-#: data/org.mate.lapiz.gschema.xml.in:156
+#: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
 msgstr "El quadre inferior és visible"
 
-#: data/org.mate.lapiz.gschema.xml.in:157
+#: data/org.cafe.lapiz.gschema.xml.in:157
 msgid ""
 "Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr "Si el quadre inferior de la finestra d'edició ha de ser visible."
 
-#: data/org.mate.lapiz.gschema.xml.in:161
+#: data/org.cafe.lapiz.gschema.xml.in:161
 msgid "Maximum Recent Files"
 msgstr "Nombre màxim de fitxers recents"
 
-#: data/org.mate.lapiz.gschema.xml.in:162
+#: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed"
 " in the \"Recent Files\" submenu."
@@ -386,32 +386,32 @@ msgstr ""
 "Especifica el nombre màxim de fitxers recentment oberts que es mostraran en "
 "el submenú «Fitxers recents»."
 
-#: data/org.mate.lapiz.gschema.xml.in:166
+#: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "Imprimeix el ressaltat de sintaxi"
 
-#: data/org.mate.lapiz.gschema.xml.in:167
+#: data/org.cafe.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "Si el Lapiz ha d'imprimir el ressaltat de sintaxi quan s'imprimeixen els "
 "documents."
 
-#: data/org.mate.lapiz.gschema.xml.in:171
+#: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "Imprimeix la capçalera"
 
-#: data/org.mate.lapiz.gschema.xml.in:172
+#: data/org.cafe.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Si el Lapiz ha d'incloure una capçalera del document en imprimir documents."
 
-#: data/org.mate.lapiz.gschema.xml.in:176
+#: data/org.cafe.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
 msgstr "Mode d'ajust de línia en la impressió"
 
-#: data/org.mate.lapiz.gschema.xml.in:177
+#: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
 "wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -425,11 +425,11 @@ msgstr ""
 "individuals. Recordeu que els valors són sensibles a majúscules i "
 "minúscules, assegureu-vos que apareixen exactament com es mencionen ací."
 
-#: data/org.mate.lapiz.gschema.xml.in:181
+#: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
 msgstr "Imprimeix els números de línia"
 
-#: data/org.mate.lapiz.gschema.xml.in:182
+#: data/org.cafe.lapiz.gschema.xml.in:182
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
@@ -439,32 +439,32 @@ msgstr ""
 "document. Altrament, el Lapiz imprimirà els números de línia cada tants "
 "números de línia."
 
-#: data/org.mate.lapiz.gschema.xml.in:185
+#: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.mate.lapiz.gschema.xml.in:186
+#: data/org.cafe.lapiz.gschema.xml.in:186
 msgid "Body Font for Printing"
 msgstr "Tipus de lletra del cos per a la impressió"
 
-#: data/org.mate.lapiz.gschema.xml.in:187
+#: data/org.cafe.lapiz.gschema.xml.in:187
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Especifica el tipus de lletra que s'utilitza en el cos d'un document quan "
 "s'imprimeixen els documents."
 
-#: data/org.mate.lapiz.gschema.xml.in:190
+#: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: data/org.mate.lapiz.gschema.xml.in:191
+#: data/org.cafe.lapiz.gschema.xml.in:191
 msgid "Header Font for Printing"
 msgstr "Tipus de lletra de les capçaleres per a la impressió"
 
-#: data/org.mate.lapiz.gschema.xml.in:192
+#: data/org.cafe.lapiz.gschema.xml.in:192
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -473,16 +473,16 @@ msgstr ""
 "imprimir un document. Només afectarà si l'opció «Imprimeix capçaleres» està "
 "habilitada."
 
-#: data/org.mate.lapiz.gschema.xml.in:195
+#: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: data/org.mate.lapiz.gschema.xml.in:196
+#: data/org.cafe.lapiz.gschema.xml.in:196
 msgid "Line Number Font for Printing"
 msgstr "Tipus de lletra dels números de línia per a la impressió"
 
-#: data/org.mate.lapiz.gschema.xml.in:197
+#: data/org.cafe.lapiz.gschema.xml.in:197
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -490,16 +490,16 @@ msgstr ""
 "Especifica el tipus de lletra dels números de línia en la impressió. Només "
 "afectarà si l'opció «Imprimeix els números de línia» no equival a zero."
 
-#: data/org.mate.lapiz.gschema.xml.in:200
+#: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
 msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 
-#: data/org.mate.lapiz.gschema.xml.in:201
+#: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
 msgstr "Codificacions detectades automàticament"
 
-#: data/org.mate.lapiz.gschema.xml.in:202
+#: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
@@ -510,16 +510,16 @@ msgstr ""
 "codificació de la localització actual. Només s'utilitzen les codificacions "
 "reconegudes."
 
-#: data/org.mate.lapiz.gschema.xml.in:205
+#: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
 msgid "[ 'ISO-8859-15' ]"
 msgstr "[ 'ISO-8859-15' ]"
 
-#: data/org.mate.lapiz.gschema.xml.in:206
+#: data/org.cafe.lapiz.gschema.xml.in:206
 msgid "Encodings shown in menu"
 msgstr "Codificacions mostrades al menú"
 
-#: data/org.mate.lapiz.gschema.xml.in:207
+#: data/org.cafe.lapiz.gschema.xml.in:207
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -528,27 +528,27 @@ msgstr ""
 "caràcters al diàleg obri/guarda el fitxer. Només s'utilitzen codificacions "
 "reconegudes."
 
-#: data/org.mate.lapiz.gschema.xml.in:211
+#: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
 msgstr "Historial de les entrades «cerca per»"
 
-#: data/org.mate.lapiz.gschema.xml.in:212
+#: data/org.cafe.lapiz.gschema.xml.in:212
 msgid "List of entries in \"search for\" textbox."
 msgstr "Llista de les entrades al quadre de text «cerca per»."
 
-#: data/org.mate.lapiz.gschema.xml.in:216
+#: data/org.cafe.lapiz.gschema.xml.in:216
 msgid "History for \"replace with\" entries"
 msgstr "Historial de les entrades «reemplaça per»"
 
-#: data/org.mate.lapiz.gschema.xml.in:217
+#: data/org.cafe.lapiz.gschema.xml.in:217
 msgid "List of entries in \"replace with\" textbox."
 msgstr "Llista de les entrades al quadre de text «reemplaça per»."
 
-#: data/org.mate.lapiz.gschema.xml.in:221
+#: data/org.cafe.lapiz.gschema.xml.in:221
 msgid "Active plugins"
 msgstr "Activa els connectors"
 
-#: data/org.mate.lapiz.gschema.xml.in:222
+#: data/org.cafe.lapiz.gschema.xml.in:222
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
@@ -557,41 +557,41 @@ msgstr ""
 "actius. Vegeu el fitxer .lapiz-plugin per a obtindre el valor «Location» "
 "d'un connector determinat."
 
-#: data/org.mate.lapiz.gschema.xml.in:226
+#: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:227
+#: data/org.cafe.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:231
+#: data/org.cafe.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:232
+#: data/org.cafe.lapiz.gschema.xml.in:232
 msgid ""
 "Whether lapiz should show not breaking spaces in the editor window: 'show-"
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:236
+#: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:237
+#: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
 "Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
 "spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:241
+#: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:242
+#: data/org.cafe.lapiz.gschema.xml.in:242
 msgid ""
 "Whether lapiz should show spaces in the editor window: 'show-none' no "
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
@@ -1856,7 +1856,7 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
-msgstr "Ja existeix un fitxer amb aquest mateix nom, utilitzeu-ne un altre."
+msgstr "Ja existeix un fitxer amb aquest cafeix nom, utilitzeu-ne un altre."
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
@@ -2328,7 +2328,7 @@ msgstr "Cerca el _següent"
 
 #: lapiz/lapiz-ui.h:114
 msgid "Search forwards for the same text"
-msgstr "Cerca el mateix text cap arrere"
+msgstr "Cerca el cafeix text cap arrere"
 
 #: lapiz/lapiz-ui.h:115
 msgid "Find Pre_vious"
@@ -2336,7 +2336,7 @@ msgstr "Cerca l'_anterior"
 
 #: lapiz/lapiz-ui.h:116
 msgid "Search backwards for the same text"
-msgstr "Cerca la mateixa cadena cap arrere"
+msgstr "Cerca la cafeixa cadena cap arrere"
 
 #: lapiz/lapiz-ui.h:117
 msgid "_Replace..."
@@ -2907,11 +2907,11 @@ msgstr "Accés fàcil als fitxers des de la barra lateral"
 msgid "system-file-manager"
 msgstr ""
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Establiu la ubicació del primer document"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:7
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:7
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2923,11 +2923,11 @@ msgstr ""
 "encara. (Generalment s'aplica en obrir un document des de la línia d'ordres "
 "o obrint-lo des del Caja, etc.)"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
 msgstr "Mode del filtre del navegador de fitxers"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:12
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hidden (filter hidden files), binary "
@@ -2939,11 +2939,11 @@ msgstr ""
 "fitxers ocults), binary (es filtren els fitxers binaris) i hidden_and_binary"
 " (es filtren els fitxers ocults i binaris)."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
 msgstr "Patró del filtre del navegador de fitxers"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:17
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top"
 " of the filter_mode."
@@ -2951,11 +2951,11 @@ msgstr ""
 "El patró de filtre amb què es filtrarà el navegador de fitxers. Aquest "
 "filtre funciona per damunt de filter_mode."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:24
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
 msgstr "Obri amb la vista d'arbre"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:25
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2963,11 +2963,11 @@ msgstr ""
 "Obri la vista d'arbre en lloc de la vista d'adreces d'interés quan es "
 "carregue el connector del navegador de fitxers"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:29
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
 msgstr "Directori arrel del navegador de fitxers"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:30
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2975,11 +2975,11 @@ msgstr ""
 "El directori arrel del navegador de fitxers que es farà servir quan es "
 "carregue el connector del navegador de fitxers i onload/tree_view és CERT."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:34
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
 msgstr "Directori arrel virtual del navegador de fitxers"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
 "The file browser virtual root directory to use when loading the file browser"
 " plugin when onload/tree_view is TRUE. The virtual root must always be below"
@@ -2989,11 +2989,11 @@ msgstr ""
 "es carregue el connector del navegador de fitxers i onload/tree_view és "
 "CERT. L'arrel virtual ha de ser sempre per davall de l'arrel actual."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:39
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
 msgstr "Habilita el restabliment d'ubicacions remotes"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:40
 msgid "Sets whether to enable restoring of remote locations."
 msgstr ""
 "Estableix si s'ha d'habilitar el restabliment de les ubicacions remotes."
@@ -3612,7 +3612,7 @@ msgstr "_Comença per la columna:"
 msgid "You cannot undo a sort operation"
 msgstr "No es pot desfer una operació d'ordenació"
 
-#: plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml.in:11
+#: plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml.in:11
 msgid "Autocheck Type"
 msgstr "Tipus de comprovació automàtica"
 
@@ -5621,19 +5621,19 @@ msgstr "Símbol d'infinit"
 
 #: plugins/taglist/Latex.tags.xml.in:284
 msgid "Symbol mathspace ,"
-msgstr "Símbol , en el context matemàtic"
+msgstr "Símbol , en el context cafemàtic"
 
 #: plugins/taglist/Latex.tags.xml.in:288
 msgid "Symbol mathspace ."
-msgstr "Símbol . en el context matemàtiques ."
+msgstr "Símbol . en el context cafemàtiques ."
 
 #: plugins/taglist/Latex.tags.xml.in:292
 msgid "Symbol mathspace _"
-msgstr "Símbol _ en el context matemàtic"
+msgstr "Símbol _ en el context cafemàtic"
 
 #: plugins/taglist/Latex.tags.xml.in:296
 msgid "Symbol mathspace __"
-msgstr "Símbol __ en el context matemàtic"
+msgstr "Símbol __ en el context cafemàtic"
 
 #: plugins/taglist/Latex.tags.xml.in:300
 msgid "Symbol simeq"
@@ -5974,7 +5974,7 @@ msgstr "antecessor"
 
 #: plugins/taglist/XSLT.tags.xml.in:300
 msgid "ancestor-or-self"
-msgstr "antecessor-o-un-mateix"
+msgstr "antecessor-o-un-cafeix"
 
 #: plugins/taglist/XSLT.tags.xml.in:306
 msgid "child"
@@ -5986,7 +5986,7 @@ msgstr "descendent"
 
 #: plugins/taglist/XSLT.tags.xml.in:312
 msgid "descendant-or-self"
-msgstr "descendent-o-un-mateix"
+msgstr "descendent-o-un-cafeix"
 
 #: plugins/taglist/XSLT.tags.xml.in:315
 msgid "following"
@@ -6014,7 +6014,7 @@ msgstr "predecessor-germà"
 
 #: plugins/taglist/XSLT.tags.xml.in:333
 msgid "self"
-msgstr "un mateix"
+msgstr "un cafeix"
 
 #: plugins/taglist/XUL.tags.xml.in:3
 msgid "XUL - Tags"
@@ -6456,15 +6456,15 @@ msgstr ""
 msgid "wizardpage"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:12
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:12
 msgid "Prompt type"
 msgstr "Tipus d'indicador"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:16
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:16
 msgid "Selected format"
 msgstr "Format seleccionat"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:20
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:20
 msgid "Custom format"
 msgstr "Format personalitzat"
 

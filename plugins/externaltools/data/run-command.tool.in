@@ -1,4 +1,4 @@
 #!/bin/sh
 
-#TODO: use "gsettings get org.mate.applications-terminal exec"
+#TODO: use "gsettings get org.cafe.applications-terminal exec"
 exec `zenity --entry --title="Run command - Lapiz" --text="Command to run"`

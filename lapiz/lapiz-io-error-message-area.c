@@ -256,7 +256,7 @@ parse_gio_error (gint          code,
 	case G_IO_ERROR_HOST_NOT_FOUND:
 		/* This case can be hit for user-typed strings like "foo" due to
 		 * the code that guesses web addresses when there's no initial "/".
-		 * But this case is also hit for legitimate web addresses when
+		 * But this case is also hit for legiticafe web addresses when
 		 * the proxy is set up wrong.
 		 */
 		{

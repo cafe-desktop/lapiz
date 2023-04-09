@@ -125,7 +125,7 @@ void _lapiz_cmd_help_about(GtkAction* action, LapizWindow* window)
 		"logo_icon_name", "accessories-text-editor",
 		"translator-credits", _("translator-credits"),
 		"version", VERSION,
-		"website", "http://mate-desktop.org",
+		"website", "http://cafe-desktop.org",
 		NULL);
 
 	g_strfreev (authors);

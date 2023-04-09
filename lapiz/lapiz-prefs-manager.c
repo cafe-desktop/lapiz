@@ -614,7 +614,7 @@ lapiz_prefs_manager_get_max_recents (void)
 
 }
 
-/* GSettings/GSList utility functions from mate-panel */
+/* GSettings/GSList utility functions from cafe-panel */
 
 GSList*
 lapiz_prefs_manager_get_gslist (GSettings *settings, const gchar *key)

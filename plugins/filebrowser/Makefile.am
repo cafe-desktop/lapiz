@@ -64,7 +64,7 @@ lapiz-file-browser-marshal.c: lapiz-file-browser-marshal.list $(GLIB_GENMARSHAL)
 	$(AM_V_GEN) echo "#include \"lapiz-file-browser-marshal.h\"" > $@ && \
 	$(GLIB_GENMARSHAL) $< --body --prefix=lapiz_file_browser_marshal >> $@
 
-filebrowser_gschema_in = org.mate.lapiz.plugins.filebrowser.gschema.xml.in
+filebrowser_gschema_in = org.cafe.lapiz.plugins.filebrowser.gschema.xml.in
 gsettings_SCHEMAS = $(filebrowser_gschema_in:.xml.in=.xml)
 @GSETTINGS_RULES@
 

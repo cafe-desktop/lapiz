@@ -51,7 +51,7 @@
 #define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_1"
 
 /* GSettings keys */
-#define SPELL_SCHEMA		"org.mate.lapiz.plugins.spell"
+#define SPELL_SCHEMA		"org.cafe.lapiz.plugins.spell"
 #define AUTOCHECK_TYPE_KEY	"autocheck-type"
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);

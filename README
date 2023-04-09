@@ -46,11 +46,11 @@ the file 'COPYING' for more information.
 
 The official web site is:
 
-    https://mate-desktop.org/
+    https://cafe-desktop.org/
 
 You can download the latest lapiz tarball from:
 
-    https://pub.mate-desktop.org/releases/
+    https://pub.cafe-desktop.org/releases/
 
 Installation
 ============
@@ -79,7 +79,7 @@ How to report bugs
 
 Bugs should be reported to the MATE bug tracking system:
 
-  https://github.com/mate-desktop/lapiz/issues 
+  https://github.com/cafe-desktop/lapiz/issues 
   
 You will need to create an account for yourself.
 
@@ -89,7 +89,7 @@ In the bug report please include:
 
    - What operating system and version
    - What version of X
-   - What version of the gtk+, glib and mate libraries
+   - What version of the gtk+, glib and cafe libraries
    - For Linux, what version of the C library
 
   And anything else you think is relevant.
@@ -108,7 +108,7 @@ In the bug report please include:
 Patches
 =======
 
-Patches should also be submitted to https://github.com/mate-desktop/lapiz,
+Patches should also be submitted to https://github.com/cafe-desktop/lapiz,
 preferably via pull requests.
 
 

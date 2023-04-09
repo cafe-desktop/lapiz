@@ -1207,7 +1207,7 @@ lapiz_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 	 * FIXME: is still still relevant?
 	 *
 	 * <federico> paolo: and flame whoever tells
-	 * you that file:///mate/test_files/hëllò
+	 * you that file:///cafe/test_files/hëllò
 	 * doesn't work --- that's not a valid URI
 	 *
 	 * <paolo> federico: well, another solution that
@@ -1215,7 +1215,7 @@ lapiz_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 	 * is to check that the string returned by it
 	 * contains only ASCII chars
 	 * <federico> paolo: hmmmm, isn't there
-	 * mate_vfs_is_uri_valid() or something?
+	 * cafe_vfs_is_uri_valid() or something?
 	 * <paolo>: I will use lapiz_utils_is_valid_uri ()
 	 *
 	 */

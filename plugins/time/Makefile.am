@@ -28,7 +28,7 @@ plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
 $(plugin_DATA): $(plugin_in_files)
 	$(AM_V_GEN) $(MSGFMT) --keyword=Name --keyword=Description --desktop --template $< -d $(top_srcdir)/po -o $@
 
-time_gschema_in = org.mate.lapiz.plugins.time.gschema.xml.in
+time_gschema_in = org.cafe.lapiz.plugins.time.gschema.xml.in
 gsettings_SCHEMAS = $(time_gschema_in:.xml.in=.xml)
 @GSETTINGS_RULES@
 

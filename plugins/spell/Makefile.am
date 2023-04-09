@@ -51,7 +51,7 @@ plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
 $(plugin_DATA): $(plugin_in_files)
 	$(AM_V_GEN) $(MSGFMT) --keyword=Name --keyword=Description --desktop --template $< -d $(top_srcdir)/po -o $@
 
-spell_gschema_in = org.mate.lapiz.plugins.spell.gschema.xml.in
+spell_gschema_in = org.cafe.lapiz.plugins.spell.gschema.xml.in
 gsettings_SCHEMAS = $(spell_gschema_in:.xml.in=.xml)
 @GSETTINGS_RULES@
 

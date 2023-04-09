@@ -11,22 +11,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/lapiz/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
 "POT-Creation-Date: 2020-01-13 17:23+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>, 2020\n"
-"Language-Team: Malay (https://www.transifex.com/mate/teams/13566/ms/)\n"
+"Language-Team: Malay (https://www.transifex.com/cafe/teams/13566/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ms\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/org.mate.lapiz.gschema.xml.in:11
+#: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
 msgstr "Guna Fon Lalai"
 
-#: data/org.mate.lapiz.gschema.xml.in:12
+#: data/org.cafe.lapiz.gschema.xml.in:12
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to lapiz. If this option is turned off, then the "
@@ -37,16 +37,16 @@ msgstr ""
 "selain dari fon khusus untuk lapiz. Jika pilihan ini dihidupkan, maka fon "
 "bernama dalam pilihan \"Fon Penyunting\" akan diguna selain dari fon sistem."
 
-#: data/org.mate.lapiz.gschema.xml.in:15
+#: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.mate.lapiz.gschema.xml.in:16
+#: data/org.cafe.lapiz.gschema.xml.in:16
 msgid "Editor Font"
 msgstr "Penyunting Fon"
 
-#: data/org.mate.lapiz.gschema.xml.in:17
+#: data/org.cafe.lapiz.gschema.xml.in:17
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -54,11 +54,11 @@ msgstr ""
 "Fon suai akan digunakan untuk kawasan penyuntingan. Ia hanya berkesan jika "
 "pilihan \"Guna Fon Lalai\" dilumpuhkan."
 
-#: data/org.mate.lapiz.gschema.xml.in:21
+#: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
 msgstr "Tukar tab dengan [ctrl] + [tab]"
 
-#: data/org.mate.lapiz.gschema.xml.in:22
+#: data/org.cafe.lapiz.gschema.xml.in:22
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
@@ -66,27 +66,27 @@ msgstr ""
 "Jika benar, ia membolehkan keupayaan untuk menukar tab menggunakan [ctrl + "
 "tab] dan [ctrl + shift + tab]."
 
-#: data/org.mate.lapiz.gschema.xml.in:26
+#: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
 msgstr "Tunjuk tab pertama jika hanya ada satu tab"
 
-#: data/org.mate.lapiz.gschema.xml.in:27
+#: data/org.cafe.lapiz.gschema.xml.in:27
 msgid "If false, it hides the first tab if there is only one tab."
 msgstr "Jika palsu, ia sembunyikan tab pertama jika hanya ada satu tab."
 
-#: data/org.mate.lapiz.gschema.xml.in:31
+#: data/org.cafe.lapiz.gschema.xml.in:31
 msgid "Style Scheme"
 msgstr "Skema Gaya"
 
-#: data/org.mate.lapiz.gschema.xml.in:32
+#: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "ID bagi Skema Gaya GtkSourceView yang diguna untuk warnakan teks."
 
-#: data/org.mate.lapiz.gschema.xml.in:36
+#: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
 msgstr "Cipta Salinan Sandar"
 
-#: data/org.mate.lapiz.gschema.xml.in:37
+#: data/org.cafe.lapiz.gschema.xml.in:37
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -95,11 +95,11 @@ msgstr ""
 " boleh tetapkan sambungan fail sandar dengan pilihan \"Sambungan Salinan "
 "Sandar\"."
 
-#: data/org.mate.lapiz.gschema.xml.in:41
+#: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
 msgstr "Simpan-sendiri"
 
-#: data/org.mate.lapiz.gschema.xml.in:42
+#: data/org.cafe.lapiz.gschema.xml.in:42
 msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -108,11 +108,11 @@ msgstr ""
 "Sama ada lapiz patut simpan fail diubahsuai secara automatik selepas sela "
 "masa. Anda boleh tetapkan sela masa dengan pilihan \"Sela Simpan-sendiri\"."
 
-#: data/org.mate.lapiz.gschema.xml.in:46
+#: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
 msgstr "Sela Simpan-sendiri"
 
-#: data/org.mate.lapiz.gschema.xml.in:47
+#: data/org.cafe.lapiz.gschema.xml.in:47
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -120,19 +120,19 @@ msgstr ""
 "Bilangan minit selepas lapiz simpan fail diubahsuai secara automatik. Ia "
 "hanya berkesan jika pilihan \"Simpan-sendiri\" dihidupkan."
 
-#: data/org.mate.lapiz.gschema.xml.in:51
+#: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
 msgstr "Tunjuk pengesahan simpan"
 
-#: data/org.mate.lapiz.gschema.xml.in:52
+#: data/org.cafe.lapiz.gschema.xml.in:52
 msgid "Show save confirmation if the files have changes."
 msgstr "Tunjuk pengesahan simpan jika fail telah berubah."
 
-#: data/org.mate.lapiz.gschema.xml.in:56
+#: data/org.cafe.lapiz.gschema.xml.in:56
 msgid "Writable VFS schemes"
 msgstr "Skema VFS boleh tulis"
 
-#: data/org.mate.lapiz.gschema.xml.in:57
+#: data/org.cafe.lapiz.gschema.xml.in:57
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
@@ -140,11 +140,11 @@ msgstr ""
 "Senarai skema VFS plum yang disokong dalam mod tulis. Skema 'fail' boleh "
 "ditulis secara lalai."
 
-#: data/org.mate.lapiz.gschema.xml.in:61
+#: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
 msgstr "Bilangan Maksimum Tindakan Buat Asal"
 
-#: data/org.mate.lapiz.gschema.xml.in:62
+#: data/org.cafe.lapiz.gschema.xml.in:62
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -152,11 +152,11 @@ msgstr ""
 "Bilangan maksimum tindakan yang mana lapiz boleh buat asal atau buat semula."
 " Guna \"-1\" untuk bilangan tindakan tanpa had."
 
-#: data/org.mate.lapiz.gschema.xml.in:66
+#: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
 msgstr "Mod Pelilitan Baris"
 
-#: data/org.mate.lapiz.gschema.xml.in:67
+#: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
 "for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -170,77 +170,77 @@ msgstr ""
 "sempadan aksara individu. perhatian nilai adalah sensitif-kata, jadi "
 "pastikan ia muncul sepertimana dinyatakan disini."
 
-#: data/org.mate.lapiz.gschema.xml.in:71
+#: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
 msgstr "Saiz Tab"
 
-#: data/org.mate.lapiz.gschema.xml.in:72
+#: data/org.cafe.lapiz.gschema.xml.in:72
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Nyatakan bilangan jarak yang patut dipaparkan selain aksara Tab."
 
-#: data/org.mate.lapiz.gschema.xml.in:76
+#: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
 msgstr "Sisip jarak"
 
-#: data/org.mate.lapiz.gschema.xml.in:77
+#: data/org.cafe.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
 msgstr "Sama ada lapiz patut sisipkan jarak selain dari tab."
 
-#: data/org.mate.lapiz.gschema.xml.in:81
+#: data/org.cafe.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
 msgstr "Inden automatik"
 
-#: data/org.mate.lapiz.gschema.xml.in:82
+#: data/org.cafe.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
 msgstr "Sama ada lapiz patut benarkan identasi berautomatik."
 
-#: data/org.mate.lapiz.gschema.xml.in:86
+#: data/org.cafe.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
 msgstr "Papar Nombor Baris"
 
-#: data/org.mate.lapiz.gschema.xml.in:87
+#: data/org.cafe.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr "Sama ada lapiz patut papar bilangan baris pada kawasan penyuntingan."
 
-#: data/org.mate.lapiz.gschema.xml.in:91
+#: data/org.cafe.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
 msgstr "Sorot Baris Semasa"
 
-#: data/org.mate.lapiz.gschema.xml.in:92
+#: data/org.cafe.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
 msgstr "Sama ada lapiz patut sorot baris semasa."
 
-#: data/org.mate.lapiz.gschema.xml.in:96
+#: data/org.cafe.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
 msgstr "Sorot Kurungan Sepadan"
 
-#: data/org.mate.lapiz.gschema.xml.in:97
+#: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr "Sama ada lapiz patut sorot kurungan sepadan dengan yang dipilih."
 
-#: data/org.mate.lapiz.gschema.xml.in:101
+#: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
 msgstr "Papar Margin Kanan"
 
-#: data/org.mate.lapiz.gschema.xml.in:102
+#: data/org.cafe.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
 msgstr "Sama ada lapiz patut papar margin kanan pada kawasan penyuntingan."
 
-#: data/org.mate.lapiz.gschema.xml.in:106
+#: data/org.cafe.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
 msgstr "Kedudukan Margin Kanan"
 
-#: data/org.mate.lapiz.gschema.xml.in:107
+#: data/org.cafe.lapiz.gschema.xml.in:107
 msgid "Specifies the position of the right margin."
 msgstr "Nyatakan kedudukan margin kanan"
 
-#: data/org.mate.lapiz.gschema.xml.in:111
+#: data/org.cafe.lapiz.gschema.xml.in:111
 msgid "Smart Home End"
 msgstr "Home End Pintar"
 
-#: data/org.mate.lapiz.gschema.xml.in:112
+#: data/org.cafe.lapiz.gschema.xml.in:112
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
@@ -258,11 +258,11 @@ msgstr ""
 "mula/hujung baris dan \"ALWAYS\" untuk bergerak pada mula/hujung teks selain"
 " dari mula/hujung baris."
 
-#: data/org.mate.lapiz.gschema.xml.in:116
+#: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
 msgstr "Pulih Kedudukan Kursor Terdahulu"
 
-#: data/org.mate.lapiz.gschema.xml.in:117
+#: data/org.cafe.lapiz.gschema.xml.in:117
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
@@ -270,36 +270,36 @@ msgstr ""
 "Sama ada lapiz patut pulihkan kedudukan kursor terdahulu bila fail "
 "dimuatkan."
 
-#: data/org.mate.lapiz.gschema.xml.in:121
+#: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
 msgstr "Benarkan Penyorotan Gelintar"
 
-#: data/org.mate.lapiz.gschema.xml.in:122
+#: data/org.cafe.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr "Sama ada lapiz patut sorot semua kemunculan teks digelintar."
 
-#: data/org.mate.lapiz.gschema.xml.in:126
+#: data/org.cafe.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
 msgstr "Benarkan Penyorotan Sintaks"
 
-#: data/org.mate.lapiz.gschema.xml.in:127
+#: data/org.cafe.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
 msgstr "Sama ada lapiz patut benarkan penyorotan sintaks."
 
-#: data/org.mate.lapiz.gschema.xml.in:131
+#: data/org.cafe.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
 msgstr "Palang Alat adalah Tampak"
 
-#: data/org.mate.lapiz.gschema.xml.in:132
+#: data/org.cafe.lapiz.gschema.xml.in:132
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Sama ada palang alat patut kelihatan pada tetingkap penyuntingan."
 
-#: data/org.mate.lapiz.gschema.xml.in:136
+#: data/org.cafe.lapiz.gschema.xml.in:136
 msgid "Toolbar Buttons Style"
 msgstr "Gaya Butang Palang Alat"
 
-#: data/org.mate.lapiz.gschema.xml.in:137
+#: data/org.cafe.lapiz.gschema.xml.in:137
 msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
@@ -316,52 +316,52 @@ msgstr ""
 "Perhatian nilai adalah sensitif-kata, jadi pastikan ia muncul sepertimana "
 "yang dinyatakan disini."
 
-#: data/org.mate.lapiz.gschema.xml.in:141
+#: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
 msgstr "Palang Status adalah Tampak"
 
-#: data/org.mate.lapiz.gschema.xml.in:142
+#: data/org.cafe.lapiz.gschema.xml.in:142
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Sama ada palang status dibahagian bawah tetingkap penyuntingan patut tampak."
 
-#: data/org.mate.lapiz.gschema.xml.in:146
+#: data/org.cafe.lapiz.gschema.xml.in:146
 msgid "Side Pane is Visible"
 msgstr "Anak Tetingkap Sisi Kelihatan"
 
-#: data/org.mate.lapiz.gschema.xml.in:147
+#: data/org.cafe.lapiz.gschema.xml.in:147
 msgid ""
 "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "Sama ada anak tetingkap sisi pada kiri tetingkap penyuntingan patut tampak."
 
-#: data/org.mate.lapiz.gschema.xml.in:151
+#: data/org.cafe.lapiz.gschema.xml.in:151
 msgid "Show tabs with side pane"
 msgstr "Tunjuk tab dengan anak tetingkap sisi"
 
-#: data/org.mate.lapiz.gschema.xml.in:152
+#: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
 "Jika palsu, lapiz tidak menunjukkan tab di dalam buku nota dengan anak "
 "tetingkap sisi aktif."
 
-#: data/org.mate.lapiz.gschema.xml.in:156
+#: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
 msgstr "Panel Bawah Kelihatan"
 
-#: data/org.mate.lapiz.gschema.xml.in:157
+#: data/org.cafe.lapiz.gschema.xml.in:157
 msgid ""
 "Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr ""
 "Sama ada panel bawah dibahagian bawah tetingkap penyuntingan patut tampak."
 
-#: data/org.mate.lapiz.gschema.xml.in:161
+#: data/org.cafe.lapiz.gschema.xml.in:161
 msgid "Maximum Recent Files"
 msgstr "Fail Baru-baru Ini Maksimum"
 
-#: data/org.mate.lapiz.gschema.xml.in:162
+#: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed"
 " in the \"Recent Files\" submenu."
@@ -369,30 +369,30 @@ msgstr ""
 "Nyatakan bilangan maksimum fail dibuka baru-baru ini yang dipaparkan pada "
 "sub menu \"Fail Baru-baru Ini\"."
 
-#: data/org.mate.lapiz.gschema.xml.in:166
+#: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "Cetak Penyorotan Sintaks"
 
-#: data/org.mate.lapiz.gschema.xml.in:167
+#: data/org.cafe.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "Sama ada lapiz patut mencetak penyorotan teks bila mencetak dokumen."
 
-#: data/org.mate.lapiz.gschema.xml.in:171
+#: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "Cetak Pengepala"
 
-#: data/org.mate.lapiz.gschema.xml.in:172
+#: data/org.cafe.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Sama ada lapiz patut sertakan pengepala dokumen bila mencetak dokumen."
 
-#: data/org.mate.lapiz.gschema.xml.in:176
+#: data/org.cafe.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
 msgstr "Mod Pelilitan Baris Cetakan"
 
-#: data/org.mate.lapiz.gschema.xml.in:177
+#: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
 "wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -406,11 +406,11 @@ msgstr ""
 "aksara individu. perhatian nilai adalah sensitif-kata, jadi pastikan ia "
 "muncul sepertimana dinyatakan disini."
 
-#: data/org.mate.lapiz.gschema.xml.in:181
+#: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
 msgstr "Cetak Nombor Baris"
 
-#: data/org.mate.lapiz.gschema.xml.in:182
+#: data/org.cafe.lapiz.gschema.xml.in:182
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
@@ -420,30 +420,30 @@ msgstr ""
 "dokumen. Jika tidak, lapiz akan cetak nombor baris setiap nombor baris "
 "tersebut."
 
-#: data/org.mate.lapiz.gschema.xml.in:185
+#: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.mate.lapiz.gschema.xml.in:186
+#: data/org.cafe.lapiz.gschema.xml.in:186
 msgid "Body Font for Printing"
 msgstr "Fon Badan untuk Cetakan"
 
-#: data/org.mate.lapiz.gschema.xml.in:187
+#: data/org.cafe.lapiz.gschema.xml.in:187
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "Nyatakan fon digunakan pada badan dokumen bila mencetak dokumen."
 
-#: data/org.mate.lapiz.gschema.xml.in:190
+#: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: data/org.mate.lapiz.gschema.xml.in:191
+#: data/org.cafe.lapiz.gschema.xml.in:191
 msgid "Header Font for Printing"
 msgstr "Fon Pengepala untuk Cetakan"
 
-#: data/org.mate.lapiz.gschema.xml.in:192
+#: data/org.cafe.lapiz.gschema.xml.in:192
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -451,16 +451,16 @@ msgstr ""
 "Nyatakan fon digunakan bagi pengepala halaman bila mencetak dokumen. Ia "
 "hanya berkesan jika pilihan \"Cetak Pengepala\" dihidupkan."
 
-#: data/org.mate.lapiz.gschema.xml.in:195
+#: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: data/org.mate.lapiz.gschema.xml.in:196
+#: data/org.cafe.lapiz.gschema.xml.in:196
 msgid "Line Number Font for Printing"
 msgstr "Fon Bilangan Baris bagi Cetakan"
 
-#: data/org.mate.lapiz.gschema.xml.in:197
+#: data/org.cafe.lapiz.gschema.xml.in:197
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -468,16 +468,16 @@ msgstr ""
 "Nyatakan fon digunakan bagi nombor baris bila mencetak. Ia hanya berkesan "
 "jika pilihan \"Cetak Nombor Baris\" adalah bukan-sifar."
 
-#: data/org.mate.lapiz.gschema.xml.in:200
+#: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
 msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 
-#: data/org.mate.lapiz.gschema.xml.in:201
+#: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
 msgstr "Pengekodan Dikesan Automatik"
 
-#: data/org.mate.lapiz.gschema.xml.in:202
+#: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
@@ -487,16 +487,16 @@ msgstr ""
 " bagi pengekodan fail. \"CURRENT\" mewakili pengekodan setempat. Hanya "
 "pengekodan yang dikenali akan digunakan."
 
-#: data/org.mate.lapiz.gschema.xml.in:205
+#: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
 msgid "[ 'ISO-8859-15' ]"
 msgstr "[ 'ISO-8859-15' ]"
 
-#: data/org.mate.lapiz.gschema.xml.in:206
+#: data/org.cafe.lapiz.gschema.xml.in:206
 msgid "Encodings shown in menu"
 msgstr "Pengenkodan ditunjukkan dalam menu"
 
-#: data/org.mate.lapiz.gschema.xml.in:207
+#: data/org.cafe.lapiz.gschema.xml.in:207
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -504,27 +504,27 @@ msgstr ""
 "Senarai pengekodan yang ditunjukkan dalam menu Pengekodan Aksara dalam "
 "pemilih fail buka/simpan. Hanya pengekodan yang dikenalpasti digunakan."
 
-#: data/org.mate.lapiz.gschema.xml.in:211
+#: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
 msgstr "Sejarah untuk masukan \"gelintar untuk\""
 
-#: data/org.mate.lapiz.gschema.xml.in:212
+#: data/org.cafe.lapiz.gschema.xml.in:212
 msgid "List of entries in \"search for\" textbox."
 msgstr "Senarai masukan dalam kotak teks \"gelintar untuk\"."
 
-#: data/org.mate.lapiz.gschema.xml.in:216
+#: data/org.cafe.lapiz.gschema.xml.in:216
 msgid "History for \"replace with\" entries"
 msgstr "Sejarah untuk masukan \"ganti dengan\""
 
-#: data/org.mate.lapiz.gschema.xml.in:217
+#: data/org.cafe.lapiz.gschema.xml.in:217
 msgid "List of entries in \"replace with\" textbox."
 msgstr "Senarai masukan dalam kotak teks \"ganti dengan\"."
 
-#: data/org.mate.lapiz.gschema.xml.in:221
+#: data/org.cafe.lapiz.gschema.xml.in:221
 msgid "Active plugins"
 msgstr "Pemalam aktif"
 
-#: data/org.mate.lapiz.gschema.xml.in:222
+#: data/org.cafe.lapiz.gschema.xml.in:222
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
@@ -532,21 +532,21 @@ msgstr ""
 "Senarai pemalam aktif. Ia mengandungi \"Lokasi\" bagi pemalam aktif. Rujuk "
 "fail .lapiz-plugin untuk mendapatkan \"Lokasi\" pemalam yang diberi."
 
-#: data/org.mate.lapiz.gschema.xml.in:226
+#: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
 msgstr "Tunjuk garisan baharu"
 
-#: data/org.mate.lapiz.gschema.xml.in:227
+#: data/org.cafe.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
 msgstr ""
 "Sama ada lapiz patut menunjukkan garisan baharu di dalam tetingkap "
 "penyunting."
 
-#: data/org.mate.lapiz.gschema.xml.in:231
+#: data/org.cafe.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
 msgstr "Tunjuk nbsp"
 
-#: data/org.mate.lapiz.gschema.xml.in:232
+#: data/org.cafe.lapiz.gschema.xml.in:232
 msgid ""
 "Whether lapiz should show not breaking spaces in the editor window: 'show-"
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
@@ -556,11 +556,11 @@ msgstr ""
 "penyunting: 'show-none' jangan tunjuk; 'show-trailing' hanya tunjuk ruang "
 "berjela sahaja; 'show-all' tunjuk semua ruang."
 
-#: data/org.mate.lapiz.gschema.xml.in:236
+#: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
 msgstr "Tunjuk tab"
 
-#: data/org.mate.lapiz.gschema.xml.in:237
+#: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
 "Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
@@ -570,11 +570,11 @@ msgstr ""
 "none' jangan tunjuk; 'show-trailing' hanya tunjuk ruang berjela sahaja; "
 "'show-all' tunjuk semua ruang."
 
-#: data/org.mate.lapiz.gschema.xml.in:241
+#: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
 msgstr "Tunjuk jarak"
 
-#: data/org.mate.lapiz.gschema.xml.in:242
+#: data/org.cafe.lapiz.gschema.xml.in:242
 msgid ""
 "Whether lapiz should show spaces in the editor window: 'show-none' no "
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
@@ -2905,11 +2905,11 @@ msgstr "Capai fail dengan mudah dari anak tetingkap sisi"
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Tetapkan Lokasi ke Dokumen Pertama"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:7
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:7
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2921,11 +2921,11 @@ msgstr ""
 " untuk membuka dokumen dari baris perintah atau membukanya dengan Caja, "
 "dll.)"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
 msgstr "Mod Penapis Pelayar Fail"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:12
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hidden (filter hidden files), binary "
@@ -2937,11 +2937,11 @@ msgstr ""
 "(tapis fail binari) dan hidden_and_binary (tapis kedua-dua fail tersembunyi "
 "dan binari)."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
 msgstr "Corak Penapis Pelayar Fail"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:17
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top"
 " of the filter_mode."
@@ -2949,11 +2949,11 @@ msgstr ""
 "Corak penapis untuk menapis pelayar fail. Penapis ini berfungsi diatas "
 "filter_mode."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:24
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
 msgstr "Buka Dengan Paparan Pepohon"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:25
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2961,11 +2961,11 @@ msgstr ""
 "Buka paparan pepohon bila pemalam pelayar fail dimuatkan selain dari paparan"
 " tanda buku"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:29
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
 msgstr "Direktori Root Pelayar Fail"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:30
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2973,11 +2973,11 @@ msgstr ""
 "Direktori root pelayar fail digunakan untuk membuatkan pemalam pelayar fail "
 "dan onload/tree_view adalah BENAR."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:34
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
 msgstr "Direktori Root Maya Pelayar Fail"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
 "The file browser virtual root directory to use when loading the file browser"
 " plugin when onload/tree_view is TRUE. The virtual root must always be below"
@@ -2987,11 +2987,11 @@ msgstr ""
 "dan onload/tree_view adalah BENAR. Root maya mestilah sentiasa dibawah root "
 "sebenar."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:39
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
 msgstr "Benarkan Pemulihan Lokasi Jauh"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:40
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Tetapkan sama ada hendak benarkan pemulihan lokasi jauh."
 
@@ -3603,7 +3603,7 @@ msgstr "_Mula pada lajur:"
 msgid "You cannot undo a sort operation"
 msgstr "Anda tidak boleh buat asal operasi isih"
 
-#: plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml.in:11
+#: plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml.in:11
 msgid "Autocheck Type"
 msgstr "Autosemak Jenis"
 
@@ -6447,15 +6447,15 @@ msgstr "wizard"
 msgid "wizardpage"
 msgstr "wizardpage"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:12
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:12
 msgid "Prompt type"
 msgstr "Jenis makluman"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:16
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:16
 msgid "Selected format"
 msgstr "Format terpilih"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:20
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:20
 msgid "Custom format"
 msgstr "Format suai"
 

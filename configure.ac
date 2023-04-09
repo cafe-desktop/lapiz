@@ -8,8 +8,8 @@ m4_define(lapiz_micro_version, 1)
 m4_define(lapiz_version, lapiz_major_version.lapiz_minor_version.lapiz_micro_version)
 
 AC_INIT([lapiz], [lapiz_version],
-    [https://github.com/mate-desktop/lapiz/issues],
-    [lapiz], [http://mate-desktop.org])
+    [https://github.com/cafe-desktop/lapiz/issues],
+    [lapiz], [http://cafe-desktop.org])
 
 AC_CONFIG_HEADERS(config.h)
 AC_CONFIG_SRCDIR(lapiz/lapiz.c)
@@ -232,7 +232,7 @@ Makefile
 data/lapiz.desktop.in
 data/lapiz-bugreport.sh
 data/lapiz.pc
-data/org.mate.lapiz.gschema.xml
+data/org.cafe.lapiz.gschema.xml
 data/Makefile
 docs/Makefile
 docs/reference/Makefile
@@ -249,11 +249,11 @@ plugins/externaltools/Makefile
 plugins/externaltools/scripts/Makefile
 plugins/externaltools/tools/Makefile
 plugins/filebrowser/Makefile
-plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml
+plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml
 plugins/modelines/Makefile
 plugins/pythonconsole/Makefile
 plugins/pythonconsole/pythonconsole/Makefile
-plugins/pythonconsole/org.mate.lapiz.plugins.pythonconsole.gschema.xml
+plugins/pythonconsole/org.cafe.lapiz.plugins.pythonconsole.gschema.xml
 plugins/quickopen/Makefile
 plugins/quickopen/quickopen/Makefile
 plugins/snippets/data/lang/Makefile
@@ -262,10 +262,10 @@ plugins/snippets/Makefile
 plugins/snippets/snippets/Makefile
 plugins/sort/Makefile
 plugins/spell/Makefile
-plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml
+plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml
 plugins/taglist/Makefile
 plugins/time/Makefile
-plugins/time/org.mate.lapiz.plugins.time.gschema.xml
+plugins/time/org.cafe.lapiz.plugins.time.gschema.xml
 plugins/trailsave/Makefile
 po/Makefile.in
 tests/Makefile
@@ -302,11 +302,11 @@ It will probably crash and you will lose your data.
 If you are looking for a stable release of lapiz, either download
 it from:
 
-  http://pub.mate-desktop.org/release/1.${stable_version}/
+  http://pub.cafe-desktop.org/release/1.${stable_version}/
 
 Or checkout the 1.${stable_version} branch of the lapiz module from:
 
-  git://github.com/mate-desktop/lapiz.git
+  git://github.com/cafe-desktop/lapiz.git
 
 Thanks,
 The lapiz team

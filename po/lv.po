@@ -14,22 +14,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
-"Report-Msgid-Bugs-To: https://github.com/mate-desktop/lapiz/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
 "POT-Creation-Date: 2020-01-13 17:23+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: duck <voiceofwise1@gmail.com>, 2020\n"
-"Language-Team: Latvian (https://www.transifex.com/mate/teams/13566/lv/)\n"
+"Language-Team: Latvian (https://www.transifex.com/cafe/teams/13566/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: data/org.mate.lapiz.gschema.xml.in:11
+#: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
 msgstr "Lietot noklusēto fontu"
 
-#: data/org.mate.lapiz.gschema.xml.in:12
+#: data/org.cafe.lapiz.gschema.xml.in:12
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to lapiz. If this option is turned off, then the "
@@ -40,16 +40,16 @@ msgstr ""
 " lapiz specifisko fontu. Ja šī iespēja ir izslēgta, tad opcijā \"Redaktora "
 "fonts\" norādītais fonts tiks lietots sistēmas fonta vietā."
 
-#: data/org.mate.lapiz.gschema.xml.in:15
+#: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
 msgid "'Monospace 12'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:16
+#: data/org.cafe.lapiz.gschema.xml.in:16
 msgid "Editor Font"
 msgstr "Redaktora fonts"
 
-#: data/org.mate.lapiz.gschema.xml.in:17
+#: data/org.cafe.lapiz.gschema.xml.in:17
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -57,37 +57,37 @@ msgstr ""
 "Pielāgots fonts, kas tiks izmantos rediģēšanas laukā. Šī iespēja darbosies "
 "tikai tad, ja būs izslēgta \"Lietot Noklusēto Fontu\" iespēja."
 
-#: data/org.mate.lapiz.gschema.xml.in:21
+#: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:22
+#: data/org.cafe.lapiz.gschema.xml.in:22
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:26
+#: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:27
+#: data/org.cafe.lapiz.gschema.xml.in:27
 msgid "If false, it hides the first tab if there is only one tab."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:31
+#: data/org.cafe.lapiz.gschema.xml.in:31
 msgid "Style Scheme"
 msgstr "Stili"
 
-#: data/org.mate.lapiz.gschema.xml.in:32
+#: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "GtkSourceView stila shēmas ID, kas tiks izmantota teksta krāsošanai."
 
-#: data/org.mate.lapiz.gschema.xml.in:36
+#: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
 msgstr "Izveidot rezerves kopijas"
 
-#: data/org.mate.lapiz.gschema.xml.in:37
+#: data/org.cafe.lapiz.gschema.xml.in:37
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -96,11 +96,11 @@ msgstr ""
 "Jūs varat iestādīt rezerves faila paplašinājumu ar \"Rezerves kopijas "
 "paplašinājums\" iespēju."
 
-#: data/org.mate.lapiz.gschema.xml.in:41
+#: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
 msgstr "Automātiski saglabāt"
 
-#: data/org.mate.lapiz.gschema.xml.in:42
+#: data/org.cafe.lapiz.gschema.xml.in:42
 msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -110,11 +110,11 @@ msgstr ""
 "varat iestatīt šo laika intervālu ar \"Automātiskās saglabāšanas intervāls\""
 " iespēju."
 
-#: data/org.mate.lapiz.gschema.xml.in:46
+#: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
 msgstr "Automātiskās saglabāšanas intervāls"
 
-#: data/org.mate.lapiz.gschema.xml.in:47
+#: data/org.cafe.lapiz.gschema.xml.in:47
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -123,19 +123,19 @@ msgstr ""
 "funkcija strādās tikai tad, ja iespēja \"Automātiski saglabāt\" būs "
 "ieslēgta."
 
-#: data/org.mate.lapiz.gschema.xml.in:51
+#: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:52
+#: data/org.cafe.lapiz.gschema.xml.in:52
 msgid "Show save confirmation if the files have changes."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:56
+#: data/org.cafe.lapiz.gschema.xml.in:56
 msgid "Writable VFS schemes"
 msgstr "Rediģējamās VFS shēmas"
 
-#: data/org.mate.lapiz.gschema.xml.in:57
+#: data/org.cafe.lapiz.gschema.xml.in:57
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
@@ -143,11 +143,11 @@ msgstr ""
 "VFS shēmu saraksts, kuras lapiz atbalsta rakstīšanas režīmā. Shēma 'fails' "
 "pēc noklusējuma ir rakstāma."
 
-#: data/org.mate.lapiz.gschema.xml.in:61
+#: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
 msgstr "Maksimālais \"Atsaukt\" darbību skaits"
 
-#: data/org.mate.lapiz.gschema.xml.in:62
+#: data/org.cafe.lapiz.gschema.xml.in:62
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -155,11 +155,11 @@ msgstr ""
 "Maksimums darbību, ko lapiz var atsaukt vai atcelt atsaukšanu. Lietojiet "
 "\"-1\" neierobežotam darbību skaitam."
 
-#: data/org.mate.lapiz.gschema.xml.in:66
+#: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
 msgstr "Rindu pārneses režīms"
 
-#: data/org.mate.lapiz.gschema.xml.in:67
+#: data/org.cafe.lapiz.gschema.xml.in:67
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
 "for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -173,77 +173,77 @@ msgstr ""
 "vērtības ir reģistrjūtīgas, tāpēc pārliecinies, ka tās parādās tieši tāpat "
 "kā šeit."
 
-#: data/org.mate.lapiz.gschema.xml.in:71
+#: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
 msgstr "Tabulācijas izmērs"
 
-#: data/org.mate.lapiz.gschema.xml.in:72
+#: data/org.cafe.lapiz.gschema.xml.in:72
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Nosaka atstarpju skaitu, kuru rādīt tabulācijas rakstzīmju vietā."
 
-#: data/org.mate.lapiz.gschema.xml.in:76
+#: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
 msgstr "Ievietot atstarpes"
 
-#: data/org.mate.lapiz.gschema.xml.in:77
+#: data/org.cafe.lapiz.gschema.xml.in:77
 msgid "Whether lapiz should insert spaces instead of tabs."
 msgstr "Vai lapiz būtu jāievieto atstarpes tabulāciju vietā."
 
-#: data/org.mate.lapiz.gschema.xml.in:81
+#: data/org.cafe.lapiz.gschema.xml.in:81
 msgid "Automatic indent"
 msgstr "Automātiska atkāpe"
 
-#: data/org.mate.lapiz.gschema.xml.in:82
+#: data/org.cafe.lapiz.gschema.xml.in:82
 msgid "Whether lapiz should enable automatic indentation."
 msgstr "Vai lapiz vajadzētu ieslēgt automātisko atkāpi."
 
-#: data/org.mate.lapiz.gschema.xml.in:86
+#: data/org.cafe.lapiz.gschema.xml.in:86
 msgid "Display Line Numbers"
 msgstr "Rādīt rindu numurus"
 
-#: data/org.mate.lapiz.gschema.xml.in:87
+#: data/org.cafe.lapiz.gschema.xml.in:87
 msgid "Whether lapiz should display line numbers in the editing area."
 msgstr "Vai lapiz rediģēšanas laukā būtu jārāda rindu numuri."
 
-#: data/org.mate.lapiz.gschema.xml.in:91
+#: data/org.cafe.lapiz.gschema.xml.in:91
 msgid "Highlight Current Line"
 msgstr "Iekrāsot aktīvo rindu"
 
-#: data/org.mate.lapiz.gschema.xml.in:92
+#: data/org.cafe.lapiz.gschema.xml.in:92
 msgid "Whether lapiz should highlight the current line."
 msgstr "Vai lapiz būtu jāizceļ tekošā rindiņa."
 
-#: data/org.mate.lapiz.gschema.xml.in:96
+#: data/org.cafe.lapiz.gschema.xml.in:96
 msgid "Highlight Matching Bracket"
 msgstr "Izcelt atbilstošo iekavu"
 
-#: data/org.mate.lapiz.gschema.xml.in:97
+#: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr "Vai lapiz būtu jāizceļ izvēlētais iekavu pāris."
 
-#: data/org.mate.lapiz.gschema.xml.in:101
+#: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
 msgstr "Rādīt labo malu"
 
-#: data/org.mate.lapiz.gschema.xml.in:102
+#: data/org.cafe.lapiz.gschema.xml.in:102
 msgid "Whether lapiz should display the right margin in the editing area."
 msgstr "Vai lapiz rediģēšanas laukā būtu jārāda labā mala."
 
-#: data/org.mate.lapiz.gschema.xml.in:106
+#: data/org.cafe.lapiz.gschema.xml.in:106
 msgid "Right Margin Position"
 msgstr "Labās malas pozīcija"
 
-#: data/org.mate.lapiz.gschema.xml.in:107
+#: data/org.cafe.lapiz.gschema.xml.in:107
 msgid "Specifies the position of the right margin."
 msgstr "Norāda labās malas atrašanās vietu."
 
-#: data/org.mate.lapiz.gschema.xml.in:111
+#: data/org.cafe.lapiz.gschema.xml.in:111
 msgid "Smart Home End"
 msgstr "Gudrais Home End"
 
-#: data/org.mate.lapiz.gschema.xml.in:112
+#: data/org.cafe.lapiz.gschema.xml.in:112
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
@@ -261,11 +261,11 @@ msgstr ""
 " rindiņas sākumu. Izmantojiet \"ALWAYS\", lai vienmēr pārietu uz teksta "
 "sākumu/beigām, nevis rindiņas sākumu/beigām."
 
-#: data/org.mate.lapiz.gschema.xml.in:116
+#: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
 msgstr "Atjaunot iepriekšējo kursora pozīciju"
 
-#: data/org.mate.lapiz.gschema.xml.in:117
+#: data/org.cafe.lapiz.gschema.xml.in:117
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
@@ -273,36 +273,36 @@ msgstr ""
 "Vai lapiz būtu jāatjauno iepriekšējā kursora pozīcija atkārtoti ielādējot "
 "kādu failu."
 
-#: data/org.mate.lapiz.gschema.xml.in:121
+#: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
 msgstr "Aktivizēt meklēšanas iekrāsošanu"
 
-#: data/org.mate.lapiz.gschema.xml.in:122
+#: data/org.cafe.lapiz.gschema.xml.in:122
 msgid ""
 "Whether lapiz should highlight all the occurrences of the searched text."
 msgstr "Vai lapiz gūtu jāiekrāso visi atrastie meklējamā teksta fragmenti."
 
-#: data/org.mate.lapiz.gschema.xml.in:126
+#: data/org.cafe.lapiz.gschema.xml.in:126
 msgid "Enable Syntax Highlighting"
 msgstr "Aktivizēt sintakses iekrāsošanu"
 
-#: data/org.mate.lapiz.gschema.xml.in:127
+#: data/org.cafe.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
 msgstr "Vai lapiz būtu jāaktivizē sintakses iekrāsošana."
 
-#: data/org.mate.lapiz.gschema.xml.in:131
+#: data/org.cafe.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
 msgstr "Rīkjosla ir redzama"
 
-#: data/org.mate.lapiz.gschema.xml.in:132
+#: data/org.cafe.lapiz.gschema.xml.in:132
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Vai rīkjoslai rediģēšanas logos būtu jābūt redzamai."
 
-#: data/org.mate.lapiz.gschema.xml.in:136
+#: data/org.cafe.lapiz.gschema.xml.in:136
 msgid "Toolbar Buttons Style"
 msgstr "Rīkjoslas pogu stils"
 
-#: data/org.mate.lapiz.gschema.xml.in:137
+#: data/org.cafe.lapiz.gschema.xml.in:137
 msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
@@ -318,47 +318,47 @@ msgstr ""
 "tekstu pie ikonām. Atceries, ka vērtības ir reģistrjūtīgas, tāpēc "
 "pārliecinies, ka tās parādās tāpat, kā šeit."
 
-#: data/org.mate.lapiz.gschema.xml.in:141
+#: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
 msgstr "Statusa josla ir redzama"
 
-#: data/org.mate.lapiz.gschema.xml.in:142
+#: data/org.cafe.lapiz.gschema.xml.in:142
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Vai statusa joslai rediģēšanas logu apakšā būtu jābūt redzamai."
 
-#: data/org.mate.lapiz.gschema.xml.in:146
+#: data/org.cafe.lapiz.gschema.xml.in:146
 msgid "Side Pane is Visible"
 msgstr "Sānu panelis ir redzams"
 
-#: data/org.mate.lapiz.gschema.xml.in:147
+#: data/org.cafe.lapiz.gschema.xml.in:147
 msgid ""
 "Whether the side pane at the left of editing windows should be visible."
 msgstr "Vai panelim rediģēšanas loga kreisajā malā būtu jābūt redzamam."
 
-#: data/org.mate.lapiz.gschema.xml.in:151
+#: data/org.cafe.lapiz.gschema.xml.in:151
 msgid "Show tabs with side pane"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:152
+#: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:156
+#: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
 msgstr "Apakšējais panelis ir redzams"
 
-#: data/org.mate.lapiz.gschema.xml.in:157
+#: data/org.cafe.lapiz.gschema.xml.in:157
 msgid ""
 "Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr "Vai apakšējajam panelim rediģēšanas loga apakšā būtu jābūt redzamam."
 
-#: data/org.mate.lapiz.gschema.xml.in:161
+#: data/org.cafe.lapiz.gschema.xml.in:161
 msgid "Maximum Recent Files"
 msgstr "Maksimums Neseno Failu"
 
-#: data/org.mate.lapiz.gschema.xml.in:162
+#: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed"
 " in the \"Recent Files\" submenu."
@@ -366,30 +366,30 @@ msgstr ""
 "Nosaka maksimālo nesen atvērto failu skaitu, ko rādīt \"Nesenie Faili\" "
 "apakšizvēlnē."
 
-#: data/org.mate.lapiz.gschema.xml.in:166
+#: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "Drukāt iekrāsoto sintaksi"
 
-#: data/org.mate.lapiz.gschema.xml.in:167
+#: data/org.cafe.lapiz.gschema.xml.in:167
 msgid ""
 "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "Vai drukājot dokumentus lapiz būtu jārāda teksta sintakses iekrāsojumi."
 
-#: data/org.mate.lapiz.gschema.xml.in:171
+#: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "Drukāt galvu"
 
-#: data/org.mate.lapiz.gschema.xml.in:172
+#: data/org.cafe.lapiz.gschema.xml.in:172
 msgid ""
 "Whether lapiz should include a document header when printing documents."
 msgstr "Vai lapiz būtu jāiekļauj dokumenta galva drukājot dokumentu."
 
-#: data/org.mate.lapiz.gschema.xml.in:176
+#: data/org.cafe.lapiz.gschema.xml.in:176
 msgid "Printing Line Wrapping Mode"
 msgstr "Drukāšanas Rindu Aplaušanas Režīms"
 
-#: data/org.mate.lapiz.gschema.xml.in:177
+#: data/org.cafe.lapiz.gschema.xml.in:177
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
 "wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
@@ -403,11 +403,11 @@ msgstr ""
 "vērtības ir reģistrjūtīgas, tāpēc pārliecinies, ka tās parādās tieši tāpat "
 "kā šeit."
 
-#: data/org.mate.lapiz.gschema.xml.in:181
+#: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
 msgstr "Drukāt rindu numurus"
 
-#: data/org.mate.lapiz.gschema.xml.in:182
+#: data/org.cafe.lapiz.gschema.xml.in:182
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
@@ -416,30 +416,30 @@ msgstr ""
 "Ja vērtība ir 0, tad rindu numuri netiks iekļauti, drukājot dokumentu. "
 "Citādi, lapiz drukās rindu numurus katras tik rindas."
 
-#: data/org.mate.lapiz.gschema.xml.in:185
+#: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
 msgid "'Monospace 9'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:186
+#: data/org.cafe.lapiz.gschema.xml.in:186
 msgid "Body Font for Printing"
 msgstr "Rumpja fonts drukāšanai"
 
-#: data/org.mate.lapiz.gschema.xml.in:187
+#: data/org.cafe.lapiz.gschema.xml.in:187
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "Nosaka lietojamo dokumenta rumpja fontu pie dokumentu drukāšanas."
 
-#: data/org.mate.lapiz.gschema.xml.in:190
+#: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
 msgid "'Sans 11'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:191
+#: data/org.cafe.lapiz.gschema.xml.in:191
 msgid "Header Font for Printing"
 msgstr "Galvas fonti drukāšanai"
 
-#: data/org.mate.lapiz.gschema.xml.in:192
+#: data/org.cafe.lapiz.gschema.xml.in:192
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -447,16 +447,16 @@ msgstr ""
 "Nosaka lietojamo fontu lapu galvās drukājot dokumentu. Šī iespēja darbosies "
 "tikai tad, ja iespēja \"Drukāt Galvas\" būs ieslēgta."
 
-#: data/org.mate.lapiz.gschema.xml.in:195
+#: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
 msgid "'Sans 8'"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:196
+#: data/org.cafe.lapiz.gschema.xml.in:196
 msgid "Line Number Font for Printing"
 msgstr "Rindas numuru fonts drukāšanai"
 
-#: data/org.mate.lapiz.gschema.xml.in:197
+#: data/org.cafe.lapiz.gschema.xml.in:197
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -464,16 +464,16 @@ msgstr ""
 "Nosaka lietojamo rindu numuru fontu pie dokumentu drukāšanas. Šī iespēja "
 "darbosies tikai tad, ja iespēja \"Drukāt rindu numurus\" nebūs nulle."
 
-#: data/org.mate.lapiz.gschema.xml.in:200
+#: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
 msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:201
+#: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
 msgstr "Automātiski atrastie kodējumi"
 
-#: data/org.mate.lapiz.gschema.xml.in:202
+#: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
@@ -483,16 +483,16 @@ msgstr ""
 "noteiktu faila kodējumu. \"Pašreizējais\" ir pašreizējās kodējums. Tiek "
 "izmantoti tikai atpazīti kodējumi."
 
-#: data/org.mate.lapiz.gschema.xml.in:205
+#: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
 msgid "[ 'ISO-8859-15' ]"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:206
+#: data/org.cafe.lapiz.gschema.xml.in:206
 msgid "Encodings shown in menu"
 msgstr "Izvēlnē redzamie kodējumi"
 
-#: data/org.mate.lapiz.gschema.xml.in:207
+#: data/org.cafe.lapiz.gschema.xml.in:207
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -500,27 +500,27 @@ msgstr ""
 "Burtu Kodējuma izvēlnē (faila atvēršanas/saglabāšanas dialogā) rādīto "
 "kodējumu saraksts. Tiek lietoti tikai atpazītie kodējumi."
 
-#: data/org.mate.lapiz.gschema.xml.in:211
+#: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
 msgstr "\"Meklēt\" vēstures ieraksti"
 
-#: data/org.mate.lapiz.gschema.xml.in:212
+#: data/org.cafe.lapiz.gschema.xml.in:212
 msgid "List of entries in \"search for\" textbox."
 msgstr "Saraksts ar \"Meklēt\" teksta lodziņa ierakstiem"
 
-#: data/org.mate.lapiz.gschema.xml.in:216
+#: data/org.cafe.lapiz.gschema.xml.in:216
 msgid "History for \"replace with\" entries"
 msgstr "\"Aizviet ar\" vēstures ieraksti"
 
-#: data/org.mate.lapiz.gschema.xml.in:217
+#: data/org.cafe.lapiz.gschema.xml.in:217
 msgid "List of entries in \"replace with\" textbox."
 msgstr "Saraksts ar \"aizvietot ar\" teksta lodziņa ierakstiem."
 
-#: data/org.mate.lapiz.gschema.xml.in:221
+#: data/org.cafe.lapiz.gschema.xml.in:221
 msgid "Active plugins"
 msgstr "Aktīvie spraudņi"
 
-#: data/org.mate.lapiz.gschema.xml.in:222
+#: data/org.cafe.lapiz.gschema.xml.in:222
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
@@ -528,41 +528,41 @@ msgstr ""
 "Aktīvo spraudņu saraksts. Tas satur aktīvo spraudņu \"Atrašanās vietu\". "
 "Skatiet .lapiz-plugin failu, lai uzzinātu spraudņa \"Atrašanās vietu\"."
 
-#: data/org.mate.lapiz.gschema.xml.in:226
+#: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:227
+#: data/org.cafe.lapiz.gschema.xml.in:227
 msgid "Whether lapiz should show newlines in the editor window."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:231
+#: data/org.cafe.lapiz.gschema.xml.in:231
 msgid "Show nbsp"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:232
+#: data/org.cafe.lapiz.gschema.xml.in:232
 msgid ""
 "Whether lapiz should show not breaking spaces in the editor window: 'show-"
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:236
+#: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:237
+#: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
 "Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
 " 'show-trailing' showing only trailing spaces; 'show-all' showing all "
 "spaces."
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:241
+#: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
 msgstr ""
 
-#: data/org.mate.lapiz.gschema.xml.in:242
+#: data/org.cafe.lapiz.gschema.xml.in:242
 msgid ""
 "Whether lapiz should show spaces in the editor window: 'show-none' no "
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
@@ -2880,11 +2880,11 @@ msgstr "Viegla piekļuve failiem no sānu paneļa"
 msgid "system-file-manager"
 msgstr ""
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Iestatīt pirmā dokumenta atrašanās vietu"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:7
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:7
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2895,11 +2895,11 @@ msgstr ""
 "ja līdz tam failu pārlūks vēl nebūs ticis izmantots. (Tādējādi šis principā "
 "attiecas uz failu atvēršanu no komandrindas vai Caja)."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
 msgstr "Failu pārlūka filtrēšanas režīms"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:12
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hidden (filter hidden files), binary "
@@ -2911,11 +2911,11 @@ msgstr ""
 "(filtrē bināros failus), and hidden_and_binary (filtrē gan slēptos gan "
 "bināros failus)."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
 msgstr "Failu pārlūka filtrēšanas šablons"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:17
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top"
 " of the filter_mode."
@@ -2923,22 +2923,22 @@ msgstr ""
 "Filtrēšanas šablons, ko izmantot failu pārlūkā. Šis filtrs darbojas pāri "
 "filter_mode."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:24
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
 msgstr "Atvērt koka skatā"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:25
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
 "Ielādējot failu pārlūka spraudni atvērt koka skatu nevis grāmatzīmju skatu"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:29
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
 msgstr "Failu pārlūka saknes direktorija"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:30
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2946,11 +2946,11 @@ msgstr ""
 "Failu pārlūka saknes direktorija, kas tiks izmantota ielādējot failu pārluka"
 " spraudni, ja onload/tree_view ir TRUE."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:34
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
 msgstr "Failu pārlūka virtuālā saknes direktorija"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
 "The file browser virtual root directory to use when loading the file browser"
 " plugin when onload/tree_view is TRUE. The virtual root must always be below"
@@ -2960,11 +2960,11 @@ msgstr ""
 "failu pārluka spraudni, ja onload/tree_view ir TRUE. Virtuālajai saknes "
 "direktorijai vinmēr jābūt zem īstās."
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:39
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
 msgstr "Aktivizēt attālināto atrašanās vietu atjaunošanu"
 
-#: plugins/filebrowser/org.mate.lapiz.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:40
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Iestata vai vajadzētu atjaunot attālinātās atrašanās vietas."
 
@@ -3576,7 +3576,7 @@ msgstr "Sāk_t kolonnā:"
 msgid "You cannot undo a sort operation"
 msgstr "Jūs nevarat atsaukt kārtošanas operāciju"
 
-#: plugins/spell/org.mate.lapiz.plugins.spell.gschema.xml.in:11
+#: plugins/spell/org.cafe.lapiz.plugins.spell.gschema.xml.in:11
 msgid "Autocheck Type"
 msgstr ""
 
@@ -6420,15 +6420,15 @@ msgstr ""
 msgid "wizardpage"
 msgstr ""
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:12
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:12
 msgid "Prompt type"
 msgstr "Uzvednes tips"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:16
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:16
 msgid "Selected format"
 msgstr "Izvēlētais formāts"
 
-#: plugins/time/org.mate.lapiz.plugins.time.gschema.xml.in:20
+#: plugins/time/org.cafe.lapiz.plugins.time.gschema.xml.in:20
 msgid "Custom format"
 msgstr "Pielāgots formāts"
 
