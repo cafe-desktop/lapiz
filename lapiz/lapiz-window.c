@@ -298,7 +298,7 @@ lapiz_window_key_press_event (CtkWidget   *widget,
 	CtkWindow *window = CTK_WINDOW (widget);
 	gboolean handled = FALSE;
 
-	if (event->state & GDK_CONTROL_MASK)
+	if (event->state & CDK_CONTROL_MASK)
 	{
 		gchar     *font;
 		gchar     *tempsize;
@@ -317,7 +317,7 @@ lapiz_window_key_press_event (CtkWidget   *widget,
 
 		sscanf (tempsize, "%d", &nsize);
 
-		if ((event->keyval == GDK_KEY_plus) || (event->keyval == GDK_KEY_KP_Add))
+		if ((event->keyval == CDK_KEY_plus) || (event->keyval == CDK_KEY_KP_Add))
 		{
 			nsize = nsize + 1;
 			sprintf (tempsize, "%d", nsize);
@@ -329,7 +329,7 @@ lapiz_window_key_press_event (CtkWidget   *widget,
 				g_free (tmp);
 			}
 		}
-		else if ((event->keyval == GDK_KEY_minus) || (event->keyval == GDK_KEY_KP_Subtract))
+		else if ((event->keyval == CDK_KEY_minus) || (event->keyval == CDK_KEY_KP_Subtract))
 		{
 			nsize = nsize - 1;
 			sprintf (tempsize, "%d", nsize);
@@ -349,7 +349,7 @@ lapiz_window_key_press_event (CtkWidget   *widget,
 			int pages = ctk_notebook_get_n_pages (notebook);
 			int page_num = ctk_notebook_get_current_page (notebook);
 
-			if (event->keyval == GDK_KEY_ISO_Left_Tab)
+			if (event->keyval == CDK_KEY_ISO_Left_Tab)
 			{
 				if (page_num != 0)
 					ctk_notebook_prev_page (notebook);
@@ -358,7 +358,7 @@ lapiz_window_key_press_event (CtkWidget   *widget,
 				handled = TRUE;
 			}
 
-			if (event->keyval == GDK_KEY_Tab)
+			if (event->keyval == CDK_KEY_Tab)
 			{
 				if (page_num != (pages -1))
 					ctk_notebook_next_page (notebook);
@@ -746,7 +746,7 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 
 	clipboard = ctk_widget_get_clipboard (CTK_WIDGET (window),
-					      GDK_SELECTION_CLIPBOARD);
+					      CDK_SELECTION_CLIPBOARD);
 
 	action = ctk_action_group_get_action (window->priv->action_group,
 					      "FileSave");
@@ -2060,7 +2060,7 @@ clone_window (LapizWindow *origin)
 	screen = ctk_window_get_screen (CTK_WINDOW (origin));
 	window = lapiz_app_create_window (app, screen);
 
-	if ((origin->priv->window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
+	if ((origin->priv->window_state & CDK_WINDOW_STATE_MAXIMIZED) != 0)
 	{
 		gint w, h;
 
@@ -2077,7 +2077,7 @@ clone_window (LapizWindow *origin)
 		ctk_window_unmaximize (CTK_WINDOW (window));
 	}
 
-	if ((origin->priv->window_state & GDK_WINDOW_STATE_STICKY ) != 0)
+	if ((origin->priv->window_state & CDK_WINDOW_STATE_STICKY ) != 0)
 		ctk_window_stick (CTK_WINDOW (window));
 	else
 		ctk_window_unstick (CTK_WINDOW (window));
@@ -3480,8 +3480,8 @@ show_notebook_popup_menu (CtkNotebook    *notebook,
 
 	ctk_menu_popup_at_widget (CTK_MENU (menu),
 	                          tab_label,
-	                          GDK_GRAVITY_SOUTH_WEST,
-	                          GDK_GRAVITY_NORTH_WEST,
+	                          CDK_GRAVITY_SOUTH_WEST,
+	                          CDK_GRAVITY_NORTH_WEST,
 	                          (const GdkEvent*) event);
 
 	ctk_menu_shell_select_first (CTK_MENU_SHELL (menu), FALSE);
@@ -3494,7 +3494,7 @@ notebook_button_press_event (CtkNotebook    *notebook,
 			     GdkEventButton *event,
 			     LapizWindow    *window)
 {
-	if (event->type == GDK_BUTTON_PRESS)
+	if (event->type == CDK_BUTTON_PRESS)
 	{
 		if (event->button == 3)
 			return show_notebook_popup_menu (notebook, window, event);
@@ -3506,7 +3506,7 @@ notebook_button_press_event (CtkNotebook    *notebook,
 			notebook_tab_close_request (LAPIZ_NOTEBOOK (notebook), tab, CTK_WINDOW (window));
 		}
 	}
-	else if ((event->type == GDK_2BUTTON_PRESS) && (event->button == 1))
+	else if ((event->type == CDK_2BUTTON_PRESS) && (event->button == 1))
 	{
 		lapiz_window_create_tab (window, TRUE);
 	}
@@ -3519,11 +3519,11 @@ notebook_scroll_event (CtkNotebook    *notebook,
                        GdkEventScroll *event,
                        LapizWindow    *window)
 {
-	if (event->direction == GDK_SCROLL_UP || event->direction == GDK_SCROLL_LEFT)
+	if (event->direction == CDK_SCROLL_UP || event->direction == CDK_SCROLL_LEFT)
 	{
 		ctk_notebook_prev_page (notebook);
 	}
-	else if (event->direction == GDK_SCROLL_DOWN || event->direction == GDK_SCROLL_RIGHT)
+	else if (event->direction == CDK_SCROLL_DOWN || event->direction == CDK_SCROLL_RIGHT)
 	{
 		ctk_notebook_next_page (notebook);
 	}
@@ -3829,7 +3829,7 @@ window_realized (CtkWidget *window,
 	CtkClipboard *clipboard;
 
 	clipboard = ctk_widget_get_clipboard (window,
-					      GDK_SELECTION_CLIPBOARD);
+					      CDK_SELECTION_CLIPBOARD);
 
 	g_signal_connect (clipboard,
 			  "owner_change",
@@ -3844,7 +3844,7 @@ window_unrealized (CtkWidget *window,
 	CtkClipboard *clipboard;
 
 	clipboard = ctk_widget_get_clipboard (window,
-					      GDK_SELECTION_CLIPBOARD);
+					      CDK_SELECTION_CLIPBOARD);
 
 	g_signal_handlers_disconnect_by_func (clipboard,
 					      G_CALLBACK (clipboard_owner_change),
@@ -3856,7 +3856,7 @@ check_window_is_active (LapizWindow *window,
 			GParamSpec *property,
 			gpointer useless)
 {
-	if (window->priv->window_state & GDK_WINDOW_STATE_FULLSCREEN)
+	if (window->priv->window_state & CDK_WINDOW_STATE_FULLSCREEN)
 	{
 		if (ctk_window_is_active (CTK_WINDOW (window)))
 		{
@@ -3922,7 +3922,7 @@ add_notebook (LapizWindow *window,
 
 	ctk_widget_show (notebook);
 
-	ctk_widget_add_events (notebook, GDK_SCROLL_MASK);
+	ctk_widget_add_events (notebook, CDK_SCROLL_MASK);
 	connect_notebook_signals (window, notebook);
 }
 
@@ -4035,7 +4035,7 @@ lapiz_window_init (LapizWindow *window)
 			   CTK_DEST_DEFAULT_DROP,
 			   NULL,
 			   0,
-			   GDK_ACTION_COPY);
+			   CDK_ACTION_COPY);
 
 	/* Add uri targets */
 	tl = ctk_drag_dest_get_target_list (CTK_WIDGET (window));
@@ -4727,7 +4727,7 @@ _lapiz_window_is_fullscreen (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), FALSE);
 
-	return window->priv->window_state & GDK_WINDOW_STATE_FULLSCREEN;
+	return window->priv->window_state & CDK_WINDOW_STATE_FULLSCREEN;
 }
 
 /**

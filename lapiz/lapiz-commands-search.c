@@ -646,7 +646,7 @@ _lapiz_cmd_search_find (CtkAction   *action,
 	ctk_widget_show (search_dialog);
 	last_search_data_restore_position (LAPIZ_SEARCH_DIALOG (search_dialog));
 	lapiz_search_dialog_present_with_time (LAPIZ_SEARCH_DIALOG (search_dialog),
-					       GDK_CURRENT_TIME);
+					       CDK_CURRENT_TIME);
 }
 
 void
@@ -720,7 +720,7 @@ _lapiz_cmd_search_replace (CtkAction   *action,
 	ctk_widget_show (replace_dialog);
 	last_search_data_restore_position (LAPIZ_SEARCH_DIALOG (replace_dialog));
 	lapiz_search_dialog_present_with_time (LAPIZ_SEARCH_DIALOG (replace_dialog),
-					       GDK_CURRENT_TIME);
+					       CDK_CURRENT_TIME);
 }
 
 static void
@@ -797,8 +797,8 @@ _lapiz_cmd_search_goto_line (CtkAction   *action,
 	 * the corresponding binding.
 	 */
 	ctk_bindings_activate (G_OBJECT (active_view),
-			       GDK_KEY_i,
-			       GDK_CONTROL_MASK);
+			       CDK_KEY_i,
+			       CDK_CONTROL_MASK);
 }
 
 void
@@ -821,6 +821,6 @@ _lapiz_cmd_search_incremental_search (CtkAction   *action,
 	 * the corresponding binding.
 	 */
 	ctk_bindings_activate (G_OBJECT (active_view),
-			       GDK_KEY_k,
-			       GDK_CONTROL_MASK);
+			       CDK_KEY_k,
+			       CDK_CONTROL_MASK);
 }

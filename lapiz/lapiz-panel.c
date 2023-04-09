@@ -238,13 +238,13 @@ lapiz_panel_class_init (LapizPanelClass *klass)
 	binding_set = ctk_binding_set_by_class (klass);
 
 	ctk_binding_entry_add_signal (binding_set,
-				      GDK_KEY_Escape,
+				      CDK_KEY_Escape,
 				      0,
 				      "close",
 				      0);
 	ctk_binding_entry_add_signal (binding_set,
-				      GDK_KEY_Return,
-				      GDK_CONTROL_MASK,
+				      CDK_KEY_Return,
+				      CDK_CONTROL_MASK,
 				      "focus_document",
 				      0);
 }

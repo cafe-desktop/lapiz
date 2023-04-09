@@ -275,9 +275,9 @@ tag_list_key_press_event_cb (CtkTreeView             *tag_list,
 {
 	gboolean grab_focus;
 
-	grab_focus = (event->state & GDK_CONTROL_MASK) != 0;
+	grab_focus = (event->state & CDK_CONTROL_MASK) != 0;
 
-	if (event->keyval == GDK_KEY_Return)
+	if (event->keyval == CDK_KEY_Return)
 	{
 		CtkTreeModel *model;
 		CtkTreeSelection *selection;

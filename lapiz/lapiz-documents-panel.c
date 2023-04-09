@@ -513,7 +513,7 @@ panel_button_press_event (CtkTreeView         *treeview,
 			  GdkEventButton      *event,
 			  LapizDocumentsPanel *panel)
 {
-	if ((GDK_BUTTON_PRESS == event->type) && (3 == event->button))
+	if ((CDK_BUTTON_PRESS == event->type) && (3 == event->button))
 	{
 		CtkTreePath* path = NULL;
 
@@ -684,7 +684,7 @@ lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 
 	/* Create the empty model */
 	panel->priv->model = CTK_TREE_MODEL (ctk_list_store_new (N_COLUMNS,
-								 GDK_TYPE_PIXBUF,
+								 CDK_TYPE_PIXBUF,
 								 G_TYPE_STRING,
 								 G_TYPE_POINTER));
 

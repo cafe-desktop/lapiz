@@ -52,7 +52,7 @@
 #include "lapiz-debug.h"
 
 /* For the workspace/viewport stuff */
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <cdk/cdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -171,7 +171,7 @@ menu_popup_at_treeview_selection (CtkWidget *menu,
 	ctk_tree_view_get_cell_area (CTK_TREE_VIEW (treeview), path, column, &rect);
 
 	ctk_menu_popup_at_rect (CTK_MENU (menu), bin_window, &rect,
-				GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST,
+				CDK_GRAVITY_SOUTH_WEST, CDK_GRAVITY_NORTH_WEST,
 				NULL);
 
 	ctk_tree_path_free(path);
@@ -847,7 +847,7 @@ lapiz_utils_replace_home_dir_with_tilde (const gchar *uri)
 guint
 lapiz_utils_get_current_workspace (GdkScreen *screen)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 	GdkWindow *root_win;
 	GdkDisplay *display;
 	Atom type;
@@ -858,13 +858,13 @@ lapiz_utils_get_current_workspace (GdkScreen *screen)
 	gint err, result;
 	guint ret = 0;
 
-	g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+	g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
 	root_win = cdk_screen_get_root_window (screen);
 	display = cdk_screen_get_display (screen);
 
 	cdk_x11_display_error_trap_push (display);
-	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
+	result = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display), CDK_WINDOW_XID (root_win),
 				     cdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
 				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 				     &bytes_after, (gpointer) &current_desktop);
@@ -897,7 +897,7 @@ lapiz_utils_get_current_workspace (GdkScreen *screen)
 guint
 lapiz_utils_get_window_workspace (CtkWindow *ctkwindow)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 	GdkWindow *window;
 	GdkDisplay *display;
 	Atom type;
@@ -915,7 +915,7 @@ lapiz_utils_get_window_workspace (CtkWindow *ctkwindow)
 	display = cdk_window_get_display (window);
 
 	cdk_x11_display_error_trap_push (display);
-	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
+	result = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display), CDK_WINDOW_XID (window),
 				     cdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
 				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 				     &bytes_after, (gpointer) &workspace);
@@ -950,7 +950,7 @@ lapiz_utils_get_current_viewport (GdkScreen    *screen,
 				  gint         *x,
 				  gint         *y)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 	GdkWindow *root_win;
 	GdkDisplay *display;
 	Atom type;
@@ -960,7 +960,7 @@ lapiz_utils_get_current_viewport (GdkScreen    *screen,
 	gulong *coordinates;
 	gint err, result;
 
-	g_return_if_fail (GDK_IS_SCREEN (screen));
+	g_return_if_fail (CDK_IS_SCREEN (screen));
 	g_return_if_fail (x != NULL && y != NULL);
 
 	/* Default values for the viewport origin */
@@ -971,7 +971,7 @@ lapiz_utils_get_current_viewport (GdkScreen    *screen,
 	display = cdk_screen_get_display (screen);
 
 	cdk_x11_display_error_trap_push (display);
-	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
+	result = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display), CDK_WINDOW_XID (root_win),
 				     cdk_x11_get_xatom_by_name_for_display (display, "_NET_DESKTOP_VIEWPORT"),
 				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 				     &bytes_after, (void*) &coordinates);

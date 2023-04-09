@@ -65,7 +65,7 @@ lapiz_help_display (CtkWindow   *parent,
 
 	ret = ctk_show_uri_on_window (parent,
 	                              link,
-	                              GDK_CURRENT_TIME,
+	                              CDK_CURRENT_TIME,
 	                              &error);
 
 	g_free (link);

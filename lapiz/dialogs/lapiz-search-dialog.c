@@ -174,8 +174,8 @@ lapiz_search_dialog_class_init (LapizSearchDialogClass *klass)
 	/* Note: we cannot use the keyval/modifier associated with the
 	 * CTK_STOCK_FIND_AND_REPLACE stock item since CAFE HIG suggests Ctrl+h
 	 * for Replace while ctk+ uses Ctrl+r */
-	ctk_binding_entry_add_signal (binding_set, GDK_KEY_h, GDK_CONTROL_MASK, "show_replace", 0);
-	ctk_binding_entry_add_signal (binding_set, GDK_KEY_H, GDK_CONTROL_MASK, "show_replace", 0);
+	ctk_binding_entry_add_signal (binding_set, CDK_KEY_h, CDK_CONTROL_MASK, "show_replace", 0);
+	ctk_binding_entry_add_signal (binding_set, CDK_KEY_H, CDK_CONTROL_MASK, "show_replace", 0);
 }
 
 static void

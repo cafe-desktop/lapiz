@@ -201,8 +201,8 @@ button_press_event (CtkWidget           *widget,
 
 	ctk_menu_popup_at_widget (CTK_MENU (combo->priv->menu),
 				  ctk_widget_get_parent (widget),
-				  GDK_GRAVITY_NORTH_WEST,
-				  GDK_GRAVITY_SOUTH_WEST,
+				  CDK_GRAVITY_NORTH_WEST,
+				  CDK_GRAVITY_SOUTH_WEST,
 				  (const GdkEvent*) event);
 
 	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (combo->priv->button), TRUE);

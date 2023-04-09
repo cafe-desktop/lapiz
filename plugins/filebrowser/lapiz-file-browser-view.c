@@ -308,7 +308,7 @@ set_click_policy_property (LapizFileBrowserView            *obj,
 
 	if (click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
 		if (obj->priv->hand_cursor == NULL)
-			obj->priv->hand_cursor = cdk_cursor_new_for_display (display, GDK_HAND2);
+			obj->priv->hand_cursor = cdk_cursor_new_for_display (display, CDK_HAND2);
 	} else if (click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE) {
 		if (obj->priv->hover_path != NULL) {
 			if (ctk_tree_model_get_iter (CTK_TREE_MODEL (obj->priv->model),
@@ -420,7 +420,7 @@ toggle_hidden_filter (LapizFileBrowserView *view)
 static gboolean
 button_event_modifies_selection (GdkEventButton *event)
 {
-	return (event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) != 0;
+	return (event->state & (CDK_CONTROL_MASK | CDK_SHIFT_MASK)) != 0;
 }
 
 static void
@@ -455,8 +455,8 @@ did_not_drag (LapizFileBrowserView *view,
 		    	/* Activate all selected items, and leave them selected */
 			activate_selected_items (view);
 		} else if ((event->button == 1 || event->button == 2)
-		    && ((event->state & GDK_CONTROL_MASK) != 0 ||
-			(event->state & GDK_SHIFT_MASK) == 0)
+		    && ((event->state & CDK_CONTROL_MASK) != 0 ||
+			(event->state & CDK_SHIFT_MASK) == 0)
 		    && view->priv->selected_on_button_down) {
 			if (!button_event_modifies_selection (event)) {
 				ctk_tree_selection_unselect_all (selection);
@@ -537,7 +537,7 @@ button_press_event (CtkWidget      *widget,
 		/* Keep track of path of last click so double clicks only happen
 		 * on the same item */
 		if ((event->button == 1 || event->button == 2)  &&
-		    event->type == GDK_BUTTON_PRESS) {
+		    event->type == CDK_BUTTON_PRESS) {
 			if (view->priv->double_click_path[1])
 				ctk_tree_path_free (view->priv->double_click_path[1]);
 
@@ -545,7 +545,7 @@ button_press_event (CtkWidget      *widget,
 			view->priv->double_click_path[0] = ctk_tree_path_copy (path);
 		}
 
-		if (event->type == GDK_2BUTTON_PRESS) {
+		if (event->type == CDK_2BUTTON_PRESS) {
 			if (view->priv->double_click_path[1] &&
 			    ctk_tree_path_compare (view->priv->double_click_path[0], view->priv->double_click_path[1]) == 0)
 				activate_selected_items (view);
@@ -564,8 +564,8 @@ button_press_event (CtkWidget      *widget,
 				call_parent = FALSE;
 
 			if ((event->button == 1 || event->button == 2) &&
-			    ((event->state & GDK_CONTROL_MASK) != 0 ||
-			     (event->state & GDK_SHIFT_MASK) == 0)) {
+			    ((event->state & CDK_CONTROL_MASK) != 0 ||
+			     (event->state & CDK_SHIFT_MASK) == 0)) {
 				ctk_widget_style_get (widget,
 						      "expander-size", &expander_size,
 						      "horizontal-separator", &horizontal_separator,
@@ -578,7 +578,7 @@ button_press_event (CtkWidget      *widget,
 				if (selected) {
 					call_parent = on_expander || ctk_tree_selection_count_selected_rows (selection) == 1;
 					view->priv->ignore_release = call_parent && view->priv->click_policy != LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE;
-				} else if  ((event->state & GDK_CONTROL_MASK) != 0) {
+				} else if  ((event->state & CDK_CONTROL_MASK) != 0) {
 					call_parent = FALSE;
 					ctk_tree_selection_select_path (selection, path);
 				} else {
@@ -594,7 +594,7 @@ button_press_event (CtkWidget      *widget,
 			}
 
 			if ((event->button == 1 || event->button == 2) &&
-			    event->type == GDK_BUTTON_PRESS) {
+			    event->type == CDK_BUTTON_PRESS) {
 				view->priv->drag_started = FALSE;
 				view->priv->drag_button = event->button;
 			}
@@ -603,7 +603,7 @@ button_press_event (CtkWidget      *widget,
 		ctk_tree_path_free (path);
 	} else {
 		if ((event->button == 1 || event->button == 2)  &&
-		    event->type == GDK_BUTTON_PRESS) {
+		    event->type == CDK_BUTTON_PRESS) {
 			if (view->priv->double_click_path[1])
 				ctk_tree_path_free (view->priv->double_click_path[1]);
 
@@ -634,8 +634,8 @@ key_press_event (CtkWidget   *widget,
 	modifiers = ctk_accelerator_get_default_mod_mask ();
 
 	switch (event->keyval) {
-	case GDK_KEY_space:
-		if (event->state & GDK_CONTROL_MASK) {
+	case CDK_KEY_space:
+		if (event->state & CDK_CONTROL_MASK) {
 			handled = FALSE;
 			break;
 		}
@@ -648,14 +648,14 @@ key_press_event (CtkWidget   *widget,
 		handled = TRUE;
 		break;
 
-	case GDK_KEY_Return:
-	case GDK_KEY_KP_Enter:
+	case CDK_KEY_Return:
+	case CDK_KEY_KP_Enter:
 		activate_selected_items (view);
 		handled = TRUE;
 		break;
 
-	case GDK_KEY_h:
-		if ((event->state & modifiers) == GDK_CONTROL_MASK) {
+	case CDK_KEY_h:
+		if ((event->state & modifiers) == CDK_CONTROL_MASK) {
 			toggle_hidden_filter (view);
 			handled = TRUE;
 			break;
@@ -979,13 +979,13 @@ lapiz_file_browser_view_init (LapizFileBrowserView * obj)
 	ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (obj), FALSE);
 
 	ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (obj),
-						GDK_BUTTON1_MASK,
+						CDK_BUTTON1_MASK,
 						drag_source_targets,
 						G_N_ELEMENTS (drag_source_targets),
-						GDK_ACTION_COPY);
+						CDK_ACTION_COPY);
 
 	display = ctk_widget_get_display (CTK_WIDGET (obj));
-	obj->priv->busy_cursor = cdk_cursor_new_for_display (display, GDK_WATCH);
+	obj->priv->busy_cursor = cdk_cursor_new_for_display (display, CDK_WATCH);
 }
 
 static gboolean

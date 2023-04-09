@@ -261,7 +261,7 @@ lapiz_tab_label_init (LapizTabLabel *tab_label)
 	                                CTK_ORIENTATION_HORIZONTAL);
 
 	ebox = ctk_event_box_new ();
-	ctk_widget_add_events (ebox, GDK_SCROLL_MASK);
+	ctk_widget_add_events (ebox, CDK_SCROLL_MASK);
 	ctk_event_box_set_visible_window (CTK_EVENT_BOX (ebox), FALSE);
 	ctk_box_pack_start (CTK_BOX (tab_label), ebox, TRUE, TRUE, 0);
 	tab_label->priv->ebox = ebox;
@@ -270,7 +270,7 @@ lapiz_tab_label_init (LapizTabLabel *tab_label)
 	ctk_container_add (CTK_CONTAINER (ebox), hbox);
 
 	close_button = lapiz_close_button_new ();
-	ctk_widget_add_events (close_button, GDK_SCROLL_MASK);
+	ctk_widget_add_events (close_button, CDK_SCROLL_MASK);
 	ctk_widget_set_tooltip_text (close_button, _("Close document"));
 	ctk_box_pack_start (CTK_BOX (tab_label), close_button, FALSE, FALSE, 0);
 	tab_label->priv->close_button = close_button;
