@@ -5606,11 +5606,11 @@ msgstr "Element"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematyka (wyświetlanie)"
+msgstr "Cafematyka (wyświetlanie)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematyka (liniowy)"
+msgstr "Cafematyka (liniowy)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

@@ -1296,7 +1296,7 @@ msgstr "_Leheneratu"
 
 #: lapiz/lapiz-commands-help.c:60
 msgid "CAFE Documentation Team"
-msgstr "Mate dokumentatzeko taldea"
+msgstr "Cafe dokumentatzeko taldea"
 
 #: lapiz/lapiz-commands-help.c:61
 msgid "GNOME Documentation Team"
@@ -5502,11 +5502,11 @@ msgstr "Elementua"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematikak (adierazpena)"
+msgstr "Cafematikak (adierazpena)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematikak (lerroan)"
+msgstr "Cafematikak (lerroan)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

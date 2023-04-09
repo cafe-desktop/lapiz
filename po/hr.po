@@ -5459,11 +5459,11 @@ msgstr "Stavka"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematika (prikaz)"
+msgstr "Cafematika (prikaz)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematika (u liniji)"
+msgstr "Cafematika (u liniji)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

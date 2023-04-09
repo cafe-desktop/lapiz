@@ -5562,11 +5562,11 @@ msgstr "Kohta"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematiikka (näyttö)"
+msgstr "Cafematiikka (näyttö)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematiikka (sisäkkäinen)"
+msgstr "Cafematiikka (sisäkkäinen)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

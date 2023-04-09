@@ -5520,11 +5520,11 @@ msgstr "Item"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematik (paparan)"
+msgstr "Cafematik (paparan)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematik (dalam-baris)"
+msgstr "Cafematik (dalam-baris)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

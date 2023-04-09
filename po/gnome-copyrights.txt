@@ -311,7 +311,7 @@
 # simos:
 # kostas: 12Nov2003, fixes
 # kostas: 26Jan2004, update
-# Nikos: 12Feb2004, fixes for Mate2.6
+# Nikos: 12Feb2004, fixes for Cafe2.6
 # Nikos: 29jun2004 review
 # Nikos: 30Jul2004 Consistency
 # Nikos: 06Sep2004 Completed translation for 2.8
@@ -320,9 +320,9 @@
 #   updated: 37 translated messages, 52 fuzzy translations, 116 untranslated messages.
 # simos: 248 messages, 02Mar2001.
 # kostas: 523 messages, 30Oct2002, completed translation.
-# kostas: updated and finished translation for Mate 2.1x, 02Dec2002.
+# kostas: updated and finished translation for Cafe 2.1x, 02Dec2002.
 # kostas: 666 (uh?..) messages, 06Jan2003, one more update.
-# kostas: 563 messages,25May2003,update for Mate2.4xx.
+# kostas: 563 messages,25May2003,update for Cafe2.4xx.
 # kostas: 640 messages,06Jul2003.
 # Nikos: fixes for access keys, 08jul2003.
 # kostas:13feb2003,646 messages.
@@ -571,7 +571,7 @@
 # Gabor Sari <saga at cafe dot hu>, 2003.
 # Laszlo Dvornik <dvornik at cafe dot hu>, 2004.
 # Gabor Kelemen <kelemeng at cafe dot hu>, 2005, 2006, 2007, 2008, 2009, 2010.
-# Mate Ory <orycafe at gmail dot com>, 2006, 2007, 2008.
+# Cafe Ory <orycafe at gmail dot com>, 2006, 2007, 2008.
 
 
 
@@ -1092,7 +1092,7 @@
 #
 # Andraž Tori <andraz.tori1@guest.arnes.si>, 2000 - 2005.
 # Matic Žgur <mr.zgur@gmail.com>, 2006 - 2007.
-# Matej Urbančič <cafeju@svn.gnome.org>, 2007 - 2010.
+# Cafej Urbančič <cafeju@svn.gnome.org>, 2007 - 2010.
 #
 
 
@@ -1246,7 +1246,7 @@
 ========== wa.po ==========
 # Translation into the walloon language.
 #
-# Si vos voloz donner on côp di spale pol ratournaedje di Mate (ou des
+# Si vos voloz donner on côp di spale pol ratournaedje di Cafe (ou des
 # ôtes libes programes) sicrijhoz-mu a l' adresse emile
 # <srtxg@chanae.alphanet.ch>; nos avons co bråmint di l' ovraedje a fé.
 #

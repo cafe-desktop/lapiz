@@ -5507,11 +5507,11 @@ msgstr "Elem"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematikai (megjelenítés)"
+msgstr "Cafematikai (megjelenítés)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematikai (beágyazott)"
+msgstr "Cafematikai (beágyazott)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

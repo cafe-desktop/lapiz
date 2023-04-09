@@ -5541,11 +5541,11 @@ msgstr "Element"
 
 #: plugins/taglist/Latex.tags.xml.in:180
 msgid "Maths (display)"
-msgstr "Matematice (afișare)"
+msgstr "Cafematice (afișare)"
 
 #: plugins/taglist/Latex.tags.xml.in:185
 msgid "Maths (inline)"
-msgstr "Matematică (intercalat)"
+msgstr "Cafematică (intercalat)"
 
 #: plugins/taglist/Latex.tags.xml.in:190
 msgid "Operator fraction"

@@ -152,7 +152,7 @@ msgstr "GNOME dokumentatzeko taldea"
 #. (itstool) path: revdescription/para
 #: C/index.docbook:206
 msgid "CAFE Documentation Team"
-msgstr "Mate dokumentatzeko taldea"
+msgstr "Cafe dokumentatzeko taldea"
 
 #. (itstool) path: info/releaseinfo
 #: C/index.docbook:212
