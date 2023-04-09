@@ -39,6 +39,16 @@ requires:
     - meson
     - wget
 
+    # required for ctksourceview
+    - libatk1.0-dev
+    - libfribidi-dev
+    - libxml2-utils
+    - libgdk-pixbuf2.0-doc
+    - libgladeui-dev
+    - libpango1.0-doc
+    - xauth
+    - xvfb
+
 before_scripts:
   - ./html-cppcheck
   - ./debrepo-install 'libctk-3-dev gir1.2-ctk-3.0 libctk-3-common libctk-3-0 libctk-3-doc'
