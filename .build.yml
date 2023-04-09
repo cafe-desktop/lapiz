@@ -28,14 +28,14 @@ requires:
     - libx11-dev
     - libxml2-dev
     - make
-    - cafe-common
-    - cafe-desktop
     - python3-dev
     - python3-lxml
     - yelp-tools
 
 before_scripts:
   - ./html-cppcheck
+  - ./install-from-git https://github.com/cafe-desktop/cafe-common master
+  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
 
 build_scripts:
   - ./before-build
