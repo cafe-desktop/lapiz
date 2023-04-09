@@ -23,7 +23,7 @@
 #include "lapiz-gio-document-loader.h"
 #include "lapiz-prefs-manager-app.h"
 #include <gio/gio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <string.h>
@@ -88,7 +88,7 @@ create_document (const gchar *contents)
 {
 	LapizDocument *document = lapiz_document_new ();
 
-	gtk_text_buffer_set_text (GTK_TEXT_BUFFER (document), contents, -1);
+	ctk_text_buffer_set_text (GTK_TEXT_BUFFER (document), contents, -1);
 	return document;
 }
 
@@ -174,7 +174,7 @@ ensure_mounted (GFile *file)
 		return TRUE;
 	}
 
-	mo = gtk_mount_operation_new (NULL);
+	mo = ctk_mount_operation_new (NULL);
 
 	g_file_mount_enclosing_volume (file,
 	                               G_MOUNT_MOUNT_NONE,

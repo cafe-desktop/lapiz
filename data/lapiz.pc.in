@@ -6,7 +6,7 @@ pluginsdir=@libdir@/lapiz/plugins
 
 Name: lapiz
 Description: lapiz
-Requires: gtksourceview-3.0 libpeas-1.0 libpeas-gtk-1.0
+Requires: ctksourceview-3.0 libpeas-1.0 libpeas-ctk-1.0
 Version: @VERSION@
 Cflags: -I${includedir}/lapiz
 Libs: -L${libdir}

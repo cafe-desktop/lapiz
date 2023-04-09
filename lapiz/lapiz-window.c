@@ -39,8 +39,8 @@
 #include <gdk/gdk.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include <gtk/gtk.h>
-#include <gtksourceview/gtksource.h>
+#include <ctk/ctk.h>
+#include <ctksourceview/ctksource.h>
 #include <libpeas/peas-activatable.h>
 #include <libpeas/peas-extension-set.h>
 
@@ -203,7 +203,7 @@ lapiz_window_dispose (GObject *object)
 
 	if (window->priv->fullscreen_controls != NULL)
 	{
-		gtk_widget_destroy (window->priv->fullscreen_controls);
+		ctk_widget_destroy (window->priv->fullscreen_controls);
 
 		window->priv->fullscreen_controls = NULL;
 	}
@@ -212,7 +212,7 @@ lapiz_window_dispose (GObject *object)
 	{
 		GtkRecentManager *recent_manager;
 
-		recent_manager =  gtk_recent_manager_get_default ();
+		recent_manager =  ctk_recent_manager_get_default ();
 		g_signal_handler_disconnect (recent_manager,
 					     window->priv->recents_handler_id);
 		window->priv->recents_handler_id = 0;
@@ -288,7 +288,7 @@ lapiz_window_configure_event (GtkWidget         *widget,
  * in an entry on a panel ends up pasting text in the TextView.
  * Here we override GtkWindow's handler to do the same things that it
  * does, but in the opposite order and then we chain up to the grand
- * parent handler, skipping gtk_window_key_press_event.
+ * parent handler, skipping ctk_window_key_press_event.
  */
 static gboolean
 lapiz_window_key_press_event (GtkWidget   *widget,
@@ -346,24 +346,24 @@ lapiz_window_key_press_event (GtkWidget   *widget,
 		{
 			GtkNotebook *notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (LAPIZ_WINDOW (window)));
 
-			int pages = gtk_notebook_get_n_pages (notebook);
-			int page_num = gtk_notebook_get_current_page (notebook);
+			int pages = ctk_notebook_get_n_pages (notebook);
+			int page_num = ctk_notebook_get_current_page (notebook);
 
 			if (event->keyval == GDK_KEY_ISO_Left_Tab)
 			{
 				if (page_num != 0)
-					gtk_notebook_prev_page (notebook);
+					ctk_notebook_prev_page (notebook);
 				else
-					gtk_notebook_set_current_page (notebook, (pages - 1));
+					ctk_notebook_set_current_page (notebook, (pages - 1));
 				handled = TRUE;
 			}
 
 			if (event->keyval == GDK_KEY_Tab)
 			{
 				if (page_num != (pages -1))
-					gtk_notebook_next_page (notebook);
+					ctk_notebook_next_page (notebook);
 				else
-					gtk_notebook_set_current_page (notebook, 0);
+					ctk_notebook_set_current_page (notebook, 0);
 				handled = TRUE;
 			}
 		}
@@ -376,11 +376,11 @@ lapiz_window_key_press_event (GtkWidget   *widget,
 
 	/* handle focus widget key events */
 	if (!handled)
-		handled = gtk_window_propagate_key_event (window, event);
+		handled = ctk_window_propagate_key_event (window, event);
 
 	/* handle mnemonics and accelerators */
 	if (!handled)
-		handled = gtk_window_activate_key (window, event);
+		handled = ctk_window_activate_key (window, event);
 
 	/* Chain up, invokes binding set */
 	if (!handled)
@@ -479,13 +479,13 @@ menu_item_select_cb (GtkMenuItem *proxy,
 	GtkAction *action;
 	char *message;
 
-	action = gtk_activatable_get_related_action (GTK_ACTIVATABLE (proxy));
+	action = ctk_activatable_get_related_action (GTK_ACTIVATABLE (proxy));
 	g_return_if_fail (action != NULL);
 
 	g_object_get (G_OBJECT (action), "tooltip", &message, NULL);
 	if (message)
 	{
-		gtk_statusbar_push (GTK_STATUSBAR (window->priv->statusbar),
+		ctk_statusbar_push (GTK_STATUSBAR (window->priv->statusbar),
 				    window->priv->tip_message_cid, message);
 		g_free (message);
 	}
@@ -495,7 +495,7 @@ static void
 menu_item_deselect_cb (GtkMenuItem *proxy,
                        LapizWindow *window)
 {
-	gtk_statusbar_pop (GTK_STATUSBAR (window->priv->statusbar),
+	ctk_statusbar_pop (GTK_STATUSBAR (window->priv->statusbar),
 			   window->priv->tip_message_cid);
 }
 
@@ -537,27 +537,27 @@ apply_toolbar_style (LapizWindow *window,
 	{
 		case LAPIZ_TOOLBAR_SYSTEM:
 			lapiz_debug_message (DEBUG_WINDOW, "LAPIZ: SYSTEM");
-			gtk_toolbar_unset_style (
+			ctk_toolbar_unset_style (
 					GTK_TOOLBAR (toolbar));
 			break;
 
 		case LAPIZ_TOOLBAR_ICONS:
 			lapiz_debug_message (DEBUG_WINDOW, "LAPIZ: ICONS");
-			gtk_toolbar_set_style (
+			ctk_toolbar_set_style (
 					GTK_TOOLBAR (toolbar),
 					GTK_TOOLBAR_ICONS);
 			break;
 
 		case LAPIZ_TOOLBAR_ICONS_AND_TEXT:
 			lapiz_debug_message (DEBUG_WINDOW, "LAPIZ: ICONS_AND_TEXT");
-			gtk_toolbar_set_style (
+			ctk_toolbar_set_style (
 					GTK_TOOLBAR (toolbar),
 					GTK_TOOLBAR_BOTH);
 			break;
 
 		case LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ:
 			lapiz_debug_message (DEBUG_WINDOW, "LAPIZ: ICONS_BOTH_HORIZ");
-			gtk_toolbar_set_style (
+			ctk_toolbar_set_style (
 					GTK_TOOLBAR (toolbar),
 					GTK_TOOLBAR_BOTH_HORIZ);
 			break;
@@ -576,19 +576,19 @@ set_toolbar_style (LapizWindow *window,
 	if (origin == NULL)
 		visible = lapiz_prefs_manager_get_toolbar_visible ();
 	else
-		visible = gtk_widget_get_visible (origin->priv->toolbar);
+		visible = ctk_widget_get_visible (origin->priv->toolbar);
 
 	/* Set visibility */
 	if (visible)
-		gtk_widget_show (window->priv->toolbar);
+		ctk_widget_show (window->priv->toolbar);
 	else
-		gtk_widget_hide (window->priv->toolbar);
+		ctk_widget_hide (window->priv->toolbar);
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewToolbar");
 
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	if (ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 
 	/* Set style */
 	if (origin == NULL)
@@ -615,17 +615,17 @@ update_next_prev_doc_sensitivity (LapizWindow *window,
 
 	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
 
-	tab_number = gtk_notebook_page_num (notebook, GTK_WIDGET (tab));
+	tab_number = ctk_notebook_page_num (notebook, GTK_WIDGET (tab));
 	g_return_if_fail (tab_number >= 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "DocumentsPreviousDocument");
-	gtk_action_set_sensitive (action, tab_number != 0);
+	ctk_action_set_sensitive (action, tab_number != 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "DocumentsNextDocument");
-	gtk_action_set_sensitive (action,
-				  tab_number < gtk_notebook_get_n_pages (notebook) - 1);
+	ctk_action_set_sensitive (action,
+				  tab_number < ctk_notebook_get_n_pages (notebook) - 1);
 }
 
 static void
@@ -644,13 +644,13 @@ update_next_prev_doc_sensitivity_per_window (LapizWindow *window)
 		return;
 	}
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "DocumentsPreviousDocument");
-	gtk_action_set_sensitive (action, FALSE);
+	ctk_action_set_sensitive (action, FALSE);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "DocumentsNextDocument");
-	gtk_action_set_sensitive (action, FALSE);
+	ctk_action_set_sensitive (action, FALSE);
 
 }
 
@@ -674,17 +674,17 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 		state_normal = (state == LAPIZ_TAB_STATE_NORMAL);
 
 		sens = state_normal &&
-		       gtk_selection_data_targets_include_text (selection_data);
+		       ctk_selection_data_targets_include_text (selection_data);
 	}
 	else
 	{
 		sens = FALSE;
 	}
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditPaste");
 
-	gtk_action_set_sensitive (action, sens);
+	ctk_action_set_sensitive (action, sens);
 
 	g_object_unref (window);
 }
@@ -695,11 +695,11 @@ set_paste_sensitivity_according_to_clipboard (LapizWindow  *window,
 {
 	GdkDisplay *display;
 
-	display = gtk_clipboard_get_display (clipboard);
+	display = ctk_clipboard_get_display (clipboard);
 
 	if (gdk_display_supports_selection_notification (display))
 	{
-		gtk_clipboard_request_contents (clipboard,
+		ctk_clipboard_request_contents (clipboard,
 						gdk_atom_intern_static_string ("TARGETS"),
 						(GtkClipboardReceivedFunc) received_clipboard_contents,
 						g_object_ref (window));
@@ -708,12 +708,12 @@ set_paste_sensitivity_according_to_clipboard (LapizWindow  *window,
 	{
 		GtkAction *action;
 
-		action = gtk_action_group_get_action (window->priv->action_group,
+		action = ctk_action_group_get_action (window->priv->action_group,
 						      "EditPaste");
 
 		/* XFIXES extension not availbale, make
 		 * Paste always sensitive */
-		gtk_action_set_sensitive (action, TRUE);
+		ctk_action_set_sensitive (action, TRUE);
 	}
 }
 
@@ -741,21 +741,21 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 	state_normal = (state == LAPIZ_TAB_STATE_NORMAL);
 
 	view = lapiz_tab_get_view (tab);
-	editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
+	editable = ctk_text_view_get_editable (GTK_TEXT_VIEW (view));
 
-	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
-	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (window),
+	clipboard = ctk_widget_get_clipboard (GTK_WIDGET (window),
 					      GDK_SELECTION_CLIPBOARD);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "FileSave");
 
 	if (state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) {
-		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), TRUE);
+		ctk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), TRUE);
 	}
 
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   (state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
 				   (state == LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
@@ -764,39 +764,39 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 				   (cansave) &&
 				   (editable));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "FileSaveAs");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   (state == LAPIZ_TAB_STATE_SAVING_ERROR) ||
 				   (state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
 				   (state == LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
 				  !(lockdown & LAPIZ_LOCKDOWN_SAVE_TO_DISK));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "FileRevert");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   (state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
 				  !lapiz_document_is_untitled (doc));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "FilePrintPreview");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
 				  !(lockdown & LAPIZ_LOCKDOWN_PRINTING));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "FilePrint");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				  (state == LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
 				  !(lockdown & LAPIZ_LOCKDOWN_PRINTING));
 
-	action = gtk_action_group_get_action (window->priv->close_action_group,
+	action = ctk_action_group_get_action (window->priv->close_action_group,
 					      "FileClose");
 
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state != LAPIZ_TAB_STATE_CLOSING) &&
 				  (state != LAPIZ_TAB_STATE_SAVING) &&
 				  (state != LAPIZ_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
@@ -804,33 +804,33 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 				  (state != LAPIZ_TAB_STATE_PRINT_PREVIEWING) &&
 				  (state != LAPIZ_TAB_STATE_SAVING_ERROR));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditUndo");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
-				  gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
+				  ctk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditRedo");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
-				  gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
+				  ctk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditCut");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
 				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+				  ctk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditCopy");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+				  ctk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditPaste");
 	if (state_normal && editable)
 	{
@@ -839,62 +839,62 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 	}
 	else
 	{
-		gtk_action_set_sensitive (action, FALSE);
+		ctk_action_set_sensitive (action, FALSE);
 	}
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditDelete");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
 				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+				  ctk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchFind");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchIncrementalSearch");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchReplace");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
 				  editable);
 
 	b = lapiz_document_get_can_search_again (doc);
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchFindPrevious");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchClearHighlight");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchGoToLine");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "ViewHighlightMode");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state != LAPIZ_TAB_STATE_CLOSING) &&
 				  lapiz_prefs_manager_get_enable_syntax_highlighting ());
 
@@ -911,14 +911,14 @@ language_toggled (GtkToggleAction *action,
 	GtkSourceLanguage *lang;
 	const gchar *lang_id;
 
-	if (gtk_toggle_action_get_active (action) == FALSE)
+	if (ctk_toggle_action_get_active (action) == FALSE)
 		return;
 
 	doc = lapiz_window_get_active_document (window);
 	if (doc == NULL)
 		return;
 
-	lang_id = gtk_action_get_name (GTK_ACTION (action));
+	lang_id = ctk_action_get_name (GTK_ACTION (action));
 
 	if (strcmp (lang_id, LANGUAGE_NONE) == 0)
 	{
@@ -927,7 +927,7 @@ language_toggled (GtkToggleAction *action,
 	}
 	else
 	{
-		lang = gtk_source_language_manager_get_language (
+		lang = ctk_source_language_manager_get_language (
 				lapiz_get_language_manager (),
 				lang_id);
 		if (lang == NULL)
@@ -970,11 +970,11 @@ create_language_menu_item (GtkSourceLanguage *lang,
 	gchar *tip;
 	gchar *path;
 
-	section = gtk_source_language_get_section (lang);
+	section = ctk_source_language_get_section (lang);
 	escaped_section = escape_section_name (section);
 
 	/* check if the section submenu exists or create it */
-	section_action = gtk_action_group_get_action (window->priv->languages_action_group,
+	section_action = ctk_action_group_get_action (window->priv->languages_action_group,
 						      escaped_section);
 
 	if (section_action == NULL)
@@ -983,18 +983,18 @@ create_language_menu_item (GtkSourceLanguage *lang,
 
 		section_name = lapiz_utils_escape_underscores (section, -1);
 
-		section_action = gtk_action_new (escaped_section,
+		section_action = ctk_action_new (escaped_section,
 						 section_name,
 						 NULL,
 						 NULL);
 
 		g_free (section_name);
 
-		gtk_action_group_add_action (window->priv->languages_action_group,
+		ctk_action_group_add_action (window->priv->languages_action_group,
 					     section_action);
 		g_object_unref (section_action);
 
-		gtk_ui_manager_add_ui (window->priv->manager,
+		ctk_ui_manager_add_ui (window->priv->manager,
 				       ui_id,
 				       "/MenuBar/ViewMenu/ViewHighlightModeMenu/LanguagesMenuPlaceholder",
 				       escaped_section,
@@ -1004,8 +1004,8 @@ create_language_menu_item (GtkSourceLanguage *lang,
 	}
 
 	/* now add the language item to the section */
-	lang_name = gtk_source_language_get_name (lang);
-	lang_id = gtk_source_language_get_id (lang);
+	lang_name = ctk_source_language_get_name (lang);
+	lang_id = ctk_source_language_get_id (lang);
 
 	escaped_lang_name = lapiz_utils_escape_underscores (lang_name, -1);
 
@@ -1013,7 +1013,7 @@ create_language_menu_item (GtkSourceLanguage *lang,
 	path = g_strdup_printf ("/MenuBar/ViewMenu/ViewHighlightModeMenu/LanguagesMenuPlaceholder/%s",
 				escaped_section);
 
-	action = gtk_radio_action_new (lang_id,
+	action = ctk_radio_action_new (lang_id,
 				       escaped_lang_name,
 				       tip,
 				       NULL,
@@ -1022,23 +1022,23 @@ create_language_menu_item (GtkSourceLanguage *lang,
 	g_free (escaped_lang_name);
 
 	/* Action is added with a NULL accel to make the accel overridable */
-	gtk_action_group_add_action_with_accel (window->priv->languages_action_group,
+	ctk_action_group_add_action_with_accel (window->priv->languages_action_group,
 						GTK_ACTION (action),
 						NULL);
 	g_object_unref (action);
 
 	/* add the action to the same radio group of the "Normal" action */
-	normal_action = gtk_action_group_get_action (window->priv->languages_action_group,
+	normal_action = ctk_action_group_get_action (window->priv->languages_action_group,
 						     LANGUAGE_NONE);
-	group = gtk_radio_action_get_group (GTK_RADIO_ACTION (normal_action));
-	gtk_radio_action_set_group (action, group);
+	group = ctk_radio_action_get_group (GTK_RADIO_ACTION (normal_action));
+	ctk_radio_action_set_group (action, group);
 
 	g_signal_connect (action,
 			  "activate",
 			  G_CALLBACK (language_toggled),
 			  window);
 
-	gtk_ui_manager_add_ui (window->priv->manager,
+	ctk_ui_manager_add_ui (window->priv->manager,
 			       ui_id,
 			       path,
 			       lang_id,
@@ -1066,12 +1066,12 @@ create_languages_menu (LapizWindow *window)
 
 	/* Translators: "Plain Text" means that no highlight mode is selected in the
 	 * "View->Highlight Mode" submenu and so syntax highlighting is disabled */
-	action_none = gtk_radio_action_new (LANGUAGE_NONE, _("Plain Text"),
+	action_none = ctk_radio_action_new (LANGUAGE_NONE, _("Plain Text"),
 					    _("Disable syntax highlighting"),
 					    NULL,
 					    -1);
 
-	gtk_action_group_add_action (window->priv->languages_action_group,
+	ctk_action_group_add_action (window->priv->languages_action_group,
 				     GTK_ACTION (action_none));
 	g_object_unref (action_none);
 
@@ -1080,9 +1080,9 @@ create_languages_menu (LapizWindow *window)
 			  G_CALLBACK (language_toggled),
 			  window);
 
-	id = gtk_ui_manager_new_merge_id (window->priv->manager);
+	id = ctk_ui_manager_new_merge_id (window->priv->manager);
 
-	gtk_ui_manager_add_ui (window->priv->manager,
+	ctk_ui_manager_add_ui (window->priv->manager,
 			       id,
 			       "/MenuBar/ViewMenu/ViewHighlightModeMenu/LanguagesMenuPlaceholder",
 			       LANGUAGE_NONE,
@@ -1090,7 +1090,7 @@ create_languages_menu (LapizWindow *window)
 			       GTK_UI_MANAGER_MENUITEM,
 			       TRUE);
 
-	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action_none), TRUE);
+	ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action_none), TRUE);
 
 	/* now add all the known languages */
 	languages = lapiz_language_manager_list_languages_sorted (
@@ -1124,11 +1124,11 @@ update_languages_menu (LapizWindow *window)
 
 	lang = lapiz_document_get_language (doc);
 	if (lang != NULL)
-		lang_id = gtk_source_language_get_id (lang);
+		lang_id = ctk_source_language_get_id (lang);
 	else
 		lang_id = LANGUAGE_NONE;
 
-	actions = gtk_action_group_list_actions (window->priv->languages_action_group);
+	actions = ctk_action_group_list_actions (window->priv->languages_action_group);
 
 	/* prevent recursion */
 	for (l = actions; l != NULL; l = l->next)
@@ -1138,10 +1138,10 @@ update_languages_menu (LapizWindow *window)
 						 window);
 	}
 
-	action = gtk_action_group_get_action (window->priv->languages_action_group,
+	action = ctk_action_group_get_action (window->priv->languages_action_group,
 					      lang_id);
 
-	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+	ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
 	for (l = actions; l != NULL; l = l->next)
 	{
@@ -1166,7 +1166,7 @@ _lapiz_recent_add (LapizWindow *window,
 		NULL
 	};
 
-	recent_manager =  gtk_recent_manager_get_default ();
+	recent_manager =  ctk_recent_manager_get_default ();
 
 	recent_data.display_name = NULL;
 	recent_data.description = NULL;
@@ -1176,7 +1176,7 @@ _lapiz_recent_add (LapizWindow *window,
 	recent_data.groups = groups;
 	recent_data.is_private = FALSE;
 
-	gtk_recent_manager_add_full (recent_manager,
+	ctk_recent_manager_add_full (recent_manager,
 				     uri,
 				     &recent_data);
 
@@ -1189,9 +1189,9 @@ _lapiz_recent_remove (LapizWindow *window,
 {
 	GtkRecentManager *recent_manager;
 
-	recent_manager =  gtk_recent_manager_get_default ();
+	recent_manager =  ctk_recent_manager_get_default ();
 
-	gtk_recent_manager_remove_item (recent_manager, uri, NULL);
+	ctk_recent_manager_remove_item (recent_manager, uri, NULL);
 }
 
 static void
@@ -1216,7 +1216,7 @@ recent_chooser_item_activated (GtkRecentChooser *chooser,
 {
 	gchar *uri;
 
-	uri = gtk_recent_chooser_get_current_uri (chooser);
+	uri = ctk_recent_chooser_get_current_uri (chooser);
 
 	open_recent_file (uri, window);
 
@@ -1230,10 +1230,10 @@ recents_menu_activate (GtkAction   *action,
 	GtkRecentInfo *info;
 	const gchar *uri;
 
-	info = g_object_get_data (G_OBJECT (action), "gtk-recent-info");
+	info = g_object_get_data (G_OBJECT (action), "ctk-recent-info");
 	g_return_if_fail (info != NULL);
 
-	uri = gtk_recent_info_get_uri (info);
+	uri = ctk_recent_info_get_uri (info);
 
 	open_recent_file (uri, window);
 }
@@ -1241,7 +1241,7 @@ recents_menu_activate (GtkAction   *action,
 static gint
 sort_recents_mru (GtkRecentInfo *a, GtkRecentInfo *b)
 {
-	return (gtk_recent_info_get_modified (b) - gtk_recent_info_get_modified (a));
+	return (ctk_recent_info_get_modified (b) - ctk_recent_info_get_modified (a));
 }
 
 static void	update_recent_files_menu (LapizWindow *window);
@@ -1256,7 +1256,7 @@ recent_manager_changed (GtkRecentManager *manager,
 
 /*
  * Manually construct the inline recents list in the File menu.
- * Hopefully gtk 2.12 will add support for it.
+ * Hopefully ctk 2.12 will add support for it.
  */
 static void
 update_recent_files_menu (LapizWindow *window)
@@ -1275,31 +1275,31 @@ update_recent_files_menu (LapizWindow *window)
 	g_return_if_fail (p->recents_action_group != NULL);
 
 	if (p->recents_menu_ui_id != 0)
-		gtk_ui_manager_remove_ui (p->manager,
+		ctk_ui_manager_remove_ui (p->manager,
 					  p->recents_menu_ui_id);
 
-	actions = gtk_action_group_list_actions (p->recents_action_group);
+	actions = ctk_action_group_list_actions (p->recents_action_group);
 	for (l = actions; l != NULL; l = l->next)
 	{
 		g_signal_handlers_disconnect_by_func (GTK_ACTION (l->data),
 						      G_CALLBACK (recents_menu_activate),
 						      window);
- 		gtk_action_group_remove_action (p->recents_action_group,
+ 		ctk_action_group_remove_action (p->recents_action_group,
 						GTK_ACTION (l->data));
 	}
 	g_list_free (actions);
 
-	p->recents_menu_ui_id = gtk_ui_manager_new_merge_id (p->manager);
+	p->recents_menu_ui_id = ctk_ui_manager_new_merge_id (p->manager);
 
-	recent_manager =  gtk_recent_manager_get_default ();
-	items = gtk_recent_manager_get_items (recent_manager);
+	recent_manager =  ctk_recent_manager_get_default ();
+	items = ctk_recent_manager_get_items (recent_manager);
 
 	/* filter */
 	for (l = items; l != NULL; l = l->next)
 	{
 		GtkRecentInfo *info = l->data;
 
-		if (!gtk_recent_info_has_group (info, "lapiz"))
+		if (!ctk_recent_info_has_group (info, "lapiz"))
 			continue;
 
 		filtered_items = g_list_prepend (filtered_items, info);
@@ -1330,7 +1330,7 @@ update_recent_files_menu (LapizWindow *window)
 
 		action_name = g_strdup_printf ("recent-info-%d", i);
 
-		display_name = gtk_recent_info_get_display_name (info);
+		display_name = ctk_recent_info_get_display_name (info);
 		escaped = lapiz_utils_escape_underscores (display_name, -1);
 		if (i >= 10)
 			label = g_strdup_printf ("%d.  %s",
@@ -1342,9 +1342,9 @@ update_recent_files_menu (LapizWindow *window)
 						 escaped);
 		g_free (escaped);
 
-		/* gtk_recent_info_get_uri_display (info) is buggy and
+		/* ctk_recent_info_get_uri_display (info) is buggy and
 		 * works only for local files */
-		uri = lapiz_utils_uri_for_display (gtk_recent_info_get_uri (info));
+		uri = lapiz_utils_uri_for_display (ctk_recent_info_get_uri (info));
 		ruri = lapiz_utils_replace_home_dir_with_tilde (uri);
 		g_free (uri);
 
@@ -1352,26 +1352,26 @@ update_recent_files_menu (LapizWindow *window)
 		tip = g_strdup_printf (_("Open '%s'"), ruri);
 		g_free (ruri);
 
-		action = gtk_action_new (action_name,
+		action = ctk_action_new (action_name,
 					 label,
 					 tip,
 					 NULL);
 
 		g_object_set_data_full (G_OBJECT (action),
-					"gtk-recent-info",
-					gtk_recent_info_ref (info),
-					(GDestroyNotify) gtk_recent_info_unref);
+					"ctk-recent-info",
+					ctk_recent_info_ref (info),
+					(GDestroyNotify) ctk_recent_info_unref);
 
 		g_signal_connect (action,
 				  "activate",
 				  G_CALLBACK (recents_menu_activate),
 				  window);
 
-		gtk_action_group_add_action (p->recents_action_group,
+		ctk_action_group_add_action (p->recents_action_group,
 					     action);
 		g_object_unref (action);
 
-		gtk_ui_manager_add_ui (p->manager,
+		ctk_ui_manager_add_ui (p->manager,
 				       p->recents_menu_ui_id,
 				       "/MenuBar/FileMenu/FileRecentsPlaceholder",
 				       action_name,
@@ -1386,14 +1386,14 @@ update_recent_files_menu (LapizWindow *window)
 
 	g_list_free (filtered_items);
 
-	g_list_foreach (items, (GFunc) gtk_recent_info_unref, NULL);
+	g_list_foreach (items, (GFunc) ctk_recent_info_unref, NULL);
 	g_list_free (items);
 }
 
 static void
 set_non_homogeneus (GtkWidget *widget, gpointer data)
 {
-	gtk_tool_item_set_homogeneous (GTK_TOOL_ITEM (widget), FALSE);
+	ctk_tool_item_set_homogeneous (GTK_TOOL_ITEM (widget), FALSE);
 }
 
 static void
@@ -1403,16 +1403,16 @@ toolbar_visibility_changed (GtkWidget   *toolbar,
 	gboolean visible;
 	GtkAction *action;
 
-	visible = gtk_widget_get_visible (toolbar);
+	visible = ctk_widget_get_visible (toolbar);
 
 	if (lapiz_prefs_manager_toolbar_visible_can_set ())
 		lapiz_prefs_manager_set_toolbar_visible (visible);
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewToolbar");
 
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	if (ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 }
 
 static GtkWidget *
@@ -1425,21 +1425,21 @@ setup_toolbar_open_button (LapizWindow *window,
 	GtkToolItem *open_button;
 	GtkAction *action;
 
-	recent_manager = gtk_recent_manager_get_default ();
+	recent_manager = ctk_recent_manager_get_default ();
 
 	/* recent files menu tool button */
-	toolbar_recent_menu = gtk_recent_chooser_menu_new_for_manager (recent_manager);
+	toolbar_recent_menu = ctk_recent_chooser_menu_new_for_manager (recent_manager);
 
-	gtk_recent_chooser_set_local_only (GTK_RECENT_CHOOSER (toolbar_recent_menu),
+	ctk_recent_chooser_set_local_only (GTK_RECENT_CHOOSER (toolbar_recent_menu),
 					   FALSE);
-	gtk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER (toolbar_recent_menu),
+	ctk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER (toolbar_recent_menu),
 					  GTK_RECENT_SORT_MRU);
-	gtk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (toolbar_recent_menu),
+	ctk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (toolbar_recent_menu),
 				      lapiz_prefs_manager_get_max_recents ());
 
-	filter = gtk_recent_filter_new ();
-	gtk_recent_filter_add_group (filter, "lapiz");
-	gtk_recent_chooser_set_filter (GTK_RECENT_CHOOSER (toolbar_recent_menu),
+	filter = ctk_recent_filter_new ();
+	ctk_recent_filter_add_group (filter, "lapiz");
+	ctk_recent_chooser_set_filter (GTK_RECENT_CHOOSER (toolbar_recent_menu),
 				       filter);
 
 	g_signal_connect (toolbar_recent_menu,
@@ -1448,26 +1448,26 @@ setup_toolbar_open_button (LapizWindow *window,
 			  window);
 
 	/* add the custom Open button to the toolbar */
-	open_button = gtk_menu_tool_button_new (gtk_image_new_from_icon_name ("document-open",
+	open_button = ctk_menu_tool_button_new (ctk_image_new_from_icon_name ("document-open",
 									      GTK_ICON_SIZE_MENU),
 						_("Open a file"));
 
-	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (open_button),
+	ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (open_button),
 				       toolbar_recent_menu);
 
-	gtk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (open_button),
+	ctk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (open_button),
 						     _("Open a recently used file"));
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "FileOpen");
 	g_object_set (action,
 		      "is_important", TRUE,
 		      "short_label", _("Open"),
 		      NULL);
-	gtk_activatable_set_related_action (GTK_ACTIVATABLE (open_button),
+	ctk_activatable_set_related_action (GTK_ACTIVATABLE (open_button),
 					    action);
 
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar),
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar),
 			    open_button,
 			    1);
 
@@ -1487,89 +1487,89 @@ create_menu_bar_and_toolbar (LapizWindow *window,
 
 	lapiz_debug (DEBUG_WINDOW);
 
-	manager = gtk_ui_manager_new ();
+	manager = ctk_ui_manager_new ();
 	window->priv->manager = manager;
 
-	gtk_window_add_accel_group (GTK_WINDOW (window),
-				    gtk_ui_manager_get_accel_group (manager));
+	ctk_window_add_accel_group (GTK_WINDOW (window),
+				    ctk_ui_manager_get_accel_group (manager));
 
-	action_group = gtk_action_group_new ("LapizWindowAlwaysSensitiveActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("LapizWindowAlwaysSensitiveActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      lapiz_always_sensitive_menu_entries,
 				      G_N_ELEMENTS (lapiz_always_sensitive_menu_entries),
 				      window);
-	gtk_action_group_add_toggle_actions (action_group,
+	ctk_action_group_add_toggle_actions (action_group,
 					     lapiz_always_sensitive_toggle_menu_entries,
 					     G_N_ELEMENTS (lapiz_always_sensitive_toggle_menu_entries),
 					     window);
 
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 	window->priv->always_sensitive_action_group = action_group;
 
-	action_group = gtk_action_group_new ("LapizWindowActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("LapizWindowActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      lapiz_menu_entries,
 				      G_N_ELEMENTS (lapiz_menu_entries),
 				      window);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 	window->priv->action_group = action_group;
 
 	/* set short labels to use in the toolbar */
-	action = gtk_action_group_get_action (action_group, "FileSave");
+	action = ctk_action_group_get_action (action_group, "FileSave");
 	g_object_set (action, "short_label", _("Save"), NULL);
-	action = gtk_action_group_get_action (action_group, "FilePrint");
+	action = ctk_action_group_get_action (action_group, "FilePrint");
 	g_object_set (action, "short_label", _("Print"), NULL);
-	action = gtk_action_group_get_action (action_group, "SearchFind");
+	action = ctk_action_group_get_action (action_group, "SearchFind");
 	g_object_set (action, "short_label", _("Find"), NULL);
-	action = gtk_action_group_get_action (action_group, "SearchReplace");
+	action = ctk_action_group_get_action (action_group, "SearchReplace");
 	g_object_set (action, "short_label", _("Replace"), NULL);
 
 	/* set which actions should have priority on the toolbar */
-	action = gtk_action_group_get_action (action_group, "FileSave");
+	action = ctk_action_group_get_action (action_group, "FileSave");
 	g_object_set (action, "is_important", TRUE, NULL);
-	action = gtk_action_group_get_action (action_group, "EditUndo");
+	action = ctk_action_group_get_action (action_group, "EditUndo");
 	g_object_set (action, "is_important", TRUE, NULL);
 
-	action_group = gtk_action_group_new ("LapizQuitWindowActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("LapizQuitWindowActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      lapiz_quit_menu_entries,
 				      G_N_ELEMENTS (lapiz_quit_menu_entries),
 				      window);
 
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 	window->priv->quit_action_group = action_group;
 
-	action_group = gtk_action_group_new ("LapizCloseWindowActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("LapizCloseWindowActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 	                              lapiz_close_menu_entries,
 	                              G_N_ELEMENTS (lapiz_close_menu_entries),
 	                              window);
 
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 	window->priv->close_action_group = action_group;
 
-	action_group = gtk_action_group_new ("LapizWindowPanesActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_toggle_actions (action_group,
+	action_group = ctk_action_group_new ("LapizWindowPanesActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_toggle_actions (action_group,
 					     lapiz_panes_toggle_menu_entries,
 					     G_N_ELEMENTS (lapiz_panes_toggle_menu_entries),
 					     window);
 
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 	window->priv->panes_action_group = action_group;
 
 	/* now load the UI definition */
 	ui_file = lapiz_dirs_get_ui_file (LAPIZ_UIFILE);
-	gtk_ui_manager_add_ui_from_file (manager, ui_file, &error);
+	ctk_ui_manager_add_ui_from_file (manager, ui_file, &error);
 	if (error != NULL)
 	{
 		g_warning ("Could not merge %s: %s", ui_file, error->message);
@@ -1588,13 +1588,13 @@ create_menu_bar_and_toolbar (LapizWindow *window,
 			  window);
 
 	/* recent files menu */
-	action_group = gtk_action_group_new ("RecentFilesActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
+	action_group = ctk_action_group_new ("RecentFilesActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->recents_action_group = action_group;
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 
-	recent_manager = gtk_recent_manager_get_default ();
+	recent_manager = ctk_recent_manager_get_default ();
 	window->priv->recents_handler_id = g_signal_connect (recent_manager,
 							     "changed",
 							     G_CALLBACK (recent_manager_changed),
@@ -1602,31 +1602,31 @@ create_menu_bar_and_toolbar (LapizWindow *window,
 	update_recent_files_menu (window);
 
 	/* languages menu */
-	action_group = gtk_action_group_new ("LanguagesActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
+	action_group = ctk_action_group_new ("LanguagesActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->languages_action_group = action_group;
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 	create_languages_menu (window);
 
 	/* list of open documents menu */
-	action_group = gtk_action_group_new ("DocumentsListActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
+	action_group = ctk_action_group_new ("DocumentsListActions");
+	ctk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->documents_list_action_group = action_group;
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 
-	window->priv->menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
-	gtk_box_pack_start (GTK_BOX (main_box),
+	window->priv->menubar = ctk_ui_manager_get_widget (manager, "/MenuBar");
+	ctk_box_pack_start (GTK_BOX (main_box),
 			    window->priv->menubar,
 			    FALSE,
 			    FALSE,
 			    0);
 
-	window->priv->toolbar = gtk_ui_manager_get_widget (manager, "/ToolBar");
-	gtk_style_context_add_class (gtk_widget_get_style_context (window->priv->toolbar),
+	window->priv->toolbar = ctk_ui_manager_get_widget (manager, "/ToolBar");
+	ctk_style_context_add_class (ctk_widget_get_style_context (window->priv->toolbar),
 		GTK_STYLE_CLASS_PRIMARY_TOOLBAR);
-	gtk_box_pack_start (GTK_BOX (main_box),
+	ctk_box_pack_start (GTK_BOX (main_box),
 			    window->priv->toolbar,
 			    FALSE,
 			    FALSE,
@@ -1637,7 +1637,7 @@ create_menu_bar_and_toolbar (LapizWindow *window,
 	window->priv->toolbar_recent_menu = setup_toolbar_open_button (window,
 								       window->priv->toolbar);
 
-	gtk_container_foreach (GTK_CONTAINER (window->priv->toolbar),
+	ctk_container_foreach (GTK_CONTAINER (window->priv->toolbar),
 			       (GtkCallback)set_non_homogeneus,
 			       NULL);
 
@@ -1657,11 +1657,11 @@ documents_list_menu_activate (GtkToggleAction *action,
 {
 	gint n;
 
-	if (gtk_toggle_action_get_active (action) == FALSE)
+	if (ctk_toggle_action_get_active (action) == FALSE)
 		return;
 
-	n = gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
-	gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), n);
+	n = ctk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+	ctk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), n);
 }
 
 static gchar *
@@ -1699,23 +1699,23 @@ update_documents_list_menu (LapizWindow *window)
 	g_return_if_fail (p->documents_list_action_group != NULL);
 
 	if (p->documents_list_menu_ui_id != 0)
-		gtk_ui_manager_remove_ui (p->manager,
+		ctk_ui_manager_remove_ui (p->manager,
 					  p->documents_list_menu_ui_id);
 
-	actions = gtk_action_group_list_actions (p->documents_list_action_group);
+	actions = ctk_action_group_list_actions (p->documents_list_action_group);
 	for (l = actions; l != NULL; l = l->next)
 	{
 		g_signal_handlers_disconnect_by_func (GTK_ACTION (l->data),
 						      G_CALLBACK (documents_list_menu_activate),
 						      window);
- 		gtk_action_group_remove_action (p->documents_list_action_group,
+ 		ctk_action_group_remove_action (p->documents_list_action_group,
 						GTK_ACTION (l->data));
 	}
 	g_list_free (actions);
 
-	n = gtk_notebook_get_n_pages (GTK_NOTEBOOK (p->notebook));
+	n = ctk_notebook_get_n_pages (GTK_NOTEBOOK (p->notebook));
 
-	id = (n > 0) ? gtk_ui_manager_new_merge_id (p->manager) : 0;
+	id = (n > 0) ? ctk_ui_manager_new_merge_id (p->manager) : 0;
 
 	for (i = 0; i < n; i++)
 	{
@@ -1727,11 +1727,11 @@ update_documents_list_menu (LapizWindow *window)
 		gchar *tip;
 		gchar *accel;
 
-		tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (p->notebook), i);
+		tab = ctk_notebook_get_nth_page (GTK_NOTEBOOK (p->notebook), i);
 
 		/* NOTE: the action is associated to the position of the tab in
 		 * the notebook not to the tab itself! This is needed to work
-		 * around the gtk+ bug #170727: gtk leaves around the accels
+		 * around the ctk+ bug #170727: ctk leaves around the accels
 		 * of the action. Since the accel depends on the tab position
 		 * the problem is worked around, action with the same name always
 		 * get the same accel.
@@ -1744,19 +1744,19 @@ update_documents_list_menu (LapizWindow *window)
 		/* alt + 1, 2, 3... 0 to switch to the first ten tabs */
 		accel = (i < 10) ? g_strdup_printf ("<alt>%d", (i + 1) % 10) : NULL;
 
-		action = gtk_radio_action_new (action_name,
+		action = ctk_radio_action_new (action_name,
 					       name,
 					       tip,
 					       NULL,
 					       i);
 
 		if (group != NULL)
-			gtk_radio_action_set_group (action, group);
+			ctk_radio_action_set_group (action, group);
 
 		/* note that group changes each time we add an action, so it must be updated */
-		group = gtk_radio_action_get_group (action);
+		group = ctk_radio_action_get_group (action);
 
-		gtk_action_group_add_action_with_accel (p->documents_list_action_group,
+		ctk_action_group_add_action_with_accel (p->documents_list_action_group,
 							GTK_ACTION (action),
 							accel);
 
@@ -1765,7 +1765,7 @@ update_documents_list_menu (LapizWindow *window)
 				  G_CALLBACK (documents_list_menu_activate),
 				  window);
 
-		gtk_ui_manager_add_ui (p->manager,
+		ctk_ui_manager_add_ui (p->manager,
 				       id,
 				       "/MenuBar/DocumentsMenu/DocumentsListPlaceholder",
 				       action_name, action_name,
@@ -1773,7 +1773,7 @@ update_documents_list_menu (LapizWindow *window)
 				       FALSE);
 
 		if (LAPIZ_TAB (tab) == p->active_tab)
-			gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+			ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
 		g_object_unref (action);
 
@@ -1799,18 +1799,18 @@ set_statusbar_style (LapizWindow *window,
 	if (origin == NULL)
 		visible = lapiz_prefs_manager_get_statusbar_visible ();
 	else
-		visible = gtk_widget_get_visible (origin->priv->statusbar);
+		visible = ctk_widget_get_visible (origin->priv->statusbar);
 
 	if (visible)
-		gtk_widget_show (window->priv->statusbar);
+		ctk_widget_show (window->priv->statusbar);
 	else
-		gtk_widget_hide (window->priv->statusbar);
+		ctk_widget_hide (window->priv->statusbar);
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewStatusbar");
 
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	if (ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 
 	return visible;
 }
@@ -1822,16 +1822,16 @@ statusbar_visibility_changed (GtkWidget   *statusbar,
 	gboolean visible;
 	GtkAction *action;
 
-	visible = gtk_widget_get_visible (statusbar);
+	visible = ctk_widget_get_visible (statusbar);
 
 	if (lapiz_prefs_manager_statusbar_visible_can_set ())
 		lapiz_prefs_manager_set_statusbar_visible (visible);
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewStatusbar");
 
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	if (ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 }
 
 static void
@@ -1853,7 +1853,7 @@ tab_width_combo_changed (LapizStatusComboBox *combo,
 		return;
 
 	g_signal_handler_block (view, window->priv->tab_width_id);
-	gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (view), width_data);
+	ctk_source_view_set_tab_width (GTK_SOURCE_VIEW (view), width_data);
 	g_signal_handler_unblock (view, window->priv->tab_width_id);
 }
 
@@ -1866,9 +1866,9 @@ use_spaces_toggled (GtkCheckMenuItem *item,
 	view = lapiz_window_get_active_view (window);
 
 	g_signal_handler_block (view, window->priv->spaces_instead_of_tabs_id);
-	gtk_source_view_set_insert_spaces_instead_of_tabs (
+	ctk_source_view_set_insert_spaces_instead_of_tabs (
 			GTK_SOURCE_VIEW (view),
-			gtk_check_menu_item_get_active (item));
+			ctk_check_menu_item_get_active (item));
 	g_signal_handler_unblock (view, window->priv->spaces_instead_of_tabs_id);
 }
 
@@ -1915,7 +1915,7 @@ fill_tab_width_combo (LapizWindow *window)
 
 	while (defs[i].label != NULL)
 	{
-		item = gtk_menu_item_new_with_label (defs[i].label);
+		item = ctk_menu_item_new_with_label (defs[i].label);
 		g_object_set_data (G_OBJECT (item), TAB_WIDTH_DATA, GINT_TO_POINTER (defs[i].width));
 
 		lapiz_status_combo_box_add_item (combo,
@@ -1923,18 +1923,18 @@ fill_tab_width_combo (LapizWindow *window)
 						 defs[i].label);
 
 		if (defs[i].width != 0)
-			gtk_widget_show (item);
+			ctk_widget_show (item);
 
 		++i;
 	}
 
-	item = gtk_separator_menu_item_new ();
+	item = ctk_separator_menu_item_new ();
 	lapiz_status_combo_box_add_item (combo, GTK_MENU_ITEM (item), NULL);
-	gtk_widget_show (item);
+	ctk_widget_show (item);
 
-	item = gtk_check_menu_item_new_with_label (_("Use Spaces"));
+	item = ctk_check_menu_item_new_with_label (_("Use Spaces"));
 	lapiz_status_combo_box_add_item (combo, GTK_MENU_ITEM (item), NULL);
-	gtk_widget_show (item);
+	ctk_widget_show (item);
 
 	g_signal_connect (item,
 			  "toggled",
@@ -1955,8 +1955,8 @@ fill_language_combo (LapizWindow *window)
 	languages = lapiz_language_manager_list_languages_sorted (manager, FALSE);
 
 	name = _("Plain Text");
-	menu_item = gtk_menu_item_new_with_label (name);
-	gtk_widget_show (menu_item);
+	menu_item = ctk_menu_item_new_with_label (name);
+	ctk_widget_show (menu_item);
 
 	g_object_set_data (G_OBJECT (menu_item), LANGUAGE_DATA, NULL);
 	lapiz_status_combo_box_add_item (LAPIZ_STATUS_COMBO_BOX (window->priv->language_combo),
@@ -1967,9 +1967,9 @@ fill_language_combo (LapizWindow *window)
 	{
 		GtkSourceLanguage *lang = GTK_SOURCE_LANGUAGE (item->data);
 
-		name = gtk_source_language_get_name (lang);
-		menu_item = gtk_menu_item_new_with_label (name);
-		gtk_widget_show (menu_item);
+		name = ctk_source_language_get_name (lang);
+		menu_item = ctk_menu_item_new_with_label (name);
+		ctk_widget_show (menu_item);
 
 		g_object_set_data_full (G_OBJECT (menu_item),
 				        LANGUAGE_DATA,
@@ -1992,20 +1992,20 @@ create_statusbar (LapizWindow *window,
 
 	window->priv->statusbar = lapiz_statusbar_new ();
 
-	window->priv->generic_message_cid = gtk_statusbar_get_context_id
+	window->priv->generic_message_cid = ctk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "generic_message");
-	window->priv->tip_message_cid = gtk_statusbar_get_context_id
+	window->priv->tip_message_cid = ctk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "tip_message");
 
-	gtk_box_pack_end (GTK_BOX (main_box),
+	ctk_box_pack_end (GTK_BOX (main_box),
 			  window->priv->statusbar,
 			  FALSE,
 			  TRUE,
 			  0);
 
 	window->priv->tab_width_combo = lapiz_status_combo_box_new (_("Tab Width"));
-	gtk_widget_show (window->priv->tab_width_combo);
-	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
+	ctk_widget_show (window->priv->tab_width_combo);
+	ctk_box_pack_end (GTK_BOX (window->priv->statusbar),
 			  window->priv->tab_width_combo,
 			  FALSE,
 			  TRUE,
@@ -2019,8 +2019,8 @@ create_statusbar (LapizWindow *window,
 			  window);
 
 	window->priv->language_combo = lapiz_status_combo_box_new (NULL);
-	gtk_widget_show (window->priv->language_combo);
-	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
+	ctk_widget_show (window->priv->language_combo);
+	ctk_box_pack_end (GTK_BOX (window->priv->statusbar),
 			  window->priv->language_combo,
 			  FALSE,
 			  TRUE,
@@ -2057,7 +2057,7 @@ clone_window (LapizWindow *origin)
 
 	app = lapiz_app_get_default ();
 
-	screen = gtk_window_get_screen (GTK_WINDOW (origin));
+	screen = ctk_window_get_screen (GTK_WINDOW (origin));
 	window = lapiz_app_create_window (app, screen);
 
 	if ((origin->priv->window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
@@ -2065,22 +2065,22 @@ clone_window (LapizWindow *origin)
 		gint w, h;
 
 		lapiz_prefs_manager_get_default_window_size (&w, &h);
-		gtk_window_set_default_size (GTK_WINDOW (window), w, h);
-		gtk_window_maximize (GTK_WINDOW (window));
+		ctk_window_set_default_size (GTK_WINDOW (window), w, h);
+		ctk_window_maximize (GTK_WINDOW (window));
 	}
 	else
 	{
-		gtk_window_set_default_size (GTK_WINDOW (window),
+		ctk_window_set_default_size (GTK_WINDOW (window),
 					     origin->priv->width,
 					     origin->priv->height);
 
-		gtk_window_unmaximize (GTK_WINDOW (window));
+		ctk_window_unmaximize (GTK_WINDOW (window));
 	}
 
 	if ((origin->priv->window_state & GDK_WINDOW_STATE_STICKY ) != 0)
-		gtk_window_stick (GTK_WINDOW (window));
+		ctk_window_stick (GTK_WINDOW (window));
 	else
-		gtk_window_unstick (GTK_WINDOW (window));
+		ctk_window_unstick (GTK_WINDOW (window));
 
 	/* set the panes size, the paned position will be set when
 	 * they are mapped */
@@ -2095,15 +2095,15 @@ clone_window (LapizWindow *origin)
 	_lapiz_panel_set_active_item_by_id (LAPIZ_PANEL (window->priv->bottom_panel),
 					    panel_page);
 
-	if (gtk_widget_get_visible (origin->priv->side_panel))
-		gtk_widget_show (window->priv->side_panel);
+	if (ctk_widget_get_visible (origin->priv->side_panel))
+		ctk_widget_show (window->priv->side_panel);
 	else
-		gtk_widget_hide (window->priv->side_panel);
+		ctk_widget_hide (window->priv->side_panel);
 
-	if (gtk_widget_get_visible (origin->priv->bottom_panel))
-		gtk_widget_show (window->priv->bottom_panel);
+	if (ctk_widget_get_visible (origin->priv->bottom_panel))
+		ctk_widget_show (window->priv->bottom_panel);
 	else
-		gtk_widget_hide (window->priv->bottom_panel);
+		ctk_widget_hide (window->priv->bottom_panel);
 
 	set_statusbar_style (window, origin);
 	set_toolbar_style (window, origin);
@@ -2128,28 +2128,28 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 
  	view = lapiz_window_get_active_view (window);
 
-	gtk_text_buffer_get_iter_at_mark (buffer,
+	ctk_text_buffer_get_iter_at_mark (buffer,
 					  &iter,
-					  gtk_text_buffer_get_insert (buffer));
+					  ctk_text_buffer_get_insert (buffer));
 
-	row = gtk_text_iter_get_line (&iter);
+	row = ctk_text_iter_get_line (&iter);
 
 	start = iter;
-	gtk_text_iter_set_line_offset (&start, 0);
+	ctk_text_iter_set_line_offset (&start, 0);
 	col = 0;
 
-	tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
+	tab_size = ctk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
 
-	while (!gtk_text_iter_equal (&start, &iter))
+	while (!ctk_text_iter_equal (&start, &iter))
 	{
 		/* FIXME: Are we Unicode compliant here? */
-		if (gtk_text_iter_get_char (&start) == '\t')
+		if (ctk_text_iter_get_char (&start) == '\t')
 
 			col += (tab_size - (col  % tab_size));
 		else
 			++col;
 
-		gtk_text_iter_forward_char (&start);
+		ctk_text_iter_forward_char (&start);
 	}
 
 	lapiz_statusbar_set_cursor_position (
@@ -2165,13 +2165,13 @@ update_overwrite_mode_statusbar (GtkTextView *view,
 	if (view != GTK_TEXT_VIEW (lapiz_window_get_active_view (window)))
 		return;
 
-	/* Note that we have to use !gtk_text_view_get_overwrite since we
+	/* Note that we have to use !ctk_text_view_get_overwrite since we
 	   are in the in the signal handler of "toggle overwrite" that is
 	   G_SIGNAL_RUN_LAST
 	*/
 	lapiz_statusbar_set_overwrite (
 			LAPIZ_STATUSBAR (window->priv->statusbar),
-			!gtk_text_view_get_overwrite (view));
+			!ctk_text_view_get_overwrite (view));
 }
 
 #define MAX_TITLE_LENGTH 100
@@ -2188,7 +2188,7 @@ set_title (LapizWindow *window)
 
 	if (window->priv->active_tab == NULL)
 	{
-		gtk_window_set_title (GTK_WINDOW (window), "Lapiz");
+		ctk_window_set_title (GTK_WINDOW (window), "Lapiz");
 		return;
 	}
 
@@ -2235,7 +2235,7 @@ set_title (LapizWindow *window)
 		}
 	}
 
-	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	if (ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
 		gchar *tmp_name;
 
@@ -2271,11 +2271,11 @@ set_title (LapizWindow *window)
 						 name);
 	}
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "FileSave");
-	gtk_action_set_sensitive (action, cansave);
+	ctk_action_set_sensitive (action, cansave);
 
-	gtk_window_set_title (GTK_WINDOW (window), title);
+	ctk_window_set_title (GTK_WINDOW (window), title);
 
 	g_free (dirname);
 	g_free (name);
@@ -2306,7 +2306,7 @@ spaces_instead_of_tabs_changed (GObject     *object,
 		 		LapizWindow *window)
 {
 	LapizView *view = LAPIZ_VIEW (object);
-	gboolean active = gtk_source_view_get_insert_spaces_instead_of_tabs (
+	gboolean active = ctk_source_view_get_insert_spaces_instead_of_tabs (
 			GTK_SOURCE_VIEW (view));
 	GList *children = lapiz_status_combo_box_get_items (
 			LAPIZ_STATUS_COMBO_BOX (window->priv->tab_width_combo));
@@ -2314,7 +2314,7 @@ spaces_instead_of_tabs_changed (GObject     *object,
 
 	item = GTK_CHECK_MENU_ITEM (g_list_last (children)->data);
 
-	gtk_check_menu_item_set_active (item, active);
+	ctk_check_menu_item_set_active (item, active);
 
 	g_list_free (children);
 }
@@ -2332,7 +2332,7 @@ tab_width_changed (GObject     *object,
 
 	items = lapiz_status_combo_box_get_items (combo);
 
-	new_tab_width = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (object));
+	new_tab_width = ctk_source_view_get_tab_width (GTK_SOURCE_VIEW (object));
 
 	for (item = items; item; item = item->next)
 	{
@@ -2356,15 +2356,15 @@ tab_width_changed (GObject     *object,
 								      GTK_MENU_ITEM (item->data),
 								      text);
 
-				gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (GTK_BIN (item->data))),
+				ctk_label_set_text (GTK_LABEL (ctk_bin_get_child (GTK_BIN (item->data))),
 						    text);
 
 				set_tab_width_item_blocked (window, GTK_MENU_ITEM (item->data));
-				gtk_widget_show (GTK_WIDGET (item->data));
+				ctk_widget_show (GTK_WIDGET (item->data));
 			}
 			else
 			{
-				gtk_widget_hide (GTK_WIDGET (item->data));
+				ctk_widget_hide (GTK_WIDGET (item->data));
 			}
 
 			break;
@@ -2387,10 +2387,10 @@ language_changed (GObject     *object,
 
 	items = lapiz_status_combo_box_get_items (combo);
 
-	new_language = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (object));
+	new_language = ctk_source_buffer_get_language (GTK_SOURCE_BUFFER (object));
 
 	if (new_language)
-		new_id = gtk_source_language_get_id (new_language);
+		new_id = ctk_source_language_get_id (new_language);
 	else
 		new_id = NULL;
 
@@ -2399,7 +2399,7 @@ language_changed (GObject     *object,
 		GtkSourceLanguage *lang = g_object_get_data (G_OBJECT (item->data), LANGUAGE_DATA);
 
 		if ((new_id == NULL && lang == NULL) ||
-		    (new_id != NULL && lang != NULL && strcmp (gtk_source_language_get_id (lang),
+		    (new_id != NULL && lang != NULL && strcmp (ctk_source_language_get_id (lang),
 		    					       new_id) == 0))
 		{
 			g_signal_handlers_block_by_func (window->priv->language_combo,
@@ -2432,7 +2432,7 @@ notebook_switch_page (GtkNotebook     *book,
 	/* CHECK: I don't know why but it seems notebook_switch_page is called
 	two times every time the user change the active tab */
 
-	tab = LAPIZ_TAB (gtk_notebook_get_nth_page (book, page_num));
+	tab = LAPIZ_TAB (ctk_notebook_get_nth_page (book, page_num));
 	if (tab == window->priv->active_tab)
 		return;
 
@@ -2463,7 +2463,7 @@ notebook_switch_page (GtkNotebook     *book,
 
 	/* activate the right item in the documents menu */
 	action_name = g_strdup_printf ("Tab_%d", page_num);
-	action = gtk_action_group_get_action (window->priv->documents_list_action_group,
+	action = ctk_action_group_get_action (window->priv->documents_list_action_group,
 					      action_name);
 
 	/* sometimes the action doesn't exist yet, and the proper action
@@ -2471,7 +2471,7 @@ notebook_switch_page (GtkNotebook     *book,
 	 * CHECK: would it be nicer if active_tab was a property and we monitored the notify signal?
 	 */
 	if (action != NULL)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
 	g_free (action_name);
 
@@ -2484,10 +2484,10 @@ notebook_switch_page (GtkNotebook     *book,
 	update_cursor_position_statusbar (GTK_TEXT_BUFFER (lapiz_tab_get_document (tab)),
 					  window);
 	lapiz_statusbar_set_overwrite (LAPIZ_STATUSBAR (window->priv->statusbar),
-				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
+				       ctk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
 
-	gtk_widget_show (window->priv->tab_width_combo);
-	gtk_widget_show (window->priv->language_combo);
+	ctk_widget_show (window->priv->tab_width_combo);
+	ctk_widget_show (window->priv->language_combo);
 
 	window->priv->tab_width_id = g_signal_connect (view,
 						       "notify::tab-width",
@@ -2527,33 +2527,33 @@ set_sensitivity_according_to_window_state (LapizWindow *window)
 	   the same time (may be we can remove this limitation in the future) */
 	/* We disable File->Quit/CloseAll if state is saving since saving cannot be
 	   cancelled (may be we can remove this limitation in the future) */
-	gtk_action_group_set_sensitive (window->priv->quit_action_group,
+	ctk_action_group_set_sensitive (window->priv->quit_action_group,
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_SAVING) &&
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_PRINTING));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 				              "FileCloseAll");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_SAVING) &&
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_PRINTING));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 				              "FileSaveAll");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_PRINTING) &&
 				  !(lockdown & LAPIZ_LOCKDOWN_SAVE_TO_DISK));
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "FileNew");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_SAVING_SESSION));
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "FileOpen");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_SAVING_SESSION));
 
-	gtk_action_group_set_sensitive (window->priv->recents_action_group,
+	ctk_action_group_set_sensitive (window->priv->recents_action_group,
 					!(window->priv->state & LAPIZ_WINDOW_STATE_SAVING_SESSION));
 
 	lapiz_notebook_set_close_buttons_sensitive (LAPIZ_NOTEBOOK (window->priv->notebook),
@@ -2567,27 +2567,27 @@ set_sensitivity_according_to_window_state (LapizWindow *window)
 		/* TODO: If we really care, Find could be active
 		 * when in SAVING_SESSION state */
 
-		if (gtk_action_group_get_sensitive (window->priv->action_group))
-			gtk_action_group_set_sensitive (window->priv->action_group,
+		if (ctk_action_group_get_sensitive (window->priv->action_group))
+			ctk_action_group_set_sensitive (window->priv->action_group,
 							FALSE);
-		if (gtk_action_group_get_sensitive (window->priv->quit_action_group))
-			gtk_action_group_set_sensitive (window->priv->quit_action_group,
+		if (ctk_action_group_get_sensitive (window->priv->quit_action_group))
+			ctk_action_group_set_sensitive (window->priv->quit_action_group,
 							FALSE);
-		if (gtk_action_group_get_sensitive (window->priv->close_action_group))
-			gtk_action_group_set_sensitive (window->priv->close_action_group,
+		if (ctk_action_group_get_sensitive (window->priv->close_action_group))
+			ctk_action_group_set_sensitive (window->priv->close_action_group,
 							FALSE);
 	}
 	else
 	{
-		if (!gtk_action_group_get_sensitive (window->priv->action_group))
-			gtk_action_group_set_sensitive (window->priv->action_group,
+		if (!ctk_action_group_get_sensitive (window->priv->action_group))
+			ctk_action_group_set_sensitive (window->priv->action_group,
 							window->priv->num_tabs > 0);
-		if (!gtk_action_group_get_sensitive (window->priv->quit_action_group))
-			gtk_action_group_set_sensitive (window->priv->quit_action_group,
+		if (!ctk_action_group_get_sensitive (window->priv->quit_action_group))
+			ctk_action_group_set_sensitive (window->priv->quit_action_group,
 							window->priv->num_tabs > 0);
-		if (!gtk_action_group_get_sensitive (window->priv->close_action_group))
+		if (!ctk_action_group_get_sensitive (window->priv->close_action_group))
 		{
-			gtk_action_group_set_sensitive (window->priv->close_action_group,
+			ctk_action_group_set_sensitive (window->priv->close_action_group,
 							window->priv->num_tabs > 0);
 		}
 	}
@@ -2613,7 +2613,7 @@ _lapiz_window_set_lockdown (LapizWindow       *window,
 
 	/* start/stop autosave in each existing tab */
 	autosave = lapiz_prefs_manager_get_auto_save ();
-	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+	ctk_container_foreach (GTK_CONTAINER (window->priv->notebook),
 			       update_tab_autosave,
 			       &autosave);
 
@@ -2622,9 +2622,9 @@ _lapiz_window_set_lockdown (LapizWindow       *window,
 
 	set_sensitivity_according_to_tab (window, tab);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 				              "FileSaveAll");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  !(window->priv->state & LAPIZ_WINDOW_STATE_PRINTING) &&
 				  !(lockdown & LAPIZ_LOCKDOWN_SAVE_TO_DISK));
 
@@ -2681,7 +2681,7 @@ update_window_state (LapizWindow *window)
 
 	window->priv->num_tabs_with_error = 0;
 
-	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+	ctk_container_foreach (GTK_CONTAINER (window->priv->notebook),
 	       		       (GtkCallback)analyze_tab_state,
 	       		       window);
 
@@ -2740,17 +2740,17 @@ sync_name (LapizTab    *tab,
 		set_title (window);
 
 		doc = lapiz_tab_get_document (tab);
-		action = gtk_action_group_get_action (window->priv->action_group,
+		action = ctk_action_group_get_action (window->priv->action_group,
 						      "FileRevert");
-		gtk_action_set_sensitive (action,
+		ctk_action_set_sensitive (action,
 					  !lapiz_document_is_untitled (doc));
 	}
 
 	/* sync the item in the documents list menu */
-	n = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook),
+	n = ctk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook),
 				   GTK_WIDGET (tab));
 	action_name = g_strdup_printf ("Tab_%d", n);
-	action = gtk_action_group_get_action (window->priv->documents_list_action_group,
+	action = ctk_action_group_get_action (window->priv->documents_list_action_group,
 					      action_name);
 	g_free (action_name);
 	g_return_if_fail (action != NULL);
@@ -2774,7 +2774,7 @@ get_drop_window (GtkWidget *widget)
 {
 	GtkWidget *target_window;
 
-	target_window = gtk_widget_get_toplevel (widget);
+	target_window = ctk_widget_get_toplevel (widget);
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (target_window), NULL);
 
 	if ((LAPIZ_WINDOW(target_window)->priv->state & LAPIZ_WINDOW_STATE_SAVING_SESSION) != 0)
@@ -2857,22 +2857,22 @@ fullscreen_controls_show (LapizWindow *window)
 	GdkRectangle fs_rect;
 	gint w, h;
 
-	screen = gtk_window_get_screen (GTK_WINDOW (window));
+	screen = ctk_window_get_screen (GTK_WINDOW (window));
 	display = gdk_screen_get_display (screen);
 
 	gdk_monitor_get_geometry (gdk_display_get_monitor_at_window (display,
-								     gtk_widget_get_window (GTK_WIDGET (window))),
+								     ctk_widget_get_window (GTK_WIDGET (window))),
 				  &fs_rect);
 
-	gtk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
+	ctk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
 
-	gtk_window_resize (GTK_WINDOW (window->priv->fullscreen_controls),
+	ctk_window_resize (GTK_WINDOW (window->priv->fullscreen_controls),
 			   fs_rect.width, h);
 
-	gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
+	ctk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
 			 fs_rect.x, fs_rect.y - h + 1);
 
-	gtk_widget_show_all (window->priv->fullscreen_controls);
+	ctk_widget_show_all (window->priv->fullscreen_controls);
 }
 
 static gboolean
@@ -2884,14 +2884,14 @@ run_fullscreen_animation (gpointer data)
 	GdkRectangle fs_rect;
 	gint x, y;
 
-	screen = gtk_window_get_screen (GTK_WINDOW (window));
+	screen = ctk_window_get_screen (GTK_WINDOW (window));
 	display = gdk_screen_get_display (screen);
 
 	gdk_monitor_get_geometry (gdk_display_get_monitor_at_window (display,
-								     gtk_widget_get_window (GTK_WIDGET (window))),
+								     ctk_widget_get_window (GTK_WIDGET (window))),
 				  &fs_rect);
 
-	gtk_window_get_position (GTK_WINDOW (window->priv->fullscreen_controls),
+	ctk_window_get_position (GTK_WINDOW (window->priv->fullscreen_controls),
 				 &x, &y);
 
 	if (window->priv->fullscreen_animation_enter)
@@ -2903,7 +2903,7 @@ run_fullscreen_animation (gpointer data)
 		}
 		else
 		{
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
+			ctk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
 					 x, y + 1);
 			return TRUE;
 		}
@@ -2912,7 +2912,7 @@ run_fullscreen_animation (gpointer data)
 	{
 		gint w, h;
 
-		gtk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls),
+		ctk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls),
 				     &w, &h);
 
 		if (y == fs_rect.y - h + 1)
@@ -2922,7 +2922,7 @@ run_fullscreen_animation (gpointer data)
 		}
 		else
 		{
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
+			ctk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
 					 x, y - 1);
 			return TRUE;
 		}
@@ -2937,9 +2937,9 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 	GtkSettings *settings;
 	gboolean enable_animations;
 
-	settings = gtk_widget_get_settings (GTK_WIDGET (window));
+	settings = ctk_widget_get_settings (GTK_WIDGET (window));
 	g_object_get (G_OBJECT (settings),
-		      "gtk-enable-animations",
+		      "ctk-enable-animations",
 		      &enable_animations,
 		      NULL);
 
@@ -2961,18 +2961,18 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 		GdkScreen *screen;
 		GdkDisplay *display;
 
-		screen = gtk_window_get_screen (GTK_WINDOW (window));
+		screen = ctk_window_get_screen (GTK_WINDOW (window));
 		display = gdk_screen_get_display (screen);
 
 		gdk_monitor_get_geometry (gdk_display_get_monitor_at_window (display,
-									     gtk_widget_get_window (GTK_WIDGET (window))),
+									     ctk_widget_get_window (GTK_WIDGET (window))),
 					  &fs_rect);
 
 		if (show)
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
+			ctk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
 				 fs_rect.x, fs_rect.y);
 		else
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
+			ctk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
 					 fs_rect.x, fs_rect.y - height + 1);
 	}
 
@@ -2999,10 +2999,10 @@ on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
 
 	device = gdk_event_get_device ((GdkEvent *)event);
 
-	gtk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
+	ctk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
 	gdk_device_get_position (device, NULL, &x, &y);
 
-	/* gtk seems to emit leave notify when clicking on tool items,
+	/* ctk seems to emit leave notify when clicking on tool items,
 	 * work around it by checking the coordinates
 	 */
 	if (y >= h)
@@ -3023,28 +3023,28 @@ fullscreen_controls_build (LapizWindow *window)
 	if (priv->fullscreen_controls != NULL)
 		return;
 
-	priv->fullscreen_controls = gtk_window_new (GTK_WINDOW_POPUP);
+	priv->fullscreen_controls = ctk_window_new (GTK_WINDOW_POPUP);
 
-	gtk_window_set_transient_for (GTK_WINDOW (priv->fullscreen_controls),
+	ctk_window_set_transient_for (GTK_WINDOW (priv->fullscreen_controls),
 				      &window->window);
 
 	/* popup toolbar */
-	toolbar = gtk_ui_manager_get_widget (priv->manager, "/FullscreenToolBar");
-	gtk_container_add (GTK_CONTAINER (priv->fullscreen_controls),
+	toolbar = ctk_ui_manager_get_widget (priv->manager, "/FullscreenToolBar");
+	ctk_container_add (GTK_CONTAINER (priv->fullscreen_controls),
 			   toolbar);
 
-	action = gtk_action_group_get_action (priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (priv->always_sensitive_action_group,
 					      "LeaveFullscreen");
 	g_object_set (action, "is-important", TRUE, NULL);
 
 	setup_toolbar_open_button (window, toolbar);
 
-	gtk_container_foreach (GTK_CONTAINER (toolbar),
+	ctk_container_foreach (GTK_CONTAINER (toolbar),
 			       (GtkCallback)set_non_homogeneus,
 			       NULL);
 
 	/* Set the toolbar style */
-	gtk_toolbar_set_style (GTK_TOOLBAR (toolbar),
+	ctk_toolbar_set_style (GTK_TOOLBAR (toolbar),
 			       GTK_TOOLBAR_BOTH_HORIZ);
 
 	g_signal_connect (priv->fullscreen_controls, "enter-notify-event",
@@ -3068,17 +3068,17 @@ can_search_again (LapizDocument *doc,
 
 	sensitive = lapiz_document_get_can_search_again (doc);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
-	gtk_action_set_sensitive (action, sensitive);
+	ctk_action_set_sensitive (action, sensitive);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchFindPrevious");
-	gtk_action_set_sensitive (action, sensitive);
+	ctk_action_set_sensitive (action, sensitive);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "SearchClearHighlight");
-	gtk_action_set_sensitive (action, sensitive);
+	ctk_action_set_sensitive (action, sensitive);
 }
 
 static void
@@ -3089,14 +3089,14 @@ can_undo (LapizDocument *doc,
 	GtkAction *action;
 	gboolean sensitive;
 
-	sensitive = gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc));
+	sensitive = ctk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc));
 
 	if (doc != lapiz_window_get_active_document (window))
 		return;
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					     "EditUndo");
-	gtk_action_set_sensitive (action, sensitive);
+	ctk_action_set_sensitive (action, sensitive);
 }
 
 static void
@@ -3107,14 +3107,14 @@ can_redo (LapizDocument *doc,
 	GtkAction *action;
 	gboolean sensitive;
 
-	sensitive = gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc));
+	sensitive = ctk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc));
 
 	if (doc != lapiz_window_get_active_document (window))
 		return;
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					     "EditRedo");
-	gtk_action_set_sensitive (action, sensitive);
+	ctk_action_set_sensitive (action, sensitive);
 }
 
 static void
@@ -3139,28 +3139,28 @@ selection_changed (LapizDocument *doc,
 	state_normal = (state == LAPIZ_TAB_STATE_NORMAL);
 
 	view = lapiz_tab_get_view (tab);
-	editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
+	editable = ctk_text_view_get_editable (GTK_TEXT_VIEW (view));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditCut");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
 				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+				  ctk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditCopy");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (state_normal ||
 				   state == LAPIZ_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+				  ctk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "EditDelete");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  state_normal &&
 				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+				  ctk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
 	peas_extension_set_call (window->priv->extensions, "update_state", window);
 }
@@ -3200,15 +3200,15 @@ update_sensitivity_according_to_open_tabs (LapizWindow *window)
 	GtkAction *action;
 
 	/* Set sensitivity */
-	gtk_action_group_set_sensitive (window->priv->action_group,
+	ctk_action_group_set_sensitive (window->priv->action_group,
 					window->priv->num_tabs != 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					     "DocumentsMoveToNewWindow");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  window->priv->num_tabs > 1);
 
-	gtk_action_group_set_sensitive (window->priv->close_action_group,
+	ctk_action_group_set_sensitive (window->priv->close_action_group,
 	                                window->priv->num_tabs != 0);
 }
 
@@ -3381,8 +3381,8 @@ notebook_tab_removed (LapizNotebook *notebook,
 				LAPIZ_STATUSBAR (window->priv->statusbar));
 
 		/* hide the combos */
-		gtk_widget_hide (window->priv->tab_width_combo);
-		gtk_widget_hide (window->priv->language_combo);
+		ctk_widget_hide (window->priv->tab_width_combo);
+		ctk_widget_hide (window->priv->language_combo);
 	}
 
 	if (!window->priv->removing_tabs)
@@ -3434,10 +3434,10 @@ notebook_tab_detached (LapizNotebook *notebook,
 				 LAPIZ_NOTEBOOK (_lapiz_window_get_notebook (new_window)),
 				 tab, 0);
 
-	gtk_window_set_position (GTK_WINDOW (new_window),
+	ctk_window_set_position (GTK_WINDOW (new_window),
 				 GTK_WIN_POS_MOUSE);
 
-	gtk_widget_show (GTK_WIDGET (new_window));
+	ctk_widget_show (GTK_WIDGET (new_window));
 }
 
 static void
@@ -3458,16 +3458,16 @@ show_notebook_popup_menu (GtkNotebook    *notebook,
 	GtkWidget *menu;
 //	GtkAction *action;
 
-	menu = gtk_ui_manager_get_widget (window->priv->manager, "/NotebookPopup");
+	menu = ctk_ui_manager_get_widget (window->priv->manager, "/NotebookPopup");
 	g_return_val_if_fail (menu != NULL, FALSE);
 
 // CHECK do we need this?
 #if 0
 	/* allow extensions to sync when showing the popup */
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = ctk_action_group_get_action (window->priv->action_group,
 					      "NotebookPopupAction");
 	g_return_val_if_fail (action != NULL, FALSE);
-	gtk_action_activate (action);
+	ctk_action_activate (action);
 #endif
 
 	GtkWidget *tab;
@@ -3476,15 +3476,15 @@ show_notebook_popup_menu (GtkNotebook    *notebook,
 	tab = GTK_WIDGET (lapiz_window_get_active_tab (window));
 	g_return_val_if_fail (tab != NULL, FALSE);
 
-	tab_label = gtk_notebook_get_tab_label (notebook, tab);
+	tab_label = ctk_notebook_get_tab_label (notebook, tab);
 
-	gtk_menu_popup_at_widget (GTK_MENU (menu),
+	ctk_menu_popup_at_widget (GTK_MENU (menu),
 	                          tab_label,
 	                          GDK_GRAVITY_SOUTH_WEST,
 	                          GDK_GRAVITY_NORTH_WEST,
 	                          (const GdkEvent*) event);
 
-	gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+	ctk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
 
 	return TRUE;
 }
@@ -3521,11 +3521,11 @@ notebook_scroll_event (GtkNotebook    *notebook,
 {
 	if (event->direction == GDK_SCROLL_UP || event->direction == GDK_SCROLL_LEFT)
 	{
-		gtk_notebook_prev_page (notebook);
+		ctk_notebook_prev_page (notebook);
 	}
 	else if (event->direction == GDK_SCROLL_DOWN || event->direction == GDK_SCROLL_RIGHT)
 	{
-		gtk_notebook_next_page (notebook);
+		ctk_notebook_next_page (notebook);
 	}
 
 	return FALSE;
@@ -3536,7 +3536,7 @@ notebook_popup_menu (GtkNotebook *notebook,
 		     LapizWindow *window)
 {
 	/* Only respond if the notebook is the actual focus */
-	if (LAPIZ_IS_NOTEBOOK (gtk_window_get_focus (GTK_WINDOW (window))))
+	if (LAPIZ_IS_NOTEBOOK (ctk_window_get_focus (GTK_WINDOW (window))))
 	{
 		return show_notebook_popup_menu (notebook, window, NULL);
 	}
@@ -3571,7 +3571,7 @@ hpaned_restore_position (GtkWidget   *widget,
 			     window->priv->side_panel_size);
 
 	pos = MAX (100, window->priv->side_panel_size);
-	gtk_paned_set_position (GTK_PANED (window->priv->hpaned), pos);
+	ctk_paned_set_position (GTK_PANED (window->priv->hpaned), pos);
 
 	/* start monitoring the size */
 	g_signal_connect (window->priv->side_panel,
@@ -3590,7 +3590,7 @@ vpaned_restore_position (GtkWidget   *widget,
 	GtkAllocation allocation;
 	gint pos;
 
-	gtk_widget_get_allocation (widget, &allocation);
+	ctk_widget_get_allocation (widget, &allocation);
 
 	lapiz_debug_message (DEBUG_WINDOW,
 			     "Restoring vpaned position: bottom panel size %d",
@@ -3598,7 +3598,7 @@ vpaned_restore_position (GtkWidget   *widget,
 
 	pos = allocation.height -
 	      MAX (50, window->priv->bottom_panel_size);
-	gtk_paned_set_position (GTK_PANED (window->priv->vpaned), pos);
+	ctk_paned_set_position (GTK_PANED (window->priv->vpaned), pos);
 
 	/* start monitoring the size */
 	g_signal_connect (window->priv->bottom_panel,
@@ -3617,34 +3617,34 @@ side_panel_visibility_changed (GtkWidget   *side_panel,
 	gboolean   visible;
 	GtkAction *action;
 
-	visible = gtk_widget_get_visible (side_panel);
+	visible = ctk_widget_get_visible (side_panel);
 
 	if (!g_settings_get_boolean (lapiz_prefs_manager->settings, "show-tabs-with-side-pane"))
 	{
 		if (visible)
-			gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), FALSE);
+			ctk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), FALSE);
 		else
-			gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook),
+			ctk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook),
 						    g_settings_get_boolean (lapiz_prefs_manager->settings, "show-single-tab") ||
-						    (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 1));
+						    (ctk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 1));
 	}
 	else
-		gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook),
+		ctk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook),
 					    g_settings_get_boolean (lapiz_prefs_manager->settings, "show-single-tab") ||
-					    (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 1));
+					    (ctk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 1));
 
 	if (lapiz_prefs_manager_side_pane_visible_can_set ())
 		lapiz_prefs_manager_set_side_pane_visible (visible);
 
-	action = gtk_action_group_get_action (window->priv->panes_action_group,
+	action = ctk_action_group_get_action (window->priv->panes_action_group,
 	                                      "ViewSidePane");
 
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	if (ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 
 	/* focus the document */
 	if (!visible && window->priv->active_tab != NULL)
-		gtk_widget_grab_focus (GTK_WIDGET (
+		ctk_widget_grab_focus (GTK_WIDGET (
 				lapiz_tab_get_view (LAPIZ_TAB (window->priv->active_tab))));
 }
 
@@ -3657,7 +3657,7 @@ create_side_panel (LapizWindow *window)
 
 	window->priv->side_panel = lapiz_panel_new (GTK_ORIENTATION_VERTICAL);
 
-	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned),
+	ctk_paned_pack1 (GTK_PANED (window->priv->hpaned),
 			 window->priv->side_panel,
 			 FALSE,
 			 FALSE);
@@ -3685,20 +3685,20 @@ bottom_panel_visibility_changed (LapizPanel  *bottom_panel,
 	gboolean visible;
 	GtkAction *action;
 
-	visible = gtk_widget_get_visible (GTK_WIDGET (bottom_panel));
+	visible = ctk_widget_get_visible (GTK_WIDGET (bottom_panel));
 
 	if (lapiz_prefs_manager_bottom_panel_visible_can_set ())
 		lapiz_prefs_manager_set_bottom_panel_visible (visible);
 
-	action = gtk_action_group_get_action (window->priv->panes_action_group,
+	action = ctk_action_group_get_action (window->priv->panes_action_group,
 					      "ViewBottomPane");
 
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	if (ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 
 	/* focus the document */
 	if (!visible && window->priv->active_tab != NULL)
-		gtk_widget_grab_focus (GTK_WIDGET (
+		ctk_widget_grab_focus (GTK_WIDGET (
 				lapiz_tab_get_view (LAPIZ_TAB (window->priv->active_tab))));
 }
 
@@ -3711,11 +3711,11 @@ bottom_panel_item_removed (LapizPanel  *panel,
 	{
 		GtkAction *action;
 
-		gtk_widget_hide (GTK_WIDGET (panel));
+		ctk_widget_hide (GTK_WIDGET (panel));
 
-		action = gtk_action_group_get_action (window->priv->panes_action_group,
+		action = ctk_action_group_get_action (window->priv->panes_action_group,
 						      "ViewBottomPane");
-		gtk_action_set_sensitive (action, FALSE);
+		ctk_action_set_sensitive (action, FALSE);
 	}
 }
 
@@ -3731,13 +3731,13 @@ bottom_panel_item_added (LapizPanel  *panel,
 		GtkAction *action;
 		gboolean show;
 
-		action = gtk_action_group_get_action (window->priv->panes_action_group,
+		action = ctk_action_group_get_action (window->priv->panes_action_group,
 						      "ViewBottomPane");
-		gtk_action_set_sensitive (action, TRUE);
+		ctk_action_set_sensitive (action, TRUE);
 
-		show = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+		show = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 		if (show)
-			gtk_widget_show (GTK_WIDGET (panel));
+			ctk_widget_show (GTK_WIDGET (panel));
 	}
 }
 
@@ -3748,7 +3748,7 @@ create_bottom_panel (LapizWindow *window)
 
 	window->priv->bottom_panel = lapiz_panel_new (GTK_ORIENTATION_HORIZONTAL);
 
-	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned),
+	ctk_paned_pack2 (GTK_PANED (window->priv->vpaned),
 			 window->priv->bottom_panel,
 			 FALSE,
 			 FALSE);
@@ -3777,7 +3777,7 @@ init_panels_visibility (LapizWindow *window)
 
 	if (lapiz_prefs_manager_get_side_pane_visible ())
 	{
-		gtk_widget_show (window->priv->side_panel);
+		ctk_widget_show (window->priv->side_panel);
 	}
 
 	/* bottom pane, it can be empty */
@@ -3789,15 +3789,15 @@ init_panels_visibility (LapizWindow *window)
 
 		if (lapiz_prefs_manager_get_bottom_panel_visible ())
 		{
-			gtk_widget_show (window->priv->bottom_panel);
+			ctk_widget_show (window->priv->bottom_panel);
 		}
 	}
 	else
 	{
 		GtkAction *action;
-		action = gtk_action_group_get_action (window->priv->panes_action_group,
+		action = ctk_action_group_get_action (window->priv->panes_action_group,
 						      "ViewBottomPane");
-		gtk_action_set_sensitive (action, FALSE);
+		ctk_action_set_sensitive (action, FALSE);
 	}
 
 	/* start track sensitivity after the initial state is set */
@@ -3828,7 +3828,7 @@ window_realized (GtkWidget *window,
 {
 	GtkClipboard *clipboard;
 
-	clipboard = gtk_widget_get_clipboard (window,
+	clipboard = ctk_widget_get_clipboard (window,
 					      GDK_SELECTION_CLIPBOARD);
 
 	g_signal_connect (clipboard,
@@ -3843,7 +3843,7 @@ window_unrealized (GtkWidget *window,
 {
 	GtkClipboard *clipboard;
 
-	clipboard = gtk_widget_get_clipboard (window,
+	clipboard = ctk_widget_get_clipboard (window,
 					      GDK_SELECTION_CLIPBOARD);
 
 	g_signal_handlers_disconnect_by_func (clipboard,
@@ -3858,13 +3858,13 @@ check_window_is_active (LapizWindow *window,
 {
 	if (window->priv->window_state & GDK_WINDOW_STATE_FULLSCREEN)
 	{
-		if (gtk_window_is_active (GTK_WINDOW (window)))
+		if (ctk_window_is_active (GTK_WINDOW (window)))
 		{
-			gtk_widget_show (window->priv->fullscreen_controls);
+			ctk_widget_show (window->priv->fullscreen_controls);
 		}
 		else
 		{
-			gtk_widget_hide (window->priv->fullscreen_controls);
+			ctk_widget_hide (window->priv->fullscreen_controls);
 		}
 	}
 }
@@ -3915,14 +3915,14 @@ static void
 add_notebook (LapizWindow *window,
 	      GtkWidget   *notebook)
 {
-	gtk_paned_pack1 (GTK_PANED (window->priv->vpaned),
+	ctk_paned_pack1 (GTK_PANED (window->priv->vpaned),
 	                 notebook,
 	                 TRUE,
 	                 TRUE);
 
-	gtk_widget_show (notebook);
+	ctk_widget_show (notebook);
 
-	gtk_widget_add_events (notebook, GDK_SCROLL_MASK);
+	ctk_widget_add_events (notebook, GDK_SCROLL_MASK);
 	connect_notebook_signals (window, notebook);
 }
 
@@ -3947,7 +3947,7 @@ on_extension_removed (PeasExtensionSet *extensions,
 	 * with expected static strings in the type module (when unloaded the
 	 * strings don't exist anymore, and ui manager updates in an idle
 	 * func) */
-	gtk_ui_manager_ensure_update (window->priv->manager);
+	ctk_ui_manager_ensure_update (window->priv->manager);
 }
 
 static void
@@ -3969,17 +3969,17 @@ lapiz_window_init (LapizWindow *window)
 
 	window->priv->message_bus = lapiz_message_bus_new ();
 
-	window->priv->window_group = gtk_window_group_new ();
-	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
+	window->priv->window_group = ctk_window_group_new ();
+	ctk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
 
 	GtkStyleContext *context;
 
-	context = gtk_widget_get_style_context (GTK_WIDGET (window));
-	gtk_style_context_add_class (context, "lapiz-window");
+	context = ctk_widget_get_style_context (GTK_WIDGET (window));
+	ctk_style_context_add_class (context, "lapiz-window");
 
-	main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-	gtk_container_add (GTK_CONTAINER (window), main_box);
-	gtk_widget_show (main_box);
+	main_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	ctk_container_add (GTK_CONTAINER (window), main_box);
+	ctk_widget_show (main_box);
 
 	/* Add menu bar and toolbar bar */
 	create_menu_bar_and_toolbar (window, main_box);
@@ -3989,15 +3989,15 @@ lapiz_window_init (LapizWindow *window)
 
 	/* Add the main area */
 	lapiz_debug_message (DEBUG_WINDOW, "Add main area");
-	window->priv->hpaned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
-  	gtk_box_pack_start (GTK_BOX (main_box),
+	window->priv->hpaned = ctk_paned_new (GTK_ORIENTATION_HORIZONTAL);
+  	ctk_box_pack_start (GTK_BOX (main_box),
   			    window->priv->hpaned,
   			    TRUE,
   			    TRUE,
   			    0);
 
-	window->priv->vpaned = gtk_paned_new (GTK_ORIENTATION_VERTICAL);
-  	gtk_paned_pack2 (GTK_PANED (window->priv->hpaned),
+	window->priv->vpaned = ctk_paned_new (GTK_ORIENTATION_VERTICAL);
+  	ctk_paned_pack2 (GTK_PANED (window->priv->hpaned),
   			 window->priv->vpaned,
   			 TRUE,
   			 FALSE);
@@ -4024,12 +4024,12 @@ lapiz_window_init (LapizWindow *window)
 				G_CALLBACK (vpaned_restore_position),
 				window);
 
-	gtk_widget_show (window->priv->hpaned);
-	gtk_widget_show (window->priv->vpaned);
+	ctk_widget_show (window->priv->hpaned);
+	ctk_widget_show (window->priv->vpaned);
 
 	/* Drag and drop support, set targets to NULL because we add the
 	   default uri_targets below */
-	gtk_drag_dest_set (GTK_WIDGET (window),
+	ctk_drag_dest_set (GTK_WIDGET (window),
 			   GTK_DEST_DEFAULT_MOTION |
 			   GTK_DEST_DEFAULT_HIGHLIGHT |
 			   GTK_DEST_DEFAULT_DROP,
@@ -4038,16 +4038,16 @@ lapiz_window_init (LapizWindow *window)
 			   GDK_ACTION_COPY);
 
 	/* Add uri targets */
-	tl = gtk_drag_dest_get_target_list (GTK_WIDGET (window));
+	tl = ctk_drag_dest_get_target_list (GTK_WIDGET (window));
 
 	if (tl == NULL)
 	{
-		tl = gtk_target_list_new (NULL, 0);
-		gtk_drag_dest_set_target_list (GTK_WIDGET (window), tl);
-		gtk_target_list_unref (tl);
+		tl = ctk_target_list_new (NULL, 0);
+		ctk_drag_dest_set_target_list (GTK_WIDGET (window), tl);
+		ctk_target_list_unref (tl);
 	}
 
-	gtk_target_list_add_uri_targets (tl, TARGET_URI_LIST);
+	ctk_target_list_add_uri_targets (tl, TARGET_URI_LIST);
 
 	/* connect instead of override, so that we can
 	 * share the cb code with the view */
@@ -4140,7 +4140,7 @@ lapiz_window_get_active_document (LapizWindow *window)
 	if (view == NULL)
 		return NULL;
 
-	return LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	return LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 }
 
 GtkWidget *
@@ -4170,16 +4170,16 @@ lapiz_window_create_tab (LapizWindow *window,
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
 	tab = LAPIZ_TAB (_lapiz_tab_new ());
-	gtk_widget_show (GTK_WIDGET (tab));
+	ctk_widget_show (GTK_WIDGET (tab));
 
 	lapiz_notebook_add_tab (LAPIZ_NOTEBOOK (window->priv->notebook),
 				tab,
 				-1,
 				jump_to);
 
-	if (!gtk_widget_get_visible (GTK_WIDGET (window)))
+	if (!ctk_widget_get_visible (GTK_WIDGET (window)))
 	{
-		gtk_window_present (GTK_WINDOW (window));
+		ctk_window_present (GTK_WINDOW (window));
 	}
 
 	return tab;
@@ -4221,7 +4221,7 @@ lapiz_window_create_tab_from_uri (LapizWindow         *window,
 	if (tab == NULL)
 		return NULL;
 
-	gtk_widget_show (tab);
+	ctk_widget_show (tab);
 
 	lapiz_notebook_add_tab (LAPIZ_NOTEBOOK (window->priv->notebook),
 				LAPIZ_TAB (tab),
@@ -4229,9 +4229,9 @@ lapiz_window_create_tab_from_uri (LapizWindow         *window,
 				jump_to);
 
 
-	if (!gtk_widget_get_visible (GTK_WIDGET (window)))
+	if (!ctk_widget_get_visible (GTK_WIDGET (window)))
 	{
-		gtk_window_present (GTK_WINDOW (window));
+		ctk_window_present (GTK_WINDOW (window));
 	}
 
 	return LAPIZ_TAB (tab);
@@ -4281,7 +4281,7 @@ lapiz_window_get_documents (LapizWindow *window)
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
-	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+	ctk_container_foreach (GTK_CONTAINER (window->priv->notebook),
 			       (GtkCallback)add_document,
 			       &res);
 
@@ -4316,7 +4316,7 @@ lapiz_window_get_views (LapizWindow *window)
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
-	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+	ctk_container_foreach (GTK_CONTAINER (window->priv->notebook),
 			       (GtkCallback)add_view,
 			       &res);
 
@@ -4407,7 +4407,7 @@ _lapiz_window_move_tab_to_new_window (LapizWindow *window,
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (LAPIZ_IS_TAB (tab), NULL);
-	g_return_val_if_fail (gtk_notebook_get_n_pages (
+	g_return_val_if_fail (ctk_notebook_get_n_pages (
 				GTK_NOTEBOOK (window->priv->notebook)) > 1,
 			      NULL);
 
@@ -4418,7 +4418,7 @@ _lapiz_window_move_tab_to_new_window (LapizWindow *window,
 				 tab,
 				 -1);
 
-	gtk_widget_show (GTK_WIDGET (new_window));
+	ctk_widget_show (GTK_WIDGET (new_window));
 
 	return new_window;
 }
@@ -4439,11 +4439,11 @@ lapiz_window_set_active_tab (LapizWindow *window,
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
-	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook),
+	page_num = ctk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook),
 					  GTK_WIDGET (tab));
 	g_return_if_fail (page_num != -1);
 
-	gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook),
+	ctk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook),
 				       page_num);
 }
 
@@ -4596,7 +4596,7 @@ lapiz_window_get_unsaved_documents (LapizWindow *window)
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
-	tabs = gtk_container_get_children (GTK_CONTAINER (window->priv->notebook));
+	tabs = ctk_container_get_children (GTK_CONTAINER (window->priv->notebook));
 
 	l = tabs;
 	while (l != NULL)
@@ -4649,7 +4649,7 @@ hide_notebook_tabs_on_fullscreen (GtkNotebook	*notebook,
 				  GParamSpec	*pspec,
 				  LapizWindow	*window)
 {
-	gtk_notebook_set_show_tabs (notebook, FALSE);
+	ctk_notebook_set_show_tabs (notebook, FALSE);
 }
 
 void
@@ -4661,22 +4661,22 @@ _lapiz_window_fullscreen (LapizWindow *window)
 		return;
 
 	/* Go to fullscreen mode and hide bars */
-	gtk_window_fullscreen (&window->window);
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), FALSE);
+	ctk_window_fullscreen (&window->window);
+	ctk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), FALSE);
 	g_signal_connect (window->priv->notebook, "notify::show-tabs",
 			  G_CALLBACK (hide_notebook_tabs_on_fullscreen), window);
 
-	gtk_widget_hide (window->priv->menubar);
+	ctk_widget_hide (window->priv->menubar);
 
 	g_signal_handlers_block_by_func (window->priv->toolbar,
 					 toolbar_visibility_changed,
 					 window);
-	gtk_widget_hide (window->priv->toolbar);
+	ctk_widget_hide (window->priv->toolbar);
 
 	g_signal_handlers_block_by_func (window->priv->statusbar,
 					 statusbar_visibility_changed,
 					 window);
-	gtk_widget_hide (window->priv->statusbar);
+	ctk_widget_hide (window->priv->statusbar);
 
 	fullscreen_controls_build (window);
 	fullscreen_controls_show (window);
@@ -4694,32 +4694,32 @@ _lapiz_window_unfullscreen (LapizWindow *window)
 		return;
 
 	/* Unfullscreen and show bars */
-	gtk_window_unfullscreen (&window->window);
+	ctk_window_unfullscreen (&window->window);
 	g_signal_handlers_disconnect_by_func (window->priv->notebook,
 					      hide_notebook_tabs_on_fullscreen,
 					      window);
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), TRUE);
-	gtk_widget_show (window->priv->menubar);
+	ctk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), TRUE);
+	ctk_widget_show (window->priv->menubar);
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewToolbar");
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	visible = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 	if (visible)
-		gtk_widget_show (window->priv->toolbar);
+		ctk_widget_show (window->priv->toolbar);
 	g_signal_handlers_unblock_by_func (window->priv->toolbar,
 					   toolbar_visibility_changed,
 					   window);
 
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewStatusbar");
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	visible = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 	if (visible)
-		gtk_widget_show (window->priv->statusbar);
+		ctk_widget_show (window->priv->statusbar);
 	g_signal_handlers_unblock_by_func (window->priv->statusbar,
 					   statusbar_visibility_changed,
 					   window);
 
-	gtk_widget_hide (window->priv->fullscreen_controls);
+	ctk_widget_hide (window->priv->fullscreen_controls);
 }
 
 gboolean
@@ -4750,7 +4750,7 @@ lapiz_window_get_tab_from_location (LapizWindow *window,
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 
-	tabs = gtk_container_get_children (GTK_CONTAINER (window->priv->notebook));
+	tabs = ctk_container_get_children (GTK_CONTAINER (window->priv->notebook));
 
 	for (l = tabs; l != NULL; l = g_list_next (l))
 	{

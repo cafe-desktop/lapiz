@@ -79,19 +79,19 @@ save_window_session (GKeyFile    *state_file,
 
 	lapiz_debug (DEBUG_SESSION);
 
-	role = gtk_window_get_role (GTK_WINDOW (window));
+	role = ctk_window_get_role (GTK_WINDOW (window));
 	g_key_file_set_string (state_file, group_name, "role", role);
-	gtk_window_get_size (GTK_WINDOW (window), &width, &height);
+	ctk_window_get_size (GTK_WINDOW (window), &width, &height);
 	g_key_file_set_integer (state_file, group_name, "width", width);
 	g_key_file_set_integer (state_file, group_name, "height", height);
 
 	panel = lapiz_window_get_side_panel (window);
 	g_key_file_set_boolean (state_file, group_name, "side-panel-visible",
-				gtk_widget_get_visible (GTK_WIDGET (panel)));
+				ctk_widget_get_visible (GTK_WIDGET (panel)));
 
 	panel = lapiz_window_get_bottom_panel (window);
 	g_key_file_set_boolean (state_file, group_name, "bottom-panel-visible",
-				gtk_widget_get_visible (GTK_WIDGET (panel)));
+				ctk_widget_get_visible (GTK_WIDGET (panel)));
 
 	active_document = lapiz_window_get_active_document (window);
 	if (active_document)
@@ -265,7 +265,7 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 			break;
 	}
 
-	gtk_widget_destroy (GTK_WIDGET (dlg));
+	ctk_widget_destroy (GTK_WIDGET (dlg));
 }
 
 static void
@@ -312,7 +312,7 @@ show_confirmation_dialog (LapizWindow *window)
 			  G_CALLBACK (close_confirmation_dialog_response_handler),
 			  window);
 
-	gtk_widget_show (dlg);
+	ctk_widget_show (dlg);
 }
 
 static void
@@ -392,7 +392,7 @@ client_quit_cb (EggSMClient *client, gpointer data)
 	lapiz_debug_message (DEBUG_FILE, "Unref lapiz_app_server: DONE");
 #endif
 
-	gtk_main_quit ();
+	ctk_main_quit ();
 }
 
 /**
@@ -487,7 +487,7 @@ parse_window (GKeyFile *state_file, const char *group_name)
 	        g_clear_error (&error);
 		height = -1;
 	}
-	gtk_window_set_default_size (GTK_WINDOW (window), width, height);
+	ctk_window_set_default_size (GTK_WINDOW (window), width, height);
 
 
 	visible = g_key_file_get_boolean (state_file, group_name,
@@ -503,12 +503,12 @@ parse_window (GKeyFile *state_file, const char *group_name)
 	if (visible)
 	{
 	        lapiz_debug_message (DEBUG_SESSION, "Side panel visible");
-		gtk_widget_show (GTK_WIDGET (panel));
+		ctk_widget_show (GTK_WIDGET (panel));
 	}
 	else
 	{
 	      lapiz_debug_message (DEBUG_SESSION, "Side panel _NOT_ visible");
-	      gtk_widget_hide (GTK_WIDGET (panel));
+	      ctk_widget_hide (GTK_WIDGET (panel));
 	}
 
 	visible = g_key_file_get_boolean (state_file, group_name,
@@ -523,12 +523,12 @@ parse_window (GKeyFile *state_file, const char *group_name)
 	if (visible)
 	{
 	        lapiz_debug_message (DEBUG_SESSION, "Bottom panel visible");
-		gtk_widget_show (GTK_WIDGET (panel));
+		ctk_widget_show (GTK_WIDGET (panel));
 	}
 	else
 	{
 	        lapiz_debug_message (DEBUG_SESSION, "Bottom panel _NOT_ visible");
-		gtk_widget_hide (GTK_WIDGET (panel));
+		ctk_widget_hide (GTK_WIDGET (panel));
 	}
 
 	active_document = g_key_file_get_string (state_file, group_name,
@@ -562,7 +562,7 @@ parse_window (GKeyFile *state_file, const char *group_name)
 
 	g_free (active_document);
 
-	gtk_widget_show (GTK_WIDGET (window));
+	ctk_widget_show (GTK_WIDGET (window));
 }
 
 /**

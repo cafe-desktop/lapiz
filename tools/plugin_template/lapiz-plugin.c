@@ -104,17 +104,17 @@ impl_activate (LapizPlugin *plugin,
 	data = g_new (WindowData, 1);
 	manager = lapiz_window_get_ui_manager (window);
 
-	data->action_group = gtk_action_group_new ("##(PLUGIN_ID.camel)PluginActions");
-	gtk_action_group_set_translation_domain (data->action_group,
+	data->action_group = ctk_action_group_new ("##(PLUGIN_ID.camel)PluginActions");
+	ctk_action_group_set_translation_domain (data->action_group,
 						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (data->action_group,
+	ctk_action_group_add_actions (data->action_group,
 				      action_entries,
 				      G_N_ELEMENTS (action_entries),
 				      window);
 
-	gtk_ui_manager_insert_action_group (manager, data->action_group, -1);
+	ctk_ui_manager_insert_action_group (manager, data->action_group, -1);
 
-	data->ui_id = gtk_ui_manager_add_ui_from_string (manager, ui_str,
+	data->ui_id = ctk_ui_manager_add_ui_from_string (manager, ui_str,
 							 -1, NULL);
 
 	g_object_set_data_full (G_OBJECT (window),
@@ -142,8 +142,8 @@ impl_deactivate (LapizPlugin *plugin,
 						 WINDOW_DATA_KEY);
 	g_return_if_fail (data != NULL);
 
-	gtk_ui_manager_remove_ui (manager, data->ui_id);
-	gtk_ui_manager_remove_action_group (manager, data->action_group);
+	ctk_ui_manager_remove_ui (manager, data->ui_id);
+	ctk_ui_manager_remove_action_group (manager, data->action_group);
 
 	g_object_set_data (G_OBJECT (window), WINDOW_DATA_KEY, NULL);
 ##endif

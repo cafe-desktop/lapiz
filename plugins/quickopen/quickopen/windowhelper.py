@@ -130,7 +130,7 @@ class WindowHelper:
         self._popup.connect('destroy', self.on_popup_destroy)
 
     def _local_bookmarks(self):
-        filename = os.path.expanduser('~/.config/gtk-3.0/bookmarks')
+        filename = os.path.expanduser('~/.config/ctk-3.0/bookmarks')
 
         if not os.path.isfile(filename):
             return []

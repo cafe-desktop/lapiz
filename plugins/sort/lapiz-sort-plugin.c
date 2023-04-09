@@ -116,7 +116,7 @@ sort_dialog_response_handler (GtkDialog  *widget,
 	{
 		case GTK_RESPONSE_OK:
 			sort_real (dialog);
-			gtk_widget_destroy (dialog->dialog);
+			ctk_widget_destroy (dialog->dialog);
 			break;
 
 		case GTK_RESPONSE_HELP:
@@ -126,7 +126,7 @@ sort_dialog_response_handler (GtkDialog  *widget,
 			break;
 
 		case GTK_RESPONSE_CANCEL:
-			gtk_widget_destroy (dialog->dialog);
+			ctk_widget_destroy (dialog->dialog);
 			break;
 	}
 }
@@ -143,12 +143,12 @@ get_current_selection (LapizWindow *window, SortDialog *dialog)
 
 	doc = lapiz_window_get_active_document (window);
 
-	if (!gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+	if (!ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
 						   &dialog->start,
 						   &dialog->end))
 	{
 		/* No selection, get the whole document. */
-		gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
 					    &dialog->start,
 					    &dialog->end);
 	}
@@ -188,17 +188,17 @@ get_sort_dialog (LapizSortPlugin *plugin)
 	{
 		const gchar *err_message;
 
-		err_message = gtk_label_get_label (GTK_LABEL (error_widget));
+		err_message = ctk_label_get_label (GTK_LABEL (error_widget));
 		lapiz_warning (GTK_WINDOW (window),
 			       "%s", err_message);
 
 		g_slice_free (SortDialog, dialog);
-		gtk_widget_destroy (error_widget);
+		ctk_widget_destroy (error_widget);
 
 		return NULL;
 	}
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
+	ctk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);
 
 	g_signal_connect (dialog->dialog,
@@ -236,18 +236,18 @@ sort_cb (GtkAction  *action,
 	g_return_if_fail (dialog != NULL);
 
 	wg = lapiz_window_get_group (window);
-	gtk_window_group_add_window (wg,
+	ctk_window_group_add_window (wg,
 				     GTK_WINDOW (dialog->dialog));
 
 	dialog->doc = doc;
 
-	gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
+	ctk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
 				      GTK_WINDOW (window));
 
-	gtk_window_set_modal (GTK_WINDOW (dialog->dialog),
+	ctk_window_set_modal (GTK_WINDOW (dialog->dialog),
 			      TRUE);
 
-	gtk_widget_show (GTK_WIDGET (dialog->dialog));
+	ctk_widget_show (GTK_WIDGET (dialog->dialog));
 }
 
 /* Compares two strings for the sorting algorithm. Uses the UTF-8 processing
@@ -342,13 +342,13 @@ get_line_slice (GtkTextBuffer *buf,
 	GtkTextIter start, end;
 	char *ret;
 
-	gtk_text_buffer_get_iter_at_line (buf, &start, line);
+	ctk_text_buffer_get_iter_at_line (buf, &start, line);
 	end = start;
 
-	if (!gtk_text_iter_ends_line (&start))
-		gtk_text_iter_forward_to_line_end (&end);
+	if (!ctk_text_iter_ends_line (&start))
+		ctk_text_iter_forward_to_line_end (&end);
 
-	ret= gtk_text_buffer_get_slice (buf,
+	ret= ctk_text_buffer_get_slice (buf,
 					  &start,
 					  &end,
 					  TRUE);
@@ -376,23 +376,23 @@ sort_real (SortDialog *dialog)
 	g_return_if_fail (doc != NULL);
 
 	sort_info = g_new0 (SortInfo, 1);
-	sort_info->ignore_case = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->ignore_case_checkbutton));
-	sort_info->reverse_order = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->reverse_order_checkbutton));
-	sort_info->remove_duplicates = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->remove_dups_checkbutton));
-	sort_info->starting_column = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (dialog->col_num_spinbutton)) - 1;
+	sort_info->ignore_case = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->ignore_case_checkbutton));
+	sort_info->reverse_order = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->reverse_order_checkbutton));
+	sort_info->remove_duplicates = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->remove_dups_checkbutton));
+	sort_info->starting_column = ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (dialog->col_num_spinbutton)) - 1;
 
 	start = dialog->start;
 	end = dialog->end;
-	start_line = gtk_text_iter_get_line (&start);
-	end_line = gtk_text_iter_get_line (&end);
+	start_line = ctk_text_iter_get_line (&start);
+	end_line = ctk_text_iter_get_line (&end);
 
 	/* if we are at line start our last line is the previus one.
 	 * Otherwise the last line is the current one but we try to
 	 * move the iter after the line terminator */
-	if (gtk_text_iter_get_line_offset (&end) == 0)
+	if (ctk_text_iter_get_line_offset (&end) == 0)
 		end_line = MAX (start_line, end_line - 1);
 	else
-		gtk_text_iter_forward_line (&end);
+		ctk_text_iter_forward_line (&end);
 
 	num_lines = end_line - start_line + 1;
 	lines = g_new0 (gchar *, num_lines + 1);
@@ -416,9 +416,9 @@ sort_real (SortDialog *dialog)
 
 	lapiz_debug_message (DEBUG_PLUGINS, "Rebuilding document...");
 
-	gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (doc));
+	ctk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (doc));
 
-	gtk_text_buffer_delete (GTK_TEXT_BUFFER (doc),
+	ctk_text_buffer_delete (GTK_TEXT_BUFFER (doc),
 				&start,
 				&end);
 
@@ -429,13 +429,13 @@ sort_real (SortDialog *dialog)
 		    (strcmp (last_row, lines[i]) == 0))
 			continue;
 
-		gtk_text_buffer_insert (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_insert (GTK_TEXT_BUFFER (doc),
 					&start,
 					lines[i],
 					-1);
 
 		if (i < (num_lines - 1))
-			gtk_text_buffer_insert (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_insert (GTK_TEXT_BUFFER (doc),
 						&start,
 						"\n",
 						-1);
@@ -443,7 +443,7 @@ sort_real (SortDialog *dialog)
 		last_row = lines[i];
 	}
 
-	gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (doc));
+	ctk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (doc));
 
 	g_strfreev (lines);
 	g_free (sort_info);
@@ -502,9 +502,9 @@ update_ui (LapizSortPluginPrivate *data)
 	window = LAPIZ_WINDOW (data->window);
 	view = lapiz_window_get_active_view (window);
 
-	gtk_action_group_set_sensitive (data->ui_action_group,
+	ctk_action_group_set_sensitive (data->ui_action_group,
 					(view != NULL) &&
-					gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+					ctk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 }
 
 static void
@@ -523,21 +523,21 @@ lapiz_sort_plugin_activate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	data->ui_action_group = gtk_action_group_new ("LapizSortPluginActions");
-	gtk_action_group_set_translation_domain (data->ui_action_group,
+	data->ui_action_group = ctk_action_group_new ("LapizSortPluginActions");
+	ctk_action_group_set_translation_domain (data->ui_action_group,
 						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (data->ui_action_group,
+	ctk_action_group_add_actions (data->ui_action_group,
 					   action_entries,
 					   G_N_ELEMENTS (action_entries),
 					   plugin);
 
-	gtk_ui_manager_insert_action_group (manager,
+	ctk_ui_manager_insert_action_group (manager,
 					    data->ui_action_group,
 					    -1);
 
-	data->ui_id = gtk_ui_manager_new_merge_id (manager);
+	data->ui_id = ctk_ui_manager_new_merge_id (manager);
 
-	gtk_ui_manager_add_ui (manager,
+	ctk_ui_manager_add_ui (manager,
 			       data->ui_id,
 			       MENU_PATH,
 			       "Sort",
@@ -562,9 +562,9 @@ lapiz_sort_plugin_deactivate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	gtk_ui_manager_remove_ui (manager,
+	ctk_ui_manager_remove_ui (manager,
 				  data->ui_id);
-	gtk_ui_manager_remove_action_group (manager,
+	ctk_ui_manager_remove_action_group (manager,
 					    data->ui_action_group);
 }
 

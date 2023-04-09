@@ -23,7 +23,7 @@
 
 #include "lapiz-document-input-stream.h"
 #include <gio/gio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib.h>
 #include <string.h>
 
@@ -41,8 +41,8 @@ test_consecutive_read (const gchar *inbuf,
 	gchar *b;
 	gboolean close;
 
-	buf = gtk_text_buffer_new (NULL);
-	gtk_text_buffer_set_text (buf, inbuf, -1);
+	buf = ctk_text_buffer_new (NULL);
+	ctk_text_buffer_set_text (buf, inbuf, -1);
 
 	b = g_malloc (200);
 	in = lapiz_document_input_stream_new (buf, type);

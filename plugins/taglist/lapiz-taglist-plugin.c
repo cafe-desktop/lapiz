@@ -155,9 +155,9 @@ lapiz_taglist_plugin_update_state (PeasActivatable *activatable)
 	window = LAPIZ_WINDOW (priv->window);
 	view = lapiz_window_get_active_view (window);
 
-	gtk_widget_set_sensitive (priv->taglist_panel,
+	ctk_widget_set_sensitive (priv->taglist_panel,
 				  (view != NULL) &&
-				  gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+				  ctk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 }
 
 static void

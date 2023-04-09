@@ -96,16 +96,16 @@ find_nearest_subregion (LapizTextRegion     *region,
 		gint cmp;
 
 		if (!leftmost) {
-			gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_iter, sr->end);
-			cmp = gtk_text_iter_compare (iter, &sr_iter);
+			ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_iter, sr->end);
+			cmp = ctk_text_iter_compare (iter, &sr_iter);
 			if (cmp < 0 || (cmp == 0 && include_edges)) {
 				retval = l;
 				break;
 			}
 
 		} else {
-			gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_iter, sr->start);
-			cmp = gtk_text_iter_compare (iter, &sr_iter);
+			ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_iter, sr->start);
+			cmp = ctk_text_iter_compare (iter, &sr_iter);
 			if (cmp > 0 || (cmp == 0 && include_edges))
 				retval = l;
 			else
@@ -142,8 +142,8 @@ lapiz_text_region_destroy (LapizTextRegion *region, gboolean delete_marks)
 	while (region->subregions) {
 		Subregion *sr = region->subregions->data;
 		if (delete_marks) {
-			gtk_text_buffer_delete_mark (region->buffer, sr->start);
-			gtk_text_buffer_delete_mark (region->buffer, sr->end);
+			ctk_text_buffer_delete_mark (region->buffer, sr->start);
+			ctk_text_buffer_delete_mark (region->buffer, sr->end);
 		}
 		g_free (sr);
 		region->subregions = g_list_delete_link (region->subregions,
@@ -173,11 +173,11 @@ lapiz_text_region_clear_zero_length_subregions (LapizTextRegion *region)
 
 	for (node = region->subregions; node; ) {
 		Subregion *sr = node->data;
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &start, sr->start);
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &end, sr->end);
-		if (gtk_text_iter_equal (&start, &end)) {
-			gtk_text_buffer_delete_mark (region->buffer, sr->start);
-			gtk_text_buffer_delete_mark (region->buffer, sr->end);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &start, sr->start);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &end, sr->end);
+		if (ctk_text_iter_equal (&start, &end)) {
+			ctk_text_buffer_delete_mark (region->buffer, sr->start);
+			ctk_text_buffer_delete_mark (region->buffer, sr->end);
 			g_free (sr);
 			if (node == region->subregions)
 				region->subregions = node = g_list_delete_link (node, node);
@@ -208,13 +208,13 @@ lapiz_text_region_add (LapizTextRegion     *region,
 	DEBUG (g_print ("---\n"));
 	DEBUG (lapiz_text_region_debug_print (region));
 	DEBUG (g_message ("region_add (%d, %d)",
-			  gtk_text_iter_get_offset (&start),
-			  gtk_text_iter_get_offset (&end)));
+			  ctk_text_iter_get_offset (&start),
+			  ctk_text_iter_get_offset (&end)));
 
-	gtk_text_iter_order (&start, &end);
+	ctk_text_iter_order (&start, &end);
 
 	/* don't add zero-length regions */
-	if (gtk_text_iter_equal (&start, &end))
+	if (ctk_text_iter_equal (&start, &end))
 		return;
 
 	/* find bounding subregions */
@@ -224,8 +224,8 @@ lapiz_text_region_add (LapizTextRegion     *region,
 	if (start_node == NULL || end_node == NULL || end_node == start_node->prev) {
 		/* create the new subregion */
 		Subregion *sr = g_new0 (Subregion, 1);
-		sr->start = gtk_text_buffer_create_mark (region->buffer, NULL, &start, TRUE);
-		sr->end = gtk_text_buffer_create_mark (region->buffer, NULL, &end, FALSE);
+		sr->start = ctk_text_buffer_create_mark (region->buffer, NULL, &start, TRUE);
+		sr->end = ctk_text_buffer_create_mark (region->buffer, NULL, &end, FALSE);
 
 		if (start_node == NULL) {
 			/* append the new region */
@@ -249,27 +249,27 @@ lapiz_text_region_add (LapizTextRegion     *region,
 			GList *l = start_node->next;
 			Subregion *q;
 
-			gtk_text_buffer_delete_mark (region->buffer, sr->end);
+			ctk_text_buffer_delete_mark (region->buffer, sr->end);
 			while (l != end_node) {
 				q = l->data;
-				gtk_text_buffer_delete_mark (region->buffer, q->start);
-				gtk_text_buffer_delete_mark (region->buffer, q->end);
+				ctk_text_buffer_delete_mark (region->buffer, q->start);
+				ctk_text_buffer_delete_mark (region->buffer, q->end);
 				g_free (q);
 				l = g_list_delete_link (l, l);
 			}
 			q = l->data;
-			gtk_text_buffer_delete_mark (region->buffer, q->start);
+			ctk_text_buffer_delete_mark (region->buffer, q->start);
 			sr->end = q->end;
 			g_free (q);
 			l = g_list_delete_link (l, l);
 		}
 		/* now move marks if that action expands the region */
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &iter, sr->start);
-		if (gtk_text_iter_compare (&iter, &start) > 0)
-			gtk_text_buffer_move_mark (region->buffer, sr->start, &start);
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &iter, sr->end);
-		if (gtk_text_iter_compare (&iter, &end) < 0)
-			gtk_text_buffer_move_mark (region->buffer, sr->end, &end);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &iter, sr->start);
+		if (ctk_text_iter_compare (&iter, &start) > 0)
+			ctk_text_buffer_move_mark (region->buffer, sr->start, &start);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &iter, sr->end);
+		if (ctk_text_iter_compare (&iter, &end) < 0)
+			ctk_text_buffer_move_mark (region->buffer, sr->end, &end);
 	}
 
 	++region->time_stamp;
@@ -297,10 +297,10 @@ lapiz_text_region_subtract (LapizTextRegion     *region,
 	DEBUG (g_print ("---\n"));
 	DEBUG (lapiz_text_region_debug_print (region));
 	DEBUG (g_message ("region_substract (%d, %d)",
-			  gtk_text_iter_get_offset (&start),
-			  gtk_text_iter_get_offset (&end)));
+			  ctk_text_iter_get_offset (&start),
+			  ctk_text_iter_get_offset (&end)));
 
-	gtk_text_iter_order (&start, &end);
+	ctk_text_iter_order (&start, &end);
 
 	/* find bounding subregions */
 	start_node = find_nearest_subregion (region, &start, NULL, FALSE, FALSE);
@@ -314,23 +314,23 @@ lapiz_text_region_subtract (LapizTextRegion     *region,
 	start_is_outside = end_is_outside = FALSE;
 
 	sr = start_node->data;
-	gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
-	gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
+	ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
+	ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
 
-	if (gtk_text_iter_in_range (&start, &sr_start_iter, &sr_end_iter) &&
-	    !gtk_text_iter_equal (&start, &sr_start_iter)) {
+	if (ctk_text_iter_in_range (&start, &sr_start_iter, &sr_end_iter) &&
+	    !ctk_text_iter_equal (&start, &sr_start_iter)) {
 		/* the starting point is inside the first subregion */
-		if (gtk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter) &&
-		    !gtk_text_iter_equal (&end, &sr_end_iter)) {
+		if (ctk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter) &&
+		    !ctk_text_iter_equal (&end, &sr_end_iter)) {
 			/* the ending point is also inside the first
                            subregion: we need to split */
 			Subregion *new_sr = g_new0 (Subregion, 1);
 			new_sr->end = sr->end;
-			new_sr->start = gtk_text_buffer_create_mark (region->buffer,
+			new_sr->start = ctk_text_buffer_create_mark (region->buffer,
 								     NULL, &end, TRUE);
 			start_node = g_list_insert_before (start_node, start_node->next, new_sr);
 
-			sr->end = gtk_text_buffer_create_mark (region->buffer,
+			sr->end = ctk_text_buffer_create_mark (region->buffer,
 							       NULL, &start, FALSE);
 
 			/* no further processing needed */
@@ -340,7 +340,7 @@ lapiz_text_region_subtract (LapizTextRegion     *region,
 		} else {
 			/* the ending point is outside, so just move
                            the end of the subregion to the starting point */
-			gtk_text_buffer_move_mark (region->buffer, sr->end, &start);
+			ctk_text_buffer_move_mark (region->buffer, sr->end, &start);
 		}
 	} else {
 		/* the starting point is outside (and so to the left)
@@ -353,14 +353,14 @@ lapiz_text_region_subtract (LapizTextRegion     *region,
 	/* deal with the end point */
 	if (start_node != end_node) {
 		sr = end_node->data;
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
 	}
 
-	if (gtk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter) &&
-	    !gtk_text_iter_equal (&end, &sr_end_iter)) {
+	if (ctk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter) &&
+	    !ctk_text_iter_equal (&end, &sr_end_iter)) {
 		/* ending point is inside, move the start mark */
-		gtk_text_buffer_move_mark (region->buffer, sr->start, &end);
+		ctk_text_buffer_move_mark (region->buffer, sr->start, &end);
 	} else {
 		end_is_outside = TRUE;
 		DEBUG (g_message ("end is outside"));
@@ -383,8 +383,8 @@ lapiz_text_region_subtract (LapizTextRegion     *region,
 		} else {
 			GList *l = node->next;
 			sr = node->data;
-			gtk_text_buffer_delete_mark (region->buffer, sr->start);
-			gtk_text_buffer_delete_mark (region->buffer, sr->end);
+			ctk_text_buffer_delete_mark (region->buffer, sr->start);
+			ctk_text_buffer_delete_mark (region->buffer, sr->end);
 			g_free (sr);
 			region->subregions = g_list_delete_link (region->subregions,
 								 node);
@@ -425,9 +425,9 @@ lapiz_text_region_nth_subregion (LapizTextRegion *region,
 		return FALSE;
 
 	if (start)
-		gtk_text_buffer_get_iter_at_mark (region->buffer, start, sr->start);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, start, sr->start);
 	if (end)
-		gtk_text_buffer_get_iter_at_mark (region->buffer, end, sr->end);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, end, sr->end);
 
 	return TRUE;
 }
@@ -449,7 +449,7 @@ lapiz_text_region_intersect (LapizTextRegion     *region,
 	start = *_start;
 	end = *_end;
 
-	gtk_text_iter_order (&start, &end);
+	ctk_text_iter_order (&start, &end);
 
 	/* find bounding subregions */
 	start_node = find_nearest_subregion (region, &start, NULL, FALSE, FALSE);
@@ -463,28 +463,28 @@ lapiz_text_region_intersect (LapizTextRegion     *region,
 	done = FALSE;
 
 	sr = start_node->data;
-	gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
-	gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
+	ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
+	ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
 
 	/* starting node */
-	if (gtk_text_iter_in_range (&start, &sr_start_iter, &sr_end_iter)) {
+	if (ctk_text_iter_in_range (&start, &sr_start_iter, &sr_end_iter)) {
 		new_sr = g_new0 (Subregion, 1);
 		new_region->subregions = g_list_prepend (new_region->subregions, new_sr);
 
-		new_sr->start = gtk_text_buffer_create_mark (new_region->buffer, NULL,
+		new_sr->start = ctk_text_buffer_create_mark (new_region->buffer, NULL,
 							     &start, TRUE);
 		if (start_node == end_node) {
 			/* things will finish shortly */
 			done = TRUE;
-			if (gtk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter))
-				new_sr->end = gtk_text_buffer_create_mark (new_region->buffer,
+			if (ctk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter))
+				new_sr->end = ctk_text_buffer_create_mark (new_region->buffer,
 									   NULL, &end, FALSE);
 			else
-				new_sr->end = gtk_text_buffer_create_mark (new_region->buffer,
+				new_sr->end = ctk_text_buffer_create_mark (new_region->buffer,
 									   NULL, &sr_end_iter,
 									   FALSE);
 		} else {
-			new_sr->end = gtk_text_buffer_create_mark (new_region->buffer, NULL,
+			new_sr->end = ctk_text_buffer_create_mark (new_region->buffer, NULL,
 								   &sr_end_iter, FALSE);
 		}
 		node = start_node->next;
@@ -497,15 +497,15 @@ lapiz_text_region_intersect (LapizTextRegion     *region,
 		while (node != end_node) {
 			/* copy intermediate subregions verbatim */
 			sr = node->data;
-			gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter,
+			ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter,
 							  sr->start);
-			gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
+			ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
 
 			new_sr = g_new0 (Subregion, 1);
 			new_region->subregions = g_list_prepend (new_region->subregions, new_sr);
-			new_sr->start = gtk_text_buffer_create_mark (new_region->buffer, NULL,
+			new_sr->start = ctk_text_buffer_create_mark (new_region->buffer, NULL,
 								     &sr_start_iter, TRUE);
-			new_sr->end = gtk_text_buffer_create_mark (new_region->buffer, NULL,
+			new_sr->end = ctk_text_buffer_create_mark (new_region->buffer, NULL,
 								   &sr_end_iter, FALSE);
 			/* next node */
 			node = node->next;
@@ -513,20 +513,20 @@ lapiz_text_region_intersect (LapizTextRegion     *region,
 
 		/* ending node */
 		sr = node->data;
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_start_iter, sr->start);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &sr_end_iter, sr->end);
 
 		new_sr = g_new0 (Subregion, 1);
 		new_region->subregions = g_list_prepend (new_region->subregions, new_sr);
 
-		new_sr->start = gtk_text_buffer_create_mark (new_region->buffer, NULL,
+		new_sr->start = ctk_text_buffer_create_mark (new_region->buffer, NULL,
 							     &sr_start_iter, TRUE);
 
-		if (gtk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter))
-			new_sr->end = gtk_text_buffer_create_mark (new_region->buffer, NULL,
+		if (ctk_text_iter_in_range (&end, &sr_start_iter, &sr_end_iter))
+			new_sr->end = ctk_text_buffer_create_mark (new_region->buffer, NULL,
 								   &end, FALSE);
 		else
-			new_sr->end = gtk_text_buffer_create_mark (new_region->buffer, NULL,
+			new_sr->end = ctk_text_buffer_create_mark (new_region->buffer, NULL,
 								   &sr_end_iter, FALSE);
 	}
 
@@ -619,9 +619,9 @@ lapiz_text_region_iterator_get_subregion (LapizTextRegionIterator *iter,
 	g_return_if_fail (sr != NULL);
 
 	if (start)
-		gtk_text_buffer_get_iter_at_mark (real->region->buffer, start, sr->start);
+		ctk_text_buffer_get_iter_at_mark (real->region->buffer, start, sr->start);
 	if (end)
-		gtk_text_buffer_get_iter_at_mark (real->region->buffer, end, sr->end);
+		ctk_text_buffer_get_iter_at_mark (real->region->buffer, end, sr->end);
 }
 
 void
@@ -636,10 +636,10 @@ lapiz_text_region_debug_print (LapizTextRegion *region)
 	while (l) {
 		Subregion *sr = l->data;
 		GtkTextIter iter1, iter2;
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &iter1, sr->start);
-		gtk_text_buffer_get_iter_at_mark (region->buffer, &iter2, sr->end);
-		g_print ("%d-%d ", gtk_text_iter_get_offset (&iter1),
-			 gtk_text_iter_get_offset (&iter2));
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &iter1, sr->start);
+		ctk_text_buffer_get_iter_at_mark (region->buffer, &iter2, sr->end);
+		g_print ("%d-%d ", ctk_text_iter_get_offset (&iter1),
+			 ctk_text_iter_get_offset (&iter2));
 		l = l->next;
 	}
 	g_print ("\n");

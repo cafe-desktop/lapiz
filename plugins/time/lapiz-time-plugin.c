@@ -41,7 +41,7 @@
 #include <gmodule.h>
 #include <gio/gio.h>
 #include <libpeas/peas-activatable.h>
-#include <libpeas-gtk/peas-gtk-configurable.h>
+#include <libpeas-ctk/peas-ctk-configurable.h>
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
@@ -164,7 +164,7 @@ enum {
 };
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
-static void peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
+static void peas_ctk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 lapiz_time_plugin,
@@ -174,7 +174,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
-                                                               peas_gtk_configurable_iface_init))
+                                                               peas_ctk_configurable_iface_init))
 
 static void time_cb (GtkAction *action, LapizTimePlugin *plugin);
 
@@ -248,11 +248,11 @@ update_ui (LapizTimePluginPrivate *data)
 
 	lapiz_debug_message (DEBUG_PLUGINS, "View: %p", view);
 
-	action = gtk_action_group_get_action (data->action_group,
+	action = ctk_action_group_get_action (data->action_group,
 					      "InsertDateAndTime");
-	gtk_action_set_sensitive (action,
+	ctk_action_set_sensitive (action,
 				  (view != NULL) &&
-				  gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+				  ctk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 }
 
 static void
@@ -271,19 +271,19 @@ lapiz_time_plugin_activate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	data->action_group = gtk_action_group_new ("LapizTimePluginActions");
-	gtk_action_group_set_translation_domain (data->action_group,
+	data->action_group = ctk_action_group_new ("LapizTimePluginActions");
+	ctk_action_group_set_translation_domain (data->action_group,
 						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (data->action_group,
+	ctk_action_group_add_actions (data->action_group,
 				      	   action_entries,
 				      	   G_N_ELEMENTS (action_entries),
 				           plugin);
 
-	gtk_ui_manager_insert_action_group (manager, data->action_group, -1);
+	ctk_ui_manager_insert_action_group (manager, data->action_group, -1);
 
-	data->ui_id = gtk_ui_manager_new_merge_id (manager);
+	data->ui_id = ctk_ui_manager_new_merge_id (manager);
 
-	gtk_ui_manager_add_ui (manager,
+	ctk_ui_manager_add_ui (manager,
 			       data->ui_id,
 			       MENU_PATH,
 			       "InsertDateAndTime",
@@ -308,8 +308,8 @@ lapiz_time_plugin_deactivate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	gtk_ui_manager_remove_ui (manager, data->ui_id);
-	gtk_ui_manager_remove_action_group (manager, data->action_group);
+	ctk_ui_manager_remove_ui (manager, data->ui_id);
+	ctk_ui_manager_remove_action_group (manager, data->action_group);
 }
 
 static void
@@ -486,18 +486,18 @@ create_model (GtkWidget       *listview,
 	lapiz_debug (DEBUG_PLUGINS);
 
 	/* create list store */
-	store = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
+	store = ctk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
 	/* Set tree view model*/
-	gtk_tree_view_set_model (GTK_TREE_VIEW (listview),
+	ctk_tree_view_set_model (GTK_TREE_VIEW (listview),
 				 GTK_TREE_MODEL (store));
 	g_object_unref (G_OBJECT (store));
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (listview));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (listview));
 	g_return_val_if_fail (selection != NULL, GTK_TREE_MODEL (store));
 
 	/* there should always be one line selected */
-	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+	ctk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 
 	/* add data to the list store */
 	while (formats[i] != NULL)
@@ -507,24 +507,24 @@ create_model (GtkWidget       *listview,
 		str = get_time (formats[i]);
 
 		lapiz_debug_message (DEBUG_PLUGINS, "%d : %s", i, str);
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store, &iter,
 				    COLUMN_FORMATS, str,
 				    COLUMN_INDEX, i,
 				    -1);
 		g_free (str);
 
 		if (sel_format && strcmp (formats[i], sel_format) == 0)
-			gtk_tree_selection_select_iter (selection, &iter);
+			ctk_tree_selection_select_iter (selection, &iter);
 
 		++i;
 	}
 
 	/* fall back to select the first iter */
-	if (!gtk_tree_selection_get_selected (selection, NULL, NULL))
+	if (!ctk_tree_selection_get_selected (selection, NULL, NULL))
 	{
-		gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
-		gtk_tree_selection_select_iter (selection, &iter);
+		ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
+		ctk_tree_selection_select_iter (selection, &iter);
 	}
 
 	return GTK_TREE_MODEL (store);
@@ -539,23 +539,23 @@ scroll_to_selected (GtkTreeView *tree_view)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	model = gtk_tree_view_get_model (tree_view);
+	model = ctk_tree_view_get_model (tree_view);
 	g_return_if_fail (model != NULL);
 
 	/* Scroll to selected */
-	selection = gtk_tree_view_get_selection (tree_view);
+	selection = ctk_tree_view_get_selection (tree_view);
 	g_return_if_fail (selection != NULL);
 
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 	{
 		GtkTreePath* path;
 
-		path = gtk_tree_model_get_path (model, &iter);
+		path = ctk_tree_model_get_path (model, &iter);
 		g_return_if_fail (path != NULL);
 
-		gtk_tree_view_scroll_to_cell (tree_view,
+		ctk_tree_view_scroll_to_cell (tree_view,
 					      path, NULL, TRUE, 1.0, 0.0);
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 	}
 }
 
@@ -573,13 +573,13 @@ create_formats_list (GtkWidget       *listview,
 	g_return_if_fail (sel_format != NULL);
 
 	/* the Available formats column */
-	cell = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (
+	cell = ctk_cell_renderer_text_new ();
+	column = ctk_tree_view_column_new_with_attributes (
 			_("Available formats"),
 			cell,
 			"text", COLUMN_FORMATS,
 			NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (listview), column);
+	ctk_tree_view_append_column (GTK_TREE_VIEW (listview), column);
 
 	/* Create model, it also add model to the tree view */
 	create_model (listview, sel_format, plugin);
@@ -589,7 +589,7 @@ create_formats_list (GtkWidget       *listview,
 			  G_CALLBACK (scroll_to_selected),
 			  NULL);
 
-	gtk_widget_show (listview);
+	ctk_widget_show (listview);
 }
 
 static void
@@ -606,14 +606,14 @@ updated_custom_format_example (GtkEntry *format_entry,
 	g_return_if_fail (GTK_IS_ENTRY (format_entry));
 	g_return_if_fail (GTK_IS_LABEL (format_example));
 
-	format = gtk_entry_get_text (format_entry);
+	format = ctk_entry_get_text (format_entry);
 
 	time = get_time (format);
 	escaped_time = g_markup_escape_text (time, -1);
 
 	str = g_strdup_printf ("<span size=\"small\">%s</span>", escaped_time);
 
-	gtk_label_set_markup (format_example, str);
+	ctk_label_set_markup (format_example, str);
 
 	g_free (escaped_time);
 	g_free (time);
@@ -626,20 +626,20 @@ choose_format_dialog_button_toggled (GtkToggleButton *button,
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
+	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
 	{
-		gtk_widget_set_sensitive (dialog->list, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_entry, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, TRUE);
+		ctk_widget_set_sensitive (dialog->list, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_entry, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, TRUE);
 
 		return;
 	}
 
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
+	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
 	{
-		gtk_widget_set_sensitive (dialog->list, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+		ctk_widget_set_sensitive (dialog->list, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, FALSE);
 
 		return;
 	}
@@ -650,31 +650,31 @@ configure_dialog_button_toggled (GtkToggleButton *button, TimeConfigureDialog *d
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
+	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
 	{
-		gtk_widget_set_sensitive (dialog->list, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_entry, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, TRUE);
+		ctk_widget_set_sensitive (dialog->list, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_entry, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, TRUE);
 
 		set_prompt_type (dialog->settings, USE_CUSTOM_FORMAT);
 		return;
 	}
 
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
+	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
 	{
-		gtk_widget_set_sensitive (dialog->list, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+		ctk_widget_set_sensitive (dialog->list, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, FALSE);
 
 		set_prompt_type (dialog->settings, USE_SELECTED_FORMAT);
 		return;
 	}
 
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->prompt)))
+	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->prompt)))
 	{
-		gtk_widget_set_sensitive (dialog->list, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+		ctk_widget_set_sensitive (dialog->list, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, FALSE);
 
 		set_prompt_type (dialog->settings, PROMPT_SELECTED_FORMAT);
 		return;
@@ -690,17 +690,17 @@ get_format_from_list (GtkWidget *listview)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (listview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (listview));
 	g_return_val_if_fail (model != NULL, 0);
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (listview));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (listview));
 	g_return_val_if_fail (selection != NULL, 0);
 
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 	{
 	        gint selected_value;
 
-		gtk_tree_model_get (model, &iter, COLUMN_INDEX, &selected_value, -1);
+		ctk_tree_model_get (model, &iter, COLUMN_INDEX, &selected_value, -1);
 
 		lapiz_debug_message (DEBUG_PLUGINS, "Sel value: %d", selected_value);
 
@@ -779,34 +779,34 @@ get_configure_dialog (LapizTimePlugin *plugin)
 
         if (prompt_type == USE_CUSTOM_FORMAT)
         {
-	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->custom), TRUE);
+	        ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->custom), TRUE);
 
-		gtk_widget_set_sensitive (dialog->list, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_entry, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, TRUE);
+		ctk_widget_set_sensitive (dialog->list, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_entry, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, TRUE);
         }
         else if (prompt_type == USE_SELECTED_FORMAT)
         {
-	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_list), TRUE);
+	        ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_list), TRUE);
 
-		gtk_widget_set_sensitive (dialog->list, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+		ctk_widget_set_sensitive (dialog->list, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, FALSE);
         }
         else
         {
-	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->prompt), TRUE);
+	        ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->prompt), TRUE);
 
-		gtk_widget_set_sensitive (dialog->list, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+		ctk_widget_set_sensitive (dialog->list, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, FALSE);
         }
 
 	updated_custom_format_example (GTK_ENTRY (dialog->custom_entry),
 			GTK_LABEL (dialog->custom_format_example));
 
 	/* setup a window of a sane size. */
-	gtk_widget_set_size_request (GTK_WIDGET (viewport), 10, 200);
+	ctk_widget_set_size_request (GTK_WIDGET (viewport), 10, 200);
 
 	g_signal_connect (dialog->custom,
 			  "toggled",
@@ -829,7 +829,7 @@ get_configure_dialog (LapizTimePlugin *plugin)
 			  G_CALLBACK (updated_custom_format_example),
 			  dialog->custom_format_example);
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dialog->list));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dialog->list));
 	g_signal_connect (selection,
 			  "changed",
 			  G_CALLBACK (configure_dialog_selection_changed),
@@ -844,12 +844,12 @@ real_insert_time (GtkTextBuffer *buffer,
 {
 	lapiz_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
 
-	gtk_text_buffer_begin_user_action (buffer);
+	ctk_text_buffer_begin_user_action (buffer);
 
-	gtk_text_buffer_insert_at_cursor (buffer, the_time, -1);
-	gtk_text_buffer_insert_at_cursor (buffer, " ", -1);
+	ctk_text_buffer_insert_at_cursor (buffer, the_time, -1);
+	ctk_text_buffer_insert_at_cursor (buffer, " ", -1);
 
-	gtk_text_buffer_end_user_action (buffer);
+	ctk_text_buffer_end_user_action (buffer);
 }
 
 static void
@@ -888,7 +888,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 	GtkWindowGroup *wg = NULL;
 
 	if (parent != NULL)
-		wg = gtk_window_get_group (parent);
+		wg = ctk_window_get_group (parent);
 
 	dialog = g_slice_new (ChooseFormatDialog);
 	dialog->settings = plugin->priv->settings;
@@ -913,42 +913,42 @@ get_choose_format_dialog (GtkWindow                 *parent,
 	{
 		GtkWidget *err_dialog;
 
-		err_dialog = gtk_dialog_new ();
-		gtk_window_set_transient_for (GTK_WINDOW (err_dialog), parent);
-		gtk_window_set_modal (GTK_WINDOW (err_dialog), TRUE);
-		gtk_window_set_destroy_with_parent (GTK_WINDOW (err_dialog), TRUE);
-		lapiz_dialog_add_button (GTK_DIALOG (err_dialog), _("_OK"), "gtk-ok", GTK_RESPONSE_ACCEPT);
+		err_dialog = ctk_dialog_new ();
+		ctk_window_set_transient_for (GTK_WINDOW (err_dialog), parent);
+		ctk_window_set_modal (GTK_WINDOW (err_dialog), TRUE);
+		ctk_window_set_destroy_with_parent (GTK_WINDOW (err_dialog), TRUE);
+		lapiz_dialog_add_button (GTK_DIALOG (err_dialog), _("_OK"), "ctk-ok", GTK_RESPONSE_ACCEPT);
 
 		if (wg != NULL)
-			gtk_window_group_add_window (wg, GTK_WINDOW (err_dialog));
+			ctk_window_group_add_window (wg, GTK_WINDOW (err_dialog));
 
-		gtk_window_set_resizable (GTK_WINDOW (err_dialog), FALSE);
-		gtk_dialog_set_default_response (GTK_DIALOG (err_dialog), GTK_RESPONSE_OK);
+		ctk_window_set_resizable (GTK_WINDOW (err_dialog), FALSE);
+		ctk_dialog_set_default_response (GTK_DIALOG (err_dialog), GTK_RESPONSE_OK);
 
-		gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (err_dialog))),
+		ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (err_dialog))),
 				   error_widget);
 
 		g_signal_connect (G_OBJECT (err_dialog),
 				  "response",
-				  G_CALLBACK (gtk_widget_destroy),
+				  G_CALLBACK (ctk_widget_destroy),
 				  NULL);
 
-		gtk_widget_show_all (err_dialog);
+		ctk_widget_show_all (err_dialog);
 
 		return NULL;
 	}
 
-	gtk_window_group_add_window (wg,
+	ctk_window_group_add_window (wg,
 			     	     GTK_WINDOW (dialog->dialog));
-	gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog), parent);
-	gtk_window_set_modal (GTK_WINDOW (dialog->dialog), TRUE);
+	ctk_window_set_transient_for (GTK_WINDOW (dialog->dialog), parent);
+	ctk_window_set_modal (GTK_WINDOW (dialog->dialog), TRUE);
 
 	sf = get_selected_format (plugin);
 	create_formats_list (dialog->list, sf, plugin);
 	g_free (sf);
 
 	cf = get_custom_format (plugin);
-     	gtk_entry_set_text (GTK_ENTRY(dialog->custom_entry), cf);
+     	ctk_entry_set_text (GTK_ENTRY(dialog->custom_entry), cf);
 	g_free (cf);
 
 	updated_custom_format_example (GTK_ENTRY (dialog->custom_entry),
@@ -956,19 +956,19 @@ get_choose_format_dialog (GtkWindow                 *parent,
 
 	if (prompt_type == PROMPT_CUSTOM_FORMAT)
 	{
-        	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->custom), TRUE);
+        	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->custom), TRUE);
 
-		gtk_widget_set_sensitive (dialog->list, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_entry, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, TRUE);
+		ctk_widget_set_sensitive (dialog->list, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_entry, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, TRUE);
 	}
 	else if (prompt_type == PROMPT_SELECTED_FORMAT)
 	{
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_list), TRUE);
+		ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_list), TRUE);
 
-		gtk_widget_set_sensitive (dialog->list, TRUE);
-		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
-		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+		ctk_widget_set_sensitive (dialog->list, TRUE);
+		ctk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		ctk_widget_set_sensitive (dialog->custom_format_example, FALSE);
 	}
 	else
 	{
@@ -976,9 +976,9 @@ get_choose_format_dialog (GtkWindow                 *parent,
 	}
 
 	/* setup a window of a sane size. */
-	gtk_widget_set_size_request (dialog->list, 10, 200);
+	ctk_widget_set_size_request (dialog->list, 10, 200);
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
+	ctk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);
 
 	g_signal_connect (dialog->custom,
@@ -1002,7 +1002,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 			  G_CALLBACK (choose_format_dialog_row_activated),
 			  dialog);
 
-	gtk_window_set_resizable (GTK_WINDOW (dialog->dialog), FALSE);
+	ctk_window_set_resizable (GTK_WINDOW (dialog->dialog), FALSE);
 
 	return dialog;
 }
@@ -1029,7 +1029,7 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
 
 			/* Get the user's chosen format */
-			if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
+			if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
 			{
 				gint sel_format;
 
@@ -1043,7 +1043,7 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 			{
 				const gchar *format;
 
-				format = gtk_entry_get_text (GTK_ENTRY (dialog->custom_entry));
+				format = ctk_entry_get_text (GTK_ENTRY (dialog->custom_entry));
 				the_time = get_time (format);
 
 				set_prompt_type (dialog->settings, PROMPT_CUSTOM_FORMAT);
@@ -1055,12 +1055,12 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 			real_insert_time (dialog->buffer, the_time);
 			g_free (the_time);
 
-			gtk_widget_destroy (dialog->dialog);
+			ctk_widget_destroy (dialog->dialog);
 			break;
 		}
 		case GTK_RESPONSE_CANCEL:
 			lapiz_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CANCEL");
-			gtk_widget_destroy (dialog->dialog);
+			ctk_widget_destroy (dialog->dialog);
 	}
 }
 
@@ -1110,7 +1110,7 @@ time_cb (GtkAction  *action,
 					  G_CALLBACK (choose_format_dialog_response_cb),
 					  dialog);
 
-			gtk_widget_show (GTK_WIDGET (dialog->dialog));
+			ctk_widget_show (GTK_WIDGET (dialog->dialog));
 		}
 
 		return;
@@ -1201,7 +1201,7 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 static void
-peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
+peas_ctk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
 {
 	iface->create_configure_widget = lapiz_time_plugin_create_configure_widget;
 }

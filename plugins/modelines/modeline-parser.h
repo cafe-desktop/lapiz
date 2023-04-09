@@ -23,7 +23,7 @@
 #define __MODELINE_PARSER_H__
 
 #include <glib.h>
-#include <gtksourceview/gtksource.h>
+#include <ctksourceview/ctksource.h>
 
 G_BEGIN_DECLS
 

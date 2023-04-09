@@ -52,7 +52,7 @@ window_data_new (LapizWindow            *window,
 	data->row_tracking = g_hash_table_new_full (g_str_hash,
 						    g_str_equal,
 						    (GDestroyNotify)g_free,
-						    (GDestroyNotify)gtk_tree_row_reference_free);
+						    (GDestroyNotify)ctk_tree_row_reference_free);
 
 	data->filters = g_hash_table_new_full (g_str_hash,
 					       g_str_equal,
@@ -62,10 +62,10 @@ window_data_new (LapizWindow            *window,
 	manager = lapiz_file_browser_widget_get_ui_manager (widget);
 
 	data->merge_ids = NULL;
-	data->merged_actions = gtk_action_group_new ("MessageMergedActions");
+	data->merged_actions = ctk_action_group_new ("MessageMergedActions");
 
-	groups = gtk_ui_manager_get_action_groups (manager);
-	gtk_ui_manager_insert_action_group (manager, data->merged_actions, g_list_length (groups));
+	groups = ctk_ui_manager_get_action_groups (manager);
+	ctk_ui_manager_insert_action_group (manager, data->merged_actions, g_list_length (groups));
 
 	g_object_set_data (G_OBJECT (window), WINDOW_DATA_KEY, data);
 
@@ -89,10 +89,10 @@ window_data_free (LapizWindow *window)
 	g_hash_table_destroy (data->filters);
 
 	manager = lapiz_file_browser_widget_get_ui_manager (data->widget);
-	gtk_ui_manager_remove_action_group (manager, data->merged_actions);
+	ctk_ui_manager_remove_action_group (manager, data->merged_actions);
 
 	for (item = data->merge_ids; item; item = item->next)
-		gtk_ui_manager_remove_ui (manager, GPOINTER_TO_INT (item->data));
+		ctk_ui_manager_remove_ui (manager, GPOINTER_TO_INT (item->data));
 
 	g_list_free (data->merge_ids);
 	g_object_unref (data->merged_actions);
@@ -150,7 +150,7 @@ track_row_lookup (WindowData  *data,
 	if (!ref)
 		return NULL;
 
-	return gtk_tree_row_reference_get_path (ref);
+	return ctk_tree_row_reference_get_path (ref);
 }
 
 static void
@@ -239,7 +239,7 @@ message_set_emblem_cb (LapizMessageBus *bus,
 		GError *error = NULL;
 		GdkPixbuf *pixbuf;
 
-		pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+		pixbuf = ctk_icon_theme_load_icon (ctk_icon_theme_get_default (),
 						   emblem,
 						   10,
 						   0,
@@ -252,7 +252,7 @@ message_set_emblem_cb (LapizMessageBus *bus,
 
 			store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
-			if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+			if (ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
 			{
 				g_value_init (&value, GDK_TYPE_PIXBUF);
 				g_value_set_object (&value, pixbuf);
@@ -293,10 +293,10 @@ track_row (WindowData            *data,
 	gchar *id;
 	gchar *pathstr;
 
-	pathstr = gtk_tree_path_to_string (path);
+	pathstr = ctk_tree_path_to_string (path);
 	id = item_id (pathstr, uri);
 
-	ref = gtk_tree_row_reference_new (GTK_TREE_MODEL (store), path);
+	ref = ctk_tree_row_reference_new (GTK_TREE_MODEL (store), path);
 	g_hash_table_insert (data->row_tracking, g_strdup (id), ref);
 
 	g_free (pathstr);
@@ -317,7 +317,7 @@ set_item_message (WindowData   *data,
 
 	store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
-	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -325,7 +325,7 @@ set_item_message (WindowData   *data,
 	if (!uri)
 		return;
 
-	if (path && gtk_tree_path_get_depth (path) != 0)
+	if (path && ctk_tree_path_get_depth (path) != 0)
 		track_id = track_row (data, store, path, uri);
 	else
 		track_id = NULL;
@@ -358,7 +358,7 @@ custom_message_filter_func (LapizFileBrowserWidget *widget,
 	gboolean filter = FALSE;
 	GtkTreePath *path;
 
-	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -369,9 +369,9 @@ custom_message_filter_func (LapizFileBrowserWidget *widget,
 		return FALSE;
 	}
 
-	path = gtk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
+	path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
 	set_item_message (wdata, iter, path, data->message);
-	gtk_tree_path_free (path);
+	ctk_tree_path_free (path);
 
 	lapiz_message_set (data->message, "filter", filter, NULL);
 
@@ -578,20 +578,20 @@ message_add_context_item_cb (LapizMessageBus *bus,
 		return;
 	}
 
-	gtk_action_group_add_action (data->merged_actions, action);
+	ctk_action_group_add_action (data->merged_actions, action);
 	manager = lapiz_file_browser_widget_get_ui_manager (data->widget);
-	name = g_strconcat (gtk_action_get_name (action), "MenuItem", NULL);
-	merge_id = gtk_ui_manager_new_merge_id (manager);
+	name = g_strconcat (ctk_action_get_name (action), "MenuItem", NULL);
+	merge_id = ctk_ui_manager_new_merge_id (manager);
 
-	gtk_ui_manager_add_ui (manager,
+	ctk_ui_manager_add_ui (manager,
 			       merge_id,
 			       path,
 			       name,
-			       gtk_action_get_name (action),
+			       ctk_action_get_name (action),
 			       GTK_UI_MANAGER_AUTO,
 			       FALSE);
 
-	if (gtk_ui_manager_get_widget (manager, path))
+	if (ctk_ui_manager_get_widget (manager, path))
 	{
 		data->merge_ids = g_list_prepend (data->merge_ids, GINT_TO_POINTER (merge_id));
 		lapiz_message_set (message, "id", merge_id, NULL);
@@ -622,7 +622,7 @@ message_remove_context_item_cb (LapizMessageBus *bus,
 	manager = lapiz_file_browser_widget_get_ui_manager (data->widget);
 
 	data->merge_ids = g_list_remove (data->merge_ids, GINT_TO_POINTER (merge_id));
-	gtk_ui_manager_remove_ui (manager, merge_id);
+	ctk_ui_manager_remove_ui (manager, merge_id);
 }
 
 static void
@@ -752,7 +752,7 @@ store_row_inserted (LapizFileBrowserStore *store,
 	gchar *uri = NULL;
 	guint flags = 0;
 
-	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -777,10 +777,10 @@ store_row_deleted (LapizFileBrowserStore *store,
 	gchar *uri = NULL;
 	guint flags = 0;
 
-	if (!gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+	if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
 		return;
 
-	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -826,12 +826,12 @@ store_begin_loading (LapizFileBrowserStore *store,
 	GtkTreePath *path;
 	WindowData *wdata = get_window_data (data->window);
 
-	path = gtk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
+	path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
 
 	set_item_message (wdata, iter, path, data->message);
 
 	lapiz_message_bus_send_message_sync (wdata->bus, data->message);
-	gtk_tree_path_free (path);
+	ctk_tree_path_free (path);
 }
 
 static void
@@ -842,12 +842,12 @@ store_end_loading (LapizFileBrowserStore *store,
 	GtkTreePath *path;
 	WindowData *wdata = get_window_data (data->window);
 
-	path = gtk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
+	path = ctk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
 
 	set_item_message (wdata, iter, path, data->message);
 
 	lapiz_message_bus_send_message_sync (wdata->bus, data->message);
-	gtk_tree_path_free (path);
+	ctk_tree_path_free (path);
 }
 
 static void

@@ -22,7 +22,7 @@
 #ifndef __LAPIZ_FILE_BROWSER_WIDGET_H__
 #define __LAPIZ_FILE_BROWSER_WIDGET_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "lapiz-file-browser-store.h"
 #include "lapiz-file-bookmarks-store.h"
 #include "lapiz-file-browser-view.h"

@@ -34,8 +34,8 @@
 #define __LAPIZ_DOCUMENT_H__
 
 #include <gio/gio.h>
-#include <gtk/gtk.h>
-#include <gtksourceview/gtksource.h>
+#include <ctk/ctk.h>
+#include <ctksourceview/ctksource.h>
 
 #include <lapiz/lapiz-encodings.h>
 

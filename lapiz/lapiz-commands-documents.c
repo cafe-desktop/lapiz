@@ -34,7 +34,7 @@
 #include <config.h>
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-commands.h"
 #include "lapiz-window.h"
@@ -50,7 +50,7 @@ _lapiz_cmd_documents_previous_document (GtkAction   *action,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
-	gtk_notebook_prev_page (notebook);
+	ctk_notebook_prev_page (notebook);
 }
 
 void
@@ -62,7 +62,7 @@ _lapiz_cmd_documents_next_document (GtkAction   *action,
 	lapiz_debug (DEBUG_COMMANDS);
 
 	notebook = GTK_NOTEBOOK (_lapiz_window_get_notebook (window));
-	gtk_notebook_next_page (notebook);
+	ctk_notebook_next_page (notebook);
 }
 
 void
@@ -81,7 +81,7 @@ _lapiz_cmd_documents_move_to_new_window (GtkAction   *action,
 
 	old_notebook = LAPIZ_NOTEBOOK (_lapiz_window_get_notebook (window));
 
-	g_return_if_fail (gtk_notebook_get_n_pages (GTK_NOTEBOOK (old_notebook)) > 1);
+	g_return_if_fail (ctk_notebook_get_n_pages (GTK_NOTEBOOK (old_notebook)) > 1);
 
 	_lapiz_window_move_tab_to_new_window (window, tab);
 }

@@ -22,7 +22,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <lapiz/lapiz-language-manager.h>
 #include <lapiz/lapiz-prefs-manager.h>
 #include <lapiz/lapiz-debug.h>
@@ -184,7 +184,7 @@ get_language_id (const gchar *language_name, GHashTable *mapping)
 	}
 	else
 	{
-		/* by default assume that the gtksourcevuew id is the same */
+		/* by default assume that the ctksourcevuew id is the same */
 		return name;
 	}
 }
@@ -611,7 +611,7 @@ check_previous (GtkSourceView   *view,
                 ModelineOptions *previous,
                 ModelineSet      set)
 {
-	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
 	/* Do not restore default when this is the first time */
 	if (!previous)
@@ -625,33 +625,33 @@ check_previous (GtkSourceView   *view,
 	switch (set)
 	{
 		case MODELINE_SET_INSERT_SPACES:
-			return gtk_source_view_get_insert_spaces_instead_of_tabs (view) ==
+			return ctk_source_view_get_insert_spaces_instead_of_tabs (view) ==
 			       previous->insert_spaces;
 		break;
 		case MODELINE_SET_TAB_WIDTH:
-			return gtk_source_view_get_tab_width (view) == previous->tab_width;
+			return ctk_source_view_get_tab_width (view) == previous->tab_width;
 		break;
 		case MODELINE_SET_INDENT_WIDTH:
-			return gtk_source_view_get_indent_width (view) == previous->indent_width;
+			return ctk_source_view_get_indent_width (view) == previous->indent_width;
 		break;
 		case MODELINE_SET_WRAP_MODE:
-			return gtk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view)) ==
+			return ctk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view)) ==
 			       previous->wrap_mode;
 		break;
 		case MODELINE_SET_RIGHT_MARGIN_POSITION:
-			return gtk_source_view_get_right_margin_position (view) ==
+			return ctk_source_view_get_right_margin_position (view) ==
 			       previous->right_margin_position;
 		break;
 		case MODELINE_SET_SHOW_RIGHT_MARGIN:
-			return gtk_source_view_get_show_right_margin (view) ==
+			return ctk_source_view_get_show_right_margin (view) ==
 			       previous->display_right_margin;
 		break;
 		case MODELINE_SET_LANGUAGE:
 		{
-			GtkSourceLanguage *language = gtk_source_buffer_get_language (buffer);
+			GtkSourceLanguage *language = ctk_source_buffer_get_language (buffer);
 
 			return (language == NULL && previous->language_id == NULL) ||
-			       (language != NULL && g_strcmp0 (gtk_source_language_get_id (language),
+			       (language != NULL && g_strcmp0 (ctk_source_language_get_id (language),
 			                                       previous->language_id) == 0);
 		}
 		break;
@@ -679,64 +679,64 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 	options.language_id = NULL;
 	options.set = MODELINE_SET_NONE;
 
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-	gtk_text_buffer_get_start_iter (buffer, &iter);
+	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	ctk_text_buffer_get_start_iter (buffer, &iter);
 
-	line_count = gtk_text_buffer_get_line_count (buffer);
+	line_count = ctk_text_buffer_get_line_count (buffer);
 
 	/* Parse the modelines on the 10 first lines... */
-	while ((gtk_text_iter_get_line (&iter) < 10) &&
-	       !gtk_text_iter_is_end (&iter))
+	while ((ctk_text_iter_get_line (&iter) < 10) &&
+	       !ctk_text_iter_is_end (&iter))
 	{
 		gchar *line;
 
 		liter = iter;
-		gtk_text_iter_forward_to_line_end (&iter);
-		line = gtk_text_buffer_get_text (buffer, &liter, &iter, TRUE);
+		ctk_text_iter_forward_to_line_end (&iter);
+		line = ctk_text_buffer_get_text (buffer, &liter, &iter, TRUE);
 
 		parse_modeline (line,
-				1 + gtk_text_iter_get_line (&iter),
+				1 + ctk_text_iter_get_line (&iter),
 				line_count,
 				&options);
 
-		gtk_text_iter_forward_line (&iter);
+		ctk_text_iter_forward_line (&iter);
 
 		g_free (line);
 	}
 
 	/* ...and on the 10 last ones (modelines are not allowed in between) */
-	if (!gtk_text_iter_is_end (&iter))
+	if (!ctk_text_iter_is_end (&iter))
 	{
 		gint cur_line;
 		guint remaining_lines;
 
 		/* we are on the 11th line (count from 0) */
-		cur_line = gtk_text_iter_get_line (&iter);
+		cur_line = ctk_text_iter_get_line (&iter);
 		/* g_assert (10 == cur_line); */
 
 		remaining_lines = line_count - cur_line - 1;
 
 		if (remaining_lines > 10)
 		{
-			gtk_text_buffer_get_end_iter (buffer, &iter);
-			gtk_text_iter_backward_lines (&iter, 9);
+			ctk_text_buffer_get_end_iter (buffer, &iter);
+			ctk_text_iter_backward_lines (&iter, 9);
 		}
 	}
 
-	while (!gtk_text_iter_is_end (&iter))
+	while (!ctk_text_iter_is_end (&iter))
 	{
 		gchar *line;
 
 		liter = iter;
-		gtk_text_iter_forward_to_line_end (&iter);
-		line = gtk_text_buffer_get_text (buffer, &liter, &iter, TRUE);
+		ctk_text_iter_forward_to_line_end (&iter);
+		line = ctk_text_buffer_get_text (buffer, &liter, &iter, TRUE);
 
 		parse_modeline (line,
-				1 + gtk_text_iter_get_line (&iter),
+				1 + ctk_text_iter_get_line (&iter),
 				line_count,
 				&options);
 
-		gtk_text_iter_forward_line (&iter);
+		ctk_text_iter_forward_line (&iter);
 
 		g_free (line);
 	}
@@ -748,12 +748,12 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 		GtkSourceLanguage *language;
 
 		manager = lapiz_get_language_manager ();
-		language = gtk_source_language_manager_get_language
+		language = ctk_source_language_manager_get_language
 				(manager, options.language_id);
 
 		if (language != NULL)
 		{
-			gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (buffer),
+			ctk_source_buffer_set_language (GTK_SOURCE_BUFFER (buffer),
 							language);
 		}
 	}
@@ -765,62 +765,62 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 	   we set them before */
 	if (has_option (&options, MODELINE_SET_INSERT_SPACES))
 	{
-		gtk_source_view_set_insert_spaces_instead_of_tabs
+		ctk_source_view_set_insert_spaces_instead_of_tabs
 							(view, options.insert_spaces);
 	}
 	else if (check_previous (view, previous, MODELINE_SET_INSERT_SPACES))
 	{
-		gtk_source_view_set_insert_spaces_instead_of_tabs
+		ctk_source_view_set_insert_spaces_instead_of_tabs
 							(view,
 							 lapiz_prefs_manager_get_insert_spaces ());
 	}
 
 	if (has_option (&options, MODELINE_SET_TAB_WIDTH))
 	{
-		gtk_source_view_set_tab_width (view, options.tab_width);
+		ctk_source_view_set_tab_width (view, options.tab_width);
 	}
 	else if (check_previous (view, previous, MODELINE_SET_TAB_WIDTH))
 	{
-		gtk_source_view_set_tab_width (view,
+		ctk_source_view_set_tab_width (view,
 		                               lapiz_prefs_manager_get_tabs_size ());
 	}
 
 	if (has_option (&options, MODELINE_SET_INDENT_WIDTH))
 	{
-		gtk_source_view_set_indent_width (view, options.indent_width);
+		ctk_source_view_set_indent_width (view, options.indent_width);
 	}
 	else if (check_previous (view, previous, MODELINE_SET_INDENT_WIDTH))
 	{
-		gtk_source_view_set_indent_width (view, -1);
+		ctk_source_view_set_indent_width (view, -1);
 	}
 
 	if (has_option (&options, MODELINE_SET_WRAP_MODE))
 	{
-		gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), options.wrap_mode);
+		ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), options.wrap_mode);
 	}
 	else if (check_previous (view, previous, MODELINE_SET_WRAP_MODE))
 	{
-		gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view),
+		ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view),
 		                             lapiz_prefs_manager_get_wrap_mode ());
 	}
 
 	if (has_option (&options, MODELINE_SET_RIGHT_MARGIN_POSITION))
 	{
-		gtk_source_view_set_right_margin_position (view, options.right_margin_position);
+		ctk_source_view_set_right_margin_position (view, options.right_margin_position);
 	}
 	else if (check_previous (view, previous, MODELINE_SET_RIGHT_MARGIN_POSITION))
 	{
-		gtk_source_view_set_right_margin_position (view,
+		ctk_source_view_set_right_margin_position (view,
 		                                           lapiz_prefs_manager_get_right_margin_position ());
 	}
 
 	if (has_option (&options, MODELINE_SET_SHOW_RIGHT_MARGIN))
 	{
-		gtk_source_view_set_show_right_margin (view, options.display_right_margin);
+		ctk_source_view_set_show_right_margin (view, options.display_right_margin);
 	}
 	else if (check_previous (view, previous, MODELINE_SET_SHOW_RIGHT_MARGIN))
 	{
-		gtk_source_view_set_show_right_margin (view,
+		ctk_source_view_set_show_right_margin (view,
 		                                       lapiz_prefs_manager_get_display_right_margin ());
 	}
 
@@ -847,7 +847,7 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 void
 modeline_parser_deactivate (GtkSourceView *view)
 {
-	g_object_set_data (G_OBJECT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view))),
+	g_object_set_data (G_OBJECT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view))),
 	                   MODELINE_OPTIONS_DATA_KEY,
 	                   NULL);
 }

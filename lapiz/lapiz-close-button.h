@@ -23,7 +23,7 @@
 #ifndef __LAPIZ_CLOSE_BUTTON_H__
 #define __LAPIZ_CLOSE_BUTTON_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

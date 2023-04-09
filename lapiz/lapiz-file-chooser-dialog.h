@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_FILE_CHOOSER_DIALOG_H__
 #define __LAPIZ_FILE_CHOOSER_DIALOG_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <lapiz/lapiz-encodings.h>
 #include <lapiz/lapiz-enum-types.h>

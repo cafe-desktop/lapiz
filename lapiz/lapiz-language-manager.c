@@ -30,7 +30,7 @@
  */
 
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "lapiz-language-manager.h"
 #include "lapiz-prefs-manager.h"
 #include "lapiz-utils.h"
@@ -43,7 +43,7 @@ lapiz_get_language_manager (void)
 {
 	if (language_manager == NULL)
 	{
-		language_manager = gtk_source_language_manager_new ();
+		language_manager = ctk_source_language_manager_new ();
 	}
 
 	return language_manager;
@@ -54,8 +54,8 @@ language_compare (gconstpointer a, gconstpointer b)
 {
 	GtkSourceLanguage *lang_a = (GtkSourceLanguage *)a;
 	GtkSourceLanguage *lang_b = (GtkSourceLanguage *)b;
-	const gchar *name_a = gtk_source_language_get_name (lang_a);
-	const gchar *name_b = gtk_source_language_get_name (lang_b);
+	const gchar *name_a = ctk_source_language_get_name (lang_a);
+	const gchar *name_b = ctk_source_language_get_name (lang_b);
 
 	return g_utf8_collate (name_a, name_b);
 }
@@ -67,7 +67,7 @@ lapiz_language_manager_list_languages_sorted (GtkSourceLanguageManager *lm,
 	GSList *languages = NULL;
 	const gchar * const *ids;
 
-	ids = gtk_source_language_manager_get_language_ids (lm);
+	ids = ctk_source_language_manager_get_language_ids (lm);
 	if (ids == NULL)
 		return NULL;
 
@@ -75,11 +75,11 @@ lapiz_language_manager_list_languages_sorted (GtkSourceLanguageManager *lm,
 	{
 		GtkSourceLanguage *lang;
 
-		lang = gtk_source_language_manager_get_language (lm, *ids);
+		lang = ctk_source_language_manager_get_language (lm, *ids);
 		g_return_val_if_fail (GTK_SOURCE_IS_LANGUAGE (lang), NULL);
 		++ids;
 
-		if (include_hidden || !gtk_source_language_get_hidden (lang))
+		if (include_hidden || !ctk_source_language_get_hidden (lang))
 		{
 			languages = g_slist_prepend (languages, lang);
 		}

@@ -25,7 +25,7 @@
 #ifndef __LAPIZ_TEXT_REGION_H__
 #define __LAPIZ_TEXT_REGION_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

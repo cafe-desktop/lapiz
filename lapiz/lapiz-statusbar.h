@@ -29,7 +29,7 @@
 #ifndef LAPIZ_STATUSBAR_H
 #define LAPIZ_STATUSBAR_H
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <lapiz/lapiz-window.h>
 
 G_BEGIN_DECLS

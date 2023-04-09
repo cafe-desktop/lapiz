@@ -25,7 +25,7 @@
 #ifndef __LAPIZ_STYLE_SCHEME_MANAGER_H__
 #define __LAPIZ_STYLE_SCHEME_MANAGER_H__
 
-#include <gtksourceview/gtksource.h>
+#include <ctksourceview/ctksource.h>
 
 G_BEGIN_DECLS
 

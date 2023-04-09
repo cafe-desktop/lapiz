@@ -38,7 +38,7 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-style-scheme-manager.h"
 #include "lapiz-prefs-manager.h"
@@ -74,7 +74,7 @@ add_lapiz_styles_path (GtkSourceStyleSchemeManager *mgr)
 
 	if (dir != NULL)
 	{
-		gtk_source_style_scheme_manager_append_search_path (mgr, dir);
+		ctk_source_style_scheme_manager_append_search_path (mgr, dir);
 		g_free (dir);
 	}
 }
@@ -84,7 +84,7 @@ lapiz_get_style_scheme_manager (void)
 {
 	if (style_scheme_manager == NULL)
 	{
-		style_scheme_manager = gtk_source_style_scheme_manager_new ();
+		style_scheme_manager = ctk_source_style_scheme_manager_new ();
 		add_lapiz_styles_path (style_scheme_manager);
 	}
 
@@ -97,8 +97,8 @@ schemes_compare (gconstpointer a, gconstpointer b)
 	GtkSourceStyleScheme *scheme_a = (GtkSourceStyleScheme *)a;
 	GtkSourceStyleScheme *scheme_b = (GtkSourceStyleScheme *)b;
 
-	const gchar *name_a = gtk_source_style_scheme_get_name (scheme_a);
-	const gchar *name_b = gtk_source_style_scheme_get_name (scheme_b);
+	const gchar *name_a = ctk_source_style_scheme_get_name (scheme_a);
+	const gchar *name_b = ctk_source_style_scheme_get_name (scheme_b);
 
 	return g_utf8_collate (name_a, name_b);
 }
@@ -111,13 +111,13 @@ lapiz_style_scheme_manager_list_schemes_sorted (GtkSourceStyleSchemeManager *man
 
 	g_return_val_if_fail (GTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), NULL);
 
-	scheme_ids = gtk_source_style_scheme_manager_get_scheme_ids (manager);
+	scheme_ids = ctk_source_style_scheme_manager_get_scheme_ids (manager);
 
 	while (*scheme_ids != NULL)
 	{
 		GtkSourceStyleScheme *scheme;
 
-		scheme = gtk_source_style_scheme_manager_get_scheme (manager,
+		scheme = ctk_source_style_scheme_manager_get_scheme (manager,
 								     *scheme_ids);
 
 		schemes = g_slist_prepend (schemes, scheme);
@@ -140,11 +140,11 @@ _lapiz_style_scheme_manager_scheme_is_lapiz_user_scheme (GtkSourceStyleSchemeMan
 	gchar *dir;
 	gboolean res = FALSE;
 
-	scheme = gtk_source_style_scheme_manager_get_scheme (manager, scheme_id);
+	scheme = ctk_source_style_scheme_manager_get_scheme (manager, scheme_id);
 	if (scheme == NULL)
 		return FALSE;
 
-	filename = gtk_source_style_scheme_get_filename (scheme);
+	filename = ctk_source_style_scheme_get_filename (scheme);
 	if (filename == NULL)
 		return FALSE;
 
@@ -298,27 +298,27 @@ _lapiz_style_scheme_manager_install_scheme (GtkSourceStyleSchemeManager *manager
 	g_free (styles_dir);
 
 	/* Reload the available style schemes */
-	gtk_source_style_scheme_manager_force_rescan (manager);
+	ctk_source_style_scheme_manager_force_rescan (manager);
 
 	/* Check the new style scheme has been actually installed */
-	ids = gtk_source_style_scheme_manager_get_scheme_ids (manager);
+	ids = ctk_source_style_scheme_manager_get_scheme_ids (manager);
 
 	while (*ids != NULL)
 	{
 		GtkSourceStyleScheme *scheme;
 		const gchar *filename;
 
-		scheme = gtk_source_style_scheme_manager_get_scheme (
+		scheme = ctk_source_style_scheme_manager_get_scheme (
 				lapiz_get_style_scheme_manager (), *ids);
 
-		filename = gtk_source_style_scheme_get_filename (scheme);
+		filename = ctk_source_style_scheme_get_filename (scheme);
 
 		if (filename && (strcmp (filename, new_file_name) == 0))
 		{
 			/* The style scheme has been correctly installed */
 			g_free (new_file_name);
 
-			return gtk_source_style_scheme_get_id (scheme);
+			return ctk_source_style_scheme_get_id (scheme);
 		}
 		++ids;
 	}
@@ -354,11 +354,11 @@ _lapiz_style_scheme_manager_uninstall_scheme (GtkSourceStyleSchemeManager *manag
 	g_return_val_if_fail (GTK_SOURCE_IS_STYLE_SCHEME_MANAGER (manager), FALSE);
 	g_return_val_if_fail (id != NULL, FALSE);
 
-	scheme = gtk_source_style_scheme_manager_get_scheme (manager, id);
+	scheme = ctk_source_style_scheme_manager_get_scheme (manager, id);
 	if (scheme == NULL)
 		return FALSE;
 
-	filename = gtk_source_style_scheme_get_filename (scheme);
+	filename = ctk_source_style_scheme_get_filename (scheme);
 	if (filename == NULL)
 		return FALSE;
 
@@ -366,7 +366,7 @@ _lapiz_style_scheme_manager_uninstall_scheme (GtkSourceStyleSchemeManager *manag
 		return FALSE;
 
 	/* Reload the available style schemes */
-	gtk_source_style_scheme_manager_force_rescan (manager);
+	ctk_source_style_scheme_manager_force_rescan (manager);
 
 	return TRUE;
 }

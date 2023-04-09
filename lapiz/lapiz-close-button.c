@@ -40,21 +40,21 @@ lapiz_close_button_init (LapizCloseButton *button)
 		"	padding: 0;\n"
 		"}";
 
-	image = gtk_image_new_from_icon_name ("gtk-close",
+	image = ctk_image_new_from_icon_name ("ctk-close",
 	                                      GTK_ICON_SIZE_MENU);
-	gtk_widget_show (image);
+	ctk_widget_show (image);
 
-	gtk_container_add (GTK_CONTAINER (button), image);
+	ctk_container_add (GTK_CONTAINER (button), image);
 
 	/* make it as small as possible */
-	css = gtk_css_provider_new ();
-	if (gtk_css_provider_load_from_data (css, button_style,
+	css = ctk_css_provider_new ();
+	if (ctk_css_provider_load_from_data (css, button_style,
 	                                     -1, &error))
 	{
 		GtkStyleContext *context;
 
-		context = gtk_widget_get_style_context (GTK_WIDGET (button));
-		gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (css),
+		context = ctk_widget_get_style_context (GTK_WIDGET (button));
+		ctk_style_context_add_provider (context, GTK_STYLE_PROVIDER (css),
 			                        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 		g_object_unref (css);
 	}

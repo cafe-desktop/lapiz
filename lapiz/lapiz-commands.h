@@ -34,7 +34,7 @@
 #ifndef __LAPIZ_COMMANDS_H__
 #define __LAPIZ_COMMANDS_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <lapiz/lapiz-window.h>
 
 G_BEGIN_DECLS

@@ -60,9 +60,9 @@ lapiz_file_browser_utils_pixbuf_from_theme (gchar const * name,
 	GError *error = NULL;
 	GdkPixbuf *pixbuf;
 
-	gtk_icon_size_lookup (size, &width, NULL);
+	ctk_icon_size_lookup (size, &width, NULL);
 
-	pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+	pixbuf = ctk_icon_theme_load_icon (ctk_icon_theme_get_default (),
 					   name,
 					   width,
 					   0,
@@ -85,10 +85,10 @@ lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
 	if (!icon)
 		return NULL;
 
-	theme = gtk_icon_theme_get_default ();
-	gtk_icon_size_lookup (size, &width, NULL);
+	theme = ctk_icon_theme_get_default ();
+	ctk_icon_size_lookup (size, &width, NULL);
 
-	info = gtk_icon_theme_lookup_by_gicon (theme,
+	info = ctk_icon_theme_lookup_by_gicon (theme,
 					       icon,
 					       width,
 					       GTK_ICON_LOOKUP_USE_BUILTIN);
@@ -96,7 +96,7 @@ lapiz_file_browser_utils_pixbuf_from_icon (GIcon * icon,
 	if (!info)
 		return NULL;
 
-	ret = gtk_icon_info_load_icon (info, NULL);
+	ret = ctk_icon_info_load_icon (info, NULL);
 	g_object_unref (info);
 
 	return ret;
@@ -157,39 +157,39 @@ lapiz_file_browser_utils_confirmation_dialog (LapizWindow * window,
 	gint ret;
 	GtkWidget *button;
 
-	dlg = gtk_message_dialog_new (GTK_WINDOW (window),
+	dlg = ctk_message_dialog_new (GTK_WINDOW (window),
 				      GTK_DIALOG_MODAL |
 				      GTK_DIALOG_DESTROY_WITH_PARENT,
 				      type,
 				      GTK_BUTTONS_NONE, "%s", message);
 
 	if (secondary)
-		gtk_message_dialog_format_secondary_text
+		ctk_message_dialog_format_secondary_text
 		    (GTK_MESSAGE_DIALOG (dlg), "%s", secondary);
 
 	/* Add a cancel button */
-	button = gtk_button_new_with_mnemonic (_("_Cancel"));
-	gtk_button_set_image (GTK_BUTTON (button), gtk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
+	button = ctk_button_new_with_mnemonic (_("_Cancel"));
+	ctk_button_set_image (GTK_BUTTON (button), ctk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
 
-	gtk_widget_show (button);
+	ctk_widget_show (button);
 
-	gtk_widget_set_can_default (button, TRUE);
-	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	ctk_widget_set_can_default (button, TRUE);
+	ctk_dialog_add_action_widget (GTK_DIALOG (dlg),
                                       button,
                                       GTK_RESPONSE_CANCEL);
 
 	/* Add delete button */
-	button = gtk_button_new_with_mnemonic (_("_Delete"));
-	gtk_button_set_image (GTK_BUTTON (button), gtk_image_new_from_icon_name ("edit-delete", GTK_ICON_SIZE_BUTTON));
+	button = ctk_button_new_with_mnemonic (_("_Delete"));
+	ctk_button_set_image (GTK_BUTTON (button), ctk_image_new_from_icon_name ("edit-delete", GTK_ICON_SIZE_BUTTON));
 
-	gtk_widget_show (button);
-	gtk_widget_set_can_default (button, TRUE);
-	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	ctk_widget_show (button);
+	ctk_widget_set_can_default (button, TRUE);
+	ctk_dialog_add_action_widget (GTK_DIALOG (dlg),
                                       button,
                                       GTK_RESPONSE_OK);
 
-	ret = gtk_dialog_run (GTK_DIALOG (dlg));
-	gtk_widget_destroy (dlg);
+	ret = ctk_dialog_run (GTK_DIALOG (dlg));
+	ctk_widget_destroy (dlg);
 
 	return (ret == GTK_RESPONSE_OK);
 }

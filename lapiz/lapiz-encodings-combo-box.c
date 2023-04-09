@@ -34,7 +34,7 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <lapiz/lapiz-encodings-combo-box.h>
 #include <lapiz/lapiz-prefs-manager.h>
@@ -158,7 +158,7 @@ dialog_response_cb (GtkDialog              *dialog,
 		update_menu (menu);
 	}
 
-	gtk_widget_destroy (GTK_WIDGET (dialog));
+	ctk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 static void
@@ -168,28 +168,28 @@ add_or_remove (LapizEncodingsComboBox *menu,
 	GtkTreeIter iter;
 	gboolean add_item = FALSE;
 
-	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
+	if (ctk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
 	{
-		gtk_tree_model_get (model, &iter,
+		ctk_tree_model_get (model, &iter,
 				    ADD_COLUMN, &add_item,
 				    -1);
 	}
 
 	if (!add_item)
 	{
-		menu->priv->activated_item = gtk_combo_box_get_active (GTK_COMBO_BOX (menu));
+		menu->priv->activated_item = ctk_combo_box_get_active (GTK_COMBO_BOX (menu));
 	}
 	else
 	{
 		GtkWidget *dialog;
 
-		GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (menu));
+		GtkWidget *toplevel = ctk_widget_get_toplevel (GTK_WIDGET (menu));
 
-		if (!gtk_widget_is_toplevel (toplevel))
+		if (!ctk_widget_is_toplevel (toplevel))
 			toplevel = NULL;
 
 		g_signal_handler_block (menu, menu->priv->changed_id);
-		gtk_combo_box_set_active (GTK_COMBO_BOX (menu),
+		ctk_combo_box_set_active (GTK_COMBO_BOX (menu),
 					  menu->priv->activated_item);
 		g_signal_handler_unblock (menu, menu->priv->changed_id);
 
@@ -199,29 +199,29 @@ add_or_remove (LapizEncodingsComboBox *menu,
 		{
 			GtkWindowGroup *wg;
 
-			gtk_window_set_transient_for (GTK_WINDOW (dialog),
+			ctk_window_set_transient_for (GTK_WINDOW (dialog),
 						      GTK_WINDOW (toplevel));
 
-			wg = gtk_window_get_group (GTK_WINDOW (toplevel));
+			wg = ctk_window_get_group (GTK_WINDOW (toplevel));
 			if (wg == NULL)
 			{
-				wg = gtk_window_group_new ();
-				gtk_window_group_add_window (wg,
+				wg = ctk_window_group_new ();
+				ctk_window_group_add_window (wg,
 							     GTK_WINDOW (toplevel));
 			}
 
-			gtk_window_group_add_window (wg,
+			ctk_window_group_add_window (wg,
 						     GTK_WINDOW (dialog));
 		}
 
-		gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+		ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
 		g_signal_connect (dialog,
 				  "response",
 				  G_CALLBACK (dialog_response_cb),
 				  menu);
 
-		gtk_widget_show (dialog);
+		ctk_widget_show (dialog);
 	}
 }
 
@@ -231,7 +231,7 @@ separator_func (GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
 	gchar *str;
 	gboolean ret;
 
-	gtk_tree_model_get (model, iter, NAME_COLUMN, &str, -1);
+	ctk_tree_model_get (model, iter, NAME_COLUMN, &str, -1);
 	ret = (str == NULL || *str == '\0');
 	g_free (str);
 
@@ -252,8 +252,8 @@ update_menu (LapizEncodingsComboBox *menu)
 
 	/* Unset the previous model */
 	g_signal_handler_block (menu, menu->priv->changed_id);
-	gtk_list_store_clear (store);
-	gtk_combo_box_set_model (GTK_COMBO_BOX (menu),
+	ctk_list_store_clear (store);
+	ctk_combo_box_set_model (GTK_COMBO_BOX (menu),
 				 NULL);
 
 	utf8_encoding = lapiz_encoding_get_utf8 ();
@@ -261,15 +261,15 @@ update_menu (LapizEncodingsComboBox *menu)
 
 	if (!menu->priv->save_mode)
 	{
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store, &iter,
 				    NAME_COLUMN, _("Automatically Detected"),
 				    ENCODING_COLUMN, NULL,
 				    ADD_COLUMN, FALSE,
 				    -1);
 
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store, &iter,
 				    NAME_COLUMN, "",
 				    ENCODING_COLUMN, NULL,
 				    ADD_COLUMN, FALSE,
@@ -282,8 +282,8 @@ update_menu (LapizEncodingsComboBox *menu)
 		str = g_strdup_printf (_("Current Locale (%s)"),
 				       lapiz_encoding_get_charset (utf8_encoding));
 
-	gtk_list_store_append (store, &iter);
-	gtk_list_store_set (store, &iter,
+	ctk_list_store_append (store, &iter);
+	ctk_list_store_set (store, &iter,
 			    NAME_COLUMN, str,
 			    ENCODING_COLUMN, utf8_encoding,
 			    ADD_COLUMN, FALSE,
@@ -297,8 +297,8 @@ update_menu (LapizEncodingsComboBox *menu)
 		str = g_strdup_printf (_("Current Locale (%s)"),
 				       lapiz_encoding_get_charset (current_encoding));
 
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store, &iter,
 				    NAME_COLUMN, str,
 				    ENCODING_COLUMN, current_encoding,
 				    ADD_COLUMN, FALSE,
@@ -319,8 +319,8 @@ update_menu (LapizEncodingsComboBox *menu)
 		{
 			str = lapiz_encoding_to_string (enc);
 
-			gtk_list_store_append (store, &iter);
-			gtk_list_store_set (store, &iter,
+			ctk_list_store_append (store, &iter);
+			ctk_list_store_set (store, &iter,
 					    NAME_COLUMN, str,
 					    ENCODING_COLUMN, enc,
 					    ADD_COLUMN, FALSE,
@@ -334,16 +334,16 @@ update_menu (LapizEncodingsComboBox *menu)
 
 	if (lapiz_prefs_manager_shown_in_menu_encodings_can_set ())
 	{
-		gtk_list_store_append (store, &iter);
+		ctk_list_store_append (store, &iter);
 		/* separator */
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_set (store, &iter,
 				    NAME_COLUMN, "",
 				    ENCODING_COLUMN, NULL,
 				    ADD_COLUMN, FALSE,
 				    -1);
 
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store, &iter,
 				    NAME_COLUMN, _("Add or Remove..."),
 				    ENCODING_COLUMN, NULL,
 				    ADD_COLUMN, TRUE,
@@ -351,9 +351,9 @@ update_menu (LapizEncodingsComboBox *menu)
 	}
 
 	/* set the model back */
-	gtk_combo_box_set_model (GTK_COMBO_BOX (menu),
+	ctk_combo_box_set_model (GTK_COMBO_BOX (menu),
 				 GTK_TREE_MODEL (menu->priv->store));
-	gtk_combo_box_set_active (GTK_COMBO_BOX (menu), 0);
+	ctk_combo_box_set_active (GTK_COMBO_BOX (menu), 0);
 
 	g_signal_handler_unblock (menu, menu->priv->changed_id);
 }
@@ -365,23 +365,23 @@ lapiz_encodings_combo_box_init (LapizEncodingsComboBox *menu)
 
 	menu->priv = lapiz_encodings_combo_box_get_instance_private (menu);
 
-	menu->priv->store = gtk_list_store_new (N_COLUMNS,
+	menu->priv->store = ctk_list_store_new (N_COLUMNS,
 						G_TYPE_STRING,
 						G_TYPE_POINTER,
 						G_TYPE_BOOLEAN);
 
 	/* Setup up the cells */
-	text_renderer = gtk_cell_renderer_text_new ();
-	gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (menu),
+	text_renderer = ctk_cell_renderer_text_new ();
+	ctk_cell_layout_pack_end (GTK_CELL_LAYOUT (menu),
 				  text_renderer, TRUE);
 
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (menu),
+	ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (menu),
 					text_renderer,
 					"text",
 					NAME_COLUMN,
 					NULL);
 
-	gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (menu),
+	ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (menu),
 					      separator_func, NULL,
 					      NULL);
 
@@ -407,14 +407,14 @@ lapiz_encodings_combo_box_get_selected_encoding (LapizEncodingsComboBox *menu)
 
 	g_return_val_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (menu), NULL);
 
-	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
+	if (ctk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
 	{
 		const LapizEncoding *ret;
 		GtkTreeModel *model;
 
-		model = gtk_combo_box_get_model (GTK_COMBO_BOX (menu));
+		model = ctk_combo_box_get_model (GTK_COMBO_BOX (menu));
 
-		gtk_tree_model_get (model, &iter,
+		ctk_tree_model_get (model, &iter,
 				    ENCODING_COLUMN, &ret,
 				    -1);
 
@@ -439,25 +439,25 @@ lapiz_encodings_combo_box_set_selected_encoding (LapizEncodingsComboBox *menu,
 	g_return_if_fail (LAPIZ_IS_ENCODINGS_COMBO_BOX (menu));
 	g_return_if_fail (GTK_IS_COMBO_BOX (menu));
 
-	model = gtk_combo_box_get_model (GTK_COMBO_BOX (menu));
-	b = gtk_tree_model_get_iter_first (model, &iter);
+	model = ctk_combo_box_get_model (GTK_COMBO_BOX (menu));
+	b = ctk_tree_model_get_iter_first (model, &iter);
 
 	while (b)
 	{
 		const LapizEncoding *enc;
 
-		gtk_tree_model_get (model, &iter,
+		ctk_tree_model_get (model, &iter,
 				    ENCODING_COLUMN, &enc,
 				    -1);
 
 		if (enc == encoding)
 		{
-			gtk_combo_box_set_active_iter (GTK_COMBO_BOX (menu),
+			ctk_combo_box_set_active_iter (GTK_COMBO_BOX (menu),
 						       &iter);
 
 			return;
 		}
 
-		b = gtk_tree_model_iter_next (model, &iter);
+		b = ctk_tree_model_iter_next (model, &iter);
 	}
 }

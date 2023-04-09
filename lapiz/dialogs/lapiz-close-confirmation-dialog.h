@@ -30,7 +30,7 @@
 #define __LAPIZ_CLOSE_CONFIRMATION_DIALOG_H__
 
 #include <glib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <lapiz/lapiz-document.h>
 

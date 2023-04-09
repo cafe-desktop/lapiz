@@ -132,14 +132,14 @@ lapiz_document_output_stream_constructed (GObject *object)
 	}
 
 	/* Init the undoable action */
-	gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
+	ctk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
 	/* clear the buffer */
-	gtk_text_buffer_set_text (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_set_text (GTK_TEXT_BUFFER (stream->priv->doc),
 				  "", 0);
-	gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_set_modified (GTK_TEXT_BUFFER (stream->priv->doc),
 				      FALSE);
 
-	gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
+	ctk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
 }
 
 static void
@@ -187,12 +187,12 @@ get_newline_type (GtkTextIter *end)
 	gunichar c;
 
 	copy = *end;
-	c = gtk_text_iter_get_char (&copy);
+	c = ctk_text_iter_get_char (&copy);
 
 	if (g_unichar_break_type (c) == G_UNICODE_BREAK_CARRIAGE_RETURN)
 	{
-		if (gtk_text_iter_forward_char (&copy) &&
-		    g_unichar_break_type (gtk_text_iter_get_char (&copy)) == G_UNICODE_BREAK_LINE_FEED)
+		if (ctk_text_iter_forward_char (&copy) &&
+		    g_unichar_break_type (ctk_text_iter_get_char (&copy)) == G_UNICODE_BREAK_LINE_FEED)
 		{
 			res = LAPIZ_DOCUMENT_NEWLINE_TYPE_CR_LF;
 		}
@@ -227,10 +227,10 @@ lapiz_document_output_stream_detect_newline_type (LapizDocumentOutputStream *str
 
 	type = LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 
-	gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (stream->priv->doc),
 					&iter);
 
-	if (gtk_text_iter_ends_line (&iter) || gtk_text_iter_forward_to_line_end (&iter))
+	if (ctk_text_iter_ends_line (&iter) || ctk_text_iter_forward_to_line_end (&iter))
 	{
 		type = get_newline_type (&iter);
 	}
@@ -246,21 +246,21 @@ remove_ending_newline (LapizDocumentOutputStream *stream)
 	GtkTextIter end;
 	GtkTextIter start;
 
-	gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (stream->priv->doc), &end);
+	ctk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (stream->priv->doc), &end);
 	start = end;
 
-	gtk_text_iter_set_line_offset (&start, 0);
+	ctk_text_iter_set_line_offset (&start, 0);
 
-	if (gtk_text_iter_ends_line (&start) &&
-	    gtk_text_iter_backward_line (&start))
+	if (ctk_text_iter_ends_line (&start) &&
+	    ctk_text_iter_backward_line (&start))
 	{
-		if (!gtk_text_iter_ends_line (&start))
+		if (!ctk_text_iter_ends_line (&start))
 		{
-			gtk_text_iter_forward_to_line_end (&start);
+			ctk_text_iter_forward_to_line_end (&start);
 		}
 
 		/* Delete the empty line which is from 'start' to 'end' */
-		gtk_text_buffer_delete (GTK_TEXT_BUFFER (stream->priv->doc),
+		ctk_text_buffer_delete (GTK_TEXT_BUFFER (stream->priv->doc),
 		                        &start,
 		                        &end);
 	}
@@ -271,10 +271,10 @@ end_append_text_to_document (LapizDocumentOutputStream *stream)
 {
 	remove_ending_newline (stream);
 
-	gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (stream->priv->doc),
+	ctk_text_buffer_set_modified (GTK_TEXT_BUFFER (stream->priv->doc),
 				      FALSE);
 
-	gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
+	ctk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (stream->priv->doc));
 }
 
 static gssize
@@ -299,9 +299,9 @@ lapiz_document_output_stream_write (GOutputStream            *stream,
 	if (!ostream->priv->is_initialized)
 	{
 		/* Init the undoable action */
-		gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (ostream->priv->doc));
+		ctk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (ostream->priv->doc));
 
-		gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (ostream->priv->doc),
+		ctk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (ostream->priv->doc),
 						&ostream->priv->pos);
 		ostream->priv->is_initialized = TRUE;
 	}
@@ -363,7 +363,7 @@ lapiz_document_output_stream_write (GOutputStream            *stream,
 		}
 	}
 
-	gtk_text_buffer_insert (GTK_TEXT_BUFFER (ostream->priv->doc),
+	ctk_text_buffer_insert (GTK_TEXT_BUFFER (ostream->priv->doc),
 				&ostream->priv->pos, text, len);
 
 	if (freetext)

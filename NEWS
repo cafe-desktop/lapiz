@@ -196,24 +196,24 @@
   * lapiz-notebook: Fix: unexpected behavior with dnd selected text
   * lapiz-view: Fix: unexpected behavior with dnd under line numbers
   * lapiz-notebook: pass event to gdk_seat_grab
-  * lapiz-window: use gtk_menu_popup_at_widget for GtkNotebook
+  * lapiz-window: use ctk_menu_popup_at_widget for GtkNotebook
   * lapiz-utils: remove unused 'lapiz_utils_menu_position_under_tree_view'
-  * avoid deprecated 'gtk_menu_popup'
+  * avoid deprecated 'ctk_menu_popup'
   * lapiz-print-preview: Fix weird behavior with mouse buttons
   * Fix: Lapiz crashes with mouse wheel over a tab
   * lapiz-notebook.c: avoid deprecated 'gdk_pointer_ ...' functions
   * lapiz-notebook.c: avoid deprecated 'gdk_window_at_pointer'
-  * avoid deprecated 'gtk_dialog_get_action_area'
-  * lapiz-view.c: avoid deprecated 'gtk_widget_override_font'
-  * avoid deprecated 'gtk_font_button_set/get_font_name'
+  * avoid deprecated 'ctk_dialog_get_action_area'
+  * lapiz-view.c: avoid deprecated 'ctk_widget_override_font'
+  * avoid deprecated 'ctk_font_button_set/get_font_name'
   * lapiz-view.c: Fix: GtkCheckMenuItem "Display line numbers" improved
   * lapiz-file-browser-widget.c: avoid deprecated GtkImageMenuItem
-  * error-message-area: avoid 'gtk_info_bar_new_with_buttons' with stock id
-  * avoid 'gtk_info_bar_add_button' with stock ids
+  * error-message-area: avoid 'ctk_info_bar_new_with_buttons' with stock id
+  * avoid 'ctk_info_bar_add_button' with stock ids
   * avoid 'lapiz_file_chooser_dialog_new' with stock ids
-  * avoid 'gtk_file_chooser_dialog_new' with stock id
-  * lapiz-time-plugin.c: avoid 'gtk_dialog_new_with_buttons' with stock id
-  * avoid 'gtk_dialog_add_buttons' with stock ids
+  * avoid 'ctk_file_chooser_dialog_new' with stock id
+  * lapiz-time-plugin.c: avoid 'ctk_dialog_new_with_buttons' with stock id
+  * avoid 'ctk_dialog_add_buttons' with stock ids
 
 ### lapiz 1.21.0
 
@@ -267,11 +267,11 @@
   * don't request to save documents with no changes
   * add gsettings key to hide/show(default) tabs with the side pane
   * Hide tabs if we are using the sidebar
-  * gtk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
+  * ctk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
   * avoid deprecated gdk_screen_get_width/height
   * avoid deprecated gdk_screen_make_display_name
-  * lapiz-help: don't use deprecated gtk_show_uri
-  * filebrowser: don't use deprecated gtk_show_uri
+  * lapiz-help: don't use deprecated ctk_show_uri
+  * filebrowser: don't use deprecated ctk_show_uri
   * avoid deprecated gdk_display_get_screen and gdk_screen_get_number
   * enable the abbility to save the document if it was changed externally
   * disable the abbility to save the document if it has no changes
@@ -302,7 +302,7 @@
 
   * Translations update
   * double click to the right of the last open tab to open a new tab
-  * Support new location of gtk bookmarks file
+  * Support new location of ctk bookmarks file
   * docs: we have encodings combobox, not option menu
   * remove references to LapizStatus
   * docs: remove some references to nonexistent stuff
@@ -319,7 +319,7 @@
   * NEWS: use consistent, project wide, markdown-like formatting
     to make generating release announcements easier
   * Move to GTK+3 (require GTK+ >= 3.14), drop GTK+2 code and
-    --with-gtk build option
+    --with-ctk build option
   * Build: actually build GObject introspection data
   * Build: remove --enable-deprecations option - it actually
     disabled all deprecated stuff
@@ -428,4 +428,4 @@
     (All code is migrated, except pythonconsole plugin. The plugin works,
     except you cant configure it; the configurable things were command
     and error colors; this will be fixed migrating the plugin to Gir
-    instead of python-gtk)
+    instead of python-ctk)

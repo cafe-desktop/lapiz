@@ -27,8 +27,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-/* This is a modified version of gtkspell 2.0.5  (gtkspell.sf.net) */
-/* gtkspell - a spell-checking addon for GTK's TextView widget
+/* This is a modified version of ctkspell 2.0.5  (ctkspell.sf.net) */
+/* ctkspell - a spell-checking addon for GTK's TextView widget
  * Copyright (c) 2002 Evan Martin.
  */
 
@@ -73,20 +73,20 @@ check_word (LapizAutomaticSpellChecker *spell, GtkTextIter *start, GtkTextIter *
 {
 	gchar *word;
 
-	word = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), start, end, FALSE);
+	word = ctk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), start, end, FALSE);
 
 	/*
-	g_print ("Check word: %s [%d - %d]\n", word, gtk_text_iter_get_offset (start),
-						gtk_text_iter_get_offset (end));
+	g_print ("Check word: %s [%d - %d]\n", word, ctk_text_iter_get_offset (start),
+						ctk_text_iter_get_offset (end));
 	*/
 
 	if (!lapiz_spell_checker_check_word (spell->spell_checker, word, -1))
 	{
 		/*
-		g_print ("Apply tag: [%d - %d]\n", gtk_text_iter_get_offset (start),
-						gtk_text_iter_get_offset (end));
+		g_print ("Apply tag: [%d - %d]\n", ctk_text_iter_get_offset (start),
+						ctk_text_iter_get_offset (end));
 		*/
-		gtk_text_buffer_apply_tag (GTK_TEXT_BUFFER (spell->doc),
+		ctk_text_buffer_apply_tag (GTK_TEXT_BUFFER (spell->doc),
 					   spell->tag_highlight,
 					   start,
 					   end);
@@ -112,19 +112,19 @@ check_range (LapizAutomaticSpellChecker *spell,
   	gboolean    highlight;
 
 	/*
-	g_print ("Check range: [%d - %d]\n", gtk_text_iter_get_offset (&start),
-						gtk_text_iter_get_offset (&end));
+	g_print ("Check range: [%d - %d]\n", ctk_text_iter_get_offset (&start),
+						ctk_text_iter_get_offset (&end));
 	*/
 
-	if (gtk_text_iter_inside_word (&end))
-		gtk_text_iter_forward_word_end (&end);
+	if (ctk_text_iter_inside_word (&end))
+		ctk_text_iter_forward_word_end (&end);
 
-	if (!gtk_text_iter_starts_word (&start))
+	if (!ctk_text_iter_starts_word (&start))
 	{
-		if (gtk_text_iter_inside_word (&start) ||
-		    gtk_text_iter_ends_word (&start))
+		if (ctk_text_iter_inside_word (&start) ||
+		    ctk_text_iter_ends_word (&start))
 		{
-			gtk_text_iter_backward_word_start (&start);
+			ctk_text_iter_backward_word_start (&start);
 		}
 		else
 		{
@@ -132,22 +132,22 @@ check_range (LapizAutomaticSpellChecker *spell,
 			 * me must be in some spaces.
 			 * skip forward to the beginning of the next word. */
 
-			if (gtk_text_iter_forward_word_end (&start))
-				gtk_text_iter_backward_word_start (&start);
+			if (ctk_text_iter_forward_word_end (&start))
+				ctk_text_iter_backward_word_start (&start);
 		}
 	}
 
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (spell->doc),
+	ctk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (spell->doc),
 					  &cursor,
-					  gtk_text_buffer_get_insert (GTK_TEXT_BUFFER (spell->doc)));
+					  ctk_text_buffer_get_insert (GTK_TEXT_BUFFER (spell->doc)));
 
 	precursor = cursor;
-	gtk_text_iter_backward_char (&precursor);
+	ctk_text_iter_backward_char (&precursor);
 
-  	highlight = gtk_text_iter_has_tag (&cursor, spell->tag_highlight) ||
-  	            gtk_text_iter_has_tag (&precursor, spell->tag_highlight);
+  	highlight = ctk_text_iter_has_tag (&cursor, spell->tag_highlight) ||
+  	            ctk_text_iter_has_tag (&precursor, spell->tag_highlight);
 
-	gtk_text_buffer_remove_tag (GTK_TEXT_BUFFER (spell->doc),
+	ctk_text_buffer_remove_tag (GTK_TEXT_BUFFER (spell->doc),
 				    spell->tag_highlight,
 				    &start,
 				    &end);
@@ -156,26 +156,26 @@ check_range (LapizAutomaticSpellChecker *spell,
 	 * An iter at offset 0 seems to always be inside a word,
   	 * even if it's not.  Possibly a pango bug.
 	 */
-  	if (gtk_text_iter_get_offset (&start) == 0)
+  	if (ctk_text_iter_get_offset (&start) == 0)
 	{
-		gtk_text_iter_forward_word_end(&start);
-		gtk_text_iter_backward_word_start(&start);
+		ctk_text_iter_forward_word_end(&start);
+		ctk_text_iter_backward_word_start(&start);
 	}
 
 	wstart = start;
 
 	while (lapiz_spell_utils_skip_no_spell_check (&wstart, &end) &&
-	       gtk_text_iter_compare (&wstart, &end) < 0)
+	       ctk_text_iter_compare (&wstart, &end) < 0)
 	{
 		gboolean inword;
 
 		/* move wend to the end of the current word. */
 		wend = wstart;
 
-		gtk_text_iter_forward_word_end (&wend);
+		ctk_text_iter_forward_word_end (&wend);
 
-		inword = (gtk_text_iter_compare (&wstart, &cursor) < 0) &&
-			 (gtk_text_iter_compare (&cursor, &wend) <= 0);
+		inword = (ctk_text_iter_compare (&wstart, &cursor) < 0) &&
+			 (ctk_text_iter_compare (&cursor, &wend) <= 0);
 
 		if (inword && !force_all)
 		{
@@ -194,12 +194,12 @@ check_range (LapizAutomaticSpellChecker *spell,
 		}
 
 		/* now move wend to the beginning of the next word, */
-		gtk_text_iter_forward_word_end (&wend);
-		gtk_text_iter_backward_word_start (&wend);
+		ctk_text_iter_forward_word_end (&wend);
+		ctk_text_iter_backward_word_start (&wend);
 
 		/* make sure we've actually advanced
 		 * (we don't advance in some corner cases), */
-		if (gtk_text_iter_equal (&wstart, &wend))
+		if (ctk_text_iter_equal (&wstart, &wend))
 			break; /* we're done in these cases.. */
 
 		/* and then pick this as the new next word beginning. */
@@ -213,10 +213,10 @@ check_deferred_range (LapizAutomaticSpellChecker *spell,
 {
 	GtkTextIter start, end;
 
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (spell->doc),
+	ctk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (spell->doc),
 					  &start,
 					  spell->mark_insert_start);
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (spell->doc),
+	ctk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (spell->doc),
 					  &end,
 					  spell->mark_insert_end);
 
@@ -234,7 +234,7 @@ static void
 insert_text_before (GtkTextBuffer *buffer, GtkTextIter *iter,
 		gchar *text, gint len, LapizAutomaticSpellChecker *spell)
 {
-	gtk_text_buffer_move_mark (buffer, spell->mark_insert_start, iter);
+	ctk_text_buffer_move_mark (buffer, spell->mark_insert_start, iter);
 }
 
 static void
@@ -244,11 +244,11 @@ insert_text_after (GtkTextBuffer *buffer, GtkTextIter *iter,
 	GtkTextIter start;
 
 	/* we need to check a range of text. */
-	gtk_text_buffer_get_iter_at_mark (buffer, &start, spell->mark_insert_start);
+	ctk_text_buffer_get_iter_at_mark (buffer, &start, spell->mark_insert_start);
 
 	check_range (spell, start, *iter, FALSE);
 
-	gtk_text_buffer_move_mark (buffer, spell->mark_insert_end, iter);
+	ctk_text_buffer_move_mark (buffer, spell->mark_insert_end, iter);
 }
 
 /* deleting is more simple:  we're given the range of deleted text.
@@ -272,7 +272,7 @@ mark_set (GtkTextBuffer              *buffer,
 	  LapizAutomaticSpellChecker *spell)
 {
 	/* if the cursor has moved and there is a deferred check so handle it now */
-	if ((mark == gtk_text_buffer_get_insert (buffer)) && spell->deferred_check)
+	if ((mark == ctk_text_buffer_get_insert (buffer)) && spell->deferred_check)
 		check_deferred_range (spell, FALSE);
 }
 
@@ -282,15 +282,15 @@ get_word_extents_from_mark (GtkTextBuffer *buffer,
 			    GtkTextIter   *end,
 			    GtkTextMark   *mark)
 {
-	gtk_text_buffer_get_iter_at_mark(buffer, start, mark);
+	ctk_text_buffer_get_iter_at_mark(buffer, start, mark);
 
-	if (!gtk_text_iter_starts_word (start))
-		gtk_text_iter_backward_word_start (start);
+	if (!ctk_text_iter_starts_word (start))
+		ctk_text_iter_backward_word_start (start);
 
 	*end = *start;
 
-	if (gtk_text_iter_inside_word (end))
-		gtk_text_iter_forward_word_end (end);
+	if (ctk_text_iter_inside_word (end))
+		ctk_text_iter_forward_word_end (end);
 }
 
 static void
@@ -301,13 +301,13 @@ remove_tag_to_word (LapizAutomaticSpellChecker *spell, const gchar *word)
 
 	gboolean found;
 
-	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (spell->doc), &iter, 0);
+	ctk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (spell->doc), &iter, 0);
 
 	found = TRUE;
 
 	while (found)
 	{
-		found = gtk_text_iter_forward_search (&iter,
+		found = ctk_text_iter_forward_search (&iter,
 				word,
 				GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY,
 				&match_start,
@@ -316,10 +316,10 @@ remove_tag_to_word (LapizAutomaticSpellChecker *spell, const gchar *word)
 
 		if (found)
 		{
-			if (gtk_text_iter_starts_word (&match_start) &&
-			    gtk_text_iter_ends_word (&match_end))
+			if (ctk_text_iter_starts_word (&match_start) &&
+			    ctk_text_iter_ends_word (&match_end))
 			{
-				gtk_text_buffer_remove_tag (GTK_TEXT_BUFFER (spell->doc),
+				ctk_text_buffer_remove_tag (GTK_TEXT_BUFFER (spell->doc),
 						spell->tag_highlight,
 						&match_start,
 						&match_end);
@@ -339,7 +339,7 @@ add_to_dictionary (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 
 	get_word_extents_from_mark (GTK_TEXT_BUFFER (spell->doc), &start, &end, spell->mark_click);
 
-	word = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc),
+	word = ctk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc),
 					 &start,
 					 &end,
 					 FALSE);
@@ -358,7 +358,7 @@ ignore_all (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 
 	get_word_extents_from_mark (GTK_TEXT_BUFFER (spell->doc), &start, &end, spell->mark_click);
 
-	word = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc),
+	word = ctk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc),
 					 &start,
 					 &end,
 					 FALSE);
@@ -378,17 +378,17 @@ replace_word (GtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 
 	get_word_extents_from_mark (GTK_TEXT_BUFFER (spell->doc), &start, &end, spell->mark_click);
 
-	oldword = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), &start, &end, FALSE);
+	oldword = ctk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), &start, &end, FALSE);
 
 	newword =  g_object_get_qdata (G_OBJECT (menuitem), suggestion_id);
 	g_return_if_fail (newword != NULL);
 
-	gtk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (spell->doc));
+	ctk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (spell->doc));
 
-	gtk_text_buffer_delete (GTK_TEXT_BUFFER (spell->doc), &start, &end);
-	gtk_text_buffer_insert (GTK_TEXT_BUFFER (spell->doc), &start, newword, -1);
+	ctk_text_buffer_delete (GTK_TEXT_BUFFER (spell->doc), &start, &end);
+	ctk_text_buffer_insert (GTK_TEXT_BUFFER (spell->doc), &start, newword, -1);
 
-	gtk_text_buffer_end_user_action (GTK_TEXT_BUFFER (spell->doc));
+	ctk_text_buffer_end_user_action (GTK_TEXT_BUFFER (spell->doc));
 
 	lapiz_spell_checker_set_correction (spell->spell_checker,
 				oldword, strlen (oldword),
@@ -406,7 +406,7 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 	GSList *list;
 	gchar *label_text;
 
-	topmenu = menu = gtk_menu_new();
+	topmenu = menu = ctk_menu_new();
 
 	suggestions = lapiz_spell_checker_get_suggestions (spell->spell_checker, word, -1);
 
@@ -417,13 +417,13 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 		/* no suggestions.  put something in the menu anyway... */
 		GtkWidget *label;
 		/* Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word */
-		label = gtk_label_new (_("(no suggested words)"));
+		label = ctk_label_new (_("(no suggested words)"));
 
-		mi = gtk_menu_item_new ();
-		gtk_widget_set_sensitive (mi, FALSE);
-		gtk_container_add (GTK_CONTAINER(mi), label);
-		gtk_widget_show_all (mi);
-		gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
+		mi = ctk_menu_item_new ();
+		ctk_widget_set_sensitive (mi, FALSE);
+		ctk_container_add (GTK_CONTAINER(mi), label);
+		ctk_widget_show_all (mi);
+		ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
 	}
 	else
 	{
@@ -437,30 +437,30 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 			if (count == 10)
 			{
 				/* Separator */
-				mi = gtk_menu_item_new ();
-				gtk_widget_show (mi);
-				gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+				mi = ctk_menu_item_new ();
+				ctk_widget_show (mi);
+				ctk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
-				mi = gtk_menu_item_new_with_mnemonic (_("_More..."));
-				gtk_widget_show (mi);
-				gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+				mi = ctk_menu_item_new_with_mnemonic (_("_More..."));
+				ctk_widget_show (mi);
+				ctk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
-				menu = gtk_menu_new ();
-				gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), menu);
+				menu = ctk_menu_new ();
+				ctk_menu_item_set_submenu (GTK_MENU_ITEM (mi), menu);
 				count = 0;
 			}
 
 			label_text = g_strdup_printf ("<b>%s</b>", (gchar*) suggestions->data);
 
-			label = gtk_label_new (label_text);
-			gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-			gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+			label = ctk_label_new (label_text);
+			ctk_label_set_use_markup (GTK_LABEL (label), TRUE);
+			ctk_label_set_xalign (GTK_LABEL (label), 0.0);
 
-			mi = gtk_menu_item_new ();
-			gtk_container_add (GTK_CONTAINER(mi), label);
+			mi = ctk_menu_item_new ();
+			ctk_container_add (GTK_CONTAINER(mi), label);
 
-			gtk_widget_show_all (mi);
-			gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+			ctk_widget_show_all (mi);
+			ctk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
 			g_object_set_qdata_full (G_OBJECT (mi),
 				 suggestion_id,
@@ -491,14 +491,14 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 	g_slist_free (suggestions);
 
 	/* Separator */
-	mi = gtk_menu_item_new ();
-	gtk_widget_show (mi);
-	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
+	mi = ctk_menu_item_new ();
+	ctk_widget_show (mi);
+	ctk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
 
 	/* Ignore all */
-	mi = gtk_image_menu_item_new_with_mnemonic (_("_Ignore All"));
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),
-				       gtk_image_new_from_icon_name ("go-bottom",
+	mi = ctk_image_menu_item_new_with_mnemonic (_("_Ignore All"));
+	ctk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),
+				       ctk_image_new_from_icon_name ("go-bottom",
 					       			     GTK_ICON_SIZE_MENU));
 
 	g_signal_connect (mi,
@@ -506,14 +506,14 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 			  G_CALLBACK(ignore_all),
 			  spell);
 
-	gtk_widget_show_all (mi);
+	ctk_widget_show_all (mi);
 
-	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
+	ctk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
 
 	/* + Add to Dictionary */
-	mi = gtk_image_menu_item_new_with_mnemonic (_("_Add"));
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),
-				       gtk_image_new_from_icon_name ("list-add",
+	mi = ctk_image_menu_item_new_with_mnemonic (_("_Add"));
+	ctk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),
+				       ctk_image_new_from_icon_name ("list-add",
 					       			     GTK_ICON_SIZE_MENU));
 
 	g_signal_connect (mi,
@@ -521,9 +521,9 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 			  G_CALLBACK (add_to_dictionary),
 			  spell);
 
-	gtk_widget_show_all (mi);
+	ctk_widget_show_all (mi);
 
-	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
+	ctk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
 
 	return topmenu;
 }
@@ -540,26 +540,26 @@ populate_popup (GtkTextView *textview, GtkMenu *menu, LapizAutomaticSpellChecker
 
 	/* if our highlight algorithm ever messes up,
 	 * this isn't correct, either. */
-	if (!gtk_text_iter_has_tag (&start, spell->tag_highlight))
+	if (!ctk_text_iter_has_tag (&start, spell->tag_highlight))
 		return; /* word wasn't misspelled. */
 
 	/* menu separator comes first. */
-	mi = gtk_menu_item_new ();
-	gtk_widget_show (mi);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
+	mi = ctk_menu_item_new ();
+	ctk_widget_show (mi);
+	ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
 
 	/* then, on top of it, the suggestions menu. */
-	img = gtk_image_new_from_icon_name ("tools-check-spelling", GTK_ICON_SIZE_MENU);
-	mi = gtk_image_menu_item_new_with_mnemonic (_("_Spelling Suggestions..."));
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
+	img = ctk_image_new_from_icon_name ("tools-check-spelling", GTK_ICON_SIZE_MENU);
+	mi = ctk_image_menu_item_new_with_mnemonic (_("_Spelling Suggestions..."));
+	ctk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
 
-	word = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), &start, &end, FALSE);
-	gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi),
+	word = ctk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), &start, &end, FALSE);
+	ctk_menu_item_set_submenu (GTK_MENU_ITEM (mi),
 				   build_suggestion_menu (spell, word));
 	g_free(word);
 
-	gtk_widget_show_all (mi);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
+	ctk_widget_show_all (mi);
+	ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
 }
 
 void
@@ -569,7 +569,7 @@ lapiz_automatic_spell_checker_recheck_all (LapizAutomaticSpellChecker *spell)
 
 	g_return_if_fail (spell != NULL);
 
-	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (spell->doc), &start, &end);
+	ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (spell->doc), &start, &end);
 
 	check_range (spell, start, end, TRUE);
 }
@@ -621,23 +621,23 @@ button_press_event (GtkTextView *view,
 		gint x, y;
 		GtkTextIter iter;
 
-		GtkTextBuffer *buffer = gtk_text_view_get_buffer (view);
+		GtkTextBuffer *buffer = ctk_text_view_get_buffer (view);
 
 		/* handle deferred check if it exists */
   	        if (spell->deferred_check)
 			check_deferred_range (spell, TRUE);
 
-		gtk_text_view_window_to_buffer_coords (view,
+		ctk_text_view_window_to_buffer_coords (view,
 				GTK_TEXT_WINDOW_TEXT,
 				event->x, event->y,
 				&x, &y);
 
-		gtk_text_view_get_iter_at_location (view, &iter, x, y);
+		ctk_text_view_get_iter_at_location (view, &iter, x, y);
 
-		gtk_text_buffer_move_mark (buffer, spell->mark_click, &iter);
+		ctk_text_buffer_move_mark (buffer, spell->mark_click, &iter);
 	}
 
-	return FALSE; /* false: let gtk process this event, too.
+	return FALSE; /* false: let ctk process this event, too.
 			 we don't want to eat any events. */
 }
 
@@ -650,15 +650,15 @@ popup_menu_event (GtkTextView *view, LapizAutomaticSpellChecker *spell)
 	GtkTextIter iter;
 	GtkTextBuffer *buffer;
 
-	buffer = gtk_text_view_get_buffer (view);
+	buffer = ctk_text_view_get_buffer (view);
 
 	/* handle deferred check if it exists */
 	if (spell->deferred_check)
 		check_deferred_range (spell, TRUE);
 
-	gtk_text_buffer_get_iter_at_mark (buffer, &iter,
-					  gtk_text_buffer_get_insert (buffer));
-	gtk_text_buffer_move_mark (buffer, spell->mark_click, &iter);
+	ctk_text_buffer_get_iter_at_mark (buffer, &iter,
+					  ctk_text_buffer_get_insert (buffer));
+	ctk_text_buffer_move_mark (buffer, spell->mark_click, &iter);
 
 	return FALSE;
 }
@@ -669,8 +669,8 @@ tag_table_changed (GtkTextTagTable            *table,
 {
 	g_return_if_fail (spell->tag_highlight !=  NULL);
 
-	gtk_text_tag_set_priority (spell->tag_highlight,
-				   gtk_text_tag_table_get_size (table) - 1);
+	ctk_text_tag_set_priority (spell->tag_highlight,
+				   ctk_text_tag_table_get_size (table) - 1);
 }
 
 static void
@@ -779,9 +779,9 @@ lapiz_automatic_spell_checker_new (LapizDocument     *doc,
 			  G_CALLBACK (set_language_cb),
 			  spell);
 
-	spell->tag_highlight = gtk_text_buffer_create_tag (
+	spell->tag_highlight = ctk_text_buffer_create_tag (
 				GTK_TEXT_BUFFER (doc),
-				"gtkspell-misspelled",
+				"ctkspell-misspelled",
 				"underline", PANGO_UNDERLINE_ERROR,
 				NULL);
 
@@ -789,10 +789,10 @@ lapiz_automatic_spell_checker_new (LapizDocument     *doc,
 	                   (GWeakNotify)spell_tag_destroyed,
 	                   spell);
 
-	tag_table = gtk_text_buffer_get_tag_table (GTK_TEXT_BUFFER (doc));
+	tag_table = ctk_text_buffer_get_tag_table (GTK_TEXT_BUFFER (doc));
 
-	gtk_text_tag_set_priority (spell->tag_highlight,
-				   gtk_text_tag_table_get_size (tag_table) - 1);
+	ctk_text_tag_set_priority (spell->tag_highlight,
+				   ctk_text_tag_table_get_size (tag_table) - 1);
 
 	g_signal_connect (tag_table,
 			  "tag-added",
@@ -809,58 +809,58 @@ lapiz_automatic_spell_checker_new (LapizDocument     *doc,
 
 	/* we create the mark here, but we don't use it until text is
 	 * inserted, so we don't really care where iter points.  */
-	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc), &start, &end);
+	ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc), &start, &end);
 
-	spell->mark_insert_start = gtk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
+	spell->mark_insert_start = ctk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
 					"lapiz-automatic-spell-checker-insert-start");
 
 	if (spell->mark_insert_start == NULL)
 	{
 		spell->mark_insert_start =
-			gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
 						     "lapiz-automatic-spell-checker-insert-start",
 						     &start,
 						     TRUE);
 	}
 	else
 	{
-		gtk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
 					   spell->mark_insert_start,
 					   &start);
 	}
 
-	spell->mark_insert_end = gtk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
+	spell->mark_insert_end = ctk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
 					"lapiz-automatic-spell-checker-insert-end");
 
 	if (spell->mark_insert_end == NULL)
 	{
 		spell->mark_insert_end =
-			gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
 						     "lapiz-automatic-spell-checker-insert-end",
 						     &start,
 						     TRUE);
 	}
 	else
 	{
-		gtk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
 					   spell->mark_insert_end,
 					   &start);
 	}
 
-	spell->mark_click = gtk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
+	spell->mark_click = ctk_text_buffer_get_mark (GTK_TEXT_BUFFER (doc),
 					"lapiz-automatic-spell-checker-click");
 
 	if (spell->mark_click == NULL)
 	{
 		spell->mark_click =
-			gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
+			ctk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
 						     "lapiz-automatic-spell-checker-click",
 						     &start,
 						     TRUE);
 	}
 	else
 	{
-		gtk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
 					   spell->mark_click,
 					   &start);
 	}
@@ -902,14 +902,14 @@ lapiz_automatic_spell_checker_free_internal (LapizAutomaticSpellChecker *spell)
 
 	g_return_if_fail (spell != NULL);
 
-	table = gtk_text_buffer_get_tag_table (GTK_TEXT_BUFFER (spell->doc));
+	table = ctk_text_buffer_get_tag_table (GTK_TEXT_BUFFER (spell->doc));
 
 	if (table != NULL && spell->tag_highlight != NULL)
 	{
-		gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (spell->doc),
+		ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (spell->doc),
 					    &start,
 					    &end);
-		gtk_text_buffer_remove_tag (GTK_TEXT_BUFFER (spell->doc),
+		ctk_text_buffer_remove_tag (GTK_TEXT_BUFFER (spell->doc),
 					    spell->tag_highlight,
 					    &start,
 					    &end);
@@ -919,7 +919,7 @@ lapiz_automatic_spell_checker_free_internal (LapizAutomaticSpellChecker *spell)
 					0, 0, NULL, NULL,
 					spell);
 
-		gtk_text_tag_table_remove (table, spell->tag_highlight);
+		ctk_text_tag_table_remove (table, spell->tag_highlight);
 	}
 
 	g_signal_handlers_disconnect_matched (G_OBJECT (spell->doc),
@@ -965,7 +965,7 @@ lapiz_automatic_spell_checker_attach_view (
 	g_return_if_fail (spell != NULL);
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	g_return_if_fail (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
+	g_return_if_fail (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
 			  GTK_TEXT_BUFFER (spell->doc));
 
 	g_signal_connect (view,
@@ -996,7 +996,7 @@ lapiz_automatic_spell_checker_detach_view (
 	g_return_if_fail (spell != NULL);
 	g_return_if_fail (LAPIZ_IS_VIEW (view));
 
-	g_return_if_fail (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
+	g_return_if_fail (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
 			  GTK_TEXT_BUFFER (spell->doc));
 	g_return_if_fail (spell->views != NULL);
 

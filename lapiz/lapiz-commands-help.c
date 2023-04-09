@@ -37,7 +37,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-commands.h"
 #include "lapiz-debug.h"
@@ -108,7 +108,7 @@ void _lapiz_cmd_help_about(GtkAction* action, LapizWindow* window)
 	for (p = documenters; *p; ++p)
 		*p = _(*p);
 
-	gtk_show_about_dialog(GTK_WINDOW(window),
+	ctk_show_about_dialog(GTK_WINDOW(window),
 		"program-name", "Lapiz",
 		"title", _("About Lapiz"),
 		"authors", authors,

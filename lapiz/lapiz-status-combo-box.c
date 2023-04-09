@@ -113,16 +113,16 @@ lapiz_status_combo_box_constructed (GObject *object)
 		"}";
 
 	/* make it as small as possible */
-	css = gtk_css_provider_new ();
-	if (!gtk_css_provider_load_from_data (css, style, -1, &error))
+	css = ctk_css_provider_new ();
+	if (!ctk_css_provider_load_from_data (css, style, -1, &error))
 	{
 		g_warning ("%s", error->message);
 		g_error_free (error);
 		return;
 	}
 
-	context = gtk_widget_get_style_context (GTK_WIDGET (combo));
-	gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (css),
+	context = ctk_widget_get_style_context (GTK_WIDGET (combo));
+	ctk_style_context_add_provider (context, GTK_STYLE_PROVIDER (css),
 	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 	g_object_unref (css);
 }
@@ -137,7 +137,7 @@ lapiz_status_combo_box_changed (LapizStatusComboBox *combo,
 
 	if (text != NULL)
 	{
-		gtk_label_set_markup (GTK_LABEL (combo->priv->item), text);
+		ctk_label_set_markup (GTK_LABEL (combo->priv->item), text);
 		combo->priv->current_item = GTK_WIDGET (item);
 	}
 }
@@ -175,7 +175,7 @@ static void
 menu_deactivate (GtkMenu             *menu,
 		 LapizStatusComboBox *combo)
 {
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (combo->priv->button), FALSE);
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (combo->priv->button), FALSE);
 }
 
 static void
@@ -187,29 +187,29 @@ button_press_event (GtkWidget           *widget,
 	GtkAllocation allocation;
 	gint max_height;
 
-	gtk_widget_get_preferred_size (combo->priv->menu, NULL, &request);
-	gtk_widget_get_allocation (GTK_WIDGET (combo), &allocation);
+	ctk_widget_get_preferred_size (combo->priv->menu, NULL, &request);
+	ctk_widget_get_allocation (GTK_WIDGET (combo), &allocation);
 
 	/* do something relative to our own height here, maybe we can do better */
 	max_height = allocation.height * 20;
 
 	if (request.height > max_height)
 	{
-		gtk_widget_set_size_request (combo->priv->menu, -1, max_height);
-		gtk_widget_set_size_request (gtk_widget_get_toplevel (combo->priv->menu), -1, max_height);
+		ctk_widget_set_size_request (combo->priv->menu, -1, max_height);
+		ctk_widget_set_size_request (ctk_widget_get_toplevel (combo->priv->menu), -1, max_height);
 	}
 
-	gtk_menu_popup_at_widget (GTK_MENU (combo->priv->menu),
-				  gtk_widget_get_parent (widget),
+	ctk_menu_popup_at_widget (GTK_MENU (combo->priv->menu),
+				  ctk_widget_get_parent (widget),
 				  GDK_GRAVITY_NORTH_WEST,
 				  GDK_GRAVITY_SOUTH_WEST,
 				  (const GdkEvent*) event);
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (combo->priv->button), TRUE);
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (combo->priv->button), TRUE);
 
 	if (combo->priv->current_item)
 	{
-		gtk_menu_shell_select_item (GTK_MENU_SHELL (combo->priv->menu),
+		ctk_menu_shell_select_item (GTK_MENU_SHELL (combo->priv->menu),
 					    combo->priv->current_item);
 	}
 }
@@ -222,13 +222,13 @@ set_shadow_type (LapizStatusComboBox *combo)
 	GtkWidget *statusbar;
 
 	/* This is a hack needed to use the shadow type of a statusbar */
-	statusbar = gtk_statusbar_new ();
-	context = gtk_widget_get_style_context (statusbar);
+	statusbar = ctk_statusbar_new ();
+	context = ctk_widget_get_style_context (statusbar);
 
-	gtk_style_context_get_style (context, "shadow-type", &shadow_type, NULL);
-	gtk_frame_set_shadow_type (GTK_FRAME (combo->priv->frame), shadow_type);
+	ctk_style_context_get_style (context, "shadow-type", &shadow_type, NULL);
+	ctk_frame_set_shadow_type (GTK_FRAME (combo->priv->frame), shadow_type);
 
-	gtk_widget_destroy (statusbar);
+	ctk_widget_destroy (statusbar);
 }
 
 static void
@@ -236,49 +236,49 @@ lapiz_status_combo_box_init (LapizStatusComboBox *self)
 {
 	self->priv = lapiz_status_combo_box_get_instance_private (self);
 
-	gtk_event_box_set_visible_window (GTK_EVENT_BOX (self), TRUE);
+	ctk_event_box_set_visible_window (GTK_EVENT_BOX (self), TRUE);
 
-	self->priv->frame = gtk_frame_new (NULL);
-	gtk_widget_show (self->priv->frame);
+	self->priv->frame = ctk_frame_new (NULL);
+	ctk_widget_show (self->priv->frame);
 
-	self->priv->button = gtk_toggle_button_new ();
-	gtk_widget_set_name (self->priv->button, "lapiz-status-combo-button");
-	gtk_button_set_relief (GTK_BUTTON (self->priv->button), GTK_RELIEF_NONE);
-	gtk_widget_show (self->priv->button);
+	self->priv->button = ctk_toggle_button_new ();
+	ctk_widget_set_name (self->priv->button, "lapiz-status-combo-button");
+	ctk_button_set_relief (GTK_BUTTON (self->priv->button), GTK_RELIEF_NONE);
+	ctk_widget_show (self->priv->button);
 
 	set_shadow_type (self);
 
-	self->priv->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
-	gtk_widget_show (self->priv->hbox);
+	self->priv->hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
+	ctk_widget_show (self->priv->hbox);
 
-	gtk_container_add (GTK_CONTAINER (self), self->priv->frame);
-	gtk_container_add (GTK_CONTAINER (self->priv->frame), self->priv->button);
-	gtk_container_add (GTK_CONTAINER (self->priv->button), self->priv->hbox);
+	ctk_container_add (GTK_CONTAINER (self), self->priv->frame);
+	ctk_container_add (GTK_CONTAINER (self->priv->frame), self->priv->button);
+	ctk_container_add (GTK_CONTAINER (self->priv->button), self->priv->hbox);
 
-	self->priv->label = gtk_label_new ("");
-	gtk_widget_show (self->priv->label);
+	self->priv->label = ctk_label_new ("");
+	ctk_widget_show (self->priv->label);
 
-	gtk_label_set_single_line_mode (GTK_LABEL (self->priv->label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (self->priv->label), 0.0);
+	ctk_label_set_single_line_mode (GTK_LABEL (self->priv->label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (self->priv->label), 0.0);
 
-	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->label, FALSE, TRUE, 0);
+	ctk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->label, FALSE, TRUE, 0);
 
-	self->priv->item = gtk_label_new ("");
-	gtk_widget_show (self->priv->item);
+	self->priv->item = ctk_label_new ("");
+	ctk_widget_show (self->priv->item);
 
-	gtk_label_set_single_line_mode (GTK_LABEL (self->priv->item), TRUE);
-	gtk_widget_set_halign (self->priv->item, GTK_ALIGN_START);
+	ctk_label_set_single_line_mode (GTK_LABEL (self->priv->item), TRUE);
+	ctk_widget_set_halign (self->priv->item, GTK_ALIGN_START);
 
-	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->item, TRUE, TRUE, 0);
+	ctk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->item, TRUE, TRUE, 0);
 
-	self->priv->arrow = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
-	gtk_widget_show (self->priv->arrow);
-	gtk_widget_set_halign (self->priv->arrow, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (self->priv->arrow, GTK_ALIGN_CENTER);
+	self->priv->arrow = ctk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
+	ctk_widget_show (self->priv->arrow);
+	ctk_widget_set_halign (self->priv->arrow, GTK_ALIGN_CENTER);
+	ctk_widget_set_valign (self->priv->arrow, GTK_ALIGN_CENTER);
 
-	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->arrow, FALSE, TRUE, 0);
+	ctk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->arrow, FALSE, TRUE, 0);
 
-	self->priv->menu = gtk_menu_new ();
+	self->priv->menu = ctk_menu_new ();
 	g_object_ref_sink (self->priv->menu);
 
 	g_signal_connect (self->priv->button,
@@ -317,7 +317,7 @@ lapiz_status_combo_box_set_label (LapizStatusComboBox *combo,
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
 
 	text = g_strconcat ("  ", label, ": ", NULL);
-	gtk_label_set_markup (GTK_LABEL (combo->priv->label), text);
+	ctk_label_set_markup (GTK_LABEL (combo->priv->label), text);
 	g_free (text);
 }
 
@@ -326,7 +326,7 @@ lapiz_status_combo_box_get_label (LapizStatusComboBox *combo)
 {
 	g_return_val_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo), NULL);
 
-	return gtk_label_get_label (GTK_LABEL (combo->priv->label));
+	return ctk_label_get_label (GTK_LABEL (combo->priv->label));
 }
 
 static void
@@ -350,7 +350,7 @@ lapiz_status_combo_box_add_item (LapizStatusComboBox *combo,
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
 	g_return_if_fail (GTK_IS_MENU_ITEM (item));
 
-	gtk_menu_shell_append (GTK_MENU_SHELL (combo->priv->menu), GTK_WIDGET (item));
+	ctk_menu_shell_append (GTK_MENU_SHELL (combo->priv->menu), GTK_WIDGET (item));
 
 	lapiz_status_combo_box_set_item_text (combo, item, text);
 	g_signal_connect (item, "activate", G_CALLBACK (item_activated), combo);
@@ -363,7 +363,7 @@ lapiz_status_combo_box_remove_item (LapizStatusComboBox *combo,
 	g_return_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo));
 	g_return_if_fail (GTK_IS_MENU_ITEM (item));
 
-	gtk_container_remove (GTK_CONTAINER (combo->priv->menu),
+	ctk_container_remove (GTK_CONTAINER (combo->priv->menu),
 			      GTK_WIDGET (item));
 }
 
@@ -378,7 +378,7 @@ lapiz_status_combo_box_get_items (LapizStatusComboBox *combo)
 {
 	g_return_val_if_fail (LAPIZ_IS_STATUS_COMBO_BOX (combo), NULL);
 
-	return gtk_container_get_children (GTK_CONTAINER (combo->priv->menu));
+	return ctk_container_get_children (GTK_CONTAINER (combo->priv->menu));
 }
 
 const gchar *

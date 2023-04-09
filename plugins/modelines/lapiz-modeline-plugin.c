@@ -171,7 +171,7 @@ connect_handlers (LapizView *view)
 	DocumentData *data;
         GtkTextBuffer *doc;
 
-        doc = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+        doc = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
         data = g_slice_new (DocumentData);
 
@@ -194,7 +194,7 @@ disconnect_handlers (LapizView *view)
 	DocumentData *data;
 	GtkTextBuffer *doc;
 
-	doc = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	doc = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
 	data = g_object_steal_data (G_OBJECT (doc), DOCUMENT_DATA_KEY);
 

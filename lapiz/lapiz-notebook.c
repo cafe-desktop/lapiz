@@ -41,7 +41,7 @@
 
 #include <glib-object.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-notebook.h"
 #include "lapiz-tab.h"
@@ -106,7 +106,7 @@ lapiz_notebook_dispose (GObject *object)
 	{
 		GList *children, *l;
 
-		children = gtk_container_get_children (GTK_CONTAINER (notebook));
+		children = ctk_container_get_children (GTK_CONTAINER (notebook));
 
 		for (l = children; l != NULL; l = g_list_next (l))
 		{
@@ -245,7 +245,7 @@ find_tab_num_at_pos (LapizNotebook *notebook,
 	GtkNotebook *nb = GTK_NOTEBOOK (notebook);
 	GtkWidget *page;
 
-	tab_pos = gtk_notebook_get_tab_pos (GTK_NOTEBOOK (notebook));
+	tab_pos = ctk_notebook_get_tab_pos (GTK_NOTEBOOK (notebook));
 
 	/* For some reason unfullscreen + quick click can
 	   cause a wrong click event to be reported to the tab */
@@ -254,26 +254,26 @@ find_tab_num_at_pos (LapizNotebook *notebook,
 		return NOT_IN_APP_WINDOWS;
 	}
 
-	while ((page = gtk_notebook_get_nth_page (nb, page_num)) != NULL)
+	while ((page = ctk_notebook_get_nth_page (nb, page_num)) != NULL)
 	{
 		GtkAllocation allocation;
 		GtkWidget *tab;
 		gint max_x, max_y;
 		gint x_root, y_root;
 
-		tab = gtk_notebook_get_tab_label (nb, page);
+		tab = ctk_notebook_get_tab_label (nb, page);
 		g_return_val_if_fail (tab != NULL, AFTER_ALL_TABS);
 
-		if (!gtk_widget_get_mapped (tab))
+		if (!ctk_widget_get_mapped (tab))
 		{
 			++page_num;
 			continue;
 		}
 
-		gdk_window_get_origin (GDK_WINDOW (gtk_widget_get_window (tab)),
+		gdk_window_get_origin (GDK_WINDOW (ctk_widget_get_window (tab)),
 				       &x_root, &y_root);
 
-		gtk_widget_get_allocation(tab, &allocation);
+		ctk_widget_get_allocation(tab, &allocation);
 
 		max_x = x_root + allocation.x + allocation.width;
 		max_y = y_root + allocation.y + allocation.height;
@@ -372,13 +372,13 @@ lapiz_notebook_reorder_tab (LapizNotebook *src,
 	g_return_if_fail (LAPIZ_IS_NOTEBOOK (src));
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
-	old_position = gtk_notebook_page_num (GTK_NOTEBOOK (src),
+	old_position = ctk_notebook_page_num (GTK_NOTEBOOK (src),
 				    	      GTK_WIDGET (tab));
 
 	if (old_position == dest_position)
 		return;
 
-	gtk_notebook_reorder_child (GTK_NOTEBOOK (src),
+	ctk_notebook_reorder_child (GTK_NOTEBOOK (src),
 				    GTK_WIDGET (tab),
 				    dest_position);
 
@@ -398,7 +398,7 @@ drag_start (LapizNotebook *notebook,
 	GdkDevice  *device;
 	GdkDisplay *display;
 
-	display = gtk_widget_get_display (GTK_WIDGET (notebook));
+	display = ctk_widget_get_display (GTK_WIDGET (notebook));
 	seat = gdk_display_get_default_seat (display);
 	device = gdk_seat_get_pointer (seat);
 
@@ -412,13 +412,13 @@ drag_start (LapizNotebook *notebook,
 		cursor = gdk_cursor_new_for_display (display, GDK_FLEUR);
 
 	/* grab the pointer */
-	gtk_grab_add (GTK_WIDGET (notebook));
+	ctk_grab_add (GTK_WIDGET (notebook));
 
 	/* FIXME multi-head */
 	if (!gdk_display_device_is_grabbed (display, device))
 	{
 		gdk_seat_grab (seat,
-			       gtk_widget_get_window (GTK_WIDGET (notebook)),
+			       ctk_widget_get_window (GTK_WIDGET (notebook)),
 			       GDK_SEAT_CAPABILITY_POINTER,
 			       FALSE,
 			       cursor,
@@ -456,13 +456,13 @@ move_current_tab (LapizNotebook *notebook,
 {
 	gint cur_page_num;
 
-	cur_page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
+	cur_page_num = ctk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
 
 	if (dest_position != cur_page_num)
 	{
 		GtkWidget *cur_tab;
 
-		cur_tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook),
+		cur_tab = ctk_notebook_get_nth_page (GTK_NOTEBOOK (notebook),
 						     cur_page_num);
 
 		lapiz_notebook_reorder_tab (LAPIZ_NOTEBOOK (notebook),
@@ -485,7 +485,7 @@ motion_notify_cb (LapizNotebook  *notebook,
 		if (notebook->priv->tab_drag_and_drop_enabled == FALSE)
 			return FALSE;
 
-		if (gtk_drag_check_threshold (GTK_WIDGET (notebook),
+		if (ctk_drag_check_threshold (GTK_WIDGET (notebook),
 					      notebook->priv->x_start,
 					      notebook->priv->y_start,
 					      event->x_root,
@@ -538,7 +538,7 @@ move_current_tab_to_another_notebook (LapizNotebook  *src,
 	GdkDevice  *device;
 	GdkDisplay *display;
 
-	display = gtk_widget_get_display (GTK_WIDGET (GTK_NOTEBOOK (src)));
+	display = ctk_widget_get_display (GTK_WIDGET (GTK_NOTEBOOK (src)));
 	seat = gdk_display_get_default_seat (display);
 	device = gdk_seat_get_pointer (seat);
 
@@ -550,8 +550,8 @@ move_current_tab_to_another_notebook (LapizNotebook  *src,
 	g_return_if_fail (LAPIZ_IS_NOTEBOOK (dest));
 	g_return_if_fail (dest != src);
 
-	cur_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (src));
-	tab = LAPIZ_TAB (gtk_notebook_get_nth_page (GTK_NOTEBOOK (src),
+	cur_page = ctk_notebook_get_current_page (GTK_NOTEBOOK (src));
+	tab = LAPIZ_TAB (ctk_notebook_get_nth_page (GTK_NOTEBOOK (src),
 						    cur_page));
 
 	/* stop drag in origin window */
@@ -561,7 +561,7 @@ move_current_tab_to_another_notebook (LapizNotebook  *src,
 	{
 		gdk_seat_ungrab (seat);
 	}
-	gtk_grab_remove (GTK_WIDGET (src));
+	ctk_grab_remove (GTK_WIDGET (src));
 
 	lapiz_notebook_move_tab (src, dest, tab, dest_position);
 
@@ -584,7 +584,7 @@ button_release_cb (LapizNotebook  *notebook,
 	GdkDevice  *device;
 	GdkDisplay *display;
 
-	display = gtk_widget_get_display (GTK_WIDGET (GTK_NOTEBOOK (notebook)));
+	display = ctk_widget_get_display (GTK_WIDGET (GTK_NOTEBOOK (notebook)));
 	seat = gdk_display_get_default_seat (display);
 	device = gdk_seat_get_pointer (seat);
 
@@ -595,13 +595,13 @@ button_release_cb (LapizNotebook  *notebook,
 		gint cur_page_num;
 		GtkWidget *cur_page;
 
-		cur_page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
-		cur_page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook),
+		cur_page_num = ctk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
+		cur_page = ctk_notebook_get_nth_page (GTK_NOTEBOOK (notebook),
 						      cur_page_num);
 
 		/* CHECK: I don't follow the code here -- Paolo  */
 		if (!is_in_notebook_window (notebook, event->x_root, event->y_root) &&
-		    (gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 1))
+		    (ctk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 1))
 		{
 			/* Tab was detached */
 			g_signal_emit (G_OBJECT (notebook),
@@ -615,7 +615,7 @@ button_release_cb (LapizNotebook  *notebook,
 		{
 			gdk_seat_ungrab (seat);
 		}
-		gtk_grab_remove (GTK_WIDGET (notebook));
+		ctk_grab_remove (GTK_WIDGET (notebook));
 	}
 
 	/* This must be called even if a drag isn't happening */
@@ -675,7 +675,7 @@ button_press_cb (LapizNotebook  *notebook,
 			}
 
 			/* Switch to the page the mouse is over, but don't consume the event */
-			gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
+			ctk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
 						       tab_clicked);
 		}
 	}
@@ -684,7 +684,7 @@ button_press_cb (LapizNotebook  *notebook,
 	{
 		if (event->type == GDK_BUTTON_PRESS)
 		{
-			tab1click = gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
+			tab1click = ctk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
 
 			if (newfile_ready)
 				newfile = (tab_clicked == -1);
@@ -693,7 +693,7 @@ button_press_cb (LapizNotebook  *notebook,
 		}
 		else if (event->type == GDK_2BUTTON_PRESS)
 		{
-			if ((tab1click != gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook))) ||
+			if ((tab1click != ctk_notebook_get_current_page (GTK_NOTEBOOK (notebook))) ||
 			    (tab_clicked >= 0) || ((tab_clicked == -1) && (!newfile)) || (!leftdown))
 				return TRUE;
 
@@ -756,7 +756,7 @@ lapiz_notebook_switch_page_cb (GtkNotebook     *notebook,
 	GtkWidget *child;
 	LapizView *view;
 
-	child = gtk_notebook_get_nth_page (notebook, page_num);
+	child = ctk_notebook_get_nth_page (notebook, page_num);
 
 	/* Remove the old page, we dont want to grow unnecessarily
 	 * the list */
@@ -771,7 +771,7 @@ lapiz_notebook_switch_page_cb (GtkNotebook     *notebook,
 
 	/* give focus to the view */
 	view = lapiz_tab_get_view (LAPIZ_TAB (child));
-	gtk_widget_grab_focus (GTK_WIDGET (view));
+	ctk_widget_grab_focus (GTK_WIDGET (view));
 }
 
 /*
@@ -784,18 +784,18 @@ update_tabs_visibility (LapizNotebook *nb)
 	gboolean   show_tabs;
 	guint      num;
 
-	num = gtk_notebook_get_n_pages (GTK_NOTEBOOK (nb));
+	num = ctk_notebook_get_n_pages (GTK_NOTEBOOK (nb));
 
 	show_tabs = (g_settings_get_boolean (lapiz_prefs_manager->settings, "show-single-tab") || num > 1);
 
 	if (g_settings_get_boolean (lapiz_prefs_manager->settings, "show-tabs-with-side-pane"))
-		gtk_notebook_set_show_tabs (GTK_NOTEBOOK (nb), show_tabs);
+		ctk_notebook_set_show_tabs (GTK_NOTEBOOK (nb), show_tabs);
 	else
 	{
 		if (lapiz_prefs_manager_get_side_pane_visible ())
-			gtk_notebook_set_show_tabs (GTK_NOTEBOOK (nb), FALSE);
+			ctk_notebook_set_show_tabs (GTK_NOTEBOOK (nb), FALSE);
 		else
-			gtk_notebook_set_show_tabs (GTK_NOTEBOOK (nb), show_tabs);
+			ctk_notebook_set_show_tabs (GTK_NOTEBOOK (nb), show_tabs);
 	}
 }
 
@@ -807,9 +807,9 @@ lapiz_notebook_init (LapizNotebook *notebook)
 	notebook->priv->close_buttons_sensitive = TRUE;
 	notebook->priv->tab_drag_and_drop_enabled = TRUE;
 
-	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
-	gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), FALSE);
+	ctk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
+	ctk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
+	ctk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), FALSE);
 
 	g_signal_connect (notebook,
 			  "button-press-event",
@@ -836,7 +836,7 @@ lapiz_notebook_init (LapizNotebook *notebook)
 			  (GCallback)focus_out_cb,
 			  NULL);
 
-	gtk_widget_add_events (GTK_WIDGET (notebook),
+	ctk_widget_add_events (GTK_WIDGET (notebook),
 			       GDK_BUTTON1_MOTION_MASK);
 
 	g_signal_connect_after (G_OBJECT (notebook),
@@ -866,33 +866,33 @@ lapiz_notebook_change_current_page (GtkNotebook *notebook,
 	gboolean wrap_around;
 	gint current;
 
-	current = gtk_notebook_get_current_page (notebook);
+	current = ctk_notebook_get_current_page (notebook);
 
 	if (current != -1)
 	{
 		current = current + offset;
 
-		g_object_get (gtk_widget_get_settings (GTK_WIDGET (notebook)),
-			      "gtk-keynav-wrap-around", &wrap_around,
+		g_object_get (ctk_widget_get_settings (GTK_WIDGET (notebook)),
+			      "ctk-keynav-wrap-around", &wrap_around,
 			      NULL);
 
 		if (wrap_around)
 		{
 			if (current < 0)
 			{
-				current = gtk_notebook_get_n_pages (notebook) - 1;
+				current = ctk_notebook_get_n_pages (notebook) - 1;
 			}
-			else if (current >= gtk_notebook_get_n_pages (notebook))
+			else if (current >= ctk_notebook_get_n_pages (notebook))
 			{
 				current = 0;
 			}
 		}
 
-		gtk_notebook_set_current_page (notebook, current);
+		ctk_notebook_set_current_page (notebook, current);
 	}
 	else
 	{
-		gtk_widget_error_bell (GTK_WIDGET (notebook));
+		ctk_widget_error_bell (GTK_WIDGET (notebook));
 	}
 
 	return TRUE;
@@ -972,7 +972,7 @@ lapiz_notebook_add_tab (LapizNotebook *nb,
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 
 	tab_label = create_tab_label (nb, tab);
-	gtk_notebook_insert_page (GTK_NOTEBOOK (nb),
+	ctk_notebook_insert_page (GTK_NOTEBOOK (nb),
 				  GTK_WIDGET (tab),
 				  tab_label,
 				  position);
@@ -981,20 +981,20 @@ lapiz_notebook_add_tab (LapizNotebook *nb,
 	g_signal_emit (G_OBJECT (nb), signals[TAB_ADDED], 0, tab);
 
 	/* The signal handler may have reordered the tabs */
-	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb),
+	position = ctk_notebook_page_num (GTK_NOTEBOOK (nb),
 					  GTK_WIDGET (tab));
 
 	if (jump_to)
 	{
 		LapizView *view;
 
-		gtk_notebook_set_current_page (GTK_NOTEBOOK (nb), position);
+		ctk_notebook_set_current_page (GTK_NOTEBOOK (nb), position);
 		g_object_set_data (G_OBJECT (tab),
 				   "jump_to",
 				   GINT_TO_POINTER (jump_to));
 		view = lapiz_tab_get_view (tab);
 
-		gtk_widget_grab_focus (GTK_WIDGET (view));
+		ctk_widget_grab_focus (GTK_WIDGET (view));
 	}
 }
 
@@ -1009,7 +1009,7 @@ smart_tab_switching_on_closure (LapizNotebook *nb,
 
 	if (!jump_to || !nb->priv->focused_pages)
 	{
-		gtk_notebook_next_page (GTK_NOTEBOOK (nb));
+		ctk_notebook_next_page (GTK_NOTEBOOK (nb));
 	}
 	else
 	{
@@ -1020,9 +1020,9 @@ smart_tab_switching_on_closure (LapizNotebook *nb,
 		/* activate the last focused tab */
 		l = g_list_last (nb->priv->focused_pages);
 		child = GTK_WIDGET (l->data);
-		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (nb),
+		page_num = ctk_notebook_page_num (GTK_NOTEBOOK (nb),
 						  child);
-		gtk_notebook_set_current_page (GTK_NOTEBOOK (nb),
+		ctk_notebook_set_current_page (GTK_NOTEBOOK (nb),
 					       page_num);
 	}
 }
@@ -1033,7 +1033,7 @@ remove_tab (LapizTab      *tab,
 {
 	gint position;
 
-	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
+	position = ctk_notebook_page_num (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
 
 	/* we ref the tab so that it's still alive while the tabs_removed
 	 * signal is processed.
@@ -1041,7 +1041,7 @@ remove_tab (LapizTab      *tab,
 	g_object_ref (tab);
 
 	remove_tab_label (nb, tab);
-	gtk_notebook_remove_page (GTK_NOTEBOOK (nb), position);
+	ctk_notebook_remove_page (GTK_NOTEBOOK (nb), position);
 	update_tabs_visibility (nb);
 
 	g_signal_emit (G_OBJECT (nb), signals[TAB_REMOVED], 0, tab);
@@ -1069,8 +1069,8 @@ lapiz_notebook_remove_tab (LapizNotebook *nb,
 	nb->priv->focused_pages =  g_list_remove (nb->priv->focused_pages,
 						  tab);
 
-	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
-	curr = gtk_notebook_get_current_page (GTK_NOTEBOOK (nb));
+	position = ctk_notebook_page_num (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
+	curr = ctk_notebook_get_current_page (GTK_NOTEBOOK (nb));
 
 	if (position == curr)
 	{
@@ -1094,7 +1094,7 @@ lapiz_notebook_remove_all_tabs (LapizNotebook *nb)
 	g_list_free (nb->priv->focused_pages);
 	nb->priv->focused_pages = NULL;
 
-	gtk_container_foreach (GTK_CONTAINER (nb),
+	ctk_container_foreach (GTK_CONTAINER (nb),
 			       (GtkCallback)remove_tab,
 			       nb);
 }
@@ -1131,7 +1131,7 @@ lapiz_notebook_set_close_buttons_sensitive (LapizNotebook *nb,
 
 	nb->priv->close_buttons_sensitive = sensitive;
 
-	gtk_container_foreach (GTK_CONTAINER (nb),
+	ctk_container_foreach (GTK_CONTAINER (nb),
 			       (GtkCallback)set_close_buttons_sensitivity,
 			       nb);
 }

@@ -27,8 +27,8 @@
  * See the ChangeLog files for a list of changes.
  */
 
-/* This is a modified version of gtkspell 2.0.2  (gtkspell.sf.net) */
-/* gtkspell - a spell-checking addon for GTK's TextView widget
+/* This is a modified version of ctkspell 2.0.2  (ctkspell.sf.net) */
+/* ctkspell - a spell-checking addon for GTK's TextView widget
  * Copyright (c) 2002 Evan Martin.
  */
 

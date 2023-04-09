@@ -17,7 +17,7 @@ lib##(PLUGIN_MODULE)_la_SOURCES = \
 lib##(PLUGIN_MODULE)_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 lib##(PLUGIN_MODULE)_la_LIBADD  = $(LAPIZ_LIBS)
 
-# UI files (if you use gtkbuilder for your plugin, list those files here)
+# UI files (if you use ctkbuilder for your plugin, list those files here)
 uidir = $(LAPIZ_PLUGINS_DATA_DIR)/##(PLUGIN_MODULE)
 ui_DATA =
 

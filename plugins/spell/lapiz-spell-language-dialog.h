@@ -30,7 +30,7 @@
 #ifndef __LAPIZ_SPELL_LANGUAGE_DIALOG_H__
 #define __LAPIZ_SPELL_LANGUAGE_DIALOG_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "lapiz-spell-checker-language.h"
 
 G_BEGIN_DECLS

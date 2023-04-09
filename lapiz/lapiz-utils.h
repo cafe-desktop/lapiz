@@ -34,7 +34,7 @@
 #define __LAPIZ_UTILS_H__
 
 #include <glib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <atk/atk.h>
 #include <lapiz/lapiz-encodings.h>
 
@@ -60,7 +60,7 @@ void		 lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
 void		 menu_popup_at_treeview_selection	(GtkWidget *menu,
 							 GtkWidget *treeview);
 
-GtkWidget	*lapiz_gtk_button_new_with_icon		(const gchar *label,
+GtkWidget	*lapiz_ctk_button_new_with_icon		(const gchar *label,
 							 const gchar *icon_name);
 
 GtkWidget	*lapiz_dialog_add_button		(GtkDialog   *dialog,
@@ -112,7 +112,7 @@ gchar		*lapiz_utils_replace_home_dir_with_tilde (const gchar *uri);
 
 guint		 lapiz_utils_get_current_workspace	(GdkScreen *screen);
 
-guint		 lapiz_utils_get_window_workspace	(GtkWindow *gtkwindow);
+guint		 lapiz_utils_get_window_workspace	(GtkWindow *ctkwindow);
 
 void		 lapiz_utils_get_current_viewport	(GdkScreen    *screen,
 							 gint         *x,
@@ -147,7 +147,7 @@ gchar 	       **lapiz_utils_drop_get_uris		(GtkSelectionData *selection_data);
 
 /* Provides regexp forward search */
 gboolean
-lapiz_gtk_text_iter_regex_search (const GtkTextIter *iter,
+lapiz_ctk_text_iter_regex_search (const GtkTextIter *iter,
 				  const gchar       *str,
 				  GtkTextSearchFlags flags,
 				  GtkTextIter       *match_start,
