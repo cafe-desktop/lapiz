@@ -47,9 +47,9 @@ enum {
 
 struct _LapizProgressMessageAreaPrivate
 {
-	GtkWidget *image;
-	GtkWidget *label;
-	GtkWidget *progress;
+	CtkWidget *image;
+	CtkWidget *label;
+	CtkWidget *progress;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (LapizProgressMessageArea, lapiz_progress_message_area, CTK_TYPE_INFO_BAR)
@@ -125,8 +125,8 @@ lapiz_progress_message_area_class_init (LapizProgressMessageAreaClass *klass)
 static void
 lapiz_progress_message_area_init (LapizProgressMessageArea *area)
 {
-	GtkWidget *vbox;
-	GtkWidget *hbox;
+	CtkWidget *vbox;
+	CtkWidget *hbox;
 
 	area->priv = lapiz_progress_message_area_get_instance_private (area);
 
@@ -157,13 +157,13 @@ lapiz_progress_message_area_init (LapizProgressMessageArea *area)
 	ctk_box_pack_start (CTK_BOX (vbox), area->priv->progress, TRUE, FALSE, 0);
 	ctk_widget_set_size_request (area->priv->progress, -1, 15);
 
-	GtkWidget *content;
+	CtkWidget *content;
 
 	content = ctk_info_bar_get_content_area (CTK_INFO_BAR (area));
 	ctk_container_add (CTK_CONTAINER (content), vbox);
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_progress_message_area_new (const gchar *image_id,
 				 const gchar *markup,
 				 gboolean     has_cancel)

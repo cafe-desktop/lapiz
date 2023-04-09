@@ -55,7 +55,7 @@ typedef struct _LapizPanel LapizPanel;
 
 struct _LapizPanel
 {
-	GtkBox vbox;
+	CtkBox vbox;
 
 	/*< private > */
 	LapizPanelPrivate *priv;
@@ -68,12 +68,12 @@ typedef struct _LapizPanelClass LapizPanelClass;
 
 struct _LapizPanelClass
 {
-	GtkBoxClass parent_class;
+	CtkBoxClass parent_class;
 
 	void (* item_added)     (LapizPanel     *panel,
-				 GtkWidget      *item);
+				 CtkWidget      *item);
 	void (* item_removed)   (LapizPanel     *panel,
-				 GtkWidget      *item);
+				 CtkWidget      *item);
 
 	/* Keybinding signals */
 	void (* close)          (LapizPanel     *panel);
@@ -91,28 +91,28 @@ struct _LapizPanelClass
  */
 GType 		 lapiz_panel_get_type 			(void) G_GNUC_CONST;
 
-GtkWidget 	*lapiz_panel_new 			(GtkOrientation	 orientation);
+CtkWidget 	*lapiz_panel_new 			(CtkOrientation	 orientation);
 
 void		 lapiz_panel_add_item			(LapizPanel     *panel,
-						      	 GtkWidget      *item,
+						      	 CtkWidget      *item,
 						      	 const gchar    *name,
-							 GtkWidget      *image);
+							 CtkWidget      *image);
 
 void		 lapiz_panel_add_item_with_icon	(LapizPanel     *panel,
-						 GtkWidget      *item,
+						 CtkWidget      *item,
 						 const gchar    *name,
 						 const gchar    *icon_name);
 
 gboolean	 lapiz_panel_remove_item	(LapizPanel     *panel,
-					  	 GtkWidget      *item);
+					  	 CtkWidget      *item);
 
 gboolean	 lapiz_panel_activate_item 	(LapizPanel     *panel,
-					    	 GtkWidget      *item);
+					    	 CtkWidget      *item);
 
 gboolean	 lapiz_panel_item_is_active 	(LapizPanel     *panel,
-					    	 GtkWidget      *item);
+					    	 CtkWidget      *item);
 
-GtkOrientation	 lapiz_panel_get_orientation	(LapizPanel	*panel);
+CtkOrientation	 lapiz_panel_get_orientation	(LapizPanel	*panel);
 
 gint		 lapiz_panel_get_n_items	(LapizPanel	*panel);
 

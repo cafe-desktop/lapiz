@@ -32,8 +32,8 @@ lapiz_close_button_class_init (LapizCloseButtonClass *klass)
 static void
 lapiz_close_button_init (LapizCloseButton *button)
 {
-	GtkWidget *image;
-	GtkCssProvider *css;
+	CtkWidget *image;
+	CtkCssProvider *css;
 	GError *error = NULL;
 	const gchar button_style[] =
 		"* {\n"
@@ -51,7 +51,7 @@ lapiz_close_button_init (LapizCloseButton *button)
 	if (ctk_css_provider_load_from_data (css, button_style,
 	                                     -1, &error))
 	{
-		GtkStyleContext *context;
+		CtkStyleContext *context;
 
 		context = ctk_widget_get_style_context (CTK_WIDGET (button));
 		ctk_style_context_add_provider (context, CTK_STYLE_PROVIDER (css),
@@ -65,7 +65,7 @@ lapiz_close_button_init (LapizCloseButton *button)
 	}
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_close_button_new ()
 {
 	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_CLOSE_BUTTON,

@@ -52,12 +52,12 @@
 
 struct _LapizFileBrowserPluginPrivate
 {
-	GtkWidget               *window;
+	CtkWidget               *window;
 
 	LapizFileBrowserWidget * tree_widget;
 	gulong                   merge_id;
-	GtkActionGroup         * action_group;
-	GtkActionGroup	       * single_selection_action_group;
+	CtkActionGroup         * action_group;
+	CtkActionGroup	       * single_selection_action_group;
 	gboolean	         auto_root;
 	gulong                   end_loading_handle;
 	gboolean		 confirm_trash;
@@ -186,7 +186,7 @@ lapiz_file_browser_plugin_get_property (GObject    *object,
 
 static void
 on_end_loading_cb (LapizFileBrowserStore      * store,
-                   GtkTreeIter                * iter,
+                   CtkTreeIter                * iter,
                    LapizFileBrowserPluginPrivate * data)
 {
 	/* Disconnect the signal */
@@ -444,7 +444,7 @@ set_root_from_doc (LapizFileBrowserPluginPrivate * data,
 }
 
 static void
-on_action_set_active_root (GtkAction * action,
+on_action_set_active_root (CtkAction * action,
                            LapizFileBrowserPluginPrivate * data)
 {
 	set_root_from_doc (data,
@@ -472,7 +472,7 @@ get_terminal (LapizFileBrowserPluginPrivate * data)
 }
 
 static void
-on_action_open_terminal (GtkAction * action,
+on_action_open_terminal (CtkAction * action,
                          LapizFileBrowserPluginPrivate * data)
 {
 	gchar * terminal;
@@ -481,7 +481,7 @@ on_action_open_terminal (GtkAction * action,
 	gchar * argv[2];
 	GFile * file;
 
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	LapizFileBrowserStore * store;
 
 	/* Get the current directory */
@@ -522,12 +522,12 @@ on_action_open_terminal (GtkAction * action,
 }
 
 static void
-on_selection_changed_cb (GtkTreeSelection *selection,
+on_selection_changed_cb (CtkTreeSelection *selection,
 			 LapizFileBrowserPluginPrivate *data)
 {
-	GtkTreeView * tree_view;
-	GtkTreeModel * model;
-	GtkTreeIter iter;
+	CtkTreeView * tree_view;
+	CtkTreeModel * model;
+	CtkTreeIter iter;
 	gboolean sensitive;
 	gchar * uri;
 
@@ -571,7 +571,7 @@ on_selection_changed_cb (GtkTreeSelection *selection,
 "  </popup>"                                    \
 "</ui>"
 
-static GtkActionEntry extra_actions[] =
+static CtkActionEntry extra_actions[] =
 {
 	{"SetActiveRoot", "go-jump", N_("_Set root to active document"),
 	 NULL,
@@ -579,7 +579,7 @@ static GtkActionEntry extra_actions[] =
 	 G_CALLBACK (on_action_set_active_root)}
 };
 
-static GtkActionEntry extra_single_selection_actions[] = {
+static CtkActionEntry extra_single_selection_actions[] = {
 	{"OpenTerminal", "utilities-terminal", N_("_Open terminal here"),
 	 NULL,
 	 N_("Open a terminal at the currently opened directory"),
@@ -589,8 +589,8 @@ static GtkActionEntry extra_single_selection_actions[] = {
 static void
 add_popup_ui (LapizFileBrowserPluginPrivate *data)
 {
-	GtkUIManager * manager;
-	GtkActionGroup * action_group;
+	CtkUIManager * manager;
+	CtkActionGroup * action_group;
 	GError * error = NULL;
 
 	manager = lapiz_file_browser_widget_get_ui_manager (data->tree_widget);
@@ -627,7 +627,7 @@ add_popup_ui (LapizFileBrowserPluginPrivate *data)
 static void
 remove_popup_ui (LapizFileBrowserPluginPrivate *data)
 {
-	GtkUIManager * manager;
+	CtkUIManager * manager;
 
 	manager = lapiz_file_browser_widget_get_ui_manager (data->tree_widget);
 	ctk_ui_manager_remove_ui (manager, data->merge_id);
@@ -661,7 +661,7 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 	LapizFileBrowserPluginPrivate *data;
 	LapizWindow *window;
 	LapizPanel * panel;
-	GtkWidget * image;
+	CtkWidget * image;
 	GdkPixbuf * pixbuf;
 	LapizFileBrowserStore * store;
 	gchar *data_dir;
@@ -853,7 +853,7 @@ on_error_cb (LapizFileBrowserWidget * tree_widget,
 	     guint code, gchar const *message, LapizFileBrowserPluginPrivate * data)
 {
 	gchar * title;
-	GtkWidget * dlg;
+	CtkWidget * dlg;
 
 	/* Do not show the error when the root has been set automatically */
 	if (data->auto_root && (code == LAPIZ_FILE_BROWSER_ERROR_SET_ROOT ||
@@ -917,7 +917,7 @@ on_model_set_cb (LapizFileBrowserView * widget,
                  GParamSpec *arg1,
                  LapizFileBrowserPluginPrivate * data)
 {
-	GtkTreeModel * model;
+	CtkTreeModel * model;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget)));
 
@@ -1100,9 +1100,9 @@ on_tab_added_cb (LapizWindow * window,
 }
 
 static gchar *
-get_filename_from_path (GtkTreeModel *model, GtkTreePath *path)
+get_filename_from_path (CtkTreeModel *model, CtkTreePath *path)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gchar *uri;
 
 	ctk_tree_model_get_iter (model, &iter, path);
@@ -1157,7 +1157,7 @@ on_confirm_delete_cb (LapizFileBrowserWidget *widget,
 		return TRUE;
 
 	if (paths->next == NULL) {
-		normal = get_filename_from_path (CTK_TREE_MODEL (store), (GtkTreePath *)(paths->data));
+		normal = get_filename_from_path (CTK_TREE_MODEL (store), (CtkTreePath *)(paths->data));
 		message = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\"?"), normal);
 		g_free (normal);
 	} else {

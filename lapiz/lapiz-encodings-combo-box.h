@@ -52,20 +52,20 @@ typedef struct _LapizEncodingsComboBoxPrivate	LapizEncodingsComboBoxPrivate;
 
 struct _LapizEncodingsComboBox
 {
-	GtkComboBox			 parent;
+	CtkComboBox			 parent;
 
 	LapizEncodingsComboBoxPrivate	*priv;
 };
 
 struct _LapizEncodingsComboBoxClass
 {
-	GtkComboBoxClass		 parent_class;
+	CtkComboBoxClass		 parent_class;
 };
 
 GType		     lapiz_encodings_combo_box_get_type		(void) G_GNUC_CONST;
 
 /* Constructor */
-GtkWidget 	    *lapiz_encodings_combo_box_new 			(gboolean save_mode);
+CtkWidget 	    *lapiz_encodings_combo_box_new 			(gboolean save_mode);
 
 const LapizEncoding *lapiz_encodings_combo_box_get_selected_encoding	(LapizEncodingsComboBox *menu);
 void		     lapiz_encodings_combo_box_set_selected_encoding	(LapizEncodingsComboBox *menu,

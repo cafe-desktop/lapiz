@@ -5,7 +5,7 @@
   <object class="LapizDocument" id="commands_buffer">
   	<property name="highlight-matching-brackets">True</property>
   </object>
-  <object class="GtkListStore" id="model_applicability">
+  <object class="CtkListStore" id="model_applicability">
     <columns>
       <!-- column-name gchararray -->
       <column type="gchararray"/>
@@ -35,7 +35,7 @@
       </row>
     </data>
   </object>
-  <object class="GtkListStore" id="model_input">
+  <object class="CtkListStore" id="model_input">
     <columns>
       <!-- column-name gchararray -->
       <column type="gchararray"/>
@@ -69,7 +69,7 @@
       </row>
     </data>
   </object>
-  <object class="GtkListStore" id="model_output">
+  <object class="CtkListStore" id="model_output">
     <columns>
       <!-- column-name gchararray -->
       <column type="gchararray"/>
@@ -107,7 +107,7 @@
       </row>
     </data>
   </object>
-  <object class="GtkListStore" id="model_save_files">
+  <object class="CtkListStore" id="model_save_files">
     <columns>
       <!-- column-name gchararray -->
       <column type="gchararray"/>
@@ -129,7 +129,7 @@
       </row>
     </data>
   </object>
-  <object class="GtkDialog" id="tool-manager-dialog">
+  <object class="CtkDialog" id="tool-manager-dialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">External Tools Manager</property>
     <property name="default_width">750</property>
@@ -143,17 +143,17 @@
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox" id="tool-manager-dialog-vbox">
+      <object class="CtkBox" id="tool-manager-dialog-vbox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="hbuttonbox1">
+          <object class="CtkButtonBox" id="hbuttonbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="CtkButton" id="button1">
                 <property name="label">ctk-help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -168,7 +168,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button2">
+              <object class="CtkButton" id="button2">
                 <property name="label">ctk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -191,14 +191,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkPaned" id="paned">
+          <object class="CtkPaned" id="paned">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <property name="position">275</property>
             <child>
-              <object class="GtkGrid">
+              <object class="CtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">6</property>
@@ -210,20 +210,20 @@
                 <property name="orientation">vertical</property>
                 <property name="row_spacing">6</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="scrolled_window1">
+                  <object class="CtkScrolledWindow" id="scrolled_window1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="shadow_type">in</property>
                     <child>
-                      <object class="GtkTreeView" id="view">
+                      <object class="CtkTreeView" id="view">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="headers_visible">False</property>
                         <property name="reorderable">True</property>
                         <child internal-child="selection">
-                          <object class="GtkTreeSelection"/>
+                          <object class="CtkTreeSelection"/>
                         </child>
                       </object>
                     </child>
@@ -234,7 +234,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label20">
+                  <object class="CtkLabel" id="label20">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_Tools:</property>
@@ -248,12 +248,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButtonBox">
+                  <object class="CtkButtonBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="layout_style">start</property>
                     <child>
-                      <object class="GtkButton" id="new-tool-button">
+                      <object class="CtkButton" id="new-tool-button">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="can_default">True</property>
@@ -261,7 +261,7 @@
                         <property name="halign">start</property>
                         <signal name="clicked" handler="on_new_tool_button_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="new-tool-image">
+                          <object class="CtkImage" id="new-tool-image">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">ctk-new</property>
@@ -276,7 +276,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="remove-tool-button">
+                      <object class="CtkButton" id="remove-tool-button">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="can_default">True</property>
@@ -284,7 +284,7 @@
                         <property name="halign">start</property>
                         <signal name="clicked" handler="on_remove_tool_button_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="remove-tool-image">
+                          <object class="CtkImage" id="remove-tool-image">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">ctk-delete</property>
@@ -299,13 +299,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="revert-tool-button">
+                      <object class="CtkButton" id="revert-tool-button">
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
                         <property name="halign">start</property>
                         <signal name="clicked" handler="on_remove_tool_button_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="revert-tool-image">
+                          <object class="CtkImage" id="revert-tool-image">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">ctk-revert-to-saved</property>
@@ -332,7 +332,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid">
+              <object class="CtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
@@ -340,7 +340,7 @@
                 <property name="orientation">vertical</property>
                 <property name="row_spacing">6</property>
                 <child>
-                  <object class="GtkGrid" id="tool-table">
+                  <object class="CtkGrid" id="tool-table">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -349,7 +349,7 @@
                     <property name="row_spacing">6</property>
                     <property name="column_spacing">6</property>
                     <child>
-                      <object class="GtkLabel" id="label23">
+                      <object class="CtkLabel" id="label23">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Applicability:</property>
@@ -362,7 +362,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label8">
+                      <object class="CtkLabel" id="label8">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Output:</property>
@@ -375,7 +375,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label7">
+                      <object class="CtkLabel" id="label7">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Input:</property>
@@ -388,7 +388,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label6">
+                      <object class="CtkLabel" id="label6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Save:</property>
@@ -401,7 +401,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label3">
+                      <object class="CtkLabel" id="label3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Shortcut Key:</property>
@@ -414,12 +414,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="output">
+                      <object class="CtkComboBox" id="output">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">model_output</property>
                         <child>
-                          <object class="GtkCellRendererText" id="output_renderer"/>
+                          <object class="CtkCellRendererText" id="output_renderer"/>
                           <attributes>
                             <attribute name="text">0</attribute>
                           </attributes>
@@ -431,12 +431,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="input">
+                      <object class="CtkComboBox" id="input">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">model_input</property>
                         <child>
-                          <object class="GtkCellRendererText" id="input_renderer"/>
+                          <object class="CtkCellRendererText" id="input_renderer"/>
                           <attributes>
                             <attribute name="text">0</attribute>
                           </attributes>
@@ -448,12 +448,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="save-files">
+                      <object class="CtkComboBox" id="save-files">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">model_save_files</property>
                         <child>
-                          <object class="GtkCellRendererText" id="renderer1"/>
+                          <object class="CtkCellRendererText" id="renderer1"/>
                           <attributes>
                             <attribute name="text">0</attribute>
                           </attributes>
@@ -465,7 +465,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="accelerator">
+                      <object class="CtkEntry" id="accelerator">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <signal name="focus-in-event" handler="on_accelerator_focus_in" swapped="no"/>
@@ -478,7 +478,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScrolledWindow" id="scrolledwindow1">
+                      <object class="CtkScrolledWindow" id="scrolledwindow1">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="hexpand">True</property>
@@ -505,21 +505,21 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid">
+                      <object class="CtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkEventBox" id="languages_event_box">
+                          <object class="CtkEventBox" id="languages_event_box">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkButton" id="languages_button">
+                              <object class="CtkButton" id="languages_button">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
                                 <signal name="clicked" handler="on_languages_button_clicked" swapped="no"/>
                                 <child>
-                                  <object class="GtkLabel" id="languages_label">
+                                  <object class="CtkLabel" id="languages_label">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">All Languages</property>
@@ -537,12 +537,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox" id="applicability">
+                          <object class="CtkComboBox" id="applicability">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="model">model_applicability</property>
                             <child>
-                              <object class="GtkCellRendererText" id="applicability_renderer"/>
+                              <object class="CtkCellRendererText" id="applicability_renderer"/>
                               <attributes>
                                 <attribute name="text">0</attribute>
                               </attributes>
@@ -566,7 +566,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="title">
+                  <object class="CtkLabel" id="title">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">_Edit:</property>

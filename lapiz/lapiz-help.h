@@ -35,7 +35,7 @@
 
 G_BEGIN_DECLS
 
-gboolean	lapiz_help_display (GtkWindow   *parent,
+gboolean	lapiz_help_display (CtkWindow   *parent,
 				    const gchar *name, /* "lapiz" if NULL */
 				    const gchar *link_id);
 

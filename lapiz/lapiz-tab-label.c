@@ -46,11 +46,11 @@ struct _LapizTabLabelPrivate
 {
 	LapizTab *tab;
 
-	GtkWidget *ebox;
-	GtkWidget *close_button;
-	GtkWidget *spinner;
-	GtkWidget *icon;
-	GtkWidget *label;
+	CtkWidget *ebox;
+	CtkWidget *close_button;
+	CtkWidget *spinner;
+	CtkWidget *icon;
+	CtkWidget *label;
 
 	gboolean close_button_sensitive;
 };
@@ -106,7 +106,7 @@ lapiz_tab_label_get_property (GObject    *object,
 }
 
 static void
-close_button_clicked_cb (GtkWidget     *widget,
+close_button_clicked_cb (CtkWidget     *widget,
 			 LapizTabLabel *tab_label)
 {
 	g_signal_emit (tab_label, signals[CLOSE_CLICKED], 0, NULL);
@@ -245,13 +245,13 @@ lapiz_tab_label_class_init (LapizTabLabelClass *klass)
 static void
 lapiz_tab_label_init (LapizTabLabel *tab_label)
 {
-	GtkWidget *ebox;
-	GtkWidget *hbox;
-	GtkWidget *close_button;
-	GtkWidget *spinner;
-	GtkWidget *icon;
-	GtkWidget *label;
-	GtkWidget *dummy_label;
+	CtkWidget *ebox;
+	CtkWidget *hbox;
+	CtkWidget *close_button;
+	CtkWidget *spinner;
+	CtkWidget *icon;
+	CtkWidget *label;
+	CtkWidget *dummy_label;
 
 	tab_label->priv = lapiz_tab_label_get_instance_private (tab_label);
 
@@ -344,7 +344,7 @@ lapiz_tab_label_get_tab (LapizTabLabel *tab_label)
 	return tab_label->priv->tab;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_tab_label_new (LapizTab *tab)
 {
 	LapizTabLabel *tab_label;

@@ -80,9 +80,9 @@ msgid "Style Scheme"
 msgstr "Սխեմայի Ոճը"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgid "The ID of a CtkSourceView Style Scheme used to color the text."
 msgstr ""
-"GtkSourceView Ոճի Գունային Գամմայի ID֊ն օգտագործված է տեքստի գույնի համար։"
+"CtkSourceView Ոճի Գունային Գամմայի ID֊ն օգտագործված է տեքստի գույնի համար։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"

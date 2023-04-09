@@ -18,7 +18,7 @@
 import os
 import re
 
-from gi.repository import GLib, Gio, Gdk, Gtk, Lapiz
+from gi.repository import GLib, Gio, Gdk, Ctk, Lapiz
 
 from .Library import Library
 from .Snippet import Snippet
@@ -176,7 +176,7 @@ class Document:
         if not self.view or not self.view.get_editable():
             return False
 
-        accelerator = Gtk.accelerator_name(keyval, mod)
+        accelerator = Ctk.accelerator_name(keyval, mod)
         snippets = Library().from_accelerator(accelerator, \
                 self.language_id)
 
@@ -811,7 +811,7 @@ class Document:
             library.ensure_files()
             library.ensure(self.language_id)
             self.accelerator_activate(event.keyval, \
-                    state & Gtk.accelerator_get_default_mod_mask())
+                    state & Ctk.accelerator_get_default_mod_mask())
 
         return False
 
@@ -897,7 +897,7 @@ class Document:
 
     def in_bounds(self, x, y):
         rect = self.view.get_visible_rect()
-        rect.x, rect.y = self.view.buffer_to_window_coords(Gtk.TextWindowType.WIDGET, rect.x, rect.y)
+        rect.x, rect.y = self.view.buffer_to_window_coords(Ctk.TextWindowType.WIDGET, rect.x, rect.y)
 
         return not (x < rect.x or x > rect.x + rect.width or y < rect.y or y > rect.y + rect.height)
 
@@ -937,7 +937,7 @@ class Document:
             view.grab_focus()
 
     def find_uri_target(self, context):
-        lst = Gtk.target_list_add_uri_targets((), 0)
+        lst = Ctk.target_list_add_uri_targets((), 0)
 
         return self.view.drag_dest_find_target(context, lst)
 
@@ -972,7 +972,7 @@ class Document:
 
     def iter_coords(self, piter):
         rect = self.view.get_iter_location(piter)
-        rect.x, rect.y = self.view.buffer_to_window_coords(Gtk.TextWindowType.TEXT, rect.x, rect.y)
+        rect.x, rect.y = self.view.buffer_to_window_coords(Ctk.TextWindowType.TEXT, rect.x, rect.y)
 
         return rect
 
@@ -1001,13 +1001,13 @@ class Document:
 
         line = start.copy()
         line.set_line_offset(0)
-        geom = self.view.get_window(Gtk.TextWindowType.TEXT).get_geometry()
+        geom = self.view.get_window(Ctk.TextWindowType.TEXT).get_geometry()
 
         ctx.translate(0.5, 0.5)
 
         while line.get_line() <= end_line:
             ypos, height = self.view.get_line_yrange(line)
-            x_, ypos = self.view.window_to_buffer_coords(Gtk.TextWindowType.TEXT, 0, ypos)
+            x_, ypos = self.view.window_to_buffer_coords(Ctk.TextWindowType.TEXT, 0, ypos)
 
             if line.get_line() == start_line and line.get_line() == end_line:
                 # Simply draw a box, both are on the same line
@@ -1049,7 +1049,7 @@ class Document:
         if isinstance(placeholder, PlaceholderEnd):
             return
 
-        col = self.view.get_style_context().get_color(Gtk.StateFlags.INSENSITIVE)
+        col = self.view.get_style_context().get_color(Ctk.StateFlags.INSENSITIVE)
         col.alpha = 0.5
         Gdk.cairo_set_source_rgba(ctx, col)
 
@@ -1067,13 +1067,13 @@ class Document:
             self.draw_placeholder_rect(ctx, placeholder)
 
     def on_draw(self, view, ctx):
-        window = view.get_window(Gtk.TextWindowType.TEXT)
+        window = view.get_window(Ctk.TextWindowType.TEXT)
 
-        if not Gtk.cairo_should_draw_window(ctx, window):
+        if not Ctk.cairo_should_draw_window(ctx, window):
             return False
 
         ctx.set_line_width(1.0)
-        Gtk.cairo_transform_to_window(ctx, view, window)
+        Ctk.cairo_transform_to_window(ctx, view, window)
         clipped, clip = Gdk.cairo_get_clip_rectangle(ctx)
 
         if not clipped:

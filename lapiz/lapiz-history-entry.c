@@ -55,7 +55,7 @@ struct _LapizHistoryEntryPrivate
 	gchar              *history_id;
 	guint               history_length;
 
-	GtkEntryCompletion *completion;
+	CtkEntryCompletion *completion;
 
 	GSettings          *settings;
 };
@@ -171,22 +171,22 @@ lapiz_history_entry_class_init (LapizHistoryEntryClass *klass)
 	/* TODO: Add enable-completion property */
 }
 
-static GtkListStore *
+static CtkListStore *
 get_history_store (LapizHistoryEntry *entry)
 {
-	GtkTreeModel *store;
+	CtkTreeModel *store;
 
 	store = ctk_combo_box_get_model (CTK_COMBO_BOX (entry));
 	g_return_val_if_fail (CTK_IS_LIST_STORE (store), NULL);
 
-	return (GtkListStore *) store;
+	return (CtkListStore *) store;
 }
 
 static GSList *
 get_history_list (LapizHistoryEntry *entry)
 {
-	GtkListStore *store;
-	GtkTreeIter iter;
+	CtkListStore *store;
+	CtkTreeIter iter;
 	gboolean valid;
 	GSList *list = NULL;
 
@@ -231,10 +231,10 @@ lapiz_history_entry_save_history (LapizHistoryEntry *entry)
 }
 
 static gboolean
-remove_item (GtkListStore *store,
+remove_item (CtkListStore *store,
 	     const gchar  *text)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	g_return_val_if_fail (text != NULL, FALSE);
 
@@ -267,11 +267,11 @@ remove_item (GtkListStore *store,
 }
 
 static void
-clamp_list_store (GtkListStore *store,
+clamp_list_store (CtkListStore *store,
 		  guint         max)
 {
-	GtkTreePath *path;
-	GtkTreeIter iter;
+	CtkTreePath *path;
+	CtkTreeIter iter;
 
 	/* -1 because TreePath counts from 0 */
 	path = ctk_tree_path_new_from_indices (max - 1, -1);
@@ -293,8 +293,8 @@ insert_history_item (LapizHistoryEntry *entry,
 		     const gchar       *text,
 		     gboolean           prepend)
 {
-	GtkListStore *store;
-	GtkTreeIter iter;
+	CtkListStore *store;
+	CtkTreeIter iter;
 
 	if (g_utf8_strlen (text, -1) <= MIN_ITEM_LEN)
 		return;
@@ -348,8 +348,8 @@ static void
 lapiz_history_entry_load_history (LapizHistoryEntry *entry)
 {
 	GSList *settings_items, *l;
-	GtkListStore *store;
-	GtkTreeIter iter;
+	CtkListStore *store;
+	CtkTreeIter iter;
 	guint i;
 
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
@@ -380,7 +380,7 @@ lapiz_history_entry_load_history (LapizHistoryEntry *entry)
 void
 lapiz_history_entry_clear (LapizHistoryEntry *entry)
 {
-	GtkListStore *store;
+	CtkListStore *store;
 
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
@@ -484,12 +484,12 @@ lapiz_history_entry_get_enable_completion (LapizHistoryEntry *entry)
 	return entry->priv->completion != NULL;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_history_entry_new (const gchar *history_id,
 			 gboolean     enable_completion)
 {
-	GtkWidget *ret;
-	GtkListStore *store;
+	CtkWidget *ret;
+	CtkListStore *store;
 
 	g_return_val_if_fail (history_id != NULL, NULL);
 
@@ -512,7 +512,7 @@ lapiz_history_entry_new (const gchar *history_id,
 
 	/* loading has to happen after the model
 	 * has been set. However the model is not a
-	 * G_PARAM_CONSTRUCT property of GtkComboBox
+	 * G_PARAM_CONSTRUCT property of CtkComboBox
 	 * so we cannot do this in the constructor.
 	 * For now we simply do here since this widget is
 	 * not bound to other programming languages.
@@ -533,11 +533,11 @@ lapiz_history_entry_new (const gchar *history_id,
  * Utility function to get the editable text entry internal widget.
  * I would prefer to not expose this implementation detail and
  * simply make the LapizHistoryEntry widget implement the
- * GtkEditable interface. Unfortunately both GtkEditable and
- * GtkComboBox have a "changed" signal and I am not sure how to
+ * CtkEditable interface. Unfortunately both CtkEditable and
+ * CtkComboBox have a "changed" signal and I am not sure how to
  * handle the conflict.
  */
-GtkWidget *
+CtkWidget *
 lapiz_history_entry_get_entry (LapizHistoryEntry *entry)
 {
 	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), NULL);
@@ -546,10 +546,10 @@ lapiz_history_entry_get_entry (LapizHistoryEntry *entry)
 }
 
 static void
-escape_cell_data_func (GtkTreeViewColumn           *col,
-		       GtkCellRenderer             *renderer,
-		       GtkTreeModel                *model,
-		       GtkTreeIter                 *iter,
+escape_cell_data_func (CtkTreeViewColumn           *col,
+		       CtkCellRenderer             *renderer,
+		       CtkTreeModel                *model,
+		       CtkTreeIter                 *iter,
 		       LapizHistoryEntryEscapeFunc  escape_func)
 {
 	gchar *str;
@@ -579,7 +579,7 @@ lapiz_history_entry_set_escape_func (LapizHistoryEntry           *entry,
 	if (escape_func != NULL)
 		ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (entry),
 						    CTK_CELL_RENDERER (cells->data),
-						    (GtkCellLayoutDataFunc) escape_cell_data_func,
+						    (CtkCellLayoutDataFunc) escape_cell_data_func,
 						    escape_func,
 						    NULL);
 	else

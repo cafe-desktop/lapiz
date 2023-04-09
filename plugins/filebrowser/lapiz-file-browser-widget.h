@@ -43,19 +43,19 @@ typedef struct _LapizFileBrowserWidgetPrivate LapizFileBrowserWidgetPrivate;
 typedef
 gboolean (*LapizFileBrowserWidgetFilterFunc) (LapizFileBrowserWidget * obj,
 					      LapizFileBrowserStore *
-					      model, GtkTreeIter * iter,
+					      model, CtkTreeIter * iter,
 					      gpointer user_data);
 
 struct _LapizFileBrowserWidget
 {
-	GtkBox parent;
+	CtkBox parent;
 
 	LapizFileBrowserWidgetPrivate *priv;
 };
 
 struct _LapizFileBrowserWidgetClass
 {
-	GtkBoxClass parent_class;
+	CtkBoxClass parent_class;
 
 	/* Signals */
 	void (*uri_activated)        (LapizFileBrowserWidget * widget,
@@ -73,7 +73,7 @@ struct _LapizFileBrowserWidgetClass
 GType lapiz_file_browser_widget_get_type            (void) G_GNUC_CONST;
 void _lapiz_file_browser_widget_register_type       (GTypeModule * module);
 
-GtkWidget *lapiz_file_browser_widget_new            (const gchar *data_dir);
+CtkWidget *lapiz_file_browser_widget_new            (const gchar *data_dir);
 
 void lapiz_file_browser_widget_show_bookmarks       (LapizFileBrowserWidget * obj);
 void lapiz_file_browser_widget_show_files           (LapizFileBrowserWidget * obj);
@@ -88,7 +88,7 @@ lapiz_file_browser_widget_set_root_and_virtual_root (LapizFileBrowserWidget * ob
 
 gboolean
 lapiz_file_browser_widget_get_selected_directory    (LapizFileBrowserWidget * obj,
-                                                     GtkTreeIter * iter);
+                                                     CtkTreeIter * iter);
 
 LapizFileBrowserStore *
 lapiz_file_browser_widget_get_browser_store         (LapizFileBrowserWidget * obj);
@@ -96,10 +96,10 @@ LapizFileBookmarksStore *
 lapiz_file_browser_widget_get_bookmarks_store       (LapizFileBrowserWidget * obj);
 LapizFileBrowserView *
 lapiz_file_browser_widget_get_browser_view          (LapizFileBrowserWidget * obj);
-GtkWidget *
+CtkWidget *
 lapiz_file_browser_widget_get_filter_entry          (LapizFileBrowserWidget * obj);
 
-GtkUIManager *
+CtkUIManager *
 lapiz_file_browser_widget_get_ui_manager            (LapizFileBrowserWidget * obj);
 
 gulong lapiz_file_browser_widget_add_filter         (LapizFileBrowserWidget * obj,

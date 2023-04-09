@@ -28,13 +28,13 @@ import string
 import sys
 import re
 import traceback
-from gi.repository import GObject, Gdk, Gtk, Pango
+from gi.repository import GObject, Gdk, Ctk, Pango
 
 from .config import PythonConsoleConfig
 
 __all__ = ('PythonConsole', 'OutFile')
 
-class PythonConsole(Gtk.ScrolledWindow):
+class PythonConsole(Ctk.ScrolledWindow):
 
     __gsignals__ = {
         'grab-focus' : 'override',
@@ -43,13 +43,13 @@ class PythonConsole(Gtk.ScrolledWindow):
     DEFAULT_FONT = "Monospace 10"
 
     def __init__(self, namespace = {}):
-        Gtk.ScrolledWindow.__init__(self)
+        Ctk.ScrolledWindow.__init__(self)
 
-        self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        self.set_shadow_type(Gtk.ShadowType.IN)
-        self.view = Gtk.TextView()
+        self.set_policy(Ctk.PolicyType.NEVER, Ctk.PolicyType.AUTOMATIC)
+        self.set_shadow_type(Ctk.ShadowType.IN)
+        self.view = Ctk.TextView()
         self.view.set_editable(True)
-        self.view.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+        self.view.set_wrap_mode(Ctk.WrapMode.WORD_CHAR)
         self.add(self.view)
         self.view.show()
 
@@ -117,7 +117,7 @@ class PythonConsole(Gtk.ScrolledWindow):
         self.namespace = None
 
     def __key_press_event_cb(self, view, event):
-        modifier_mask = Gtk.accelerator_get_default_mod_mask()
+        modifier_mask = Ctk.accelerator_get_default_mod_mask()
         event_state = event.state & modifier_mask
         keyname = Gdk.keyval_name(event.keyval)
 
@@ -369,7 +369,7 @@ class PythonConsole(Gtk.ScrolledWindow):
 
     def destroy(self):
         pass
-        #Gtk.ScrolledWindow.destroy(self)
+        #Ctk.ScrolledWindow.destroy(self)
 
 class OutFile:
     """A fake output file object. It sends output to a TK test widget,

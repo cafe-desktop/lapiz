@@ -130,12 +130,12 @@ void		 _lapiz_window_set_lockdown		(LapizWindow         *window,
 							 LapizLockdownMask    lockdown);
 
 /* global print config */
-GtkPageSetup		*_lapiz_app_get_default_page_setup	(LapizApp         *app);
+CtkPageSetup		*_lapiz_app_get_default_page_setup	(LapizApp         *app);
 void			 _lapiz_app_set_default_page_setup	(LapizApp         *app,
-								 GtkPageSetup     *page_setup);
-GtkPrintSettings	*_lapiz_app_get_default_print_settings	(LapizApp         *app);
+								 CtkPageSetup     *page_setup);
+CtkPrintSettings	*_lapiz_app_get_default_print_settings	(LapizApp         *app);
 void			 _lapiz_app_set_default_print_settings	(LapizApp         *app,
-								 GtkPrintSettings *settings);
+								 CtkPrintSettings *settings);
 
 G_END_DECLS
 

@@ -54,12 +54,12 @@
 
 struct _LapizFileChooserDialogPrivate
 {
-	GtkWidget *option_menu;
-	GtkWidget *extra_widget;
+	CtkWidget *option_menu;
+	CtkWidget *extra_widget;
 
-	GtkWidget *newline_label;
-	GtkWidget *newline_combo;
-	GtkListStore *newline_store;
+	CtkWidget *newline_label;
+	CtkWidget *newline_combo;
+	CtkListStore *newline_store;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (LapizFileChooserDialog, lapiz_file_chooser_dialog, CTK_TYPE_FILE_CHOOSER_DIALOG)
@@ -72,8 +72,8 @@ lapiz_file_chooser_dialog_class_init (LapizFileChooserDialogClass *klass)
 static void
 create_option_menu (LapizFileChooserDialog *dialog)
 {
-	GtkWidget *label;
-	GtkWidget *menu;
+	CtkWidget *label;
+	CtkWidget *menu;
 
 	label = ctk_label_new_with_mnemonic (_("C_haracter Encoding:"));
 	ctk_label_set_xalign (CTK_LABEL (label), 0.0);
@@ -117,9 +117,9 @@ update_newline_visibility (LapizFileChooserDialog *dialog)
 }
 
 static void
-newline_combo_append (GtkComboBox              *combo,
-                      GtkListStore             *store,
-                      GtkTreeIter              *iter,
+newline_combo_append (CtkComboBox              *combo,
+                      CtkListStore             *store,
+                      CtkTreeIter              *iter,
                       const gchar              *label,
                       LapizDocumentNewlineType  newline_type)
 {
@@ -135,10 +135,10 @@ newline_combo_append (GtkComboBox              *combo,
 static void
 create_newline_combo (LapizFileChooserDialog *dialog)
 {
-	GtkWidget *label, *combo;
-	GtkListStore *store;
-	GtkCellRenderer *renderer;
-	GtkTreeIter iter;
+	CtkWidget *label, *combo;
+	CtkListStore *store;
+	CtkCellRenderer *renderer;
+	CtkTreeIter iter;
 
 	label = ctk_label_new_with_mnemonic (_("L_ine Ending:"));
 	ctk_label_set_xalign (CTK_LABEL (label), 0.0);
@@ -215,7 +215,7 @@ action_changed (LapizFileChooserDialog *dialog,
 		GParamSpec	       *pspec,
 		gpointer		data)
 {
-	GtkFileChooserAction action;
+	CtkFileChooserAction action;
 
 	action = ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog));
 
@@ -245,7 +245,7 @@ filter_changed (LapizFileChooserDialog *dialog,
 		GParamSpec	       *pspec,
 		gpointer		data)
 {
-	GtkFileFilter *filter;
+	CtkFileFilter *filter;
 
 	if (!lapiz_prefs_manager_active_file_filter_can_set ())
 		return;
@@ -270,7 +270,7 @@ filter_changed (LapizFileChooserDialog *dialog,
 
 /* FIXME: use globs too - Paolo (Aug. 27, 2007) */
 static gboolean
-all_text_files_filter (const GtkFileFilterInfo *filter_info,
+all_text_files_filter (const CtkFileFilterInfo *filter_info,
 		       gpointer                 data)
 {
 	static GSList *known_mime_types = NULL;
@@ -278,7 +278,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 
 	if (known_mime_types == NULL)
 	{
-		GtkSourceLanguageManager *lm;
+		CtkSourceLanguageManager *lm;
 		const gchar * const *languages;
 
 		lm = lapiz_get_language_manager ();
@@ -288,7 +288,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 		{
 			gchar **mime_types;
 			gint i;
-			GtkSourceLanguage *lang;
+			CtkSourceLanguage *lang;
 
 			lang = ctk_source_language_manager_get_language (lm, *languages);
 			g_return_val_if_fail (CTK_SOURCE_IS_LANGUAGE (lang), FALSE);
@@ -352,18 +352,18 @@ lapiz_file_chooser_dialog_init (LapizFileChooserDialog *dialog)
 	dialog->priv = lapiz_file_chooser_dialog_get_instance_private (dialog);
 }
 
-static GtkWidget *
+static CtkWidget *
 lapiz_file_chooser_dialog_new_valist (const gchar          *title,
-				      GtkWindow            *parent,
-				      GtkFileChooserAction  action,
+				      CtkWindow            *parent,
+				      CtkFileChooserAction  action,
 				      const LapizEncoding  *encoding,
 				      const gchar          *first_button_text,
 				      va_list               varargs)
 {
-	GtkWidget *result;
+	CtkWidget *result;
 	const char *button_text = first_button_text;
 	gint response_id;
-	GtkFileFilter *filter;
+	CtkFileFilter *filter;
 	gint active_filter;
 
 	g_return_val_if_fail (parent != NULL, NULL);
@@ -468,15 +468,15 @@ lapiz_file_chooser_dialog_new_valist (const gchar          *title,
  * Return value: a new #LapizFileChooserDialog
  *
  **/
-GtkWidget *
+CtkWidget *
 lapiz_file_chooser_dialog_new (const gchar          *title,
-			       GtkWindow            *parent,
-			       GtkFileChooserAction  action,
+			       CtkWindow            *parent,
+			       CtkFileChooserAction  action,
 			       const LapizEncoding  *encoding,
 			       const gchar          *first_button_text,
 			       ...)
 {
-	GtkWidget *result;
+	CtkWidget *result;
 	va_list varargs;
 
 	va_start (varargs, first_button_text);
@@ -516,8 +516,8 @@ void
 lapiz_file_chooser_dialog_set_newline_type (LapizFileChooserDialog  *dialog,
 					    LapizDocumentNewlineType newline_type)
 {
-	GtkTreeIter iter;
-	GtkTreeModel *model;
+	CtkTreeIter iter;
+	CtkTreeModel *model;
 
 	g_return_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog));
 	g_return_if_fail (ctk_file_chooser_get_action (CTK_FILE_CHOOSER (dialog)) == CTK_FILE_CHOOSER_ACTION_SAVE);
@@ -547,7 +547,7 @@ lapiz_file_chooser_dialog_set_newline_type (LapizFileChooserDialog  *dialog,
 LapizDocumentNewlineType
 lapiz_file_chooser_dialog_get_newline_type (LapizFileChooserDialog *dialog)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	LapizDocumentNewlineType newline_type;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_CHOOSER_DIALOG (dialog), LAPIZ_DOCUMENT_NEWLINE_TYPE_DEFAULT);

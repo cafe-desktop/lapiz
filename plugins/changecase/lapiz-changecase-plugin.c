@@ -37,9 +37,9 @@ static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
 struct _LapizChangecasePluginPrivate
 {
-	GtkWidget        *window;
+	CtkWidget        *window;
 
-	GtkActionGroup   *action_group;
+	CtkActionGroup   *action_group;
 	guint             ui_id;
 };
 
@@ -64,9 +64,9 @@ typedef enum {
 } ChangeCaseChoice;
 
 static void
-do_upper_case (GtkTextBuffer *buffer,
-               GtkTextIter   *start,
-               GtkTextIter   *end)
+do_upper_case (CtkTextBuffer *buffer,
+               CtkTextIter   *start,
+               CtkTextIter   *end)
 {
 	GString *s = g_string_new (NULL);
 
@@ -89,9 +89,9 @@ do_upper_case (GtkTextBuffer *buffer,
 }
 
 static void
-do_lower_case (GtkTextBuffer *buffer,
-               GtkTextIter   *start,
-               GtkTextIter   *end)
+do_lower_case (CtkTextBuffer *buffer,
+               CtkTextIter   *start,
+               CtkTextIter   *end)
 {
 	GString *s = g_string_new (NULL);
 
@@ -114,9 +114,9 @@ do_lower_case (GtkTextBuffer *buffer,
 }
 
 static void
-do_invert_case (GtkTextBuffer *buffer,
-                GtkTextIter   *start,
-                GtkTextIter   *end)
+do_invert_case (CtkTextBuffer *buffer,
+                CtkTextIter   *start,
+                CtkTextIter   *end)
 {
 	GString *s = g_string_new (NULL);
 
@@ -142,9 +142,9 @@ do_invert_case (GtkTextBuffer *buffer,
 }
 
 static void
-do_title_case (GtkTextBuffer *buffer,
-               GtkTextIter   *start,
-               GtkTextIter   *end)
+do_title_case (CtkTextBuffer *buffer,
+               CtkTextIter   *start,
+               CtkTextIter   *end)
 {
 	GString *s = g_string_new (NULL);
 
@@ -174,7 +174,7 @@ change_case (LapizWindow      *window,
              ChangeCaseChoice  choice)
 {
 	LapizDocument *doc;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -211,34 +211,34 @@ change_case (LapizWindow      *window,
 }
 
 static void
-upper_case_cb (GtkAction   *action,
+upper_case_cb (CtkAction   *action,
                LapizWindow *window)
 {
 	change_case (window, TO_UPPER_CASE);
 }
 
 static void
-lower_case_cb (GtkAction   *action,
+lower_case_cb (CtkAction   *action,
                LapizWindow *window)
 {
 	change_case (window, TO_LOWER_CASE);
 }
 
 static void
-invert_case_cb (GtkAction   *action,
+invert_case_cb (CtkAction   *action,
                 LapizWindow *window)
 {
 	change_case (window, INVERT_CASE);
 }
 
 static void
-title_case_cb (GtkAction   *action,
+title_case_cb (CtkAction   *action,
                LapizWindow *window)
 {
 	change_case (window, TO_TITLE_CASE);
 }
 
-static const GtkActionEntry action_entries[] =
+static const CtkActionEntry action_entries[] =
 {
 	{ "ChangeCase", NULL, N_("C_hange Case") },
 	{ "UpperCase", NULL, N_("All _Upper Case"), NULL,
@@ -346,8 +346,8 @@ static void
 update_ui (LapizChangecasePluginPrivate *data)
 {
 	LapizWindow *window;
-	GtkTextView *view;
-	GtkAction *action;
+	CtkTextView *view;
+	CtkAction *action;
 	gboolean sensitive = FALSE;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -357,7 +357,7 @@ update_ui (LapizChangecasePluginPrivate *data)
 
 	if (view != NULL)
 	{
-		GtkTextBuffer *buffer;
+		CtkTextBuffer *buffer;
 
 		buffer = ctk_text_view_get_buffer (view);
 		sensitive = (ctk_text_view_get_editable (view) &&
@@ -374,7 +374,7 @@ lapiz_changecase_plugin_activate (PeasActivatable *activatable)
 {
 	LapizChangecasePluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	GError *error = NULL;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -412,7 +412,7 @@ lapiz_changecase_plugin_deactivate (PeasActivatable *activatable)
 {
 	LapizChangecasePluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 

@@ -39,7 +39,7 @@
 #include <ctk/ctk.h>
 
 gboolean
-lapiz_help_display (GtkWindow   *parent,
+lapiz_help_display (CtkWindow   *parent,
 		    const gchar *name, /* "lapiz" if NULL */
 		    const gchar *link_id)
 {
@@ -72,7 +72,7 @@ lapiz_help_display (GtkWindow   *parent,
 
 	if (error != NULL)
 	{
-		GtkWidget *dialog;
+		CtkWidget *dialog;
 
 		dialog = ctk_message_dialog_new (parent,
 						 CTK_DIALOG_DESTROY_WITH_PARENT,

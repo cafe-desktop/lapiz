@@ -32,19 +32,19 @@
 
 struct _LapizFileBrowserViewPrivate
 {
-	GtkTreeViewColumn *column;
-	GtkCellRenderer *pixbuf_renderer;
-	GtkCellRenderer *text_renderer;
+	CtkTreeViewColumn *column;
+	CtkCellRenderer *pixbuf_renderer;
+	CtkCellRenderer *text_renderer;
 
-	GtkTreeModel *model;
-	GtkTreeRowReference *editable;
+	CtkTreeModel *model;
+	CtkTreeRowReference *editable;
 
 	GdkCursor *busy_cursor;
 
 	/* CLick policy */
 	LapizFileBrowserViewClickPolicy click_policy;
-	GtkTreePath *double_click_path[2]; /* Both clicks in a double click need to be on the same row */
-	GtkTreePath *hover_path;
+	CtkTreePath *double_click_path[2]; /* Both clicks in a double click need to be on the same row */
+	CtkTreePath *hover_path;
 	GdkCursor *hand_cursor;
 	gboolean ignore_release;
 	gboolean selected_on_button_down;
@@ -77,7 +77,7 @@ enum
 
 static guint signals[NUM_SIGNALS] = { 0 };
 
-static const GtkTargetEntry drag_source_targets[] = {
+static const CtkTargetEntry drag_source_targets[] = {
 	{ "text/uri-list", 0, 0 }
 };
 
@@ -87,7 +87,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserView,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserView))
 
-static void on_cell_edited 		(GtkCellRendererText 	* cell,
+static void on_cell_edited 		(CtkCellRendererText 	* cell,
 				 	 gchar 			* path,
 				 	 gchar 			* new_text,
 				 	LapizFileBrowserView 	* tree_view);
@@ -102,8 +102,8 @@ static void on_unload			(LapizFileBrowserStore 	* model,
 					 LapizFileBrowserView 	* view);
 
 static void on_row_inserted		(LapizFileBrowserStore 	* model,
-					 GtkTreePath		* path,
-					 GtkTreeIter		* iter,
+					 CtkTreePath		* path,
+					 CtkTreeIter		* iter,
 					 LapizFileBrowserView 	* view);
 
 static void
@@ -164,9 +164,9 @@ remove_expand_state (LapizFileBrowserView * view,
 }
 
 static void
-row_expanded (GtkTreeView * tree_view,
-	      GtkTreeIter * iter,
-	      GtkTreePath * path)
+row_expanded (CtkTreeView * tree_view,
+	      CtkTreeIter * iter,
+	      CtkTreePath * path)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
@@ -194,9 +194,9 @@ row_expanded (GtkTreeView * tree_view,
 }
 
 static void
-row_collapsed (GtkTreeView * tree_view,
-	       GtkTreeIter * iter,
-	       GtkTreePath * path)
+row_collapsed (CtkTreeView * tree_view,
+	       CtkTreeIter * iter,
+	       CtkTreePath * path)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (tree_view);
 	gchar * uri;
@@ -224,7 +224,7 @@ row_collapsed (GtkTreeView * tree_view,
 }
 
 static gboolean
-leave_notify_event (GtkWidget *widget,
+leave_notify_event (CtkWidget *widget,
 		    GdkEventCrossing *event)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
@@ -240,7 +240,7 @@ leave_notify_event (GtkWidget *widget,
 }
 
 static gboolean
-enter_notify_event (GtkWidget *widget,
+enter_notify_event (CtkWidget *widget,
 		    GdkEventCrossing *event)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
@@ -264,10 +264,10 @@ enter_notify_event (GtkWidget *widget,
 }
 
 static gboolean
-motion_notify_event (GtkWidget * widget,
+motion_notify_event (CtkWidget * widget,
 		     GdkEventMotion * event)
 {
-	GtkTreePath *old_hover_path;
+	CtkTreePath *old_hover_path;
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
 
 	if (view->priv->click_policy == LAPIZ_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE) {
@@ -298,7 +298,7 @@ static void
 set_click_policy_property (LapizFileBrowserView            *obj,
 			   LapizFileBrowserViewClickPolicy  click_policy)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	GdkDisplay *display;
 	GdkWindow *win;
 
@@ -339,25 +339,25 @@ set_click_policy_property (LapizFileBrowserView            *obj,
 
 static void
 directory_activated (LapizFileBrowserView *view,
-		     GtkTreeIter          *iter)
+		     CtkTreeIter          *iter)
 {
 	lapiz_file_browser_store_set_virtual_root (LAPIZ_FILE_BROWSER_STORE (view->priv->model), iter);
 }
 
 static void
 activate_selected_files (LapizFileBrowserView *view) {
-	GtkTreeView *tree_view = CTK_TREE_VIEW (view);
-	GtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
+	CtkTreeView *tree_view = CTK_TREE_VIEW (view);
+	CtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
 	GList *rows, *row;
-	GtkTreePath *directory = NULL;
-	GtkTreePath *path;
-	GtkTreeIter iter;
+	CtkTreePath *directory = NULL;
+	CtkTreePath *path;
+	CtkTreeIter iter;
 	LapizFileBrowserStoreFlag flags;
 
 	rows = ctk_tree_selection_get_selected_rows (selection, &view->priv->model);
 
 	for (row = rows; row; row = row->next) {
-		path = (GtkTreePath *)(row->data);
+		path = (CtkTreePath *)(row->data);
 
 		/* Get iter from path */
 		if (!ctk_tree_model_get_iter (view->priv->model, &iter, path))
@@ -385,9 +385,9 @@ activate_selected_files (LapizFileBrowserView *view) {
 
 static void
 activate_selected_bookmark (LapizFileBrowserView *view) {
-	GtkTreeView *tree_view = CTK_TREE_VIEW (view);
-	GtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
-	GtkTreeIter iter;
+	CtkTreeView *tree_view = CTK_TREE_VIEW (view);
+	CtkTreeSelection *selection = ctk_tree_view_get_selection (tree_view);
+	CtkTreeIter iter;
 
 	if (ctk_tree_selection_get_selected (selection, &view->priv->model, &iter))
 		g_signal_emit (view, signals[BOOKMARK_ACTIVATED], 0, &iter);
@@ -424,7 +424,7 @@ button_event_modifies_selection (GdkEventButton *event)
 }
 
 static void
-drag_begin (GtkWidget      *widget,
+drag_begin (CtkWidget      *widget,
 	    GdkDragContext *context)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
@@ -440,9 +440,9 @@ static void
 did_not_drag (LapizFileBrowserView *view,
 	      GdkEventButton       *event)
 {
-	GtkTreeView *tree_view;
-	GtkTreeSelection *selection;
-	GtkTreePath *path;
+	CtkTreeView *tree_view;
+	CtkTreeSelection *selection;
+	CtkTreePath *path;
 
 	tree_view = CTK_TREE_VIEW (view);
 	selection = ctk_tree_view_get_selection (tree_view);
@@ -471,7 +471,7 @@ did_not_drag (LapizFileBrowserView *view,
 }
 
 static gboolean
-button_release_event (GtkWidget       *widget,
+button_release_event (CtkWidget       *widget,
 		      GdkEventButton *event)
 {
 	LapizFileBrowserView *view = LAPIZ_FILE_BROWSER_VIEW (widget);
@@ -489,22 +489,22 @@ button_release_event (GtkWidget       *widget,
 }
 
 static gboolean
-button_press_event (GtkWidget      *widget,
+button_press_event (CtkWidget      *widget,
 		    GdkEventButton *event)
 {
 	int double_click_time;
 	static int click_count = 0;
 	static guint32 last_click_time = 0;
 	LapizFileBrowserView *view;
-	GtkTreeView *tree_view;
-	GtkTreeSelection *selection;
-	GtkTreePath *path;
+	CtkTreeView *tree_view;
+	CtkTreeSelection *selection;
+	CtkTreePath *path;
 	int expander_size;
 	int horizontal_separator;
 	gboolean on_expander;
 	gboolean call_parent;
 	gboolean selected;
-	GtkWidgetClass *widget_parent = CTK_WIDGET_CLASS(lapiz_file_browser_view_parent_class);
+	CtkWidgetClass *widget_parent = CTK_WIDGET_CLASS(lapiz_file_browser_view_parent_class);
 
 	tree_view = CTK_TREE_VIEW (widget);
 	view = LAPIZ_FILE_BROWSER_VIEW (widget);
@@ -621,7 +621,7 @@ button_press_event (GtkWidget      *widget,
 }
 
 static gboolean
-key_press_event (GtkWidget   *widget,
+key_press_event (CtkWidget   *widget,
 		 GdkEventKey *event)
 {
 	LapizFileBrowserView *view;
@@ -673,10 +673,10 @@ key_press_event (GtkWidget   *widget,
 }
 
 static void
-fill_expand_state (LapizFileBrowserView * view, GtkTreeIter * iter)
+fill_expand_state (LapizFileBrowserView * view, CtkTreeIter * iter)
 {
-	GtkTreePath * path;
-	GtkTreeIter child;
+	CtkTreePath * path;
+	CtkTreeIter child;
 	gchar * uri;
 
 	if (!ctk_tree_model_iter_has_child (view->priv->model, iter))
@@ -708,7 +708,7 @@ fill_expand_state (LapizFileBrowserView * view, GtkTreeIter * iter)
 
 static void
 uninstall_restore_signals (LapizFileBrowserView * tree_view,
-			   GtkTreeModel * model)
+			   CtkTreeModel * model)
 {
 	g_signal_handlers_disconnect_by_func (model,
 					      on_begin_refresh,
@@ -729,7 +729,7 @@ uninstall_restore_signals (LapizFileBrowserView * tree_view,
 
 static void
 install_restore_signals (LapizFileBrowserView * tree_view,
-			 GtkTreeModel * model)
+			 CtkTreeModel * model)
 {
 	g_signal_connect (model,
 			  "begin-refresh",
@@ -835,8 +835,8 @@ static void
 lapiz_file_browser_view_class_init (LapizFileBrowserViewClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkTreeViewClass *tree_view_class = CTK_TREE_VIEW_CLASS (klass);
-	GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+	CtkTreeViewClass *tree_view_class = CTK_TREE_VIEW_CLASS (klass);
+	CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = lapiz_file_browser_view_finalize;
 	object_class->get_property = get_property;
@@ -914,11 +914,11 @@ lapiz_file_browser_view_class_finalize (LapizFileBrowserViewClass *klass)
 }
 
 static void
-cell_data_cb (GtkTreeViewColumn * tree_column, GtkCellRenderer * cell,
-	      GtkTreeModel * tree_model, GtkTreeIter * iter,
+cell_data_cb (CtkTreeViewColumn * tree_column, CtkCellRenderer * cell,
+	      CtkTreeModel * tree_model, CtkTreeIter * iter,
 	      LapizFileBrowserView * obj)
 {
-	GtkTreePath *path;
+	CtkTreePath *path;
 	PangoUnderline underline = PANGO_UNDERLINE_NONE;
 	gboolean editable = FALSE;
 
@@ -935,7 +935,7 @@ cell_data_cb (GtkTreeViewColumn * tree_column, GtkCellRenderer * cell,
 		if (obj->priv->editable != NULL &&
 		    ctk_tree_row_reference_valid (obj->priv->editable))
 		{
-			GtkTreePath *edpath = ctk_tree_row_reference_get_path (obj->priv->editable);
+			CtkTreePath *edpath = ctk_tree_row_reference_get_path (obj->priv->editable);
 
 			editable = edpath && ctk_tree_path_compare (path, edpath) == 0;
 		}
@@ -989,7 +989,7 @@ lapiz_file_browser_view_init (LapizFileBrowserView * obj)
 }
 
 static gboolean
-bookmarks_separator_func (GtkTreeModel * model, GtkTreeIter * iter,
+bookmarks_separator_func (CtkTreeModel * model, CtkTreeIter * iter,
 			  gpointer user_data)
 {
 	guint flags;
@@ -1002,7 +1002,7 @@ bookmarks_separator_func (GtkTreeModel * model, GtkTreeIter * iter,
 }
 
 /* Public */
-GtkWidget *
+CtkWidget *
 lapiz_file_browser_view_new (void)
 {
 	LapizFileBrowserView *obj =
@@ -1014,9 +1014,9 @@ lapiz_file_browser_view_new (void)
 
 void
 lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
-				   GtkTreeModel * model)
+				   CtkTreeModel * model)
 {
-	GtkTreeSelection *selection;
+	CtkTreeSelection *selection;
 
 	if (tree_view->priv->model == model)
 		return;
@@ -1033,7 +1033,7 @@ lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
 							 column,
 							 tree_view->priv->
 							 text_renderer,
-							 (GtkTreeCellDataFunc)
+							 (CtkTreeCellDataFunc)
 							 cell_data_cb,
 							 tree_view, NULL);
 	} else {
@@ -1045,7 +1045,7 @@ lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
 							 column,
 							 tree_view->priv->
 							 text_renderer,
-							 (GtkTreeCellDataFunc)
+							 (CtkTreeCellDataFunc)
 							 cell_data_cb,
 							 tree_view, NULL);
 
@@ -1071,11 +1071,11 @@ lapiz_file_browser_view_set_model (LapizFileBrowserView * tree_view,
 
 void
 lapiz_file_browser_view_start_rename (LapizFileBrowserView * tree_view,
-				      GtkTreeIter * iter)
+				      CtkTreeIter * iter)
 {
 	guint flags;
-	GtkTreeRowReference *rowref;
-	GtkTreePath *path;
+	CtkTreeRowReference *rowref;
+	CtkTreePath *path;
 
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_VIEW (tree_view));
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE
@@ -1135,11 +1135,11 @@ lapiz_file_browser_view_set_restore_expand_state (LapizFileBrowserView * tree_vi
 
 /* Signal handlers */
 static void
-on_cell_edited (GtkCellRendererText * cell, gchar * path, gchar * new_text,
+on_cell_edited (CtkCellRendererText * cell, gchar * path, gchar * new_text,
 		LapizFileBrowserView * tree_view)
 {
-	GtkTreePath * treepath;
-	GtkTreeIter iter;
+	CtkTreePath * treepath;
+	CtkTreeIter iter;
 	gboolean ret;
 	GError * error = NULL;
 
@@ -1205,11 +1205,11 @@ on_unload (LapizFileBrowserStore * model,
 static void
 restore_expand_state (LapizFileBrowserView * view,
 		      LapizFileBrowserStore * model,
-		      GtkTreeIter * iter)
+		      CtkTreeIter * iter)
 {
 	gchar * uri;
 	GFile * file;
-	GtkTreePath * path;
+	CtkTreePath * path;
 
 	ctk_tree_model_get (CTK_TREE_MODEL (model),
 			    iter,
@@ -1238,12 +1238,12 @@ restore_expand_state (LapizFileBrowserView * view,
 
 static void
 on_row_inserted (LapizFileBrowserStore * model,
-		 GtkTreePath * path,
-		 GtkTreeIter * iter,
+		 CtkTreePath * path,
+		 CtkTreeIter * iter,
 		 LapizFileBrowserView * view)
 {
-	GtkTreeIter parent;
-	GtkTreePath * copy;
+	CtkTreeIter parent;
+	CtkTreePath * copy;
 
 	if (ctk_tree_model_iter_has_child (CTK_TREE_MODEL (model), iter))
 		restore_expand_state (view, model, iter);

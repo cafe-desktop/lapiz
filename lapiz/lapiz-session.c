@@ -272,7 +272,7 @@ static void
 show_confirmation_dialog (LapizWindow *window)
 {
 	GList *unsaved_docs;
-	GtkWidget *dlg;
+	CtkWidget *dlg;
 
 	lapiz_debug (DEBUG_SESSION);
 

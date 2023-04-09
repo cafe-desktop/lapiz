@@ -910,10 +910,10 @@ lapiz_prefs_manager_tabs_size_changed (GSettings *settings,
 	}
 }
 
-static GtkWrapMode
+static CtkWrapMode
 get_wrap_mode_from_string (const gchar* str)
 {
-	GtkWrapMode res;
+	CtkWrapMode res;
 
 	g_return_val_if_fail (str != NULL, CTK_WRAP_WORD);
 
@@ -939,7 +939,7 @@ lapiz_prefs_manager_wrap_mode_changed (GSettings *settings,
 
 	if (strcmp (key, GPM_WRAP_MODE) == 0)
 	{
-		GtkWrapMode wrap_mode;
+		CtkWrapMode wrap_mode;
 		GList *views;
 		GList *l;
 
@@ -1165,10 +1165,10 @@ lapiz_prefs_manager_right_margin_changed (GSettings *settings,
 	}
 }
 
-static GtkSourceSmartHomeEndType
+static CtkSourceSmartHomeEndType
 get_smart_home_end_from_string (const gchar *str)
 {
-	GtkSourceSmartHomeEndType res;
+	CtkSourceSmartHomeEndType res;
 
 	g_return_val_if_fail (str != NULL, CTK_SOURCE_SMART_HOME_END_AFTER);
 
@@ -1193,7 +1193,7 @@ lapiz_prefs_manager_smart_home_end_changed (GSettings *settings,
 
 	if (strcmp (key, GPM_SMART_HOME_END) == 0)
 	{
-		GtkSourceSmartHomeEndType smart_he;
+		CtkSourceSmartHomeEndType smart_he;
 		GList *views;
 		GList *l;
 
@@ -1249,8 +1249,8 @@ lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 		windows = lapiz_app_get_windows (lapiz_app_get_default ());
 		while (windows != NULL)
 		{
-			GtkUIManager *ui;
-			GtkAction *a;
+			CtkUIManager *ui;
+			CtkAction *a;
 
 			ui = lapiz_window_get_ui_manager (LAPIZ_WINDOW (windows->data));
 
@@ -1307,7 +1307,7 @@ lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 	{
 		static gchar *old_scheme = NULL;
 		gchar *scheme;
-		GtkSourceStyleScheme *style;
+		CtkSourceStyleScheme *style;
 		GList *docs;
 		GList *l;
 
@@ -1333,7 +1333,7 @@ lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 
 			if (style == NULL)
 			{
-				g_warning ("Style scheme 'classic' cannot be found, check your GtkSourceView installation.");
+				g_warning ("Style scheme 'classic' cannot be found, check your CtkSourceView installation.");
 				return;
 			}
 		}
@@ -1481,7 +1481,7 @@ lapiz_prefs_manager_lockdown_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_space_drawer_generic (GSettings              *settings,
                                           gint                    level,
-                                          GtkSourceSpaceTypeFlags type)
+                                          CtkSourceSpaceTypeFlags type)
 {
 
 	GList *views;
@@ -1505,7 +1505,7 @@ lapiz_prefs_manager_space_drawer_generic (GSettings              *settings,
 static void
 lapiz_prefs_manager_draw_generic (GSettings               *settings,
                                   gint                     level,
-                                  GtkSourceDrawSpacesFlags type)
+                                  CtkSourceDrawSpacesFlags type)
 {
 
 	GList *views;
@@ -1518,7 +1518,7 @@ lapiz_prefs_manager_draw_generic (GSettings               *settings,
 
 	while (l != NULL)
 	{
-		GtkSourceDrawSpacesFlags value;
+		CtkSourceDrawSpacesFlags value;
 
 		value = ctk_source_view_get_draw_spaces (CTK_SOURCE_VIEW (l->data));
 		if (level > 0)

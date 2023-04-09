@@ -22,7 +22,7 @@ typedef struct
 	guint end_loading_id;
 
 	GList *merge_ids;
-	GtkActionGroup *merged_actions;
+	CtkActionGroup *merged_actions;
 
 	LapizMessageBus *bus;
 	LapizFileBrowserWidget *widget;
@@ -44,7 +44,7 @@ window_data_new (LapizWindow            *window,
 		 LapizFileBrowserWidget *widget)
 {
 	WindowData *data = g_slice_new (WindowData);
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	GList *groups;
 
 	data->bus = lapiz_window_get_message_bus (window);
@@ -82,7 +82,7 @@ static void
 window_data_free (LapizWindow *window)
 {
 	WindowData *data = get_window_data (window);
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	GList *item;
 
 	g_hash_table_destroy (data->row_tracking);
@@ -139,13 +139,13 @@ filter_data_free (FilterData *data)
 	g_slice_free (FilterData, data);
 }
 
-static GtkTreePath *
+static CtkTreePath *
 track_row_lookup (WindowData  *data,
 		  const gchar *id)
 {
-	GtkTreeRowReference *ref;
+	CtkTreeRowReference *ref;
 
-	ref = (GtkTreeRowReference *)g_hash_table_lookup (data->row_tracking, id);
+	ref = (CtkTreeRowReference *)g_hash_table_lookup (data->row_tracking, id);
 
 	if (!ref)
 		return NULL;
@@ -219,7 +219,7 @@ message_set_emblem_cb (LapizMessageBus *bus,
 {
 	gchar *id = NULL;
 	gchar *emblem = NULL;
-	GtkTreePath *path;
+	CtkTreePath *path;
 	LapizFileBrowserStore *store;
 
 	lapiz_message_get (message, "id", &id, "emblem", &emblem, NULL);
@@ -248,7 +248,7 @@ message_set_emblem_cb (LapizMessageBus *bus,
 		if (pixbuf)
 		{
 			GValue value = { 0, };
-			GtkTreeIter iter;
+			CtkTreeIter iter;
 
 			store = lapiz_file_browser_widget_get_browser_store (data->widget);
 
@@ -286,10 +286,10 @@ item_id (const gchar *path,
 static gchar *
 track_row (WindowData            *data,
 	   LapizFileBrowserStore *store,
-	   GtkTreePath           *path,
+	   CtkTreePath           *path,
 	   const gchar		 *uri)
 {
-	GtkTreeRowReference *ref;
+	CtkTreeRowReference *ref;
 	gchar *id;
 	gchar *pathstr;
 
@@ -306,8 +306,8 @@ track_row (WindowData            *data,
 
 static void
 set_item_message (WindowData   *data,
-		  GtkTreeIter  *iter,
-		  GtkTreePath  *path,
+		  CtkTreeIter  *iter,
+		  CtkTreePath  *path,
 		  LapizMessage *message)
 {
 	LapizFileBrowserStore *store;
@@ -349,14 +349,14 @@ set_item_message (WindowData   *data,
 static gboolean
 custom_message_filter_func (LapizFileBrowserWidget *widget,
 			    LapizFileBrowserStore  *store,
-			    GtkTreeIter            *iter,
+			    CtkTreeIter            *iter,
 			    FilterData             *data)
 {
 	WindowData *wdata = get_window_data (data->window);
 	gchar *uri = NULL;
 	guint flags = 0;
 	gboolean filter = FALSE;
-	GtkTreePath *path;
+	CtkTreePath *path;
 
 	ctk_tree_model_get (CTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
@@ -558,10 +558,10 @@ message_add_context_item_cb (LapizMessageBus *bus,
 			     LapizMessage    *message,
 			     WindowData      *data)
 {
-	GtkAction *action = NULL;
+	CtkAction *action = NULL;
 	gchar *path = NULL;
 	gchar *name;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	guint merge_id;
 
 	lapiz_message_get (message,
@@ -612,7 +612,7 @@ message_remove_context_item_cb (LapizMessageBus *bus,
 				WindowData      *data)
 {
 	guint merge_id = 0;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_message_get (message, "id", &merge_id, NULL);
 
@@ -745,8 +745,8 @@ register_methods (LapizWindow            *window,
 
 static void
 store_row_inserted (LapizFileBrowserStore *store,
-		    GtkTreePath		  *path,
-		    GtkTreeIter           *iter,
+		    CtkTreePath		  *path,
+		    CtkTreeIter           *iter,
 		    MessageCacheData      *data)
 {
 	gchar *uri = NULL;
@@ -770,10 +770,10 @@ store_row_inserted (LapizFileBrowserStore *store,
 
 static void
 store_row_deleted (LapizFileBrowserStore *store,
-		   GtkTreePath		 *path,
+		   CtkTreePath		 *path,
 		   MessageCacheData      *data)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gchar *uri = NULL;
 	guint flags = 0;
 
@@ -820,10 +820,10 @@ store_virtual_root_changed (LapizFileBrowserStore *store,
 
 static void
 store_begin_loading (LapizFileBrowserStore *store,
-		     GtkTreeIter           *iter,
+		     CtkTreeIter           *iter,
 		     MessageCacheData      *data)
 {
-	GtkTreePath *path;
+	CtkTreePath *path;
 	WindowData *wdata = get_window_data (data->window);
 
 	path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);
@@ -836,10 +836,10 @@ store_begin_loading (LapizFileBrowserStore *store,
 
 static void
 store_end_loading (LapizFileBrowserStore *store,
-		   GtkTreeIter           *iter,
+		   CtkTreeIter           *iter,
 		   MessageCacheData      *data)
 {
-	GtkTreePath *path;
+	CtkTreePath *path;
 	WindowData *wdata = get_window_data (data->window);
 
 	path = ctk_tree_model_get_path (CTK_TREE_MODEL (store), iter);

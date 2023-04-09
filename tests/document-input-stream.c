@@ -33,7 +33,7 @@ test_consecutive_read (const gchar *inbuf,
 		       LapizDocumentNewlineType type,
 		       gsize read_chunk_len)
 {
-	GtkTextBuffer *buf;
+	CtkTextBuffer *buf;
 	GInputStream *in;
 	gsize outlen;
 	gssize n, r;

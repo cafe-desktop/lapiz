@@ -76,8 +76,8 @@ msgid "Style Scheme"
 msgstr "বিন্যাসের স্কিম"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
-msgstr "হরফের রং নির্ধারণের জন্য ব্যবহৃত GtkSourceView বিন্যাসের স্কিমের ID।"
+msgid "The ID of a CtkSourceView Style Scheme used to color the text."
+msgstr "হরফের রং নির্ধারণের জন্য ব্যবহৃত CtkSourceView বিন্যাসের স্কিমের ID।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"

@@ -43,14 +43,14 @@
 
 struct _LapizPanelPrivate
 {
-	GtkOrientation orientation;
+	CtkOrientation orientation;
 
 	/* Title bar (vertical panel only) */
-	GtkWidget *title_image;
-	GtkWidget *title_label;
+	CtkWidget *title_image;
+	CtkWidget *title_label;
 
 	/* Notebook */
-	GtkWidget *notebook;
+	CtkWidget *notebook;
 };
 
 typedef struct _LapizPanelItem LapizPanelItem;
@@ -58,7 +58,7 @@ typedef struct _LapizPanelItem LapizPanelItem;
 struct _LapizPanelItem
 {
 	gchar *name;
-	GtkWidget *icon;
+	CtkWidget *icon;
 };
 
 /* Properties */
@@ -139,7 +139,7 @@ lapiz_panel_close (LapizPanel *panel)
 static void
 lapiz_panel_focus_document (LapizPanel *panel)
 {
-	GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (panel));
+	CtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (panel));
 	if (ctk_widget_is_toplevel (toplevel) && LAPIZ_IS_WINDOW (toplevel))
 	{
 		LapizView *view;
@@ -151,10 +151,10 @@ lapiz_panel_focus_document (LapizPanel *panel)
 }
 
 static void
-lapiz_panel_grab_focus (GtkWidget *w)
+lapiz_panel_grab_focus (CtkWidget *w)
 {
 	gint n;
-	GtkWidget *tab;
+	CtkWidget *tab;
 	LapizPanel *panel = LAPIZ_PANEL (w);
 
 	n = ctk_notebook_get_current_page (CTK_NOTEBOOK (panel->priv->notebook));
@@ -171,9 +171,9 @@ lapiz_panel_grab_focus (GtkWidget *w)
 static void
 lapiz_panel_class_init (LapizPanelClass *klass)
 {
-	GtkBindingSet *binding_set;
+	CtkBindingSet *binding_set;
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+	CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
 	object_class->constructor = lapiz_panel_constructor;
 	object_class->finalize = lapiz_panel_finalize;
@@ -250,13 +250,13 @@ lapiz_panel_class_init (LapizPanelClass *klass)
 }
 
 /* This is ugly, since it supports only known
- * storage types of GtkImage, otherwise fall back
+ * storage types of CtkImage, otherwise fall back
  * to the empty icon.
  * See http://bugzilla.gnome.org/show_bug.cgi?id=317520.
  */
 static void
-set_ctk_image_from_ctk_image (GtkImage *image,
-			      GtkImage *source)
+set_ctk_image_from_ctk_image (CtkImage *image,
+			      CtkImage *source)
 {
 	switch (ctk_image_get_storage_type (source))
 	{
@@ -282,7 +282,7 @@ set_ctk_image_from_ctk_image (GtkImage *image,
 	case CTK_IMAGE_ICON_NAME:
 		{
 			const gchar *n;
-			GtkIconSize s;
+			CtkIconSize s;
 
 			ctk_image_get_icon_name (source, &n, &s);
 			ctk_image_set_from_icon_name (image, n, s);
@@ -322,12 +322,12 @@ sync_title (LapizPanel     *panel,
 }
 
 static void
-notebook_page_changed (GtkNotebook     *notebook,
-                       GtkWidget       *page,
+notebook_page_changed (CtkNotebook     *notebook,
+                       CtkWidget       *page,
                        guint            page_num,
                        LapizPanel      *panel)
 {
-	GtkWidget *item;
+	CtkWidget *item;
 	LapizPanelItem *data;
 
 	item = ctk_notebook_get_nth_page (notebook, page_num);
@@ -345,7 +345,7 @@ panel_show (LapizPanel *panel,
 	    gpointer    user_data)
 {
 	gint page;
-	GtkNotebook *nb;
+	CtkNotebook *nb;
 
 	nb = CTK_NOTEBOOK (panel->priv->notebook);
 
@@ -364,16 +364,16 @@ lapiz_panel_init (LapizPanel *panel)
 }
 
 static void
-close_button_clicked_cb (GtkWidget *widget,
-			 GtkWidget *panel)
+close_button_clicked_cb (CtkWidget *widget,
+			 CtkWidget *panel)
 {
 	ctk_widget_hide (panel);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_close_button (LapizPanel *panel)
 {
-	GtkWidget *button;
+	CtkWidget *button;
 
 	button = lapiz_close_button_new ();
 
@@ -410,9 +410,9 @@ build_notebook_for_panel (LapizPanel *panel)
 static void
 build_horizontal_panel (LapizPanel *panel)
 {
-	GtkWidget *box;
-	GtkWidget *sidebar;
-	GtkWidget *close_button;
+	CtkWidget *box;
+	CtkWidget *sidebar;
+	CtkWidget *close_button;
 
 	box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 
@@ -452,10 +452,10 @@ build_horizontal_panel (LapizPanel *panel)
 static void
 build_vertical_panel (LapizPanel *panel)
 {
-	GtkWidget *close_button;
-	GtkWidget *title_hbox;
-	GtkWidget *icon_name_hbox;
-	GtkWidget *dummy_label;
+	CtkWidget *close_button;
+	CtkWidget *title_hbox;
+	CtkWidget *icon_name_hbox;
+	CtkWidget *dummy_label;
 
 	/* Create title hbox */
 	title_hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
@@ -547,7 +547,7 @@ lapiz_panel_constructor (GType type,
 
 /**
  * lapiz_panel_new:
- * @orientation: a #GtkOrientation
+ * @orientation: a #CtkOrientation
  *
  * Creates a new #LapizPanel with the given @orientation. You shouldn't create
  * a new panel use lapiz_window_get_side_panel() or lapiz_window_get_bottom_panel()
@@ -555,20 +555,20 @@ lapiz_panel_constructor (GType type,
  *
  * Returns: a new #LapizPanel object.
  */
-GtkWidget *
-lapiz_panel_new (GtkOrientation orientation)
+CtkWidget *
+lapiz_panel_new (CtkOrientation orientation)
 {
 	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_PANEL, "panel-orientation", orientation, NULL));
 }
 
-static GtkWidget *
+static CtkWidget *
 build_tab_label (LapizPanel  *panel,
-		 GtkWidget   *item,
+		 CtkWidget   *item,
 		 const gchar *name,
-		 GtkWidget   *icon)
+		 CtkWidget   *icon)
 {
-	GtkWidget *hbox, *label_hbox, *label_ebox;
-	GtkWidget *label;
+	CtkWidget *hbox, *label_hbox, *label_ebox;
+	CtkWidget *label;
 
 	/* set hbox spacing and label padding (see below) so that there's an
 	 * equal amount of space around the label */
@@ -609,7 +609,7 @@ build_tab_label (LapizPanel  *panel,
 /**
  * lapiz_panel_add_item:
  * @panel: a #LapizPanel
- * @item: the #GtkWidget to add to the @panel
+ * @item: the #CtkWidget to add to the @panel
  * @name: the name to be shown in the @panel
  * @image: the image to be shown in the @panel
  *
@@ -617,13 +617,13 @@ build_tab_label (LapizPanel  *panel,
  */
 void
 lapiz_panel_add_item (LapizPanel  *panel,
-		      GtkWidget   *item,
+		      CtkWidget   *item,
 		      const gchar *name,
-		      GtkWidget   *image)
+		      CtkWidget   *image)
 {
 	LapizPanelItem *data;
-	GtkWidget *tab_label;
-	GtkWidget *menu_label;
+	CtkWidget *tab_label;
+	CtkWidget *menu_label;
 	gint w, h;
 
 	g_return_if_fail (LAPIZ_IS_PANEL (panel));
@@ -672,7 +672,7 @@ lapiz_panel_add_item (LapizPanel  *panel,
 /**
  * lapiz_panel_add_item_with_icon:
  * @panel: a #LapizPanel
- * @item: the #GtkWidget to add to the @panel
+ * @item: the #CtkWidget to add to the @panel
  * @name: the name to be shown in the @panel
  * @icon_name: a icon name
  *
@@ -680,11 +680,11 @@ lapiz_panel_add_item (LapizPanel  *panel,
  */
 void
 lapiz_panel_add_item_with_icon (LapizPanel  *panel,
-				GtkWidget   *item,
+				CtkWidget   *item,
 				const gchar *name,
 				const gchar *icon_name)
 {
-	GtkWidget *icon = NULL;
+	CtkWidget *icon = NULL;
 
 	if (icon_name != NULL)
 	{
@@ -707,7 +707,7 @@ lapiz_panel_add_item_with_icon (LapizPanel  *panel,
  */
 gboolean
 lapiz_panel_remove_item (LapizPanel *panel,
-			 GtkWidget  *item)
+			 CtkWidget  *item)
 {
 	LapizPanelItem *data;
 	gint page_num;
@@ -760,7 +760,7 @@ lapiz_panel_remove_item (LapizPanel *panel,
  */
 gboolean
 lapiz_panel_activate_item (LapizPanel *panel,
-			   GtkWidget  *item)
+			   CtkWidget  *item)
 {
 	gint page_num;
 
@@ -782,7 +782,7 @@ lapiz_panel_activate_item (LapizPanel *panel,
 /**
  * lapiz_panel_item_is_active:
  * @panel: a #LapizPanel
- * @item: a #GtkWidget
+ * @item: a #CtkWidget
  *
  * Returns whether @item is the active widget in @panel
  *
@@ -790,7 +790,7 @@ lapiz_panel_activate_item (LapizPanel *panel,
  */
 gboolean
 lapiz_panel_item_is_active (LapizPanel *panel,
-			    GtkWidget  *item)
+			    CtkWidget  *item)
 {
 	gint cur_page;
 	gint page_num;
@@ -816,9 +816,9 @@ lapiz_panel_item_is_active (LapizPanel *panel,
  *
  * Gets the orientation of the @panel.
  *
- * Returns: the #GtkOrientation of #LapizPanel
+ * Returns: the #CtkOrientation of #LapizPanel
  */
-GtkOrientation
+CtkOrientation
 lapiz_panel_get_orientation (LapizPanel *panel)
 {
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), CTK_ORIENTATION_VERTICAL);
@@ -846,7 +846,7 @@ gint
 _lapiz_panel_get_active_item_id (LapizPanel *panel)
 {
 	gint cur_page;
-	GtkWidget *item;
+	CtkWidget *item;
 	LapizPanelItem *data;
 
 	g_return_val_if_fail (LAPIZ_IS_PANEL (panel), 0);
@@ -890,7 +890,7 @@ _lapiz_panel_set_active_item_by_id (LapizPanel *panel,
 
 	for (i = 0; i < n; i++)
 	{
-		GtkWidget *item;
+		CtkWidget *item;
 		LapizPanelItem *data;
 
 		item = ctk_notebook_get_nth_page (

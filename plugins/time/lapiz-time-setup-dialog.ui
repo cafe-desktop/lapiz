@@ -3,39 +3,39 @@
 <!--*- mode: xml -*-->
 <interface>
   <requires lib="ctk+" version="3.22"/>
-  <object class="GtkImage" id="image1">
+  <object class="CtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">help-browser</property>
   </object>
-  <object class="GtkImage" id="image2">
+  <object class="CtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">process-stop</property>
   </object>
-  <object class="GtkImage" id="image3">
+  <object class="CtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">ctk-ok</property>
   </object>
-  <object class="GtkDialog" id="time_dialog">
+  <object class="CtkDialog" id="time_dialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Configure date/time plugin</property>
     <property name="resizable">False</property>
     <property name="type_hint">normal</property>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="CtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">8</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
+          <object class="CtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="CtkButton" id="button1">
                 <property name="label" translatable="yes">_Help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -51,7 +51,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button3">
+              <object class="CtkButton" id="button3">
                 <property name="label" translatable="yes">_Cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -67,7 +67,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button4">
+              <object class="CtkButton" id="button4">
                 <property name="label" translatable="yes">_OK</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -91,14 +91,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="time_dialog_content">
+          <object class="CtkBox" id="time_dialog_content">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">10</property>
             <property name="orientation">vertical</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkLabel" id="label1">
+              <object class="CtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">When inserting date/time...</property>
@@ -115,11 +115,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="hbox2">
+              <object class="CtkBox" id="hbox2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkLabel" id="label3">
+                  <object class="CtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">    </property>
@@ -133,13 +133,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="vbox4">
+                  <object class="CtkBox" id="vbox4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkRadioButton" id="always_prompt">
+                      <object class="CtkRadioButton" id="always_prompt">
                         <property name="label" translatable="yes">_Prompt for a format</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -155,13 +155,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="vbox5">
+                      <object class="CtkBox" id="vbox5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
                         <child>
-                          <object class="GtkRadioButton" id="never_prompt">
+                          <object class="CtkRadioButton" id="never_prompt">
                             <property name="label" translatable="yes">Use the _selected format</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -178,11 +178,11 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox" id="hbox3">
+                          <object class="CtkBox" id="hbox3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkLabel" id="label4">
+                              <object class="CtkLabel" id="label4">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">    </property>
@@ -196,17 +196,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkScrolledWindow" id="formats_viewport">
+                              <object class="CtkScrolledWindow" id="formats_viewport">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="shadow_type">in</property>
                                 <child>
-                                  <object class="GtkTreeView" id="formats_tree">
+                                  <object class="CtkTreeView" id="formats_tree">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="headers_visible">False</property>
                                     <child internal-child="selection">
-                                      <object class="GtkTreeSelection"/>
+                                      <object class="CtkTreeSelection"/>
                                     </child>
                                   </object>
                                 </child>
@@ -232,18 +232,18 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="vbox6">
+                      <object class="CtkBox" id="vbox6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">2</property>
                         <child>
-                          <object class="GtkBox" id="hbox1">
+                          <object class="CtkBox" id="hbox1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="spacing">12</property>
                             <child>
-                              <object class="GtkRadioButton" id="use_custom">
+                              <object class="CtkRadioButton" id="use_custom">
                                 <property name="label" translatable="yes">_Use custom format</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -259,7 +259,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="custom_entry">
+                              <object class="CtkEntry" id="custom_entry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="text" translatable="yes" comments="Translators: Use the more common date format in your locale">%d/%m/%Y %H:%M:%S</property>
@@ -279,7 +279,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="custom_format_example">
+                          <object class="CtkLabel" id="custom_format_example">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes" comments="Translators: This example should follow the date format defined in the entry above">01/11/2009 17:52:00</property>

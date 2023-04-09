@@ -98,7 +98,7 @@ enum
 
 G_DEFINE_TYPE_WITH_PRIVATE (LapizWindow, lapiz_window, CTK_TYPE_WINDOW)
 
-static void	recent_manager_changed	(GtkRecentManager *manager,
+static void	recent_manager_changed	(CtkRecentManager *manager,
 					 LapizWindow *window);
 
 static void
@@ -210,7 +210,7 @@ lapiz_window_dispose (GObject *object)
 
 	if (window->priv->recents_handler_id != 0)
 	{
-		GtkRecentManager *recent_manager;
+		CtkRecentManager *recent_manager;
 
 		recent_manager =  ctk_recent_manager_get_default ();
 		g_signal_handler_disconnect (recent_manager,
@@ -260,7 +260,7 @@ lapiz_window_finalize (GObject *object)
 }
 
 static gboolean
-lapiz_window_window_state_event (GtkWidget           *widget,
+lapiz_window_window_state_event (CtkWidget           *widget,
 				 GdkEventWindowState *event)
 {
 	LapizWindow *window = LAPIZ_WINDOW (widget);
@@ -271,7 +271,7 @@ lapiz_window_window_state_event (GtkWidget           *widget,
 }
 
 static gboolean
-lapiz_window_configure_event (GtkWidget         *widget,
+lapiz_window_configure_event (CtkWidget         *widget,
 			      GdkEventConfigure *event)
 {
 	LapizWindow *window = LAPIZ_WINDOW (widget);
@@ -283,19 +283,19 @@ lapiz_window_configure_event (GtkWidget         *widget,
 }
 
 /*
- * GtkWindow catches keybindings for the menu items _before_ passing them to
+ * CtkWindow catches keybindings for the menu items _before_ passing them to
  * the focused widget. This is unfortunate and means that pressing ctrl+V
  * in an entry on a panel ends up pasting text in the TextView.
- * Here we override GtkWindow's handler to do the same things that it
+ * Here we override CtkWindow's handler to do the same things that it
  * does, but in the opposite order and then we chain up to the grand
  * parent handler, skipping ctk_window_key_press_event.
  */
 static gboolean
-lapiz_window_key_press_event (GtkWidget   *widget,
+lapiz_window_key_press_event (CtkWidget   *widget,
 			      GdkEventKey *event)
 {
 	static gpointer grand_parent_class = NULL;
-	GtkWindow *window = CTK_WINDOW (widget);
+	CtkWindow *window = CTK_WINDOW (widget);
 	gboolean handled = FALSE;
 
 	if (event->state & GDK_CONTROL_MASK)
@@ -344,7 +344,7 @@ lapiz_window_key_press_event (GtkWidget   *widget,
 
 		if (g_settings_get_boolean (lapiz_prefs_manager->settings, "ctrl-tab-switch-tabs"))
 		{
-			GtkNotebook *notebook = CTK_NOTEBOOK (_lapiz_window_get_notebook (LAPIZ_WINDOW (window)));
+			CtkNotebook *notebook = CTK_NOTEBOOK (_lapiz_window_get_notebook (LAPIZ_WINDOW (window)));
 
 			int pages = ctk_notebook_get_n_pages (notebook);
 			int page_num = ctk_notebook_get_current_page (notebook);
@@ -400,7 +400,7 @@ static void
 lapiz_window_class_init (LapizWindowClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+	CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
 	klass->tab_removed = lapiz_window_tab_removed;
 
@@ -473,10 +473,10 @@ lapiz_window_class_init (LapizWindowClass *klass)
 }
 
 static void
-menu_item_select_cb (GtkMenuItem *proxy,
+menu_item_select_cb (CtkMenuItem *proxy,
 		     LapizWindow *window)
 {
-	GtkAction *action;
+	CtkAction *action;
 	char *message;
 
 	action = ctk_activatable_get_related_action (CTK_ACTIVATABLE (proxy));
@@ -492,7 +492,7 @@ menu_item_select_cb (GtkMenuItem *proxy,
 }
 
 static void
-menu_item_deselect_cb (GtkMenuItem *proxy,
+menu_item_deselect_cb (CtkMenuItem *proxy,
                        LapizWindow *window)
 {
 	ctk_statusbar_pop (CTK_STATUSBAR (window->priv->statusbar),
@@ -500,9 +500,9 @@ menu_item_deselect_cb (GtkMenuItem *proxy,
 }
 
 static void
-connect_proxy_cb (GtkUIManager *manager,
-                  GtkAction *action,
-                  GtkWidget *proxy,
+connect_proxy_cb (CtkUIManager *manager,
+                  CtkAction *action,
+                  CtkWidget *proxy,
                   LapizWindow *window)
 {
 	if (CTK_IS_MENU_ITEM (proxy))
@@ -515,9 +515,9 @@ connect_proxy_cb (GtkUIManager *manager,
 }
 
 static void
-disconnect_proxy_cb (GtkUIManager *manager,
-                     GtkAction *action,
-                     GtkWidget *proxy,
+disconnect_proxy_cb (CtkUIManager *manager,
+                     CtkAction *action,
+                     CtkWidget *proxy,
                      LapizWindow *window)
 {
 	if (CTK_IS_MENU_ITEM (proxy))
@@ -531,7 +531,7 @@ disconnect_proxy_cb (GtkUIManager *manager,
 
 static void
 apply_toolbar_style (LapizWindow *window,
-		     GtkWidget *toolbar)
+		     CtkWidget *toolbar)
 {
 	switch (window->priv->toolbar_style)
 	{
@@ -571,7 +571,7 @@ set_toolbar_style (LapizWindow *window,
 {
 	gboolean visible;
 	LapizToolbarSetting style;
-	GtkAction *action;
+	CtkAction *action;
 
 	if (origin == NULL)
 		visible = lapiz_prefs_manager_get_toolbar_visible ();
@@ -608,8 +608,8 @@ update_next_prev_doc_sensitivity (LapizWindow *window,
 				  LapizTab    *tab)
 {
 	gint	     tab_number;
-	GtkNotebook *notebook;
-	GtkAction   *action;
+	CtkNotebook *notebook;
+	CtkAction   *action;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -632,7 +632,7 @@ static void
 update_next_prev_doc_sensitivity_per_window (LapizWindow *window)
 {
 	LapizTab  *tab;
-	GtkAction *action;
+	CtkAction *action;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -655,12 +655,12 @@ update_next_prev_doc_sensitivity_per_window (LapizWindow *window)
 }
 
 static void
-received_clipboard_contents (GtkClipboard     *clipboard,
-			     GtkSelectionData *selection_data,
+received_clipboard_contents (CtkClipboard     *clipboard,
+			     CtkSelectionData *selection_data,
 			     LapizWindow      *window)
 {
 	gboolean sens;
-	GtkAction *action;
+	CtkAction *action;
 
 	/* getting clipboard contents is async, so we need to
 	 * get the current tab and its state */
@@ -691,7 +691,7 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 
 static void
 set_paste_sensitivity_according_to_clipboard (LapizWindow  *window,
-					      GtkClipboard *clipboard)
+					      CtkClipboard *clipboard)
 {
 	GdkDisplay *display;
 
@@ -701,12 +701,12 @@ set_paste_sensitivity_according_to_clipboard (LapizWindow  *window,
 	{
 		ctk_clipboard_request_contents (clipboard,
 						gdk_atom_intern_static_string ("TARGETS"),
-						(GtkClipboardReceivedFunc) received_clipboard_contents,
+						(CtkClipboardReceivedFunc) received_clipboard_contents,
 						g_object_ref (window));
 	}
 	else
 	{
-		GtkAction *action;
+		CtkAction *action;
 
 		action = ctk_action_group_get_action (window->priv->action_group,
 						      "EditPaste");
@@ -723,12 +723,12 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 {
 	LapizDocument *doc;
 	LapizView     *view;
-	GtkAction     *action;
+	CtkAction     *action;
 	gboolean       b;
 	gboolean       state_normal;
 	gboolean       editable;
 	LapizTabState  state;
-	GtkClipboard  *clipboard;
+	CtkClipboard  *clipboard;
 	LapizLockdownMask lockdown;
 
 	g_return_if_fail (LAPIZ_TAB (tab));
@@ -904,11 +904,11 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 }
 
 static void
-language_toggled (GtkToggleAction *action,
+language_toggled (CtkToggleAction *action,
 		  LapizWindow     *window)
 {
 	LapizDocument *doc;
-	GtkSourceLanguage *lang;
+	CtkSourceLanguage *lang;
 	const gchar *lang_id;
 
 	if (ctk_toggle_action_get_active (action) == FALSE)
@@ -953,14 +953,14 @@ escape_section_name (const gchar *name)
 }
 
 static void
-create_language_menu_item (GtkSourceLanguage *lang,
+create_language_menu_item (CtkSourceLanguage *lang,
 			   gint               index,
 			   guint              ui_id,
 			   LapizWindow       *window)
 {
-	GtkAction *section_action;
-	GtkRadioAction *action;
-	GtkAction *normal_action;
+	CtkAction *section_action;
+	CtkRadioAction *action;
+	CtkAction *normal_action;
 	GSList *group;
 	const gchar *section;
 	gchar *escaped_section;
@@ -1054,7 +1054,7 @@ create_language_menu_item (GtkSourceLanguage *lang,
 static void
 create_languages_menu (LapizWindow *window)
 {
-	GtkRadioAction *action_none;
+	CtkRadioAction *action_none;
 	GSList *languages;
 	GSList *l;
 	guint id;
@@ -1114,8 +1114,8 @@ update_languages_menu (LapizWindow *window)
 	LapizDocument *doc;
 	GList *actions;
 	GList *l;
-	GtkAction *action;
-	GtkSourceLanguage *lang;
+	CtkAction *action;
+	CtkSourceLanguage *lang;
 	const gchar *lang_id;
 
 	doc = lapiz_window_get_active_document (window);
@@ -1158,8 +1158,8 @@ _lapiz_recent_add (LapizWindow *window,
 		   const gchar *uri,
 		   const gchar *mime)
 {
-	GtkRecentManager *recent_manager;
-	GtkRecentData recent_data;
+	CtkRecentManager *recent_manager;
+	CtkRecentData recent_data;
 
 	static gchar *groups[2] = {
 		"lapiz",
@@ -1187,7 +1187,7 @@ void
 _lapiz_recent_remove (LapizWindow *window,
 		      const gchar *uri)
 {
-	GtkRecentManager *recent_manager;
+	CtkRecentManager *recent_manager;
 
 	recent_manager =  ctk_recent_manager_get_default ();
 
@@ -1211,7 +1211,7 @@ open_recent_file (const gchar *uri,
 }
 
 static void
-recent_chooser_item_activated (GtkRecentChooser *chooser,
+recent_chooser_item_activated (CtkRecentChooser *chooser,
 			       LapizWindow      *window)
 {
 	gchar *uri;
@@ -1224,10 +1224,10 @@ recent_chooser_item_activated (GtkRecentChooser *chooser,
 }
 
 static void
-recents_menu_activate (GtkAction   *action,
+recents_menu_activate (CtkAction   *action,
 		       LapizWindow *window)
 {
-	GtkRecentInfo *info;
+	CtkRecentInfo *info;
 	const gchar *uri;
 
 	info = g_object_get_data (G_OBJECT (action), "ctk-recent-info");
@@ -1239,7 +1239,7 @@ recents_menu_activate (GtkAction   *action,
 }
 
 static gint
-sort_recents_mru (GtkRecentInfo *a, GtkRecentInfo *b)
+sort_recents_mru (CtkRecentInfo *a, CtkRecentInfo *b)
 {
 	return (ctk_recent_info_get_modified (b) - ctk_recent_info_get_modified (a));
 }
@@ -1247,7 +1247,7 @@ sort_recents_mru (GtkRecentInfo *a, GtkRecentInfo *b)
 static void	update_recent_files_menu (LapizWindow *window);
 
 static void
-recent_manager_changed (GtkRecentManager *manager,
+recent_manager_changed (CtkRecentManager *manager,
 			LapizWindow      *window)
 {
 	/* regenerate the menu when the model changes */
@@ -1262,7 +1262,7 @@ static void
 update_recent_files_menu (LapizWindow *window)
 {
 	LapizWindowPrivate *p = window->priv;
-	GtkRecentManager *recent_manager;
+	CtkRecentManager *recent_manager;
 	gint max_recents;
 	GList *actions, *l, *items;
 	GList *filtered_items = NULL;
@@ -1297,7 +1297,7 @@ update_recent_files_menu (LapizWindow *window)
 	/* filter */
 	for (l = items; l != NULL; l = l->next)
 	{
-		GtkRecentInfo *info = l->data;
+		CtkRecentInfo *info = l->data;
 
 		if (!ctk_recent_info_has_group (info, "lapiz"))
 			continue;
@@ -1319,8 +1319,8 @@ update_recent_files_menu (LapizWindow *window)
 		gchar *uri;
 		gchar *ruri;
 		gchar *tip;
-		GtkAction *action;
-		GtkRecentInfo *info = l->data;
+		CtkAction *action;
+		CtkRecentInfo *info = l->data;
 
 		/* clamp */
 		if (i >= max_recents)
@@ -1391,17 +1391,17 @@ update_recent_files_menu (LapizWindow *window)
 }
 
 static void
-set_non_homogeneus (GtkWidget *widget, gpointer data)
+set_non_homogeneus (CtkWidget *widget, gpointer data)
 {
 	ctk_tool_item_set_homogeneous (CTK_TOOL_ITEM (widget), FALSE);
 }
 
 static void
-toolbar_visibility_changed (GtkWidget   *toolbar,
+toolbar_visibility_changed (CtkWidget   *toolbar,
 			    LapizWindow *window)
 {
 	gboolean visible;
-	GtkAction *action;
+	CtkAction *action;
 
 	visible = ctk_widget_get_visible (toolbar);
 
@@ -1415,15 +1415,15 @@ toolbar_visibility_changed (GtkWidget   *toolbar,
 		ctk_toggle_action_set_active (CTK_TOGGLE_ACTION (action), visible);
 }
 
-static GtkWidget *
+static CtkWidget *
 setup_toolbar_open_button (LapizWindow *window,
-			   GtkWidget *toolbar)
+			   CtkWidget *toolbar)
 {
-	GtkRecentManager *recent_manager;
-	GtkRecentFilter *filter;
-	GtkWidget *toolbar_recent_menu;
-	GtkToolItem *open_button;
-	GtkAction *action;
+	CtkRecentManager *recent_manager;
+	CtkRecentFilter *filter;
+	CtkWidget *toolbar_recent_menu;
+	CtkToolItem *open_button;
+	CtkAction *action;
 
 	recent_manager = ctk_recent_manager_get_default ();
 
@@ -1476,12 +1476,12 @@ setup_toolbar_open_button (LapizWindow *window,
 
 static void
 create_menu_bar_and_toolbar (LapizWindow *window,
-			     GtkWidget   *main_box)
+			     CtkWidget   *main_box)
 {
-	GtkActionGroup *action_group;
-	GtkAction *action;
-	GtkUIManager *manager;
-	GtkRecentManager *recent_manager;
+	CtkActionGroup *action_group;
+	CtkAction *action;
+	CtkUIManager *manager;
+	CtkRecentManager *recent_manager;
 	GError *error = NULL;
 	gchar *ui_file;
 
@@ -1638,7 +1638,7 @@ create_menu_bar_and_toolbar (LapizWindow *window,
 								       window->priv->toolbar);
 
 	ctk_container_foreach (CTK_CONTAINER (window->priv->toolbar),
-			       (GtkCallback)set_non_homogeneus,
+			       (CtkCallback)set_non_homogeneus,
 			       NULL);
 
 	g_signal_connect_after (G_OBJECT (window->priv->toolbar),
@@ -1652,7 +1652,7 @@ create_menu_bar_and_toolbar (LapizWindow *window,
 }
 
 static void
-documents_list_menu_activate (GtkToggleAction *action,
+documents_list_menu_activate (CtkToggleAction *action,
 			      LapizWindow     *window)
 {
 	gint n;
@@ -1719,8 +1719,8 @@ update_documents_list_menu (LapizWindow *window)
 
 	for (i = 0; i < n; i++)
 	{
-		GtkWidget *tab;
-		GtkRadioAction *action;
+		CtkWidget *tab;
+		CtkRadioAction *action;
 		gchar *action_name;
 		gchar *tab_name;
 		gchar *name;
@@ -1792,7 +1792,7 @@ static gboolean
 set_statusbar_style (LapizWindow *window,
 		     LapizWindow *origin)
 {
-	GtkAction *action;
+	CtkAction *action;
 
 	gboolean visible;
 
@@ -1816,11 +1816,11 @@ set_statusbar_style (LapizWindow *window,
 }
 
 static void
-statusbar_visibility_changed (GtkWidget   *statusbar,
+statusbar_visibility_changed (CtkWidget   *statusbar,
 			      LapizWindow *window)
 {
 	gboolean visible;
-	GtkAction *action;
+	CtkAction *action;
 
 	visible = ctk_widget_get_visible (statusbar);
 
@@ -1836,7 +1836,7 @@ statusbar_visibility_changed (GtkWidget   *statusbar,
 
 static void
 tab_width_combo_changed (LapizStatusComboBox *combo,
-			 GtkMenuItem         *item,
+			 CtkMenuItem         *item,
 			 LapizWindow         *window)
 {
 	LapizView *view;
@@ -1858,7 +1858,7 @@ tab_width_combo_changed (LapizStatusComboBox *combo,
 }
 
 static void
-use_spaces_toggled (GtkCheckMenuItem *item,
+use_spaces_toggled (CtkCheckMenuItem *item,
 		    LapizWindow      *window)
 {
 	LapizView *view;
@@ -1874,11 +1874,11 @@ use_spaces_toggled (GtkCheckMenuItem *item,
 
 static void
 language_combo_changed (LapizStatusComboBox *combo,
-			GtkMenuItem         *item,
+			CtkMenuItem         *item,
 			LapizWindow         *window)
 {
 	LapizDocument *doc;
-	GtkSourceLanguage *language;
+	CtkSourceLanguage *language;
 
 	doc = lapiz_window_get_active_document (window);
 
@@ -1911,7 +1911,7 @@ fill_tab_width_combo (LapizWindow *window)
 
 	LapizStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->tab_width_combo);
 	guint i = 0;
-	GtkWidget *item;
+	CtkWidget *item;
 
 	while (defs[i].label != NULL)
 	{
@@ -1945,10 +1945,10 @@ fill_tab_width_combo (LapizWindow *window)
 static void
 fill_language_combo (LapizWindow *window)
 {
-	GtkSourceLanguageManager *manager;
+	CtkSourceLanguageManager *manager;
 	GSList *languages;
 	GSList *item;
-	GtkWidget *menu_item;
+	CtkWidget *menu_item;
 	const gchar *name;
 
 	manager = lapiz_get_language_manager ();
@@ -1965,7 +1965,7 @@ fill_language_combo (LapizWindow *window)
 
 	for (item = languages; item; item = item->next)
 	{
-		GtkSourceLanguage *lang = CTK_SOURCE_LANGUAGE (item->data);
+		CtkSourceLanguage *lang = CTK_SOURCE_LANGUAGE (item->data);
 
 		name = ctk_source_language_get_name (lang);
 		menu_item = ctk_menu_item_new_with_label (name);
@@ -1986,7 +1986,7 @@ fill_language_combo (LapizWindow *window)
 
 static void
 create_statusbar (LapizWindow *window,
-		  GtkWidget   *main_box)
+		  CtkWidget   *main_box)
 {
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -2112,12 +2112,12 @@ clone_window (LapizWindow *origin)
 }
 
 static void
-update_cursor_position_statusbar (GtkTextBuffer *buffer,
+update_cursor_position_statusbar (CtkTextBuffer *buffer,
 				  LapizWindow   *window)
 {
 	gint row, col;
-	GtkTextIter iter;
-	GtkTextIter start;
+	CtkTextIter iter;
+	CtkTextIter start;
 	guint tab_size;
 	LapizView *view;
 
@@ -2159,7 +2159,7 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 }
 
 static void
-update_overwrite_mode_statusbar (GtkTextView *view,
+update_overwrite_mode_statusbar (CtkTextView *view,
 				 LapizWindow *window)
 {
 	if (view != CTK_TEXT_VIEW (lapiz_window_get_active_view (window)))
@@ -2184,7 +2184,7 @@ set_title (LapizWindow *window)
 	gchar *dirname = NULL;
 	gchar *title = NULL;
 	gint len;
-	GtkAction *action;
+	CtkAction *action;
 
 	if (window->priv->active_tab == NULL)
 	{
@@ -2286,7 +2286,7 @@ set_title (LapizWindow *window)
 
 static void
 set_tab_width_item_blocked (LapizWindow *window,
-			    GtkMenuItem *item)
+			    CtkMenuItem *item)
 {
 	g_signal_handlers_block_by_func (window->priv->tab_width_combo,
 					 tab_width_combo_changed,
@@ -2310,7 +2310,7 @@ spaces_instead_of_tabs_changed (GObject     *object,
 			CTK_SOURCE_VIEW (view));
 	GList *children = lapiz_status_combo_box_get_items (
 			LAPIZ_STATUS_COMBO_BOX (window->priv->tab_width_combo));
-	GtkCheckMenuItem *item;
+	CtkCheckMenuItem *item;
 
 	item = CTK_CHECK_MENU_ITEM (g_list_last (children)->data);
 
@@ -2382,7 +2382,7 @@ language_changed (GObject     *object,
 	GList *items;
 	GList *item;
 	LapizStatusComboBox *combo = LAPIZ_STATUS_COMBO_BOX (window->priv->language_combo);
-	GtkSourceLanguage *new_language;
+	CtkSourceLanguage *new_language;
 	const gchar *new_id;
 
 	items = lapiz_status_combo_box_get_items (combo);
@@ -2396,7 +2396,7 @@ language_changed (GObject     *object,
 
 	for (item = items; item; item = item->next)
 	{
-		GtkSourceLanguage *lang = g_object_get_data (G_OBJECT (item->data), LANGUAGE_DATA);
+		CtkSourceLanguage *lang = g_object_get_data (G_OBJECT (item->data), LANGUAGE_DATA);
 
 		if ((new_id == NULL && lang == NULL) ||
 		    (new_id != NULL && lang != NULL && strcmp (ctk_source_language_get_id (lang),
@@ -2419,14 +2419,14 @@ language_changed (GObject     *object,
 }
 
 static void
-notebook_switch_page (GtkNotebook     *book,
-		      GtkWidget       *pg,
+notebook_switch_page (CtkNotebook     *book,
+		      CtkWidget       *pg,
 		      gint             page_num,
 		      LapizWindow     *window)
 {
 	LapizView *view;
 	LapizTab *tab;
-	GtkAction *action;
+	CtkAction *action;
 	gchar *action_name;
 
 	/* CHECK: I don't know why but it seems notebook_switch_page is called
@@ -2517,7 +2517,7 @@ notebook_switch_page (GtkNotebook     *book,
 static void
 set_sensitivity_according_to_window_state (LapizWindow *window)
 {
-	GtkAction *action;
+	CtkAction *action;
 	LapizLockdownMask lockdown;
 
 	lockdown = lapiz_app_get_lockdown (lapiz_app_get_default ());
@@ -2594,7 +2594,7 @@ set_sensitivity_according_to_window_state (LapizWindow *window)
 }
 
 static void
-update_tab_autosave (GtkWidget *widget,
+update_tab_autosave (CtkWidget *widget,
 		     gpointer   data)
 {
 	LapizTab *tab = LAPIZ_TAB (widget);
@@ -2608,7 +2608,7 @@ _lapiz_window_set_lockdown (LapizWindow       *window,
 			    LapizLockdownMask  lockdown)
 {
 	LapizTab *tab;
-	GtkAction *action;
+	CtkAction *action;
 	gboolean autosave;
 
 	/* start/stop autosave in each existing tab */
@@ -2682,7 +2682,7 @@ update_window_state (LapizWindow *window)
 	window->priv->num_tabs_with_error = 0;
 
 	ctk_container_foreach (CTK_CONTAINER (window->priv->notebook),
-	       		       (GtkCallback)analyze_tab_state,
+	       		       (CtkCallback)analyze_tab_state,
 	       		       window);
 
 	lapiz_debug_message (DEBUG_WINDOW, "New state: %x", window->priv->state);
@@ -2727,7 +2727,7 @@ sync_name (LapizTab    *tab,
 	   GParamSpec  *pspec,
 	   LapizWindow *window)
 {
-	GtkAction *action;
+	CtkAction *action;
 	gchar *action_name;
 	gchar *tab_name;
 	gchar *escaped_name;
@@ -2770,9 +2770,9 @@ sync_name (LapizTab    *tab,
 }
 
 static LapizWindow *
-get_drop_window (GtkWidget *widget)
+get_drop_window (CtkWidget *widget)
 {
-	GtkWidget *target_window;
+	CtkWidget *target_window;
 
 	target_window = ctk_widget_get_toplevel (widget);
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (target_window), NULL);
@@ -2809,11 +2809,11 @@ load_uris_from_drop (LapizWindow  *window,
 
 /* Handle drops on the LapizWindow */
 static void
-drag_data_received_cb (GtkWidget        *widget,
+drag_data_received_cb (CtkWidget        *widget,
 		       GdkDragContext   *context,
 		       gint              x,
 		       gint              y,
-		       GtkSelectionData *selection_data,
+		       CtkSelectionData *selection_data,
 		       guint             info,
 		       guint             timestamp,
 		       gpointer          data)
@@ -2836,7 +2836,7 @@ drag_data_received_cb (GtkWidget        *widget,
 
 /* Handle drops on the LapizView */
 static void
-drop_uris_cb (GtkWidget    *widget,
+drop_uris_cb (CtkWidget    *widget,
 	      gchar       **uri_list)
 {
 	LapizWindow *window;
@@ -2934,7 +2934,7 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 			      gboolean     show,
 			      gint         height)
 {
-	GtkSettings *settings;
+	CtkSettings *settings;
 	gboolean enable_animations;
 
 	settings = ctk_widget_get_settings (CTK_WIDGET (window));
@@ -2979,7 +2979,7 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 }
 
 static gboolean
-on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
+on_fullscreen_controls_enter_notify_event (CtkWidget        *widget,
 					   GdkEventCrossing *event,
 					   LapizWindow      *window)
 {
@@ -2989,7 +2989,7 @@ on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
 }
 
 static gboolean
-on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
+on_fullscreen_controls_leave_notify_event (CtkWidget        *widget,
 					   GdkEventCrossing *event,
 					   LapizWindow      *window)
 {
@@ -3017,8 +3017,8 @@ static void
 fullscreen_controls_build (LapizWindow *window)
 {
 	LapizWindowPrivate *priv = window->priv;
-	GtkWidget *toolbar;
-	GtkAction *action;
+	CtkWidget *toolbar;
+	CtkAction *action;
 
 	if (priv->fullscreen_controls != NULL)
 		return;
@@ -3040,7 +3040,7 @@ fullscreen_controls_build (LapizWindow *window)
 	setup_toolbar_open_button (window, toolbar);
 
 	ctk_container_foreach (CTK_CONTAINER (toolbar),
-			       (GtkCallback)set_non_homogeneus,
+			       (CtkCallback)set_non_homogeneus,
 			       NULL);
 
 	/* Set the toolbar style */
@@ -3061,7 +3061,7 @@ can_search_again (LapizDocument *doc,
 		  LapizWindow   *window)
 {
 	gboolean sensitive;
-	GtkAction *action;
+	CtkAction *action;
 
 	if (doc != lapiz_window_get_active_document (window))
 		return;
@@ -3086,7 +3086,7 @@ can_undo (LapizDocument *doc,
 	  GParamSpec    *pspec,
 	  LapizWindow   *window)
 {
-	GtkAction *action;
+	CtkAction *action;
 	gboolean sensitive;
 
 	sensitive = ctk_source_buffer_can_undo (CTK_SOURCE_BUFFER (doc));
@@ -3104,7 +3104,7 @@ can_redo (LapizDocument *doc,
 	  GParamSpec    *pspec,
 	  LapizWindow   *window)
 {
-	GtkAction *action;
+	CtkAction *action;
 	gboolean sensitive;
 
 	sensitive = ctk_source_buffer_can_redo (CTK_SOURCE_BUFFER (doc));
@@ -3124,7 +3124,7 @@ selection_changed (LapizDocument *doc,
 {
 	LapizTab *tab;
 	LapizView *view;
-	GtkAction *action;
+	CtkAction *action;
 	LapizTabState state;
 	gboolean state_normal;
 	gboolean editable;
@@ -3197,7 +3197,7 @@ editable_changed (LapizView  *view,
 static void
 update_sensitivity_according_to_open_tabs (LapizWindow *window)
 {
-	GtkAction *action;
+	CtkAction *action;
 
 	/* Set sensitivity */
 	ctk_action_group_set_sensitive (window->priv->action_group,
@@ -3443,7 +3443,7 @@ notebook_tab_detached (LapizNotebook *notebook,
 static void
 notebook_tab_close_request (LapizNotebook *notebook,
 			    LapizTab      *tab,
-			    GtkWindow     *window)
+			    CtkWindow     *window)
 {
 	/* Note: we are destroying the tab before the default handler
 	 * seems to be ok, but we need to keep an eye on this. */
@@ -3451,12 +3451,12 @@ notebook_tab_close_request (LapizNotebook *notebook,
 }
 
 static gboolean
-show_notebook_popup_menu (GtkNotebook    *notebook,
+show_notebook_popup_menu (CtkNotebook    *notebook,
 			  LapizWindow    *window,
 			  GdkEventButton *event)
 {
-	GtkWidget *menu;
-//	GtkAction *action;
+	CtkWidget *menu;
+//	CtkAction *action;
 
 	menu = ctk_ui_manager_get_widget (window->priv->manager, "/NotebookPopup");
 	g_return_val_if_fail (menu != NULL, FALSE);
@@ -3470,8 +3470,8 @@ show_notebook_popup_menu (GtkNotebook    *notebook,
 	ctk_action_activate (action);
 #endif
 
-	GtkWidget *tab;
-	GtkWidget *tab_label;
+	CtkWidget *tab;
+	CtkWidget *tab_label;
 
 	tab = CTK_WIDGET (lapiz_window_get_active_tab (window));
 	g_return_val_if_fail (tab != NULL, FALSE);
@@ -3490,7 +3490,7 @@ show_notebook_popup_menu (GtkNotebook    *notebook,
 }
 
 static gboolean
-notebook_button_press_event (GtkNotebook    *notebook,
+notebook_button_press_event (CtkNotebook    *notebook,
 			     GdkEventButton *event,
 			     LapizWindow    *window)
 {
@@ -3515,7 +3515,7 @@ notebook_button_press_event (GtkNotebook    *notebook,
 }
 
 static gboolean
-notebook_scroll_event (GtkNotebook    *notebook,
+notebook_scroll_event (CtkNotebook    *notebook,
                        GdkEventScroll *event,
                        LapizWindow    *window)
 {
@@ -3532,7 +3532,7 @@ notebook_scroll_event (GtkNotebook    *notebook,
 }
 
 static gboolean
-notebook_popup_menu (GtkNotebook *notebook,
+notebook_popup_menu (CtkNotebook *notebook,
 		     LapizWindow *window)
 {
 	/* Only respond if the notebook is the actual focus */
@@ -3545,23 +3545,23 @@ notebook_popup_menu (GtkNotebook *notebook,
 }
 
 static void
-side_panel_size_allocate (GtkWidget     *widget,
-			  GtkAllocation *allocation,
+side_panel_size_allocate (CtkWidget     *widget,
+			  CtkAllocation *allocation,
 			  LapizWindow   *window)
 {
 	window->priv->side_panel_size = allocation->width;
 }
 
 static void
-bottom_panel_size_allocate (GtkWidget     *widget,
-			    GtkAllocation *allocation,
+bottom_panel_size_allocate (CtkWidget     *widget,
+			    CtkAllocation *allocation,
 			    LapizWindow   *window)
 {
 	window->priv->bottom_panel_size = allocation->height;
 }
 
 static void
-hpaned_restore_position (GtkWidget   *widget,
+hpaned_restore_position (CtkWidget   *widget,
 			 LapizWindow *window)
 {
 	gint pos;
@@ -3584,10 +3584,10 @@ hpaned_restore_position (GtkWidget   *widget,
 }
 
 static void
-vpaned_restore_position (GtkWidget   *widget,
+vpaned_restore_position (CtkWidget   *widget,
 			 LapizWindow *window)
 {
-	GtkAllocation allocation;
+	CtkAllocation allocation;
 	gint pos;
 
 	ctk_widget_get_allocation (widget, &allocation);
@@ -3611,11 +3611,11 @@ vpaned_restore_position (GtkWidget   *widget,
 }
 
 static void
-side_panel_visibility_changed (GtkWidget   *side_panel,
+side_panel_visibility_changed (CtkWidget   *side_panel,
 			       LapizWindow *window)
 {
 	gboolean   visible;
-	GtkAction *action;
+	CtkAction *action;
 
 	visible = ctk_widget_get_visible (side_panel);
 
@@ -3651,7 +3651,7 @@ side_panel_visibility_changed (GtkWidget   *side_panel,
 static void
 create_side_panel (LapizWindow *window)
 {
-	GtkWidget *documents_panel;
+	CtkWidget *documents_panel;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -3683,7 +3683,7 @@ bottom_panel_visibility_changed (LapizPanel  *bottom_panel,
 				 LapizWindow *window)
 {
 	gboolean visible;
-	GtkAction *action;
+	CtkAction *action;
 
 	visible = ctk_widget_get_visible (CTK_WIDGET (bottom_panel));
 
@@ -3704,12 +3704,12 @@ bottom_panel_visibility_changed (LapizPanel  *bottom_panel,
 
 static void
 bottom_panel_item_removed (LapizPanel  *panel,
-			   GtkWidget   *item,
+			   CtkWidget   *item,
 			   LapizWindow *window)
 {
 	if (lapiz_panel_get_n_items (panel) == 0)
 	{
-		GtkAction *action;
+		CtkAction *action;
 
 		ctk_widget_hide (CTK_WIDGET (panel));
 
@@ -3721,14 +3721,14 @@ bottom_panel_item_removed (LapizPanel  *panel,
 
 static void
 bottom_panel_item_added (LapizPanel  *panel,
-			 GtkWidget   *item,
+			 CtkWidget   *item,
 			 LapizWindow *window)
 {
 	/* if it's the first item added, set the menu item
 	 * sensitive and if needed show the panel */
 	if (lapiz_panel_get_n_items (panel) == 1)
 	{
-		GtkAction *action;
+		CtkAction *action;
 		gboolean show;
 
 		action = ctk_action_group_get_action (window->priv->panes_action_group,
@@ -3794,7 +3794,7 @@ init_panels_visibility (LapizWindow *window)
 	}
 	else
 	{
-		GtkAction *action;
+		CtkAction *action;
 		action = ctk_action_group_get_action (window->priv->panes_action_group,
 						      "ViewBottomPane");
 		ctk_action_set_sensitive (action, FALSE);
@@ -3814,7 +3814,7 @@ init_panels_visibility (LapizWindow *window)
 }
 
 static void
-clipboard_owner_change (GtkClipboard        *clipboard,
+clipboard_owner_change (CtkClipboard        *clipboard,
 			GdkEventOwnerChange *event,
 			LapizWindow         *window)
 {
@@ -3823,10 +3823,10 @@ clipboard_owner_change (GtkClipboard        *clipboard,
 }
 
 static void
-window_realized (GtkWidget *window,
+window_realized (CtkWidget *window,
 		 gpointer  *data)
 {
-	GtkClipboard *clipboard;
+	CtkClipboard *clipboard;
 
 	clipboard = ctk_widget_get_clipboard (window,
 					      GDK_SELECTION_CLIPBOARD);
@@ -3838,10 +3838,10 @@ window_realized (GtkWidget *window,
 }
 
 static void
-window_unrealized (GtkWidget *window,
+window_unrealized (CtkWidget *window,
 		   gpointer  *data)
 {
-	GtkClipboard *clipboard;
+	CtkClipboard *clipboard;
 
 	clipboard = ctk_widget_get_clipboard (window,
 					      GDK_SELECTION_CLIPBOARD);
@@ -3871,7 +3871,7 @@ check_window_is_active (LapizWindow *window,
 
 static void
 connect_notebook_signals (LapizWindow *window,
-			  GtkWidget   *notebook)
+			  CtkWidget   *notebook)
 {
 	g_signal_connect (notebook,
 			  "switch-page",
@@ -3913,7 +3913,7 @@ connect_notebook_signals (LapizWindow *window,
 
 static void
 add_notebook (LapizWindow *window,
-	      GtkWidget   *notebook)
+	      CtkWidget   *notebook)
 {
 	ctk_paned_pack1 (CTK_PANED (window->priv->vpaned),
 	                 notebook,
@@ -3953,8 +3953,8 @@ on_extension_removed (PeasExtensionSet *extensions,
 static void
 lapiz_window_init (LapizWindow *window)
 {
-	GtkWidget *main_box;
-	GtkTargetList *tl;
+	CtkWidget *main_box;
+	CtkTargetList *tl;
 
 	lapiz_debug (DEBUG_WINDOW);
 
@@ -3972,7 +3972,7 @@ lapiz_window_init (LapizWindow *window)
 	window->priv->window_group = ctk_window_group_new ();
 	ctk_window_group_add_window (window->priv->window_group, CTK_WINDOW (window));
 
-	GtkStyleContext *context;
+	CtkStyleContext *context;
 
 	context = ctk_widget_get_style_context (CTK_WIDGET (window));
 	ctk_style_context_add_class (context, "lapiz-window");
@@ -4143,7 +4143,7 @@ lapiz_window_get_active_document (LapizWindow *window)
 	return LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
 }
 
-GtkWidget *
+CtkWidget *
 _lapiz_window_get_notebook (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
@@ -4209,7 +4209,7 @@ lapiz_window_create_tab_from_uri (LapizWindow         *window,
 				  gboolean             create,
 				  gboolean             jump_to)
 {
-	GtkWidget *tab;
+	CtkWidget *tab;
 
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (uri != NULL, NULL);
@@ -4282,7 +4282,7 @@ lapiz_window_get_documents (LapizWindow *window)
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
 	ctk_container_foreach (CTK_CONTAINER (window->priv->notebook),
-			       (GtkCallback)add_document,
+			       (CtkCallback)add_document,
 			       &res);
 
 	res = g_list_reverse (res);
@@ -4317,7 +4317,7 @@ lapiz_window_get_views (LapizWindow *window)
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
 
 	ctk_container_foreach (CTK_CONTAINER (window->priv->notebook),
-			       (GtkCallback)add_view,
+			       (CtkCallback)add_view,
 			       &res);
 
 	res = g_list_reverse (res);
@@ -4451,11 +4451,11 @@ lapiz_window_set_active_tab (LapizWindow *window,
  * lapiz_window_get_group:
  * @window: a #LapizWindow
  *
- * Gets the #GtkWindowGroup in which @window resides.
+ * Gets the #CtkWindowGroup in which @window resides.
  *
- * Returns: (transfer none): the #GtkWindowGroup
+ * Returns: (transfer none): the #CtkWindowGroup
  */
-GtkWindowGroup *
+CtkWindowGroup *
 lapiz_window_get_group (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
@@ -4475,11 +4475,11 @@ _lapiz_window_is_removing_tabs (LapizWindow *window)
  * lapiz_window_get_ui_manager:
  * @window: a #LapizWindow
  *
- * Gets the #GtkUIManager associated with the @window.
+ * Gets the #CtkUIManager associated with the @window.
  *
- * Returns: (transfer none): the #GtkUIManager of the @window.
+ * Returns: (transfer none): the #CtkUIManager of the @window.
  */
-GtkUIManager *
+CtkUIManager *
 lapiz_window_get_ui_manager (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), NULL);
@@ -4527,7 +4527,7 @@ lapiz_window_get_bottom_panel (LapizWindow *window)
  *
  * Returns: (transfer none): the #LapizStatusbar of the @window.
  */
-GtkWidget *
+CtkWidget *
 lapiz_window_get_statusbar (LapizWindow *window)
 {
 	g_return_val_if_fail (LAPIZ_IS_WINDOW (window), 0);
@@ -4645,7 +4645,7 @@ _lapiz_window_set_saving_session_state (LapizWindow *window,
 }
 
 static void
-hide_notebook_tabs_on_fullscreen (GtkNotebook	*notebook,
+hide_notebook_tabs_on_fullscreen (CtkNotebook	*notebook,
 				  GParamSpec	*pspec,
 				  LapizWindow	*window)
 {
@@ -4686,7 +4686,7 @@ void
 _lapiz_window_unfullscreen (LapizWindow *window)
 {
 	gboolean visible;
-	GtkAction *action;
+	CtkAction *action;
 
 	g_return_if_fail (LAPIZ_IS_WINDOW (window));
 

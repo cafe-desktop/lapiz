@@ -22,7 +22,7 @@ import tempfile
 import re
 import codecs
 
-from gi.repository import Gdk, Gtk
+from gi.repository import Gdk, Ctk
 
 import xml.etree.ElementTree as et
 from .Helper import *
@@ -85,10 +85,10 @@ class SnippetData:
 
                 # Normalize accelerator
                 if child.tag == 'accelerator' and child.text != None:
-                    keyval, mod = Gtk.accelerator_parse(child.text)
+                    keyval, mod = Ctk.accelerator_parse(child.text)
 
-                    if Gtk.accelerator_valid(keyval, mod):
-                        child.text = Gtk.accelerator_name(keyval, mod)
+                    if Ctk.accelerator_valid(keyval, mod):
+                        child.text = Ctk.accelerator_name(keyval, mod)
                     else:
                         child.text = ''
 
@@ -114,7 +114,7 @@ class SnippetData:
             return False
 
         library = Library()
-        keyval, mod = Gtk.accelerator_parse(self['accelerator'])
+        keyval, mod = Ctk.accelerator_parse(self['accelerator'])
 
         self.valid = library.valid_tab_trigger(self['tag']) and \
                 (not self['accelerator'] or library.valid_accelerator(keyval, mod))
@@ -272,7 +272,7 @@ class LanguageContainer:
         self.language = language
         self.snippets = []
         self.snippets_by_prop = {'tag': {}, 'accelerator': {}, 'drop-targets': {}}
-        self.accel_group = Gtk.AccelGroup()
+        self.accel_group = Ctk.AccelGroup()
         self._refs = 0
 
     def _add_prop(self, snippet, prop, value=0):
@@ -285,7 +285,7 @@ class LanguageContainer:
         snippets_debug('Added ', prop ,' ', value, ' to ', str(self.language))
 
         if prop == 'accelerator':
-            keyval, mod = Gtk.accelerator_parse(value)
+            keyval, mod = Ctk.accelerator_parse(value)
             self.accel_group.connect(keyval, mod, 0, \
                     Library().accelerator_activated)
 
@@ -310,7 +310,7 @@ class LanguageContainer:
         snippets_debug('Removed ', prop, ' ', value, ' from ', str(self.language))
 
         if prop == 'accelerator':
-            keyval, mod = Gtk.accelerator_parse(value)
+            keyval, mod = Ctk.accelerator_parse(value)
             self.accel_group.disconnect_key(keyval, mod)
 
         snippets = self.snippets_by_prop[prop]
@@ -656,7 +656,7 @@ class Library(Singleton):
     def __init_once__(self):
         self._accelerator_activated_cb = []
         self.loaded = False
-        self.check_buffer = Gtk.TextBuffer()
+        self.check_buffer = Ctk.TextBuffer()
 
     def set_dirs(self, userdir, systemdirs):
         self.userdir = userdir
@@ -940,7 +940,7 @@ class Library(Singleton):
         self.loaded = True
 
     def valid_accelerator(self, keyval, mod):
-        mod &= Gtk.accelerator_get_default_mod_mask()
+        mod &= Ctk.accelerator_get_default_mod_mask()
 
         return mod and (Gdk.keyval_to_unicode(keyval) or \
                 re.match('^F(?:1[012]?|[2-9])$', Gdk.keyval_name(keyval)))

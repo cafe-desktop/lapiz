@@ -179,8 +179,8 @@ void			 lapiz_prefs_manager_set_undo_actions_limit	(gint ual);
 gboolean		 lapiz_prefs_manager_undo_actions_limit_can_set	(void);
 
 /* Wrap mode */
-GtkWrapMode		 lapiz_prefs_manager_get_wrap_mode		(void);
-void			 lapiz_prefs_manager_set_wrap_mode		(GtkWrapMode wp);
+CtkWrapMode		 lapiz_prefs_manager_get_wrap_mode		(void);
+void			 lapiz_prefs_manager_set_wrap_mode		(CtkWrapMode wp);
 gboolean		 lapiz_prefs_manager_wrap_mode_can_set		(void);
 
 /* Tabs size */
@@ -238,8 +238,8 @@ void			 lapiz_prefs_manager_set_print_header		(gboolean ph);
 gboolean		 lapiz_prefs_manager_print_header_can_set	(void);
 
 /* Wrap mode while printing */
-GtkWrapMode		 lapiz_prefs_manager_get_print_wrap_mode	(void);
-void			 lapiz_prefs_manager_set_print_wrap_mode	(GtkWrapMode pwm);
+CtkWrapMode		 lapiz_prefs_manager_get_print_wrap_mode	(void);
+void			 lapiz_prefs_manager_set_print_wrap_mode	(CtkWrapMode pwm);
 gboolean		 lapiz_prefs_manager_print_wrap_mode_can_set	(void);
 
 /* Print line numbers */
@@ -298,9 +298,9 @@ void 			 lapiz_prefs_manager_set_right_margin_position	(gint rmp);
 gboolean		 lapiz_prefs_manager_right_margin_position_can_set (void);
 
 /* Smart home end */
-GtkSourceSmartHomeEndType
+CtkSourceSmartHomeEndType
 		 	 lapiz_prefs_manager_get_smart_home_end		(void);
-void 			 lapiz_prefs_manager_set_smart_home_end		(GtkSourceSmartHomeEndType  smart_he);
+void 			 lapiz_prefs_manager_set_smart_home_end		(CtkSourceSmartHomeEndType  smart_he);
 gboolean		 lapiz_prefs_manager_smart_home_end_can_set	(void);
 
 /* Enable syntax highlighting */

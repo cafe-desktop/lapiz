@@ -33,8 +33,8 @@ struct _LapizFileBookmarksStorePrivate
 	GFileMonitor * bookmarks_monitor;
 };
 
-static void remove_node               (GtkTreeModel * model,
-                                       GtkTreeIter * iter);
+static void remove_node               (CtkTreeModel * model,
+                                       CtkTreeIter * iter);
 
 static void on_fs_changed             (GVolumeMonitor 		*monitor,
                                        GObject 			*object,
@@ -45,8 +45,8 @@ static void on_bookmarks_file_changed (GFileMonitor * monitor,
 				       GFile * other_file,
 				       GFileMonitorEvent event_type,
 				       LapizFileBookmarksStore * model);
-static gboolean find_with_flags       (GtkTreeModel * model,
-                                       GtkTreeIter * iter,
+static gboolean find_with_flags       (CtkTreeModel * model,
+                                       CtkTreeIter * iter,
                                        gpointer obj,
                                        guint flags,
                                        guint notflags);
@@ -113,9 +113,9 @@ add_node (LapizFileBookmarksStore *model,
 	  const gchar 		  *name,
 	  GObject 		  *obj,
 	  guint 		   flags,
-	  GtkTreeIter 		  *iter)
+	  CtkTreeIter 		  *iter)
 {
-	GtkTreeIter newiter;
+	CtkTreeIter newiter;
 
 	ctk_tree_store_append (CTK_TREE_STORE (model), &newiter, NULL);
 
@@ -135,7 +135,7 @@ add_file (LapizFileBookmarksStore *model,
 	  GFile 		  *file,
 	  const gchar 		  *name,
 	  guint 		   flags,
-	  GtkTreeIter 		  *iter)
+	  CtkTreeIter 		  *iter)
 {
 	GdkPixbuf *pixbuf = NULL;
 	gboolean native;
@@ -183,7 +183,7 @@ static void
 check_mount_separator (LapizFileBookmarksStore * model, guint flags,
 			gboolean added)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gboolean found;
 
 	found =
@@ -287,7 +287,7 @@ static void
 add_fs (LapizFileBookmarksStore *model,
 	gpointer 		 fs,
 	guint 			 flags,
-	GtkTreeIter		*iter)
+	CtkTreeIter		*iter)
 {
 	gchar *name;
 	GdkPixbuf *pixbuf;
@@ -475,7 +475,7 @@ add_bookmark (LapizFileBookmarksStore * model,
 	GFile * file;
 	gboolean ret;
 	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK;
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	file = g_file_new_for_uri (uri);
 
@@ -630,8 +630,8 @@ utf8_casecmp (gchar const *s1, const gchar * s2)
 }
 
 static gint
-bookmarks_compare_names (GtkTreeModel * model, GtkTreeIter * a,
-			 GtkTreeIter * b)
+bookmarks_compare_names (CtkTreeModel * model, CtkTreeIter * a,
+			 CtkTreeIter * b)
 {
 	gchar *n1;
 	gchar *n2;
@@ -668,8 +668,8 @@ bookmarks_compare_names (GtkTreeModel * model, GtkTreeIter * a,
 }
 
 static gint
-bookmarks_compare_flags (GtkTreeModel * model, GtkTreeIter * a,
-			 GtkTreeIter * b)
+bookmarks_compare_flags (CtkTreeModel * model, CtkTreeIter * a,
+			 CtkTreeIter * b)
 {
 	guint f1;
 	guint f2;
@@ -704,8 +704,8 @@ bookmarks_compare_flags (GtkTreeModel * model, GtkTreeIter * a,
 }
 
 static gint
-bookmarks_compare_func (GtkTreeModel * model, GtkTreeIter * a,
-			GtkTreeIter * b, gpointer user_data)
+bookmarks_compare_func (CtkTreeModel * model, CtkTreeIter * a,
+			CtkTreeIter * b, gpointer user_data)
 {
 	gint result;
 
@@ -718,10 +718,10 @@ bookmarks_compare_func (GtkTreeModel * model, GtkTreeIter * a,
 }
 
 static gboolean
-find_with_flags (GtkTreeModel * model, GtkTreeIter * iter, gpointer obj,
+find_with_flags (CtkTreeModel * model, CtkTreeIter * iter, gpointer obj,
 		 guint flags, guint notflags)
 {
-	GtkTreeIter child;
+	CtkTreeIter child;
 	guint childflags = 0;
  	GObject * childobj;
  	gboolean fequal;
@@ -753,7 +753,7 @@ find_with_flags (GtkTreeModel * model, GtkTreeIter * iter, gpointer obj,
 }
 
 static void
-remove_node (GtkTreeModel * model, GtkTreeIter * iter)
+remove_node (CtkTreeModel * model, CtkTreeIter * iter)
 {
 	guint flags;
 
@@ -775,7 +775,7 @@ remove_node (GtkTreeModel * model, GtkTreeIter * iter)
 static void
 remove_bookmarks (LapizFileBookmarksStore * model)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	while (find_with_flags (CTK_TREE_MODEL (model), &iter, NULL,
 				LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
@@ -823,7 +823,7 @@ lapiz_file_bookmarks_store_new (void)
 
 gchar *
 lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
-				    GtkTreeIter * iter)
+				    CtkTreeIter * iter)
 {
 	GObject * obj;
 	GFile * file = NULL;
@@ -878,10 +878,10 @@ on_fs_changed (GVolumeMonitor 	      *monitor,
 	       GObject 		      *object,
 	       LapizFileBookmarksStore *model)
 {
-	GtkTreeModel *tree_model = CTK_TREE_MODEL (model);
+	CtkTreeModel *tree_model = CTK_TREE_MODEL (model);
 	guint flags = LAPIZ_FILE_BOOKMARKS_STORE_IS_FS;
 	guint noflags = LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	/* clear all fs items */
 	while (find_with_flags (tree_model, &iter, NULL, flags, noflags))

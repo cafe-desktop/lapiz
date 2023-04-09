@@ -41,20 +41,20 @@ typedef struct _LapizTabLabelClass	LapizTabLabelClass;
 typedef struct _LapizTabLabelPrivate	LapizTabLabelPrivate;
 
 struct _LapizTabLabel {
-	GtkBox parent;
+	CtkBox parent;
 
 	LapizTabLabelPrivate *priv;
 };
 
 struct _LapizTabLabelClass {
-	GtkBoxClass parent_class;
+	CtkBoxClass parent_class;
 
 	void (* close_clicked)  (LapizTabLabel *tab_label);
 };
 
 GType		 lapiz_tab_label_get_type (void) G_GNUC_CONST;
 
-GtkWidget 	*lapiz_tab_label_new (LapizTab *tab);
+CtkWidget 	*lapiz_tab_label_new (LapizTab *tab);
 
 LapizTab	*lapiz_tab_label_get_tab (LapizTabLabel *tab_label);
 

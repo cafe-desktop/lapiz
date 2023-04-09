@@ -70,7 +70,7 @@ typedef struct _LapizWindow LapizWindow;
 
 struct _LapizWindow
 {
-	GtkWindow window;
+	CtkWindow window;
 
 	/*< private > */
 	LapizWindowPrivate *priv;
@@ -83,7 +83,7 @@ typedef struct _LapizWindowClass LapizWindowClass;
 
 struct _LapizWindowClass
 {
-	GtkWindowClass parent_class;
+	CtkWindowClass parent_class;
 
 	/* Signals */
 	void	 (* tab_added)      	(LapizWindow *window,
@@ -139,15 +139,15 @@ GList		*lapiz_window_get_unsaved_documents 	(LapizWindow         *window);
 /* Returns a newly allocated list with all the views in the window */
 GList		*lapiz_window_get_views			(LapizWindow         *window);
 
-GtkWindowGroup  *lapiz_window_get_group			(LapizWindow         *window);
+CtkWindowGroup  *lapiz_window_get_group			(LapizWindow         *window);
 
 LapizPanel	*lapiz_window_get_side_panel		(LapizWindow         *window);
 
 LapizPanel	*lapiz_window_get_bottom_panel		(LapizWindow         *window);
 
-GtkWidget	*lapiz_window_get_statusbar		(LapizWindow         *window);
+CtkWidget	*lapiz_window_get_statusbar		(LapizWindow         *window);
 
-GtkUIManager	*lapiz_window_get_ui_manager		(LapizWindow         *window);
+CtkUIManager	*lapiz_window_get_ui_manager		(LapizWindow         *window);
 
 LapizWindowState lapiz_window_get_state 		(LapizWindow         *window);
 
@@ -160,7 +160,7 @@ LapizMessageBus	*lapiz_window_get_message_bus		(LapizWindow         *window);
 /*
  * Non exported functions
  */
-GtkWidget	*_lapiz_window_get_notebook		(LapizWindow         *window);
+CtkWidget	*_lapiz_window_get_notebook		(LapizWindow         *window);
 
 LapizWindow	*_lapiz_window_move_tab_to_new_window	(LapizWindow         *window,
 							 LapizTab            *tab);

@@ -64,8 +64,8 @@ struct _LapizAppPrivate
 
 	LapizLockdownMask  lockdown;
 
-	GtkPageSetup      *page_setup;
-	GtkPrintSettings  *print_settings;
+	CtkPageSetup      *page_setup;
+	CtkPrintSettings  *print_settings;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (LapizApp, lapiz_app, G_TYPE_OBJECT)
@@ -825,7 +825,7 @@ _lapiz_app_set_lockdown_bit (LapizApp          *app,
 }
 
 /* Returns a copy */
-GtkPageSetup *
+CtkPageSetup *
 _lapiz_app_get_default_page_setup (LapizApp *app)
 {
 	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
@@ -838,7 +838,7 @@ _lapiz_app_get_default_page_setup (LapizApp *app)
 
 void
 _lapiz_app_set_default_page_setup (LapizApp     *app,
-				   GtkPageSetup *page_setup)
+				   CtkPageSetup *page_setup)
 {
 	g_return_if_fail (LAPIZ_IS_APP (app));
 	g_return_if_fail (CTK_IS_PAGE_SETUP (page_setup));
@@ -850,7 +850,7 @@ _lapiz_app_set_default_page_setup (LapizApp     *app,
 }
 
 /* Returns a copy */
-GtkPrintSettings *
+CtkPrintSettings *
 _lapiz_app_get_default_print_settings (LapizApp *app)
 {
 	g_return_val_if_fail (LAPIZ_IS_APP (app), NULL);
@@ -863,7 +863,7 @@ _lapiz_app_get_default_print_settings (LapizApp *app)
 
 void
 _lapiz_app_set_default_print_settings (LapizApp         *app,
-				       GtkPrintSettings *settings)
+				       CtkPrintSettings *settings)
 {
 	g_return_if_fail (LAPIZ_IS_APP (app));
 	g_return_if_fail (CTK_IS_PRINT_SETTINGS (settings));

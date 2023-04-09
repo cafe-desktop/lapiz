@@ -58,7 +58,7 @@ typedef struct _LapizView		LapizView;
 
 struct _LapizView
 {
-	GtkSourceView view;
+	CtkSourceView view;
 
 	/*< private > */
 	LapizViewPrivate *priv;
@@ -71,7 +71,7 @@ typedef struct _LapizViewClass		LapizViewClass;
 
 struct _LapizViewClass
 {
-	GtkSourceViewClass parent_class;
+	CtkSourceViewClass parent_class;
 
 	/* FIXME: Do we need placeholders ? */
 
@@ -89,7 +89,7 @@ struct _LapizViewClass
  */
 GType		 lapiz_view_get_type     	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_view_new			(LapizDocument   *doc);
+CtkWidget	*lapiz_view_new			(LapizDocument   *doc);
 
 void		 lapiz_view_cut_clipboard 	(LapizView       *view);
 void		 lapiz_view_copy_clipboard 	(LapizView       *view);
@@ -100,7 +100,7 @@ void		 lapiz_view_select_all		(LapizView       *view);
 void		 lapiz_view_scroll_to_cursor 	(LapizView       *view);
 
 void		 lapiz_override_font		(const gchar          *item,
-						 GtkWidget            *widget,
+						 CtkWidget            *widget,
 						 PangoFontDescription *font);
 
 void 		 lapiz_view_set_font		(LapizView       *view,
@@ -109,9 +109,9 @@ void 		 lapiz_view_set_font		(LapizView       *view,
 
 #ifdef CTK_SOURCE_VERSION_3_24
 void
-lapiz_set_source_space_drawer_by_level (GtkSourceView          *view,
+lapiz_set_source_space_drawer_by_level (CtkSourceView          *view,
                                         gint                    level,
-                                        GtkSourceSpaceTypeFlags type);
+                                        CtkSourceSpaceTypeFlags type);
 #endif
 
 

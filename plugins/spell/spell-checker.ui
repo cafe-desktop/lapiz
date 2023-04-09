@@ -3,50 +3,50 @@
 <!--*- mode: xml -*-->
 <interface>
   <requires lib="ctk+" version="3.22"/>
-  <object class="GtkImage" id="add_word_image">
+  <object class="CtkImage" id="add_word_image">
     <property name="can_focus">False</property>
     <property name="icon_name">list-add</property>
   </object>
-  <object class="GtkImage" id="change_all_image">
+  <object class="CtkImage" id="change_all_image">
     <property name="can_focus">False</property>
     <property name="icon_name">ctk-convert</property>
   </object>
-  <object class="GtkImage" id="change_image">
+  <object class="CtkImage" id="change_image">
     <property name="can_focus">False</property>
     <property name="icon_name">ctk-convert</property>
   </object>
-  <object class="GtkImage" id="check_word_image">
+  <object class="CtkImage" id="check_word_image">
     <property name="can_focus">False</property>
     <property name="icon_name">tools-check-spelling</property>
   </object>
-  <object class="GtkImage" id="ignore_all_image">
+  <object class="CtkImage" id="ignore_all_image">
     <property name="can_focus">False</property>
     <property name="icon_name">go-bottom</property>
   </object>
-  <object class="GtkImage" id="ignore_image">
+  <object class="CtkImage" id="ignore_image">
     <property name="can_focus">False</property>
     <property name="icon_name">go-down</property>
   </object>
-  <object class="GtkWindow" id="check_spelling_window">
+  <object class="CtkWindow" id="check_spelling_window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Check spelling</property>
     <property name="resizable">False</property>
     <child>
-      <object class="GtkBox" id="content">
+      <object class="CtkBox" id="content">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="border_width">12</property>
         <property name="orientation">vertical</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkGrid" id="table1">
+          <object class="CtkGrid" id="table1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="row_spacing">6</property>
             <property name="column_spacing">12</property>
             <child>
-              <object class="GtkLabel" id="label1">
+              <object class="CtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Misspelled word:</property>
@@ -60,7 +60,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="misspelled_word_label">
+              <object class="CtkLabel" id="misspelled_word_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">word</property>
@@ -78,7 +78,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label3">
+              <object class="CtkLabel" id="label3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Change _to:</property>
@@ -94,13 +94,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="hbox1">
+              <object class="CtkBox" id="hbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="spacing">12</property>
                 <child>
-                  <object class="GtkEntry" id="word_entry">
+                  <object class="CtkEntry" id="word_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -111,7 +111,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="check_word_button">
+                  <object class="CtkButton" id="check_word_button">
                     <property name="label" translatable="yes">Check _Word</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -139,13 +139,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="table2">
+          <object class="CtkGrid" id="table2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="row_spacing">6</property>
             <property name="column_spacing">12</property>
             <child>
-              <object class="GtkLabel" id="label4">
+              <object class="CtkLabel" id="label4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Suggestions:</property>
@@ -161,18 +161,18 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow1">
+              <object class="CtkScrolledWindow" id="scrolledwindow1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="shadow_type">etched-in</property>
                 <child>
-                  <object class="GtkTreeView" id="suggestions_list">
+                  <object class="CtkTreeView" id="suggestions_list">
                     <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="headers_visible">False</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                      <object class="CtkTreeSelection"/>
                     </child>
                   </object>
                 </child>
@@ -183,14 +183,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="vbox2">
+              <object class="CtkBox" id="vbox2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">12</property>
                 <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkGrid" id="table3">
+                  <object class="CtkGrid" id="table3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -198,7 +198,7 @@
                     <property name="column_spacing">12</property>
                     <property name="column_homogeneous">True</property>
                     <child>
-                      <object class="GtkButton" id="ignore_button">
+                      <object class="CtkButton" id="ignore_button">
                         <property name="label" translatable="yes">_Ignore</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -212,7 +212,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="change_button">
+                      <object class="CtkButton" id="change_button">
                         <property name="label" translatable="yes">Cha_nge</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -226,7 +226,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="ignore_all_button">
+                      <object class="CtkButton" id="ignore_all_button">
                         <property name="label" translatable="yes">Ignore _All</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -240,7 +240,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="change_all_button">
+                      <object class="CtkButton" id="change_all_button">
                         <property name="label" translatable="yes">Change A_ll</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -261,13 +261,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="vbox3">
+                  <object class="CtkBox" id="vbox3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">11</property>
                     <child>
-                      <object class="GtkLabel" id="label6">
+                      <object class="CtkLabel" id="label6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">User dictionary:</property>
@@ -282,13 +282,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="hbox2">
+                      <object class="CtkBox" id="hbox2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="spacing">6</property>
                         <property name="homogeneous">True</property>
                         <child>
-                          <object class="GtkButton" id="add_word_button">
+                          <object class="CtkButton" id="add_word_button">
                             <property name="label" translatable="yes">Add w_ord</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -323,12 +323,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="hbox32">
+              <object class="CtkBox" id="hbox32">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="spacing">12</property>
                 <child>
-                  <object class="GtkLabel" id="label44">
+                  <object class="CtkLabel" id="label44">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Language:</property>
@@ -342,7 +342,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="language_label">
+                  <object class="CtkLabel" id="language_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Language</property>
@@ -366,12 +366,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButtonBox" id="hbuttonbox1">
+              <object class="CtkButtonBox" id="hbuttonbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="layout_style">end</property>
                 <child>
-                  <object class="GtkButton" id="close_button">
+                  <object class="CtkButton" id="close_button">
                     <property name="label" translatable="yes">_Close</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>

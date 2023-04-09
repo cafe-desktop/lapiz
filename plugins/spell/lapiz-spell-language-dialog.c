@@ -49,10 +49,10 @@ enum
 
 struct _LapizSpellLanguageDialog
 {
-	GtkDialog dialog;
+	CtkDialog dialog;
 
-	GtkWidget *languages_treeview;
-	GtkTreeModel *model;
+	CtkWidget *languages_treeview;
+	CtkTreeModel *model;
 };
 
 G_DEFINE_TYPE(LapizSpellLanguageDialog, lapiz_spell_language_dialog, CTK_TYPE_DIALOG)
@@ -65,7 +65,7 @@ lapiz_spell_language_dialog_class_init (LapizSpellLanguageDialogClass *klass)
 }
 
 static void
-dialog_response_handler (GtkDialog *dlg,
+dialog_response_handler (CtkDialog *dlg,
 			 gint       res_id)
 {
 	if (res_id == CTK_RESPONSE_HELP)
@@ -79,11 +79,11 @@ dialog_response_handler (GtkDialog *dlg,
 }
 
 static void
-scroll_to_selected (GtkTreeView *tree_view)
+scroll_to_selected (CtkTreeView *tree_view)
 {
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeSelection *selection;
+	CtkTreeIter iter;
 
 	model = ctk_tree_view_get_model (tree_view);
 	g_return_if_fail (model != NULL);
@@ -94,7 +94,7 @@ scroll_to_selected (GtkTreeView *tree_view)
 
 	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 	{
-		GtkTreePath* path;
+		CtkTreePath* path;
 
 		path = ctk_tree_model_get_path (model, &iter);
 		g_return_if_fail (path != NULL);
@@ -106,9 +106,9 @@ scroll_to_selected (GtkTreeView *tree_view)
 }
 
 static void
-language_row_activated (GtkTreeView *tree_view,
-			GtkTreePath *path,
-			GtkTreeViewColumn *column,
+language_row_activated (CtkTreeView *tree_view,
+			CtkTreePath *path,
+			CtkTreeViewColumn *column,
 			LapizSpellLanguageDialog *dialog)
 {
 	ctk_dialog_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
@@ -118,11 +118,11 @@ static void
 create_dialog (LapizSpellLanguageDialog *dlg,
 	       const gchar *data_dir)
 {
-	GtkWidget *error_widget;
-	GtkWidget *content;
+	CtkWidget *error_widget;
+	CtkWidget *content;
 	gboolean ret;
-	GtkCellRenderer *cell;
-	GtkTreeViewColumn *column;
+	CtkCellRenderer *cell;
+	CtkTreeViewColumn *column;
 	gchar *ui_file;
 	gchar *root_objects[] = {
 		"content",
@@ -215,8 +215,8 @@ static void
 populate_language_list (LapizSpellLanguageDialog        *dlg,
 			const LapizSpellCheckerLanguage *cur_lang)
 {
-	GtkListStore *store;
-	GtkTreeIter iter;
+	CtkListStore *store;
+	CtkTreeIter iter;
 
 	const GSList* langs;
 
@@ -239,7 +239,7 @@ populate_language_list (LapizSpellLanguageDialog        *dlg,
 
 		if (langs->data == cur_lang)
 		{
-			GtkTreeSelection *selection;
+			CtkTreeSelection *selection;
 
 			selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->languages_treeview));
 			g_return_if_fail (selection != NULL);
@@ -251,8 +251,8 @@ populate_language_list (LapizSpellLanguageDialog        *dlg,
 	}
 }
 
-GtkWidget *
-lapiz_spell_language_dialog_new (GtkWindow                       *parent,
+CtkWidget *
+lapiz_spell_language_dialog_new (CtkWindow                       *parent,
 				 const LapizSpellCheckerLanguage *cur_lang,
 				 const gchar *data_dir)
 {
@@ -278,8 +278,8 @@ lapiz_spell_language_get_selected_language (LapizSpellLanguageDialog *dlg)
 	GValue value = {0, };
 	const LapizSpellCheckerLanguage* lang;
 
-	GtkTreeIter iter;
-	GtkTreeSelection *selection;
+	CtkTreeIter iter;
+	CtkTreeSelection *selection;
 
 	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (dlg->languages_treeview));
 	g_return_val_if_fail (selection != NULL, NULL);

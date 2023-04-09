@@ -127,54 +127,54 @@ static FileBrowserNode *model_find_node 		    (LapizFileBrowserStore *model,
 							     GFile *uri);
 static void model_remove_node                               (LapizFileBrowserStore * model,
 							     FileBrowserNode * node,
-							     GtkTreePath * path,
+							     CtkTreePath * path,
 							     gboolean free_nodes);
 
 static void set_virtual_root_from_node                      (LapizFileBrowserStore * model,
 				                             FileBrowserNode * node);
 
-static void lapiz_file_browser_store_iface_init             (GtkTreeModelIface * iface);
-static GtkTreeModelFlags lapiz_file_browser_store_get_flags (GtkTreeModel * tree_model);
-static gint lapiz_file_browser_store_get_n_columns          (GtkTreeModel * tree_model);
-static GType lapiz_file_browser_store_get_column_type       (GtkTreeModel * tree_model,
+static void lapiz_file_browser_store_iface_init             (CtkTreeModelIface * iface);
+static CtkTreeModelFlags lapiz_file_browser_store_get_flags (CtkTreeModel * tree_model);
+static gint lapiz_file_browser_store_get_n_columns          (CtkTreeModel * tree_model);
+static GType lapiz_file_browser_store_get_column_type       (CtkTreeModel * tree_model,
 							     gint index);
-static gboolean lapiz_file_browser_store_get_iter           (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter,
-							     GtkTreePath * path);
-static GtkTreePath *lapiz_file_browser_store_get_path       (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter);
-static void lapiz_file_browser_store_get_value              (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter,
+static gboolean lapiz_file_browser_store_get_iter           (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter,
+							     CtkTreePath * path);
+static CtkTreePath *lapiz_file_browser_store_get_path       (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter);
+static void lapiz_file_browser_store_get_value              (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter,
 							     gint column,
 							     GValue * value);
-static gboolean lapiz_file_browser_store_iter_next          (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter);
-static gboolean lapiz_file_browser_store_iter_children      (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter,
-							     GtkTreeIter * parent);
-static gboolean lapiz_file_browser_store_iter_has_child     (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter);
-static gint lapiz_file_browser_store_iter_n_children        (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter);
-static gboolean lapiz_file_browser_store_iter_nth_child     (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter,
-							     GtkTreeIter * parent,
+static gboolean lapiz_file_browser_store_iter_next          (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter);
+static gboolean lapiz_file_browser_store_iter_children      (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter,
+							     CtkTreeIter * parent);
+static gboolean lapiz_file_browser_store_iter_has_child     (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter);
+static gint lapiz_file_browser_store_iter_n_children        (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter);
+static gboolean lapiz_file_browser_store_iter_nth_child     (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter,
+							     CtkTreeIter * parent,
 							     gint n);
-static gboolean lapiz_file_browser_store_iter_parent        (GtkTreeModel * tree_model,
-							     GtkTreeIter * iter,
-							     GtkTreeIter * child);
-static void lapiz_file_browser_store_row_inserted	    (GtkTreeModel * tree_model,
-							     GtkTreePath * path,
-							     GtkTreeIter * iter);
+static gboolean lapiz_file_browser_store_iter_parent        (CtkTreeModel * tree_model,
+							     CtkTreeIter * iter,
+							     CtkTreeIter * child);
+static void lapiz_file_browser_store_row_inserted	    (CtkTreeModel * tree_model,
+							     CtkTreePath * path,
+							     CtkTreeIter * iter);
 
-static void lapiz_file_browser_store_drag_source_init       (GtkTreeDragSourceIface * iface);
-static gboolean lapiz_file_browser_store_row_draggable      (GtkTreeDragSource * drag_source,
-							     GtkTreePath       * path);
-static gboolean lapiz_file_browser_store_drag_data_delete   (GtkTreeDragSource * drag_source,
-							     GtkTreePath       * path);
-static gboolean lapiz_file_browser_store_drag_data_get      (GtkTreeDragSource * drag_source,
-							     GtkTreePath       * path,
-							     GtkSelectionData  * selection_data);
+static void lapiz_file_browser_store_drag_source_init       (CtkTreeDragSourceIface * iface);
+static gboolean lapiz_file_browser_store_row_draggable      (CtkTreeDragSource * drag_source,
+							     CtkTreePath       * path);
+static gboolean lapiz_file_browser_store_drag_data_delete   (CtkTreeDragSource * drag_source,
+							     CtkTreePath       * path);
+static gboolean lapiz_file_browser_store_drag_data_get      (CtkTreeDragSource * drag_source,
+							     CtkTreePath       * path,
+							     CtkSelectionData  * selection_data);
 
 static void file_browser_node_free                          (LapizFileBrowserStore * model,
 							     FileBrowserNode * node);
@@ -426,7 +426,7 @@ lapiz_file_browser_store_class_finalize (LapizFileBrowserStoreClass *klass)
 }
 
 static void
-lapiz_file_browser_store_iface_init (GtkTreeModelIface * iface)
+lapiz_file_browser_store_iface_init (CtkTreeModelIface * iface)
 {
 	iface->get_flags = lapiz_file_browser_store_get_flags;
 	iface->get_n_columns = lapiz_file_browser_store_get_n_columns;
@@ -444,7 +444,7 @@ lapiz_file_browser_store_iface_init (GtkTreeModelIface * iface)
 }
 
 static void
-lapiz_file_browser_store_drag_source_init (GtkTreeDragSourceIface * iface)
+lapiz_file_browser_store_drag_source_init (CtkTreeDragSourceIface * iface)
 {
 	iface->row_draggable = lapiz_file_browser_store_row_draggable;
 	iface->drag_data_delete = lapiz_file_browser_store_drag_data_delete;
@@ -518,17 +518,17 @@ model_node_inserted (LapizFileBrowserStore * model,
 
 /* Interface implementation */
 
-static GtkTreeModelFlags
-lapiz_file_browser_store_get_flags (GtkTreeModel * tree_model)
+static CtkTreeModelFlags
+lapiz_file_browser_store_get_flags (CtkTreeModel * tree_model)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
-			      (GtkTreeModelFlags) 0);
+			      (CtkTreeModelFlags) 0);
 
 	return CTK_TREE_MODEL_ITERS_PERSIST;
 }
 
 static gint
-lapiz_file_browser_store_get_n_columns (GtkTreeModel * tree_model)
+lapiz_file_browser_store_get_n_columns (CtkTreeModel * tree_model)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model), 0);
 
@@ -536,7 +536,7 @@ lapiz_file_browser_store_get_n_columns (GtkTreeModel * tree_model)
 }
 
 static GType
-lapiz_file_browser_store_get_column_type (GtkTreeModel * tree_model, gint idx)
+lapiz_file_browser_store_get_column_type (CtkTreeModel * tree_model, gint idx)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model),
 			      G_TYPE_INVALID);
@@ -547,8 +547,8 @@ lapiz_file_browser_store_get_column_type (GtkTreeModel * tree_model, gint idx)
 }
 
 static gboolean
-lapiz_file_browser_store_get_iter (GtkTreeModel * tree_model,
-				   GtkTreeIter * iter, GtkTreePath * path)
+lapiz_file_browser_store_get_iter (CtkTreeModel * tree_model,
+				   CtkTreeIter * iter, CtkTreePath * path)
 {
 	gint * indices, depth, i;
 	FileBrowserNode * node;
@@ -602,11 +602,11 @@ lapiz_file_browser_store_get_iter (GtkTreeModel * tree_model,
 	return node != NULL;
 }
 
-static GtkTreePath *
+static CtkTreePath *
 lapiz_file_browser_store_get_path_real (LapizFileBrowserStore * model,
 					FileBrowserNode * node)
 {
-	GtkTreePath *path;
+	CtkTreePath *path;
 	gint num = 0;
 
 	path = ctk_tree_path_new ();
@@ -649,9 +649,9 @@ lapiz_file_browser_store_get_path_real (LapizFileBrowserStore * model,
 	return path;
 }
 
-static GtkTreePath *
-lapiz_file_browser_store_get_path (GtkTreeModel * tree_model,
-				   GtkTreeIter * iter)
+static CtkTreePath *
+lapiz_file_browser_store_get_path (CtkTreeModel * tree_model,
+				   CtkTreeIter * iter)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
@@ -662,8 +662,8 @@ lapiz_file_browser_store_get_path (GtkTreeModel * tree_model,
 }
 
 static void
-lapiz_file_browser_store_get_value (GtkTreeModel * tree_model,
-				    GtkTreeIter * iter,
+lapiz_file_browser_store_get_value (CtkTreeModel * tree_model,
+				    CtkTreeIter * iter,
 				    gint column,
 				    GValue * value)
 {
@@ -699,8 +699,8 @@ lapiz_file_browser_store_get_value (GtkTreeModel * tree_model,
 }
 
 static gboolean
-lapiz_file_browser_store_iter_next (GtkTreeModel * tree_model,
-				    GtkTreeIter * iter)
+lapiz_file_browser_store_iter_next (CtkTreeModel * tree_model,
+				    CtkTreeIter * iter)
 {
 	LapizFileBrowserStore * model;
 	FileBrowserNode * node;
@@ -731,9 +731,9 @@ lapiz_file_browser_store_iter_next (GtkTreeModel * tree_model,
 }
 
 static gboolean
-lapiz_file_browser_store_iter_children (GtkTreeModel * tree_model,
-					GtkTreeIter * iter,
-					GtkTreeIter * parent)
+lapiz_file_browser_store_iter_children (CtkTreeModel * tree_model,
+					CtkTreeIter * iter,
+					CtkTreeIter * parent)
 {
 	FileBrowserNode * node;
 	LapizFileBrowserStore * model;
@@ -785,8 +785,8 @@ filter_tree_model_iter_has_child_real (LapizFileBrowserStore * model,
 }
 
 static gboolean
-lapiz_file_browser_store_iter_has_child (GtkTreeModel * tree_model,
-					 GtkTreeIter * iter)
+lapiz_file_browser_store_iter_has_child (CtkTreeModel * tree_model,
+					 CtkTreeIter * iter)
 {
 	FileBrowserNode *node;
 	LapizFileBrowserStore *model;
@@ -807,8 +807,8 @@ lapiz_file_browser_store_iter_has_child (GtkTreeModel * tree_model,
 }
 
 static gint
-lapiz_file_browser_store_iter_n_children (GtkTreeModel * tree_model,
-					  GtkTreeIter * iter)
+lapiz_file_browser_store_iter_n_children (CtkTreeModel * tree_model,
+					  CtkTreeIter * iter)
 {
 	FileBrowserNode *node;
 	LapizFileBrowserStore *model;
@@ -838,9 +838,9 @@ lapiz_file_browser_store_iter_n_children (GtkTreeModel * tree_model,
 }
 
 static gboolean
-lapiz_file_browser_store_iter_nth_child (GtkTreeModel * tree_model,
-					 GtkTreeIter * iter,
-					 GtkTreeIter * parent, gint n)
+lapiz_file_browser_store_iter_nth_child (CtkTreeModel * tree_model,
+					 CtkTreeIter * iter,
+					 CtkTreeIter * parent, gint n)
 {
 	FileBrowserNode *node;
 	LapizFileBrowserStore *model;
@@ -878,9 +878,9 @@ lapiz_file_browser_store_iter_nth_child (GtkTreeModel * tree_model,
 }
 
 static gboolean
-lapiz_file_browser_store_iter_parent (GtkTreeModel * tree_model,
-				      GtkTreeIter * iter,
-				      GtkTreeIter * child)
+lapiz_file_browser_store_iter_parent (CtkTreeModel * tree_model,
+				      CtkTreeIter * iter,
+				      CtkTreeIter * child)
 {
 	FileBrowserNode *node;
 	LapizFileBrowserStore *model;
@@ -903,9 +903,9 @@ lapiz_file_browser_store_iter_parent (GtkTreeModel * tree_model,
 }
 
 static void
-lapiz_file_browser_store_row_inserted (GtkTreeModel * tree_model,
-				       GtkTreePath * path,
-				       GtkTreeIter * iter)
+lapiz_file_browser_store_row_inserted (CtkTreeModel * tree_model,
+				       CtkTreePath * path,
+				       CtkTreeIter * iter)
 {
 	FileBrowserNode * node = (FileBrowserNode *)(iter->user_data);
 
@@ -913,10 +913,10 @@ lapiz_file_browser_store_row_inserted (GtkTreeModel * tree_model,
 }
 
 static gboolean
-lapiz_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
-					GtkTreePath       * path)
+lapiz_file_browser_store_row_draggable (CtkTreeDragSource * drag_source,
+					CtkTreePath       * path)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	LapizFileBrowserStoreFlag flags;
 
 	if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_source),
@@ -933,18 +933,18 @@ lapiz_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
 }
 
 static gboolean
-lapiz_file_browser_store_drag_data_delete (GtkTreeDragSource * drag_source,
-					   GtkTreePath       * path)
+lapiz_file_browser_store_drag_data_delete (CtkTreeDragSource * drag_source,
+					   CtkTreePath       * path)
 {
 	return FALSE;
 }
 
 static gboolean
-lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
-					GtkTreePath       * path,
-					GtkSelectionData  * selection_data)
+lapiz_file_browser_store_drag_data_get (CtkTreeDragSource * drag_source,
+					CtkTreePath       * path,
+					CtkSelectionData  * selection_data)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gchar *uri;
 	gchar *uris[2] = {0, };
 	gboolean ret;
@@ -976,7 +976,7 @@ lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
 static void
 model_begin_loading (LapizFileBrowserStore * model, FileBrowserNode * node)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	iter.user_data = node;
 	g_signal_emit (model, model_signals[BEGIN_LOADING], 0, &iter);
@@ -985,7 +985,7 @@ model_begin_loading (LapizFileBrowserStore * model, FileBrowserNode * node)
 static void
 model_end_loading (LapizFileBrowserStore * model, FileBrowserNode * node)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	iter.user_data = node;
 	g_signal_emit (model, model_signals[END_LOADING], 0, &iter);
@@ -995,7 +995,7 @@ static void
 model_node_update_visibility (LapizFileBrowserStore * model,
 			      FileBrowserNode * node)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	node->flags &= ~LAPIZ_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 
@@ -1083,8 +1083,8 @@ model_resort_node (LapizFileBrowserStore * model, FileBrowserNode * node)
 	GSList *item;
 	FileBrowserNode *child;
 	gint pos = 0;
-	GtkTreeIter iter;
-	GtkTreePath *path;
+	CtkTreeIter iter;
+	CtkTreePath *path;
 	gint *neworder;
 
 	dir = FILE_BROWSER_NODE_DIR (node->parent);
@@ -1132,10 +1132,10 @@ model_resort_node (LapizFileBrowserStore * model, FileBrowserNode * node)
 
 static void
 row_changed (LapizFileBrowserStore * model,
-	     GtkTreePath ** path,
-	     GtkTreeIter * iter)
+	     CtkTreePath ** path,
+	     CtkTreeIter * iter)
 {
-	GtkTreeRowReference *ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (model), *path);
+	CtkTreeRowReference *ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (model), *path);
 
 	/* Insert a copy of the actual path here because the row-inserted
 	   signal may alter the path */
@@ -1148,8 +1148,8 @@ row_changed (LapizFileBrowserStore * model,
 
 static void
 row_inserted (LapizFileBrowserStore * model,
-	      GtkTreePath ** path,
-	      GtkTreeIter * iter)
+	      CtkTreePath ** path,
+	      CtkTreeIter * iter)
 {
 	/* This function creates a row reference for the path because it's
 	   uncertain what might change the actual model/view when we insert
@@ -1157,8 +1157,8 @@ row_inserted (LapizFileBrowserStore * model,
 	   Because functions that use this function rely on the notion that
 	   the path remains pointed towards the inserted node, we use the
 	   reference to keep track. */
-	GtkTreeRowReference *ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (model), *path);
-	GtkTreePath * copy = ctk_tree_path_copy (*path);
+	CtkTreeRowReference *ref = ctk_tree_row_reference_new (CTK_TREE_MODEL (model), *path);
+	CtkTreePath * copy = ctk_tree_path_copy (*path);
 
 	ctk_tree_model_row_inserted (CTK_TREE_MODEL(model), copy, iter);
 	ctk_tree_path_free (copy);
@@ -1179,9 +1179,9 @@ row_inserted (LapizFileBrowserStore * model,
 
 static void
 row_deleted (LapizFileBrowserStore * model,
-	     const GtkTreePath * path)
+	     const CtkTreePath * path)
 {
-	GtkTreePath *copy = ctk_tree_path_copy (path);
+	CtkTreePath *copy = ctk_tree_path_copy (path);
 
 	/* Delete a copy of the actual path here because the row-deleted
 	   signal may alter the path */
@@ -1192,14 +1192,14 @@ row_deleted (LapizFileBrowserStore * model,
 static void
 model_refilter_node (LapizFileBrowserStore * model,
 		     FileBrowserNode * node,
-		     GtkTreePath ** path)
+		     CtkTreePath ** path)
 {
 	gboolean old_visible;
 	gboolean new_visible;
 	FileBrowserNodeDir *dir;
 	GSList *item;
-	GtkTreeIter iter;
-	GtkTreePath *tmppath = NULL;
+	CtkTreeIter iter;
+	CtkTreePath *tmppath = NULL;
 	gboolean in_tree;
 
 	if (node == NULL)
@@ -1406,11 +1406,11 @@ file_browser_node_free (LapizFileBrowserStore * model,
 static void
 model_remove_node_children (LapizFileBrowserStore * model,
 			    FileBrowserNode * node,
-			    GtkTreePath * path,
+			    CtkTreePath * path,
 			    gboolean free_nodes)
 {
 	FileBrowserNodeDir *dir;
-	GtkTreePath *path_child;
+	CtkTreePath *path_child;
 	GSList *list;
 	GSList *item;
 
@@ -1465,7 +1465,7 @@ model_remove_node_children (LapizFileBrowserStore * model,
 static void
 model_remove_node (LapizFileBrowserStore * model,
 		   FileBrowserNode * node,
-		   GtkTreePath * path,
+		   CtkTreePath * path,
 		   gboolean free_nodes)
 {
 	gboolean free_path = FALSE;
@@ -1524,7 +1524,7 @@ model_remove_node (LapizFileBrowserStore * model,
 static void
 model_clear (LapizFileBrowserStore * model, gboolean free_nodes)
 {
-	GtkTreePath *path;
+	CtkTreePath *path;
 	FileBrowserNodeDir *dir;
 	FileBrowserNode *dummy;
 
@@ -1641,7 +1641,7 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 
 static void
 model_recomposite_icon (LapizFileBrowserStore * tree_model,
-			GtkTreeIter * iter)
+			CtkTreeIter * iter)
 {
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_return_if_fail (iter != NULL);
@@ -1689,8 +1689,8 @@ model_check_dummy (LapizFileBrowserStore * model, FileBrowserNode * node)
 	// Hide the dummy child if needed
 	if (NODE_IS_DIR (node)) {
 		FileBrowserNode *dummy;
-		GtkTreeIter iter;
-		GtkTreePath *path;
+		CtkTreeIter iter;
+		CtkTreePath *path;
 		guint flags;
 		FileBrowserNodeDir *dir;
 
@@ -1782,8 +1782,8 @@ model_add_node (LapizFileBrowserStore * model, FileBrowserNode * child,
 
 	if (model_node_visibility (model, parent) &&
 	    model_node_visibility (model, child)) {
-		GtkTreeIter iter;
-		GtkTreePath *path;
+		CtkTreeIter iter;
+		CtkTreePath *path;
 
 		iter.user_data = child;
 		path = lapiz_file_browser_store_get_path_real (model, child);
@@ -1820,8 +1820,8 @@ model_add_nodes_batch (LapizFileBrowserStore * model,
 
 	while (child) {
 		FileBrowserNode *node = child->data;
-		GtkTreeIter iter;
-		GtkTreePath *path;
+		CtkTreeIter iter;
+		CtkTreePath *path;
 
 		/* reached the end of the first list, just append the second */
 		if (l == NULL) {
@@ -1907,7 +1907,7 @@ file_browser_node_set_from_info (LapizFileBrowserStore * model,
 {
 	gchar const * content;
 	gboolean free_info = FALSE;
-	GtkTreePath * path;
+	CtkTreePath * path;
 	gchar * uri;
 	GError * error = NULL;
 
@@ -2320,10 +2320,10 @@ get_parent_files (LapizFileBrowserStore * model, GFile * file)
 
 static void
 model_fill (LapizFileBrowserStore * model, FileBrowserNode * node,
-	    GtkTreePath ** path)
+	    CtkTreePath ** path)
 {
 	gboolean free_path = FALSE;
-	GtkTreeIter iter = {0,};
+	CtkTreeIter iter = {0,};
 	GSList *item;
 	FileBrowserNode *child;
 
@@ -2389,7 +2389,7 @@ set_virtual_root_from_node (LapizFileBrowserStore * model,
 	FileBrowserNodeDir *dir;
 	GSList *item;
 	GSList *copy;
-	GtkTreePath *empty = NULL;
+	CtkTreePath *empty = NULL;
 
 	g_assert (node != NULL);
 
@@ -2725,12 +2725,12 @@ lapiz_file_browser_store_new (gchar const *root)
 
 void
 lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
-				    GtkTreeIter * iter, gint column,
+				    CtkTreeIter * iter, gint column,
 				    GValue * value)
 {
 	gpointer data;
 	FileBrowserNode *node;
-	GtkTreePath *path;
+	CtkTreePath *path;
 
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_return_if_fail (column ==
@@ -2766,7 +2766,7 @@ lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 
 LapizFileBrowserStoreResult
 lapiz_file_browser_store_set_virtual_root (LapizFileBrowserStore * model,
-					   GtkTreeIter * iter)
+					   CtkTreeIter * iter)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model),
 			      LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
@@ -2871,7 +2871,7 @@ lapiz_file_browser_store_set_virtual_root_up (LapizFileBrowserStore *
 
 gboolean
 lapiz_file_browser_store_get_iter_virtual_root (LapizFileBrowserStore *
-						model, GtkTreeIter * iter)
+						model, CtkTreeIter * iter)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
@@ -2885,7 +2885,7 @@ lapiz_file_browser_store_get_iter_virtual_root (LapizFileBrowserStore *
 
 gboolean
 lapiz_file_browser_store_get_iter_root (LapizFileBrowserStore * model,
-					GtkTreeIter * iter)
+					CtkTreeIter * iter)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
@@ -2899,8 +2899,8 @@ lapiz_file_browser_store_get_iter_root (LapizFileBrowserStore * model,
 
 gboolean
 lapiz_file_browser_store_iter_equal (LapizFileBrowserStore * model,
-				     GtkTreeIter * iter1,
-				     GtkTreeIter * iter2)
+				     CtkTreeIter * iter1,
+				     CtkTreeIter * iter2)
 {
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter1 != NULL, FALSE);
@@ -3024,7 +3024,7 @@ lapiz_file_browser_store_get_virtual_root (LapizFileBrowserStore * model)
 
 void
 _lapiz_file_browser_store_iter_expanded (LapizFileBrowserStore * model,
-					 GtkTreeIter * iter)
+					 CtkTreeIter * iter)
 {
 	FileBrowserNode *node;
 
@@ -3042,7 +3042,7 @@ _lapiz_file_browser_store_iter_expanded (LapizFileBrowserStore * model,
 
 void
 _lapiz_file_browser_store_iter_collapsed (LapizFileBrowserStore * model,
-					  GtkTreeIter * iter)
+					  CtkTreeIter * iter)
 {
 	FileBrowserNode *node;
 	GSList *item;
@@ -3162,7 +3162,7 @@ reparent_node (FileBrowserNode * node, gboolean reparent)
 
 gboolean
 lapiz_file_browser_store_rename (LapizFileBrowserStore * model,
-				 GtkTreeIter * iter,
+				 CtkTreeIter * iter,
 				 const gchar * new_name,
 				 GError ** error)
 {
@@ -3173,7 +3173,7 @@ lapiz_file_browser_store_rename (LapizFileBrowserStore * model,
 	GError * err = NULL;
 	gchar * olduri;
 	gchar * newuri;
-	GtkTreePath *path;
+	CtkTreePath *path;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
@@ -3376,9 +3376,9 @@ lapiz_file_browser_store_delete_all (LapizFileBrowserStore *model,
 	AsyncData * data;
 	GList * files = NULL;
 	GList * row;
-	GtkTreeIter iter;
-	GtkTreePath * prev = NULL;
-	GtkTreePath * path;
+	CtkTreeIter iter;
+	CtkTreePath * prev = NULL;
+	CtkTreePath * path;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (model), LAPIZ_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
@@ -3391,7 +3391,7 @@ lapiz_file_browser_store_delete_all (LapizFileBrowserStore *model,
 	rows = g_list_sort (g_list_copy (rows), (GCompareFunc)ctk_tree_path_compare);
 
 	for (row = rows; row; row = row->next) {
-		path = (GtkTreePath *)(row->data);
+		path = (CtkTreePath *)(row->data);
 
 		if (!ctk_tree_model_get_iter (CTK_TREE_MODEL (model), &iter, path))
 			continue;
@@ -3426,7 +3426,7 @@ lapiz_file_browser_store_delete_all (LapizFileBrowserStore *model,
 
 LapizFileBrowserStoreResult
 lapiz_file_browser_store_delete (LapizFileBrowserStore * model,
-				 GtkTreeIter * iter, gboolean trash)
+				 CtkTreeIter * iter, gboolean trash)
 {
 	FileBrowserNode *node;
 	GList *rows = NULL;
@@ -3452,8 +3452,8 @@ lapiz_file_browser_store_delete (LapizFileBrowserStore * model,
 
 gboolean
 lapiz_file_browser_store_new_file (LapizFileBrowserStore * model,
-				   GtkTreeIter * parent,
-				   GtkTreeIter * iter)
+				   CtkTreeIter * parent,
+				   CtkTreeIter * iter)
 {
 	GFile * file;
 	GFileOutputStream * stream;
@@ -3506,8 +3506,8 @@ lapiz_file_browser_store_new_file (LapizFileBrowserStore * model,
 
 gboolean
 lapiz_file_browser_store_new_directory (LapizFileBrowserStore * model,
-					GtkTreeIter * parent,
-					GtkTreeIter * iter)
+					CtkTreeIter * parent,
+					CtkTreeIter * iter)
 {
 	GFile * file;
 	FileBrowserNodeDir *parent_node;

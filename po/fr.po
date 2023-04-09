@@ -94,9 +94,9 @@ msgid "Style Scheme"
 msgstr "Jeu de styles"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgid "The ID of a CtkSourceView Style Scheme used to color the text."
 msgstr ""
-"L'identifiant d'un jeu de styles GtkSourceView utilisé pour la coloration "
+"L'identifiant d'un jeu de styles CtkSourceView utilisé pour la coloration "
 "syntaxique du texte."
 
 #: data/org.cafe.lapiz.gschema.xml.in:36

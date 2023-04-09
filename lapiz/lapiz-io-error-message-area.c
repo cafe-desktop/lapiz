@@ -80,23 +80,23 @@ is_gio_error (const GError *error,
 }
 
 static void
-set_contents (GtkWidget *area,
-	      GtkWidget *contents)
+set_contents (CtkWidget *area,
+	      CtkWidget *contents)
 {
-	GtkWidget *content_area;
+	CtkWidget *content_area;
 
 	content_area = ctk_info_bar_get_content_area (CTK_INFO_BAR (area));
 	ctk_container_add (CTK_CONTAINER (content_area), contents);
 }
 
 static void
-info_bar_add_icon_button_with_text (GtkInfoBar  *infobar,
+info_bar_add_icon_button_with_text (CtkInfoBar  *infobar,
 				    const gchar *text,
 				    const gchar *icon_id,
 				    gint         response_id)
 {
-	GtkWidget *button;
-	GtkWidget *image;
+	CtkWidget *button;
+	CtkWidget *image;
 
 	button = ctk_info_bar_add_button (infobar, text, response_id);
 	image = ctk_image_new_from_icon_name (icon_id, CTK_ICON_SIZE_BUTTON);
@@ -104,18 +104,18 @@ info_bar_add_icon_button_with_text (GtkInfoBar  *infobar,
 }
 
 static void
-set_message_area_text_and_icon (GtkWidget   *message_area,
+set_message_area_text_and_icon (CtkWidget   *message_area,
 				const gchar *icon_name,
 				const gchar *primary_text,
 				const gchar *secondary_text)
 {
-	GtkWidget *hbox_content;
-	GtkWidget *image;
-	GtkWidget *vbox;
+	CtkWidget *hbox_content;
+	CtkWidget *image;
+	CtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
-	GtkWidget *primary_label;
-	GtkWidget *secondary_label;
+	CtkWidget *primary_label;
+	CtkWidget *secondary_label;
 
 	hbox_content = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 8);
 
@@ -155,12 +155,12 @@ set_message_area_text_and_icon (GtkWidget   *message_area,
 	set_contents (message_area, hbox_content);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_io_loading_error_message_area (const gchar *primary_text,
 				      const gchar *secondary_text,
 				      gboolean     recoverable_error)
 {
-	GtkWidget *message_area;
+	CtkWidget *message_area;
 
 	message_area = ctk_info_bar_new ();
 
@@ -372,7 +372,7 @@ parse_error (const GError *error,
 	}
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
 						      const GError *error)
 {
@@ -381,7 +381,7 @@ lapiz_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
 	gchar *full_formatted_uri;
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
-	GtkWidget *message_area;
+	CtkWidget *message_area;
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
@@ -429,11 +429,11 @@ lapiz_unrecoverable_reverting_error_message_area_new (const gchar  *uri,
 }
 
 static void
-create_combo_box (GtkWidget *message_area, GtkWidget *vbox)
+create_combo_box (CtkWidget *message_area, CtkWidget *vbox)
 {
-	GtkWidget *hbox;
-	GtkWidget *label;
-	GtkWidget *menu;
+	CtkWidget *hbox;
+	CtkWidget *label;
+	CtkWidget *menu;
 	gchar *label_markup;
 
 	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
@@ -465,19 +465,19 @@ create_combo_box (GtkWidget *message_area, GtkWidget *vbox)
 	ctk_box_pack_start (CTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_conversion_error_message_area (const gchar *primary_text,
 				      const gchar *secondary_text,
 				      gboolean     edit_anyway)
 {
-	GtkWidget *message_area;
-	GtkWidget *hbox_content;
-	GtkWidget *image;
-	GtkWidget *vbox;
+	CtkWidget *message_area;
+	CtkWidget *hbox_content;
+	CtkWidget *image;
+	CtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
-	GtkWidget *primary_label;
-	GtkWidget *secondary_label;
+	CtkWidget *primary_label;
+	CtkWidget *secondary_label;
 
 	message_area = ctk_info_bar_new ();
 
@@ -553,7 +553,7 @@ create_conversion_error_message_area (const gchar *primary_text,
 	return message_area;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_io_loading_error_message_area_new (const gchar         *uri,
 					 const LapizEncoding *encoding,
 					 const GError        *error)
@@ -564,7 +564,7 @@ lapiz_io_loading_error_message_area_new (const gchar         *uri,
 	gchar *encoding_name;
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
-	GtkWidget *message_area;
+	CtkWidget *message_area;
 	gboolean edit_anyway = FALSE;
 	gboolean convert_error = FALSE;
 
@@ -664,7 +664,7 @@ lapiz_io_loading_error_message_area_new (const gchar         *uri,
 	return message_area;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_conversion_error_while_saving_message_area_new (
 						const gchar         *uri,
 						const LapizEncoding *encoding,
@@ -676,7 +676,7 @@ lapiz_conversion_error_while_saving_message_area_new (
 	gchar *encoding_name;
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
-	GtkWidget *message_area;
+	CtkWidget *message_area;
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
@@ -720,7 +720,7 @@ lapiz_conversion_error_while_saving_message_area_new (
 }
 
 const LapizEncoding *
-lapiz_conversion_error_message_area_get_encoding (GtkWidget *message_area)
+lapiz_conversion_error_message_area_get_encoding (CtkWidget *message_area)
 {
 	gpointer menu;
 
@@ -734,17 +734,17 @@ lapiz_conversion_error_message_area_get_encoding (GtkWidget *message_area)
 					(LAPIZ_ENCODINGS_COMBO_BOX (menu));
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_file_already_open_warning_message_area_new (const gchar *uri)
 {
-	GtkWidget *message_area;
-	GtkWidget *hbox_content;
-	GtkWidget *image;
-	GtkWidget *vbox;
+	CtkWidget *message_area;
+	CtkWidget *hbox_content;
+	CtkWidget *image;
+	CtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
-	GtkWidget *primary_label;
-	GtkWidget *secondary_label;
+	CtkWidget *primary_label;
+	CtkWidget *secondary_label;
 	gchar *primary_text;
 	const gchar *secondary_text;
 	gchar *full_formatted_uri;
@@ -821,19 +821,19 @@ lapiz_file_already_open_warning_message_area_new (const gchar *uri)
 	return message_area;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_externally_modified_saving_error_message_area_new (
 						const gchar  *uri,
 						const GError *error)
 {
-	GtkWidget *message_area;
-	GtkWidget *hbox_content;
-	GtkWidget *image;
-	GtkWidget *vbox;
+	CtkWidget *message_area;
+	CtkWidget *hbox_content;
+	CtkWidget *image;
+	CtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
-	GtkWidget *primary_label;
-	GtkWidget *secondary_label;
+	CtkWidget *primary_label;
+	CtkWidget *secondary_label;
 	gchar *primary_text;
 	const gchar *secondary_text;
 	gchar *full_formatted_uri;
@@ -916,18 +916,18 @@ lapiz_externally_modified_saving_error_message_area_new (
 	return message_area;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_no_backup_saving_error_message_area_new (const gchar  *uri,
 					       const GError *error)
 {
-	GtkWidget *message_area;
-	GtkWidget *hbox_content;
-	GtkWidget *image;
-	GtkWidget *vbox;
+	CtkWidget *message_area;
+	CtkWidget *hbox_content;
+	CtkWidget *image;
+	CtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
-	GtkWidget *primary_label;
-	GtkWidget *secondary_label;
+	CtkWidget *primary_label;
+	CtkWidget *secondary_label;
 	gchar *primary_text;
 	const gchar *secondary_text;
 	gchar *full_formatted_uri;
@@ -1018,7 +1018,7 @@ lapiz_no_backup_saving_error_message_area_new (const gchar  *uri,
 	return message_area;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 						   const GError *error)
 {
@@ -1029,7 +1029,7 @@ lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 	gchar *scheme_markup;
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
-	GtkWidget *message_area;
+	CtkWidget *message_area;
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (error != NULL, NULL);
@@ -1141,7 +1141,7 @@ lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 	return message_area;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_externally_modified_message_area_new (const gchar *uri,
 					    gboolean     document_modified)
 {
@@ -1150,7 +1150,7 @@ lapiz_externally_modified_message_area_new (const gchar *uri,
 	gchar *temp_uri_for_display;
 	const gchar *primary_text;
 	const gchar *secondary_text;
-	GtkWidget *message_area;
+	CtkWidget *message_area;
 
 	g_return_val_if_fail (uri != NULL, NULL);
 

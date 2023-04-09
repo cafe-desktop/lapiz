@@ -52,11 +52,11 @@ struct _LapizTabPrivate
 {
 	LapizTabState	        state;
 
-	GtkWidget	       *view;
-	GtkWidget	       *view_scrolled_window;
+	CtkWidget	       *view;
+	CtkWidget	       *view_scrolled_window;
 
-	GtkWidget	       *message_area;
-	GtkWidget	       *print_preview;
+	CtkWidget	       *message_area;
+	CtkWidget	       *print_preview;
 
 	LapizPrintJob          *print_job;
 
@@ -309,7 +309,7 @@ lapiz_tab_get_state (LapizTab *tab)
 }
 
 static void
-set_cursor_according_to_state (GtkTextView   *view,
+set_cursor_according_to_state (CtkTextView   *view,
 			       LapizTabState  state)
 {
 	GdkCursor *cursor;
@@ -353,7 +353,7 @@ set_cursor_according_to_state (GtkTextView   *view,
 }
 
 static void
-view_realized (GtkTextView *view,
+view_realized (CtkTextView *view,
 	       LapizTab    *tab)
 {
 	set_cursor_according_to_state (view, tab->priv->state);
@@ -434,7 +434,7 @@ document_shortname_notify_handler (LapizDocument *document,
 }
 
 static void
-document_modified_changed (GtkTextBuffer *document,
+document_modified_changed (CtkTextBuffer *document,
 			   LapizTab      *tab)
 {
 	g_object_notify (G_OBJECT (tab), "name");
@@ -442,7 +442,7 @@ document_modified_changed (GtkTextBuffer *document,
 
 static void
 set_message_area (LapizTab  *tab,
-		  GtkWidget *message_area)
+		  CtkWidget *message_area)
 {
 	if (tab->priv->message_area == message_area)
 		return;
@@ -476,7 +476,7 @@ remove_tab (LapizTab *tab)
 }
 
 static void
-io_loading_error_message_area_response (GtkWidget        *message_area,
+io_loading_error_message_area_response (CtkWidget        *message_area,
 					gint              response_id,
 					LapizTab         *tab)
 {
@@ -536,7 +536,7 @@ io_loading_error_message_area_response (GtkWidget        *message_area,
 }
 
 static void
-file_already_open_warning_message_area_response (GtkWidget   *message_area,
+file_already_open_warning_message_area_response (CtkWidget   *message_area,
 						 gint         response_id,
 						 LapizTab    *tab)
 {
@@ -558,7 +558,7 @@ file_already_open_warning_message_area_response (GtkWidget   *message_area,
 }
 
 static void
-load_cancelled (GtkWidget        *area,
+load_cancelled (CtkWidget        *area,
                 gint              response_id,
                 LapizTab         *tab)
 {
@@ -578,7 +578,7 @@ scroll_to_cursor (LapizTab *tab)
 }
 
 static void
-unrecoverable_reverting_error_message_area_response (GtkWidget        *message_area,
+unrecoverable_reverting_error_message_area_response (CtkWidget        *message_area,
 						     gint              response_id,
 						     LapizTab         *tab)
 {
@@ -601,7 +601,7 @@ unrecoverable_reverting_error_message_area_response (GtkWidget        *message_a
 static void
 show_loading_message_area (LapizTab *tab)
 {
-	GtkWidget *area;
+	CtkWidget *area;
 	LapizDocument *doc = NULL;
 	gchar *name;
 	gchar *dirname = NULL;
@@ -723,7 +723,7 @@ show_loading_message_area (LapizTab *tab)
 static void
 show_saving_message_area (LapizTab *tab)
 {
-	GtkWidget *area;
+	CtkWidget *area;
 	LapizDocument *doc = NULL;
 	gchar *short_name;
 	gchar *from;
@@ -883,7 +883,7 @@ document_loaded (LapizDocument *document,
 		 const GError  *error,
 		 LapizTab      *tab)
 {
-	GtkWidget *emsg;
+	CtkWidget *emsg;
 	GFile *location;
 	gchar *uri;
 
@@ -981,7 +981,7 @@ document_loaded (LapizDocument *document,
 		    error->domain == LAPIZ_DOCUMENT_ERROR &&
 		    error->code == LAPIZ_DOCUMENT_ERROR_CONVERSION_FALLBACK)
 		{
-			GtkWidget *emsg;
+			CtkWidget *emsg;
 
 			_lapiz_document_set_readonly (document, TRUE);
 
@@ -1026,7 +1026,7 @@ document_loaded (LapizDocument *document,
 				if ((loc != NULL) &&
 			    	    g_file_equal (location, loc))
 			    	{
-			    		GtkWidget *w;
+			    		CtkWidget *w;
 
 			    		tab->priv->not_editable = TRUE;
 
@@ -1117,7 +1117,7 @@ end_saving (LapizTab *tab)
 }
 
 static void
-unrecoverable_saving_error_message_area_response (GtkWidget        *message_area,
+unrecoverable_saving_error_message_area_response (CtkWidget        *message_area,
 						  gint              response_id,
 						  LapizTab         *tab)
 {
@@ -1138,7 +1138,7 @@ unrecoverable_saving_error_message_area_response (GtkWidget        *message_area
 }
 
 static void
-no_backup_error_message_area_response (GtkWidget        *message_area,
+no_backup_error_message_area_response (CtkWidget        *message_area,
 				       gint              response_id,
 				       LapizTab         *tab)
 {
@@ -1173,7 +1173,7 @@ no_backup_error_message_area_response (GtkWidget        *message_area,
 }
 
 static void
-externally_modified_error_message_area_response (GtkWidget        *message_area,
+externally_modified_error_message_area_response (CtkWidget        *message_area,
 						 gint              response_id,
 						 LapizTab         *tab)
 {
@@ -1207,7 +1207,7 @@ externally_modified_error_message_area_response (GtkWidget        *message_area,
 }
 
 static void
-recoverable_saving_error_message_area_response (GtkWidget        *message_area,
+recoverable_saving_error_message_area_response (CtkWidget        *message_area,
 						gint              response_id,
 						LapizTab         *tab)
 {
@@ -1255,7 +1255,7 @@ document_saved (LapizDocument *document,
 		const GError  *error,
 		LapizTab      *tab)
 {
-	GtkWidget *emsg;
+	CtkWidget *emsg;
 
 	g_return_if_fail (tab->priv->state == LAPIZ_TAB_STATE_SAVING);
 
@@ -1372,7 +1372,7 @@ document_saved (LapizDocument *document,
 }
 
 static void
-externally_modified_notification_message_area_response (GtkWidget        *message_area,
+externally_modified_notification_message_area_response (CtkWidget        *message_area,
 							gint              response_id,
 							LapizTab         *tab)
 {
@@ -1399,7 +1399,7 @@ externally_modified_notification_message_area_response (GtkWidget        *messag
 static void
 display_externally_modified_notification (LapizTab *tab)
 {
-	GtkWidget *message_area;
+	CtkWidget *message_area;
 	LapizDocument *doc;
 	gchar *uri;
 	gboolean document_modified;
@@ -1427,7 +1427,7 @@ display_externally_modified_notification (LapizTab *tab)
 }
 
 static gboolean
-view_focused_in (GtkWidget     *widget,
+view_focused_in (CtkWidget     *widget,
                  GdkEventFocus *event,
                  LapizTab      *tab)
 {
@@ -1472,7 +1472,7 @@ tab_mount_operation_factory (LapizDocument *doc,
 			     gpointer userdata)
 {
 	LapizTab *tab = LAPIZ_TAB (userdata);
-	GtkWidget *window;
+	CtkWidget *window;
 
 	window = ctk_widget_get_toplevel (CTK_WIDGET (tab));
 	return ctk_mount_operation_new (CTK_WINDOW (window));
@@ -1481,7 +1481,7 @@ tab_mount_operation_factory (LapizDocument *doc,
 static void
 lapiz_tab_init (LapizTab *tab)
 {
-	GtkWidget *sw;
+	CtkWidget *sw;
 	LapizDocument *doc;
 	LapizLockdownMask lockdown;
 
@@ -1575,7 +1575,7 @@ lapiz_tab_init (LapizTab *tab)
 				tab);
 }
 
-GtkWidget *
+CtkWidget *
 _lapiz_tab_new (void)
 {
 	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_TAB, NULL));
@@ -1583,7 +1583,7 @@ _lapiz_tab_new (void)
 
 /* Whether create is TRUE, creates a new empty document if location does
    not refer to an existing file */
-GtkWidget *
+CtkWidget *
 _lapiz_tab_new_from_uri (const gchar         *uri,
 			 const LapizEncoding *encoding,
 			 gint                 line_pos,
@@ -1800,7 +1800,7 @@ resize_icon (GdkPixbuf *pixbuf,
 }
 
 static GdkPixbuf *
-get_stock_icon (GtkIconTheme *theme,
+get_stock_icon (CtkIconTheme *theme,
 		const gchar  *icon_name,
 		gint          size)
 {
@@ -1814,12 +1814,12 @@ get_stock_icon (GtkIconTheme *theme,
 }
 
 static GdkPixbuf *
-get_icon (GtkIconTheme *theme,
+get_icon (CtkIconTheme *theme,
 	  GFile        *location,
 	  gint          size)
 {
 	GdkPixbuf *pixbuf;
-	GtkIconInfo *icon_info;
+	CtkIconInfo *icon_info;
 	GFileInfo *info;
 	GIcon *gicon;
 
@@ -1864,7 +1864,7 @@ GdkPixbuf *
 _lapiz_tab_get_icon (LapizTab *tab)
 {
 	GdkPixbuf *pixbuf;
-	GtkIconTheme *theme;
+	CtkIconTheme *theme;
 	GdkScreen *screen;
 	gint icon_size;
 
@@ -2195,7 +2195,7 @@ _lapiz_tab_save_as (LapizTab                 *tab,
 #define LAPIZ_PAGE_SETUP_KEY "lapiz-page-setup-key"
 #define LAPIZ_PRINT_SETTINGS_KEY "lapiz-print-settings-key"
 
-static GtkPageSetup *
+static CtkPageSetup *
 get_page_setup (LapizTab *tab)
 {
 	gpointer data;
@@ -2216,12 +2216,12 @@ get_page_setup (LapizTab *tab)
 	}
 }
 
-static GtkPrintSettings *
+static CtkPrintSettings *
 get_print_settings (LapizTab *tab)
 {
 	gpointer data;
 	LapizDocument *doc;
-	GtkPrintSettings *settings;
+	CtkPrintSettings *settings;
 	gchar *uri, *name;
 
 	doc = lapiz_tab_get_document (tab);
@@ -2273,8 +2273,8 @@ store_print_settings (LapizTab      *tab,
 		      LapizPrintJob *job)
 {
 	LapizDocument *doc;
-	GtkPrintSettings *settings;
-	GtkPageSetup *page_setup;
+	CtkPrintSettings *settings;
+	CtkPageSetup *page_setup;
 
 	doc = lapiz_tab_get_document (tab);
 
@@ -2360,7 +2360,7 @@ done_printing_cb (LapizPrintJob       *job,
 
 #if 0
 static void
-print_preview_destroyed (GtkWidget *preview,
+print_preview_destroyed (CtkWidget *preview,
 			 LapizTab  *tab)
 {
 	tab->priv->print_preview = NULL;
@@ -2418,7 +2418,7 @@ show_preview_cb (LapizPrintJob       *job,
 
 static void
 set_print_preview (LapizTab  *tab,
-		   GtkWidget *print_preview)
+		   CtkWidget *print_preview)
 {
 	if (tab->priv->print_preview == print_preview)
 		return;
@@ -2443,10 +2443,10 @@ set_print_preview (LapizTab  *tab,
 }
 
 static void
-preview_finished_cb (GtkSourcePrintJob *pjob, LapizTab *tab)
+preview_finished_cb (CtkSourcePrintJob *pjob, LapizTab *tab)
 {
 	CafePrintJob *gjob;
-	GtkWidget *preview = NULL;
+	CtkWidget *preview = NULL;
 
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
 	set_message_area (tab, NULL); /* destroy the message area */
@@ -2468,7 +2468,7 @@ preview_finished_cb (GtkSourcePrintJob *pjob, LapizTab *tab)
 #endif
 
 static void
-print_cancelled (GtkWidget        *area,
+print_cancelled (CtkWidget        *area,
                  gint              response_id,
                  LapizTab         *tab)
 {
@@ -2482,7 +2482,7 @@ print_cancelled (GtkWidget        *area,
 static void
 show_printing_message_area (LapizTab *tab, gboolean preview)
 {
-	GtkWidget *area;
+	CtkWidget *area;
 
 	if (preview)
 		area = lapiz_progress_message_area_new ("document-print-preview",
@@ -2503,13 +2503,13 @@ show_printing_message_area (LapizTab *tab, gboolean preview)
 
 static void
 lapiz_tab_print_or_print_preview (LapizTab                *tab,
-				  GtkPrintOperationAction  print_action)
+				  CtkPrintOperationAction  print_action)
 {
 	LapizView *view;
 	gboolean is_preview;
-	GtkPageSetup *setup;
-	GtkPrintSettings *settings;
-	GtkPrintOperationResult res;
+	CtkPageSetup *setup;
+	CtkPrintSettings *settings;
+	CtkPrintOperationResult res;
 	GError *error = NULL;
 
 	g_return_if_fail (tab->priv->print_job == NULL);
@@ -2775,7 +2775,7 @@ lapiz_tab_set_auto_save_interval (LapizTab *tab,
 
 void
 lapiz_tab_set_info_bar (LapizTab  *tab,
-                        GtkWidget *info_bar)
+                        CtkWidget *info_bar)
 {
 	g_return_if_fail (LAPIZ_IS_TAB (tab));
 	g_return_if_fail (info_bar == NULL || CTK_IS_WIDGET (info_bar));

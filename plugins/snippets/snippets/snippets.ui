@@ -3,7 +3,7 @@
 <!--*- mode: xml -*-->
 <interface>
   <requires lib="ctk+" version="3.0"/>
-  <object class="GtkListStore" id="model1">
+  <object class="CtkListStore" id="model1">
     <columns>
       <!-- column-name gchararray -->
       <column type="gchararray"/>
@@ -35,7 +35,7 @@
       </row>
     </data>
   </object>
-  <object class="GtkDialog" id="dialog_snippets">
+  <object class="CtkDialog" id="dialog_snippets">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Snippets Manager</property>
     <property name="default_width">750</property>
@@ -49,18 +49,18 @@
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="CtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
+          <object class="CtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="CtkButton" id="button1">
                 <property name="label">ctk-help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -75,7 +75,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="closebutton1">
+              <object class="CtkButton" id="closebutton1">
                 <property name="label">ctk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -99,12 +99,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkPaned">
+          <object class="CtkPaned">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="position">275</property>
             <child>
-              <object class="GtkGrid" id="grid_selection">
+              <object class="CtkGrid" id="grid_selection">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
@@ -112,21 +112,21 @@
                 <property name="orientation">vertical</property>
                 <property name="row_spacing">6</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="scrolled_window_snippets">
+                  <object class="CtkScrolledWindow" id="scrolled_window_snippets">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="shadow_type">in</property>
                     <child>
-                      <object class="GtkTreeView" id="tree_view_snippets">
+                      <object class="CtkTreeView" id="tree_view_snippets">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="headers_visible">False</property>
                         <signal name="key-press-event" handler="on_tree_view_snippets_key_press" swapped="no"/>
                         <signal name="row-expanded" handler="on_tree_view_snippets_row_expanded" swapped="no"/>
                         <child internal-child="selection">
-                          <object class="GtkTreeSelection"/>
+                          <object class="CtkTreeSelection"/>
                         </child>
                       </object>
                     </child>
@@ -137,7 +137,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label1">
+                  <object class="CtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -151,13 +151,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="grid_buttons">
+                  <object class="CtkGrid" id="grid_buttons">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
                     <property name="column_spacing">6</property>
                     <child>
-                      <object class="GtkButton" id="button_new_snippet">
+                      <object class="CtkButton" id="button_new_snippet">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="can_default">True</property>
@@ -165,7 +165,7 @@
                         <property name="tooltip_text" translatable="yes">Create new snippet</property>
                         <signal name="clicked" handler="on_button_new_snippet_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image1">
+                          <object class="CtkImage" id="image1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="icon_name">document-new</property>
@@ -178,7 +178,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button_import_snippets">
+                      <object class="CtkButton" id="button_import_snippets">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="can_default">True</property>
@@ -186,7 +186,7 @@
                         <property name="tooltip_text" translatable="yes">Import snippets</property>
                         <signal name="clicked" handler="on_button_import_snippets_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image5">
+                          <object class="CtkImage" id="image5">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="icon_name">document-open</property>
@@ -199,7 +199,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button_export_snippets">
+                      <object class="CtkButton" id="button_export_snippets">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="can_default">True</property>
@@ -207,7 +207,7 @@
                         <property name="tooltip_text" translatable="yes">Export selected snippets</property>
                         <signal name="clicked" handler="on_button_export_snippets_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image4">
+                          <object class="CtkImage" id="image4">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="icon_name">document-save</property>
@@ -220,7 +220,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button_remove_snippet">
+                      <object class="CtkButton" id="button_remove_snippet">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">True</property>
@@ -231,7 +231,7 @@
                         <property name="hexpand">True</property>
                         <signal name="clicked" handler="on_button_remove_snippet_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image_remove">
+                          <object class="CtkImage" id="image_remove">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="icon_name">edit-delete</property>
@@ -256,7 +256,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grid_snippet">
+              <object class="CtkGrid" id="grid_snippet">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
@@ -264,7 +264,7 @@
                 <property name="orientation">vertical</property>
                 <property name="row_spacing">12</property>
                 <child>
-                  <object class="GtkGrid">
+                  <object class="CtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -272,7 +272,7 @@
                     <property name="orientation">vertical</property>
                     <property name="row_spacing">6</property>
                     <child>
-                      <object class="GtkScrolledWindow" id="scrolled_window_snippet">
+                      <object class="CtkScrolledWindow" id="scrolled_window_snippet">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="hexpand">True</property>
@@ -300,7 +300,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label4">
+                      <object class="CtkLabel" id="label4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
@@ -320,14 +320,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid">
+                  <object class="CtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
                     <property name="orientation">vertical</property>
                     <property name="row_spacing">6</property>
                     <child>
-                      <object class="GtkLabel" id="label3">
+                      <object class="CtkLabel" id="label3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
@@ -344,7 +344,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid">
+                      <object class="CtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="margin_left">12</property>
@@ -352,7 +352,7 @@
                         <property name="row_spacing">6</property>
                         <property name="column_spacing">6</property>
                         <child>
-                          <object class="GtkComboBox" id="combo_drop_targets">
+                          <object class="CtkComboBox" id="combo_drop_targets">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="hexpand">True</property>
@@ -360,7 +360,7 @@
                             <property name="has_entry">True</property>
                             <property name="entry_text_column">0</property>
                             <child internal-child="entry">
-                              <object class="GtkEntry">
+                              <object class="CtkEntry">
                                 <property name="can_focus">True</property>
                               </object>
                             </child>
@@ -372,7 +372,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="label_drop_targets">
+                          <object class="CtkLabel" id="label_drop_targets">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
@@ -385,7 +385,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="entry_accelerator">
+                          <object class="CtkEntry" id="entry_accelerator">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">True</property>
@@ -404,7 +404,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="label_accelerator">
+                          <object class="CtkLabel" id="label_accelerator">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
@@ -417,7 +417,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="label_tab_trigger">
+                          <object class="CtkLabel" id="label_tab_trigger">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
@@ -430,7 +430,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="image_tab_trigger">
+                          <object class="CtkImage" id="image_tab_trigger">
                             <property name="can_focus">False</property>
                           </object>
                           <packing>
@@ -439,7 +439,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="entry_tab_trigger">
+                          <object class="CtkEntry" id="entry_tab_trigger">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">True</property>

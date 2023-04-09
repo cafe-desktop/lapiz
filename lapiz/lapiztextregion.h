@@ -1,8 +1,8 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
- * lapiztextregion.h - GtkTextMark based region utility functions
+ * lapiztextregion.h - CtkTextMark based region utility functions
  *
- * This file is part of the GtkSourceView widget
+ * This file is part of the CtkSourceView widget
  *
  * Copyright (C) 2002 Gustavo Giráldez <gustavo.giraldez@gmx.net>
  *
@@ -43,30 +43,30 @@ struct _LapizTextRegionIterator {
 	gpointer dummy3;
 };
 
-LapizTextRegion *lapiz_text_region_new                          (GtkTextBuffer *buffer);
+LapizTextRegion *lapiz_text_region_new                          (CtkTextBuffer *buffer);
 void           lapiz_text_region_destroy                      (LapizTextRegion *region,
 							     gboolean       delete_marks);
 
-GtkTextBuffer *lapiz_text_region_get_buffer                   (LapizTextRegion *region);
+CtkTextBuffer *lapiz_text_region_get_buffer                   (LapizTextRegion *region);
 
 void           lapiz_text_region_add                          (LapizTextRegion     *region,
-							     const GtkTextIter *_start,
-							     const GtkTextIter *_end);
+							     const CtkTextIter *_start,
+							     const CtkTextIter *_end);
 
 void           lapiz_text_region_subtract                     (LapizTextRegion     *region,
-							     const GtkTextIter *_start,
-							     const GtkTextIter *_end);
+							     const CtkTextIter *_start,
+							     const CtkTextIter *_end);
 
 gint           lapiz_text_region_subregions                   (LapizTextRegion *region);
 
 gboolean       lapiz_text_region_nth_subregion                (LapizTextRegion *region,
 							     guint          subregion,
-							     GtkTextIter   *start,
-							     GtkTextIter   *end);
+							     CtkTextIter   *start,
+							     CtkTextIter   *end);
 
 LapizTextRegion *lapiz_text_region_intersect                    (LapizTextRegion     *region,
-							     const GtkTextIter *_start,
-							     const GtkTextIter *_end);
+							     const CtkTextIter *_start,
+							     const CtkTextIter *_end);
 
 void           lapiz_text_region_get_iterator                 (LapizTextRegion         *region,
                                                              LapizTextRegionIterator *iter,
@@ -78,8 +78,8 @@ gboolean       lapiz_text_region_iterator_is_end              (LapizTextRegionIt
 gboolean       lapiz_text_region_iterator_next	            (LapizTextRegionIterator *iter);
 
 void           lapiz_text_region_iterator_get_subregion       (LapizTextRegionIterator *iter,
-							     GtkTextIter           *start,
-							     GtkTextIter           *end);
+							     CtkTextIter           *start,
+							     CtkTextIter           *end);
 
 void           lapiz_text_region_debug_print                  (LapizTextRegion *region);
 

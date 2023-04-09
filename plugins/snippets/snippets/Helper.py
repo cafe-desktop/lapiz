@@ -20,10 +20,10 @@ import xml.etree.ElementTree as et
 import re
 import codecs
 
-from gi.repository import Gtk
+from gi.repository import Ctk
 
 def message_dialog(par, typ, msg):
-    d = Gtk.MessageDialog(par, Gtk.DialogFlags.MODAL, typ, Gtk.ButtonsType.OK, msg)
+    d = Ctk.MessageDialog(par, Ctk.DialogFlags.MODAL, typ, Ctk.ButtonsType.OK, msg)
     d.set_property('use-markup', True)
 
     d.run()

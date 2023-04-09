@@ -24,7 +24,7 @@
 # Bits from lapiz Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
-from gi.repository import GObject, Gtk, Peas, PeasGtk, Lapiz
+from gi.repository import GObject, Ctk, Peas, PeasCtk, Lapiz
 
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
@@ -32,7 +32,7 @@ from .config import PythonConsoleConfig
 
 PYTHON_ICON = 'text-x-python'
 
-class PythonConsolePlugin(GObject.Object, Peas.Activatable, PeasGtk.Configurable):
+class PythonConsolePlugin(GObject.Object, Peas.Activatable, PeasCtk.Configurable):
     __gtype_name__ = "PythonConsolePlugin"
 
     object = GObject.Property(type=GObject.Object)
@@ -50,8 +50,8 @@ class PythonConsolePlugin(GObject.Object, Peas.Activatable, PeasGtk.Configurable
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)
         bottom = window.get_bottom_panel()
-        image = Gtk.Image()
-        image.set_from_icon_name(PYTHON_ICON, Gtk.IconSize.MENU)
+        image = Ctk.Image()
+        image.set_from_icon_name(PYTHON_ICON, Ctk.IconSize.MENU)
         bottom.add_item(self._console, _('Python Console'), image)
 
     def do_deactivate(self):

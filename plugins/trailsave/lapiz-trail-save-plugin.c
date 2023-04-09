@@ -33,7 +33,7 @@ static void peas_activatable_iface_init (PeasActivatableInterface *iface);
 
 struct _LapizTrailSavePluginPrivate
 {
-	GtkWidget *window;
+	CtkWidget *window;
 };
 
 enum {
@@ -50,16 +50,16 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTrailSavePlugin,
                                                                peas_activatable_iface_init))
 
 static void
-strip_trailing_spaces (GtkTextBuffer *text_buffer)
+strip_trailing_spaces (CtkTextBuffer *text_buffer)
 {
 	gint line_count, line_num;
-	GtkTextIter line_start, line_end;
+	CtkTextIter line_start, line_end;
 	gchar *slice;
 	gchar byte;
 	gint byte_index;
 	gint strip_start_index, strip_end_index;
 	gboolean should_strip;
-	GtkTextIter strip_start, strip_end;
+	CtkTextIter strip_start, strip_end;
 
 	g_assert (text_buffer != NULL);
 
@@ -132,7 +132,7 @@ on_save (LapizDocument         *document,
 	 LapizDocumentSaveFlags save_flags,
 	 LapizTrailSavePlugin  *plugin)
 {
-	GtkTextBuffer *text_buffer = CTK_TEXT_BUFFER (document);
+	CtkTextBuffer *text_buffer = CTK_TEXT_BUFFER (document);
 
 	strip_trailing_spaces (text_buffer);
 }

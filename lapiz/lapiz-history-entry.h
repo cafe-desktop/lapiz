@@ -48,19 +48,19 @@ typedef struct _LapizHistoryEntryPrivate LapizHistoryEntryPrivate;
 
 struct _LapizHistoryEntryClass
 {
-	GtkComboBoxTextClass parent_class;
+	CtkComboBoxTextClass parent_class;
 };
 
 struct _LapizHistoryEntry
 {
-	GtkComboBoxText parent_instance;
+	CtkComboBoxText parent_instance;
 
 	LapizHistoryEntryPrivate *priv;
 };
 
 GType		 lapiz_history_entry_get_type	(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_history_entry_new		(const gchar       *history_id,
+CtkWidget	*lapiz_history_entry_new		(const gchar       *history_id,
 							 gboolean           enable_completion);
 
 void		 lapiz_history_entry_prepend_text	(LapizHistoryEntry *entry,
@@ -85,7 +85,7 @@ void             lapiz_history_entry_set_enable_completion
 gboolean         lapiz_history_entry_get_enable_completion
 							(LapizHistoryEntry *entry);
 
-GtkWidget	*lapiz_history_entry_get_entry		(LapizHistoryEntry *entry);
+CtkWidget	*lapiz_history_entry_get_entry		(LapizHistoryEntry *entry);
 
 typedef gchar * (* LapizHistoryEntryEscapeFunc) (const gchar *str);
 void		lapiz_history_entry_set_escape_func	(LapizHistoryEntry *entry,

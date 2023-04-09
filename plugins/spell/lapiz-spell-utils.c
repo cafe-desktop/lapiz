@@ -56,14 +56,14 @@ lapiz_spell_utils_is_digit (const char *text, gssize length)
 }
 
 gboolean
-lapiz_spell_utils_skip_no_spell_check (GtkTextIter *start,
-                                       GtkTextIter *end)
+lapiz_spell_utils_skip_no_spell_check (CtkTextIter *start,
+                                       CtkTextIter *end)
 {
-	GtkSourceBuffer *buffer = CTK_SOURCE_BUFFER (ctk_text_iter_get_buffer (start));
+	CtkSourceBuffer *buffer = CTK_SOURCE_BUFFER (ctk_text_iter_get_buffer (start));
 
 	while (ctk_source_buffer_iter_has_context_class (buffer, start, "no-spell-check"))
 	{
-		GtkTextIter last = *start;
+		CtkTextIter last = *start;
 
 		if (!ctk_source_buffer_iter_forward_to_context_class_toggle (buffer, start, "no-spell-check"))
 		{

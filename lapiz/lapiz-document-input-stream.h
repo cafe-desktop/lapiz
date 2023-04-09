@@ -56,7 +56,7 @@ struct _LapizDocumentInputStreamClass
 
 GType				 lapiz_document_input_stream_get_type		(void) G_GNUC_CONST;
 
-GInputStream			*lapiz_document_input_stream_new		(GtkTextBuffer           *buffer,
+GInputStream			*lapiz_document_input_stream_new		(CtkTextBuffer           *buffer,
 										 LapizDocumentNewlineType type);
 
 gsize				 lapiz_document_input_stream_get_total_size	(LapizDocumentInputStream *stream);

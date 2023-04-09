@@ -1,10 +1,10 @@
-from gi.repository import GObject, Gtk, GtkSource, Lapiz
+from gi.repository import GObject, Ctk, CtkSource, Lapiz
 
 from .Library import Library
 from .LanguageManager import get_language_manager
 from .Snippet import Snippet
 
-class Proposal(GObject.Object, GtkSource.CompletionProposal):
+class Proposal(GObject.Object, CtkSource.CompletionProposal):
     __gtype_name__ = "LapizSnippetsProposal"
 
     def __init__(self, snippet):
@@ -21,7 +21,7 @@ class Proposal(GObject.Object, GtkSource.CompletionProposal):
     def do_get_info(self):
         return self._snippet.data['text']
 
-class Provider(GObject.Object, GtkSource.CompletionProvider):
+class Provider(GObject.Object, CtkSource.CompletionProvider):
     __gtype_name__ = "LapizSnippetsProvider"
 
     def __init__(self, name, language_id, handler):
@@ -35,8 +35,8 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
         self.info_widget = None
         self.mark = None
 
-        theme = Gtk.IconTheme.get_default()
-        f, w, h = Gtk.icon_size_lookup(Gtk.IconSize.MENU)
+        theme = Ctk.IconTheme.get_default()
+        f, w, h = Ctk.icon_size_lookup(Ctk.IconSize.MENU)
 
         try:
             self.icon = theme.load_icon("format-justify-left", w, 0)
@@ -114,7 +114,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
             lang = manager.get_language('snippets')
             view.get_buffer().set_language(lang)
 
-            sw = Gtk.ScrolledWindow()
+            sw = Ctk.ScrolledWindow()
             sw.add(view)
             sw.show_all()
 
@@ -138,9 +138,9 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
         return self.icon
 
     def do_get_activation(self):
-        return GtkSource.CompletionActivation.USER_REQUESTED
+        return CtkSource.CompletionActivation.USER_REQUESTED
 
-class Defaults(GObject.Object, GtkSource.CompletionProvider):
+class Defaults(GObject.Object, CtkSource.CompletionProvider):
     __gtype_name__ = "LapizSnippetsDefaultsProvider"
 
     def __init__(self, handler):
@@ -153,7 +153,7 @@ class Defaults(GObject.Object, GtkSource.CompletionProvider):
         self.proposals = []
 
         for d in defaults:
-            self.proposals.append(GtkSource.CompletionItem.new(d, d, None, None))
+            self.proposals.append(CtkSource.CompletionItem.new(d, d, None, None))
 
     def do_get_name(self):
         return ""
@@ -165,6 +165,6 @@ class Defaults(GObject.Object, GtkSource.CompletionProvider):
         context.add_proposals(self, self.proposals, True)
 
     def do_get_activation(self):
-        return GtkSource.CompletionActivation.USER_REQUESTED
+        return CtkSource.CompletionActivation.USER_REQUESTED
 
 # ex:ts=4:et:

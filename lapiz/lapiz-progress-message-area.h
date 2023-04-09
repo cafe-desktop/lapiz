@@ -55,7 +55,7 @@ typedef struct _LapizProgressMessageArea LapizProgressMessageArea;
 
 struct _LapizProgressMessageArea
 {
-	GtkInfoBar parent;
+	CtkInfoBar parent;
 
 	/*< private > */
 	LapizProgressMessageAreaPrivate *priv;
@@ -68,7 +68,7 @@ typedef struct _LapizProgressMessageAreaClass LapizProgressMessageAreaClass;
 
 struct _LapizProgressMessageAreaClass
 {
-	GtkInfoBarClass parent_class;
+	CtkInfoBarClass parent_class;
 };
 
 /*
@@ -76,7 +76,7 @@ struct _LapizProgressMessageAreaClass
  */
 GType 		 lapiz_progress_message_area_get_type 		(void) G_GNUC_CONST;
 
-GtkWidget	*lapiz_progress_message_area_new      		(const gchar              *image_id,
+CtkWidget	*lapiz_progress_message_area_new      		(const gchar              *image_id,
 								 const gchar              *markup,
 								 gboolean                  has_cancel);
 

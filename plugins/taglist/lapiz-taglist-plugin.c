@@ -44,9 +44,9 @@
 
 struct _LapizTaglistPluginPrivate
 {
-	GtkWidget *window;
+	CtkWidget *window;
 
-	GtkWidget *taglist_panel;
+	CtkWidget *taglist_panel;
 };
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);

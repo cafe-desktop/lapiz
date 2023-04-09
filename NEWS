@@ -51,7 +51,7 @@
   * lapiz-docinfo-plugin: avoid 'g_type_class_add_private'
   * lapiz-changecase-plugin: avoid 'g_type_class_add_private'
   * lapiz-window: avoid 'g_type_class_add_private'
-  * fix build with GtkSourceView 3.22
+  * fix build with CtkSourceView 3.22
   * lapiz-view: avoid 'g_type_class_add_private'
   * lapiz-tab-label: avoid 'g_type_class_add_private'
   * spell-checker plugin: add missing translation (i18n)
@@ -196,7 +196,7 @@
   * lapiz-notebook: Fix: unexpected behavior with dnd selected text
   * lapiz-view: Fix: unexpected behavior with dnd under line numbers
   * lapiz-notebook: pass event to gdk_seat_grab
-  * lapiz-window: use ctk_menu_popup_at_widget for GtkNotebook
+  * lapiz-window: use ctk_menu_popup_at_widget for CtkNotebook
   * lapiz-utils: remove unused 'lapiz_utils_menu_position_under_tree_view'
   * avoid deprecated 'ctk_menu_popup'
   * lapiz-print-preview: Fix weird behavior with mouse buttons
@@ -206,8 +206,8 @@
   * avoid deprecated 'ctk_dialog_get_action_area'
   * lapiz-view.c: avoid deprecated 'ctk_widget_override_font'
   * avoid deprecated 'ctk_font_button_set/get_font_name'
-  * lapiz-view.c: Fix: GtkCheckMenuItem "Display line numbers" improved
-  * lapiz-file-browser-widget.c: avoid deprecated GtkImageMenuItem
+  * lapiz-view.c: Fix: CtkCheckMenuItem "Display line numbers" improved
+  * lapiz-file-browser-widget.c: avoid deprecated CtkImageMenuItem
   * error-message-area: avoid 'ctk_info_bar_new_with_buttons' with stock id
   * avoid 'ctk_info_bar_add_button' with stock ids
   * avoid 'lapiz_file_chooser_dialog_new' with stock ids
@@ -221,19 +221,19 @@
   * sort.ui plugin: avoid deprecations
   * lapiz-time-setup-dialog.ui plugin: avoid deprecations
   * lapiz-time-dialog.ui plugin: deprecations
-  * lapiz-spell-setup-dialog.ui plugin: avoid GtkRadioButton:xalign
-  * lapiz-preferences-dialog.ui: avoid GtkButton:use-stock and GtkImage:stock
-  * lapiz-encodings-dialog.ui: avoid GtkButton:use-stock
-  * externaltools plugin: outputpanel.ui: avoid GtkHBox and GtkVButtonBox
+  * lapiz-spell-setup-dialog.ui plugin: avoid CtkRadioButton:xalign
+  * lapiz-preferences-dialog.ui: avoid CtkButton:use-stock and CtkImage:stock
+  * lapiz-encodings-dialog.ui: avoid CtkButton:use-stock
+  * externaltools plugin: outputpanel.ui: avoid CtkHBox and CtkVButtonBox
   * spell plugin: languages-dialog.ui: avoid deprecations
-  * docinfo.ui plugin: avoid GtkVBox, GtkHBox, GtkLabel:xpad/ypad and GtkTable
-  * plugins: docinfo.ui: avoid GtkButton:use-stock and GtkImage:stock
+  * docinfo.ui plugin: avoid CtkVBox, CtkHBox, CtkLabel:xpad/ypad and CtkTable
+  * plugins: docinfo.ui: avoid CtkButton:use-stock and CtkImage:stock
   * spell plugin: lapiz-spell-setup-dialog.ui: avoid deprecations
-  * python console: config.ui: avoid GtkButton:use-stock
+  * python console: config.ui: avoid CtkButton:use-stock
   * Make notebook tabs scrollable
-  * avoid deprecated GtkButton:use-stock
+  * avoid deprecated CtkButton:use-stock
   * Fix warning with external tools plugin
-  * avoid deprecated GtkStock
+  * avoid deprecated CtkStock
 
 ### lapiz 1.20.0
 
@@ -250,7 +250,7 @@
 ### lapiz 1.19.3
 
   * Translations update
-  * lapiz-window: have GtkRecentData on stack instead of allocating it
+  * lapiz-window: have CtkRecentData on stack instead of allocating it
   * WidthOfScreen and HeightOfScreen implementation
   * Fixes for regexp replacement with backreferences (e.g. "\0") (#259)
   * lapiz-view.c: use one static variable instead two to do the same job
@@ -281,19 +281,19 @@
   * print-preferences UI: fix some basic deprecations
   * encoding-dialog UI: fix some basic deprecations
   * preferences-dialog UI: fix some basic deprecations
-  * lapiz-panel: remove  deprecated GtkImage types
-  * lapizl-panel: remove some GtkStock deprecations
+  * lapiz-panel: remove  deprecated CtkImage types
+  * lapizl-panel: remove some CtkStock deprecations
   * search-dialogs: fix a -Wpointer-compare warning
-  * tag-list-plugin: avoid deprecated GtkStock
+  * tag-list-plugin: avoid deprecated CtkStock
   * file-browser-widget: fix one stock deprecation
   * configure: drop GLIB_VERSION_MAX_ALLOWED
   * File browser: don't use GIOScheduler (deprecated)
   * file-browser-view: silent some build warnings
-  * lapiz-view: avoid GtkStock deprecations
-  * lapiz-tab: replace some GtkStock icons
+  * lapiz-view: avoid CtkStock deprecations
+  * lapiz-tab: replace some CtkStock icons
   * lapiz-notebook: don't use deprecated gdk_cursor_new
-  * progress-message-area: fix one GtkStock deprecation
-  * io-error-message-dialog: fix some GtkStock deprecation warnings
+  * progress-message-area: fix one CtkStock deprecation
+  * io-error-message-dialog: fix some CtkStock deprecation warnings
   * Restore Polish translation credits from GNOME
   * Fix: lapiz closes tabs unexpectedly with middle click
   * lapiz-notebook.c: fix a build warning
@@ -337,7 +337,7 @@
 
 ### lapiz 1.16.0
 
-  * Use GtkAboutDialog instead of CafeAboutDialog
+  * Use CtkAboutDialog instead of CafeAboutDialog
   * Drop dependency on libcafe-desktop and --without-cafedesktop
     build option
   * CTK+3: fix lots of deprecations

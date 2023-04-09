@@ -86,16 +86,16 @@ static void	lapiz_document_save_real	(LapizDocument          *doc,
 						 const LapizEncoding    *encoding,
 						 LapizDocumentSaveFlags  flags);
 static void	to_search_region_range 		(LapizDocument *doc,
-						 GtkTextIter   *start,
-						 GtkTextIter   *end);
+						 CtkTextIter   *start,
+						 CtkTextIter   *end);
 static void 	insert_text_cb		 	(LapizDocument *doc,
-						 GtkTextIter   *pos,
+						 CtkTextIter   *pos,
 						 const gchar   *text,
 						 gint           length);
 
 static void	delete_range_cb 		(LapizDocument *doc,
-						 GtkTextIter   *start,
-						 GtkTextIter   *end);
+						 CtkTextIter   *start,
+						 CtkTextIter   *end);
 
 struct _LapizDocumentPrivate
 {
@@ -131,7 +131,7 @@ struct _LapizDocumentPrivate
 
 	/* Search highlighting support variables */
 	LapizTextRegion *to_search_region;
-	GtkTextTag      *found_tag;
+	CtkTextTag      *found_tag;
 
 	/* Mount operation factory */
 	LapizMountOperationFactory  mount_operation_factory;
@@ -233,13 +233,13 @@ lapiz_document_dispose (GObject *object)
 	 * holding a ref to the doc, we still save the metadata */
 	if ((!doc->priv->dispose_has_run) && (doc->priv->uri != NULL))
 	{
-		GtkTextIter iter;
+		CtkTextIter iter;
 		gchar *position;
 		const gchar *language = NULL;
 
 		if (doc->priv->language_set_by_user)
 		{
-			GtkSourceLanguage *lang;
+			CtkSourceLanguage *lang;
 
 			lang = lapiz_document_get_language (doc);
 
@@ -398,9 +398,9 @@ emit_cursor_moved (LapizDocument *doc)
 }
 
 static void
-lapiz_document_mark_set (GtkTextBuffer     *buffer,
-                         const GtkTextIter *iter,
-                         GtkTextMark       *mark)
+lapiz_document_mark_set (CtkTextBuffer     *buffer,
+                         const CtkTextIter *iter,
+                         CtkTextMark       *mark)
 {
 	LapizDocument *doc = LAPIZ_DOCUMENT (buffer);
 
@@ -416,7 +416,7 @@ lapiz_document_mark_set (GtkTextBuffer     *buffer,
 }
 
 static void
-lapiz_document_changed (GtkTextBuffer *buffer)
+lapiz_document_changed (CtkTextBuffer *buffer)
 {
 	emit_cursor_moved (LAPIZ_DOCUMENT (buffer));
 
@@ -427,7 +427,7 @@ static void
 lapiz_document_class_init (LapizDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkTextBufferClass *buf_class = CTK_TEXT_BUFFER_CLASS (klass);
+	CtkTextBufferClass *buf_class = CTK_TEXT_BUFFER_CLASS (klass);
 
 	object_class->dispose = lapiz_document_dispose;
 	object_class->finalize = lapiz_document_finalize;
@@ -691,10 +691,10 @@ file_with_bom (GFile *file)
 
 static void
 set_language (LapizDocument     *doc,
-              GtkSourceLanguage *lang,
+              CtkSourceLanguage *lang,
               gboolean           set_by_user)
 {
-	GtkSourceLanguage *old_lang;
+	CtkSourceLanguage *old_lang;
 	const gchar       *bom_langs;
 
 	lapiz_debug (DEBUG_DOCUMENT);
@@ -763,12 +763,12 @@ set_encoding (LapizDocument       *doc,
 	g_object_notify (G_OBJECT (doc), "encoding");
 }
 
-static GtkSourceStyleScheme *
+static CtkSourceStyleScheme *
 get_default_style_scheme (void)
 {
 	gchar *scheme_id;
-	GtkSourceStyleScheme *def_style;
-	GtkSourceStyleSchemeManager *manager;
+	CtkSourceStyleScheme *def_style;
+	CtkSourceStyleSchemeManager *manager;
 
 	manager = lapiz_get_style_scheme_manager ();
 	scheme_id = lapiz_prefs_manager_get_source_style_scheme ();
@@ -782,7 +782,7 @@ get_default_style_scheme (void)
 		def_style = ctk_source_style_scheme_manager_get_scheme (manager, "classic");
 		if (def_style == NULL)
 		{
-			g_warning ("Style scheme 'classic' cannot be found, check your GtkSourceView installation.");
+			g_warning ("Style scheme 'classic' cannot be found, check your CtkSourceView installation.");
 		}
 	}
 
@@ -835,12 +835,12 @@ on_uri_changed (LapizDocument *doc,
 #endif
 }
 
-static GtkSourceLanguage *
+static CtkSourceLanguage *
 guess_language (LapizDocument *doc,
 		const gchar   *content_type)
 {
 	gchar *data;
-	GtkSourceLanguage *language = NULL;
+	CtkSourceLanguage *language = NULL;
 
 	data = lapiz_document_get_metadata (doc, LAPIZ_METADATA_ATTRIBUTE_LANGUAGE);
 
@@ -897,7 +897,7 @@ on_content_type_changed (LapizDocument *doc,
 {
 	if (!doc->priv->language_set_by_user)
 	{
-		GtkSourceLanguage *language;
+		CtkSourceLanguage *language;
 
 		language = guess_language (doc, doc->priv->content_type);
 
@@ -917,7 +917,7 @@ get_default_content_type (void)
 static void
 lapiz_document_init (LapizDocument *doc)
 {
-	GtkSourceStyleScheme *style_scheme;
+	CtkSourceStyleScheme *style_scheme;
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
@@ -1326,7 +1326,7 @@ document_loader_loaded (LapizDocumentLoader *loader,
 	    (error->domain == LAPIZ_DOCUMENT_ERROR &&
 	     error->code == LAPIZ_DOCUMENT_ERROR_CONVERSION_FALLBACK))
 	{
-		GtkTextIter iter;
+		CtkTextIter iter;
 		GFileInfo *info;
 		const gchar *content_type = NULL;
 		gboolean read_only = FALSE;
@@ -1684,7 +1684,7 @@ lapiz_document_save_as (LapizDocument          *doc,
 
 gboolean
 lapiz_document_insert_file (LapizDocument       *doc,
-			    GtkTextIter         *iter,
+			    CtkTextIter         *iter,
 			    const gchar         *uri,
 			    const LapizEncoding *encoding)
 {
@@ -1746,7 +1746,7 @@ lapiz_document_goto_line (LapizDocument *doc,
 {
 	gboolean ret = TRUE;
 	guint line_count;
-	GtkTextIter iter;
+	CtkTextIter iter;
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
@@ -1780,7 +1780,7 @@ lapiz_document_goto_line_offset (LapizDocument *doc,
 {
 	gboolean ret = TRUE;
 	guint offset_count;
-	GtkTextIter iter;
+	CtkTextIter iter;
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (line >= -1, FALSE);
@@ -1886,8 +1886,8 @@ lapiz_document_set_search_text (LapizDocument *doc,
 
 	if (update_to_search_region)
 	{
-		GtkTextIter begin;
-		GtkTextIter end;
+		CtkTextIter begin;
+		CtkTextIter end;
 
 		ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 					    &begin,
@@ -1967,16 +1967,16 @@ lapiz_document_get_can_search_again (LapizDocument *doc)
  **/
 gboolean
 lapiz_document_search_forward (LapizDocument     *doc,
-			       const GtkTextIter *start,
-			       const GtkTextIter *end,
-			       GtkTextIter       *match_start,
-			       GtkTextIter       *match_end)
+			       const CtkTextIter *start,
+			       const CtkTextIter *end,
+			       CtkTextIter       *match_start,
+			       CtkTextIter       *match_end)
 {
-	GtkTextIter iter;
-	GtkTextSearchFlags search_flags;
+	CtkTextIter iter;
+	CtkTextSearchFlags search_flags;
 	gboolean found = FALSE;
-	GtkTextIter m_start;
-	GtkTextIter m_end;
+	CtkTextIter m_start;
+	CtkTextIter m_end;
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail ((start == NULL) ||
@@ -2056,16 +2056,16 @@ lapiz_document_search_forward (LapizDocument     *doc,
  **/
 gboolean
 lapiz_document_search_backward (LapizDocument     *doc,
-		const GtkTextIter *start,
-		const GtkTextIter *end,
-		GtkTextIter       *match_start,
-		GtkTextIter       *match_end)
+		const CtkTextIter *start,
+		const CtkTextIter *end,
+		CtkTextIter       *match_start,
+		CtkTextIter       *match_end)
 {
-	GtkTextIter iter;
-	GtkTextSearchFlags search_flags;
+	CtkTextIter iter;
+	CtkTextSearchFlags search_flags;
 	gboolean found = FALSE;
-	GtkTextIter m_start;
-	GtkTextIter m_end;
+	CtkTextIter m_start;
+	CtkTextIter m_end;
 
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail ((start == NULL) ||
@@ -2144,16 +2144,16 @@ lapiz_document_replace_all (LapizDocument       *doc,
 			    const gchar         *replace,
 			    guint                flags)
 {
-	GtkTextIter iter;
-	GtkTextIter m_start;
-	GtkTextIter m_end;
-	GtkTextSearchFlags search_flags = 0;
+	CtkTextIter iter;
+	CtkTextIter m_start;
+	CtkTextIter m_end;
+	CtkTextSearchFlags search_flags = 0;
 	gboolean found = TRUE;
 	gint cont = 0;
 	gchar *search_text;
 	gchar *replace_text = NULL;
 	gint replace_text_len = 0;
-	GtkTextBuffer *buffer;
+	CtkTextBuffer *buffer;
 	gboolean brackets_highlighting;
 	gboolean search_highliting;
 
@@ -2282,7 +2282,7 @@ lapiz_document_replace_all (LapizDocument       *doc,
  **/
 void
 lapiz_document_set_language (LapizDocument     *doc,
-			     GtkSourceLanguage *lang)
+			     CtkSourceLanguage *lang)
 {
 	g_return_if_fail (LAPIZ_IS_DOCUMENT (doc));
 
@@ -2295,7 +2295,7 @@ lapiz_document_set_language (LapizDocument     *doc,
  *
  * Return value: (transfer none):
  */
-GtkSourceLanguage *
+CtkSourceLanguage *
 lapiz_document_get_language (LapizDocument *doc)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), NULL);
@@ -2332,8 +2332,8 @@ get_search_match_colors (LapizDocument *doc,
 			 gboolean      *background_set,
 			 GdkRGBA       *background)
 {
-	GtkSourceStyleScheme *style_scheme;
-	GtkSourceStyle *style;
+	CtkSourceStyleScheme *style_scheme;
+	CtkSourceStyle *style;
 	gchar *bg;
 	gchar *fg;
 
@@ -2415,10 +2415,10 @@ sync_found_tag (LapizDocument *doc,
 }
 
 static void
-text_tag_set_highest_priority (GtkTextTag    *tag,
-			       GtkTextBuffer *buffer)
+text_tag_set_highest_priority (CtkTextTag    *tag,
+			       CtkTextBuffer *buffer)
 {
-	GtkTextTagTable *table;
+	CtkTextTagTable *table;
 	gint n;
 
 	table = ctk_text_buffer_get_tag_table (buffer);
@@ -2428,16 +2428,16 @@ text_tag_set_highest_priority (GtkTextTag    *tag,
 
 static void
 search_region (LapizDocument *doc,
-	       GtkTextIter   *start,
-	       GtkTextIter   *end)
+	       CtkTextIter   *start,
+	       CtkTextIter   *end)
 {
-	GtkTextIter iter;
-	GtkTextIter m_start;
-	GtkTextIter m_end;
-	GtkTextSearchFlags search_flags = 0;
+	CtkTextIter iter;
+	CtkTextIter m_start;
+	CtkTextIter m_end;
+	CtkTextSearchFlags search_flags = 0;
 	gboolean found = TRUE;
 
-	GtkTextBuffer *buffer;
+	CtkTextBuffer *buffer;
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
@@ -2539,8 +2539,8 @@ search_region (LapizDocument *doc,
 
 static void
 to_search_region_range (LapizDocument *doc,
-			GtkTextIter   *start,
-			GtkTextIter   *end)
+			CtkTextIter   *start,
+			CtkTextIter   *end)
 {
 	lapiz_debug (DEBUG_DOCUMENT);
 
@@ -2567,8 +2567,8 @@ to_search_region_range (LapizDocument *doc,
 
 void
 _lapiz_document_search_region (LapizDocument     *doc,
-			       const GtkTextIter *start,
-			       const GtkTextIter *end)
+			       const CtkTextIter *start,
+			       const CtkTextIter *end)
 {
 	LapizTextRegion *region;
 
@@ -2593,8 +2593,8 @@ _lapiz_document_search_region (LapizDocument     *doc,
 	if (region)
 	{
 		gint i;
-		GtkTextIter start_search;
-		GtkTextIter end_search;
+		CtkTextIter start_search;
+		CtkTextIter end_search;
 
 		i = lapiz_text_region_subregions (region);
 		lapiz_text_region_nth_subregion (region,
@@ -2622,12 +2622,12 @@ _lapiz_document_search_region (LapizDocument     *doc,
 
 static void
 insert_text_cb (LapizDocument *doc,
-		GtkTextIter   *pos,
+		CtkTextIter   *pos,
 		const gchar   *text,
 		gint           length)
 {
-	GtkTextIter start;
-	GtkTextIter end;
+	CtkTextIter start;
+	CtkTextIter end;
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
@@ -2647,11 +2647,11 @@ insert_text_cb (LapizDocument *doc,
 
 static void
 delete_range_cb (LapizDocument *doc,
-		 GtkTextIter   *start,
-		 GtkTextIter   *end)
+		 CtkTextIter   *start,
+		 CtkTextIter   *end)
 {
-	GtkTextIter d_start;
-	GtkTextIter d_end;
+	CtkTextIter d_start;
+	CtkTextIter d_end;
 
 	lapiz_debug (DEBUG_DOCUMENT);
 
@@ -2678,8 +2678,8 @@ lapiz_document_set_enable_search_highlighting (LapizDocument *doc,
 		if (doc->priv->found_tag != NULL)
 		{
 			/* If needed remove the found_tag */
-			GtkTextIter begin;
-			GtkTextIter end;
+			CtkTextIter begin;
+			CtkTextIter end;
 
 			ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 						    &begin,
@@ -2701,8 +2701,8 @@ lapiz_document_set_enable_search_highlighting (LapizDocument *doc,
 		if (lapiz_document_get_can_search_again (doc))
 		{
 			/* If search_text is not empty, highligth all its occurrences */
-			GtkTextIter begin;
-			GtkTextIter end;
+			CtkTextIter begin;
+			CtkTextIter end;
 
 			ctk_text_buffer_get_bounds (CTK_TEXT_BUFFER (doc),
 						    &begin,

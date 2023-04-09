@@ -64,7 +64,7 @@ static void tab_state_changed_while_saving (LapizTab    *tab,
 					    LapizWindow *window);
 
 void
-_lapiz_cmd_file_new (GtkAction   *action,
+_lapiz_cmd_file_new (CtkAction   *action,
 		     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -438,10 +438,10 @@ open_dialog_response_cb (LapizFileChooserDialog *dialog,
 }
 
 void
-_lapiz_cmd_file_open (GtkAction   *action,
+_lapiz_cmd_file_open (CtkAction   *action,
 		      LapizWindow *window)
 {
-	GtkWidget *open_dialog;
+	CtkWidget *open_dialog;
 	gpointer data;
 	LapizDocument *doc;
 	GFile *default_path = NULL;
@@ -549,9 +549,9 @@ is_read_only (GFile *location)
 /* FIXME: modify this dialog to be similar to the one provided by ctk+ for
  * already existing files - Paolo (Oct. 11, 2005) */
 static gboolean
-replace_read_only_file (GtkWindow *parent, GFile *file)
+replace_read_only_file (CtkWindow *parent, GFile *file)
 {
-	GtkWidget *dialog;
+	CtkWidget *dialog;
 	gint ret;
 	gchar *parse_name;
 	gchar *name_for_display;
@@ -705,13 +705,13 @@ save_next_tab:
 	}
 }
 
-static GtkFileChooserConfirmation
-confirm_overwrite_callback (GtkFileChooser *dialog,
+static CtkFileChooserConfirmation
+confirm_overwrite_callback (CtkFileChooser *dialog,
 			    gpointer        data)
 {
 	gchar *uri;
 	GFile *file;
-	GtkFileChooserConfirmation res;
+	CtkFileChooserConfirmation res;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -741,8 +741,8 @@ static void
 file_save_as (LapizTab    *tab,
 	      LapizWindow *window)
 {
-	GtkWidget *save_dialog;
-	GtkWindowGroup *wg;
+	CtkWidget *save_dialog;
+	CtkWindowGroup *wg;
 	LapizDocument *doc;
 	GFile *file;
 	gboolean uri_set = FALSE;
@@ -878,7 +878,7 @@ file_save (LapizTab    *tab,
 }
 
 void
-_lapiz_cmd_file_save (GtkAction   *action,
+_lapiz_cmd_file_save (CtkAction   *action,
 		     LapizWindow *window)
 {
 	LapizTab *tab;
@@ -893,7 +893,7 @@ _lapiz_cmd_file_save (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_file_save_as (GtkAction   *action,
+_lapiz_cmd_file_save_as (CtkAction   *action,
 			LapizWindow *window)
 {
 	LapizTab *tab;
@@ -1047,7 +1047,7 @@ lapiz_commands_save_all_documents (LapizWindow *window)
 }
 
 void
-_lapiz_cmd_file_save_all (GtkAction   *action,
+_lapiz_cmd_file_save_all (CtkAction   *action,
 			 LapizWindow *window)
 {
 	lapiz_commands_save_all_documents (window);
@@ -1092,7 +1092,7 @@ do_revert (LapizWindow *window,
 }
 
 static void
-revert_dialog_response_cb (GtkDialog   *dialog,
+revert_dialog_response_cb (CtkDialog   *dialog,
 			   gint         response_id,
 			   LapizWindow *window)
 {
@@ -1115,11 +1115,11 @@ revert_dialog_response_cb (GtkDialog   *dialog,
 	}
 }
 
-static GtkWidget *
+static CtkWidget *
 revert_dialog (LapizWindow   *window,
 	       LapizDocument *doc)
 {
-	GtkWidget *dialog;
+	CtkWidget *dialog;
 	gchar *docname;
 	gchar *primary_msg;
 	gchar *secondary_msg;
@@ -1236,13 +1236,13 @@ revert_dialog (LapizWindow   *window,
 }
 
 void
-_lapiz_cmd_file_revert (GtkAction   *action,
+_lapiz_cmd_file_revert (CtkAction   *action,
 		       LapizWindow *window)
 {
 	LapizTab       *tab;
 	LapizDocument  *doc;
-	GtkWidget      *dialog;
-	GtkWindowGroup *wg;
+	CtkWidget      *dialog;
+	CtkWindowGroup *wg;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1282,7 +1282,7 @@ _lapiz_cmd_file_revert (GtkAction   *action,
 static gboolean
 really_close_tab (LapizTab *tab)
 {
-	GtkWidget *toplevel;
+	CtkWidget *toplevel;
 	LapizWindow *window;
 
 	lapiz_debug (DEBUG_COMMANDS);
@@ -1668,7 +1668,7 @@ close_confirmation_dialog_response_handler (LapizCloseConfirmationDialog *dlg,
 /* Returns TRUE if the tab can be immediately closed */
 static gboolean
 tab_can_close (LapizTab  *tab,
-	       GtkWindow *window)
+	       CtkWindow *window)
 {
 	LapizDocument *doc;
 
@@ -1678,7 +1678,7 @@ tab_can_close (LapizTab  *tab,
 
 	if (!_lapiz_tab_can_close (tab))
 	{
-		GtkWidget     *dlg;
+		CtkWidget     *dlg;
 
 		dlg = lapiz_close_confirmation_dialog_new_single (
 						window,
@@ -1730,7 +1730,7 @@ _lapiz_cmd_file_close_tab (LapizTab    *tab,
 }
 
 void
-_lapiz_cmd_file_close (GtkAction   *action,
+_lapiz_cmd_file_close (CtkAction   *action,
 		      LapizWindow *window)
 {
 	LapizTab *active_tab;
@@ -1753,7 +1753,7 @@ file_close_all (LapizWindow *window,
 		gboolean     is_quitting)
 {
 	GList     *unsaved_docs;
-	GtkWidget *dlg;
+	CtkWidget *dlg;
 
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -1819,7 +1819,7 @@ file_close_all (LapizWindow *window,
 }
 
 void
-_lapiz_cmd_file_close_all (GtkAction   *action,
+_lapiz_cmd_file_close_all (CtkAction   *action,
 			  LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -1833,7 +1833,7 @@ _lapiz_cmd_file_close_all (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_file_quit (GtkAction   *action,
+_lapiz_cmd_file_quit (CtkAction   *action,
 		     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);

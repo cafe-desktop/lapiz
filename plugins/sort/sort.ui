@@ -3,45 +3,45 @@
 <!--*- mode: xml -*-->
 <interface>
   <requires lib="ctk+" version="3.22"/>
-  <object class="GtkAdjustment" id="adjustment1">
+  <object class="CtkAdjustment" id="adjustment1">
     <property name="lower">1</property>
     <property name="upper">100</property>
     <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkImage" id="image1">
+  <object class="CtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">process-stop</property>
   </object>
-  <object class="GtkImage" id="image2">
+  <object class="CtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">help-browser</property>
   </object>
-  <object class="GtkImage" id="sort_image">
+  <object class="CtkImage" id="sort_image">
     <property name="can_focus">False</property>
     <property name="icon_name">view-sort-ascending</property>
   </object>
-  <object class="GtkDialog" id="sort_dialog">
+  <object class="CtkDialog" id="sort_dialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Sort</property>
     <property name="resizable">False</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="CtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog_action_area1">
+          <object class="CtkButtonBox" id="dialog_action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="CtkButton" id="button1">
                 <property name="label" translatable="yes">_Cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -57,7 +57,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button2">
+              <object class="CtkButton" id="button2">
                 <property name="label" translatable="yes">_Sort</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -73,7 +73,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button3">
+              <object class="CtkButton" id="button3">
                 <property name="label" translatable="yes">_Help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -97,20 +97,20 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="vbox1">
+          <object class="CtkBox" id="vbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">10</property>
             <property name="orientation">vertical</property>
             <property name="spacing">18</property>
             <child>
-              <object class="GtkBox" id="vbox5">
+              <object class="CtkBox" id="vbox5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">12</property>
                 <child>
-                  <object class="GtkCheckButton" id="reverse_order_checkbutton">
+                  <object class="CtkCheckButton" id="reverse_order_checkbutton">
                     <property name="label" translatable="yes">_Reverse order</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -125,7 +125,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="remove_dups_checkbutton">
+                  <object class="CtkCheckButton" id="remove_dups_checkbutton">
                     <property name="label" translatable="yes">R_emove duplicates</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -140,7 +140,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="ignore_case_checkbutton">
+                  <object class="CtkCheckButton" id="ignore_case_checkbutton">
                     <property name="label" translatable="yes">_Ignore case</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -156,12 +156,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="hbox13">
+                  <object class="CtkBox" id="hbox13">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkLabel" id="label18">
+                      <object class="CtkLabel" id="label18">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">S_tart at column:</property>
@@ -177,7 +177,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="col_num_spinbutton">
+                      <object class="CtkSpinButton" id="col_num_spinbutton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">adjustment1</property>
@@ -205,12 +205,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="hbox14">
+              <object class="CtkBox" id="hbox14">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkImage" id="image7">
+                  <object class="CtkImage" id="image7">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="icon_name">dialog-warning</property>
@@ -222,7 +222,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label17">
+                  <object class="CtkLabel" id="label17">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">You cannot undo a sort operation</property>

@@ -36,7 +36,7 @@
 
 struct _LapizModelinePluginPrivate
 {
-	GtkWidget *window;
+	CtkWidget *window;
 
 	gulong tab_added_handler_id;
 	gulong tab_removed_handler_id;
@@ -160,7 +160,7 @@ lapiz_modeline_plugin_get_property (GObject    *object,
 static void
 on_document_loaded_or_saved (LapizDocument *document,
 			     const GError  *error,
-			     GtkSourceView *view)
+			     CtkSourceView *view)
 {
 	modeline_parser_apply_modeline (view);
 }
@@ -169,7 +169,7 @@ static void
 connect_handlers (LapizView *view)
 {
 	DocumentData *data;
-        GtkTextBuffer *doc;
+        CtkTextBuffer *doc;
 
         doc = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
@@ -192,7 +192,7 @@ static void
 disconnect_handlers (LapizView *view)
 {
 	DocumentData *data;
-	GtkTextBuffer *doc;
+	CtkTextBuffer *doc;
 
 	doc = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 

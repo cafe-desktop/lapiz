@@ -37,10 +37,10 @@
 
 G_BEGIN_DECLS
 
-GtkSourceLanguageManager	*lapiz_get_language_manager	(void);
+CtkSourceLanguageManager	*lapiz_get_language_manager	(void);
 
 GSList				*lapiz_language_manager_list_languages_sorted
-								(GtkSourceLanguageManager	*lm,
+								(CtkSourceLanguageManager	*lm,
 								 gboolean			 include_hidden);
 
 G_END_DECLS

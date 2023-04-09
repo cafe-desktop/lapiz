@@ -29,26 +29,26 @@
 
 G_BEGIN_DECLS
 
-GtkSourceStyleSchemeManager *
+CtkSourceStyleSchemeManager *
 		 lapiz_get_style_scheme_manager		(void);
 
 /* Returns a sorted list of style schemes */
 GSList		*lapiz_style_scheme_manager_list_schemes_sorted
-							(GtkSourceStyleSchemeManager *manager);
+							(CtkSourceStyleSchemeManager *manager);
 
 /*
  * Non exported functions
  */
 gboolean	 _lapiz_style_scheme_manager_scheme_is_lapiz_user_scheme
-							(GtkSourceStyleSchemeManager *manager,
+							(CtkSourceStyleSchemeManager *manager,
 							 const gchar                 *scheme_id);
 
 const gchar	*_lapiz_style_scheme_manager_install_scheme
-							(GtkSourceStyleSchemeManager *manager,
+							(CtkSourceStyleSchemeManager *manager,
 							 const gchar                 *fname);
 
 gboolean	 _lapiz_style_scheme_manager_uninstall_scheme
-							(GtkSourceStyleSchemeManager *manager,
+							(CtkSourceStyleSchemeManager *manager,
 							 const gchar                 *id);
 
 G_END_DECLS

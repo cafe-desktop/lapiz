@@ -40,16 +40,16 @@
 
 struct _LapizStatusbarPrivate
 {
-	GtkWidget     *overwrite_mode_label;
-	GtkWidget     *cursor_position_label;
+	CtkWidget     *overwrite_mode_label;
+	CtkWidget     *cursor_position_label;
 
-	GtkWidget     *state_frame;
-	GtkWidget     *load_image;
-	GtkWidget     *save_image;
-	GtkWidget     *print_image;
+	CtkWidget     *state_frame;
+	CtkWidget     *load_image;
+	CtkWidget     *save_image;
+	CtkWidget     *print_image;
 
-	GtkWidget     *error_frame;
-	GtkWidget     *error_event_box;
+	CtkWidget     *error_frame;
+	CtkWidget     *error_event_box;
 
 	/* tmp flash timeout data */
 	guint          flash_timeout;
@@ -99,8 +99,8 @@ lapiz_statusbar_class_init (LapizStatusbarClass *klass)
 static void
 lapiz_statusbar_init (LapizStatusbar *statusbar)
 {
-	GtkWidget *hbox;
-	GtkWidget *error_image;
+	CtkWidget *hbox;
+	CtkWidget *error_image;
 
 	statusbar->priv = lapiz_statusbar_get_instance_private (statusbar);
 
@@ -185,7 +185,7 @@ lapiz_statusbar_init (LapizStatusbar *statusbar)
  *
  * Return value: the new #LapizStatusbar object
  **/
-GtkWidget *
+CtkWidget *
 lapiz_statusbar_new (void)
 {
 	return CTK_WIDGET (g_object_new (LAPIZ_TYPE_STATUSBAR, NULL));

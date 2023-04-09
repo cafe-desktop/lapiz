@@ -24,9 +24,9 @@ from .library import *
 from .functions import *
 import hashlib
 from xml.sax import saxutils
-from gi.repository import GObject, Gio, Gdk, Gtk, GtkSource, Lapiz
+from gi.repository import GObject, Gio, Gdk, Ctk, CtkSource, Lapiz
 
-class LanguagesPopup(Gtk.Popover):
+class LanguagesPopup(Ctk.Popover):
     __gtype_name__ = "LanguagesPopup"
 
     COLUMN_NAME = 0
@@ -34,7 +34,7 @@ class LanguagesPopup(Gtk.Popover):
     COLUMN_ENABLED = 2
 
     def __init__(self, widget, languages):
-        Gtk.Popover.__init__(self, relative_to=widget)
+        Ctk.Popover.__init__(self, relative_to=widget)
 
         self.props.can_focus = True
 
@@ -44,29 +44,29 @@ class LanguagesPopup(Gtk.Popover):
         self.view.get_selection().select_path((0,))
 
     def build(self):
-        self.model = Gtk.ListStore(str, str, bool)
+        self.model = Ctk.ListStore(str, str, bool)
 
-        self.sw = Gtk.ScrolledWindow()
+        self.sw = Ctk.ScrolledWindow()
         self.sw.set_size_request(-1, 200)
         self.sw.show()
 
-        self.sw.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        self.sw.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
+        self.sw.set_policy(Ctk.PolicyType.NEVER, Ctk.PolicyType.AUTOMATIC)
+        self.sw.set_shadow_type(Ctk.ShadowType.ETCHED_IN)
 
-        self.view = Gtk.TreeView(model=self.model)
+        self.view = Ctk.TreeView(model=self.model)
         self.view.show()
 
         self.view.set_headers_visible(False)
 
-        column = Gtk.TreeViewColumn()
+        column = Ctk.TreeViewColumn()
 
-        renderer = Gtk.CellRendererToggle()
+        renderer = Ctk.CellRendererToggle()
         column.pack_start(renderer, False)
         column.add_attribute(renderer, 'active', self.COLUMN_ENABLED)
 
         renderer.connect('toggled', self.on_language_toggled)
 
-        renderer = Gtk.CellRendererText()
+        renderer = Ctk.CellRendererText()
         column.pack_start(renderer, True)
         column.add_attribute(renderer, 'text', self.COLUMN_NAME)
 
@@ -99,7 +99,7 @@ class LanguagesPopup(Gtk.Popover):
         return val == '-'
 
     def init_languages(self, languages):
-        manager = GtkSource.LanguageManager()
+        manager = CtkSource.LanguageManager()
         langs = [manager.get_language(x) for x in manager.get_language_ids()]
         langs.sort(key=lambda x: x.get_name())
 
@@ -164,7 +164,7 @@ class Manager(GObject.Object):
         }
 
         # Load the "main-window" widget from the ui file.
-        self.ui = Gtk.Builder()
+        self.ui = Ctk.Builder()
         self.ui.add_from_file(os.path.join(self.datadir, 'ui', 'tools.ui'))
         self.ui.connect_signals(callbacks)
         self.dialog = self.ui.get_object('tool-manager-dialog')
@@ -234,7 +234,7 @@ class Manager(GObject.Object):
             del self.accelerators[shortcut]
 
     def add_tool_to_language(self, tool, language):
-        if isinstance(language, GtkSource.Language):
+        if isinstance(language, CtkSource.Language):
             lid = language.get_id()
         else:
             lid = language
@@ -242,7 +242,7 @@ class Manager(GObject.Object):
         if not lid in self._languages:
             piter = self.model.append(None, [language])
 
-            parent = Gtk.TreeRowReference.new(self.model, self.model.get_path(piter))
+            parent = Ctk.TreeRowReference.new(self.model, self.model.get_path(piter))
             self._languages[lid] = parent
         else:
             parent = self._languages[lid]
@@ -253,11 +253,11 @@ class Manager(GObject.Object):
         if not tool in self._tool_rows:
             self._tool_rows[tool] = []
 
-        self._tool_rows[tool].append(Gtk.TreeRowReference.new(self.model, self.model.get_path(child)))
+        self._tool_rows[tool].append(Ctk.TreeRowReference.new(self.model, self.model.get_path(child)))
         return child
 
     def add_tool(self, tool):
-        manager = GtkSource.LanguageManager()
+        manager = CtkSource.LanguageManager()
         ret = None
 
         for lang in tool.languages:
@@ -280,14 +280,14 @@ class Manager(GObject.Object):
         self.script_hash = None
         self.accelerators = dict()
 
-        self.model = Gtk.TreeStore(object)
+        self.model = Ctk.TreeStore(object)
         self.view.set_model(self.model)
 
         for tool in self.tools.tree.tools:
             self.add_tool(tool)
 
         self.model.set_default_sort_func(self.sort_tools)
-        self.model.set_sort_column_id(-1, Gtk.SortType.ASCENDING)
+        self.model.set_sort_column_id(-1, Ctk.SortType.ASCENDING)
 
     def sort_tools(self, model, iter1, iter2, user_data=None):
         # For languages, sort All before everything else, otherwise alphabetical
@@ -302,7 +302,7 @@ class Manager(GObject.Object):
                 return 1
 
             def lang_name(lang):
-                if isinstance(lang, GtkSource.Language):
+                if isinstance(lang, CtkSource.Language):
                     return lang.get_name()
                 else:
                     return _('Plain Text')
@@ -319,8 +319,8 @@ class Manager(GObject.Object):
 
     def __init_tools_view(self):
         # Tools column
-        column = Gtk.TreeViewColumn('Tools')
-        renderer = Gtk.CellRendererText()
+        column = Ctk.TreeViewColumn('Tools')
+        renderer = Ctk.CellRendererText()
         column.pack_start(renderer, False)
         renderer.set_property('editable', True)
         self.view.append_column(column)
@@ -416,7 +416,7 @@ class Manager(GObject.Object):
         if not self.current_node or not self.current_node.languages:
             self['languages_label'].set_text(_('All Languages'))
         else:
-            manager = GtkSource.LanguageManager()
+            manager = CtkSource.LanguageManager()
             langs = []
 
             for lang in self.current_node.languages:
@@ -446,7 +446,7 @@ class Manager(GObject.Object):
 
         self.script_hash = self.compute_hash(script)
         contenttype, uncertain = Gio.content_type_guess(None, script)
-        lmanager = GtkSource.LanguageManager.get_default()
+        lmanager = CtkSource.LanguageManager.get_default()
         language = lmanager.guess_language(content_type=contenttype)
 
         if language is not None:
@@ -503,7 +503,7 @@ class Manager(GObject.Object):
             piter = self.model.iter_parent(piter)
             tool = self.model.get_value(piter, self.TOOL_COLUMN)
 
-        if isinstance(tool, GtkSource.Language):
+        if isinstance(tool, CtkSource.Language):
             return tool.get_id()
         elif tool:
             return 'plain'
@@ -612,7 +612,7 @@ class Manager(GObject.Object):
             piter = self.model.get_iter(path)
             tool = self.model.get_value(piter, self.TOOL_COLUMN)
 
-            if isinstance(editable, Gtk.Entry):
+            if isinstance(editable, Ctk.Entry):
                 editable.set_text(tool.name)
                 editable.grab_focus()
 
@@ -642,7 +642,7 @@ class Manager(GObject.Object):
         # Check whether accelerator already exists
         self.remove_accelerator(self.current_node)
 
-        name = Gtk.accelerator_name(keyval, mod)
+        name = Ctk.accelerator_name(keyval, mod)
 
         if name == '':
             self.current_node.shorcut = None
@@ -652,10 +652,10 @@ class Manager(GObject.Object):
         col = self.accelerator_collision(name, self.current_node)
 
         if col:
-            dialog = Gtk.MessageDialog(self.dialog,
-                                       Gtk.DialogFlags.MODAL,
-                                       Gtk.MessageType.ERROR,
-                                       Gtk.ButtonsType.CLOSE,
+            dialog = Ctk.MessageDialog(self.dialog,
+                                       Ctk.DialogFlags.MODAL,
+                                       Ctk.MessageType.ERROR,
+                                       Ctk.ButtonsType.CLOSE,
                                        _('This accelerator is already bound to %s') % (', '.join(map(lambda x: x.name, col)),))
 
             dialog.run()
@@ -671,7 +671,7 @@ class Manager(GObject.Object):
         return True
 
     def on_accelerator_key_press(self, entry, event):
-        mask = event.state & Gtk.accelerator_get_default_mod_mask()
+        mask = event.state & Ctk.accelerator_get_default_mod_mask()
         keyname = Gdk.keyval_name(event.keyval)
 
         if keyname == 'Escape':
@@ -717,7 +717,7 @@ class Manager(GObject.Object):
             self.tool_changed(self.current_node)
 
     def on_tool_manager_dialog_response(self, dialog, response):
-        if response == Gtk.ResponseType.HELP:
+        if response == Ctk.ResponseType.HELP:
             Lapiz.help_display(self.dialog, 'lapiz', 'lapiz-external-tools-plugin')
             return
 
@@ -742,7 +742,7 @@ class Manager(GObject.Object):
         if tool == None or not isinstance(tool, Tool):
             if tool == None:
                 label = _('All Languages')
-            elif not isinstance(tool, GtkSource.Language):
+            elif not isinstance(tool, CtkSource.Language):
                 label = _('Plain Text')
             else:
                 label = tool.get_name()
@@ -784,7 +784,7 @@ class Manager(GObject.Object):
         ret = None
 
         if node:
-            ref = Gtk.TreeRowReference.new(self.model, self.model.get_path(piter))
+            ref = Ctk.TreeRowReference.new(self.model, self.model.get_path(piter))
 
         # Update languages, make sure to inhibit selection change stuff
         self.view.get_selection().handler_block(self.selection_changed_id)
@@ -810,7 +810,7 @@ class Manager(GObject.Object):
                 del self._languages[language]
 
         # Now, add for any that are new
-        manager = GtkSource.LanguageManager()
+        manager = CtkSource.LanguageManager()
 
         for lang in self.current_node.languages:
             if not self.tool_in_language(self.current_node, lang):

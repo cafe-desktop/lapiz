@@ -65,7 +65,7 @@ typedef struct _LapizNotebook		LapizNotebook;
 
 struct _LapizNotebook
 {
-	GtkNotebook notebook;
+	CtkNotebook notebook;
 
 	/*< private >*/
         LapizNotebookPrivate *priv;
@@ -78,7 +78,7 @@ typedef struct _LapizNotebookClass	LapizNotebookClass;
 
 struct _LapizNotebookClass
 {
-        GtkNotebookClass parent_class;
+        CtkNotebookClass parent_class;
 
 	/* Signals */
 	void	 (* tab_added)      (LapizNotebook *notebook,
@@ -98,7 +98,7 @@ struct _LapizNotebookClass
  */
 GType		lapiz_notebook_get_type		(void) G_GNUC_CONST;
 
-GtkWidget      *lapiz_notebook_new		(void);
+CtkWidget      *lapiz_notebook_new		(void);
 
 void		lapiz_notebook_add_tab		(LapizNotebook *nb,
 						 LapizTab      *tab,

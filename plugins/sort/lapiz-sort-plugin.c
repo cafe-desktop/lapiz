@@ -48,22 +48,22 @@ enum {
 
 typedef struct
 {
-	GtkWidget *dialog;
-	GtkWidget *col_num_spinbutton;
-	GtkWidget *reverse_order_checkbutton;
-	GtkWidget *ignore_case_checkbutton;
-	GtkWidget *remove_dups_checkbutton;
+	CtkWidget *dialog;
+	CtkWidget *col_num_spinbutton;
+	CtkWidget *reverse_order_checkbutton;
+	CtkWidget *ignore_case_checkbutton;
+	CtkWidget *remove_dups_checkbutton;
 
 	LapizDocument *doc;
 
-	GtkTextIter start, end; /* selection */
+	CtkTextIter start, end; /* selection */
 } SortDialog;
 
 struct _LapizSortPluginPrivate
 {
-	GtkWidget *window;
+	CtkWidget *window;
 
-	GtkActionGroup *ui_action_group;
+	CtkActionGroup *ui_action_group;
 	guint ui_id;
 };
 
@@ -83,10 +83,10 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSortPlugin,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
                                                                peas_activatable_iface_init))
 
-static void sort_cb (GtkAction *action, LapizSortPlugin *plugin);
+static void sort_cb (CtkAction *action, LapizSortPlugin *plugin);
 static void sort_real (SortDialog *dialog);
 
-static const GtkActionEntry action_entries[] =
+static const CtkActionEntry action_entries[] =
 {
 	{ "Sort",
 	  "view-sort-ascending",
@@ -106,7 +106,7 @@ sort_dialog_destroy (GObject *obj,
 }
 
 static void
-sort_dialog_response_handler (GtkDialog  *widget,
+sort_dialog_response_handler (CtkDialog  *widget,
 			      gint       res_id,
 			      SortDialog *dialog)
 {
@@ -159,7 +159,7 @@ get_sort_dialog (LapizSortPlugin *plugin)
 {
 	LapizWindow *window;
 	SortDialog *dialog;
-	GtkWidget *error_widget;
+	CtkWidget *error_widget;
 	gboolean ret;
 	gchar *data_dir;
 	gchar *ui_file;
@@ -217,12 +217,12 @@ get_sort_dialog (LapizSortPlugin *plugin)
 }
 
 static void
-sort_cb (GtkAction  *action,
+sort_cb (CtkAction  *action,
 	 LapizSortPlugin *plugin)
 {
 	LapizWindow *window;
 	LapizDocument *doc;
-	GtkWindowGroup *wg;
+	CtkWindowGroup *wg;
 	SortDialog *dialog;
 
 	lapiz_debug (DEBUG_PLUGINS);
@@ -336,10 +336,10 @@ compare_algorithm (gconstpointer s1,
 }
 
 static gchar *
-get_line_slice (GtkTextBuffer *buf,
+get_line_slice (CtkTextBuffer *buf,
 		gint           line)
 {
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 	char *ret;
 
 	ctk_text_buffer_get_iter_at_line (buf, &start, line);
@@ -362,7 +362,7 @@ static void
 sort_real (SortDialog *dialog)
 {
 	LapizDocument *doc;
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 	gint start_line, end_line;
 	gint i;
 	gchar *last_row = NULL;
@@ -513,7 +513,7 @@ lapiz_sort_plugin_activate (PeasActivatable *activatable)
 	LapizSortPlugin *plugin;
 	LapizSortPluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -553,7 +553,7 @@ lapiz_sort_plugin_deactivate (PeasActivatable *activatable)
 {
 	LapizSortPluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 

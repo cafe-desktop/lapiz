@@ -94,7 +94,7 @@ struct _LapizPrintJobClass
 	                   LapizPrintJobStatus  status);
 
 	void (* show_preview) (LapizPrintJob   *job,
-	                       GtkWidget       *preview);
+	                       CtkWidget       *preview);
 
         void (*done)      (LapizPrintJob       *job,
 		           LapizPrintJobResult  result,
@@ -111,11 +111,11 @@ LapizPrintJob		*lapiz_print_job_new			(LapizView                *view);
 void			 lapiz_print_job_set_export_filename	(LapizPrintJob            *job,
 								 const gchar              *filename);
 
-GtkPrintOperationResult	 lapiz_print_job_print			(LapizPrintJob            *job,
-								 GtkPrintOperationAction   action,
-								 GtkPageSetup             *page_setup,
-								 GtkPrintSettings         *settings,
-								 GtkWindow                *parent,
+CtkPrintOperationResult	 lapiz_print_job_print			(LapizPrintJob            *job,
+								 CtkPrintOperationAction   action,
+								 CtkPageSetup             *page_setup,
+								 CtkPrintSettings         *settings,
+								 CtkWindow                *parent,
 								 GError                  **error);
 
 void			 lapiz_print_job_cancel			(LapizPrintJob            *job);
@@ -124,9 +124,9 @@ const gchar		*lapiz_print_job_get_status_string	(LapizPrintJob            *job);
 
 gdouble			 lapiz_print_job_get_progress		(LapizPrintJob            *job);
 
-GtkPrintSettings	*lapiz_print_job_get_print_settings	(LapizPrintJob            *job);
+CtkPrintSettings	*lapiz_print_job_get_print_settings	(LapizPrintJob            *job);
 
-GtkPageSetup		*lapiz_print_job_get_page_setup		(LapizPrintJob            *job);
+CtkPageSetup		*lapiz_print_job_get_page_setup		(LapizPrintJob            *job);
 
 G_END_DECLS
 

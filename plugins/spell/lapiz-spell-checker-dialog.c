@@ -40,25 +40,25 @@
 
 struct _LapizSpellCheckerDialog
 {
-	GtkWindow parent_instance;
+	CtkWindow parent_instance;
 
 	LapizSpellChecker 	*spell_checker;
 
 	gchar			*misspelled_word;
 
-	GtkWidget 		*misspelled_word_label;
-	GtkWidget		*word_entry;
-	GtkWidget		*check_word_button;
-	GtkWidget		*ignore_button;
-	GtkWidget		*ignore_all_button;
-	GtkWidget		*change_button;
-	GtkWidget		*change_all_button;
-	GtkWidget		*add_word_button;
-	GtkWidget		*close_button;
-	GtkWidget		*suggestions_list;
-	GtkWidget		*language_label;
+	CtkWidget 		*misspelled_word_label;
+	CtkWidget		*word_entry;
+	CtkWidget		*check_word_button;
+	CtkWidget		*ignore_button;
+	CtkWidget		*ignore_all_button;
+	CtkWidget		*change_button;
+	CtkWidget		*change_all_button;
+	CtkWidget		*add_word_button;
+	CtkWidget		*close_button;
+	CtkWidget		*suggestions_list;
+	CtkWidget		*language_label;
 
-	GtkTreeModel		*suggestions_list_model;
+	CtkTreeModel		*suggestions_list_model;
 };
 
 enum
@@ -80,27 +80,27 @@ enum
 static void	update_suggestions_list_model 			(LapizSpellCheckerDialog *dlg,
 								 GSList *suggestions);
 
-static void	word_entry_changed_handler			(GtkEditable *editable,
+static void	word_entry_changed_handler			(CtkEditable *editable,
 								 LapizSpellCheckerDialog *dlg);
-static void	close_button_clicked_handler 			(GtkButton *button,
+static void	close_button_clicked_handler 			(CtkButton *button,
 								 LapizSpellCheckerDialog *dlg);
-static void	suggestions_list_selection_changed_handler 	(GtkTreeSelection *selection,
+static void	suggestions_list_selection_changed_handler 	(CtkTreeSelection *selection,
 								 LapizSpellCheckerDialog *dlg);
-static void	check_word_button_clicked_handler 		(GtkButton *button,
+static void	check_word_button_clicked_handler 		(CtkButton *button,
 								 LapizSpellCheckerDialog *dlg);
-static void	add_word_button_clicked_handler 		(GtkButton *button,
+static void	add_word_button_clicked_handler 		(CtkButton *button,
 								 LapizSpellCheckerDialog *dlg);
-static void	ignore_button_clicked_handler 			(GtkButton *button,
+static void	ignore_button_clicked_handler 			(CtkButton *button,
 								 LapizSpellCheckerDialog *dlg);
-static void	ignore_all_button_clicked_handler 		(GtkButton *button,
+static void	ignore_all_button_clicked_handler 		(CtkButton *button,
 								 LapizSpellCheckerDialog *dlg);
-static void	change_button_clicked_handler 			(GtkButton *button,
+static void	change_button_clicked_handler 			(CtkButton *button,
 								 LapizSpellCheckerDialog *dlg);
-static void	change_all_button_clicked_handler 		(GtkButton *button,
+static void	change_all_button_clicked_handler 		(CtkButton *button,
 								 LapizSpellCheckerDialog *dlg);
-static void	suggestions_list_row_activated_handler		(GtkTreeView *view,
-								 GtkTreePath *path,
-								 GtkTreeViewColumn *column,
+static void	suggestions_list_row_activated_handler		(CtkTreeView *view,
+								 CtkTreePath *path,
+								 CtkTreeViewColumn *column,
 								 LapizSpellCheckerDialog *dlg);
 
 
@@ -199,11 +199,11 @@ static void
 create_dialog (LapizSpellCheckerDialog *dlg,
 	       const gchar *data_dir)
 {
-	GtkWidget *error_widget;
-	GtkWidget *content;
-	GtkTreeViewColumn *column;
-	GtkCellRenderer *cell;
-	GtkTreeSelection *selection;
+	CtkWidget *error_widget;
+	CtkWidget *content;
+	CtkTreeViewColumn *column;
+	CtkCellRenderer *cell;
+	CtkTreeSelection *selection;
 	gchar *root_objects[] = {
 		"content",
 		"check_word_image",
@@ -328,7 +328,7 @@ lapiz_spell_checker_dialog_init (LapizSpellCheckerDialog *dlg)
 {
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_spell_checker_dialog_new (const gchar *data_dir)
 {
 	LapizSpellCheckerDialog *dlg;
@@ -343,7 +343,7 @@ lapiz_spell_checker_dialog_new (const gchar *data_dir)
 	return CTK_WIDGET (dlg);
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_spell_checker_dialog_new_from_spell_checker (LapizSpellChecker *spell,
 						   const gchar *data_dir)
 {
@@ -437,9 +437,9 @@ lapiz_spell_checker_dialog_set_misspelled_word (LapizSpellCheckerDialog *dlg,
 static void
 update_suggestions_list_model (LapizSpellCheckerDialog *dlg, GSList *suggestions)
 {
-	GtkListStore *store;
-	GtkTreeIter iter;
-	GtkTreeSelection *sel;
+	CtkListStore *store;
+	CtkTreeIter iter;
+	CtkTreeSelection *sel;
 
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 	g_return_if_fail (CTK_IS_LIST_STORE (dlg->suggestions_list_model));
@@ -485,7 +485,7 @@ update_suggestions_list_model (LapizSpellCheckerDialog *dlg, GSList *suggestions
 }
 
 static void
-word_entry_changed_handler (GtkEditable *editable, LapizSpellCheckerDialog *dlg)
+word_entry_changed_handler (CtkEditable *editable, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *text;
 
@@ -508,7 +508,7 @@ word_entry_changed_handler (GtkEditable *editable, LapizSpellCheckerDialog *dlg)
 }
 
 static void
-close_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
+close_button_clicked_handler (CtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
 
@@ -516,10 +516,10 @@ close_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 }
 
 static void
-suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
+suggestions_list_selection_changed_handler (CtkTreeSelection *selection,
 		LapizSpellCheckerDialog *dlg)
 {
- 	GtkTreeIter iter;
+ 	CtkTreeIter iter;
 	GValue value = {0, };
 	const gchar *text;
 
@@ -540,7 +540,7 @@ suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
 }
 
 static void
-check_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
+check_word_button_clicked_handler (CtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *word;
 	gssize len;
@@ -553,8 +553,8 @@ check_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *d
 
 	if (lapiz_spell_checker_check_word (dlg->spell_checker, word, len))
 	{
-		GtkListStore *store;
-		GtkTreeIter iter;
+		CtkListStore *store;
+		CtkTreeIter iter;
 
 		store = CTK_LIST_STORE (dlg->suggestions_list_model);
 		ctk_list_store_clear (store);
@@ -584,7 +584,7 @@ check_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *d
 }
 
 static void
-add_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
+add_word_button_clicked_handler (CtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	gchar *word;
 
@@ -603,7 +603,7 @@ add_word_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg
 }
 
 static void
-ignore_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
+ignore_button_clicked_handler (CtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	gchar *word;
 
@@ -618,7 +618,7 @@ ignore_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 }
 
 static void
-ignore_all_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
+ignore_all_button_clicked_handler (CtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	gchar *word;
 
@@ -637,7 +637,7 @@ ignore_all_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *d
 }
 
 static void
-change_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
+change_button_clicked_handler (CtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *entry_text;
 	gchar *change;
@@ -665,9 +665,9 @@ change_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
 
 /* double click on one of the suggestions is like clicking on "change" */
 static void
-suggestions_list_row_activated_handler (GtkTreeView *view,
-		GtkTreePath *path,
-		GtkTreeViewColumn *column,
+suggestions_list_row_activated_handler (CtkTreeView *view,
+		CtkTreePath *path,
+		CtkTreeViewColumn *column,
 		LapizSpellCheckerDialog *dlg)
 {
 	g_return_if_fail (LAPIZ_IS_SPELL_CHECKER_DIALOG (dlg));
@@ -676,7 +676,7 @@ suggestions_list_row_activated_handler (GtkTreeView *view,
 }
 
 static void
-change_all_button_clicked_handler (GtkButton *button, LapizSpellCheckerDialog *dlg)
+change_all_button_clicked_handler (CtkButton *button, LapizSpellCheckerDialog *dlg)
 {
 	const gchar *entry_text;
 	gchar *change;

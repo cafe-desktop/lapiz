@@ -119,20 +119,20 @@ struct _LapizFileBrowserWidgetPrivate
 
 	GHashTable *bookmarks_hash;
 
-	GtkWidget *combo;
-	GtkTreeStore *combo_model;
+	CtkWidget *combo;
+	CtkTreeStore *combo_model;
 
-	GtkWidget *filter_expander;
-	GtkWidget *filter_entry;
+	CtkWidget *filter_expander;
+	CtkWidget *filter_entry;
 
-	GtkUIManager *manager;
-	GtkActionGroup *action_group;
-	GtkActionGroup *action_group_selection;
-	GtkActionGroup *action_group_file_selection;
-	GtkActionGroup *action_group_single_selection;
-	GtkActionGroup *action_group_single_most_selection;
-	GtkActionGroup *action_group_sensitive;
-	GtkActionGroup *bookmark_action_group;
+	CtkUIManager *manager;
+	CtkActionGroup *action_group;
+	CtkActionGroup *action_group_selection;
+	CtkActionGroup *action_group_file_selection;
+	CtkActionGroup *action_group_single_selection;
+	CtkActionGroup *action_group_single_most_selection;
+	CtkActionGroup *action_group_sensitive;
+	CtkActionGroup *bookmark_action_group;
 
 	GSList *signal_pool;
 
@@ -145,9 +145,9 @@ struct _LapizFileBrowserWidgetPrivate
 	GList *locations;
 	GList *current_location;
 	gboolean changing_location;
-	GtkWidget *location_previous_menu;
-	GtkWidget *location_next_menu;
-	GtkWidget *current_location_menu_item;
+	CtkWidget *location_previous_menu;
+	CtkWidget *location_next_menu;
+	CtkWidget *current_location_menu_item;
 
 	gboolean enable_delete;
 
@@ -172,7 +172,7 @@ static void on_file_store_error                (LapizFileBrowserStore * store,
 static gboolean on_file_store_no_trash 	       (LapizFileBrowserStore * store,
 						GList * files,
 						LapizFileBrowserWidget * obj);
-static void on_combo_changed                   (GtkComboBox * combo,
+static void on_combo_changed                   (CtkComboBox * combo,
 						LapizFileBrowserWidget * obj);
 static gboolean on_treeview_popup_menu         (LapizFileBrowserView * treeview,
 						LapizFileBrowserWidget * obj);
@@ -182,7 +182,7 @@ static gboolean on_treeview_button_press_event (LapizFileBrowserView * treeview,
 static gboolean on_treeview_key_press_event    (LapizFileBrowserView * treeview,
 						GdkEventKey * event,
 						LapizFileBrowserWidget * obj);
-static void on_selection_changed               (GtkTreeSelection * selection,
+static void on_selection_changed               (CtkTreeSelection * selection,
 						LapizFileBrowserWidget * obj);
 
 static void on_virtual_root_changed            (LapizFileBrowserStore * model,
@@ -190,45 +190,45 @@ static void on_virtual_root_changed            (LapizFileBrowserStore * model,
 						LapizFileBrowserWidget * obj);
 
 static gboolean on_entry_filter_activate       (LapizFileBrowserWidget * obj);
-static void on_location_jump_activate          (GtkMenuItem * item,
+static void on_location_jump_activate          (CtkMenuItem * item,
 						LapizFileBrowserWidget * obj);
-static void on_bookmarks_row_changed           (GtkTreeModel * model,
-                                                GtkTreePath * path,
-                                                GtkTreeIter * iter,
+static void on_bookmarks_row_changed           (CtkTreeModel * model,
+                                                CtkTreePath * path,
+                                                CtkTreeIter * iter,
                                                 LapizFileBrowserWidget * obj);
-static void on_bookmarks_row_deleted           (GtkTreeModel * model,
-                                                GtkTreePath * path,
+static void on_bookmarks_row_deleted           (CtkTreeModel * model,
+                                                CtkTreePath * path,
                                                 LapizFileBrowserWidget * obj);
 static void on_filter_mode_changed	       (LapizFileBrowserStore * model,
                                                 GParamSpec * param,
                                                 LapizFileBrowserWidget * obj);
-static void on_action_directory_previous       (GtkAction * action,
+static void on_action_directory_previous       (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_directory_next           (GtkAction * action,
+static void on_action_directory_next           (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_directory_up             (GtkAction * action,
+static void on_action_directory_up             (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_directory_new            (GtkAction * action,
+static void on_action_directory_new            (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_file_open                (GtkAction * action,
+static void on_action_file_open                (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_file_new                 (GtkAction * action,
+static void on_action_file_new                 (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_file_rename              (GtkAction * action,
+static void on_action_file_rename              (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_file_delete              (GtkAction * action,
+static void on_action_file_delete              (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_file_move_to_trash       (GtkAction * action,
+static void on_action_file_move_to_trash       (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_directory_refresh        (GtkAction * action,
+static void on_action_directory_refresh        (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_directory_open           (GtkAction * action,
+static void on_action_directory_open           (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_filter_hidden            (GtkAction * action,
+static void on_action_filter_hidden            (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_filter_binary            (GtkAction * action,
+static void on_action_filter_binary            (CtkAction * action,
 						LapizFileBrowserWidget * obj);
-static void on_action_bookmark_open            (GtkAction * action,
+static void on_action_bookmark_open            (CtkAction * action,
 						LapizFileBrowserWidget * obj);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserWidget,
@@ -286,10 +286,10 @@ location_free (Location * loc)
 
 static gboolean
 combo_find_by_id (LapizFileBrowserWidget * obj, guint id,
-		  GtkTreeIter * iter)
+		  CtkTreeIter * iter)
 {
 	guint checkid;
-	GtkTreeModel *model = CTK_TREE_MODEL (obj->priv->combo_model);
+	CtkTreeModel *model = CTK_TREE_MODEL (obj->priv->combo_model);
 
 	if (iter == NULL)
 		return FALSE;
@@ -310,7 +310,7 @@ combo_find_by_id (LapizFileBrowserWidget * obj, guint id,
 static void
 remove_path_items (LapizFileBrowserWidget * obj)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	while (combo_find_by_id (obj, PATH_ID, &iter))
 		ctk_tree_store_remove (obj->priv->combo_model, &iter);
@@ -510,7 +510,7 @@ clear_signals (LapizFileBrowserWidget * obj)
 }
 
 static gboolean
-separator_func (GtkTreeModel * model, GtkTreeIter * iter, gpointer data)
+separator_func (CtkTreeModel * model, CtkTreeIter * iter, gpointer data)
 {
 	guint id;
 
@@ -547,8 +547,8 @@ get_from_bookmark_file (LapizFileBrowserWidget * obj, GFile * file,
 static void
 insert_path_item (LapizFileBrowserWidget * obj,
                   GFile * file,
-		  GtkTreeIter * after,
-		  GtkTreeIter * iter,
+		  CtkTreeIter * after,
+		  CtkTreeIter * iter,
 		  guint indent)
 {
 	gchar * unescape;
@@ -584,7 +584,7 @@ insert_path_item (LapizFileBrowserWidget * obj,
 static void
 insert_separator_item (LapizFileBrowserWidget * obj)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	ctk_tree_store_insert (obj->priv->combo_model, &iter, NULL, 1);
 	ctk_tree_store_set (obj->priv->combo_model, &iter,
@@ -596,7 +596,7 @@ insert_separator_item (LapizFileBrowserWidget * obj)
 static void
 combo_set_active_by_id (LapizFileBrowserWidget * obj, guint id)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	if (combo_find_by_id (obj, id, &iter))
 		ctk_combo_box_set_active_iter (CTK_COMBO_BOX
@@ -632,8 +632,8 @@ insert_location_path (LapizFileBrowserWidget * obj)
 	Location *loc;
 	GFile *current = NULL;
 	GFile * tmp;
-	GtkTreeIter separator;
-	GtkTreeIter iter;
+	CtkTreeIter separator;
+	CtkTreeIter iter;
 	guint indent;
 
 	if (!obj->priv->current_location) {
@@ -682,7 +682,7 @@ insert_location_path (LapizFileBrowserWidget * obj)
 static void
 check_current_item (LapizFileBrowserWidget * obj, gboolean show_path)
 {
-	GtkTreeIter separator;
+	CtkTreeIter separator;
 	gboolean has_sep;
 
 	remove_path_items (obj);
@@ -700,8 +700,8 @@ check_current_item (LapizFileBrowserWidget * obj, gboolean show_path)
 static void
 fill_combo_model (LapizFileBrowserWidget * obj)
 {
-	GtkTreeStore *store = obj->priv->combo_model;
-	GtkTreeIter iter;
+	CtkTreeStore *store = obj->priv->combo_model;
+	CtkTreeIter iter;
 	GdkPixbuf *icon;
 
 	icon = lapiz_file_browser_utils_pixbuf_from_theme ("go-home", CTK_ICON_SIZE_MENU);
@@ -719,10 +719,10 @@ fill_combo_model (LapizFileBrowserWidget * obj)
 }
 
 static void
-indent_cell_data_func (GtkCellLayout * cell_layout,
-                       GtkCellRenderer * cell,
-                       GtkTreeModel * model,
-                       GtkTreeIter * iter,
+indent_cell_data_func (CtkCellLayout * cell_layout,
+                       CtkCellRenderer * cell,
+                       CtkTreeModel * model,
+                       CtkTreeIter * iter,
                        gpointer data)
 {
 	gchar * indent;
@@ -743,7 +743,7 @@ indent_cell_data_func (GtkCellLayout * cell_layout,
 static void
 create_combo (LapizFileBrowserWidget * obj)
 {
-	GtkCellRenderer *renderer;
+	CtkCellRenderer *renderer;
 
 	obj->priv->combo_model = ctk_tree_store_new (N_COLUMNS,
 						     G_TYPE_UINT,
@@ -788,12 +788,12 @@ create_combo (LapizFileBrowserWidget * obj)
 	ctk_widget_show (obj->priv->combo);
 }
 
-static GtkActionEntry toplevel_actions[] =
+static CtkActionEntry toplevel_actions[] =
 {
 	{"FilterMenuAction", NULL, N_("_Filter")}
 };
 
-static const GtkActionEntry tree_actions_selection[] =
+static const CtkActionEntry tree_actions_selection[] =
 {
 	{"FileMoveToTrash", "cafe-stock-trash", N_("_Move to Trash"), NULL,
 	 N_("Move selected file or folder to trash"),
@@ -803,20 +803,20 @@ static const GtkActionEntry tree_actions_selection[] =
 	 G_CALLBACK (on_action_file_delete)}
 };
 
-static const GtkActionEntry tree_actions_file_selection[] =
+static const CtkActionEntry tree_actions_file_selection[] =
 {
 	{"FileOpen", "document-open", N_("_Open"), NULL,
 	 N_("Open selected file"),
 	 G_CALLBACK (on_action_file_open)}
 };
 
-static const GtkActionEntry tree_actions[] =
+static const CtkActionEntry tree_actions[] =
 {
 	{"DirectoryUp", "go-up", N_("Up"), NULL,
 	 N_("Open the parent folder"), G_CALLBACK (on_action_directory_up)}
 };
 
-static const GtkActionEntry tree_actions_single_most_selection[] =
+static const CtkActionEntry tree_actions_single_most_selection[] =
 {
 	{"DirectoryNew", "list-add", N_("_New Folder"), NULL,
 	 N_("Add new empty folder"),
@@ -825,14 +825,14 @@ static const GtkActionEntry tree_actions_single_most_selection[] =
 	 N_("Add new empty file"), G_CALLBACK (on_action_file_new)}
 };
 
-static const GtkActionEntry tree_actions_single_selection[] =
+static const CtkActionEntry tree_actions_single_selection[] =
 {
 	{"FileRename", NULL, N_("_Rename"), NULL,
 	 N_("Rename selected file or folder"),
 	 G_CALLBACK (on_action_file_rename)}
 };
 
-static const GtkActionEntry tree_actions_sensitive[] =
+static const CtkActionEntry tree_actions_sensitive[] =
 {
 	{"DirectoryPrevious", "go-previous", N_("_Previous Location"),
 	 NULL,
@@ -847,7 +847,7 @@ static const GtkActionEntry tree_actions_sensitive[] =
 	 G_CALLBACK (on_action_directory_open)}
 };
 
-static const GtkToggleActionEntry tree_actions_toggle[] =
+static const CtkToggleActionEntry tree_actions_toggle[] =
 {
 	{"FilterHidden", "dialog-password",
 	 N_("Show _Hidden"), NULL,
@@ -858,7 +858,7 @@ static const GtkToggleActionEntry tree_actions_toggle[] =
 	 FALSE}
 };
 
-static const GtkActionEntry bookmark_actions[] =
+static const CtkActionEntry bookmark_actions[] =
 {
 	{"BookmarkOpen", "document-open", N_("_View Folder"), NULL,
 	 N_("View folder in file manager"), G_CALLBACK (on_action_bookmark_open)}
@@ -868,12 +868,12 @@ static void
 create_toolbar (LapizFileBrowserWidget * obj,
 		const gchar *data_dir)
 {
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 	GError *error = NULL;
-	GtkActionGroup *action_group;
-	GtkWidget *toolbar;
-	GtkWidget *widget;
-	GtkAction *action;
+	CtkActionGroup *action_group;
+	CtkWidget *toolbar;
+	CtkWidget *widget;
+	CtkAction *action;
 	gchar *ui_file;
 
 	manager = ctk_ui_manager_new ();
@@ -1040,7 +1040,7 @@ static void
 set_enable_delete (LapizFileBrowserWidget *obj,
 		   gboolean enable)
 {
-	GtkAction *action;
+	CtkAction *action;
 	obj->priv->enable_delete = enable;
 
 	if (obj->priv->action_group_selection == NULL)
@@ -1054,7 +1054,7 @@ set_enable_delete (LapizFileBrowserWidget *obj,
 }
 
 static gboolean
-filter_real (LapizFileBrowserStore * model, GtkTreeIter * iter,
+filter_real (LapizFileBrowserStore * model, CtkTreeIter * iter,
 	     LapizFileBrowserWidget * obj)
 {
 	GSList *item;
@@ -1072,9 +1072,9 @@ filter_real (LapizFileBrowserStore * model, GtkTreeIter * iter,
 
 static void
 add_bookmark_hash (LapizFileBrowserWidget * obj,
-                   GtkTreeIter * iter)
+                   CtkTreeIter * iter)
 {
-	GtkTreeModel *model;
+	CtkTreeModel *model;
 	GdkPixbuf * pixbuf;
 	gchar * name;
 	gchar * uri;
@@ -1111,8 +1111,8 @@ add_bookmark_hash (LapizFileBrowserWidget * obj,
 static void
 init_bookmarks_hash (LapizFileBrowserWidget * obj)
 {
-	GtkTreeIter iter;
-	GtkTreeModel *model;
+	CtkTreeIter iter;
+	CtkTreeModel *model;
 
 	model = CTK_TREE_MODEL (obj->priv->bookmarks_store);
 
@@ -1136,7 +1136,7 @@ init_bookmarks_hash (LapizFileBrowserWidget * obj)
 
 static void
 on_begin_loading (LapizFileBrowserStore  *model,
-		  GtkTreeIter            *iter,
+		  CtkTreeIter            *iter,
 		  LapizFileBrowserWidget *obj)
 {
 	if (!GDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
@@ -1148,7 +1148,7 @@ on_begin_loading (LapizFileBrowserStore  *model,
 
 static void
 on_end_loading (LapizFileBrowserStore  *model,
-		GtkTreeIter            *iter,
+		CtkTreeIter            *iter,
 		LapizFileBrowserWidget *obj)
 {
 	if (!GDK_IS_WINDOW (ctk_widget_get_window (CTK_WIDGET (obj->priv->treeview))))
@@ -1160,7 +1160,7 @@ on_end_loading (LapizFileBrowserStore  *model,
 static void
 create_tree (LapizFileBrowserWidget * obj)
 {
-	GtkWidget *sw;
+	CtkWidget *sw;
 
 	obj->priv->file_store = lapiz_file_browser_store_new (NULL);
 	obj->priv->bookmarks_store = lapiz_file_bookmarks_store_new ();
@@ -1227,9 +1227,9 @@ create_tree (LapizFileBrowserWidget * obj)
 static void
 create_filter (LapizFileBrowserWidget * obj)
 {
-	GtkWidget *expander;
-	GtkWidget *vbox;
-	GtkWidget *entry;
+	CtkWidget *expander;
+	CtkWidget *vbox;
+	CtkWidget *entry;
 
 	expander = ctk_expander_new_with_mnemonic (_("_Match Filename"));
 	ctk_widget_show (expander);
@@ -1281,9 +1281,9 @@ lapiz_file_browser_widget_init (LapizFileBrowserWidget * obj)
 static void
 update_sensitivity (LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model =
+	CtkTreeModel *model =
 	    ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
-	GtkAction *action;
+	CtkAction *action;
 	gint mode;
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model)) {
@@ -1322,17 +1322,17 @@ update_sensitivity (LapizFileBrowserWidget * obj)
 
 static gboolean
 lapiz_file_browser_widget_get_first_selected (LapizFileBrowserWidget *obj,
-					      GtkTreeIter *iter)
+					      CtkTreeIter *iter)
 {
-	GtkTreeSelection *selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (obj->priv->treeview));
-	GtkTreeModel *model;
+	CtkTreeSelection *selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (obj->priv->treeview));
+	CtkTreeModel *model;
 	GList *rows = ctk_tree_selection_get_selected_rows (selection, &model);
 	gboolean result;
 
 	if (!rows)
 		return FALSE;
 
-	result = ctk_tree_model_get_iter(model, iter, (GtkTreePath *)(rows->data));
+	result = ctk_tree_model_get_iter(model, iter, (CtkTreePath *)(rows->data));
 
 	g_list_foreach (rows, (GFunc)ctk_tree_path_free, NULL);
 	g_list_free (rows);
@@ -1341,9 +1341,9 @@ lapiz_file_browser_widget_get_first_selected (LapizFileBrowserWidget *obj,
 }
 
 static gboolean
-popup_menu (LapizFileBrowserWidget * obj, GdkEventButton * event, GtkTreeModel * model)
+popup_menu (LapizFileBrowserWidget * obj, GdkEventButton * event, CtkTreeModel * model)
 {
-	GtkWidget *menu;
+	CtkWidget *menu;
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
 		menu = ctk_ui_manager_get_widget (obj->priv->manager, "/FilePopup");
@@ -1355,11 +1355,11 @@ popup_menu (LapizFileBrowserWidget * obj, GdkEventButton * event, GtkTreeModel *
 	g_return_val_if_fail (menu != NULL, FALSE);
 
 	if (event != NULL) {
-		GtkTreeSelection *selection;
+		CtkTreeSelection *selection;
 		selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (obj->priv->treeview));
 
 		if (ctk_tree_selection_count_selected_rows (selection) <= 1) {
-			GtkTreePath *path;
+			CtkTreePath *path;
 
 			if (ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (obj->priv->treeview),
 			                                   (gint)event->x, (gint)event->y,
@@ -1382,7 +1382,7 @@ popup_menu (LapizFileBrowserWidget * obj, GdkEventButton * event, GtkTreeModel *
 
 static gboolean
 filter_glob (LapizFileBrowserWidget * obj, LapizFileBrowserStore * store,
-	     GtkTreeIter * iter, gpointer user_data)
+	     CtkTreeIter * iter, gpointer user_data)
 {
 	gchar *name;
 	gboolean result;
@@ -1411,8 +1411,8 @@ filter_glob (LapizFileBrowserWidget * obj, LapizFileBrowserStore * store,
 static void
 rename_selected_file (LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeIter iter;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 
@@ -1426,14 +1426,14 @@ rename_selected_file (LapizFileBrowserWidget * obj)
 
 static GList *
 get_deletable_files (LapizFileBrowserWidget *obj) {
-	GtkTreeSelection *selection;
-	GtkTreeModel *model;
+	CtkTreeSelection *selection;
+	CtkTreeModel *model;
 	GList *rows;
 	GList *row;
 	GList *paths = NULL;
 	guint flags;
-	GtkTreeIter iter;
-	GtkTreePath *path;
+	CtkTreeIter iter;
+	CtkTreePath *path;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 
@@ -1442,7 +1442,7 @@ get_deletable_files (LapizFileBrowserWidget *obj) {
 	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
-		path = (GtkTreePath *)(row->data);
+		path = (CtkTreePath *)(row->data);
 
 		if (!ctk_tree_model_get_iter (model, &iter, path))
 			continue;
@@ -1466,7 +1466,7 @@ get_deletable_files (LapizFileBrowserWidget *obj) {
 static gboolean
 delete_selected_files (LapizFileBrowserWidget * obj, gboolean trash)
 {
-	GtkTreeModel *model;
+	CtkTreeModel *model;
 	gboolean confirm;
 	LapizFileBrowserStoreResult result;
 	GList *rows;
@@ -1525,11 +1525,11 @@ get_topmost_file (GFile * file)
 	return current;
 }
 
-static GtkWidget *
+static CtkWidget *
 create_goto_menu_item (LapizFileBrowserWidget * obj, GList * item,
 		       GdkPixbuf * icon)
 {
-	GtkWidget *result;
+	CtkWidget *result;
 	gchar *unescape;
 	GdkPixbuf *pixbuf = NULL;
 	Location *loc;
@@ -1584,12 +1584,12 @@ jump_to_location (LapizFileBrowserWidget * obj, GList * item,
 		  gboolean previous)
 {
 	Location *loc;
-	GtkWidget *widget;
+	CtkWidget *widget;
 	GList *children;
 	GList *child;
 	GList *(*iter_func) (GList *);
-	GtkWidget *menu_from;
-	GtkWidget *menu_to;
+	CtkWidget *menu_from;
+	CtkWidget *menu_to;
 	gchar *root;
 	gchar *virtual_root;
 
@@ -1701,12 +1701,12 @@ clear_next_locations (LapizFileBrowserWidget * obj)
 
 static void
 update_filter_mode (LapizFileBrowserWidget * obj,
-                    GtkAction * action,
+                    CtkAction * action,
                     LapizFileBrowserStoreFilterMode mode)
 {
 	gboolean active =
 	    ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action));
-	GtkTreeModel *model =
+	CtkTreeModel *model =
 	    ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 	gint now;
 
@@ -1730,7 +1730,7 @@ set_filter_pattern_real (LapizFileBrowserWidget * obj,
                         gchar const * pattern,
                         gboolean update_entry)
 {
-	GtkTreeModel *model;
+	CtkTreeModel *model;
 
 	model =
 	    ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
@@ -1796,7 +1796,7 @@ set_filter_pattern_real (LapizFileBrowserWidget * obj,
 
 /* Public */
 
-GtkWidget *
+CtkWidget *
 lapiz_file_browser_widget_new (const gchar *data_dir)
 {
 	LapizFileBrowserWidget *obj =
@@ -1917,13 +1917,13 @@ lapiz_file_browser_widget_get_browser_view (LapizFileBrowserWidget * obj)
 	return obj->priv->treeview;
 }
 
-GtkUIManager *
+CtkUIManager *
 lapiz_file_browser_widget_get_ui_manager (LapizFileBrowserWidget * obj)
 {
 	return obj->priv->manager;
 }
 
-GtkWidget *
+CtkWidget *
 lapiz_file_browser_widget_get_filter_entry (LapizFileBrowserWidget * obj)
 {
 	return obj->priv->filter_entry;
@@ -1936,7 +1936,7 @@ lapiz_file_browser_widget_add_filter (LapizFileBrowserWidget * obj,
 				      GDestroyNotify notify)
 {
 	FilterFunc *f;
-	GtkTreeModel *model =
+	CtkTreeModel *model =
 	    ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 
 	f = filter_func_new (obj, func, user_data, notify);
@@ -1984,11 +1984,11 @@ lapiz_file_browser_widget_set_filter_pattern (LapizFileBrowserWidget * obj,
 
 gboolean
 lapiz_file_browser_widget_get_selected_directory (LapizFileBrowserWidget * obj,
-						  GtkTreeIter * iter)
+						  CtkTreeIter * iter)
 {
-	GtkTreeModel *model =
+	CtkTreeModel *model =
 	    ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
-	GtkTreeIter parent;
+	CtkTreeIter parent;
 	guint flags;
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
@@ -2019,12 +2019,12 @@ lapiz_file_browser_widget_get_num_selected_files_or_directories (LapizFileBrowse
 								 guint                  *dirs)
 {
 	GList *rows, *row;
-	GtkTreePath *path;
-	GtkTreeIter iter;
+	CtkTreePath *path;
+	CtkTreeIter iter;
 	LapizFileBrowserStoreFlag flags;
 	guint result = 0;
-	GtkTreeSelection *selection;
-	GtkTreeModel *model;
+	CtkTreeSelection *selection;
+	CtkTreeModel *model;
 
 	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (obj->priv->treeview));
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
@@ -2035,7 +2035,7 @@ lapiz_file_browser_widget_get_num_selected_files_or_directories (LapizFileBrowse
 	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
-		path = (GtkTreePath *)(row->data);
+		path = (CtkTreePath *)(row->data);
 
 		/* Get iter from path */
 		if (!ctk_tree_model_get_iter (model, &iter, path))
@@ -2279,7 +2279,7 @@ mount_volume_cb (GVolume      *volume,
 
 static void
 activate_drive (LapizFileBrowserWidget *obj,
-		GtkTreeIter	       *iter)
+		CtkTreeIter	       *iter)
 {
 	GDrive *drive;
 	AsyncData *async;
@@ -2323,7 +2323,7 @@ try_mount_volume (LapizFileBrowserWidget *widget,
 
 static void
 activate_volume (LapizFileBrowserWidget *obj,
-		 GtkTreeIter	        *iter)
+		 CtkTreeIter	        *iter)
 {
 	GVolume *volume;
 
@@ -2339,7 +2339,7 @@ activate_volume (LapizFileBrowserWidget *obj,
 void
 lapiz_file_browser_widget_refresh (LapizFileBrowserWidget *obj)
 {
-	GtkTreeModel *model =
+	CtkTreeModel *model =
 	    ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
@@ -2378,8 +2378,8 @@ lapiz_file_browser_widget_history_forward (LapizFileBrowserWidget *obj)
 
 static void
 bookmark_open (LapizFileBrowserWidget *obj,
-	       GtkTreeModel           *model,
-	       GtkTreeIter            *iter)
+	       CtkTreeModel           *model,
+	       CtkTreeIter            *iter)
 {
 	gchar *uri;
 	gint flags;
@@ -2432,8 +2432,8 @@ bookmark_open (LapizFileBrowserWidget *obj,
 
 static void
 file_open  (LapizFileBrowserWidget *obj,
-	    GtkTreeModel           *model,
-	    GtkTreeIter            *iter)
+	    CtkTreeModel           *model,
+	    CtkTreeIter            *iter)
 {
 	gchar *uri;
 	gint flags;
@@ -2452,8 +2452,8 @@ file_open  (LapizFileBrowserWidget *obj,
 
 static gboolean
 directory_open (LapizFileBrowserWidget *obj,
-		GtkTreeModel           *model,
-		GtkTreeIter            *iter)
+		CtkTreeModel           *model,
+		CtkTreeIter            *iter)
 {
 	gboolean result = FALSE;
 	GError *error = NULL;
@@ -2485,20 +2485,20 @@ directory_open (LapizFileBrowserWidget *obj,
 
 static void
 on_bookmark_activated (LapizFileBrowserView   *tree_view,
-		       GtkTreeIter            *iter,
+		       CtkTreeIter            *iter,
 		       LapizFileBrowserWidget *obj)
 {
-	GtkTreeModel *model = ctk_tree_view_get_model (CTK_TREE_VIEW (tree_view));
+	CtkTreeModel *model = ctk_tree_view_get_model (CTK_TREE_VIEW (tree_view));
 
 	bookmark_open (obj, model, iter);
 }
 
 static void
 on_file_activated (LapizFileBrowserView   *tree_view,
-		   GtkTreeIter            *iter,
+		   CtkTreeIter            *iter,
 		   LapizFileBrowserWidget *obj)
 {
-	GtkTreeModel *model = ctk_tree_view_get_model (CTK_TREE_VIEW (tree_view));
+	CtkTreeModel *model = ctk_tree_view_get_model (CTK_TREE_VIEW (tree_view));
 
 	file_open (obj, model, iter);
 }
@@ -2507,8 +2507,8 @@ static gboolean
 virtual_root_is_root (LapizFileBrowserWidget * obj,
                       LapizFileBrowserStore  * model)
 {
-	GtkTreeIter root;
-	GtkTreeIter virtual_root;
+	CtkTreeIter root;
+	CtkTreeIter virtual_root;
 
 	if (!lapiz_file_browser_store_get_iter_root (model, &root))
 		return TRUE;
@@ -2524,11 +2524,11 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 			 GParamSpec * param,
 			 LapizFileBrowserWidget * obj)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gchar *uri;
 	gchar *root_uri;
-	GtkTreeIter root;
-	GtkAction *action;
+	CtkTreeIter root;
+	CtkAction *action;
 	Location *loc;
 	GdkPixbuf *pixbuf;
 
@@ -2635,7 +2635,7 @@ static void
 on_model_set (GObject * gobject, GParamSpec * arg1,
 	      LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
+	CtkTreeModel *model;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (gobject));
 
@@ -2646,7 +2646,7 @@ on_model_set (GObject * gobject, GParamSpec * arg1,
 
 		/* Add the current location to the back menu */
 		if (obj->priv->current_location) {
-			GtkAction *action;
+			CtkAction *action;
 
 			ctk_menu_shell_prepend (CTK_MENU_SHELL (obj->priv->location_previous_menu),
 						obj->priv->current_location_menu_item);
@@ -2701,9 +2701,9 @@ on_treeview_error (LapizFileBrowserView * tree_view, guint code,
 }
 
 static void
-on_combo_changed (GtkComboBox * combo, LapizFileBrowserWidget * obj)
+on_combo_changed (CtkComboBox * combo, LapizFileBrowserWidget * obj)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	guint id;
 	gchar * uri;
 	GFile * file;
@@ -2758,7 +2758,7 @@ static gboolean
 do_change_directory (LapizFileBrowserWidget * obj,
                      GdkEventKey            * event)
 {
-	GtkAction * action = NULL;
+	CtkAction * action = NULL;
 
 	if ((event->state &
 	    (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK & ~GDK_MOD1_MASK)) ==
@@ -2839,10 +2839,10 @@ on_treeview_key_press_event (LapizFileBrowserView * treeview,
 }
 
 static void
-on_selection_changed (GtkTreeSelection * selection,
+on_selection_changed (CtkTreeSelection * selection,
 		      LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
+	CtkTreeModel *model;
 	guint selected = 0;
 	guint files = 0;
 	guint dirs = 0;
@@ -2878,7 +2878,7 @@ on_entry_filter_activate (LapizFileBrowserWidget * obj)
 }
 
 static void
-on_location_jump_activate (GtkMenuItem * item,
+on_location_jump_activate (CtkMenuItem * item,
 			   LapizFileBrowserWidget * obj)
 {
 	GList *location;
@@ -2899,20 +2899,20 @@ on_location_jump_activate (GtkMenuItem * item,
 }
 
 static void
-on_bookmarks_row_changed (GtkTreeModel * model,
-                          GtkTreePath * path,
-                          GtkTreeIter * iter,
+on_bookmarks_row_changed (CtkTreeModel * model,
+                          CtkTreePath * path,
+                          CtkTreeIter * iter,
                           LapizFileBrowserWidget *obj)
 {
 	add_bookmark_hash (obj, iter);
 }
 
 static void
-on_bookmarks_row_deleted (GtkTreeModel * model,
-                          GtkTreePath * path,
+on_bookmarks_row_deleted (CtkTreeModel * model,
+                          CtkTreePath * path,
                           LapizFileBrowserWidget *obj)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gchar * uri;
 	GFile * file;
 
@@ -2937,7 +2937,7 @@ on_filter_mode_changed (LapizFileBrowserStore * model,
                         LapizFileBrowserWidget * obj)
 {
 	gint mode;
-	GtkToggleAction * action;
+	CtkToggleAction * action;
 	gboolean active;
 
 	mode = lapiz_file_browser_store_get_filter_mode (model);
@@ -2958,23 +2958,23 @@ on_filter_mode_changed (LapizFileBrowserStore * model,
 }
 
 static void
-on_action_directory_next (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_directory_next (CtkAction * action, LapizFileBrowserWidget * obj)
 {
 	lapiz_file_browser_widget_history_forward (obj);
 }
 
 static void
-on_action_directory_previous (GtkAction * action,
+on_action_directory_previous (CtkAction * action,
 			      LapizFileBrowserWidget * obj)
 {
 	lapiz_file_browser_widget_history_back (obj);
 }
 
 static void
-on_action_directory_up (GtkAction              * action,
+on_action_directory_up (CtkAction              * action,
 			LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
+	CtkTreeModel *model;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 
@@ -2985,11 +2985,11 @@ on_action_directory_up (GtkAction              * action,
 }
 
 static void
-on_action_directory_new (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_directory_new (CtkAction * action, LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
-	GtkTreeIter parent;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeIter parent;
+	CtkTreeIter iter;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 
@@ -3007,14 +3007,14 @@ on_action_directory_new (GtkAction * action, LapizFileBrowserWidget * obj)
 }
 
 static void
-on_action_file_open (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_file_open (CtkAction * action, LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
+	CtkTreeModel *model;
+	CtkTreeSelection *selection;
 	GList *rows;
 	GList *row;
-	GtkTreeIter iter;
-	GtkTreePath *path;
+	CtkTreeIter iter;
+	CtkTreePath *path;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (obj->priv->treeview));
@@ -3025,7 +3025,7 @@ on_action_file_open (GtkAction * action, LapizFileBrowserWidget * obj)
 	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
-		path = (GtkTreePath *)(row->data);
+		path = (CtkTreePath *)(row->data);
 
 		if (ctk_tree_model_get_iter (model, &iter, path))
 			file_open (obj, model, &iter);
@@ -3037,11 +3037,11 @@ on_action_file_open (GtkAction * action, LapizFileBrowserWidget * obj)
 }
 
 static void
-on_action_file_new (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_file_new (CtkAction * action, LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
-	GtkTreeIter parent;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeIter parent;
+	CtkTreeIter iter;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 
@@ -3059,40 +3059,40 @@ on_action_file_new (GtkAction * action, LapizFileBrowserWidget * obj)
 }
 
 static void
-on_action_file_rename (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_file_rename (CtkAction * action, LapizFileBrowserWidget * obj)
 {
 	rename_selected_file (obj);
 }
 
 static void
-on_action_file_delete (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_file_delete (CtkAction * action, LapizFileBrowserWidget * obj)
 {
 	delete_selected_files (obj, FALSE);
 }
 
 static void
-on_action_file_move_to_trash (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_file_move_to_trash (CtkAction * action, LapizFileBrowserWidget * obj)
 {
 	delete_selected_files (obj, TRUE);
 }
 
 static void
-on_action_directory_refresh (GtkAction * action,
+on_action_directory_refresh (CtkAction * action,
 			     LapizFileBrowserWidget * obj)
 {
 	lapiz_file_browser_widget_refresh (obj);
 }
 
 static void
-on_action_directory_open (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_directory_open (CtkAction * action, LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
+	CtkTreeModel *model;
+	CtkTreeSelection *selection;
 	GList *rows;
 	GList *row;
 	gboolean directory_opened = FALSE;
-	GtkTreeIter iter;
-	GtkTreePath *path;
+	CtkTreeIter iter;
+	CtkTreePath *path;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (obj->priv->treeview));
@@ -3103,7 +3103,7 @@ on_action_directory_open (GtkAction * action, LapizFileBrowserWidget * obj)
 	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
-		path = (GtkTreePath *)(row->data);
+		path = (CtkTreePath *)(row->data);
 
 		if (ctk_tree_model_get_iter (model, &iter, path))
 			directory_opened |= directory_open (obj, model, &iter);
@@ -3120,7 +3120,7 @@ on_action_directory_open (GtkAction * action, LapizFileBrowserWidget * obj)
 }
 
 static void
-on_action_filter_hidden (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_filter_hidden (CtkAction * action, LapizFileBrowserWidget * obj)
 {
 	update_filter_mode (obj,
 	                    action,
@@ -3128,7 +3128,7 @@ on_action_filter_hidden (GtkAction * action, LapizFileBrowserWidget * obj)
 }
 
 static void
-on_action_filter_binary (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_filter_binary (CtkAction * action, LapizFileBrowserWidget * obj)
 {
 	update_filter_mode (obj,
 	                    action,
@@ -3136,11 +3136,11 @@ on_action_filter_binary (GtkAction * action, LapizFileBrowserWidget * obj)
 }
 
 static void
-on_action_bookmark_open (GtkAction * action, LapizFileBrowserWidget * obj)
+on_action_bookmark_open (CtkAction * action, LapizFileBrowserWidget * obj)
 {
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeSelection *selection;
+	CtkTreeIter iter;
 
 	model = ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview));
 	selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (obj->priv->treeview));

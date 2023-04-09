@@ -66,86 +66,86 @@ gint		_lapiz_cmd_load_files_from_prompt	(LapizWindow         *window,
 							 const LapizEncoding *encoding,
 							 gint                 line_pos);
 
-void		_lapiz_cmd_file_new			(GtkAction   *action,
+void		_lapiz_cmd_file_new			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_open			(GtkAction   *action,
+void		_lapiz_cmd_file_open			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_save			(GtkAction   *action,
+void		_lapiz_cmd_file_save			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_save_as			(GtkAction   *action,
+void		_lapiz_cmd_file_save_as			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_save_all		(GtkAction   *action,
+void		_lapiz_cmd_file_save_all		(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_revert			(GtkAction   *action,
+void		_lapiz_cmd_file_revert			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_open_uri		(GtkAction   *action,
+void		_lapiz_cmd_file_open_uri		(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_print_preview		(GtkAction   *action,
+void		_lapiz_cmd_file_print_preview		(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_print			(GtkAction   *action,
+void		_lapiz_cmd_file_print			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_close			(GtkAction   *action,
+void		_lapiz_cmd_file_close			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_close_all		(GtkAction   *action,
+void		_lapiz_cmd_file_close_all		(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_file_quit			(GtkAction   *action,
-							 LapizWindow *window);
-
-void		_lapiz_cmd_edit_undo			(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_edit_redo			(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_edit_cut			(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_edit_copy			(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_edit_paste			(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_edit_delete			(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_edit_select_all		(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_edit_preferences		(GtkAction   *action,
+void		_lapiz_cmd_file_quit			(CtkAction   *action,
 							 LapizWindow *window);
 
-void		_lapiz_cmd_view_show_toolbar		(GtkAction   *action,
+void		_lapiz_cmd_edit_undo			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_view_show_statusbar		(GtkAction   *action,
+void		_lapiz_cmd_edit_redo			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_view_show_side_pane		(GtkAction   *action,
+void		_lapiz_cmd_edit_cut			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_view_show_bottom_pane	(GtkAction   *action,
+void		_lapiz_cmd_edit_copy			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_view_toggle_fullscreen_mode	(GtkAction   *action,
+void		_lapiz_cmd_edit_paste			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_view_leave_fullscreen_mode	(GtkAction   *action,
+void		_lapiz_cmd_edit_delete			(CtkAction   *action,
 							 LapizWindow *window);
-
-void		_lapiz_cmd_search_find			(GtkAction   *action,
+void		_lapiz_cmd_edit_select_all		(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_search_find_next		(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_search_find_prev		(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_search_replace		(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_search_clear_highlight	(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_search_goto_line		(GtkAction   *action,
-							 LapizWindow *window);
-void		_lapiz_cmd_search_incremental_search	(GtkAction   *action,
+void		_lapiz_cmd_edit_preferences		(CtkAction   *action,
 							 LapizWindow *window);
 
-void		_lapiz_cmd_documents_previous_document	(GtkAction   *action,
+void		_lapiz_cmd_view_show_toolbar		(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_documents_next_document	(GtkAction   *action,
+void		_lapiz_cmd_view_show_statusbar		(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_documents_move_to_new_window	(GtkAction   *action,
+void		_lapiz_cmd_view_show_side_pane		(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_view_show_bottom_pane	(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_view_toggle_fullscreen_mode	(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_view_leave_fullscreen_mode	(CtkAction   *action,
 							 LapizWindow *window);
 
-void		_lapiz_cmd_help_contents		(GtkAction   *action,
+void		_lapiz_cmd_search_find			(CtkAction   *action,
 							 LapizWindow *window);
-void		_lapiz_cmd_help_about			(GtkAction   *action,
+void		_lapiz_cmd_search_find_next		(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_search_find_prev		(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_search_replace		(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_search_clear_highlight	(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_search_goto_line		(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_search_incremental_search	(CtkAction   *action,
+							 LapizWindow *window);
+
+void		_lapiz_cmd_documents_previous_document	(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_documents_next_document	(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_documents_move_to_new_window	(CtkAction   *action,
+							 LapizWindow *window);
+
+void		_lapiz_cmd_help_contents		(CtkAction   *action,
+							 LapizWindow *window);
+void		_lapiz_cmd_help_about			(CtkAction   *action,
 							 LapizWindow *window);
 
 void		_lapiz_cmd_file_close_tab 		(LapizTab    *tab,

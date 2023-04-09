@@ -150,9 +150,9 @@ run_search (LapizView   *view,
 	    gboolean     search_backwards)
 {
 	LapizDocument *doc;
-	GtkTextIter start_iter;
-	GtkTextIter match_start;
-	GtkTextIter match_end;
+	CtkTextIter start_iter;
+	CtkTextIter match_start;
+	CtkTextIter match_end;
 	gboolean found = FALSE;
 
 	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (CTK_TEXT_VIEW (view)));
@@ -297,11 +297,11 @@ do_find (LapizSearchDialog *dialog,
 
 /* FIXME: move in lapiz-document.c and share it with lapiz-view */
 static gboolean
-get_selected_text (GtkTextBuffer  *doc,
+get_selected_text (CtkTextBuffer  *doc,
 		   gchar         **selected_text,
 		   gint           *len)
 {
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	g_return_val_if_fail (selected_text != NULL, FALSE);
 	g_return_val_if_fail (*selected_text == NULL, FALSE);
@@ -323,7 +323,7 @@ get_selected_text (GtkTextBuffer  *doc,
 }
 
 static void
-replace_selected_text (GtkTextBuffer *buffer,
+replace_selected_text (CtkTextBuffer *buffer,
 		       const gchar   *replace)
 {
 	g_return_if_fail (ctk_text_buffer_get_selection_bounds (buffer, NULL, NULL));
@@ -524,7 +524,7 @@ search_dialog_response_cb (LapizSearchDialog *dialog,
 }
 
 static gboolean
-search_dialog_delete_event_cb (GtkWidget   *widget,
+search_dialog_delete_event_cb (CtkWidget   *widget,
 			       GdkEventAny *event,
 			       gpointer     user_data)
 {
@@ -548,10 +548,10 @@ search_dialog_destroyed (LapizWindow       *window,
 			   NULL);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_dialog (LapizWindow *window, gboolean show_replace)
 {
-	GtkWidget *dialog;
+	CtkWidget *dialog;
 
 	dialog = lapiz_search_dialog_new (CTK_WINDOW (window), show_replace);
 
@@ -576,11 +576,11 @@ create_dialog (LapizWindow *window, gboolean show_replace)
 }
 
 void
-_lapiz_cmd_search_find (GtkAction   *action,
+_lapiz_cmd_search_find (CtkAction   *action,
 			LapizWindow *window)
 {
 	gpointer data;
-	GtkWidget *search_dialog;
+	CtkWidget *search_dialog;
 	LapizDocument *doc;
 	gboolean selection_exists;
 	gboolean parse_escapes;
@@ -650,11 +650,11 @@ _lapiz_cmd_search_find (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_replace (GtkAction   *action,
+_lapiz_cmd_search_replace (CtkAction   *action,
 			   LapizWindow *window)
 {
 	gpointer data;
-	GtkWidget *replace_dialog;
+	CtkWidget *replace_dialog;
 	LapizDocument *doc;
 	gboolean selection_exists;
 	gboolean parse_escapes;
@@ -745,7 +745,7 @@ do_find_again (LapizWindow *window,
 }
 
 void
-_lapiz_cmd_search_find_next (GtkAction   *action,
+_lapiz_cmd_search_find_next (CtkAction   *action,
 			     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -754,7 +754,7 @@ _lapiz_cmd_search_find_next (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_find_prev (GtkAction   *action,
+_lapiz_cmd_search_find_prev (CtkAction   *action,
 			     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -763,7 +763,7 @@ _lapiz_cmd_search_find_prev (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_clear_highlight (GtkAction   *action,
+_lapiz_cmd_search_clear_highlight (CtkAction   *action,
 				   LapizWindow *window)
 {
 	LapizDocument *doc;
@@ -777,7 +777,7 @@ _lapiz_cmd_search_clear_highlight (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_goto_line (GtkAction   *action,
+_lapiz_cmd_search_goto_line (CtkAction   *action,
 			     LapizWindow *window)
 {
 	LapizView *active_view;
@@ -802,7 +802,7 @@ _lapiz_cmd_search_goto_line (GtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_incremental_search (GtkAction   *action,
+_lapiz_cmd_search_incremental_search (CtkAction   *action,
 				      LapizWindow *window)
 {
 	LapizView *active_view;

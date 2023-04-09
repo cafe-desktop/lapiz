@@ -26,7 +26,7 @@ from weakref import WeakKeyDictionary
 from .capture import *
 from . import linkparsing
 from . import filelookup
-from gi.repository import GLib, Gdk, Gtk, Pango, Lapiz
+from gi.repository import GLib, Gdk, Ctk, Pango, Lapiz
 
 class UniqueById:
     __shared_state = WeakKeyDictionary()
@@ -55,7 +55,7 @@ class OutputPanel(UniqueById):
         }
 
         self.window = window
-        self.ui = Gtk.Builder()
+        self.ui = Ctk.Builder()
         self.ui.add_from_file(os.path.join(datadir, 'ui', 'outputpanel.ui'))
         self.ui.connect_signals(callbacks)
 
@@ -163,16 +163,16 @@ class OutputPanel(UniqueById):
         else:
             cursor = self.normal_cursor
 
-        view.get_window(Gtk.TextWindowType.TEXT).set_cursor(cursor)
+        view.get_window(Ctk.TextWindowType.TEXT).set_cursor(cursor)
 
     def on_view_motion_notify_event(self, view, event):
-        if event.window == view.get_window(Gtk.TextWindowType.TEXT):
+        if event.window == view.get_window(Ctk.TextWindowType.TEXT):
             self.update_cursor_style(view, int(event.x), int(event.y))
 
         return False
 
     def on_view_visibility_notify_event(self, view, event):
-        if event.window == view.get_window(Gtk.TextWindowType.TEXT):
+        if event.window == view.get_window(Ctk.TextWindowType.TEXT):
             x, y, m = event.window.get_pointer()
             self.update_cursor_style(view, x, y)
 
@@ -189,11 +189,11 @@ class OutputPanel(UniqueById):
         """
 
         # get the offset within the buffer from the x,y coordinates
-        buff_x, buff_y = view.window_to_buffer_coords(Gtk.TextWindowType.TEXT,
+        buff_x, buff_y = view.window_to_buffer_coords(Ctk.TextWindowType.TEXT,
                                                         x, y)
         # usual API breakage in CTK+3, nothing new...
         # see https://bugzilla.gnome.org/768793
-        if Gtk.get_minor_version() >= 20:
+        if Ctk.get_minor_version() >= 20:
             (over_text, iter_at_xy) = view.get_iter_at_location(buff_x, buff_y)
             if not over_text:
                 return None
@@ -212,7 +212,7 @@ class OutputPanel(UniqueById):
 
     def on_view_button_press_event(self, view, event):
         if event.button != 1 or event.type != Gdk.EventType.BUTTON_PRESS or \
-           event.window != view.get_window(Gtk.TextWindowType.TEXT):
+           event.window != view.get_window(Ctk.TextWindowType.TEXT):
             return False
 
         link = self.get_link_at_location(view, int(event.x), int(event.y))

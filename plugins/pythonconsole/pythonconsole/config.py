@@ -25,7 +25,7 @@
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
 import os
-from gi.repository import Gio, Gtk, Gdk
+from gi.repository import Gio, Ctk, Gdk
 
 __all__ = ('PythonConsoleConfig', 'PythonConsoleConfigWidget')
 
@@ -91,7 +91,7 @@ class PythonConsoleConfigWidget(object):
         self._widget = None
         self._ui_path = os.path.join(datadir, 'ui', 'config.ui')
         self._config = PythonConsoleConfig()
-        self._ui = Gtk.Builder()
+        self._ui = Ctk.Builder()
 
     def configure_widget(self):
         if self._widget is None:
@@ -139,8 +139,8 @@ class PythonConsoleConfigWidget(object):
         # Set icon in dialog close button.
         try:
             actionarea = widget.get_toplevel().get_action_area()
-            image = Gtk.Image.new_from_icon_name("window-close",
-                                                 Gtk.IconSize.BUTTON)
+            image = Ctk.Image.new_from_icon_name("window-close",
+                                                 Ctk.IconSize.BUTTON)
             for button in actionarea.get_children():
                 button.set_image(image)
                 button.set_property("always-show-image", True)

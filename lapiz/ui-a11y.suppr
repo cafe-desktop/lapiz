@@ -1,6 +1,6 @@
-lapiz-print-preferences.ui://GtkLabel[@id='label33'] orphan-label
-lapiz-print-preferences.ui://GtkLabel[@id='label27'] orphan-label
-lapiz-print-preferences.ui://GtkLabel[@id='label4'] orphan-label
-lapiz-print-preferences.ui://GtkLabel[@id='label31'] orphan-label
-lapiz-print-preferences.ui://GtkLabel[@id='label45'] orphan-label
-lapiz-print-preferences.ui://GtkLabel[@id='label43'] orphan-label
+lapiz-print-preferences.ui://CtkLabel[@id='label33'] orphan-label
+lapiz-print-preferences.ui://CtkLabel[@id='label27'] orphan-label
+lapiz-print-preferences.ui://CtkLabel[@id='label4'] orphan-label
+lapiz-print-preferences.ui://CtkLabel[@id='label31'] orphan-label
+lapiz-print-preferences.ui://CtkLabel[@id='label45'] orphan-label
+lapiz-print-preferences.ui://CtkLabel[@id='label43'] orphan-label

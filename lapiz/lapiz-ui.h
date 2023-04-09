@@ -41,7 +41,7 @@
 
 G_BEGIN_DECLS
 
-static const GtkActionEntry lapiz_always_sensitive_menu_entries[] =
+static const CtkActionEntry lapiz_always_sensitive_menu_entries[] =
 {
 	/* Toplevel */
 	{ "File", NULL, N_("_File") },
@@ -74,7 +74,7 @@ static const GtkActionEntry lapiz_always_sensitive_menu_entries[] =
 	  G_CALLBACK (_lapiz_cmd_view_leave_fullscreen_mode) }
 };
 
-static const GtkActionEntry lapiz_menu_entries[] =
+static const CtkActionEntry lapiz_menu_entries[] =
 {
 	/* File menu */
 	{ "FileSave", "document-save", N_("_Save"), "<control>S",
@@ -137,20 +137,20 @@ static const GtkActionEntry lapiz_menu_entries[] =
 };
 
 /* separate group, needs to be sensitive on OS X even when there are no tabs */
-static const GtkActionEntry lapiz_close_menu_entries[] =
+static const CtkActionEntry lapiz_close_menu_entries[] =
 {
 	{ "FileClose", "window-close", N_("_Close"), "<control>W",
 	  N_("Close the current file"), G_CALLBACK (_lapiz_cmd_file_close) }
 };
 
 /* separate group, should be sensitive even when there are no tabs */
-static const GtkActionEntry lapiz_quit_menu_entries[] =
+static const CtkActionEntry lapiz_quit_menu_entries[] =
 {
 	{ "FileQuit", "application-exit", N_("_Quit"), "<control>Q",
 	  N_("Quit the program"), G_CALLBACK (_lapiz_cmd_file_quit) }
 };
 
-static const GtkToggleActionEntry lapiz_always_sensitive_toggle_menu_entries[] =
+static const CtkToggleActionEntry lapiz_always_sensitive_toggle_menu_entries[] =
 {
 	{ "ViewToolbar", NULL, N_("_Toolbar"), NULL,
 	  N_("Show or hide the toolbar in the current window"),
@@ -164,7 +164,7 @@ static const GtkToggleActionEntry lapiz_always_sensitive_toggle_menu_entries[] =
 };
 
 /* separate group, should be always sensitive except when there are no panes */
-static const GtkToggleActionEntry lapiz_panes_toggle_menu_entries[] =
+static const CtkToggleActionEntry lapiz_panes_toggle_menu_entries[] =
 {
 	{ "ViewSidePane", NULL, N_("Side _Pane"), "F9",
 	  N_("Show or hide the side pane in the current window"),

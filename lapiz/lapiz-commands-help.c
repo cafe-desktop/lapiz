@@ -44,7 +44,7 @@
 #include "lapiz-help.h"
 #include "lapiz-dirs.h"
 
-void _lapiz_cmd_help_contents(GtkAction* action, LapizWindow* window)
+void _lapiz_cmd_help_contents(CtkAction* action, LapizWindow* window)
 {
 	lapiz_debug(DEBUG_COMMANDS);
 
@@ -54,7 +54,7 @@ void _lapiz_cmd_help_contents(GtkAction* action, LapizWindow* window)
 #define ABOUT_GROUP "About"
 #define EMAILIFY(string) (g_strdelimit ((string), "%", '@'))
 
-void _lapiz_cmd_help_about(GtkAction* action, LapizWindow* window)
+void _lapiz_cmd_help_about(CtkAction* action, LapizWindow* window)
 {
 	static const gchar* documenters[] = {
 		N_("CAFE Documentation Team"),

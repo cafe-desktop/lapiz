@@ -22,7 +22,7 @@ import sys
 import signal
 import locale
 import subprocess
-from gi.repository import GObject, GLib, Gtk
+from gi.repository import GObject, GLib, Ctk
 
 from .SubstitutionParser import SubstitutionParser
 from .Helper import *
@@ -406,7 +406,7 @@ class PlaceholderShell(PlaceholderExpand):
         if self.remove_me:
             PlaceholderExpand.remove(self)
 
-        message_dialog(None, Gtk.MessageType.ERROR, 'Execution of the shell ' \
+        message_dialog(None, Ctk.MessageType.ERROR, 'Execution of the shell ' \
                 'command (%s) exceeded the maximum time; ' \
                 'execution aborted.' % self.command)
 
@@ -597,7 +597,7 @@ class PlaceholderEval(PlaceholderExpand):
             except TimeoutError:
                 self.remove_timeout()
 
-                message_dialog(None, Gtk.MessageType.ERROR, \
+                message_dialog(None, Ctk.MessageType.ERROR, \
                 _('Execution of the Python command (%s) exceeds the maximum ' \
                 'time, execution aborted.') % self.command)
 
@@ -605,7 +605,7 @@ class PlaceholderEval(PlaceholderExpand):
             except Exception as detail:
                 self.remove_timeout()
 
-                message_dialog(None, Gtk.MessageType.ERROR,
+                message_dialog(None, Ctk.MessageType.ERROR,
                 _('Execution of the Python command (%s) failed: %s') %
                 (self.command, detail))
 

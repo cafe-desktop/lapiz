@@ -104,17 +104,17 @@ typedef struct _TimeConfigureDialog TimeConfigureDialog;
 
 struct _TimeConfigureDialog
 {
-	GtkWidget *content;
+	CtkWidget *content;
 
-	GtkWidget *list;
+	CtkWidget *list;
 
         /* Radio buttons to indicate what should be done */
-        GtkWidget *prompt;
-        GtkWidget *use_list;
-        GtkWidget *custom;
+        CtkWidget *prompt;
+        CtkWidget *use_list;
+        CtkWidget *custom;
 
-	GtkWidget *custom_entry;
-	GtkWidget *custom_format_example;
+	CtkWidget *custom_entry;
+	CtkWidget *custom_format_example;
 
 	GSettings *settings;
 };
@@ -123,19 +123,19 @@ typedef struct _ChooseFormatDialog ChooseFormatDialog;
 
 struct _ChooseFormatDialog
 {
-	GtkWidget *dialog;
+	CtkWidget *dialog;
 
-	GtkWidget *list;
+	CtkWidget *list;
 
         /* Radio buttons to indicate what should be done */
-        GtkWidget *use_list;
-        GtkWidget *custom;
+        CtkWidget *use_list;
+        CtkWidget *custom;
 
-        GtkWidget *custom_entry;
-	GtkWidget *custom_format_example;
+        CtkWidget *custom_entry;
+	CtkWidget *custom_format_example;
 
 	/* Info needed for the response handler */
-	GtkTextBuffer   *buffer;
+	CtkTextBuffer   *buffer;
 
 	GSettings *settings;
 };
@@ -150,11 +150,11 @@ typedef enum
 
 struct _LapizTimePluginPrivate
 {
-	GtkWidget *window;
+	CtkWidget *window;
 
 	GSettings *settings;
 
-	GtkActionGroup *action_group;
+	CtkActionGroup *action_group;
 	guint           ui_id;
 };
 
@@ -164,7 +164,7 @@ enum {
 };
 
 static void peas_activatable_iface_init (PeasActivatableInterface *iface);
-static void peas_ctk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
+static void peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 lapiz_time_plugin,
@@ -176,9 +176,9 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_CTK_TYPE_CONFIGURABLE,
                                                                peas_ctk_configurable_iface_init))
 
-static void time_cb (GtkAction *action, LapizTimePlugin *plugin);
+static void time_cb (CtkAction *action, LapizTimePlugin *plugin);
 
-static const GtkActionEntry action_entries[] =
+static const CtkActionEntry action_entries[] =
 {
 	{
 		"InsertDateAndTime",
@@ -239,7 +239,7 @@ update_ui (LapizTimePluginPrivate *data)
 {
 	LapizWindow *window;
 	LapizView *view;
-	GtkAction *action;
+	CtkAction *action;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -261,7 +261,7 @@ lapiz_time_plugin_activate (PeasActivatable *activatable)
 	LapizTimePlugin *plugin;
 	LapizTimePluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -299,7 +299,7 @@ lapiz_time_plugin_deactivate (PeasActivatable *activatable)
 {
 	LapizTimePluginPrivate *data;
 	LapizWindow *window;
-	GtkUIManager *manager;
+	CtkUIManager *manager;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -453,7 +453,7 @@ get_time (const gchar* format)
 }
 
 static void
-configure_dialog_destroyed (GtkWidget *widget,
+configure_dialog_destroyed (CtkWidget *widget,
                             gpointer   data)
 {
 	TimeConfigureDialog *dialog = (TimeConfigureDialog *) data;
@@ -465,7 +465,7 @@ configure_dialog_destroyed (GtkWidget *widget,
 }
 
 static void
-choose_format_dialog_destroyed (GtkWidget *widget,
+choose_format_dialog_destroyed (CtkWidget *widget,
                                 gpointer   data)
 {
 	lapiz_debug (DEBUG_PLUGINS);
@@ -473,15 +473,15 @@ choose_format_dialog_destroyed (GtkWidget *widget,
 	g_slice_free (ChooseFormatDialog, data);
 }
 
-static GtkTreeModel *
-create_model (GtkWidget       *listview,
+static CtkTreeModel *
+create_model (CtkWidget       *listview,
 	      const gchar     *sel_format,
 	      LapizTimePlugin *plugin)
 {
 	gint i = 0;
-	GtkListStore *store;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
+	CtkListStore *store;
+	CtkTreeSelection *selection;
+	CtkTreeIter iter;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -531,11 +531,11 @@ create_model (GtkWidget       *listview,
 }
 
 static void
-scroll_to_selected (GtkTreeView *tree_view)
+scroll_to_selected (CtkTreeView *tree_view)
 {
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeSelection *selection;
+	CtkTreeIter iter;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -548,7 +548,7 @@ scroll_to_selected (GtkTreeView *tree_view)
 
 	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 	{
-		GtkTreePath* path;
+		CtkTreePath* path;
 
 		path = ctk_tree_model_get_path (model, &iter);
 		g_return_if_fail (path != NULL);
@@ -560,12 +560,12 @@ scroll_to_selected (GtkTreeView *tree_view)
 }
 
 static void
-create_formats_list (GtkWidget       *listview,
+create_formats_list (CtkWidget       *listview,
 		     const gchar     *sel_format,
 		     LapizTimePlugin *plugin)
 {
-	GtkTreeViewColumn *column;
-	GtkCellRenderer *cell;
+	CtkTreeViewColumn *column;
+	CtkCellRenderer *cell;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -593,8 +593,8 @@ create_formats_list (GtkWidget       *listview,
 }
 
 static void
-updated_custom_format_example (GtkEntry *format_entry,
-			       GtkLabel *format_example)
+updated_custom_format_example (CtkEntry *format_entry,
+			       CtkLabel *format_example)
 {
 	const gchar *format;
 	gchar *time;
@@ -621,7 +621,7 @@ updated_custom_format_example (GtkEntry *format_entry,
 }
 
 static void
-choose_format_dialog_button_toggled (GtkToggleButton *button,
+choose_format_dialog_button_toggled (CtkToggleButton *button,
 				     ChooseFormatDialog *dialog)
 {
 	lapiz_debug (DEBUG_PLUGINS);
@@ -646,7 +646,7 @@ choose_format_dialog_button_toggled (GtkToggleButton *button,
 }
 
 static void
-configure_dialog_button_toggled (GtkToggleButton *button, TimeConfigureDialog *dialog)
+configure_dialog_button_toggled (CtkToggleButton *button, TimeConfigureDialog *dialog)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -682,11 +682,11 @@ configure_dialog_button_toggled (GtkToggleButton *button, TimeConfigureDialog *d
 }
 
 static gint
-get_format_from_list (GtkWidget *listview)
+get_format_from_list (CtkWidget *listview)
 {
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
+	CtkTreeModel *model;
+	CtkTreeSelection *selection;
+	CtkTreeIter iter;
 
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -711,7 +711,7 @@ get_format_from_list (GtkWidget *listview)
 }
 
 static void
-configure_dialog_selection_changed (GtkTreeSelection *selection,
+configure_dialog_selection_changed (CtkTreeSelection *selection,
                                     TimeConfigureDialog *dialog)
 {
 	gint sel_format;
@@ -724,13 +724,13 @@ static TimeConfigureDialog *
 get_configure_dialog (LapizTimePlugin *plugin)
 {
 	TimeConfigureDialog *dialog = NULL;
-	GtkTreeSelection *selection;
+	CtkTreeSelection *selection;
 	gchar *data_dir;
 	gchar *ui_file;
-	GtkWidget *viewport;
+	CtkWidget *viewport;
 	LapizTimePluginPromptType prompt_type;
 	gchar *sf;
-	GtkWidget *error_widget;
+	CtkWidget *error_widget;
 	gboolean ret;
 	gchar *root_objects[] = {
 		"time_dialog_content",
@@ -839,7 +839,7 @@ get_configure_dialog (LapizTimePlugin *plugin)
 }
 
 static void
-real_insert_time (GtkTextBuffer *buffer,
+real_insert_time (CtkTextBuffer *buffer,
 		  const gchar   *the_time)
 {
 	lapiz_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
@@ -853,9 +853,9 @@ real_insert_time (GtkTextBuffer *buffer,
 }
 
 static void
-choose_format_dialog_row_activated (GtkTreeView        *list,
-				    GtkTreePath        *path,
-				    GtkTreeViewColumn  *column,
+choose_format_dialog_row_activated (CtkTreeView        *list,
+				    CtkTreePath        *path,
+				    CtkTreeViewColumn  *column,
 				    ChooseFormatDialog *dialog)
 {
 	gint sel_format;
@@ -875,17 +875,17 @@ choose_format_dialog_row_activated (GtkTreeView        *list,
 }
 
 static ChooseFormatDialog *
-get_choose_format_dialog (GtkWindow                 *parent,
+get_choose_format_dialog (CtkWindow                 *parent,
 			  LapizTimePluginPromptType  prompt_type,
 			  LapizTimePlugin           *plugin)
 {
 	ChooseFormatDialog *dialog;
 	gchar *data_dir;
 	gchar *ui_file;
-	GtkWidget *error_widget;
+	CtkWidget *error_widget;
 	gboolean ret;
 	gchar *sf, *cf;
-	GtkWindowGroup *wg = NULL;
+	CtkWindowGroup *wg = NULL;
 
 	if (parent != NULL)
 		wg = ctk_window_get_group (parent);
@@ -911,7 +911,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 
 	if (!ret)
 	{
-		GtkWidget *err_dialog;
+		CtkWidget *err_dialog;
 
 		err_dialog = ctk_dialog_new ();
 		ctk_window_set_transient_for (CTK_WINDOW (err_dialog), parent);
@@ -1008,7 +1008,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 }
 
 static void
-choose_format_dialog_response_cb (GtkWidget          *widget,
+choose_format_dialog_response_cb (CtkWidget          *widget,
 				  gint                response,
 				  ChooseFormatDialog *dialog)
 {
@@ -1065,11 +1065,11 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 }
 
 static void
-time_cb (GtkAction  *action,
+time_cb (CtkAction  *action,
 	 LapizTimePlugin *plugin)
 {
 	LapizWindow *window;
-	GtkTextBuffer *buffer;
+	CtkTextBuffer *buffer;
 	gchar *the_time = NULL;
 	LapizTimePluginPromptType prompt_type;
 
@@ -1123,8 +1123,8 @@ time_cb (GtkAction  *action,
 	g_free (the_time);
 }
 
-static GtkWidget *
-lapiz_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
+static CtkWidget *
+lapiz_time_plugin_create_configure_widget (PeasCtkConfigurable *configurable)
 {
 	TimeConfigureDialog *dialog;
 
@@ -1201,7 +1201,7 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 static void
-peas_ctk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
+peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface)
 {
 	iface->create_configure_widget = lapiz_time_plugin_create_configure_widget;
 }

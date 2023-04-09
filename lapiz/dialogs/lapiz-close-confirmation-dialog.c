@@ -72,7 +72,7 @@ struct _LapizCloseConfirmationDialogPrivate
 
 	GList       *selected_documents;
 
-	GtkTreeModel *list_store;
+	CtkTreeModel *list_store;
 
 	gboolean     disable_save_to_disk;
 };
@@ -86,7 +86,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (LapizCloseConfirmationDialog, lapiz_close_confirmati
 static void 	 set_unsaved_document 		(LapizCloseConfirmationDialog *dlg,
 						 const GList                  *list);
 
-static GList 	*get_selected_docs 		(GtkTreeModel                 *store);
+static GList 	*get_selected_docs 		(CtkTreeModel                 *store);
 
 /*  Since we connect in the costructor we are sure this handler will be called
  *  before the user ones
@@ -318,11 +318,11 @@ lapiz_close_confirmation_dialog_class_init (LapizCloseConfirmationDialogClass *k
 }
 
 static GList *
-get_selected_docs (GtkTreeModel *store)
+get_selected_docs (CtkTreeModel *store)
 {
 	GList      *list;
 	gboolean     valid;
-	GtkTreeIter  iter;
+	CtkTreeIter  iter;
 
 	list = NULL;
 	valid = ctk_tree_model_get_iter_first (store, &iter);
@@ -355,12 +355,12 @@ lapiz_close_confirmation_dialog_get_selected_documents (LapizCloseConfirmationDi
 	return g_list_copy (dlg->priv->selected_documents);
 }
 
-GtkWidget *
-lapiz_close_confirmation_dialog_new (GtkWindow *parent,
+CtkWidget *
+lapiz_close_confirmation_dialog_new (CtkWindow *parent,
 				     GList     *unsaved_documents,
 				     gboolean   logout_mode)
 {
-	GtkWidget *dlg;
+	CtkWidget *dlg;
 	g_return_val_if_fail (unsaved_documents != NULL, NULL);
 
 	dlg = CTK_WIDGET (g_object_new (LAPIZ_TYPE_CLOSE_CONFIRMATION_DIALOG,
@@ -380,12 +380,12 @@ lapiz_close_confirmation_dialog_new (GtkWindow *parent,
 	return dlg;
 }
 
-GtkWidget *
-lapiz_close_confirmation_dialog_new_single (GtkWindow     *parent,
+CtkWidget *
+lapiz_close_confirmation_dialog_new_single (CtkWindow     *parent,
 					    LapizDocument *doc,
 					    gboolean       logout_mode)
 {
-	GtkWidget *dlg;
+	CtkWidget *dlg;
 	GList *unsaved_documents;
 	g_return_val_if_fail (doc != NULL, NULL);
 
@@ -486,11 +486,11 @@ get_text_secondary_label (LapizDocument *doc)
 static void
 build_single_doc_dialog (LapizCloseConfirmationDialog *dlg)
 {
-	GtkWidget     *hbox;
-	GtkWidget     *vbox;
-	GtkWidget     *primary_label;
-	GtkWidget     *secondary_label;
-	GtkWidget     *image;
+	CtkWidget     *hbox;
+	CtkWidget     *vbox;
+	CtkWidget     *primary_label;
+	CtkWidget     *secondary_label;
+	CtkWidget     *image;
 	LapizDocument *doc;
 	gchar         *doc_name;
 	gchar         *str;
@@ -571,9 +571,9 @@ build_single_doc_dialog (LapizCloseConfirmationDialog *dlg)
 }
 
 static void
-populate_model (GtkTreeModel *store, GList *docs)
+populate_model (CtkTreeModel *store, GList *docs)
 {
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
 	while (docs != NULL)
 	{
@@ -598,10 +598,10 @@ populate_model (GtkTreeModel *store, GList *docs)
 }
 
 static void
-save_toggled (GtkCellRendererToggle *renderer, gchar *path_str, GtkTreeModel *store)
+save_toggled (CtkCellRendererToggle *renderer, gchar *path_str, CtkTreeModel *store)
 {
-	GtkTreePath *path = ctk_tree_path_new_from_string (path_str);
-	GtkTreeIter iter;
+	CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
+	CtkTreeIter iter;
 	gboolean active;
 
 	ctk_tree_model_get_iter (store, &iter, path);
@@ -615,13 +615,13 @@ save_toggled (GtkCellRendererToggle *renderer, gchar *path_str, GtkTreeModel *st
 	ctk_tree_path_free (path);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_treeview (LapizCloseConfirmationDialogPrivate *priv)
 {
-	GtkListStore *store;
-	GtkWidget *treeview;
-	GtkCellRenderer *renderer;
-	GtkTreeViewColumn *column;
+	CtkListStore *store;
+	CtkWidget *treeview;
+	CtkCellRenderer *renderer;
+	CtkTreeViewColumn *column;
 
 	treeview = ctk_tree_view_new ();
 	ctk_widget_set_size_request (treeview, 260, 120);
@@ -668,15 +668,15 @@ static void
 build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 {
 	LapizCloseConfirmationDialogPrivate *priv;
-	GtkWidget   *hbox;
-	GtkWidget   *image;
-	GtkWidget   *vbox;
-	GtkWidget   *primary_label;
-	GtkWidget   *vbox2;
-	GtkWidget   *select_label;
-	GtkWidget   *scrolledwindow;
-	GtkWidget   *treeview;
-	GtkWidget   *secondary_label;
+	CtkWidget   *hbox;
+	CtkWidget   *image;
+	CtkWidget   *vbox;
+	CtkWidget   *primary_label;
+	CtkWidget   *vbox2;
+	CtkWidget   *select_label;
+	CtkWidget   *scrolledwindow;
+	CtkWidget   *treeview;
+	CtkWidget   *secondary_label;
 	GdkDisplay  *display;
 	GdkRectangle mon_geo;
 	gchar       *str;

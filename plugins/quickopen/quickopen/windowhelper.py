@@ -19,7 +19,7 @@
 
 import os
 import codecs
-from gi.repository import Gio, GLib, Gtk, Lapiz
+from gi.repository import Gio, GLib, Ctk, Lapiz
 from .popup import Popup
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
@@ -61,12 +61,12 @@ class WindowHelper:
 
     def _install_menu(self):
         manager = self._window.get_ui_manager()
-        action = Gtk.Action.new("QuickOpen",
+        action = Ctk.Action.new("QuickOpen",
                                 _("Quick open"),
                                 _("Quickly open documents"))
         action.set_icon_name("document-open")
         action.connect("activate", self.on_quick_open_activate)
-        self._action_group = Gtk.ActionGroup("LapizQuickOpenPluginActions")
+        self._action_group = Ctk.ActionGroup("LapizQuickOpenPluginActions")
         self._action_group.add_action_with_accel(action, "<Ctrl><Alt>O")
 
         manager.insert_action_group(self._action_group, -1)
@@ -123,7 +123,7 @@ class WindowHelper:
 
         self._popup.set_default_size(*self._plugin.get_popup_size())
         self._popup.set_transient_for(self._window)
-        self._popup.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
+        self._popup.set_position(Ctk.WindowPosition.CENTER_ON_PARENT)
 
         self._window.get_group().add_window(self._popup)
 

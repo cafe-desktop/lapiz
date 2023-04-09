@@ -69,7 +69,7 @@ on_document_loaded (LapizDocument  *document,
                     GError         *error,
                     LoaderTestData *data)
 {
-	GtkTextIter start, end;
+	CtkTextIter start, end;
 
 	g_assert_no_error (error);
 

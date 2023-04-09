@@ -82,8 +82,8 @@ msgid "Style Scheme"
 msgstr "Estilo-eskema"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
-msgstr "Testuaren kolorean erabilitako GtkSourceView estilo-eskemaren IDa."
+msgid "The ID of a CtkSourceView Style Scheme used to color the text."
+msgstr "Testuaren kolorean erabilitako CtkSourceView estilo-eskemaren IDa."
 
 #: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
