@@ -31,10 +31,10 @@
 #ifndef __LAPIZ_VIEW_H__
 #define __LAPIZ_VIEW_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <lapiz/lapiz-document.h>
-#include <gtksourceview/gtksource.h>
+#include <ctksourceview/ctksource.h>
 
 G_BEGIN_DECLS
 

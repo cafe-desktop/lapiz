@@ -116,7 +116,7 @@ widget_get_origin (GtkWidget *widget, gint *x, gint *y)
 {
 	GdkWindow *window;
 
-	window = gtk_widget_get_window (widget);
+	window = ctk_widget_get_window (widget);
 	gdk_window_get_origin (window, x, y);
 }
 
@@ -134,11 +134,11 @@ lapiz_utils_menu_position_under_widget (GtkMenu  *menu,
 	widget = GTK_WIDGET (user_data);
 	widget_get_origin (widget, x, y);
 
-	gtk_widget_get_preferred_size (GTK_WIDGET (menu), NULL, &requisition);
+	ctk_widget_get_preferred_size (GTK_WIDGET (menu), NULL, &requisition);
 
-	gtk_widget_get_allocation (widget, &allocation);
+	ctk_widget_get_allocation (widget, &allocation);
 
-	if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+	if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
 	{
 		*x += allocation.x + allocation.width - requisition.width;
 	}
@@ -161,24 +161,24 @@ menu_popup_at_treeview_selection (GtkWidget *menu,
 	GdkWindow *bin_window;
 	GdkRectangle rect;
 
-	gtk_tree_view_get_cursor (GTK_TREE_VIEW (treeview), &path, &column);
+	ctk_tree_view_get_cursor (GTK_TREE_VIEW (treeview), &path, &column);
 	g_return_if_fail (path != NULL);
 
 	if (column == NULL)
-		column = gtk_tree_view_get_column (GTK_TREE_VIEW (treeview), 0);
+		column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), 0);
 
-	bin_window = gtk_tree_view_get_bin_window (GTK_TREE_VIEW (treeview));
-	gtk_tree_view_get_cell_area (GTK_TREE_VIEW (treeview), path, column, &rect);
+	bin_window = ctk_tree_view_get_bin_window (GTK_TREE_VIEW (treeview));
+	ctk_tree_view_get_cell_area (GTK_TREE_VIEW (treeview), path, column, &rect);
 
-	gtk_menu_popup_at_rect (GTK_MENU (menu), bin_window, &rect,
+	ctk_menu_popup_at_rect (GTK_MENU (menu), bin_window, &rect,
 				GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST,
 				NULL);
 
-	gtk_tree_path_free(path);
+	ctk_tree_path_free(path);
 }
 
 /**
- * lapiz_gtk_button_new_with_icon:
+ * lapiz_ctk_button_new_with_icon:
  * @label:
  * @icon_name:
  *
@@ -186,14 +186,14 @@ menu_popup_at_treeview_selection (GtkWidget *menu,
  */
 
 GtkWidget *
-lapiz_gtk_button_new_with_icon (const gchar *label,
+lapiz_ctk_button_new_with_icon (const gchar *label,
 				const gchar *icon_name)
 {
 	GtkWidget *button;
 
-	button = gtk_button_new_with_mnemonic (label);
-	gtk_button_set_image (GTK_BUTTON (button),
-			      gtk_image_new_from_icon_name (icon_name,
+	button = ctk_button_new_with_mnemonic (label);
+	ctk_button_set_image (GTK_BUTTON (button),
+			      ctk_image_new_from_icon_name (icon_name,
 							    GTK_ICON_SIZE_BUTTON));
 
         return button;
@@ -220,14 +220,14 @@ lapiz_dialog_add_button (GtkDialog   *dialog,
 	g_return_val_if_fail (text != NULL, NULL);
 	g_return_val_if_fail (icon_name != NULL, NULL);
 
-	button = lapiz_gtk_button_new_with_icon (text, icon_name);
+	button = lapiz_ctk_button_new_with_icon (text, icon_name);
 	g_return_val_if_fail (button != NULL, NULL);
 
-	gtk_widget_set_can_default (button, TRUE);
+	ctk_widget_set_can_default (button, TRUE);
 
-	gtk_widget_show (button);
+	ctk_widget_show (button);
 
-	gtk_dialog_add_action_widget (dialog, button, response_id);
+	ctk_dialog_add_action_widget (dialog, button, response_id);
 
 	return button;
 }
@@ -280,7 +280,7 @@ finally_2:
  * @description: Atk description string
  *
  * This function sets up name and description
- * for a specified gtk widget.
+ * for a specified ctk widget.
  */
 void
 lapiz_utils_set_atk_name_description (GtkWidget *widget,
@@ -289,7 +289,7 @@ lapiz_utils_set_atk_name_description (GtkWidget *widget,
 {
 	AtkObject *aobj;
 
-	aobj = gtk_widget_get_accessible (widget);
+	aobj = ctk_widget_get_accessible (widget);
 
 	if (!(GTK_IS_ACCESSIBLE (aobj)))
 		return;
@@ -320,8 +320,8 @@ lapiz_utils_set_atk_relation (GtkWidget *obj1,
 	AtkObject *targets[1];
 	AtkRelation *relation;
 
-	atk_obj1 = gtk_widget_get_accessible (obj1);
-	atk_obj2 = gtk_widget_get_accessible (obj2);
+	atk_obj1 = ctk_widget_get_accessible (obj1);
+	atk_obj2 = ctk_widget_get_accessible (obj2);
 
 	if (!(GTK_IS_ACCESSIBLE (atk_obj1)) || !(GTK_IS_ACCESSIBLE (atk_obj2)))
 		return;
@@ -496,13 +496,13 @@ lapiz_warning (GtkWindow *parent, const gchar *format, ...)
 	g_return_if_fail (format != NULL);
 
 	if (parent != NULL)
-		wg = gtk_window_get_group (parent);
+		wg = ctk_window_get_group (parent);
 
 	va_start (args, format);
 	str = g_strdup_vprintf (format, args);
 	va_end (args);
 
-	dialog = gtk_message_dialog_new_with_markup (
+	dialog = ctk_message_dialog_new_with_markup (
 			parent,
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 		   	GTK_MESSAGE_ERROR,
@@ -512,18 +512,18 @@ lapiz_warning (GtkWindow *parent, const gchar *format, ...)
 	g_free (str);
 
 	if (wg != NULL)
-		gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
+		ctk_window_group_add_window (wg, GTK_WINDOW (dialog));
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+	ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
-	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
 	g_signal_connect (G_OBJECT (dialog),
 			  "response",
-			  G_CALLBACK (gtk_widget_destroy),
+			  G_CALLBACK (ctk_widget_destroy),
 			  NULL);
 
-	gtk_widget_show (dialog);
+	ctk_widget_show (dialog);
 }
 
 /*
@@ -895,7 +895,7 @@ lapiz_utils_get_current_workspace (GdkScreen *screen)
  * the window manager doesn support this function
  */
 guint
-lapiz_utils_get_window_workspace (GtkWindow *gtkwindow)
+lapiz_utils_get_window_workspace (GtkWindow *ctkwindow)
 {
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *window;
@@ -908,10 +908,10 @@ lapiz_utils_get_window_workspace (GtkWindow *gtkwindow)
 	gint err, result;
 	guint ret = LAPIZ_ALL_WORKSPACES;
 
-	g_return_val_if_fail (GTK_IS_WINDOW (gtkwindow), 0);
-	g_return_val_if_fail (gtk_widget_get_realized (GTK_WIDGET (gtkwindow)), 0);
+	g_return_val_if_fail (GTK_IS_WINDOW (ctkwindow), 0);
+	g_return_val_if_fail (ctk_widget_get_realized (GTK_WIDGET (ctkwindow)), 0);
 
-	window = gtk_widget_get_window (GTK_WIDGET (gtkwindow));
+	window = ctk_widget_get_window (GTK_WIDGET (ctkwindow));
 	display = gdk_window_get_display (window);
 
 	gdk_x11_display_error_trap_push (display);
@@ -1066,23 +1066,23 @@ handle_builder_error (const gchar *message, ...)
 	msg_plain = g_strdup_vprintf (message, args);
 	va_end (args);
 
-	label = gtk_label_new (NULL);
-	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	label = ctk_label_new (NULL);
+	ctk_label_set_line_wrap (GTK_LABEL (label), TRUE);
 
 	msg = g_strconcat ("<span size=\"large\" weight=\"bold\">",
 			   msg_plain, "</span>\n\n",
 			   _("Please check your installation."),
 			   NULL);
 
-	gtk_label_set_markup (GTK_LABEL (label), msg);
+	ctk_label_set_markup (GTK_LABEL (label), msg);
 
 	g_free (msg_plain);
 	g_free (msg);
 
-	gtk_widget_set_margin_start (label, 5);
-	gtk_widget_set_margin_end (label, 5);
-	gtk_widget_set_margin_top (label, 5);
-	gtk_widget_set_margin_bottom (label, 5);
+	ctk_widget_set_margin_start (label, 5);
+	ctk_widget_set_margin_end (label, 5);
+	ctk_widget_set_margin_top (label, 5);
+	ctk_widget_set_margin_bottom (label, 5);
 
 	return label;
 }
@@ -1090,7 +1090,7 @@ handle_builder_error (const gchar *message, ...)
 /* FIXME this is an issue for introspection */
 /**
  * lapiz_utils_get_ui_objects:
- * @filename: the path to the gtk builder file
+ * @filename: the path to the ctk builder file
  * @root_objects: a %NULL terminated list of root objects to load or NULL to
  *                load all objects
  * @error_widget: a pointer were a #GtkLabel
@@ -1126,18 +1126,18 @@ lapiz_utils_get_ui_objects (const gchar  *filename,
 	filename_markup = g_markup_printf_escaped ("<i>%s</i>", filename);
 	*error_widget = NULL;
 
-	builder = gtk_builder_new ();
+	builder = ctk_builder_new ();
 
 	if (root_objects != NULL)
 	{
-		gtk_builder_add_objects_from_file (builder,
+		ctk_builder_add_objects_from_file (builder,
 						   filename,
 						   root_objects,
 						   &error);
 	}
 	else
 	{
-		gtk_builder_add_from_file (builder,
+		ctk_builder_add_from_file (builder,
 					   filename,
 					   &error);
 	}
@@ -1160,7 +1160,7 @@ lapiz_utils_get_ui_objects (const gchar  *filename,
 		GObject **gobj;
 
 		gobj = va_arg (args, GObject **);
-		*gobj = gtk_builder_get_object (builder, name);
+		*gobj = ctk_builder_get_object (builder, name);
 
 		if (!*gobj)
 		{
@@ -1377,7 +1377,7 @@ lapiz_utils_drop_get_uris (GtkSelectionData *selection_data)
 	gint p = 0;
 	gchar **uri_list;
 
-	uris = g_uri_list_extract_uris ((gchar *) gtk_selection_data_get_data (selection_data));
+	uris = g_uri_list_extract_uris ((gchar *) ctk_selection_data_get_data (selection_data));
 	uri_list = g_new0(gchar *, g_strv_length (uris) + 1);
 
 	for (i = 0; uris[i] != NULL; i++)
@@ -1555,7 +1555,7 @@ lapiz_utils_decode_uri (const gchar  *uri,
 }
 
 gboolean
-lapiz_gtk_text_iter_regex_search (const GtkTextIter *iter,
+lapiz_ctk_text_iter_regex_search (const GtkTextIter *iter,
 				  const gchar       *str,
 				  GtkTextSearchFlags flags,
 				  GtkTextIter       *match_start,
@@ -1584,38 +1584,38 @@ lapiz_gtk_text_iter_regex_search (const GtkTextIter *iter,
 	if (regex == NULL)
 		return FALSE;
 
-	begin_iter = gtk_text_iter_copy (iter);
+	begin_iter = ctk_text_iter_copy (iter);
 
 	if (limit == NULL)
 	{
-		end_iter = gtk_text_iter_copy (begin_iter);
+		end_iter = ctk_text_iter_copy (begin_iter);
 		if (forward_search)
 		{
-			gtk_text_buffer_get_end_iter (gtk_text_iter_get_buffer(begin_iter),
+			ctk_text_buffer_get_end_iter (ctk_text_iter_get_buffer(begin_iter),
 						      end_iter);
 		}
 		else
 		{
-			gtk_text_buffer_get_start_iter (gtk_text_iter_get_buffer (begin_iter),
+			ctk_text_buffer_get_start_iter (ctk_text_iter_get_buffer (begin_iter),
 							end_iter);
 		}
 	}
 	else
 	{
-		end_iter = gtk_text_iter_copy (limit);
+		end_iter = ctk_text_iter_copy (limit);
 	}
 
 	if ((flags & GTK_TEXT_SEARCH_TEXT_ONLY) != 0)
 	{
 		if ((flags & GTK_TEXT_SEARCH_VISIBLE_ONLY) != 0)
-			text = gtk_text_iter_get_visible_text (begin_iter, end_iter);
+			text = ctk_text_iter_get_visible_text (begin_iter, end_iter);
 		else
-			text = gtk_text_iter_get_text (begin_iter, end_iter);
+			text = ctk_text_iter_get_text (begin_iter, end_iter);
 	}
 	else if ((flags & GTK_TEXT_SEARCH_VISIBLE_ONLY) != 0)
-		text = gtk_text_iter_get_visible_slice (begin_iter, end_iter);
+		text = ctk_text_iter_get_visible_slice (begin_iter, end_iter);
 	else
-		text = gtk_text_iter_get_slice (begin_iter, end_iter);
+		text = ctk_text_iter_get_slice (begin_iter, end_iter);
 
 	found = g_regex_match (regex, text, 0, &match_info);
 
@@ -1642,14 +1642,14 @@ lapiz_gtk_text_iter_regex_search (const GtkTextIter *iter,
 
 	if (forward_search)
 	{
-		gtk_text_iter_forward_search (begin_iter,
+		ctk_text_iter_forward_search (begin_iter,
 					      match_string,
 					      flags,
 					      match_start,
 					      match_end,
 					      limit);
 	} else {
-		gtk_text_iter_backward_search (begin_iter,
+		ctk_text_iter_backward_search (begin_iter,
 					       match_string,
 					       flags,
 					       match_start,
@@ -1658,8 +1658,8 @@ lapiz_gtk_text_iter_regex_search (const GtkTextIter *iter,
 	}
 
 free_resources:
-	gtk_text_iter_free (begin_iter);
-	gtk_text_iter_free (end_iter);
+	ctk_text_iter_free (begin_iter);
+	ctk_text_iter_free (end_iter);
 	g_match_info_free (match_info);
 	g_regex_unref (regex);
 	return found;
@@ -1671,23 +1671,23 @@ lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
 {
 	gchar *concat;
 	GtkWidget *icon;
-	GtkWidget *box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+	GtkWidget *box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 
 	if (icon_pixbuf)
-		icon = gtk_image_new_from_pixbuf (icon_pixbuf);
+		icon = ctk_image_new_from_pixbuf (icon_pixbuf);
 	else
-		icon = gtk_image_new ();
+		icon = ctk_image_new ();
 
 	concat = g_strconcat (label_name, "     ", NULL);
 
-	GtkWidget *label_menu = gtk_label_new (concat);
-	GtkWidget *menuitem = gtk_menu_item_new ();
+	GtkWidget *label_menu = ctk_label_new (concat);
+	GtkWidget *menuitem = ctk_menu_item_new ();
 
-	gtk_container_add (GTK_CONTAINER (box), icon);
-	gtk_container_add (GTK_CONTAINER (box), label_menu);
+	ctk_container_add (GTK_CONTAINER (box), icon);
+	ctk_container_add (GTK_CONTAINER (box), label_menu);
 
-	gtk_container_add (GTK_CONTAINER (menuitem), box);
-	gtk_widget_show_all (menuitem);
+	ctk_container_add (GTK_CONTAINER (menuitem), box);
+	ctk_widget_show_all (menuitem);
 
 	g_free (concat);
 

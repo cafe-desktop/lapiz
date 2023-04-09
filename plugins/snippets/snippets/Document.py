@@ -887,7 +887,7 @@ class Document:
 
         environ['LAPIZ_DROP_DOCUMENT_RELATIVE_PATH'] = relpath
 
-        mark = buf.get_mark('gtk_drag_target')
+        mark = buf.get_mark('ctk_drag_target')
 
         if not mark:
             mark = buf.get_insert()

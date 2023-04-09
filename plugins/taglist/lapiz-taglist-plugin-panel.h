@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_TAGLIST_PLUGIN_PANEL_H__
 #define __LAPIZ_TAGLIST_PLUGIN_PANEL_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <lapiz/lapiz-window.h>
 

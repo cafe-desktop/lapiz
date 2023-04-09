@@ -23,7 +23,7 @@
 #ifndef __LAPIZ_TAB_LABEL_H__
 #define __LAPIZ_TAB_LABEL_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <lapiz/lapiz-tab.h>
 
 G_BEGIN_DECLS

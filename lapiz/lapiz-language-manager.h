@@ -33,7 +33,7 @@
 #define __LAPIZ_LANGUAGES_MANAGER_H__
 
 #include <glib-object.h>
-#include <gtksourceview/gtksource.h>
+#include <ctksourceview/ctksource.h>
 
 G_BEGIN_DECLS
 

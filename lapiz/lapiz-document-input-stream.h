@@ -24,7 +24,7 @@
 #define __LAPIZ_DOCUMENT_INPUT_STREAM_H__
 
 #include <gio/gio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-document.h"
 

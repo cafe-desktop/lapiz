@@ -32,7 +32,7 @@
 #ifndef __LAPIZ_PRINT_JOB_H__
 #define __LAPIZ_PRINT_JOB_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <lapiz/lapiz-view.h>
 
 G_BEGIN_DECLS

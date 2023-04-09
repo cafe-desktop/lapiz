@@ -34,7 +34,7 @@
 
 #include <string.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gio/gio.h>
 
 #include "lapiz-history-entry.h"
@@ -176,7 +176,7 @@ get_history_store (LapizHistoryEntry *entry)
 {
 	GtkTreeModel *store;
 
-	store = gtk_combo_box_get_model (GTK_COMBO_BOX (entry));
+	store = ctk_combo_box_get_model (GTK_COMBO_BOX (entry));
 	g_return_val_if_fail (GTK_IS_LIST_STORE (store), NULL);
 
 	return (GtkListStore *) store;
@@ -192,21 +192,21 @@ get_history_list (LapizHistoryEntry *entry)
 
 	store = get_history_store (entry);
 
-	valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store),
+	valid = ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store),
 					       &iter);
 
 	while (valid)
 	{
 		gchar *str;
 
-		gtk_tree_model_get (GTK_TREE_MODEL (store),
+		ctk_tree_model_get (GTK_TREE_MODEL (store),
 				    &iter,
 				    0, &str,
 				    -1);
 
 		list = g_slist_prepend (list, str);
 
-		valid = gtk_tree_model_iter_next (GTK_TREE_MODEL (store),
+		valid = ctk_tree_model_iter_next (GTK_TREE_MODEL (store),
 						  &iter);
 	}
 
@@ -238,14 +238,14 @@ remove_item (GtkListStore *store,
 
 	g_return_val_if_fail (text != NULL, FALSE);
 
-	if (!gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter))
+	if (!ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter))
 		return FALSE;
 
 	do
 	{
 		gchar *item_text;
 
-		gtk_tree_model_get (GTK_TREE_MODEL (store),
+		ctk_tree_model_get (GTK_TREE_MODEL (store),
 				    &iter,
 				    0,
 				    &item_text,
@@ -254,14 +254,14 @@ remove_item (GtkListStore *store,
 		if (item_text != NULL &&
 		    strcmp (item_text, text) == 0)
 		{
-			gtk_list_store_remove (store, &iter);
+			ctk_list_store_remove (store, &iter);
 			g_free (item_text);
 			return TRUE;
 		}
 
 		g_free (item_text);
 
-	} while (gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter));
+	} while (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter));
 
 	return FALSE;
 }
@@ -274,18 +274,18 @@ clamp_list_store (GtkListStore *store,
 	GtkTreeIter iter;
 
 	/* -1 because TreePath counts from 0 */
-	path = gtk_tree_path_new_from_indices (max - 1, -1);
+	path = ctk_tree_path_new_from_indices (max - 1, -1);
 
-	if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+	if (ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
 	{
 		while (1)
 		{
-			if (!gtk_list_store_remove (store, &iter))
+			if (!ctk_list_store_remove (store, &iter))
 				break;
 		}
 	}
 
-	gtk_tree_path_free (path);
+	ctk_tree_path_free (path);
 }
 
 static void
@@ -311,11 +311,11 @@ insert_history_item (LapizHistoryEntry *entry,
 				  entry->priv->history_length - 1);
 
 	if (prepend)
-		gtk_list_store_insert (store, &iter, 0);
+		ctk_list_store_insert (store, &iter, 0);
 	else
-		gtk_list_store_append (store, &iter);
+		ctk_list_store_append (store, &iter);
 
-	gtk_list_store_set (store,
+	ctk_list_store_set (store,
 			    &iter,
 			    0,
 			    text,
@@ -359,14 +359,14 @@ lapiz_history_entry_load_history (LapizHistoryEntry *entry)
 	settings_items = lapiz_prefs_manager_get_gslist (entry->priv->settings,
 					     entry->priv->history_id);
 
-	gtk_list_store_clear (store);
+	ctk_list_store_clear (store);
 
 	for (l = settings_items, i = 0;
 	     l != NULL && i < entry->priv->history_length;
 	     l = l->next, i++)
 	{
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store,
 				    &iter,
 				    0,
 				    l->data,
@@ -385,7 +385,7 @@ lapiz_history_entry_clear (LapizHistoryEntry *entry)
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
 	store = get_history_store (entry);
-	gtk_list_store_clear (store);
+	ctk_list_store_clear (store);
 
 	lapiz_history_entry_save_history (entry);
 }
@@ -445,21 +445,21 @@ lapiz_history_entry_set_enable_completion (LapizHistoryEntry *entry,
 		if (entry->priv->completion != NULL)
 			return;
 
-		entry->priv->completion = gtk_entry_completion_new ();
-		gtk_entry_completion_set_model (entry->priv->completion,
+		entry->priv->completion = ctk_entry_completion_new ();
+		ctk_entry_completion_set_model (entry->priv->completion,
 						GTK_TREE_MODEL (get_history_store (entry)));
 
 		/* Use model column 0 as the text column */
-		gtk_entry_completion_set_text_column (entry->priv->completion, 0);
+		ctk_entry_completion_set_text_column (entry->priv->completion, 0);
 
-		gtk_entry_completion_set_minimum_key_length (entry->priv->completion,
+		ctk_entry_completion_set_minimum_key_length (entry->priv->completion,
 							     MIN_ITEM_LEN);
 
-		gtk_entry_completion_set_popup_completion (entry->priv->completion, FALSE);
-		gtk_entry_completion_set_inline_completion (entry->priv->completion, TRUE);
+		ctk_entry_completion_set_popup_completion (entry->priv->completion, FALSE);
+		ctk_entry_completion_set_inline_completion (entry->priv->completion, TRUE);
 
 		/* Assign the completion to the entry */
-		gtk_entry_set_completion (GTK_ENTRY (lapiz_history_entry_get_entry(entry)),
+		ctk_entry_set_completion (GTK_ENTRY (lapiz_history_entry_get_entry(entry)),
 					  entry->priv->completion);
 	}
 	else
@@ -467,7 +467,7 @@ lapiz_history_entry_set_enable_completion (LapizHistoryEntry *entry,
 		if (entry->priv->completion == NULL)
 			return;
 
-		gtk_entry_set_completion (GTK_ENTRY (lapiz_history_entry_get_entry (entry)),
+		ctk_entry_set_completion (GTK_ENTRY (lapiz_history_entry_get_entry (entry)),
 					  NULL);
 
 		g_object_unref (entry->priv->completion);
@@ -499,7 +499,7 @@ lapiz_history_entry_new (const gchar *history_id,
 	 * functions.
 	 */
 
-	store = gtk_list_store_new (1, G_TYPE_STRING);
+	store = ctk_list_store_new (1, G_TYPE_STRING);
 
 	ret = g_object_new (LAPIZ_TYPE_HISTORY_ENTRY,
 			    "history-id", history_id,
@@ -542,7 +542,7 @@ lapiz_history_entry_get_entry (LapizHistoryEntry *entry)
 {
 	g_return_val_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry), NULL);
 
-	return gtk_bin_get_child (GTK_BIN (entry));
+	return ctk_bin_get_child (GTK_BIN (entry));
 }
 
 static void
@@ -555,7 +555,7 @@ escape_cell_data_func (GtkTreeViewColumn           *col,
 	gchar *str;
 	gchar *escaped;
 
-	gtk_tree_model_get (model, iter, 0, &str, -1);
+	ctk_tree_model_get (model, iter, 0, &str, -1);
 	escaped = escape_func (str);
 	g_object_set (renderer, "text", escaped, NULL);
 
@@ -571,19 +571,19 @@ lapiz_history_entry_set_escape_func (LapizHistoryEntry           *entry,
 
 	g_return_if_fail (LAPIZ_IS_HISTORY_ENTRY (entry));
 
-	cells = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (entry));
+	cells = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (entry));
 
 	/* We only have one cell renderer */
 	g_return_if_fail (cells->data != NULL && cells->next == NULL);
 
 	if (escape_func != NULL)
-		gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (entry),
+		ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (entry),
 						    GTK_CELL_RENDERER (cells->data),
 						    (GtkCellLayoutDataFunc) escape_cell_data_func,
 						    escape_func,
 						    NULL);
 	else
-		gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (entry),
+		ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (entry),
 						    GTK_CELL_RENDERER (cells->data),
 						    NULL,
 						    NULL,

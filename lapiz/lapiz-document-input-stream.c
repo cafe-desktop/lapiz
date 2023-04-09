@@ -213,7 +213,7 @@ lapiz_document_input_stream_get_total_size (LapizDocumentInputStream *stream)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT_INPUT_STREAM (stream), 0);
 
-	return gtk_text_buffer_get_char_count (stream->priv->buffer);
+	return ctk_text_buffer_get_char_count (stream->priv->buffer);
 }
 
 gsize
@@ -232,10 +232,10 @@ lapiz_document_input_stream_tell (LapizDocumentInputStream *stream)
 	{
 		GtkTextIter iter;
 
-		gtk_text_buffer_get_iter_at_mark (stream->priv->buffer,
+		ctk_text_buffer_get_iter_at_mark (stream->priv->buffer,
 						  &iter,
 						  stream->priv->pos);
-		return gtk_text_iter_get_offset (&iter);
+		return ctk_text_iter_get_offset (&iter);
 	}
 }
 
@@ -279,32 +279,32 @@ read_line (LapizDocumentInputStream *stream,
 	const gchar *newline;
 	gboolean is_last;
 
-	gtk_text_buffer_get_iter_at_mark (stream->priv->buffer,
+	ctk_text_buffer_get_iter_at_mark (stream->priv->buffer,
 					  &start,
 					  stream->priv->pos);
 
-	if (gtk_text_iter_is_end (&start))
+	if (ctk_text_iter_is_end (&start))
 		return 0;
 
 	end = next = start;
 	newline = get_new_line (stream);
 
 	/* Check needed for empty lines */
-	if (!gtk_text_iter_ends_line (&end))
-		gtk_text_iter_forward_to_line_end (&end);
+	if (!ctk_text_iter_ends_line (&end))
+		ctk_text_iter_forward_to_line_end (&end);
 
-	gtk_text_iter_forward_line (&next);
+	ctk_text_iter_forward_line (&next);
 
-	buf = gtk_text_iter_get_slice (&start, &end);
+	buf = ctk_text_iter_get_slice (&start, &end);
 
 	/* the bytes of a line includes also the newline, so with the
 	   offsets we remove the newline and we add the new newline size */
-	bytes = gtk_text_iter_get_bytes_in_line (&start) - stream->priv->bytes_partial;
+	bytes = ctk_text_iter_get_bytes_in_line (&start) - stream->priv->bytes_partial;
 
 	/* bytes_in_line includes the newlines, so we remove that assuming that
 	   they are single byte characters */
-	bytes = bytes - (gtk_text_iter_get_offset (&next) - gtk_text_iter_get_offset (&end));
-	is_last = gtk_text_iter_is_end (&end);
+	bytes = bytes - (ctk_text_iter_get_offset (&next) - ctk_text_iter_get_offset (&end));
+	is_last = ctk_text_iter_is_end (&end);
 
 	/* bytes_to_write contains the amount of bytes we would like to write.
 	   This means its the amount of bytes in the line (without the newline
@@ -354,7 +354,7 @@ read_line (LapizDocumentInputStream *stream,
 		memcpy (outbuf, buf, written);
 
 		/* Note: offset is one past what we wrote */
-		gtk_text_iter_forward_chars (&start, char_offset);
+		ctk_text_iter_forward_chars (&start, char_offset);
 		stream->priv->bytes_partial += written;
 		read = written;
 	}
@@ -374,7 +374,7 @@ read_line (LapizDocumentInputStream *stream,
 		read = bytes_to_write;
 	}
 
-	gtk_text_buffer_move_mark (stream->priv->buffer,
+	ctk_text_buffer_move_mark (stream->priv->buffer,
 				   stream->priv->pos,
 				   &start);
 
@@ -408,8 +408,8 @@ lapiz_document_input_stream_read (GInputStream  *stream,
 	/* Initialize the mark to the first char in the text buffer */
 	if (!dstream->priv->is_initialized)
 	{
-		gtk_text_buffer_get_start_iter (dstream->priv->buffer, &iter);
-		dstream->priv->pos = gtk_text_buffer_create_mark (dstream->priv->buffer,
+		ctk_text_buffer_get_start_iter (dstream->priv->buffer, &iter);
+		dstream->priv->pos = ctk_text_buffer_create_mark (dstream->priv->buffer,
 								 NULL,
 								 &iter,
 								 FALSE);
@@ -429,12 +429,12 @@ lapiz_document_input_stream_read (GInputStream  *stream,
 
 	/* Make sure that non-empty files are always terminated with \n (see bug #95676).
 	 * Note that we strip the trailing \n when loading the file */
-	gtk_text_buffer_get_iter_at_mark (dstream->priv->buffer,
+	ctk_text_buffer_get_iter_at_mark (dstream->priv->buffer,
 					  &iter,
 					  dstream->priv->pos);
 
-	if (gtk_text_iter_is_end (&iter) &&
-	    !gtk_text_iter_is_start (&iter))
+	if (ctk_text_iter_is_end (&iter) &&
+	    !ctk_text_iter_is_start (&iter))
 	{
 		gssize newline_size;
 
@@ -468,7 +468,7 @@ lapiz_document_input_stream_close (GInputStream  *stream,
 
 	if (dstream->priv->is_initialized)
 	{
-		gtk_text_buffer_delete_mark (dstream->priv->buffer, dstream->priv->pos);
+		ctk_text_buffer_delete_mark (dstream->priv->buffer, dstream->priv->pos);
 	}
 
 	return TRUE;

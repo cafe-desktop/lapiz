@@ -85,8 +85,8 @@ set_contents (GtkWidget *area,
 {
 	GtkWidget *content_area;
 
-	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (area));
-	gtk_container_add (GTK_CONTAINER (content_area), contents);
+	content_area = ctk_info_bar_get_content_area (GTK_INFO_BAR (area));
+	ctk_container_add (GTK_CONTAINER (content_area), contents);
 }
 
 static void
@@ -98,9 +98,9 @@ info_bar_add_icon_button_with_text (GtkInfoBar  *infobar,
 	GtkWidget *button;
 	GtkWidget *image;
 
-	button = gtk_info_bar_add_button (infobar, text, response_id);
-	image = gtk_image_new_from_icon_name (icon_id, GTK_ICON_SIZE_BUTTON);
-	gtk_button_set_image (GTK_BUTTON (button), image);
+	button = ctk_info_bar_add_button (infobar, text, response_id);
+	image = ctk_image_new_from_icon_name (icon_id, GTK_ICON_SIZE_BUTTON);
+	ctk_button_set_image (GTK_BUTTON (button), image);
 }
 
 static void
@@ -117,41 +117,41 @@ set_message_area_text_and_icon (GtkWidget   *message_area,
 	GtkWidget *primary_label;
 	GtkWidget *secondary_label;
 
-	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+	hbox_content = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
-	image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
+	image = ctk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
+	ctk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	ctk_widget_set_halign (image, GTK_ALIGN_CENTER);
+	ctk_widget_set_valign (image, GTK_ALIGN_START);
 
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
+	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	ctk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
-	primary_label = gtk_label_new (primary_markup);
+	primary_label = ctk_label_new (primary_markup);
 	g_free (primary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
-	gtk_widget_set_can_focus (primary_label, TRUE);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
+	ctk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
+	ctk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
+	ctk_widget_set_can_focus (primary_label, TRUE);
+	ctk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
 	if (secondary_text != NULL)
 	{
 		secondary_markup = g_strdup_printf ("<small>%s</small>",
 						    secondary_text);
-		secondary_label = gtk_label_new (secondary_markup);
+		secondary_label = ctk_label_new (secondary_markup);
 		g_free (secondary_markup);
-		gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
-		gtk_widget_set_can_focus (secondary_label, TRUE);
-		gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
-		gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-		gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-		gtk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
+		ctk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
+		ctk_widget_set_can_focus (secondary_label, TRUE);
+		ctk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
+		ctk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
+		ctk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
+		ctk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
 	}
 
-	gtk_widget_show_all (hbox_content);
+	ctk_widget_show_all (hbox_content);
 	set_contents (message_area, hbox_content);
 }
 
@@ -162,14 +162,14 @@ create_io_loading_error_message_area (const gchar *primary_text,
 {
 	GtkWidget *message_area;
 
-	message_area = gtk_info_bar_new ();
+	message_area = ctk_info_bar_new ();
 
-	gtk_button_set_image (GTK_BUTTON (gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+	ctk_button_set_image (GTK_BUTTON (ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 								   _("_Cancel"),
 								   GTK_RESPONSE_CANCEL)),
-			      gtk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
+			      ctk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
 
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
+	ctk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
 				       GTK_MESSAGE_ERROR);
 
 	set_message_area_text_and_icon (message_area,
@@ -436,33 +436,33 @@ create_combo_box (GtkWidget *message_area, GtkWidget *vbox)
 	GtkWidget *menu;
 	gchar *label_markup;
 
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+	hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 
 	label_markup = g_strdup_printf ("<small>%s</small>",
 					_("Ch_aracter Encoding:"));
-	label = gtk_label_new_with_mnemonic (label_markup);
+	label = ctk_label_new_with_mnemonic (label_markup);
 	g_free (label_markup);
-	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	ctk_label_set_use_markup (GTK_LABEL (label), TRUE);
 	menu = lapiz_encodings_combo_box_new (TRUE);
 	g_object_set_data (G_OBJECT (message_area),
 			   "lapiz-message-area-encoding-menu",
 			   menu);
 
-	gtk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
-	gtk_box_pack_start (GTK_BOX (hbox),
+	ctk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
+	ctk_box_pack_start (GTK_BOX (hbox),
 			    label,
 			    FALSE,
 			    FALSE,
 			    0);
 
-	gtk_box_pack_start (GTK_BOX (hbox),
+	ctk_box_pack_start (GTK_BOX (hbox),
 			    menu,
 			    FALSE,
 			    FALSE,
 			    0);
 
-	gtk_widget_show_all (hbox);
-	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+	ctk_widget_show_all (hbox);
+	ctk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 }
 
 static GtkWidget *
@@ -479,7 +479,7 @@ create_conversion_error_message_area (const gchar *primary_text,
 	GtkWidget *primary_label;
 	GtkWidget *secondary_label;
 
-	message_area = gtk_info_bar_new ();
+	message_area = ctk_info_bar_new ();
 
 	info_bar_add_icon_button_with_text (GTK_INFO_BAR (message_area),
 					    _("_Retry"),
@@ -488,66 +488,66 @@ create_conversion_error_message_area (const gchar *primary_text,
 
 	if (edit_anyway)
 	{
-		gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+		ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 		/* Translators: the access key chosen for this string should be
 		 different from other main menu access keys (Open, Edit, View...) */
 					 _("Edit Any_way"),
 					 GTK_RESPONSE_YES);
-		gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+		ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 		/* Translators: the access key chosen for this string should be
 		 different from other main menu access keys (Open, Edit, View...) */
 					 _("D_on't Edit"),
 					 GTK_RESPONSE_NO);
-		gtk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
+		ctk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
 					       GTK_MESSAGE_WARNING);
 	}
 	else
 	{
-		gtk_button_set_image (GTK_BUTTON (gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+		ctk_button_set_image (GTK_BUTTON (ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 									   _("_Cancel"),
 									   GTK_RESPONSE_CANCEL)),
-				      gtk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
+				      ctk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
 
-		gtk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
+		ctk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
 					       GTK_MESSAGE_ERROR);
 	}
 
-	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+	hbox_content = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
-	image = gtk_image_new_from_icon_name ("dialog-error", GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
+	image = ctk_image_new_from_icon_name ("dialog-error", GTK_ICON_SIZE_DIALOG);
+	ctk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	ctk_widget_set_halign (image, GTK_ALIGN_CENTER);
+	ctk_widget_set_valign (image, GTK_ALIGN_START);
 
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
+	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	ctk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
-	primary_label = gtk_label_new (primary_markup);
+	primary_label = ctk_label_new (primary_markup);
 	g_free (primary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
-	gtk_widget_set_can_focus (primary_label, TRUE);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
+	ctk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
+	ctk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
+	ctk_widget_set_can_focus (primary_label, TRUE);
+	ctk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
 	if (secondary_text != NULL)
 	{
 		secondary_markup = g_strdup_printf ("<small>%s</small>",
 						    secondary_text);
-		secondary_label = gtk_label_new (secondary_markup);
+		secondary_label = ctk_label_new (secondary_markup);
 		g_free (secondary_markup);
-		gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
-		gtk_widget_set_can_focus (secondary_label, TRUE);
-		gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
-		gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-		gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-		gtk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
+		ctk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
+		ctk_widget_set_can_focus (secondary_label, TRUE);
+		ctk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
+		ctk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
+		ctk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
+		ctk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
 	}
 
 	create_combo_box (message_area, vbox);
-	gtk_widget_show_all (hbox_content);
+	ctk_widget_show_all (hbox_content);
 	set_contents (message_area, hbox_content);
 
 	return message_area;
@@ -764,58 +764,58 @@ lapiz_file_already_open_warning_message_area_new (const gchar *uri)
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
-	message_area = gtk_info_bar_new ();
-	gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+	message_area = ctk_info_bar_new ();
+	ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 	/* Translators: the access key chosen for this string should be
 	 different from other main menu access keys (Open, Edit, View...) */
 				 _("Edit Any_way"),
 				 GTK_RESPONSE_YES);
-	gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+	ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 	/* Translators: the access key chosen for this string should be
 	 different from other main menu access keys (Open, Edit, View...) */
 				 _("D_on't Edit"),
 				 GTK_RESPONSE_CANCEL);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
+	ctk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
 				       GTK_MESSAGE_WARNING);
 
-	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+	hbox_content = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
-	image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
+	image = ctk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
+	ctk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	ctk_widget_set_halign (image, GTK_ALIGN_CENTER);
+	ctk_widget_set_valign (image, GTK_ALIGN_START);
 
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
+	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	ctk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
 	primary_text = g_strdup_printf (_("This file (%s) is already open in another lapiz window."), uri_for_display);
 	g_free (uri_for_display);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
 	g_free (primary_text);
-	primary_label = gtk_label_new (primary_markup);
+	primary_label = ctk_label_new (primary_markup);
 	g_free (primary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
-	gtk_widget_set_can_focus (primary_label, TRUE);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
+	ctk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
+	ctk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
+	ctk_widget_set_can_focus (primary_label, TRUE);
+	ctk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
 	secondary_text = _("lapiz opened this instance of the file in a non-editable way. "
 			   "Do you want to edit it anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
 					    secondary_text);
-	secondary_label = gtk_label_new (secondary_markup);
+	secondary_label = ctk_label_new (secondary_markup);
 	g_free (secondary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
-	gtk_widget_set_can_focus (secondary_label, TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
+	ctk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
+	ctk_widget_set_can_focus (secondary_label, TRUE);
+	ctk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
 
-	gtk_widget_show_all (hbox_content);
+	ctk_widget_show_all (hbox_content);
 	set_contents (message_area, hbox_content);
 
 	return message_area;
@@ -858,27 +858,27 @@ lapiz_externally_modified_saving_error_message_area_new (
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
-	message_area = gtk_info_bar_new ();
+	message_area = ctk_info_bar_new ();
 
 	info_bar_add_icon_button_with_text (GTK_INFO_BAR (message_area),
 					    _("S_ave Anyway"),
 					    "document-save",
 					    GTK_RESPONSE_YES);
-	gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+	ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
+	ctk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
 				       GTK_MESSAGE_WARNING);
 
-	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+	hbox_content = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
-	image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
+	image = ctk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
+	ctk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	ctk_widget_set_halign (image, GTK_ALIGN_CENTER);
+	ctk_widget_set_valign (image, GTK_ALIGN_START);
 
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
+	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	ctk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
 	// FIXME: review this message, it's not clear since for the user the "modification"
 	// could be interpreted as the changes he made in the document. beside "reading" is
@@ -889,28 +889,28 @@ lapiz_externally_modified_saving_error_message_area_new (
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
 	g_free (primary_text);
-	primary_label = gtk_label_new (primary_markup);
+	primary_label = ctk_label_new (primary_markup);
 	g_free (primary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
-	gtk_widget_set_can_focus (primary_label, TRUE);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
+	ctk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
+	ctk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
+	ctk_widget_set_can_focus (primary_label, TRUE);
+	ctk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
 	secondary_text = _("If you save it, all the external changes could be lost. Save it anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
 					    secondary_text);
-	secondary_label = gtk_label_new (secondary_markup);
+	secondary_label = ctk_label_new (secondary_markup);
 	g_free (secondary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
-	gtk_widget_set_can_focus (secondary_label, TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
+	ctk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
+	ctk_widget_set_can_focus (secondary_label, TRUE);
+	ctk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
 
-	gtk_widget_show_all (hbox_content);
+	ctk_widget_show_all (hbox_content);
 	set_contents (message_area, hbox_content);
 
 	return message_area;
@@ -954,27 +954,27 @@ lapiz_no_backup_saving_error_message_area_new (const gchar  *uri,
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
-	message_area = gtk_info_bar_new ();
+	message_area = ctk_info_bar_new ();
 
 	info_bar_add_icon_button_with_text (GTK_INFO_BAR (message_area),
 					    _("S_ave Anyway"),
 					    "document-save",
 					    GTK_RESPONSE_YES);
-	gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+	ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
+	ctk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
 				       GTK_MESSAGE_WARNING);
 
-	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+	hbox_content = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
-	image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
+	image = ctk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
+	ctk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	ctk_widget_set_halign (image, GTK_ALIGN_CENTER);
+	ctk_widget_set_valign (image, GTK_ALIGN_START);
 
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
+	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	ctk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
 	// FIXME: review this messages
 
@@ -989,30 +989,30 @@ lapiz_no_backup_saving_error_message_area_new (const gchar  *uri,
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
 	g_free (primary_text);
-	primary_label = gtk_label_new (primary_markup);
+	primary_label = ctk_label_new (primary_markup);
 	g_free (primary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
-	gtk_widget_set_can_focus (primary_label, TRUE);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
+	ctk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
+	ctk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (primary_label), 0.0);
+	ctk_widget_set_can_focus (primary_label, TRUE);
+	ctk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
 	secondary_text = _("lapiz could not back up the old copy of the file before saving the new one. "
 			   "You can ignore this warning and save the file anyway, but if an error "
 			   "occurs while saving, you could lose the old copy of the file. Save anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
 					    secondary_text);
-	secondary_label = gtk_label_new (secondary_markup);
+	secondary_label = ctk_label_new (secondary_markup);
 	g_free (secondary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
-	gtk_widget_set_can_focus (secondary_label, TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
+	ctk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
+	ctk_widget_set_can_focus (secondary_label, TRUE);
+	ctk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
+	ctk_label_set_xalign (GTK_LABEL (secondary_label), 0.0);
 
-	gtk_widget_show_all (hbox_content);
+	ctk_widget_show_all (hbox_content);
 	set_contents (message_area, hbox_content);
 
 	return message_area;
@@ -1179,23 +1179,23 @@ lapiz_externally_modified_message_area_new (const gchar *uri,
 	else
 		secondary_text = _("Do you want to reload the file?");
 
-	message_area = gtk_info_bar_new ();
+	message_area = ctk_info_bar_new ();
 
 	info_bar_add_icon_button_with_text (GTK_INFO_BAR (message_area),
 					    _("_Reload"),
 					    "view-refresh",
 					    GTK_RESPONSE_OK);
 
-	gtk_button_set_image (GTK_BUTTON (gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
+	ctk_button_set_image (GTK_BUTTON (ctk_info_bar_add_button (GTK_INFO_BAR (message_area),
 								   _("_Cancel"),
 								   GTK_RESPONSE_CANCEL)),
-			      gtk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
+			      ctk_image_new_from_icon_name ("process-stop", GTK_ICON_SIZE_BUTTON));
 
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
+	ctk_info_bar_set_message_type (GTK_INFO_BAR (message_area),
 				       GTK_MESSAGE_WARNING);
 
 	set_message_area_text_and_icon (message_area,
-					"gtk-dialog-warning",
+					"ctk-dialog-warning",
 					primary_text,
 					secondary_text);
 

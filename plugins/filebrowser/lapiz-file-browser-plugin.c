@@ -489,7 +489,7 @@ on_action_open_terminal (GtkAction * action,
 		return;
 
 	store = lapiz_file_browser_widget_get_browser_store (data->tree_widget);
-	gtk_tree_model_get (GTK_TREE_MODEL (store),
+	ctk_tree_model_get (GTK_TREE_MODEL (store),
 	                    &iter,
 	                    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 	                    &wd,
@@ -532,7 +532,7 @@ on_selection_changed_cb (GtkTreeSelection *selection,
 	gchar * uri;
 
 	tree_view = GTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget));
-	model = gtk_tree_view_get_model (tree_view);
+	model = ctk_tree_view_get_model (tree_view);
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
@@ -540,7 +540,7 @@ on_selection_changed_cb (GtkTreeSelection *selection,
 	sensitive = lapiz_file_browser_widget_get_selected_directory (data->tree_widget, &iter);
 
 	if (sensitive) {
-		gtk_tree_model_get (model, &iter,
+		ctk_tree_model_get (model, &iter,
 				    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 				    &uri, -1);
 
@@ -548,8 +548,8 @@ on_selection_changed_cb (GtkTreeSelection *selection,
 		g_free (uri);
 	}
 
-	gtk_action_set_sensitive (
-		gtk_action_group_get_action (data->single_selection_action_group,
+	ctk_action_set_sensitive (
+		ctk_action_group_get_action (data->single_selection_action_group,
                                             "OpenTerminal"),
 		sensitive);
 }
@@ -595,25 +595,25 @@ add_popup_ui (LapizFileBrowserPluginPrivate *data)
 
 	manager = lapiz_file_browser_widget_get_ui_manager (data->tree_widget);
 
-	action_group = gtk_action_group_new ("FileBrowserPluginExtra");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserPluginExtra");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      extra_actions,
 				      G_N_ELEMENTS (extra_actions),
 				      data);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	data->action_group = action_group;
 
-	action_group = gtk_action_group_new ("FileBrowserPluginSingleSelectionExtra");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserPluginSingleSelectionExtra");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      extra_single_selection_actions,
 				      G_N_ELEMENTS (extra_single_selection_actions),
 				      data);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	data->single_selection_action_group = action_group;
 
-	data->merge_id = gtk_ui_manager_add_ui_from_string (manager,
+	data->merge_id = ctk_ui_manager_add_ui_from_string (manager,
 	                                                    POPUP_UI,
 	                                                    -1,
 	                                                    &error);
@@ -630,12 +630,12 @@ remove_popup_ui (LapizFileBrowserPluginPrivate *data)
 	GtkUIManager * manager;
 
 	manager = lapiz_file_browser_widget_get_ui_manager (data->tree_widget);
-	gtk_ui_manager_remove_ui (manager, data->merge_id);
+	ctk_ui_manager_remove_ui (manager, data->merge_id);
 
-	gtk_ui_manager_remove_action_group (manager, data->action_group);
+	ctk_ui_manager_remove_action_group (manager, data->action_group);
 	g_object_unref (data->action_group);
 
-	gtk_ui_manager_remove_action_group (manager, data->single_selection_action_group);
+	ctk_ui_manager_remove_action_group (manager, data->single_selection_action_group);
 	g_object_unref (data->single_selection_action_group);
 }
 
@@ -649,7 +649,7 @@ lapiz_file_browser_plugin_update_state (PeasActivatable *activatable)
 
 	doc = lapiz_window_get_active_document (LAPIZ_WINDOW (data->window));
 
-	gtk_action_set_sensitive (gtk_action_group_get_action (data->action_group,
+	ctk_action_set_sensitive (ctk_action_group_get_action (data->action_group,
 	                                                       "SetActiveRoot"),
 	                          doc != NULL &&
 	                          !lapiz_document_is_untitled (doc));
@@ -701,7 +701,7 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 	                  G_CALLBACK (on_confirm_no_trash_cb),
 	                  window);
 
-	g_signal_connect (gtk_tree_view_get_selection (GTK_TREE_VIEW
+	g_signal_connect (ctk_tree_view_get_selection (GTK_TREE_VIEW
 			  (lapiz_file_browser_widget_get_browser_view
 			  (data->tree_widget))),
 			  "changed",
@@ -713,18 +713,18 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 	                                                    GTK_ICON_SIZE_MENU);
 
 	if (pixbuf) {
-		image = gtk_image_new_from_pixbuf(pixbuf);
+		image = ctk_image_new_from_pixbuf(pixbuf);
 		g_object_unref(pixbuf);
 	} else {
-		image = gtk_image_new_from_icon_name("gtk-index", GTK_ICON_SIZE_MENU);
+		image = ctk_image_new_from_icon_name("ctk-index", GTK_ICON_SIZE_MENU);
 	}
 
-	gtk_widget_show(image);
+	ctk_widget_show(image);
 	lapiz_panel_add_item (panel,
 	                      GTK_WIDGET (data->tree_widget),
 	                      _("File Browser"),
 	                      image);
-	gtk_widget_show (GTK_WIDGET (data->tree_widget));
+	ctk_widget_show (GTK_WIDGET (data->tree_widget));
 
 	add_popup_ui (data);
 
@@ -900,16 +900,16 @@ on_error_cb (LapizFileBrowserWidget * tree_widget,
 		break;
 	}
 
-	dlg = gtk_message_dialog_new (GTK_WINDOW (data->window),
+	dlg = ctk_message_dialog_new (GTK_WINDOW (data->window),
 				      GTK_DIALOG_MODAL |
 				      GTK_DIALOG_DESTROY_WITH_PARENT,
 				      GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				      "%s", title);
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dlg),
+	ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dlg),
 						  "%s", message);
 
-	gtk_dialog_run (GTK_DIALOG (dlg));
-	gtk_widget_destroy (dlg);
+	ctk_dialog_run (GTK_DIALOG (dlg));
+	ctk_widget_destroy (dlg);
 }
 
 static void
@@ -919,7 +919,7 @@ on_model_set_cb (LapizFileBrowserView * widget,
 {
 	GtkTreeModel * model;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget)));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (lapiz_file_browser_widget_get_browser_view (data->tree_widget)));
 
 	if (model == NULL)
 		return;
@@ -1105,8 +1105,8 @@ get_filename_from_path (GtkTreeModel *model, GtkTreePath *path)
 	GtkTreeIter iter;
 	gchar *uri;
 
-	gtk_tree_model_get_iter (model, &iter, path);
-	gtk_tree_model_get (model, &iter,
+	ctk_tree_model_get_iter (model, &iter, path);
+	ctk_tree_model_get (model, &iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
 

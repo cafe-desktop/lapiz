@@ -32,7 +32,7 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <lapiz/lapiz-utils.h>
 #include <lapiz/lapiz-help.h>
 #include "lapiz-spell-language-dialog.h"
@@ -85,23 +85,23 @@ scroll_to_selected (GtkTreeView *tree_view)
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	model = gtk_tree_view_get_model (tree_view);
+	model = ctk_tree_view_get_model (tree_view);
 	g_return_if_fail (model != NULL);
 
 	/* Scroll to selected */
-	selection = gtk_tree_view_get_selection (tree_view);
+	selection = ctk_tree_view_get_selection (tree_view);
 	g_return_if_fail (selection != NULL);
 
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 	{
 		GtkTreePath* path;
 
-		path = gtk_tree_model_get_path (model, &iter);
+		path = ctk_tree_model_get_path (model, &iter);
 		g_return_if_fail (path != NULL);
 
-		gtk_tree_view_scroll_to_cell (tree_view,
+		ctk_tree_view_scroll_to_cell (tree_view,
 					      path, NULL, TRUE, 1.0, 0.0);
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 	}
 }
 
@@ -111,7 +111,7 @@ language_row_activated (GtkTreeView *tree_view,
 			GtkTreeViewColumn *column,
 			LapizSpellLanguageDialog *dialog)
 {
-	gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+	ctk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 }
 
 static void
@@ -130,16 +130,16 @@ create_dialog (LapizSpellLanguageDialog *dlg,
 	};
 
 	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), "process-stop", GTK_RESPONSE_CANCEL);
-	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "gtk-ok", GTK_RESPONSE_OK);
+	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_OK"), "ctk-ok", GTK_RESPONSE_OK);
 	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Help"), "help-browser", GTK_RESPONSE_HELP);
 
-	gtk_window_set_title (GTK_WINDOW (dlg), _("Set language"));
-	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
-	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_title (GTK_WINDOW (dlg), _("Set language"));
+	ctk_window_set_modal (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
 
 	/* HIG defaults */
-	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_container_set_border_width (GTK_CONTAINER (dlg), 5);
+	ctk_box_set_spacing (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			     2); /* 2 * 5 + 2 = 12 */
 
 	g_signal_connect (dlg,
@@ -158,41 +158,41 @@ create_dialog (LapizSpellLanguageDialog *dlg,
 
 	if (!ret)
 	{
-		gtk_widget_show (error_widget);
+		ctk_widget_show (error_widget);
 
-		gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+		ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
 		                    error_widget,
 		                    TRUE, TRUE, 0);
 
 		return;
 	}
 
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			    content, TRUE, TRUE, 0);
 	g_object_unref (content);
-	gtk_container_set_border_width (GTK_CONTAINER (content), 5);
+	ctk_container_set_border_width (GTK_CONTAINER (content), 5);
 
-	dlg->model = GTK_TREE_MODEL (gtk_list_store_new (ENCODING_NUM_COLS,
+	dlg->model = GTK_TREE_MODEL (ctk_list_store_new (ENCODING_NUM_COLS,
 							 G_TYPE_STRING,
 							 G_TYPE_POINTER));
 
-	gtk_tree_view_set_model (GTK_TREE_VIEW (dlg->languages_treeview),
+	ctk_tree_view_set_model (GTK_TREE_VIEW (dlg->languages_treeview),
 				 dlg->model);
 
 	g_object_unref (dlg->model);
 
 	/* Add the encoding column */
-	cell = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (_("Languages"),
+	cell = ctk_cell_renderer_text_new ();
+	column = ctk_tree_view_column_new_with_attributes (_("Languages"),
 							   cell,
 							   "text",
 							   COLUMN_LANGUAGE_NAME,
 							   NULL);
 
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->languages_treeview),
+	ctk_tree_view_append_column (GTK_TREE_VIEW (dlg->languages_treeview),
 				     column);
 
-	gtk_tree_view_set_search_column (GTK_TREE_VIEW (dlg->languages_treeview),
+	ctk_tree_view_set_search_column (GTK_TREE_VIEW (dlg->languages_treeview),
 					 COLUMN_LANGUAGE_NAME);
 
 	g_signal_connect (dlg->languages_treeview,
@@ -231,8 +231,8 @@ populate_language_list (LapizSpellLanguageDialog        *dlg,
 
 		name = lapiz_spell_checker_language_to_string ((const LapizSpellCheckerLanguage*)langs->data);
 
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store, &iter,
 				    COLUMN_LANGUAGE_NAME, name,
 				    COLUMN_LANGUAGE_POINTER, langs->data,
 				    -1);
@@ -241,10 +241,10 @@ populate_language_list (LapizSpellLanguageDialog        *dlg,
 		{
 			GtkTreeSelection *selection;
 
-			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->languages_treeview));
+			selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->languages_treeview));
 			g_return_if_fail (selection != NULL);
 
-			gtk_tree_selection_select_iter (selection, &iter);
+			ctk_tree_selection_select_iter (selection, &iter);
 		}
 
 		langs = g_slist_next (langs);
@@ -266,8 +266,8 @@ lapiz_spell_language_dialog_new (GtkWindow                       *parent,
 
 	populate_language_list (dlg, cur_lang);
 
-	gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);
-	gtk_widget_grab_focus (dlg->languages_treeview);
+	ctk_window_set_transient_for (GTK_WINDOW (dlg), parent);
+	ctk_widget_grab_focus (dlg->languages_treeview);
 
 	return GTK_WIDGET (dlg);
 }
@@ -281,13 +281,13 @@ lapiz_spell_language_get_selected_language (LapizSpellLanguageDialog *dlg)
 	GtkTreeIter iter;
 	GtkTreeSelection *selection;
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->languages_treeview));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (dlg->languages_treeview));
 	g_return_val_if_fail (selection != NULL, NULL);
 
-	if (!gtk_tree_selection_get_selected (selection, NULL, &iter))
+	if (!ctk_tree_selection_get_selected (selection, NULL, &iter))
 		return NULL;
 
-	gtk_tree_model_get_value (dlg->model,
+	ctk_tree_model_get_value (dlg->model,
 				  &iter,
 				  COLUMN_LANGUAGE_POINTER,
 				  &value);

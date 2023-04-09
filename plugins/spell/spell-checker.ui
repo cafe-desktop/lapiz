@@ -2,18 +2,18 @@
 <!-- Generated with glade 3.20.4 -->
 <!--*- mode: xml -*-->
 <interface>
-  <requires lib="gtk+" version="3.22"/>
+  <requires lib="ctk+" version="3.22"/>
   <object class="GtkImage" id="add_word_image">
     <property name="can_focus">False</property>
     <property name="icon_name">list-add</property>
   </object>
   <object class="GtkImage" id="change_all_image">
     <property name="can_focus">False</property>
-    <property name="icon_name">gtk-convert</property>
+    <property name="icon_name">ctk-convert</property>
   </object>
   <object class="GtkImage" id="change_image">
     <property name="can_focus">False</property>
-    <property name="icon_name">gtk-convert</property>
+    <property name="icon_name">ctk-convert</property>
   </object>
   <object class="GtkImage" id="check_word_image">
     <property name="can_focus">False</property>

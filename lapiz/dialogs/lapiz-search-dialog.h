@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_SEARCH_DIALOG_H__
 #define __LAPIZ_SEARCH_DIALOG_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

@@ -34,7 +34,7 @@
 #include <config.h>
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-commands.h"
 #include "lapiz-window.h"
@@ -54,13 +54,13 @@ _lapiz_cmd_edit_undo (GtkAction   *action,
 	active_view = lapiz_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	active_document = GTK_SOURCE_BUFFER (ctk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
-	gtk_source_buffer_undo (active_document);
+	ctk_source_buffer_undo (active_document);
 
 	lapiz_view_scroll_to_cursor (active_view);
 
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
@@ -75,13 +75,13 @@ _lapiz_cmd_edit_redo (GtkAction   *action,
 	active_view = lapiz_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	active_document = GTK_SOURCE_BUFFER (ctk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
-	gtk_source_buffer_redo (active_document);
+	ctk_source_buffer_redo (active_document);
 
 	lapiz_view_scroll_to_cursor (active_view);
 
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
@@ -97,7 +97,7 @@ _lapiz_cmd_edit_cut (GtkAction   *action,
 
 	lapiz_view_cut_clipboard (active_view);
 
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
@@ -113,7 +113,7 @@ _lapiz_cmd_edit_copy (GtkAction   *action,
 
 	lapiz_view_copy_clipboard (active_view);
 
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
@@ -129,7 +129,7 @@ _lapiz_cmd_edit_paste (GtkAction   *action,
 
 	lapiz_view_paste_clipboard (active_view);
 
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
@@ -145,7 +145,7 @@ _lapiz_cmd_edit_delete (GtkAction   *action,
 
 	lapiz_view_delete_selection (active_view);
 
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
@@ -161,7 +161,7 @@ _lapiz_cmd_edit_select_all (GtkAction   *action,
 
 	lapiz_view_select_all (active_view);
 
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void

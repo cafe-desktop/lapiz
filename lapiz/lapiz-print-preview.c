@@ -34,7 +34,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 #include <cairo-pdf.h>
 
@@ -46,7 +46,7 @@ struct _LapizPrintPreviewPrivate
 {
 	GtkPrintOperation *operation;
 	GtkPrintContext *context;
-	GtkPrintOperationPreview *gtk_preview;
+	GtkPrintOperationPreview *ctk_preview;
 
 	GtkWidget *layout;
 	GtkWidget *scrolled_window;
@@ -132,7 +132,7 @@ lapiz_print_preview_grab_focus (GtkWidget *widget)
 
 	preview = LAPIZ_PRINT_PREVIEW (widget);
 
-	gtk_widget_grab_focus (GTK_WIDGET (preview->priv->layout));
+	ctk_widget_grab_focus (GTK_WIDGET (preview->priv->layout));
 }
 
 static void
@@ -159,11 +159,11 @@ update_layout_size (LapizPrintPreview *preview)
 	priv = preview->priv;
 
 	/* force size of the drawing area to make the scrolled window work */
-	gtk_layout_set_size (GTK_LAYOUT (priv->layout),
+	ctk_layout_set_size (GTK_LAYOUT (priv->layout),
 			     priv->tile_w * priv->cols,
 			     priv->tile_h * priv->rows);
 
-	gtk_widget_queue_draw (preview->priv->layout);
+	ctk_widget_queue_draw (preview->priv->layout);
 }
 
 static void
@@ -252,10 +252,10 @@ set_zoom_fit_to_size (LapizPrintPreview *preview)
 
 	priv = preview->priv;
 
-	g_object_get (gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (priv->layout)),
+	g_object_get (ctk_scrollable_get_hadjustment (GTK_SCROLLABLE (priv->layout)),
 		      "page-size", &width,
 		      NULL);
-	g_object_get (gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (priv->layout)),
+	g_object_get (ctk_scrollable_get_vadjustment (GTK_SCROLLABLE (priv->layout)),
 		      "page-size", &height,
 		      NULL);
 
@@ -316,11 +316,11 @@ goto_page (LapizPrintPreview *preview, gint page)
 	gchar c[32];
 
 	g_snprintf (c, 32, "%d", page + 1);
-	gtk_entry_set_text (GTK_ENTRY (preview->priv->page_entry), c);
+	ctk_entry_set_text (GTK_ENTRY (preview->priv->page_entry), c);
 
-	gtk_widget_set_sensitive (GTK_WIDGET (preview->priv->prev),
+	ctk_widget_set_sensitive (GTK_WIDGET (preview->priv->prev),
 				  (page > 0) && (preview->priv->n_pages > 1));
-	gtk_widget_set_sensitive (GTK_WIDGET (preview->priv->next),
+	ctk_widget_set_sensitive (GTK_WIDGET (preview->priv->next),
 				  (page != (preview->priv->n_pages - 1)) &&
 				  (preview->priv->n_pages > 1));
 
@@ -328,7 +328,7 @@ goto_page (LapizPrintPreview *preview, gint page)
 	{
 		preview->priv->cur_page = page;
 		if (preview->priv->n_pages > 0)
-			gtk_widget_queue_draw (preview->priv->layout);
+			ctk_widget_queue_draw (preview->priv->layout);
 	}
 }
 
@@ -339,7 +339,7 @@ prev_button_clicked (GtkWidget         *button,
 	GdkEvent *event;
 	gint page;
 
-	event = gtk_get_current_event ();
+	event = ctk_get_current_event ();
 
 	if (event->button.state & GDK_SHIFT_MASK)
 		page = 0;
@@ -358,7 +358,7 @@ next_button_clicked (GtkWidget         *button,
 	GdkEvent *event;
 	gint page;
 
-	event = gtk_get_current_event ();
+	event = ctk_get_current_event ();
 
 	if (event->button.state & GDK_SHIFT_MASK)
 		page = preview->priv->n_pages - 1;
@@ -377,12 +377,12 @@ page_entry_activated (GtkEntry          *entry,
 	const gchar *text;
 	gint page;
 
-	text = gtk_entry_get_text (entry);
+	text = ctk_entry_get_text (entry);
 
 	page = CLAMP (atoi (text), 1, preview->priv->n_pages) - 1;
 	goto_page (preview, page);
 
-	gtk_widget_grab_focus (GTK_WIDGET (preview->priv->layout));
+	ctk_widget_grab_focus (GTK_WIDGET (preview->priv->layout));
 }
 
 static void
@@ -423,7 +423,7 @@ page_entry_focus_out (GtkWidget         *widget,
 	const gchar *text;
 	gint page;
 
-	text = gtk_entry_get_text (GTK_ENTRY (widget));
+	text = ctk_entry_get_text (GTK_ENTRY (widget));
 	page = atoi (text) - 1;
 
 	/* Reset the page number only if really needed */
@@ -432,7 +432,7 @@ page_entry_focus_out (GtkWidget         *widget,
 		gchar *str;
 
 		str = g_strdup_printf ("%d", preview->priv->cur_page + 1);
-		gtk_entry_set_text (GTK_ENTRY (widget), str);
+		ctk_entry_set_text (GTK_ENTRY (widget), str);
 		g_free (str);
 	}
 
@@ -469,34 +469,34 @@ multi_button_clicked (GtkWidget	 *button,
 {
 	GtkWidget *m, *i;
 
-	m = gtk_menu_new ();
-	gtk_widget_show (m);
+	m = ctk_menu_new ();
+	ctk_widget_show (m);
 	g_signal_connect (m,
 			 "selection_done",
-			  G_CALLBACK (gtk_widget_destroy),
+			  G_CALLBACK (ctk_widget_destroy),
 			  m);
 
-	i = gtk_menu_item_new_with_label ("1x1");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 0, 1, 0, 1);
+	i = ctk_menu_item_new_with_label ("1x1");
+	ctk_widget_show (i);
+	ctk_menu_attach (GTK_MENU (m), i, 0, 1, 0, 1);
 	g_signal_connect (i, "activate", G_CALLBACK (on_1x1_clicked), preview);
 
-	i = gtk_menu_item_new_with_label ("2x1");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 0, 1, 1, 2);
+	i = ctk_menu_item_new_with_label ("2x1");
+	ctk_widget_show (i);
+	ctk_menu_attach (GTK_MENU (m), i, 0, 1, 1, 2);
 	g_signal_connect (i, "activate", G_CALLBACK (on_2x1_clicked), preview);
 
-	i = gtk_menu_item_new_with_label ("1x2");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 1, 2, 0, 1);
+	i = ctk_menu_item_new_with_label ("1x2");
+	ctk_widget_show (i);
+	ctk_menu_attach (GTK_MENU (m), i, 1, 2, 0, 1);
 	g_signal_connect (i, "activate", G_CALLBACK (on_1x2_clicked), preview);
 
-	i = gtk_menu_item_new_with_label ("2x2");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 1, 2, 1, 2);
+	i = ctk_menu_item_new_with_label ("2x2");
+	ctk_widget_show (i);
+	ctk_menu_attach (GTK_MENU (m), i, 1, 2, 1, 2);
 	g_signal_connect (i, "activate", G_CALLBACK (on_2x2_clicked), preview);
 
-	gtk_menu_popup_at_pointer (GTK_MENU (m), NULL);
+	ctk_menu_popup_at_pointer (GTK_MENU (m), NULL);
 }
 
 static void
@@ -531,7 +531,7 @@ static void
 close_button_clicked (GtkWidget         *button,
 		      LapizPrintPreview *preview)
 {
-	gtk_widget_destroy (GTK_WIDGET (preview));
+	ctk_widget_destroy (GTK_WIDGET (preview));
 }
 
 static gboolean
@@ -553,49 +553,49 @@ create_bar (LapizPrintPreview *preview)
 
 	priv = preview->priv;
 
-	toolbar = gtk_toolbar_new ();
-	gtk_toolbar_set_style (GTK_TOOLBAR (toolbar),
+	toolbar = ctk_toolbar_new ();
+	ctk_toolbar_set_style (GTK_TOOLBAR (toolbar),
 			       GTK_TOOLBAR_BOTH_HORIZ);
-	gtk_widget_show (toolbar);
-	gtk_box_pack_start (GTK_BOX (preview),
+	ctk_widget_show (toolbar);
+	ctk_box_pack_start (GTK_BOX (preview),
 			    toolbar,
 			    FALSE, FALSE, 0);
 
-	priv->prev = gtk_tool_button_new (NULL, NULL);
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->prev), "go-previous");
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (priv->prev),
+	priv->prev = ctk_tool_button_new (NULL, NULL);
+	ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->prev), "go-previous");
+	ctk_tool_button_set_label (GTK_TOOL_BUTTON (priv->prev),
 				   "P_revious Page");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->prev), TRUE);
-	gtk_tool_item_set_tooltip_text (priv->prev, _("Show the previous page"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->prev, -1);
+	ctk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->prev), TRUE);
+	ctk_tool_item_set_tooltip_text (priv->prev, _("Show the previous page"));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->prev, -1);
 	g_signal_connect (priv->prev,
 			  "clicked",
 			  G_CALLBACK (prev_button_clicked),
 			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->prev));
+	ctk_widget_show (GTK_WIDGET (priv->prev));
 
-	priv->next = gtk_tool_button_new (NULL, NULL);
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->next), "go-next");
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (priv->next),
+	priv->next = ctk_tool_button_new (NULL, NULL);
+	ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->next), "go-next");
+	ctk_tool_button_set_label (GTK_TOOL_BUTTON (priv->next),
 				   "_Next Page");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->next), TRUE);
-	gtk_tool_item_set_tooltip_text (priv->next, _("Show the next page"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->next, -1);
+	ctk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->next), TRUE);
+	ctk_tool_item_set_tooltip_text (priv->next, _("Show the next page"));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->next, -1);
 	g_signal_connect (priv->next,
 			  "clicked",
 			  G_CALLBACK (next_button_clicked),
 			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->next));
+	ctk_widget_show (GTK_WIDGET (priv->next));
 
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
+	i = ctk_separator_tool_item_new ();
+	ctk_widget_show (GTK_WIDGET (i));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
 
-	status = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	priv->page_entry = gtk_entry_new ();
-	gtk_entry_set_width_chars (GTK_ENTRY (priv->page_entry), 3);
-	gtk_entry_set_max_length (GTK_ENTRY (priv->page_entry), 6);
-	gtk_widget_set_tooltip_text (priv->page_entry, _("Current page (Alt+P)"));
+	status = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
+	priv->page_entry = ctk_entry_new ();
+	ctk_entry_set_width_chars (GTK_ENTRY (priv->page_entry), 3);
+	ctk_entry_set_max_length (GTK_ENTRY (priv->page_entry), 6);
+	ctk_widget_set_tooltip_text (priv->page_entry, _("Current page (Alt+P)"));
 
 	g_signal_connect (priv->page_entry,
 			  "activate",
@@ -610,105 +610,105 @@ create_bar (LapizPrintPreview *preview)
 			  G_CALLBACK (page_entry_focus_out),
 			  preview);
 
-	gtk_box_pack_start (GTK_BOX (status),
+	ctk_box_pack_start (GTK_BOX (status),
 			    priv->page_entry,
 			    FALSE, FALSE, 0);
-	/* gtk_label_set_mnemonic_widget ((GtkLabel *) l, mp->priv->page_entry); */
+	/* ctk_label_set_mnemonic_widget ((GtkLabel *) l, mp->priv->page_entry); */
 
 	/* We are displaying 'XXX of XXX'. */
-	gtk_box_pack_start (GTK_BOX (status),
+	ctk_box_pack_start (GTK_BOX (status),
 	                    /* Translators: the "of" from "1 of 19" in print preview. */
-			    gtk_label_new (_("of")),
+			    ctk_label_new (_("of")),
 			    FALSE, FALSE, 0);
 
-	priv->last = gtk_label_new ("");
-	gtk_box_pack_start (GTK_BOX (status),
+	priv->last = ctk_label_new ("");
+	ctk_box_pack_start (GTK_BOX (status),
 			    priv->last,
 			    FALSE, FALSE, 0);
-	atko = gtk_widget_get_accessible (priv->last);
+	atko = ctk_widget_get_accessible (priv->last);
 	atk_object_set_name (atko, _("Page total"));
 	atk_object_set_description (atko, _("The total number of pages in the document"));
 
-	gtk_widget_show_all (status);
+	ctk_widget_show_all (status);
 
-	i = gtk_tool_item_new ();
-	gtk_container_add (GTK_CONTAINER (i), status);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
+	i = ctk_tool_item_new ();
+	ctk_container_add (GTK_CONTAINER (i), status);
+	ctk_widget_show (GTK_WIDGET (i));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
 
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
+	i = ctk_separator_tool_item_new ();
+	ctk_widget_show (GTK_WIDGET (i));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
 
-	priv->multi = gtk_tool_button_new (NULL, NULL);
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->multi), "dnd-multiple");
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (priv->multi),
+	priv->multi = ctk_tool_button_new (NULL, NULL);
+	ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->multi), "dnd-multiple");
+	ctk_tool_button_set_label (GTK_TOOL_BUTTON (priv->multi),
 				   "_Show Multiple Pages");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->multi), TRUE);
-	gtk_tool_item_set_tooltip_text (priv->multi, _("Show multiple pages"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->multi, -1);
+	ctk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->multi), TRUE);
+	ctk_tool_item_set_tooltip_text (priv->multi, _("Show multiple pages"));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->multi, -1);
 	g_signal_connect (priv->multi,
 			  "clicked",
 			  G_CALLBACK (multi_button_clicked),
 			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->multi));
+	ctk_widget_show (GTK_WIDGET (priv->multi));
 
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
+	i = ctk_separator_tool_item_new ();
+	ctk_widget_show (GTK_WIDGET (i));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
 
-	priv->zoom_one = gtk_tool_button_new (NULL, NULL);
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_one), "zoom-original");
-	gtk_tool_item_set_tooltip_text (priv->zoom_one, _("Zoom 1:1"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_one, -1);
+	priv->zoom_one = ctk_tool_button_new (NULL, NULL);
+	ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_one), "zoom-original");
+	ctk_tool_item_set_tooltip_text (priv->zoom_one, _("Zoom 1:1"));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_one, -1);
 	g_signal_connect (priv->zoom_one,
 			  "clicked",
 			  G_CALLBACK (zoom_one_button_clicked),
 			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_one));
+	ctk_widget_show (GTK_WIDGET (priv->zoom_one));
 
-	priv->zoom_fit = gtk_tool_button_new (NULL, NULL);
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_fit), "zoom-fit-best");
-	gtk_tool_item_set_tooltip_text (priv->zoom_fit,	_("Zoom to fit the whole page"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_fit, -1);
+	priv->zoom_fit = ctk_tool_button_new (NULL, NULL);
+	ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_fit), "zoom-fit-best");
+	ctk_tool_item_set_tooltip_text (priv->zoom_fit,	_("Zoom to fit the whole page"));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_fit, -1);
 	g_signal_connect (priv->zoom_fit,
 			  "clicked",
 			  G_CALLBACK (zoom_fit_button_clicked),
 			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_fit));
+	ctk_widget_show (GTK_WIDGET (priv->zoom_fit));
 
-	priv->zoom_in = gtk_tool_button_new (NULL, NULL);
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_in), "zoom-in");
-	gtk_tool_item_set_tooltip_text (priv->zoom_in, _("Zoom the page in"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_in, -1);
+	priv->zoom_in = ctk_tool_button_new (NULL, NULL);
+	ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_in), "zoom-in");
+	ctk_tool_item_set_tooltip_text (priv->zoom_in, _("Zoom the page in"));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_in, -1);
 	g_signal_connect (priv->zoom_in,
 			  "clicked",
 			  G_CALLBACK (zoom_in_button_clicked),
 			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_in));
+	ctk_widget_show (GTK_WIDGET (priv->zoom_in));
 
-	priv->zoom_out = gtk_tool_button_new (NULL, NULL);
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_out), "zoom-out");
-	gtk_tool_item_set_tooltip_text (priv->zoom_out, _("Zoom the page out"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_out, -1);
+	priv->zoom_out = ctk_tool_button_new (NULL, NULL);
+	ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (priv->zoom_out), "zoom-out");
+	ctk_tool_item_set_tooltip_text (priv->zoom_out, _("Zoom the page out"));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_out, -1);
 	g_signal_connect (priv->zoom_out,
 			  "clicked",
 			  G_CALLBACK (zoom_out_button_clicked),
 			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_out));
+	ctk_widget_show (GTK_WIDGET (priv->zoom_out));
 
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
+	i = ctk_separator_tool_item_new ();
+	ctk_widget_show (GTK_WIDGET (i));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
 
-	i = gtk_tool_button_new (NULL, _("_Close Preview"));
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
-	gtk_tool_item_set_is_important (i, TRUE);
-	gtk_tool_item_set_tooltip_text (i, _("Close print preview"));
+	i = ctk_tool_button_new (NULL, _("_Close Preview"));
+	ctk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
+	ctk_tool_item_set_is_important (i, TRUE);
+	ctk_tool_item_set_tooltip_text (i, _("Close print preview"));
 	g_signal_connect (i, "clicked",
 			  G_CALLBACK (close_button_clicked), preview);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
+	ctk_widget_show (GTK_WIDGET (i));
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
 
 	g_signal_connect (GTK_TOOLBAR (toolbar),
 			  "button-press-event",
@@ -741,11 +741,11 @@ get_page_at_coords (LapizPrintPreview *preview,
 	if (priv->tile_h <= 0 || priv->tile_w <= 0)
 		return -1;
 
-	hadj = gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (priv->layout));
-	vadj = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (priv->layout));
+	hadj = ctk_scrollable_get_hadjustment (GTK_SCROLLABLE (priv->layout));
+	vadj = ctk_scrollable_get_vadjustment (GTK_SCROLLABLE (priv->layout));
 
-	x += gtk_adjustment_get_value (hadj);
-	y += gtk_adjustment_get_value (vadj);
+	x += ctk_adjustment_get_value (hadj);
+	y += ctk_adjustment_get_value (vadj);
 
 	r = 1 + y / (priv->tile_h);
 	c = 1 + x / (priv->tile_w);
@@ -780,7 +780,7 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 		return FALSE;
 
 	tip = g_strdup_printf (_("Page %d of %d"), pg + 1, preview->priv->n_pages);
-	gtk_tooltip_set_text (tooltip, tip);
+	ctk_tooltip_set_text (tooltip, tip);
 	g_free (tip);
 
 	return TRUE;
@@ -803,11 +803,11 @@ preview_layout_key_press (GtkWidget         *widget,
 
 	priv = preview->priv;
 
-	hadj = gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (priv->layout));
-	vadj = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (priv->layout));
+	hadj = ctk_scrollable_get_hadjustment (GTK_SCROLLABLE (priv->layout));
+	vadj = ctk_scrollable_get_vadjustment (GTK_SCROLLABLE (priv->layout));
 
-	x = gtk_adjustment_get_value (hadj);
-	y = gtk_adjustment_get_value (vadj);
+	x = ctk_adjustment_get_value (hadj);
+	y = ctk_adjustment_get_value (vadj);
 
 	g_object_get (hadj,
 		      "lower", &hlower,
@@ -820,7 +820,7 @@ preview_layout_key_press (GtkWidget         *widget,
 		      "page-size", &vpage,
 		      NULL);
 
-	gtk_layout_get_size (GTK_LAYOUT (priv->layout), &w, &h);
+	ctk_layout_get_size (GTK_LAYOUT (priv->layout), &w, &h);
 
 	hstep = 10;
 	vstep = 10;
@@ -920,18 +920,18 @@ preview_layout_key_press (GtkWidget         *widget,
 		domove = TRUE;
 		break;
 	case GDK_KEY_Escape:
-		gtk_widget_destroy (GTK_WIDGET (preview));
+		ctk_widget_destroy (GTK_WIDGET (preview));
 		break;
 	case 'c':
 		if (event->state & GDK_MOD1_MASK)
 		{
-			gtk_widget_destroy (GTK_WIDGET (preview));
+			ctk_widget_destroy (GTK_WIDGET (preview));
 		}
 		break;
 	case 'p':
 		if (event->state & GDK_MOD1_MASK)
 		{
-			gtk_widget_grab_focus (preview->priv->page_entry);
+			ctk_widget_grab_focus (preview->priv->page_entry);
 		}
 		break;
 	default:
@@ -941,8 +941,8 @@ preview_layout_key_press (GtkWidget         *widget,
 
 	if (domove)
 	{
-		gtk_adjustment_set_value (hadj, x);
-		gtk_adjustment_set_value (vadj, y);
+		ctk_adjustment_set_value (hadj, x);
+		ctk_adjustment_set_value (vadj, y);
 	}
 
 	return ret;
@@ -956,19 +956,19 @@ create_preview_layout (LapizPrintPreview *preview)
 
 	priv = preview->priv;
 
-	priv->layout = gtk_layout_new (NULL, NULL);
-//	gtk_widget_set_double_buffered (priv->layout, FALSE);
+	priv->layout = ctk_layout_new (NULL, NULL);
+//	ctk_widget_set_double_buffered (priv->layout, FALSE);
 
-	atko = gtk_widget_get_accessible (GTK_WIDGET (priv->layout));
+	atko = ctk_widget_get_accessible (GTK_WIDGET (priv->layout));
 	atk_object_set_name (atko, _("Page Preview"));
 	atk_object_set_description (atko, _("The preview of a page in the document to be printed"));
 
-	gtk_widget_add_events (priv->layout,
+	ctk_widget_add_events (priv->layout,
 			       GDK_POINTER_MOTION_MASK |
 			       GDK_BUTTON_PRESS_MASK |
 			       GDK_KEY_PRESS_MASK);
 
-	gtk_widget_set_can_focus (priv->layout, TRUE);
+	ctk_widget_set_can_focus (priv->layout, TRUE);
 
   	g_signal_connect (priv->layout,
 			  "key-press-event",
@@ -986,18 +986,18 @@ create_preview_layout (LapizPrintPreview *preview)
 			  G_CALLBACK (ignore_mouse_buttons),
 			  preview);
 
-	priv->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (priv->scrolled_window),
+	priv->scrolled_window = ctk_scrolled_window_new (NULL, NULL);
+	ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (priv->scrolled_window),
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
 
-	gtk_container_add (GTK_CONTAINER (priv->scrolled_window), priv->layout);
-	gtk_box_pack_end (GTK_BOX (preview),
+	ctk_container_add (GTK_CONTAINER (priv->scrolled_window), priv->layout);
+	ctk_box_pack_end (GTK_BOX (preview),
 			  priv->scrolled_window,
 			  TRUE, TRUE, 0);
 
-	gtk_widget_show_all (GTK_WIDGET (priv->scrolled_window));
-	gtk_widget_grab_focus (GTK_WIDGET (priv->layout));
+	ctk_widget_show_all (GTK_WIDGET (priv->scrolled_window));
+	ctk_widget_grab_focus (GTK_WIDGET (priv->layout));
 }
 
 static void
@@ -1011,13 +1011,13 @@ lapiz_print_preview_init (LapizPrintPreview *preview)
 
 	priv->operation = NULL;
 	priv->context = NULL;
-	priv->gtk_preview = NULL;
+	priv->ctk_preview = NULL;
 
 	GtkStyleContext *context;
 
-	context = gtk_widget_get_style_context (GTK_WIDGET (preview));
-	gtk_style_context_add_class (context, "lapiz-print-preview");
-	gtk_orientable_set_orientation (GTK_ORIENTABLE (preview),
+	context = ctk_widget_get_style_context (GTK_WIDGET (preview));
+	ctk_style_context_add_class (context, "lapiz-print-preview");
+	ctk_orientable_set_orientation (GTK_ORIENTABLE (preview),
 	                                GTK_ORIENTATION_VERTICAL);
 
 	create_bar (preview);
@@ -1054,12 +1054,12 @@ draw_page_content (cairo_t            *cr,
 		cairo_transform (cr, &matrix);
 	}
 
-	gtk_print_context_set_cairo_context (preview->priv->context,
+	ctk_print_context_set_cairo_context (preview->priv->context,
 					     cr,
 					     preview->priv->dpi,
 					     preview->priv->dpi);
 
-	gtk_print_operation_preview_render_page (preview->priv->gtk_preview,
+	ctk_print_operation_preview_render_page (preview->priv->ctk_preview,
 						 page_number);
 }
 
@@ -1137,14 +1137,14 @@ preview_draw (GtkWidget         *widget,
 
 	priv = preview->priv;
 
-	bin_window = gtk_layout_get_bin_window (GTK_LAYOUT (priv->layout));
+	bin_window = ctk_layout_get_bin_window (GTK_LAYOUT (priv->layout));
 
-	if (!gtk_cairo_should_draw_window (cr, bin_window))
+	if (!ctk_cairo_should_draw_window (cr, bin_window))
 		return TRUE;
 
 	cairo_save (cr);
 
-	gtk_cairo_transform_to_window (cr, widget, bin_window);
+	ctk_cairo_transform_to_window (cr, widget, bin_window);
 
 	/* get the first page to display */
 	pg = get_first_page_displayed (preview);
@@ -1153,7 +1153,7 @@ preview_draw (GtkWidget         *widget,
 	{
 		for (j = 0; j < priv->rows; ++j)
 		{
-			if (!gtk_print_operation_preview_is_selected (priv->gtk_preview,
+			if (!ctk_print_operation_preview_is_selected (priv->ctk_preview,
 								      pg))
 			{
 				continue;
@@ -1183,7 +1183,7 @@ get_screen_dpi (LapizPrintPreview *preview)
 	GdkScreen *screen;
 	double dpi;
 
-	screen = gtk_widget_get_screen (GTK_WIDGET (preview));
+	screen = ctk_widget_get_screen (GTK_WIDGET (preview));
 
 	dpi = gdk_screen_get_resolution (screen);
 	if (dpi < 30. || 600. < dpi)
@@ -1206,12 +1206,12 @@ set_n_pages (LapizPrintPreview *preview,
 	// FIXME: count the visible pages
 
 	str =  g_strdup_printf ("%d", n_pages);
-	gtk_label_set_markup (GTK_LABEL (preview->priv->last), str);
+	ctk_label_set_markup (GTK_LABEL (preview->priv->last), str);
 	g_free (str);
 }
 
 static void
-preview_ready (GtkPrintOperationPreview *gtk_preview,
+preview_ready (GtkPrintOperationPreview *ctk_preview,
 	       GtkPrintContext          *context,
 	       LapizPrintPreview        *preview)
 {
@@ -1226,13 +1226,13 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 
 	set_zoom_factor (preview, 1.0);
 
-	/* let the default gtklayout handler clear the background */
+	/* let the default ctklayout handler clear the background */
 	g_signal_connect_after (preview->priv->layout,
 				"draw",
 				G_CALLBACK (preview_draw),
 				preview);
 
-	gtk_widget_queue_draw (preview->priv->layout);
+	ctk_widget_queue_draw (preview->priv->layout);
 }
 
 static void
@@ -1241,16 +1241,16 @@ update_paper_size (LapizPrintPreview *preview,
 {
 	GtkPaperSize *paper_size;
 
-	paper_size = gtk_page_setup_get_paper_size (page_setup);
+	paper_size = ctk_page_setup_get_paper_size (page_setup);
 
-	preview->priv->paper_w = gtk_paper_size_get_width (paper_size, GTK_UNIT_INCH);
-	preview->priv->paper_h = gtk_paper_size_get_height (paper_size, GTK_UNIT_INCH);
+	preview->priv->paper_w = ctk_paper_size_get_width (paper_size, GTK_UNIT_INCH);
+	preview->priv->paper_h = ctk_paper_size_get_height (paper_size, GTK_UNIT_INCH);
 
-	preview->priv->orientation = gtk_page_setup_get_orientation (page_setup);
+	preview->priv->orientation = ctk_page_setup_get_orientation (page_setup);
 }
 
 static void
-preview_got_page_size (GtkPrintOperationPreview *gtk_preview,
+preview_got_page_size (GtkPrintOperationPreview *ctk_preview,
 		       GtkPrintContext          *context,
 		       GtkPageSetup             *page_setup,
 		       LapizPrintPreview        *preview)
@@ -1278,8 +1278,8 @@ create_preview_surface_platform (GtkPaperSize *paper_size,
     double width, height;
     cairo_surface_t *sf;
 
-    width = gtk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
-    height = gtk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
+    width = ctk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
+    height = ctk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
 
     *dpi_x = *dpi_y = PRINTER_DPI;
 
@@ -1296,16 +1296,16 @@ create_preview_surface (LapizPrintPreview *preview,
     GtkPageSetup *page_setup;
     GtkPaperSize *paper_size;
 
-    page_setup = gtk_print_context_get_page_setup (preview->priv->context);
-    /* gtk_page_setup_get_paper_size swaps width and height for landscape */
-    paper_size = gtk_page_setup_get_paper_size (page_setup);
+    page_setup = ctk_print_context_get_page_setup (preview->priv->context);
+    /* ctk_page_setup_get_paper_size swaps width and height for landscape */
+    paper_size = ctk_page_setup_get_paper_size (page_setup);
 
     return create_preview_surface_platform (paper_size, dpi_x, dpi_y);
 }
 
 GtkWidget *
 lapiz_print_preview_new (GtkPrintOperation        *op,
-			 GtkPrintOperationPreview *gtk_preview,
+			 GtkPrintOperationPreview *ctk_preview,
 			 GtkPrintContext          *context)
 {
 	LapizPrintPreview *preview;
@@ -1315,23 +1315,23 @@ lapiz_print_preview_new (GtkPrintOperation        *op,
 	double dpi_x, dpi_y;
 
 	g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), NULL);
-	g_return_val_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (gtk_preview), NULL);
+	g_return_val_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (ctk_preview), NULL);
 
 	preview = g_object_new (LAPIZ_TYPE_PRINT_PREVIEW, NULL);
 
 	preview->priv->operation = g_object_ref (op);
-	preview->priv->gtk_preview = g_object_ref (gtk_preview);
+	preview->priv->ctk_preview = g_object_ref (ctk_preview);
 	preview->priv->context = g_object_ref (context);
 
 	/* FIXME: is this legal?? */
-	gtk_print_operation_set_unit (op, GTK_UNIT_POINTS);
+	ctk_print_operation_set_unit (op, GTK_UNIT_POINTS);
 
-	g_signal_connect (gtk_preview, "ready",
+	g_signal_connect (ctk_preview, "ready",
 			  G_CALLBACK (preview_ready), preview);
-	g_signal_connect (gtk_preview, "got-page-size",
+	g_signal_connect (ctk_preview, "got-page-size",
 			  G_CALLBACK (preview_got_page_size), preview);
 
-	page_setup = gtk_print_context_get_page_setup (preview->priv->context);
+	page_setup = ctk_print_context_get_page_setup (preview->priv->context);
 	update_paper_size (preview, page_setup);
 
 	/* FIXME: we need a cr to paginate... but we can't get the drawing
@@ -1340,7 +1340,7 @@ lapiz_print_preview_new (GtkPrintOperation        *op,
 
 	surface = create_preview_surface (preview, &dpi_x, &dpi_y);
 	cr = cairo_create (surface);
-	gtk_print_context_set_cairo_context (context, cr, dpi_x, dpi_y);
+	ctk_print_context_set_cairo_context (context, cr, dpi_x, dpi_y);
 	cairo_destroy (cr);
 	cairo_surface_destroy (surface);
 

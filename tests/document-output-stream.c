@@ -24,7 +24,7 @@
 #include "lapiz-document-output-stream.h"
 #include "lapiz-prefs-manager-app.h"
 #include <gio/gio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib.h>
 #include <string.h>
 
@@ -76,7 +76,7 @@ test_consecutive_write (const gchar *inbuf,
 	g_assert_cmpstr (outbuf, ==, b);
 	g_free (b);
 
-	g_assert (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) == FALSE);
+	g_assert (ctk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) == FALSE);
 
 	g_object_unref (doc);
 	g_object_unref (out);

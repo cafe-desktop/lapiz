@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.20.2 -->
 <!--*- mode: xml -*-->
 <interface>
-  <requires lib="gtk+" version="3.22"/>
+  <requires lib="ctk+" version="3.22"/>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -16,7 +16,7 @@
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">gtk-ok</property>
+    <property name="icon_name">ctk-ok</property>
   </object>
   <object class="GtkDialog" id="spell_dialog">
     <property name="can_focus">False</property>

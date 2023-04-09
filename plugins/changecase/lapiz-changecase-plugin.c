@@ -70,20 +70,20 @@ do_upper_case (GtkTextBuffer *buffer,
 {
 	GString *s = g_string_new (NULL);
 
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
+	while (!ctk_text_iter_is_end (start) &&
+	       !ctk_text_iter_equal (start, end))
 	{
 		gunichar c, nc;
 
-		c = gtk_text_iter_get_char (start);
+		c = ctk_text_iter_get_char (start);
 		nc = g_unichar_toupper (c);
 		g_string_append_unichar (s, nc);
 
-		gtk_text_iter_forward_char (start);
+		ctk_text_iter_forward_char (start);
 	}
 
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
+	ctk_text_buffer_delete_selection (buffer, TRUE, TRUE);
+	ctk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
 
 	g_string_free (s, TRUE);
 }
@@ -95,20 +95,20 @@ do_lower_case (GtkTextBuffer *buffer,
 {
 	GString *s = g_string_new (NULL);
 
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
+	while (!ctk_text_iter_is_end (start) &&
+	       !ctk_text_iter_equal (start, end))
 	{
 		gunichar c, nc;
 
-		c = gtk_text_iter_get_char (start);
+		c = ctk_text_iter_get_char (start);
 		nc = g_unichar_tolower (c);
 		g_string_append_unichar (s, nc);
 
-		gtk_text_iter_forward_char (start);
+		ctk_text_iter_forward_char (start);
 	}
 
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
+	ctk_text_buffer_delete_selection (buffer, TRUE, TRUE);
+	ctk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
 
 	g_string_free (s, TRUE);
 }
@@ -120,23 +120,23 @@ do_invert_case (GtkTextBuffer *buffer,
 {
 	GString *s = g_string_new (NULL);
 
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
+	while (!ctk_text_iter_is_end (start) &&
+	       !ctk_text_iter_equal (start, end))
 	{
 		gunichar c, nc;
 
-		c = gtk_text_iter_get_char (start);
+		c = ctk_text_iter_get_char (start);
 		if (g_unichar_islower (c))
 			nc = g_unichar_toupper (c);
 		else
 			nc = g_unichar_tolower (c);
 		g_string_append_unichar (s, nc);
 
-		gtk_text_iter_forward_char (start);
+		ctk_text_iter_forward_char (start);
 	}
 
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
+	ctk_text_buffer_delete_selection (buffer, TRUE, TRUE);
+	ctk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
 
 	g_string_free (s, TRUE);
 }
@@ -148,23 +148,23 @@ do_title_case (GtkTextBuffer *buffer,
 {
 	GString *s = g_string_new (NULL);
 
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
+	while (!ctk_text_iter_is_end (start) &&
+	       !ctk_text_iter_equal (start, end))
 	{
 		gunichar c, nc;
 
-		c = gtk_text_iter_get_char (start);
-		if (gtk_text_iter_starts_word (start))
+		c = ctk_text_iter_get_char (start);
+		if (ctk_text_iter_starts_word (start))
 			nc = g_unichar_totitle (c);
 		else
 			nc = g_unichar_tolower (c);
 		g_string_append_unichar (s, nc);
 
-		gtk_text_iter_forward_char (start);
+		ctk_text_iter_forward_char (start);
 	}
 
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
+	ctk_text_buffer_delete_selection (buffer, TRUE, TRUE);
+	ctk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
 
 	g_string_free (s, TRUE);
 }
@@ -181,13 +181,13 @@ change_case (LapizWindow      *window,
 	doc = lapiz_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
-	if (!gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+	if (!ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
 						   &start, &end))
 	{
 		return;
 	}
 
-	gtk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (doc));
+	ctk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (doc));
 
 	switch (choice)
 	{
@@ -207,7 +207,7 @@ change_case (LapizWindow      *window,
 		g_return_if_reached ();
 	}
 
-	gtk_text_buffer_end_user_action (GTK_TEXT_BUFFER (doc));
+	ctk_text_buffer_end_user_action (GTK_TEXT_BUFFER (doc));
 }
 
 static void
@@ -359,14 +359,14 @@ update_ui (LapizChangecasePluginPrivate *data)
 	{
 		GtkTextBuffer *buffer;
 
-		buffer = gtk_text_view_get_buffer (view);
-		sensitive = (gtk_text_view_get_editable (view) &&
-			     gtk_text_buffer_get_has_selection (buffer));
+		buffer = ctk_text_view_get_buffer (view);
+		sensitive = (ctk_text_view_get_editable (view) &&
+			     ctk_text_buffer_get_has_selection (buffer));
 	}
 
-	action = gtk_action_group_get_action (data->action_group,
+	action = ctk_action_group_get_action (data->action_group,
 					      "ChangeCase");
-	gtk_action_set_sensitive (action, sensitive);
+	ctk_action_set_sensitive (action, sensitive);
 }
 
 static void
@@ -384,17 +384,17 @@ lapiz_changecase_plugin_activate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	data->action_group = gtk_action_group_new ("LapizChangecasePluginActions");
-	gtk_action_group_set_translation_domain (data->action_group,
+	data->action_group = ctk_action_group_new ("LapizChangecasePluginActions");
+	ctk_action_group_set_translation_domain (data->action_group,
 						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (data->action_group,
+	ctk_action_group_add_actions (data->action_group,
 				      action_entries,
 				      G_N_ELEMENTS (action_entries),
 				      window);
 
-	gtk_ui_manager_insert_action_group (manager, data->action_group, -1);
+	ctk_ui_manager_insert_action_group (manager, data->action_group, -1);
 
-	data->ui_id = gtk_ui_manager_add_ui_from_string (manager,
+	data->ui_id = ctk_ui_manager_add_ui_from_string (manager,
 							 submenu,
 							 -1,
 							 &error);
@@ -421,8 +421,8 @@ lapiz_changecase_plugin_deactivate (PeasActivatable *activatable)
 
 	manager = lapiz_window_get_ui_manager (window);
 
-	gtk_ui_manager_remove_ui (manager, data->ui_id);
-	gtk_ui_manager_remove_action_group (manager, data->action_group);
+	ctk_ui_manager_remove_ui (manager, data->ui_id);
+	ctk_ui_manager_remove_action_group (manager, data->action_group);
 }
 
 static void

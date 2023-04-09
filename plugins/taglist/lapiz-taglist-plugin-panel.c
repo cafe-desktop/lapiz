@@ -40,7 +40,7 @@
 #include <lapiz/lapiz-utils.h>
 #include <lapiz/lapiz-debug.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 
@@ -179,9 +179,9 @@ insert_tag (LapizTaglistPluginPanel *panel,
 	view = lapiz_window_get_active_view (panel->priv->window);
 	g_return_if_fail (view != NULL);
 
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
-	gtk_text_buffer_begin_user_action (buffer);
+	ctk_text_buffer_begin_user_action (buffer);
 
 	/* always insert the begin tag at the beginning of the selection
 	 * and the end tag at the end, if there is no selection they will
@@ -190,29 +190,29 @@ insert_tag (LapizTaglistPluginPanel *panel,
 
 	if (tag->begin != NULL)
 	{
-		sel = gtk_text_buffer_get_selection_bounds (buffer,
+		sel = ctk_text_buffer_get_selection_bounds (buffer,
 						 	    &start,
 						 	    &end);
 
-		gtk_text_buffer_insert (buffer,
+		ctk_text_buffer_insert (buffer,
 					&start,
 					(gchar *)tag->begin,
 					-1);
 
 		/* get iterators again since they have been invalidated and move
 		 * the cursor after the selection */
-		gtk_text_buffer_get_selection_bounds (buffer,
+		ctk_text_buffer_get_selection_bounds (buffer,
 						      &start,
 						      &cursor);
 	}
 
 	if (tag->end != NULL)
 	{
-		sel = gtk_text_buffer_get_selection_bounds (buffer,
+		sel = ctk_text_buffer_get_selection_bounds (buffer,
 							    &start,
 							    &end);
 
-		gtk_text_buffer_insert (buffer,
+		ctk_text_buffer_insert (buffer,
 					&end,
 					(gchar *)tag->end,
 					-1);
@@ -223,10 +223,10 @@ insert_tag (LapizTaglistPluginPanel *panel,
 		{
 			gint offset;
 
-			offset = gtk_text_iter_get_offset (&end) -
+			offset = ctk_text_iter_get_offset (&end) -
 				 g_utf8_strlen ((gchar *)tag->end, -1);
 
-			gtk_text_buffer_get_iter_at_offset (buffer,
+			ctk_text_buffer_get_iter_at_offset (buffer,
 							    &end,
 							    offset);
 		}
@@ -234,12 +234,12 @@ insert_tag (LapizTaglistPluginPanel *panel,
 		cursor = end;
 	}
 
-	gtk_text_buffer_place_cursor (buffer, &cursor);
+	ctk_text_buffer_place_cursor (buffer, &cursor);
 
-	gtk_text_buffer_end_user_action (buffer);
+	ctk_text_buffer_end_user_action (buffer);
 
 	if (grab_focus)
-		gtk_widget_grab_focus (GTK_WIDGET (view));
+		ctk_widget_grab_focus (GTK_WIDGET (view));
 }
 
 static void
@@ -254,12 +254,12 @@ tag_list_row_activated_cb (GtkTreeView             *tag_list,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	model = gtk_tree_view_get_model (tag_list);
+	model = ctk_tree_view_get_model (tag_list);
 
-	gtk_tree_model_get_iter (model, &iter, path);
+	ctk_tree_model_get_iter (model, &iter, path);
 	g_return_if_fail (&iter != NULL);
 
-	gtk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
+	ctk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "Index: %d", index);
 
@@ -286,13 +286,13 @@ tag_list_key_press_event_cb (GtkTreeView             *tag_list,
 
 		lapiz_debug_message (DEBUG_PLUGINS, "RETURN Pressed");
 
-		model = gtk_tree_view_get_model (tag_list);
+		model = ctk_tree_view_get_model (tag_list);
 
-		selection = gtk_tree_view_get_selection (tag_list);
+		selection = ctk_tree_view_get_selection (tag_list);
 
-		if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+		if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 		{
-			gtk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
+			ctk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
 
 			lapiz_debug_message (DEBUG_PLUGINS, "Index: %d", index);
 
@@ -318,7 +318,7 @@ create_model (LapizTaglistPluginPanel *panel)
 	lapiz_debug (DEBUG_PLUGINS);
 
 	/* create list store */
-	store = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
+	store = ctk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
 	/* add data to the list store */
 	list = panel->priv->selected_tag_group->tags;
@@ -331,8 +331,8 @@ create_model (LapizTaglistPluginPanel *panel)
 
 		lapiz_debug_message (DEBUG_PLUGINS, "%d : %s", i, tag_name);
 
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		ctk_list_store_append (store, &iter);
+		ctk_list_store_set (store, &iter,
 				    COLUMN_TAG_NAME, tag_name,
 				    COLUMN_TAG_INDEX_IN_GROUP, i,
 				    -1);
@@ -342,7 +342,7 @@ create_model (LapizTaglistPluginPanel *panel)
 	}
 
 	lapiz_debug_message (DEBUG_PLUGINS, "Rows: %d ",
-			     gtk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL));
+			     ctk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL));
 
 	return GTK_TREE_MODEL (store);
 }
@@ -357,7 +357,7 @@ populate_tags_list (LapizTaglistPluginPanel *panel)
 	g_return_if_fail (taglist != NULL);
 
 	model = create_model (panel);
-	gtk_tree_view_set_model (GTK_TREE_VIEW (panel->priv->tags_list),
+	ctk_tree_view_set_model (GTK_TREE_VIEW (panel->priv->tags_list),
 			         model);
 	g_object_unref (model);
 }
@@ -397,11 +397,11 @@ populate_tag_groups_combo (LapizTaglistPluginPanel *panel)
 
 	for (l = taglist->tag_groups; l != NULL; l = g_list_next (l))
 	{
-		gtk_combo_box_text_append_text (combotext,
+		ctk_combo_box_text_append_text (combotext,
 					   (gchar *)((TagGroup*)l->data)->name);
 	}
 
-	gtk_combo_box_set_active (combo, 0);
+	ctk_combo_box_set_active (combo, 0);
 
 	return;
 }
@@ -414,7 +414,7 @@ selected_group_changed (GtkComboBox             *combo,
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	group_name = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combo));
+	group_name = ctk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combo));
 
 	if ((group_name == NULL) || (strlen (group_name) <= 0))
 	{
@@ -436,7 +436,7 @@ selected_group_changed (GtkComboBox             *combo,
 	}
 
 	/* Clean up preview */
-	gtk_label_set_text (GTK_LABEL (panel->priv->preview),
+	ctk_label_set_text (GTK_LABEL (panel->priv->preview),
 			    "");
 
 	g_free (group_name);
@@ -480,7 +480,7 @@ update_preview (LapizTaglistPluginPanel *panel,
 
 	str = create_preview_string (tag);
 
-	gtk_label_set_markup (GTK_LABEL (panel->priv->preview),
+	ctk_label_set_markup (GTK_LABEL (panel->priv->preview),
 			      str);
 
 	g_free (str);
@@ -497,13 +497,13 @@ tag_list_cursor_changed_cb (GtkTreeView *tag_list,
 
 	LapizTaglistPluginPanel *panel = (LapizTaglistPluginPanel *)data;
 
-	model = gtk_tree_view_get_model (tag_list);
+	model = ctk_tree_view_get_model (tag_list);
 
-	selection = gtk_tree_view_get_selection (tag_list);
+	selection = ctk_tree_view_get_selection (tag_list);
 
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 	{
-		gtk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
+		ctk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
 
 		lapiz_debug_message (DEBUG_PLUGINS, "Index: %d", index);
 
@@ -526,11 +526,11 @@ tags_list_query_tooltip_cb (GtkWidget               *widget,
 	gint index;
 	Tag *tag;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (widget));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (widget));
 
 	if (keyboard_tip)
 	{
-		gtk_tree_view_get_cursor (GTK_TREE_VIEW (widget),
+		ctk_tree_view_get_cursor (GTK_TREE_VIEW (widget),
 					  &path,
 					  NULL);
 
@@ -543,11 +543,11 @@ tags_list_query_tooltip_cb (GtkWidget               *widget,
 	{
 		gint bin_x, bin_y;
 
-		gtk_tree_view_convert_widget_to_bin_window_coords (GTK_TREE_VIEW (widget),
+		ctk_tree_view_convert_widget_to_bin_window_coords (GTK_TREE_VIEW (widget),
 								   x, y,
 								   &bin_x, &bin_y);
 
-		if (!gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
+		if (!ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
 						    bin_x, bin_y,
 						    &path,
 						    NULL, NULL, NULL))
@@ -556,8 +556,8 @@ tags_list_query_tooltip_cb (GtkWidget               *widget,
 		}
 	}
 
-	gtk_tree_model_get_iter (model, &iter, path);
-	gtk_tree_model_get (model, &iter,
+	ctk_tree_model_get_iter (model, &iter, path);
+	ctk_tree_model_get (model, &iter,
 			    COLUMN_TAG_INDEX_IN_GROUP, &index,
 			    -1);
 
@@ -567,14 +567,14 @@ tags_list_query_tooltip_cb (GtkWidget               *widget,
 		gchar *tip;
 
 		tip = create_preview_string (tag);
-		gtk_tooltip_set_markup (tooltip, tip);
+		ctk_tooltip_set_markup (tooltip, tip);
 		g_free (tip);
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 
 		return TRUE;
 	}
 
-	gtk_tree_path_free (path);
+	ctk_tree_path_free (path);
 
 	return FALSE;
 }
@@ -607,7 +607,7 @@ set_combo_tooltip (GtkWidget *widget,
 {
 	if (GTK_IS_BUTTON (widget))
 	{
-		gtk_widget_set_tooltip_text (widget,
+		ctk_widget_set_tooltip_text (widget,
 					     _("Select the group of tags you want to use"));
 	}
 }
@@ -616,7 +616,7 @@ static void
 realize_tag_groups_combo (GtkWidget *combo,
 			  gpointer   data)
 {
-	gtk_container_forall (GTK_CONTAINER (combo),
+	ctk_container_forall (GTK_CONTAINER (combo),
 			      set_combo_tooltip,
 			      NULL);
 }
@@ -627,36 +627,36 @@ add_preview_widget (LapizTaglistPluginPanel *panel)
 	GtkWidget *expander;
 	GtkWidget *frame;
 
-	expander = gtk_expander_new_with_mnemonic (_("_Preview"));
+	expander = ctk_expander_new_with_mnemonic (_("_Preview"));
 
-	panel->priv->preview = 	gtk_label_new (NULL);
-	gtk_widget_set_size_request (panel->priv->preview, -1, 80);
+	panel->priv->preview = 	ctk_label_new (NULL);
+	ctk_widget_set_size_request (panel->priv->preview, -1, 80);
 
-	gtk_label_set_line_wrap	(GTK_LABEL (panel->priv->preview), TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (panel->priv->preview), TRUE);
-	gtk_widget_set_halign (panel->priv->preview, GTK_ALIGN_START);
-	gtk_widget_set_valign (panel->priv->preview, GTK_ALIGN_START);
-	gtk_widget_set_margin_start (panel->priv->preview, 6);
-	gtk_widget_set_margin_end (panel->priv->preview, 6);
-	gtk_widget_set_margin_top (panel->priv->preview, 6);
-	gtk_widget_set_margin_bottom (panel->priv->preview, 6);
-	gtk_label_set_selectable (GTK_LABEL (panel->priv->preview), TRUE);
-	gtk_label_set_selectable (GTK_LABEL (panel->priv->preview), TRUE);
-	gtk_label_set_ellipsize  (GTK_LABEL (panel->priv->preview),
+	ctk_label_set_line_wrap	(GTK_LABEL (panel->priv->preview), TRUE);
+	ctk_label_set_use_markup (GTK_LABEL (panel->priv->preview), TRUE);
+	ctk_widget_set_halign (panel->priv->preview, GTK_ALIGN_START);
+	ctk_widget_set_valign (panel->priv->preview, GTK_ALIGN_START);
+	ctk_widget_set_margin_start (panel->priv->preview, 6);
+	ctk_widget_set_margin_end (panel->priv->preview, 6);
+	ctk_widget_set_margin_top (panel->priv->preview, 6);
+	ctk_widget_set_margin_bottom (panel->priv->preview, 6);
+	ctk_label_set_selectable (GTK_LABEL (panel->priv->preview), TRUE);
+	ctk_label_set_selectable (GTK_LABEL (panel->priv->preview), TRUE);
+	ctk_label_set_ellipsize  (GTK_LABEL (panel->priv->preview),
 				  PANGO_ELLIPSIZE_END);
 
-	frame = gtk_frame_new (0);
-	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
+	frame = ctk_frame_new (0);
+	ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
 
-	gtk_container_add (GTK_CONTAINER (frame),
+	ctk_container_add (GTK_CONTAINER (frame),
 			   panel->priv->preview);
 
-	gtk_container_add (GTK_CONTAINER (expander),
+	ctk_container_add (GTK_CONTAINER (expander),
 			   frame);
 
-	gtk_box_pack_start (GTK_BOX (panel), expander, FALSE, FALSE, 0);
+	ctk_box_pack_start (GTK_BOX (panel), expander, FALSE, FALSE, 0);
 
-	gtk_widget_show_all (expander);
+	ctk_widget_show_all (expander);
 }
 
 static void
@@ -672,12 +672,12 @@ lapiz_taglist_plugin_panel_init (LapizTaglistPluginPanel *panel)
 	panel->priv = lapiz_taglist_plugin_panel_get_instance_private (panel);
 	panel->priv->data_dir = NULL;
 
-	gtk_orientable_set_orientation (GTK_ORIENTABLE (panel),
+	ctk_orientable_set_orientation (GTK_ORIENTABLE (panel),
 									GTK_ORIENTATION_VERTICAL);
 
 	/* Build the window content */
-	panel->priv->tag_groups_combo = gtk_combo_box_text_new ();
-	gtk_box_pack_start (GTK_BOX (panel),
+	panel->priv->tag_groups_combo = ctk_combo_box_text_new ();
+	ctk_box_pack_start (GTK_BOX (panel),
 			    panel->priv->tag_groups_combo,
 			    FALSE,
 			    TRUE,
@@ -688,17 +688,17 @@ lapiz_taglist_plugin_panel_init (LapizTaglistPluginPanel *panel)
 			  G_CALLBACK (realize_tag_groups_combo),
 			  panel);
 
-	sw = gtk_scrolled_window_new (NULL, NULL);
+	sw = ctk_scrolled_window_new (NULL, NULL);
 
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+	ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
-	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
+	ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
                                              GTK_SHADOW_IN);
-	gtk_box_pack_start (GTK_BOX (panel), sw, TRUE, TRUE, 0);
+	ctk_box_pack_start (GTK_BOX (panel), sw, TRUE, TRUE, 0);
 
 	/* Create tree view */
-	panel->priv->tags_list = gtk_tree_view_new ();
+	panel->priv->tags_list = ctk_tree_view_new ();
 
 	lapiz_utils_set_atk_name_description (panel->priv->tag_groups_combo,
 					      _("Available Tag Lists"),
@@ -713,36 +713,36 @@ lapiz_taglist_plugin_panel_init (LapizTaglistPluginPanel *panel)
 				      panel->priv->tag_groups_combo,
 				      ATK_RELATION_CONTROLLED_BY);
 
-	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (panel->priv->tags_list), FALSE);
+	ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (panel->priv->tags_list), FALSE);
 
 	g_object_set (panel->priv->tags_list, "has-tooltip", TRUE, NULL);
 
 	/* Add the tags column */
-	cell = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (_("Tags"),
+	cell = ctk_cell_renderer_text_new ();
+	column = ctk_tree_view_column_new_with_attributes (_("Tags"),
 							   cell,
 							   "text",
 							   COLUMN_TAG_NAME,
 							   NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (panel->priv->tags_list),
+	ctk_tree_view_append_column (GTK_TREE_VIEW (panel->priv->tags_list),
 				     column);
 
-	gtk_tree_view_set_search_column (GTK_TREE_VIEW (panel->priv->tags_list),
+	ctk_tree_view_set_search_column (GTK_TREE_VIEW (panel->priv->tags_list),
 					 COLUMN_TAG_NAME);
 
-	gtk_container_add (GTK_CONTAINER (sw), panel->priv->tags_list);
+	ctk_container_add (GTK_CONTAINER (sw), panel->priv->tags_list);
 
 	focus_chain = g_list_prepend (focus_chain, panel->priv->tags_list);
 	focus_chain = g_list_prepend (focus_chain, panel->priv->tag_groups_combo);
 
-	gtk_container_set_focus_chain (GTK_CONTAINER (panel),
+	ctk_container_set_focus_chain (GTK_CONTAINER (panel),
 				       focus_chain);
 	g_list_free (focus_chain);
 
 	add_preview_widget (panel);
 
-	gtk_widget_show_all (GTK_WIDGET (sw));
-	gtk_widget_show (GTK_WIDGET (panel->priv->tag_groups_combo));
+	ctk_widget_show_all (GTK_WIDGET (sw));
+	ctk_widget_show (GTK_WIDGET (panel->priv->tag_groups_combo));
 
 	g_signal_connect_after (panel->priv->tags_list,
 				"row_activated",

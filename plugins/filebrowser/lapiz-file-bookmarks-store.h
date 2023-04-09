@@ -22,7 +22,7 @@
 #ifndef __LAPIZ_FILE_BOOKMARKS_STORE_H__
 #define __LAPIZ_FILE_BOOKMARKS_STORE_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 #define LAPIZ_TYPE_FILE_BOOKMARKS_STORE			(lapiz_file_bookmarks_store_get_type ())
@@ -59,9 +59,9 @@ enum
 	LAPIZ_FILE_BOOKMARKS_STORE_IS_VOLUME        	= 1 << 7,  /* A volume object */
 	LAPIZ_FILE_BOOKMARKS_STORE_IS_DRIVE        	= 1 << 8,  /* A drive object */
 	LAPIZ_FILE_BOOKMARKS_STORE_IS_ROOT         	= 1 << 9,  /* The root file system (file:///) */
-	LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK     	= 1 << 10,  /* A gtk bookmark */
-	LAPIZ_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK	= 1 << 11, /* A remote gtk bookmark */
-	LAPIZ_FILE_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK	= 1 << 12  /* A local gtk bookmark */
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK     	= 1 << 10,  /* A ctk bookmark */
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK	= 1 << 11, /* A remote ctk bookmark */
+	LAPIZ_FILE_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK	= 1 << 12  /* A local ctk bookmark */
 };
 
 struct _LapizFileBookmarksStore

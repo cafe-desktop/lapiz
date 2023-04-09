@@ -158,7 +158,7 @@ load_accels (void)
 	if (filename != NULL)
 	{
 		lapiz_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
-		gtk_accel_map_load (filename);
+		ctk_accel_map_load (filename);
 		g_free (filename);
 	}
 }
@@ -172,7 +172,7 @@ save_accels (void)
 	if (filename != NULL)
 	{
 		lapiz_debug_message (DEBUG_APP, "Saving keybindings in %s\n", filename);
-		gtk_accel_map_save (filename);
+		ctk_accel_map_save (filename);
 		g_free (filename);
 	}
 }
@@ -206,7 +206,7 @@ load_page_setup (LapizApp *app)
 
 	filename = get_page_setup_file ();
 
-	app->priv->page_setup = gtk_page_setup_new_from_file (filename,
+	app->priv->page_setup = ctk_page_setup_new_from_file (filename,
 							      &error);
 	if (error)
 	{
@@ -224,7 +224,7 @@ load_page_setup (LapizApp *app)
 
 	/* fall back to default settings */
 	if (app->priv->page_setup == NULL)
-		app->priv->page_setup = gtk_page_setup_new ();
+		app->priv->page_setup = ctk_page_setup_new ();
 }
 
 static void
@@ -238,7 +238,7 @@ save_page_setup (LapizApp *app)
 
 	filename = get_page_setup_file ();
 
-	gtk_page_setup_to_file (app->priv->page_setup,
+	ctk_page_setup_to_file (app->priv->page_setup,
 				filename,
 				&error);
 	if (error)
@@ -279,7 +279,7 @@ load_print_settings (LapizApp *app)
 
 	filename = get_print_settings_file ();
 
-	app->priv->print_settings = gtk_print_settings_new_from_file (filename,
+	app->priv->print_settings = ctk_print_settings_new_from_file (filename,
 								      &error);
 	if (error)
 	{
@@ -297,7 +297,7 @@ load_print_settings (LapizApp *app)
 
 	/* fall back to default settings */
 	if (app->priv->print_settings == NULL)
-		app->priv->print_settings = gtk_print_settings_new ();
+		app->priv->print_settings = ctk_print_settings_new ();
 }
 
 static void
@@ -311,7 +311,7 @@ save_print_settings (LapizApp *app)
 
 	filename = get_print_settings_file ();
 
-	gtk_print_settings_to_file (app->priv->print_settings,
+	ctk_print_settings_to_file (app->priv->print_settings,
 				    filename,
 				    &error);
 	if (error)
@@ -338,7 +338,7 @@ static void
 app_weak_notify (gpointer data,
 		 GObject *where_the_app_was)
 {
-	gtk_main_quit ();
+	ctk_main_quit ();
 }
 
 /**
@@ -492,14 +492,14 @@ lapiz_app_create_window_real (LapizApp    *app,
 
 	if (role != NULL)
 	{
-		gtk_window_set_role (GTK_WINDOW (window), role);
+		ctk_window_set_role (GTK_WINDOW (window), role);
 	}
 	else
 	{
 		gchar *newrole;
 
 		newrole = gen_role ();
-		gtk_window_set_role (GTK_WINDOW (window), newrole);
+		ctk_window_set_role (GTK_WINDOW (window), newrole);
 		g_free (newrole);
 	}
 
@@ -513,20 +513,20 @@ lapiz_app_create_window_real (LapizApp    *app,
 		if ((state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
 		{
 			lapiz_prefs_manager_get_default_window_size (&w, &h);
-			gtk_window_set_default_size (GTK_WINDOW (window), w, h);
-			gtk_window_maximize (GTK_WINDOW (window));
+			ctk_window_set_default_size (GTK_WINDOW (window), w, h);
+			ctk_window_maximize (GTK_WINDOW (window));
 		}
 		else
 		{
 			lapiz_prefs_manager_get_window_size (&w, &h);
-			gtk_window_set_default_size (GTK_WINDOW (window), w, h);
-			gtk_window_unmaximize (GTK_WINDOW (window));
+			ctk_window_set_default_size (GTK_WINDOW (window), w, h);
+			ctk_window_unmaximize (GTK_WINDOW (window));
 		}
 
 		if ((state & GDK_WINDOW_STATE_STICKY ) != 0)
-			gtk_window_stick (GTK_WINDOW (window));
+			ctk_window_stick (GTK_WINDOW (window));
 		else
-			gtk_window_unstick (GTK_WINDOW (window));
+			ctk_window_unstick (GTK_WINDOW (window));
 	}
 
 	g_signal_connect (window,
@@ -563,7 +563,7 @@ lapiz_app_create_window (LapizApp  *app,
 	window = lapiz_app_create_window_real (app, TRUE, NULL);
 
 	if (screen != NULL)
-		gtk_window_set_screen (GTK_WINDOW (window), screen);
+		ctk_window_set_screen (GTK_WINDOW (window), screen);
 
 	return window;
 }
@@ -618,8 +618,8 @@ lapiz_app_get_active_window (LapizApp *app)
 	 * enough that the second instance comes up before the
 	 * first one shows its window.
 	 */
-	if (!gtk_widget_get_realized (GTK_WIDGET (app->priv->active_window)))
-		gtk_widget_realize (GTK_WIDGET (app->priv->active_window));
+	if (!ctk_widget_get_realized (GTK_WIDGET (app->priv->active_window)))
+		ctk_widget_realize (GTK_WIDGET (app->priv->active_window));
 
 	return app->priv->active_window;
 }
@@ -643,7 +643,7 @@ is_in_viewport (LapizWindow  *window,
 		return FALSE;
 
 	/* Check for viewport match */
-	gdkwindow = gtk_widget_get_window (GTK_WIDGET (window));
+	gdkwindow = ctk_widget_get_window (GTK_WIDGET (window));
 	gdk_window_get_position (gdkwindow, &x, &y);
 
 		width = gdk_window_get_width(gdkwindow);
@@ -833,7 +833,7 @@ _lapiz_app_get_default_page_setup (LapizApp *app)
 	if (app->priv->page_setup == NULL)
 		load_page_setup (app);
 
-	return gtk_page_setup_copy (app->priv->page_setup);
+	return ctk_page_setup_copy (app->priv->page_setup);
 }
 
 void
@@ -858,7 +858,7 @@ _lapiz_app_get_default_print_settings (LapizApp *app)
 	if (app->priv->print_settings == NULL)
 		load_print_settings (app);
 
-	return gtk_print_settings_copy (app->priv->print_settings);
+	return ctk_print_settings_copy (app->priv->print_settings);
 }
 
 void

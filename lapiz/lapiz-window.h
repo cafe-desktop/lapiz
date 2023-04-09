@@ -32,7 +32,7 @@
 #define __LAPIZ_WINDOW_H__
 
 #include <gio/gio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <lapiz/lapiz-tab.h>
 #include <lapiz/lapiz-panel.h>

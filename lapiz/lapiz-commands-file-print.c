@@ -35,7 +35,7 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-commands.h"
 #include "lapiz-window.h"

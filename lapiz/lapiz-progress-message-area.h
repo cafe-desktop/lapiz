@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_PROGRESS_MESSAGE_AREA_H__
 #define __LAPIZ_PROGRESS_MESSAGE_AREA_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

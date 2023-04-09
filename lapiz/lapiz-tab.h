@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_TAB_H__
 #define __LAPIZ_TAB_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <lapiz/lapiz-view.h>
 #include <lapiz/lapiz-document.h>

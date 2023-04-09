@@ -30,9 +30,9 @@
 #ifndef __LAPIZ_PREFS_MANAGER_H__
 #define __LAPIZ_PREFS_MANAGER_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib.h>
-#include <gtksourceview/gtksource.h>
+#include <ctksourceview/ctksource.h>
 #include "lapiz-app.h"
 
 #define LAPIZ_SCHEMA	"org.cafe.lapiz"

@@ -34,7 +34,7 @@
 #include <config.h>
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "lapiz-commands.h"
 #include "lapiz-debug.h"
@@ -50,12 +50,12 @@ _lapiz_cmd_view_show_toolbar (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	visible = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
 	if (visible)
-		gtk_widget_show (window->priv->toolbar);
+		ctk_widget_show (window->priv->toolbar);
 	else
-		gtk_widget_hide (window->priv->toolbar);
+		ctk_widget_hide (window->priv->toolbar);
 }
 
 void
@@ -66,12 +66,12 @@ _lapiz_cmd_view_show_statusbar (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	visible = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
 	if (visible)
-		gtk_widget_show (window->priv->statusbar);
+		ctk_widget_show (window->priv->statusbar);
 	else
-		gtk_widget_hide (window->priv->statusbar);
+		ctk_widget_hide (window->priv->statusbar);
 }
 
 void
@@ -83,18 +83,18 @@ _lapiz_cmd_view_show_side_pane (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	visible = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
 	panel = lapiz_window_get_side_panel (window);
 
 	if (visible)
 	{
-		gtk_widget_show (GTK_WIDGET (panel));
-		gtk_widget_grab_focus (GTK_WIDGET (panel));
+		ctk_widget_show (GTK_WIDGET (panel));
+		ctk_widget_grab_focus (GTK_WIDGET (panel));
 	}
 	else
 	{
-		gtk_widget_hide (GTK_WIDGET (panel));
+		ctk_widget_hide (GTK_WIDGET (panel));
 	}
 }
 
@@ -107,18 +107,18 @@ _lapiz_cmd_view_show_bottom_pane (GtkAction   *action,
 
 	lapiz_debug (DEBUG_COMMANDS);
 
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	visible = ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
 	panel = lapiz_window_get_bottom_panel (window);
 
 	if (visible)
 	{
-		gtk_widget_show (GTK_WIDGET (panel));
-		gtk_widget_grab_focus (GTK_WIDGET (panel));
+		ctk_widget_show (GTK_WIDGET (panel));
+		ctk_widget_grab_focus (GTK_WIDGET (panel));
 	}
 	else
 	{
-		gtk_widget_hide (GTK_WIDGET (panel));
+		ctk_widget_hide (GTK_WIDGET (panel));
 	}
 }
 
@@ -140,12 +140,12 @@ _lapiz_cmd_view_leave_fullscreen_mode (GtkAction *action,
 {
 	GtkAction *view_action;
 
-	view_action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+	view_action = ctk_action_group_get_action (window->priv->always_sensitive_action_group,
 						   "ViewFullscreen");
 	g_signal_handlers_block_by_func
 		(view_action, G_CALLBACK (_lapiz_cmd_view_toggle_fullscreen_mode),
 		 window);
-	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (view_action),
+	ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (view_action),
 				      FALSE);
 	_lapiz_window_unfullscreen (window);
 	g_signal_handlers_unblock_by_func

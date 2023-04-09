@@ -809,7 +809,7 @@ lapiz_prefs_manager_editor_font_changed (GSettings *settings,
 	{
 		/* Note: we use def=FALSE to avoid LapizView to query GSettings */
 		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE,  font);
-		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
+		ctk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 
 		l = l->next;
 	}
@@ -848,7 +848,7 @@ lapiz_prefs_manager_system_font_changed (GSettings *settings,
 		/* Note: we use def=FALSE to avoid LapizView to query GSettings */
 		lapiz_view_set_font (LAPIZ_VIEW (l->data), FALSE, font);
 
-		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
+		ctk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 		l = l->next;
 	}
 
@@ -878,7 +878,7 @@ lapiz_prefs_manager_tabs_size_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data),
 						       tab_width);
 
 			l = l->next;
@@ -899,7 +899,7 @@ lapiz_prefs_manager_tabs_size_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_insert_spaces_instead_of_tabs (
+			ctk_source_view_set_insert_spaces_instead_of_tabs (
 					GTK_SOURCE_VIEW (l->data),
 					enable);
 
@@ -950,7 +950,7 @@ lapiz_prefs_manager_wrap_mode_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (l->data),
+			ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (l->data),
 						     wrap_mode);
 
 			l = l->next;
@@ -980,7 +980,7 @@ lapiz_prefs_manager_line_numbers_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (l->data),
 							       dln);
 
 			l = l->next;
@@ -1010,7 +1010,7 @@ lapiz_prefs_manager_hl_current_line_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_highlight_current_line (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_highlight_current_line (GTK_SOURCE_VIEW (l->data),
 								    hl);
 
 			l = l->next;
@@ -1040,7 +1040,7 @@ lapiz_prefs_manager_bracket_matching_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (l->data),
 									   enable);
 
 			l = l->next;
@@ -1070,7 +1070,7 @@ lapiz_prefs_manager_auto_indent_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_auto_indent (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_auto_indent (GTK_SOURCE_VIEW (l->data),
 							 enable);
 
 			l = l->next;
@@ -1102,7 +1102,7 @@ lapiz_prefs_manager_undo_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (l->data),
 							       ul);
 
 			l = l->next;
@@ -1134,7 +1134,7 @@ lapiz_prefs_manager_right_margin_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_right_margin_position (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_right_margin_position (GTK_SOURCE_VIEW (l->data),
 								   pos);
 
 			l = l->next;
@@ -1155,7 +1155,7 @@ lapiz_prefs_manager_right_margin_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_show_right_margin (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_show_right_margin (GTK_SOURCE_VIEW (l->data),
 							       display);
 
 			l = l->next;
@@ -1204,7 +1204,7 @@ lapiz_prefs_manager_smart_home_end_changed (GSettings *settings,
 
 		while (l != NULL)
 		{
-			gtk_source_view_set_smart_home_end (GTK_SOURCE_VIEW (l->data),
+			ctk_source_view_set_smart_home_end (GTK_SOURCE_VIEW (l->data),
 							    smart_he);
 
 			l = l->next;
@@ -1237,7 +1237,7 @@ lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 		{
 			g_return_if_fail (GTK_SOURCE_IS_BUFFER (l->data));
 
-			gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (l->data),
 								enable);
 
 			l = l->next;
@@ -1254,10 +1254,10 @@ lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 
 			ui = lapiz_window_get_ui_manager (LAPIZ_WINDOW (windows->data));
 
-			a = gtk_ui_manager_get_action (ui,
+			a = ctk_ui_manager_get_action (ui,
 						       "/MenuBar/ViewMenu/ViewHighlightModeMenu");
 
-			gtk_action_set_sensitive (a, enable);
+			ctk_action_set_sensitive (a, enable);
 
 			windows = g_list_next (windows);
 		}
@@ -1319,7 +1319,7 @@ lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 		g_free (old_scheme);
 		old_scheme = scheme;
 
-		style = gtk_source_style_scheme_manager_get_scheme (
+		style = ctk_source_style_scheme_manager_get_scheme (
 				lapiz_get_style_scheme_manager (),
 				scheme);
 
@@ -1327,7 +1327,7 @@ lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 		{
 			g_warning ("Default style scheme '%s' not found, falling back to 'classic'", scheme);
 
-			style = gtk_source_style_scheme_manager_get_scheme (
+			style = ctk_source_style_scheme_manager_get_scheme (
 				lapiz_get_style_scheme_manager (),
 				"classic");
 
@@ -1343,7 +1343,7 @@ lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 		{
 			g_return_if_fail (GTK_SOURCE_IS_BUFFER (l->data));
 
-			gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (l->data),
+			ctk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (l->data),
 							    style);
 		}
 
@@ -1374,7 +1374,7 @@ lapiz_prefs_manager_max_recents_changed (GSettings *settings,
 		{
 			LapizWindow *w = windows->data;
 
-			gtk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (w->priv->toolbar_recent_menu),
+			ctk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (w->priv->toolbar_recent_menu),
 						      max);
 
 			windows = g_list_next (windows);
@@ -1520,12 +1520,12 @@ lapiz_prefs_manager_draw_generic (GSettings               *settings,
 	{
 		GtkSourceDrawSpacesFlags value;
 
-		value = gtk_source_view_get_draw_spaces (GTK_SOURCE_VIEW (l->data));
+		value = ctk_source_view_get_draw_spaces (GTK_SOURCE_VIEW (l->data));
 		if (level > 0)
 			value |= type;
 		else
 			value &= ~type;
-		gtk_source_view_set_draw_spaces (GTK_SOURCE_VIEW (l->data),
+		ctk_source_view_set_draw_spaces (GTK_SOURCE_VIEW (l->data),
 		                                 value);
 		l = l->next;
 	}

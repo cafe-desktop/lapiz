@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_PRINT_PREVIEW_H__
 #define __LAPIZ_PRINT_PREVIEW_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 
@@ -64,7 +64,7 @@ struct _LapizPrintPreviewClass
 GType		 lapiz_print_preview_get_type	(void) G_GNUC_CONST;
 
 GtkWidget	*lapiz_print_preview_new	(GtkPrintOperation		*op,
-						 GtkPrintOperationPreview	*gtk_preview,
+						 GtkPrintOperationPreview	*ctk_preview,
 						 GtkPrintContext		*context);
 
 G_END_DECLS

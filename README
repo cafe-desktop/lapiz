@@ -89,7 +89,7 @@ In the bug report please include:
 
    - What operating system and version
    - What version of X
-   - What version of the gtk+, glib and cafe libraries
+   - What version of the ctk+, glib and cafe libraries
    - For Linux, what version of the C library
 
   And anything else you think is relevant.

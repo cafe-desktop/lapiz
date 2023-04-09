@@ -34,7 +34,7 @@
 
 #include <string.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
 #include "lapiz-search-dialog.h"
@@ -129,9 +129,9 @@ lapiz_search_dialog_present_with_time (LapizSearchDialog *dialog,
 {
 	g_return_if_fail (LAPIZ_SEARCH_DIALOG (dialog));
 
-	gtk_window_present_with_time (GTK_WINDOW (dialog), timestamp);
+	ctk_window_present_with_time (GTK_WINDOW (dialog), timestamp);
 
-	gtk_widget_grab_focus (dialog->priv->search_text_entry);
+	ctk_widget_grab_focus (dialog->priv->search_text_entry);
 }
 
 static gboolean
@@ -169,13 +169,13 @@ lapiz_search_dialog_class_init (LapizSearchDialogClass *klass)
 					 		       FALSE,
 					 		       G_PARAM_READWRITE));
 
-	binding_set = gtk_binding_set_by_class (klass);
+	binding_set = ctk_binding_set_by_class (klass);
 
 	/* Note: we cannot use the keyval/modifier associated with the
 	 * GTK_STOCK_FIND_AND_REPLACE stock item since CAFE HIG suggests Ctrl+h
-	 * for Replace while gtk+ uses Ctrl+r */
-	gtk_binding_entry_add_signal (binding_set, GDK_KEY_h, GDK_CONTROL_MASK, "show_replace", 0);
-	gtk_binding_entry_add_signal (binding_set, GDK_KEY_H, GDK_CONTROL_MASK, "show_replace", 0);
+	 * for Replace while ctk+ uses Ctrl+r */
+	ctk_binding_entry_add_signal (binding_set, GDK_KEY_h, GDK_CONTROL_MASK, "show_replace", 0);
+	ctk_binding_entry_add_signal (binding_set, GDK_KEY_H, GDK_CONTROL_MASK, "show_replace", 0);
 }
 
 static void
@@ -207,7 +207,7 @@ insert_text_handler (GtkEditable *editable,
 
 	g_signal_stop_emission_by_name (editable, "insert_text");
 
-	gtk_editable_insert_text (editable, escaped_text, new_len, position);
+	ctk_editable_insert_text (editable, escaped_text, new_len, position);
 
 	insert_text = FALSE;
 
@@ -220,23 +220,23 @@ search_text_entry_changed (GtkEditable       *editable,
 {
 	const gchar *search_string;
 
-	search_string = gtk_entry_get_text (GTK_ENTRY (editable));
+	search_string = ctk_entry_get_text (GTK_ENTRY (editable));
 	g_return_if_fail (search_string != NULL);
 
 	if (*search_string != '\0')
 	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+		ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			LAPIZ_SEARCH_DIALOG_FIND_RESPONSE, TRUE);
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+		ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE, TRUE);
 	}
 	else
 	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+		ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			LAPIZ_SEARCH_DIALOG_FIND_RESPONSE, FALSE);
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+		ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE, FALSE);
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+		ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE, FALSE);
 	}
 }
@@ -252,7 +252,7 @@ response_handler (LapizSearchDialog *dialog,
 	{
 		case LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE:
 		case LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE:
-			str = gtk_entry_get_text (GTK_ENTRY (dialog->priv->replace_text_entry));
+			str = ctk_entry_get_text (GTK_ENTRY (dialog->priv->replace_text_entry));
 			if (*str != '\0')
 			{
 				gchar *text;
@@ -266,7 +266,7 @@ response_handler (LapizSearchDialog *dialog,
 			}
 			/* fall through, so that we also save the find entry */
 		case LAPIZ_SEARCH_DIALOG_FIND_RESPONSE:
-			str = gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
+			str = ctk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
 			if (*str != '\0')
 			{
 				gchar *text;
@@ -287,24 +287,24 @@ show_replace_widgets (LapizSearchDialog *dlg,
 {
 	if (show_replace)
 	{
-		gtk_widget_show (dlg->priv->replace_label);
-		gtk_widget_show (dlg->priv->replace_entry);
-		gtk_widget_show (dlg->priv->replace_all_button);
-		gtk_widget_show (dlg->priv->replace_button);
+		ctk_widget_show (dlg->priv->replace_label);
+		ctk_widget_show (dlg->priv->replace_entry);
+		ctk_widget_show (dlg->priv->replace_all_button);
+		ctk_widget_show (dlg->priv->replace_button);
 
-		gtk_window_set_title (GTK_WINDOW (dlg), _("Replace"));
+		ctk_window_set_title (GTK_WINDOW (dlg), _("Replace"));
 	}
 	else
 	{
-		gtk_widget_hide (dlg->priv->replace_label);
-		gtk_widget_hide (dlg->priv->replace_entry);
-		gtk_widget_hide (dlg->priv->replace_all_button);
-		gtk_widget_hide (dlg->priv->replace_button);
+		ctk_widget_hide (dlg->priv->replace_label);
+		ctk_widget_hide (dlg->priv->replace_entry);
+		ctk_widget_hide (dlg->priv->replace_all_button);
+		ctk_widget_hide (dlg->priv->replace_button);
 
-		gtk_window_set_title (GTK_WINDOW (dlg), _("Find"));
+		ctk_window_set_title (GTK_WINDOW (dlg), _("Find"));
 	}
 
-	gtk_widget_show (dlg->priv->find_button);
+	ctk_widget_show (dlg->priv->find_button);
 }
 
 static void
@@ -321,14 +321,14 @@ lapiz_search_dialog_init (LapizSearchDialog *dlg)
 
 	dlg->priv = lapiz_search_dialog_get_instance_private (dlg);
 
-	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
-	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
+	ctk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
+	ctk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
 
 	lapiz_dialog_add_button (GTK_DIALOG (dlg), _("_Close"), "window-close", GTK_RESPONSE_CANCEL);
 
 	/* HIG defaults */
-	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_container_set_border_width (GTK_CONTAINER (dlg), 5);
+	ctk_box_set_spacing (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			     2); /* 2 * 5 + 2 = 12 */
 
 	file = lapiz_dirs_get_ui_file ("lapiz-search-dialog.ui");
@@ -351,12 +351,12 @@ lapiz_search_dialog_init (LapizSearchDialog *dlg)
 
 	if (!ret)
 	{
-		gtk_widget_show (error_widget);
+		ctk_widget_show (error_widget);
 
-		gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+		ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
 		                    error_widget,
 		                    TRUE, TRUE, 0);
-		gtk_container_set_border_width (GTK_CONTAINER (error_widget),
+		ctk_container_set_border_width (GTK_CONTAINER (error_widget),
 						5);
 
 		dlg->priv->ui_error = TRUE;
@@ -366,18 +366,18 @@ lapiz_search_dialog_init (LapizSearchDialog *dlg)
 
 	dlg->priv->search_entry = lapiz_history_entry_new ("history-search-for",
 							   TRUE);
-	gtk_widget_set_size_request (dlg->priv->search_entry, 300, -1);
+	ctk_widget_set_size_request (dlg->priv->search_entry, 300, -1);
 	lapiz_history_entry_set_escape_func
 			(LAPIZ_HISTORY_ENTRY (dlg->priv->search_entry),
 			 (LapizHistoryEntryEscapeFunc) lapiz_utils_escape_search_text);
 
-	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->search_entry), TRUE);
+	ctk_widget_set_hexpand (GTK_WIDGET (dlg->priv->search_entry), TRUE);
 	dlg->priv->search_text_entry = lapiz_history_entry_get_entry
 			(LAPIZ_HISTORY_ENTRY (dlg->priv->search_entry));
-	gtk_entry_set_activates_default (GTK_ENTRY (dlg->priv->search_text_entry),
+	ctk_entry_set_activates_default (GTK_ENTRY (dlg->priv->search_text_entry),
 					 TRUE);
-	gtk_widget_show (dlg->priv->search_entry);
-	gtk_grid_attach_next_to (GTK_GRID (dlg->priv->grid),
+	ctk_widget_show (dlg->priv->search_entry);
+	ctk_grid_attach_next_to (GTK_GRID (dlg->priv->grid),
 				 dlg->priv->search_entry,
 				 dlg->priv->search_label,
 				 GTK_POS_RIGHT, 1, 1);
@@ -388,60 +388,60 @@ lapiz_search_dialog_init (LapizSearchDialog *dlg)
 			(LAPIZ_HISTORY_ENTRY (dlg->priv->replace_entry),
 			 (LapizHistoryEntryEscapeFunc) lapiz_utils_escape_search_text);
 
-	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->replace_entry), TRUE);
+	ctk_widget_set_hexpand (GTK_WIDGET (dlg->priv->replace_entry), TRUE);
 	dlg->priv->replace_text_entry = lapiz_history_entry_get_entry
 			(LAPIZ_HISTORY_ENTRY (dlg->priv->replace_entry));
-	gtk_entry_set_activates_default (GTK_ENTRY (dlg->priv->replace_text_entry),
+	ctk_entry_set_activates_default (GTK_ENTRY (dlg->priv->replace_text_entry),
 					 TRUE);
-	gtk_widget_show (dlg->priv->replace_entry);
-	gtk_grid_attach_next_to (GTK_GRID (dlg->priv->grid),
+	ctk_widget_show (dlg->priv->replace_entry);
+	ctk_grid_attach_next_to (GTK_GRID (dlg->priv->grid),
 				 dlg->priv->replace_entry,
 				 dlg->priv->replace_label,
 				 GTK_POS_RIGHT, 1, 1);
 
-	gtk_label_set_mnemonic_widget (GTK_LABEL (dlg->priv->search_label),
+	ctk_label_set_mnemonic_widget (GTK_LABEL (dlg->priv->search_label),
 				       dlg->priv->search_entry);
-	gtk_label_set_mnemonic_widget (GTK_LABEL (dlg->priv->replace_label),
+	ctk_label_set_mnemonic_widget (GTK_LABEL (dlg->priv->replace_label),
 				       dlg->priv->replace_entry);
 
-	dlg->priv->find_button = gtk_button_new_with_mnemonic (_("_Find"));
-	gtk_button_set_image (GTK_BUTTON (dlg->priv->find_button), gtk_image_new_from_icon_name ("edit-find", GTK_ICON_SIZE_BUTTON));
+	dlg->priv->find_button = ctk_button_new_with_mnemonic (_("_Find"));
+	ctk_button_set_image (GTK_BUTTON (dlg->priv->find_button), ctk_image_new_from_icon_name ("edit-find", GTK_ICON_SIZE_BUTTON));
 
-	dlg->priv->replace_all_button = gtk_button_new_with_mnemonic (_("Replace _All"));
-	dlg->priv->replace_button = lapiz_gtk_button_new_with_icon (_("_Replace"),
+	dlg->priv->replace_all_button = ctk_button_new_with_mnemonic (_("Replace _All"));
+	dlg->priv->replace_button = lapiz_ctk_button_new_with_icon (_("_Replace"),
 								    "edit-find-replace");
 
-	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	ctk_dialog_add_action_widget (GTK_DIALOG (dlg),
 				      dlg->priv->replace_all_button,
 				      LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE);
-	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	ctk_dialog_add_action_widget (GTK_DIALOG (dlg),
 				      dlg->priv->replace_button,
 				      LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE);
-	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	ctk_dialog_add_action_widget (GTK_DIALOG (dlg),
 				      dlg->priv->find_button,
 				      LAPIZ_SEARCH_DIALOG_FIND_RESPONSE);
 	g_object_set (G_OBJECT (dlg->priv->find_button),
 		      "can-default", TRUE,
 		      NULL);
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dlg),
+	ctk_dialog_set_default_response (GTK_DIALOG (dlg),
 					 LAPIZ_SEARCH_DIALOG_FIND_RESPONSE);
 
 	/* insensitive by default */
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
+	ctk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
 					   LAPIZ_SEARCH_DIALOG_FIND_RESPONSE,
 					   FALSE);
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
+	ctk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
 					   LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE,
 					   FALSE);
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
+	ctk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
 					   LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE,
 					   FALSE);
 
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	ctk_box_pack_start (GTK_BOX (ctk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			    content, FALSE, FALSE, 0);
 	g_object_unref (content);
-	gtk_container_set_border_width (GTK_CONTAINER (content), 5);
+	ctk_container_set_border_width (GTK_CONTAINER (content), 5);
 
 	g_signal_connect (dlg->priv->search_text_entry,
 			  "insert_text",
@@ -474,10 +474,10 @@ lapiz_search_dialog_new (GtkWindow *parent,
 
 	if (parent != NULL)
 	{
-		gtk_window_set_transient_for (GTK_WINDOW (dlg),
+		ctk_window_set_transient_for (GTK_WINDOW (dlg),
 					      parent);
 
-		gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg),
+		ctk_window_set_destroy_with_parent (GTK_WINDOW (dlg),
 						    TRUE);
 	}
 
@@ -514,14 +514,14 @@ lapiz_search_dialog_set_search_text (LapizSearchDialog *dialog,
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 	g_return_if_fail (text != NULL);
 
-	gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
+	ctk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
 			    text);
 
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+	ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   LAPIZ_SEARCH_DIALOG_FIND_RESPONSE,
 					   (*text != '\0'));
 
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+	ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   LAPIZ_SEARCH_DIALOG_REPLACE_ALL_RESPONSE,
 					   (*text != '\0'));
 }
@@ -534,7 +534,7 @@ lapiz_search_dialog_get_search_text (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), NULL);
 
-	return gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
+	return ctk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
 }
 
 void
@@ -544,7 +544,7 @@ lapiz_search_dialog_set_replace_text (LapizSearchDialog *dialog,
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 	g_return_if_fail (text != NULL);
 
-	gtk_entry_set_text (GTK_ENTRY (dialog->priv->replace_text_entry),
+	ctk_entry_set_text (GTK_ENTRY (dialog->priv->replace_text_entry),
 			    text);
 }
 
@@ -553,7 +553,7 @@ lapiz_search_dialog_get_replace_text (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), NULL);
 
-	return gtk_entry_get_text (GTK_ENTRY (dialog->priv->replace_text_entry));
+	return ctk_entry_get_text (GTK_ENTRY (dialog->priv->replace_text_entry));
 }
 
 void
@@ -562,7 +562,7 @@ lapiz_search_dialog_set_match_case (LapizSearchDialog *dialog,
 {
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton),
 				      match_case);
 }
 
@@ -571,7 +571,7 @@ lapiz_search_dialog_get_match_case (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), FALSE);
 
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton));
+	return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton));
 }
 
 void
@@ -580,7 +580,7 @@ lapiz_search_dialog_set_match_regex (LapizSearchDialog *dialog,
 {
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->match_regex_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->match_regex_checkbutton),
                       match_case);
 }
 
@@ -589,7 +589,7 @@ lapiz_search_dialog_get_match_regex (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), FALSE);
 
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->match_regex_checkbutton));
+	return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->match_regex_checkbutton));
 }
 
 void
@@ -598,7 +598,7 @@ lapiz_search_dialog_set_entire_word (LapizSearchDialog *dialog,
 {
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton),
 				      entire_word);
 }
 
@@ -607,7 +607,7 @@ lapiz_search_dialog_get_entire_word (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), FALSE);
 
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton));
+	return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton));
 }
 
 void
@@ -616,7 +616,7 @@ lapiz_search_dialog_set_backwards (LapizSearchDialog *dialog,
 {
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->backwards_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->backwards_checkbutton),
 				      backwards);
 }
 
@@ -625,7 +625,7 @@ lapiz_search_dialog_get_backwards (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), FALSE);
 
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->backwards_checkbutton));
+	return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->backwards_checkbutton));
 }
 
 void
@@ -634,7 +634,7 @@ lapiz_search_dialog_set_wrap_around (LapizSearchDialog *dialog,
 {
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton),
 				      wrap_around);
 }
 
@@ -643,7 +643,7 @@ lapiz_search_dialog_get_wrap_around (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), FALSE);
 
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton));
+	return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton));
 }
 
 void
@@ -652,7 +652,7 @@ lapiz_search_dialog_set_parse_escapes (LapizSearchDialog *dialog,
 {
 	g_return_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog));
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->parse_escapes_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->parse_escapes_checkbutton),
 				      parse_escapes);
 }
 
@@ -661,5 +661,5 @@ lapiz_search_dialog_get_parse_escapes (LapizSearchDialog *dialog)
 {
 	g_return_val_if_fail (LAPIZ_IS_SEARCH_DIALOG (dialog), FALSE);
 
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->parse_escapes_checkbutton));
+	return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->parse_escapes_checkbutton));
 }

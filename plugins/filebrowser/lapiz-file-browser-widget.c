@@ -28,7 +28,7 @@
 #include <string.h>
 #include <glib.h>
 #include <glib/gi18n-lib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
 #include <lapiz/lapiz-utils.h>
@@ -294,14 +294,14 @@ combo_find_by_id (LapizFileBrowserWidget * obj, guint id,
 	if (iter == NULL)
 		return FALSE;
 
-	if (gtk_tree_model_get_iter_first (model, iter)) {
+	if (ctk_tree_model_get_iter_first (model, iter)) {
 		do {
-			gtk_tree_model_get (model, iter, COLUMN_ID,
+			ctk_tree_model_get (model, iter, COLUMN_ID,
 					    &checkid, -1);
 
 			if (checkid == id)
 				return TRUE;
-		} while (gtk_tree_model_iter_next (model, iter));
+		} while (ctk_tree_model_iter_next (model, iter));
 	}
 
 	return FALSE;
@@ -313,7 +313,7 @@ remove_path_items (LapizFileBrowserWidget * obj)
 	GtkTreeIter iter;
 
 	while (combo_find_by_id (obj, PATH_ID, &iter))
-		gtk_tree_store_remove (obj->priv->combo_model, &iter);
+		ctk_tree_store_remove (obj->priv->combo_model, &iter);
 }
 
 static void
@@ -514,7 +514,7 @@ separator_func (GtkTreeModel * model, GtkTreeIter * iter, gpointer data)
 {
 	guint id;
 
-	gtk_tree_model_get (model, iter, COLUMN_ID, &id, -1);
+	ctk_tree_model_get (model, iter, COLUMN_ID, &id, -1);
 
 	return (id == SEPARATOR_ID);
 }
@@ -563,10 +563,10 @@ insert_path_item (LapizFileBrowserWidget * obj,
 		icon = lapiz_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
 	}
 
-	gtk_tree_store_insert_after (obj->priv->combo_model, iter, NULL,
+	ctk_tree_store_insert_after (obj->priv->combo_model, iter, NULL,
 				     after);
 
-	gtk_tree_store_set (obj->priv->combo_model,
+	ctk_tree_store_set (obj->priv->combo_model,
 	                    iter,
 	                    COLUMN_INDENT, indent,
 	                    COLUMN_ICON, icon,
@@ -586,8 +586,8 @@ insert_separator_item (LapizFileBrowserWidget * obj)
 {
 	GtkTreeIter iter;
 
-	gtk_tree_store_insert (obj->priv->combo_model, &iter, NULL, 1);
-	gtk_tree_store_set (obj->priv->combo_model, &iter,
+	ctk_tree_store_insert (obj->priv->combo_model, &iter, NULL, 1);
+	ctk_tree_store_set (obj->priv->combo_model, &iter,
 			    COLUMN_ICON, NULL,
 			    COLUMN_NAME, NULL,
 			    COLUMN_ID, SEPARATOR_ID, -1);
@@ -599,7 +599,7 @@ combo_set_active_by_id (LapizFileBrowserWidget * obj, guint id)
 	GtkTreeIter iter;
 
 	if (combo_find_by_id (obj, id, &iter))
-		gtk_combo_box_set_active_iter (GTK_COMBO_BOX
+		ctk_combo_box_set_active_iter (GTK_COMBO_BOX
 					       (obj->priv->combo), &iter);
 }
 
@@ -655,7 +655,7 @@ insert_location_path (LapizFileBrowserWidget * obj)
 			g_signal_handlers_block_by_func (obj->priv->combo,
 							 on_combo_changed,
 							 obj);
-			gtk_combo_box_set_active_iter (GTK_COMBO_BOX
+			ctk_combo_box_set_active_iter (GTK_COMBO_BOX
 						       (obj->priv->combo),
 						       &iter);
 			g_signal_handlers_unblock_by_func (obj->priv->
@@ -694,7 +694,7 @@ check_current_item (LapizFileBrowserWidget * obj, gboolean show_path)
 
 		insert_location_path (obj);
 	} else if (has_sep)
-		gtk_tree_store_remove (obj->priv->combo_model, &separator);
+		ctk_tree_store_remove (obj->priv->combo_model, &separator);
 }
 
 static void
@@ -706,16 +706,16 @@ fill_combo_model (LapizFileBrowserWidget * obj)
 
 	icon = lapiz_file_browser_utils_pixbuf_from_theme ("go-home", GTK_ICON_SIZE_MENU);
 
-	gtk_tree_store_append (store, &iter, NULL);
-	gtk_tree_store_set (store, &iter,
+	ctk_tree_store_append (store, &iter, NULL);
+	ctk_tree_store_set (store, &iter,
 			    COLUMN_ICON, icon,
 			    COLUMN_NAME, _("Bookmarks"),
 			    COLUMN_ID, BOOKMARKS_ID, -1);
 	g_object_unref (icon);
 
-	gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (obj->priv->combo),
+	ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (obj->priv->combo),
 					      separator_func, obj, NULL);
-	gtk_combo_box_set_active (GTK_COMBO_BOX (obj->priv->combo), 0);
+	ctk_combo_box_set_active (GTK_COMBO_BOX (obj->priv->combo), 0);
 }
 
 static void
@@ -728,7 +728,7 @@ indent_cell_data_func (GtkCellLayout * cell_layout,
 	gchar * indent;
 	guint num;
 
-	gtk_tree_model_get (model, iter, COLUMN_INDENT, &num, -1);
+	ctk_tree_model_get (model, iter, COLUMN_INDENT, &num, -1);
 
 	if (num == 0)
 		g_object_set (cell, "text", "", NULL);
@@ -745,47 +745,47 @@ create_combo (LapizFileBrowserWidget * obj)
 {
 	GtkCellRenderer *renderer;
 
-	obj->priv->combo_model = gtk_tree_store_new (N_COLUMNS,
+	obj->priv->combo_model = ctk_tree_store_new (N_COLUMNS,
 						     G_TYPE_UINT,
 						     GDK_TYPE_PIXBUF,
 						     G_TYPE_STRING,
 						     G_TYPE_FILE,
 						     G_TYPE_UINT);
 	obj->priv->combo =
-	    gtk_combo_box_new_with_model (GTK_TREE_MODEL
+	    ctk_combo_box_new_with_model (GTK_TREE_MODEL
 					  (obj->priv->combo_model));
 
-	renderer = gtk_cell_renderer_text_new ();
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (obj->priv->combo),
+	renderer = ctk_cell_renderer_text_new ();
+	ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (obj->priv->combo),
 	                            renderer, FALSE);
-	gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT
+	ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT
 					    (obj->priv->combo), renderer,
 					    indent_cell_data_func, obj, NULL);
 
 
-	renderer = gtk_cell_renderer_pixbuf_new ();
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (obj->priv->combo),
+	renderer = ctk_cell_renderer_pixbuf_new ();
+	ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (obj->priv->combo),
 				    renderer, FALSE);
-	gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (obj->priv->combo),
+	ctk_cell_layout_add_attribute (GTK_CELL_LAYOUT (obj->priv->combo),
 				       renderer, "pixbuf", COLUMN_ICON);
 
-	renderer = gtk_cell_renderer_text_new ();
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (obj->priv->combo),
+	renderer = ctk_cell_renderer_text_new ();
+	ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (obj->priv->combo),
 				    renderer, TRUE);
-	gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (obj->priv->combo),
+	ctk_cell_layout_add_attribute (GTK_CELL_LAYOUT (obj->priv->combo),
 				       renderer, "text", COLUMN_NAME);
 
 	g_object_set (renderer, "ellipsize-set", TRUE,
 		      "ellipsize", PANGO_ELLIPSIZE_END, NULL);
 
-	gtk_box_pack_start (GTK_BOX (obj), GTK_WIDGET (obj->priv->combo),
+	ctk_box_pack_start (GTK_BOX (obj), GTK_WIDGET (obj->priv->combo),
 			    FALSE, FALSE, 0);
 
 	fill_combo_model (obj);
 	g_signal_connect (obj->priv->combo, "changed",
 			  G_CALLBACK (on_combo_changed), obj);
 
-	gtk_widget_show (obj->priv->combo);
+	ctk_widget_show (obj->priv->combo);
 }
 
 static GtkActionEntry toplevel_actions[] =
@@ -876,11 +876,11 @@ create_toolbar (LapizFileBrowserWidget * obj,
 	GtkAction *action;
 	gchar *ui_file;
 
-	manager = gtk_ui_manager_new ();
+	manager = ctk_ui_manager_new ();
 	obj->priv->manager = manager;
 
 	ui_file = g_build_filename (data_dir, XML_UI_FILE, NULL);
-	gtk_ui_manager_add_ui_from_file (manager, ui_file, &error);
+	ctk_ui_manager_add_ui_from_file (manager, ui_file, &error);
 
 	g_free (ui_file);
 
@@ -891,147 +891,147 @@ create_toolbar (LapizFileBrowserWidget * obj,
 		return;
 	}
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetActionGroupToplevel");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetActionGroupToplevel");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      toplevel_actions,
 				      G_N_ELEMENTS (toplevel_actions),
 				      obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetActionGroup");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetActionGroup");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      tree_actions,
 				      G_N_ELEMENTS (tree_actions),
 				      obj);
-	gtk_action_group_add_toggle_actions (action_group,
+	ctk_action_group_add_toggle_actions (action_group,
 					     tree_actions_toggle,
 					     G_N_ELEMENTS (tree_actions_toggle),
 					     obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	obj->priv->action_group = action_group;
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetSelectionActionGroup");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetSelectionActionGroup");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      tree_actions_selection,
 				      G_N_ELEMENTS (tree_actions_selection),
 				      obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	obj->priv->action_group_selection = action_group;
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetFileSelectionActionGroup");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetFileSelectionActionGroup");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      tree_actions_file_selection,
 				      G_N_ELEMENTS (tree_actions_file_selection),
 				      obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	obj->priv->action_group_file_selection = action_group;
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetSingleSelectionActionGroup");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetSingleSelectionActionGroup");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      tree_actions_single_selection,
 				      G_N_ELEMENTS (tree_actions_single_selection),
 				      obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	obj->priv->action_group_single_selection = action_group;
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetSingleMostSelectionActionGroup");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetSingleMostSelectionActionGroup");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      tree_actions_single_most_selection,
 				      G_N_ELEMENTS (tree_actions_single_most_selection),
 				      obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	obj->priv->action_group_single_most_selection = action_group;
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetSensitiveActionGroup");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetSensitiveActionGroup");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      tree_actions_sensitive,
 				      G_N_ELEMENTS (tree_actions_sensitive),
 				      obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	obj->priv->action_group_sensitive = action_group;
 
-	action_group = gtk_action_group_new ("FileBrowserWidgetBookmarkActionGroup");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
+	action_group = ctk_action_group_new ("FileBrowserWidgetBookmarkActionGroup");
+	ctk_action_group_set_translation_domain (action_group, NULL);
+	ctk_action_group_add_actions (action_group,
 				      bookmark_actions,
 				      G_N_ELEMENTS (bookmark_actions),
 				      obj);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	ctk_ui_manager_insert_action_group (manager, action_group, 0);
 	obj->priv->bookmark_action_group = action_group;
 
-	action = gtk_action_group_get_action (obj->priv->action_group_sensitive,
+	action = ctk_action_group_get_action (obj->priv->action_group_sensitive,
 					      "DirectoryPrevious");
-	gtk_action_set_sensitive (action, FALSE);
+	ctk_action_set_sensitive (action, FALSE);
 
-	action = gtk_action_group_get_action (obj->priv->action_group_sensitive,
+	action = ctk_action_group_get_action (obj->priv->action_group_sensitive,
 					      "DirectoryNext");
-	gtk_action_set_sensitive (action, FALSE);
+	ctk_action_set_sensitive (action, FALSE);
 
-	toolbar = gtk_ui_manager_get_widget (manager, "/ToolBar");
-	gtk_toolbar_set_style (GTK_TOOLBAR (toolbar), GTK_TOOLBAR_ICONS);
-	gtk_toolbar_set_icon_size (GTK_TOOLBAR (toolbar), GTK_ICON_SIZE_MENU);
+	toolbar = ctk_ui_manager_get_widget (manager, "/ToolBar");
+	ctk_toolbar_set_style (GTK_TOOLBAR (toolbar), GTK_TOOLBAR_ICONS);
+	ctk_toolbar_set_icon_size (GTK_TOOLBAR (toolbar), GTK_ICON_SIZE_MENU);
 
 	/* Previous directory menu tool item */
-	obj->priv->location_previous_menu = gtk_menu_new ();
+	obj->priv->location_previous_menu = ctk_menu_new ();
 
-	gtk_menu_set_reserve_toggle_size (GTK_MENU (obj->priv->location_previous_menu), FALSE);
+	ctk_menu_set_reserve_toggle_size (GTK_MENU (obj->priv->location_previous_menu), FALSE);
 
-	gtk_widget_show (obj->priv->location_previous_menu);
+	ctk_widget_show (obj->priv->location_previous_menu);
 
-	widget = GTK_WIDGET (gtk_menu_tool_button_new (gtk_image_new_from_icon_name ("go-previous",
+	widget = GTK_WIDGET (ctk_menu_tool_button_new (ctk_image_new_from_icon_name ("go-previous",
 										     GTK_ICON_SIZE_MENU),
 						       _("Previous location")));
 
-	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (widget),
+	ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (widget),
 				       obj->priv->location_previous_menu);
 
-	gtk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (widget),
+	ctk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (widget),
 					_("Go to previous location"));
-	gtk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (widget),
+	ctk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (widget),
 						     _("Go to a previously opened location"));
 
-	action = gtk_action_group_get_action (obj->priv->action_group_sensitive,
+	action = ctk_action_group_get_action (obj->priv->action_group_sensitive,
 					      "DirectoryPrevious");
 	g_object_set (action, "is_important", TRUE, "short_label",
 		      _("Previous location"), NULL);
-	gtk_activatable_set_related_action (GTK_ACTIVATABLE (widget), action);
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), GTK_TOOL_ITEM (widget), 0);
+	ctk_activatable_set_related_action (GTK_ACTIVATABLE (widget), action);
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), GTK_TOOL_ITEM (widget), 0);
 
 	/* Next directory menu tool item */
-	obj->priv->location_next_menu = gtk_menu_new ();
+	obj->priv->location_next_menu = ctk_menu_new ();
 
-	gtk_menu_set_reserve_toggle_size (GTK_MENU (obj->priv->location_next_menu), FALSE);
+	ctk_menu_set_reserve_toggle_size (GTK_MENU (obj->priv->location_next_menu), FALSE);
 
-	gtk_widget_show (obj->priv->location_next_menu);
+	ctk_widget_show (obj->priv->location_next_menu);
 
-	widget = GTK_WIDGET (gtk_menu_tool_button_new (gtk_image_new_from_icon_name ("go-next",
+	widget = GTK_WIDGET (ctk_menu_tool_button_new (ctk_image_new_from_icon_name ("go-next",
 										     GTK_ICON_SIZE_MENU),
 						       _("Next location")));
 
-	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (widget),
+	ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (widget),
 				       obj->priv->location_next_menu);
 
-	gtk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (widget),
+	ctk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (widget),
 					_("Go to next location"));
-	gtk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (widget),
+	ctk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (widget),
 						     _("Go to a previously opened location"));
 
-	action = gtk_action_group_get_action (obj->priv->action_group_sensitive,
+	action = ctk_action_group_get_action (obj->priv->action_group_sensitive,
 					      "DirectoryNext");
 	g_object_set (action, "is_important", TRUE, "short_label",
 		      _("Previous location"), NULL);
-	gtk_activatable_set_related_action (GTK_ACTIVATABLE (widget), action);
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), GTK_TOOL_ITEM (widget), 1);
+	ctk_activatable_set_related_action (GTK_ACTIVATABLE (widget), action);
+	ctk_toolbar_insert (GTK_TOOLBAR (toolbar), GTK_TOOL_ITEM (widget), 1);
 
-	gtk_box_pack_start (GTK_BOX (obj), toolbar, FALSE, FALSE, 0);
-	gtk_widget_show (toolbar);
+	ctk_box_pack_start (GTK_BOX (obj), toolbar, FALSE, FALSE, 0);
+	ctk_widget_show (toolbar);
 
 	set_enable_delete (obj, obj->priv->enable_delete);
 }
@@ -1047,7 +1047,7 @@ set_enable_delete (LapizFileBrowserWidget *obj,
 		return;
 
 	action =
-	    gtk_action_group_get_action (obj->priv->action_group_selection,
+	    ctk_action_group_get_action (obj->priv->action_group_selection,
 					 "FileDelete");
 
 	g_object_set (action, "visible", enable, "sensitive", enable, NULL);
@@ -1093,7 +1093,7 @@ add_bookmark_hash (LapizFileBrowserWidget * obj,
 	file = g_file_new_for_uri (uri);
 	g_free (uri);
 
-	gtk_tree_model_get (model, iter,
+	ctk_tree_model_get (model, iter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_ICON,
 			    &pixbuf,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME,
@@ -1116,12 +1116,12 @@ init_bookmarks_hash (LapizFileBrowserWidget * obj)
 
 	model = GTK_TREE_MODEL (obj->priv->bookmarks_store);
 
-	if (!gtk_tree_model_get_iter_first (model, &iter))
+	if (!ctk_tree_model_get_iter_first (model, &iter))
 		return;
 
 	do {
 		add_bookmark_hash (obj, &iter);
-	} while (gtk_tree_model_iter_next (model, &iter));
+	} while (ctk_tree_model_iter_next (model, &iter));
 
 	g_signal_connect (obj->priv->bookmarks_store,
 		          "row-changed",
@@ -1139,10 +1139,10 @@ on_begin_loading (LapizFileBrowserStore  *model,
 		  GtkTreeIter            *iter,
 		  LapizFileBrowserWidget *obj)
 {
-	if (!GDK_IS_WINDOW (gtk_widget_get_window (GTK_WIDGET (obj->priv->treeview))))
+	if (!GDK_IS_WINDOW (ctk_widget_get_window (GTK_WIDGET (obj->priv->treeview))))
 		return;
 
-	gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (obj)),
+	gdk_window_set_cursor (ctk_widget_get_window (GTK_WIDGET (obj)),
 			       obj->priv->busy_cursor);
 }
 
@@ -1151,10 +1151,10 @@ on_end_loading (LapizFileBrowserStore  *model,
 		GtkTreeIter            *iter,
 		LapizFileBrowserWidget *obj)
 {
-	if (!GDK_IS_WINDOW (gtk_widget_get_window (GTK_WIDGET (obj->priv->treeview))))
+	if (!GDK_IS_WINDOW (ctk_widget_get_window (GTK_WIDGET (obj->priv->treeview))))
 		return;
 
-	gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (obj)), NULL);
+	gdk_window_set_cursor (ctk_widget_get_window (GTK_WIDGET (obj)), NULL);
 }
 
 static void
@@ -1177,16 +1177,16 @@ create_tree (LapizFileBrowserWidget * obj)
 						  (LapizFileBrowserStoreFilterFunc)
 						  filter_real, obj);
 
-	sw = gtk_scrolled_window_new (NULL, NULL);
-	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
+	sw = ctk_scrolled_window_new (NULL, NULL);
+	ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
 					     GTK_SHADOW_ETCHED_IN);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+	ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
 
-	gtk_container_add (GTK_CONTAINER (sw),
+	ctk_container_add (GTK_CONTAINER (sw),
 			   GTK_WIDGET (obj->priv->treeview));
-	gtk_box_pack_start (GTK_BOX (obj), sw, TRUE, TRUE, 0);
+	ctk_box_pack_start (GTK_BOX (obj), sw, TRUE, TRUE, 0);
 
 	g_signal_connect (obj->priv->treeview, "notify::model",
 			  G_CALLBACK (on_model_set), obj);
@@ -1200,7 +1200,7 @@ create_tree (LapizFileBrowserWidget * obj)
 	g_signal_connect (obj->priv->treeview, "key-press-event",
 			  G_CALLBACK (on_treeview_key_press_event), obj);
 
-	g_signal_connect (gtk_tree_view_get_selection
+	g_signal_connect (ctk_tree_view_get_selection
 			  (GTK_TREE_VIEW (obj->priv->treeview)), "changed",
 			  G_CALLBACK (on_selection_changed), obj);
 	g_signal_connect (obj->priv->file_store, "notify::filter-mode",
@@ -1220,8 +1220,8 @@ create_tree (LapizFileBrowserWidget * obj)
 
 	init_bookmarks_hash (obj);
 
-	gtk_widget_show (sw);
-	gtk_widget_show (GTK_WIDGET (obj->priv->treeview));
+	ctk_widget_show (sw);
+	ctk_widget_show (GTK_WIDGET (obj->priv->treeview));
 }
 
 static void
@@ -1231,17 +1231,17 @@ create_filter (LapizFileBrowserWidget * obj)
 	GtkWidget *vbox;
 	GtkWidget *entry;
 
-	expander = gtk_expander_new_with_mnemonic (_("_Match Filename"));
-	gtk_widget_show (expander);
-	gtk_box_pack_start (GTK_BOX (obj), expander, FALSE, FALSE, 0);
+	expander = ctk_expander_new_with_mnemonic (_("_Match Filename"));
+	ctk_widget_show (expander);
+	ctk_box_pack_start (GTK_BOX (obj), expander, FALSE, FALSE, 0);
 
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 3);
-	gtk_widget_show (vbox);
+	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 3);
+	ctk_widget_show (vbox);
 
 	obj->priv->filter_expander = expander;
 
-	entry = gtk_entry_new ();
-	gtk_widget_show (entry);
+	entry = ctk_entry_new ();
+	ctk_widget_show (entry);
 
 	obj->priv->filter_entry = entry;
 
@@ -1252,8 +1252,8 @@ create_filter (LapizFileBrowserWidget * obj)
 				  G_CALLBACK (on_entry_filter_activate),
 				  obj);
 
-	gtk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
-	gtk_container_add (GTK_CONTAINER (expander), vbox);
+	ctk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
+	ctk_container_add (GTK_CONTAINER (expander), vbox);
 }
 
 static void
@@ -1268,11 +1268,11 @@ lapiz_file_browser_widget_init (LapizFileBrowserWidget * obj)
 			                                   g_object_unref,
 			                                   free_name_icon);
 
-	gtk_box_set_spacing (GTK_BOX (obj), 3);
-	gtk_orientable_set_orientation (GTK_ORIENTABLE (obj),
+	ctk_box_set_spacing (GTK_BOX (obj), 3);
+	ctk_orientable_set_orientation (GTK_ORIENTABLE (obj),
 	                                GTK_ORIENTATION_VERTICAL);
 
-	display = gtk_widget_get_display (GTK_WIDGET (obj));
+	display = ctk_widget_get_display (GTK_WIDGET (obj));
 	obj->priv->busy_cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
 }
 
@@ -1282,14 +1282,14 @@ static void
 update_sensitivity (LapizFileBrowserWidget * obj)
 {
 	GtkTreeModel *model =
-	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	    ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	GtkAction *action;
 	gint mode;
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model)) {
-		gtk_action_group_set_sensitive (obj->priv->action_group,
+		ctk_action_group_set_sensitive (obj->priv->action_group,
 						TRUE);
-		gtk_action_group_set_sensitive (obj->priv->bookmark_action_group,
+		ctk_action_group_set_sensitive (obj->priv->bookmark_action_group,
 						FALSE);
 
 		mode =
@@ -1297,26 +1297,26 @@ update_sensitivity (LapizFileBrowserWidget * obj)
 		    (LAPIZ_FILE_BROWSER_STORE (model));
 
 		action =
-		    gtk_action_group_get_action (obj->priv->action_group,
+		    ctk_action_group_get_action (obj->priv->action_group,
 						 "FilterHidden");
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
 					      !(mode &
 						LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN));
 	} else if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model)) {
-		gtk_action_group_set_sensitive (obj->priv->action_group,
+		ctk_action_group_set_sensitive (obj->priv->action_group,
 						FALSE);
-		gtk_action_group_set_sensitive (obj->priv->bookmark_action_group,
+		ctk_action_group_set_sensitive (obj->priv->bookmark_action_group,
 						TRUE);
 
 		/* Set the filter toggle to normal up state, just for visual pleasure */
 		action =
-		    gtk_action_group_get_action (obj->priv->action_group,
+		    ctk_action_group_get_action (obj->priv->action_group,
 						 "FilterHidden");
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+		ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
 					      FALSE);
 	}
 
-	on_selection_changed (gtk_tree_view_get_selection
+	on_selection_changed (ctk_tree_view_get_selection
 			      (GTK_TREE_VIEW (obj->priv->treeview)), obj);
 }
 
@@ -1324,17 +1324,17 @@ static gboolean
 lapiz_file_browser_widget_get_first_selected (LapizFileBrowserWidget *obj,
 					      GtkTreeIter *iter)
 {
-	GtkTreeSelection *selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+	GtkTreeSelection *selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 	GtkTreeModel *model;
-	GList *rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	GList *rows = ctk_tree_selection_get_selected_rows (selection, &model);
 	gboolean result;
 
 	if (!rows)
 		return FALSE;
 
-	result = gtk_tree_model_get_iter(model, iter, (GtkTreePath *)(rows->data));
+	result = ctk_tree_model_get_iter(model, iter, (GtkTreePath *)(rows->data));
 
-	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
+	g_list_foreach (rows, (GFunc)ctk_tree_path_free, NULL);
 	g_list_free (rows);
 
 	return result;
@@ -1346,9 +1346,9 @@ popup_menu (LapizFileBrowserWidget * obj, GdkEventButton * event, GtkTreeModel *
 	GtkWidget *menu;
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
-		menu = gtk_ui_manager_get_widget (obj->priv->manager, "/FilePopup");
+		menu = ctk_ui_manager_get_widget (obj->priv->manager, "/FilePopup");
 	else if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model))
-		menu = gtk_ui_manager_get_widget (obj->priv->manager, "/BookmarkPopup");
+		menu = ctk_ui_manager_get_widget (obj->priv->manager, "/BookmarkPopup");
 	else
 		return FALSE;
 
@@ -1356,25 +1356,25 @@ popup_menu (LapizFileBrowserWidget * obj, GdkEventButton * event, GtkTreeModel *
 
 	if (event != NULL) {
 		GtkTreeSelection *selection;
-		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+		selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 
-		if (gtk_tree_selection_count_selected_rows (selection) <= 1) {
+		if (ctk_tree_selection_count_selected_rows (selection) <= 1) {
 			GtkTreePath *path;
 
-			if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (obj->priv->treeview),
+			if (ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (obj->priv->treeview),
 			                                   (gint)event->x, (gint)event->y,
 			                                   &path, NULL, NULL, NULL))
 			{
-				gtk_tree_selection_unselect_all (selection);
-				gtk_tree_selection_select_path (selection, path);
-				gtk_tree_path_free (path);
+				ctk_tree_selection_unselect_all (selection);
+				ctk_tree_selection_select_path (selection, path);
+				ctk_tree_path_free (path);
 			}
 		}
 
-		gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+		ctk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 	} else {
 		menu_popup_at_treeview_selection (menu, GTK_WIDGET (obj->priv->treeview));
-		gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+		ctk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
 	}
 
 	return TRUE;
@@ -1391,7 +1391,7 @@ filter_glob (LapizFileBrowserWidget * obj, LapizFileBrowserStore * store,
 	if (obj->priv->filter_pattern == NULL)
 		return TRUE;
 
-	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (store), iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_NAME, &name,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -1414,7 +1414,7 @@ rename_selected_file (LapizFileBrowserWidget * obj)
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
@@ -1435,29 +1435,29 @@ get_deletable_files (LapizFileBrowserWidget *obj) {
 	GtkTreeIter iter;
 	GtkTreePath *path;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	/* Get all selected files */
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
-	rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
 		path = (GtkTreePath *)(row->data);
 
-		if (!gtk_tree_model_get_iter (model, &iter, path))
+		if (!ctk_tree_model_get_iter (model, &iter, path))
 			continue;
 
-		gtk_tree_model_get (model, &iter,
+		ctk_tree_model_get (model, &iter,
 				    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS,
 				    &flags, -1);
 
 		if (FILE_IS_DUMMY (flags))
 			continue;
 
-		paths = g_list_append (paths, gtk_tree_path_copy (path));
+		paths = g_list_append (paths, ctk_tree_path_copy (path));
 	}
 
-	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
+	g_list_foreach (rows, (GFunc)ctk_tree_path_free, NULL);
 	g_list_free (rows);
 
 	return paths;
@@ -1471,7 +1471,7 @@ delete_selected_files (LapizFileBrowserWidget * obj, gboolean trash)
 	LapizFileBrowserStoreResult result;
 	GList *rows;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return FALSE;
@@ -1491,7 +1491,7 @@ delete_selected_files (LapizFileBrowserWidget * obj, gboolean trash)
 	result = lapiz_file_browser_store_delete_all (LAPIZ_FILE_BROWSER_STORE (model),
 						      rows, trash);
 
-	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
+	g_list_foreach (rows, (GFunc)ctk_tree_path_free, NULL);
 	g_list_free (rows);
 
 	return result == LAPIZ_FILE_BROWSER_STORE_RESULT_OK;
@@ -1547,14 +1547,14 @@ create_goto_menu_item (LapizFileBrowserWidget * obj, GList * item,
 		result = lapiz_image_menu_item_new_from_pixbuf (pixbuf, unescape);
 		g_object_unref (pixbuf);
 	} else {
-		result = gtk_menu_item_new_with_label (unescape);
+		result = ctk_menu_item_new_with_label (unescape);
 	}
 
 	g_object_set_data (G_OBJECT (result), LOCATION_DATA_KEY, item);
 	g_signal_connect (result, "activate",
 			  G_CALLBACK (on_location_jump_activate), obj);
 
-	gtk_widget_show (result);
+	ctk_widget_show (result);
 
 	g_free (unescape);
 
@@ -1606,7 +1606,7 @@ jump_to_location (LapizFileBrowserWidget * obj, GList * item,
 		menu_to = obj->priv->location_previous_menu;
 	}
 
-	children = gtk_container_get_children (GTK_CONTAINER (menu_from));
+	children = ctk_container_get_children (GTK_CONTAINER (menu_from));
 	child = children;
 
 	/* This is the menuitem for the current location, which is the first
@@ -1616,7 +1616,7 @@ jump_to_location (LapizFileBrowserWidget * obj, GList * item,
 	while (obj->priv->current_location != item) {
 		if (widget) {
 			/* Prepend the menu item to the menu */
-			gtk_menu_shell_prepend (GTK_MENU_SHELL (menu_to),
+			ctk_menu_shell_prepend (GTK_MENU_SHELL (menu_to),
 						widget);
 
 			g_object_unref (widget);
@@ -1626,7 +1626,7 @@ jump_to_location (LapizFileBrowserWidget * obj, GList * item,
 
 		/* Make sure the widget isn't destroyed when removed */
 		g_object_ref (widget);
-		gtk_container_remove (GTK_CONTAINER (menu_from), widget);
+		ctk_container_remove (GTK_CONTAINER (menu_from), widget);
 
 		obj->priv->current_location_menu_item = widget;
 
@@ -1683,18 +1683,18 @@ clear_next_locations (LapizFileBrowserWidget * obj)
 	}
 
 	children =
-	    gtk_container_get_children (GTK_CONTAINER
+	    ctk_container_get_children (GTK_CONTAINER
 					(obj->priv->location_next_menu));
 
 	for (item = children; item; item = item->next) {
-		gtk_container_remove (GTK_CONTAINER
+		ctk_container_remove (GTK_CONTAINER
 				      (obj->priv->location_next_menu),
 				      GTK_WIDGET (item->data));
 	}
 
 	g_list_free (children);
 
-	gtk_action_set_sensitive (gtk_action_group_get_action
+	ctk_action_set_sensitive (ctk_action_group_get_action
 				  (obj->priv->action_group_sensitive,
 				   "DirectoryNext"), FALSE);
 }
@@ -1705,9 +1705,9 @@ update_filter_mode (LapizFileBrowserWidget * obj,
                     LapizFileBrowserStoreFilterMode mode)
 {
 	gboolean active =
-	    gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	    ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 	GtkTreeModel *model =
-	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	    ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	gint now;
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model)) {
@@ -1733,7 +1733,7 @@ set_filter_pattern_real (LapizFileBrowserWidget * obj,
 	GtkTreeModel *model;
 
 	model =
-	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	    ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (pattern != NULL && *pattern == '\0')
 		pattern = NULL;
@@ -1775,13 +1775,13 @@ set_filter_pattern_real (LapizFileBrowserWidget * obj,
 
 	if (update_entry) {
 		if (obj->priv->filter_pattern_str == NULL)
-			gtk_entry_set_text (GTK_ENTRY (obj->priv->filter_entry),
+			ctk_entry_set_text (GTK_ENTRY (obj->priv->filter_entry),
 			                    "");
 		else {
-			gtk_entry_set_text (GTK_ENTRY (obj->priv->filter_entry),
+			ctk_entry_set_text (GTK_ENTRY (obj->priv->filter_entry),
 			                    obj->priv->filter_pattern_str);
 
-			gtk_expander_set_expanded (GTK_EXPANDER (obj->priv->filter_expander),
+			ctk_expander_set_expanded (GTK_EXPANDER (obj->priv->filter_expander),
 		        	                   TRUE);
 		}
 	}
@@ -1937,7 +1937,7 @@ lapiz_file_browser_widget_add_filter (LapizFileBrowserWidget * obj,
 {
 	FilterFunc *f;
 	GtkTreeModel *model =
-	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	    ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	f = filter_func_new (obj, func, user_data, notify);
 	obj->priv->filter_funcs =
@@ -1987,7 +1987,7 @@ lapiz_file_browser_widget_get_selected_directory (LapizFileBrowserWidget * obj,
 						  GtkTreeIter * iter)
 {
 	GtkTreeModel *model =
-	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	    ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	GtkTreeIter parent;
 	guint flags;
 
@@ -2000,13 +2000,13 @@ lapiz_file_browser_widget_get_selected_directory (LapizFileBrowserWidget * obj,
 			return FALSE;
 	}
 
-	gtk_tree_model_get (model, iter,
+	ctk_tree_model_get (model, iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
 	if (!FILE_IS_DIR (flags)) {
 		/* Get the parent, because the selection is a file */
-		gtk_tree_model_iter_parent (model, &parent, iter);
+		ctk_tree_model_iter_parent (model, &parent, iter);
 		*iter = parent;
 	}
 
@@ -2026,22 +2026,22 @@ lapiz_file_browser_widget_get_num_selected_files_or_directories (LapizFileBrowse
 	GtkTreeSelection *selection;
 	GtkTreeModel *model;
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (LAPIZ_IS_FILE_BOOKMARKS_STORE (model))
 		return 0;
 
-	rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
 		path = (GtkTreePath *)(row->data);
 
 		/* Get iter from path */
-		if (!gtk_tree_model_get_iter (model, &iter, path))
+		if (!ctk_tree_model_get_iter (model, &iter, path))
 			continue;
 
-		gtk_tree_model_get (model, &iter,
+		ctk_tree_model_get (model, &iter,
 				    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 				    -1);
 
@@ -2055,7 +2055,7 @@ lapiz_file_browser_widget_get_num_selected_files_or_directories (LapizFileBrowse
 		}
 	}
 
-	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
+	g_list_foreach (rows, (GFunc)ctk_tree_path_free, NULL);
 	g_list_free (rows);
 
 	return result;
@@ -2095,7 +2095,7 @@ set_busy (LapizFileBrowserWidget *obj, gboolean busy)
 {
 	GdkWindow *window;
 
-	window = gtk_widget_get_window (GTK_WIDGET (obj->priv->treeview));
+	window = ctk_widget_get_window (GTK_WIDGET (obj->priv->treeview));
 
 	if (!GDK_IS_WINDOW (window))
 		return;
@@ -2105,7 +2105,7 @@ set_busy (LapizFileBrowserWidget *obj, gboolean busy)
 		GdkDisplay *display;
 		GdkCursor *cursor;
 
-		display = gtk_widget_get_display (GTK_WIDGET (obj));
+		display = ctk_widget_get_display (GTK_WIDGET (obj));
 		cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
 		gdk_window_set_cursor (window, cursor);
 		g_object_unref (obj->priv->busy_cursor);
@@ -2284,7 +2284,7 @@ activate_drive (LapizFileBrowserWidget *obj,
 	GDrive *drive;
 	AsyncData *async;
 
-	gtk_tree_model_get (GTK_TREE_MODEL (obj->priv->bookmarks_store), iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (obj->priv->bookmarks_store), iter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
 			    &drive, -1);
 
@@ -2307,7 +2307,7 @@ try_mount_volume (LapizFileBrowserWidget *widget,
 	GMountOperation *operation;
 	AsyncData *async;
 
-	operation = gtk_mount_operation_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (widget))));
+	operation = ctk_mount_operation_new (GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (widget))));
 	async = async_data_new (widget);
 
 	g_volume_mount (volume,
@@ -2327,7 +2327,7 @@ activate_volume (LapizFileBrowserWidget *obj,
 {
 	GVolume *volume;
 
-	gtk_tree_model_get (GTK_TREE_MODEL (obj->priv->bookmarks_store), iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (obj->priv->bookmarks_store), iter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
 			    &volume, -1);
 
@@ -2340,7 +2340,7 @@ void
 lapiz_file_browser_widget_refresh (LapizFileBrowserWidget *obj)
 {
 	GtkTreeModel *model =
-	    gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	    ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
 		lapiz_file_browser_store_refresh (LAPIZ_FILE_BROWSER_STORE
@@ -2384,7 +2384,7 @@ bookmark_open (LapizFileBrowserWidget *obj,
 	gchar *uri;
 	gint flags;
 
-	gtk_tree_model_get (model, iter,
+	ctk_tree_model_get (model, iter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
 			    &flags, -1);
 
@@ -2438,7 +2438,7 @@ file_open  (LapizFileBrowserWidget *obj,
 	gchar *uri;
 	gint flags;
 
-	gtk_tree_model_get (model, iter,
+	ctk_tree_model_get (model, iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
@@ -2460,7 +2460,7 @@ directory_open (LapizFileBrowserWidget *obj,
 	gchar *uri = NULL;
 	LapizFileBrowserStoreFlag flags;
 
-	gtk_tree_model_get (model, iter,
+	ctk_tree_model_get (model, iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
@@ -2468,7 +2468,7 @@ directory_open (LapizFileBrowserWidget *obj,
 	if (FILE_IS_DIR (flags)) {
 		result = TRUE;
 
-		if (!gtk_show_uri_on_window (NULL, uri, GDK_CURRENT_TIME, &error)) {
+		if (!ctk_show_uri_on_window (NULL, uri, GDK_CURRENT_TIME, &error)) {
 			g_signal_emit (obj, signals[ERROR], 0,
 				       LAPIZ_FILE_BROWSER_ERROR_OPEN_DIRECTORY,
 				       error->message);
@@ -2488,7 +2488,7 @@ on_bookmark_activated (LapizFileBrowserView   *tree_view,
 		       GtkTreeIter            *iter,
 		       LapizFileBrowserWidget *obj)
 {
-	GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW (tree_view));
+	GtkTreeModel *model = ctk_tree_view_get_model (GTK_TREE_VIEW (tree_view));
 
 	bookmark_open (obj, model, iter);
 }
@@ -2498,7 +2498,7 @@ on_file_activated (LapizFileBrowserView   *tree_view,
 		   GtkTreeIter            *iter,
 		   LapizFileBrowserWidget *obj)
 {
-	GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW (tree_view));
+	GtkTreeModel *model = ctk_tree_view_get_model (GTK_TREE_VIEW (tree_view));
 
 	file_open (obj, model, iter);
 }
@@ -2532,14 +2532,14 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 	Location *loc;
 	GdkPixbuf *pixbuf;
 
-	if (gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview)) !=
+	if (ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview)) !=
 	    GTK_TREE_MODEL (obj->priv->file_store))
 	{
 		show_files_real (obj, FALSE);
 	}
 
 	if (lapiz_file_browser_store_get_iter_virtual_root (model, &iter)) {
-		gtk_tree_model_get (GTK_TREE_MODEL (model), &iter,
+		ctk_tree_model_get (GTK_TREE_MODEL (model), &iter,
 				    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI,
 				    &uri, -1);
 
@@ -2561,7 +2561,7 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 				if (obj->priv->current_location) {
 					/* Add current location to the menu so we can go back
 					   to it later */
-					gtk_menu_shell_prepend
+					ctk_menu_shell_prepend
 					    (GTK_MENU_SHELL
 					     (obj->priv->
 					      location_previous_menu),
@@ -2573,7 +2573,7 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 				    g_list_prepend (obj->priv->locations,
 						    loc);
 
-				gtk_tree_model_get (GTK_TREE_MODEL (model),
+				ctk_tree_model_get (GTK_TREE_MODEL (model),
 						    &iter,
 						    LAPIZ_FILE_BROWSER_STORE_COLUMN_ICON,
 						    &pixbuf, -1);
@@ -2595,17 +2595,17 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 			}
 
 			action =
-			    gtk_action_group_get_action (obj->priv->
+			    ctk_action_group_get_action (obj->priv->
 			                                 action_group,
 			                                 "DirectoryUp");
-			gtk_action_set_sensitive (action,
+			ctk_action_set_sensitive (action,
 			                          !virtual_root_is_root (obj, model));
 
 			action =
-			    gtk_action_group_get_action (obj->priv->
+			    ctk_action_group_get_action (obj->priv->
 							 action_group_sensitive,
 							 "DirectoryPrevious");
-			gtk_action_set_sensitive (action,
+			ctk_action_set_sensitive (action,
 						  obj->priv->
 						  current_location != NULL
 						  && obj->priv->
@@ -2613,10 +2613,10 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 						  NULL);
 
 			action =
-			    gtk_action_group_get_action (obj->priv->
+			    ctk_action_group_get_action (obj->priv->
 							 action_group_sensitive,
 							 "DirectoryNext");
-			gtk_action_set_sensitive (action,
+			ctk_action_set_sensitive (action,
 						  obj->priv->
 						  current_location != NULL
 						  && obj->priv->
@@ -2637,7 +2637,7 @@ on_model_set (GObject * gobject, GParamSpec * arg1,
 {
 	GtkTreeModel *model;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (gobject));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (gobject));
 
 	clear_signals (obj);
 
@@ -2648,19 +2648,19 @@ on_model_set (GObject * gobject, GParamSpec * arg1,
 		if (obj->priv->current_location) {
 			GtkAction *action;
 
-			gtk_menu_shell_prepend (GTK_MENU_SHELL (obj->priv->location_previous_menu),
+			ctk_menu_shell_prepend (GTK_MENU_SHELL (obj->priv->location_previous_menu),
 						obj->priv->current_location_menu_item);
 
 			g_object_unref (obj->priv->current_location_menu_item);
 			obj->priv->current_location = NULL;
 			obj->priv->current_location_menu_item = NULL;
 
-			action = gtk_action_group_get_action (obj->priv->action_group_sensitive,
+			action = ctk_action_group_get_action (obj->priv->action_group_sensitive,
 							      "DirectoryPrevious");
-			gtk_action_set_sensitive (action, TRUE);
+			ctk_action_set_sensitive (action, TRUE);
 		}
 
-		gtk_widget_set_sensitive (obj->priv->filter_expander, FALSE);
+		ctk_widget_set_sensitive (obj->priv->filter_expander, FALSE);
 
 		add_signal (obj, gobject,
 			    g_signal_connect (gobject, "bookmark-activated",
@@ -2680,7 +2680,7 @@ on_model_set (GObject * gobject, GParamSpec * arg1,
 			    		      G_CALLBACK
 			    		      (on_file_store_no_trash), obj));
 
-		gtk_widget_set_sensitive (obj->priv->filter_expander, TRUE);
+		ctk_widget_set_sensitive (obj->priv->filter_expander, TRUE);
 	}
 
 	update_sensitivity (obj);
@@ -2708,10 +2708,10 @@ on_combo_changed (GtkComboBox * combo, LapizFileBrowserWidget * obj)
 	gchar * uri;
 	GFile * file;
 
-	if (!gtk_combo_box_get_active_iter (combo, &iter))
+	if (!ctk_combo_box_get_active_iter (combo, &iter))
 		return;
 
-	gtk_tree_model_get (GTK_TREE_MODEL (obj->priv->combo_model), &iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (obj->priv->combo_model), &iter,
 			    COLUMN_ID, &id, -1);
 
 	switch (id) {
@@ -2720,7 +2720,7 @@ on_combo_changed (GtkComboBox * combo, LapizFileBrowserWidget * obj)
 		break;
 
 	case PATH_ID:
-		gtk_tree_model_get (GTK_TREE_MODEL
+		ctk_tree_model_get (GTK_TREE_MODEL
 				    (obj->priv->combo_model), &iter,
 				    COLUMN_FILE, &file, -1);
 
@@ -2738,7 +2738,7 @@ static gboolean
 on_treeview_popup_menu (LapizFileBrowserView * treeview,
 			LapizFileBrowserWidget * obj)
 {
-	return popup_menu (obj, NULL, gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
+	return popup_menu (obj, NULL, ctk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
 }
 
 static gboolean
@@ -2748,7 +2748,7 @@ on_treeview_button_press_event (LapizFileBrowserView * treeview,
 {
 	if (event->type == GDK_BUTTON_PRESS && event->button == 3) {
 		return popup_menu (obj, event,
-				   gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
+				   ctk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
 	}
 
 	return FALSE;
@@ -2763,7 +2763,7 @@ do_change_directory (LapizFileBrowserWidget * obj,
 	if ((event->state &
 	    (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK & ~GDK_MOD1_MASK)) ==
 	     event->state && event->keyval == GDK_KEY_BackSpace)
-		action = gtk_action_group_get_action (obj->priv->
+		action = ctk_action_group_get_action (obj->priv->
 		                                      action_group_sensitive,
 		                                      "DirectoryPrevious");
 	else if (!((event->state & GDK_MOD1_MASK) &&
@@ -2772,17 +2772,17 @@ do_change_directory (LapizFileBrowserWidget * obj,
 
 	switch (event->keyval) {
 		case GDK_KEY_Left:
-			action = gtk_action_group_get_action (obj->priv->
+			action = ctk_action_group_get_action (obj->priv->
 			                                      action_group_sensitive,
 			                                      "DirectoryPrevious");
 		break;
 		case GDK_KEY_Right:
-			action = gtk_action_group_get_action (obj->priv->
+			action = ctk_action_group_get_action (obj->priv->
 			                                      action_group_sensitive,
 			                                      "DirectoryNext");
 		break;
 		case GDK_KEY_Up:
-			action = gtk_action_group_get_action (obj->priv->
+			action = ctk_action_group_get_action (obj->priv->
 			                                      action_group,
 			                                      "DirectoryUp");
 		break;
@@ -2791,7 +2791,7 @@ do_change_directory (LapizFileBrowserWidget * obj,
 	}
 
 	if (action != NULL) {
-		gtk_action_activate (action);
+		ctk_action_activate (action);
 		return TRUE;
 	}
 
@@ -2809,10 +2809,10 @@ on_treeview_key_press_event (LapizFileBrowserView * treeview,
 		return TRUE;
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE
-	    (gtk_tree_view_get_model (GTK_TREE_VIEW (treeview))))
+	    (ctk_tree_view_get_model (GTK_TREE_VIEW (treeview))))
 		return FALSE;
 
-	modifiers = gtk_accelerator_get_default_mod_mask ();
+	modifiers = ctk_accelerator_get_default_mod_mask ();
 
 	if (event->keyval == GDK_KEY_Delete
 	    || event->keyval == GDK_KEY_KP_Delete) {
@@ -2847,7 +2847,7 @@ on_selection_changed (GtkTreeSelection * selection,
 	guint files = 0;
 	guint dirs = 0;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (LAPIZ_IS_FILE_BROWSER_STORE (model))
 	{
@@ -2856,13 +2856,13 @@ on_selection_changed (GtkTreeSelection * selection,
 											    &dirs);
 	}
 
-	gtk_action_group_set_sensitive (obj->priv->action_group_selection,
+	ctk_action_group_set_sensitive (obj->priv->action_group_selection,
 					selected > 0);
-	gtk_action_group_set_sensitive (obj->priv->action_group_file_selection,
+	ctk_action_group_set_sensitive (obj->priv->action_group_file_selection,
 					(selected > 0) && (selected == files));
-	gtk_action_group_set_sensitive (obj->priv->action_group_single_selection,
+	ctk_action_group_set_sensitive (obj->priv->action_group_single_selection,
 					selected == 1);
-	gtk_action_group_set_sensitive (obj->priv->action_group_single_most_selection,
+	ctk_action_group_set_sensitive (obj->priv->action_group_single_most_selection,
 					selected <= 1);
 }
 
@@ -2871,7 +2871,7 @@ on_entry_filter_activate (LapizFileBrowserWidget * obj)
 {
 	gchar const *text;
 
-	text = gtk_entry_get_text (GTK_ENTRY (obj->priv->filter_entry));
+	text = ctk_entry_get_text (GTK_ENTRY (obj->priv->filter_entry));
 	set_filter_pattern_real (obj, text, FALSE);
 
 	return FALSE;
@@ -2916,7 +2916,7 @@ on_bookmarks_row_deleted (GtkTreeModel * model,
 	gchar * uri;
 	GFile * file;
 
-	if (!gtk_tree_model_get_iter (model, &iter, path))
+	if (!ctk_tree_model_get_iter (model, &iter, path))
 		return;
 
 	uri = lapiz_file_bookmarks_store_get_uri (obj->priv->bookmarks_store, &iter);
@@ -2942,19 +2942,19 @@ on_filter_mode_changed (LapizFileBrowserStore * model,
 
 	mode = lapiz_file_browser_store_get_filter_mode (model);
 
-	action = GTK_TOGGLE_ACTION (gtk_action_group_get_action (obj->priv->action_group,
+	action = GTK_TOGGLE_ACTION (ctk_action_group_get_action (obj->priv->action_group,
 	                                                         "FilterHidden"));
 	active = !(mode & LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
 
-	if (active != gtk_toggle_action_get_active (action))
-		gtk_toggle_action_set_active (action, active);
+	if (active != ctk_toggle_action_get_active (action))
+		ctk_toggle_action_set_active (action, active);
 
-	action = GTK_TOGGLE_ACTION (gtk_action_group_get_action (obj->priv->action_group,
+	action = GTK_TOGGLE_ACTION (ctk_action_group_get_action (obj->priv->action_group,
 	                                                         "FilterBinary"));
 	active = !(mode & LAPIZ_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
 
-	if (active != gtk_toggle_action_get_active (action))
-		gtk_toggle_action_set_active (action, active);
+	if (active != ctk_toggle_action_get_active (action))
+		ctk_toggle_action_set_active (action, active);
 }
 
 static void
@@ -2976,7 +2976,7 @@ on_action_directory_up (GtkAction              * action,
 {
 	GtkTreeModel *model;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
@@ -2991,7 +2991,7 @@ on_action_directory_new (GtkAction * action, LapizFileBrowserWidget * obj)
 	GtkTreeIter parent;
 	GtkTreeIter iter;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
@@ -3016,21 +3016,21 @@ on_action_file_open (GtkAction * action, LapizFileBrowserWidget * obj)
 	GtkTreeIter iter;
 	GtkTreePath *path;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
-	rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
 		path = (GtkTreePath *)(row->data);
 
-		if (gtk_tree_model_get_iter (model, &iter, path))
+		if (ctk_tree_model_get_iter (model, &iter, path))
 			file_open (obj, model, &iter);
 
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 	}
 
 	g_list_free (rows);
@@ -3043,7 +3043,7 @@ on_action_file_new (GtkAction * action, LapizFileBrowserWidget * obj)
 	GtkTreeIter parent;
 	GtkTreeIter iter;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
@@ -3094,21 +3094,21 @@ on_action_directory_open (GtkAction * action, LapizFileBrowserWidget * obj)
 	GtkTreeIter iter;
 	GtkTreePath *path;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BROWSER_STORE (model))
 		return;
 
-	rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	rows = ctk_tree_selection_get_selected_rows (selection, &model);
 
 	for (row = rows; row; row = row->next) {
 		path = (GtkTreePath *)(row->data);
 
-		if (gtk_tree_model_get_iter (model, &iter, path))
+		if (ctk_tree_model_get_iter (model, &iter, path))
 			directory_opened |= directory_open (obj, model, &iter);
 
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 	}
 
 	if (!directory_opened) {
@@ -3142,13 +3142,13 @@ on_action_bookmark_open (GtkAction * action, LapizFileBrowserWidget * obj)
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+	model = ctk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
+	selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
 
 	if (!LAPIZ_IS_FILE_BOOKMARKS_STORE (model))
 		return;
 
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+	if (ctk_tree_selection_get_selected (selection, NULL, &iter))
 		bookmark_open (obj, model, &iter);
 }
 

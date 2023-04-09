@@ -23,7 +23,7 @@
 #ifndef __LAPIZ_STATUS_COMBO_BOX_H__
 #define __LAPIZ_STATUS_COMBO_BOX_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

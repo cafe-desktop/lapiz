@@ -23,7 +23,7 @@
 #include "lapiz-gio-document-loader.h"
 #include "lapiz-prefs-manager-app.h"
 #include <gio/gio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib.h>
 #include <string.h>
 
@@ -77,8 +77,8 @@ on_document_loaded (LapizDocument  *document,
 	{
 		gchar *text;
 
-		gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (document), &start, &end);
-		text = gtk_text_iter_get_slice (&start, &end);
+		ctk_text_buffer_get_bounds (GTK_TEXT_BUFFER (document), &start, &end);
+		text = ctk_text_iter_get_slice (&start, &end);
 
 		g_assert_cmpstr (text, ==, data->in_buffer);
 

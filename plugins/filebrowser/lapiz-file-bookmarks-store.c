@@ -117,9 +117,9 @@ add_node (LapizFileBookmarksStore *model,
 {
 	GtkTreeIter newiter;
 
-	gtk_tree_store_append (GTK_TREE_STORE (model), &newiter, NULL);
+	ctk_tree_store_append (GTK_TREE_STORE (model), &newiter, NULL);
 
-	gtk_tree_store_set (GTK_TREE_STORE (model), &newiter,
+	ctk_tree_store_set (GTK_TREE_STORE (model), &newiter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_ICON, pixbuf,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME, name,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, obj,
@@ -495,13 +495,13 @@ add_bookmark (LapizFileBookmarksStore * model,
 static gchar *
 get_bookmarks_file (void)
 {
-	return g_build_filename (g_get_user_config_dir (), "gtk-3.0", "bookmarks", NULL);
+	return g_build_filename (g_get_user_config_dir (), "ctk-3.0", "bookmarks", NULL);
 }
 
 static gchar *
 get_legacy_bookmarks_file (void)
 {
-	return g_build_filename (g_get_home_dir (), ".gtk-bookmarks", NULL);
+	return g_build_filename (g_get_home_dir (), ".ctk-bookmarks", NULL);
 }
 
 static gboolean
@@ -586,7 +586,7 @@ init_bookmarks (LapizFileBookmarksStore *model)
 	{
 		g_free (bookmarks);
 
-		/* try the old location (gtk <= 3.4) */
+		/* try the old location (ctk <= 3.4) */
 		bookmarks = get_legacy_bookmarks_file ();
 		parse_bookmarks_file (model, bookmarks, &added);
 	}
@@ -639,11 +639,11 @@ bookmarks_compare_names (GtkTreeModel * model, GtkTreeIter * a,
 	guint f1;
 	guint f2;
 
-	gtk_tree_model_get (model, a,
+	ctk_tree_model_get (model, a,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n1,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
 			    -1);
-	gtk_tree_model_get (model, b,
+	ctk_tree_model_get (model, b,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n2,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
 			    -1);
@@ -678,10 +678,10 @@ bookmarks_compare_flags (GtkTreeModel * model, GtkTreeIter * a,
 
 	sep = LAPIZ_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
 
-	gtk_tree_model_get (model, a,
+	ctk_tree_model_get (model, a,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
 			    -1);
-	gtk_tree_model_get (model, b,
+	ctk_tree_model_get (model, b,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
 			    -1);
 
@@ -726,11 +726,11 @@ find_with_flags (GtkTreeModel * model, GtkTreeIter * iter, gpointer obj,
  	GObject * childobj;
  	gboolean fequal;
 
-	if (!gtk_tree_model_get_iter_first (model, &child))
+	if (!ctk_tree_model_get_iter_first (model, &child))
 		return FALSE;
 
 	do {
-		gtk_tree_model_get (model, &child,
+		ctk_tree_model_get (model, &child,
 				    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
 				    &childobj,
 				    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
@@ -747,7 +747,7 @@ find_with_flags (GtkTreeModel * model, GtkTreeIter * iter, gpointer obj,
 			*iter = child;
 			return TRUE;
 		}
-	} while (gtk_tree_model_iter_next (model, &child));
+	} while (ctk_tree_model_iter_next (model, &child));
 
 	return FALSE;
 }
@@ -757,7 +757,7 @@ remove_node (GtkTreeModel * model, GtkTreeIter * iter)
 {
 	guint flags;
 
-	gtk_tree_model_get (model, iter,
+	ctk_tree_model_get (model, iter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
@@ -769,7 +769,7 @@ remove_node (GtkTreeModel * model, GtkTreeIter * iter)
 		}
 	}
 
-	gtk_tree_store_remove (GTK_TREE_STORE (model), iter);
+	ctk_tree_store_remove (GTK_TREE_STORE (model), iter);
 }
 
 static void
@@ -805,14 +805,14 @@ lapiz_file_bookmarks_store_new (void)
 	};
 
 	model = g_object_new (LAPIZ_TYPE_FILE_BOOKMARKS_STORE, NULL);
-	gtk_tree_store_set_column_types (GTK_TREE_STORE (model),
+	ctk_tree_store_set_column_types (GTK_TREE_STORE (model),
 					 LAPIZ_FILE_BOOKMARKS_STORE_N_COLUMNS,
 					 column_types);
 
-	gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model),
+	ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (model),
 						 bookmarks_compare_func,
 						 NULL, NULL);
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model),
+	ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model),
 					      GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
 					      GTK_SORT_ASCENDING);
 
@@ -834,7 +834,7 @@ lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
 	g_return_val_if_fail (LAPIZ_IS_FILE_BOOKMARKS_STORE (model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
 
-	gtk_tree_model_get (GTK_TREE_MODEL (model), iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (model), iter,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
 			    &flags,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_OBJECT,
@@ -869,7 +869,7 @@ lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
 void
 lapiz_file_bookmarks_store_refresh (LapizFileBookmarksStore * model)
 {
-	gtk_tree_store_clear (GTK_TREE_STORE (model));
+	ctk_tree_store_clear (GTK_TREE_STORE (model));
 	initialize_fill (model);
 }
 

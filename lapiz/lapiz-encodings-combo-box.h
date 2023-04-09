@@ -32,7 +32,7 @@
 #ifndef __LAPIZ_ENCODINGS_COMBO_BOX_H__
 #define __LAPIZ_ENCODINGS_COMBO_BOX_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <lapiz/lapiz-encodings.h>
 
 G_BEGIN_DECLS

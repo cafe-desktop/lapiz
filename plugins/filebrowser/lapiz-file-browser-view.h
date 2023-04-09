@@ -22,7 +22,7 @@
 #ifndef __LAPIZ_FILE_BROWSER_VIEW_H__
 #define __LAPIZ_FILE_BROWSER_VIEW_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 #define LAPIZ_TYPE_FILE_BROWSER_VIEW			(lapiz_file_browser_view_get_type ())

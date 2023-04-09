@@ -36,7 +36,7 @@
 
 #include <string.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
 #include "lapiz-commands.h"
@@ -72,7 +72,7 @@ last_search_data_restore_position (LapizSearchDialog *dlg)
 
 	if (data != NULL)
 	{
-		gtk_window_move (GTK_WINDOW (dlg),
+		ctk_window_move (GTK_WINDOW (dlg),
 				 data->x,
 				 data->y);
 	}
@@ -95,7 +95,7 @@ last_search_data_store_position (LapizSearchDialog *dlg)
 					(GDestroyNotify) last_search_data_free);
 	}
 
-	gtk_window_get_position (GTK_WINDOW (dlg),
+	ctk_window_get_position (GTK_WINDOW (dlg),
 				 &data->x,
 				 &data->y);
 }
@@ -155,11 +155,11 @@ run_search (LapizView   *view,
 	GtkTextIter match_end;
 	gboolean found = FALSE;
 
-	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
 	if (!search_backwards)
 	{
-		gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
 						      NULL,
 						      &start_iter);
 
@@ -171,7 +171,7 @@ run_search (LapizView   *view,
 	}
 	else
 	{
-		gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
 						      &start_iter,
 						      NULL);
 
@@ -200,10 +200,10 @@ run_search (LapizView   *view,
 
 	if (found)
 	{
-		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
 					      &match_start);
 
-		gtk_text_buffer_move_mark_by_name (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_move_mark_by_name (GTK_TEXT_BUFFER (doc),
 						   "selection_bound",
 						   &match_end);
 
@@ -211,7 +211,7 @@ run_search (LapizView   *view,
 	}
 	else
 	{
-		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
+		ctk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
 					      &start_iter);
 	}
 
@@ -242,7 +242,7 @@ do_find (LapizSearchDialog *dialog,
 	if (active_view == NULL)
 		return;
 
-	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	match_case = lapiz_search_dialog_get_match_case (dialog);
         match_regex = lapiz_search_dialog_get_match_regex(dialog);
@@ -290,7 +290,7 @@ do_find (LapizSearchDialog *dialog,
 		}
 	}
 
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+	ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE,
 					   found);
 }
@@ -306,7 +306,7 @@ get_selected_text (GtkTextBuffer  *doc,
 	g_return_val_if_fail (selected_text != NULL, FALSE);
 	g_return_val_if_fail (*selected_text == NULL, FALSE);
 
-	if (!gtk_text_buffer_get_selection_bounds (doc, &start, &end))
+	if (!ctk_text_buffer_get_selection_bounds (doc, &start, &end))
 	{
 		if (len != NULL)
 			len = 0;
@@ -314,7 +314,7 @@ get_selected_text (GtkTextBuffer  *doc,
 		return FALSE;
 	}
 
-	*selected_text = gtk_text_buffer_get_slice (doc, &start, &end, TRUE);
+	*selected_text = ctk_text_buffer_get_slice (doc, &start, &end, TRUE);
 
 	if (len != NULL)
 		*len = g_utf8_strlen (*selected_text, -1);
@@ -326,16 +326,16 @@ static void
 replace_selected_text (GtkTextBuffer *buffer,
 		       const gchar   *replace)
 {
-	g_return_if_fail (gtk_text_buffer_get_selection_bounds (buffer, NULL, NULL));
+	g_return_if_fail (ctk_text_buffer_get_selection_bounds (buffer, NULL, NULL));
 	g_return_if_fail (replace != NULL);
 
-	gtk_text_buffer_begin_user_action (buffer);
+	ctk_text_buffer_begin_user_action (buffer);
 
-	gtk_text_buffer_delete_selection (buffer, FALSE, TRUE);
+	ctk_text_buffer_delete_selection (buffer, FALSE, TRUE);
 
-	gtk_text_buffer_insert_at_cursor (buffer, replace, strlen (replace));
+	ctk_text_buffer_insert_at_cursor (buffer, replace, strlen (replace));
 
-	gtk_text_buffer_end_user_action (buffer);
+	ctk_text_buffer_end_user_action (buffer);
 }
 
 static void
@@ -449,7 +449,7 @@ do_replace_all (LapizSearchDialog *dialog,
 	if (active_view == NULL)
 		return;
 
-	doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	parse_escapes = lapiz_search_dialog_get_parse_escapes (dialog);
 	if (!parse_escapes) {
@@ -494,7 +494,7 @@ do_replace_all (LapizSearchDialog *dialog,
 		}
 	}
 
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+	ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   LAPIZ_SEARCH_DIALOG_REPLACE_RESPONSE,
 					   FALSE);
 }
@@ -519,7 +519,7 @@ search_dialog_response_cb (LapizSearchDialog *dialog,
 			break;
 		default:
 			last_search_data_store_position (dialog);
-			gtk_widget_hide (GTK_WIDGET (dialog));
+			ctk_widget_hide (GTK_WIDGET (dialog));
 	}
 }
 
@@ -643,7 +643,7 @@ _lapiz_cmd_search_find (GtkAction   *action,
 		g_free (find_text);
 	}
 
-	gtk_widget_show (search_dialog);
+	ctk_widget_show (search_dialog);
 	last_search_data_restore_position (LAPIZ_SEARCH_DIALOG (search_dialog));
 	lapiz_search_dialog_present_with_time (LAPIZ_SEARCH_DIALOG (search_dialog),
 					       GDK_CURRENT_TIME);
@@ -717,7 +717,7 @@ _lapiz_cmd_search_replace (GtkAction   *action,
 		g_free (find_text);
 	}
 
-	gtk_widget_show (replace_dialog);
+	ctk_widget_show (replace_dialog);
 	last_search_data_restore_position (LAPIZ_SEARCH_DIALOG (replace_dialog));
 	lapiz_search_dialog_present_with_time (LAPIZ_SEARCH_DIALOG (replace_dialog),
 					       GDK_CURRENT_TIME);
@@ -790,13 +790,13 @@ _lapiz_cmd_search_goto_line (GtkAction   *action,
 
 	/* Focus the view if needed: we need to focus the view otherwise
 	   activating the binding for goto line has no effect */
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 
 
 	/* goto line is builtin in LapizView, just activate
 	 * the corresponding binding.
 	 */
-	gtk_bindings_activate (G_OBJECT (active_view),
+	ctk_bindings_activate (G_OBJECT (active_view),
 			       GDK_KEY_i,
 			       GDK_CONTROL_MASK);
 }
@@ -815,12 +815,12 @@ _lapiz_cmd_search_incremental_search (GtkAction   *action,
 
 	/* Focus the view if needed: we need to focus the view otherwise
 	   activating the binding for incremental search has no effect */
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+	ctk_widget_grab_focus (GTK_WIDGET (active_view));
 
 	/* incremental search is builtin in LapizView, just activate
 	 * the corresponding binding.
 	 */
-	gtk_bindings_activate (G_OBJECT (active_view),
+	ctk_bindings_activate (G_OBJECT (active_view),
 			       GDK_KEY_k,
 			       GDK_CONTROL_MASK);
 }

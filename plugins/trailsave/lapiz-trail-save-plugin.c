@@ -63,23 +63,23 @@ strip_trailing_spaces (GtkTextBuffer *text_buffer)
 
 	g_assert (text_buffer != NULL);
 
-	line_count = gtk_text_buffer_get_line_count (text_buffer);
+	line_count = ctk_text_buffer_get_line_count (text_buffer);
 
 	for (line_num = 0; line_num < line_count; ++line_num)
 	{
 		/* Get line text */
-		gtk_text_buffer_get_iter_at_line (text_buffer, &line_start, line_num);
+		ctk_text_buffer_get_iter_at_line (text_buffer, &line_start, line_num);
 
 		if (line_num == line_count - 1)
 		{
-			gtk_text_buffer_get_end_iter (text_buffer, &line_end);
+			ctk_text_buffer_get_end_iter (text_buffer, &line_end);
 		}
 		else
 		{
-			gtk_text_buffer_get_iter_at_line (text_buffer, &line_end, line_num + 1);
+			ctk_text_buffer_get_iter_at_line (text_buffer, &line_end, line_num + 1);
 		}
 
-		slice = gtk_text_buffer_get_slice (text_buffer, &line_start, &line_end, TRUE);
+		slice = ctk_text_buffer_get_slice (text_buffer, &line_start, &line_end, TRUE);
 
 		if (slice == NULL)
 		{
@@ -118,9 +118,9 @@ strip_trailing_spaces (GtkTextBuffer *text_buffer)
 		/* Strip trailing spaces */
 		if (should_strip)
 		{
-			gtk_text_buffer_get_iter_at_line_index (text_buffer, &strip_start, line_num, strip_start_index);
-			gtk_text_buffer_get_iter_at_line_index (text_buffer, &strip_end, line_num, strip_end_index);
-			gtk_text_buffer_delete (text_buffer, &strip_start, &strip_end);
+			ctk_text_buffer_get_iter_at_line_index (text_buffer, &strip_start, line_num, strip_start_index);
+			ctk_text_buffer_get_iter_at_line_index (text_buffer, &strip_end, line_num, strip_end_index);
+			ctk_text_buffer_delete (text_buffer, &strip_start, &strip_end);
 		}
 	}
 }

@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_HELP_H__
 #define __LAPIZ_HELP_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

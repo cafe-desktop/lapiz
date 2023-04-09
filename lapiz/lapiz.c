@@ -39,7 +39,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkx.h>
 
 #ifdef HAVE_INTROSPECTION
@@ -376,16 +376,16 @@ on_message_received (const char *message,
 	 * terminal. We also need to make sure that the window
 	 * has been realized otherwise it will not work. lame.
 	 */
-	if (!gtk_widget_get_realized (GTK_WIDGET (window)))
-		gtk_widget_realize (GTK_WIDGET (window));
+	if (!ctk_widget_get_realized (GTK_WIDGET (window)))
+		ctk_widget_realize (GTK_WIDGET (window));
 
 	if (startup_timestamp <= 0)
-		startup_timestamp = gdk_x11_get_server_time (gtk_widget_get_window (GTK_WIDGET (window)));
+		startup_timestamp = gdk_x11_get_server_time (ctk_widget_get_window (GTK_WIDGET (window)));
 
-	gdk_x11_window_set_user_time (gtk_widget_get_window (GTK_WIDGET (window)),
+	gdk_x11_window_set_user_time (ctk_widget_get_window (GTK_WIDGET (window)),
 				      startup_timestamp);
 
-	gtk_window_present (GTK_WINDOW (window));
+	ctk_window_present (GTK_WINDOW (window));
 
  out:
 	g_strfreev (commands);
@@ -523,7 +523,7 @@ main (int argc, char *argv[])
 	/* Setup command line options */
 	context = g_option_context_new (_("- Edit text files"));
 	g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
-	g_option_context_add_group (context, gtk_get_option_group (TRUE));
+	g_option_context_add_group (context, ctk_get_option_group (TRUE));
 	g_option_context_add_group (context, egg_sm_client_get_option_group ());
 
 #ifdef HAVE_INTROSPECTION
@@ -588,7 +588,7 @@ main (int argc, char *argv[])
 				     NULL);
 	g_free (dir);
 
-	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
+	ctk_icon_theme_append_search_path (ctk_icon_theme_get_default (),
 					   icon_dir);
 	g_free (icon_dir);
 
@@ -641,14 +641,14 @@ main (int argc, char *argv[])
 		}
 
 		lapiz_debug_message (DEBUG_APP, "Show window");
-		gtk_widget_show (GTK_WIDGET (window));
+		ctk_widget_show (GTK_WIDGET (window));
 
 		free_command_line_data ();
 	}
 
-	lapiz_debug_message (DEBUG_APP, "Start gtk-main");
+	lapiz_debug_message (DEBUG_APP, "Start ctk-main");
 
-	gtk_main();
+	ctk_main();
 
 	bacon_message_connection_free (connection);
 

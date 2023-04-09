@@ -36,7 +36,7 @@
 
 #include <glib/gi18n.h>
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 gboolean
 lapiz_help_display (GtkWindow   *parent,
@@ -63,7 +63,7 @@ lapiz_help_display (GtkWindow   *parent,
 	else
 		link = g_strdup_printf ("help:%s", name);
 
-	ret = gtk_show_uri_on_window (parent,
+	ret = ctk_show_uri_on_window (parent,
 	                              link,
 	                              GDK_CURRENT_TIME,
 	                              &error);
@@ -74,23 +74,23 @@ lapiz_help_display (GtkWindow   *parent,
 	{
 		GtkWidget *dialog;
 
-		dialog = gtk_message_dialog_new (parent,
+		dialog = ctk_message_dialog_new (parent,
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
 						 GTK_BUTTONS_CLOSE,
 						 _("There was an error displaying the help."));
 
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+		ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 							  "%s", error->message);
 
 		g_signal_connect (G_OBJECT (dialog),
 				  "response",
-				  G_CALLBACK (gtk_widget_destroy),
+				  G_CALLBACK (ctk_widget_destroy),
 				  NULL);
 
-		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+		ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-		gtk_widget_show (dialog);
+		ctk_widget_show (dialog);
 
 		g_error_free (error);
 	}

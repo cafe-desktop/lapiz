@@ -559,8 +559,8 @@ lapiz_file_browser_store_get_iter (GtkTreeModel * tree_model,
 	g_assert (path != NULL);
 
 	model = LAPIZ_FILE_BROWSER_STORE (tree_model);
-	indices = gtk_tree_path_get_indices (path);
-	depth = gtk_tree_path_get_depth (path);
+	indices = ctk_tree_path_get_indices (path);
+	depth = ctk_tree_path_get_depth (path);
 	node = model->priv->virtual_root;
 
 	for (i = 0; i < depth; ++i) {
@@ -609,13 +609,13 @@ lapiz_file_browser_store_get_path_real (LapizFileBrowserStore * model,
 	GtkTreePath *path;
 	gint num = 0;
 
-	path = gtk_tree_path_new ();
+	path = ctk_tree_path_new ();
 
 	while (node != model->priv->virtual_root) {
 		GSList *item;
 
 		if (node->parent == NULL) {
-			gtk_tree_path_free (path);
+			ctk_tree_path_free (path);
 			return NULL;
 		}
 
@@ -628,7 +628,7 @@ lapiz_file_browser_store_get_path_real (LapizFileBrowserStore * model,
 
 			if (model_node_visibility (model, check) && (check == node || check->inserted)) {
 				if (check == node) {
-					gtk_tree_path_prepend_index (path,
+					ctk_tree_path_prepend_index (path,
 								     num);
 					break;
 				}
@@ -638,7 +638,7 @@ lapiz_file_browser_store_get_path_real (LapizFileBrowserStore * model,
 				if (NODE_IS_DUMMY (node))
 					g_warning ("Dummy not visible???");
 
-				gtk_tree_path_free (path);
+				ctk_tree_path_free (path);
 				return NULL;
 			}
 		}
@@ -919,13 +919,13 @@ lapiz_file_browser_store_row_draggable (GtkTreeDragSource * drag_source,
 	GtkTreeIter iter;
 	LapizFileBrowserStoreFlag flags;
 
-	if (!gtk_tree_model_get_iter (GTK_TREE_MODEL (drag_source),
+	if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (drag_source),
 				      &iter, path))
 	{
 		return FALSE;
 	}
 
-	gtk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
 
@@ -949,20 +949,20 @@ lapiz_file_browser_store_drag_data_get (GtkTreeDragSource * drag_source,
 	gchar *uris[2] = {0, };
 	gboolean ret;
 
-	if (!gtk_tree_model_get_iter (GTK_TREE_MODEL (drag_source),
+	if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (drag_source),
 				      &iter, path))
 	{
 		return FALSE;
 	}
 
-	gtk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
+	ctk_tree_model_get (GTK_TREE_MODEL (drag_source), &iter,
 			    LAPIZ_FILE_BROWSER_STORE_COLUMN_URI, &uri,
 			    -1);
 
 	g_assert (uri);
 
 	uris[0] = uri;
-	ret = gtk_selection_data_set_uris (selection_data, uris);
+	ret = ctk_selection_data_set_uris (selection_data, uris);
 
 	g_free (uri);
 
@@ -1122,11 +1122,11 @@ model_resort_node (LapizFileBrowserStore * model, FileBrowserNode * node)
 		    lapiz_file_browser_store_get_path_real (model,
 							    node->parent);
 
-		gtk_tree_model_rows_reordered (GTK_TREE_MODEL (model),
+		ctk_tree_model_rows_reordered (GTK_TREE_MODEL (model),
 					       path, &iter, neworder);
 
 		g_free (neworder);
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 	}
 }
 
@@ -1135,15 +1135,15 @@ row_changed (LapizFileBrowserStore * model,
 	     GtkTreePath ** path,
 	     GtkTreeIter * iter)
 {
-	GtkTreeRowReference *ref = gtk_tree_row_reference_new (GTK_TREE_MODEL (model), *path);
+	GtkTreeRowReference *ref = ctk_tree_row_reference_new (GTK_TREE_MODEL (model), *path);
 
 	/* Insert a copy of the actual path here because the row-inserted
 	   signal may alter the path */
-	gtk_tree_model_row_changed (GTK_TREE_MODEL(model), *path, iter);
-	gtk_tree_path_free (*path);
+	ctk_tree_model_row_changed (GTK_TREE_MODEL(model), *path, iter);
+	ctk_tree_path_free (*path);
 
-	*path = gtk_tree_row_reference_get_path (ref);
-	gtk_tree_row_reference_free (ref);
+	*path = ctk_tree_row_reference_get_path (ref);
+	ctk_tree_row_reference_free (ref);
 }
 
 static void
@@ -1157,36 +1157,36 @@ row_inserted (LapizFileBrowserStore * model,
 	   Because functions that use this function rely on the notion that
 	   the path remains pointed towards the inserted node, we use the
 	   reference to keep track. */
-	GtkTreeRowReference *ref = gtk_tree_row_reference_new (GTK_TREE_MODEL (model), *path);
-	GtkTreePath * copy = gtk_tree_path_copy (*path);
+	GtkTreeRowReference *ref = ctk_tree_row_reference_new (GTK_TREE_MODEL (model), *path);
+	GtkTreePath * copy = ctk_tree_path_copy (*path);
 
-	gtk_tree_model_row_inserted (GTK_TREE_MODEL(model), copy, iter);
-	gtk_tree_path_free (copy);
+	ctk_tree_model_row_inserted (GTK_TREE_MODEL(model), copy, iter);
+	ctk_tree_path_free (copy);
 
 	if (ref)
 	{
-		gtk_tree_path_free (*path);
+		ctk_tree_path_free (*path);
 
 		/* To restore the path, we get the path from the reference. But, since
 		   we inserted a row, the path will be one index further than the
-		   actual path of our node. We therefore call gtk_tree_path_prev */
-		*path = gtk_tree_row_reference_get_path (ref);
-		gtk_tree_path_prev (*path);
+		   actual path of our node. We therefore call ctk_tree_path_prev */
+		*path = ctk_tree_row_reference_get_path (ref);
+		ctk_tree_path_prev (*path);
 	}
 
-	gtk_tree_row_reference_free (ref);
+	ctk_tree_row_reference_free (ref);
 }
 
 static void
 row_deleted (LapizFileBrowserStore * model,
 	     const GtkTreePath * path)
 {
-	GtkTreePath *copy = gtk_tree_path_copy (path);
+	GtkTreePath *copy = ctk_tree_path_copy (path);
 
 	/* Delete a copy of the actual path here because the row-deleted
 	   signal may alter the path */
-	gtk_tree_model_row_deleted (GTK_TREE_MODEL(model), copy);
-	gtk_tree_path_free (copy);
+	ctk_tree_model_row_deleted (GTK_TREE_MODEL(model), copy);
+	ctk_tree_path_free (copy);
 }
 
 static void
@@ -1216,14 +1216,14 @@ model_refilter_node (LapizFileBrowserStore * model,
 			tmppath = lapiz_file_browser_store_get_path_real (model,
 								       node);
 		else
-			tmppath = gtk_tree_path_new_first ();
+			tmppath = ctk_tree_path_new_first ();
 
 		path = &tmppath;
 	}
 
 	if (NODE_IS_DIR (node)) {
 		if (in_tree)
-			gtk_tree_path_down (*path);
+			ctk_tree_path_down (*path);
 
 		dir = FILE_BROWSER_NODE_DIR (node);
 
@@ -1234,7 +1234,7 @@ model_refilter_node (LapizFileBrowserStore * model,
 		}
 
 		if (in_tree)
-			gtk_tree_path_up (*path);
+			ctk_tree_path_up (*path);
 	}
 
 	if (in_tree) {
@@ -1247,17 +1247,17 @@ model_refilter_node (LapizFileBrowserStore * model,
 			} else {
 				iter.user_data = node;
 				row_inserted (model, path, &iter);
-				gtk_tree_path_next (*path);
+				ctk_tree_path_next (*path);
 			}
 		} else if (old_visible) {
-			gtk_tree_path_next (*path);
+			ctk_tree_path_next (*path);
 		}
 	}
 
 	model_check_dummy (model, node);
 
 	if (tmppath)
-		gtk_tree_path_free (tmppath);
+		ctk_tree_path_free (tmppath);
 }
 
 static void
@@ -1435,9 +1435,9 @@ model_remove_node_children (LapizFileBrowserStore * model,
 		path_child =
 		    lapiz_file_browser_store_get_path_real (model, node);
 	else
-		path_child = gtk_tree_path_copy (path);
+		path_child = ctk_tree_path_copy (path);
 
-	gtk_tree_path_down (path_child);
+	ctk_tree_path_down (path_child);
 
 	list = g_slist_copy (dir->children);
 
@@ -1447,7 +1447,7 @@ model_remove_node_children (LapizFileBrowserStore * model,
 	}
 
 	g_slist_free (list);
-	gtk_tree_path_free (path_child);
+	ctk_tree_path_free (path_child);
 }
 
 /**
@@ -1488,7 +1488,7 @@ model_remove_node (LapizFileBrowserStore * model,
 	}
 
 	if (free_path)
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 
 	parent = node->parent;
 
@@ -1528,10 +1528,10 @@ model_clear (LapizFileBrowserStore * model, gboolean free_nodes)
 	FileBrowserNodeDir *dir;
 	FileBrowserNode *dummy;
 
-	path = gtk_tree_path_new ();
+	path = ctk_tree_path_new ();
 	model_remove_node_children (model, model->priv->virtual_root, path,
 				    free_nodes);
-	gtk_tree_path_free (path);
+	ctk_tree_path_free (path);
 
 	/* Remove the dummy if there is one */
 	if (model->priv->virtual_root) {
@@ -1542,11 +1542,11 @@ model_clear (LapizFileBrowserStore * model, gboolean free_nodes)
 
 			if (NODE_IS_DUMMY (dummy)
 			    && model_node_visibility (model, dummy)) {
-				path = gtk_tree_path_new_first ();
+				path = ctk_tree_path_new_first ();
 
 				dummy->inserted = FALSE;
 				row_deleted (model, path);
-				gtk_tree_path_free (path);
+				ctk_tree_path_free (path);
 			}
 		}
 	}
@@ -1616,7 +1616,7 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 	if (node->emblem) {
 		gint icon_size;
 
-		gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
+		ctk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
 
 		if (icon == NULL) {
 			node->icon =
@@ -1731,7 +1731,7 @@ model_check_dummy (LapizFileBrowserStore * model, FileBrowserNode * node)
 				    (model, dummy);
 
 				row_inserted (model, &path, &iter);
-				gtk_tree_path_free (path);
+				ctk_tree_path_free (path);
 			}
 		} else {
 			if (!FILE_IS_HIDDEN (flags)) {
@@ -1748,7 +1748,7 @@ model_check_dummy (LapizFileBrowserStore * model, FileBrowserNode * node)
 
 				dummy->inserted = FALSE;
 				row_deleted (model, path);
-				gtk_tree_path_free (path);
+				ctk_tree_path_free (path);
 			}
 		}
 	}
@@ -1790,7 +1790,7 @@ model_add_node (LapizFileBrowserStore * model, FileBrowserNode * child,
 
 		/* Emit row inserted */
 		row_inserted (model, &path, &iter);
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 	}
 
 	model_check_dummy (model, parent);
@@ -1836,7 +1836,7 @@ model_add_nodes_batch (LapizFileBrowserStore * model,
 
 					// Emit row inserted
 					row_inserted (model, &path, &iter);
-					gtk_tree_path_free (path);
+					ctk_tree_path_free (path);
 				}
 
 				model_check_dummy (model, l->data);
@@ -1867,7 +1867,7 @@ model_add_nodes_batch (LapizFileBrowserStore * model,
 
 				// Emit row inserted
 				row_inserted (model, &path, &iter);
-				gtk_tree_path_free (path);
+				ctk_tree_path_free (path);
 			}
 
 			model_check_dummy (model, node);
@@ -1955,7 +1955,7 @@ file_browser_node_set_from_info (LapizFileBrowserStore * model,
 	if (isadded) {
 		path = lapiz_file_browser_store_get_path_real (model, node);
 		model_refilter_node (model, node, &path);
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 
 		model_check_dummy (model, node->parent);
 	} else {
@@ -2329,7 +2329,7 @@ model_fill (LapizFileBrowserStore * model, FileBrowserNode * node,
 
 	if (node == NULL) {
 		node = model->priv->virtual_root;
-		*path = gtk_tree_path_new ();
+		*path = ctk_tree_path_new ();
 		free_path = TRUE;
 	}
 
@@ -2341,7 +2341,7 @@ model_fill (LapizFileBrowserStore * model, FileBrowserNode * node,
 
 	if (!model_node_visibility (model, node)) {
 		if (free_path)
-			gtk_tree_path_free (*path);
+			ctk_tree_path_free (*path);
 
 		return;
 	}
@@ -2355,7 +2355,7 @@ model_fill (LapizFileBrowserStore * model, FileBrowserNode * node,
 
 	if (NODE_IS_DIR (node)) {
 		/* Go to the first child */
-		gtk_tree_path_down (*path);
+		ctk_tree_path_down (*path);
 
 		for (item = FILE_BROWSER_NODE_DIR (node)->children; item;
 		     item = item->next) {
@@ -2365,18 +2365,18 @@ model_fill (LapizFileBrowserStore * model, FileBrowserNode * node,
 				model_fill (model, child, path);
 
 				/* Increase path for next child */
-				gtk_tree_path_next (*path);
+				ctk_tree_path_next (*path);
 			}
 		}
 
 		/* Move back up to node path */
-		gtk_tree_path_up (*path);
+		ctk_tree_path_up (*path);
 	}
 
 	model_check_dummy (model, node);
 
 	if (free_path)
-		gtk_tree_path_free (*path);
+		ctk_tree_path_free (*path);
 }
 
 static void
@@ -2681,7 +2681,7 @@ model_mount_root (LapizFileBrowserStore * model, gchar const * virtual_root)
 			mount_info->virtual_root = g_strdup (virtual_root);
 
 			/* FIXME: we should be setting the correct window */
-			mount_info->operation = gtk_mount_operation_new (NULL);
+			mount_info->operation = ctk_mount_operation_new (NULL);
 			mount_info->cancellable = g_object_ref (FILE_BROWSER_NODE_DIR (model->priv->root)->cancellable);
 
 			model_begin_loading (model, model->priv->root);
@@ -2760,7 +2760,7 @@ lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 		path = lapiz_file_browser_store_get_path (GTK_TREE_MODEL (tree_model),
 							  iter);
 		row_changed (tree_model, &path, iter);
-		gtk_tree_path_free (path);
+		ctk_tree_path_free (path);
 	}
 }
 
@@ -3205,7 +3205,7 @@ lapiz_file_browser_store_rename (LapizFileBrowserStore * model,
 		if (model_node_visibility (model, node)) {
 			path = lapiz_file_browser_store_get_path_real (model, node);
 			row_changed (model, &path, iter);
-			gtk_tree_path_free (path);
+			ctk_tree_path_free (path);
 
 			/* Reorder this item */
 			model_resort_node (model, node);
@@ -3388,17 +3388,17 @@ lapiz_file_browser_store_delete_all (LapizFileBrowserStore *model,
 	/* First we sort the paths so that we can later on remove any
 	   files/directories that are actually subfiles/directories of
 	   a directory that's also deleted */
-	rows = g_list_sort (g_list_copy (rows), (GCompareFunc)gtk_tree_path_compare);
+	rows = g_list_sort (g_list_copy (rows), (GCompareFunc)ctk_tree_path_compare);
 
 	for (row = rows; row; row = row->next) {
 		path = (GtkTreePath *)(row->data);
 
-		if (!gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path))
+		if (!ctk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path))
 			continue;
 
 		/* Skip if the current path is actually a descendant of the
 		   previous path */
-		if (prev != NULL && gtk_tree_path_is_descendant (path, prev))
+		if (prev != NULL && ctk_tree_path_is_descendant (path, prev))
 			continue;
 
 		prev = path;
@@ -3444,7 +3444,7 @@ lapiz_file_browser_store_delete (LapizFileBrowserStore * model,
 	rows = g_list_append(NULL, lapiz_file_browser_store_get_path_real (model, node));
 	result = lapiz_file_browser_store_delete_all (model, rows, trash);
 
-	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
+	g_list_foreach (rows, (GFunc)ctk_tree_path_free, NULL);
 	g_list_free (rows);
 
 	return result;

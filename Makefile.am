@@ -28,7 +28,7 @@ MAINTAINERCLEANFILES = 		\
 	depcomp			\
 	configure \
 	INSTALL \
-	gtk-doc.make		\
+	ctk-doc.make		\
 	install-sh		\
 	ltmain.sh		\
 	missing			\
@@ -36,7 +36,7 @@ MAINTAINERCLEANFILES = 		\
 	omf.make		\
 	py-compile		\
 	xmldocs.make		\
-	m4/gtk-doc.m4		\
+	m4/ctk-doc.m4		\
 	m4/libtool.m4		\
 	m4/ltoptions.m4		\
 	m4/ltsugar.m4		\
@@ -45,7 +45,7 @@ MAINTAINERCLEANFILES = 		\
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--enable-gtk-doc \
+	--enable-ctk-doc \
 	--disable-tests \
 	--enable-compile-warnings=no \
 	CFLAGS='-Wno-deprecated-declarations'

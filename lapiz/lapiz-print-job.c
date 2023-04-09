@@ -34,7 +34,7 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <gtksourceview/gtksource.h>
+#include <ctksourceview/ctksource.h>
 
 #include "lapiz-print-job.h"
 #include "lapiz-debug.h"
@@ -106,7 +106,7 @@ static void
 set_view (LapizPrintJob *job, LapizView *view)
 {
 	job->priv->view = view;
-	job->priv->doc = LAPIZ_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	job->priv->doc = LAPIZ_DOCUMENT (ctk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 }
 
 static void
@@ -223,14 +223,14 @@ static void
 line_numbers_checkbutton_toggled (GtkToggleButton *button,
 				  LapizPrintJob   *job)
 {
-	if (gtk_toggle_button_get_active (button))
+	if (ctk_toggle_button_get_active (button))
 	{
-		gtk_widget_set_sensitive (job->priv->line_numbers_hbox,
+		ctk_widget_set_sensitive (job->priv->line_numbers_hbox,
 					  lapiz_prefs_manager_print_line_numbers_can_set ());
 	}
 	else
 	{
-		gtk_widget_set_sensitive (job->priv->line_numbers_hbox, FALSE);
+		ctk_widget_set_sensitive (job->priv->line_numbers_hbox, FALSE);
 	}
 }
 
@@ -238,19 +238,19 @@ static void
 wrap_mode_checkbutton_toggled (GtkToggleButton *button,
 			       LapizPrintJob   *job)
 {
-	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
+	if (!ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
 	{
-		gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
+		ctk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
 					  FALSE);
-		gtk_toggle_button_set_inconsistent (
+		ctk_toggle_button_set_inconsistent (
 			GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton),
 					   TRUE);
 	}
 	else
 	{
-		gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
+		ctk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
 					  TRUE);
-		gtk_toggle_button_set_inconsistent (
+		ctk_toggle_button_set_inconsistent (
 			GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton),
 					   FALSE);
 	}
@@ -267,7 +267,7 @@ restore_button_clicked (GtkButton     *button,
 
 		font = lapiz_prefs_manager_get_default_print_font_body ();
 
-		gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton),
+		ctk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton),
 					   font);
 
 		g_free (font);
@@ -279,7 +279,7 @@ restore_button_clicked (GtkButton     *button,
 
 		font = lapiz_prefs_manager_get_default_print_font_header ();
 
-		gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton),
+		ctk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton),
 					   font);
 
 		g_free (font);
@@ -291,7 +291,7 @@ restore_button_clicked (GtkButton     *button,
 
 		font = lapiz_prefs_manager_get_default_print_font_numbers ();
 
-		gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton),
+		ctk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton),
 					   font);
 
 		g_free (font);
@@ -345,36 +345,36 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	}
 
 	/* Print syntax */
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton),
 				      lapiz_prefs_manager_get_print_syntax_hl ());
-	gtk_widget_set_sensitive (job->priv->syntax_checkbutton,
+	ctk_widget_set_sensitive (job->priv->syntax_checkbutton,
 				  lapiz_prefs_manager_print_syntax_hl_can_set ());
 
 	/* Print page headers */
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton),
 				      lapiz_prefs_manager_get_print_header ());
-	gtk_widget_set_sensitive (job->priv->page_header_checkbutton,
+	ctk_widget_set_sensitive (job->priv->page_header_checkbutton,
 				  lapiz_prefs_manager_print_header_can_set ());
 
 	/* Line numbers */
 	line_numbers =  lapiz_prefs_manager_get_print_line_numbers ();
 	can_set = lapiz_prefs_manager_print_line_numbers_can_set ();
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->line_numbers_checkbutton),
+	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->line_numbers_checkbutton),
 				      line_numbers > 0);
-	gtk_widget_set_sensitive (job->priv->line_numbers_checkbutton, can_set);
+	ctk_widget_set_sensitive (job->priv->line_numbers_checkbutton, can_set);
 
 	if (line_numbers > 0)
 	{
-		gtk_spin_button_set_value (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton),
+		ctk_spin_button_set_value (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton),
 					   (guint) line_numbers);
-		gtk_widget_set_sensitive (job->priv->line_numbers_hbox, can_set);
+		ctk_widget_set_sensitive (job->priv->line_numbers_hbox, can_set);
 	}
 	else
 	{
-		gtk_spin_button_set_value (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton),
+		ctk_spin_button_set_value (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton),
 					   1);
-		gtk_widget_set_sensitive (job->priv->line_numbers_hbox, FALSE);
+		ctk_widget_set_sensitive (job->priv->line_numbers_hbox, FALSE);
 	}
 
 	/* Text wrapping */
@@ -383,57 +383,57 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	switch (wrap_mode)
 	{
 		case GTK_WRAP_WORD:
-			gtk_toggle_button_set_active (
+			ctk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton), TRUE);
-			gtk_toggle_button_set_active (
+			ctk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton), TRUE);
 			break;
 		case GTK_WRAP_CHAR:
-			gtk_toggle_button_set_active (
+			ctk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton), TRUE);
-			gtk_toggle_button_set_active (
+			ctk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton), FALSE);
 			break;
 		default:
-			gtk_toggle_button_set_active (
+			ctk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton), FALSE);
-			gtk_toggle_button_set_inconsistent (
+			ctk_toggle_button_set_inconsistent (
 				GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton), TRUE);
 	}
 
 	can_set = lapiz_prefs_manager_print_wrap_mode_can_set ();
 
-	gtk_widget_set_sensitive (job->priv->text_wrapping_checkbutton, can_set);
-	gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
+	ctk_widget_set_sensitive (job->priv->text_wrapping_checkbutton, can_set);
+	ctk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
 				  can_set && (wrap_mode != GTK_WRAP_NONE));
 
 	/* Set initial values */
 	font = lapiz_prefs_manager_get_print_font_body ();
-	gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton),
+	ctk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton),
 				   font);
 	g_free (font);
 
 	font = lapiz_prefs_manager_get_print_font_header ();
-	gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton),
+	ctk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton),
 				   font);
 	g_free (font);
 
 	font = lapiz_prefs_manager_get_print_font_numbers ();
-	gtk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton),
+	ctk_font_chooser_set_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton),
 				   font);
 	g_free (font);
 
 	can_set = lapiz_prefs_manager_print_font_body_can_set ();
-	gtk_widget_set_sensitive (job->priv->body_fontbutton, can_set);
-	gtk_widget_set_sensitive (job->priv->body_font_label, can_set);
+	ctk_widget_set_sensitive (job->priv->body_fontbutton, can_set);
+	ctk_widget_set_sensitive (job->priv->body_font_label, can_set);
 
 	can_set = lapiz_prefs_manager_print_font_header_can_set ();
-	gtk_widget_set_sensitive (job->priv->headers_fontbutton, can_set);
-	gtk_widget_set_sensitive (job->priv->headers_font_label, can_set);
+	ctk_widget_set_sensitive (job->priv->headers_fontbutton, can_set);
+	ctk_widget_set_sensitive (job->priv->headers_font_label, can_set);
 
 	can_set = lapiz_prefs_manager_print_font_numbers_can_set ();
-	gtk_widget_set_sensitive (job->priv->numbers_fontbutton, can_set);
-	gtk_widget_set_sensitive (job->priv->numbers_font_label, can_set);
+	ctk_widget_set_sensitive (job->priv->numbers_fontbutton, can_set);
+	ctk_widget_set_sensitive (job->priv->numbers_font_label, can_set);
 
 	g_signal_connect (job->priv->line_numbers_checkbutton,
 			  "toggled",
@@ -460,27 +460,27 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 			GtkWidget         *widget,
 			LapizPrintJob     *job)
 {
-	lapiz_prefs_manager_set_print_syntax_hl (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton)));
+	lapiz_prefs_manager_set_print_syntax_hl (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton)));
 
-	lapiz_prefs_manager_set_print_header (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton)));
+	lapiz_prefs_manager_set_print_header (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton)));
 
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->line_numbers_checkbutton)))
+	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->line_numbers_checkbutton)))
 	{
 		lapiz_prefs_manager_set_print_line_numbers (
-			MAX (1, gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton))));
+			MAX (1, ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton))));
 	}
 	else
 	{
 		lapiz_prefs_manager_set_print_line_numbers (0);
 	}
 
-	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
+	if (!ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
 	{
 		lapiz_prefs_manager_set_print_wrap_mode (GTK_WRAP_NONE);
 	}
 	else
 	{
-		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton)))
+		if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton)))
 		{
 			lapiz_prefs_manager_set_print_wrap_mode (GTK_WRAP_WORD);
 		}
@@ -490,9 +490,9 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 		}
 	}
 
-	lapiz_prefs_manager_set_print_font_body (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton)));
-	lapiz_prefs_manager_set_print_font_header (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton)));
-	lapiz_prefs_manager_set_print_font_numbers (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton)));
+	lapiz_prefs_manager_set_print_font_body (ctk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->body_fontbutton)));
+	lapiz_prefs_manager_set_print_font_header (ctk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->headers_fontbutton)));
+	lapiz_prefs_manager_set_print_font_numbers (ctk_font_chooser_get_font (GTK_FONT_CHOOSER (job->priv->numbers_fontbutton)));
 }
 
 static void
@@ -510,8 +510,8 @@ create_compositor (LapizPrintJob *job)
 	job->priv->compositor = GTK_SOURCE_PRINT_COMPOSITOR (
 					g_object_new (GTK_SOURCE_TYPE_PRINT_COMPOSITOR,
 						     "buffer", GTK_SOURCE_BUFFER (job->priv->doc),
-						     "tab-width", gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (job->priv->view)),
-						     "highlight-syntax", gtk_source_buffer_get_highlight_syntax (GTK_SOURCE_BUFFER (job->priv->doc)) &&
+						     "tab-width", ctk_source_view_get_tab_width (GTK_SOURCE_VIEW (job->priv->view)),
+						     "highlight-syntax", ctk_source_buffer_get_highlight_syntax (GTK_SOURCE_BUFFER (job->priv->doc)) &&
 					   				 lapiz_prefs_manager_get_print_syntax_hl (),
 						     "wrap-mode", lapiz_prefs_manager_get_print_wrap_mode (),
 						     "print-line-numbers", lapiz_prefs_manager_get_print_line_numbers (),
@@ -540,7 +540,7 @@ create_compositor (LapizPrintJob *job)
 		/* Translators: %N is the current page number, %Q is the total
 		 * number of pages (ex. Page 2 of 10)
 		 */
-		gtk_source_print_compositor_set_header_format (job->priv->compositor,
+		ctk_source_print_compositor_set_header_format (job->priv->compositor,
 							       TRUE,
 							       left,
 							       NULL,
@@ -567,7 +567,7 @@ begin_print_cb (GtkPrintOperation *operation,
 }
 
 static void
-preview_ready (GtkPrintOperationPreview *gtk_preview,
+preview_ready (GtkPrintOperationPreview *ctk_preview,
 	       GtkPrintContext          *context,
 	       LapizPrintJob            *job)
 {
@@ -578,21 +578,21 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 
 static void
 preview_destroyed (GtkWidget                *preview,
-		   GtkPrintOperationPreview *gtk_preview)
+		   GtkPrintOperationPreview *ctk_preview)
 {
-	gtk_print_operation_preview_end_preview (gtk_preview);
+	ctk_print_operation_preview_end_preview (ctk_preview);
 }
 
 static gboolean
 preview_cb (GtkPrintOperation        *op,
-	    GtkPrintOperationPreview *gtk_preview,
+	    GtkPrintOperationPreview *ctk_preview,
 	    GtkPrintContext          *context,
 	    GtkWindow                *parent,
 	    LapizPrintJob            *job)
 {
-	job->priv->preview = lapiz_print_preview_new (op, gtk_preview, context);
+	job->priv->preview = lapiz_print_preview_new (op, ctk_preview, context);
 
-	g_signal_connect_after (gtk_preview,
+	g_signal_connect_after (ctk_preview,
 			        "ready",
 				G_CALLBACK (preview_ready),
 				job);
@@ -601,7 +601,7 @@ preview_cb (GtkPrintOperation        *op,
 	g_signal_connect (job->priv->preview,
 			  "destroy",
 			  G_CALLBACK (preview_destroyed),
-			  gtk_preview);
+			  ctk_preview);
 
 	return TRUE;
 }
@@ -615,17 +615,17 @@ paginate_cb (GtkPrintOperation *operation,
 
 	job->priv->status = LAPIZ_PRINT_JOB_STATUS_PAGINATING;
 
-	res = gtk_source_print_compositor_paginate (job->priv->compositor, context);
+	res = ctk_source_print_compositor_paginate (job->priv->compositor, context);
 
 	if (res)
 	{
 		gint n_pages;
 
-		n_pages = gtk_source_print_compositor_get_n_pages (job->priv->compositor);
-		gtk_print_operation_set_n_pages (job->priv->operation, n_pages);
+		n_pages = ctk_source_print_compositor_get_n_pages (job->priv->compositor);
+		ctk_print_operation_set_n_pages (job->priv->operation, n_pages);
 	}
 
-	job->priv->progress = gtk_source_print_compositor_get_pagination_progress (job->priv->compositor);
+	job->priv->progress = ctk_source_print_compositor_get_pagination_progress (job->priv->compositor);
 
 	/* When previewing, the progress is just for pagination, when printing
 	 * it's split between pagination and rendering */
@@ -651,7 +651,7 @@ draw_page_cb (GtkPrintOperation *operation,
 	{
 		g_free (job->priv->status_string);
 
-		n_pages = gtk_source_print_compositor_get_n_pages (job->priv->compositor);
+		n_pages = ctk_source_print_compositor_get_n_pages (job->priv->compositor);
 
 		job->priv->status = LAPIZ_PRINT_JOB_STATUS_DRAWING;
 
@@ -664,7 +664,7 @@ draw_page_cb (GtkPrintOperation *operation,
 		g_signal_emit (job, print_job_signals[PRINTING], 0, job->priv->status);
 	}
 
-	gtk_source_print_compositor_draw_page (job->priv->compositor, context, page_nr);
+	ctk_source_print_compositor_draw_page (job->priv->compositor, context, page_nr);
 }
 
 static void
@@ -696,7 +696,7 @@ done_cb (GtkPrintOperation       *operation,
 
 		case GTK_PRINT_OPERATION_RESULT_ERROR:
 			print_result = LAPIZ_PRINT_JOB_RESULT_ERROR;
-			gtk_print_operation_get_error (operation, &error);
+			ctk_print_operation_get_error (operation, &error);
 			break;
 
 		default:
@@ -734,26 +734,26 @@ lapiz_print_job_print (LapizPrintJob            *job,
 	priv->is_preview = (action == GTK_PRINT_OPERATION_ACTION_PREVIEW);
 
 	/* Create print operation */
-	job->priv->operation = gtk_print_operation_new ();
+	job->priv->operation = ctk_print_operation_new ();
 
 	if (settings)
-		gtk_print_operation_set_print_settings (priv->operation,
+		ctk_print_operation_set_print_settings (priv->operation,
 							settings);
 
 	if (page_setup != NULL)
-		gtk_print_operation_set_default_page_setup (priv->operation,
+		ctk_print_operation_set_default_page_setup (priv->operation,
 							    page_setup);
 
 	job_name = lapiz_document_get_short_name_for_display (priv->doc);
-	gtk_print_operation_set_job_name (priv->operation, job_name);
+	ctk_print_operation_set_job_name (priv->operation, job_name);
 	g_free (job_name);
 
-	gtk_print_operation_set_embed_page_setup (priv->operation, TRUE);
+	ctk_print_operation_set_embed_page_setup (priv->operation, TRUE);
 
-	gtk_print_operation_set_custom_tab_label (priv->operation,
+	ctk_print_operation_set_custom_tab_label (priv->operation,
 						  _("Text Editor"));
 
-	gtk_print_operation_set_allow_async (priv->operation, TRUE);
+	ctk_print_operation_set_allow_async (priv->operation, TRUE);
 
 	g_signal_connect (priv->operation,
 			  "create-custom-widget",
@@ -788,7 +788,7 @@ lapiz_print_job_print (LapizPrintJob            *job,
 			  G_CALLBACK (done_cb),
 			  job);
 
-	return gtk_print_operation_run (priv->operation,
+	return ctk_print_operation_run (priv->operation,
 					action,
 					parent,
 					error);
@@ -823,7 +823,7 @@ lapiz_print_job_cancel (LapizPrintJob *job)
 {
 	g_return_if_fail (LAPIZ_IS_PRINT_JOB (job));
 
-	gtk_print_operation_cancel (job->priv->operation);
+	ctk_print_operation_cancel (job->priv->operation);
 }
 
 const gchar *
@@ -848,7 +848,7 @@ lapiz_print_job_get_print_settings (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 
-	return gtk_print_operation_get_print_settings (job->priv->operation);
+	return ctk_print_operation_get_print_settings (job->priv->operation);
 }
 
 GtkPageSetup *
@@ -856,5 +856,5 @@ lapiz_print_job_get_page_setup (LapizPrintJob *job)
 {
 	g_return_val_if_fail (LAPIZ_IS_PRINT_JOB (job), NULL);
 
-	return gtk_print_operation_get_default_page_setup (job->priv->operation);
+	return ctk_print_operation_get_default_page_setup (job->priv->operation);
 }
