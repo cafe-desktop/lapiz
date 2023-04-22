@@ -16,14 +16,14 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-from gi.repository import GObject, GLib, Ctk, Peas, Lapiz
+from gi.repository import GObject, GLib, Ctk, Bean, Lapiz
 
 from .WindowHelper import WindowHelper
 from .Library import Library
 from .Manager import Manager
 from .comment import toggle_lines
 
-class SnippetsPlugin(GObject.Object, Peas.Activatable):
+class SnippetsPlugin(GObject.Object, Bean.Activatable):
     __gtype_name__ = "SnippetsPlugin"
 
     object = GObject.Property(type=GObject.Object)

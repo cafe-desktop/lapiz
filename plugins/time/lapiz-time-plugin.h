@@ -50,7 +50,7 @@ typedef struct _LapizTimePlugin		LapizTimePlugin;
 
 struct _LapizTimePlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private >*/
 	LapizTimePluginPrivate *priv;
@@ -63,7 +63,7 @@ typedef struct _LapizTimePluginClass	LapizTimePluginClass;
 
 struct _LapizTimePluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 /*
@@ -72,7 +72,7 @@ struct _LapizTimePluginClass
 GType	lapiz_time_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

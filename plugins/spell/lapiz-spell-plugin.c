@@ -54,8 +54,8 @@
 #define SPELL_SCHEMA		"org.cafe.lapiz.plugins.spell"
 #define AUTOCHECK_TYPE_KEY	"autocheck-type"
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
-static void bean_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
+static void bean_ctk_configurable_iface_init (BeanCtkConfigurableInterface *iface);
 
 enum {
 	PROP_0,
@@ -1259,7 +1259,7 @@ tab_removed_cb (LapizWindow *window,
 }
 
 static void
-lapiz_spell_plugin_activate (PeasActivatable *activatable)
+lapiz_spell_plugin_activate (BeanActivatable *activatable)
 {
 	LapizSpellPlugin *plugin;
 	LapizSpellPluginPrivate *data;
@@ -1347,7 +1347,7 @@ lapiz_spell_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_spell_plugin_deactivate (PeasActivatable *activatable)
+lapiz_spell_plugin_deactivate (BeanActivatable *activatable)
 {
 	LapizSpellPluginPrivate *data;
 	LapizWindow *window;
@@ -1368,7 +1368,7 @@ lapiz_spell_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_spell_plugin_update_state (PeasActivatable *activatable)
+lapiz_spell_plugin_update_state (BeanActivatable *activatable)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -1416,7 +1416,7 @@ lapiz_spell_plugin_get_property (GObject    *object,
 }
 
 static CtkWidget *
-lapiz_spell_plugin_create_configure_widget (PeasCtkConfigurable *configurable)
+lapiz_spell_plugin_create_configure_widget (BeanCtkConfigurable *configurable)
 {
 	SpellConfigureDialog *dialog;
 
@@ -1468,7 +1468,7 @@ lapiz_spell_plugin_class_finalize (LapizSpellPluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
 	iface->activate = lapiz_spell_plugin_activate;
 	iface->deactivate = lapiz_spell_plugin_deactivate;
@@ -1476,13 +1476,13 @@ bean_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 static void
-bean_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface)
+bean_ctk_configurable_iface_init (BeanCtkConfigurableInterface *iface)
 {
 	iface->create_configure_widget = lapiz_spell_plugin_create_configure_widget;
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 	lapiz_spell_plugin_register_type (G_TYPE_MODULE (module));
 

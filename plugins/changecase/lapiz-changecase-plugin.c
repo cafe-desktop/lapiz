@@ -33,7 +33,7 @@
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 struct _LapizChangecasePluginPrivate
 {
@@ -370,7 +370,7 @@ update_ui (LapizChangecasePluginPrivate *data)
 }
 
 static void
-lapiz_changecase_plugin_activate (PeasActivatable *activatable)
+lapiz_changecase_plugin_activate (BeanActivatable *activatable)
 {
 	LapizChangecasePluginPrivate *data;
 	LapizWindow *window;
@@ -408,7 +408,7 @@ lapiz_changecase_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_changecase_plugin_deactivate (PeasActivatable *activatable)
+lapiz_changecase_plugin_deactivate (BeanActivatable *activatable)
 {
 	LapizChangecasePluginPrivate *data;
 	LapizWindow *window;
@@ -426,7 +426,7 @@ lapiz_changecase_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_changecase_plugin_update_state (PeasActivatable *activatable)
+lapiz_changecase_plugin_update_state (BeanActivatable *activatable)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -452,7 +452,7 @@ lapiz_changecase_plugin_class_finalize (LapizChangecasePluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
 	iface->activate = lapiz_changecase_plugin_activate;
 	iface->deactivate = lapiz_changecase_plugin_deactivate;
@@ -460,7 +460,7 @@ bean_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 	lapiz_changecase_plugin_register_type (G_TYPE_MODULE (module));
 

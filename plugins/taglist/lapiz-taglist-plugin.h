@@ -57,7 +57,7 @@ typedef struct _LapizTaglistPlugin		LapizTaglistPlugin;
 
 struct _LapizTaglistPlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private >*/
 	LapizTaglistPluginPrivate *priv;
@@ -70,7 +70,7 @@ typedef struct _LapizTaglistPluginClass	LapizTaglistPluginClass;
 
 struct _LapizTaglistPluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 /*
@@ -79,7 +79,7 @@ struct _LapizTaglistPluginClass
 GType	lapiz_taglist_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

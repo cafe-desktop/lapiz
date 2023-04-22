@@ -39,7 +39,7 @@
 
 #define MENU_PATH "/MenuBar/EditMenu/EditOps_6"
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 enum {
 	PROP_0,
@@ -508,7 +508,7 @@ update_ui (LapizSortPluginPrivate *data)
 }
 
 static void
-lapiz_sort_plugin_activate (PeasActivatable *activatable)
+lapiz_sort_plugin_activate (BeanActivatable *activatable)
 {
 	LapizSortPlugin *plugin;
 	LapizSortPluginPrivate *data;
@@ -549,7 +549,7 @@ lapiz_sort_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_sort_plugin_deactivate (PeasActivatable *activatable)
+lapiz_sort_plugin_deactivate (BeanActivatable *activatable)
 {
 	LapizSortPluginPrivate *data;
 	LapizWindow *window;
@@ -569,7 +569,7 @@ lapiz_sort_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_sort_plugin_update_state (PeasActivatable *activatable)
+lapiz_sort_plugin_update_state (BeanActivatable *activatable)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -625,7 +625,7 @@ lapiz_sort_plugin_class_finalize (LapizSortPluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
 	iface->activate = lapiz_sort_plugin_activate;
 	iface->deactivate = lapiz_sort_plugin_deactivate;
@@ -633,7 +633,7 @@ bean_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 	lapiz_sort_plugin_register_type (G_TYPE_MODULE (module));
 

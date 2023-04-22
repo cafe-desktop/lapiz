@@ -48,7 +48,7 @@ typedef struct _LapizSortPlugin		LapizSortPlugin;
 
 struct _LapizSortPlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private >*/
 	LapizSortPluginPrivate *priv;
@@ -61,7 +61,7 @@ typedef struct _LapizSortPluginClass	LapizSortPluginClass;
 
 struct _LapizSortPluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 /*
@@ -70,7 +70,7 @@ struct _LapizSortPluginClass
 GType	lapiz_sort_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

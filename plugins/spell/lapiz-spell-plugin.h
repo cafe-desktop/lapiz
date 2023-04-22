@@ -50,7 +50,7 @@ typedef struct _LapizSpellPlugin	LapizSpellPlugin;
 
 struct _LapizSpellPlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private >*/
 	LapizSpellPluginPrivate *priv;
@@ -63,7 +63,7 @@ typedef struct _LapizSpellPluginClass	LapizSpellPluginClass;
 
 struct _LapizSpellPluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 /*
@@ -72,7 +72,7 @@ struct _LapizSpellPluginClass
 GType	lapiz_spell_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

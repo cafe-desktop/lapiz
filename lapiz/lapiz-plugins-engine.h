@@ -48,7 +48,7 @@ typedef struct _LapizPluginsEnginePrivate	LapizPluginsEnginePrivate;
 
 struct _LapizPluginsEngine
 {
-	PeasEngine parent;
+	BeanEngine parent;
 	LapizPluginsEnginePrivate *priv;
 };
 
@@ -56,7 +56,7 @@ typedef struct _LapizPluginsEngineClass		LapizPluginsEngineClass;
 
 struct _LapizPluginsEngineClass
 {
-	PeasEngineClass parent_class;
+	BeanEngineClass parent_class;
 };
 
 GType			 lapiz_plugins_engine_get_type		(void) G_GNUC_CONST;

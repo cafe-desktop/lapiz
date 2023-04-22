@@ -107,7 +107,7 @@ static gboolean on_confirm_no_trash_cb   (LapizFileBrowserWidget * widget,
                                           GList * files,
                                           LapizWindow * window);
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserPlugin,
                                 lapiz_file_browser_plugin,
@@ -640,7 +640,7 @@ remove_popup_ui (LapizFileBrowserPluginPrivate *data)
 }
 
 static void
-lapiz_file_browser_plugin_update_state (PeasActivatable *activatable)
+lapiz_file_browser_plugin_update_state (BeanActivatable *activatable)
 {
 	LapizFileBrowserPluginPrivate *data;
 	LapizDocument * doc;
@@ -656,7 +656,7 @@ lapiz_file_browser_plugin_update_state (PeasActivatable *activatable)
 }
 
 static void
-lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
+lapiz_file_browser_plugin_activate (BeanActivatable *activatable)
 {
 	LapizFileBrowserPluginPrivate *data;
 	LapizWindow *window;
@@ -774,7 +774,7 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_file_browser_plugin_deactivate (PeasActivatable *activatable)
+lapiz_file_browser_plugin_deactivate (BeanActivatable *activatable)
 {
 	LapizFileBrowserPluginPrivate *data;
 	LapizWindow *window;
@@ -823,7 +823,7 @@ lapiz_file_browser_plugin_class_finalize (LapizFileBrowserPluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
 	iface->activate = lapiz_file_browser_plugin_activate;
 	iface->deactivate = lapiz_file_browser_plugin_deactivate;
@@ -831,7 +831,7 @@ bean_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 	lapiz_file_browser_plugin_register_type (G_TYPE_MODULE (module));
 

@@ -24,7 +24,7 @@
 # Bits from lapiz Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
-from gi.repository import GObject, Ctk, Peas, PeasCtk, Lapiz
+from gi.repository import GObject, Ctk, Bean, BeanCtk, Lapiz
 
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
@@ -32,7 +32,7 @@ from .config import PythonConsoleConfig
 
 PYTHON_ICON = 'text-x-python'
 
-class PythonConsolePlugin(GObject.Object, Peas.Activatable, PeasCtk.Configurable):
+class PythonConsolePlugin(GObject.Object, Bean.Activatable, BeanCtk.Configurable):
     __gtype_name__ = "PythonConsolePlugin"
 
     object = GObject.Property(type=GObject.Object)

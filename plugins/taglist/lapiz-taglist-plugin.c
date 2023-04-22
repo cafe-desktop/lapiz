@@ -49,7 +49,7 @@ struct _LapizTaglistPluginPrivate
 	CtkWidget *taglist_panel;
 };
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTaglistPlugin,
                                 lapiz_taglist_plugin,
@@ -102,7 +102,7 @@ lapiz_taglist_plugin_finalize (GObject *object)
 }
 
 static void
-lapiz_taglist_plugin_activate (PeasActivatable *activatable)
+lapiz_taglist_plugin_activate (BeanActivatable *activatable)
 {
 	LapizTaglistPluginPrivate *priv;
 	LapizWindow *window;
@@ -126,7 +126,7 @@ lapiz_taglist_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_taglist_plugin_deactivate (PeasActivatable *activatable)
+lapiz_taglist_plugin_deactivate (BeanActivatable *activatable)
 {
 	LapizTaglistPluginPrivate *priv;
 	LapizWindow *window;
@@ -143,7 +143,7 @@ lapiz_taglist_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_taglist_plugin_update_state (PeasActivatable *activatable)
+lapiz_taglist_plugin_update_state (BeanActivatable *activatable)
 {
 	LapizTaglistPluginPrivate *priv;
 	LapizWindow *window;
@@ -220,7 +220,7 @@ lapiz_taglist_plugin_class_finalize (LapizTaglistPluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
 	iface->activate = lapiz_taglist_plugin_activate;
 	iface->deactivate = lapiz_taglist_plugin_deactivate;
@@ -228,7 +228,7 @@ bean_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 	lapiz_taglist_plugin_register_type (G_TYPE_MODULE (module));
 

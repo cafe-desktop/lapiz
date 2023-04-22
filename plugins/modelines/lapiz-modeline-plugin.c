@@ -53,7 +53,7 @@ enum {
 	PROP_OBJECT
 };
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizModelinePlugin,
                                 lapiz_modeline_plugin,
@@ -228,7 +228,7 @@ on_window_tab_removed (LapizWindow *window,
 }
 
 static void
-lapiz_modeline_plugin_activate (PeasActivatable *activatable)
+lapiz_modeline_plugin_activate (BeanActivatable *activatable)
 {
 	LapizModelinePluginPrivate *data;
 	LapizWindow *window;
@@ -258,7 +258,7 @@ lapiz_modeline_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_modeline_plugin_deactivate (PeasActivatable *activatable)
+lapiz_modeline_plugin_deactivate (BeanActivatable *activatable)
 {
 	LapizModelinePluginPrivate *data;
 	LapizWindow *window;
@@ -306,14 +306,14 @@ lapiz_modeline_plugin_class_finalize (LapizModelinePluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
 	iface->activate = lapiz_modeline_plugin_activate;
 	iface->deactivate = lapiz_modeline_plugin_deactivate;
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 	lapiz_modeline_plugin_register_type (G_TYPE_MODULE (module));
 

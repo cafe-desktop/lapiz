@@ -41,7 +41,7 @@ typedef struct _LapizModelinePluginPrivate  LapizModelinePluginPrivate;
 
 struct _LapizModelinePlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private >*/
 	LapizModelinePluginPrivate *priv;
@@ -51,12 +51,12 @@ typedef struct _LapizModelinePluginClass    LapizModelinePluginClass;
 
 struct _LapizModelinePluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 GType	lapiz_modeline_plugin_get_type		(void) G_GNUC_CONST;
 
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 
