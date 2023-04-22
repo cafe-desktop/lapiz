@@ -48,7 +48,7 @@ typedef struct _LapizTrailSavePlugin		LapizTrailSavePlugin;
 
 struct _LapizTrailSavePlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private >*/
 	LapizTrailSavePluginPrivate *priv;
@@ -61,7 +61,7 @@ typedef struct _LapizTrailSavePluginClass	LapizTrailSavePluginClass;
 
 struct _LapizTrailSavePluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 /*
@@ -70,7 +70,7 @@ struct _LapizTrailSavePluginClass
 GType	lapiz_trail_save_plugin_get_type	(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

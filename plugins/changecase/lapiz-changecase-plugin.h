@@ -50,7 +50,7 @@ typedef struct _LapizChangecasePlugin		LapizChangecasePlugin;
 
 struct _LapizChangecasePlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private >*/
 	LapizChangecasePluginPrivate *priv;
@@ -63,7 +63,7 @@ typedef struct _LapizChangecasePluginClass	LapizChangecasePluginClass;
 
 struct _LapizChangecasePluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 /*
@@ -72,7 +72,7 @@ struct _LapizChangecasePluginClass
 GType	lapiz_changecase_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

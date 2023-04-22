@@ -55,7 +55,7 @@ struct _LapizWindowPrivate
 	CtkWidget      *language_combo;
 
 	LapizMessageBus *message_bus;
-	PeasExtensionSet *extensions;
+	BeanExtensionSet *extensions;
 
 	/* Widgets for fullscreen mode */
 	CtkWidget      *fullscreen_controls;

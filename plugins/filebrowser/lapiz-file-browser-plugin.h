@@ -46,7 +46,7 @@ typedef struct _LapizFileBrowserPluginClass   LapizFileBrowserPluginClass;
 
 struct _LapizFileBrowserPlugin
 {
-	PeasExtensionBase parent_instance;
+	BeanExtensionBase parent_instance;
 
 	/*< private > */
 	LapizFileBrowserPluginPrivate *priv;
@@ -54,7 +54,7 @@ struct _LapizFileBrowserPlugin
 
 struct _LapizFileBrowserPluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	BeanExtensionBaseClass parent_class;
 };
 
 /*
@@ -63,7 +63,7 @@ struct _LapizFileBrowserPluginClass
 GType lapiz_file_browser_plugin_get_type              (void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

@@ -17,10 +17,10 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor,
 #  Boston, MA 02110-1301, USA.
 
-from gi.repository import GObject, Peas
+from gi.repository import GObject, Bean
 from .windowhelper import WindowHelper
 
-class QuickOpenPlugin(GObject.Object, Peas.Activatable):
+class QuickOpenPlugin(GObject.Object, Bean.Activatable):
     __gtype_name__ = "QuickOpenPlugin"
 
     object = GObject.Property(type=GObject.Object)

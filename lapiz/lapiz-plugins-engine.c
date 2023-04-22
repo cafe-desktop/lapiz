@@ -68,17 +68,17 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 
 	/* This should be moved to libbean */
 	if (!g_irepository_require (g_irepository_get_default (),
-	                            "Peas", "1.0", 0, &error))
+	                            "Bean", "1.0", 0, &error))
 	{
-		g_warning ("Could not load Peas repository: %s", error->message);
+		g_warning ("Could not load Bean repository: %s", error->message);
 		g_error_free (error);
 		error = NULL;
 	}
 
 	if (!g_irepository_require (g_irepository_get_default (),
-	                            "PeasCtk", "1.0", 0, &error))
+	                            "BeanCtk", "1.0", 0, &error))
 	{
-		g_warning ("Could not load PeasCtk repository: %s", error->message);
+		g_warning ("Could not load BeanCtk repository: %s", error->message);
 		g_error_free (error);
 		error = NULL;
 	}

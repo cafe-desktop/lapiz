@@ -18,7 +18,7 @@
 
 __all__ = ('ExternalToolsPlugin', )
 
-from gi.repository import GObject, Ctk, Peas, Lapiz
+from gi.repository import GObject, Ctk, Bean, Lapiz
 from .manager import Manager
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
@@ -149,7 +149,7 @@ class ToolMenu(object):
                 action.set_visible(states[action._tool_item.applicability] and
                                    self.filter_language(language, action._tool_item))
 
-class ExternalToolsPlugin(GObject.Object, Peas.Activatable):
+class ExternalToolsPlugin(GObject.Object, Bean.Activatable):
     __gtype_name__ = "ExternalToolsPlugin"
 
     object = GObject.Property(type=GObject.Object)

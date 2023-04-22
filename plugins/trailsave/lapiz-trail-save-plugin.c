@@ -29,7 +29,7 @@
 
 #include "lapiz-trail-save-plugin.h"
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 struct _LapizTrailSavePluginPrivate
 {
@@ -160,7 +160,7 @@ on_tab_removed (LapizWindow *window,
 }
 
 static void
-lapiz_trail_save_plugin_activate (PeasActivatable *activatable)
+lapiz_trail_save_plugin_activate (BeanActivatable *activatable)
 {
 	LapizTrailSavePlugin *plugin;
 	LapizWindow *window;
@@ -190,7 +190,7 @@ lapiz_trail_save_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-lapiz_trail_save_plugin_deactivate (PeasActivatable *activatable)
+lapiz_trail_save_plugin_deactivate (BeanActivatable *activatable)
 {
 	LapizTrailSavePlugin *plugin;
 	LapizWindow *window;
@@ -301,14 +301,14 @@ lapiz_trail_save_plugin_class_finalize (LapizTrailSavePluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
 	iface->activate = lapiz_trail_save_plugin_activate;
 	iface->deactivate = lapiz_trail_save_plugin_deactivate;
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 	lapiz_trail_save_plugin_register_type (G_TYPE_MODULE (module));
 

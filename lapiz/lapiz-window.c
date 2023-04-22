@@ -3927,18 +3927,18 @@ add_notebook (LapizWindow *window,
 }
 
 static void
-on_extension_added (PeasExtensionSet *extensions,
-		    PeasPluginInfo   *info,
-		    PeasExtension    *exten,
+on_extension_added (BeanExtensionSet *extensions,
+		    BeanPluginInfo   *info,
+		    BeanExtension    *exten,
 		    LapizWindow      *window)
 {
 	bean_extension_call (exten, "activate", window);
 }
 
 static void
-on_extension_removed (PeasExtensionSet *extensions,
-		      PeasPluginInfo   *info,
-		      PeasExtension    *exten,
+on_extension_removed (BeanExtensionSet *extensions,
+		      BeanPluginInfo   *info,
+		      BeanExtension    *exten,
 		      LapizWindow      *window)
 {
 	bean_extension_call (exten, "deactivate", window);
