@@ -77,12 +77,12 @@ struct _LapizSpellPluginPrivate
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSpellPlugin,
                                 lapiz_spell_plugin,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizSpellPlugin)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_CTK_TYPE_CONFIGURABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_CTK_TYPE_CONFIGURABLE,
                                                                bean_ctk_configurable_iface_init))
 
 static void	spell_cb	(CtkAction *action, LapizSpellPlugin *plugin);
@@ -769,7 +769,7 @@ get_configure_dialog (LapizSpellPlugin *plugin)
 	dialog = g_slice_new (SpellConfigureDialog);
 	dialog->settings = g_object_ref (plugin->priv->settings);
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "lapiz-spell-setup-dialog.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  root_objects,
@@ -861,7 +861,7 @@ set_language_cb (CtkAction   *action,
 
 	lang = lapiz_spell_checker_get_language (spell);
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (plugin));
 	dlg = lapiz_spell_language_dialog_new (CTK_WINDOW (window),
 					       lang,
 					       data_dir);
@@ -945,7 +945,7 @@ spell_cb (CtkAction   *action,
 		return;
 	}
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (plugin));
 	dlg = lapiz_spell_checker_dialog_new_from_spell_checker (spell, data_dir);
 	g_free (data_dir);
 
@@ -1487,10 +1487,10 @@ bean_register_types (BeanObjectModule *module)
 	lapiz_spell_plugin_register_type (G_TYPE_MODULE (module));
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_TYPE_ACTIVATABLE,
+	                                            BEAN_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_SPELL_PLUGIN);
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_CTK_TYPE_CONFIGURABLE,
+	                                            BEAN_CTK_TYPE_CONFIGURABLE,
 	                                            LAPIZ_TYPE_SPELL_PLUGIN);
 }
