@@ -21,7 +21,6 @@ requires:
     - libenchant-2-dev
     - libgirepository1.0-dev
     - libglib2.0-dev
-    - libpeas-dev
     - libsm-dev
     - libx11-dev
     - libxml2-dev
@@ -49,12 +48,18 @@ requires:
     - xauth
     - xvfb
 
+    # required for libbean
+    - libgirepository1.0-doc
+    - python-gi-dev
+    - python3-gi
+
 before_scripts:
   - ./html-cppcheck
   - ./debrepo-install 'libctk-3-dev gir1.2-ctk-3.0 libctk-3-common libctk-3-0 libctk-3-doc'
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
   - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master #required for make check
   - ./install-from-git https://github.com/cafe-desktop/ctksourceview master meson
+  - ./install-from-git https://github.com/cafe-desktop/libbean master meson
 
 build_scripts:
   - ./before-build
