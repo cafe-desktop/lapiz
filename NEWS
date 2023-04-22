@@ -239,7 +239,7 @@
 
   * Translations update
   * require CTK+ 3.22 and GLib 2.50
-  * put 'peas_engine_enable_loader' in the correct place
+  * put 'bean_engine_enable_loader' in the correct place
   * update copyright year to 2018
   * Fix: make the list of recently used files working again
   * drop unused variables
@@ -325,7 +325,7 @@
     disabled all deprecated stuff
   * Add ability to search/replace text using regular expressions
   * Drop Python bindings and --enable-python build option
-  * Port plugin system and both C and Python plugins to libpeas
+  * Port plugin system and both C and Python plugins to libbean
   * Snippets plugin: stop exposing functions on Lapiz message bus
     (doesn't work with GObject introspection)
   * Snippets plugin: fix snippet parts staying after Ctrl-Z

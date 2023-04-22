@@ -40,8 +40,8 @@
 #include <glib.h>
 #include <gmodule.h>
 #include <gio/gio.h>
-#include <libpeas/peas-activatable.h>
-#include <libpeas-ctk/peas-ctk-configurable.h>
+#include <libbean/bean-activatable.h>
+#include <libbean-ctk/bean-ctk-configurable.h>
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
@@ -163,8 +163,8 @@ enum {
 	PROP_OBJECT
 };
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
-static void peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 lapiz_time_plugin,
@@ -172,9 +172,9 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizTimePlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init)
+                                                               bean_activatable_iface_init)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_CTK_TYPE_CONFIGURABLE,
-                                                               peas_ctk_configurable_iface_init))
+                                                               bean_ctk_configurable_iface_init))
 
 static void time_cb (CtkAction *action, LapizTimePlugin *plugin);
 
@@ -742,7 +742,7 @@ get_configure_dialog (LapizTimePlugin *plugin)
 	dialog = g_slice_new (TimeConfigureDialog);
 	dialog->settings = g_object_ref (plugin->priv->settings);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "lapiz-time-setup-dialog.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  root_objects,
@@ -893,7 +893,7 @@ get_choose_format_dialog (CtkWindow                 *parent,
 	dialog = g_slice_new (ChooseFormatDialog);
 	dialog->settings = plugin->priv->settings;
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "lapiz-time-dialog.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  NULL,
@@ -1193,7 +1193,7 @@ lapiz_time_plugin_class_finalize (LapizTimePluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_time_plugin_activate;
 	iface->deactivate = lapiz_time_plugin_deactivate;
@@ -1201,21 +1201,21 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 static void
-peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface)
+bean_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface)
 {
 	iface->create_configure_widget = lapiz_time_plugin_create_configure_widget;
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_time_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_TIME_PLUGIN);
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_CTK_TYPE_CONFIGURABLE,
 	                                            LAPIZ_TYPE_TIME_PLUGIN);
 }

@@ -39,7 +39,7 @@
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 #include <ctksourceview/ctksource.h>
-#include <libpeas-ctk/peas-ctk-plugin-manager.h>
+#include <libbean-ctk/bean-ctk-plugin-manager.h>
 
 #include <lapiz/lapiz-prefs-manager.h>
 
@@ -1257,7 +1257,7 @@ setup_plugins_page (LapizPreferencesDialog *dlg)
 
 	lapiz_debug (DEBUG_PREFS);
 
-	page_content = peas_ctk_plugin_manager_new (NULL);
+	page_content = bean_ctk_plugin_manager_new (NULL);
 	g_return_if_fail (page_content != NULL);
 
 	ctk_box_pack_start (CTK_BOX (dlg->priv->plugin_manager_place_holder),

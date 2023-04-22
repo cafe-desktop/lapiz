@@ -31,7 +31,7 @@
 #ifndef __LAPIZ_WINDOW_PRIVATE_H__
 #define __LAPIZ_WINDOW_PRIVATE_H__
 
-#include <libpeas/peas-extension-set.h>
+#include <libbean/bean-extension-set.h>
 
 #include "lapiz/lapiz-window.h"
 #include "lapiz-prefs-manager.h"

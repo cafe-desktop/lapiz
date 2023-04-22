@@ -32,7 +32,7 @@
 #include <lapiz/lapiz-debug.h>
 #include <gio/gio.h>
 #include <string.h>
-#include <libpeas/peas-activatable.h>
+#include <libbean/bean-activatable.h>
 
 #include "lapiz-file-browser-enum-types.h"
 #include "lapiz-file-browser-plugin.h"
@@ -107,7 +107,7 @@ static gboolean on_confirm_no_trash_cb   (LapizFileBrowserWidget * widget,
                                           GList * files,
                                           LapizWindow * window);
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserPlugin,
                                 lapiz_file_browser_plugin,
@@ -115,7 +115,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserPlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init)    \
+                                                               bean_activatable_iface_init)    \
                                                                                                \
                                 lapiz_file_browser_enum_and_flag_register_type (type_module);  \
                                 _lapiz_file_browser_store_register_type        (type_module);  \
@@ -671,7 +671,7 @@ lapiz_file_browser_plugin_activate (PeasActivatable *activatable)
 	data = LAPIZ_FILE_BROWSER_PLUGIN (activatable)->priv;
 	window = LAPIZ_WINDOW (data->window);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
 	data->tree_widget = LAPIZ_FILE_BROWSER_WIDGET (lapiz_file_browser_widget_new (data_dir));
 	g_free (data_dir);
 
@@ -823,7 +823,7 @@ lapiz_file_browser_plugin_class_finalize (LapizFileBrowserPluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_file_browser_plugin_activate;
 	iface->deactivate = lapiz_file_browser_plugin_deactivate;
@@ -831,11 +831,11 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_file_browser_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_FILE_BROWSER_PLUGIN);
 }

@@ -41,8 +41,8 @@
 #include <gio/gio.h>
 #include <ctk/ctk.h>
 #include <ctksourceview/ctksource.h>
-#include <libpeas/peas-activatable.h>
-#include <libpeas/peas-extension-set.h>
+#include <libbean/bean-activatable.h>
+#include <libbean/bean-extension-set.h>
 
 #include "lapiz-ui.h"
 #include "lapiz-window.h"
@@ -178,7 +178,7 @@ lapiz_window_dispose (GObject *object)
 	/* First of all, force collection so that plugins
 	 * really drop some of the references.
 	 */
-	peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+	bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 
 	/* save the panes position and make sure to deactivate plugins
 	 * for this window, but only once */
@@ -190,7 +190,7 @@ lapiz_window_dispose (GObject *object)
 		   all extensions which in turn will deactivate the extension */
 		g_object_unref (window->priv->extensions);
 
-		peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+		bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 
 		window->priv->dispose_has_run = TRUE;
 	}
@@ -239,7 +239,7 @@ lapiz_window_dispose (GObject *object)
 	/* Now that there have broken some reference loops,
 	 * force collection again.
 	 */
-	peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+	bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 
 	G_OBJECT_CLASS (lapiz_window_parent_class)->dispose (object);
 }
@@ -393,7 +393,7 @@ static void
 lapiz_window_tab_removed (LapizWindow *window,
 			  LapizTab    *tab)
 {
-	peas_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+	bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
 }
 
 static void
@@ -900,7 +900,7 @@ set_sensitivity_according_to_tab (LapizWindow *window,
 
 	update_next_prev_doc_sensitivity (window, tab);
 
-	peas_extension_set_call (window->priv->extensions, "update_state", window);
+	bean_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static void
@@ -2766,7 +2766,7 @@ sync_name (LapizTab    *tab,
 	g_free (escaped_name);
 	g_free (tip);
 
-	peas_extension_set_call (window->priv->extensions, "update_state", window);
+	bean_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static LapizWindow *
@@ -3162,7 +3162,7 @@ selection_changed (LapizDocument *doc,
 				  editable &&
 				  ctk_text_buffer_get_has_selection (CTK_TEXT_BUFFER (doc)));
 
-	peas_extension_set_call (window->priv->extensions, "update_state", window);
+	bean_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static void
@@ -3171,7 +3171,7 @@ sync_languages_menu (LapizDocument *doc,
 		     LapizWindow   *window)
 {
 	update_languages_menu (window);
-	peas_extension_set_call (window->priv->extensions, "update_state", window);
+	bean_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static void
@@ -3183,7 +3183,7 @@ readonly_changed (LapizDocument *doc,
 
 	sync_name (window->priv->active_tab, NULL, window);
 
-	peas_extension_set_call (window->priv->extensions, "update_state", window);
+	bean_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static void
@@ -3191,7 +3191,7 @@ editable_changed (LapizView  *view,
                   GParamSpec  *arg1,
                   LapizWindow *window)
 {
-	peas_extension_set_call (window->priv->extensions, "update_state", window);
+	bean_extension_set_call (window->priv->extensions, "update_state", window);
 }
 
 static void
@@ -3403,7 +3403,7 @@ notebook_tab_removed (LapizNotebook *notebook,
 
 	if (window->priv->num_tabs == 0)
 	{
-		peas_extension_set_call (window->priv->extensions, "update_state", window);
+		bean_extension_set_call (window->priv->extensions, "update_state", window);
 	}
 
 	update_window_state (window);
@@ -3932,7 +3932,7 @@ on_extension_added (PeasExtensionSet *extensions,
 		    PeasExtension    *exten,
 		    LapizWindow      *window)
 {
-	peas_extension_call (exten, "activate", window);
+	bean_extension_call (exten, "activate", window);
 }
 
 static void
@@ -3941,7 +3941,7 @@ on_extension_removed (PeasExtensionSet *extensions,
 		      PeasExtension    *exten,
 		      LapizWindow      *window)
 {
-	peas_extension_call (exten, "deactivate", window);
+	bean_extension_call (exten, "deactivate", window);
 
 	/* Ensure update of ui manager, because we suspect it does something
 	 * with expected static strings in the type module (when unloaded the
@@ -4075,10 +4075,10 @@ lapiz_window_init (LapizWindow *window)
 
 	lapiz_debug_message (DEBUG_WINDOW, "Update plugins ui");
 
-	window->priv->extensions = peas_extension_set_new (PEAS_ENGINE (lapiz_plugins_engine_get_default ()),
+	window->priv->extensions = bean_extension_set_new (PEAS_ENGINE (lapiz_plugins_engine_get_default ()),
 	                                                   PEAS_TYPE_ACTIVATABLE, "object", window, NULL);
 
-	peas_extension_set_call (window->priv->extensions, "activate");
+	bean_extension_set_call (window->priv->extensions, "activate");
 
 	g_signal_connect (window->priv->extensions,
 	                  "extension-added",

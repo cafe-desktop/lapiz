@@ -30,7 +30,7 @@
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
-#include <libpeas/peas-activatable.h>
+#include <libbean/bean-activatable.h>
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
@@ -39,7 +39,7 @@
 
 #define MENU_PATH "/MenuBar/EditMenu/EditOps_6"
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 enum {
 	PROP_0,
@@ -81,7 +81,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSortPlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizSortPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init))
+                                                               bean_activatable_iface_init))
 
 static void sort_cb (CtkAction *action, LapizSortPlugin *plugin);
 static void sort_real (SortDialog *dialog);
@@ -170,7 +170,7 @@ get_sort_dialog (LapizSortPlugin *plugin)
 
 	dialog = g_slice_new (SortDialog);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "sort.ui", NULL);
 	g_free (data_dir);
 	ret = lapiz_utils_get_ui_objects (ui_file,
@@ -625,7 +625,7 @@ lapiz_sort_plugin_class_finalize (LapizSortPluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_sort_plugin_activate;
 	iface->deactivate = lapiz_sort_plugin_deactivate;
@@ -633,11 +633,11 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_sort_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_SORT_PLUGIN);
 }
