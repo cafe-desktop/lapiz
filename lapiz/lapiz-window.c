@@ -178,7 +178,7 @@ lapiz_window_dispose (GObject *object)
 	/* First of all, force collection so that plugins
 	 * really drop some of the references.
 	 */
-	bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+	bean_engine_garbage_collect (BEAN_ENGINE (lapiz_plugins_engine_get_default ()));
 
 	/* save the panes position and make sure to deactivate plugins
 	 * for this window, but only once */
@@ -190,7 +190,7 @@ lapiz_window_dispose (GObject *object)
 		   all extensions which in turn will deactivate the extension */
 		g_object_unref (window->priv->extensions);
 
-		bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+		bean_engine_garbage_collect (BEAN_ENGINE (lapiz_plugins_engine_get_default ()));
 
 		window->priv->dispose_has_run = TRUE;
 	}
@@ -239,7 +239,7 @@ lapiz_window_dispose (GObject *object)
 	/* Now that there have broken some reference loops,
 	 * force collection again.
 	 */
-	bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+	bean_engine_garbage_collect (BEAN_ENGINE (lapiz_plugins_engine_get_default ()));
 
 	G_OBJECT_CLASS (lapiz_window_parent_class)->dispose (object);
 }
@@ -393,7 +393,7 @@ static void
 lapiz_window_tab_removed (LapizWindow *window,
 			  LapizTab    *tab)
 {
-	bean_engine_garbage_collect (PEAS_ENGINE (lapiz_plugins_engine_get_default ()));
+	bean_engine_garbage_collect (BEAN_ENGINE (lapiz_plugins_engine_get_default ()));
 }
 
 static void
@@ -4075,8 +4075,8 @@ lapiz_window_init (LapizWindow *window)
 
 	lapiz_debug_message (DEBUG_WINDOW, "Update plugins ui");
 
-	window->priv->extensions = bean_extension_set_new (PEAS_ENGINE (lapiz_plugins_engine_get_default ()),
-	                                                   PEAS_TYPE_ACTIVATABLE, "object", window, NULL);
+	window->priv->extensions = bean_extension_set_new (BEAN_ENGINE (lapiz_plugins_engine_get_default ()),
+	                                                   BEAN_TYPE_ACTIVATABLE, "object", window, NULL);
 
 	bean_extension_set_call (window->priv->extensions, "activate");
 

@@ -168,12 +168,12 @@ static void bean_ctk_configurable_iface_init (BeanCtkConfigurableInterface *ifac
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTimePlugin,
                                 lapiz_time_plugin,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizTimePlugin)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_CTK_TYPE_CONFIGURABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_CTK_TYPE_CONFIGURABLE,
                                                                bean_ctk_configurable_iface_init))
 
 static void time_cb (CtkAction *action, LapizTimePlugin *plugin);
@@ -742,7 +742,7 @@ get_configure_dialog (LapizTimePlugin *plugin)
 	dialog = g_slice_new (TimeConfigureDialog);
 	dialog->settings = g_object_ref (plugin->priv->settings);
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "lapiz-time-setup-dialog.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  root_objects,
@@ -893,7 +893,7 @@ get_choose_format_dialog (CtkWindow                 *parent,
 	dialog = g_slice_new (ChooseFormatDialog);
 	dialog->settings = plugin->priv->settings;
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "lapiz-time-dialog.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  NULL,
@@ -1212,10 +1212,10 @@ bean_register_types (BeanObjectModule *module)
 	lapiz_time_plugin_register_type (G_TYPE_MODULE (module));
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_TYPE_ACTIVATABLE,
+	                                            BEAN_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_TIME_PLUGIN);
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_CTK_TYPE_CONFIGURABLE,
+	                                            BEAN_CTK_TYPE_CONFIGURABLE,
 	                                            LAPIZ_TYPE_TIME_PLUGIN);
 }

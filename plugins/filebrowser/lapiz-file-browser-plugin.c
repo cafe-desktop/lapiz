@@ -111,10 +111,10 @@ static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizFileBrowserPlugin,
                                 lapiz_file_browser_plugin,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizFileBrowserPlugin)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init)    \
                                                                                                \
                                 lapiz_file_browser_enum_and_flag_register_type (type_module);  \
@@ -671,7 +671,7 @@ lapiz_file_browser_plugin_activate (BeanActivatable *activatable)
 	data = LAPIZ_FILE_BROWSER_PLUGIN (activatable)->priv;
 	window = LAPIZ_WINDOW (data->window);
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (activatable));
 	data->tree_widget = LAPIZ_FILE_BROWSER_WIDGET (lapiz_file_browser_widget_new (data_dir));
 	g_free (data_dir);
 
@@ -836,7 +836,7 @@ bean_register_types (BeanObjectModule *module)
 	lapiz_file_browser_plugin_register_type (G_TYPE_MODULE (module));
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_TYPE_ACTIVATABLE,
+	                                            BEAN_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_FILE_BROWSER_PLUGIN);
 }
 

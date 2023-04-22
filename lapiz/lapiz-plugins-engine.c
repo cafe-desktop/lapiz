@@ -48,7 +48,7 @@ struct _LapizPluginsEnginePrivate
 	GSettings *plugin_settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (LapizPluginsEngine, lapiz_plugins_engine, PEAS_TYPE_ENGINE)
+G_DEFINE_TYPE_WITH_PRIVATE (LapizPluginsEngine, lapiz_plugins_engine, BEAN_TYPE_ENGINE)
 
 LapizPluginsEngine *default_engine = NULL;
 
@@ -60,7 +60,7 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	bean_engine_enable_loader (PEAS_ENGINE (engine), "python3");
+	bean_engine_enable_loader (BEAN_ENGINE (engine), "python3");
 
 	engine->priv = lapiz_plugins_engine_get_instance_private (engine);
 
@@ -95,11 +95,11 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 
 	g_free (private_path);
 
-	bean_engine_add_search_path (PEAS_ENGINE (engine),
+	bean_engine_add_search_path (BEAN_ENGINE (engine),
 	                             lapiz_dirs_get_user_plugins_dir (),
 	                             lapiz_dirs_get_user_plugins_dir ());
 
-	bean_engine_add_search_path (PEAS_ENGINE (engine),
+	bean_engine_add_search_path (BEAN_ENGINE (engine),
 	                             lapiz_dirs_get_lapiz_plugins_dir (),
 	                             lapiz_dirs_get_lapiz_plugins_data_dir ());
 

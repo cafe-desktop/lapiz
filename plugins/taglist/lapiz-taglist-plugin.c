@@ -53,10 +53,10 @@ static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTaglistPlugin,
                                 lapiz_taglist_plugin,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizTaglistPlugin)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init) \
                                                                                             \
                                 _lapiz_taglist_plugin_panel_register_type (type_module);    \
@@ -115,7 +115,7 @@ lapiz_taglist_plugin_activate (BeanActivatable *activatable)
 	window = LAPIZ_WINDOW (priv->window);
 	side_panel = lapiz_window_get_side_panel (window);
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (activatable));
 	priv->taglist_panel = lapiz_taglist_plugin_panel_new (window, data_dir);
 	g_free (data_dir);
 
@@ -233,6 +233,6 @@ bean_register_types (BeanObjectModule *module)
 	lapiz_taglist_plugin_register_type (G_TYPE_MODULE (module));
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_TYPE_ACTIVATABLE,
+	                                            BEAN_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_TAGLIST_PLUGIN);
 }

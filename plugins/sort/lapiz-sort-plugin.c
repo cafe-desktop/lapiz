@@ -77,10 +77,10 @@ typedef struct
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSortPlugin,
                                 lapiz_sort_plugin,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizSortPlugin)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init))
 
 static void sort_cb (CtkAction *action, LapizSortPlugin *plugin);
@@ -170,7 +170,7 @@ get_sort_dialog (LapizSortPlugin *plugin)
 
 	dialog = g_slice_new (SortDialog);
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "sort.ui", NULL);
 	g_free (data_dir);
 	ret = lapiz_utils_get_ui_objects (ui_file,
@@ -638,6 +638,6 @@ bean_register_types (BeanObjectModule *module)
 	lapiz_sort_plugin_register_type (G_TYPE_MODULE (module));
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_TYPE_ACTIVATABLE,
+	                                            BEAN_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_SORT_PLUGIN);
 }

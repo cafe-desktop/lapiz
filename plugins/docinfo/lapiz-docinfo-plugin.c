@@ -70,10 +70,10 @@ struct _LapizDocInfoPluginPrivate
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizDocInfoPlugin,
                                 lapiz_docinfo_plugin,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizDocInfoPlugin)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init))
 
 enum {
@@ -117,7 +117,7 @@ get_docinfo_dialog (LapizDocInfoPlugin *plugin)
 
 	dialog = g_new (DocInfoDialog, 1);
 
-	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (BEAN_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "docinfo.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  NULL,
@@ -637,6 +637,6 @@ bean_register_types (BeanObjectModule *module)
 	lapiz_docinfo_plugin_register_type (G_TYPE_MODULE (module));
 
 	bean_object_module_register_extension_type (module,
-	                                            PEAS_TYPE_ACTIVATABLE,
+	                                            BEAN_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_DOCINFO_PLUGIN);
 }
