@@ -37,7 +37,7 @@
 
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
-#include <libpeas/peas-activatable.h>
+#include <libbean/bean-activatable.h>
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
@@ -49,7 +49,7 @@ struct _LapizTaglistPluginPrivate
 	CtkWidget *taglist_panel;
 };
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTaglistPlugin,
                                 lapiz_taglist_plugin,
@@ -57,7 +57,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTaglistPlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizTaglistPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init) \
+                                                               bean_activatable_iface_init) \
                                                                                             \
                                 _lapiz_taglist_plugin_panel_register_type (type_module);    \
 )
@@ -115,7 +115,7 @@ lapiz_taglist_plugin_activate (PeasActivatable *activatable)
 	window = LAPIZ_WINDOW (priv->window);
 	side_panel = lapiz_window_get_side_panel (window);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
 	priv->taglist_panel = lapiz_taglist_plugin_panel_new (window, data_dir);
 	g_free (data_dir);
 
@@ -220,7 +220,7 @@ lapiz_taglist_plugin_class_finalize (LapizTaglistPluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_taglist_plugin_activate;
 	iface->deactivate = lapiz_taglist_plugin_deactivate;
@@ -228,11 +228,11 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_taglist_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_TAGLIST_PLUGIN);
 }

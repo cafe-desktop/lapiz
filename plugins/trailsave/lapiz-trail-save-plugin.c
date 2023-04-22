@@ -22,14 +22,14 @@
 #include <config.h>
 #endif
 
-#include <libpeas/peas-activatable.h>
+#include <libbean/bean-activatable.h>
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
 
 #include "lapiz-trail-save-plugin.h"
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 struct _LapizTrailSavePluginPrivate
 {
@@ -47,7 +47,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizTrailSavePlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizTrailSavePlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init))
+                                                               bean_activatable_iface_init))
 
 static void
 strip_trailing_spaces (CtkTextBuffer *text_buffer)
@@ -301,18 +301,18 @@ lapiz_trail_save_plugin_class_finalize (LapizTrailSavePluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_trail_save_plugin_activate;
 	iface->deactivate = lapiz_trail_save_plugin_deactivate;
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_trail_save_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_TRAIL_SAVE_PLUGIN);
 }

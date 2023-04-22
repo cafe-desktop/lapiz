@@ -31,7 +31,7 @@
 #include <glib/gi18n-lib.h>
 #include <pango/pango-break.h>
 #include <gmodule.h>
-#include <libpeas/peas-activatable.h>
+#include <libbean/bean-activatable.h>
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
@@ -39,7 +39,7 @@
 
 #define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_2"
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 typedef struct
 {
@@ -74,7 +74,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizDocInfoPlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizDocInfoPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init))
+                                                               bean_activatable_iface_init))
 
 enum {
 	PROP_0,
@@ -117,7 +117,7 @@ get_docinfo_dialog (LapizDocInfoPlugin *plugin)
 
 	dialog = g_new (DocInfoDialog, 1);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "docinfo.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  NULL,
@@ -624,7 +624,7 @@ lapiz_docinfo_plugin_class_finalize (LapizDocInfoPluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_docinfo_plugin_activate;
 	iface->deactivate = lapiz_docinfo_plugin_deactivate;
@@ -632,11 +632,11 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_docinfo_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_DOCINFO_PLUGIN);
 }

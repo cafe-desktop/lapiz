@@ -31,8 +31,8 @@
 
 #include <glib/gi18n.h>
 #include <gmodule.h>
-#include <libpeas/peas-activatable.h>
-#include <libpeas-ctk/peas-ctk-configurable.h>
+#include <libbean/bean-activatable.h>
+#include <libbean-ctk/bean-ctk-configurable.h>
 
 #include <lapiz/lapiz-window.h>
 #include <lapiz/lapiz-debug.h>
@@ -54,8 +54,8 @@
 #define SPELL_SCHEMA		"org.cafe.lapiz.plugins.spell"
 #define AUTOCHECK_TYPE_KEY	"autocheck-type"
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
-static void peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface);
 
 enum {
 	PROP_0,
@@ -81,9 +81,9 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizSpellPlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizSpellPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init)
+                                                               bean_activatable_iface_init)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_CTK_TYPE_CONFIGURABLE,
-                                                               peas_ctk_configurable_iface_init))
+                                                               bean_ctk_configurable_iface_init))
 
 static void	spell_cb	(CtkAction *action, LapizSpellPlugin *plugin);
 static void	set_language_cb	(CtkAction *action, LapizSpellPlugin *plugin);
@@ -769,7 +769,7 @@ get_configure_dialog (LapizSpellPlugin *plugin)
 	dialog = g_slice_new (SpellConfigureDialog);
 	dialog->settings = g_object_ref (plugin->priv->settings);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	ui_file = g_build_filename (data_dir, "lapiz-spell-setup-dialog.ui", NULL);
 	ret = lapiz_utils_get_ui_objects (ui_file,
 					  root_objects,
@@ -861,7 +861,7 @@ set_language_cb (CtkAction   *action,
 
 	lang = lapiz_spell_checker_get_language (spell);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	dlg = lapiz_spell_language_dialog_new (CTK_WINDOW (window),
 					       lang,
 					       data_dir);
@@ -945,7 +945,7 @@ spell_cb (CtkAction   *action,
 		return;
 	}
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
 	dlg = lapiz_spell_checker_dialog_new_from_spell_checker (spell, data_dir);
 	g_free (data_dir);
 
@@ -1468,7 +1468,7 @@ lapiz_spell_plugin_class_finalize (LapizSpellPluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_spell_plugin_activate;
 	iface->deactivate = lapiz_spell_plugin_deactivate;
@@ -1476,21 +1476,21 @@ peas_activatable_iface_init (PeasActivatableInterface *iface)
 }
 
 static void
-peas_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface)
+bean_ctk_configurable_iface_init (PeasCtkConfigurableInterface *iface)
 {
 	iface->create_configure_widget = lapiz_spell_plugin_create_configure_widget;
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_spell_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_SPELL_PLUGIN);
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_CTK_TYPE_CONFIGURABLE,
 	                                            LAPIZ_TYPE_SPELL_PLUGIN);
 }

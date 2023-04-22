@@ -25,7 +25,7 @@
 
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
-#include <libpeas/peas-activatable.h>
+#include <libbean/bean-activatable.h>
 #include "lapiz-modeline-plugin.h"
 #include "modeline-parser.h"
 
@@ -53,7 +53,7 @@ enum {
 	PROP_OBJECT
 };
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizModelinePlugin,
                                 lapiz_modeline_plugin,
@@ -61,7 +61,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (LapizModelinePlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (LapizModelinePlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init))
+                                                               bean_activatable_iface_init))
 
 static void
 document_data_free (DocumentData *ddata)
@@ -74,7 +74,7 @@ lapiz_modeline_plugin_constructed (GObject *object)
 {
 	gchar *data_dir;
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (object));
+	data_dir = bean_extension_base_get_data_dir (PEAS_EXTENSION_BASE (object));
 
 	modeline_parser_init (data_dir);
 
@@ -306,18 +306,18 @@ lapiz_modeline_plugin_class_finalize (LapizModelinePluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
 	iface->activate = lapiz_modeline_plugin_activate;
 	iface->deactivate = lapiz_modeline_plugin_deactivate;
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
 	lapiz_modeline_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
+	bean_object_module_register_extension_type (module,
 	                                            PEAS_TYPE_ACTIVATABLE,
 	                                            LAPIZ_TYPE_MODELINE_PLUGIN);
 }

@@ -23,8 +23,8 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include <libpeas/peas-extension-base.h>
-#include <libpeas/peas-object-module.h>
+#include <libbean/bean-extension-base.h>
+#include <libbean/bean-object-module.h>
 
 G_BEGIN_DECLS
 
@@ -70,7 +70,7 @@ struct _LapizSortPluginClass
 GType	lapiz_sort_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
-G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void bean_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 

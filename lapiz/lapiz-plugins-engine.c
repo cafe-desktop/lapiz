@@ -60,13 +60,13 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 
 	lapiz_debug (DEBUG_PLUGINS);
 
-	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
+	bean_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
 	engine->priv = lapiz_plugins_engine_get_instance_private (engine);
 
 	engine->priv->plugin_settings = g_settings_new (LAPIZ_SCHEMA);
 
-	/* This should be moved to libpeas */
+	/* This should be moved to libbean */
 	if (!g_irepository_require (g_irepository_get_default (),
 	                            "Peas", "1.0", 0, &error))
 	{
@@ -95,11 +95,11 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 
 	g_free (private_path);
 
-	peas_engine_add_search_path (PEAS_ENGINE (engine),
+	bean_engine_add_search_path (PEAS_ENGINE (engine),
 	                             lapiz_dirs_get_user_plugins_dir (),
 	                             lapiz_dirs_get_user_plugins_dir ());
 
-	peas_engine_add_search_path (PEAS_ENGINE (engine),
+	bean_engine_add_search_path (PEAS_ENGINE (engine),
 	                             lapiz_dirs_get_lapiz_plugins_dir (),
 	                             lapiz_dirs_get_lapiz_plugins_data_dir ());
 

@@ -32,7 +32,7 @@
 #define __LAPIZ_PLUGINS_ENGINE_H__
 
 #include <glib.h>
-#include <libpeas/peas-engine.h>
+#include <libbean/bean-engine.h>
 
 G_BEGIN_DECLS
 

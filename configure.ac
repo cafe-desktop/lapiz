@@ -167,8 +167,8 @@ PKG_CHECK_MODULES(LAPIZ, [
 	gio-2.0 >= 2.50.0
 	ctk+-3.0 >= $CTK_REQUIRED
 	ctksourceview-3.0 >= $CTKSOURCEVIEW_REQUIRED
-	libpeas-1.0 >= 1.2.0
-	libpeas-ctk-1.0 >= 1.2.0
+	libbean-1.0 >= 1.2.0
+	libbean-ctk-1.0 >= 1.2.0
 ])
 
 PKG_CHECK_MODULES(X11, [x11])
