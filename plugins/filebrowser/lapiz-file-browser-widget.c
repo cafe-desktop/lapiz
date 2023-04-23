@@ -108,7 +108,7 @@ typedef struct
 typedef struct
 {
 	gchar *name;
-	CdkPixbuf *icon;
+	GdkPixbuf *icon;
 } NameIcon;
 
 struct _LapizFileBrowserWidgetPrivate
@@ -521,7 +521,7 @@ separator_func (CtkTreeModel * model, CtkTreeIter * iter, gpointer data)
 
 static gboolean
 get_from_bookmark_file (LapizFileBrowserWidget * obj, GFile * file,
-		       gchar ** name, CdkPixbuf ** icon)
+		       gchar ** name, GdkPixbuf ** icon)
 {
 	gpointer data;
 	NameIcon * item;
@@ -552,7 +552,7 @@ insert_path_item (LapizFileBrowserWidget * obj,
 		  guint indent)
 {
 	gchar * unescape;
-	CdkPixbuf * icon = NULL;
+	GdkPixbuf * icon = NULL;
 
 	/* Try to get the icon and name from the bookmarks hash */
 	if (!get_from_bookmark_file (obj, file, &unescape, &icon)) {
@@ -702,7 +702,7 @@ fill_combo_model (LapizFileBrowserWidget * obj)
 {
 	CtkTreeStore *store = obj->priv->combo_model;
 	CtkTreeIter iter;
-	CdkPixbuf *icon;
+	GdkPixbuf *icon;
 
 	icon = lapiz_file_browser_utils_pixbuf_from_theme ("go-home", CTK_ICON_SIZE_MENU);
 
@@ -1075,7 +1075,7 @@ add_bookmark_hash (LapizFileBrowserWidget * obj,
                    CtkTreeIter * iter)
 {
 	CtkTreeModel *model;
-	CdkPixbuf * pixbuf;
+	GdkPixbuf * pixbuf;
 	gchar * name;
 	gchar * uri;
 	GFile * file;
@@ -1527,11 +1527,11 @@ get_topmost_file (GFile * file)
 
 static CtkWidget *
 create_goto_menu_item (LapizFileBrowserWidget * obj, GList * item,
-		       CdkPixbuf * icon)
+		       GdkPixbuf * icon)
 {
 	CtkWidget *result;
 	gchar *unescape;
-	CdkPixbuf *pixbuf = NULL;
+	GdkPixbuf *pixbuf = NULL;
 	Location *loc;
 
 	loc = (Location *) (item->data);
@@ -2530,7 +2530,7 @@ on_virtual_root_changed (LapizFileBrowserStore * model,
 	CtkTreeIter root;
 	CtkAction *action;
 	Location *loc;
-	CdkPixbuf *pixbuf;
+	GdkPixbuf *pixbuf;
 
 	if (ctk_tree_view_get_model (CTK_TREE_VIEW (obj->priv->treeview)) !=
 	    CTK_TREE_MODEL (obj->priv->file_store))

@@ -88,8 +88,8 @@ struct _FileBrowserNode
 	guint flags;
 	gchar *name;
 
-	CdkPixbuf *icon;
-	CdkPixbuf *emblem;
+	GdkPixbuf *icon;
+	GdkPixbuf *emblem;
 
 	FileBrowserNode *parent;
 	gint pos;
@@ -1592,7 +1592,7 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 			     FileBrowserNode * node,
 			     GFileInfo * info)
 {
-	CdkPixbuf *icon;
+	GdkPixbuf *icon;
 
 	g_return_if_fail (LAPIZ_IS_FILE_BROWSER_STORE (tree_model));
 	g_return_if_fail (node != NULL);
