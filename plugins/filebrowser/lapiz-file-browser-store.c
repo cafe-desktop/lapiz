@@ -2742,7 +2742,7 @@ lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 	data = g_value_get_object (value);
 
 	if (data)
-		g_return_if_fail (CDK_IS_PIXBUF (data));
+		g_return_if_fail (GDK_IS_PIXBUF (data));
 
 	node = (FileBrowserNode *) (iter->user_data);
 
