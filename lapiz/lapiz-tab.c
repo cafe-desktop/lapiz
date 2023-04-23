@@ -1791,7 +1791,7 @@ resize_icon (GdkPixbuf *pixbuf,
 		scaled_pixbuf = gdk_pixbuf_scale_simple	(pixbuf,
 							 width,
 							 height,
-							 CDK_INTERP_BILINEAR);
+							 GDK_INTERP_BILINEAR);
 		g_object_unref (pixbuf);
 		pixbuf = scaled_pixbuf;
 	}
