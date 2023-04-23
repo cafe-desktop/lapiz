@@ -202,7 +202,7 @@ INTROSPECTION_GIRS = Lapiz-1.0.gir
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) --warn-all
 
 Lapiz-1.0.gir: lapiz
-Lapiz_1_0_gir_INCLUDES = Ctk-3.0 CtkSource-3.0
+Lapiz_1_0_gir_INCLUDES = Ctk-3.0 CtkSource-4
 Lapiz_1_0_gir_FILES = $(INST_H_FILES) $(liblapiz_c_files) $(BUILT_SOURCES)
 Lapiz_1_0_gir_VERSION = 1.0
 Lapiz_1_0_gir_PROGRAM = $(builddir)/lapiz
