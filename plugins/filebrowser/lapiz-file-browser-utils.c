@@ -40,8 +40,8 @@ process_icon_pixbuf (GdkPixbuf * pixbuf,
 		g_error_free (error);
 	}
 
-	if (pixbuf && cdk_pixbuf_get_width (pixbuf) > size) {
-		scale = cdk_pixbuf_scale_simple (pixbuf,
+	if (pixbuf && gdk_pixbuf_get_width (pixbuf) > size) {
+		scale = gdk_pixbuf_scale_simple (pixbuf,
 		                                 size,
 		                                 size,
 		                                 CDK_INTERP_BILINEAR);
