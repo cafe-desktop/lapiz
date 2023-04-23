@@ -1241,7 +1241,7 @@ recents_menu_activate (CtkAction   *action,
 static gint
 sort_recents_mru (CtkRecentInfo *a, CtkRecentInfo *b)
 {
-	return (ctk_recent_info_get_modified (b) - ctk_recent_info_get_modified (a));
+	return (g_date_time_to_unix (ctk_recent_info_get_modified (b)) - g_date_time_to_unix (ctk_recent_info_get_modified (a)));
 }
 
 static void	update_recent_files_menu (LapizWindow *window);
