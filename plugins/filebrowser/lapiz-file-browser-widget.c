@@ -747,7 +747,7 @@ create_combo (LapizFileBrowserWidget * obj)
 
 	obj->priv->combo_model = ctk_tree_store_new (N_COLUMNS,
 						     G_TYPE_UINT,
-						     CDK_TYPE_PIXBUF,
+						     GDK_TYPE_PIXBUF,
 						     G_TYPE_STRING,
 						     G_TYPE_FILE,
 						     G_TYPE_UINT);

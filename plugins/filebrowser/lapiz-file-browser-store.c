@@ -463,9 +463,9 @@ lapiz_file_browser_store_init (LapizFileBrowserStore * obj)
 	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS] =
 	    G_TYPE_UINT;
 	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_ICON] =
-	    CDK_TYPE_PIXBUF;
+	    GDK_TYPE_PIXBUF;
 	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_EMBLEM] =
-	    CDK_TYPE_PIXBUF;
+	    GDK_TYPE_PIXBUF;
 
 	// Default filter mode is hiding the hidden files
 	obj->priv->filter_mode = lapiz_file_browser_store_filter_mode_get_default ();

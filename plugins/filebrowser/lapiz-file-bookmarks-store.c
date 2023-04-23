@@ -798,7 +798,7 @@ lapiz_file_bookmarks_store_new (void)
 {
 	LapizFileBookmarksStore *model;
 	GType column_types[] = {
-		CDK_TYPE_PIXBUF,
+		GDK_TYPE_PIXBUF,
 		G_TYPE_STRING,
 		G_TYPE_OBJECT,
 		G_TYPE_UINT
