@@ -1633,7 +1633,7 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 		gdk_pixbuf_composite (node->emblem, node->icon,
 				      icon_size - 10, icon_size - 10, 10,
 				      10, icon_size - 10, icon_size - 10,
-				      1, 1, CDK_INTERP_NEAREST, 255);
+				      1, 1, GDK_INTERP_NEAREST, 255);
 	} else {
 		node->icon = icon;
 	}
