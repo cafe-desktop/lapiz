@@ -59,7 +59,7 @@ before_scripts:
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
   - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master #required for make check
   - ./install-from-git https://github.com/cafe-desktop/ctksourceview master meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu'
-  - ./install-from-git https://github.com/cafe-desktop/libbean master meson
+  - ./install-from-git https://github.com/cafe-desktop/libbean master meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu'
 
 build_scripts:
   - ./before-build
