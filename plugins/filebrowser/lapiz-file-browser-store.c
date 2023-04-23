@@ -2750,7 +2750,7 @@ lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 		g_object_unref (node->emblem);
 
 	if (data)
-		node->emblem = g_object_ref (CDK_PIXBUF (data));
+		node->emblem = g_object_ref (GDK_PIXBUF (data));
 	else
 		node->emblem = NULL;
 
