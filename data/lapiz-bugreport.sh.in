@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PKG_CONFIG_MODULES="glib-2.0 ctk+-3.0 ctksourceview-3.0 enchant iso-codes"
+PKG_CONFIG_MODULES="glib-2.0 ctk+-3.0 ctksourceview-4 enchant iso-codes"
 
 echo_padded ()
 {

@@ -166,7 +166,7 @@ PKG_CHECK_MODULES(LAPIZ, [
 	gthread-2.0 >= 2.13.0
 	gio-2.0 >= 2.50.0
 	ctk+-3.0 >= $CTK_REQUIRED
-	ctksourceview-3.0 >= $CTKSOURCEVIEW_REQUIRED
+	ctksourceview-4 >= $CTKSOURCEVIEW_REQUIRED
 	libbean-1.0 >= 1.2.0
 	libbean-ctk-1.0 >= 1.2.0
 ])
