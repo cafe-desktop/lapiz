@@ -136,7 +136,7 @@ CtkWidget	*_lapiz_tab_new_from_uri	(const gchar         *uri,
 						 gboolean             create);
 gchar 		*_lapiz_tab_get_name		(LapizTab            *tab);
 gchar 		*_lapiz_tab_get_tooltips	(LapizTab            *tab);
-CdkPixbuf 	*_lapiz_tab_get_icon		(LapizTab            *tab);
+GdkPixbuf 	*_lapiz_tab_get_icon		(LapizTab            *tab);
 void		 _lapiz_tab_load		(LapizTab            *tab,
 						 const gchar         *uri,
 						 const LapizEncoding *encoding,
