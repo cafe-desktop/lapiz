@@ -648,6 +648,9 @@ main (int argc, char *argv[])
 
 	lapiz_debug_message (DEBUG_APP, "Start ctk-main");
 
+	g_object_set (ctk_settings_get_default (), "ctk-button-images", TRUE, NULL);
+	g_object_set (ctk_settings_get_default (), "ctk-menu-images", TRUE, NULL);
+
 	ctk_main();
 
 	bacon_message_connection_free (connection);
