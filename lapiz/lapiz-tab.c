@@ -1533,6 +1533,7 @@ lapiz_tab_init (LapizTab *tab)
 	ctk_container_add (CTK_CONTAINER (sw), tab->priv->view);
 	ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
 					     CTK_SHADOW_IN);
+	ctk_scrolled_window_set_overlay_scrolling (CTK_SCROLLED_WINDOW (sw), FALSE);
 	ctk_widget_show (sw);
 
 	g_signal_connect (doc,
