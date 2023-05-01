@@ -82,7 +82,7 @@
       <description>Whether lapiz should enable automatic indentation.</description>
     </key>
     <key name="display-line-numbers" type="b">
-      <default>false</default>
+      <default>true</default>
       <summary>Display Line Numbers</summary>
       <description>Whether lapiz should display line numbers in the editing area.</description>
     </key>
