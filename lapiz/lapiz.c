@@ -650,6 +650,7 @@ main (int argc, char *argv[])
 
 	g_object_set (ctk_settings_get_default (), "ctk-button-images", TRUE, NULL);
 	g_object_set (ctk_settings_get_default (), "ctk-menu-images", TRUE, NULL);
+	g_object_set (ctk_settings_get_default (), "ctk-overlay-scrolling", FALSE, NULL);
 
 	ctk_main();
 
