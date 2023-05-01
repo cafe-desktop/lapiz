@@ -118,7 +118,8 @@ void _lapiz_cmd_help_about(CtkAction* action, LapizWindow* window)
 		               "Copyright \xc2\xa9 2003-2006 Paolo Maggi\n"
 		               "Copyright \xc2\xa9 2004-2010 Paolo Borelli, Jesse van den Kieboom\nSteve Fr\303\251cinaux, Ignacio Casal Quinteiro\n"
 		               "Copyright \xc2\xa9 2011 Perberos\n"
-		               "Copyright \xc2\xa9 2012-2020 CAFE developers"),
+		               "Copyright \xc2\xa9 2012-2020 MATE developers\n"
+		               "Copyright \xc2\xa9 2023 Pablo Barciela"),
 		"license", license_trans,
 		"wrap-license", TRUE,
 		"documenters", documenters,
