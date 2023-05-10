@@ -43,10 +43,10 @@
 
 #define FILE_BROWSER_SCHEMA 		"org.cafe.lapiz.plugins.filebrowser"
 #define FILE_BROWSER_ONLOAD_SCHEMA 	"org.cafe.lapiz.plugins.filebrowser.on-load"
-#define CAJA_SCHEMA					"org.cafe.baul.preferences"
-#define CAJA_CLICK_POLICY_KEY		"click-policy"
-#define CAJA_ENABLE_DELETE_KEY		"enable-delete"
-#define CAJA_CONFIRM_TRASH_KEY		"confirm-trash"
+#define BAUL_SCHEMA					"org.cafe.baul.preferences"
+#define BAUL_CLICK_POLICY_KEY		"click-policy"
+#define BAUL_ENABLE_DELETE_KEY		"enable-delete"
+#define BAUL_CONFIRM_TRASH_KEY		"confirm-trash"
 #define TERMINAL_SCHEMA				"org.cafe.applications-terminal"
 #define TERMINAL_EXEC_KEY			"exec"
 
@@ -363,8 +363,8 @@ on_confirm_trash_changed (GSettings *settings,
 static gboolean
 have_click_policy (void)
 {
-	GSettings *settings = g_settings_new (CAJA_SCHEMA);
-	gchar *pref = g_settings_get_string (settings, CAJA_CLICK_POLICY_KEY);
+	GSettings *settings = g_settings_new (BAUL_SCHEMA);
+	gchar *pref = g_settings_get_string (settings, BAUL_CLICK_POLICY_KEY);
 	gboolean result = (pref != NULL);
 
 	g_free (pref);
@@ -382,32 +382,32 @@ install_baul_prefs (LapizFileBrowserPluginPrivate *data)
 
 	if (have_click_policy ()) {
 		g_signal_connect (data->baul_settings,
-		                  "changed::" CAJA_CLICK_POLICY_KEY,
+		                  "changed::" BAUL_CLICK_POLICY_KEY,
 		                  G_CALLBACK (on_click_policy_changed),
 		                  data);
 	}
 
 	g_signal_connect (data->baul_settings,
-	                  "changed::" CAJA_ENABLE_DELETE_KEY,
+	                  "changed::" BAUL_ENABLE_DELETE_KEY,
 	                  G_CALLBACK (on_enable_delete_changed),
 	                  data);
 
 	g_signal_connect (data->baul_settings,
-	                  "changed::" CAJA_CONFIRM_TRASH_KEY,
+	                  "changed::" BAUL_CONFIRM_TRASH_KEY,
 	                  G_CALLBACK (on_confirm_trash_changed),
 	                  data);
 
-	pref = g_settings_get_string (data->baul_settings, CAJA_CLICK_POLICY_KEY);
+	pref = g_settings_get_string (data->baul_settings, BAUL_CLICK_POLICY_KEY);
 	policy = click_policy_from_string (pref);
 	g_free (pref);
 
 	view = lapiz_file_browser_widget_get_browser_view (data->tree_widget);
 	lapiz_file_browser_view_set_click_policy (view, policy);
 
-	prefb = g_settings_get_boolean (data->baul_settings, CAJA_ENABLE_DELETE_KEY);
+	prefb = g_settings_get_boolean (data->baul_settings, BAUL_ENABLE_DELETE_KEY);
 	g_object_set (G_OBJECT (data->tree_widget), "enable-delete", prefb, NULL);
 
-	prefb = g_settings_get_boolean (data->baul_settings, CAJA_CONFIRM_TRASH_KEY);
+	prefb = g_settings_get_boolean (data->baul_settings, BAUL_CONFIRM_TRASH_KEY);
 	data->confirm_trash = prefb;
 }
 
@@ -733,9 +733,9 @@ lapiz_file_browser_plugin_activate (BeanActivatable *activatable)
 
 	/* Install baul preferences */
 	schema_source = g_settings_schema_source_get_default();
-	schema = g_settings_schema_source_lookup (schema_source, CAJA_SCHEMA, FALSE);
+	schema = g_settings_schema_source_lookup (schema_source, BAUL_SCHEMA, FALSE);
 	if (schema != NULL) {
-		data->baul_settings = g_settings_new (CAJA_SCHEMA);
+		data->baul_settings = g_settings_new (BAUL_SCHEMA);
 		install_baul_prefs (data);
 		g_settings_schema_unref (schema);
 	}
