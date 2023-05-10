@@ -2805,11 +2805,11 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
 "TRUE "
 "にすると、初めて開いたドキュメントがあるフォルダーで、ファイル参照プラグインがまだ使われたことがないディレクトリを表示します。(すなわち、この機能は一般的にコマンドラインからドキュメントを開く場合や"
-" Caja などからドキュメントを開く際に動作します。)"
+" Baul などからドキュメントを開く際に動作します。)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"

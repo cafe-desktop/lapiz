@@ -4,7 +4,7 @@
     <key name="open-at-first-doc" type="b">
       <default>true</default>
       <summary>Set Location to First Document</summary>
-      <description>If TRUE the file browser plugin will view the directory of the first opened document given that the file browser hasn't been used yet. (Thus this generally applies to opening a document from the command line or opening it with Caja, etc.)</description>
+      <description>If TRUE the file browser plugin will view the directory of the first opened document given that the file browser hasn't been used yet. (Thus this generally applies to opening a document from the command line or opening it with Baul, etc.)</description>
     </key>
     <key name="filter-mode" type="s">
       <default>'hidden_and_binary'</default>

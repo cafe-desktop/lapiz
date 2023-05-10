@@ -2879,11 +2879,11 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
 "ಇದು TRUE ಆಗಿದಲ್ಲಿ, ಕಡತ ವೀಕ್ಷಕವು ಈ ಮೊದಲು ಬಳಸಲ್ಪಡದೆ ಇದ್ದ ಪಕ್ಷದಲ್ಲಿ ಕಡತ ವೀಕ್ಷಕ "
 "ಪ್ಲಗ್ಇನ್ ಮೊದಲು ತೆರೆಯಲ್ಪಟ್ಟ ದಸ್ತಾವೇಜನ್ನು ವೀಕ್ಷಿಸುತ್ತದೆ. (ಇದರರ್ಥ, ಇದು ಒಂದು "
-"ದಸ್ತಾವೇಜನ್ನು ಆಜ್ಞಾಸಾಲಿನಿಂದ ಅಥವ Caja ಇತ್ಯಾದಿಗಳಿಂದ ತೆರೆಯುವಾಗ ಸಾಮಾನ್ಯವಾಗಿ "
+"ದಸ್ತಾವೇಜನ್ನು ಆಜ್ಞಾಸಾಲಿನಿಂದ ಅಥವ Baul ಇತ್ಯಾದಿಗಳಿಂದ ತೆರೆಯುವಾಗ ಸಾಮಾನ್ಯವಾಗಿ "
 "ಅನ್ವಯಿಸುತ್ತದೆ ಎಂದಾಗುತ್ತದೆ)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11

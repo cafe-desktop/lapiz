@@ -2862,11 +2862,11 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
 "Dersom set til TRUE, vil filvisartillegget visa katalogen til det først opna"
 " dokumentet når filvisaren ikkje har vore brukt før. (Så dette gjeld stort "
-"sett når eit dokument vert opna frå kommandolinja eller med Caja eller "
+"sett når eit dokument vert opna frå kommandolinja eller med Baul eller "
 "tilsvarande.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11

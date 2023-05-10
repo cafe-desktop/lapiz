@@ -2768,9 +2768,9 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
-"如設定為 TRUE，當從未使用過檔案瀏覽器時，則檔案瀏覽器外掛程式會顯示第一個開啟的檔案所在的目錄。（這通常會用於在命令列或 Caja "
+"如設定為 TRUE，當從未使用過檔案瀏覽器時，則檔案瀏覽器外掛程式會顯示第一個開啟的檔案所在的目錄。（這通常會用於在命令列或 Baul "
 "等程式中開啟文件時）"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11

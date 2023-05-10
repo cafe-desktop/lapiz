@@ -2891,11 +2891,11 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
 "Wenn TRUE, wiest dat Datei-Uppasser-Plugin dat Verteeknis vun de eersten "
 "openen Dokument, wenn de Datei-Uppasser noch nich bruukt worden is. (Dat is "
-"also vör allem dann so, wenn een Dokument vun de Oorderreeg, ut Caja oder so"
+"also vör allem dann so, wenn een Dokument vun de Oorderreeg, ut Baul oder so"
 " opendaan wurre.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11

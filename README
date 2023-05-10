@@ -6,7 +6,7 @@ environment. Based on gedit, the text editor for the GNOME2 environment.
 
 lapiz is part of CAFE and uses the latest CTK+ and CAFE libraries.
 Complete CAFE integration is featured, with support for Drag and Drop (DnD)
-from Caja (the CAFE file manager), the use of the CAFE help system,
+from Baul (the CAFE file manager), the use of the CAFE help system,
 the CAFE Virtual File System and the CAFE print framework.
 
 lapiz uses a Multiple Document Interface (MDI), which lets you edit more than

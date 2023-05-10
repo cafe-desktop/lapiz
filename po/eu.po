@@ -2895,11 +2895,11 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
 "TRUE (egia) gisa ezartzen bada, fitxategi-arakatzaileak oraindik erabili ez "
 "duen irekitako aurreneko dokumentuaren direktorioa bistaratuko du fitxategi-"
-"arakatzailearen osagaiak. Kasu hau dokumentua komando lerrotik edo Caja-etik"
+"arakatzailearen osagaiak. Kasu hau dokumentua komando lerrotik edo Baul-etik"
 " irekitzen denean gertatu ohi da."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11

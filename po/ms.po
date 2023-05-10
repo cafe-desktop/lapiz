@@ -2914,11 +2914,11 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
 "Jika BENAR pemalam pelayar fail akan lihat direktori dokumen yang pertama "
 "dibuka yang mana pelayar fail belum lagi digunakan. (Maka ia amnya dilaksana"
-" untuk membuka dokumen dari baris perintah atau membukanya dengan Caja, "
+" untuk membuka dokumen dari baris perintah atau membukanya dengan Baul, "
 "dll.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11

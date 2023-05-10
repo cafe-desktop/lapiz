@@ -2901,11 +2901,11 @@ msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
-"with Caja, etc.)"
+"with Baul, etc.)"
 msgstr ""
 "Ha ez a beállítás igaz, akkor a fájlböngésző bővítmény az első megnyitott "
 "dokumentum könyvtárát jeleníti meg, ha a fájlböngésző még nem volt "
-"használatban (így ez általánosságban például a parancssorból vagy a Cajaból "
+"használatban (így ez általánosságban például a parancssorból vagy a Baulból "
 "megnyitott dokumentumokra érvényes)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
