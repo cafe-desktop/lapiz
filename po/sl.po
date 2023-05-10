@@ -2908,7 +2908,7 @@ msgstr ""
 "Izbrana možnost omogoča, da bo vstavek pregledovalnika datotek prikazal "
 "imenik prvega odprtega dokumenta, če pregledovalnik še ni bil uporabljen. "
 "(Čeprav se ponavadi to nanaša na odpiranje dokumenta iz ukazne vrstice ali "
-"na odpiranje s programom caja itd.)"
+"na odpiranje s programom baul itd.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"

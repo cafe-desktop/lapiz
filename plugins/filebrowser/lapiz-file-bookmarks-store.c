@@ -648,7 +648,7 @@ bookmarks_compare_names (CtkTreeModel * model, CtkTreeIter * a,
 			    LAPIZ_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
 			    -1);
 
-	/* do not sort actual bookmarks to keep same order as in caja */
+	/* do not sort actual bookmarks to keep same order as in baul */
 	if ((f1 & LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK) &&
 	    (f2 & LAPIZ_FILE_BOOKMARKS_STORE_IS_BOOKMARK))
 		result = 0;

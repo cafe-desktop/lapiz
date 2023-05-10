@@ -2945,7 +2945,7 @@ msgstr ""
 "Hvis TRUE vil filvælger-udvidelsesmodulet åbne i den mappe som det først "
 "åbnede dokument findes i, givet at det er første gang filvælger-"
 "udvidelsesmodulet bruges. (Derfor gælder dette også generelt når man åbner "
-"et dokument fra kommandolinjen, med caja eller lignende.)"
+"et dokument fra kommandolinjen, med baul eller lignende.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"

@@ -2935,7 +2935,7 @@ msgid ""
 msgstr ""
 "Jei TEIGIAMA, failų naršyklės įskiepis rodys pirmo atverto dokumento "
 "katalogą, jei failų naršyklė dar nebuvo naudota. (Taigi, tai paprastai "
-"taikoma dokumento atvėrimui iš komandų eilutės arba atveriant jį su caja, ir"
+"taikoma dokumento atvėrimui iš komandų eilutės arba atveriant jį su baul, ir"
 " t.t.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
