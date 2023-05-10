@@ -3362,11 +3362,11 @@ msgstr "Pika-avaus"
 
 #: plugins/quickopen/quickopen/windowhelper.py:66
 msgid "Quickly open documents"
-msgstr "Avaa asiakirjoja nobeanti"
+msgstr "Avaa asiakirjoja nopeasti"
 
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
-msgstr "Avaa tiedostoja nobeanti"
+msgstr "Avaa tiedostoja nopeasti"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon
 #. file name)!
