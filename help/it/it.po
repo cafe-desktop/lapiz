@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Marco Z. <minaz666@gmail.com>, 2020
 # Dario Di Nucci <linkin88mail@gmail.com>, 2020
@@ -9,18 +9,18 @@
 # Simone Centonze <mypythonit@gmail.com>, 2020
 # Alessandro Volturno <alelvb@inwind.it>, 2020
 # Wolfgang Ulbrich <cafe@raveit.de>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-07-17 14:34+0200\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:48+0000\n"
 "Last-Translator: Wolfgang Ulbrich <cafe@raveit.de>, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/cafe/teams/13566/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -44,11 +44,11 @@ msgstr "progetto Documentazione di  CAFE"
 #. (itstool) path: author/orgname
 #. (itstool) path: affiliation/orgname
 #. (itstool) path: revdescription/para
-#: C/index.docbook:45 C/index.docbook:64 C/index.docbook:89
-#: C/index.docbook:119 C/index.docbook:127 C/index.docbook:135
-#: C/index.docbook:143 C/index.docbook:151 C/index.docbook:159
-#: C/index.docbook:167 C/index.docbook:175 C/index.docbook:183
-#: C/index.docbook:191 C/index.docbook:199
+#: C/index.docbook:45 C/index.docbook:64 C/index.docbook:89 C/index.docbook:119
+#: C/index.docbook:127 C/index.docbook:135 C/index.docbook:143
+#: C/index.docbook:151 C/index.docbook:159 C/index.docbook:167
+#: C/index.docbook:175 C/index.docbook:183 C/index.docbook:191
+#: C/index.docbook:199
 msgid "GNOME Documentation Project"
 msgstr "Progetto della Documentazione di GNOME "
 
@@ -192,8 +192,8 @@ msgid ""
 "<firstterm>plugins</firstterm>, allowing a variety of tasks related to text-"
 "editing."
 msgstr ""
-"Lo scopo di <application>lapiz</application> è quello di essere un editor di"
-" testi semplice e facile da usare. Le funzioni più avanzate possono essere "
+"Lo scopo di <application>lapiz</application> è quello di essere un editor di "
+"testi semplice e facile da usare. Le funzioni più avanzate possono essere "
 "abilitate con differenti <firstterm>plugin</firstterm>, che permettono una "
 "varietà di compiti relativi alla modifica del testo.."
 
@@ -256,8 +256,8 @@ msgid ""
 "When you start <application>lapiz</application>, the following window is "
 "displayed:"
 msgstr ""
-"Quando si avvia <application>lapiz</application>, viene mostrata la seguente"
-" finestra:"
+"Quando si avvia <application>lapiz</application>, viene mostrata la seguente "
+"finestra:"
 
 #. (itstool) path: info/title
 #: C/index.docbook:273
@@ -274,8 +274,7 @@ msgstr "Mostra la finestra principale di lapiz."
 msgid ""
 "The <application>lapiz</application> window contains the following elements:"
 msgstr ""
-"La finestra di <application>lapiz</application> contiene i seguenti "
-"elementi:"
+"La finestra di <application>lapiz</application> contiene i seguenti elementi:"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:290
@@ -324,9 +323,9 @@ msgstr "Barra di stato"
 #. (itstool) path: listitem/para
 #: C/index.docbook:310
 msgid ""
-"The statusbar displays information about current "
-"<application>lapiz</application> activity and contextual information about "
-"the menu items. The statusbar also displays the following information:"
+"The statusbar displays information about current <application>lapiz</"
+"application> activity and contextual information about the menu items. The "
+"statusbar also displays the following information:"
 msgstr ""
 "La barra di stato mostra informazioni sull'attività corrente di "
 "<application>lapiz</application> e informazioni contestuali sugli oggetti "
@@ -346,14 +345,14 @@ msgstr ""
 msgid ""
 "Edit mode: If the editor is in insert mode, the statusbar contains the text "
 "<guilabel>INS</guilabel>. If the editor is in overwrite mode, the statusbar "
-"contains the text <guilabel>OVR</guilabel>. Press the "
-"<keycap>Insert</keycap> key to change edit mode."
+"contains the text <guilabel>OVR</guilabel>. Press the <keycap>Insert</"
+"keycap> key to change edit mode."
 msgstr ""
 "Modalità di modifica: se l'editor è nella modalità inserimento, la barra di "
 "stato contiene il testo <guilabel>INS</guilabel>. Se l'editor si trova in "
-"modalità sovrascrittura, la barra di stato contiene il testo "
-"<guilabel>OVR</guilabel>. Premete il tasto <keycap>Insert</keycap> sulla "
-"tastiera per cambiare modalità."
+"modalità sovrascrittura, la barra di stato contiene il testo <guilabel>OVR</"
+"guilabel>. Premete il tasto <keycap>Insert</keycap> sulla tastiera per "
+"cambiare modalità."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:322
@@ -376,8 +375,8 @@ msgid ""
 "<guimenu>View</guimenu> <guimenuitem>Side Pane</guimenuitem> </menuchoice>."
 msgstr ""
 "Per default il pannello laterale non viene mostrato. Per visualizzarlo, "
-"selezionate <menuchoice> <guimenu>Visualizza</guimenu> <guimenuitem>Riquadro"
-" Laterale</guimenuitem> </menuchoice>. "
+"selezionate <menuchoice> <guimenu>Visualizza</guimenu> <guimenuitem>Riquadro "
+"Laterale</guimenuitem> </menuchoice>. "
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:329
@@ -387,23 +386,22 @@ msgstr "Pannello Inferiore"
 #. (itstool) path: listitem/para
 #: C/index.docbook:331
 msgid ""
-"The bottom pane is used by programming tools such as the <application>Python"
-" Console</application> plugin to display output."
+"The bottom pane is used by programming tools such as the <application>Python "
+"Console</application> plugin to display output."
 msgstr ""
-"Il pannello inferiore è utilizzato dagli strumenti di programmazione come ad"
-" esempio il plugin <application>Console Python</application> per mostrare il"
-" loro output."
+"Il pannello inferiore è utilizzato dagli strumenti di programmazione come ad "
+"esempio il plugin <application>Console Python</application> per mostrare il "
+"loro output."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:332
 msgid ""
 "By default, the bottom pane is not shown. To show it, choose <menuchoice> "
-"<guimenu>View</guimenu> <guimenuitem>Bottom Pane</guimenuitem> "
-"</menuchoice>."
+"<guimenu>View</guimenu> <guimenuitem>Bottom Pane</guimenuitem> </menuchoice>."
 msgstr ""
 "Per Default il pannello laterale non viene mostrato. Per visualizzarlo "
-"selezionate <menuchoice> <guimenu>Visualizza</guimenu> <guimenuitem>Riquadro"
-" Inferiore</guimenuitem> </menuchoice>. "
+"selezionate <menuchoice> <guimenu>Visualizza</guimenu> <guimenuitem>Riquadro "
+"Inferiore</guimenuitem> </menuchoice>. "
 
 #. (itstool) path: section/para
 #: C/index.docbook:336
@@ -424,11 +422,11 @@ msgid ""
 "shortcut keys. Shortcuts keys common to all applications are listed in the "
 "<link xlink:href=\"help:cafe-user-guide/shortcuts-apps\">User Guide</link>."
 msgstr ""
-"Come per altre applicazioni CAFE, le azioni in "
-"<application>lapiz</application> possono essere eseguite in più modi: "
-"attrverso il menu, con la barra degli strumenti o via tasti scorciatoia. Le "
-"scorciatoie comuni a tutte le applicazioni sono elencate nella <link "
-"xlink:href=\"help:cafe-user-guide/shortcuts-apps\">Guida Utente</link>."
+"Come per altre applicazioni CAFE, le azioni in <application>lapiz</"
+"application> possono essere eseguite in più modi: attrverso il menu, con la "
+"barra degli strumenti o via tasti scorciatoia. Le scorciatoie comuni a tutte "
+"le applicazioni sono elencate nella <link xlink:href=\"help:cafe-user-guide/"
+"shortcuts-apps\">Guida Utente</link>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:343
@@ -442,18 +440,18 @@ msgid ""
 "single file or multiple files. To open multiple files from a command line, "
 "type the following command, then press <keycap>Return</keycap>:"
 msgstr ""
-"È possibile avviare <application>lapiz</application> dalla riga di comando e"
-" aprire uno o più file contemporaneamente. Per aprire più file dalla riga di"
-" comando, inserite il seguente comando e premete <keycap>Invio</keycap>:"
+"È possibile avviare <application>lapiz</application> dalla riga di comando e "
+"aprire uno o più file contemporaneamente. Per aprire più file dalla riga di "
+"comando, inserite il seguente comando e premete <keycap>Invio</keycap>:"
 
 #. (itstool) path: section/para
 #: C/index.docbook:346
 msgid ""
-"<command>lapiz <replaceable>file1.txt file2.txt "
-"file3.txt</replaceable></command>"
+"<command>lapiz <replaceable>file1.txt file2.txt file3.txt</replaceable></"
+"command>"
 msgstr ""
-"<command>lapiz <replaceable>file1.txt file2.txt file3.txt</replaceable> "
-"</command>"
+"<command>lapiz <replaceable>file1.txt file2.txt file3.txt</replaceable> </"
+"command>"
 
 #. (itstool) path: section/para
 #: C/index.docbook:349
@@ -465,13 +463,13 @@ msgstr ""
 #: C/index.docbook:350
 msgid ""
 "Refer to the <link xlink:href=\"man:lapiz\"> <citerefentry> "
-"<refentrytitle>lapiz</refentrytitle> <manvolnum>1</manvolnum> "
-"</citerefentry> </link> man page for more information on how to run "
+"<refentrytitle>lapiz</refentrytitle> <manvolnum>1</manvolnum> </"
+"citerefentry> </link> man page for more information on how to run "
 "<application>lapiz</application> from a command line."
 msgstr ""
 "Fate riferimento alla pagina man <link xlink:href=\"man:lapiz\"> "
-"<citerefentry> <refentrytitle>lapiz</refentrytitle> <manvolnum>1</manvolnum>"
-" </citerefentry> </link> per avere ulteriori informazioni su come avviare "
+"<citerefentry> <refentrytitle>lapiz</refentrytitle> <manvolnum>1</manvolnum> "
+"</citerefentry> </link> per avere ulteriori informazioni su come avviare "
 "<application>lapiz</application> da una ria di comando."
 
 #. (itstool) path: info/title
@@ -488,16 +486,15 @@ msgstr "Creare un Nuovo Documento"
 #: C/index.docbook:365
 msgid ""
 "To create a new document, choose <menuchoice> <guimenu>File</guimenu> "
-"<guimenuitem>New</guimenuitem> </menuchoice>. The application displays a new"
-" blank document in the <application>lapiz</application> window."
+"<guimenuitem>New</guimenuitem> </menuchoice>. The application displays a new "
+"blank document in the <application>lapiz</application> window."
 msgstr ""
-"Per creare un nuovo documento, seleziona <menuchoice> "
-"<guimenu>File</guimenu><guimenuitem>Nuovo</guimenuitem> </menuchoice>. "
-"L'applicazione mostrerà un documento vuoto nella finestra principale del "
-"programma.  "
+"Per creare un nuovo documento, seleziona <menuchoice> <guimenu>File</"
+"guimenu><guimenuitem>Nuovo</guimenuitem> </menuchoice>. L'applicazione "
+"mostrerà un documento vuoto nella finestra principale del programma.  "
 
 #. (itstool) path: info/title
-#: C/index.docbook:371 C/index.docbook:2098
+#: C/index.docbook:371 C/index.docbook:2090
 msgid "Opening a File"
 msgstr "Aprire un File."
 
@@ -531,10 +528,9 @@ msgid ""
 "recent files."
 msgstr ""
 "L'applicazione registra i percorsi ed i nomi dei cinque file modificati più "
-"recentemente e li mostra come oggetti nel menu <menuchoice> "
-"<guimenu>File</guimenu> </menuchoice>. Potete anche cliccare sulla "
-"<_:inlinemediaobject-1/> icona nella barra degli strumenti per visualizzare "
-"la lista dei file recenti."
+"recentemente e li mostra come oggetti nel menu <menuchoice> <guimenu>File</"
+"guimenu> </menuchoice>. Potete anche cliccare sulla <_:inlinemediaobject-1/> "
+"icona nella barra degli strumenti per visualizzare la lista dei file recenti."
 
 #. (itstool) path: note/para
 #: C/index.docbook:383
@@ -560,8 +556,8 @@ msgstr "Potete salvare un file nei modi seguenti:"
 #. (itstool) path: listitem/para
 #: C/index.docbook:395
 msgid ""
-"To save changes to an existing file, choose <menuchoice> "
-"<guimenu>File</guimenu> <guimenuitem>Save</guimenuitem> </menuchoice>."
+"To save changes to an existing file, choose <menuchoice> <guimenu>File</"
+"guimenu> <guimenuitem>Save</guimenuitem> </menuchoice>."
 msgstr ""
 "Per salvare i cambiamenti di un file esistente, seleziona <menuchoice> "
 "<guimenu>File</guimenu> <guimenuitem>Salva</guimenuitem> </menuchoice>."
@@ -570,22 +566,21 @@ msgstr ""
 #: C/index.docbook:398
 msgid ""
 "To save a new file or to save an existing file under a new filename, choose "
-"<menuchoice> <guimenu>File</guimenu> <guimenuitem>Save As</guimenuitem> "
-"</menuchoice>. Enter a name for the file in the <guilabel>Save As</guilabel>"
-" dialog, then click <guibutton>Save</guibutton>."
+"<menuchoice> <guimenu>File</guimenu> <guimenuitem>Save As</guimenuitem> </"
+"menuchoice>. Enter a name for the file in the <guilabel>Save As</guilabel> "
+"dialog, then click <guibutton>Save</guibutton>."
 msgstr ""
 "Per salvare un nuovo file o per salvare un file esistente sotto un altro "
 "nome, selezionar <menuchoice> <guimenu>File</guimenu> <guimenuitem>Salva "
-"come</guimenuitem> </menuchoice>. Inserire un nome nella finestra di dialogo"
-" <guilabel>Salva come</guilabel> e clicca <guibutton>Salva</guibutton>."
+"come</guimenuitem> </menuchoice>. Inserire un nome nella finestra di dialogo "
+"<guilabel>Salva come</guilabel> e clicca <guibutton>Salva</guibutton>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:401
 msgid ""
-"To save all the files that are currently open in "
-"<application>lapiz</application>, choose <menuchoice> "
-"<guimenu>Documents</guimenu> <guimenuitem>Save All</guimenuitem> "
-"</menuchoice>."
+"To save all the files that are currently open in <application>lapiz</"
+"application>, choose <menuchoice> <guimenu>Documents</guimenu> "
+"<guimenuitem>Save All</guimenuitem> </menuchoice>."
 msgstr ""
 "Per salvare tutti i documenti aperti in <application>lapiz</application>, "
 "seleziona <menuchoice> <guimenu>Documenti</guimenu> <guimenuitem>Salva "
@@ -594,10 +589,9 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:404
 msgid ""
-"To close all the files that are currently open in "
-"<application>lapiz</application>, choose <menuchoice> "
-"<guimenu>Documents</guimenu> <guimenuitem>Close All</guimenuitem> "
-"</menuchoice>."
+"To close all the files that are currently open in <application>lapiz</"
+"application>, choose <menuchoice> <guimenu>Documents</guimenu> "
+"<guimenuitem>Close All</guimenuitem> </menuchoice>."
 msgstr ""
 "Per chiudere tutti i documenti aperti in <application>lapiz</application>, "
 "seleziona <menuchoice> <guimenu>Documenti</guimenu> <guimenuitem>Chiudi "
@@ -622,25 +616,24 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:413
 msgid ""
-"To move a document to another <application> lapiz</application> window, drag"
-" the tab corresponding to the file to the window you want to move it to."
+"To move a document to another <application> lapiz</application> window, drag "
+"the tab corresponding to the file to the window you want to move it to."
 msgstr ""
-"Per muovere un documento su un'altra finestra di "
-"<application>lapiz</application>, trascina la scheda corrispondente al file "
-"sulla finestra in cui volete spostarlo."
+"Per muovere un documento su un'altra finestra di <application>lapiz</"
+"application>, trascina la scheda corrispondente al file sulla finestra in "
+"cui volete spostarlo."
 
 #. (itstool) path: section/para
 #: C/index.docbook:414
 msgid ""
-"To move a document to a new <application> lapiz</application> window, either"
-" drag its tab to the desktop, or choose <menuchoice> "
-"<guimenu>Documents</guimenu> <guimenuitem>Move to New Window</guimenuitem> "
-"</menuchoice>."
+"To move a document to a new <application> lapiz</application> window, either "
+"drag its tab to the desktop, or choose <menuchoice> <guimenu>Documents</"
+"guimenu> <guimenuitem>Move to New Window</guimenuitem> </menuchoice>."
 msgstr ""
-"Per spostare un documento su una nuova finestra di "
-"<application>lapiz</application>, potete trascinare la sua scheda sul "
-"desktop, o seleziona <menuchoice> <guimenu>Documenti</guimenu> "
-"<guimenuitem>Sposta in una nuova finestra</guimenuitem> </menuchoice>."
+"Per spostare un documento su una nuova finestra di <application>lapiz</"
+"application>, potete trascinare la sua scheda sul desktop, o seleziona "
+"<menuchoice> <guimenu>Documenti</guimenu> <guimenuitem>Sposta in una nuova "
+"finestra</guimenuitem> </menuchoice>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:421
@@ -660,9 +653,9 @@ msgstr "Potete modificare il testo di un file nei modi seguenti:"
 #. (itstool) path: listitem/para
 #: C/index.docbook:432
 msgid ""
-"Type new text from the keyboard. The blinking <firstterm>insertion "
-"cursor</firstterm> marks the point where new text appears. To change this, "
-"use the arrow keys on the keyboard or click with the mouse."
+"Type new text from the keyboard. The blinking <firstterm>insertion cursor</"
+"firstterm> marks the point where new text appears. To change this, use the "
+"arrow keys on the keyboard or click with the mouse."
 msgstr ""
 "Scrivere il nuovo testo dalla tastiera. Il <firstterm>cursore di "
 "inserimento</firstterm> lampeggiante segna il punto in cui comparirà il "
@@ -676,19 +669,19 @@ msgid ""
 "<guimenu>Edit</guimenu> <guimenuitem>Copy</guimenuitem> </menuchoice>."
 msgstr ""
 "Per copiare il testo selezionato negli appunti, seleziona "
-"<menuchoice><guimenu>Modifica</guimenu> <guimenuitem>Copia</guimenuitem> "
-"</menuchoice>."
+"<menuchoice><guimenu>Modifica</guimenu> <guimenuitem>Copia</guimenuitem> </"
+"menuchoice>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:438
 msgid ""
 "To delete the selected text from the file and move the selected text to the "
-"clipboard, choose <menuchoice> <guimenu>Edit</guimenu> "
-"<guimenuitem>Cut</guimenuitem> </menuchoice>."
+"clipboard, choose <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Cut</"
+"guimenuitem> </menuchoice>."
 msgstr ""
 "Per cancellare da un file il testo evidenziato e copiarlo negli appunti, "
-"seleziona <menuchoice> <guimenu>Modifica</guimenu> "
-"<guimenuitem>Taglia</guimenuitem> </menuchoice>. "
+"seleziona <menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Taglia</"
+"guimenuitem> </menuchoice>. "
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:441
@@ -697,32 +690,31 @@ msgid ""
 "<guimenu>Edit</guimenu> <guimenuitem>Delete</guimenuitem> </menuchoice>."
 msgstr ""
 "Per cancellare permanentemente il testo evidenziato da un file, seleziona "
-"<menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Cancella</guimenuitem>"
-" </menuchoice>."
+"<menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Cancella</guimenuitem> "
+"</menuchoice>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:444
 msgid ""
 "To insert the contents of the clipboard at the cursor position, choose "
-"<menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> "
-"</menuchoice>. You must cut or copy text before you can paste text into the "
+"<menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> </"
+"menuchoice>. You must cut or copy text before you can paste text into the "
 "file, either from lapiz or another application."
 msgstr ""
 "Per inserire il contenuto degli appunti alla posizione del cursore, "
-"seleziona <menuchoice> <guimenu>Modifica</guimenu> "
-"<guimenuitem>Incolla</guimenuitem> </menuchoice>. Dovrete tagliare o copiare"
-" del testo prima di poterlo incollare nel file, o da un file lapiz o da "
-"un'altra applicazione.."
+"seleziona <menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Incolla</"
+"guimenuitem> </menuchoice>. Dovrete tagliare o copiare del testo prima di "
+"poterlo incollare nel file, o da un file lapiz o da un'altra applicazione.."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:447
 msgid ""
-"To select all the text in a file, choose <menuchoice> "
-"<guimenu>Edit</guimenu> <guimenuitem>Select All</guimenuitem> </menuchoice>."
+"To select all the text in a file, choose <menuchoice> <guimenu>Edit</"
+"guimenu> <guimenuitem>Select All</guimenuitem> </menuchoice>."
 msgstr ""
 "Per evidenziare tutto il testo in un file, seleziona <menuchoice> "
-"<guimenu>Modifica</guimenu> <guimenuitem>Seleziona tutto</guimenuitem> "
-"</menuchoice>."
+"<guimenu>Modifica</guimenu> <guimenuitem>Seleziona tutto</guimenuitem> </"
+"menuchoice>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:455
@@ -738,10 +730,10 @@ msgid ""
 "</menuchoice>."
 msgstr ""
 "Per annullare un cambiamento fatto al file, seleziona <menuchoice> "
-"<guimenu>Modifica</guimenu> <guimenuitem>Annulla</guimenuitem> "
-"</menuchoice>. Per ripetere la modifica appena annullata, seleziona "
-"<menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Ripeti</guimenuitem> "
-"</menuchoice>."
+"<guimenu>Modifica</guimenu> <guimenuitem>Annulla</guimenuitem> </"
+"menuchoice>. Per ripetere la modifica appena annullata, seleziona "
+"<menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Ripeti</guimenuitem> </"
+"menuchoice>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:463
@@ -757,10 +749,10 @@ msgid ""
 "highlight matching text as you type it."
 msgstr ""
 "In <application>lapiz</application>, ci sono due modi per cercare del testo "
-"in un file. Potete utilizzare la finestra di dialogo "
-"<guilabel>Trova</guilabel> per cercare uno specifico frammento di testo, o "
-"utilizzare <guilabel>Ricerca Incrementale</guilabel> per evidenziare il "
-"testo corrispondente mentre lo digitate. "
+"in un file. Potete utilizzare la finestra di dialogo <guilabel>Trova</"
+"guilabel> per cercare uno specifico frammento di testo, o utilizzare "
+"<guilabel>Ricerca Incrementale</guilabel> per evidenziare il testo "
+"corrispondente mentre lo digitate. "
 
 #. (itstool) path: info/title
 #: C/index.docbook:470
@@ -775,24 +767,23 @@ msgstr "Per cercare una stringa di testo in un file, procedere come segue:"
 #. (itstool) path: listitem/para
 #: C/index.docbook:476
 msgid ""
-"Choose <menuchoice> <guimenu>Search</guimenu> "
-"<guimenuitem>Find</guimenuitem> </menuchoice> to display the "
-"<guilabel>Find</guilabel> dialog."
+"Choose <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Find</"
+"guimenuitem> </menuchoice> to display the <guilabel>Find</guilabel> dialog."
 msgstr ""
-"Seleziona <menuchoice> <guimenu>Cerca</guimenu> "
-"<guimenuitem>Trova</guimenuitem> </menuchoice> per mostrare la finestra di "
-"dialogo <guilabel>Trova</guilabel>."
+"Seleziona <menuchoice> <guimenu>Cerca</guimenu> <guimenuitem>Trova</"
+"guimenuitem> </menuchoice> per mostrare la finestra di dialogo "
+"<guilabel>Trova</guilabel>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:482
 msgid ""
-"Type the string that you want to find in the <guilabel>Search for</guilabel>"
-" field. You can include special characters such as a new line or tab: see "
+"Type the string that you want to find in the <guilabel>Search for</guilabel> "
+"field. You can include special characters such as a new line or tab: see "
 "<xref linkend=\"lapiz-find-escapes\"/>."
 msgstr ""
-"Scrivi il testo che volete trovare nel campo di testo "
-"<guilabel>Cerca</guilabel>. Potete includere caratteri speciali come ad "
-"esempio new line o tab: vedi <xref linkend=\"lapiz-find-escapes\"/>."
+"Scrivi il testo che volete trovare nel campo di testo <guilabel>Cerca</"
+"guilabel>. Potete includere caratteri speciali come ad esempio new line o "
+"tab: vedi <xref linkend=\"lapiz-find-escapes\"/>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:485
@@ -803,53 +794,51 @@ msgid ""
 "first occurrence of the string. Other occurrences of the string are "
 "highlighted."
 msgstr ""
-"Clicca <guibutton>Trova</guibutton> per cercare nel file la prima occorrenza"
-" della stringa successiva alla posizione corrente del cursore. Se "
+"Clicca <guibutton>Trova</guibutton> per cercare nel file la prima occorrenza "
+"della stringa successiva alla posizione corrente del cursore. Se "
 "<application>lapiz</application> trova la stringa, l'applicazione seleziona "
 "la prima occorrenza di essa. Le altre occorrenze vengono evidenziate."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:488
 msgid ""
-"To find the next occurrence of the string, click <guibutton>Find</guibutton>"
-" or choose <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Find "
-"Next</guimenuitem> </menuchoice>. To find the previous occurrence of the "
-"text, choose <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Find "
-"Previous</guimenuitem> </menuchoice>."
+"To find the next occurrence of the string, click <guibutton>Find</guibutton> "
+"or choose <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Find Next</"
+"guimenuitem> </menuchoice>. To find the previous occurrence of the text, "
+"choose <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Find Previous</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Per trovare la successiva occorrenza della stringa, clicca "
-"<guibutton>Trova</guibutton> o seleziona <menuchoice> "
-"<guimenu>Cerca</guimenu> <guimenuitem>Trova successivo</guimenuitem> "
-"</menuchoice>. Per trovare l'occorrenza precedente del testo, seleziona "
-"<menuchoice> <guimenu>Cerca</guimenu> <guimenuitem>Trova "
-"Precedente</guimenuitem> </menuchoice>."
+"Per trovare la successiva occorrenza della stringa, clicca <guibutton>Trova</"
+"guibutton> o seleziona <menuchoice> <guimenu>Cerca</guimenu> "
+"<guimenuitem>Trova successivo</guimenuitem> </menuchoice>. Per trovare "
+"l'occorrenza precedente del testo, seleziona <menuchoice> <guimenu>Cerca</"
+"guimenu> <guimenuitem>Trova Precedente</guimenuitem> </menuchoice>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:497
 msgid ""
 "After you have closed the <guilabel>Find</guilabel> dialog, you can still "
-"move the selection to other occurrences of the text by choosing <menuchoice>"
-" <guimenu>Search</guimenu> <guimenuitem>Find Next</guimenuitem> "
-"</menuchoice> and <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Find "
-"Previous</guimenuitem> </menuchoice>."
+"move the selection to other occurrences of the text by choosing <menuchoice> "
+"<guimenu>Search</guimenu> <guimenuitem>Find Next</guimenuitem> </menuchoice> "
+"and <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Find Previous</"
+"guimenuitem> </menuchoice>."
 msgstr ""
 "Dopo aver chiuso la finestra di dialogo <guilabel>Trova</guilabel>, puoi "
 "ancora spostare la selezione su altre occorrenze del testo selezionando "
-"<menuchoice> <guimenu>Cerca</guimenu> <guimenuitem>Trova "
-"Successivo</guimenuitem> </menuchoice> e <menuchoice> "
-"<guimenu>Cerca</guimenu> <guimenuitem>Trova Precedente</guimenuitem> "
-"</menuchoice>."
+"<menuchoice> <guimenu>Cerca</guimenu> <guimenuitem>Trova Successivo</"
+"guimenuitem> </menuchoice> e <menuchoice> <guimenu>Cerca</guimenu> "
+"<guimenuitem>Trova Precedente</guimenuitem> </menuchoice>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:504
 msgid ""
 "To remove the highlighting from the text, choose <menuchoice> "
-"<guimenu>Search</guimenu> <guimenuitem>Clear Highlight</guimenuitem> "
-"</menuchoice>."
+"<guimenu>Search</guimenu> <guimenuitem>Clear Highlight</guimenuitem> </"
+"menuchoice>."
 msgstr ""
 "Per rimuovere l'evidenziazione dal testo, seleziona <menuchoice> "
-"<guimenu>Cerca</guimenu> <guimenuitem>Pulisci voci evidenziate</guimenuitem>"
-" </menuchoice>."
+"<guimenu>Cerca</guimenu> <guimenuitem>Pulisci voci evidenziate</guimenuitem> "
+"</menuchoice>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:512
@@ -870,20 +859,19 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:517
 msgid ""
-"To start an incremental search, choose <menuchoice> "
-"<guimenu>Search</guimenu> <guimenuitem>Incremental Search</guimenuitem> "
-"</menuchoice>. The search box appears at the top of the display area."
+"To start an incremental search, choose <menuchoice> <guimenu>Search</"
+"guimenu> <guimenuitem>Incremental Search</guimenuitem> </menuchoice>. The "
+"search box appears at the top of the display area."
 msgstr ""
-"Per avviare una ricerca incrementale, seleziona <menuchoice> "
-"<guimenu>Cerca</guimenu> <guimenuitem>Ricerca Incrementale</guimenuitem> "
-"</menuchoice>. La casella di ricerca appare in cima all'area di "
-"visualizzazione."
+"Per avviare una ricerca incrementale, seleziona <menuchoice> <guimenu>Cerca</"
+"guimenu> <guimenuitem>Ricerca Incrementale</guimenuitem> </menuchoice>. La "
+"casella di ricerca appare in cima all'area di visualizzazione."
 
 #. (itstool) path: section/para
 #: C/index.docbook:521
 msgid ""
-"Begin typing, and text that matches will be highlighted in the document. The"
-" first instance after the cursor position is also selected."
+"Begin typing, and text that matches will be highlighted in the document. The "
+"first instance after the cursor position is also selected."
 msgstr ""
 "Iniziate a digitare, e il testo corrispondente sarà evidenziato. Verrà "
 "selezionata anche la prima istanza dopo la posizione del cursore."
@@ -892,8 +880,8 @@ msgstr ""
 #: C/index.docbook:522
 msgid ""
 "To advance the selection to the next match while keeping the incremental "
-"search box open, press <keycombo> <keycap>Ctrl</keycap> <keycap>G</keycap> "
-"</keycombo>. Press <keycombo> <keycap>Ctrl</keycap> <keycap>Shift</keycap> "
+"search box open, press <keycombo> <keycap>Ctrl</keycap> <keycap>G</keycap> </"
+"keycombo>. Press <keycombo> <keycap>Ctrl</keycap> <keycap>Shift</keycap> "
 "<keycap>G</keycap> </keycombo> to go back to the previous match."
 msgstr ""
 "Per avanzare la selezione alla successiva occorrenza mantenendo aperta la "
@@ -928,30 +916,30 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:543
 msgid ""
-"Choose <menuchoice> <guimenu>Search</guimenu> "
-"<guimenuitem>Replace</guimenuitem> </menuchoice> to display the "
-"<guilabel>Replace</guilabel> dialog."
+"Choose <menuchoice> <guimenu>Search</guimenu> <guimenuitem>Replace</"
+"guimenuitem> </menuchoice> to display the <guilabel>Replace</guilabel> "
+"dialog."
 msgstr ""
-"Seleziona <menuchoice> <guimenu>Cerca</guimenu> "
-"<guimenuitem>Sostituisci</guimenuitem> </menuchoice> per mostrare la "
-"finestra di dialogo <guilabel>Sostituisci</guilabel>."
+"Seleziona <menuchoice> <guimenu>Cerca</guimenu> <guimenuitem>Sostituisci</"
+"guimenuitem> </menuchoice> per mostrare la finestra di dialogo "
+"<guilabel>Sostituisci</guilabel>."
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:549
 msgid ""
-"Type the string that you want to find, in the <guilabel>Search "
-"for</guilabel> field. You can include special characters such as a new line "
-"or tab: see <xref linkend=\"lapiz-find-escapes\"/>."
+"Type the string that you want to find, in the <guilabel>Search for</"
+"guilabel> field. You can include special characters such as a new line or "
+"tab: see <xref linkend=\"lapiz-find-escapes\"/>."
 msgstr ""
-"Scrivi il testo che volete trovare nel campo di testo "
-"<guilabel>Cerca</guilabel>. Potete includere caratteri speciali come ad "
-"esempio new line o tab: vedi <xref linkend=\"lapiz-find-escapes\"/>. "
+"Scrivi il testo che volete trovare nel campo di testo <guilabel>Cerca</"
+"guilabel>. Potete includere caratteri speciali come ad esempio new line o "
+"tab: vedi <xref linkend=\"lapiz-find-escapes\"/>. "
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:552
 msgid ""
-"Type the string that you want to use to replace the string that you find, in"
-" the <guilabel>Replace with</guilabel> field."
+"Type the string that you want to use to replace the string that you find, in "
+"the <guilabel>Replace with</guilabel> field."
 msgstr ""
 "Digita il testo che volete usare nella campo di testo <guilabel>Sostituisci "
 "con</guilabel>,, per sostituire la stringa trovata."
@@ -961,17 +949,16 @@ msgstr ""
 msgid ""
 "To examine each occurrence of the string before replacing it, click "
 "<guibutton>Find</guibutton>. If <application>lapiz</application> finds the "
-"string, the application selects the string. Click "
-"<guibutton>Replace</guibutton> to replace the selected occurrence of the "
-"string. To find the next occurrence of the string, click "
-"<guibutton>Find</guibutton> again."
+"string, the application selects the string. Click <guibutton>Replace</"
+"guibutton> to replace the selected occurrence of the string. To find the "
+"next occurrence of the string, click <guibutton>Find</guibutton> again."
 msgstr ""
 "Per ispezionare ogni occorrenza della stringa prima di sostituirla, clicca "
 "<guibutton>Trova</guibutton>. Se <application>lapiz</application> trova la "
-"stringa, l'applicazione la seleziona. Clicca "
-"<guibutton>Sostituisci</guibutton> per sostituire l'occorrenza della stringa"
-" selezionata. Per trovare l'occorrenza successiva, clicca "
-"<guibutton>Trova</guibutton>nuovamente."
+"stringa, l'applicazione la seleziona. Clicca <guibutton>Sostituisci</"
+"guibutton> per sostituire l'occorrenza della stringa selezionata. Per "
+"trovare l'occorrenza successiva, clicca <guibutton>Trova</"
+"guibutton>nuovamente."
 
 #. (itstool) path: section/para
 #: C/index.docbook:557
@@ -979,8 +966,8 @@ msgid ""
 "To replace all occurrences of the string throughout the document, click "
 "<guibutton>Replace All</guibutton>."
 msgstr ""
-"Per sostituire tutte le occorrenze, clicca <guibutton>Sostituisci "
-"tutti</guibutton>."
+"Per sostituire tutte le occorrenze, clicca <guibutton>Sostituisci tutti</"
+"guibutton>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:563
@@ -993,8 +980,8 @@ msgid ""
 "The <guilabel>Find</guilabel> dialog and the <guilabel>Replace</guilabel> "
 "dialog both have the following options:"
 msgstr ""
-"Le finestre di dialogo <guilabel>Trova</guilabel> e "
-"<guilabel>Sostituisci</guilabel>, hanno entrambe le seguenti opzioni:"
+"Le finestre di dialogo <guilabel>Trova</guilabel> e <guilabel>Sostituisci</"
+"guilabel>, hanno entrambe le seguenti opzioni:"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:569
@@ -1017,8 +1004,8 @@ msgid ""
 "type. For example, with <guilabel>Match entire word only</guilabel> "
 "selected, \"text\" will not match \"texture\"."
 msgstr ""
-"Seleziona l'opzione <guilabel>Solo parole intere</guilabel> per trovare solo"
-" le occorrenze della stringa che corrispondono alle parole intere del testo "
+"Seleziona l'opzione <guilabel>Solo parole intere</guilabel> per trovare solo "
+"le occorrenze della stringa che corrispondono alle parole intere del testo "
 "che inserite. Per esempio, se è attiva l'opzione <guilabel>Solo parole "
 "intere</guilabel>, \"text\" non corrisponderà a \"texture\"."
 
@@ -1096,14 +1083,14 @@ msgid ""
 "The backslash character itself must be escaped if it is being searched for. "
 "For example, if you are looking for the \"<literal>\\n</literal>\" literal, "
 "you will have to type \"\\\\n\" in the <guilabel>Search for</guilabel> "
-"field. Or if you are looking for a sequence of backslashes, you will have to"
-" double the number of searched backslashes."
+"field. Or if you are looking for a sequence of backslashes, you will have to "
+"double the number of searched backslashes."
 msgstr ""
-"Per cercare un carattere di backslash \"\\\", questo deve essere trattato in"
-" modo speciale. Per esempio, se state cercando il letterale "
-"\"<literal>\\n</literal>\", dovrete inserire il testo \"\\\\n\" nel campo "
-"<guilabel>Cerca</guilabel>. Se si cerca una sequenza di backslash, occorre "
-"raddoppiare il numero di caratteri \"\\\" da cercare."
+"Per cercare un carattere di backslash \"\\\", questo deve essere trattato in "
+"modo speciale. Per esempio, se state cercando il letterale \"<literal>\\n</"
+"literal>\", dovrete inserire il testo \"\\\\n\" nel campo <guilabel>Cerca</"
+"guilabel>. Se si cerca una sequenza di backslash, occorre raddoppiare il "
+"numero di caratteri \"\\\" da cercare."
 
 #. (itstool) path: info/title
 #: C/index.docbook:633
@@ -1114,8 +1101,8 @@ msgstr "Posizionare il Cursore su una Riga Specifica"
 #: C/index.docbook:635
 msgid ""
 "To position the cursor on a specific line in the current file, choose "
-"<menuchoice> <guimenu>Search</guimenu> <guimenuitem>Go to Line</guimenuitem>"
-" </menuchoice>. The line number box appears at the top of the display area."
+"<menuchoice> <guimenu>Search</guimenu> <guimenuitem>Go to Line</guimenuitem> "
+"</menuchoice>. The line number box appears at the top of the display area."
 msgstr ""
 "Per posizionare il cursore all'inizio di una specifica riga nel file "
 "corrente, seleziona <menuchoice> <guimenu>Cerca</guimenu> <guimenuitem>Vai "
@@ -1157,10 +1144,9 @@ msgid ""
 "<guimenuitem>Page Setup</guimenuitem> </menuchoice> to display the "
 "<guilabel>Page Setup</guilabel> dialog."
 msgstr ""
-"Per impostare le opzioni della pagina, seleziona <menuchoice> "
-"<guimenu>File</guimenu> <guimenuitem>Imposta Pagina</guimenuitem> "
-"</menuchoice> per mostrare la finestra di dialogo <guilabel>Imposta "
-"Pagina</guilabel>.  "
+"Per impostare le opzioni della pagina, seleziona <menuchoice> <guimenu>File</"
+"guimenu> <guimenuitem>Imposta Pagina</guimenuitem> </menuchoice> per "
+"mostrare la finestra di dialogo <guilabel>Imposta Pagina</guilabel>.  "
 
 #. (itstool) path: section/para
 #: C/index.docbook:654
@@ -1188,8 +1174,8 @@ msgid ""
 "syntax highlighting, see <xref linkend=\"lapiz-set-highlightmode\"/>."
 msgstr ""
 "Seleziona questa opzione per stampare l'evidenziazione della sintassi. Per "
-"maggiori informazioni sulla evidenziazione sintassi, vedi <xref linkend"
-"=\"lapiz-set-highlightmode\"/>."
+"maggiori informazioni sulla evidenziazione sintassi, vedi <xref "
+"linkend=\"lapiz-set-highlightmode\"/>."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:670
@@ -1206,7 +1192,7 @@ msgstr ""
 "stampata. Non è possibile configurare l'intestazione."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:678 C/index.docbook:1556
+#: C/index.docbook:678 C/index.docbook:1548
 msgid "<guilabel>Line Numbers</guilabel>"
 msgstr "<guilabel>Numeri di Riga</guilabel>"
 
@@ -1222,16 +1208,16 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:683
 msgid ""
-"Use the <guilabel>Number every ... lines </guilabel> spin box to specify how"
-" often to print the line numbers, for example every 5 lines, every 10 lines,"
-" and so on."
+"Use the <guilabel>Number every ... lines </guilabel> spin box to specify how "
+"often to print the line numbers, for example every 5 lines, every 10 lines, "
+"and so on."
 msgstr ""
 "Utilizzate il riquadro <guilabel>Numera ogni ... righe</guilabel> per "
-"indicare la frequenza di stampa dei numeri di riga, ad esempio ogni 5 linee,"
-" ogni 10 linee etc."
+"indicare la frequenza di stampa dei numeri di riga, ad esempio ogni 5 linee, "
+"ogni 10 linee etc."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:687 C/index.docbook:1547
+#: C/index.docbook:687 C/index.docbook:1539
 msgid "<guilabel>Text Wrapping</guilabel>"
 msgstr "<guilabel>A capo Automatico</guilabel>"
 
@@ -1253,9 +1239,9 @@ msgid ""
 "Select the <guilabel>Do not split words over two lines</guilabel> option to "
 "wrap text onto the next line, at a word level, when you print a file."
 msgstr ""
-"Selezionare l'opzione <guilabel>Non dividere le parole su due "
-"righe</guilabel> per usare l'a capo automatico, a livello delle parole, "
-"quando si stampa un file."
+"Selezionare l'opzione <guilabel>Non dividere le parole su due righe</"
+"guilabel> per usare l'a capo automatico, a livello delle parole, quando si "
+"stampa un file."
 
 #. (itstool) path: info/title
 #: C/index.docbook:700
@@ -1306,8 +1292,8 @@ msgstr ""
 #: C/index.docbook:728
 msgid ""
 "To reset the fonts to the default fonts for printing a file from "
-"<application>lapiz</application>, click <guibutton>Restore Default "
-"Fonts</guibutton>."
+"<application>lapiz</application>, click <guibutton>Restore Default Fonts</"
+"guibutton>."
 msgstr ""
 "Per resettare al formato carattere predefinito per la stampa di un file in "
 "<application>lapiz</application>, clicca <guibutton>Ripristina il carattere "
@@ -1340,8 +1326,8 @@ msgstr "Stampa il risultato del comando stampa su un file."
 #. (itstool) path: section/para
 #: C/index.docbook:746
 msgid ""
-"If you print to a file, <application>lapiz</application> sends the output of"
-" the file to a pre-press format file. The most common pre-press formats are "
+"If you print to a file, <application>lapiz</application> sends the output of "
+"the file to a pre-press format file. The most common pre-press formats are "
 "PostScript and Portable Document Format (PDF)."
 msgstr ""
 "Se stampare su un file, <application>lapiz</application> invia l'output del "
@@ -1352,12 +1338,12 @@ msgstr ""
 #: C/index.docbook:747
 msgid ""
 "To preview the pages that you want to print, choose <menuchoice> "
-"<guimenu>File</guimenu> <guimenuitem>Print Preview</guimenuitem> "
-"</menuchoice>."
+"<guimenu>File</guimenu> <guimenuitem>Print Preview</guimenuitem> </"
+"menuchoice>."
 msgstr ""
 "Per vedere l'anteprima delle pagine che si vogliono stampare, seleziona "
-"<menuchoice><guimenu>File</guimenu> <guimenuitem>Anteprima di "
-"stampa</guimenuitem></menuchoice>."
+"<menuchoice><guimenu>File</guimenu> <guimenuitem>Anteprima di stampa</"
+"guimenuitem></menuchoice>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:748
@@ -1367,9 +1353,8 @@ msgid ""
 "display the <guilabel>Print</guilabel> dialog."
 msgstr ""
 "Per stampare il file corrente su una stampante o su un file, seleziona "
-"<menuchoice> <guimenu>File</guimenu> <guimenuitem>Stampa</guimenuitem> "
-"</menuchoice> per mostrare la finestra di dialogo "
-"<guilabel>Stampa</guilabel>."
+"<menuchoice> <guimenu>File</guimenu> <guimenuitem>Stampa</guimenuitem> </"
+"menuchoice> per mostrare la finestra di dialogo <guilabel>Stampa</guilabel>."
 
 #. (itstool) path: section/para
 #: C/index.docbook:749
@@ -1419,8 +1404,8 @@ msgid ""
 "<guilabel>From</guilabel> and <guilabel>To</guilabel> spin boxes to specify "
 "the line range."
 msgstr ""
-"Seleziona questa opzione per specificare di stampare solo le righe indicate."
-" Usare i riquadri <guilabel>Dalla</guilabel> e <guilabel>Alla</guilabel>per "
+"Seleziona questa opzione per specificare di stampare solo le righe indicate. "
+"Usare i riquadri <guilabel>Dalla</guilabel> e <guilabel>Alla</guilabel>per "
 "specificare l'intervallo di linee."
 
 #. (itstool) path: listitem/para
@@ -1445,8 +1430,8 @@ msgstr "<guilabel>Copie</guilabel>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:789
 msgid ""
-"Use the <guilabel>Number of copies</guilabel> spin box to specify the number"
-" of copies of the file that you want to print."
+"Use the <guilabel>Number of copies</guilabel> spin box to specify the number "
+"of copies of the file that you want to print."
 msgstr ""
 "Usa la il riquadro <guilabel>Numero di copie</guilabel> per indicare il "
 "numero di copie del file che si vuole stampare."
@@ -1454,11 +1439,11 @@ msgstr ""
 #. (itstool) path: listitem/para
 #: C/index.docbook:790
 msgid ""
-"If you print multiple copies of the file, select the "
-"<guilabel>Collate</guilabel> option to collate the printed copies."
+"If you print multiple copies of the file, select the <guilabel>Collate</"
+"guilabel> option to collate the printed copies."
 msgstr ""
-"Se si stampano più copie, selezionare l'opzione raggruppa per raggruppare le"
-" copie stampate."
+"Se si stampano più copie, selezionare l'opzione raggruppa per raggruppare le "
+"copie stampate."
 
 #. (itstool) path: info/title
 #: C/index.docbook:798
@@ -1473,8 +1458,8 @@ msgstr "<guilabel>Stampante</guilabel>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:807
 msgid ""
-"Use this drop-down list to select the printer to which you want to print the"
-" file."
+"Use this drop-down list to select the printer to which you want to print the "
+"file."
 msgstr ""
 "Usa il menu a tendina per selezionare la stampante su cui effettuare la "
 "stampa."
@@ -1497,8 +1482,8 @@ msgid ""
 "printing, if this functionality is supported by the printer."
 msgstr ""
 "Per configurare la stampante, clicca <guibutton>Configura</guibutton>. Ad "
-"esempio è possibile abilitare o meno la stampa fronte-retro o posticipare la"
-" stampa, se le funzionalità sono supportate dalla stampante."
+"esempio è possibile abilitare o meno la stampa fronte-retro o posticipare la "
+"stampa, se le funzionalità sono supportate dalla stampante."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:820
@@ -1613,8 +1598,8 @@ msgstr "Dimensione carta"
 #. (itstool) path: listitem/para
 #: C/index.docbook:904
 msgid ""
-"Use this drop-down list to select the size of the paper to which you want to"
-" print the file."
+"Use this drop-down list to select the size of the paper to which you want to "
+"print the file."
 msgstr ""
 "Usa questa lista per selezionare la dimensione della carta su cui verrà "
 "stampato il documento."
@@ -1654,8 +1639,7 @@ msgid ""
 "Use this drop-down list to select the orientation of the paper in the "
 "printer."
 msgstr ""
-"Usa questa lista per selezionare l'orientamento della carta sui cui "
-"stampare."
+"Usa questa lista per selezionare l'orientamento della carta sui cui stampare."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:932
@@ -1702,13 +1686,13 @@ msgstr "Caratteristiche per la Programmazione"
 msgid ""
 "Several of <application>lapiz</application>'s features for programming are "
 "provided with plugins. For example, the Tag List plugin provides a list of "
-"commonly-used tags for different markup languages: see <xref linkend"
-"=\"lapiz-tag-list-plugin\"/>."
+"commonly-used tags for different markup languages: see <xref linkend=\"lapiz-"
+"tag-list-plugin\"/>."
 msgstr ""
 "Molte delle caratteristiche di <application>lapiz</application> specifiche "
 "per la programmazione sono offerte mediante plugin. Ad esempio il plugin "
-"elenco dei tag fornisce una lista dei tag per i diversi linguaggi di markup:"
-" vedi <xref linkend=\"lapiz-tag-list-plugin\"/>."
+"elenco dei tag fornisce una lista dei tag per i diversi linguaggi di markup: "
+"vedi <xref linkend=\"lapiz-tag-list-plugin\"/>."
 
 #. (itstool) path: info/title
 #: C/index.docbook:969
@@ -1729,16 +1713,14 @@ msgstr ""
 msgid ""
 "<application>lapiz</application> chooses an appropriate syntax highlighting "
 "mode based on a document's type. To override the syntax highlighting mode, "
-"choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Highlight "
-"Mode</guimenuitem> </menuchoice>, then choose one of the following menu "
-"items:"
+"choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Highlight Mode</"
+"guimenuitem> </menuchoice>, then choose one of the following menu items:"
 msgstr ""
 "<application>lapiz</application> seleziona il modo di evidenziazione della "
 "sintassi appropriato basandosi sul tipo di documento. Per impostare "
 "manualmente il modo di evidenziazione, seleziona <menuchoice> "
-"<guimenu>Visualizza</guimenu> <guimenuitem>Modalità di "
-"evidenziazione</guimenuitem> </menuchoice> e poi scegli uno dei seguenti "
-"oggetti:"
+"<guimenu>Visualizza</guimenu> <guimenuitem>Modalità di evidenziazione</"
+"guimenuitem> </menuchoice> e poi scegli uno dei seguenti oggetti:"
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:976
@@ -1762,8 +1744,8 @@ msgid ""
 "<guisubmenu>Sources</guisubmenu> submenu to select the source code type."
 msgstr ""
 "Mostra l'evidenziazione della sintassi per modificare il codice sorgente. "
-"Utilizzare il sottomenu <guisubmenu>Sorgente</guisubmenu> per selezionare il"
-" tipo di codice sorgente."
+"Utilizzare il sottomenu <guisubmenu>Sorgente</guisubmenu> per selezionare il "
+"tipo di codice sorgente."
 
 #. (itstool) path: varlistentry/term
 #: C/index.docbook:992
@@ -1773,8 +1755,8 @@ msgstr "<guisubmenu>Markup</guisubmenu>"
 #. (itstool) path: listitem/para
 #: C/index.docbook:996
 msgid ""
-"Display syntax highlighting to edit markup code. Use the "
-"<guisubmenu>Markup</guisubmenu> submenu to select the markup code type."
+"Display syntax highlighting to edit markup code. Use the <guisubmenu>Markup</"
+"guisubmenu> submenu to select the markup code type."
 msgstr ""
 "Mostra l'evidenziazione della sintassi per modificare codice di markup. "
 "Utilizzare il sottomenu <guisubmenu>Markup</guisubmenu> per selezionare il "
@@ -1818,14 +1800,14 @@ msgstr "Creare un File re-indirizzando l'output di un Comando"
 #. (itstool) path: section/para
 #: C/index.docbook:1023
 msgid ""
-"You can use <application>lapiz</application> to pipe the output of a command"
-" to a text file. For example, to pipe the output of an <command>ls</command>"
-" command to a text file, type <command>ls | lapiz</command>, then press "
+"You can use <application>lapiz</application> to pipe the output of a command "
+"to a text file. For example, to pipe the output of an <command>ls</command> "
+"command to a text file, type <command>ls | lapiz</command>, then press "
 "<keycap>Return</keycap>."
 msgstr ""
-"È possibile ridirezionare il risultato di un comando verso un file di testo."
-" Per esempio, per reindirizzare l'output di un comando <command>ls</command>"
-" in un file di testo scrivere <command>ls | lapiz</command>, e premere "
+"È possibile ridirezionare il risultato di un comando verso un file di testo. "
+"Per esempio, per reindirizzare l'output di un comando <command>ls</command> "
+"in un file di testo scrivere <command>ls | lapiz</command>, e premere "
 "<keycap>Invio</keycap>"
 
 #. (itstool) path: section/para
@@ -1843,9 +1825,8 @@ msgid ""
 "Alternatively, you can use the <application>External tools</application> "
 "plugin to pipe command output to the current file."
 msgstr ""
-"In alternativa, si può usare il plugin <application>Strumenti "
-"esterni</application> per reindirizzare il risultato di un comando sul file "
-"corrente."
+"In alternativa, si può usare il plugin <application>Strumenti esterni</"
+"application> per reindirizzare il risultato di un comando sul file corrente."
 
 #. (itstool) path: info/title
 #: C/index.docbook:1032
@@ -1856,8 +1837,8 @@ msgstr "Tasti Scorciatoia"
 #: C/index.docbook:1034
 msgid ""
 "Use shortcut keys to perform common tasks more quickly than with the mouse "
-"and menus. The following tables list all of "
-"<application>lapiz</application>'s shortcut keys."
+"and menus. The following tables list all of <application>lapiz</"
+"application>'s shortcut keys."
 msgstr ""
 "Utilizzare i tasti scorciatoia per effettuare azioni comuni più velocemente "
 "che con il mouse e i menu. Le tabelle seguenti elencano tutti i tasti "
@@ -1866,12 +1847,11 @@ msgstr ""
 #. (itstool) path: section/para
 #: C/index.docbook:1035
 msgid ""
-"For more on shortcut keys, see the <link xlink:href=\"help:cafe-user-guide"
-"/keyboard-skills\">Desktop User Guide</link>."
+"For more on shortcut keys, see the <link xlink:href=\"help:cafe-user-guide/"
+"keyboard-skills\">Desktop User Guide</link>."
 msgstr ""
-"Per maggiori informazioni sui tasti scorciatoie, vedi la <link "
-"xlink:href=\"help:cafe-user-guide/keyboard-skills\">Gida Utente del "
-"Desktop</link>."
+"Per maggiori informazioni sui tasti scorciatoie, vedi la <link xlink:"
+"href=\"help:cafe-user-guide/keyboard-skills\">Gida Utente del Desktop</link>."
 
 #. (itstool) path: section/bridgehead
 #: C/index.docbook:1038
@@ -1884,16 +1864,16 @@ msgid "Shortcuts for tabs:"
 msgstr "Scorciatoie per le Schede:"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1047 C/index.docbook:1117 C/index.docbook:1211
-#: C/index.docbook:1305 C/index.docbook:1343 C/index.docbook:1421
-#: C/index.docbook:1491
+#: C/index.docbook:1047 C/index.docbook:1117 C/index.docbook:1203
+#: C/index.docbook:1297 C/index.docbook:1335 C/index.docbook:1413
+#: C/index.docbook:1483
 msgid "Shortcut Key"
 msgstr "Tasto Scorciatoia"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1050 C/index.docbook:1120 C/index.docbook:1214
-#: C/index.docbook:1308 C/index.docbook:1346 C/index.docbook:1424
-#: C/index.docbook:1494
+#: C/index.docbook:1050 C/index.docbook:1120 C/index.docbook:1206
+#: C/index.docbook:1300 C/index.docbook:1338 C/index.docbook:1416
+#: C/index.docbook:1486
 msgid "Command"
 msgstr "Comando"
 
@@ -1918,7 +1898,7 @@ msgid "Switches to the next tab to the right."
 msgstr "Cambia visualizzazione con la successiva scheda di destra."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1073 C/index.docbook:1183
+#: C/index.docbook:1073 C/index.docbook:1175
 msgid "Ctrl + W"
 msgstr "Ctrl + W"
 
@@ -1989,394 +1969,384 @@ msgstr "Apre un documento."
 
 #. (itstool) path: entry/para
 #: C/index.docbook:1143
-msgid "Ctrl + L"
-msgstr "Ctrl + L"
-
-#. (itstool) path: entry/para
-#: C/index.docbook:1146
-msgid "Open a location."
-msgstr "Aprire una posizione."
-
-#. (itstool) path: entry/para
-#: C/index.docbook:1151
 msgid "Ctrl + S"
 msgstr "Ctrl + S"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1154
+#: C/index.docbook:1146
 msgid "Save the current document to disk."
 msgstr "Salva il documento corrente sul disco."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1159
+#: C/index.docbook:1151
 msgid "Ctrl + Shift + S"
 msgstr "Ctrl + Shift + S"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1162
+#: C/index.docbook:1154
 msgid "Save the current document with a new filename."
 msgstr "Salva il file corrente con un nome diverso."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1167
+#: C/index.docbook:1159
 msgid "Ctrl + P"
 msgstr "Ctrl + P"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1170
+#: C/index.docbook:1162
 msgid "Print the current document."
 msgstr "Stampa il file corrente."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1175
+#: C/index.docbook:1167
 msgid "Ctrl + Shift + P"
 msgstr "Ctrl + Shift + P"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1178
+#: C/index.docbook:1170
 msgid "Print preview."
 msgstr "Anteprima di stampa."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1186
+#: C/index.docbook:1178
 msgid "Close the current document."
 msgstr "Chiude il documento corrente."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1191
+#: C/index.docbook:1183
 msgid "Ctrl + Q"
 msgstr "Ctrl + Q"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1194
+#: C/index.docbook:1186
 msgid "Quit Lapiz."
 msgstr "Esce da Lapiz."
 
 #. (itstool) path: section/bridgehead
-#: C/index.docbook:1202
+#: C/index.docbook:1194
 msgid "Edit"
 msgstr "Modifica"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1203
+#: C/index.docbook:1195
 msgid "Shortcuts for editing documents:"
 msgstr "Scorciatoie per modificare documenti:"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1221
+#: C/index.docbook:1213
 msgid "Ctrl + Z"
 msgstr "Ctrl + Z"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1224
+#: C/index.docbook:1216
 msgid "Undo the last action."
 msgstr "Annulla l'ultima azione."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1229
+#: C/index.docbook:1221
 msgid "Ctrl + Shift + Z"
 msgstr "Ctrl + Shift + Z"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1232
+#: C/index.docbook:1224
 msgid "Redo the last undone action ."
 msgstr "Ripete l'ultima azione annullata."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1237
+#: C/index.docbook:1229
 msgid "Ctrl + X"
 msgstr "Ctrl + X"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1240
+#: C/index.docbook:1232
 msgid "Cut the selected text or region and place it on the clipboard."
 msgstr "Taglia il testo o la regione selezionata e li copia negli appunti."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1245
+#: C/index.docbook:1237
 msgid "Ctrl + C"
 msgstr "Ctrl + C"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1248
+#: C/index.docbook:1240
 msgid "Copy the selected text or region onto the clipboard."
 msgstr "Copia il testo o regione selezionata negli appunti."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1253
+#: C/index.docbook:1245
 msgid "Ctrl + V"
 msgstr "Ctrl + V"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1256
+#: C/index.docbook:1248
 msgid "Paste the contents of the clipboard."
 msgstr "Incolla il contenuto degli appunti."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1261
+#: C/index.docbook:1253
 msgid "Ctrl + A"
 msgstr "Ctrl + A"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1264
+#: C/index.docbook:1256
 msgid "Select all."
 msgstr "Seleziona tutto."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1269
+#: C/index.docbook:1261
 msgid "Ctrl + D"
 msgstr "Ctrl + D"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1272
+#: C/index.docbook:1264
 msgid "Delete current line."
 msgstr "Cancella la riga corrente."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1277
+#: C/index.docbook:1269
 msgid "Alt + Up"
 msgstr "Alt + Freccia in Alto"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1280
+#: C/index.docbook:1272
 msgid "Move the selected line up one line."
 msgstr "Sposta la riga selezionata in alto di una linea."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1285
+#: C/index.docbook:1277
 msgid "Alt + Down"
 msgstr "Alt + Freccia in Basso"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1288
+#: C/index.docbook:1280
 msgid "Move the selected line down one line."
 msgstr "Sposta la riga selezionata in basso di una linea."
 
 #. (itstool) path: section/bridgehead
-#: C/index.docbook:1296
+#: C/index.docbook:1288
 msgid "Panes"
 msgstr "Riquadri"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1297
+#: C/index.docbook:1289
 msgid "Shortcuts for showing and hiding panes:"
 msgstr "Scorciatoie per mostrare e nascondere i riquadri:"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1315
+#: C/index.docbook:1307
 msgid "F9"
 msgstr "F9"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1318
+#: C/index.docbook:1310
 msgid "Show/hide the side pane."
 msgstr "Mostra/Nasconde il riquadro laterale."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1323
+#: C/index.docbook:1315
 msgid "Ctrl + F9"
 msgstr "Ctrl + F9"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1326
+#: C/index.docbook:1318
 msgid "Show/hide the bottom pane."
 msgstr "Mostra/Nasconde il riquadro inferiore."
 
 #. (itstool) path: section/bridgehead
-#: C/index.docbook:1334
+#: C/index.docbook:1326
 msgid "Search"
 msgstr "Ricerca"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1335
+#: C/index.docbook:1327
 msgid "Shortcuts for searching:"
 msgstr "Scorciatoie per la ricerca:"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1353
+#: C/index.docbook:1345
 msgid "Ctrl + F"
 msgstr "Ctrl + F"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1356
+#: C/index.docbook:1348
 msgid "Find a string."
 msgstr "Trova una stringa."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1361
+#: C/index.docbook:1353
 msgid "Ctrl + G"
 msgstr "Ctrl + G"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1364
+#: C/index.docbook:1356
 msgid "Find the next instance of the string."
 msgstr "Trova la successiva occorrenza di una stringa."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1369
+#: C/index.docbook:1361
 msgid "Ctrl + Shift + G"
 msgstr "Ctrl + Shift + G"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1372
+#: C/index.docbook:1364
 msgid "Find the previous instance of the string."
 msgstr "Trova la precedente occorrenza di una stringa."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1377
+#: C/index.docbook:1369
 msgid "Ctrl + K"
 msgstr "Ctrl + K"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1380
+#: C/index.docbook:1372
 msgid "Interactive search."
 msgstr "Ricerca Interattiva"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1385
+#: C/index.docbook:1377
 msgid "Ctrl + H"
 msgstr "Ctrl + H"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1388
+#: C/index.docbook:1380
 msgid "Search and replace."
 msgstr "Cerca e Sostituisci."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1393
+#: C/index.docbook:1385
 msgid "Ctrl + Shift + K"
 msgstr "Ctrl + Shift + K"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1396
+#: C/index.docbook:1388
 msgid "Clear highlight."
 msgstr "Cancella parole evidenziate."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1401
+#: C/index.docbook:1393
 msgid "Ctrl + I"
 msgstr "Ctrl + I"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1404
+#: C/index.docbook:1396
 msgid "Goto line."
 msgstr "Vai alla riga."
 
 #. (itstool) path: section/bridgehead
-#: C/index.docbook:1412
+#: C/index.docbook:1404
 msgid "Tools"
 msgstr "Strumenti"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1413
+#: C/index.docbook:1405
 msgid "Shortcuts for tools:"
 msgstr "Scorciatoie degli strumenti:"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1431
+#: C/index.docbook:1423
 msgid "Shift + F7"
 msgstr "Shift + F7"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1434
+#: C/index.docbook:1426
 msgid "Check spelling (with plugin)."
 msgstr "Controlla l'ortografia (con plugin)."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1439
+#: C/index.docbook:1431
 msgid "Alt + F12"
 msgstr "Alt + F12"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1442
+#: C/index.docbook:1434
 msgid "Remove trailing spaces (with plugin)."
 msgstr "Rimuove spazi a fine riga (con plugin)."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1447
+#: C/index.docbook:1439
 msgid "Ctrl + T"
 msgstr "Ctrl + T"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1450
+#: C/index.docbook:1442
 msgid "Indent (with plugin)."
 msgstr "Aumenta rientro (con plugin)."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1455
+#: C/index.docbook:1447
 msgid "Ctrl + Shift + T"
 msgstr "Ctrl + Shift + T"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1458
+#: C/index.docbook:1450
 msgid "Remove Indent (with plugin)."
 msgstr "Togli rientro (con plugin)."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1463
+#: C/index.docbook:1455
 msgid "F8"
 msgstr "F8"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1466
+#: C/index.docbook:1458
 msgid "Run \"make\" in current directory (with plugin)."
 msgstr "Esegue \"make\" nella directory corrente (con plugin)."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1471
+#: C/index.docbook:1463
 msgid "Ctrl + Shift + D"
 msgstr "Ctrl + Shift + D"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1474
+#: C/index.docbook:1466
 msgid "Directory listing (with plugin)."
 msgstr "Elenco di una cartella (con plugin)."
 
 #. (itstool) path: section/bridgehead
-#: C/index.docbook:1482
+#: C/index.docbook:1474
 msgid "Help"
 msgstr "Aiuto"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1483
+#: C/index.docbook:1475
 msgid "Shortcuts for help:"
 msgstr "Scorciatoie per aiuto:"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1501
+#: C/index.docbook:1493
 msgid "F1"
 msgstr "F1"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1504
+#: C/index.docbook:1496
 msgid "Open <application>lapiz</application>'s user manual."
 msgstr "Apre il manuale utente di <application>lapiz</application>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1515
+#: C/index.docbook:1507
 msgid "Preferences"
 msgstr "Preferenze"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1517
+#: C/index.docbook:1509
 msgid ""
 "To configure <application>lapiz</application>, choose <menuchoice> "
-"<guimenu>Edit</guimenu> <guimenuitem>Preferences</guimenuitem> "
-"</menuchoice>. The <guilabel>Preferences</guilabel> dialog contains the "
+"<guimenu>Edit</guimenu> <guimenuitem>Preferences</guimenuitem> </"
+"menuchoice>. The <guilabel>Preferences</guilabel> dialog contains the "
 "following categories:"
 msgstr ""
 "Per configurare <application>lapiz</application>, seleziona <menuchoice> "
-"<guimenu>Modifica</guimenu> <guimenuitem>Preferenze</guimenuitem> "
-"</menuchoice>. La finestra di dialogo <guilabel>Preferenze</guilabel> "
-"contiene le seguenti categorie:"
+"<guimenu>Modifica</guimenu> <guimenuitem>Preferenze</guimenuitem> </"
+"menuchoice>. La finestra di dialogo <guilabel>Preferenze</guilabel> contiene "
+"le seguenti categorie:"
 
 #. (itstool) path: info/title
-#: C/index.docbook:1543
+#: C/index.docbook:1535
 msgid "View Preferences"
 msgstr "Preferenze di Visualizzazione"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1551
+#: C/index.docbook:1543
 msgid ""
 "Select the <guilabel>Enable text wrapping</guilabel> option to have long "
 "lines of text flow into paragraphs instead of running off the edge of the "
@@ -2384,23 +2354,23 @@ msgid ""
 msgstr ""
 "Seleziona l'opzione <guilabel>Attivare a capo automatico</guilabel> per "
 "mandare il flusso di lunghe di testo di testo a capo su una riga successiva "
-"invece che farlo fuoriuscire dal bordo della finestra. Questo evita di dover"
-" scorrere orizzontalmente il testo."
+"invece che farlo fuoriuscire dal bordo della finestra. Questo evita di dover "
+"scorrere orizzontalmente il testo."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1552
+#: C/index.docbook:1544
 msgid ""
 "Select the <guilabel>Do not split words over two lines</guilabel> option to "
 "have the text wrapping option preserve whole words when flowing text to the "
 "next line. This makes text easier to read."
 msgstr ""
-"Seleziona l'opzione <guilabel>Non dividere le parole su due righe</guilabel>"
-" per fare in modo che l'a capo automatico mantenga le parole intere quando "
-"il testo scorre su una linea successiva. Questo rende il testo più semplice "
-"da leggere."
+"Seleziona l'opzione <guilabel>Non dividere le parole su due righe</guilabel> "
+"per fare in modo che l'a capo automatico mantenga le parole intere quando il "
+"testo scorre su una linea successiva. Questo rende il testo più semplice da "
+"leggere."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1560
+#: C/index.docbook:1552
 msgid ""
 "Select the <guilabel>Display line numbers</guilabel> option to display line "
 "numbers on the left side of the <application>lapiz</application> window."
@@ -2410,12 +2380,12 @@ msgstr ""
 "<application>lapiz</application>."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1564
+#: C/index.docbook:1556
 msgid "<guilabel>Current Line</guilabel>"
 msgstr "<guilabel>Riga corrente</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1568
+#: C/index.docbook:1560
 msgid ""
 "Select the <guilabel>Highlight current line</guilabel> option to highlight "
 "the line where the cursor is placed."
@@ -2424,12 +2394,12 @@ msgstr ""
 "evidenziare la riga su cui si trova il cursore."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1572
+#: C/index.docbook:1564
 msgid "<guilabel>Right Margin</guilabel>"
 msgstr "<guilabel>Margine Destro</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1576
+#: C/index.docbook:1568
 msgid ""
 "Select the <guilabel>Display right margin</guilabel> option to display a "
 "vertical line that indicates the right margin."
@@ -2438,7 +2408,7 @@ msgstr ""
 "mostrare una linea verticale che delimita il margine destro."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1577
+#: C/index.docbook:1569
 msgid ""
 "Use the <guilabel>Right margin at column</guilabel> spin box to specify the "
 "location of the vertical line."
@@ -2447,33 +2417,33 @@ msgstr ""
 "specificare la posizione della linea verticale."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1581
+#: C/index.docbook:1573
 msgid "<guilabel>Bracket Matching</guilabel>"
 msgstr "<guilabel>Parentesi Corrispondenti</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1585
+#: C/index.docbook:1577
 msgid ""
 "Select the <guilabel>Highlight matching bracket</guilabel> option to "
 "highlight the corresponding bracket when the cursor is positioned on a "
 "bracket character."
 msgstr ""
-"Selezionare l'opzione <guilabel>Evidenziare la parentesi "
-"corrispondente</guilabel> per mettere in evidenza la parentesi "
-"corrispondente quando il cursore è posizionato su un carattere di parentesi."
+"Selezionare l'opzione <guilabel>Evidenziare la parentesi corrispondente</"
+"guilabel> per mettere in evidenza la parentesi corrispondente quando il "
+"cursore è posizionato su un carattere di parentesi."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1593
+#: C/index.docbook:1585
 msgid "Editor Preferences"
 msgstr "Preferenze dell'Editor"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1597
+#: C/index.docbook:1589
 msgid "<guilabel>Tabs</guilabel>"
 msgstr "<guilabel>Tabulazioni</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1601
+#: C/index.docbook:1593
 msgid ""
 "Use the <guilabel>Tab width</guilabel> spin box to specify the width of the "
 "space that <application> lapiz</application> inserts when you press the "
@@ -2484,24 +2454,24 @@ msgstr ""
 "inserisce quando si preme il tasto<keycap>Tab</keycap>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1602
+#: C/index.docbook:1594
 msgid ""
 "Select the <guilabel>Insert spaces instead of tabs</guilabel> option to "
 "specify that <application> lapiz</application> inserts spaces instead of a "
 "tab character when you press the <keycap>Tab</keycap> key."
 msgstr ""
-"Selezionare l'opzione <guilabel>Insere spazi invece di "
-"tabulazioni</guilabel> per specificare che <application>lapiz</application> "
-"inserisca degli spazi invece che un carattere di tabulazione quando si preme"
-" il tasto <keycap>Tab</keycap>."
+"Selezionare l'opzione <guilabel>Insere spazi invece di tabulazioni</"
+"guilabel> per specificare che <application>lapiz</application> inserisca "
+"degli spazi invece che un carattere di tabulazione quando si preme il tasto "
+"<keycap>Tab</keycap>."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1606
+#: C/index.docbook:1598
 msgid "<guilabel>Auto Indentation</guilabel>"
 msgstr "<guilabel>Rientro Automatico</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1610
+#: C/index.docbook:1602
 msgid ""
 "Select the <guilabel>Enable auto indentation</guilabel> option to specify "
 "that the next line starts at the indentation level of the current line."
@@ -2511,24 +2481,24 @@ msgstr ""
 "indentazione della riga corrente."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1614
+#: C/index.docbook:1606
 msgid "<guilabel>File Saving</guilabel>"
 msgstr "<guilabel>Salvataggio del File</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1618
+#: C/index.docbook:1610
 msgid ""
 "Select the <guilabel>Create a backup copy of files before saving</guilabel> "
 "option to create a backup copy of a file each time you save the file. The "
 "backup copy of the file contains a ~ at the end of the filename."
 msgstr ""
-"Selezionare l'opzione <guilabel>Creare una copia di backup dei file prima di"
-" salvare</guilabel>per creare una copia di backup di un file ogni volta che "
+"Selezionare l'opzione <guilabel>Creare una copia di backup dei file prima di "
+"salvare</guilabel>per creare una copia di backup di un file ogni volta che "
 "si salva. La copia di backup del file contiene un carattere ~ alla fine del "
 "nome."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1619
+#: C/index.docbook:1611
 msgid ""
 "Select the <guilabel>Autosave files every ... minutes</guilabel> option to "
 "automatically save the current file at regular intervals. Use the spin box "
@@ -2540,28 +2510,28 @@ msgstr ""
 "desidera salvare il file."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1627
+#: C/index.docbook:1619
 msgid "Font &amp; Colors Preferences"
 msgstr "Preferenze dei Caratteri &amp; Colori"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1632
+#: C/index.docbook:1624
 msgid "<guilabel>Font</guilabel>"
 msgstr "<guilabel>Tipo di carattere</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1636
+#: C/index.docbook:1628
 msgid ""
 "Select the <guilabel>Use default theme font</guilabel> option to use the "
 "default system font for the text in the <application>lapiz</application> "
 "text window."
 msgstr ""
-"Selezionare l'opzione <guilabel>Usare il carattere del tema "
-"predefinito</guilabel> per utilizzare il carattere predefinito di sistema "
-"per il testo nella finestra principale di <application>lapiz</application>."
+"Selezionare l'opzione <guilabel>Usare il carattere del tema predefinito</"
+"guilabel> per utilizzare il carattere predefinito di sistema per il testo "
+"nella finestra principale di <application>lapiz</application>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1637
+#: C/index.docbook:1629
 msgid ""
 "The <guilabel>Editor font</guilabel> field displays the font that "
 "<application>lapiz</application> uses to display text. Click on the button "
@@ -2573,12 +2543,12 @@ msgstr ""
 "carattere da utilizzare per il testo. "
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1641
+#: C/index.docbook:1633
 msgid "<guilabel>Color Scheme</guilabel>"
 msgstr "<guilabel>Schema Colore</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1645
+#: C/index.docbook:1637
 msgid ""
 "You can choose a color scheme from the list of color schemes. By default, "
 "the following color schemes are installed:"
@@ -2587,97 +2557,96 @@ msgstr ""
 "preinstallati i seguenti schemi di colore:"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1648
+#: C/index.docbook:1640
 msgid "<guilabel>Classic</guilabel>"
 msgstr "<guilabel>Classico</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1652
+#: C/index.docbook:1644
 msgid "Classic color scheme based on the gvim color scheme."
 msgstr "Schema colore classico basato su gvim."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1656
+#: C/index.docbook:1648
 msgid "<guilabel>Cobalt</guilabel>"
 msgstr "<guilabel>Cobalto</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1660
+#: C/index.docbook:1652
 msgid "Blue based color scheme."
 msgstr "Schema di colore Blu."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1664
+#: C/index.docbook:1656
 msgid "<guilabel>Kate</guilabel>"
 msgstr "<guilabel>Kate</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1668
+#: C/index.docbook:1660
 msgid "Color scheme used in the Kate text editor."
 msgstr "Schema colore utilizzato nell'editor Kate."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1672
+#: C/index.docbook:1664
 msgid "<guilabel>Oblivion</guilabel>"
 msgstr "<guilabel>Oblivion</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1676
+#: C/index.docbook:1668
 msgid "Dark color scheme using the Tango color palette."
 msgstr "Schema colori scuro che utilizza la tavolozza colori del tema Tango."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1680
+#: C/index.docbook:1672
 msgid "<guilabel>Tango</guilabel>"
 msgstr "<guilabel>Tango</guilabel>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1684
+#: C/index.docbook:1676
 msgid "Color scheme using the Tango color scheme."
 msgstr "Schema che utilizza i colori del tema Tango."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1688
+#: C/index.docbook:1680
 msgid ""
 "You can add a new color scheme by clicking on <guilabel>Add...</guilabel>, "
 "and selecting a color scheme file"
 msgstr ""
-"È possibile aggiungere nuovi schemi colore cliccando su <guilabel>Aggiungi "
-"...</guilabel> e selezionando un file di schemi colore."
+"È possibile aggiungere nuovi schemi colore cliccando su "
+"<guilabel>Aggiungi ...</guilabel> e selezionando un file di schemi colore."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1689
+#: C/index.docbook:1681
 msgid ""
-"You can remove the selected color scheme by clicking on "
-"<guilabel>Remove</guilabel>"
+"You can remove the selected color scheme by clicking on <guilabel>Remove</"
+"guilabel>"
 msgstr ""
 "È possibile rimuovere lo schema colore selezionato cliccando sul pulsante "
 "<guilabel>Rimuovi</guilabel>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1697
+#: C/index.docbook:1689
 msgid "Plugins Preferences"
 msgstr "Preferenze dei Plugin"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1699
+#: C/index.docbook:1691
 msgid ""
 "Plugins add extra features to <application>lapiz</application>. For more "
 "information on plugins and how to use the built-in plugins, see <xref "
 "linkend=\"lapiz-plugins-overview\"/>."
 msgstr ""
-"I plugin aggiungono funzionalità aggiuntive a "
-"<application>lapiz</application>. Per maggiori informazionisui plugin e su "
-"come utilizzare quelli predefiniti, vedere <xref linkend=\"lapiz-plugins-"
-"overview\"/>."
+"I plugin aggiungono funzionalità aggiuntive a <application>lapiz</"
+"application>. Per maggiori informazionisui plugin e su come utilizzare "
+"quelli predefiniti, vedere <xref linkend=\"lapiz-plugins-overview\"/>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1704
+#: C/index.docbook:1696
 msgid "Enabling a Plugin"
 msgstr "Attivare un Plugin"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1706
+#: C/index.docbook:1698
 msgid ""
 "To enable a <application>lapiz</application> plugin, perform the following "
 "steps:"
@@ -2686,49 +2655,49 @@ msgstr ""
 "segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1709 C/index.docbook:1733 C/index.docbook:2156
+#: C/index.docbook:1701 C/index.docbook:1725 C/index.docbook:2148
 msgid ""
-"Choose <menuchoice> <guimenu>Edit</guimenu> "
-"<guimenuitem>Preferences</guimenuitem> </menuchoice>."
+"Choose <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Preferences</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Scegliere <menuchoice><guimenu>Modifica</guimenu> "
-"<guimenuitem>Preferenze</guimenuitem></menuchoice>."
+"Scegliere <menuchoice><guimenu>Modifica</guimenu> <guimenuitem>Preferenze</"
+"guimenuitem></menuchoice>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1712 C/index.docbook:1736 C/index.docbook:2159
+#: C/index.docbook:1704 C/index.docbook:1728 C/index.docbook:2151
 msgid "Select the <guilabel>Plugins</guilabel> tab."
 msgstr "Selezionare la scheda <guilabel>Plugin</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1715
+#: C/index.docbook:1707
 msgid ""
 "Select the check box next to the name of the plugin that you want to enable."
 msgstr "Spuntare la casella accanto al nome del plugin che si vuole attivare."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1718 C/index.docbook:1742
+#: C/index.docbook:1710 C/index.docbook:1734
 msgid ""
-"Click <guibutton>Close</guibutton> to close the "
-"<guilabel>Preferences</guilabel> dialog."
+"Click <guibutton>Close</guibutton> to close the <guilabel>Preferences</"
+"guilabel> dialog."
 msgstr ""
 "Fare Click su <guibutton>Chiudi</guibutton> per chiudere la finestra di "
 "dialogo <guilabel>Preferenze</guilabel>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1726
+#: C/index.docbook:1718
 msgid "Disabling a Plugin"
 msgstr "Disabilitare un Plugin"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1729
+#: C/index.docbook:1721
 msgid ""
 "A plugin remains enabled when you quit <application>lapiz</application>."
 msgstr ""
-"Un plugin rimane attivo anche quando si chiude "
-"<application>lapiz</application>."
+"Un plugin rimane attivo anche quando si chiude <application>lapiz</"
+"application>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:1730
+#: C/index.docbook:1722
 msgid ""
 "To disable a <application>lapiz</application> plugin, perform the following "
 "steps:"
@@ -2737,7 +2706,7 @@ msgstr ""
 "segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1739
+#: C/index.docbook:1731
 msgid ""
 "Deselect the check box next to the name of the plugin that you want to "
 "disable."
@@ -2746,37 +2715,36 @@ msgstr ""
 "disabilitare."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1752
+#: C/index.docbook:1744
 msgid "Plugins"
 msgstr "Plugin"
 
 #. (itstool) path: info/title
-#: C/index.docbook:1757
+#: C/index.docbook:1749
 msgid "Working with Plugins"
 msgstr "Lavorare con i Plugin"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1759
+#: C/index.docbook:1751
 msgid ""
 "You can add extra features to <application>lapiz</application> by enabling "
 "<firstterm>plugins</firstterm>. A plugin is a supplementary program that "
 "enhances the functionality of an application. Plugins add new items to the "
 "<application>lapiz</application> menus for the new features they provide."
 msgstr ""
-"È possibile aggiungere funzionalità aggiuntive a "
-"<application>lapiz</application> abilitando i <firstterm>plugin</firstterm>."
-" Un plugin è un programma supplementare che migliora la funzionalità di una "
-"applicazione. I plugin aggiungono nuovi oggetti al menu di "
-"<application>lapiz</application> in base alle funzionalità che essi "
-"forniscono."
+"È possibile aggiungere funzionalità aggiuntive a <application>lapiz</"
+"application> abilitando i <firstterm>plugin</firstterm>. Un plugin è un "
+"programma supplementare che migliora la funzionalità di una applicazione. I "
+"plugin aggiungono nuovi oggetti al menu di <application>lapiz</application> "
+"in base alle funzionalità che essi forniscono."
 
 #. (itstool) path: section/para
-#: C/index.docbook:1761
+#: C/index.docbook:1753
 msgid "Several plugins come built-in with <application>lapiz</application>."
 msgstr "Diversi plugin sono inclusi in <application>lapiz</application>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:1762
+#: C/index.docbook:1754
 msgid ""
 "To enable and disable plugins, or see which plugins are currently enabled, "
 "use the <xref linkend=\"lapiz-prefs-plugins\"/>."
@@ -2785,15 +2753,15 @@ msgstr ""
 "attualmente attivi, usate <xref linkend=\"lapiz-prefs-plugins\"/>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:1763
+#: C/index.docbook:1755
 msgid ""
 "The following plugins come built-in with <application>lapiz</application>:"
 msgstr ""
-"I seguenti plugin vengono forniti preinstallati con "
-"<application>lapiz</application>:"
+"I seguenti plugin vengono forniti preinstallati con <application>lapiz</"
+"application>:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1769
+#: C/index.docbook:1761
 msgid ""
 "<xref linkend=\"lapiz-change-case-plugin\"/> allows you to change the case "
 "of the selected text."
@@ -2802,7 +2770,7 @@ msgstr ""
 "maiuscolo e minuscolo il testo selezionato."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1774
+#: C/index.docbook:1766
 msgid ""
 "<xref linkend=\"lapiz-document-statistics-plugin\"/> shows the number of "
 "lines, words, and characters in the document."
@@ -2811,7 +2779,7 @@ msgstr ""
 "linee, parole e caratteri nel documento. "
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1779
+#: C/index.docbook:1771
 msgid ""
 "<xref linkend=\"lapiz-external-tools-plugin\"/> allows you to execute "
 "external commands from <application>lapiz</application>."
@@ -2820,14 +2788,14 @@ msgstr ""
 "comandi esterni in <application>lapiz</application>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1784
+#: C/index.docbook:1776
 msgid ""
 "<xref linkend=\"lapiz-file-browser-plugin\"/> allows you to browse your "
 "files and folders in the side pane."
 msgstr "Permette di esplorare i vostri file e cartelle nel riquadro laterale."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1788
+#: C/index.docbook:1780
 msgid ""
 "<xref linkend=\"lapiz-indent-lines-plugin\"/> adds or removes indentation "
 "from the selected lines."
@@ -2836,7 +2804,7 @@ msgstr ""
 "l'indentazione dalle righe selezionate."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1793
+#: C/index.docbook:1785
 msgid ""
 "<xref linkend=\"lapiz-insert-date-time-plugin\"/> adds the current date and "
 "time into a document."
@@ -2845,28 +2813,28 @@ msgstr ""
 "correnti in un documento."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1798
+#: C/index.docbook:1790
 msgid ""
 "<xref linkend=\"lapiz-modelines-plugin\"/> allows you to set editing "
-"preferences for individual documents, and supports "
-"<application>Emacs</application>, <application>Kate</application> and "
-"<application>Vim</application>-style modelines."
+"preferences for individual documents, and supports <application>Emacs</"
+"application>, <application>Kate</application> and <application>Vim</"
+"application>-style modelines."
 msgstr ""
 "<xref linkend=\"lapiz-modelines-plugin\"/>Permette di modificare le "
 "preferenze per documenti individuali, e supporta le modalità stile Emacs, "
 "Kate e Vim."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1803
+#: C/index.docbook:1795
 msgid ""
 "<xref linkend=\"lapiz-python-console-plugin\"/> allows you to run commands "
 "in the python programming language."
 msgstr ""
-"<xref linkend=\"lapiz-python-console-plugin\"/> Permette di eseguire comandi"
-" nel linguaggio di programmazione Python."
+"<xref linkend=\"lapiz-python-console-plugin\"/> Permette di eseguire comandi "
+"nel linguaggio di programmazione Python."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1808
+#: C/index.docbook:1800
 msgid ""
 "<xref linkend=\"lapiz-trailsave-plugin\"/> allows you to strip trailing "
 "whitespaces in your document after saving."
@@ -2875,7 +2843,7 @@ msgstr ""
 "di fine riga dal vostro documento dopo aver salvato."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1813
+#: C/index.docbook:1805
 msgid ""
 "<xref linkend=\"lapiz-snippets-plugin\"/> allows you to store frequently-"
 "used pieces of text and insert them quickly into a document."
@@ -2884,7 +2852,7 @@ msgstr ""
 "di testo usate frequentemente e di inserirle in un documento."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1818
+#: C/index.docbook:1810
 msgid ""
 "<xref linkend=\"lapiz-sort-plugin\"/> arranges selected lines of text into "
 "alphabetical order."
@@ -2893,7 +2861,7 @@ msgstr ""
 "selezionate in ordine alfabetico."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1823
+#: C/index.docbook:1815
 msgid ""
 "<xref linkend=\"lapiz-spell-checker-plugin\"/> corrects the spelling in the "
 "selected text, or marks errors automatically in the document."
@@ -2903,152 +2871,152 @@ msgstr ""
 "automatico."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1828
+#: C/index.docbook:1820
 msgid ""
-"<xref linkend=\"lapiz-tag-list-plugin\"/> lets you insert commonly-used tags"
-" for HTML and other languages from a list in the side pane."
+"<xref linkend=\"lapiz-tag-list-plugin\"/> lets you insert commonly-used tags "
+"for HTML and other languages from a list in the side pane."
 msgstr ""
-"<xref linkend=\"lapiz-tag-list-plugin\"/> permette di inserire tag HTML o di"
-" altri linguaggi di markup da una lista  nel riquadro laterale."
+"<xref linkend=\"lapiz-tag-list-plugin\"/> permette di inserire tag HTML o di "
+"altri linguaggi di markup da una lista  nel riquadro laterale."
 
 #. (itstool) path: note/para
-#: C/index.docbook:1835
+#: C/index.docbook:1827
 msgid ""
-"For more information on creating plugins, see <link "
-"xlink:href=\"https://github.com/cafe-desktop/lapiz/tree/master/plugins\"/>."
+"For more information on creating plugins, see <link xlink:href=\"https://"
+"github.com/cafe-desktop/lapiz/tree/master/plugins\"/>."
 msgstr ""
-"Per maggiori informazioni su come creare un plugin, vedere <link "
-"xlink:href=\"https://github.com/cafe-desktop/lapiz/tree/master/plugins\"/>.-"
+"Per maggiori informazioni su come creare un plugin, vedere <link xlink:"
+"href=\"https://github.com/cafe-desktop/lapiz/tree/master/plugins\"/>.-"
 
 #. (itstool) path: info/title
-#: C/index.docbook:1841
+#: C/index.docbook:1833
 msgid "Change Case Plugin"
 msgstr "Plugin Cambia maiuscole/minuscole"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1843
+#: C/index.docbook:1835
 msgid ""
 "The <application>Change Case</application> plugin changes the case of the "
 "selected text."
 msgstr ""
-"Il plugin <application>Cambia maiuscole/minuscole</application> cambia la la"
-" capitalizzazione del testo selezionato."
+"Il plugin <application>Cambia maiuscole/minuscole</application> cambia la la "
+"capitalizzazione del testo selezionato."
 
 #. (itstool) path: section/para
-#: C/index.docbook:1844
+#: C/index.docbook:1836
 msgid ""
 "The following items are added to the <guimenu>Edit</guimenu> menu when the "
 "<application>Change Case</application> plugin is enabled:"
 msgstr ""
-"Le seguenti voci saranno aggiunte al menu <guimenu>Modifica</guimenu> quando"
-" il plugin <application>Cambia maiuscole/minuscole</application> è attivato."
+"Le seguenti voci saranno aggiunte al menu <guimenu>Modifica</guimenu> quando "
+"il plugin <application>Cambia maiuscole/minuscole</application> è attivato."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1853
+#: C/index.docbook:1845
 msgid "Menu Item"
 msgstr "Voce di menu"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1856
+#: C/index.docbook:1848
 msgid "Action"
 msgstr "Azione"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1859
+#: C/index.docbook:1851
 msgid "Example"
 msgstr "Esempio"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1866
+#: C/index.docbook:1858
 msgid ""
 "<menuchoice> <guimenu>Edit</guimenu> <guisubmenu>Change Case</guisubmenu> "
 "<guimenuitem>All Upper Case</guimenuitem> </menuchoice>"
 msgstr ""
-"<menuchoice> <guimenu>Modifica</guimenu> <guisubmenu>Modifica "
-"maiuscole/minuscole</guisubmenu> <guimenuitem>Tutto in "
-"maiuscolo</guimenuitem> </menuchoice>"
+"<menuchoice> <guimenu>Modifica</guimenu> <guisubmenu>Modifica maiuscole/"
+"minuscole</guisubmenu> <guimenuitem>Tutto in maiuscolo</guimenuitem> </"
+"menuchoice>"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1869
+#: C/index.docbook:1861
 msgid "Change each character to uppercase."
 msgstr "Modifica ogni carattere nel corrispettivo maiuscolo."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1872
+#: C/index.docbook:1864
 msgid "<literal>This text</literal> becomes <literal>THIS TEXT</literal>"
 msgstr "<literal>This text</literal> diventa <literal>THIS TEXT</literal>"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1877
+#: C/index.docbook:1869
 msgid ""
 "<menuchoice> <guimenu>Edit</guimenu> <guisubmenu>Change Case</guisubmenu> "
 "<guimenuitem>All Lower Case</guimenuitem> </menuchoice>"
 msgstr ""
-"<menuchoice> <guimenu>Modifica</guimenu> <guisubmenu>Modifica "
-"maiuscole/minuscole</guisubmenu> <guimenuitem>Tutto in "
-"minuscolo</guimenuitem> </menuchoice>"
+"<menuchoice> <guimenu>Modifica</guimenu> <guisubmenu>Modifica maiuscole/"
+"minuscole</guisubmenu> <guimenuitem>Tutto in minuscolo</guimenuitem> </"
+"menuchoice>"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1880
+#: C/index.docbook:1872
 msgid "Change each character to lowercase."
 msgstr "Modifica ogni carattere nel corrispettivo minuscolo."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1883
+#: C/index.docbook:1875
 msgid "<literal>This Text</literal> becomes <literal>this text</literal>"
 msgstr "<literal>This Text</literal> diventa<literal>this text</literal>"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1888
+#: C/index.docbook:1880
 msgid ""
 "<menuchoice> <guimenu>Edit</guimenu> <guisubmenu>Change Case</guisubmenu> "
 "<guimenuitem>Invert Case</guimenuitem> </menuchoice>"
 msgstr ""
-"<menuchoice><guimenu>Modifica</guimenu><guisubmenu>Modifica "
-"maiuscole/minuscole</guisubmenu><guimenuitem>Inverti "
-"maiuscole/minuscole</guimenuitem></menuchoice>"
+"<menuchoice><guimenu>Modifica</guimenu><guisubmenu>Modifica maiuscole/"
+"minuscole</guisubmenu><guimenuitem>Inverti maiuscole/minuscole</"
+"guimenuitem></menuchoice>"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1891
+#: C/index.docbook:1883
 msgid ""
 "Change each lowercase character to uppercase, and change each uppercase "
 "character to lowercase."
 msgstr ""
-"Modifica ogni carattere minuscolo in maiuscolo e ogni carattere minuscolo in"
-" maiuscolo."
+"Modifica ogni carattere minuscolo in maiuscolo e ogni carattere minuscolo in "
+"maiuscolo."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1894
+#: C/index.docbook:1886
 msgid "<literal>This Text</literal> becomes <literal>tHIS tEXT</literal>"
 msgstr "<literal>This Text</literal> diventa <literal>tHIS tEXT</literal>"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1899
+#: C/index.docbook:1891
 msgid ""
 "<menuchoice> <guimenu>Edit</guimenu> <guisubmenu>Change Case</guisubmenu> "
 "<guimenuitem>Title Case</guimenuitem> </menuchoice>"
 msgstr ""
-"<menuchoice> <guimenu>Edit</guimenu> <guisubmenu>Modifica "
-"maiuscole/minuscole</guisubmenu> <guimenuitem>Iniziali "
-"maiuscole</guimenuitem> </menuchoice>"
+"<menuchoice> <guimenu>Edit</guimenu> <guisubmenu>Modifica maiuscole/"
+"minuscole</guisubmenu> <guimenuitem>Iniziali maiuscole</guimenuitem> </"
+"menuchoice>"
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1902
+#: C/index.docbook:1894
 msgid "Change the first character of each word to uppercase."
 msgstr "Modifica il primo carattere di ogni parola in maiuscolo."
 
 #. (itstool) path: entry/para
-#: C/index.docbook:1905
+#: C/index.docbook:1897
 msgid "<literal>this text</literal> becomes <literal>This Text</literal>"
 msgstr "<literal>this text</literal> diventa <literal>This Text</literal>"
 
 #. (itstool) path: info/title
-#: C/index.docbook:1916
+#: C/index.docbook:1908
 msgid "Document Statistics Plugin"
 msgstr "Plugin Statistiche sul Documento"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1919
+#: C/index.docbook:1911
 msgid ""
 "The <application>Document Statistics</application> plugin counts the number "
 "of lines, words, characters with spaces, characters without spaces, and "
@@ -3063,46 +3031,46 @@ msgstr ""
 "utilizzare il plugin Statistiche del Documento procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1922
+#: C/index.docbook:1914
 msgid ""
 "Choose <menuchoice> <guimenu>Tools</guimenu> <guimenuitem>Document "
 "Statistics</guimenuitem> </menuchoice> to display the <guilabel>Document "
 "Statistics</guilabel> dialog. The <guilabel>Document Statistics</guilabel> "
 "dialog displays the following information about the file:"
 msgstr ""
-"Seleziona <menuchoice> <guimenu>Strumenti</guimenu> <guimenuitem>Statistiche"
-" sul documento</guimenuitem> </menuchoice> per mostrare la finestra di "
+"Seleziona <menuchoice> <guimenu>Strumenti</guimenu> <guimenuitem>Statistiche "
+"sul documento</guimenuitem> </menuchoice> per mostrare la finestra di "
 "dialogo<guilabel>Statistiche sul documento</guilabel>. La finestra "
 "<guilabel>Statistiche sul documento</guilabel> mostra le seguenti "
 "informazioni:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1925
+#: C/index.docbook:1917
 msgid "Number of lines in the current document."
 msgstr "Numero di righe di testo nel documento corrente."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1928
+#: C/index.docbook:1920
 msgid "Number of words in the current document."
 msgstr "Numero di parole nel documento corrente."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1931
+#: C/index.docbook:1923
 msgid "Number of characters, including spaces, in the current document."
 msgstr "Numero di caratteri, inclusi gli spazi, del documento corrente."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1934
+#: C/index.docbook:1926
 msgid "Number of characters, not including spaces, in the current document."
 msgstr "Numero di caratteri, non inclusi gli spazi, del documento corrente."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1937
+#: C/index.docbook:1929
 msgid "Number of bytes in the current document."
 msgstr "Numero di byte del documento corrente."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1942
+#: C/index.docbook:1934
 msgid ""
 "You can continue to update the <application>lapiz</application> file while "
 "the <guilabel>Document Statistics</guilabel> dialog is open. To refresh the "
@@ -3110,17 +3078,17 @@ msgid ""
 "<guibutton>Update</guibutton>."
 msgstr ""
 "È possibile aggiornare il file <application>lapiz</application> mentre la "
-"finestra di dialogo <guilabel>Statistiche del Documento</guilabel> è aperta."
-" Per aggiornarne il contenuto della finestra <guilabel>Statistiche del "
+"finestra di dialogo <guilabel>Statistiche del Documento</guilabel> è aperta. "
+"Per aggiornarne il contenuto della finestra <guilabel>Statistiche del "
 "Documento</guilabel>, cliccare sul pulsante <guibutton>Aggiorna</guibutton>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1949
+#: C/index.docbook:1941
 msgid "External Tools Plugin"
 msgstr "Plugin Strumenti Esterni"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1951
+#: C/index.docbook:1943
 msgid ""
 "The <application>External Tools</application> plugin allows you to execute "
 "external commands from <application>lapiz</application>. You can pipe some "
@@ -3135,37 +3103,37 @@ msgstr ""
 "comando predefinito (per esempio, <application>make</application>)."
 
 #. (itstool) path: section/para
-#: C/index.docbook:1952
+#: C/index.docbook:1944
 msgid ""
 "Use the <guilabel>External Tools Manager</guilabel> to create and edit "
-"commands. To run an external command, choose it from the "
-"<guimenu>Tools</guimenu> menu."
+"commands. To run an external command, choose it from the <guimenu>Tools</"
+"guimenu> menu."
 msgstr ""
 "Si utilizzi <guilabel>Gestore degli Strumenti Esterni</guilabel> per creare "
 "e modificare i comandi. Per eseguire un comando esterno selezionarlo dal "
 "menu <guimenu>Strumenti</guimenu>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1956
+#: C/index.docbook:1948
 msgid "Built-in Commands"
 msgstr "Comandi pre-definiti"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1958
+#: C/index.docbook:1950
 msgid ""
-"The following commands are provided with the <application>External "
-"Tools</application> plugin:"
+"The following commands are provided with the <application>External Tools</"
+"application> plugin:"
 msgstr ""
 "i seguenti comandi sono forniti assieme al plugin <application>Strumenti "
 "Esterni</application>:"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1961
+#: C/index.docbook:1953
 msgid "Build"
 msgstr "Build"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1963
+#: C/index.docbook:1955
 msgid ""
 "Runs <application>make</application> in the current document's directory."
 msgstr ""
@@ -3173,12 +3141,12 @@ msgstr ""
 "corrente."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1967
+#: C/index.docbook:1959
 msgid "Directory Listing"
 msgstr "Elenco Cartella"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1969
+#: C/index.docbook:1961
 msgid ""
 "Lists the contents of the current document's directory in a new document."
 msgstr ""
@@ -3186,22 +3154,22 @@ msgstr ""
 "documento "
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1973
+#: C/index.docbook:1965
 msgid "Environment Variables"
 msgstr "Variabili di Ambiente"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1975
+#: C/index.docbook:1967
 msgid "Displays the environment variables list in the bottom pane."
 msgstr "Mostra le variabili di ambiente nel riquadro inferiore."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1979
+#: C/index.docbook:1971
 msgid "Grep"
 msgstr "Grep"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1981
+#: C/index.docbook:1973
 msgid ""
 "Searches for a term in all files in the current document directory, using "
 "pattern matching. Results are shown in the bottom pane."
@@ -3211,33 +3179,33 @@ msgstr ""
 "inferiore."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:1985
+#: C/index.docbook:1977
 msgid "Remove Trailing Spaces"
 msgstr "Elimina Spazi a Fine Riga"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:1987
+#: C/index.docbook:1979
 msgid "Removes all spaces from the end of lines in the document."
 msgstr ""
 "Elimina tutti gli spazi superflui dalla fine di ogni riga del documento."
 
 #. (itstool) path: info/title
-#: C/index.docbook:1995
+#: C/index.docbook:1987
 msgid "Defining a Command"
 msgstr "Definire un Comando"
 
 #. (itstool) path: section/para
-#: C/index.docbook:1997
+#: C/index.docbook:1989
 msgid ""
 "To add an external command, choose <menuchoice> <guimenu>Tools</guimenu> "
 "<guimenuitem>External Tools</guimenuitem> </menuchoice>."
 msgstr ""
 "Per aggiungere un comando esterno, seleziona <menuchoice> "
-"<guimenu>Strumenti</guimenu> <guimenuitem>Strumenti Esterni</guimenuitem> "
-"</menuchoice>."
+"<guimenu>Strumenti</guimenu> <guimenuitem>Strumenti Esterni</guimenuitem> </"
+"menuchoice>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:1998
+#: C/index.docbook:1990
 msgid ""
 "In the <guilabel>External Tools Manager</guilabel> window, click "
 "<guibutton>New</guibutton>. You can specify the following details for the "
@@ -3248,12 +3216,12 @@ msgstr ""
 "dettagli per un nuovo comando:"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2001
+#: C/index.docbook:1993
 msgid "Description"
 msgstr "Descrizione"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2003
+#: C/index.docbook:1995
 msgid ""
 "This description is shown in the statusbar when the menu command is chosen."
 msgstr ""
@@ -3261,22 +3229,22 @@ msgstr ""
 "il comando."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2007
+#: C/index.docbook:1999
 msgid "Accelerator"
 msgstr "Acceleratore"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2009
+#: C/index.docbook:2001
 msgid "Enter a keyboard shortcut for the command."
 msgstr "Inserire una scorciatoia da tastiera per il comando."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2013
+#: C/index.docbook:2005
 msgid "Commands"
 msgstr "Comandi"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2015
+#: C/index.docbook:2007
 msgid ""
 "The actual commands to be run. Several <application>lapiz</application> "
 "environment variables can be used to pass content to these commands: see "
@@ -3288,27 +3256,27 @@ msgstr ""
 "plugin-variables\"/>."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2019
+#: C/index.docbook:2011
 msgid "Input"
 msgstr "Input"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2021
+#: C/index.docbook:2013
 msgid ""
-"The content to give to the commands (as <systemitem>stdin</systemitem>): the"
-" entire text of the current document, the current selection, line, or word."
+"The content to give to the commands (as <systemitem>stdin</systemitem>): the "
+"entire text of the current document, the current selection, line, or word."
 msgstr ""
 "Il contenuto da fornire al comandi (come <systemitem>stdin</systemitem>): "
 "l'intero contenuto del documento corrente, la selezione corrente, una linea "
 "o una parola. "
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2025
+#: C/index.docbook:2017
 msgid "Output"
 msgstr "Output"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2027
+#: C/index.docbook:2019
 msgid ""
 "What to do with the output of the commands: display in the bottom pane, put "
 "in a new document, or place in the current document, at the end, at the "
@@ -3319,12 +3287,12 @@ msgstr ""
 "sostituire il testo selezionato o l'intero documento."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2031
+#: C/index.docbook:2023
 msgid "Applicability"
 msgstr "Applicabilità"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2033
+#: C/index.docbook:2025
 msgid ""
 "Determines which sort of documents can be affected by the command, for "
 "example whether saved or not, and local or remote."
@@ -3333,12 +3301,12 @@ msgstr ""
 "esempio documenti salvati o no: documenti locali o remoti."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2041
+#: C/index.docbook:2033
 msgid "Editing and Removing Tools"
 msgstr "Modificare e Rimuovere Strumenti"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2043
+#: C/index.docbook:2035
 msgid ""
 "To edit a tool, select it in the list and make changes to its properties."
 msgstr ""
@@ -3346,113 +3314,113 @@ msgstr ""
 "cambiamenti alle sue proprietà."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2044
+#: C/index.docbook:2036
 msgid "To rename a tool, click it again in the list."
 msgstr "Per rinominare uno strumento cliccarlo nuovamente nella lista."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2045
+#: C/index.docbook:2037
 msgid ""
-"To restore a built-in tool that you have changed, press "
-"<guilabel>Revert</guilabel>."
+"To restore a built-in tool that you have changed, press <guilabel>Revert</"
+"guilabel>."
 msgstr ""
 "Per ripristinare uno strumento pre-definito che avete modificato cliccare "
 "<guilabel>Ripristina</guilabel>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2046
+#: C/index.docbook:2038
 msgid ""
-"To remove a tool, select it in the list and press "
-"<guibutton>Remove</guibutton>. You can not remove built-in tools, only those"
-" you have created yourself."
+"To remove a tool, select it in the list and press <guibutton>Remove</"
+"guibutton>. You can not remove built-in tools, only those you have created "
+"yourself."
 msgstr ""
-"Per rimuovere uno strumento selezionarlo e premere "
-"<guibutton>Rimuovi</guibutton>. Non è possibile rimuovere uno strumento pre-"
-"definito ma solo uno di quelli creati da voi."
+"Per rimuovere uno strumento selezionarlo e premere <guibutton>Rimuovi</"
+"guibutton>. Non è possibile rimuovere uno strumento pre-definito ma solo uno "
+"di quelli creati da voi."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2051
+#: C/index.docbook:2043
 msgid "Variables"
 msgstr "Variabili"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2053
+#: C/index.docbook:2045
 msgid ""
 "You can use the following variables in the <guilabel>Commands</guilabel> "
 "field of the command definition:"
 msgstr ""
-"Possono essere usate le seguenti variabili nel campo "
-"<guilabel>Comandi</guilabel> della definizione del comando."
+"Possono essere usate le seguenti variabili nel campo <guilabel>Comandi</"
+"guilabel> della definizione del comando."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2056
+#: C/index.docbook:2048
 msgid "LAPIZ_CURRENT_DOCUMENT_URI"
 msgstr "LAPIZ_CURRENT_DOCUMENT_URI"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2059
+#: C/index.docbook:2051
 msgid "LAPIZ_CURRENT_DOCUMENT_NAME"
 msgstr "LAPIZ_CURRENT_DOCUMENT_NAME"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2062
+#: C/index.docbook:2054
 msgid "LAPIZ_CURRENT_DOCUMENT_SCHEME"
 msgstr "LAPIZ_CURRENT_DOCUMENT_SCHEME"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2065
+#: C/index.docbook:2057
 msgid "LAPIZ_CURRENT_DOCUMENT_PATH"
 msgstr "LAPIZ_CURRENT_DOCUMENT_PATH"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2068
+#: C/index.docbook:2060
 msgid "LAPIZ_CURRENT_DOCUMENT_DIR"
 msgstr "LAPIZ_CURRENT_DOCUMENT_DIR"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2071
+#: C/index.docbook:2063
 msgid "LAPIZ_DOCUMENTS_URI"
 msgstr "LAPIZ_DOCUMENTS_URI"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2074
+#: C/index.docbook:2066
 msgid "LAPIZ_DOCUMENTS_PATH"
 msgstr "LAPIZ_DOCUMENTS_PATH"
 
 #. (itstool) path: info/title
-#: C/index.docbook:2082
+#: C/index.docbook:2074
 msgid "File Browser Pane Plugin"
 msgstr "Plugin Riquadro Esplora File"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2084
+#: C/index.docbook:2076
 msgid ""
-"The <application>File Browser Pane</application> Plugin shows your files and"
-" folders in the side pane, allowing you to quickly open files."
+"The <application>File Browser Pane</application> Plugin shows your files and "
+"folders in the side pane, allowing you to quickly open files."
 msgstr ""
 "il plugin <application>Riquadro Esplora File</application> mostra i vostri "
 "file e cartelle nel riquadro laterale, consentendo di aprire i file "
 "velocemente."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2085
+#: C/index.docbook:2077
 msgid ""
 "To view the File Browser, choose <menuchoice> <guimenu>View</guimenu> "
-"<guimenuitem>Side Pane</guimenuitem> </menuchoice> and then click on the tab"
-" showing the File Browser icon at the bottom of the side pane."
+"<guimenuitem>Side Pane</guimenuitem> </menuchoice> and then click on the tab "
+"showing the File Browser icon at the bottom of the side pane."
 msgstr ""
 "Per mostrare Esplorazione File, selezionare <menuchoice> "
-"<guimenu>Visualizza</guimenu> <guimenuitem>Riquadro laterale</guimenuitem> "
-"</menuchoice> e cliccare in seguito sulla scheda che mostra l'icona di "
+"<guimenu>Visualizza</guimenu> <guimenuitem>Riquadro laterale</guimenuitem> </"
+"menuchoice> e cliccare in seguito sulla scheda che mostra l'icona di "
 "Esplorazione File situata in fondo al pannello laterale."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2089
+#: C/index.docbook:2081
 msgid "Browsing your Files"
 msgstr "Sfogliare i Vostri File"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2091
+#: C/index.docbook:2083
 msgid ""
 "The File Browser tab initially shows your file manager bookmarks. To browse "
 "the contents of any item, double-click it."
@@ -3462,7 +3430,7 @@ msgstr ""
 "cliccare due volte su di esso."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2092
+#: C/index.docbook:2084
 msgid ""
 "To show a parent folder, choose from the drop-down list, or press the up "
 "arrow on the File Browser's toolbar."
@@ -3472,7 +3440,7 @@ msgstr ""
 "plugin Esplorazione File."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2093
+#: C/index.docbook:2085
 msgid ""
 "To show the folder that contains the document you are currently working on, "
 "right-click in the file list and choose <guimenuitem>Set root to active "
@@ -3483,32 +3451,31 @@ msgstr ""
 "<guimenuitem>Imposta il documento attivo come radice</guimenuitem>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2100
+#: C/index.docbook:2092
 msgid ""
 "To open a file in <application>lapiz</application>, double-click it in the "
 "file list."
 msgstr ""
-"Per aprire un file in <application>lapiz</application>, fare doppio click su"
-" di esso nella lista dei file."
+"Per aprire un file in <application>lapiz</application>, fare doppio click su "
+"di esso nella lista dei file."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2105
+#: C/index.docbook:2097
 msgid "Creating Files and Folders"
 msgstr "Creare File e Cartelle"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2107
+#: C/index.docbook:2099
 msgid ""
-"To create a new, empty text file in the current folder shown in the browser,"
-" right-click in the file list and choose <guimenuitem>New "
-"File</guimenuitem>."
+"To create a new, empty text file in the current folder shown in the browser, "
+"right-click in the file list and choose <guimenuitem>New File</guimenuitem>."
 msgstr ""
 "Per creare un file di testo vuoto nella directory corrente mostrata "
 "nell'esploratore dei  file, fare click col pulsante destro del mouse e "
 "selezionare <guimenuitem>Nouvo File</guimenuitem>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2108
+#: C/index.docbook:2100
 msgid ""
 "To create a new folder in the current folder shown in the browser, right-"
 "click in the file list and choose <guimenuitem>New Folder</guimenuitem>."
@@ -3518,12 +3485,12 @@ msgstr ""
 "selezionare <guimenuitem>Nouva cartella</guimenuitem>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2114
+#: C/index.docbook:2106
 msgid "Indent Lines Plugin"
 msgstr "plugin Indenta Righe"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2116
+#: C/index.docbook:2108
 msgid ""
 "The <application>Indent Lines</application> plugin adds or removes space "
 "from the beginning of lines of text."
@@ -3532,12 +3499,12 @@ msgstr ""
 "caratteri spazio all'inizio delle righe di testo."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2117
+#: C/index.docbook:2109
 msgid "To indent or unindent text, perform the following steps:"
 msgstr "Per indentare o rimuovere l'indentazione, procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2120
+#: C/index.docbook:2112
 msgid ""
 "Select the lines that you want to indent. To indent or unindent a single "
 "line, place the cursor anywhere on that line."
@@ -3547,7 +3514,7 @@ msgstr ""
 "qualsiasi punto della riga."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2125
+#: C/index.docbook:2117
 msgid ""
 "To indent the text, choose <menuchoice> <guimenu>Edit</guimenu> "
 "<guimenuitem>Indent</guimenuitem> </menuchoice>."
@@ -3556,7 +3523,7 @@ msgstr ""
 "<guimenuitem>Indenta</guimenuitem> </menuchoice>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2128
+#: C/index.docbook:2120
 msgid ""
 "To remove the indentation, choose <menuchoice> <guimenu>Edit</guimenu> "
 "<guimenuitem>Unindent</guimenuitem> </menuchoice>."
@@ -3566,7 +3533,7 @@ msgstr ""
 "</menuchoice>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2133
+#: C/index.docbook:2125
 msgid ""
 "The amount of space used, and whether tab character or space characters are "
 "used, depends on the <guilabel>Tab Stops</guilabel> settings in the Editor "
@@ -3578,12 +3545,12 @@ msgstr ""
 "vedere <xref linkend=\"lapiz-prefs-editor\"/>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2138
+#: C/index.docbook:2130
 msgid "Insert Date/Time Plugin"
 msgstr "Plugin Inserisci Data e Ora"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2140
+#: C/index.docbook:2132
 msgid ""
 "The <application>Insert Date/Time</application> plugin inserts the current "
 "date and time into a document. To use the Insert Date/Time plugin, perform "
@@ -3594,7 +3561,7 @@ msgstr ""
 "Ora, procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2143
+#: C/index.docbook:2135
 msgid ""
 "Choose <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert Date and "
 "Time</guimenuitem> </menuchoice>."
@@ -3603,27 +3570,27 @@ msgstr ""
 "Data e Ora</guimenuitem> </menuchoice>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2144
+#: C/index.docbook:2136
 msgid ""
 "If you have not configured the Insert Date/Time plugin to automatically "
 "insert the date/time without prompting you for the format, "
 "<application>lapiz</application> displays the <guilabel>Insert Date and "
 "Time</guilabel> dialog. Select the appropriate date/time format from the "
-"list. Click <guibutton>Insert</guibutton> to close the <guilabel>Insert Date"
-" and Time</guilabel> dialog. <application>lapiz</application> inserts the "
+"list. Click <guibutton>Insert</guibutton> to close the <guilabel>Insert Date "
+"and Time</guilabel> dialog. <application>lapiz</application> inserts the "
 "date/time at the cursor position in the current file."
 msgstr ""
 "Se non è stato configurato il plugin Inserisci Data e Ora per inserire la "
 "data e l'orario automaticamente senza chiedervi il formato da utilizzare, "
 "<application>lapiz</application> mostra la finestra di dialogo "
-"<guilabel>Inserisci Data e Ora</guilabel>.  Selezionare il formato "
-"data/orario dalla lista  e cliccare <guibutton>Inserisci</guibutton> per "
-"chiudere la finestra di dialogo <guilabel>Inserisci Data e Ora</guilabel>. "
+"<guilabel>Inserisci Data e Ora</guilabel>.  Selezionare il formato data/"
+"orario dalla lista  e cliccare <guibutton>Inserisci</guibutton> per chiudere "
+"la finestra di dialogo <guilabel>Inserisci Data e Ora</guilabel>. "
 "<application>Lapiz</application> inserisce la data e l'ora alla posizione "
 "corrente del cursore."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2145
+#: C/index.docbook:2137
 msgid ""
 "If you have configured <application>lapiz</application> to use one "
 "particular date/time format, the <guilabel>Insert Date and Time</guilabel> "
@@ -3637,22 +3604,22 @@ msgstr ""
 "corrente."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2151
+#: C/index.docbook:2143
 msgid "Configuring the Insert Date/Time Plugin"
 msgstr "Configurare il plugin Inserisci Data e Ora"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2153
+#: C/index.docbook:2145
 msgid "To configure the Insert Date/Time plugin, perform the following steps:"
 msgstr "Per configurare il plugin Inserisci Data e Ora, procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2162
+#: C/index.docbook:2154
 msgid "Select the <guilabel>Insert Date/Time</guilabel> plugin."
 msgstr "Selezionare il plugin <guilabel>Inserisci Data e Ora</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2165
+#: C/index.docbook:2157
 msgid ""
 "Click <guibutton>Configure Plugin</guibutton> to display the "
 "<guilabel>Configure insert date/time plugin</guilabel> dialog."
@@ -3661,12 +3628,12 @@ msgstr ""
 "dialogo <guilabel>Configura plugin Inserisci Data e Ora</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2168
+#: C/index.docbook:2160
 msgid "Select one of the options, as follows:"
 msgstr "Selezionare una delle opzioni come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2171
+#: C/index.docbook:2163
 msgid ""
 "To specify the date/time format each time you insert the date/time, select "
 "the <guilabel>Prompt for a format</guilabel> option."
@@ -3676,60 +3643,59 @@ msgstr ""
 "formato</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2174
+#: C/index.docbook:2166
 msgid ""
 "To use the same <application>lapiz</application>-provided date/time format "
 "each time you insert the date/time, select the <guilabel>Use the selected "
 "format</guilabel> option, then select the appropriate format from the list. "
 "When you select this option, <application>lapiz</application> does not "
 "prompt you for the date/time format when you choose <menuchoice> "
-"<guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</guimenuitem> "
-"</menuchoice>."
+"<guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</guimenuitem> </"
+"menuchoice>."
 msgstr ""
 "Per utilizzare sempre lo stesso formato di data e ora tra quelli forniti da "
 "<application>lapiz</application>, selezionare l'opzione <guilabel>Usare il "
 "formato selezionato</guilabel>e quindi scegliere il formato appropriato "
 "dalla lista. Se si sceglie questa opzione, <application>lapiz</application> "
 "non chiederà il formato di data e ora da utilizzare quando si seleziona "
-"<menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Inserisci Data e "
-"Ora</guimenuitem> </menuchoice>."
+"<menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Inserisci Data e Ora</"
+"guimenuitem> </menuchoice>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2177
+#: C/index.docbook:2169
 msgid ""
-"To use the same customized date/time format each time you insert the "
-"date/time, select the <guilabel>Use custom format</guilabel> option, then "
-"enter the appropriate format in the text box. Refer to the <link "
-"xlink:href=\"man:strftime\"> <citerefentry> "
-"<refentrytitle>strftime</refentrytitle> <manvolnum>3</manvolnum> "
-"</citerefentry> </link> for more information on how to specify a custom "
-"format. When you select this option, <application>lapiz</application> does "
-"not prompt you for the date/time format when you choose <menuchoice> "
-"<guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</guimenuitem> "
-"</menuchoice>."
+"To use the same customized date/time format each time you insert the date/"
+"time, select the <guilabel>Use custom format</guilabel> option, then enter "
+"the appropriate format in the text box. Refer to the <link xlink:href=\"man:"
+"strftime\"> <citerefentry> <refentrytitle>strftime</refentrytitle> "
+"<manvolnum>3</manvolnum> </citerefentry> </link> for more information on how "
+"to specify a custom format. When you select this option, <application>lapiz</"
+"application> does not prompt you for the date/time format when you choose "
+"<menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert Date and Time</"
+"guimenuitem> </menuchoice>."
 msgstr ""
 "Per utilizzare ogni volta il formato di data e ora personalizzato, "
 "selezionare l'opzione <guilabel>Usare un formato personalizzato</guilabel>, "
 "quindi inserire nella casella di testo il formato appropriato. Per maggiori "
-"informazioni su come specificare un formato personalizzato, fate riferimento"
-" a <link xlink:href=\"man:strftime\"> <citerefentry> "
-"<refentrytitle>strftime</refentrytitle> <manvolnum> 3</manvolnum> "
-"</citerefentry> </link>. Se si sceglie questa opzione, "
-"<application>lapiz</application> non chiederà il formato di data e ora da "
-"utilizzare quando si seleziona <menuchoice> <guimenu>Modifica</guimenu> "
-"<guimenuitem>Inserisci Data e Ora</guimenuitem> </menuchoice>."
+"informazioni su come specificare un formato personalizzato, fate riferimento "
+"a <link xlink:href=\"man:strftime\"> <citerefentry> <refentrytitle>strftime</"
+"refentrytitle> <manvolnum> 3</manvolnum> </citerefentry> </link>. Se si "
+"sceglie questa opzione, <application>lapiz</application> non chiederà il "
+"formato di data e ora da utilizzare quando si seleziona <menuchoice> "
+"<guimenu>Modifica</guimenu> <guimenuitem>Inserisci Data e Ora</guimenuitem> "
+"</menuchoice>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2188
+#: C/index.docbook:2180
 msgid ""
-"Click <guibutton>OK</guibutton> to close the <guilabel>Configure insert "
-"date/time plugin</guilabel> dialog."
+"Click <guibutton>OK</guibutton> to close the <guilabel>Configure insert date/"
+"time plugin</guilabel> dialog."
 msgstr ""
 "Fare click su <guibutton>Chiudi</guibutton> per chiudere la finestra di "
 "dialogo <guilabel>Configura plugin Inserisci Data e Ora</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2192
+#: C/index.docbook:2184
 msgid ""
 "To close the <guilabel>Preferences</guilabel> dialog, click "
 "<guibutton>Close</guibutton>."
@@ -3738,16 +3704,16 @@ msgstr ""
 "cliccare <guibutton>Chudi</guibutton>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2200
+#: C/index.docbook:2192
 msgid "Modelines Plugin"
 msgstr "Plugin Modeline"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2202
+#: C/index.docbook:2194
 msgid ""
 "The <application>Modelines</application> plugin allows you to set "
-"preferences for individual documents. A <firstterm>modeline</firstterm> is a"
-" line of text at the start or end of the document with settings that "
+"preferences for individual documents. A <firstterm>modeline</firstterm> is a "
+"line of text at the start or end of the document with settings that "
 "<application>lapiz</application> recognizes."
 msgstr ""
 "Il plugin <application>Modeline</application> permette di impostare le "
@@ -3756,7 +3722,7 @@ msgstr ""
 "<application>lapiz</application> riconosce."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2203
+#: C/index.docbook:2195
 msgid ""
 "Preferences set using modelines take precedence over the ones specified in "
 "the preference dialog."
@@ -3765,143 +3731,140 @@ msgstr ""
 "quelle specificate nella finestra di dialogo preferenze."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2204
+#: C/index.docbook:2196
 msgid "You can set the following preferences with modelines:"
 msgstr "Con una modeline è possibile impostare le seguenti preferenze:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2207
+#: C/index.docbook:2199
 msgid "Tab width"
 msgstr "Ampiezza di Tabulazione"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2210
+#: C/index.docbook:2202
 msgid "Indent width"
 msgstr "Ampiezza del Rientro"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2213
+#: C/index.docbook:2205
 msgid "Insert spaces instead of tabs"
 msgstr "Inserisci spazi al posto di tabulazioni."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2216
+#: C/index.docbook:2208
 msgid "Text Wrapping"
 msgstr "A capo automatico"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2219
+#: C/index.docbook:2211
 msgid "Right margin width"
 msgstr "Ampiezza del margine destro"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2222
+#: C/index.docbook:2214
 msgid ""
 "The <application>Modelines</application> plugin supports a subset of the "
 "options used by other text editors <application>Emacs</application>, "
 "<application>Kate</application> and <application>Vim</application>."
 msgstr ""
-"Il plugin <application>Modeline</application> supporta un sottoinsieme delle"
-" opzioni utilizzate dagli editor <application>Emacs</application>, "
+"Il plugin <application>Modeline</application> supporta un sottoinsieme delle "
+"opzioni utilizzate dagli editor <application>Emacs</application>, "
 "<application>Kate</application> e <application>Vim</application>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2226
+#: C/index.docbook:2218
 msgid "Emacs Modelines"
 msgstr "Modeline Emacs"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2228
+#: C/index.docbook:2220
 msgid ""
-"The first two lines of a document are scanned for "
-"<application>Emacs</application> modelines."
+"The first two lines of a document are scanned for <application>Emacs</"
+"application> modelines."
 msgstr ""
 "Le prime due righe di un documento sono analizzate per le modeline di "
 "<application>Emacs</application>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2229
+#: C/index.docbook:2221
 msgid ""
 "The <application>Emacs</application> options for tab-width, indent-offset, "
 "indent-tabs-mode and autowrap are supported. For more information, see the "
-"<link "
-"xlink:href=\"http://www.delorie.com/gnu/docs/emacs/emacs_486.html\">GNU "
-"Emacs Manual</link>."
+"<link xlink:href=\"http://www.delorie.com/gnu/docs/emacs/emacs_486."
+"html\">GNU Emacs Manual</link>."
 msgstr ""
-"Sono supportate le opzioni<application>Emacs</application> tab-width, "
-"indent-offset, indent-tabs-mode and autowrap. Per ulteriori informazioni, "
-"vedere il <link "
-"xlink:href=\"http://www.delorie.com/gnu/docs/emacs/emacs_486.html\">Manuale "
-"GNU Emacs</link>."
+"Sono supportate le opzioni<application>Emacs</application> tab-width, indent-"
+"offset, indent-tabs-mode and autowrap. Per ulteriori informazioni, vedere il "
+"<link xlink:href=\"http://www.delorie.com/gnu/docs/emacs/emacs_486."
+"html\">Manuale GNU Emacs</link>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2234
+#: C/index.docbook:2226
 msgid "Kate Modelines"
 msgstr "Modeline Kate"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2236
+#: C/index.docbook:2228
 msgid ""
-"The first and last ten lines a document are scanned for "
-"<application>Kate</application> modelines."
+"The first and last ten lines a document are scanned for <application>Kate</"
+"application> modelines."
 msgstr ""
 "La prima e le ultime dieci righe di un documento sono analizzate per le "
 "modeline di Kate."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2237
+#: C/index.docbook:2229
 msgid ""
 "The <application>Kate</application> options for tab-width, indent-width, "
 "space-indent, word-wrap and word-wrap-column are supported. For more "
-"information, see the <link xlink:href=\"http://www.kate-"
-"editor.org/article/katepart_modelines\">Kate website</link>."
+"information, see the <link xlink:href=\"http://www.kate-editor.org/article/"
+"katepart_modelines\">Kate website</link>."
 msgstr ""
 "Sono supportate le opzioni per specificare  l'ampiezza di tabulazione, "
 "l'ampiezza del rientro, l'indentazione con spazi e l'a capo automatico e la "
 "colonna per l'a capo automatico di Kate. Per ulteriori informazioni vedere "
-"il <link xlink:href=\"http://www.kate-"
-"editor.org/article/katepart_modelines\">sito web di Kate</link>."
+"il <link xlink:href=\"http://www.kate-editor.org/article/"
+"katepart_modelines\">sito web di Kate</link>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2242
+#: C/index.docbook:2234
 msgid "Vim Modelines"
 msgstr "Modeline Vim"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2244
+#: C/index.docbook:2236
 msgid ""
-"The first and last three lines a document are scanned for "
-"<application>Vim</application> modelines."
+"The first and last three lines a document are scanned for <application>Vim</"
+"application> modelines."
 msgstr ""
 "La prima e le ultime tre righe di un documento sono analizzate per le "
 "modeline di <application>Vim</application>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2245
+#: C/index.docbook:2237
 msgid ""
 "The <application>Vim</application> options for et, expandtab, ts, tabstop, "
-"sw, shiftwidth, wrap, and textwidth are supported. For more information, see"
-" the <link "
-"xlink:href=\"http://vimdoc.sourceforge.net/htmldoc/options.html#modeline\">Vim"
-" website</link>."
+"sw, shiftwidth, wrap, and textwidth are supported. For more information, see "
+"the <link xlink:href=\"http://vimdoc.sourceforge.net/htmldoc/options."
+"html#modeline\">Vim website</link>."
 msgstr ""
 "Sono supportate le opzioni et, expandtab, ts, tabstop, sw e shiftwidth di "
 "<application>Vim</application>. Per maggiori informazioni vedere il <link "
-"xlink:href=\"http://vimdoc.sourceforge.net/htmldoc/options.html#modeline\">sito"
-" web di Vim</link>."
+"xlink:href=\"http://vimdoc.sourceforge.net/htmldoc/options."
+"html#modeline\">sito web di Vim</link>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2251
+#: C/index.docbook:2243
 msgid "Python Console Plugin"
 msgstr "Plugin Console Python"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2253
+#: C/index.docbook:2245
 msgid ""
 "The <application>Python Console</application> Plugin allows you to run "
-"commands in the python programming language from "
-"<application>lapiz</application>. Enabling the plugin adds a tab to the "
-"bottom pane. This shows recent output and a command prompt field."
+"commands in the python programming language from <application>lapiz</"
+"application>. Enabling the plugin adds a tab to the bottom pane. This shows "
+"recent output and a command prompt field."
 msgstr ""
 "Il plugin <application>Console Python</application> permette di eseguire in "
 "<application>lapiz</application>comandi nel linguaggio di programmazione "
@@ -3909,23 +3872,23 @@ msgstr ""
 "inferiore che mostrerà l'output dei comandi recenti e un prompt dei comandi."
 
 #. (itstool) path: caution/para
-#: C/index.docbook:2255
+#: C/index.docbook:2247
 msgid ""
 "Commands entered into the python console are not checked before they are "
 "run. It is therefore possible to hang <application>lapiz</application>, for "
 "example by entering an infinite loop."
 msgstr ""
 "I comandi inseriti nella console python non vengono controllati prima della "
-"loro esecuzione. C'è quindi la possibilità di bloccare "
-"<application>lapiz</application>, inserendo ad esempio un ciclo infinito."
+"loro esecuzione. C'è quindi la possibilità di bloccare <application>lapiz</"
+"application>, inserendo ad esempio un ciclo infinito."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2261
+#: C/index.docbook:2253
 msgid "Save Without Trailing Spaces Plugin"
 msgstr "Plugin Salva Senza Spazi di Fine Riga"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2263
+#: C/index.docbook:2255
 msgid ""
 "The <application>Save Without Trailing Spaces</application> Plugin removes "
 "whitespace characters such as space (<command>˽</command>), tab "
@@ -3935,24 +3898,25 @@ msgid ""
 msgstr ""
 "Il plugin <application>Salva Senza Spazi di Fine Riga</application> rimuove "
 "i caratteri bianchi come gli spazi (<command>˽ </command>), tab "
-"(<command>\\t</command>), ritorni di carrello (<command>\\r</command>), etc."
-" dalla fine di una riga. Per utilizzare il plugin Salva Senza Spazi di Fine "
+"(<command>\\t</command>), ritorni di carrello (<command>\\r</command>), etc. "
+"dalla fine di una riga. Per utilizzare il plugin Salva Senza Spazi di Fine "
 "Riga, procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2266
-msgid "Enable the plugin as described in <xref linkend=\"lapiz-prefs-plugins\"/>."
+#: C/index.docbook:2258
+msgid ""
+"Enable the plugin as described in <xref linkend=\"lapiz-prefs-plugins\"/>."
 msgstr ""
-"Abilitare il plugin come descritto in <xref linkend=\"lapiz-prefs-"
-"plugins\"/>."
+"Abilitare il plugin come descritto in <xref linkend=\"lapiz-prefs-plugins\"/"
+">."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2269
+#: C/index.docbook:2261
 msgid "When your document is ready, save it."
 msgstr "Quando il documento è pronto, salvatelo."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2272
+#: C/index.docbook:2264
 msgid ""
 "You will see that any trailing whitespaces has been stripped after the "
 "document has been saved."
@@ -3961,23 +3925,23 @@ msgstr ""
 "salvato."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2279
+#: C/index.docbook:2271
 msgid "Snippets Plugin"
 msgstr "Plugin Snippet"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2281
+#: C/index.docbook:2273
 msgid ""
 "The <application>Snippets</application> plugin allows you to store "
 "frequently-used pieces of text, called <firstterm>snippets</firstterm>, and "
 "insert them quickly into a document."
 msgstr ""
 "Il plugin <application>Snippet</application> permette di memorizzare "
-"porzioni di testo utilizzate frequentemente, chiacafe "
-"<firstterm>snippet</firstterm>, e di inserirle rapidamente in un documento."
+"porzioni di testo utilizzate frequentemente, chiacafe <firstterm>snippet</"
+"firstterm>, e di inserirle rapidamente in un documento."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2282
+#: C/index.docbook:2274
 msgid ""
 "Snippets are specific to the language syntax of the current document. For "
 "example, when you are working with an HTML document, you can choose from a "
@@ -3990,69 +3954,69 @@ msgstr ""
 "globali e sono resi disponibili in tutti i documenti."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2283
+#: C/index.docbook:2275
 msgid ""
-"A number of built-in snippets are installed with "
-"<application>lapiz</application>, which can be modified."
+"A number of built-in snippets are installed with <application>lapiz</"
+"application>, which can be modified."
 msgstr ""
 "In <application>lapiz</application> sono disponibili diversi snippet pre-"
 "installati, che possono essere modificati."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2287
+#: C/index.docbook:2279
 msgid "Inserting Snippets"
 msgstr "Inserire uno snippet"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2289
+#: C/index.docbook:2281
 msgid ""
-"To insert a snippet into a document, type its <firstterm>tab "
-"trigger</firstterm> and press <keycap>Tab</keycap>. A snippet's tab trigger "
-"is usually the first few letters of the snippet, or something else that is "
+"To insert a snippet into a document, type its <firstterm>tab trigger</"
+"firstterm> and press <keycap>Tab</keycap>. A snippet's tab trigger is "
+"usually the first few letters of the snippet, or something else that is "
 "short and easy to remember."
 msgstr ""
 "Per inserire uno snippet in un documento, digitate il suo <firstterm>tab "
-"trigger</firstterm> e premete il tasto <keycap>Tab</keycap>.  Il tab trigger"
-" di uno snippet è il suo nome o le prime lettere di esso, o qualcos'altro "
-"che sia breve e facile da ricordare."
+"trigger</firstterm> e premete il tasto <keycap>Tab</keycap>.  Il tab trigger "
+"di uno snippet è il suo nome o le prime lettere di esso, o qualcos'altro che "
+"sia breve e facile da ricordare."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2290
+#: C/index.docbook:2282
 msgid ""
-"Alternatively, press <keycombo> <keycap>Ctrl</keycap> <keycap>Space</keycap>"
-" </keycombo> to see a list of snippets you can insert."
+"Alternatively, press <keycombo> <keycap>Ctrl</keycap> <keycap>Space</keycap> "
+"</keycombo> to see a list of snippets you can insert."
 msgstr ""
-"In alternativa, premere <keycombo> <keycap>Ctrl</keycap> "
-"<keycap>Spazio</keycap> </keycombo> per vedere la lista degli snippet che "
-"possono essere inseriti."
+"In alternativa, premere <keycombo> <keycap>Ctrl</keycap> <keycap>Spazio</"
+"keycap> </keycombo> per vedere la lista degli snippet che possono essere "
+"inseriti."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2295
+#: C/index.docbook:2287
 msgid "Adding Snippets"
 msgstr "Aggiungere Snippet"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2297
+#: C/index.docbook:2289
 msgid "To create a new snippet, do the following:"
 msgstr "Per creare un nuovo snippet, procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2300
+#: C/index.docbook:2292
 msgid ""
-"Choose <menuchoice> <guimenu>Tools</guimenu> <guimenuitem>Manage "
-"Snippets</guimenuitem> </menuchoice>. The <guilabel>Snippets "
-"Manager</guilabel> window opens."
+"Choose <menuchoice> <guimenu>Tools</guimenu> <guimenuitem>Manage Snippets</"
+"guimenuitem> </menuchoice>. The <guilabel>Snippets Manager</guilabel> window "
+"opens."
 msgstr ""
 "Selezionare <menuchoice><guimenu>Strumenti</guimenu> "
 "<guimenuitem>Preferenze</guimenuitem></menuchoice>. Si aprirà la finestra "
 "<guilabel>Gestore Snippet</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2303
+#: C/index.docbook:2295
 msgid ""
-"The list of snippets is grouped by language. Select the language you want to"
-" add a snippet to, or a snippet in that language group. To add a snippet for"
-" all languages, choose Global at the top of the list. The syntax of the "
+"The list of snippets is grouped by language. Select the language you want to "
+"add a snippet to, or a snippet in that language group. To add a snippet for "
+"all languages, choose Global at the top of the list. The syntax of the "
 "document you are currently working with is shown by default."
 msgstr ""
 "L'elenco degli snippet è raggruppato per linguaggio. Selezionate il "
@@ -4062,24 +4026,24 @@ msgstr ""
 "linguaggio con cui si sta lavorando."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2306
+#: C/index.docbook:2298
 msgid "Click <guibutton>New</guibutton>. A new snippet appears in the list."
 msgstr ""
 "Fare clic su <guibutton>Nuovo</guibutton>. Apparirà un nuovo snippet nella "
 "lista."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2309
+#: C/index.docbook:2301
 msgid "Enter the following information for the new snippet:"
 msgstr "Immettere le seguenti informazioni del nuovo snippet:"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2312
+#: C/index.docbook:2304
 msgid "Name"
 msgstr "Nome"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2314
+#: C/index.docbook:2306
 msgid ""
 "Enter a name for the snippet in the text field within the snippet list. The "
 "name of a snippet serves only as a reminder of its purpose. You can change "
@@ -4091,12 +4055,12 @@ msgstr ""
 "cliccando su di esso nella lista."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2318
+#: C/index.docbook:2310
 msgid "Snippet text"
 msgstr "Testo Snippet"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2320
+#: C/index.docbook:2312
 msgid ""
 "Enter the text of the snippet in the <guilabel>Edit snippet</guilabel> text "
 "box. For special codes you can use, see <xref linkend=\"lapiz-snippets-"
@@ -4107,7 +4071,7 @@ msgstr ""
 "<xref linkend=\"lapiz-snippets-plugin-syntax\"/>."
 
 #. (itstool) path: tip/para
-#: C/index.docbook:2322
+#: C/index.docbook:2314
 msgid ""
 "You can switch back to the document window to copy text without closing the "
 "<guilabel>Snippets Manager</guilabel> window."
@@ -4116,22 +4080,21 @@ msgstr ""
 "snippet senza chiudere la finestra <guilabel>Gestore Snippet</guilabel>."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2327
+#: C/index.docbook:2319
 msgid "Tab Trigger"
 msgstr "Tab Trigger"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2329
+#: C/index.docbook:2321
 msgid ""
-"Enter the tab trigger for the snippet. This is the text that you type before"
-" pressing <keycap>Tab</keycap> to insert the snippet."
+"Enter the tab trigger for the snippet. This is the text that you type before "
+"pressing <keycap>Tab</keycap> to insert the snippet."
 msgstr ""
 "Inserite il tab trigger per lo snippet. Questo sarà il testo che scriverete "
-"prima di premere <keycap>Tab</keycap> per inserire lo snippet vero e "
-"proprio."
+"prima di premere <keycap>Tab</keycap> per inserire lo snippet vero e proprio."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2330
+#: C/index.docbook:2322
 msgid ""
 "The tag must be either a single word comprising only letters, or any single "
 "character. The <guilabel>Tab trigger</guilabel> will highlight in red if an "
@@ -4142,22 +4105,22 @@ msgstr ""
 "in rosso qualora si inserisca un tab trigger non valido."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2334
+#: C/index.docbook:2326
 msgid "Shortcut key"
 msgstr "Tasto Scorciatoia"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2336
+#: C/index.docbook:2328
 msgid "Type a shortcut key to use for inserting the snippet."
 msgstr "Inserire il il tasto scorciatoia per inserire lo snippet."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2346
+#: C/index.docbook:2338
 msgid "Editing and Removing Snippets"
 msgstr "Modificare e Rimuovere Snippet"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2348
+#: C/index.docbook:2340
 msgid ""
 "To edit a snippet, select it in the list and make changes to its text and "
 "activation properties."
@@ -4166,38 +4129,38 @@ msgstr ""
 "cambiamenti al suo testo e alle sue proprietà di attivazione."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2349
+#: C/index.docbook:2341
 msgid "To rename a snippet, click it again in the list."
 msgstr ""
 "Per modificare il nome di uno snippet, cliccarlo nuovamente nella lista"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2350
+#: C/index.docbook:2342
 msgid ""
-"To restore a built-in snippet that you have changed, press "
-"<guilabel>Revert</guilabel>."
+"To restore a built-in snippet that you have changed, press <guilabel>Revert</"
+"guilabel>."
 msgstr ""
 "Per ripristinare uno snippet pre-definito che è stato modificato, premere "
 "<guilabel>Ripristina</guilabel>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2351
+#: C/index.docbook:2343
 msgid ""
-"To remove a snippet, select it in the list and press "
-"<guibutton>Remove</guibutton>. You can not remove built-in snippets, only "
-"those you have created yourself."
+"To remove a snippet, select it in the list and press <guibutton>Remove</"
+"guibutton>. You can not remove built-in snippets, only those you have "
+"created yourself."
 msgstr ""
-"Per rimuovere uno snippet, selezionarlo e premere "
-"<guibutton>Rimuovi</guibutton>. Non è possibile rimuovere gli snippet pre-"
-"definiti, ma solo quelli da voi creati."
+"Per rimuovere uno snippet, selezionarlo e premere <guibutton>Rimuovi</"
+"guibutton>. Non è possibile rimuovere gli snippet pre-definiti, ma solo "
+"quelli da voi creati."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2356
+#: C/index.docbook:2348
 msgid "Snippet Substitutions"
 msgstr "Sostituzione dello Snippet"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2358
+#: C/index.docbook:2350
 msgid ""
 "In addition to inserting stored text, a snippet can include customizable "
 "text, or mark spaces where you can add text once the snippet is inserted in "
@@ -4208,18 +4171,18 @@ msgstr ""
 "volta che lo snippet è stato inserito nel documento."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2359
+#: C/index.docbook:2351
 msgid "You can use the following placeholder codes in snippet text:"
 msgstr ""
 "Potete utilizzare i seguenti codici segnaposto nel testo di uno snippet:"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2362
+#: C/index.docbook:2354
 msgid "Tab placeholders"
 msgstr "Segnaposto di Tabulazione"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2364
+#: C/index.docbook:2356
 msgid ""
 "<literal>$<replaceable>n</replaceable></literal> defines a tab placeholder, "
 "where <literal>n</literal> is any number from 1 upwards."
@@ -4228,26 +4191,26 @@ msgstr ""
 "tabulazione, in cui <literal>n</literal> è un numero da 1 a salire."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2365
+#: C/index.docbook:2357
 msgid ""
-"<literal>${<replaceable>n</replaceable>:<replaceable>default</replaceable>}</literal>"
-" defines a tab placeholder with a default value."
+"<literal>${<replaceable>n</replaceable>:<replaceable>default</replaceable>}</"
+"literal> defines a tab placeholder with a default value."
 msgstr ""
-"<literal>${<replaceable>n</replaceable>:<replaceable>default</replaceable>}</literal>"
-" definisce un segnaposto di tabulazione con un valore pre-definito.."
+"<literal>${<replaceable>n</replaceable>:<replaceable>default</replaceable>}</"
+"literal> definisce un segnaposto di tabulazione con un valore pre-definito.."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2366
+#: C/index.docbook:2358
 msgid ""
 "A tab placeholder marks a place in the snippet text where you can add extra "
 "text after the snippet is inserted."
 msgstr ""
 "Un segnaposto di tabulazione segnala uno spazio nel testo dello snippet in "
-"cui è possibile aggiungere del testo addizionale dopo che lo snippet è stato"
-" inserito."
+"cui è possibile aggiungere del testo addizionale dopo che lo snippet è stato "
+"inserito."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2367
+#: C/index.docbook:2359
 msgid ""
 "To use tab placeholders, insert the snippet as normal. The cursor is placed "
 "at the first tab placeholder. Type text, and press <keycap>Tab</keycap> to "
@@ -4261,7 +4224,7 @@ msgstr ""
 "l'ordine in cui Tab avanza su ciascun posto nel testo."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2368
+#: C/index.docbook:2360
 msgid ""
 "Press <keycombo> <keycap>Shift</keycap> <keycap>Tab</keycap> </keycombo> to "
 "return to the previous tab placeholder. Pressing <keycap>Tab</keycap> when "
@@ -4274,15 +4237,15 @@ msgstr ""
 "snippet, o al segnaposto di conclusione, se questo esiste."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2372
+#: C/index.docbook:2364
 msgid "Mirror placeholders"
 msgstr "Segnaposto Specchio"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2374
+#: C/index.docbook:2366
 msgid ""
-"A repeated tab placeholder will mirror the placeholder already defined. This"
-" allows you to type in text only once that you want to appear several times "
+"A repeated tab placeholder will mirror the placeholder already defined. This "
+"allows you to type in text only once that you want to appear several times "
 "in the snippet."
 msgstr ""
 "Un segnaposto di tabulazione ripetuto rispecchierà il segnaposto già "
@@ -4290,15 +4253,15 @@ msgstr ""
 "si vuole far comparire più volte nello snippet."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2378
+#: C/index.docbook:2370
 msgid "End placeholder"
 msgstr "Segnaposto di Conclusione"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2380
+#: C/index.docbook:2372
 msgid ""
-"<literal>$0</literal> defines the end placeholder. This allows you to finish"
-" working with the snippet with the cursor at a point other than the end of "
+"<literal>$0</literal> defines the end placeholder. This allows you to finish "
+"working with the snippet with the cursor at a point other than the end of "
 "the snippet text."
 msgstr ""
 "<literal>$0</literal> definisce il segnaposto di conclusione. Questo "
@@ -4306,39 +4269,39 @@ msgstr ""
 "punto diverso dalla fine dello snippet. "
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2384
+#: C/index.docbook:2376
 msgid "Environmental variables"
 msgstr "Variabili di Ambiente"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2386
+#: C/index.docbook:2378
 msgid ""
-"Environmental variable such as <literal>$PATH</literal> and "
-"<literal>$HOME</literal> are substituted in snippet text. The following "
-"variables specific to <application>lapiz</application> can also be used:"
+"Environmental variable such as <literal>$PATH</literal> and <literal>$HOME</"
+"literal> are substituted in snippet text. The following variables specific "
+"to <application>lapiz</application> can also be used:"
 msgstr ""
-"Le variabili di ambiente come <literal>$PATH$</literal> e "
-"<literal>$HOME$</literal> vengono espanse nel testo dello snippet. Possono "
-"inoltre essere utilizzate le seguenti variabili specifiche di "
-"<application>lapiz</application>:"
+"Le variabili di ambiente come <literal>$PATH$</literal> e <literal>$HOME$</"
+"literal> vengono espanse nel testo dello snippet. Possono inoltre essere "
+"utilizzate le seguenti variabili specifiche di <application>lapiz</"
+"application>:"
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2389
+#: C/index.docbook:2381
 msgid "$LAPIZ_SELECTED_TEXT"
 msgstr "$LAPIZ_SELECTED_TEXT"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2391
+#: C/index.docbook:2383
 msgid "The currently selected text."
 msgstr "Il testo attualmente selezionato."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2395
+#: C/index.docbook:2387
 msgid "$LAPIZ_FILENAME"
 msgstr "$LAPIZ_FILENAME"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2397
+#: C/index.docbook:2389
 msgid ""
 "The full filename of the document, or an empty string if the document isn't "
 "saved yet."
@@ -4347,26 +4310,26 @@ msgstr ""
 "ancora stato salvato."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2401
+#: C/index.docbook:2393
 msgid "$LAPIZ_BASENAME"
 msgstr "$LAPIZ_BASENAME"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2403
+#: C/index.docbook:2395
 msgid ""
 "The basename of the filename of the document, or an empty string if the "
 "document isn't saved yet."
 msgstr ""
-"Il nome base del documento, o una stringa vuota se il documento non è ancora"
-" stato salvato."
+"Il nome base del documento, o una stringa vuota se il documento non è ancora "
+"stato salvato."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2407
+#: C/index.docbook:2399
 msgid "$LAPIZ_CURRENT_WORD"
 msgstr "$LAPIZ_CURRENT_WORD"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2409
+#: C/index.docbook:2401
 msgid ""
 "The word at the cursor's location in the document. When this variable is "
 "used, the current word will be replaced by the snippet text."
@@ -4375,42 +4338,41 @@ msgstr ""
 "la parola corrente verrà sostituita con il testo snippet."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2416
+#: C/index.docbook:2408
 msgid "Shell placeholders"
 msgstr "Segnaposto di console"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2418
+#: C/index.docbook:2410
 msgid ""
 "<literal>$(<replaceable>cmd</replaceable>)</literal> is replaced by the "
 "result of executing <replaceable>cmd</replaceable> in a shell."
 msgstr ""
-"<literal>$(<replaceable>cmd</replaceable>)</literal> viene sostituito con il"
-" risultato dell'esecuzione di  <replaceable>cmd</replaceable> in una "
-"console."
+"<literal>$(<replaceable>cmd</replaceable>)</literal> viene sostituito con il "
+"risultato dell'esecuzione di  <replaceable>cmd</replaceable> in una console."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2419
+#: C/index.docbook:2411
 msgid ""
-"<literal>$(<replaceable>n</replaceable>:<replaceable>cmd</replaceable>)</literal>"
-" allows you to give this placeholder a reference, where "
+"<literal>$(<replaceable>n</replaceable>:<replaceable>cmd</replaceable>)</"
+"literal> allows you to give this placeholder a reference, where "
 "<replaceable>n</replaceable> is any number from 1 upwards. Use "
 "<literal>$<replaceable>n</replaceable></literal> to use the output from one "
 "shell placeholder as input in another."
 msgstr ""
-"<literal>$(<replaceable>n</replaceable>:<replaceable>cmd</replaceable>)</literal>"
-" permette di assegnare a questo segnaposto un riferimento, dove "
+"<literal>$(<replaceable>n</replaceable>:<replaceable>cmd</replaceable>)</"
+"literal> permette di assegnare a questo segnaposto un riferimento, dove "
 "<replaceable>n</replaceable> is un numero da 1 in su. Utilizzare "
 "<literal>$<replaceable>n</replaceable></literal> per fornire l'output da un "
 "segnaposto di console come input ad un altro."
 
 #. (itstool) path: varlistentry/term
-#: C/index.docbook:2423
+#: C/index.docbook:2415
 msgid "Python placeholders"
 msgstr "Segnaposti python"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2425
+#: C/index.docbook:2417
 msgid ""
 "<literal>$&lt;<replaceable>cmd</replaceable>&gt;</literal> is replaced by "
 "the result of evaluating <replaceable>cmd</replaceable> in the python "
@@ -4420,25 +4382,26 @@ msgstr ""
 "con la valutazione di <replaceable>cmd</replaceable> nell'interprete python."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2426
+#: C/index.docbook:2418
 msgid ""
-"<literal>$&lt;<replaceable>a</replaceable>:<replaceable>cmd</replaceable>&gt;</literal>"
-" specifies another python placeholder as a dependency, where "
-"<replaceable>a</replaceable> gives its order in the snippet. This allows you"
-" to use python functions defined in another snippet. To specify several "
-"dependencies, separate the numbers with commas thus: "
-"<literal>$&lt;<replaceable>a</replaceable>,<replaceable>b</replaceable>:<replaceable>cmd</replaceable>&gt;</literal>"
+"<literal>$&lt;<replaceable>a</replaceable>:<replaceable>cmd</replaceable>&gt;"
+"</literal> specifies another python placeholder as a dependency, where "
+"<replaceable>a</replaceable> gives its order in the snippet. This allows you "
+"to use python functions defined in another snippet. To specify several "
+"dependencies, separate the numbers with commas thus: <literal>$&lt;"
+"<replaceable>a</replaceable>,<replaceable>b</replaceable>:<replaceable>cmd</"
+"replaceable>&gt;</literal>"
 msgstr ""
-"<literal>$&lt;<replaceable>a</replaceable>:<replaceable>cmd</replaceable>&gt;</literal>"
-" specifica un altro segnaposto python come dipendenza, dove "
+"<literal>$&lt;<replaceable>a</replaceable>:<replaceable>cmd</replaceable>&gt;"
+"</literal> specifica un altro segnaposto python come dipendenza, dove "
 "<replaceable>a</replaceable> indica il suo ordine nello snippet. Ciò "
 "consente di usare funzioni python definite in un altro snippet. Per "
 "specificare diverse dipendenze, separatre i numeri con delle virgole in "
-"questo modo: "
-"<literal>$&lt;<replaceable>a</replaceable>,<replaceable>b</replaceable>:<replaceable>cmd</replaceable>&gt;</literal>"
+"questo modo: <literal>$&lt;<replaceable>a</replaceable>,<replaceable>b</"
+"replaceable>:<replaceable>cmd</replaceable>&gt;</literal>"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2427
+#: C/index.docbook:2419
 msgid ""
 "To use a variable in all other python snippets, declare it as "
 "<literal>global</literal>."
@@ -4447,12 +4410,12 @@ msgstr ""
 "come <literal>globale</literal>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2436
+#: C/index.docbook:2428
 msgid "Sort Plugin"
 msgstr "Plugin Ordina"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2438
+#: C/index.docbook:2430
 msgid ""
 "The <application>Sort</application> plugin arranges selected lines of text "
 "into alphabetical order."
@@ -4461,69 +4424,69 @@ msgstr ""
 "selezionate in ordine alfabetico."
 
 #. (itstool) path: caution/para
-#: C/index.docbook:2440
+#: C/index.docbook:2432
 msgid ""
 "You cannot undo the Sort operation, so you should save the file before "
 "performing the sort. To revert to the saved version of the file after the "
 "sort operation, choose <menuchoice> <guimenu>File</guimenu> "
 "<guimenuitem>Revert</guimenuitem> </menuchoice>."
 msgstr ""
-"Non è possibile annullare l'operazione di ordinamento, quindi dovete salvare"
-" il file prima di eseguire l'ordinamento. Per ritornare alla versione "
-"salvata del file dopo l'ordinamento del testo selezionare <menuchoice> "
+"Non è possibile annullare l'operazione di ordinamento, quindi dovete salvare "
+"il file prima di eseguire l'ordinamento. Per ritornare alla versione salvata "
+"del file dopo l'ordinamento del testo selezionare <menuchoice> "
 "<guimenu>File</guimenu> <guimenuitem>Ripristina</guimenuitem> </menuchoice>."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2442
+#: C/index.docbook:2434
 msgid "To use the Sort plugin, perform the following steps:"
 msgstr "Per utilizzare il plugin Ordina, procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2445
+#: C/index.docbook:2437
 msgid "Select the lines of text you want to sort."
 msgstr "Selezionare le lrighe da ordinare."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2448
+#: C/index.docbook:2440
 msgid ""
 "Choose <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Sort</guimenuitem> "
 "</menuchoice>. The <guilabel>Sort</guilabel> dialog opens."
 msgstr ""
-"Seleziona <menuchoice> <guimenu>Modifica</guimenu> "
-"<guimenuitem>Ordina</guimenuitem> </menuchoice>. Si apre la finestra di "
-"dialogo <guilabel>Ordina</guilabel>."
+"Seleziona <menuchoice> <guimenu>Modifica</guimenu> <guimenuitem>Ordina</"
+"guimenuitem> </menuchoice>. Si apre la finestra di dialogo <guilabel>Ordina</"
+"guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2451
+#: C/index.docbook:2443
 msgid "Choose the options you want for the sort:"
 msgstr "Selezionare le opzioni di ordinamento desiderate: "
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2454
+#: C/index.docbook:2446
 msgid ""
-"To arrange the text in reverse order, select <guilabel>Reverse "
-"order</guilabel>."
+"To arrange the text in reverse order, select <guilabel>Reverse order</"
+"guilabel>."
 msgstr ""
 "Per disporre le righe in ordine inverso, selezionare <guilabel>Ordine "
 "invertito</guilabel>. "
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2457
+#: C/index.docbook:2449
 msgid ""
 "To delete duplicate lines, select <guilabel>Remove duplicates</guilabel>."
 msgstr ""
-"Per eliminare righe doppie, selezionare <guilabel>Rimuovere i "
-"duplicati</guilabel>."
+"Per eliminare righe doppie, selezionare <guilabel>Rimuovere i duplicati</"
+"guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2460
+#: C/index.docbook:2452
 msgid "To ignore case sensitivity, select <guilabel>Ignore case</guilabel>."
 msgstr ""
-"Per ignorare maiuscole e minuscole, selezionare <guilabel>Ignorare "
-"maiuscole/minuscole</guilabel>."
+"Per ignorare maiuscole e minuscole, selezionare <guilabel>Ignorare maiuscole/"
+"minuscole</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2463
+#: C/index.docbook:2455
 msgid ""
 "To have the sort ignore the characters at the start of the lines, set the "
 "first character that should be used for sorting in the <guilabel>Start at "
@@ -4534,26 +4497,26 @@ msgstr ""
 "<guilabel>Incomincia dalla colonna</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2468
+#: C/index.docbook:2460
 msgid "To perform the sort operation, click <guibutton>Sort</guibutton>."
 msgstr ""
-"Per eseguire l'ordinamento , premere il pulsante "
-"<guibutton>Ordina</guibutton>."
+"Per eseguire l'ordinamento , premere il pulsante <guibutton>Ordina</"
+"guibutton>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2475
+#: C/index.docbook:2467
 msgid "Spell Checker Plugin"
 msgstr "Correttore Ortografico"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2477
+#: C/index.docbook:2469
 msgid ""
 "The <application>Spell Checker</application> plugin checks the spelling in "
 "the selected text. You can configure <application>lapiz</application> to "
-"check the spelling automatically, or you can check the spelling manually, in"
-" the specified language. The language setting, and the autocheck spelling "
-"properties, apply per document. To use the Spell checker plugin, perform the"
-" following steps:"
+"check the spelling automatically, or you can check the spelling manually, in "
+"the specified language. The language setting, and the autocheck spelling "
+"properties, apply per document. To use the Spell checker plugin, perform the "
+"following steps:"
 msgstr ""
 "Il plugin <application>Correttore Ortografico</application> controlla "
 "l'ortografia nel testo selezionato. È possibile configurare "
@@ -4564,13 +4527,12 @@ msgstr ""
 "procedere come segue:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2480
+#: C/index.docbook:2472
 msgid ""
-"Choose <menuchoice> <guimenu>Tools</guimenu> <guimenuitem>Set "
-"Language</guimenuitem> </menuchoice> to display the <guilabel>Set "
-"language</guilabel> dialog. Select the appropriate language from the list. "
-"Click <guibutton>OK</guibutton> to close the <guilabel>Set "
-"language</guilabel> dialog."
+"Choose <menuchoice> <guimenu>Tools</guimenu> <guimenuitem>Set Language</"
+"guimenuitem> </menuchoice> to display the <guilabel>Set language</guilabel> "
+"dialog. Select the appropriate language from the list. Click <guibutton>OK</"
+"guibutton> to close the <guilabel>Set language</guilabel> dialog."
 msgstr ""
 "Selezionare <menuchoice><guimenu>Strumenti</guimenu> <guimenuitem>Configura "
 "lingua...</guimenuitem></menuchoice> per mostrare la finestra di dialogo "
@@ -4579,16 +4541,16 @@ msgstr ""
 "finestra<guilabel>Configura lingua</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2483
+#: C/index.docbook:2475
 msgid ""
-"To check the spelling automatically, choose <menuchoice> "
-"<guimenu>Tools</guimenu> <guimenuitem>Autocheck Spelling</guimenuitem> "
-"</menuchoice>. To unset the automatic spell check, choose <menuchoice> "
-"<guimenu>Tools</guimenu> <guimenuitem>Autocheck Spelling</guimenuitem> "
-"</menuchoice> again. When automatic spell checking is set, an icon is "
-"displayed beside the <guimenuitem>Autocheck Spelling</guimenuitem> menu "
-"item. Automatic spell checking is unset by default, each time "
-"<application>lapiz</application> starts."
+"To check the spelling automatically, choose <menuchoice> <guimenu>Tools</"
+"guimenu> <guimenuitem>Autocheck Spelling</guimenuitem> </menuchoice>. To "
+"unset the automatic spell check, choose <menuchoice> <guimenu>Tools</"
+"guimenu> <guimenuitem>Autocheck Spelling</guimenuitem> </menuchoice> again. "
+"When automatic spell checking is set, an icon is displayed beside the "
+"<guimenuitem>Autocheck Spelling</guimenuitem> menu item. Automatic spell "
+"checking is unset by default, each time <application>lapiz</application> "
+"starts."
 msgstr ""
 "Per controllare automaticamente l'ortografia, selezionare "
 "<menuchoice><guimenu>Strumenti</guimenu> <guimenuitem>Controllo ortografico "
@@ -4602,19 +4564,18 @@ msgstr ""
 "avviato <application>lapiz</application>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2484
+#: C/index.docbook:2476
 msgid ""
 "Unknown spellings are displayed in a different color, and underlined. Right-"
-"click on an unknown spelling, then select <guimenu>Spelling "
-"Suggestions</guimenu> from the popup menu:"
+"click on an unknown spelling, then select <guimenu>Spelling Suggestions</"
+"guimenu> from the popup menu:"
 msgstr ""
 "Le ortografie sconosciute vengono mostrate in un altro colore, e "
 "sottolineate. Fare clic con il pulsante destro su una parola sconosciuta, e "
-"selezionare <guimenu>Suggerimenti ortografici</guimenu> dal menu a "
-"comparsa::"
+"selezionare <guimenu>Suggerimenti ortografici</guimenu> dal menu a comparsa::"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2487
+#: C/index.docbook:2479
 msgid ""
 "To replace the unknown spelling with another spelling in the list, select "
 "the replacement spelling from the <guimenu>Spelling Suggestions</guimenu> "
@@ -4625,18 +4586,18 @@ msgstr ""
 "<guimenu>Suggerimenti ortografici</guimenu>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2490
+#: C/index.docbook:2482
 msgid ""
-"To add the unknown spelling to your personal dictionary, select <menuchoice>"
-" <guimenu>Spelling Suggestions</guimenu> <guimenuitem>Add</guimenuitem> "
-"</menuchoice>."
+"To add the unknown spelling to your personal dictionary, select <menuchoice> "
+"<guimenu>Spelling Suggestions</guimenu> <guimenuitem>Add</guimenuitem> </"
+"menuchoice>."
 msgstr ""
 "Per aggiungere la parola sconosciuta al vostro dizionario personale, "
 "selezionare <menuchoice><guimenu>Suggerimenti ortografici</guimenu> "
 "<guimenuitem>Aggiungi</guimenuitem></menuchoice>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2493
+#: C/index.docbook:2485
 msgid ""
 "To ignore all occurrences of the unknown spelling, so that they are no "
 "longer flagged as unknown but are not added to your personal dictionary, "
@@ -4646,84 +4607,83 @@ msgid ""
 msgstr ""
 "Per ignorare tutte le occorrenze dell'ortografia sconosciuta, in modo che "
 "non sia più segnalata come sconosciuta ma non venga aggiunta al dizionario "
-"personale, selezionare <menuchoice> <guimenu>Suggerimenti "
-"ortografici</guimenu> <guimenuitem>Ignora tutto</guimenuitem> </menuchoice>."
-" La parola sconosciuta verrà ignorata solo per la sessione corrente di "
+"personale, selezionare <menuchoice> <guimenu>Suggerimenti ortografici</"
+"guimenu> <guimenuitem>Ignora tutto</guimenuitem> </menuchoice>. La parola "
+"sconosciuta verrà ignorata solo per la sessione corrente di "
 "<application>lapiz</application>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2498
+#: C/index.docbook:2490
 msgid ""
-"To check the spelling manually, choose <menuchoice> <guimenu>Tools</guimenu>"
-" <guimenuitem>Check Spelling</guimenuitem> </menuchoice>."
+"To check the spelling manually, choose <menuchoice> <guimenu>Tools</guimenu> "
+"<guimenuitem>Check Spelling</guimenuitem> </menuchoice>."
 msgstr ""
 "Per controllare l'ortografia manualmente, sezionare <menuchoice> "
-"<guimenu>Strumenti</guimenu> <guimenuitem>Controllo "
-"Ortografico</guimenuitem> </menuchoice>. "
+"<guimenu>Strumenti</guimenu> <guimenuitem>Controllo Ortografico</"
+"guimenuitem> </menuchoice>. "
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2499
+#: C/index.docbook:2491
 msgid ""
 "If there are no spelling errors, an <guilabel>Information</guilabel> dialog "
 "displays a message stating that the document does not contain misspelled "
-"words. Click <guibutton>OK</guibutton> to close the "
-"<guilabel>Information</guilabel> dialog."
+"words. Click <guibutton>OK</guibutton> to close the <guilabel>Information</"
+"guilabel> dialog."
 msgstr ""
 "Se non sono presenti errori ortografici, una finestra di dialogo di "
 "<guilabel>Informazione</guilabel> mostrerà un messaggio in cui si afferma "
-"che il documento non contiene parole errate. Cliccare "
-"<guibutton>OK</guibutton> per chiudere la finestra di dialogo "
-"<guilabel>Informazione</guilabel>."
+"che il documento non contiene parole errate. Cliccare <guibutton>OK</"
+"guibutton> per chiudere la finestra di dialogo <guilabel>Informazione</"
+"guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2500
+#: C/index.docbook:2492
 msgid ""
-"If there are spelling errors, the <guilabel>Check Spelling</guilabel> dialog"
-" is displayed:"
+"If there are spelling errors, the <guilabel>Check Spelling</guilabel> dialog "
+"is displayed:"
 msgstr ""
 "Se sono presenti errori di scrittura, verrà mostrata ka finestra di dialogo "
 "<guilabel>Controllo ortografico</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2503
+#: C/index.docbook:2495
 msgid ""
 "The <guilabel>Misspelled word</guilabel> is displayed at the top of the "
 "dialog."
-msgstr ""
-"La parola scritta in modo errato viene mostrata in cima alla finestra."
+msgstr "La parola scritta in modo errato viene mostrata in cima alla finestra."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2506
+#: C/index.docbook:2498
 msgid ""
-"A suggested known spelling is displayed in the <guilabel>Change "
-"to</guilabel> text box. You can replace this with another known spelling by "
+"A suggested known spelling is displayed in the <guilabel>Change to</"
+"guilabel> text box. You can replace this with another known spelling by "
 "selecting a spelling from the <guilabel>Suggestions</guilabel> list, or you "
 "can enter text directly into the <guilabel>Change to</guilabel> text box."
 msgstr ""
 "Una parola di ortografia conosciuta viene mostrata nella casella di testo "
 "<guilabel>Sostituisci con</guilabel>. Potete rimpiazzare questa parola con "
 "un'altra di ortografia nota selezionandola dall'elenco "
-"<guilabel>Suggerimenti</guilabel>, oppure scrivendola direttamente nel campo"
-" di testo <guilabel>Sostituisci con</guilabel>."
+"<guilabel>Suggerimenti</guilabel>, oppure scrivendola direttamente nel campo "
+"di testo <guilabel>Sostituisci con</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2509
+#: C/index.docbook:2501
 msgid ""
-"To check the spelling of the text in the <guilabel>Change to</guilabel> text"
-" box, click <guibutton>Check Word</guibutton>. If this is a known word, the "
+"To check the spelling of the text in the <guilabel>Change to</guilabel> text "
+"box, click <guibutton>Check Word</guibutton>. If this is a known word, the "
 "<guilabel>Suggestions</guilabel> list is replaced with the text "
-"<literal>(correct spelling)</literal>. If the word is not known, new entries"
-" appear in the <guilabel>Suggestions</guilabel> list."
+"<literal>(correct spelling)</literal>. If the word is not known, new entries "
+"appear in the <guilabel>Suggestions</guilabel> list."
 msgstr ""
 "To check l'ortografia della parola scritta nella casella di testo "
 "<guilabel>Sostituisci con</guilabel>, fare clic su <guibutton>Controlla "
 "parola</guibutton>. Se questa è una parola conosciuta, l'elenco "
 "<guilabel>Suggerimenti</guilabel> sarà sostituito dal testo "
-"<literal>(ortografia corretta)</literal>.  Se la parola è sconosciuta, nella"
-" lista <guilabel>Suggerimenti</guilabel> compariranno nuove voci."
+"<literal>(ortografia corretta)</literal>.  Se la parola è sconosciuta, nella "
+"lista <guilabel>Suggerimenti</guilabel> compariranno nuove voci."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2512
+#: C/index.docbook:2504
 msgid ""
 "To ignore the current occurrence of the unknown word, click "
 "<guibutton>Ignore</guibutton>. To ignore all occurrences of the unknown "
@@ -4731,29 +4691,29 @@ msgid ""
 "in the current <application>lapiz</application> session only."
 msgstr ""
 "Per ignorare l'occorrenza corrente della parola sconosciuta, cliccare "
-"<guibutton>Ignora</guibutton>. Per ignorare tutte le occorrenze della parola"
-" sconosciuta, cliccare <guibutton>Ignora tutto</guibutton>. La parola "
-"sconosciuta sarà ignorata solo nella sessione correntedi "
-"<application>lapiz</application>."
+"<guibutton>Ignora</guibutton>. Per ignorare tutte le occorrenze della parola "
+"sconosciuta, cliccare <guibutton>Ignora tutto</guibutton>. La parola "
+"sconosciuta sarà ignorata solo nella sessione correntedi <application>lapiz</"
+"application>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2515
+#: C/index.docbook:2507
 msgid ""
 "To change the current occurrence of the unknown word to the text in the "
-"<guilabel>Change to</guilabel> text box, click "
-"<guibutton>Change</guibutton>. To change all occurrences of the unknown word"
-" to the text in the <guilabel>Change to</guilabel> text box, click "
-"<guibutton>Change All</guibutton>."
+"<guilabel>Change to</guilabel> text box, click <guibutton>Change</"
+"guibutton>. To change all occurrences of the unknown word to the text in the "
+"<guilabel>Change to</guilabel> text box, click <guibutton>Change All</"
+"guibutton>."
 msgstr ""
 "Per modificare l'occorrenza attuale della parola sconosciuta con il "
 "contenuto della casella di testo <guilabel>Sostituisci con</guilabel>, "
-"cliccare <guibutton>Modifica</guibutton>. Per modificare tutte le occorrenze"
-" della parola sconosciuta con il contenuto della casella di testo "
-"<guilabel>Sostituisci con</guilabel>, cliccare <guibutton>Modifica "
-"tutto</guibutton>."
+"cliccare <guibutton>Modifica</guibutton>. Per modificare tutte le occorrenze "
+"della parola sconosciuta con il contenuto della casella di testo "
+"<guilabel>Sostituisci con</guilabel>, cliccare <guibutton>Modifica tutto</"
+"guibutton>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2518
+#: C/index.docbook:2510
 msgid ""
 "To add the unknown word to your personal dictionary, click <guibutton>Add "
 "word</guibutton>."
@@ -4762,21 +4722,21 @@ msgstr ""
 "cliccare <guibutton>Aggiungi parola</guibutton>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2521
+#: C/index.docbook:2513
 msgid ""
 "To close the <guilabel>Check Spelling</guilabel> dialog, click "
 "<guibutton>Close</guibutton>."
 msgstr ""
-"Per uscire dalla finestra di dialogo <guilabel>Controllo "
-"ortografico</guilabel>, cliccare <guibutton>Chiudi</guibutton>."
+"Per uscire dalla finestra di dialogo <guilabel>Controllo ortografico</"
+"guilabel>, cliccare <guibutton>Chiudi</guibutton>."
 
 #. (itstool) path: info/title
-#: C/index.docbook:2530
+#: C/index.docbook:2522
 msgid "Tag List Plugin"
 msgstr "Plugin Elenco Tag"
 
 #. (itstool) path: section/para
-#: C/index.docbook:2532
+#: C/index.docbook:2524
 msgid ""
 "The <application>Tag List</application> plugin allows you to insert common "
 "tags from a list in the side pane."
@@ -4785,33 +4745,33 @@ msgstr ""
 "comuni da una lista elencata nel riquadro laterale."
 
 #. (itstool) path: section/para
-#: C/index.docbook:2533
+#: C/index.docbook:2525
 msgid "To use the Tag List plugin, perform the following steps:"
 msgstr "Per utilizzare il plugin Elenco Tag, procedere come segue."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2536
+#: C/index.docbook:2528
 msgid ""
-"Choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Side "
-"Pane</guimenuitem> </menuchoice>."
+"Choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Side Pane</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Selezionare <menuchoice> <guimenu>Visualizza</guimenu> <guimenuitem>Riquadro"
-" Laterale</guimenuitem> </menuchoice>."
+"Selezionare <menuchoice> <guimenu>Visualizza</guimenu> <guimenuitem>Riquadro "
+"Laterale</guimenuitem> </menuchoice>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2539
+#: C/index.docbook:2531
 msgid ""
 "By default, the side pane shows a tab containing a list of open documents. "
-"Click on the tab showing a + icon at the bottom of the side pane to show the"
-" tag list tab."
+"Click on the tab showing a + icon at the bottom of the side pane to show the "
+"tag list tab."
 msgstr ""
 "Per impostazione predefinita, il riquadro laterale mostra una scheda con la "
-"lista dei documenti aperti. Fare clic sulla scheda contrassegnata dall'icona"
-" a forma di croce + in basso al riquadro laterale per mostrare la scheda "
+"lista dei documenti aperti. Fare clic sulla scheda contrassegnata dall'icona "
+"a forma di croce + in basso al riquadro laterale per mostrare la scheda "
 "elenco tag."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2542
+#: C/index.docbook:2534
 msgid ""
 "Select the appropriate tag category from the drop-down list. For example, "
 "<guilabel>HTML - Tags</guilabel>."
@@ -4820,12 +4780,12 @@ msgstr ""
 "<guilabel>HTML - Tag</guilabel>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2545
+#: C/index.docbook:2537
 msgid "Scroll through the tag list to find the required tag."
 msgstr "Scorrere la lista dei tag per trovare quello richiesto."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2548
+#: C/index.docbook:2540
 msgid ""
 "To insert a tag at the cursor position in the current file, double-click on "
 "the tag in the tag list. You can also insert a tag as follows:"
@@ -4835,25 +4795,25 @@ msgstr ""
 "seguenti modi:"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2551
+#: C/index.docbook:2543
 msgid ""
 "To insert a tag in the current file and change the focus from the side pane "
 "to the display area, press <keycap>Return</keycap>."
 msgstr ""
 "Per inserire un tag nel file corrente e spostare il focus su dal riquadro "
-"laterale all'area di visualizzazione del documento, premere "
-"<keycap>Invio</keycap>."
+"laterale all'area di visualizzazione del documento, premere <keycap>Invio</"
+"keycap>."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:2554
+#: C/index.docbook:2546
 msgid ""
 "To insert a tag in the current file and maintain the focus on the "
-"<guilabel>Tag list plugin</guilabel> window, press <keycombo> "
-"<keycap>Shift</keycap> <keycap>Return</keycap> </keycombo>."
+"<guilabel>Tag list plugin</guilabel> window, press <keycombo> <keycap>Shift</"
+"keycap> <keycap>Return</keycap> </keycombo>."
 msgstr ""
 "Per inserire un tag nel file corrente e mantenere il focus sulla finestra "
-"<guilabel>plugin Elenco Tag</guilabel>, premere <keycombo> "
-"<keycap>Shift</keycap> <keycap>Invio</keycap> </keycombo>. "
+"<guilabel>plugin Elenco Tag</guilabel>, premere <keycombo> <keycap>Shift</"
+"keycap> <keycap>Invio</keycap> </keycombo>. "
 
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:5
@@ -4861,31 +4821,30 @@ msgid ""
 "Permission is granted to copy, distribute and/or modify this document under "
 "the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any "
 "later version published by the Free Software Foundation with no Invariant "
-"Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy"
-" of the GFDL at this <link "
-"xlink:href=\"https://www.gnu.org/licenses/fdl-1.1.html\">link</link> or in "
-"the file COPYING-DOCS distributed with this manual."
+"Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy "
+"of the GFDL at this <link xlink:href=\"https://www.gnu.org/licenses/fdl-1.1."
+"html\">link</link> or in the file COPYING-DOCS distributed with this manual."
 msgstr ""
 "Questo documento può essere copiato, distribuito e/o modificato solo in "
 "conformità con i termini della GNU Free Documentation License (GFDL), "
 "versione 1.1 o delle versioni successive pubblicate dalla Free Software "
 "Foundation senza sezioni invariabili, frontespizi e testi di copertina. Una "
-"copia della GFDL è disponibile a questo <ulink type=\"help\" "
-"url=\"help:fdl\">collegamento</ulink> o nel file COPYING-DOCS distribuito "
-"con questo manuale."
+"copia della GFDL è disponibile a questo <ulink type=\"help\" url=\"help:"
+"fdl\">collegamento</ulink> o nel file COPYING-DOCS distribuito con questo "
+"manuale."
 
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:14
 msgid ""
 "This manual is part of a collection of CAFE manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
-"you can do so by adding a copy of the license to the manual, as described in"
-" section 6 of the license."
+"you can do so by adding a copy of the license to the manual, as described in "
+"section 6 of the license."
 msgstr ""
 "Questo manuale fa parte di una raccolta di manuali CAFE distribuita in "
 "conformità con la GFDL. Per poter distribuire questo manuale separatamente, "
-"è necessario inserirvi una copia della licenza, come descritto nella sezione"
-" 6 della licenza."
+"è necessario inserirvi una copia della licenza, come descritto nella sezione "
+"6 della licenza."
 
 #. (itstool) path: legalnotice/para
 #: C/legal.xml:21
@@ -4921,29 +4880,29 @@ msgstr ""
 "IMPLICITE, INCLUSE, MA SENZA LIMITAZIONE, LE GARANZIE ATTESTANTI CHE IL "
 "DOCUMENTO O LE SUE VERSIONI MODIFICATE SIANO PRIVI DI DIFETTI, "
 "COMMERCIALIZZABILI, IDONEI A UN DETERMINATO SCOPO O CHE NON VIOLINO DIRITTI "
-"DI TERZI. SI DECLINA QUALUNQUE RESPONSABILITÀ RIGUARDO AI RISCHI INERENTI LA"
-" QUALITÀ, L'ACCURATEZZA E LE PRESTAZIONI DEL DOCUMENTO O DI UNA SUA VERSIONE"
-" MODIFICATA. QUALORA UN DOCUMENTO O UNA SUA VERSIONE MODIFICATA DOVESSERO "
+"DI TERZI. SI DECLINA QUALUNQUE RESPONSABILITÀ RIGUARDO AI RISCHI INERENTI LA "
+"QUALITÀ, L'ACCURATEZZA E LE PRESTAZIONI DEL DOCUMENTO O DI UNA SUA VERSIONE "
+"MODIFICATA. QUALORA UN DOCUMENTO O UNA SUA VERSIONE MODIFICATA DOVESSERO "
 "PRESENTARE QUALUNQUE TIPO DI DIFETTO, IL COSTO DI EVENTUALI INTERVENTI DI "
 "ASSISTENZA, RIPARAZIONE O CORREZIONE SARÀ A CARICO DELL'UTENTE (NON DEL "
 "REDATTORE INIZIALE, DELL'AUTORE O DI ALTRI COLLABORATORI). QUESTA "
-"LIMITAZIONE DELLA GARANZIA COSTITUISCE PARTE ESSENZIALE DELLA LICENZA. L'USO"
-" DEL DOCUMENTO O DELLE SUE VERSIONI MODIFICATE È CONSENTITO SOLO ENTRO I "
+"LIMITAZIONE DELLA GARANZIA COSTITUISCE PARTE ESSENZIALE DELLA LICENZA. L'USO "
+"DEL DOCUMENTO O DELLE SUE VERSIONI MODIFICATE È CONSENTITO SOLO ENTRO I "
 "TERMINI DI QUESTA LIMITAZIONE DELLA GARANZIA; E"
 
 #. (itstool) path: listitem/para
 #: C/legal.xml:57
 msgid ""
-"UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING"
-" NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
+"UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING "
+"NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
 "CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE "
 "DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO ANY PERSON "
 "FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF "
 "ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, "
-"WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES"
-" OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED "
-"VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE"
-" POSSIBILITY OF SUCH DAMAGES."
+"WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES "
+"OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED "
+"VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE "
+"POSSIBILITY OF SUCH DAMAGES."
 msgstr ""
 "IN NESSUNA CIRCOSTANZA E PER NESSUNA RAGIONE LEGALE, INCLUSI I PRINCIPI DI "
 "COLPA (INCLUSA LA NEGLIGENZA), ACCORDO CONTRATTUALE O ALTRO, SARÀ POSSIBILE "
@@ -4953,8 +4912,8 @@ msgstr ""
 "QUALUNQUE PERSONA PER DANNI DIRETTI, INDIRETTI, SPECIALI, INCIDENTALI O "
 "CONSEGUENTI DI QUALUNQUE NATURA, INCLUSI, MA SENZA LIMITAZIONE, I DANNI PER "
 "PERDITA DI AVVIAMENTO, INTERRUZIONE DEL LAVORO, GUASTO O MALFUNZIONAMENTO "
-"DEL COMPUTER O QUALUNQUE ALTRO DANNO O PERDITA DERIVANTE O CORRELATA ALL'USO"
-" DEL DOCUMENTO O DI UNA SUA VERSIONE MODIFICATA, ANCHE QUALORA LE PERSONE "
+"DEL COMPUTER O QUALUNQUE ALTRO DANNO O PERDITA DERIVANTE O CORRELATA ALL'USO "
+"DEL DOCUMENTO O DI UNA SUA VERSIONE MODIFICATA, ANCHE QUALORA LE PERSONE "
 "CITATE FOSSERO STATE INFORCAFE DELLA POSSIBILITÀ DI TALI DANNI."
 
 #. (itstool) path: legalnotice/para
@@ -4965,8 +4924,8 @@ msgid ""
 "<_:orderedlist-1/>"
 msgstr ""
 "IL DOCUMENTO E LE VERSIONI MODIFICATE DEL DOCUMENTO VENGONO RILASCIATE "
-"SECONDO I TERMINI DELLA GNU FREE DOCUMENTATION LICENSE TENENDO PRESENTE CHE:"
-" <_:orderedlist-1/>"
+"SECONDO I TERMINI DELLA GNU FREE DOCUMENTATION LICENSE TENENDO PRESENTE CHE: "
+"<_:orderedlist-1/>"
 
 #. (itstool) path: formalpara/title
 #: C/legal.xml:78
@@ -4976,12 +4935,17 @@ msgstr "Commenti"
 #. (itstool) path: formalpara/para
 #: C/legal.xml:79
 msgid ""
-"To report a bug or make a suggestion regarding the "
-"<application>lapiz</application> application or this manual, follow the "
-"directions in the <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE "
-"Feedback Page</link>."
+"To report a bug or make a suggestion regarding the <application>lapiz</"
+"application> application or this manual, follow the directions in the <link "
+"xlink:href=\"help:cafe-user-guide/feedback\">CAFE Feedback Page</link>."
 msgstr ""
 "Per segnalare un bug o dare un suggerimento a proposito dell'applicazione "
-"<application>lapiz</application> o di questo manuale, seguire le indicazioni"
-" alla <link xlink:href=\"help:cafe-user-guide/feedback\">Pagina Feedback di "
+"<application>lapiz</application> o di questo manuale, seguire le indicazioni "
+"alla <link xlink:href=\"help:cafe-user-guide/feedback\">Pagina Feedback di "
 "CAFE</link>."
+
+#~ msgid "Ctrl + L"
+#~ msgstr "Ctrl + L"
+
+#~ msgid "Open a location."
+#~ msgstr "Aprire una posizione."
