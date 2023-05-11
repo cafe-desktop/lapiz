@@ -4906,9 +4906,3 @@ msgstr ""
 "<application>Lapiz</application> eller denne manual, bør du følge "
 "instruktionerne på <link xlink:href=\"help:cafe-user-guide/feedback\">CAFE-"
 "tilbagemeldingssiden</link>."
-
-#~ msgid "Ctrl + L"
-#~ msgstr "Ctrl + L"
-
-#~ msgid "Open a location."
-#~ msgstr "Åbn en placering."

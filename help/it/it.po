@@ -4943,9 +4943,3 @@ msgstr ""
 "<application>lapiz</application> o di questo manuale, seguire le indicazioni "
 "alla <link xlink:href=\"help:cafe-user-guide/feedback\">Pagina Feedback di "
 "CAFE</link>."
-
-#~ msgid "Ctrl + L"
-#~ msgstr "Ctrl + L"
-
-#~ msgid "Open a location."
-#~ msgstr "Aprire una posizione."
