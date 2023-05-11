@@ -6458,13 +6458,3 @@ msgstr "Dátum/idő beszúrásakor…"
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Formátum bekérése"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-
-#~ msgid "system-file-manager"
-#~ msgstr "rendszer-fájlkezelő"
-
-#~ msgid "text-x-python"
-#~ msgstr "text-x-python"

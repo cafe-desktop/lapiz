@@ -6555,39 +6555,3 @@ msgstr "Kiedy wstawiać datę/czas..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Pytanie o format"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-2', 'WINDOWS-1250', 'UTF-16' ]"
-
-#~ msgid ""
-#~ "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
-#~ "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
-#~ "Copyright © 2003-2006 Paolo Maggi\n"
-#~ "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
-#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
-#~ "Copyright © 2011 Perberos\n"
-#~ "Copyright © 2012-2020 CAFE developers"
-#~ msgstr ""
-#~ "Prawa Autorskie © 1998-2000 Evan Lawrence, Alex Robert\n"
-#~ "Prawa Autorskie © 2000-2002 Chema Celorio, Paolo Maggi\n"
-#~ "Prawa Autorskie © 2003-2006 Paolo Maggi\n"
-#~ "Prawa Autorskie © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
-#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
-#~ "Prawa Autorskie © 2011 Perberos\n"
-#~ "Prawa Autorskie © 2012-2020 Deweloperzy CAFE"
-
-#~ msgid "system-file-manager"
-#~ msgstr "system-file-manager"
-
-#~ msgid "text-x-python"
-#~ msgstr "text-x-python"
-
-#~ msgid "document-open"
-#~ msgstr "document-open"
-
-#~ msgid "view-sort-ascending"
-#~ msgstr "view-sort-ascending"
-
-#~ msgid "tools-check-spelling"
-#~ msgstr "tools-check-spelling"

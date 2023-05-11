@@ -6463,16 +6463,3 @@ msgstr "När datum/tid infogas..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Fråga efter ett format"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-
-#~ msgid "accessories-text-editor"
-#~ msgstr "accessories-text-editor"
-
-#~ msgid "system-file-manager"
-#~ msgstr "system-file-manager"
-
-#~ msgid "text-x-python"
-#~ msgstr "text-x-python"

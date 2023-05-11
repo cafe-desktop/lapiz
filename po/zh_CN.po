@@ -6364,13 +6364,3 @@ msgstr "在插入日期/时间时..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "提示可使用的格式(_P)"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-
-#~ msgid "system-file-manager"
-#~ msgstr "系统文件管理器"
-
-#~ msgid "text-x-python"
-#~ msgstr "text-x-python"

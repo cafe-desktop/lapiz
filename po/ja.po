@@ -6441,7 +6441,3 @@ msgstr "日付/時刻を挿入する時..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "書式を毎回指定する(_P)"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

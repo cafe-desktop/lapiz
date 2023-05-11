@@ -6488,22 +6488,3 @@ msgstr "Įterpiant datą/laiką ..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Paklausti formato"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-
-#~ msgid "system-file-manager"
-#~ msgstr "system-file-manager"
-
-#~ msgid "text-x-python"
-#~ msgstr "text-x-python"
-
-#~ msgid "document-open"
-#~ msgstr "document-open"
-
-#~ msgid "view-sort-ascending"
-#~ msgstr "view-sort-ascending"
-
-#~ msgid "tools-check-spelling"
-#~ msgstr "tools-check-spelling"

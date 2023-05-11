@@ -6447,6 +6447,3 @@ msgstr "Kad ievieto datumu/laiku..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Prasīt formātu"
-
-#~ msgid "text-x-python"
-#~ msgstr "text-x-python"

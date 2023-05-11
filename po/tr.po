@@ -6472,13 +6472,3 @@ msgstr "Tarih/zaman eklendiğinde..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Bir biçim için sor"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[UTF-8,Güncel,ISO-8859-9,UTF-16]"
-
-#~ msgid "system-file-manager"
-#~ msgstr "system-file-manager"
-
-#~ msgid "text-x-python"
-#~ msgstr "text-x-python"

@@ -6358,7 +6358,3 @@ msgstr "Þegar slegin er inn dagsetning og tími..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "S_pyrja um snið"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'NÚVERANDI', 'ISO-8859-15', 'UTF-16' ]"

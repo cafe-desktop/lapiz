@@ -6411,7 +6411,3 @@ msgstr "ದಿನಾಂಕ/ಸಮಯವನ್ನು ಸೇರಿಸುವಾಗ.
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "ಒಂದು ವಿನ್ಯಾಸಕ್ಕಾಗಿ ಕೇಳು(_P)"
-
-#~ msgctxt "auto-detected"
-#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

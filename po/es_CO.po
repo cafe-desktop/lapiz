@@ -6296,6 +6296,3 @@ msgstr "Cuando ingrese fecha/hora..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr ""
-
-#~ msgid "system-file-manager"
-#~ msgstr "sistema administrador de archivo"
