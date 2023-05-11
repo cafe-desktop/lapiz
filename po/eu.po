@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Wolfgang Ulbrich <cafe@raveit.de>, 2020
 # Alexander Gabilondo <alexgabi@disroot.org>, 2020
@@ -10,19 +10,19 @@
 # Egoitz Rodriguez <egoitzro@gmail.com>, 2020
 # Asier Iturralde Sarasola <asier.iturralde@gmail.com>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Basque (https://www.transifex.com/cafe/teams/13566/eu/)\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -56,8 +56,7 @@ msgid ""
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
 "Editatzeko arean erabiliko den letra-tipo pertsonalizatua. Eragina izan "
-"dezan, \"Erabili letra-tipo lehenetsia\" aukerak desaktibatuta egon behar "
-"du."
+"dezan, \"Erabili letra-tipo lehenetsia\" aukerak desaktibatuta egon behar du."
 
 #: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
@@ -94,8 +93,8 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Lapiz-ek gordetzen dituen fitxategien babeskopiak sortu behar dituen ala ez."
-" Babeskopiaren luzapena ezar dezakezu \"Babeskopiaren luzapena\" aukeraren "
+"Lapiz-ek gordetzen dituen fitxategien babeskopiak sortu behar dituen ala ez. "
+"Babeskopiaren luzapena ezar dezakezu \"Babeskopiaren luzapena\" aukeraren "
 "bidez."
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
@@ -154,8 +153,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Lapiz-ek desegin edo berregin ditzakeen ekintzen gehienezko kopurua. Erabili"
-" \"-1\" ekintza kopurua ez mugatzeko."
+"Lapiz-ek desegin edo berregin ditzakeen ekintzen gehienezko kopurua. Erabili "
+"\"-1\" ekintza kopurua ez mugatzeko."
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -165,9 +164,9 @@ msgstr "Lerroaren itzulbiratze-modua"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Lerro luzeak editatzeko arean nola itzulbiratu zehazten du. Erabili "
 "\"CTK_WRAP_NONE\" ez itzulbiratzeko, \"CTK_WRAP_WORD\" hitzaren mugetan "
@@ -227,8 +226,8 @@ msgstr "Nabarmendu bat-datorren parentesia"
 #: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
-"Lapiz-ek hautatutako parentesiari dagokion bikotea nabarmendu behar duen ala"
-" ez."
+"Lapiz-ek hautatutako parentesiari dagokion bikotea nabarmendu behar duen ala "
+"ez."
 
 #: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
@@ -266,10 +265,9 @@ msgstr ""
 "mugitzeko. \"ONDOREN\"  lerroaren hasierara/amaierara mugitzeko teklak "
 "aurreneko aldiz sakatzen direnean eta testuaren hasierara/amaierara "
 "(zuriuneei ez ikusi eginez) mugitzeko teklak bigarren aldiz sakatzean. "
-"\"AURRETIK\" testuaren hasierara/amaierara mugitzeko lerroaren "
-"hasierara/amaierara mugitu aurretik. Edo erabili \"BETI\" testuaren "
-"hasierara/amaierara beti mugitzeko, lerroaren hasierara/amaierara mugitu "
-"ordez."
+"\"AURRETIK\" testuaren hasierara/amaierara mugitzeko lerroaren hasierara/"
+"amaierara mugitu aurretik. Edo erabili \"BETI\" testuaren hasierara/"
+"amaierara beti mugitzeko, lerroaren hasierara/amaierara mugitu ordez."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -319,9 +317,9 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 "Tresna-barrako botoien estiloa. Balio posibleak hauek dira: "
 "\"LAPIZ_TOOLBAR_SYSTEM\" sistemaren estilo lehenetsia erabiltzeko, "
@@ -346,8 +344,7 @@ msgid "Side Pane is Visible"
 msgstr "Alboko panela ikusgai dago"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "Editatzeko leihoen alboko panelak ikusgai egon behar duen ala ez."
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -374,19 +371,18 @@ msgstr "Fitxategi berrienen gehienezko kopurua"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
-"\"Fitxategi berrienak\" azpimenuan bistaratuko diren fitxategi ireki berrien"
-" gehienezko kopurua zehazten du."
+"\"Fitxategi berrienak\" azpimenuan bistaratuko diren fitxategi ireki berrien "
+"gehienezko kopurua zehazten du."
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "Inprimatu sintaxiaren nabarmentzea"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "lapiz-ek dokumentuak inprimatzean sintaxiaren nabarmentzea inprimatu behar "
 "duen ala ez."
@@ -396,8 +392,7 @@ msgid "Print Header"
 msgstr "Inprimatu goiburua"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Lapiz-ek dokumentuak inprimatzean dokumentuaren goiburua sartu behar duen "
 "ala ez."
@@ -410,9 +405,9 @@ msgstr "Lerroaren itzulbiratze-modua inprimatzen"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Lerro luzeak inprimatzeko nola itzulbiratu zehazten du. Erabili "
 "\"CTK_WRAP_NONE\" ez itzulbiratzeko, \"CTK_WRAP_WORD\" hitzaren mugetan "
@@ -447,8 +442,8 @@ msgstr "Testuaren letra-tipoa inprimatzeko"
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Dokumentuak inprimatzean dokumentuaren testuan zein letra-tipo erabili behar"
-" den zehazten du."
+"Dokumentuak inprimatzean dokumentuaren testuan zein letra-tipo erabili behar "
+"den zehazten du."
 
 #: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
@@ -487,8 +482,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -497,8 +492,8 @@ msgstr "Automatikoki detektatutako kodeketak"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Lapiz-ek fitxategien kodeketa automatikoki detektatzeko erabiltzen dituen "
 "kodeketen zerrenda ordenatua. \"CURRENT\" uneko locale-aren kodeketa da. "
@@ -518,9 +513,8 @@ msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
 msgstr ""
-"'Karaktereak kodetzea' menuan agertzen diren kodeketen zerrenda, ireki/gorde"
-" fitxategi-hautatzailean. Ezagutzen diren kodeketak bakarrik erabiltzen "
-"dira."
+"'Karaktereak kodetzea' menuan agertzen diren kodeketen zerrenda, ireki/gorde "
+"fitxategi-hautatzailean. Ezagutzen diren kodeketak bakarrik erabiltzen dira."
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -575,9 +569,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -603,8 +596,8 @@ msgstr "CAFE mahaigain ingurunerako testu-editorea"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -623,14 +616,7 @@ msgstr "Testu-editorea"
 msgid "Edit text files"
 msgstr "Editatu testu-fitxategiak"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -650,9 +636,8 @@ msgstr "Itxi gorde _gabe"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -688,8 +673,7 @@ msgstr "Galdera"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -715,8 +699,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -724,8 +707,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Ez baduzu gordetzen, azken orduko aldaketak betirako galduko dira."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -772,8 +754,7 @@ msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1229,8 +1210,7 @@ msgstr "Leheneratu '%s' dokumentuko gorde ez diren aldaketak?"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1240,8 +1220,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1149
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
-msgstr ""
-"Azken minutuan dokumentuan egin diren aldaketak betirako galduko dira."
+msgstr "Azken minutuan dokumentuan egin diren aldaketak betirako galduko dira."
 
 #: lapiz/lapiz-commands-file.c:1155
 #, c-format
@@ -1257,8 +1236,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1266,8 +1244,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Azken orduan dokumentuan egin diren aldaketak betirako galduko dira."
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1328,8 +1305,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1345,10 +1322,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Asier Iturralde Sarasola <asier.iturralde@gmail.com>\n"
@@ -1605,8 +1583,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "Ostalari-izena baliogabea da. Egiaztatu helbidea ondo idatzi duzula eta "
 "saiatu berriro."
@@ -1662,8 +1640,8 @@ msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
-"Esteka jarraien kopurua mugatua dago, eta uneko fitxategia ezin izan da muga"
-" horretan aurkitu."
+"Esteka jarraien kopurua mugatua dago, eta uneko fitxategia ezin izan da muga "
+"horretan aurkitu."
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1734,8 +1712,8 @@ msgstr "%s fitxategia jadanik irekita dago beste lapiz leihoan."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "lapiz-ek fitxategiaren instantzia irakurtzeko soilik moduan ireki du. Dena "
 "den editatzea nahi duzu?"
@@ -1756,8 +1734,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "%s fitxategia aldatu egin da azken irakurketatik."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "Gordetzen baduzu kanpoko aldaketak galdu egingo dira. Gorde dena den?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
@@ -1773,8 +1750,8 @@ msgstr "Ezin izan da aldi baterako babeskopiarik sortu %s gordetzean"
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "lapiz-ek ezin izan du fitxategiaren kopia zaharraren babeskopirik egin "
 "berria gordetzean. Abisu honi ez ikusi egin dezaiokezu eta fitxategia gorde "
@@ -1793,8 +1770,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "lapiz-ek ezin du helbide hau idazteko moduan kudeatu. Egiaztatu helbidea "
 "ondo idatzi duzula eta saiatu berriro."
@@ -1805,8 +1782,8 @@ msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"%s ez da baliozko helbidea. Egiaztatu helbidea ondo idatzi duzula eta saiatu"
-" berriro."
+"%s ez da baliozko helbidea. Egiaztatu helbidea ondo idatzi duzula eta saiatu "
+"berriro."
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
@@ -1818,8 +1795,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "Diskoan ez dago fitxategia gordetzeko behar adina leku. Libratu lekua "
 "diskoan eta saiatu berriro."
@@ -1834,22 +1811,21 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
-msgstr ""
-"Izen berdineko fitxategia badago lehendik ere. Erabili beste izen bat."
+msgstr "Izen berdineko fitxategia badago lehendik ere. Erabili beste izen bat."
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
-"Fitxategia gordetzeko erabili nahi duzun diskoak fitxategi-izenaren muga du."
-" Saiatu izen laburragoa erabiltzen."
+"Fitxategia gordetzeko erabili nahi duzun diskoak fitxategi-izenaren muga du. "
+"Saiatu izen laburragoa erabiltzen."
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 "Fitxategia gordetzeko erabili nahi duzun diskoak fitxategi-tamainaren muga "
 "du. Saiatu fitxategia tamaina txikiagoan gordetzen edo muga hori ez duen "
@@ -1914,14 +1890,12 @@ msgstr "Inprimatu s_intaxiaren nabarmentzea"
 msgid "Print line nu_mbers"
 msgstr "Inprimatu _lerro-zenbakiak"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Zenbakia"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "lerro"
@@ -2032,8 +2006,7 @@ msgstr "GAIN"
 msgid "INS"
 msgstr "TXER"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2089,38 +2062,38 @@ msgstr "%2$s(e)n %1$s gordetzen"
 msgid "Saving %s"
 msgstr "%s gordetzen"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "IS"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "Errorea %s fitxategia irekitzean."
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Errorea %s fitxategia leheneratzean."
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "Errorea %s fitxategia gordetzean."
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Izena:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME mota:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Kodeketa:"
 
@@ -2880,12 +2853,6 @@ msgstr "Fitxategi-arakatzailearen panela"
 msgid "Easy file access from the side pane"
 msgstr "Fitxategiak erraz sarbidetu albo-paneletik"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Ezarri aurreneko dokumentuaren kokalekua"
@@ -2899,8 +2866,8 @@ msgid ""
 msgstr ""
 "TRUE (egia) gisa ezartzen bada, fitxategi-arakatzaileak oraindik erabili ez "
 "duen irekitako aurreneko dokumentuaren direktorioa bistaratuko du fitxategi-"
-"arakatzailearen osagaiak. Kasu hau dokumentua komando lerrotik edo Baul-etik"
-" irekitzen denean gertatu ohi da."
+"arakatzailearen osagaiak. Kasu hau dokumentua komando lerrotik edo Baul-etik "
+"irekitzen denean gertatu ohi da."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -2915,8 +2882,8 @@ msgid ""
 msgstr ""
 "Balio honek fitxategi-arakatzailetik iragaziko diren fitxategiak zehazten "
 "du. Balio posibleak: 'none' (ez du iragazten), 'hidden' (iragazi ezkutuko "
-"fitxategiak), 'binary' (iragazi fitxategi bitarrak) eta 'hidden_and_binary' "
-"(iragazi bai ezkutukoak bai bitarrak)."
+"fitxategiak), 'binary' (iragazi fitxategi bitarrak) eta "
+"'hidden_and_binary' (iragazi bai ezkutukoak bai bitarrak)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2924,8 +2891,8 @@ msgstr "Fitxategi-arakatzailearen iragazki-eredua"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "Iragazki-eredua fitxategi-arakatzailearekin iragazteko. Iragazki honek "
 "iragazki-moduaren gainean funtzionatzen du."
@@ -2960,9 +2927,9 @@ msgstr "Fitxategi-arakatzailearen erro birtualeko direktorioa"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Fitxategi-arakatzailearen erro birtualeko direktorioa, fitxategi-"
 "arakatzailearen osagaia kargatzean eta onload/tree_view EGIA denean "
@@ -3074,8 +3041,7 @@ msgstr ""
 "Izenez aldatutako fitxategia jadanik iragazita dago. Iragazkiaren ezarpenak "
 "egokitu behar dituzu fitxategia ikusgai egiteko."
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "fitxategia"
@@ -3088,8 +3054,7 @@ msgstr ""
 "Fitxategi berria jadanik iragazita dago. Iragazkiaren ezarpenak egokitu "
 "behar dituzu fitxategia ikusgai egiteko."
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "direktorioa"
@@ -3267,12 +3232,6 @@ msgstr "Python kontsola"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Python-en kontsola interaktiboa beheko panelean."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "_Errore-kolorea:"
@@ -3305,12 +3264,6 @@ msgstr "Dokumentuak azkar irekitzen ditu"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Fitxategiak azkar irekitzen ditu"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3531,8 +3484,8 @@ msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr ""
-"Python-eko komandoak (%s) gehienezko denbora gainditu du, exekuzioa abortatu"
-" egin da."
+"Python-eko komandoak (%s) gehienezko denbora gainditu du, exekuzioa abortatu "
+"egin da."
 
 #: plugins/snippets/snippets/Placeholder.py:609
 #, python-format
@@ -3554,12 +3507,6 @@ msgstr "Ordenatu"
 #: plugins/sort/sort.plugin.desktop.in:6
 msgid "Sorts a document or selected text."
 msgstr "Dokumentua edo hautatutako testua ordenatzen du."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
 
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
@@ -3589,10 +3536,8 @@ msgstr "Ezin duzu ordenatze-eragiketarik desegin"
 msgid "Autocheck Type"
 msgstr ""
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3619,8 +3564,7 @@ msgstr "Ortografia-egiaztapena"
 msgid "Suggestions"
 msgstr "Iradokizunak"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(ortografia zuzena)"
@@ -3632,6 +3576,7 @@ msgstr "Ortografia-egiaztapena bukatuta"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3641,6 +3586,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3649,6 +3595,7 @@ msgstr "Ezezaguna (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3782,12 +3729,6 @@ msgstr "Ortografia-egiaztatzailea"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Uneko dokumentuaren ortografia egiaztatzen du."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6469,12 +6410,6 @@ msgstr "Gorde Tarteko Zuriune Gabe"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Lerroetatik zuriuneak kendu gorde aurretik."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Sartu data eta ordua"
@@ -6499,8 +6434,7 @@ msgstr "_Erabili formatu pertsonalizatua"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%Y/%m/%d %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6517,3 +6451,7 @@ msgstr "Data/ordua txertatzean..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "Eskatu _formatu bat"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

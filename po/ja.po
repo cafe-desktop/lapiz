@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Aefgh Threenine <aefgh3962@gmail.com>, 2020
 # Ikuru K <kanumaiku@gmail.com>, 2020
@@ -19,19 +19,19 @@
 # あわしろいくや <ikunya@gmail.com>, 2020
 # Mika Kobayashi, 2020
 # semicolon <mail@semicln.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: semicolon <mail@semicln.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/cafe/teams/13566/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -45,9 +45,9 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"lapiz "
-"で指定したフォントの代わりにシステムのデフォルトフォントを編集で使用するかどうかを指定します。このオプションを無効にした場合は、システムフォントではなく"
-" \"エディターのフォント\" オプションで指定したフォントが使用されます。"
+"lapiz で指定したフォントの代わりにシステムのデフォルトフォントを編集で使用す"
+"るかどうかを指定します。このオプションを無効にした場合は、システムフォントで"
+"はなく \"エディターのフォント\" オプションで指定したフォントが使用されます。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
@@ -62,7 +62,9 @@ msgstr "エディターのフォント"
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
-msgstr "編集領域で使用するカスタムフォントを指定します。これは \"デフォルトのフォントを使う\" オプションを無効にしている場合にのみ効果があります。"
+msgstr ""
+"編集領域で使用するカスタムフォントを指定します。これは \"デフォルトのフォント"
+"を使う\" オプションを無効にしている場合にのみ効果があります。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
@@ -72,7 +74,9 @@ msgstr "[ctrl] + [tab]でタブを切り替えます"
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
-msgstr "trueの場合、[ctrl + tab]および[ctrl + shift + tab]を使用してタブを切り替えることができます。"
+msgstr ""
+"trueの場合、[ctrl + tab]および[ctrl + shift + tab]を使用してタブを切り替える"
+"ことができます。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
@@ -88,7 +92,9 @@ msgstr "スタイルのスキーム"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a CtkSourceView Style Scheme used to color the text."
-msgstr "文字列に色を付ける際に使用する CtkSourceView のスタイルを表すスキームの ID です。"
+msgstr ""
+"文字列に色を付ける際に使用する CtkSourceView のスタイルを表すスキームの ID で"
+"す。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
@@ -99,8 +105,9 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"ファイルを保存する時にバックアップコピーを作成するかどうかを指定します。\"バックアップコピーの拡張子\" "
-"オプションでバックアップファイルの拡張子を設定することができます。"
+"ファイルを保存する時にバックアップコピーを作成するかどうかを指定しま"
+"す。\"バックアップコピーの拡張子\" オプションでバックアップファイルの拡張子を"
+"設定することができます。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -111,7 +118,9 @@ msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
-msgstr "指定時間後に変更されたファイルを lapiz が自動的に保存するかどうかを指定します。\"自動保存の間隔\" オプションで時間を設定できます。"
+msgstr ""
+"指定時間後に変更されたファイルを lapiz が自動的に保存するかどうかを指定しま"
+"す。\"自動保存の間隔\" オプションで時間を設定できます。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -121,7 +130,9 @@ msgstr "自動保存の間隔"
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
-msgstr "変更したファイルを lapiz が自動的に保存するまでの時間(分単位)です。これは \"自動保存\" オプションが有効の場合のみ効果があります。"
+msgstr ""
+"変更したファイルを lapiz が自動的に保存するまでの時間(分単位)です。これは "
+"\"自動保存\" オプションが有効の場合のみ効果があります。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -139,7 +150,9 @@ msgstr "書き込み可能な VFS スキーム"
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
-msgstr "lapiz が書き込みモードでサポートする VFS の並びです。'file' のスキームはデフォルトで書き込み可能です。"
+msgstr ""
+"lapiz が書き込みモードでサポートする VFS の並びです。'file' のスキームはデ"
+"フォルトで書き込み可能です。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -149,7 +162,9 @@ msgstr "\"元に戻す\" の最大回数"
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
-msgstr "lapiz で \"元に戻す\" または \"やり直す\" ことができる動作の回数を最大値で指定します (無制限にする場合は \"-1\")。"
+msgstr ""
+"lapiz で \"元に戻す\" または \"やり直す\" ことができる動作の回数を最大値で指"
+"定します (無制限にする場合は \"-1\")。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -159,13 +174,15 @@ msgstr "行の折り返しモード"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"編集領域内の長い行をどのように折り返すかを指定します。折り返さない場合は \"CTK_WRAP_NONE\"、単語の境界で折り返す場合は "
-"\"CTK_WRAP_WORD\"、そして文字の境界で折り返す場合は \"CTK_WRAP_CHAR\" "
-"を使います。値は大文字小文字を区別することに注意してください。そしてここで記述したとおりに表示されるか確認してください。"
+"編集領域内の長い行をどのように折り返すかを指定します。折り返さない場合は "
+"\"CTK_WRAP_NONE\"、単語の境界で折り返す場合は \"CTK_WRAP_WORD\"、そして文字の"
+"境界で折り返す場合は \"CTK_WRAP_CHAR\" を使います。値は大文字小文字を区別する"
+"ことに注意してください。そしてここで記述したとおりに表示されるか確認してくだ"
+"さい。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
@@ -247,11 +264,12 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"[Home]/[End] キーを押下した時のカーソルの動きを指定します。\"DISABLED\" "
-"を指定すると常に行の先頭/末尾にカーソルを移動し、\"AFTER\" "
-"を指定するとキーを初めて押下した時は行の先頭/末尾に移動し二回目に押下したらホワイトスペースを除く文字列の先頭/終端にカーソルを移動し、\"BEFORE\""
-" を指定すると行の先頭/末尾に移動する前に一旦文字列の先頭/終端にカーソルを移動し、\"ALWAYS\" "
-"を指定すると行の先頭/末尾ではなく常に文字列の先頭/終端にカーソルを移動します。"
+"[Home]/[End] キーを押下した時のカーソルの動きを指定します。\"DISABLED\" を指"
+"定すると常に行の先頭/末尾にカーソルを移動し、\"AFTER\" を指定するとキーを初め"
+"て押下した時は行の先頭/末尾に移動し二回目に押下したらホワイトスペースを除く文"
+"字列の先頭/終端にカーソルを移動し、\"BEFORE\" を指定すると行の先頭/末尾に移動"
+"する前に一旦文字列の先頭/終端にカーソルを移動し、\"ALWAYS\" を指定すると行の"
+"先頭/末尾ではなく常に文字列の先頭/終端にカーソルを移動します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -261,7 +279,8 @@ msgstr "以前あったカーソル位置に戻す"
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
-msgstr "ファイルを読み込んだ時に記憶していたカーソル位置に戻すかどうか指定します。"
+msgstr ""
+"ファイルを読み込んだ時に記憶していたカーソル位置に戻すかどうか指定します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -297,15 +316,17 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"ツールバーボタンのスタイルを指定します。可能な値はシステムのデフォルトスタイルを使う \"LAPIZ_TOOLBAR_SYSTEM\" "
-"とアイコンのみを表示する \"LAPIZ_TOOLBAR_ICONS\"、アイコンとテキスト両方を表示する "
-"\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\"、そしてアイコンのそばに優先的なテキストを表示する "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" "
-"があります。値は大文字小文字を区別することに注意してください。そしてここで記述したとおりに表示されるか確認してください。"
+"ツールバーボタンのスタイルを指定します。可能な値はシステムのデフォルトスタイ"
+"ルを使う \"LAPIZ_TOOLBAR_SYSTEM\" とアイコンのみを表示する "
+"\"LAPIZ_TOOLBAR_ICONS\"、アイコンとテキスト両方を表示する "
+"\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\"、そしてアイコンのそばに優先的なテキストを表"
+"示する \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" があります。値は大文字小文字を区別"
+"することに注意してください。そしてここで記述したとおりに表示されるか確認して"
+"ください。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -321,8 +342,7 @@ msgid "Side Pane is Visible"
 msgstr "サイドペインの表示可否"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "編集ウィンドウの左側にサイドペインを表示するかどうかです。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -332,7 +352,8 @@ msgstr "サイドペインでタブを表示します"
 #: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
-msgstr "falseの場合、Lapizはサイドペインがアクティブなノートにタブを表示しません。"
+msgstr ""
+"falseの場合、Lapizはサイドペインがアクティブなノートにタブを表示しません。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
@@ -349,26 +370,26 @@ msgstr "\"最近使ったファイル\" に表示する最大数"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
-msgstr "\"最近使ったファイル\" のサブメニューに表示するエントリの最大数を指定します。"
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"\"最近使ったファイル\" のサブメニューに表示するエントリの最大数を指定します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "強調表示の印刷"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
-msgstr "ドキュメントを印刷する際に構文の強調表示も印刷するかどうかを指定します。"
+msgid "Whether lapiz should print syntax highlighting when printing documents."
+msgstr ""
+"ドキュメントを印刷する際に構文の強調表示も印刷するかどうかを指定します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "ヘッダーの印刷"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "ドキュメントを印刷する際にヘッダーを含めるかどうかを指定します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -379,13 +400,15 @@ msgstr "印刷時の行の折り返しモード"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"印刷する際に長い行をどのように折り返すかを指定します。折り返さない場合は \"CTK_WRAP_NONE\"、単語の境界で折り返す場合は "
-"\"CTK_WRAP_WORD\"、そして文字の境界で折り返す場合は \"CTK_WRAP_CHAR\" "
-"を使います。値は大文字小文字を区別することに注意してください。そしてここで記述したとおりに印刷されるか確認してください。"
+"印刷する際に長い行をどのように折り返すかを指定します。折り返さない場合は "
+"\"CTK_WRAP_NONE\"、単語の境界で折り返す場合は \"CTK_WRAP_WORD\"、そして文字の"
+"境界で折り返す場合は \"CTK_WRAP_CHAR\" を使います。値は大文字小文字を区別する"
+"ことに注意してください。そしてここで記述したとおりに印刷されるか確認してくだ"
+"さい。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
@@ -396,7 +419,9 @@ msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
-msgstr "この値が 0 の場合はドキュメントを印刷する時に行番号を挿入しません。それ以外の場合は lapiz は行番号を印刷します。"
+msgstr ""
+"この値が 0 の場合はドキュメントを印刷する時に行番号を挿入しません。それ以外の"
+"場合は lapiz は行番号を印刷します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -425,7 +450,9 @@ msgstr "印刷時のヘッダーに使用するフォント"
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
-msgstr "ドキュメントを印刷する際のページヘッダーに使用するフォントを指定します。これは \"ヘッダーの印刷\" オプションが有効の場合のみ効果があります。"
+msgstr ""
+"ドキュメントを印刷する際のページヘッダーに使用するフォントを指定します。これ"
+"は \"ヘッダーの印刷\" オプションが有効の場合のみ効果があります。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -440,12 +467,14 @@ msgstr "印刷時の行番号に使用するフォント"
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
-msgstr "印刷する際の行番号に使用するフォントを指定します。これは \"行番号の印刷\" オプションが 0 以外の場合のみ効果があります。"
+msgstr ""
+"印刷する際の行番号に使用するフォントを指定します。これは \"行番号の印刷\" オ"
+"プションが 0 以外の場合のみ効果があります。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -454,11 +483,12 @@ msgstr "自動検出されたエンコーディング"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
-"ファイルのエンコーディングを自動検出する際に lapiz が使用するエンコーディングのリストです。\"CURRENT\" "
-"は現在使用しているロケールを表します。認識したエンコーディングのみ使用されます。"
+"ファイルのエンコーディングを自動検出する際に lapiz が使用するエンコーディング"
+"のリストです。\"CURRENT\" は現在使用しているロケールを表します。認識したエン"
+"コーディングのみ使用されます。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
@@ -474,7 +504,8 @@ msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
 msgstr ""
-"開く/保存のファイル選択ダイアログの文字エンコーディングメニューの中に表示するエンコーディングのリストです。認識したエンコーディングのみ使用します。"
+"開く/保存のファイル選択ダイアログの文字エンコーディングメニューの中に表示する"
+"エンコーディングのリストです。認識したエンコーディングのみ使用します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -501,8 +532,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"利用可能なプラグインの一覧です。プラグインの \"場所\" が含まれます。指定したプラグインの \"場所\" を得るには .lapiz-plugin "
-"ファイルを参照してください。"
+"利用可能なプラグインの一覧です。プラグインの \"場所\" が含まれます。指定した"
+"プラグインの \"場所\" を得るには .lapiz-plugin ファイルを参照してください。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -522,8 +553,9 @@ msgid ""
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
-"lapizがエディターウィンドウでスペースを分割しないように表示するかどうかの設定： 「show-none」は表示なし。「show-"
-"trailing」は末尾のスペースのみを表示。「show-all」はすべてのスペースを表示します。"
+"lapizがエディターウィンドウでスペースを分割しないように表示するかどうかの設"
+"定： 「show-none」は表示なし。「show-trailing」は末尾のスペースのみを表示。"
+"「show-all」はすべてのスペースを表示します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
@@ -531,12 +563,12 @@ msgstr "タブを表示"
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
-"lapizがエディターウィンドウにタブを表示するかどうかの設定： 「show-none」は表示なし。「show-"
-"trailing」は末尾のスペースのみを表示。「show-all」はすべてのスペースを表示します。"
+"lapizがエディターウィンドウにタブを表示するかどうかの設定： 「show-none」は表"
+"示なし。「show-trailing」は末尾のスペースのみを表示。「show-all」はすべてのス"
+"ペースを表示します。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
@@ -561,8 +593,8 @@ msgstr "CAFEデスクトップ環境向けのテキストエディター"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -581,14 +613,7 @@ msgstr "テキストエディター"
 msgid "Edit text files"
 msgstr "テキスト形式のファイルを編集します"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -608,9 +633,8 @@ msgstr "保存せずに閉じる(_W)"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -646,8 +670,7 @@ msgstr "質問"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -671,16 +694,14 @@ msgstr[0] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "保存しないと、1時間前からの変更内容が完全に失われます。"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -724,8 +745,7 @@ msgstr[0] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -802,7 +822,9 @@ msgstr "削除(_R)"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:726
 msgid "Click on this button to select the font to be used by the editor"
-msgstr "エディターで使用するフォントを選択する場合は、このボタンをクリックしてください"
+msgstr ""
+"エディターで使用するフォントを選択する場合は、このボタンをクリックしてくださ"
+"い"
 
 #: lapiz/dialogs/lapiz-preferences-dialog.c:736
 #, c-format
@@ -1127,7 +1149,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"'%s --help' で利用可能なすべてのコマンドラインオプションの一覧が表示されます\n"
+"'%s --help' で利用可能なすべてのコマンドラインオプションの一覧が表示されま"
+"す\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1176,8 +1199,7 @@ msgstr "変更部分を保存しないで、元のドキュメント '%s' に戻
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1201,16 +1223,14 @@ msgstr[0] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "1時間前に編集したドキュメントへの変更が完全に失われます。"
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1249,7 +1269,8 @@ msgstr "Sun Microsystems"
 
 #: lapiz/lapiz-commands-help.c:67
 msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
-msgstr "Lapiz は CAFE デスクトップ用に作られた小型軽量のテキストエディターです。"
+msgstr ""
+"Lapiz は CAFE デスクトップ用に作られた小型軽量のテキストエディターです。"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
@@ -1269,8 +1290,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1286,10 +1307,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
@@ -1531,7 +1553,9 @@ msgstr "ファイルが格納されている場所をマウントできません
 
 #: lapiz/lapiz-io-error-message-area.c:239
 msgid "The location of the file cannot be accessed because it is not mounted."
-msgstr "ファイルが格納されている場所がマウントされていないのでファイルにアクセスできません。"
+msgstr ""
+"ファイルが格納されている場所がマウントされていないのでファイルにアクセスでき"
+"ません。"
 
 #: lapiz/lapiz-io-error-message-area.c:243
 #, c-format
@@ -1548,13 +1572,17 @@ msgstr "%s は適切な場所ではありません"
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
-msgstr "ホスト %s が見つかりませんでした。プロキシの設定が正しいか確認して、もう一度実行してみてください。"
+msgstr ""
+"ホスト %s が見つかりませんでした。プロキシの設定が正しいか確認して、もう一度"
+"実行してみてください。"
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
-msgstr "ホスト名が間違っています。入力した場所が正しいか確認して、もう一度実行してみてください。"
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr ""
+"ホスト名が間違っています。入力した場所が正しいか確認して、もう一度実行してみ"
+"てください。"
 
 #: lapiz/lapiz-io-error-message-area.c:301
 #, c-format
@@ -1605,7 +1633,9 @@ msgstr "編集しない(_O)"
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
-msgstr "リンクの数が制限され、実際のファイルがこの制限内に見つけることができませんでした。"
+msgstr ""
+"リンクの数が制限され、実際のファイルがこの制限内に見つけることができませんで"
+"した。"
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1633,7 +1663,9 @@ msgstr "ファイル %s を開くする際にエラーが発生しました。"
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
-msgstr "開いたファイルに正しくない文字が含まれています。このファイルを編集し続けると、この文書が役に立たなくなるかもしれません。"
+msgstr ""
+"開いたファイルに正しくない文字が含まれています。このファイルを編集し続ける"
+"と、この文書が役に立たなくなるかもしれません。"
 
 #: lapiz/lapiz-io-error-message-area.c:621
 msgid "You can also choose another character encoding and try again."
@@ -1647,7 +1679,8 @@ msgstr "ファイル %s を文字エンコーディング %s で開けません�
 #: lapiz/lapiz-io-error-message-area.c:632
 #: lapiz/lapiz-io-error-message-area.c:707
 msgid "Select a different character encoding from the menu and try again."
-msgstr "メニューから別の文字エンコーディングを選択して、もう一度実行してください。"
+msgstr ""
+"メニューから別の文字エンコーディングを選択して、もう一度実行してください。"
 
 #: lapiz/lapiz-io-error-message-area.c:642
 #, c-format
@@ -1663,7 +1696,9 @@ msgstr "ファイル %s を文字エンコーディング %s で保存できま�
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
-msgstr "そのドキュメントには、指定した文字エンコーディングで表せない文字が一つ以上含まれています。"
+msgstr ""
+"そのドキュメントには、指定した文字エンコーディングで表せない文字が一つ以上含"
+"まれています。"
 
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
@@ -1672,9 +1707,10 @@ msgstr "このファイル (%s) は既に別の lapiz ウィンドウの中に�
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
-msgstr "このファイルのインスタンスを編集不可モードで開きました。編集を続行しますか?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
+msgstr ""
+"このファイルのインスタンスを編集不可モードで開きました。編集を続行しますか?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
 #: lapiz/lapiz-io-error-message-area.c:960
@@ -1692,9 +1728,10 @@ msgid "The file %s has been modified since reading it."
 msgstr "ファイル %s は変更されています。"
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
-msgstr "このファイルを保存すると外部からの変更はすべて失われます。強制的に保存しますか?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr ""
+"このファイルを保存すると外部からの変更はすべて失われます。強制的に保存します"
+"か?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
 #, c-format
@@ -1709,11 +1746,13 @@ msgstr "%s を保存する際に作業用のバックアップファイルを作
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"lapiz "
-"は新しいファイルを保存する前に古いファイルのバックアップファイルを作成することはできません。この警告を無視してファイルを強制的に保存することは可能ですが、保存中にエラーが発生すると古いファイルの内容を失う可能性があります。とにかく保存しますか?"
+"lapiz は新しいファイルを保存する前に古いファイルのバックアップファイルを作成"
+"することはできません。この警告を無視してファイルを強制的に保存することは可能"
+"ですが、保存中にエラーが発生すると古いファイルの内容を失う可能性があります。"
+"とにかく保存しますか?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:1061
@@ -1721,38 +1760,50 @@ msgstr ""
 msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
-msgstr "場所 %s へ書き込めません。入力した場所が正しいか確認して、もう一度実行してみてください。"
+msgstr ""
+"場所 %s へ書き込めません。入力した場所が正しいか確認して、もう一度実行してみ"
+"てください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
-msgstr "この場所へ書き込めません。入力した場所が正しいか確認して、もう一度実行してみてください。"
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"この場所へ書き込めません。入力した場所が正しいか確認して、もう一度実行してみ"
+"てください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1078
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
-msgstr "場所 %s が間違っています。入力した場所が正しいか確認して、もう一度実行してみてください。"
+msgstr ""
+"場所 %s が間違っています。入力した場所が正しいか確認して、もう一度実行してみ"
+"てください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
-msgstr "そのファイルを保存するために必要な権限がありません。入力した場所が正しいか確認して、もう一度実行してみてください。"
+msgstr ""
+"そのファイルを保存するために必要な権限がありません。入力した場所が正しいか確"
+"認して、もう一度実行してみてください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
-msgstr "そのファイルを保存するのに十分な空き容量がありません。空き容量を増やしてから、もう一度実行してみてください。"
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr ""
+"そのファイルを保存するのに十分な空き容量がありません。空き容量を増やしてか"
+"ら、もう一度実行してみてください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
-msgstr "読み込み専用のディスクにファイルを保存しようとしています。入力した場所が正しいか確認して、もう一度実行してみてください。"
+msgstr ""
+"読み込み専用のディスクにファイルを保存しようとしています。入力した場所が正し"
+"いか確認して、もう一度実行してみてください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
@@ -1760,16 +1811,20 @@ msgstr "同名のファイルが存在します。別の名前にしてくださ
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
-msgstr "保存先のディスクには指定できるファイル名の長さに制限があります。もっと短いファイル名にしてください。"
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
+msgstr ""
+"保存先のディスクには指定できるファイル名の長さに制限があります。もっと短い"
+"ファイル名にしてください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
-msgstr "保存先のディスクにはファイルサイズの制限があります。小さいファイルを保存するか、この制限のない泥空くに保存してください。"
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
+msgstr ""
+"保存先のディスクにはファイルサイズの制限があります。小さいファイルを保存する"
+"か、この制限のない泥空くに保存してください。"
 
 #: lapiz/lapiz-io-error-message-area.c:1129
 #, c-format
@@ -1830,14 +1885,12 @@ msgstr "強調表示を含めて印刷する(_X)"
 msgid "Print line nu_mbers"
 msgstr "行番号を印刷する(_M)"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "行番号を付与する間隔(_N) "
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "行"
@@ -1948,8 +2001,7 @@ msgstr " [上書き]"
 msgid "INS"
 msgstr " [挿入]"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -1965,7 +2017,8 @@ msgstr[0] ""
 #: lapiz/lapiz-style-scheme-manager.c:213
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
-msgstr "'%s' というフォルダを生成できませんでした: g_mkdir_with_parents() に失敗: %s"
+msgstr ""
+"'%s' というフォルダを生成できませんでした: g_mkdir_with_parents() に失敗: %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
@@ -2003,38 +2056,38 @@ msgstr "%s を %s へ保存しています"
 msgid "Saving %s"
 msgstr "%s を保存しています"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "[書き込み禁止]"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "ファイル %s を読み込む際にエラー"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "ファイル %s に戻す際にエラー"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "ファイル %s を保存する際にエラー"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "名前:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME 型:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "エンコーディング:"
 
@@ -2510,7 +2563,9 @@ msgstr "ドキュメントの統計"
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
-msgstr "ドキュメントを解析して、単語、行、文字と非スペース文字の数を測定しその結果を表示します。"
+msgstr ""
+"ドキュメントを解析して、単語、行、文字と非スペース文字の数を測定しその結果を"
+"表示します。"
 
 #: plugins/docinfo/docinfo.ui:51
 msgid "_Update"
@@ -2627,7 +2682,8 @@ msgstr "このアクセラレーターはすでに %s に割り当てられて�
 
 #: plugins/externaltools/tools/manager.py:710
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr "新たなアクセラレーターを入力するか、バックスペースキーでクリアしてください"
+msgstr ""
+"新たなアクセラレーターを入力するか、バックスペースキーでクリアしてください"
 
 #: plugins/externaltools/tools/manager.py:712
 msgid "Type a new accelerator"
@@ -2790,12 +2846,6 @@ msgstr "ファイル参照ペイン"
 msgid "Easy file access from the side pane"
 msgstr "サイドペインから簡単にファイルにアクセスできます。"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "初めて開くドキュメントの場所を設定"
@@ -2807,9 +2857,10 @@ msgid ""
 "generally applies to opening a document from the command line or opening it "
 "with Baul, etc.)"
 msgstr ""
-"TRUE "
-"にすると、初めて開いたドキュメントがあるフォルダーで、ファイル参照プラグインがまだ使われたことがないディレクトリを表示します。(すなわち、この機能は一般的にコマンドラインからドキュメントを開く場合や"
-" Baul などからドキュメントを開く際に動作します。)"
+"TRUE にすると、初めて開いたドキュメントがあるフォルダーで、ファイル参照プラグ"
+"インがまだ使われたことがないディレクトリを表示します。(すなわち、この機能は一"
+"般的にコマンドラインからドキュメントを開く場合や Baul などからドキュメントを"
+"開く際に動作します。)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -2822,9 +2873,10 @@ msgid ""
 "(filter binary files) and hidden_and_binary (filter both hidden and binary "
 "files)."
 msgstr ""
-"ファイル参照ペインでフィルターして表示しないファイルを指定します。指定可能な値: none (フィルターしない)、hidden "
-"(隠しファイルをフィルターする)、binary (バイナリファイルをフィルターする)、hidden_and_binary "
-"(隠しファイルとバイナリの両方をフィルターする)"
+"ファイル参照ペインでフィルターして表示しないファイルを指定します。指定可能な"
+"値: none (フィルターしない)、hidden (隠しファイルをフィルターする)、binary "
+"(バイナリファイルをフィルターする)、hidden_and_binary (隠しファイルとバイナリ"
+"の両方をフィルターする)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2832,9 +2884,11 @@ msgstr "ファイル参照ペインのフィルター (パターン)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
-msgstr "ファイル参照ペインでフィルターするパターンです。これは filter_mode の先頭で機能します。"
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
+msgstr ""
+"ファイル参照ペインでフィルターするパターンです。これは filter_mode の先頭で機"
+"能します。"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
@@ -2844,7 +2898,9 @@ msgstr "ツリー表示で開く"
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
-msgstr "ファイル参照プラグインを読み込んだ際に、ブックマーク表示ではなくツリー表示で開きます。"
+msgstr ""
+"ファイル参照プラグインを読み込んだ際に、ブックマーク表示ではなくツリー表示で"
+"開きます。"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
@@ -2854,7 +2910,9 @@ msgstr "ファイル参照ペインのルートフォルダー"
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
-msgstr "ファイル参照プラグインを読み込んで onload/tree_view が TRUE の場合のファイル参照ブラウザのルートフォルダー"
+msgstr ""
+"ファイル参照プラグインを読み込んで onload/tree_view が TRUE の場合のファイル"
+"参照ブラウザのルートフォルダー"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2862,12 +2920,13 @@ msgstr "ファイル参照ペインの仮想的なルートフォルダー"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"ファイル参照プラグインを読み込んで onload/tree_view が TRUE "
-"の場合にファイル参照ブラウザが参照する仮想的なルートフォルダーを指定します。この仮想フォルダーは必ず実際のルートよりも下層にあるフォルダーを指定してください。"
+"ファイル参照プラグインを読み込んで onload/tree_view が TRUE の場合にファイル"
+"参照ブラウザが参照する仮想的なルートフォルダーを指定します。この仮想フォル"
+"ダーは必ず実際のルートよりも下層にあるフォルダーを指定してください。"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
@@ -2971,10 +3030,11 @@ msgstr "(空)"
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr "新しい名前のファイルはフィルターの機能により表示されていません。そのファイルを表示するにはフィルターの設定を調整してください。"
+msgstr ""
+"新しい名前のファイルはフィルターの機能により表示されていません。そのファイル"
+"を表示するにはフィルターの設定を調整してください。"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "ファイル"
@@ -2983,10 +3043,11 @@ msgstr "ファイル"
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr "新しいファイルはフィルターの機能により表示されていません。そのファイルを表示するにはフィルターの設定を変調整してください。"
+msgstr ""
+"新しいファイルはフィルターの機能により表示されていません。そのファイルを表示"
+"するにはフィルターの設定を変調整してください。"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "フォルダー"
@@ -2995,7 +3056,9 @@ msgstr "フォルダー"
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
-msgstr "新しい名前のフォルダーはフィルターの機能により表示されていません。そのフォルダーを表示するにはフィルターの設定を調整してください。"
+msgstr ""
+"新しい名前のフォルダーはフィルターの機能により表示されていません。そのフォル"
+"ダーを表示するにはフィルターの設定を調整してください。"
 
 #: plugins/filebrowser/lapiz-file-browser-widget.c:712
 msgid "Bookmarks"
@@ -3162,12 +3225,6 @@ msgstr "Python コンソール"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "対話形式の Python コンソールをボトムパネルに起動"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "エラーの色 (_E):"
@@ -3200,12 +3257,6 @@ msgstr "文書を簡単に開く"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "ファイルを簡単に開く"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3299,8 +3350,9 @@ msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
 msgstr ""
-"これは [Tab] のトリガーとしては妥当ではありません。トリガーとして妥当な形式は、英数字 (_、:、. を含む) "
-"からなる文字列か、あるいは一文字の非英数字(例: {、[ など) のいずれかです。"
+"これは [Tab] のトリガーとしては妥当ではありません。トリガーとして妥当な形式"
+"は、英数字 (_、:、. を含む) からなる文字列か、あるいは一文字の非英数字(例: "
+"{、[ など) のいずれかです。"
 
 #: plugins/snippets/snippets/Manager.py:771
 #, python-format
@@ -3446,12 +3498,6 @@ msgstr "並び替え"
 msgid "Sorts a document or selected text."
 msgstr "ドキュメントまたは選択した文字列を並べ替えます。"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "並び替え(_S)"
@@ -3480,10 +3526,8 @@ msgstr "並び替えの操作をやり直すことはできません"
 msgid "Autocheck Type"
 msgstr "自動型チェック"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3510,8 +3554,7 @@ msgstr "スペルチェック"
 msgid "Suggestions"
 msgstr "提示"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(正しいつづり)"
@@ -3523,6 +3566,7 @@ msgstr "スペルチェック完了"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3532,6 +3576,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3540,6 +3585,7 @@ msgstr "不明 (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3673,12 +3719,6 @@ msgstr "スペルチェッカー"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "このドキュメントのスペルをチェックします。"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -5539,7 +5579,9 @@ msgstr "タグの一覧"
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
-msgstr "よく利用するタグや文字列をキーボードを使わずにドキュメントに挿入する機能を提供します。"
+msgstr ""
+"よく利用するタグや文字列をキーボードを使わずにドキュメントに挿入する機能を提"
+"供します。"
 
 #: plugins/taglist/XSLT.tags.xml.in:7
 msgid "XSLT - Elements"
@@ -6358,12 +6400,6 @@ msgstr "末尾のスペースを削除して保存"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "行末のスペースを削除して保存"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "日付と時間の挿入"
@@ -6388,8 +6424,7 @@ msgstr "その他(_U)"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%Y-%m-%d %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6406,3 +6441,7 @@ msgstr "日付/時刻を挿入する時..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "書式を毎回指定する(_P)"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

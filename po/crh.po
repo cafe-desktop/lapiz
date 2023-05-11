@@ -2,22 +2,23 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
-"Language-Team: Crimean Turkish (https://www.transifex.com/cafe/teams/13566/crh/)\n"
+"Language-Team: Crimean Turkish (https://www.transifex.com/cafe/teams/13566/"
+"crh/)\n"
+"Language: crh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: crh\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -147,8 +148,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Lapiz'in geri alabileceği ya da tekrarlayabileceği eylemlerin azami miktarı."
-" Sınırsız sayıda eylem için \"-1\" kullanın."
+"Lapiz'in geri alabileceği ya da tekrarlayabileceği eylemlerin azami miktarı. "
+"Sınırsız sayıda eylem için \"-1\" kullanın."
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -158,9 +159,9 @@ msgstr "Satır Sarma Tarzı"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Düzenleme alanı için uzun satırların nasıl bölüneceğini belirtir. "
 "\"CTK_WRAP_NONE\" bölme olmaması için, \"CTK_WRAP_WORD\", sözcük "
@@ -217,8 +218,7 @@ msgstr "Eşleşken Qavusnı Işıqlandır"
 #: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
-"Lapiz'niñ saylanğan qavus ile eşleşken birini ışıqlandırıp "
-"ışıqlandırmaycağı."
+"Lapiz'niñ saylanğan qavus ile eşleşken birini ışıqlandırıp ışıqlandırmaycağı."
 
 #: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
@@ -252,8 +252,8 @@ msgid ""
 msgstr ""
 "HOME ve END tuşları basıldığında imlecin nasıl areket edeceğini belirtir. "
 "\"DISABLED\"kullanmak er zaman satırın başına ve sonuna taşınmasını sağlar, "
-"\"AFTER\" tuşa ilk seferinde basıldığında satırın başına ve sonuna ve ikinci"
-" defa basıldığında boşlukların yok sayılarak metnin başına ve sonuna "
+"\"AFTER\" tuşa ilk seferinde basıldığında satırın başına ve sonuna ve ikinci "
+"defa basıldığında boşlukların yok sayılarak metnin başına ve sonuna "
 "taşınmasını, \"BEFORE\" satırların başına ve sonuna gitmeden önce metnin "
 "başına ve sonuna taşınmasını, \"ALWAYS\" ise satırların başına ve sonuna "
 "taşınmaktansa metinlerin başına ve sonuna taşınmasını sağlar."
@@ -284,8 +284,7 @@ msgstr "Sintaksis Işıqlandırmasını Qabilleştir"
 
 #: data/org.cafe.lapiz.gschema.xml.in:127
 msgid "Whether lapiz should enable syntax highlighting."
-msgstr ""
-"Lapiz'niñ sintaksis ışıqlandırmasını qabilleştirip qabilleştirmeycegi."
+msgstr "Lapiz'niñ sintaksis ışıqlandırmasını qabilleştirip qabilleştirmeycegi."
 
 #: data/org.cafe.lapiz.gschema.xml.in:131
 msgid "Toolbar is Visible"
@@ -304,9 +303,9 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 "Alet çubuğı dögmeleri içün uslûp. Caiz qıymetler şöyledir: sistemniñ ög-"
 "belgilengen uslûbı içün \"LAPIZ_TOOLBAR_SYSTEM\", sadece işaretçiklerni "
@@ -332,8 +331,7 @@ msgid "Side Pane is Visible"
 msgstr "Yan Tereze Körünir"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "Tarir pencereleriniñ solundaki yan terezeniñ körünir olıp olmaycağı."
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -360,19 +358,18 @@ msgstr "Azamiy Deminki Dosyeler"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
-"\"Son Dosyalar \" altmenüsünde görüntülenecek olan en son açılmış dosyaların"
-" en yüksek sayısını belirtir."
+"\"Son Dosyalar \" altmenüsünde görüntülenecek olan en son açılmış dosyaların "
+"en yüksek sayısını belirtir."
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "Sintaksis Işıqlandırmasını Bastır"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "Lapiz'in belgeleri yazdırırken bir belge başlığı eklemesi."
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -380,8 +377,7 @@ msgid "Print Header"
 msgstr "Başlıqnı Bastır"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "Lapiz'in belgeleri yazdırırken bir belge başlığı eklemesi."
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -392,9 +388,9 @@ msgstr "Bastıruv Satır Sarma Tarzı"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Yazdırma işlemi için uzun satırların nasıl bölüneceğini belirtir. "
 "\"CTK_WRAP_NONE\" bölme olmaması için, \"CTK_WRAP_WORD\", sözcük "
@@ -412,8 +408,8 @@ msgid ""
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
 msgstr ""
-"Bu değer \"0\" ise, belge yazdırılırken satır sayıları eklenmez. Aksi halde,"
-" lapiz er satır için satır sayılarını yazdırır."
+"Bu değer \"0\" ise, belge yazdırılırken satır sayıları eklenmez. Aksi halde, "
+"lapiz er satır için satır sayılarını yazdırır."
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -445,8 +441,8 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Yazdırma işleminde satır sayıları için kullanılacak yazıtipini belirtir. Bu,"
-" sadece \"Print Header\" açık ise etki gösterir."
+"Yazdırma işleminde satır sayıları için kullanılacak yazıtipini belirtir. Bu, "
+"sadece \"Print Header\" açık ise etki gösterir."
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -462,13 +458,13 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Yazdırma işleminde satır sayıları için kullanılacak yazıtipini belirtir. Bu,"
-" sadece \"Print Line Numbers\" seçeneği sıfırdan başka bir şey ise etki "
+"Yazdırma işleminde satır sayıları için kullanılacak yazıtipini belirtir. Bu, "
+"sadece \"Print Line Numbers\" seçeneği sıfırdan başka bir şey ise etki "
 "gösterir."
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
@@ -478,8 +474,8 @@ msgstr "Öz-özünden Alğılanğan Kodlandırmalar"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Bir dosye kodlandırmasını öz-özünden alğılamaq içün lapiz tarafından "
 "qullanılğan kodlandırmalarnıñ sıralanğan listesi. \"CURRENT\" cari mahal "
@@ -527,8 +523,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Kullanılan eklentiler listesi. Kullanılan eklentilerin \"Yeri\"ni "
-"içerir.Eklentilerin \"Yeri\" için .lapiz-plugins dosyasına bakın."
+"Kullanılan eklentiler listesi. Kullanılan eklentilerin \"Yeri\"ni içerir."
+"Eklentilerin \"Yeri\" için .lapiz-plugins dosyasına bakın."
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -555,9 +551,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -583,8 +578,8 @@ msgstr ""
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -603,14 +598,7 @@ msgstr "Metin Muarriri"
 msgid "Edit text files"
 msgstr "Metin dosyelerini tarir et"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -630,9 +618,8 @@ msgstr "Saqlamadan _Qapat"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -668,8 +655,7 @@ msgstr "Sual"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -696,8 +682,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -705,8 +690,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Saqlamasañız, soñki saatta yapılğan deñişiklikler ebediyen ğayıp olacaq."
 
@@ -754,8 +738,7 @@ msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1159,7 +1142,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Mevcut buyruq satrı ihtiyariyatınıñ tam cedvelini körmek içün '%s --help' çaptırıñız.\n"
+"Mevcut buyruq satrı ihtiyariyatınıñ tam cedvelini körmek içün '%s --help' "
+"çaptırıñız.\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1209,8 +1193,7 @@ msgstr "'%s' vesiqasındaki saqlanmağan deñişiklikler keri döndürilsinmi?"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1236,8 +1219,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1245,8 +1227,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Vesiqağa soñki saatta yapılğan deñişiklikler ebediyen ğayıp olacaq."
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1307,8 +1288,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1324,10 +1305,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1584,8 +1566,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "Qonaqbay adı keçersiz edi. Lütfen qonumnı doğru yazğanıñıznı teşkerip "
 "yañıdan deñeñiz."
@@ -1712,8 +1694,8 @@ msgstr "Bu dosye (%s) endi başqa bir lapiz penceresinde açıqtır."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "lapiz, dosyayının bu oturumunu düzenlenemeyecek bir yolda açtı. Gene de "
 "dosyayıdüzenlemek istiyor musunuz?"
@@ -1734,8 +1716,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "Dosye %s oqulğanından berli deñiştirilgendir."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Eğer kaydederseniz, yapılan tüm harici deñişiklikler kaybolacak. Gene de "
 "kaydedilsin mi?"
@@ -1753,8 +1734,8 @@ msgstr "%s kaydedilirken bir geçici yedek dosyası oluşturulamadı"
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "lapiz, dosyeniñ yañı kopiyasını saqlağanda eskisini yedekleyamadı. Bu "
 "tenbini ihmal etip dosyeni kene de saqlaybilirsiñiz, ancaq eger saqlağanda "
@@ -1772,8 +1753,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "lapiz yazma kipinde bu konumu işleyemez. Lütfen konumu doğru yazdığınıza "
 "emin olun ve tekrar deneyin."
@@ -1797,8 +1778,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "Dosyayı kaydetmek için yeterli disk alanı yok. Lütfen diskinizde yer açıp "
 "tekrar deneyin."
@@ -1808,18 +1789,17 @@ msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"Dosyayı salt okunur bir diske kaydetmeye çalışıyorsunuz. Lütfen konumu doğru"
-" yazdığınıza emin olun ve tekrar deneyin."
+"Dosyayı salt okunur bir diske kaydetmeye çalışıyorsunuz. Lütfen konumu doğru "
+"yazdığınıza emin olun ve tekrar deneyin."
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
-msgstr ""
-"Aynı isimde başka bir dosya zaten var. Lütfen başka bir isim kullanın."
+msgstr "Aynı isimde başka bir dosya zaten var. Lütfen başka bir isim kullanın."
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Dosyeni saqlamağa talpınğanıñız diskte dosye adlarınıñ uzunlığına bir "
 "sıñırlama bar. Lütfen daa qısqa bir ad qullanıñız."
@@ -1827,8 +1807,8 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 "Dosyeni saqlamağa talpınğanıñız diskte bir dosye ölçüsi sıñırlaması bar. "
 "Lütfen daa kiçik bir dosyeni saqlamağa talpınıñız ya da sıñırlaması olmağan "
@@ -1893,14 +1873,12 @@ msgstr "Sintaksis ışıqlandırmasını _bastır"
 msgid "Print line nu_mbers"
 msgstr "_Satır numaralarını bastır"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Er"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "satırnı nomeralandır"
@@ -2011,8 +1989,7 @@ msgstr "ÜZR"
 msgid "INS"
 msgstr "QST"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2067,38 +2044,38 @@ msgstr "%s, %s qonumına saqlana"
 msgid "Saving %s"
 msgstr "%s saqlana"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "FO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "%s dosyesi açılğanda hata"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s dosyesi keri döndürilgende hata"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "%s dosyesi saqlanğanda hata"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unikod (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "İsim:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MİME Türü:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Kodlandırma:"
 
@@ -2857,12 +2834,6 @@ msgstr "Dosye Kezicisi Terezesi"
 msgid "Easy file access from the side pane"
 msgstr "Yan terezeden qolay dosye irişimi"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Qonumnı İlk Vesiqağa Tesbit Et"
@@ -2900,8 +2871,8 @@ msgstr "Dosye Kezicisi Süzgüç Deseni"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "Dosya tarayıcısının kullanacaği filtre dokusu. Bu filtre filter_mode "
 "üstündeçalışır."
@@ -2936,9 +2907,9 @@ msgstr "Dosye Kezicisi Sanal Tamır Cilbenti"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Dosya tarayıcısı eklentisi yüklendiğinde ve onload/tree_view TRUE ise "
 "kullanılacakdosya tarayıcısı sanal başlangıç dizini. Sanal başlangıç asıl "
@@ -3047,11 +3018,10 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"İsmi değiştirilen dosya şu anda filtrelendi. Dosyayı görünebilir yapmak için"
-" filtrenizi ayarlamanız gerekiyor"
+"İsmi değiştirilen dosya şu anda filtrelendi. Dosyayı görünebilir yapmak için "
+"filtrenizi ayarlamanız gerekiyor"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "dosye"
@@ -3064,8 +3034,7 @@ msgstr ""
 "Yeni dosya şu anda filtrelendi. Dosyayı görünebilir yapmak için filtrenizi "
 "ayarlamanız gerekiyor"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "cilbent"
@@ -3243,12 +3212,6 @@ msgstr "Python Konsolı"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Alt panelde turğan tesirleşimli Python konsolı"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "_Hata tüsü:"
@@ -3281,12 +3244,6 @@ msgstr "Vesiqalarnı çabik aç"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Dosyelerni çabik aç"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3349,8 +3306,7 @@ msgstr "_İlmek tetikleyicisi:"
 #: plugins/snippets/snippets/snippets.ui:446
 #: plugins/snippets/snippets/Manager.py:681
 msgid "Single word the snippet is activated with after pressing Tab"
-msgstr ""
-"Sekirme (Tab) tuşuna basılğandan soñ qırpıntını faalleştirecek tek söz"
+msgstr "Sekirme (Tab) tuşuna basılğandan soñ qırpıntını faalleştirecek tek söz"
 
 #: plugins/snippets/snippets/WindowHelper.py:72
 msgid "Manage _Snippets..."
@@ -3532,12 +3488,6 @@ msgstr "Sırala"
 msgid "Sorts a document or selected text."
 msgstr "Bir vesiqa yaki saylanğan metinni sıralar."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "_Sırala"
@@ -3566,10 +3516,8 @@ msgstr "Bir sıralama işlemini keri yapamazısıñız"
 msgid "Autocheck Type"
 msgstr ""
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3596,8 +3544,7 @@ msgstr "İmlânı Teşker"
 msgid "Suggestions"
 msgstr "Telqinler"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(imlânı tüzet)"
@@ -3609,6 +3556,7 @@ msgstr "İmlâ teşkerüvi tamamlandı"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3618,6 +3566,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3626,6 +3575,7 @@ msgstr "Bilinmegen (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3759,12 +3709,6 @@ msgstr "İmlâ Teşkericisi"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Cari vesiqanıñ imlâsını teşkerir."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6446,12 +6390,6 @@ msgstr ""
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Tarih ve Vaqıtnı Qıstır"
@@ -6476,8 +6414,7 @@ msgstr "_Şahsiyleştirilgen format qullan"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"

@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # AntonieG <vastinar.antonie@gmail.com>, 2020
 # sorinn <nemes.sorin@gmail.com>, 2020
@@ -12,20 +12,21 @@
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # corneliu.e <corneliueva@yahoo.com>, 2020
 # Daniel <danny3@tutanota.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Daniel <danny3@tutanota.com>, 2020\n"
 "Language-Team: Romanian (https://www.transifex.com/cafe/teams/13566/ro/)\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
@@ -99,9 +100,9 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Specifică dacă lapiz ar trebui să creeze copii de siguranță pentru fișierele"
-" pe care le salvează. Puteți defini extensia pentru fișierele de siguranță "
-"cu ajutorul opțiunii „Extensia copiei de siguranță”."
+"Specifică dacă lapiz ar trebui să creeze copii de siguranță pentru fișierele "
+"pe care le salvează. Puteți defini extensia pentru fișierele de siguranță cu "
+"ajutorul opțiunii „Extensia copiei de siguranță”."
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -170,9 +171,9 @@ msgstr "Mod de rupere rânduri"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Specifică felul în care vor fi rupte rândurile lungi la editare. Utilizați "
 "„CTK_WRAP_NONE” pentru ca rândurile să nu fie rupte, „CTK_WRAP_WORD” pentru "
@@ -267,9 +268,9 @@ msgid ""
 "the text instead of the start/end of the line."
 msgstr ""
 "Specifică unde sare cursorul când se apasă tastele HOME sau END. Utilizați "
-"„DISABLED” pentru a sări întotdeauna la începutul ori la sfârșitul rândului,"
-" „AFTER” pentru salt la începutul ori la sfârșitul rândului la prima apăsare"
-" și la începutul ori la sfârșitul textului (fără a lua în considerare "
+"„DISABLED” pentru a sări întotdeauna la începutul ori la sfârșitul rândului, "
+"„AFTER” pentru salt la începutul ori la sfârșitul rândului la prima apăsare "
+"și la începutul ori la sfârșitul textului (fără a lua în considerare "
 "spațiile goale) la a doua apăsare, „BEFORE” pentru salt la începutul ori la "
 "sfârșitul textului înainte de a sări la începutul ori la sfârșitul rândului "
 "și „ALWAYS” pentru a sări întotdeauna la sfârșitul ori începutul textului, "
@@ -284,8 +285,8 @@ msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Specifică dacă lapiz ar trebui să restaureze poziția precedentă a cursorului"
-" atunci când se încarcă un fișier."
+"Specifică dacă lapiz ar trebui să restaureze poziția precedentă a cursorului "
+"atunci când se încarcă un fișier."
 
 #: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -325,9 +326,9 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 "Stilul pentru butoanele din bara de unelte. Valorile posibile sunt: "
 "„LAPIZ_TOOLBAR_SYSTEM” pentru stilul implicit al sistemului, "
@@ -353,8 +354,7 @@ msgid "Side Pane is Visible"
 msgstr "Panoul lateral este vizibil"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "Specifică dacă panoul lateral din stânga ferestrei de editare ar trebui să "
 "fie vizibil."
@@ -385,8 +385,8 @@ msgstr "Numărul maxim de fișiere recente"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
 "Specifică numărul maxim de fișiere deschise recent care vor fi afișate în "
 "submeniul „Fișiere recente”."
@@ -396,8 +396,7 @@ msgid "Print Syntax Highlighting"
 msgstr "Tipărește sintaxa evidențiată"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "Specifică dacă lapiz ar trebui să tipărească evidențierea sintaxei pentru "
 "documente."
@@ -407,8 +406,7 @@ msgid "Print Header"
 msgstr "Tipărește antetul"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Specifică dacă lapiz ar trebui să includă antetul la tipărirea documentelor."
 
@@ -420,9 +418,9 @@ msgstr "Mod de rupere a rândurilor la tipărire"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Specifică felul în care vor fi rupte rândurile lungi la tipărire. Utilizați "
 "„CTK_WRAP_NONE” pentru ca rândurile să nu fie rupte, „CTK_WRAP_WORD” pentru "
@@ -440,8 +438,8 @@ msgid ""
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
 msgstr ""
-"Dacă această valoare este 0, atunci niciun număr de rând nu va fi inserat la"
-" tipărirea unui document. Pentru o valoare „n”, lapiz va tipări numărul "
+"Dacă această valoare este 0, atunci niciun număr de rând nu va fi inserat la "
+"tipărirea unui document. Pentru o valoare „n”, lapiz va tipări numărul "
 "rândului la fiecare „n” număr de rânduri."
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
@@ -490,14 +488,14 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Specifică fontul utilizat pentru numerotarea rândurilor la tipărire. Această"
-" opțiune are efect doar dacă opțiunea „Numerotează rândurile la tipărire” "
+"Specifică fontul utilizat pentru numerotarea rândurilor la tipărire. Această "
+"opțiune are efect doar dacă opțiunea „Numerotează rândurile la tipărire” "
 "este diferită de zero."
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ „UTF-8”, „ACTUAL”, „ISO-8859-15”, „UTF-16” ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -506,8 +504,8 @@ msgstr "Codificări detectate automat"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Lista de codificări utilizate de lapiz pentru autodetecția codificării unui "
 "fișier. „CURRENT” este codificarea locală actuală. Sunt utilizate doar "
@@ -584,9 +582,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -612,8 +609,8 @@ msgstr "Un editor de texte pentru mediul desktop CAFE"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -632,14 +629,7 @@ msgstr "Editor de text"
 msgid "Edit text files"
 msgstr "Editați fișiere text"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -659,9 +649,8 @@ msgstr "Închide _fără a salva"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -697,8 +686,7 @@ msgstr "Întrebare"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -727,8 +715,7 @@ msgstr[2] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -737,8 +724,7 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Dacă nu salvați, modificările din ultima oră vor fi pierdute definitiv."
 
@@ -768,8 +754,7 @@ msgstr[2] ""
 #, c-format
 msgid "Changes to document \"%s\" will be permanently lost."
 msgstr ""
-"Modificările aduse documentului „%s” în ultima oră vor fi pierdute "
-"definitiv."
+"Modificările aduse documentului „%s” în ultima oră vor fi pierdute definitiv."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:526
 #, c-format
@@ -791,8 +776,7 @@ msgstr[2] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1201,7 +1185,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Porniți „%s --help” pentru a vizualiza lista completă a opțiunilor din linia de comandă.\n"
+"Porniți „%s --help” pentru a vizualiza lista completă a opțiunilor din linia "
+"de comandă.\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1252,8 +1237,7 @@ msgstr "Anulați modificările nesalvate ale documentului „%s”?"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1282,8 +1266,7 @@ msgstr[2] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1292,8 +1275,7 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Modificările aduse documentului în ultima oră vor fi pierdute definitiv."
 
@@ -1357,8 +1339,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1374,10 +1356,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr "Daniel Alămiță <danny3@tutanota.com>"
 
@@ -1634,8 +1617,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "Numele gazdei nu este valid. Verificați corectitudinea adresei introduse și "
 "încercați din nou."
@@ -1720,8 +1703,8 @@ msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
 msgstr ""
-"Unele caractere din fișierul pe care l-ați deschis nu sunt valide. Dacă veți"
-" continua să editați acest fișier, documentul ar putea deveni inutilizabil."
+"Unele caractere din fișierul pe care l-ați deschis nu sunt valide. Dacă veți "
+"continua să editați acest fișier, documentul ar putea deveni inutilizabil."
 
 #: lapiz/lapiz-io-error-message-area.c:621
 msgid "You can also choose another character encoding and try again."
@@ -1765,8 +1748,8 @@ msgstr "Acest fișier (%s) este deja deschis în altă fereastră lapiz."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "lapiz a deschis această instanță a fișierului într-un mod ne-editabil. "
 "Doriți să îl editați oricum?"
@@ -1787,8 +1770,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "Fișierul %s a fost modificat de la ultima salvare."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Dacă îl salvați, toate modificările exterioare ar putea fi pierdute. Doriți "
 "să îl salvați oricum?"
@@ -1806,8 +1788,8 @@ msgstr "Nu s-a putut crea o copie temporară de siguranță la salvarea %s"
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "lapiz nu a putut crea o copie de siguranță a variantei vechi a fișierului "
 "înainte de salvarea celei noi. Puteți ignora această avertizare și salva "
@@ -1826,8 +1808,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "lapiz nu poate opera la această adresă în modul de scriere. Verificați "
 "corectitudinea adresei introduse și încercați din nou."
@@ -1851,8 +1833,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "Nu este destul spațiu pe disc pentru a salva fișierul. Eliberați spațiu pe "
 "disc și încercați din nou."
@@ -1871,8 +1853,8 @@ msgstr "Un fișier cu același nume există deja. Utilizați un alt nume."
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Discul pe care încercați să salvați fișierul are o limitare la dimensiunea "
 "maximă a numelor de fișiere. Folosiți un nume mai scurt."
@@ -1880,8 +1862,8 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 "Discul pe care încercați să salvați fișierul are o limitare la dimensiunea "
 "maximă a fișierelor. Încercați să salvați un fișier mai mic sau să salvați "
@@ -1947,14 +1929,12 @@ msgstr "Tipărește evidențierea sinta_xei"
 msgid "Print line nu_mbers"
 msgstr "Tipărește nu_merele rândurilor"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Numerotează la fiecare"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "linii"
@@ -2065,8 +2045,7 @@ msgstr "SUPR"
 msgid "INS"
 msgstr "INTR"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2122,38 +2101,38 @@ msgstr "Se salvează „%s” în „%s”"
 msgid "Saving %s"
 msgstr "Se salvează „%s”"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "Doar citire"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "Eroare la deschiderea fișierului %s"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Eroare la restaurarea fișierului %s"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "Eroare la salvarea fișierului %s"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Nume:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "Tip MIME:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Codificare:"
 
@@ -2482,8 +2461,7 @@ msgstr "Verificați instalarea."
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr ""
-"Nu s-a putut deschide fișierul %s din interfața pentru utilizator. Eroare: "
-"%s"
+"Nu s-a putut deschide fișierul %s din interfața pentru utilizator. Eroare: %s"
 
 #: lapiz/lapiz-utils.c:1167
 #, c-format
@@ -2749,8 +2727,7 @@ msgstr "Acest accelerator este deja asociat cu %s"
 
 #: plugins/externaltools/tools/manager.py:710
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr ""
-"Introduceți un nou accelerator sau apăsați [Backspace] pentru ștergere"
+msgstr "Introduceți un nou accelerator sau apăsați [Backspace] pentru ștergere"
 
 #: plugins/externaltools/tools/manager.py:712
 msgid "Type a new accelerator"
@@ -2895,8 +2872,7 @@ msgstr "Execută o comandă"
 
 #: plugins/externaltools/data/run-command.desktop.in:4
 msgid "Execute a custom command and put its output in a new document"
-msgstr ""
-"Execută o comandă specifică și copiază rezultatul într-un document nou"
+msgstr "Execută o comandă specifică și copiază rezultatul într-un document nou"
 
 #: plugins/externaltools/data/search-recursive.desktop.in:3
 msgid "Search"
@@ -2914,12 +2890,6 @@ msgstr "Panoul de navigare prin fișiere"
 msgid "Easy file access from the side pane"
 msgstr "Acces facil la fișiere din panoul lateral"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Definește locația la primul document"
@@ -2932,8 +2902,8 @@ msgid ""
 "with Baul, etc.)"
 msgstr ""
 "Dacă este definit ca TRUE, modulul de navigare în fișiere va vizualiza "
-"dosarul primului document deschis, atâta timp cât navigatorul de fișiere n-a"
-" fost încă utilizat. (Aceasta se aplică, în general, la deschiderea unui "
+"dosarul primului document deschis, atâta timp cât navigatorul de fișiere n-a "
+"fost încă utilizat. (Aceasta se aplică, în general, la deschiderea unui "
 "document din linia de comandă sau cu Baul etc.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
@@ -2948,9 +2918,9 @@ msgid ""
 "files)."
 msgstr ""
 "Această valoare determină ce fișiere vor fi filtrate în navigatorul de "
-"fișiere. Valori valide sunt: „none” (nu filtrează nimic), „hidden” "
-"(filtrează fișierele ascunse), „binary” (filtrează fișierele binare) și "
-"„hidden_and_binary” (filtrează fișierele ascunse și binare)."
+"fișiere. Valori valide sunt: „none” (nu filtrează nimic), "
+"„hidden” (filtrează fișierele ascunse), „binary” (filtrează fișierele "
+"binare) și „hidden_and_binary” (filtrează fișierele ascunse și binare)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2958,11 +2928,11 @@ msgstr "Model filtrare navigator fișiere"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
-"Modelul pentru filtrarea din navigatorul de fișiere. Acest filtru acționează"
-" peste filter_mode."
+"Modelul pentru filtrarea din navigatorul de fișiere. Acest filtru acționează "
+"peste filter_mode."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
@@ -2985,9 +2955,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
-"Dosarul rădăcină al navigatorului de fișiere ce va fi utilizat la încărcarea"
-" modulului de navigare în fișiere când onload/tree_view este definit la "
-"TRUE."
+"Dosarul rădăcină al navigatorului de fișiere ce va fi utilizat la încărcarea "
+"modulului de navigare în fișiere când onload/tree_view este definit la TRUE."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2995,9 +2964,9 @@ msgstr "Dosar rădăcină virtual al navigatorului de fișiere"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Dosarul rădăcină virtual al navigatorului de fișiere ce va fi utilizat la "
 "încărcarea modulului de navigare în fișiere când onload/tree_view este "
@@ -3055,8 +3024,7 @@ msgstr "A intervenit o eroare la ștergerea unui fișier sau a unui dosar"
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:888
 msgid "An error occurred while opening a directory in the file manager"
 msgstr ""
-"A intervenit o eroare la deschiderea unui dosar în administratorul de "
-"fișiere"
+"A intervenit o eroare la deschiderea unui dosar în administratorul de fișiere"
 
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:892
 msgid "An error occurred while setting a root directory"
@@ -3112,8 +3080,7 @@ msgstr ""
 "În prezent, fișierul redenumit este exclus prin filtrare. Pentru a-l face "
 "vizibil, trebuie să modificați opțiunile de filtrare"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "fișier"
@@ -3123,11 +3090,10 @@ msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"În prezent, fișierul nou este exclus prin filtrare. Pentru a-l face vizibil,"
-" trebuie să modificați opțiunile de filtrare"
+"În prezent, fișierul nou este exclus prin filtrare. Pentru a-l face vizibil, "
+"trebuie să modificați opțiunile de filtrare"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "dosar"
@@ -3306,12 +3272,6 @@ msgstr "Consolă Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Consolă Python interactivă în panoul inferior"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "Culoare _eroare:"
@@ -3344,12 +3304,6 @@ msgstr "Deschidere rapidă a documentelor"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Deschidere rapidă a fișierelor"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3594,12 +3548,6 @@ msgstr "Sortează"
 msgid "Sorts a document or selected text."
 msgstr "Sortează un document sau un text selectat."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "_Sortează"
@@ -3628,10 +3576,8 @@ msgstr "Nu puteți anula o operație de sortare"
 msgid "Autocheck Type"
 msgstr "Tip verificare automată"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3658,8 +3604,7 @@ msgstr "Verifică ortografia"
 msgid "Suggestions"
 msgstr "Sugestii"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(ortografie corectă)"
@@ -3671,6 +3616,7 @@ msgstr "Verificarea ortografică s-a terminat"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3680,6 +3626,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3688,6 +3635,7 @@ msgstr "Necunoscut (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3821,12 +3769,6 @@ msgstr "Verificare ortografică"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Verifică ortografia documentului actual."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6508,12 +6450,6 @@ msgstr "Salvează fără spațiile din capete"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Elimină spațiile din capete înainte de salvare."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Inserare dată și oră"
@@ -6538,8 +6474,7 @@ msgstr "_Utilizează un format personalizat"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6556,3 +6491,7 @@ msgstr "Când se inserează data/ora..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Solicită un format"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ „UTF-8”, „ACTUAL”, „ISO-8859-15”, „UTF-16” ]"

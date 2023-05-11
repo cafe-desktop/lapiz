@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # clefebvre <clement.lefebvre@linuxmint.com>, 2020
 # Wolfgang Ulbrich <cafe@raveit.de>, 2020
@@ -11,19 +11,19 @@
 # Aefgh Threenine <aefgh3962@gmail.com>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # Akom <knight2000@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Akom <knight2000@gmail.com>, 2020\n"
 "Language-Team: Thai (https://www.transifex.com/cafe/teams/13566/th/)\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -37,9 +37,8 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"ใช้แบบอักษรความกว้างคงที่ปริยายของระบบในการแก้ไขข้อความหรือไม่ "
-"ถ้าปิดตัวเลือกนี้ แบบอักษรที่ใช้จะเป็นไปตามตัวเลือก "
-"\"แบบอักษรของเครื่องมือแก้ไข\" แทนแบบอักษรของระบบ"
+"ใช้แบบอักษรความกว้างคงที่ปริยายของระบบในการแก้ไขข้อความหรือไม่ ถ้าปิดตัวเลือกนี้ "
+"แบบอักษรที่ใช้จะเป็นไปตามตัวเลือก \"แบบอักษรของเครื่องมือแก้ไข\" แทนแบบอักษรของระบบ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
@@ -55,8 +54,8 @@ msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"แบบอักษรที่กำหนดเองจะถูกใช้ในพื้นที่การแก้ไขข้อความ "
-"ซึ่งจะมีผลใช้ก็ต่อเมื่อไม่ใช้ตัวเลือก \"ใช้แบบอักษรปริยาย\""
+"แบบอักษรที่กำหนดเองจะถูกใช้ในพื้นที่การแก้ไขข้อความ ซึ่งจะมีผลใช้ก็ต่อเมื่อไม่ใช้ตัวเลือก "
+"\"ใช้แบบอักษรปริยาย\""
 
 #: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
@@ -107,8 +106,7 @@ msgid ""
 "option."
 msgstr ""
 "ให้ lapiz บันทึกการแก้ไขโดยอัตโนมัติเป็นช่วงๆ หรือไม่ "
-"คุณสามารถกำหนดช่วงเวลาการบันทึกได้โดยตั้งค่าตัวเลือก "
-"\"ช่วงเวลาการบันทึกข้อมูลอัตโนมัติ\""
+"คุณสามารถกำหนดช่วงเวลาการบันทึกได้โดยตั้งค่าตัวเลือก \"ช่วงเวลาการบันทึกข้อมูลอัตโนมัติ\""
 
 #: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -118,9 +116,7 @@ msgstr "ช่วงเวลาการบันทึกข้อมูลอ
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
-msgstr ""
-"ระยะเวลาเป็นนาทีที่ lapiz จะบันทึกแฟ้ม มีผลใช้ต่อเมื่อใช้ตัวเลือก "
-"\"บันทึกข้อมูลอัตโนมัติ\""
+msgstr "ระยะเวลาเป็นนาทีที่ lapiz จะบันทึกแฟ้ม มีผลใช้ต่อเมื่อใช้ตัวเลือก \"บันทึกข้อมูลอัตโนมัติ\""
 
 #: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -139,8 +135,7 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"รายการ VFS scheme ที่ lapiz สนับสนุนการเขียน โดย scheme 'file' "
-"ถือว่าเขียนได้โดยปริยาย"
+"รายการ VFS scheme ที่ lapiz สนับสนุนการเขียน โดย scheme 'file' ถือว่าเขียนได้โดยปริยาย"
 
 #: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -151,8 +146,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"จำนวนครั้งสูงสุดของการปฏิบัติการที่ lapiz จะสามารถเรียกคืนการทำหรือทำซ้ำได้"
-"  ใช้ค่า \"-1\" จะหมายถึงไม่จำกัดจำนวน"
+"จำนวนครั้งสูงสุดของการปฏิบัติการที่ lapiz จะสามารถเรียกคืนการทำหรือทำซ้ำได้  ใช้ค่า \"-1\" "
+"จะหมายถึงไม่จำกัดจำนวน"
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -162,14 +157,13 @@ msgstr "โหมดการตัดบรรทัด"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"กรุณาเลือกว่าจะตัดบรรทัดอย่างไรเวลาแก้ไข หากไม่ตัดบรรทัดเลือก "
-"\"CTK_WRAP_NONE\" หรือตัดบรรทัดเมื่อจบคำเลือก \"CTK_WRAP_WORD\" "
-"หรือตัดบรรทัดที่ระดับตัวอักษรเลือก \"CTK_WRAP_CHAR\" หมายเหตุ "
-"ตัวพิมพ์ใหญ่-เล็กมีความหมายต่างกัน"
+"กรุณาเลือกว่าจะตัดบรรทัดอย่างไรเวลาแก้ไข หากไม่ตัดบรรทัดเลือก \"CTK_WRAP_NONE\" "
+"หรือตัดบรรทัดเมื่อจบคำเลือก \"CTK_WRAP_WORD\" หรือตัดบรรทัดที่ระดับตัวอักษรเลือก "
+"\"CTK_WRAP_CHAR\" หมายเหตุ ตัวพิมพ์ใหญ่-เล็กมีความหมายต่างกัน"
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
@@ -251,12 +245,11 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"ระบุว่าจะเลื่อนเคอร์เซอร์อย่างไรเมื่อกดปุ่ม HOME และ END ใช้ค่า \"DISABLED\""
-" ถ้าต้องการเลื่อนไปที่ต้น/ท้ายบรรทัดเสมอ, \"AFTER\" "
-"ถ้าต้องการเลื่อนไปที่ต้น/ท้ายบรรทัดเมื่อกดครั้งแรก "
-"และเมื่อกดครั้งที่สองจึงจะย้ายมาต้น/ท้ายข้อความโดยกระโดดข้ามช่องว่างที่หัว/ท้ายบรรทัด,"
-" \"BEFORE\" ถ้าต้องการเลื่อนไปที่ต้น/ท้ายข้อความก่อน "
-"แล้วจึงย้ายไปที่ต้น/ท้ายบรรทัดในครั้งต่อมา, และ \"ALWAYS\" "
+"ระบุว่าจะเลื่อนเคอร์เซอร์อย่างไรเมื่อกดปุ่ม HOME และ END ใช้ค่า \"DISABLED\" "
+"ถ้าต้องการเลื่อนไปที่ต้น/ท้ายบรรทัดเสมอ, \"AFTER\" ถ้าต้องการเลื่อนไปที่ต้น/"
+"ท้ายบรรทัดเมื่อกดครั้งแรก และเมื่อกดครั้งที่สองจึงจะย้ายมาต้น/"
+"ท้ายข้อความโดยกระโดดข้ามช่องว่างที่หัว/ท้ายบรรทัด, \"BEFORE\" ถ้าต้องการเลื่อนไปที่ต้น/"
+"ท้ายข้อความก่อน แล้วจึงย้ายไปที่ต้น/ท้ายบรรทัดในครั้งต่อมา, และ \"ALWAYS\" "
 "ถ้าต้องการเลื่อนไปที่ต้น/ท้ายข้อความเสมอ โดยไม่ย้ายไปที่ต้น/ท้ายบรรทัด"
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
@@ -303,12 +296,12 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"รูปแบบของปุ่มแถบเครื่องมือ เลือก \"LAPIZ_TOOLBAR_SYSTEM\" "
-"เพื่อใช้ค่าปริยายหรือ \"LAPIZ_TOOLBAR_ICONS\" สำหรับแสดงเฉพาะไอคอน หรือ "
+"รูปแบบของปุ่มแถบเครื่องมือ เลือก \"LAPIZ_TOOLBAR_SYSTEM\" เพื่อใช้ค่าปริยายหรือ "
+"\"LAPIZ_TOOLBAR_ICONS\" สำหรับแสดงเฉพาะไอคอน หรือ "
 "\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" เพื่อแสดงทั้งไอคอนและข้อความ หรือ "
 "\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" เพื่อแสดงข้อความเฉพาะบางไอคอน "
 "ค่าทั้งหมดจะต้องเป็นอักษรตัวใหญ่ดังแสดงที่นี่"
@@ -327,8 +320,7 @@ msgid "Side Pane is Visible"
 msgstr "แสดงแถบข้าง"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "จะแสดงแถบข้างที่ด้านซ้ายของหน้าต่างแก้ไขข้อความหรือไม่"
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -355,8 +347,8 @@ msgstr "จำนวนสูงสุดของแฟ้มล่าสุด
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr "กำหนดจำนวนชื่อแฟ้มที่เคยแก้ไขและแสดงในเมนูย่อย \"แฟ้มล่าสุด\""
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
@@ -364,8 +356,7 @@ msgid "Print Syntax Highlighting"
 msgstr "พิมพ์เป็นตัวเน้นสำหรับชื่อไวยากรณ์"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "กำหนดให้ lapiz เน้นไวยากรณ์ขณะจัดพิมพ์เอกสาร"
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -373,8 +364,7 @@ msgid "Print Header"
 msgstr "แบบของหัวกระดาษสำหรับพิมพ์"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "กำหนดให้ lapiz พิมพ์หัวกระดาษด้วย"
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -385,14 +375,13 @@ msgstr "พิมพ์โดยใช้โหมดตัดบรรทัด
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"กรุณาเลือกว่าจะตัดบรรทัดอย่างไรเวลาพิมพ์ หากไม่ตัดบรรทัดเลือก "
-"\"CTK_WRAP_NONE\" หรือตัดบรรทัดเมื่อจบคำเลือก \"CTK_WRAP_WORD\" "
-"หรือตัดบรรทัดที่ระดับตัวอักษรเลือก \"CTK_WRAP_CHAR\" หมายเหตุ "
-"ตัวพิมพ์ใหญ่-เล็กมีความหมายต่างกัน"
+"กรุณาเลือกว่าจะตัดบรรทัดอย่างไรเวลาพิมพ์ หากไม่ตัดบรรทัดเลือก \"CTK_WRAP_NONE\" "
+"หรือตัดบรรทัดเมื่อจบคำเลือก \"CTK_WRAP_WORD\" หรือตัดบรรทัดที่ระดับตัวอักษรเลือก "
+"\"CTK_WRAP_CHAR\" หมายเหตุ ตัวพิมพ์ใหญ่-เล็กมีความหมายต่างกัน"
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
@@ -404,8 +393,8 @@ msgid ""
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
 msgstr ""
-"ไม่แสดงเลขบรรทัดตอนพิมพ์หากตั้งค่านี้เท่ากับ 0 ถ้าเป็นค่าอื่น lapiz "
-"จะพิมพ์เลขบรรทัดทุกๆ บรรทัดที่เป็นผลคูณของค่าที่ตั้ง"
+"ไม่แสดงเลขบรรทัดตอนพิมพ์หากตั้งค่านี้เท่ากับ 0 ถ้าเป็นค่าอื่น lapiz จะพิมพ์เลขบรรทัดทุกๆ "
+"บรรทัดที่เป็นผลคูณของค่าที่ตั้ง"
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -434,9 +423,7 @@ msgstr "แบบอักษรของหัวกระดาษในกา
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
-msgstr ""
-"เลือกแบบอักษรสำหรับส่วนหัวกระดาษตอนพิมพ์ มีผลเมื่อเลือกใช้ "
-"\"พิมพ์หัวกระดาษ\""
+msgstr "เลือกแบบอักษรสำหรับส่วนหัวกระดาษตอนพิมพ์ มีผลเมื่อเลือกใช้ \"พิมพ์หัวกระดาษ\""
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -452,13 +439,13 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"เลือกแบบอักษรสำหรับส่วนของเลขบรรทัดที่จะใช้สำหรับเวลาพิมพ์ มีผลใช้เมื่อ "
-"\"พิมพ์เลขบรรทัด\" ไม่มีค่าเป็นศูนย์"
+"เลือกแบบอักษรสำหรับส่วนของเลขบรรทัดที่จะใช้สำหรับเวลาพิมพ์ มีผลใช้เมื่อ \"พิมพ์เลขบรรทัด\" "
+"ไม่มีค่าเป็นศูนย์"
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'TIS-620', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -467,12 +454,11 @@ msgstr "รหัสอักขระที่จะตรวจหาโดย
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
-"ลำดับของรหัสอักขระที่ lapiz ใช้ตรวจสอบรหัสอักขระของแฟ้มโดยอัตโนมัติ ค่า "
-"\"CURRENT\" ใช้แทนรหัสตามข้อกำหนดท้องถิ่นในขณะนั้น lapiz "
-"จะใช้เฉพาะรหัสที่รู้จักเท่านั้น"
+"ลำดับของรหัสอักขระที่ lapiz ใช้ตรวจสอบรหัสอักขระของแฟ้มโดยอัตโนมัติ ค่า \"CURRENT\" "
+"ใช้แทนรหัสตามข้อกำหนดท้องถิ่นในขณะนั้น lapiz จะใช้เฉพาะรหัสที่รู้จักเท่านั้น"
 
 #: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
@@ -516,9 +502,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"รายการปลั๊กอินที่เลือกใช้ คีย์นี้เก็บ \"ตำแหน่ง\" "
-"ของปลั๊กอินทั้งหลายที่เลือกกรุณาดูแฟ้ม .lapiz-plugin เพื่อดู \"ตำแหน่ง\" "
-"ของปลั๊กอินที่ต้องการ"
+"รายการปลั๊กอินที่เลือกใช้ คีย์นี้เก็บ \"ตำแหน่ง\" ของปลั๊กอินทั้งหลายที่เลือกกรุณาดูแฟ้ม .lapiz-"
+"plugin เพื่อดู \"ตำแหน่ง\" ของปลั๊กอินที่ต้องการ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -545,9 +530,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -573,8 +557,8 @@ msgstr "เครื่องมือแก้ไขข้อความสำ
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -593,14 +577,7 @@ msgstr "เครื่องมือแก้ไขข้อความ"
 msgid "Edit text files"
 msgstr "แก้ไขแฟ้มข้อความ"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -620,9 +597,8 @@ msgstr "ปิดโดยไ_ม่บันทึก"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -658,8 +634,7 @@ msgstr "คำถาม"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -683,16 +658,14 @@ msgstr[0] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดในชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -736,8 +709,7 @@ msgstr[0] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1164,8 +1136,7 @@ msgstr "แฟ้ม \"%s\" อ่านได้อย่างเดียว"
 
 #: lapiz/lapiz-commands-file.c:579
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr ""
-"คุณต้องการพยายามเขียนทับแฟ้มดังกล่าวด้วยข้อมูลที่กำลังจะบันทึกนี้หรือไม่?"
+msgstr "คุณต้องการพยายามเขียนทับแฟ้มดังกล่าวด้วยข้อมูลที่กำลังจะบันทึกนี้หรือไม่?"
 
 #: lapiz/lapiz-commands-file.c:649 lapiz/lapiz-commands-file.c:872
 #, c-format
@@ -1184,14 +1155,12 @@ msgstr "กำลังแปลงแฟ้ม '%s' กลับ…"
 #: lapiz/lapiz-commands-file.c:1131
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
-msgstr ""
-"ยกเลิกการแก้ไขที่ยังไม่บันทึกของเอกสาร '%s' เพื่อย้อนกลับสู่สภาพเดิมหรือไม่?"
+msgstr "ยกเลิกการแก้ไขที่ยังไม่บันทึกของเอกสาร '%s' เพื่อย้อนกลับสู่สภาพเดิมหรือไม่?"
 
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1215,16 +1184,14 @@ msgstr[0] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "การแก้ไขทั้งหมดในเอกสารในชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1263,9 +1230,7 @@ msgstr "ซัน ไมโครซิสเท็มส์"
 
 #: lapiz/lapiz-commands-help.c:67
 msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
-msgstr ""
-"Lapiz เป็นเครื่องมือแก้ไขข้อความที่มีขนาดเล็กและน้ำหนักเบาสำหรับเดสก์ท็อป "
-"CAFE"
+msgstr "Lapiz เป็นเครื่องมือแก้ไขข้อความที่มีขนาดเล็กและน้ำหนักเบาสำหรับเดสก์ท็อป CAFE"
 
 #: lapiz/lapiz-commands-help.c:70
 msgid ""
@@ -1285,8 +1250,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1302,10 +1267,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr "Akom Chotiphantawanon <knight2000@gmail.com>, 2016"
 
@@ -1553,17 +1519,13 @@ msgstr "%s ไม่ใช่ตำแหน่งที่ถูกต้อง
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
-msgstr ""
-"ไม่พบโฮสต์ชื่อ %s กรุณาตรวจสอบการตั้งค่าพร็อกซีให้ถูกต้อง "
-"แล้วลองใหม่อีกครั้ง"
+msgstr "ไม่พบโฮสต์ชื่อ %s กรุณาตรวจสอบการตั้งค่าพร็อกซีให้ถูกต้อง แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
-msgstr ""
-"ชื่อโฮสต์ไม่ถูกต้อง กรุณาตรวจสอบว่าคุณพิมพ์ชื่อถูกต้องหรือไม่ "
-"แล้วลองใหม่อีกครั้ง"
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr "ชื่อโฮสต์ไม่ถูกต้อง กรุณาตรวจสอบว่าคุณพิมพ์ชื่อถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:301
 #, c-format
@@ -1614,9 +1576,7 @@ msgstr "ไ_ม่แก้ไข"
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
-msgstr ""
-"จำนวนขั้นของการตามลิงก์ถูกจำกัด "
-"และไม่สามารถไปถึงแฟ้มจริงภายในจำนวนขั้นที่กำหนดนี้"
+msgstr "จำนวนขั้นของการตามลิงก์ถูกจำกัด และไม่สามารถไปถึงแฟ้มจริงภายในจำนวนขั้นที่กำหนดนี้"
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1645,8 +1605,7 @@ msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
 msgstr ""
-"แฟ้มที่คุณเปิดอยู่นั้นมีตัวอักขระที่ไม่ถูกต้องอยู่ "
-"หากคุณยังแก้ไขแฟ้มนี้ต่อไปคุณอาจทำให้แฟ้มนี้ไร้ประโยชน์ได้"
+"แฟ้มที่คุณเปิดอยู่นั้นมีตัวอักขระที่ไม่ถูกต้องอยู่ หากคุณยังแก้ไขแฟ้มนี้ต่อไปคุณอาจทำให้แฟ้มนี้ไร้ประโยชน์ได้"
 
 #: lapiz/lapiz-io-error-message-area.c:621
 msgid "You can also choose another character encoding and try again."
@@ -1685,11 +1644,10 @@ msgstr "แฟ้มนี้ (%s) ถูกเปิดอยู่แล้ว
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
-"lapiz ได้เปิดแฟ้มนี้อยู่แล้วในหน้าต่างอื่นในแบบอ่านอย่างเดียว "
-"คุณต้องการยืนยันที่จะแก้ไขอยู่หรือไม่?"
+"lapiz ได้เปิดแฟ้มนี้อยู่แล้วในหน้าต่างอื่นในแบบอ่านอย่างเดียว คุณต้องการยืนยันที่จะแก้ไขอยู่หรือไม่?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
 #: lapiz/lapiz-io-error-message-area.c:960
@@ -1707,11 +1665,8 @@ msgid "The file %s has been modified since reading it."
 msgstr "แฟ้ม %s ถูกเปลี่ยนแปลงหลังจากการอ่านของ lapiz ครั้งล่าสุด"
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
-msgstr ""
-"ถ้าคุณบันทึก การเปลี่ยนแปลงจากโปรแกรมภายนอกจะสูญหายทั้งหมด "
-"ยืนยันบันทึกหรือไม่?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr "ถ้าคุณบันทึก การเปลี่ยนแปลงจากโปรแกรมภายนอกจะสูญหายทั้งหมด ยืนยันบันทึกหรือไม่?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
 #, c-format
@@ -1726,12 +1681,11 @@ msgstr "ไม่สามารถสร้างแฟ้มสำรองช
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"lapiz ไม่สามารถสำรองข้อมูลเดิมของแฟ้มนี้ก่อนบันทึกข้อมูลใหม่ได้ "
-"คุณอาจละเลยคำเตือนนี้เสีย แล้วยืนยันบันทึกแฟ้มก็ได้ "
-"แต่ถ้าเกิดข้อผิดพลาดระหว่างบันทึก คุณอาจสูญเสียข้อมูลเดิมของแฟ้มไปด้วย "
+"lapiz ไม่สามารถสำรองข้อมูลเดิมของแฟ้มนี้ก่อนบันทึกข้อมูลใหม่ได้ คุณอาจละเลยคำเตือนนี้เสีย "
+"แล้วยืนยันบันทึกแฟ้มก็ได้ แต่ถ้าเกิดข้อผิดพลาดระหว่างบันทึก คุณอาจสูญเสียข้อมูลเดิมของแฟ้มไปด้วย "
 "ยืนยันบันทึกหรือไม่?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
@@ -1741,49 +1695,44 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"lapiz ไม่สามารถจัดการตำแหน่ง %s ในโหมดเขียนได้ "
-"กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
+"lapiz ไม่สามารถจัดการตำแหน่ง %s ในโหมดเขียนได้ กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ "
+"แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
-"lapiz ไม่สามารถจัดการตำแหน่งนี้ในโหมดเขียนได้ "
-"กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
+"lapiz ไม่สามารถจัดการตำแหน่งนี้ในโหมดเขียนได้ กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ "
+"แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:1078
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
-msgstr ""
-"%s ไม่ใช่ตำแหน่งที่ถูกต้อง กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ "
-"แล้วลองใหม่อีกครั้ง"
+msgstr "%s ไม่ใช่ตำแหน่งที่ถูกต้อง กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"คุณไม่มีสิทธิ์เพียงพอที่จะบันทึกแฟ้มนี้ได้ "
-"กรุณาตรวจสอบว่าพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
+"คุณไม่มีสิทธิ์เพียงพอที่จะบันทึกแฟ้มนี้ได้ กรุณาตรวจสอบว่าพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
-msgstr ""
-"เหลือพื้นที่บนดิสก์ไม่พอที่จะบันทึกแฟ้มนี้ กรุณาลบข้อมูลที่ไม่จำเป็นออก "
-"แล้วลองใหม่อีกครั้ง"
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr "เหลือพื้นที่บนดิสก์ไม่พอที่จะบันทึกแฟ้มนี้ กรุณาลบข้อมูลที่ไม่จำเป็นออก แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"คุณกำลังพยายามบันทึกแฟ้มในดิสก์ที่อ่านได้อย่างเดียว "
-"กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
+"คุณกำลังพยายามบันทึกแฟ้มในดิสก์ที่อ่านได้อย่างเดียว กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ "
+"แล้วลองใหม่อีกครั้ง"
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
@@ -1791,20 +1740,17 @@ msgstr "มีแฟ้มชื่อเดียวกันอยู่ก่
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
-msgstr ""
-"ดิสก์ที่คุณกำลังบันทึกแฟ้มมีข้อจำกัดเรื่องความยาวของชื่อแฟ้ม "
-"กรุณาใช้ชื่อที่สั้นกว่านี้"
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
+msgstr "ดิสก์ที่คุณกำลังบันทึกแฟ้มมีข้อจำกัดเรื่องความยาวของชื่อแฟ้ม กรุณาใช้ชื่อที่สั้นกว่านี้"
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
-"ดิสก์ที่คุณกำลังบันทึกแฟ้มมีข้อจำกัดด้านขนาดของแฟ้ม "
-"ลองบันทึกแฟ้มขนาดเล็กลงหรือบันทึกลงดิสก์อื่น"
+"ดิสก์ที่คุณกำลังบันทึกแฟ้มมีข้อจำกัดด้านขนาดของแฟ้ม ลองบันทึกแฟ้มขนาดเล็กลงหรือบันทึกลงดิสก์อื่น"
 
 #: lapiz/lapiz-io-error-message-area.c:1129
 #, c-format
@@ -1865,14 +1811,12 @@ msgstr "พิมพ์โดยเน้นไ_วยากรณ์"
 msgid "Print line nu_mbers"
 msgstr "พิมพ์เล_ขบรรทัด"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "แสดงเลขบรรทัดทุ_กๆ"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "บรรทัด"
@@ -1983,8 +1927,7 @@ msgstr "ทับ"
 msgid "INS"
 msgstr "แทรก"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2038,38 +1981,38 @@ msgstr "กำลังบันทึกแฟ้ม %s ที่ %s"
 msgid "Saving %s"
 msgstr "กำลังบันทึกแฟ้ม %s"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "เกิดข้อผิดพลาดขณะเปิดแฟ้ม %s"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "เกิดข้อผิดพลาดขณะแปลงแฟ้ม %s กลับ"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "เกิดข้อผิดพลาดขณะบันทึกแฟ้ม %s"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "ยูนิโค้ด (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "ชื่อ:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "ชนิด MIME:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "รหัสอักขระ:"
 
@@ -2546,8 +2489,7 @@ msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
 msgstr ""
-"วิเคราะห์เอกสารปัจจุบันและรายงานจำนวนคำ "
-"จำนวนบรรทัดจำนวนอักขระทั้งรวมและไม่รวมช่องว่าง"
+"วิเคราะห์เอกสารปัจจุบันและรายงานจำนวนคำ จำนวนบรรทัดจำนวนอักขระทั้งรวมและไม่รวมช่องว่าง"
 
 #: plugins/docinfo/docinfo.ui:51
 msgid "_Update"
@@ -2827,12 +2769,6 @@ msgstr "ช่องเรียกดูแฟ้ม"
 msgid "Easy file access from the side pane"
 msgstr "เลือกแฟ้มอย่างสะดวกจากช่องด้านข้าง"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "กำหนดตำแหน่งที่ตั้งตามแฟ้มแรก"
@@ -2859,9 +2795,9 @@ msgid ""
 "(filter binary files) and hidden_and_binary (filter both hidden and binary "
 "files)."
 msgstr ""
-"ค่านี้กำหนดว่าแฟ้มใดจะถูกกรองออกไปจากช่องเรียกดูแฟ้ม ค่าที่เป็นไปได้คือ: "
-"none (ไม่กรอง), hidden (กรองแฟ้มซ่อนออกไป), binary (กรองแฟ้มไบนารีออกไป) และ"
-" hidden_and_binary (กรองทั้งแฟ้มซ่อนและแฟ้มไบนารีออกไป)"
+"ค่านี้กำหนดว่าแฟ้มใดจะถูกกรองออกไปจากช่องเรียกดูแฟ้ม ค่าที่เป็นไปได้คือ: none (ไม่กรอง), "
+"hidden (กรองแฟ้มซ่อนออกไป), binary (กรองแฟ้มไบนารีออกไป) และ hidden_and_binary "
+"(กรองทั้งแฟ้มซ่อนและแฟ้มไบนารีออกไป)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2869,11 +2805,11 @@ msgstr "แพตเทิร์นการกรองแฟ้มในช่
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
-"แพตเทิร์นการกรองสำหรับกรองแฟ้มในช่องเรียกดูแฟ้ม การกรองนี้ กรองต่อจาก "
-"filter_mode อีกชั้นหนึ่ง"
+"แพตเทิร์นการกรองสำหรับกรองแฟ้มในช่องเรียกดูแฟ้ม การกรองนี้ กรองต่อจาก filter_mode "
+"อีกชั้นหนึ่ง"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
@@ -2894,8 +2830,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
-"ไดเรกทอรีรากที่ช่องเรียกดูแฟ้มจะใช้เมื่อโหลดปลั๊กอินช่องเรียกดูแฟ้ม "
-"โดยค่าคีย์ onload/tree_view เป็นจริง"
+"ไดเรกทอรีรากที่ช่องเรียกดูแฟ้มจะใช้เมื่อโหลดปลั๊กอินช่องเรียกดูแฟ้ม โดยค่าคีย์ onload/tree_view "
+"เป็นจริง"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2903,13 +2839,12 @@ msgstr "ไดเรกทอรีรากเสมือนของช่อ
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"ไดเรกทอรีรากเสมือนที่ช่องเรียกดูแฟ้มจะใช้เมื่อโหลดปลั๊กอินช่องเรียกดูแฟ้ม "
-"โดยค่าคีย์ onload/tree_view เป็นจริง "
-"ไดเรกทอรีรากเสมือนต้องอยู่ใต้รากจริงเสมอ"
+"ไดเรกทอรีรากเสมือนที่ช่องเรียกดูแฟ้มจะใช้เมื่อโหลดปลั๊กอินช่องเรียกดูแฟ้ม โดยค่าคีย์ onload/"
+"tree_view เป็นจริง ไดเรกทอรีรากเสมือนต้องอยู่ใต้รากจริงเสมอ"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
@@ -3013,12 +2948,9 @@ msgstr "(ว่างเปล่า)"
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr ""
-"แฟ้มที่เปลี่ยนชื่อถูกกรองออกอยู่ "
-"คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นแฟ้มได้"
+msgstr "แฟ้มที่เปลี่ยนชื่อถูกกรองออกอยู่ คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นแฟ้มได้"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "แฟ้ม"
@@ -3027,12 +2959,9 @@ msgstr "แฟ้ม"
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr ""
-"แฟ้มใหม่ที่สร้างถูกกรองออกอยู่ "
-"คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นแฟ้มได้"
+msgstr "แฟ้มใหม่ที่สร้างถูกกรองออกอยู่ คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นแฟ้มได้"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "ไดเรกทอรี"
@@ -3042,8 +2971,7 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"ไดเรกทอรีใหม่ที่สร้างถูกกรองออกอยู่ "
-"คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นไดเรกทอรีได้"
+"ไดเรกทอรีใหม่ที่สร้างถูกกรองออกอยู่ คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นไดเรกทอรีได้"
 
 #: plugins/filebrowser/lapiz-file-browser-widget.c:712
 msgid "Bookmarks"
@@ -3210,12 +3138,6 @@ msgstr "คอนโซลไพธอน"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "คอนโซลไพธอนโต้ตอบในแถบด้านล่าง"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "สีของข้อ_ผิดพลาด:"
@@ -3248,12 +3170,6 @@ msgstr "เปิดเอกสารอย่างรวดเร็ว"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "เปิดแฟ้มอย่างรวดเร็ว"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3347,9 +3263,8 @@ msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
 msgstr ""
-"ข้อความนี้ไม่ใช่ตัวย่อสะกิดด้วยแท็บที่ใช้ได้ ข้อความที่สะกิดได้ "
-"อาจเป็นตัวอักษรหลายตัว หรืออักษรเดี่ยวๆ ที่ไม่ใช่พยัญชนะหรือตัวเลข เช่น {, ["
-" เป็นต้น"
+"ข้อความนี้ไม่ใช่ตัวย่อสะกิดด้วยแท็บที่ใช้ได้ ข้อความที่สะกิดได้ อาจเป็นตัวอักษรหลายตัว หรืออักษรเดี่ยวๆ "
+"ที่ไม่ใช่พยัญชนะหรือตัวเลข เช่น {, [ เป็นต้น"
 
 #: plugins/snippets/snippets/Manager.py:771
 #, python-format
@@ -3472,8 +3387,7 @@ msgstr "แฟ้ม \"%s\" ไม่ใช่แฟ้มจัดเก็บ�
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
-msgstr ""
-"การทำงานของคำสั่งไพธอน (%s) ใช้เวลานานกว่าค่าสูงสุดที่กำหนด ขอยกเลิกการทำงาน"
+msgstr "การทำงานของคำสั่งไพธอน (%s) ใช้เวลานานกว่าค่าสูงสุดที่กำหนด ขอยกเลิกการทำงาน"
 
 #: plugins/snippets/snippets/Placeholder.py:609
 #, python-format
@@ -3495,12 +3409,6 @@ msgstr "เรียงลำดับ"
 #: plugins/sort/sort.plugin.desktop.in:6
 msgid "Sorts a document or selected text."
 msgstr "เรียงลำดับเอกสารหรือข้อความที่เลือก"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
 
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
@@ -3530,10 +3438,8 @@ msgstr "ไม่สามารถเรียกคืนค่าเดิม
 msgid "Autocheck Type"
 msgstr "ชนิดตรวจสอบอัตโนมัติ"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3560,8 +3466,7 @@ msgstr "ตรวจตัวสะกด"
 msgid "Suggestions"
 msgstr "การแนะนำ"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(คำสะกดที่ถูกต้อง)"
@@ -3573,6 +3478,7 @@ msgstr "ตรวจตัวสะกดเสร็จสมบูรณ์"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3582,6 +3488,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3590,6 +3497,7 @@ msgstr "ไม่ทราบ (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3723,12 +3631,6 @@ msgstr "ตรวจตัวสะกด"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "ตรวจตัวสะกดในเอกสารนี้"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -5589,8 +5491,7 @@ msgstr "รายชื่อแท็ก"
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
-msgstr ""
-"ช่วยแทรกแท็กหรือข้อความที่ใช้บ่อยลงในเอกสารอย่างรวดเร็วโดยไม่ต้องพิมพ์"
+msgstr "ช่วยแทรกแท็กหรือข้อความที่ใช้บ่อยลงในเอกสารอย่างรวดเร็วโดยไม่ต้องพิมพ์"
 
 #: plugins/taglist/XSLT.tags.xml.in:7
 msgid "XSLT - Elements"
@@ -6409,12 +6310,6 @@ msgstr "บันทึกโดยไม่มีช่องว่างท้
 msgid "Removes trailing spaces from lines before saving."
 msgstr "ลบช่องว่างท้ายบรรทัดจากบรรทัดก่อนบันทึก"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "แทรกวันที่และเวลา"
@@ -6439,8 +6334,7 @@ msgstr "ใช้รูปแบบ_กำหนดเอง"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Ey %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6457,3 +6351,7 @@ msgstr "เมื่อแทรกวันที่/เวลา..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_ถามรูปแบบ"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'TIS-620', 'UTF-16' ]"

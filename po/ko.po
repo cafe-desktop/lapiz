@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Youngbin Han <sukso96100@gmail.com>, 2020
 # clefebvre <clement.lefebvre@linuxmint.com>, 2020
@@ -12,19 +12,19 @@
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/cafe/teams/13566/ko/)\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -38,8 +38,8 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"편집 영역에 플루마에서 지정한 글꼴 대신 시스템의 기본 고정폭 글꼴을 씁니다. 이 옵션이 꺼져 있으면 시스템 글꼴 대신 \"편집기 "
-"글꼴\" 옵션의 글꼴을 씁니다."
+"편집 영역에 플루마에서 지정한 글꼴 대신 시스템의 기본 고정폭 글꼴을 씁니다. "
+"이 옵션이 꺼져 있으면 시스템 글꼴 대신 \"편집기 글꼴\" 옵션의 글꼴을 씁니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
@@ -54,7 +54,9 @@ msgstr "편집기 글꼴"
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
-msgstr "편집 영역에서 사용자 글꼴을 씁니다. \"기본 글꼴 사용\" 옵션이 꺼져 있어야만 적용됩니다"
+msgstr ""
+"편집 영역에서 사용자 글꼴을 씁니다. \"기본 글꼴 사용\" 옵션이 꺼져 있어야만 "
+"적용됩니다"
 
 #: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
@@ -64,7 +66,9 @@ msgstr "[ctrl] + [tab]으로 탭 전환"
 msgid ""
 "If true, it enables the ability to switch tabs using [ctrl + tab] and [ctrl "
 "+ shift + tab]."
-msgstr "참 값이면, [ctrl + tab] 과 [ctrl + shift + tab]을 이용해서 탭을 바꿀 수 있게 합니다."
+msgstr ""
+"참 값이면, [ctrl + tab] 과 [ctrl + shift + tab]을 이용해서 탭을 바꿀 수 있게 "
+"합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:26
 msgid "Show the first tab if there is only one tab"
@@ -90,7 +94,9 @@ msgstr "예비본 만들기"
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr "파일을 저장할 때 예비본을 만듭니다. 예비본 파일의 확장자는 \"예비본 확장자\" 옵션에서 설정할 수 있습니다."
+msgstr ""
+"파일을 저장할 때 예비본을 만듭니다. 예비본 파일의 확장자는 \"예비본 확장자\" "
+"옵션에서 설정할 수 있습니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -101,7 +107,9 @@ msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
-msgstr "바뀐 파일을 일정 시간 간격마다 자동으로 저장합니다. \"자동 저장 간격\"옵션에서 시간 간격을 설정할 수 있습니다."
+msgstr ""
+"바뀐 파일을 일정 시간 간격마다 자동으로 저장합니다. \"자동 저장 간격\"옵션에"
+"서 시간 간격을 설정할 수 있습니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -111,7 +119,9 @@ msgstr "자동 저장 간격"
 msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
-msgstr "플루마에서 바뀐 파일을 자동으로 저장하는 시간입니다.\"자동 저장\"옵션이 켜져 있어야만 적용됩니다."
+msgstr ""
+"플루마에서 바뀐 파일을 자동으로 저장하는 시간입니다.\"자동 저장\"옵션이 켜져 "
+"있어야만 적용됩니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -129,7 +139,9 @@ msgstr "쓰기 가능한 VFS 스킴"
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
-msgstr "쓰기 모드를 지원하는 VFS 스킴 목록. 'file' 스킴은 기본값으로 쓰기가 지원됩니다."
+msgstr ""
+"쓰기 모드를 지원하는 VFS 스킴 목록. 'file' 스킴은 기본값으로 쓰기가 지원됩니"
+"다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -139,7 +151,8 @@ msgstr "입력취소 최대 개수"
 msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
-msgstr "플루마에서 실행 취소나 다시 실행을 할 수 있는 최대 회수. \"-1\"이면 무제한."
+msgstr ""
+"플루마에서 실행 취소나 다시 실행을 할 수 있는 최대 회수. \"-1\"이면 무제한."
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -149,13 +162,14 @@ msgstr "줄 바꿈 모드"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"편집 영역에서 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 \"CTK_WRAP_NONE\"을, 단어 단위로 줄 바꿈을 "
-"하려면 \"CTK_WRAP_WORD\"를, 문자 단위로 줄 바꿈을 하려면 \"CTK_WRAP_CHAR\"을 쓰십시오. 대소문자를 가리기 "
-"때문에 여기에 적힌대로 완벽히 입력해야 합니다."
+"편집 영역에서 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 "
+"\"CTK_WRAP_NONE\"을, 단어 단위로 줄 바꿈을 하려면 \"CTK_WRAP_WORD\"를, 문자 "
+"단위로 줄 바꿈을 하려면 \"CTK_WRAP_CHAR\"을 쓰십시오. 대소문자를 가리기 때문"
+"에 여기에 적힌대로 완벽히 입력해야 합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
@@ -237,10 +251,12 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"HOME 및 END 키를 눌렀을 때 커서 움직임을 지정합니다. \"DISABLED\"로 하면 줄의 처음과 끝으로 이동합니다. "
-"\"AFTER\"로 하면 키를 처음 눌렀을 때 줄의 처음과 끝으로 이동하고 두번째로 누르면 공백 문자를 무시한 글의 처음과 끝으로 "
-"이동합니다. \"BEFORE\"로 하면 글의 처음과 끝으로 이동한 다음 그 다음에 눌렀을 때 줄의 처음과 끝으로 이동합니다. "
-"\"ALWAYS\"로 하면 항상 줄과 관계없이 글의 처음과 끝으로만 이동합니다."
+"HOME 및 END 키를 눌렀을 때 커서 움직임을 지정합니다. \"DISABLED\"로 하면 줄"
+"의 처음과 끝으로 이동합니다. \"AFTER\"로 하면 키를 처음 눌렀을 때 줄의 처음"
+"과 끝으로 이동하고 두번째로 누르면 공백 문자를 무시한 글의 처음과 끝으로 이동"
+"합니다. \"BEFORE\"로 하면 글의 처음과 끝으로 이동한 다음 그 다음에 눌렀을 때 "
+"줄의 처음과 끝으로 이동합니다. \"ALWAYS\"로 하면 항상 줄과 관계없이 글의 처음"
+"과 끝으로만 이동합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -286,15 +302,15 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"도구 모음 단추의 스타일을 지정합니다. 시스템의 기본 스타일을 쓰려면 \"LAPIZ_TOOLBAR_SYSTEM\"을, 아이콘만 보이려면 "
-"\"LAPIZ_TOOLBAR_ICONS\"를 아이콘과 텍스트를 모두 보이려면 "
-"\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\"를, 아이콘 옆에 텍스트를 보이려면 "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\"을 값으로 사용할 수 있습니다.  대소문자를 가리기 때문에 여기에 적힌대로 "
-"완벽히 입력해야 합니다."
+"도구 모음 단추의 스타일을 지정합니다. 시스템의 기본 스타일을 쓰려면 "
+"\"LAPIZ_TOOLBAR_SYSTEM\"을, 아이콘만 보이려면 \"LAPIZ_TOOLBAR_ICONS\"를 아이"
+"콘과 텍스트를 모두 보이려면 \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\"를, 아이콘 옆에 "
+"텍스트를 보이려면 \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\"을 값으로 사용할 수 있습"
+"니다.  대소문자를 가리기 때문에 여기에 적힌대로 완벽히 입력해야 합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -310,8 +326,7 @@ msgid "Side Pane is Visible"
 msgstr "가장자리 창 보임"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "편집 창 왼쪽에 가장자리 창을 보일지 여부."
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -321,7 +336,9 @@ msgstr "사이드 창에 탭 표시"
 #: data/org.cafe.lapiz.gschema.xml.in:152
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
-msgstr "거짓 이면, 플루마는 사이드 창을 활성화한 채로 노트북에 탭을 표시하지 않습니다."
+msgstr ""
+"거짓 이면, 플루마는 사이드 창을 활성화한 채로 노트북에 탭을 표시하지 않습니"
+"다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
@@ -338,17 +355,17 @@ msgstr "최근 파일 최대 개수"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
-msgstr "\"최근 파일\" 메뉴에서 보여줄 최근에 열린 파일의 최대 개수를 지정합니다."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"\"최근 파일\" 메뉴에서 보여줄 최근에 열린 파일의 최대 개수를 지정합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "구문 강조 인쇄"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "문서를 인쇄할 때 구문 강조를 인쇄합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -356,8 +373,7 @@ msgid "Print Header"
 msgstr "머릿말 인쇄"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "문서를 인쇄할 때 문서 머릿말을 포함합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -368,13 +384,14 @@ msgstr "줄 바꿈 모드 인쇄"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"인쇄할 때 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 \"CTK_WRAP_NONE\"을, 단어 단위로 줄 바꿈을 하려면"
-" \"CTK_WRAP_WORD\"를, 문자 단위로 줄 바꿈을 하려면 \"CTK_WRAP_CHAR\"을 쓰십시오. 대소문자를 가리기 때문에"
-" 여기에 적힌대로 완벽히 입력해야 합니다."
+"인쇄할 때 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 "
+"\"CTK_WRAP_NONE\"을, 단어 단위로 줄 바꿈을 하려면 \"CTK_WRAP_WORD\"를, 문자 "
+"단위로 줄 바꿈을 하려면 \"CTK_WRAP_CHAR\"을 쓰십시오. 대소문자를 가리기 때문"
+"에 여기에 적힌대로 완벽히 입력해야 합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
@@ -385,7 +402,9 @@ msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
-msgstr "값이 0 이면 문서를 인쇄할 때 줄 번호를 넣지 않습니다. 그 외의 값이면 매 줄에 줄 번호를 인쇄합니다."
+msgstr ""
+"값이 0 이면 문서를 인쇄할 때 줄 번호를 넣지 않습니다. 그 외의 값이면 매 줄에 "
+"줄 번호를 인쇄합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -414,7 +433,9 @@ msgstr "인쇄용 머릿말 글꼴"
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
-msgstr "문서를 인쇄할 때 머릿말에 쓸 글꼴을 지정합니다. \"머릿말 인쇄\" 옵션이 켜져 있어야만 적용됩니다."
+msgstr ""
+"문서를 인쇄할 때 머릿말에 쓸 글꼴을 지정합니다. \"머릿말 인쇄\" 옵션이 켜져 "
+"있어야만 적용됩니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -429,12 +450,14 @@ msgstr "인쇄용 줄 번호 글꼴"
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
-msgstr "인쇄할 때 줄 번호에 쓸 글꼴을 지정합니다. \"줄 번호 인쇄\" 옵션이 0이 아닌 값일 때 적용됩니다."
+msgstr ""
+"인쇄할 때 줄 번호에 쓸 글꼴을 지정합니다. \"줄 번호 인쇄\" 옵션이 0이 아닌 값"
+"일 때 적용됩니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -443,11 +466,12 @@ msgstr "인코딩 자동 인식"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
-"플루마에서 파일 인코딩을 자동 인식할 때 사용할 인코딩의 정렬된 목록.  \"CURRENT\"는 현재 로캘 인코딩을 말합니다. 이 "
-"목록에서 알려져 있는 인코딩 이름만을 사용합니다."
+"플루마에서 파일 인코딩을 자동 인식할 때 사용할 인코딩의 정렬된 목록.  "
+"\"CURRENT\"는 현재 로캘 인코딩을 말합니다. 이 목록에서 알려져 있는 인코딩 이"
+"름만을 사용합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
@@ -462,7 +486,9 @@ msgstr "메뉴에 보일 인코딩"
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
-msgstr "파일 열기/저장에서 글자 인코딩 메뉴에 보일 인코딩 목록. 알려져 있는 인코딩 이름만을 사용합니다."
+msgstr ""
+"파일 열기/저장에서 글자 인코딩 메뉴에 보일 인코딩 목록. 알려져 있는 인코딩 이"
+"름만을 사용합니다."
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -489,8 +515,9 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"활성화된 플러그인 목록. 활성화된 플러그인의 위치(\"Location\")가 들어 있습니다. 주어진 플러그인의 "
-"위치(\"Location\")를 알아보려면 .lapiz-plugin 파일을 보십시오."
+"활성화된 플러그인 목록. 활성화된 플러그인의 위치(\"Location\")가 들어 있습니"
+"다. 주어진 플러그인의 위치(\"Location\")를 알아보려면 .lapiz-plugin 파일을 보"
+"십시오."
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -517,9 +544,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -545,8 +571,8 @@ msgstr "마테 데스크톱 환경용 텍스트 에디터"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -565,14 +591,7 @@ msgstr "텍스트 편집기"
 msgid "Edit text files"
 msgstr "텍스트 파일을 편집합니다"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -592,9 +611,8 @@ msgstr "저장하지 않고 닫기(_W)"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -630,8 +648,7 @@ msgstr "질문"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -655,16 +672,14 @@ msgstr[0] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "저장하지 않으면, 최근 1시간동안 편집한 사항을 잃어버립니다."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -708,8 +723,7 @@ msgstr[0] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1160,8 +1174,7 @@ msgstr "문서 '%s'의 저장하지 않은 바뀐 점을 되돌리시겠습니�
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1185,16 +1198,14 @@ msgstr[0] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "최근 한시간동안 문서에 바뀐 점을 잃어버립니다."
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1242,8 +1253,9 @@ msgid ""
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"플루마는 자유 소프트웨어 입니다. 자유 소프트웨어 재단이 발표한 GNU 일반 공중 사용 허가서 버전 2 또는 (선택에 따라) 그 이상의 "
-"버전의 조항에 의거하여 재배포하거나 수정할 수 있습니다."
+"플루마는 자유 소프트웨어 입니다. 자유 소프트웨어 재단이 발표한 GNU 일반 공중 "
+"사용 허가서 버전 2 또는 (선택에 따라) 그 이상의 버전의 조항에 의거하여 재배포"
+"하거나 수정할 수 있습니다."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
@@ -1252,18 +1264,20 @@ msgid ""
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"플루마는 유용하게 사용될 수 있으리라는 희망에서 배포되고 있지만, 특정한 목적에 맞는 적합성 여부나 판매용으로 사용할 수 있으리라는 "
-"묵시적인 보증을 포함한 어떠한 형태의 보증도 제공하지 않습니다. 보다 자세한 사항에 대해서는 GNU 일반 공중 사용 허가서를 참고하시기 "
-"바랍니다."
+"플루마는 유용하게 사용될 수 있으리라는 희망에서 배포되고 있지만, 특정한 목적"
+"에 맞는 적합성 여부나 판매용으로 사용할 수 있으리라는 묵시적인 보증을 포함한 "
+"어떠한 형태의 보증도 제공하지 않습니다. 보다 자세한 사항에 대해서는 GNU 일반 "
+"공중 사용 허가서를 참고하시기 바랍니다."
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"GNU 일반 공중 사용 허가서 사본을 이 프로그램과 받아야 합니다. 못받으셨다면 Free Software Foundation, Inc.,"
-" 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA에 요청하세요."
+"GNU 일반 공중 사용 허가서 사본을 이 프로그램과 받아야 합니다. 못받으셨다면 "
+"Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA "
+"02110-1301, USA에 요청하세요."
 
 #: lapiz/lapiz-commands-help.c:113
 msgid "About Lapiz"
@@ -1277,10 +1291,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Elex https://launchpad.net/~mysticzizone\n"
@@ -1288,7 +1303,8 @@ msgstr ""
 "Yoo Duk Nam https://launchpad.net/~yoo2001818\n"
 "onlyeriko https://launchpad.net/~onlyeriko\n"
 "Seong-ho Cho <darkcircle.0426@gmail.com>\n"
-"CAFE Desktop Environment Team <https://www.transifex.com/cafe/teams/13566/ko/>"
+"CAFE Desktop Environment Team <https://www.transifex.com/cafe/teams/13566/ko/"
+">"
 
 #: lapiz/lapiz-commands-search.c:112
 #, c-format
@@ -1534,13 +1550,17 @@ msgstr "%s(은)는 올바른 위치가 아닙니다."
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
-msgstr "호스트 %s을(를) 찾을 수 없습니다. 프록시 설정이 올바른지 확인하고 다시 시도하십시오."
+msgstr ""
+"호스트 %s을(를) 찾을 수 없습니다. 프록시 설정이 올바른지 확인하고 다시 시도하"
+"십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
-msgstr "호스트 이름이 올바르지 않습니다. 입력한 위치가 올바른지 확인하고 다시 시도하십시오."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr ""
+"호스트 이름이 올바르지 않습니다. 입력한 위치가 올바른지 확인하고 다시 시도하"
+"십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:301
 #, c-format
@@ -1591,7 +1611,9 @@ msgstr "편집하지 않기(_O)"
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
-msgstr "링크 따라가는 개수는 정해져 있습니다. 그 개수 제한 안에서 실제 파일을 찾을 수 없습니다."
+msgstr ""
+"링크 따라가는 개수는 정해져 있습니다. 그 개수 제한 안에서 실제 파일을 찾을 "
+"수 없습니다."
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1619,7 +1641,9 @@ msgstr "%s 파일을 여는데 문제가 발생했습니다."
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
-msgstr "연 파일 안에 올바르지 않은 문자가 들어 있습니다. 이 파일을 계속 편집하면 문서를 망가뜨릴 수도 있습니다."
+msgstr ""
+"연 파일 안에 올바르지 않은 문자가 들어 있습니다. 이 파일을 계속 편집하면 문서"
+"를 망가뜨릴 수도 있습니다."
 
 #: lapiz/lapiz-io-error-message-area.c:621
 msgid "You can also choose another character encoding and try again."
@@ -1649,7 +1673,8 @@ msgstr "%2$s 문자 인코딩으로 %1$s 파일을 저장할 수 없습니다."
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
-msgstr "지정한 문자 인코딩으로 인코드되지 않은 문자가 문서에 포함되어 있습니다."
+msgstr ""
+"지정한 문자 인코딩으로 인코드되지 않은 문자가 문서에 포함되어 있습니다."
 
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
@@ -1658,8 +1683,8 @@ msgstr "이 파일은 (%s) 다른 플루마 창에 열려있습니다."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr "편집할 수 없는 방법으로 파일을 열었습니다. 계속 편집하겠습니까?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
@@ -1678,8 +1703,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "파일 %s(이)가 읽은 뒤에 고쳐졌습니다."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "저장하면, 외부에서 바꾼 것을 잃어버리게 됩니다. 계속 저장하겠습니까?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
@@ -1695,11 +1719,12 @@ msgstr "%s(을)를 저장할 때 임시 백업 파일을 만들 수 없습니다
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"새로 저장하기 전에 파일의 이전판을 저장할 수 없습니다. 이 주의를 무시하고 저장할 수 있지만, 저장중 오류가 생기면 파일의 이전판을 "
-"잃어버리게 됩니다. 계속하겠습니까?"
+"새로 저장하기 전에 파일의 이전판을 저장할 수 없습니다. 이 주의를 무시하고 저"
+"장할 수 있지만, 저장중 오류가 생기면 파일의 이전판을 잃어버리게 됩니다. 계속"
+"하겠습니까?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:1061
@@ -1707,38 +1732,50 @@ msgstr ""
 msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
-msgstr "%s 위치를 쓰기 모드로 처리할 수 없습니다. 입력한 위치가 올바른지 확인하고 다시 시도하십시오."
+msgstr ""
+"%s 위치를 쓰기 모드로 처리할 수 없습니다. 입력한 위치가 올바른지 확인하고 다"
+"시 시도하십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
-msgstr "이 위치를 쓰기 모드로 처리할 수 없습니다. 입력한 위치가 올바른지 확인하고 다시 시도하십시오."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"이 위치를 쓰기 모드로 처리할 수 없습니다. 입력한 위치가 올바른지 확인하고 다"
+"시 시도하십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1078
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
-msgstr "%s(은)는 올바른 위치가 아닙니다. 입력한 위치가 올바른지 확인하고 다시 시도하십시오."
+msgstr ""
+"%s(은)는 올바른 위치가 아닙니다. 입력한 위치가 올바른지 확인하고 다시 시도하"
+"십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
-msgstr "파일을 저장할 권한이 없습니다. 입력한 위치가 올바른지 확인하고 다시 시도하십시오."
+msgstr ""
+"파일을 저장할 권한이 없습니다. 입력한 위치가 올바른지 확인하고 다시 시도하십"
+"시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
-msgstr "파일을 저장하기 위한 디스크 공간이 부족합니다. 디스크 공간을 확보하고 다시 시도하십시오."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr ""
+"파일을 저장하기 위한 디스크 공간이 부족합니다. 디스크 공간을 확보하고 다시 시"
+"도하십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
-msgstr "읽기 전용 디스크에 파일을 저장하려 합니다. 입력한 위치가 올바른지 확인하고 다시 시도하십시오."
+msgstr ""
+"읽기 전용 디스크에 파일을 저장하려 합니다. 입력한 위치가 올바른지 확인하고 다"
+"시 시도하십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
@@ -1746,16 +1783,20 @@ msgstr "같은 이름의 파일이 이미 있습니다. 다른 이름을 쓰도�
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
-msgstr "파일을 저장하려는 디스크에 파일 이름 길이 제한이 걸려있습니다. 짧은 파일이름을 쓰도록 하십시오."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
+msgstr ""
+"파일을 저장하려는 디스크에 파일 이름 길이 제한이 걸려있습니다. 짧은 파일이름"
+"을 쓰도록 하십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
-msgstr "파일을 저장하려는 디스크에 파일 크기 제한이 걸려있습니다. 파일 크기를 줄이던지 크기 제한이 풀려있는 디스크에 저장하십시오."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
+msgstr ""
+"파일을 저장하려는 디스크에 파일 크기 제한이 걸려있습니다. 파일 크기를 줄이던"
+"지 크기 제한이 풀려있는 디스크에 저장하십시오."
 
 #: lapiz/lapiz-io-error-message-area.c:1129
 #, c-format
@@ -1816,14 +1857,12 @@ msgstr "구문 강조 인쇄(_X)"
 msgid "Print line nu_mbers"
 msgstr "줄 번호 인쇄(_M)"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "다음 줄마다 줄 번호(_N):"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "줄"
@@ -1934,8 +1973,7 @@ msgstr "바꿈"
 msgid "INS"
 msgstr "삽입"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -1989,38 +2027,38 @@ msgstr "%s(을)를 %s(으)로 저장 중"
 msgid "Saving %s"
 msgstr "%s 저장 중"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "파일 %s을(를) 읽어들이는데 오류"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s 파일을 되돌리는데 오류"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "%s 파일을 저장하는데 오류"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "유니코드 (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "이름:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME 종류:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "인코딩:"
 
@@ -2496,7 +2534,9 @@ msgstr "문서 통계"
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
-msgstr "현재 문서를 분석하여 단어, 줄, 문자, 공백이 아닌 문자의 개수를 알아내고 결과를 보여줍니다."
+msgstr ""
+"현재 문서를 분석하여 단어, 줄, 문자, 공백이 아닌 문자의 개수를 알아내고 결과"
+"를 보여줍니다."
 
 #: plugins/docinfo/docinfo.ui:51
 msgid "_Update"
@@ -2776,12 +2816,6 @@ msgstr "파일 찾아보기 창"
 msgid "Easy file access from the side pane"
 msgstr "가장자리 창에서 쉽게 파일에 접근합니다"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "첫번째 문서의 위치 설정"
@@ -2793,8 +2827,9 @@ msgid ""
 "generally applies to opening a document from the command line or opening it "
 "with Baul, etc.)"
 msgstr ""
-"참이면 파일 찾아보기 플러그인을 맨 처음 사용할 때, 주어진 문서를 맨 처음 연 디렉터리를 봅니다.(즉 명령문에서 문서를 열거나, "
-"노틸러스에서 문서를 여는 따위의 동작에도 적용됩니다.)"
+"참이면 파일 찾아보기 플러그인을 맨 처음 사용할 때, 주어진 문서를 맨 처음 연 "
+"디렉터리를 봅니다.(즉 명령문에서 문서를 열거나, 노틸러스에서 문서를 여는 따위"
+"의 동작에도 적용됩니다.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -2807,8 +2842,9 @@ msgid ""
 "(filter binary files) and hidden_and_binary (filter both hidden and binary "
 "files)."
 msgstr ""
-"파일 찾아보기에서 걸러낼 파일을 결정합니다. 올바른 값은 다음입니다: none (아무것도 거르지 않기), hidden (숨김 파일만 "
-"거르기), binary (이진 파일만 거르기), hidden_and_binary (숨김 파일과 이진 파일 거르기)."
+"파일 찾아보기에서 걸러낼 파일을 결정합니다. 올바른 값은 다음입니다: none (아"
+"무것도 거르지 않기), hidden (숨김 파일만 거르기), binary (이진 파일만 거르"
+"기), hidden_and_binary (숨김 파일과 이진 파일 거르기)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2816,9 +2852,10 @@ msgstr "파일 찾아보기 필터 패턴"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
-msgstr "파일 찾아보기에 적용할 파일 이름 필터, filter_mode가 적용된 후에 적용됩니다."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
+msgstr ""
+"파일 찾아보기에 적용할 파일 이름 필터, filter_mode가 적용된 후에 적용됩니다."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
@@ -2838,7 +2875,9 @@ msgstr "파일 찾아보기 최상위 디렉터리"
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
-msgstr "onload/tree_view가 참이고 파일 찾아보기 플러그인이 시작될 때 최상위 디렉터리로 사용할 위치."
+msgstr ""
+"onload/tree_view가 참이고 파일 찾아보기 플러그인이 시작될 때 최상위 디렉터리"
+"로 사용할 위치."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2846,12 +2885,13 @@ msgstr "파일 찾아보기 가상 최상위 디렉터리"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"onload/tree_view가 참이고 파일 찾아보기 플러그인이 시작될 때 가상 최상위 디렉토리로 사용할 위치. 가상 최상위 디렉터리는 "
-"항상 실제 최상위 디렉터리의 하위 디렉터리이여야 합니다."
+"onload/tree_view가 참이고 파일 찾아보기 플러그인이 시작될 때 가상 최상위 디렉"
+"토리로 사용할 위치. 가상 최상위 디렉터리는 항상 실제 최상위 디렉터리의 하위 "
+"디렉터리이여야 합니다."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
@@ -2955,10 +2995,11 @@ msgstr "(비어있음)"
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr "이름을 바꾼 파일이 필터로 제외되었습니다. 이 파일을 보려면 필터 설정을 바꿔야합니다."
+msgstr ""
+"이름을 바꾼 파일이 필터로 제외되었습니다. 이 파일을 보려면 필터 설정을 바꿔야"
+"합니다."
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "파일"
@@ -2967,10 +3008,10 @@ msgstr "파일"
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr "새 파일이 필터로 제외되었습니다. 이 파일을 보려면 필터 설정을 바꿔야합니다."
+msgstr ""
+"새 파일이 필터로 제외되었습니다. 이 파일을 보려면 필터 설정을 바꿔야합니다."
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "디렉터리"
@@ -2979,7 +3020,9 @@ msgstr "디렉터리"
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
-msgstr "새 디렉터리가 필터로 제외되었습니다. 이 디렉터리를 보려면 필터 설정을 바꿔야합니다."
+msgstr ""
+"새 디렉터리가 필터로 제외되었습니다. 이 디렉터리를 보려면 필터 설정을 바꿔야"
+"합니다."
 
 #: plugins/filebrowser/lapiz-file-browser-widget.c:712
 msgid "Bookmarks"
@@ -3146,12 +3189,6 @@ msgstr "파이썬 콘솔"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "아래 패널에 파이썬 콘솔을 엽니다."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "오류 색(_E):"
@@ -3184,12 +3221,6 @@ msgstr "문서 빠르게 열기"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "파일을 빠르게 엽니다"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3283,8 +3314,8 @@ msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
 msgstr ""
-"이것은 올바른 탭 트리거가 아닙니다. 트리거는 영문자나 숫자로만 된 글자로 이루어져야 합니다 : {, [ 등의 문자는 포함될 수 "
-"없습니다."
+"이것은 올바른 탭 트리거가 아닙니다. 트리거는 영문자나 숫자로만 된 글자로 이루"
+"어져야 합니다 : {, [ 등의 문자는 포함될 수 없습니다."
 
 #: plugins/snippets/snippets/Manager.py:771
 #, python-format
@@ -3407,7 +3438,8 @@ msgstr "\"%s\" 파일은 올바른 관용구 압축 파일이 아닙니다"
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
-msgstr "파이썬 명령의 (%s) 수행 제한 시간이 최대값을 넘겼습니다, 실행을 취소합니다."
+msgstr ""
+"파이썬 명령의 (%s) 수행 제한 시간이 최대값을 넘겼습니다, 실행을 취소합니다."
 
 #: plugins/snippets/snippets/Placeholder.py:609
 #, python-format
@@ -3429,12 +3461,6 @@ msgstr "정렬"
 #: plugins/sort/sort.plugin.desktop.in:6
 msgid "Sorts a document or selected text."
 msgstr "문서나 선택한 텍스트를 정렬합니다."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
 
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
@@ -3464,10 +3490,8 @@ msgstr "한번 정렬하면 되돌릴 수 없습니다"
 msgid "Autocheck Type"
 msgstr "자동 검사 유형"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3494,8 +3518,7 @@ msgstr "맞춤법 검사"
 msgid "Suggestions"
 msgstr "추천 단어"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(올바른 맞춤법)"
@@ -3507,6 +3530,7 @@ msgstr "맞춤법 검사 완료"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3516,6 +3540,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3524,6 +3549,7 @@ msgstr "알 수 없음 (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3657,12 +3683,6 @@ msgstr "맞춤법 검사"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "현재 문서의 맞춤법을 검사합니다."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -5523,7 +5543,8 @@ msgstr "태그 목록"
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
-msgstr "문서에 자주 쓰이는 태그/문장를 직접 입력하지 않고 쉽게 넣을수 있도록 합니다."
+msgstr ""
+"문서에 자주 쓰이는 태그/문장를 직접 입력하지 않고 쉽게 넣을수 있도록 합니다."
 
 #: plugins/taglist/XSLT.tags.xml.in:7
 msgid "XSLT - Elements"
@@ -6342,12 +6363,6 @@ msgstr "뒤 여백 없이 저장하기"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "줄에 있는 마지막 여백을 지웁니다."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "날짜과 시간을 입력"
@@ -6372,8 +6387,7 @@ msgstr "사용자 형식 사용(_U)"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%Y/%m/%d %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6390,3 +6404,7 @@ msgstr "날짜/시간 넣기..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "형식 물어보기(_P)"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

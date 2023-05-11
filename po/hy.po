@@ -2,25 +2,25 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Davit Mayilyan <davit.mayilyan@protonmail.ch>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # Siranush <ss.m.95@mail.ru>, 2020
 # Avag Sayan <avo777772012@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Avag Sayan <avo777772012@gmail.com>, 2020\n"
 "Language-Team: Armenian (https://www.transifex.com/cafe/teams/13566/hy/)\n"
+"Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hy\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -34,8 +34,8 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"Արդյոք օգտագործել համակարգի նախնական ֆիքսված տառատեսակի լայնությունը lapiz֊ի"
-" նշված տառատեսակի փոխարեն։ Եթե այս տարբերակը անջատված է, ապա տառատեսակը "
+"Արդյոք օգտագործել համակարգի նախնական ֆիքսված տառատեսակի լայնությունը lapiz֊ի "
+"նշված տառատեսակի փոխարեն։ Եթե այս տարբերակը անջատված է, ապա տառատեսակը "
 "անվանված է \"Editor Font\" տառատեսակի մեջ, որը կօգտագործվի համակարգի "
 "տառատեսակի փոխարեն։"
 
@@ -54,8 +54,7 @@ msgid ""
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
 "Գործարկման տառատեսակը, որը կօգտագործվի խմբագրման տարածքի համար։ Սա միայն "
-"ուժի մեջ է մտնում այն դեպքում, եթե \"Use Default Font\" տարբերակը անջատված "
-"է:"
+"ուժի մեջ է մտնում այն դեպքում, եթե \"Use Default Font\" տարբերակը անջատված է:"
 
 #: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
@@ -153,8 +152,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Գործողությունների առավելագույն քանակը, որոնք lapiz֊ն կկարողանա հետ շրջել կամ"
-" կրկնել։ Օգտագործել \"-1\" անսահմանափակ թվով գործողությունների համար։"
+"Գործողությունների առավելագույն քանակը, որոնք lapiz֊ն կկարողանա հետ շրջել կամ "
+"կրկնել։ Օգտագործել \"-1\" անսահմանափակ թվով գործողությունների համար։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -164,9 +163,9 @@ msgstr "Փաթեթավորման տողային ռեժիմ"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Սահմանում է, թե ինչպես պատել երկար գծերը խմբագրման դածտում։ Օգտագործել "
 "\"CTK_WRAP_NONE\" չփաթեթավորելու համար, \"CTK_WRAP_WORD\" բառի սահմանները "
@@ -256,10 +255,10 @@ msgid ""
 msgstr ""
 "Սահմանել, թե ինչպես կուրսորը տեղափոխել, երբ HOME և END ստեղները սեղմված են։ "
 "Օգտագործել \"DISABLED\" միշտ տողի սկիզբ/վերջ տեղափոխելու համար, \"AFTER\" "
-"տեղափոխել տողի սկիզբ/վերջ, երբ ստենը առաջին անգամ է սեղմված և տեքստի "
-"սկիզբ/վերջ անտեսելով բացատներըը, երբ ստեղնը սեղմված է երկրորդ անգամ, "
-"\"BEFORE\" տեղափոխել տեքստի սկիզբ/վերջ մինչև տողի սկիղբ/վերջ տեղափոխումը և "
-"\"ALWAYS\" տեղափոխել տեքստի սկիզբ/վերջ տողի փոխարեն։"
+"տեղափոխել տողի սկիզբ/վերջ, երբ ստենը առաջին անգամ է սեղմված և տեքստի սկիզբ/"
+"վերջ անտեսելով բացատներըը, երբ ստեղնը սեղմված է երկրորդ անգամ, \"BEFORE\" "
+"տեղափոխել տեքստի սկիզբ/վերջ մինչև տողի սկիղբ/վերջ տեղափոխումը և \"ALWAYS\" "
+"տեղափոխել տեքստի սկիզբ/վերջ տողի փոխարեն։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -308,12 +307,18 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"Ոճ գործիքադարակի կոճակի համար։ Հնարավոր արժեքներն են՝ \"LAPIZ_TOOLBAR_SYSTEM\" օգտագործել համակարգի նախնական ոճը, \"LAPIZ_TOOLBAR_ICONS\" ցուցադրել միայն պատկերանշանները, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" ցուցադրել պատկերանշանները և տեքստը երկուսը միասին և \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" ցուցադրել առաջինը տեքստը, կողքին պատկերանշանները։ \n"
-"Նշենք, որ արժեքներն տառաշարազգայուն են, համոզվեք, որ նրանք հայտնվում են այնպես, ինչպես նշված են այստեղ։"
+"Ոճ գործիքադարակի կոճակի համար։ Հնարավոր արժեքներն են՝ "
+"\"LAPIZ_TOOLBAR_SYSTEM\" օգտագործել համակարգի նախնական ոճը, "
+"\"LAPIZ_TOOLBAR_ICONS\" ցուցադրել միայն պատկերանշանները, "
+"\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" ցուցադրել պատկերանշանները և տեքստը երկուսը "
+"միասին և \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" ցուցադրել առաջինը տեքստը, կողքին "
+"պատկերանշանները։ \n"
+"Նշենք, որ արժեքներն տառաշարազգայուն են, համոզվեք, որ նրանք հայտնվում են "
+"այնպես, ինչպես նշված են այստեղ։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -331,8 +336,7 @@ msgid "Side Pane is Visible"
 msgstr "Կողմնակի Ենթապատուհանը Տեսանելի է"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "Արդյոք կարգավիճակների վահանակը պետք է տեսանելի լինի խմբագրվող պատուհանների "
 "ձախ մասում։"
@@ -363,8 +367,8 @@ msgstr "Առավելագույն վերջին ֆայլերը"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
 "Մասնավորեցնում վերջին ժամանակներում բացված ֆայլերի առավելագույն թիվը, որոնք "
 "պետք է ցուցադրվեն է \"Վերջին Ֆայլեր\" ենթացանկում։"
@@ -374,8 +378,7 @@ msgid "Print Syntax Highlighting"
 msgstr "Տպել Շարահյուսությունը Ընդգծելով"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "Արդյոք lapiz֊ն պետք է ցուցադրի ընդգծման սինտաքսը, երբ տպում է փաստաթուղթ։"
 
@@ -384,8 +387,7 @@ msgid "Print Header"
 msgstr "Վերնագիրը Տպել "
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Արդյոք lapiz֊ն պետք է ներառի փաստաթղթի վերնագիրը, երբ տպում է փաստաթուղթը։"
 
@@ -397,9 +399,9 @@ msgstr "Տպել Տողի Փաթեթավորման Ռեժիմը"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Սահմանում է, թե ինչպես փաթեթավորել երկար տողերը տպելու համար։ Օգտագործել "
 "\"CTK_WRAP_NONE\" չփաթեթավորելու համար, \"CTK_WRAP_WORD\" բառերի շուրջը "
@@ -417,8 +419,8 @@ msgid ""
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
 msgstr ""
-"Եթե այս արժեքը 0 է, ապա տողի համարներ չկա ներմուծված, ենբ փաստաթուղթը տպվում"
-" է։ Հակառակ դեպքում lapiz֊ն տպելու է տողերի համարները, յուրաքանչյուր այդիսի "
+"Եթե այս արժեքը 0 է, ապա տողի համարներ չկա ներմուծված, ենբ փաստաթուղթը տպվում "
+"է։ Հակառակ դեպքում lapiz֊ն տպելու է տողերի համարները, յուրաքանչյուր այդիսի "
 "տեղերի համարի համար։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
@@ -449,9 +451,9 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Նշել տառատեսակը էջի գլխամասի օգտագործման համար, երբ փաստաթուղթը տպվում է։ Սա"
-" միայն ուժի մեջ է մտնում այն դեպքում, եթե \"Print Header\" տարբերակը միացված"
-" է։"
+"Նշել տառատեսակը էջի գլխամասի օգտագործման համար, երբ փաստաթուղթը տպվում է։ Սա "
+"միայն ուժի մեջ է մտնում այն դեպքում, եթե \"Print Header\" տարբերակը միացված "
+"է։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -468,13 +470,13 @@ msgid ""
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
 "Նշել տառատեսակը տողի համարների օգտագործման համար, երբ փաստաթուղթը տպվում է։ "
-"Սա միայն ուժի մեջ է մտնում այն դեպքում, եթե \"Print Line Numbers\" տարբերակը"
-" զրո չէ։"
+"Սա միայն ուժի մեջ է մտնում այն դեպքում, եթե \"Print Line Numbers\" տարբերակը "
+"զրո չէ։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -483,8 +485,8 @@ msgstr "Ավտոմատ կերպով Հայտնաբերված Կոդավորու�
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Տեսակավորված կոդավորումների ցանկը օգտագործվել է lapiz֊ի կողմից, ֆայլի "
 "կոդավորումը ավտոմատ կերպով հայտնաբերելու համար։ Միայն օգտագործվում է "
@@ -504,9 +506,8 @@ msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
 msgstr ""
-"Կոդավորումների ցանկը ցույց է տրված Character Encoding ընտրացանկի մեջ "
-"բացել/պահպանել ֆայլի ընտրության մեջ։ Միայն օգտագործվում է ճանաչված "
-"կոդավորումներ։"
+"Կոդավորումների ցանկը ցույց է տրված Character Encoding ընտրացանկի մեջ բացել/"
+"պահպանել ֆայլի ընտրության մեջ։ Միայն օգտագործվում է ճանաչված կոդավորումներ։"
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -562,9 +563,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -590,8 +590,8 @@ msgstr "CAFE աշխատանքային միջավայրի համար տեքստա
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -610,14 +610,7 @@ msgstr "Տեքստային խմբագրիչ"
 msgid "Edit text files"
 msgstr "Խմբագրել տեքստային ֆայլերը"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -637,9 +630,8 @@ msgstr "Փակել _առանց Պահպանելու"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -675,8 +667,7 @@ msgstr "Հարց"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -702,8 +693,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -711,8 +701,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Եթե դուք չպահպանեք, ապա փոփոխություններ վերջին ժամին ընդմիշտ կորչեն:"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -759,8 +748,7 @@ msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1167,7 +1155,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Գործարկել '%s --help' հրամանային տողի բոլոր հասանելի տարբերակների ցանկը տեսնելու համար։ \n"
+"Գործարկել '%s --help' հրամանային տողի բոլոր հասանելի տարբերակների ցանկը "
+"տեսնելու համար։ \n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1217,8 +1206,7 @@ msgstr "Վերադառնա՞լ '%s' փաստաթղթի չպահպանված փո
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1244,8 +1232,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1253,8 +1240,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Փաստաթղթի կատարված փոփոխությունները վերջին ժամում ընդմիշտ կկորչեն:"
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1315,8 +1301,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1332,10 +1318,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr "թարգմանչի կրեդիտներ"
 
@@ -1587,13 +1574,13 @@ msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr ""
-"Կենտրոնական համակարգիչը %s չգտնվեց։ Խնդրում ենք ստուգել, որ ձեր proxy ծրագրի"
-" պարամետրերը ճիշտ են և փորձեք կրկին։"
+"Կենտրոնական համակարգիչը %s չգտնվեց։ Խնդրում ենք ստուգել, որ ձեր proxy ծրագրի "
+"պարամետրերը ճիշտ են և փորձեք կրկին։"
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "Հոսթի անվանում էանվավեր էր։ Խնդրում ենք ստուգել, որ դուք մուտքագրել եք ճիշտ "
 "գնտվելու վայր և կրկին փորձեք:"
@@ -1720,8 +1707,8 @@ msgstr "(%s) այս ֆայլը արդեն բացվել է մեկ այլ lapiz պ
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "lapiz֊ի բացված ֆայլի այս պահանջը ենթակա չէ խմբագրման։ Դուք ցանկանու՞մ եք "
 "այնուամենայնիվ խմբագրել այն։"
@@ -1742,8 +1729,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "%s ֆայլը փոփոխվել է, այն ժամանակից երբ այն կարդացվում է։"
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Եթե դուք պահպանեք այն, բոլոր արտաքին փոփոխությունները կարող եք կորցրել. "
 "Պահպանե՞լ այն ամեն դեպքում։"
@@ -1761,8 +1747,8 @@ msgstr "Չհաջողվեց ստեղծել ժամանակավոր կրկնօրի�
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "lapiz֊ն չի կարող վերադարձնել ֆայլի հին պատճենը մինչև մեկ այլ նորի "
 "պահպանումը։ Դուք կարող եք անտեսել այս զգուշացումը և պահպանել ֆայլը ամեն "
@@ -1781,8 +1767,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "lapiz֊ն չի կարող գործածել այդ գտնվելու դիրքը գրել ռեժիմում։ Խնդրում ենք "
 "ստուգել, որ դուք մուտքագրել ճիշտ դիրք և կրկին փորձեք:"
@@ -1793,8 +1779,8 @@ msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"%s անվավեր գտնվելու վայրը է։ Խնդրում ենք ստուգել, որ դուք մուտքագրել եք ճիշտ"
-" գտնվելու վայրը և կրկին փորձեք:"
+"%s անվավեր գտնվելու վայրը է։ Խնդրում ենք ստուգել, որ դուք մուտքագրել եք ճիշտ "
+"գտնվելու վայրը և կրկին փորձեք:"
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
@@ -1806,8 +1792,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "Սկավառակի տարածությունը բավարար չէ ֆայլը պահպանելու համար։ Խնդրում ենք "
 "սկավառակի որոշակի տարածություն ազատել և փորձեք կրկին։"
@@ -1827,8 +1813,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Սկավառակը, որտեղ դուք փորձում եք պահպանել ֆայլը ունի ֆայլի անունի "
 "երկարության սահմանափակում։ Խնդրում ենք օգտագործել կարճ անուն։"
@@ -1836,8 +1822,8 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 "Սկավառակը, որտեղ դուք փորձում եք պահպանել ֆայլը, ունի ֆայլի չափի "
 "սահմանափակում։ Խնդրում ենք փորձեք պահպանել ավելի փոքր ֆայլ կամ պահպանել այն "
@@ -1902,14 +1888,12 @@ msgstr "Տպել շարահյուսություն_ը ընդգծելով"
 msgid "Print line nu_mbers"
 msgstr "Տպել տողի համարները"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Համարակալել բոլորը"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "գծեր"
@@ -2020,8 +2004,7 @@ msgstr "OVR"
 msgid "INS"
 msgstr "INS"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2076,38 +2059,38 @@ msgstr "Պահպանել %s %s"
 msgid "Saving %s"
 msgstr "Պահվում է %s"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "ֆայլի բացման սխալ %s"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "ֆայլի հետշրջման սխալ %s"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "Ֆայլի պահապանման սխալ %s"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Յունիկոդ (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Անուն։"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME տեսակ։"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Կոդավորում:"
 
@@ -2847,8 +2830,7 @@ msgstr "Ղեկավարել հրամանը"
 
 #: plugins/externaltools/data/run-command.desktop.in:4
 msgid "Execute a custom command and put its output in a new document"
-msgstr ""
-"Կատարել գործարկողի հրամանը և տեղադրել դրա արտադրանքի նոր փաստաթղթի մեջ"
+msgstr "Կատարել գործարկողի հրամանը և տեղադրել դրա արտադրանքի նոր փաստաթղթի մեջ"
 
 #: plugins/externaltools/data/search-recursive.desktop.in:3
 msgid "Search"
@@ -2865,12 +2847,6 @@ msgstr "Ֆայլ Բրաուզեր Վահանակ"
 #: plugins/filebrowser/filebrowser.plugin.desktop.in:7
 msgid "Easy file access from the side pane"
 msgstr "Հեշտ է ֆայլ մուտք գործել կողմնակի վահանակից"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
@@ -2910,8 +2886,8 @@ msgstr "Ֆայլի Բրաուզերի Ֆիլտր Նմուշ"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "Ֆիլտրի օրինակը ֆիլտրի համար ֆայլի բրաուզերի հետ միասին։ Այս ֆիլտրը աշխատում "
 "է ilter_mode վերևում։"
@@ -2946,9 +2922,9 @@ msgstr "Ֆայլ Բրաուզերի Վիրտուալ Root Ֆայլապանակ"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Ֆայլ բրաուզերի վիրտուալ արմատային թղթապանակը օգտագործել, երբ բեռնում է ֆայլ "
 "բրաուզերի կոնտակտները, երբ onload/tree_view ՃԻՇՏ է։ Վիրտուալ արմատը միշտ "
@@ -3060,8 +3036,7 @@ msgstr ""
 "Նոր ֆայլի անվանափոխումը ներկայումս ֆիլտրացվում է։ Դուք պետք է հարմարեցնեք "
 "Ձեր ֆիլտրի պարամետրերը, որպեսզի ֆայլը տեսանելի լինի։"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "ֆայլ"
@@ -3074,8 +3049,7 @@ msgstr ""
 "Նոր ֆայլը ներկայումս ֆիլտրացվում է։ Դուք պետք է հարմարեցնեք Ձեր ֆիլտրի "
 "պարամետրերը, որպեսզի ֆայլը տեսանելի լինի։"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "ֆայլապանակ"
@@ -3085,8 +3059,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"Նոր ֆայլապանակը ներկայումս ֆիլտրացվում է։ Դուք պետք է հարմարեցնեք Ձեր ֆիլտրի"
-" պարամետրերը, որպեսզի ֆայլապանակը տեսանելի լինի։"
+"Նոր ֆայլապանակը ներկայումս ֆիլտրացվում է։ Դուք պետք է հարմարեցնեք Ձեր ֆիլտրի "
+"պարամետրերը, որպեսզի ֆայլապանակը տեսանելի լինի։"
 
 #: plugins/filebrowser/lapiz-file-browser-widget.c:712
 msgid "Bookmarks"
@@ -3253,12 +3227,6 @@ msgstr "Python Console"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Ինտերակտիվ Python Վահանակը կանգնած է ներքևի վահանակի մեջ"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "_Սխալի գույն։"
@@ -3291,12 +3259,6 @@ msgstr "Արագորեն բացել փաստաթղթերը"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Արագորեն բացել ֆայլերը"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3443,8 +3405,7 @@ msgstr "Արտահանումը հաջողությամբ ավարտեց"
 #: plugins/snippets/snippets/Manager.py:927
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
-"Դուք ցանկանու՞մ եք ներմուծել ընտրված <b>համակարգը</b> հատվածներով ձեր "
-"ելքում։"
+"Դուք ցանկանու՞մ եք ներմուծել ընտրված <b>համակարգը</b> հատվածներով ձեր ելքում։"
 
 #: plugins/snippets/snippets/Manager.py:873
 #: plugins/snippets/snippets/Manager.py:945
@@ -3459,8 +3420,7 @@ msgstr "Արտահանման հատվածներ"
 #: plugins/snippets/snippets/Manager.py:1058
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
-"Մուտքագրել նոր կրճատ ստեղնաշարային հրաման կամ սեղմել Backspace մաքրելու "
-"համար"
+"Մուտքագրել նոր կրճատ ստեղնաշարային հրաման կամ սեղմել Backspace մաքրելու համար"
 
 #: plugins/snippets/snippets/Manager.py:1060
 msgid "Type a new shortcut"
@@ -3543,12 +3503,6 @@ msgstr "Տեսակավորել"
 msgid "Sorts a document or selected text."
 msgstr "Տեսակավորել փաստաթուղթը կամ ընտրված տեքստը."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "_Տեսակավորել"
@@ -3577,10 +3531,8 @@ msgstr "Դուք չեք կարող ետ շրջել տեսակավորման գո
 msgid "Autocheck Type"
 msgstr "Ինքնաստուգման Տիպ"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3607,8 +3559,7 @@ msgstr "Ստուգել Ուղղագրությունը"
 msgid "Suggestions"
 msgstr "Առաջարկություններ"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(ճիշտ ուղղագրություն)"
@@ -3620,6 +3571,7 @@ msgstr "Ավարտված ուղղագրության ստուգում"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3629,6 +3581,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3637,6 +3590,7 @@ msgstr "Անհայտ (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3770,12 +3724,6 @@ msgstr "Սրբագրիչ Ծրագիր"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Ընթացիկ փաստաթղթի ուղղագրության ստուգում։"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -5637,8 +5585,8 @@ msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
 msgstr ""
-"Ապահովում է մեթոդ հեշտությամբ տեղադրել լայնորեն օգտագործված "
-"հատկորոշիչները/տողեր փաստաթղթերի մեջ, առանց դրանք մուտքագրելու։"
+"Ապահովում է մեթոդ հեշտությամբ տեղադրել լայնորեն օգտագործված հատկորոշիչները/"
+"տողեր փաստաթղթերի մեջ, առանց դրանք մուտքագրելու։"
 
 #: plugins/taglist/XSLT.tags.xml.in:7
 msgid "XSLT - Elements"
@@ -6457,12 +6405,6 @@ msgstr "Հեռացնել Առանց Պարփակելով Տարածքները"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Հեռացնել պարփաիչ բացատները տողերից պահպանելուց առաջ։"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Մուտքագրել Ամսաթիվը և Ժամը"
@@ -6487,8 +6429,7 @@ msgstr "_Օգտագործել գործարկողի ձևաչափը"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6505,3 +6446,7 @@ msgstr "Երբ ներդրվում է Օր/Ժամ..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Հուշում ձևաչափի համար"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

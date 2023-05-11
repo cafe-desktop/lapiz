@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Rivo Zängov <eraser@eraser.ee>, 2020
 # xpander0 <xpander0@gmail.com>, 2020
@@ -10,19 +10,19 @@
 # Martin Wimpress <code@flexion.org>, 2020
 # Ivar Smolin <okul@linux.ee>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Estonian (https://www.transifex.com/cafe/teams/13566/et/)\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -119,8 +119,8 @@ msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"MInutite arv, mille möödudes lapiz failid automaatselt salvestab. See kehtib"
-" vaid juhul, kui valik \"Automaatne salvestamine\" on sisse lülitatud."
+"MInutite arv, mille möödudes lapiz failid automaatselt salvestab. See kehtib "
+"vaid juhul, kui valik \"Automaatne salvestamine\" on sisse lülitatud."
 
 #: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -151,8 +151,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Suurim toimingute arv, mida lapiz laseb unustada või uuesti täita. Piiramatu"
-" arvu toimingute jaoks kasuta väärtust \"-1\"."
+"Suurim toimingute arv, mida lapiz laseb unustada või uuesti täita. Piiramatu "
+"arvu toimingute jaoks kasuta väärtust \"-1\"."
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -162,9 +162,9 @@ msgstr "Reamurdmisrežiim"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Pikkade ridade murdmise määramine redigeerimisel. \"CTK_WRAP_NONE\" korral "
 "murdmist ei toimu, \"CTK_WRAP_WORD\" korral murtakse sõnavahedest ja "
@@ -255,9 +255,8 @@ msgstr ""
 "puhul liigub kursor rea algusesse või lõppu, \"AFTER\" puhul liigub kursor "
 "esmavajutusel rea algusesse/lõppu, teistkordsel vajutusel aga teksti "
 "algusesse/lõppu, eirates seal olevaid tühje ridu ja tühikuid. \"BEFORE\" "
-"puhul liigub esmavajutuse teksti algusesse/lõppu, teistkordsel rea "
-"algusesse/lõppu, \"ALWAYS\" korral liigub aga lihtsalt teksti "
-"algusesse/lõppu."
+"puhul liigub esmavajutuse teksti algusesse/lõppu, teistkordsel rea algusesse/"
+"lõppu, \"ALWAYS\" korral liigub aga lihtsalt teksti algusesse/lõppu."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -303,12 +302,12 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"Tööriistariba nuppude laad. Võimalikud väärtused on \"LAPIZ_TOOLBAR_SYSTEM\""
-" süsteemi vaikimisi laadi jaoks, \"LAPIZ_TOOLBAR_ICONS\" ainult ikoonide "
+"Tööriistariba nuppude laad. Võimalikud väärtused on \"LAPIZ_TOOLBAR_SYSTEM\" "
+"süsteemi vaikimisi laadi jaoks, \"LAPIZ_TOOLBAR_ICONS\" ainult ikoonide "
 "kuvamiseks, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" nii ikoonide kui ka teksti "
 "kuvamiseks ja \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" kuvamaks ikoonide kõrval "
 "ainult tähtsamat teksti. Väärtused on tõstutundlikud ja seetõttu tuleb "
@@ -328,8 +327,7 @@ msgid "Side Pane is Visible"
 msgstr "Külgpaan on nähtav"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "Kas redaktoriaknast vasakul pool olev külgpaan peab olema nähtav."
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -356,8 +354,8 @@ msgstr "Suurim hiljutiste failide arv"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
 "Suurim hiljuti avatud failide arv, mis kuvatakse \"Hiljutiste failide\" "
 "alammenüüs."
@@ -367,8 +365,7 @@ msgid "Print Syntax Highlighting"
 msgstr "Süntaksi esiletõstmine printimisel"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "Kas lapiz peab printimisel kasutama süntaksi esiletõstmist."
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -376,8 +373,7 @@ msgid "Print Header"
 msgstr "Prindi päis"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "Kas lapiz peab kaasama printimisel ka dokumendi päise."
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -388,9 +384,9 @@ msgstr "Reamurdmine printimisel"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Pikkade ridade murdmise määramine printimisel. \"CTK_WRAP_NONE\" korral "
 "murdmist ei toimu, \"CTK_WRAP_WORD\" korral murtakse sõnavahedest ja "
@@ -461,8 +457,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -471,8 +467,8 @@ msgstr "Automaatselt tuvastatavad kodeeringud"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Lapizi poolt faili kooditabeli tuvastamiseks kasutatavate kooditabelite "
 "sorditud loetelu. \"CURRENT\" on praegusest lokaadist tulenev kooditabel. "
@@ -549,9 +545,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -577,8 +572,8 @@ msgstr "Tekstiredaktor CAFE töölauakeskkonnale"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -597,14 +592,7 @@ msgstr "Tekstiredaktor"
 msgid "Edit text files"
 msgstr "Tekstifailide redigeerimine"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -624,9 +612,8 @@ msgstr "Sulge _ilma salvestamata"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -662,8 +649,7 @@ msgstr "Küsimus"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -674,8 +660,8 @@ msgstr[1] ""
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
-"Salvestamata jätmise korral lähevad viimase minuti jooksul tehtud muudatused"
-" jäädavalt kaotsi."
+"Salvestamata jätmise korral lähevad viimase minuti jooksul tehtud muudatused "
+"jäädavalt kaotsi."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:429
 #, c-format
@@ -691,8 +677,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -700,8 +685,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Salvestamata jätmise korral lähevad viimase tunni jooksul tehtud muudatused "
 "jäädavalt kaotsi."
@@ -750,8 +734,7 @@ msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1204,8 +1187,7 @@ msgstr "Kas taastada dokumendi salvestamata muudatused '%s'?"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1233,8 +1215,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1242,11 +1223,9 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
-"Dokumendile viimase tunni jooksul tehtud muudatused lähevad jäädavalt "
-"kaotsi."
+"Dokumendile viimase tunni jooksul tehtud muudatused lähevad jäädavalt kaotsi."
 
 #: lapiz/lapiz-commands-file.c:1186
 #, c-format
@@ -1306,8 +1285,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1323,10 +1302,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Lauris Kaplinski, 1999.\n"
@@ -1586,8 +1566,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "Hosti nimi on vigane. Palun veendu, et sa sisestasid asukoha õigesti ja "
 "proovi uuesti."
@@ -1613,8 +1593,7 @@ msgstr "Ootamatu viga: %s"
 #: lapiz/lapiz-io-error-message-area.c:406
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr ""
-"lapiz'il pole võimalik faili leida. Võib-olla on see fail hiljuti "
-"kustutatud."
+"lapiz'il pole võimalik faili leida. Võib-olla on see fail hiljuti kustutatud."
 
 #: lapiz/lapiz-io-error-message-area.c:416
 #, c-format
@@ -1715,8 +1694,8 @@ msgstr "See fail (%s) on juba ühes lapiz'i aknas avatud."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "lapiz avas selle instantsi mittemuudetaval moel. Kas Sa soovid seda ikkagi "
 "redigeerida?"
@@ -1737,8 +1716,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "Faili %s on lugemise ajal muudetud."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Kui sa selle salvestad, siis lähevad kõik välised muudatused kaotsi. Kas "
 "salvestada ikkagi?"
@@ -1756,12 +1734,12 @@ msgstr "%s salvestamisel pole ajutist varukoopiafaili võimalik luua"
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"lapiz ei saa enne uue faili salvestamist vana faili varukoopiaks salvestada."
-" Sa võid seda hoiatust eirata ja faili siiski salvestada, kuid võimaliku vea"
-" korral läheb vana koopia kaotsi. Kas salvestada siiski?"
+"lapiz ei saa enne uue faili salvestamist vana faili varukoopiaks salvestada. "
+"Sa võid seda hoiatust eirata ja faili siiski salvestada, kuid võimaliku vea "
+"korral läheb vana koopia kaotsi. Kas salvestada siiski?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:1061
@@ -1775,8 +1753,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "lapiz ei suuda seda asukohta kirjutamiseks kasutada. Palun kontrolli, kas "
 "sisestasid faili asukoha õigesti ja proovi uuesti."
@@ -1800,8 +1778,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "Faili salvestamiseks pole piisavalt kettaruumi. Palun vabasta natuke "
 "kettaruumi ja proovi uuesti."
@@ -1820,8 +1798,8 @@ msgstr "Sama nimega fail on juba olemas. Palun kasuta mõnda teist nime."
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Sa proovid faili salvestada kettale, mis piirab failinime pikkust. Palun "
 "kasuta lühemat nime."
@@ -1829,11 +1807,11 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
-"Ketas, kuhu sa üritad faili salvestada, piirab failide maksimaalset suurust."
-" Proovi salvestada väiksemat faili või salvesta kettale, millel sellist "
+"Ketas, kuhu sa üritad faili salvestada, piirab failide maksimaalset suurust. "
+"Proovi salvestada väiksemat faili või salvesta kettale, millel sellist "
 "piirangut pole."
 
 #: lapiz/lapiz-io-error-message-area.c:1129
@@ -1895,14 +1873,12 @@ msgstr "Printimine _esiletõstetud süntaksiga"
 msgid "Print line nu_mbers"
 msgstr "Prinditakse koos rea_numbritega"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Nummerdamine üle"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "rida"
@@ -2013,8 +1989,7 @@ msgstr "ÜLE"
 msgid "INS"
 msgstr "LIS"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2071,38 +2046,38 @@ msgstr "%s salvestamine kataloogi %s"
 msgid "Saving %s"
 msgstr "%s salvestamine"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "KK"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "Viga faili %s avamisel"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Viga faili %s taastamisel"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "Viga faili %s salvestamisel"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unikood (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Nimi:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME-liik:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Kodeering:"
 
@@ -2859,12 +2834,6 @@ msgstr "Failisirvimispaan"
 msgid "Easy file access from the side pane"
 msgstr "Külgpaani kaudu hõlbus ligipääs failidele"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Asukoha määramine esimese dokumendi järgi"
@@ -2903,8 +2872,8 @@ msgstr "Failisirvija filtrimuster"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "Failisirvija filtri muster. See seda filtrit kasutatakse koos filter_mode "
 "võtmes määratud režiimiga."
@@ -2938,9 +2907,9 @@ msgstr "Failisirvija virtuaalne juurkataloog"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Failisirvija virtuaalne juurkataloog, mida kasutatakse failisirvija "
 "laadimise ajal juhul, kui võtmed onload/tree_view on märgitud. Virtuaalne "
@@ -3052,8 +3021,7 @@ msgstr ""
 "Ümber nimetatud fail on hetkel välja filtreeritud. Selle nähtavaletoomiseks "
 "pead sa filtri sätteid muutma"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "fail"
@@ -3066,8 +3034,7 @@ msgstr ""
 "Uus fail on hetkel välja filtreeritud. Selle nähtavaletoomiseks pead sa "
 "filtri sätteid muutma"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "kataloog"
@@ -3245,12 +3212,6 @@ msgstr "Pythoni konsool"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktiivne Pythoni konsool alumisele paneelile"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "_Vea värvus:"
@@ -3283,12 +3244,6 @@ msgstr "Dokumendi kiiravamine"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Failide kiire avamine"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3534,12 +3489,6 @@ msgstr "Sortimine"
 msgid "Sorts a document or selected text."
 msgstr "Dokumendi või valitud teksti sortimine."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "_Sordi"
@@ -3568,10 +3517,8 @@ msgstr "Sortimisoperatsiooni pole võimalik tagasi võtta"
 msgid "Autocheck Type"
 msgstr ""
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3598,8 +3545,7 @@ msgstr "Õigekirjakontroll"
 msgid "Suggestions"
 msgstr "Soovitused"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(korrektne õigekiri)"
@@ -3611,6 +3557,7 @@ msgstr "Õigekirjakontroll sai kogu dokumendi kontrollitud"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3620,6 +3567,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3628,6 +3576,7 @@ msgstr "Tundmatu (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3761,12 +3710,6 @@ msgstr "Õigekirjakontroll"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Käesoleva dokumendi õigekirja kontrollimine."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6448,12 +6391,6 @@ msgstr "Salvestamine ilma realõputühikuteta"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Kasutute realõputühikute eemaldamine enne salvestamist."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Kuupäeva ja kellaaja lisamine"
@@ -6478,8 +6415,7 @@ msgstr "Kasutatakse o_ma vormingut"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d.%m.%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6496,3 +6432,7 @@ msgstr "\"Kuupäeva/kellaaja\" sisestamisel..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Küsitakse vormingut"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

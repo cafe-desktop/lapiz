@@ -2,23 +2,24 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Wolfgang Ulbrich <cafe@raveit.de>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
-"Language-Team: Panjabi (Punjabi) (https://www.transifex.com/cafe/teams/13566/pa/)\n"
+"Language-Team: Panjabi (Punjabi) (https://www.transifex.com/cafe/teams/13566/"
+"pa/)\n"
+"Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pa\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -32,9 +33,8 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"ਜੀ-ਸੰਪਾਦਕ ਦੇ ਖਾਸ ਫੋਂਟ ਦੀ ਬਜਾਏ ਤੁਸੀਂ ਸਿਸਟਮ ਦੇ ਮੂਲ ਸਥਿਰੀ ਚੌੜਾਈ ਫੋਂਟ ਵੀ ਵਰਤ "
-"ਸਕਦੇ ਹੋ। ਜੇਕਰ ਇਹ ਚੋਣ ਬੰਦ ਹੈ ਤਾਂ \"ਸੰਪਾਦਕ ਫੋਂਟ\" ਵਿੱਚ ਦੱਸੇ ਫੋਂਟ ਸਿਸਟਮ ਦੀ ਥਾਂ "
-"ਉੱਤੇ ਵਰਤੇ ਜਾਣਗੇ।"
+"ਜੀ-ਸੰਪਾਦਕ ਦੇ ਖਾਸ ਫੋਂਟ ਦੀ ਬਜਾਏ ਤੁਸੀਂ ਸਿਸਟਮ ਦੇ ਮੂਲ ਸਥਿਰੀ ਚੌੜਾਈ ਫੋਂਟ ਵੀ ਵਰਤ ਸਕਦੇ ਹੋ। ਜੇਕਰ ਇਹ "
+"ਚੋਣ ਬੰਦ ਹੈ ਤਾਂ \"ਸੰਪਾਦਕ ਫੋਂਟ\" ਵਿੱਚ ਦੱਸੇ ਫੋਂਟ ਸਿਸਟਮ ਦੀ ਥਾਂ ਉੱਤੇ ਵਰਤੇ ਜਾਣਗੇ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
@@ -50,8 +50,8 @@ msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"ਸੋਧੇ ਅੱਖਰ ਜੋ ਸੋਧੇ ਜਾਣ ਵਾਲੇ ਥਾਂ ਵਰਤੇ ਜਾਣੇ ਹਨ। ਇਹ ਉਦੋਂ ਹੀ ਪਰਭਾਵੀ ਹੋ ਸਕਣਗੇ, "
-"ਜਦੋਂ \"ਮੂਲ ਫੋਂਟ ਵਰਤੋਂ\" ਚੋਣ ਬੰਦ ਹੋਵੇ (ਆਫ)।"
+"ਸੋਧੇ ਅੱਖਰ ਜੋ ਸੋਧੇ ਜਾਣ ਵਾਲੇ ਥਾਂ ਵਰਤੇ ਜਾਣੇ ਹਨ। ਇਹ ਉਦੋਂ ਹੀ ਪਰਭਾਵੀ ਹੋ ਸਕਣਗੇ, ਜਦੋਂ \"ਮੂਲ ਫੋਂਟ ਵਰਤੋਂ\" "
+"ਚੋਣ ਬੰਦ ਹੋਵੇ (ਆਫ)।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
@@ -77,8 +77,7 @@ msgstr "ਸਟਾਇਲ ਸਕੀਮਾਂ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:32
 msgid "The ID of a CtkSourceView Style Scheme used to color the text."
-msgstr ""
-"ਇੱਕ CtkSourceView ਸਟਾਇਲ ਸਕੀਮ ਦਾ ID, ਜੋ ਕਿ ਟੈਕਸਟ ਦੇ ਰੰਗ ਲਈ ਵਰਤਿਆ ਜਾਵੇਗਾ।"
+msgstr "ਇੱਕ CtkSourceView ਸਟਾਇਲ ਸਕੀਮ ਦਾ ID, ਜੋ ਕਿ ਟੈਕਸਟ ਦੇ ਰੰਗ ਲਈ ਵਰਤਿਆ ਜਾਵੇਗਾ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:36
 msgid "Create Backup Copies"
@@ -89,8 +88,8 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"ਜੀ-ਸੰਪਾਦਕ ਉਹਨਾਂ ਫਾਇਲਾਂ ਦਾ ਬੈਕਅਪ ਬਣਾਏ, ਜੋ ਇਸ ਨੇ ਸੰਭਾਲੀਆਂ ਹਨ। ਤੁਸੀਂ \"ਬੈਕਅੱਪ "
-"ਕਾਪੀ ਐਕਸਟੇਸ਼ਨ\" ਚੋਣ ਨਾਲ ਬੈਕਅੱਪ ਫਾਇਲ ਦੀ ਐਕਟੇਸ਼ਨ ਦੇ ਸਕਦੇ ਹੋ।"
+"ਜੀ-ਸੰਪਾਦਕ ਉਹਨਾਂ ਫਾਇਲਾਂ ਦਾ ਬੈਕਅਪ ਬਣਾਏ, ਜੋ ਇਸ ਨੇ ਸੰਭਾਲੀਆਂ ਹਨ। ਤੁਸੀਂ \"ਬੈਕਅੱਪ ਕਾਪੀ ਐਕਸਟੇਸ਼ਨ\" "
+"ਚੋਣ ਨਾਲ ਬੈਕਅੱਪ ਫਾਇਲ ਦੀ ਐਕਟੇਸ਼ਨ ਦੇ ਸਕਦੇ ਹੋ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -102,8 +101,8 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"ਕੀ ਜੀ-ਸੰਪਾਦਕ ਸੋਧੀਆਂ ਫਾਇਲਾਂ ਦੀ ਇਕ ਸਮੇਂ ਮਗਰੋਂ ਆਟੋਮੈਟਿਕ ਸੰਭਾਲ ਕਰੇ। ਤੁਸੀਂ "
-"\"ਆਟੋ-ਸੰਭਾਲ ਅੰਤਰਾਲ\" ਚੋਣ ਨਾਲ ਸਮਾਂ ਨਿਸ਼ਚਿਤ ਕਰ ਸਕਦੇ ਹੋ।"
+"ਕੀ ਜੀ-ਸੰਪਾਦਕ ਸੋਧੀਆਂ ਫਾਇਲਾਂ ਦੀ ਇਕ ਸਮੇਂ ਮਗਰੋਂ ਆਟੋਮੈਟਿਕ ਸੰਭਾਲ ਕਰੇ। ਤੁਸੀਂ \"ਆਟੋ-ਸੰਭਾਲ ਅੰਤਰਾਲ\" ਚੋਣ "
+"ਨਾਲ ਸਮਾਂ ਨਿਸ਼ਚਿਤ ਕਰ ਸਕਦੇ ਹੋ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -114,8 +113,8 @@ msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"ਮਿੰਟ ਦੀ ਗਿਣਤੀ, ਜਿੰਨ੍ਹਾਂ ਉਪਰੰਤ ਜੀ-ਸੰਪਾਦਕ ਸੋਧੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਖੁਦ ਹੀ ਸੰਭਾਲ "
-"ਦੇਵੇਗਾ। ਇਹ ਚੋਣ ਤਾਂ ਹੀ ਪ੍ਰਭਾਵੀ ਹੋਵੇਗੀ, ਜੇਕਰ \"ਆਟੋ ਸੰਭਾਲ\" ਚੋਣ ਚਾਲੂ ਹੋਵੇਗੀ।"
+"ਮਿੰਟ ਦੀ ਗਿਣਤੀ, ਜਿੰਨ੍ਹਾਂ ਉਪਰੰਤ ਜੀ-ਸੰਪਾਦਕ ਸੋਧੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਖੁਦ ਹੀ ਸੰਭਾਲ ਦੇਵੇਗਾ। ਇਹ ਚੋਣ ਤਾਂ ਹੀ "
+"ਪ੍ਰਭਾਵੀ ਹੋਵੇਗੀ, ਜੇਕਰ \"ਆਟੋ ਸੰਭਾਲ\" ਚੋਣ ਚਾਲੂ ਹੋਵੇਗੀ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -134,8 +133,8 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"ਲਿਖਣਯੋਗ ਢੰਗ ਵਿੱਚ ਜੀ-ਸੰਪਾਦਕ ਵਲੋਂ ਸਹਾਇਕ VFS ਸਕੀਮਾਂ ਦੀ ਸੂਚੀ ਹੈ। 'File' ਸਕੀਮ ਮੂਲ"
-" ਰੂਪ ਵਿੱਚ ਲਿਖਣਯੋਗ ਢੰਗ ਹੈ।"
+"ਲਿਖਣਯੋਗ ਢੰਗ ਵਿੱਚ ਜੀ-ਸੰਪਾਦਕ ਵਲੋਂ ਸਹਾਇਕ VFS ਸਕੀਮਾਂ ਦੀ ਸੂਚੀ ਹੈ। 'File' ਸਕੀਮ ਮੂਲ ਰੂਪ ਵਿੱਚ "
+"ਲਿਖਣਯੋਗ ਢੰਗ ਹੈ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -146,8 +145,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"ਵਾਪਸ ਜਾਂ ਮੁੜ-ਵਾਪਸ ਕੀਤੇ ਜਾਣ ਵਾਲੀਆਂ ਵੱਧ ਤੋਂ ਵੱਧ ਕਾਰਵਾਈਆਂ ਦੀ ਗਿਣਤੀ ਹੈ। ਕਾਰਵਾਈਆਂ"
-" ਦੀ ਗਿਣਤੀ ਨੂੰ ਅਣਗਿਣਤ ਕਰਨ ਲਈ \"-1\" ਦਿਓ।"
+"ਵਾਪਸ ਜਾਂ ਮੁੜ-ਵਾਪਸ ਕੀਤੇ ਜਾਣ ਵਾਲੀਆਂ ਵੱਧ ਤੋਂ ਵੱਧ ਕਾਰਵਾਈਆਂ ਦੀ ਗਿਣਤੀ ਹੈ। ਕਾਰਵਾਈਆਂ ਦੀ ਗਿਣਤੀ ਨੂੰ "
+"ਅਣਗਿਣਤ ਕਰਨ ਲਈ \"-1\" ਦਿਓ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -157,15 +156,14 @@ msgstr "ਲਾਈਨ ਲਪੇਟਣ ਢੰਗ"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"ਸੰਪਾਦਕ ਖੇਤਰ ਵਿੱਚ ਲੰਬੀਆਂ ਲਾਈਨਾਂ ਕਿਵੇ ਲਪਟੇਣੀਆਂ ਹਨ, ਇਹ ਨਿਰਧਾਰਿਤ ਕਰੋ। ਨਾ ਲਪੇਟਣ "
-"ਲਈ \"CTK_WRAP_NONE\" ਵਰਤੋ। ਸ਼ਬਦਾਂ ਦੀ ਸੀਮਾ ਤੋ ਲਪੇਟਣ ਲਈ \"CTK_WRAP_WORD\" "
-"ਵਰਤੋਂ। ਹਰੇਕ ਅੱਖਰ ਦੀ ਸੀਮਾ ਤੋਂ ਲਪੇਣ ਲਈ \"CTK_WRAP_CHAR\" ਵਰਤੋਂ (ਟਿੱਪਣੀ- ਮੁੱਲ "
-"ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੇ ਵੱਡੇ ਹੋਣ ਤੋਂ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ"
-" ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।)।"
+"ਸੰਪਾਦਕ ਖੇਤਰ ਵਿੱਚ ਲੰਬੀਆਂ ਲਾਈਨਾਂ ਕਿਵੇ ਲਪਟੇਣੀਆਂ ਹਨ, ਇਹ ਨਿਰਧਾਰਿਤ ਕਰੋ। ਨਾ ਲਪੇਟਣ ਲਈ "
+"\"CTK_WRAP_NONE\" ਵਰਤੋ। ਸ਼ਬਦਾਂ ਦੀ ਸੀਮਾ ਤੋ ਲਪੇਟਣ ਲਈ \"CTK_WRAP_WORD\" ਵਰਤੋਂ। ਹਰੇਕ ਅੱਖਰ "
+"ਦੀ ਸੀਮਾ ਤੋਂ ਲਪੇਣ ਲਈ \"CTK_WRAP_CHAR\" ਵਰਤੋਂ (ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੇ ਵੱਡੇ ਹੋਣ ਤੋਂ "
+"ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।)।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
@@ -247,11 +245,10 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"ਦੱਸੋ ਕਿ ਕਰਸਰ ਘਰ (HOME) ਅਤੇ ਅੰਤ (END) ਸਵਿੱਚ ਦਬਾਉਣ ਉੱਤੇ ਕਿਵੇਂ ਹਿੱਲੇ। \"ਆਯੋਗ\" "
-"ਕਰਨ ਨਾਲ ਹਮੇਸ਼ਾਂ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ ਅਤੇ ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, \"ਬਾਅਦ ਵਿੱਚ\" ਨਾਲ ਪਹਿਲੀਂ "
-"ਵਾਰ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਵਿੱਚ, ਅਤੇ ਦੂਜੀ ਵਾਰ ਦਬਾਉਣ ਨਾਲ ਖਾਲੀ ਥਾਂ ਨੂੰ ਛੱਡ ਕੇ ਟੈਸਕਟ"
-" ਦੇ ਸ਼ੁਰੂ ਅਤੇ ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, \"ਪਹਿਲਾਂ\" ਨਾਲ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਣ ਤੋਂ"
-" ਪਹਿਲਾਂ ਟੈਕਸਟ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਵੇਗੀ ਅਤੇ \"ਹਮੇਸ਼ਾਂ\" ਚੁਣ ਨਾਲ ਲਾਈਨ ਦੇ "
+"ਦੱਸੋ ਕਿ ਕਰਸਰ ਘਰ (HOME) ਅਤੇ ਅੰਤ (END) ਸਵਿੱਚ ਦਬਾਉਣ ਉੱਤੇ ਕਿਵੇਂ ਹਿੱਲੇ। \"ਆਯੋਗ\" ਕਰਨ ਨਾਲ ਹਮੇਸ਼ਾਂ "
+"ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ ਅਤੇ ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, \"ਬਾਅਦ ਵਿੱਚ\" ਨਾਲ ਪਹਿਲੀਂ ਵਾਰ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਵਿੱਚ, ਅਤੇ "
+"ਦੂਜੀ ਵਾਰ ਦਬਾਉਣ ਨਾਲ ਖਾਲੀ ਥਾਂ ਨੂੰ ਛੱਡ ਕੇ ਟੈਸਕਟ ਦੇ ਸ਼ੁਰੂ ਅਤੇ ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, \"ਪਹਿਲਾਂ\" ਨਾਲ "
+"ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਟੈਕਸਟ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਵੇਗੀ ਅਤੇ \"ਹਮੇਸ਼ਾਂ\" ਚੁਣ ਨਾਲ ਲਾਈਨ ਦੇ "
 "ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਣ ਦੀ ਬਜਾਏ ਹਮੇਸ਼ਾਂ ਟੈਕਸਟ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਵੇਗੀ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
@@ -262,9 +259,7 @@ msgstr "ਪੁਰਾਣੀ ਕਰਸਰ ਸਥਿਤੀ ਮੁੜ-ਸਟੋਰ"
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
-msgstr ""
-"ਕੀ ਜੀ-ਸੰਪਾਦਕ ਇੱਕ ਫਾਇਲ ਨੂੰ ਲੋਡ ਕਰਨ ਉਪਰੰਤ ਕਰਸਰ ਦੀ ਪੁਰਾਣੀ ਟਿਕਾਣਾ ਮੁੜ-ਪ੍ਰਾਪਤ "
-"ਕਰੇ।"
+msgstr "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਇੱਕ ਫਾਇਲ ਨੂੰ ਲੋਡ ਕਰਨ ਉਪਰੰਤ ਕਰਸਰ ਦੀ ਪੁਰਾਣੀ ਟਿਕਾਣਾ ਮੁੜ-ਪ੍ਰਾਪਤ ਕਰੇ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -300,16 +295,15 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"ਟੂਲਬਾਰ ਦੇ ਬਟਨਾਂ ਦਾ ਸਟਾਇਲ। ਆਮਤੌਰ ਤੇ ਸਿਸਟਮ ਦੇ ਮੂਲ ਸਟਾਇਲ "
-"\"LAPIZ_TOOLBAR_SYSTEM\" ਹੀ ਵਰਤਿਆ ਜਾਵੇਗਾ, \"LAPIZ_TOOLBAR_ICONS\" ਸਿਰਫ ਆਈਕਾਨ"
-" ਵੇਖਾਉਣ ਲਈ, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" ਆਈਕਾਨ ਅਤੇ ਟੈਕਸਟ ਵੇਖਾਉਣ ਲਈ, ਅਤੇ "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" ਜ਼ਰੂਰੀ ਆਈਕਾਨ ਟੈਕਸਟ ਨਾਲ। (ਟਿੱਪਣੀ- ਮੁੱਲ "
-"ਅੰਗਰੇਜ਼ੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ"
-" ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।)।"
+"ਟੂਲਬਾਰ ਦੇ ਬਟਨਾਂ ਦਾ ਸਟਾਇਲ। ਆਮਤੌਰ ਤੇ ਸਿਸਟਮ ਦੇ ਮੂਲ ਸਟਾਇਲ \"LAPIZ_TOOLBAR_SYSTEM\" ਹੀ "
+"ਵਰਤਿਆ ਜਾਵੇਗਾ, \"LAPIZ_TOOLBAR_ICONS\" ਸਿਰਫ ਆਈਕਾਨ ਵੇਖਾਉਣ ਲਈ, "
+"\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" ਆਈਕਾਨ ਅਤੇ ਟੈਕਸਟ ਵੇਖਾਉਣ ਲਈ, ਅਤੇ "
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" ਜ਼ਰੂਰੀ ਆਈਕਾਨ ਟੈਕਸਟ ਨਾਲ। (ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜ਼ੀ "
+"ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।)।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -325,8 +319,7 @@ msgid "Side Pane is Visible"
 msgstr "ਬਾਹੀ ਉਪਲੱਬਧ ਹੈ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "ਕੀ ਸੰਪਾਦਕ ਵਿੰਡੋ ਦੀ ਖੱਬੀ ਬਾਹੀ ਵੇਖਾਈ ਦੇਵੇ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -353,19 +346,17 @@ msgstr "ਤਾਜ਼ੀਆਂ ਫਾਇਲਾਂ ਦੀ ਵੱਧ ਤੋਂ ਵ�
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
-"ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਜ਼ਾ ਖੁੱਲੀਆਂ ਫਾਇਲਾਂ ਦੀ ਗਿਣਤੀ ਦਿਓ, ਜੋ ਕਿ \"ਤਾਜ਼ਾ ਫਾਇਲ਼ਾਂ\" ਸਬ-ਮੇਨ "
-"ਵਿੱਚ ਉਪਲੱਬਧ ਹੋਣ।"
+"ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਜ਼ਾ ਖੁੱਲੀਆਂ ਫਾਇਲਾਂ ਦੀ ਗਿਣਤੀ ਦਿਓ, ਜੋ ਕਿ \"ਤਾਜ਼ਾ ਫਾਇਲ਼ਾਂ\" ਸਬ-ਮੇਨ ਵਿੱਚ ਉਪਲੱਬਧ ਹੋਣ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "ਹਾਈਲਾਈਟ ਕੀਤੇ ਸੰਟੈਕਸ ਪਰਿੰਟ ਕਰੋ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਸੰਟੇਕਸ ਹਾਈਲਾਈਟ ਕਰੇ, ਜਦੋਂ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕੀਤਾ ਜਾਵੇ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -373,8 +364,7 @@ msgid "Print Header"
 msgstr "ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "ਜੀ-ਸੰਪਾਦਕ, ਜਦੋਂ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕਰੇ ਤਾਂ ਡੌਕੂਮੈਂਟ ਦਾ ਹੈੱਡਰ ਜੋੜ ਦੇਵੇ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -385,15 +375,14 @@ msgstr "ਪਰਿੰਟ ਲਈ ਲਾਈਨ ਸਮੇਟਣ ਢੰਗ"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"ਪਰਿੰਟ ਕਰਨ ਵੇਲੇ ਲੰਬੀਆਂ ਲਾਈਨਾਂ ਕਿਵੇਂ ਲਪਟੇਣੀਆਂ ਹਨ, ਇਹ ਦਿਓ। ਨਾ ਲਪੇਟਣ ਲਈ "
-"\"CTK_WRAP_NONE\" ਵਰਤੋ। ਸ਼ਬਦਾਂ ਦੀ ਸੀਮਾ ਤੋ ਲਪੇਟਣ ਲਈ \"CTK_WRAP_WORD\" ਵਰਤੋਂ। "
-"ਹਰੇਕ ਅੱਖਰ ਦੀ ਸੀਮਾ ਤੋਂ ਲਪੇਣ ਲਈ \"CTK_WRAP_CHAR\" ਵਰਤੋਂ (ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜੀ "
-"ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋਂ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ"
-" ਮੁਤਾਬਕ ਹੀ ਹਨ।"
+"ਪਰਿੰਟ ਕਰਨ ਵੇਲੇ ਲੰਬੀਆਂ ਲਾਈਨਾਂ ਕਿਵੇਂ ਲਪਟੇਣੀਆਂ ਹਨ, ਇਹ ਦਿਓ। ਨਾ ਲਪੇਟਣ ਲਈ \"CTK_WRAP_NONE\" "
+"ਵਰਤੋ। ਸ਼ਬਦਾਂ ਦੀ ਸੀਮਾ ਤੋ ਲਪੇਟਣ ਲਈ \"CTK_WRAP_WORD\" ਵਰਤੋਂ। ਹਰੇਕ ਅੱਖਰ ਦੀ ਸੀਮਾ ਤੋਂ ਲਪੇਣ ਲਈ "
+"\"CTK_WRAP_CHAR\" ਵਰਤੋਂ (ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋਂ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ "
+"ਕਰਕੇ ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
@@ -405,8 +394,8 @@ msgid ""
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
 msgstr ""
-"ਜੇ ਇਸ ਦਾ ਮੁੱਲ 0 ਹੈ ਤਾਂ ਛਾਪਣ ਸਮੇਂ ਕੋਈ ਲਾਈਨ ਨੰਬਰ ਕਾਗਜ ਵਿੱਚ ਨਹੀ ਆ ਸਕੇਗੀ, ਨਹੀ "
-"ਤਾਂ ਜੀ-ਸੰਪਾਦਕ ਹਰੇਕ ਲਾਈਨ ਲਈ ਲਾਈਨ ਨੰਬਰ ਛਾਪੇਗਾ।"
+"ਜੇ ਇਸ ਦਾ ਮੁੱਲ 0 ਹੈ ਤਾਂ ਛਾਪਣ ਸਮੇਂ ਕੋਈ ਲਾਈਨ ਨੰਬਰ ਕਾਗਜ ਵਿੱਚ ਨਹੀ ਆ ਸਕੇਗੀ, ਨਹੀ ਤਾਂ ਜੀ-ਸੰਪਾਦਕ "
+"ਹਰੇਕ ਲਾਈਨ ਲਈ ਲਾਈਨ ਨੰਬਰ ਛਾਪੇਗਾ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -436,8 +425,8 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"ਫੋਂਟ ਦਿਓ, ਜੋ ਸਫੇ ਦੇ ਹੈੱਡਰ ਲਈ ਵਰਤਣੇ ਹਨ, ਜੋ ਕਿ ਛਾਪਿਆ ਜਾ ਰਿਹਾ ਹੈ। ਇਹ ਤਾਂ ਹੀ "
-"ਲਾਗੂ ਹੋ ਸਕੇਗਾ, ਜੇ \"ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ\" ਚੋਣ ਚਾਲੂ ਹੈ (ਆਨ)।"
+"ਫੋਂਟ ਦਿਓ, ਜੋ ਸਫੇ ਦੇ ਹੈੱਡਰ ਲਈ ਵਰਤਣੇ ਹਨ, ਜੋ ਕਿ ਛਾਪਿਆ ਜਾ ਰਿਹਾ ਹੈ। ਇਹ ਤਾਂ ਹੀ ਲਾਗੂ ਹੋ ਸਕੇਗਾ, ਜੇ "
+"\"ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ\" ਚੋਣ ਚਾਲੂ ਹੈ (ਆਨ)।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -453,12 +442,12 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"ਫੋਂਟ ਦਿਓ, ਜੋ ਲਾਈਨ ਦੇ ਨੰਬਰ ਵਰਤਣੇ ਹਨ, ਜੋ ਡੌਕੂਮੈਂਟ ਛਾਪਿਆ ਜਾ ਰਿਹਾ ਹੈ। ਇਹ ਤਾਂ ਹੀ "
-"ਲਾਗੂ ਹੋ ਸਕੇਗਾ ਜੇ \"ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ\"ਚੋਣ ਸਿਫਰ ਨਾ ਹੋਵੇ।"
+"ਫੋਂਟ ਦਿਓ, ਜੋ ਲਾਈਨ ਦੇ ਨੰਬਰ ਵਰਤਣੇ ਹਨ, ਜੋ ਡੌਕੂਮੈਂਟ ਛਾਪਿਆ ਜਾ ਰਿਹਾ ਹੈ। ਇਹ ਤਾਂ ਹੀ ਲਾਗੂ ਹੋ ਸਕੇਗਾ ਜੇ "
+"\"ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ\"ਚੋਣ ਸਿਫਰ ਨਾ ਹੋਵੇ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
@@ -468,12 +457,11 @@ msgstr "ਆਟੋਮੈਟਿਕ ਖੋਜੀ ਗਈ ਇੰਕੋਡਿੰਗ"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
-"ਫਾਇਲ ਦੀ ਇੰਕੋਡਿੰਗ ਆਟੋਮੈਟਿਕ ਖੋਜਣ ਲਈ ਜੀ-ਸੰਪਾਦਕ ਕੋਲ ਉਪਲੱਬਧ ਕ੍ਰਮਬੱਧ ਲਿਸਟ ਹੈ। "
-"ਮੌਜੂਦਾ ਲੋਕੇਲ ਇੰਕੋਡਿੰਗ \"ਮੌਜੂਦ\" ਨੂੰ ਵੇਖਾਉਦਾ ਹੈ। ਸਿਰਫ ਪਛਾਣੀ ਗਈ ਇੰਕੋਡਿੰਗ ਹੀ "
-"ਵਰਤੀ ਜਾਵੇਗੀ।"
+"ਫਾਇਲ ਦੀ ਇੰਕੋਡਿੰਗ ਆਟੋਮੈਟਿਕ ਖੋਜਣ ਲਈ ਜੀ-ਸੰਪਾਦਕ ਕੋਲ ਉਪਲੱਬਧ ਕ੍ਰਮਬੱਧ ਲਿਸਟ ਹੈ। ਮੌਜੂਦਾ ਲੋਕੇਲ ਇੰਕੋਡਿੰਗ "
+"\"ਮੌਜੂਦ\" ਨੂੰ ਵੇਖਾਉਦਾ ਹੈ। ਸਿਰਫ ਪਛਾਣੀ ਗਈ ਇੰਕੋਡਿੰਗ ਹੀ ਵਰਤੀ ਜਾਵੇਗੀ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
@@ -489,8 +477,8 @@ msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
 msgstr ""
-"ਇੰਕੋਡਿੰਗ ਲਿਸਟਾਂ ਫਾਇਲ ਖੋਲ੍ਹਣ/ਸੰਭਾਲਣ ਚੋਣਕਾਰ ਕਰੈਕਟਰ ਕੋਡਿੰਗ ਸੂਚੀ ਵਿੱਚ ਵੇਖਿਆ ਜਾ "
-"ਰਿਹਾ ਹੈ। ਸਿਰਫ ਮਨਜੂਰਸ਼ੁਦਾ ਇੰਕੋਡਿੰਗ ਹੀ ਵਰਤੀ ਜਾਵੇਗੀ।"
+"ਇੰਕੋਡਿੰਗ ਲਿਸਟਾਂ ਫਾਇਲ ਖੋਲ੍ਹਣ/ਸੰਭਾਲਣ ਚੋਣਕਾਰ ਕਰੈਕਟਰ ਕੋਡਿੰਗ ਸੂਚੀ ਵਿੱਚ ਵੇਖਿਆ ਜਾ ਰਿਹਾ ਹੈ। ਸਿਰਫ "
+"ਮਨਜੂਰਸ਼ੁਦਾ ਇੰਕੋਡਿੰਗ ਹੀ ਵਰਤੀ ਜਾਵੇਗੀ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -517,8 +505,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"ਸਰਗਰਮ ਪਲੱਗਇਨਾਂ ਦੀ ਸੂਚੀ ਹੈ। ਇਸ ਵਿੱਚ ਸਰਗਰਮ ਪਲੱਗਇਨਾਂ ਦਾ \"ਟਿਕਾਣਾ\" ਹੈ। ਦਿੱਤੀ "
-"ਪਲੱਗਇਨ ਦਾ \"ਟਿਕਾਣਾ\" ਪਰਾਪਤ ਕਰਨ ਲਈ .lapiz-plugin ਫਾਇਲ ਵੇਖੋ।"
+"ਸਰਗਰਮ ਪਲੱਗਇਨਾਂ ਦੀ ਸੂਚੀ ਹੈ। ਇਸ ਵਿੱਚ ਸਰਗਰਮ ਪਲੱਗਇਨਾਂ ਦਾ \"ਟਿਕਾਣਾ\" ਹੈ। ਦਿੱਤੀ ਪਲੱਗਇਨ ਦਾ "
+"\"ਟਿਕਾਣਾ\" ਪਰਾਪਤ ਕਰਨ ਲਈ .lapiz-plugin ਫਾਇਲ ਵੇਖੋ।"
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -545,9 +533,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -573,8 +560,8 @@ msgstr ""
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -593,14 +580,7 @@ msgstr "ਟੈਕਸਟ ਐਡੀਟਰ"
 msgid "Edit text files"
 msgstr "ਟੈਕਸਟ ਫਾਇਲਾਂ ਸੋਧੋ"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -620,9 +600,8 @@ msgstr "ਬਿਨਾਂ ਸੰਭਾਲੇ ਬੰਦ ਕਰੋ(_w)"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -658,8 +637,7 @@ msgstr "ਸਵਾਲ"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -685,8 +663,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -694,11 +671,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
-msgstr ""
-"ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲੀਆਂ ਤਾਂ ਆਖਰੀ ਘੰਟੇ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਹਮੇਸ਼ਾਂ ਲਈ ਖਤਮ ਹੋ "
-"ਜਾਣਗੀਆਂ।"
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲੀਆਂ ਤਾਂ ਆਖਰੀ ਘੰਟੇ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਹਮੇਸ਼ਾਂ ਲਈ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
 #, c-format
@@ -744,8 +718,7 @@ msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1174,8 +1147,7 @@ msgstr "ਫਾਇਲ \"%s\" ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ ਹੈ।"
 
 #: lapiz/lapiz-commands-file.c:579
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr ""
-"ਕੀ ਤੁਸੀ ਇਸ ਨੂੰ ਉਸ ਫਾਇਲ ਨਾਲ ਤਬਦੀਲ ਕਰਨਾ ਚਾਹੋਗੇ, ਜਿਸ ਨੂੰ ਸੰਭਾਲਣ ਜਾ ਰਹੇ ਹੋ?"
+msgstr "ਕੀ ਤੁਸੀ ਇਸ ਨੂੰ ਉਸ ਫਾਇਲ ਨਾਲ ਤਬਦੀਲ ਕਰਨਾ ਚਾਹੋਗੇ, ਜਿਸ ਨੂੰ ਸੰਭਾਲਣ ਜਾ ਰਹੇ ਹੋ?"
 
 #: lapiz/lapiz-commands-file.c:649 lapiz/lapiz-commands-file.c:872
 #, c-format
@@ -1199,8 +1171,7 @@ msgstr "ਕੀ ਡੌਕੂਮੈਂਟ '%s' ਵਿੱਚ ਨਾ-ਸੰਭਾਲ
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1226,8 +1197,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1235,11 +1205,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
-msgstr ""
-"ਪਿਛਲੇ ਘੰਟੇ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਵਿਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਪੱਕੇ ਤੌਰ ਤੇ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ "
-"ਹਨ।"
+msgid "Changes made to the document in the last hour will be permanently lost."
+msgstr "ਪਿਛਲੇ ਘੰਟੇ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਵਿਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਪੱਕੇ ਤੌਰ ਤੇ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ ਹਨ।"
 
 #: lapiz/lapiz-commands-file.c:1186
 #, c-format
@@ -1299,8 +1266,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1316,10 +1283,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "ਜਸਵਿੰਦਰ ਸਿੰਘ ਫੂਲੇਵਾਲਾ ੨੦੦੪\n"
@@ -1572,16 +1540,13 @@ msgstr "%s ਠੀਕ ਟਿਕਾਣਾ ਨਹੀਂ ਹੈ।"
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
-msgstr ""
-"ਹੋਸਟ %s ਨਹੀਂ ਖੋਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਆਪਣੇ ਪਰਾਕਸੀ ਸੈਟਿੰਗ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼"
-" ਕਰੋ ਜੀ।"
+msgstr "ਹੋਸਟ %s ਨਹੀਂ ਖੋਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਆਪਣੇ ਪਰਾਕਸੀ ਸੈਟਿੰਗ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
-msgstr ""
-"ਹੋਸਟ ਨਾਂ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr "ਹੋਸਟ ਨਾਂ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:301
 #, c-format
@@ -1632,8 +1597,7 @@ msgstr "ਨਾ ਸੋਧੋ(_o)"
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
-msgstr ""
-"ਵੇਖਣ ਲਈ ਲਿੰਕ ਸੀਮਿਤ ਹਨ ਅਤੇ ਅਸਲੀ ਫਾਇਲ ਨੂੰ ਇਸ ਲਿਮਟ 'ਚੋਂ ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
+msgstr "ਵੇਖਣ ਲਈ ਲਿੰਕ ਸੀਮਿਤ ਹਨ ਅਤੇ ਅਸਲੀ ਫਾਇਲ ਨੂੰ ਇਸ ਲਿਮਟ 'ਚੋਂ ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1646,8 +1610,7 @@ msgstr "ਜੀ-ਸੰਪਾਦਕ ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਲੱ�
 #: lapiz/lapiz-io-error-message-area.c:609
 #: lapiz/lapiz-io-error-message-area.c:631
 msgid "Please check that you are not trying to open a binary file."
-msgstr ""
-"ਚੈੱਕ ਕਰੋ ਕਿ ਕਿਤੇ ਤੁਸੀਂ ਇੱਕ ਬਾਈਨਰੀ ਫਾਇਲ ਤਾਂ ਖੋਲ੍ਹਣ ਦੀ ਕੋਸ਼ਸ਼ ਨਹੀਂ ਕਰ ਰਹੇ ਹੋ।"
+msgstr "ਚੈੱਕ ਕਰੋ ਕਿ ਕਿਤੇ ਤੁਸੀਂ ਇੱਕ ਬਾਈਨਰੀ ਫਾਇਲ ਤਾਂ ਖੋਲ੍ਹਣ ਦੀ ਕੋਸ਼ਸ਼ ਨਹੀਂ ਕਰ ਰਹੇ ਹੋ।"
 
 #: lapiz/lapiz-io-error-message-area.c:610
 msgid "Select a character encoding from the menu and try again."
@@ -1663,8 +1626,8 @@ msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
 msgstr ""
-"ਫਾਇਲ, ਜੋ ਤੁਸੀਂ ਖੋਲ੍ਹੀ ਹੈ, ਵਿੱਚ ਅਢੁੱਕਵੇਂ ਅੱਖਰ ਹਨ। ਜੇ ਤੁਸੀਂ ਇਸ ਫਾਇਲ ਨੂੰ ਸੋਧਣਾ "
-"ਜਾਰੀ ਰੱਖਿਆ ਤਾਂ ਇਹ ਡੌਕੂਮੈਂਟ ਬੇਕਾਰ ਹੋ ਜਾਵੇਗਾ।"
+"ਫਾਇਲ, ਜੋ ਤੁਸੀਂ ਖੋਲ੍ਹੀ ਹੈ, ਵਿੱਚ ਅਢੁੱਕਵੇਂ ਅੱਖਰ ਹਨ। ਜੇ ਤੁਸੀਂ ਇਸ ਫਾਇਲ ਨੂੰ ਸੋਧਣਾ ਜਾਰੀ ਰੱਖਿਆ ਤਾਂ ਇਹ "
+"ਡੌਕੂਮੈਂਟ ਬੇਕਾਰ ਹੋ ਜਾਵੇਗਾ।"
 
 #: lapiz/lapiz-io-error-message-area.c:621
 msgid "You can also choose another character encoding and try again."
@@ -1695,8 +1658,7 @@ msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr ""
-"ਡੌਕੂਮੈਂਟ਼ ਵਿੱਚ ਇੱਕ ਜਾਂ ਵੱਧ ਅੱਖਰ ਅਜਿਹੇ ਹਨ, ਜਿੰਨ੍ਹਾਂ ਨੂੰ ਦਿੱਤੀ ਅੱਖਰ ਇੰਕੋਡਿੰਗ "
-"ਨਾਲ ਸੋਧਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
+"ਡੌਕੂਮੈਂਟ਼ ਵਿੱਚ ਇੱਕ ਜਾਂ ਵੱਧ ਅੱਖਰ ਅਜਿਹੇ ਹਨ, ਜਿੰਨ੍ਹਾਂ ਨੂੰ ਦਿੱਤੀ ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਨਾਲ ਸੋਧਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
 
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
@@ -1705,11 +1667,11 @@ msgstr "ਇਹ ਫਾਇਲ (%s) ਹੋਰ ਜੀ-ਸੰਪਾਦਕ ਵਿੰ�
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
-"ਜੀ-ਸੰਪਾਦਕ ਨੇ ਫਾਇਲ ਦੇ ਇਸ ਮੌਕੇ ਦੇ ਵਰਜਨ ਨੂੰ ਨਾ-ਸੋਧਣਯੋਗ ਢੰਗ ਨਾਲ ਖੋਲ੍ਹਿਆ ਹੈ। ਕੀ "
-"ਤੁਸੀਂ ਇਸ ਨੂੰ ਕਿਸੇ ਵੀ ਢੰਗ ਨਾਲ ਸੋਧਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+"ਜੀ-ਸੰਪਾਦਕ ਨੇ ਫਾਇਲ ਦੇ ਇਸ ਮੌਕੇ ਦੇ ਵਰਜਨ ਨੂੰ ਨਾ-ਸੋਧਣਯੋਗ ਢੰਗ ਨਾਲ ਖੋਲ੍ਹਿਆ ਹੈ। ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਕਿਸੇ ਵੀ "
+"ਢੰਗ ਨਾਲ ਸੋਧਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
 #: lapiz/lapiz-io-error-message-area.c:960
@@ -1727,11 +1689,9 @@ msgid "The file %s has been modified since reading it."
 msgstr "ਫਾਇਲ %s ਨੂੰ ਪੜ੍ਹਨ ਦੌਰਾਨ ਸੋਧਿਆ ਗਿਆ ਹੈ।"
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
-"ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਨੂੰ ਸੰਭਾਲਿਆ ਤਾਂ, ਬਾਹਰੀ ਤਬਦੀਲੀਆਂ ਗੁੰਮ ਹੋ ਜਾਣਗੀਆਂ। ਕੀ ਕਿਸੇ ਵੀ "
-"ਤਰ੍ਹਾਂ ਸੰਭਾਲਣਾ ਹੈ?"
+"ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਨੂੰ ਸੰਭਾਲਿਆ ਤਾਂ, ਬਾਹਰੀ ਤਬਦੀਲੀਆਂ ਗੁੰਮ ਹੋ ਜਾਣਗੀਆਂ। ਕੀ ਕਿਸੇ ਵੀ ਤਰ੍ਹਾਂ ਸੰਭਾਲਣਾ ਹੈ?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
 #, c-format
@@ -1746,13 +1706,13 @@ msgstr "%s ਨੂੰ ਸੰਭਾਲਣ ਦੌਰਾਨ ਇੱਕ ਆਰਜ਼�
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"ਜੀ-ਸੰਪਾਦਕ ਇੱਕ ਫਾਇਲ ਦੀ ਪੁਰਾਣੀ ਕਾਪੀ ਤੋਂ ਬੈਕਅੱਪ ਨਹੀਂ ਬਣਾ ਸਕਦੇ ਹੈ, ਜਦੋਂ ਕਿ ਨਵੀਂ "
-"ਸੰਭਾਲੀ ਨਹੀਂ ਜਾਂਦੀ। ਤੁਸੀਂ ਇਹ ਚੇਤਾਵਨੀਆਂ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰਕੇ ਫਾਇਲ ਨੂੰ ਕਿਸੇ ਵੀ "
-"ਤਰ੍ਹਾਂ ਸੰਭਾਲ ਸਕਦੇ ਹੋ, ਪਰ ਜੇਕਰ ਸੰਭਾਲਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਤਾਂ ਤੁਸੀਂ ਫਾਇਲ ਦੀ "
-"ਪੁਰਾਣੀ ਕਾਪੀ ਨੂੰ ਗੁਆ ਬੈਠੋਗੇ। ਕੀ ਕਿਸੇ ਵੀ ਤਰ੍ਹਾਂ ਸੰਭਾਲਣਾ ਹੈ?"
+"ਜੀ-ਸੰਪਾਦਕ ਇੱਕ ਫਾਇਲ ਦੀ ਪੁਰਾਣੀ ਕਾਪੀ ਤੋਂ ਬੈਕਅੱਪ ਨਹੀਂ ਬਣਾ ਸਕਦੇ ਹੈ, ਜਦੋਂ ਕਿ ਨਵੀਂ ਸੰਭਾਲੀ ਨਹੀਂ "
+"ਜਾਂਦੀ। ਤੁਸੀਂ ਇਹ ਚੇਤਾਵਨੀਆਂ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰਕੇ ਫਾਇਲ ਨੂੰ ਕਿਸੇ ਵੀ ਤਰ੍ਹਾਂ ਸੰਭਾਲ ਸਕਦੇ ਹੋ, ਪਰ ਜੇਕਰ "
+"ਸੰਭਾਲਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਤਾਂ ਤੁਸੀਂ ਫਾਇਲ ਦੀ ਪੁਰਾਣੀ ਕਾਪੀ ਨੂੰ ਗੁਆ ਬੈਠੋਗੇ। ਕੀ ਕਿਸੇ ਵੀ ਤਰ੍ਹਾਂ "
+"ਸੰਭਾਲਣਾ ਹੈ?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:1061
@@ -1761,49 +1721,46 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"ਜੀ-ਸੰਪਾਦਕ %s ਟਿਕਾਣੇ ਨੂੰ ਲਿਖਣ ਢੰਗ ਵਿੱਚ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ "
-"ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
+"ਜੀ-ਸੰਪਾਦਕ %s ਟਿਕਾਣੇ ਨੂੰ ਲਿਖਣ ਢੰਗ ਵਿੱਚ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ "
+"ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
-"ਜੀ-ਸੰਪਾਦਕ ਇਹ ਟਿਕਾਣੇ ਨੂੰ ਲਿਖਣ ਢੰਗ ਵਿੱਚ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ "
-"ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
+"ਜੀ-ਸੰਪਾਦਕ ਇਹ ਟਿਕਾਣੇ ਨੂੰ ਲਿਖਣ ਢੰਗ ਵਿੱਚ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ "
+"ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1078
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
-msgstr ""
-"%s ਟਿਕਾਣਾ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ "
-"ਜੀ।"
+msgstr "%s ਟਿਕਾਣਾ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"ਤੁਹਾਨੂੰ ਫਾਇਲ ਸੰਭਾਲਣ ਲਈ ਲੋੜੀਦੇ ਅਧਿਕਾਰ ਨਹੀਂ ਹਨ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ "
-"ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
+"ਤੁਹਾਨੂੰ ਫਾਇਲ ਸੰਭਾਲਣ ਲਈ ਲੋੜੀਦੇ ਅਧਿਕਾਰ ਨਹੀਂ ਹਨ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ "
+"ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
-"ਫਾਇਲ ਸੰਭਾਲਣ ਲਈ ਲੋੜੀਦੀ ਡਿਸਕ ਥਾਂ ਮੌਜੂਦ ਨਹੀਂ ਹੈ। ਕੁਝ ਡਿਸਕ ਥਾਂ ਖਾਲੀ ਕਰਕੇ ਮੁੜ "
-"ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
+"ਫਾਇਲ ਸੰਭਾਲਣ ਲਈ ਲੋੜੀਦੀ ਡਿਸਕ ਥਾਂ ਮੌਜੂਦ ਨਹੀਂ ਹੈ। ਕੁਝ ਡਿਸਕ ਥਾਂ ਖਾਲੀ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"ਤੁਸੀਂ ਫਾਇਲ ਨੂੰ ਸਿਰਫ਼ ਪੜ੍ਹਨ-ਯੋਗ ਡਿਸਕ ਉੱਤੇ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਸ਼ ਕਰ ਰਹੇ ਹੋ। ਆਪਣੇ "
-"ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
+"ਤੁਸੀਂ ਫਾਇਲ ਨੂੰ ਸਿਰਫ਼ ਪੜ੍ਹਨ-ਯੋਗ ਡਿਸਕ ਉੱਤੇ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਸ਼ ਕਰ ਰਹੇ ਹੋ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ "
+"ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
@@ -1811,21 +1768,20 @@ msgstr "ਇਸ ਨਾਂ ਨਾਲ ਇੱਕ ਫਾਇਲ ਪਹਿਲਾਂ ਹ
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
-"ਜਿਸ ਡਿਸਕ ਉੱਤੇ ਤੁਸੀਂ ਫਾਇਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰ ਰਿਹੇ ਹੋ, ਉਸ ਉੱਪਰ ਫਾਇਲ ਨਾਂ ਲਈ "
-"ਸੀਮਿਤ ਸੀਮਾ ਹੈ। ਛੋਟਾ ਨਾਂ ਵਰਤੋਂ ਜੀ।"
+"ਜਿਸ ਡਿਸਕ ਉੱਤੇ ਤੁਸੀਂ ਫਾਇਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰ ਰਿਹੇ ਹੋ, ਉਸ ਉੱਪਰ ਫਾਇਲ ਨਾਂ ਲਈ ਸੀਮਿਤ ਸੀਮਾ ਹੈ। "
+"ਛੋਟਾ ਨਾਂ ਵਰਤੋਂ ਜੀ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
-"ਜਿਸ ਡਿਸਕ ਤੇ ਤੁਸੀਂ ਫਾਇਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰ ਰਿਹੇ ਹੋ, ਉਸ ਉੱਤੇ ਫਾਇਲ ਅਕਾਰ ਦੀ "
-"ਹੱਦਬੰਦੀ ਹੈ। ਇਕ ਛੋਟੀ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰੋ ਜਾਂ ਹੋਰ ਡਿਸਕ ਵਰਤੋ, ਜਿਸ ਤੇ "
-"ਇਹ ਪਾਬੰਦੀ ਨਾ ਹੋਵੇ।"
+"ਜਿਸ ਡਿਸਕ ਤੇ ਤੁਸੀਂ ਫਾਇਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰ ਰਿਹੇ ਹੋ, ਉਸ ਉੱਤੇ ਫਾਇਲ ਅਕਾਰ ਦੀ ਹੱਦਬੰਦੀ ਹੈ। ਇਕ "
+"ਛੋਟੀ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰੋ ਜਾਂ ਹੋਰ ਡਿਸਕ ਵਰਤੋ, ਜਿਸ ਤੇ ਇਹ ਪਾਬੰਦੀ ਨਾ ਹੋਵੇ।"
 
 #: lapiz/lapiz-io-error-message-area.c:1129
 #, c-format
@@ -1886,14 +1842,12 @@ msgstr "ਸੰਟੈਕਸਟ ਹਾਈਲਾਈਟਿੰਗ ਪਰਿੰਟ ਕ
 msgid "Print line nu_mbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ(_m)"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "ਹਰੇਕ ਨੰਬਰ(_N)"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "ਲਾਈਨਾਂ"
@@ -2004,8 +1958,7 @@ msgstr "ਉੱਤੇ"
 msgid "INS"
 msgstr "ਸ਼ਾਮਲ"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2060,38 +2013,38 @@ msgstr "%s ਨੂੰ %s ਵਿੱਚ ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ �
 msgid "Saving %s"
 msgstr "%s ਸੰਭਾਲਿਆ ਜਾਂਦਾ ਹੈ"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "%s ਫਾਇਲ ਖੋਲ੍ਹਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s ਫਾਇਲ ਪਰਤਾਉਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "ਫਾਇਲ %s ਸੰਭਾਲਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "ਯੂਨੀਕੋਡ (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "ਨਾਂ:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME ਕਿਸਮ:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "ਇੰਕੋਡਿੰਗ:"
 
@@ -2566,8 +2519,8 @@ msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
 msgstr ""
-"ਡੌਕੂਮੈਂਟੀ ਅੰਕੜੇ ਪਲੱਗਇਨ ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ ਦੀ ਛਾਣਬੀਣ ਕਰ ਰਿਹਾ ਹੈ ਅਤੇ ਸ਼ਬਦਾਂ, "
-"ਲਾਈਨਾਂ, ਅੱਖਰਾਂ ਅਤੇ ਨਾ ਖਾਲੀ ਅੱਖਰਾਂ ਦੀ ਗਿਣਤੀ ਕਰਕੇ ਨਤੀਜਾ ਵੇਖਾਵੇਗਾ।"
+"ਡੌਕੂਮੈਂਟੀ ਅੰਕੜੇ ਪਲੱਗਇਨ ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ ਦੀ ਛਾਣਬੀਣ ਕਰ ਰਿਹਾ ਹੈ ਅਤੇ ਸ਼ਬਦਾਂ, ਲਾਈਨਾਂ, ਅੱਖਰਾਂ ਅਤੇ ਨਾ "
+"ਖਾਲੀ ਅੱਖਰਾਂ ਦੀ ਗਿਣਤੀ ਕਰਕੇ ਨਤੀਜਾ ਵੇਖਾਵੇਗਾ।"
 
 #: plugins/docinfo/docinfo.ui:51
 msgid "_Update"
@@ -2847,12 +2800,6 @@ msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਬਾਹੀ"
 msgid "Easy file access from the side pane"
 msgstr "ਬਾਹੀ ਤੋਂ ਫਾਇਲ ਦੀ ਸੌਖੀ ਵਰਤੋਂ"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "ਪਹਿਲੇਂ ਡੌਕੂਮੈਂਟ ਲਈ ਟਿਕਾਣਾ ਦਿਓ"
@@ -2864,10 +2811,9 @@ msgid ""
 "generally applies to opening a document from the command line or opening it "
 "with Baul, etc.)"
 msgstr ""
-"ਜੇ ਸਹੀਂ ਹੋਇਆ ਤਾਂ ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਪਲੱਗਇਨ ਪਹਿਲੇ ਖੋਲ੍ਹੇ ਡੌਕੂਮੈਂਟ਼ ਦੀ ਡਾਇਰੈਕਟਰੀ "
-"ਵੇਖੇਗਾ, ਨੇ ਦਿੱਤਾ ਹੈ ਕਿ ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਨੂੰ ਹਾਲੀ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ ਹੈ। (ਤਾਂ ਹੀ ਇਹ "
-"ਆਮ ਤੌਰ ਉੱਤੇ ਕਮਾਂਡ ਲਾਈਨ ਤੋਂ ਖੁੱਲ੍ਹੇ ਡੌਕੂਮੈਂਟ ਲਈ ਲਾਗੂ ਹੁੰਦਾ ਹੈ ਜਾਂ ਨਾਟੀਲਸ "
-"ਰਾਹੀਂ ਖੋਲ੍ਹਣ ਨਾਲ)"
+"ਜੇ ਸਹੀਂ ਹੋਇਆ ਤਾਂ ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਪਲੱਗਇਨ ਪਹਿਲੇ ਖੋਲ੍ਹੇ ਡੌਕੂਮੈਂਟ਼ ਦੀ ਡਾਇਰੈਕਟਰੀ ਵੇਖੇਗਾ, ਨੇ ਦਿੱਤਾ ਹੈ ਕਿ "
+"ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਨੂੰ ਹਾਲੀ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ ਹੈ। (ਤਾਂ ਹੀ ਇਹ ਆਮ ਤੌਰ ਉੱਤੇ ਕਮਾਂਡ ਲਾਈਨ ਤੋਂ ਖੁੱਲ੍ਹੇ ਡੌਕੂਮੈਂਟ "
+"ਲਈ ਲਾਗੂ ਹੁੰਦਾ ਹੈ ਜਾਂ ਨਾਟੀਲਸ ਰਾਹੀਂ ਖੋਲ੍ਹਣ ਨਾਲ)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -2880,10 +2826,9 @@ msgid ""
 "(filter binary files) and hidden_and_binary (filter both hidden and binary "
 "files)."
 msgstr ""
-"ਇਹ ਮੁੱਲ ਤਹਿ ਕਰਦਾ ਹੈ ਕਿ ਫਾਇਲ ਝਲਕਾਰੇ ਵਲੋਂ ਕਿਹੜੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਫਿਲਟਰ ਕੀਤਾ ਜਾਵੇ। "
-"ਠੀਕ ਮੁੱਲ ਹਨ: ਕੋਈ ਨਹੀਂ (ਫਿਲਟਰ ਨਹੀਂ), ਲੁਕਵੀਆਂ (ਲੁਕਵੀਆਂ ਫਾਇਲਾਂ ਫਿਲਟਰ ਕਰੋ), "
-"ਬਾਈਨਰੀ (ਬਾਈਨਰੀ ਫਾਇਲਾਂ ਫਿਲਟਰ ਕਰੋ) ਅਤੇ ਲੁਕਵੀਆਂ ਅਤੇ ਬਾਈਨਰੀ (ਲੁਕਵੀਆਂ ਅਤੇ ਬਾਈਨਰੀ "
-"ਫਾਇਲਾਂ ਫਿਲਟਰ ਕਰੋ)।"
+"ਇਹ ਮੁੱਲ ਤਹਿ ਕਰਦਾ ਹੈ ਕਿ ਫਾਇਲ ਝਲਕਾਰੇ ਵਲੋਂ ਕਿਹੜੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਫਿਲਟਰ ਕੀਤਾ ਜਾਵੇ। ਠੀਕ ਮੁੱਲ ਹਨ: "
+"ਕੋਈ ਨਹੀਂ (ਫਿਲਟਰ ਨਹੀਂ), ਲੁਕਵੀਆਂ (ਲੁਕਵੀਆਂ ਫਾਇਲਾਂ ਫਿਲਟਰ ਕਰੋ), ਬਾਈਨਰੀ (ਬਾਈਨਰੀ ਫਾਇਲਾਂ ਫਿਲਟਰ "
+"ਕਰੋ) ਅਤੇ ਲੁਕਵੀਆਂ ਅਤੇ ਬਾਈਨਰੀ (ਲੁਕਵੀਆਂ ਅਤੇ ਬਾਈਨਰੀ ਫਾਇਲਾਂ ਫਿਲਟਰ ਕਰੋ)।"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2891,11 +2836,10 @@ msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਫਿਲਟਰ ਪੈਟਰਨ"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
-"ਫਿਲਟਰ ਪੈਟਰਨ ਜਿਸ ਨਾਲ ਫਾਇਲ ਝਲਕਾਰਾ ਫਿਲਟਰ ਕਰੇ। ਇਹ ਫਿਲਟਰ ਫਿਲਟਰ ਢੰਗ ਨਾ ਉੱਤੇ ਕੰਮ "
-"ਕਰਦਾ ਹੈ।"
+"ਫਿਲਟਰ ਪੈਟਰਨ ਜਿਸ ਨਾਲ ਫਾਇਲ ਝਲਕਾਰਾ ਫਿਲਟਰ ਕਰੇ। ਇਹ ਫਿਲਟਰ ਫਿਲਟਰ ਢੰਗ ਨਾ ਉੱਤੇ ਕੰਮ ਕਰਦਾ ਹੈ।"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
@@ -2906,8 +2850,7 @@ msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
-"ਲੜੀ ਝਲਕ ਖੋਲ੍ਹਦੀ ਹੈ, ਜਦੋਂ ਫਾਇਲ ਝਲਕਾਰਾ ਪਲੱਗਇਨ ਨੂੰ ਬੁੱਕਮਾਰਕ ਝਲਕ ਦੀ ਬਜਾਏ ਲੋਡ "
-"ਕੀਤਾ ਹੁੰਦਾ ਹੈ।"
+"ਲੜੀ ਝਲਕ ਖੋਲ੍ਹਦੀ ਹੈ, ਜਦੋਂ ਫਾਇਲ ਝਲਕਾਰਾ ਪਲੱਗਇਨ ਨੂੰ ਬੁੱਕਮਾਰਕ ਝਲਕ ਦੀ ਬਜਾਏ ਲੋਡ ਕੀਤਾ ਹੁੰਦਾ ਹੈ।"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
@@ -2918,8 +2861,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
-"ਫਾਇਲ ਝਲਕਾਰਾ ਰੂਟ ਡਾਇਰੈਕਟਰੀ ਹੈ, ਜੋ ਕਿ ਫਾਇਲ ਝਲਕਾਰਾ ਲੋਡ ਕਰਨ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਹੈ, "
-"ਜਦੋਂ onload/tree_view TRUE ਹੋਵੇ।"
+"ਫਾਇਲ ਝਲਕਾਰਾ ਰੂਟ ਡਾਇਰੈਕਟਰੀ ਹੈ, ਜੋ ਕਿ ਫਾਇਲ ਝਲਕਾਰਾ ਲੋਡ ਕਰਨ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਹੈ, ਜਦੋਂ onload/"
+"tree_view TRUE ਹੋਵੇ।"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2927,13 +2870,12 @@ msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਫ਼ਰਜ਼ੀ ਮੁੱਢਲੀ
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਫ਼ਰਜ਼ੀ ਰੂਟ ਡਾਇਰੈਕਟਰੀ ਹੈ, ਜੋ ਕਿ ਫਾਇਲ ਝਲਕਾਰਾ ਲੋਡ ਕਰਨ ਲਈ ਵਰਤੀ "
-"ਜਾਂਦੀ ਹੈ, ਜਦੋਂ onload/tree_view TRUE ਹੋਵੇ। ਫ਼ਰਜ਼ੀ ਰੂਟ ਅਸਲ ਰੂਟ ਦੇ ਹੇਠਾਂ ਹੀ "
-"ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"
+"ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਫ਼ਰਜ਼ੀ ਰੂਟ ਡਾਇਰੈਕਟਰੀ ਹੈ, ਜੋ ਕਿ ਫਾਇਲ ਝਲਕਾਰਾ ਲੋਡ ਕਰਨ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਹੈ, ਜਦੋਂ "
+"onload/tree_view TRUE ਹੋਵੇ। ਫ਼ਰਜ਼ੀ ਰੂਟ ਅਸਲ ਰੂਟ ਦੇ ਹੇਠਾਂ ਹੀ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
@@ -3038,11 +2980,9 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"ਨਵੀਂ ਫਾਇਲ ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਕੀਤੀ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਫਾਇਲ ਵੇਖਣ ਲਈ ਫਿਲਟਰ ਸੈਟਿੰਗ ਠੀਕ "
-"ਕਰਨ ਦੀ ਲੋੜ ਹੈ।"
+"ਨਵੀਂ ਫਾਇਲ ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਕੀਤੀ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਫਾਇਲ ਵੇਖਣ ਲਈ ਫਿਲਟਰ ਸੈਟਿੰਗ ਠੀਕ ਕਰਨ ਦੀ ਲੋੜ ਹੈ।"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "ਫਾਇਲ"
@@ -3052,11 +2992,9 @@ msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"ਨਵੀਂ ਫਾਇਲ ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਕੀਤੀ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਫਾਇਲ ਵੇਖਣ ਲਈ ਫਿਲਟਰ ਸੈਟਿੰਗ ਠੀਕ "
-"ਕਰਨ ਦੀ ਲੋੜ ਹੈ।"
+"ਨਵੀਂ ਫਾਇਲ ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਕੀਤੀ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਫਾਇਲ ਵੇਖਣ ਲਈ ਫਿਲਟਰ ਸੈਟਿੰਗ ਠੀਕ ਕਰਨ ਦੀ ਲੋੜ ਹੈ।"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "ਡਾਇਰੈਕਟਰੀ"
@@ -3066,8 +3004,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"ਨਵੀਂ ਡਾਇਰੈਕਟਰੀ ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਕੀਤੀ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਡਾਇਰੈਕਟਰੀ ਵੇਖਣ ਲਈ ਫਿਲਟਰ "
-"ਸੈਟਿੰਗ ਠੀਕ ਕਰਨ ਦੀ ਲੋੜ ਹੈ।"
+"ਨਵੀਂ ਡਾਇਰੈਕਟਰੀ ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਕੀਤੀ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਡਾਇਰੈਕਟਰੀ ਵੇਖਣ ਲਈ ਫਿਲਟਰ ਸੈਟਿੰਗ ਠੀਕ ਕਰਨ "
+"ਦੀ ਲੋੜ ਹੈ।"
 
 #: plugins/filebrowser/lapiz-file-browser-widget.c:712
 msgid "Bookmarks"
@@ -3234,12 +3172,6 @@ msgstr "ਪਾਈਥਨ ਕਨਸੋਂਲ"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "ਤਲ ਪੈਨਲ ਵਿੱਚ ਪਾਈਥਨ ਕੰਨਸੋਲ ਤਿਆਰ ਹੈ"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "ਗਲਤੀ ਰੰਗ(_E):"
@@ -3272,12 +3204,6 @@ msgstr "ਡੌਕੂਮੈਂਟ ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "ਫਾਇਲਾਂ ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3371,8 +3297,8 @@ msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
 msgstr ""
-"ਇਹ ਇੱਕ ਠੀਕ ਟੈਬ ਟਰਿੱਗਰ ਨਹੀਂ ਹੈ। ਟਰਿੱਗਰ ਇੱਕ ਅੱਖਰ ਜਾਂ ਇੱਕ ਇੱਕਲਾ ਨਾ-ਗਿਣਤੀ, ਅੱਖਰ,"
-" ਜਿਵੇਂ {, [ ਆਦਿ ਹੋ ਸਕਦਾ ਹੈ।"
+"ਇਹ ਇੱਕ ਠੀਕ ਟੈਬ ਟਰਿੱਗਰ ਨਹੀਂ ਹੈ। ਟਰਿੱਗਰ ਇੱਕ ਅੱਖਰ ਜਾਂ ਇੱਕ ਇੱਕਲਾ ਨਾ-ਗਿਣਤੀ, ਅੱਖਰ, ਜਿਵੇਂ {, "
+"[ ਆਦਿ ਹੋ ਸਕਦਾ ਹੈ।"
 
 #: plugins/snippets/snippets/Manager.py:771
 #, python-format
@@ -3423,9 +3349,7 @@ msgstr "ਐਕਸਪੋਰਟ ਠੀਕ ਤਰ੍ਹਾਂ ਹੋ ਗਿਆ"
 #: plugins/snippets/snippets/Manager.py:858
 #: plugins/snippets/snippets/Manager.py:927
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
-msgstr ""
-"ਕੀ ਤੁਸੀਂ ਚੁਣੇ <b>ਸਿਸਟਮ</b> ਸਨਿੱਪਟ ਨੂੰ ਆਪਣੇ ਐਕਸਪੋਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨਾ ਚਾਹੁੰਦੇ "
-"ਹੋ?"
+msgstr "ਕੀ ਤੁਸੀਂ ਚੁਣੇ <b>ਸਿਸਟਮ</b> ਸਨਿੱਪਟ ਨੂੰ ਆਪਣੇ ਐਕਸਪੋਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #: plugins/snippets/snippets/Manager.py:873
 #: plugins/snippets/snippets/Manager.py:945
@@ -3497,8 +3421,7 @@ msgstr "ਫਾਇਲ \"%s\" ਇੱਕ ਠੀਕ ਸਨਿੱਪਟ ਅਕਾਇ�
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
-msgstr ""
-"ਪਾਈਥਨ ਕਮਾਂਡ (%s) ਵੱਧ ਤੋਂ ਵੱਧ ਚੱਲਣ ਸਮੇਂ ਤੋਂ ਵੱਧ ਗਈ ਹੈ, ਚਲਾਉਣ ਅਧੂਰਾ ਛੱਡਿਆ।"
+msgstr "ਪਾਈਥਨ ਕਮਾਂਡ (%s) ਵੱਧ ਤੋਂ ਵੱਧ ਚੱਲਣ ਸਮੇਂ ਤੋਂ ਵੱਧ ਗਈ ਹੈ, ਚਲਾਉਣ ਅਧੂਰਾ ਛੱਡਿਆ।"
 
 #: plugins/snippets/snippets/Placeholder.py:609
 #, python-format
@@ -3520,12 +3443,6 @@ msgstr "ਲੜੀਬੱਧ"
 #: plugins/sort/sort.plugin.desktop.in:6
 msgid "Sorts a document or selected text."
 msgstr "ਡੌਕੂਮੈਂਟ ਜਾਂ ਚੁਣੇ ਟੈਕਸਟ ਨੂੰ ਕ੍ਰਮਬੱਧ ਕਰੋ।"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
 
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
@@ -3555,10 +3472,8 @@ msgstr "ਤੁਸੀਂ ਕ੍ਰਮਬੱਧ ਕਰਨ ਦੀ ਕਾਰਵਾ�
 msgid "Autocheck Type"
 msgstr ""
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3585,8 +3500,7 @@ msgstr "ਸ਼ਬਦ ਜੋੜ ਚੈੱਕ ਕਰੋ"
 msgid "Suggestions"
 msgstr "ਸੁਝਾਅ"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(ਸਹੀ ਸ਼ਬਦ ਜੋੜ)"
@@ -3598,6 +3512,7 @@ msgstr "ਪੂਰੀ ਤਰਾਂ ਸ਼ਬਦਜੋੜ ਦੀ ਜਾਂਚ ਹ�
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3607,6 +3522,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3615,6 +3531,7 @@ msgstr "ਅਣਜਾਣ (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3748,12 +3665,6 @@ msgstr "ਸ਼ਬਦ-ਜੋੜ ਜਾਂਚਕਾਰ"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ਼ ਲਈ ਸ਼ਬਦਾਂ ਜੋੜ ਦੀ ਜਾਂਚ ਕਰੋ।"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -5615,8 +5526,8 @@ msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
 msgstr ""
-"ਇੱਕ ਸੌਖਾ ਤਰੀਕਾ ਉਪਲੱਬਧ ਕਰਵਾਉਦੀ ਹੈ, ਜਿਸ ਰਾਹੀਂ ਇਕ ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਆਮਤੌਰ ਉੱਤੇ ਵਰਤੇ"
-" ਜਾ ਰਹੇ ਟੈਗ/ਲਾਈਨਾਂ ਬਿਨਾਂ ਲਿਖੇ ਤੋਂ ਹੀ ਵਰਤੇ ਜਾਣ।"
+"ਇੱਕ ਸੌਖਾ ਤਰੀਕਾ ਉਪਲੱਬਧ ਕਰਵਾਉਦੀ ਹੈ, ਜਿਸ ਰਾਹੀਂ ਇਕ ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਆਮਤੌਰ ਉੱਤੇ ਵਰਤੇ ਜਾ ਰਹੇ ਟੈਗ/"
+"ਲਾਈਨਾਂ ਬਿਨਾਂ ਲਿਖੇ ਤੋਂ ਹੀ ਵਰਤੇ ਜਾਣ।"
 
 #: plugins/taglist/XSLT.tags.xml.in:7
 msgid "XSLT - Elements"
@@ -6435,12 +6346,6 @@ msgstr ""
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "ਤਾਰੀਖ ਅਤੇ ਸਮਾਂ ਸ਼ਾਮਲ"
@@ -6465,8 +6370,7 @@ msgstr "ਸੋਧਿਆ ਫਾਰਮੈਟ ਵਰਤੋਂ(_U)"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"

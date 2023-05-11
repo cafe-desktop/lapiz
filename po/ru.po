@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Victor Kukshiev <andrey0bolkonsky@gmail.com>, 2020
 # Andrew Sboev <sboevandrew@gmail.com>, 2020
@@ -22,20 +22,22 @@
 # Olesya Gerasimenko <gammaray@basealt.ru>, 2020
 # Aleksey Kabanov <ak099@mail.ru>, 2020
 # Anna Vyalkova <cybertailor@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Anna Vyalkova <cybertailor@gmail.com>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/cafe/teams/13566/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
@@ -137,8 +139,7 @@ msgid ""
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
 "Интервал в минутах, после которого все изменённые файлы будут автоматически "
-"сохранены. Будет иметь эффект, только если параметр «Автосохранение» "
-"включён."
+"сохранены. Будет иметь эффект, только если параметр «Автосохранение» включён."
 
 #: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -180,9 +181,9 @@ msgstr "Режим переноса строк"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Определяет, как переносить длинные строки в области редактирования. "
 "Используйте «CTK_WRAP_NONE» для отключения переноса, «CTK_WRAP_WORD» для "
@@ -325,9 +326,9 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 "Определяет стиль для кнопок панели инструментов. Возможные значения: "
 "«LAPIZ_TOOLBAR_SYSTEM» для использования исходных системных значений, "
@@ -351,8 +352,7 @@ msgid "Side Pane is Visible"
 msgstr "Боковая панель видима"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "Будет ли видна боковая панель, расположенная слева от окна редактирования."
 
@@ -382,19 +382,18 @@ msgstr "Максимальное число последних файлов"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
-"Определяет число недавно использованных файлов, которые будут отображаться в"
-" подменю «Открыть недавно использованный файл»."
+"Определяет число недавно использованных файлов, которые будут отображаться в "
+"подменю «Открыть недавно использованный файл»."
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "Печатать подсветку синтаксиса"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "Следует ли печатать подсветку синтаксиса при печати документа."
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -402,8 +401,7 @@ msgid "Print Header"
 msgstr "Печатать заголовки страниц"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "Следует ли печатать заголовок документа."
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -414,9 +412,9 @@ msgstr "Режим переноса строк при печати"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Определяет, как переносить длинные строки при печати. Используйте "
 "«CTK_WRAP_NONE» для отключения переноса, «CTK_WRAP_WORD» для переноса по "
@@ -481,13 +479,13 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Определяет шрифт, используемый при печати номеров строк. Будет иметь эффект,"
-" только если параметр «Печатать номера строк» не равен нулю."
+"Определяет шрифт, используемый при печати номеров строк. Будет иметь эффект, "
+"только если параметр «Печатать номера строк» не равен нулю."
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "['UTF-8', 'WINDOWS-1251', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -496,8 +494,8 @@ msgstr "Кодировки, определяемые автоматически"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Сортированный список кодировок, используемых редактором для автоопределения "
 "кодировки файла. «CURRENT» — это кодировка локали. Используются только "
@@ -545,8 +543,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Список активных модулей. Он содержит «Адрес» активного модуля. См. файл "
-".lapiz-plugin для получения «адреса» данного модуля."
+"Список активных модулей. Он содержит «Адрес» активного модуля. См. файл ."
+"lapiz-plugin для получения «адреса» данного модуля."
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -567,9 +565,9 @@ msgid ""
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
-"Следует ли показывать неразрывные пробелы в окне редактора: «draw-none» — не"
-" показывать; «draw-trailing» — показывать только конечные пробелы; «draw-"
-"all» — показывать все пробелы."
+"Следует ли показывать неразрывные пробелы в окне редактора: «draw-none» — не "
+"показывать; «draw-trailing» — показывать только конечные пробелы; «draw-all» "
+"— показывать все пробелы."
 
 #: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
@@ -577,9 +575,8 @@ msgstr "Показать табы"
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 "Следует ли показывать табуляции в окне редактора: «draw-none» — не "
 "показывать; «draw-trailing» — показывать только на конце строки; «draw-all» "
@@ -596,8 +593,8 @@ msgid ""
 "all spaces."
 msgstr ""
 "Следует ли показывать символы пробела в окне редактора: «draw-none» — не "
-"показывать; «draw-trailing» — показывать только в конце строки; «draw-all» —"
-" показывать все пробелы."
+"показывать; «draw-trailing» — показывать только в конце строки; «draw-all» — "
+"показывать все пробелы."
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
 msgid "Lapiz"
@@ -611,8 +608,8 @@ msgstr "Текстовый редактор для среды CAFE"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 "Lapiz — это небольшой, но мощный текстовый редактор, спроектированный "
@@ -640,14 +637,7 @@ msgstr "Текстовый редактор"
 msgid "Edit text files"
 msgstr "Редактор текстовых файлов"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr "accessories-text-editor"
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -668,9 +658,8 @@ msgstr "Закрыть _без сохранения"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -706,8 +695,7 @@ msgstr "Вопрос"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -739,8 +727,7 @@ msgstr[3] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -750,11 +737,9 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
-"Если вы не сохраните, изменения за последний час будут безвозвратно "
-"утрачены."
+"Если вы не сохраните, изменения за последний час будут безвозвратно утрачены."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
 #, c-format
@@ -806,8 +791,7 @@ msgstr[3] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1215,7 +1199,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Выполните «%s --help» для просмотра полного списка доступных ключей командной строки.\n"
+"Выполните «%s --help» для просмотра полного списка доступных ключей "
+"командной строки.\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1267,8 +1252,7 @@ msgstr "Восстановить несохранённые изменения �
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1300,8 +1284,7 @@ msgstr[3] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1311,8 +1294,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Изменения, сделанные в документе за последний час, будут безвозвратно "
 "утрачены."
@@ -1371,8 +1353,7 @@ msgstr ""
 "Lapiz является свободным программным обеспечением; вы можете распространять "
 "и/или изменять его согласно условиям стандартной общественной лицензии GNU "
 "(GNU GPL), опубликованной Фондом свободного программного обеспечения (FSF); "
-"либо лицензии версии 2, либо (на ваше усмотрение) любой более поздней "
-"версии."
+"либо лицензии версии 2, либо (на ваше усмотрение) любой более поздней версии."
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
@@ -1382,19 +1363,19 @@ msgid ""
 "details."
 msgstr ""
 "Программа Lapiz распространяется в надежде, что она будет полезной, но БЕЗ "
-"КАКИХ БЫ ТО НИ БЫЛО ГАРАНТИЙНЫХ ОБЯЗАТЕЛЬСТВ; даже без косвенных гарантийных"
-" обязательств, связанных с ПОТРЕБИТЕЛЬСКИМИ СВОЙСТВАМИ и ПРИГОДНОСТЬЮ ДЛЯ "
+"КАКИХ БЫ ТО НИ БЫЛО ГАРАНТИЙНЫХ ОБЯЗАТЕЛЬСТВ; даже без косвенных гарантийных "
+"обязательств, связанных с ПОТРЕБИТЕЛЬСКИМИ СВОЙСТВАМИ и ПРИГОДНОСТЬЮ ДЛЯ "
 "ОПРЕДЕЛЕННЫХ ЦЕЛЕЙ. Подробности читайте в стандартной общественной лицензии "
 "GNU."
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"Вы должны были получить копию стандартной общественной лицензии GNU вместе с"
-" программой Lapiz. Если это не так, напишите по адресу Free Software "
+"Вы должны были получить копию стандартной общественной лицензии GNU вместе с "
+"программой Lapiz. Если это не так, напишите по адресу Free Software "
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
@@ -1409,17 +1390,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
-"Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
-"Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
-"Copyright © 2003-2006 Paolo Maggi\n"
-"Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
-"Steve Frécinaux, Ignacio Casal Quinteiro\n"
-"Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Александр Сапрыкин <xelfium@gmail.com>\n"
@@ -1710,8 +1685,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "Неверное имя узла. Убедитесь в правильности введённого имени и попробуйте "
 "ещё раз."
@@ -1827,8 +1802,8 @@ msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr ""
-"Документ содержит символы, которые не могут быть отображены с использованием"
-" указанной кодировки."
+"Документ содержит символы, которые не могут быть отображены с использованием "
+"указанной кодировки."
 
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
@@ -1837,8 +1812,8 @@ msgstr "Этот файл (%s) уже открыт в другом окне ре
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "Редактор lapiz открыл этот файл в режиме «только чтение». Вы всё равно "
 "хотите отредактировать его?"
@@ -1859,8 +1834,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "Файл «%s» был изменён, пока вы его читали."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Если вы сохраните файл, все внешние изменения будут потеряны. Всё равно "
 "сохранить?"
@@ -1879,8 +1853,8 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "Редактор lapiz не может сделать резервную копию старой копии файла до "
 "сохранения нового. Вы можете проигнорировать это предупреждение и сохранить "
@@ -1899,8 +1873,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "Редактор lapiz не может открыть этот адрес в режиме записи. Убедитесь в "
 "правильности введённого адреса и попробуйте ещё раз."
@@ -1924,8 +1898,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "Недостаточно места на диске для сохранения файла. Освободите немного места "
 "на диске и попробуйте ещё раз."
@@ -1944,8 +1918,8 @@ msgstr "Файл с таким именем уже существует. Ука�
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Диск, на который вы пытаетесь сохранить файл, имеет ограничение на длину "
 "имени файла. Используйте более короткое имя."
@@ -1953,12 +1927,12 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 "Диск, на который вы пытаетесь сохранить файл, имеет ограничение на размер "
-"файла. Попробуйте сохранить файл меньшего размера или воспользуйтесь диском,"
-" не имеющим подобного ограничения."
+"файла. Попробуйте сохранить файл меньшего размера или воспользуйтесь диском, "
+"не имеющим подобного ограничения."
 
 #: lapiz/lapiz-io-error-message-area.c:1129
 #, c-format
@@ -2019,14 +1993,12 @@ msgstr "Печатать по_дсветку синтаксиса"
 msgid "Print line nu_mbers"
 msgstr "Печатать _номера строк"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "Печатать н_омера каждых"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "строк"
@@ -2137,8 +2109,7 @@ msgstr "ЗАМ"
 msgid "INS"
 msgstr "ВСТ"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2196,38 +2167,38 @@ msgstr "Сохраняется файл «%s» в каталог «%s»"
 msgid "Saving %s"
 msgstr "Сохраняется файл «%s»"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "Ошибка открытия файла «%s»"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Ошибка восстановления файла «%s»"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "Ошибка сохранения файла «%s»"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Юникод (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Название:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "Тип MIME:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Кодировка:"
 
@@ -2985,12 +2956,6 @@ msgstr "Панель обозревателя файлов"
 msgid "Easy file access from the side pane"
 msgstr "Простой доступ к файлам из боковой панели"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Установить адрес на первый документ"
@@ -3029,8 +2994,8 @@ msgstr "Шаблон фильтра обозревателя файлов"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "Шаблон фильтра для фильтрации файлов в обозревателе файлов. Этот фильтр "
 "работает поверх filter_mode."
@@ -3065,9 +3030,9 @@ msgstr "Виртуальный корневой каталог обозрева�
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Виртуальный корневой каталог обозревателя файлов при загрузке модуля "
 "обозревателя, если установлен параметр onload/tree_view. Виртуальный "
@@ -3176,11 +3141,10 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"Переименованный файл сейчас отфильтрован. Необходимо настроить фильтр, чтобы"
-" сделать этот файл видимым"
+"Переименованный файл сейчас отфильтрован. Необходимо настроить фильтр, чтобы "
+"сделать этот файл видимым"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "файл"
@@ -3193,8 +3157,7 @@ msgstr ""
 "Новый файл сейчас отфильтрован. Необходимо настроить фильтр, чтобы сделать "
 "этот файл видимым"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "каталог"
@@ -3372,12 +3335,6 @@ msgstr "Консоль Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Интерактивная консоль Python в нижней панели"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr "text-x-python"
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "Цвет _ошибок:"
@@ -3410,12 +3367,6 @@ msgstr "Быстро открыть документы"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Быстрое открытие файлов"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr "document-open"
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3564,8 +3515,7 @@ msgstr "Экспорт успешно завершён"
 #: plugins/snippets/snippets/Manager.py:927
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
-"Включить выделенные <b>системные</b> фрагменты текста в экспортируемый "
-"архив?"
+"Включить выделенные <b>системные</b> фрагменты текста в экспортируемый архив?"
 
 #: plugins/snippets/snippets/Manager.py:873
 #: plugins/snippets/snippets/Manager.py:945
@@ -3663,12 +3613,6 @@ msgstr "Сортировка"
 msgid "Sorts a document or selected text."
 msgstr "Сортирует документ или выделенный текст."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr "view-sort-ascending"
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "_Упорядочить"
@@ -3697,10 +3641,8 @@ msgstr "Вы не можете отменить операцию сортиро�
 msgid "Autocheck Type"
 msgstr "Тип автопроверки"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3727,8 +3669,7 @@ msgstr "Проверка орфографии"
 msgid "Suggestions"
 msgstr "Варианты"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(правильное написание)"
@@ -3740,6 +3681,7 @@ msgstr "Проверка завершена"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3749,6 +3691,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3757,6 +3700,7 @@ msgstr "Неизвестный (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3890,12 +3834,6 @@ msgstr "Проверка орфографии"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Проверяет орфографию в текущем документе."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr "tools-check-spelling"
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -5757,8 +5695,8 @@ msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
 msgstr ""
-"Предоставляет простой способ вставки в документ часто используемых тегов или"
-" строк без необходимости набирать их вручную."
+"Предоставляет простой способ вставки в документ часто используемых тегов или "
+"строк без необходимости набирать их вручную."
 
 #: plugins/taglist/XSLT.tags.xml.in:7
 msgid "XSLT - Elements"
@@ -6577,12 +6515,6 @@ msgstr "Сохранить без лишних пробелов"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Удалить незначащие пробелы из строк перед сохранением."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr "edit-cut"
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Вставить дату и время"
@@ -6607,8 +6539,7 @@ msgstr "Использовать дру_гой формат"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6625,3 +6556,45 @@ msgstr "Параметры вставки даты и времени..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Запрашивать формат"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "['UTF-8', 'WINDOWS-1251', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#~ msgid "accessories-text-editor"
+#~ msgstr "accessories-text-editor"
+
+#~ msgid ""
+#~ "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
+#~ "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
+#~ "Copyright © 2003-2006 Paolo Maggi\n"
+#~ "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
+#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
+#~ "Copyright © 2011 Perberos\n"
+#~ "Copyright © 2012-2020 CAFE developers"
+#~ msgstr ""
+#~ "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
+#~ "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
+#~ "Copyright © 2003-2006 Paolo Maggi\n"
+#~ "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
+#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
+#~ "Copyright © 2011 Perberos\n"
+#~ "Copyright © 2012-2020 CAFE developers"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
+
+#~ msgid "text-x-python"
+#~ msgstr "text-x-python"
+
+#~ msgid "document-open"
+#~ msgstr "document-open"
+
+#~ msgid "view-sort-ascending"
+#~ msgstr "view-sort-ascending"
+
+#~ msgid "tools-check-spelling"
+#~ msgstr "tools-check-spelling"
+
+#~ msgid "edit-cut"
+#~ msgstr "edit-cut"

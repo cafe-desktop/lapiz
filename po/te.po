@@ -2,24 +2,24 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Martin Wimpress <code@flexion.org>, 2020
 # ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Telugu (https://www.transifex.com/cafe/teams/13566/te/)\n"
+"Language: te\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: te\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -33,10 +33,9 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"lapiz ప్రత్యేకించిన అక్షరశైలికి బదులుగా సిస్టమ్ అప్రమేయ నిర్ధేశిత వెడల్పు "
-"అక్షరశైలి ని టెక్స్టు సరికూర్చుటకు ఉపయోగించాలనుకుంటే.ఈ ఇచ్ఛాపూర్వకం ఆఫ్ "
-"అయితే, సిస్టమ్ అక్షరశైలికి బదులుగా \"సరిచూచువారి అక్షరశైలి\" లోని అక్షరశైలి "
-"ఇచ్ఛాపూర్వకం ఉపయోగించబడుతుంది."
+"lapiz ప్రత్యేకించిన అక్షరశైలికి బదులుగా సిస్టమ్ అప్రమేయ నిర్ధేశిత వెడల్పు అక్షరశైలి ని టెక్స్టు "
+"సరికూర్చుటకు ఉపయోగించాలనుకుంటే.ఈ ఇచ్ఛాపూర్వకం ఆఫ్ అయితే, సిస్టమ్ అక్షరశైలికి బదులుగా \"సరిచూచువారి "
+"అక్షరశైలి\" లోని అక్షరశైలి ఇచ్ఛాపూర్వకం ఉపయోగించబడుతుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
@@ -52,8 +51,8 @@ msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"సరిచూచుటకు వాడే వైశాల్యములో వాడే అక్షర శైలి. ఇది \"Use Default Font\" "
-"ఇచ్చాపూర్వక సదుపాయం నిరుపయోగంగా ఉన్నప్పుడు మాత్రమే  పనిచేస్తుంది."
+"సరిచూచుటకు వాడే వైశాల్యములో వాడే అక్షర శైలి. ఇది \"Use Default Font\" ఇచ్చాపూర్వక సదుపాయం "
+"నిరుపయోగంగా ఉన్నప్పుడు మాత్రమే  పనిచేస్తుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:21
 msgid "Switch tabs with [ctrl] + [tab]"
@@ -90,8 +89,8 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"lapiz దాచే దస్త్రాలకొరకు భద్రపరుచుకాపీలను తీయుటమంచిదైతే.మీరు భద్రపరుచు "
-"దస్త్రం పోడిగింపును \"భద్రపరుచు నకలు పొడిగింపు\" ఇచ్ఛాపూర్వకంతో అమర్చవలెను."
+"lapiz దాచే దస్త్రాలకొరకు భద్రపరుచుకాపీలను తీయుటమంచిదైతే.మీరు భద్రపరుచు దస్త్రం పోడిగింపును "
+"\"భద్రపరుచు నకలు పొడిగింపు\" ఇచ్ఛాపూర్వకంతో అమర్చవలెను."
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -130,9 +129,7 @@ msgstr "రాయగలిగిన VFS పథకాలు"
 msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
-msgstr ""
-"lapiz వ్రాయు రీతి లో మద్దతునిచ్చే VFS పధకాల జాబితా.దస్త్ర పధకం అప్రమేయంగా "
-"వ్రాయబడింది."
+msgstr "lapiz వ్రాయు రీతి లో మద్దతునిచ్చే VFS పధకాల జాబితా.దస్త్ర పధకం అప్రమేయంగా వ్రాయబడింది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -143,8 +140,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"lapiz చేసింది రద్దుచేయుటకు లేదా తిరిగిచేయుటకు గల అత్యదిక ఆవకాశాలసంఖ్య. "
-"అనంతంగా చర్యలు కొనసాగించుటకు \"-1\" ని ఉపయోగించండి."
+"lapiz చేసింది రద్దుచేయుటకు లేదా తిరిగిచేయుటకు గల అత్యదిక ఆవకాశాలసంఖ్య. అనంతంగా చర్యలు "
+"కొనసాగించుటకు \"-1\" ని ఉపయోగించండి."
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -154,15 +151,14 @@ msgstr "వరుసలకు తగినట్లుగా అమర్చే 
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"సరికూర్చు ప్రదేశంలో పొడవైన లైన్లను ఎలా తగినట్లు అమర్చాలో తెలియజేస్తుంది. పద "
-"సరిహద్దులవద్ద తగినట్లు అమర్చుటకు \"CTK_WRAP_WORD\", అమర్చుకుండా ఉండుటకు "
-"\"CTK_WRAP_NONE\" ఉపయోగించండి, మరియు \"CTK_WRAP_CHAR\" ఒక్కొక్క అక్షరం "
-"సరిహద్దువద్ద అమర్చుటకు ఉపయోగించండి. ఆవిలువలు చిన్నపెద్ద-అక్షరం తేడాలను "
-"కలిగిఉన్నాయని గర్తుంచుకోండి, అదువలన ఇక్కడ సూచించిన విధంగా ఉండునట్లు "
+"సరికూర్చు ప్రదేశంలో పొడవైన లైన్లను ఎలా తగినట్లు అమర్చాలో తెలియజేస్తుంది. పద సరిహద్దులవద్ద తగినట్లు "
+"అమర్చుటకు \"CTK_WRAP_WORD\", అమర్చుకుండా ఉండుటకు \"CTK_WRAP_NONE\" ఉపయోగించండి, "
+"మరియు \"CTK_WRAP_CHAR\" ఒక్కొక్క అక్షరం సరిహద్దువద్ద అమర్చుటకు ఉపయోగించండి. ఆవిలువలు "
+"చిన్నపెద్ద-అక్షరం తేడాలను కలిగిఉన్నాయని గర్తుంచుకోండి, అదువలన ఇక్కడ సూచించిన విధంగా ఉండునట్లు "
 "చూసుకోండి."
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
@@ -173,8 +169,7 @@ msgstr "టాబ్ పరిమాణము"
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
-msgstr ""
-"టాబ్ అక్షరాలకు బదులుగా ప్రదర్శితమవ్వాల్సిన ఖాళీల సంఖ్యను తెలియజేస్తుంది."
+msgstr "టాబ్ అక్షరాలకు బదులుగా ప్రదర్శితమవ్వాల్సిన ఖాళీల సంఖ్యను తెలియజేస్తుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
@@ -246,13 +241,12 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"HOME మరియు END కీలు వత్తినప్పుడు కర్సర్ ఎలా కదులుతుందో తెలియజేస్తుంది. "
-"ఎల్లప్పుడు లైను మొదటికి/చివరికి కదుపుటకు \"DISABLED\", మొదటిసారి కీలను "
-"వత్తినప్పుడు లైను మొదటికి/చివరికి కదుపుటకు \"AFTER\" మరియు రెండోసారి కీలను "
-"వత్తివప్పుడు టెక్స్టు మొదటికి/చివరికి ఖాళలను వదిలి కదుపుటకు, లైను "
-"మొదటికి/చివరికి కదుపుటకు ముందు టెక్స్టు మొదటికి/చివరికి కదుపుటకు "
-"\"BEFORE\"మరియు లైను మొదటికి/చివరికి కదుపుటకు బదులుగా ఎల్లప్పుడు టెక్స్టు "
-"మొదటికి/చివరికి కదుపుటకు \"ALWAYS\" ను ఉపయోగించండి."
+"HOME మరియు END కీలు వత్తినప్పుడు కర్సర్ ఎలా కదులుతుందో తెలియజేస్తుంది. ఎల్లప్పుడు లైను మొదటికి/"
+"చివరికి కదుపుటకు \"DISABLED\", మొదటిసారి కీలను వత్తినప్పుడు లైను మొదటికి/చివరికి కదుపుటకు "
+"\"AFTER\" మరియు రెండోసారి కీలను వత్తివప్పుడు టెక్స్టు మొదటికి/చివరికి ఖాళలను వదిలి కదుపుటకు, లైను "
+"మొదటికి/చివరికి కదుపుటకు ముందు టెక్స్టు మొదటికి/చివరికి కదుపుటకు \"BEFORE\"మరియు లైను మొదటికి/"
+"చివరికి కదుపుటకు బదులుగా ఎల్లప్పుడు టెక్స్టు మొదటికి/చివరికి కదుపుటకు \"ALWAYS\" ను "
+"ఉపయోగించండి."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -262,9 +256,7 @@ msgstr "ములుకు గతంలో ఉన్న స్థానాని
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
-msgstr ""
-"దస్త్రమును తెరిచినపుడు గతంలో ములుకు ఎక్కడ ఉందో అక్కడనే జీఎడిట్ "
-"ములుకునుంచాలా."
+msgstr "దస్త్రమును తెరిచినపుడు గతంలో ములుకు ఎక్కడ ఉందో అక్కడనే జీఎడిట్ ములుకునుంచాలా."
 
 #: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -300,17 +292,15 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"పనిముట్లపట్టీ బొత్తాల శైలి.సాధ్యమగు విలువలు సిస్టమ్ అప్రమేయశైలిని "
-"ఉపయోగించుటకు \" LAPIZ_TOOLBAR_SYSTEM\", ప్రతిమలను ప్రదర్శించుటకు "
-"\"LAPIZ_TOOLBAR_ICONS\", ప్రతిమలను మరియు టెక్స్టును ప్రదర్శించుటకు "
-"\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\", మరియు ప్రతిమలముందు ప్రతిపాదిత టెక్స్టు "
-"వచ్చుటకు \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\". విలువలు చిన్నపెద్ద-అక్షర "
-"తేడాలను కలిగిఉన్నాయని గమనించండి, అందుకని ఇక్కడ సూచించినవిధంగా ఉండునట్లు "
-"చూసుకొనండి."
+"పనిముట్లపట్టీ బొత్తాల శైలి.సాధ్యమగు విలువలు సిస్టమ్ అప్రమేయశైలిని ఉపయోగించుటకు \" "
+"LAPIZ_TOOLBAR_SYSTEM\", ప్రతిమలను ప్రదర్శించుటకు \"LAPIZ_TOOLBAR_ICONS\", ప్రతిమలను "
+"మరియు టెక్స్టును ప్రదర్శించుటకు \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\", మరియు ప్రతిమలముందు "
+"ప్రతిపాదిత టెక్స్టు వచ్చుటకు \"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\". విలువలు చిన్నపెద్ద-అక్షర "
+"తేడాలను కలిగిఉన్నాయని గమనించండి, అందుకని ఇక్కడ సూచించినవిధంగా ఉండునట్లు చూసుకొనండి."
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -326,8 +316,7 @@ msgid "Side Pane is Visible"
 msgstr "సుస్థితి పట్టీ ప్రత్యక్షం "
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -354,29 +343,25 @@ msgstr "గతంలో వాడిన దస్త్రాల సంఖ్య
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
-"\"ఇటీవలి దస్త్రాలు\" సబ్‌మెనూ లో ప్రదర్శితమవబోవు ఇటీవల తెరిచిన దస్త్రాల "
-"గరిష్ఠ సంఖ్యను తెలియజేస్తుంది."
+"\"ఇటీవలి దస్త్రాలు\" సబ్‌మెనూ లో ప్రదర్శితమవబోవు ఇటీవల తెరిచిన దస్త్రాల గరిష్ఠ సంఖ్యను తెలియజేస్తుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
 msgid "Print Syntax Highlighting"
 msgstr "పరిచ్ఛేద ఉద్దీపనాన్ని ప్రచురించు"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
-msgstr ""
-"పత్రములను ప్రచురించునపుడు జీఎడిట్ పరిచ్చేద ఉద్దీపనన్నికూడా ప్రచురించాలా."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
+msgstr "పత్రములను ప్రచురించునపుడు జీఎడిట్ పరిచ్చేద ఉద్దీపనన్నికూడా ప్రచురించాలా."
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
 msgid "Print Header"
 msgstr "పీఠికను ప్రచురించు"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "పత్రములను ప్రచురించునపుడు పత్రము పీఠికనుకూడా జీఎడిట్ ప్రచురించాలా."
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -387,15 +372,14 @@ msgstr "వరుసలకు తగినట్లుగా అమర్చే 
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"ముద్రణనుండి పొడవైన లైనులను ఎలా తగినట్లు అమర్చాలో తెలియజేస్తుంది. పద "
-"సరిహద్దులవద్ద తగినట్లు అమర్చుటకు \"CTK_WRAP_WORD\", అమర్చుకుండా ఉండుటకు "
-"\"CTK_WRAP_NONE\" ఉపయోగించండి, మరియు \"CTK_WRAP_CHAR\" ఒక్కొక్క అక్షరం "
-"సరిహద్దువద్ద అమర్చుటకు ఉపయోగించండి. ఆవిలువలు చిన్నపెద్ద-అక్షరం తేడాలను "
-"కలిగిఉన్నాయని గర్తుంచుకోండి, అదువలన ఇక్కడ సూచించిన విధంగా ఉండునట్లు "
+"ముద్రణనుండి పొడవైన లైనులను ఎలా తగినట్లు అమర్చాలో తెలియజేస్తుంది. పద సరిహద్దులవద్ద తగినట్లు "
+"అమర్చుటకు \"CTK_WRAP_WORD\", అమర్చుకుండా ఉండుటకు \"CTK_WRAP_NONE\" ఉపయోగించండి, "
+"మరియు \"CTK_WRAP_CHAR\" ఒక్కొక్క అక్షరం సరిహద్దువద్ద అమర్చుటకు ఉపయోగించండి. ఆవిలువలు "
+"చిన్నపెద్ద-అక్షరం తేడాలను కలిగిఉన్నాయని గర్తుంచుకోండి, అదువలన ఇక్కడ సూచించిన విధంగా ఉండునట్లు "
 "చూసుకోండి."
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
@@ -408,8 +392,8 @@ msgid ""
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
 msgstr ""
-"ఒకవేళ ఈ విలువ 0 అయితే, అప్పడు పత్రమును ముద్రిస్తుంటే ఏ లైన్ సంఖ్యలు "
-"ప్రవేశపెట్టబడవు. లేకపోతే, lapiz లైను సంఖ్యలను ప్రతి లైను కి ముద్రిస్తుంది."
+"ఒకవేళ ఈ విలువ 0 అయితే, అప్పడు పత్రమును ముద్రిస్తుంటే ఏ లైన్ సంఖ్యలు ప్రవేశపెట్టబడవు. లేకపోతే, "
+"lapiz లైను సంఖ్యలను ప్రతి లైను కి ముద్రిస్తుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -423,9 +407,7 @@ msgstr "ప్రచురించుటకు వాడే ముఖ్యభ�
 #: data/org.cafe.lapiz.gschema.xml.in:187
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
-msgstr ""
-"పత్రాలను ప్రచురించునపుడు పత్రపు ముఖ్య భాగములో వాడవలసిన అక్షరశైలిని "
-"పేర్కొంటుంది."
+msgstr "పత్రాలను ప్రచురించునపుడు పత్రపు ముఖ్య భాగములో వాడవలసిన అక్షరశైలిని పేర్కొంటుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
@@ -441,9 +423,8 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"పత్రమును ముద్రించు నప్పుడు పుట పీఠికలకు వాడవలిసిన అక్షరశైలిలను "
-"తెలియజేస్తుంది. ఇది \"పీఠికను ప్రచురించు\" ఇచ్ఛాపూర్వకం ఆన్ అయిఉంటేనే "
-"ప్రభావితంఅవుతుంది."
+"పత్రమును ముద్రించు నప్పుడు పుట పీఠికలకు వాడవలిసిన అక్షరశైలిలను తెలియజేస్తుంది. ఇది \"పీఠికను "
+"ప్రచురించు\" ఇచ్ఛాపూర్వకం ఆన్ అయిఉంటేనే ప్రభావితంఅవుతుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -459,13 +440,12 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"ముద్రించునప్పడు వరుస సంఖ్యలకు ఉపయోగించు అక్షరశైలిలను తెలియజేస్తుంది. ఇది "
-"\"వరుస సంఖ్యలను ప్రచురించు\" ఇచ్ఛాపూర్వకం జీరో-కాదు అయితేనే ప్రభావితం "
-"అవుతుంది."
+"ముద్రించునప్పడు వరుస సంఖ్యలకు ఉపయోగించు అక్షరశైలిలను తెలియజేస్తుంది. ఇది \"వరుస సంఖ్యలను "
+"ప్రచురించు\" ఇచ్ఛాపూర్వకం జీరో-కాదు అయితేనే ప్రభావితం అవుతుంది."
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
@@ -475,8 +455,8 @@ msgstr ""
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:205
@@ -519,9 +499,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"చేతనంగా ఉన్న ప్లగ్ఇన్‌ల జాబితా.ఇది చేతనంగా ఉన్న ప్లగ్ఇన్‌ల \"స్థానము\" ను "
-"కలిగిఉంటుంది. ఇవ్వబడినటువంటి ప్లగ్ఇన్ \"స్థానము\" ను పొందుటకు .lapiz-plugin "
-"దస్త్రంను చూడుము."
+"చేతనంగా ఉన్న ప్లగ్ఇన్‌ల జాబితా.ఇది చేతనంగా ఉన్న ప్లగ్ఇన్‌ల \"స్థానము\" ను కలిగిఉంటుంది. ఇవ్వబడినటువంటి "
+"ప్లగ్ఇన్ \"స్థానము\" ను పొందుటకు .lapiz-plugin దస్త్రంను చూడుము."
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -548,9 +527,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -576,8 +554,8 @@ msgstr ""
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -596,14 +574,7 @@ msgstr "పాఠ్యము సరికూర్పరి"
 msgid "Edit text files"
 msgstr "పాఠ్య దస్త్రములను సరిచేయి"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -623,9 +594,8 @@ msgstr "దాచకుండా మూయుము(_w)"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -661,8 +631,7 @@ msgstr "ప్రశ్న"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -688,8 +657,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -697,8 +665,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "మీరు దాచకపోతే, గత ఒక్క గంట నుండి చేసిన మార్పులు పూర్తిగా పోతా"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -745,8 +712,7 @@ msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1112,8 +1078,7 @@ msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
-"ఆదేశపు వరుసలో జాబితాచేసిన దస్త్రాలను తెరుచుటకు అక్షర సంకేతరచనను "
-"ఉపయోగించునట్లు అమర్చుము."
+"ఆదేశపు వరుసలో జాబితాచేసిన దస్త్రాలను తెరుచుటకు అక్షర సంకేతరచనను ఉపయోగించునట్లు అమర్చుము."
 
 #: lapiz/lapiz.c:111
 msgid "ENCODING"
@@ -1201,8 +1166,7 @@ msgstr "'%s' పత్రానికి చేసిన మార్పుల�
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1228,8 +1192,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1237,8 +1200,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "చివరి గంటలో పత్రానికి చేసిన మార్పులు పుర్తిగా పోతాయి."
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1299,8 +1261,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1316,10 +1278,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr "Praveen Illa <mail2ipn@gmail.com>, 2014"
 
@@ -1533,8 +1496,7 @@ msgstr "%s దస్త్రము దొరకలేదు."
 #: lapiz/lapiz-io-error-message-area.c:245
 #: lapiz/lapiz-io-error-message-area.c:252
 msgid "Please check that you typed the location correctly and try again."
-msgstr ""
-"మీరు ప్రవేశపెట్టిన స్థానము సరైనదో కాదో సరిచూసుకొని మళ్ళీ ప్రయత్నించండి."
+msgstr "మీరు ప్రవేశపెట్టిన స్థానము సరైనదో కాదో సరిచూసుకొని మళ్ళీ ప్రయత్నించండి."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:221
@@ -1569,14 +1531,12 @@ msgstr "%s వర్తించే స్థానము కాదు."
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
-msgstr ""
-"అతిధేయ %s కనుగొనబడలేదు.దయచేసి మీ ప్రోక్సీ అమరికలు సరిచూసుకొను మరలా "
-"తిరిగిప్రయత్నించండి."
+msgstr "అతిధేయ %s కనుగొనబడలేదు.దయచేసి మీ ప్రోక్సీ అమరికలు సరిచూసుకొను మరలా తిరిగిప్రయత్నించండి."
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:301
@@ -1599,8 +1559,7 @@ msgstr "ఊహించని దోషము: %s"
 
 #: lapiz/lapiz-io-error-message-area.c:406
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
-msgstr ""
-"lapiz దస్త్రమును కనుగొనలేక పోయింది. బహుశా దానిని ఈ మధ్యనే తొలగించి ఉంటారు."
+msgstr "lapiz దస్త్రమును కనుగొనలేక పోయింది. బహుశా దానిని ఈ మధ్యనే తొలగించి ఉంటారు."
 
 #: lapiz/lapiz-io-error-message-area.c:416
 #, c-format
@@ -1629,8 +1588,7 @@ msgstr "సరికూర్చవద్దు (_o)"
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
-msgstr ""
-"క్రిందని లింకులు పరిమితమైనవి మరియు ఈ పరిమితిలోపల వాస్తవ దస్త్రము కనబడలేదు."
+msgstr "క్రిందని లింకులు పరిమితమైనవి మరియు ఈ పరిమితిలోపల వాస్తవ దస్త్రము కనబడలేదు."
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1643,8 +1601,7 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:609
 #: lapiz/lapiz-io-error-message-area.c:631
 msgid "Please check that you are not trying to open a binary file."
-msgstr ""
-"మీరు బైనరీ దస్త్రమును తెరిచే ప్రయత్నం చేస్తున్నట్లున్నారు పరిశీలించండి."
+msgstr "మీరు బైనరీ దస్త్రమును తెరిచే ప్రయత్నం చేస్తున్నట్లున్నారు పరిశీలించండి."
 
 #: lapiz/lapiz-io-error-message-area.c:610
 msgid "Select a character encoding from the menu and try again."
@@ -1698,11 +1655,11 @@ msgstr "(%s) దస్త్రము ఇప్పటికే మరొక జ�
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
-"lapiz ఈ దస్త్రం యొక్క సదృశ్యాన్ని సరికూర్చ-లేని మార్గంలో తెరిచినది.మీరు "
-"దీనిని ఏమైనా సరికూర్చుదామునుకుంటున్నారా?"
+"lapiz ఈ దస్త్రం యొక్క సదృశ్యాన్ని సరికూర్చ-లేని మార్గంలో తెరిచినది.మీరు దీనిని ఏమైనా "
+"సరికూర్చుదామునుకుంటున్నారా?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
 #: lapiz/lapiz-io-error-message-area.c:960
@@ -1720,11 +1677,8 @@ msgid "The file %s has been modified since reading it."
 msgstr "దస్త్రం %s దాన్ని చదువుచున్నప్పటి నుంచి సరికూర్చబడింది."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
-msgstr ""
-"మీరు దీన్ని దాచినట్లైతే, అన్ని బహిర్గత మార్పులు నష్టపోతారు.ఏమైనాసరే దాచ "
-"మంటారా?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr "మీరు దీన్ని దాచినట్లైతే, అన్ని బహిర్గత మార్పులు నష్టపోతారు.ఏమైనాసరే దాచ మంటారా?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
 #, c-format
@@ -1739,8 +1693,8 @@ msgstr "%s ను దాచుచున్నప్పుడు తాత్క�
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
@@ -1750,16 +1704,16 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"lapiz %s స్థానాలను వ్రాయు రీతిలో సంభాలించలేదు.దయచేసి మీరు స్థానాన్ని సరిగా "
-"టైపుచేసారోలేదో సరిచూసుకొని మరియు తిరిగిప్రయత్నించండి."
+"lapiz %s స్థానాలను వ్రాయు రీతిలో సంభాలించలేదు.దయచేసి మీరు స్థానాన్ని సరిగా టైపుచేసారోలేదో సరిచూసుకొని మరియు "
+"తిరిగిప్రయత్నించండి."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
-"lapiz ఈ స్థానాన్ని వ్రాయు రీతిలో సంభాలించలేదు.దయచేసి మీరు స్థానాన్ని సరిగా "
-"టైపుచేసారోలేదో సరిచూసుకొని మరియు తిరిగిప్రయత్నించండి."
+"lapiz ఈ స్థానాన్ని వ్రాయు రీతిలో సంభాలించలేదు.దయచేసి మీరు స్థానాన్ని సరిగా టైపుచేసారోలేదో సరిచూసుకొని మరియు "
+"తిరిగిప్రయత్నించండి."
 
 #: lapiz/lapiz-io-error-message-area.c:1078
 #, c-format
@@ -1767,33 +1721,29 @@ msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"%s విలువైన స్థానము కాదు. దయచేసి మీరు స్థానాన్ని సరిగా టైపు చేసారోలేదో "
-"సరిచూసుకొని మరలా తిరిగిప్రయత్నించండి."
+"%s విలువైన స్థానము కాదు. దయచేసి మీరు స్థానాన్ని సరిగా టైపు చేసారోలేదో సరిచూసుకొని మరలా తిరిగిప్రయత్నించండి."
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"ఈ దస్త్రంను దాచటానికి కావలిసిన అనుమతులను మీరు కలిగిలేరు.మీరు సరియైన "
-"స్థానాన్ని టైపుచేసారోలేదో సరిచూసుకొని మరియు తిరిగిప్రయత్నించండి."
+"ఈ దస్త్రంను దాచటానికి కావలిసిన అనుమతులను మీరు కలిగిలేరు.మీరు సరియైన స్థానాన్ని టైపుచేసారోలేదో సరిచూసుకొని "
+"మరియు తిరిగిప్రయత్నించండి."
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
-msgstr ""
-"దస్త్రమును దాచుటకు సరిపడ ఖాళీ లేదు. దయచేసి కొంత ప్రాంతాన్ని ఖాళీచేసి మరళ "
-"ప్రయత్నించండి "
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr "దస్త్రమును దాచుటకు సరిపడ ఖాళీ లేదు. దయచేసి కొంత ప్రాంతాన్ని ఖాళీచేసి మరళ ప్రయత్నించండి "
 
 #: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"చదువుటకు మాత్రమే అనుమతి ఉన్న ఖనిలో మీరు దస్త్రమును దాచే ప్రయత్నం "
-"చేస్తున్నారు. దయచేసి మీరుసరి అయిన ప్రదేశాన్నే టైపు చేశారో లేదో చూసి మళ్ళీ "
-"ప్ర్యత్నించండి."
+"చదువుటకు మాత్రమే అనుమతి ఉన్న ఖనిలో మీరు దస్త్రమును దాచే ప్రయత్నం చేస్తున్నారు. దయచేసి మీరుసరి అయిన "
+"ప్రదేశాన్నే టైపు చేశారో లేదో చూసి మళ్ళీ ప్ర్యత్నించండి."
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
@@ -1801,17 +1751,16 @@ msgstr "ఈ నామముతో ఇప్పటికే మరొక దస�
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
-"మీరు దాచదలుచుకున్న ఖనిలో నామముయొక్క పొడవుపై నియంత్రణ ఉన్నది. మీరు మరొక చిన్న"
-" నామమును వాడండి."
+"మీరు దాచదలుచుకున్న ఖనిలో నామముయొక్క పొడవుపై నియంత్రణ ఉన్నది. మీరు మరొక చిన్న నామమును వాడండి."
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1129
@@ -1873,14 +1822,12 @@ msgstr "సిన్‌టాక్స్  ఉద్దీపనాన్ని 
 msgid "Print line nu_mbers"
 msgstr "వరుస సంఖ్యలను ముద్రించు"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "సంఖ్యనిర్దేశించు ప్రతీ(_N)"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "వరుసలు"
@@ -1991,8 +1938,7 @@ msgstr "OVR"
 msgid "INS"
 msgstr "INS"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2047,38 +1993,38 @@ msgstr "దాచుట %s నుండి %s"
 msgid "Saving %s"
 msgstr "%sలా దాచు"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "%s దస్త్రము తెరుచటలో దోషము"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s దస్త్రమును పున:స్థాపించుటలో దోషము"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "%s దస్త్రము దాచుటలో లోపము"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "యూనీకోడ్ (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "నామము:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME రకము:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "సంకేతరచన్: "
 
@@ -2553,8 +2499,8 @@ msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
 msgstr ""
-"ప్రస్తుత ప్రత్రమును విశ్లేషించి దానిలోని పదముల, వరుసల,అక్షరముల మరియు "
-"ఖాళీ-కాని అక్షరముల సంఖ్యను నివేదించండి."
+"ప్రస్తుత ప్రత్రమును విశ్లేషించి దానిలోని పదముల, వరుసల,అక్షరముల మరియు ఖాళీ-కాని అక్షరముల సంఖ్యను "
+"నివేదించండి."
 
 #: plugins/docinfo/docinfo.ui:51
 msgid "_Update"
@@ -2671,8 +2617,7 @@ msgstr "త్వరుణి అనునది ఇప్పటికే %s క
 
 #: plugins/externaltools/tools/manager.py:710
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr ""
-"కొత్త త్వరుణి ని టైపుచేయండి, లేదా చెరిపివేయుటకు బ్యాక్‌స్పేస్ ను వత్తండి"
+msgstr "కొత్త త్వరుణి ని టైపుచేయండి, లేదా చెరిపివేయుటకు బ్యాక్‌స్పేస్ ను వత్తండి"
 
 #: plugins/externaltools/tools/manager.py:712
 msgid "Type a new accelerator"
@@ -2817,9 +2762,7 @@ msgstr "ఆదేశాన్ని నడుపుము"
 
 #: plugins/externaltools/data/run-command.desktop.in:4
 msgid "Execute a custom command and put its output in a new document"
-msgstr ""
-"వినియోగదారుని ఆదేశాన్ని ఎగ్జిక్యూట్ చేసి దాని అవుట్‌పుట్ ను కొత్త పత్రమునందు"
-" ఉంచుము"
+msgstr "వినియోగదారుని ఆదేశాన్ని ఎగ్జిక్యూట్ చేసి దాని అవుట్‌పుట్ ను కొత్త పత్రమునందు ఉంచుము"
 
 #: plugins/externaltools/data/search-recursive.desktop.in:3
 msgid "Search"
@@ -2836,12 +2779,6 @@ msgstr "దస్త్ర అన్వేషణ ఫలకం"
 #: plugins/filebrowser/filebrowser.plugin.desktop.in:7
 msgid "Easy file access from the side pane"
 msgstr "ప్రక్కఫలకం నుండి సులభమైన దస్త్ర వాడకం"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
@@ -2866,10 +2803,9 @@ msgid ""
 "(filter binary files) and hidden_and_binary (filter both hidden and binary "
 "files)."
 msgstr ""
-"ఈ విలువ దస్త్ర అన్వేషకి నుండి ఏ దస్త్రాలు వడపోయబడాలో నిర్ణయిస్తుంది.విలువైన "
-"విలువలు: none(వడపోత ఏమీలేదు), hidden(దాగిఉన్న వడపోత దస్త్రాలు), binary(బైనరీ"
-" వడపోత దస్త్రాలు) మరియు hidden_and_binary (దాగిఉన్న మరియు బైనరీ దస్త్రాలు "
-"రెంటినీ వడపోస్తుంది)."
+"ఈ విలువ దస్త్ర అన్వేషకి నుండి ఏ దస్త్రాలు వడపోయబడాలో నిర్ణయిస్తుంది.విలువైన విలువలు: none(వడపోత "
+"ఏమీలేదు), hidden(దాగిఉన్న వడపోత దస్త్రాలు), binary(బైనరీ వడపోత దస్త్రాలు) మరియు "
+"hidden_and_binary (దాగిఉన్న మరియు బైనరీ దస్త్రాలు రెంటినీ వడపోస్తుంది)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2877,11 +2813,10 @@ msgstr "దస్త్ర అన్వేషకి వడపోత వరుస
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
-"దస్త్ర అన్వేషకి తో ఉన్న వడపోత కు వడపోత వరుసక్రమం.ఈ వడపోత వడపోత రీతి పైన పని "
-"చేస్తుంది(_m)."
+"దస్త్ర అన్వేషకి తో ఉన్న వడపోత కు వడపోత వరుసక్రమం.ఈ వడపోత వడపోత రీతి పైన పని చేస్తుంది(_m)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
@@ -2892,8 +2827,7 @@ msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
-"దస్త్ర అన్వేషకి ప్లగ్ఇన్ లు లోడయ్యినప్పుడు బుక్‌మార్క్ దర్శనం ద్వారా కాకుండా"
-" ట్రీ దర్శనం తో తెరువుము"
+"దస్త్ర అన్వేషకి ప్లగ్ఇన్ లు లోడయ్యినప్పుడు బుక్‌మార్క్ దర్శనం ద్వారా కాకుండా ట్రీ దర్శనం తో తెరువుము"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
@@ -2904,8 +2838,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
-"దస్త్ర అన్వేషకి ప్లగ్ఇన్ మరియు ఆన్‌లోడ్/ట్రీ దర్శనం నిజమైనప్పుడు "
-"ఉపయోగించుకొను దస్త్ర అన్వేషకి రూట్ సంచయం."
+"దస్త్ర అన్వేషకి ప్లగ్ఇన్ మరియు ఆన్‌లోడ్/ట్రీ దర్శనం నిజమైనప్పుడు ఉపయోగించుకొను దస్త్ర అన్వేషకి రూట్ "
+"సంచయం."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2913,13 +2847,12 @@ msgstr "దస్త్ర అన్వేషకి వర్చ్యువల�
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"onload/tree_view నిజమై దస్త్ర అన్వేషకి ప్లగ్ఇన్ లోడుఅవుతున్నప్పుడు "
-"ఉపయోగించుకొనే దస్త్ర అన్వేషకి రూట్ సంచయం.వర్చ్యువల్ రూట్ ఎప్పుడూ వాస్తవ రూట్"
-" కి క్రింద ఉండాలి."
+"onload/tree_view నిజమై దస్త్ర అన్వేషకి ప్లగ్ఇన్ లోడుఅవుతున్నప్పుడు ఉపయోగించుకొనే దస్త్ర అన్వేషకి "
+"రూట్ సంచయం.వర్చ్యువల్ రూట్ ఎప్పుడూ వాస్తవ రూట్ కి క్రింద ఉండాలి."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
@@ -2963,8 +2896,7 @@ msgstr "కొత్త దస్త్రం సృష్టిస్తున�
 
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:878
 msgid "An error occurred while renaming a file or directory"
-msgstr ""
-"ఒక దస్త్రాన్ని లేదా సంచయాన్ని పునఃనామకరణ చేస్తున్నప్పుడు దోషం ఎదురైంది"
+msgstr "ఒక దస్త్రాన్ని లేదా సంచయాన్ని పునఃనామకరణ చేస్తున్నప్పుడు దోషం ఎదురైంది"
 
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:883
 msgid "An error occurred while deleting a file or directory"
@@ -3025,11 +2957,10 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"పునఃనామకరణ దస్త్రం ప్రస్తుతం వడపోయ బడింది.ఆ దస్త్రం కనబడునట్లు చేయుటకు మీరు "
-"మీ వడపోత అమరికలను సర్దుబాటు చేయవలసిఉంది."
+"పునఃనామకరణ దస్త్రం ప్రస్తుతం వడపోయ బడింది.ఆ దస్త్రం కనబడునట్లు చేయుటకు మీరు మీ వడపోత "
+"అమరికలను సర్దుబాటు చేయవలసిఉంది."
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "దస్త్రం"
@@ -3039,11 +2970,10 @@ msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"క్రొత్త దస్త్రం ప్రస్తుతం వడపోయ బడింది.ఆ దస్త్రం కనబడునట్లు చేయుటకు మీరు మీ "
-"వడపోత అమరికలను సర్దుబాటు చేయవలసిఉంది."
+"క్రొత్త దస్త్రం ప్రస్తుతం వడపోయ బడింది.ఆ దస్త్రం కనబడునట్లు చేయుటకు మీరు మీ వడపోత అమరికలను "
+"సర్దుబాటు చేయవలసిఉంది."
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "సంచయం"
@@ -3053,8 +2983,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"కొత్త డైరెక్టరి ప్రస్తుతం వడపోయ బడింది.ఆ డైరెక్టరీ కనబడునట్లు చేయుటకు మీరు "
-"మీ వడపోత అమరికలను సర్దుబాటు చేయవలసిఉంది."
+"కొత్త డైరెక్టరి ప్రస్తుతం వడపోయ బడింది.ఆ డైరెక్టరీ కనబడునట్లు చేయుటకు మీరు మీ వడపోత అమరికలను "
+"సర్దుబాటు చేయవలసిఉంది."
 
 #: plugins/filebrowser/lapiz-file-browser-widget.c:712
 msgid "Bookmarks"
@@ -3221,12 +3151,6 @@ msgstr "పైథాన్ కన్సోల్"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "దోషము వర్ణము (_E):"
@@ -3259,12 +3183,6 @@ msgstr "త్వరితంగా పత్రములు తెరుచు�
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "త్వరితంగా దస్త్రములు తెరుచుము"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3408,9 +3326,7 @@ msgstr "ఎగుమతి సమర్ధవంతంగా పూర్తై�
 #: plugins/snippets/snippets/Manager.py:858
 #: plugins/snippets/snippets/Manager.py:927
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
-msgstr ""
-"మీ ఎగుమతి లో మీరు ఎంపికచేసిన<b>సిస్టమ్</b> స్నిప్పెట్లను కలుపుదామని "
-"అనుకుంటున్నారా?"
+msgstr "మీ ఎగుమతి లో మీరు ఎంపికచేసిన<b>సిస్టమ్</b> స్నిప్పెట్లను కలుపుదామని అనుకుంటున్నారా?"
 
 #: plugins/snippets/snippets/Manager.py:873
 #: plugins/snippets/snippets/Manager.py:945
@@ -3424,8 +3340,7 @@ msgstr "స్నిప్పెట్లను ఎగుమతిచేయి"
 
 #: plugins/snippets/snippets/Manager.py:1058
 msgid "Type a new shortcut, or press Backspace to clear"
-msgstr ""
-"కొత్త లఘువును టైపు చేయండి, లేదా చెరిపివేయుటకు బ్యాక్‌స్పేస్ ను వత్తండి"
+msgstr "కొత్త లఘువును టైపు చేయండి, లేదా చెరిపివేయుటకు బ్యాక్‌స్పేస్ ను వత్తండి"
 
 #: plugins/snippets/snippets/Manager.py:1060
 msgid "Type a new shortcut"
@@ -3506,12 +3421,6 @@ msgstr "క్రమము"
 msgid "Sorts a document or selected text."
 msgstr "పత్రమును లేదా ఎంపికచేయబడిన పాఠ్యమును క్రమపరుస్తుంది."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "క్రమము(_S)"
@@ -3540,10 +3449,8 @@ msgstr "క్రమీకరించిన ఆపరేషన్ మీరు 
 msgid "Autocheck Type"
 msgstr ""
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3570,8 +3477,7 @@ msgstr "స్పెల్లింగ్ ను పరిశీలించు�
 msgid "Suggestions"
 msgstr "సలహాలు"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(స్పెల్లింగ్ సరిచేయుము)"
@@ -3583,6 +3489,7 @@ msgstr "స్పెల్ పరిశీలన పూర్తైనది"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3592,6 +3499,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3600,6 +3508,7 @@ msgstr "తెలియని (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3733,12 +3642,6 @@ msgstr "స్పెల్ పరిశీలని"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "ప్రస్తుత పత్రము యొక్క స్పెల్లింగ్ ను పరిశీలించుము."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6418,12 +6321,6 @@ msgstr ""
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "తేదీ మరియు సమయమును ప్రవేశపెట్టు"
@@ -6448,8 +6345,7 @@ msgstr "మలచిన రూపలావణ్యాన్ని వాడు(
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr ""
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"

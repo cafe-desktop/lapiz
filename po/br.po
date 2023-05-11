@@ -2,25 +2,29 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Denis ARNAUD <denisarnuad@hotmail.com>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # Alan Monfort <alan.monfort@free.fr>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Alan Monfort <alan.monfort@free.fr>, 2020\n"
 "Language-Team: Breton (https://www.transifex.com/cafe/teams/13566/br/)\n"
+"Language: br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: br\n"
-"Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"
+"Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !"
+"=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && "
+"(n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 "
+"> 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != "
+"0 && n % 1000000 == 0) ? 3 : 4);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
 msgid "Use Default Font"
@@ -92,8 +96,8 @@ msgid ""
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
 "Hag-eñ e renko Lapiz krouiñ eiladoù gwarediñ evit ar restroù enrollet "
-"gantañ. Arventennet e vez an askouezh evit ar restr gwarediñ gant an dibarzh"
-" \"Askouezh evit an eilad gwarediñ\"."
+"gantañ. Arventennet e vez an askouezh evit ar restr gwarediñ gant an dibarzh "
+"\"Askouezh evit an eilad gwarediñ\"."
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -158,9 +162,9 @@ msgstr "Mod Azasaat al linennoù"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Erspizañ a ra penaos azasaat linennoù hir war maez an embann. Git gant "
 "\"CTK_WRAP_NONE\" evit chom hep azasaat. \"CTK_WRAP_WORD\" evit an azasaat "
@@ -220,8 +224,7 @@ msgstr "Usskediñ ar c'hrommelloù a glot ganti"
 #: data/org.cafe.lapiz.gschema.xml.in:97
 msgid "Whether lapiz should highlight the bracket matching the selected one."
 msgstr ""
-"Hag-eñ e ranko Lapiz usskediñ ar c'hrommelloù a glot gant an hini bet "
-"diuzet."
+"Hag-eñ e ranko Lapiz usskediñ ar c'hrommelloù a glot gant an hini bet diuzet."
 
 #: data/org.cafe.lapiz.gschema.xml.in:101
 msgid "Display Right Margin"
@@ -302,9 +305,9 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
@@ -321,8 +324,7 @@ msgid "Side Pane is Visible"
 msgstr "Hewel eo ar banell gostez"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "Hag-eñ e vo hewel ar banel gostez e traoñ ar prenestr embann."
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -349,8 +351,8 @@ msgstr "Niver brasañ a restroù nevez-implijet"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
 "Erspizañ a ra an niver uc'hek a restroù digoret nevez zo a vo skrammet war "
 "an islañser \"Restroù a-nevez\"."
@@ -360,8 +362,7 @@ msgid "Print Syntax Highlighting"
 msgstr "Moullañ usskediñ ar c'hevreadur"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "Hag-eñ e vo moullet usskedadur ar c'hevreadur pa vo moullet an teulioù."
 
@@ -370,8 +371,7 @@ msgid "Print Header"
 msgstr "Moullañ an talbenn"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Hag-eñ e vo enlakaet talbenn an teul gant Lapiz pa vo moullet an teulioù."
 
@@ -383,9 +383,9 @@ msgstr ""
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
@@ -448,13 +448,13 @@ msgid ""
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
 "Erspizañ a ra an nodrezh da arverañ evit an niveroù linennoù pa vo moullet. "
-"Efedus e vo goude ma vo lakaet an dibarzh \"Moullañ niveroù al linennoù\" da"
-" zisheñvel diouzh mann."
+"Efedus e vo goude ma vo lakaet an dibarzh \"Moullañ niveroù al linennoù\" da "
+"zisheñvel diouzh mann."
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -463,8 +463,8 @@ msgstr "Enbonegadurioù dinoet ent emgefreek"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Roll rummet eus an enbonegadurioù arveret gant Lapiz evit dinoiñ ent "
 "emgefreek enbonegadur ur restr. \"CURRENT/BREMANEL\" a dalv da enbonegadur "
@@ -539,9 +539,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -567,8 +566,8 @@ msgstr "Un embanner testennoù evit endro burev CAFE"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -587,14 +586,7 @@ msgstr "Embanner testennioù"
 msgid "Edit text files"
 msgstr "Embann restroù testenn"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -614,9 +606,8 @@ msgstr "Serriñ _hep enrollañ"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -652,8 +643,7 @@ msgstr "Goulenn"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -687,8 +677,7 @@ msgstr[4] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -699,8 +688,7 @@ msgstr[3] ""
 msgstr[4] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Ma n'enrollot ket e vo kollet da vat ar c'hemmoù graet e korf ar vunutenn "
 "diwezhañ"
@@ -758,8 +746,7 @@ msgstr[4] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1173,7 +1160,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Erounit '%s --help' da welout ur roll klok eus dibarzhioù an arc'hadoù hegerz.\n"
+"Erounit '%s --help' da welout ur roll klok eus dibarzhioù an arc'hadoù "
+"hegerz.\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1227,8 +1215,7 @@ msgstr "Nullañ ar c'hemmoù dienroll en teul '%s' ?"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1262,8 +1249,7 @@ msgstr[4] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1274,8 +1260,7 @@ msgstr[3] ""
 msgstr[4] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Ar c'hemmoù bet graet en teul e-pad an eurvezh diwezhañ a vo kollet da vat."
 
@@ -1343,8 +1328,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1360,10 +1345,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr "Troet eo bet gant"
 
@@ -1622,11 +1608,11 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
-"Didalvoudek e oa anv an ostiz. Mar plij, beziñ divar hoc'h eus biziataet mat"
-" al lec'hiadur ha klaskit en-dro."
+"Didalvoudek e oa anv an ostiz. Mar plij, beziñ divar hoc'h eus biziataet mat "
+"al lec'hiadur ha klaskit en-dro."
 
 #: lapiz/lapiz-io-error-message-area.c:301
 #, c-format
@@ -1760,8 +1746,8 @@ msgstr "Ar restr (%s) a zo digor endeo en ur prenestr Lapiz all."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "digoret eo bet eriol ar restr-mañ gant un doare n'hall ket bezañ embannet. "
 "Fellout  ra deoc'h embann evelkent ?"
@@ -1782,11 +1768,10 @@ msgid "The file %s has been modified since reading it."
 msgstr "Kemmoù a zo bet er restr %s abaoe ho peus he lennet."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
-"Mar enrollot anezhi e c'hellfe bezañ kollet an holl gemmoù diavaez. Enrollañ"
-" anezhi evelkent?"
+"Mar enrollot anezhi e c'hellfe bezañ kollet an holl gemmoù diavaez. Enrollañ "
+"anezhi evelkent?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
 #, c-format
@@ -1801,8 +1786,8 @@ msgstr "Ne oa ket tu da grouiñ ur restr-wareziñ padennek e-pad enrolladur %s"
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "Lapiz ne oa ket gouest da warediñ an eilad kozh eus ar restr kent enrollañ "
 "an hini nevez. An evezh-mañ a c'hallit leuskel a-gostez hag enrollañ ar "
@@ -1821,8 +1806,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "Lapiz n'hall ket dornata al lec'hiadur-mañ gant ar mod skrivañ. Bezit divar "
 "hoc'h eus biziataet al lec'hiadur gant un doare dereat ha klaskit en-dro."
@@ -1841,13 +1826,13 @@ msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"N'ho peus ket an aotreoù a-zere evit enrollañ ar restr. Ma rplij, gwiriekait"
-" ar chomlec'h ho peus roet ha klaskit en-dro."
+"N'ho peus ket an aotreoù a-zere evit enrollañ ar restr. Ma rplij, gwiriekait "
+"ar chomlec'h ho peus roet ha klaskit en-dro."
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "N'eus ket plas a-walc'h war ar gantenn evit enrollañ ar restr. Mar plij, "
 "grit plas war ar gantenn ha klaskit en-dro."
@@ -1868,8 +1853,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Bevennet eo hirder an anvioù-restr war ar gantenn emaoc'h o klask enrollañ "
 "ar restr warni. Mar plij, implijit un anv berroc'h."
@@ -1877,11 +1862,11 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
-"Bevennet eo ment ar restroù war ar gantenn emaoc'h o klask enrollañ ar restr"
-" warni. Mar plij, klaskit enrollañ ur restr vihanoc'h pe enrollit ar restr "
+"Bevennet eo ment ar restroù war ar gantenn emaoc'h o klask enrollañ ar restr "
+"warni. Mar plij, klaskit enrollañ ur restr vihanoc'h pe enrollit ar restr "
 "war ur gantenn hep ar vevenn-mañ."
 
 #: lapiz/lapiz-io-error-message-area.c:1129
@@ -1943,14 +1928,12 @@ msgstr "Moullañ usskediñ ar c'hev_readur"
 msgid "Print line nu_mbers"
 msgstr "Moullañ _niverennoù al linennoù"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Niverenn bep"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "linenn"
@@ -2061,8 +2044,7 @@ msgstr "OVR"
 msgid "INS"
 msgstr "INS"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2122,38 +2104,38 @@ msgstr "Oc'h enrollañ %s e-barzh %s"
 msgid "Saving %s"
 msgstr "Oc'h enrollañ %s"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "LH"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "Fazi e-pad  ma oa o tigeriñ ar restr %s"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Fazi e-pad ma oa o tuginañ ar restr %s"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "Fazi e-pad ma oa oc'h enrollañ ar restr %s"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Anv :"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "Rizh-MIME :"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Enbonegañ :"
 
@@ -2910,12 +2892,6 @@ msgstr "Panell da verdeiñ e-touez ar restroù"
 msgid "Easy file access from the side pane"
 msgstr "Tizhout aes ar restroù diouzh ar banell gostez"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Despizañ al lec'hiadur en teul kentañ"
@@ -2929,8 +2905,8 @@ msgid ""
 msgstr ""
 "Mar GWIR e vo gwelet kavlec'hiad an teul digoret da gentañ nad eo ket bet "
 "arveret c'hoazh gant enlugellad merdeer ar restroù. (Peurliesañ ez arlo an "
-"dra-se gant digoradur un teul dre un arc'had pe gant digoradur dre Baul, "
-"h.a.)"
+"dra-se gant digoradur un teul dre un arc'had pe gant digoradur dre Baul, h."
+"a.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -2954,8 +2930,8 @@ msgstr "Goustur silañ merdeer e-touez ar restroù"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "Ar goustur silañ ma vo silet ar merdeer restroù gantañ. Ar sil a ya en-dro "
 "war live uhelañ filter_mode."
@@ -2969,8 +2945,8 @@ msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
-"Digeriñ gwel ar gwezennad pa vo bet karget enlugellad merdeer ar restroù "
-"e-lec'h gwel ar sinedoù"
+"Digeriñ gwel ar gwezennad pa vo bet karget enlugellad merdeer ar restroù e-"
+"lec'h gwel ar sinedoù"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
@@ -2981,8 +2957,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
-"Kavlec'hiad gwrizienn merdeer ar restroù da arverañ pa vez karget enlugellad"
-" merdeer ar restroù ha pa vez lakaet da GWIR onload/tree_view."
+"Kavlec'hiad gwrizienn merdeer ar restroù da arverañ pa vez karget enlugellad "
+"merdeer ar restroù ha pa vez lakaet da GWIR onload/tree_view."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2990,9 +2966,9 @@ msgstr "Kavlec'hiad gwrizienn merdeer ar restroù darvanel"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Kavlec'hiad gwrizienn darvanel merdeer ar restroù da arverañ pa vez karget "
 "enlugellad merdeer ar restroù ha pa vez lakaet da GWIR onload/tree_view. Ar "
@@ -3041,8 +3017,7 @@ msgstr "Degouezhet ez eus bet ur fazi pa oa o krouiñ ur restr nevez"
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:878
 msgid "An error occurred while renaming a file or directory"
 msgstr ""
-"Degouezhet ez eus bet ur fazi pa oa oc'h adenvel ur c'havlec'hiad pe ur "
-"restr"
+"Degouezhet ez eus bet ur fazi pa oa oc'h adenvel ur c'havlec'hiad pe ur restr"
 
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:883
 msgid "An error occurred while deleting a file or directory"
@@ -3111,8 +3086,7 @@ msgstr ""
 "Ar restr bet adanvet a zo kuzhet gant ar silañ bremañ. Ret eo deoc'h "
 "kengeidañ arventennoù ar silañ d'he lakaat da vezañ hewel"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "restr"
@@ -3125,8 +3099,7 @@ msgstr ""
 "Ar restr nevez a zo kuzhet gant ar silañ bremañ. Ret eo deoc'h kengeidañ "
 "arventennoù ar silañ d'he lakaat da vezañ hewel"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "kavlec'hiad"
@@ -3304,12 +3277,6 @@ msgstr "Penel Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "Faz_i liv :"
@@ -3342,12 +3309,6 @@ msgstr "Digeriñ herrek an teulioù"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Digeriñ herrek ar restroù"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3443,8 +3404,8 @@ msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
 msgstr ""
-"N'eo ket un draen talvoudek evit an taolennata. An drein a c'hall bezañ gant"
-" lizherennoù pe un arouezenn (nad eo ket ul lizherenn pe ur sifr) evel : {, "
+"N'eo ket un draen talvoudek evit an taolennata. An drein a c'hall bezañ gant "
+"lizherennoù pe un arouezenn (nad eo ket ul lizherenn pe ur sifr) evel : {, "
 "[, h.a."
 
 #: plugins/snippets/snippets/Manager.py:771
@@ -3595,12 +3556,6 @@ msgstr "Rummañ"
 msgid "Sorts a document or selected text."
 msgstr "Rummañ a ra un teul pe un destenn diuzet."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "_Rummañ"
@@ -3629,10 +3584,8 @@ msgstr "N'hallit ket dizober un ober a seurt-se"
 msgid "Autocheck Type"
 msgstr "Rizh ar gwiriañ emgefreek"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3659,8 +3612,7 @@ msgstr "Gwiriañ Reizhskrivañ"
 msgid "Suggestions"
 msgstr "Kinnigoù"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(reizhskrivadur a-feson)"
@@ -3672,6 +3624,7 @@ msgstr "Echu eo gwiriañ ar reizhskrivadur"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3681,6 +3634,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3689,6 +3643,7 @@ msgstr "Dianav (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3822,12 +3777,6 @@ msgstr "Meziant da reizhskrivañ"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Gwiriañ a ra reizhskrivañ an teul bremanel."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6507,12 +6456,6 @@ msgstr ""
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Enlakaat Deiziad hag Eur"
@@ -6537,8 +6480,7 @@ msgstr "_Arverañ ur mentrezh personelaet"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr ""
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6555,3 +6497,7 @@ msgstr ""
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr ""
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"

@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # zk, 2020
 # hpiece 8 <hpiece8@gmail.com>, 2020
@@ -19,19 +19,19 @@
 # La Ode Muh. Fadlun Akbar <fadlun.net@gmail.com>, 2020
 # Kukuh Syafaat <syafaatkukuh@gmail.com>, 2020
 # Andika Triwidada <andika@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>, 2020\n"
 "Language-Team: Indonesian (https://www.transifex.com/cafe/teams/13566/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -46,8 +46,8 @@ msgid ""
 "font."
 msgstr ""
 "Apakah menggunakan fonta lebar tetap bawaan sistem untuk menyunting teks "
-"daripada fonta yang ditentukan lapiz. Jika pilihan ini dimatikan, maka fonta"
-" yang dinamai dalam pilihan \"Fonta Penyunting\", akan digunakan daripada "
+"daripada fonta yang ditentukan lapiz. Jika pilihan ini dimatikan, maka fonta "
+"yang dinamai dalam pilihan \"Fonta Penyunting\", akan digunakan daripada "
 "fonta system."
 
 #: data/org.cafe.lapiz.gschema.xml.in:15
@@ -176,9 +176,9 @@ msgstr "Mode Pelipatan Baris"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Jelaskan bagaimana wrap baris yang panjang dalam daerah penyuntingan. "
 "Gunakan \"CTK_WRAP_TIDAK\" untuk tidak mewrap, \"CTK_WRAP_KATA\" untuk "
@@ -267,13 +267,13 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"Menyatakan bagaimana kursor berpindah ketika tombol HOME dan END "
-"ditekan.Gunakan \"DISABLED\" untuk selalu pindah ke awal/akhir baris, "
-"\"AFTER\" untuk pindah ke awal/akhir baris pertama kali tombol ditekan dan "
-"ke awal/akhir teks dengan mengabaikan whitespace saat kedua kali tombol "
-"ditekan, \"BEFORE\" untuk pindah ke awal/akhir teks sebelum pindah ke "
-"awal/akhir baris, dan \"ALWAYS\" untuk selalu pindah ke awal/akhir teks "
-"alih-alih awal/akhir baris."
+"Menyatakan bagaimana kursor berpindah ketika tombol HOME dan END ditekan."
+"Gunakan \"DISABLED\" untuk selalu pindah ke awal/akhir baris, \"AFTER\" "
+"untuk pindah ke awal/akhir baris pertama kali tombol ditekan dan ke awal/"
+"akhir teks dengan mengabaikan whitespace saat kedua kali tombol ditekan, "
+"\"BEFORE\" untuk pindah ke awal/akhir teks sebelum pindah ke awal/akhir "
+"baris, dan \"ALWAYS\" untuk selalu pindah ke awal/akhir teks alih-alih awal/"
+"akhir baris."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -321,15 +321,15 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 "Gaya untuk tombol toolbar. Nilai yang bisa adalah \"LAPIZ_TOOLBAR_SYSTEM\" "
 "untuk menggunakan gaya sistem default, \"LAPIZ_TOOLBAR_ICONS\" hanya untuk "
 "menampilkan icon, \"LAPIZ_TOOLBAR_ICONS_DAN_TEKS\" untuk menampilkan baik "
-"icon dan teks, dan \"LAPIZ_TOOLBAR-ICONS_BOTH_HORIZ\" untuk menampilkan teks"
-" lebih dahulu daripada icon. Catat bahwa nilai ini adalah case sensitive, "
+"icon dan teks, dan \"LAPIZ_TOOLBAR-ICONS_BOTH_HORIZ\" untuk menampilkan teks "
+"lebih dahulu daripada icon. Catat bahwa nilai ini adalah case sensitive, "
 "jadi pastikan mereka terlihat sama persis dengan yang di sebutkan di sini."
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
@@ -347,8 +347,7 @@ msgid "Side Pane is Visible"
 msgstr "Panel Samping Terlihat"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "Apakah panel sisi pada bagian kiri jendela penyuntingan harus nampak."
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -378,8 +377,8 @@ msgstr "Berkass Maksimun sekarang"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
 "Tentukan jumlah maksimal dari berkas yang pernah terbuka yang akan "
 "ditampilkan pada menu \"Berkas Sekarang\"."
@@ -389,8 +388,7 @@ msgid "Print Syntax Highlighting"
 msgstr "Cetak Pewarnaan Sintaksis"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "Apakah lapiz harus mencetak penandaan syntax ketika mencetak dokumen."
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -398,8 +396,7 @@ msgid "Print Header"
 msgstr "Kepala Cetak"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Apakah lapiz harus memasukkan sebuah kepala dokumen ketika mencetak dokumen."
 
@@ -411,14 +408,14 @@ msgstr "Pencetakan dengan Model Baris Wraping"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Jelaskan bagaimana wrap baris yang panjang untuk pencetakan. Gunakan "
 "\"CTK_WRAP_TIDAK\" untuk tidak mewrap, \"CTK_WRAP_KATA\" untuk mewrap pada "
-"batasan kata, dan \"CTK_WRAP_CHAR\" untuk mewrap ada batasan karakter. Catat"
-" bahwa nilai ini case sensitive, jadi pastikan mereka kelihatan pas seperti "
+"batasan kata, dan \"CTK_WRAP_CHAR\" untuk mewrap ada batasan karakter. Catat "
+"bahwa nilai ini case sensitive, jadi pastikan mereka kelihatan pas seperti "
 "yang disebutkan di sini."
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
@@ -488,8 +485,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -498,8 +495,8 @@ msgstr "Encoding Yang Terdeteksi Secara Otomatis"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Daftar encoding yang telah diurutkan dan dipergunakan oleh lapiz untuk "
 "mendeteksi encoding berkas secara otomatis. \"CURRENT\" adalah lokal "
@@ -520,8 +517,7 @@ msgid ""
 "selector. Only recognized encodings are used."
 msgstr ""
 "Daftar dari encoding yang diperlihatkan dalam menu Pengkodean Karakter pada "
-"pemilih buka/simpan berkas. Hanya pengkodean yang dikenali yang "
-"dipergunakan."
+"pemilih buka/simpan berkas. Hanya pengkodean yang dikenali yang dipergunakan."
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -580,13 +576,12 @@ msgstr "Tampilkan tab"
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 "Apakah lapiz harus menampilkan tab di jendela penyunting: 'show-none' tidak "
-"menunjukkan; 'show-trailing' hanya menampilkan spasi di belakang; 'show-all'"
-" menunjukkan semua spasi."
+"menunjukkan; 'show-trailing' hanya menampilkan spasi di belakang; 'show-all' "
+"menunjukkan semua spasi."
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
@@ -614,8 +609,8 @@ msgstr "Penyunting Teks bagi lingkungan desktop CAFE"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 "Lapiz adalah penyunting teks kecil namun kuat yang dirancang khusus untuk "
@@ -630,8 +625,8 @@ msgid ""
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
 msgstr ""
-"Lapiz dapat diperluas melalui sistem plugin, yang saat ini termasuk dukungan"
-" untuk pengecekan ejaan, membandingkan berkas, melihat perubahan CVS, dan "
+"Lapiz dapat diperluas melalui sistem plugin, yang saat ini termasuk dukungan "
+"untuk pengecekan ejaan, membandingkan berkas, melihat perubahan CVS, dan "
 "menyesuaikan tingkat indentasi."
 
 #: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
@@ -642,14 +637,7 @@ msgstr "Penyunting Teks"
 msgid "Edit text files"
 msgstr "Edit berkas teks"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr "accessories-text-penyunting"
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -670,9 +658,8 @@ msgstr "Tutup _tanpa Menyimpan"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -708,8 +695,7 @@ msgstr "Pertanyaan"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -737,8 +723,7 @@ msgstr[0] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -747,8 +732,7 @@ msgstr[0] ""
 "selamanya."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Jika tidak disimpan, perubahan dari jam terakhir akan hilang."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -770,8 +754,7 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
-"Jika tidak Anda simpan, perubahan dari %d jam terakhir akan hilang "
-"selamanya."
+"Jika tidak Anda simpan, perubahan dari %d jam terakhir akan hilang selamanya."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:521
 #, c-format
@@ -796,8 +779,7 @@ msgstr[0] "Perubahan untuk %d dokumen akan hilang selamanya."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -1203,7 +1185,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Jalankan '%s·--help' untuk melihat daftar lengkap dari pilihan perintah baris yang tersedia.\n"
+"Jalankan '%s·--help' untuk melihat daftar lengkap dari pilihan perintah "
+"baris yang tersedia.\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1252,8 +1235,7 @@ msgstr "Kembalikan perubahan yang belum tersimpan ke dokumen \"%s\"?"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1281,8 +1263,7 @@ msgstr[0] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1291,8 +1272,7 @@ msgstr[0] ""
 "selamanya."
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Perubahan di dokumen dalam jam terakhir akan hilang secara permanen."
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1363,8 +1343,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 "Anda seharusnya menerima salinan Lisensi Publik Umum GNU bersama dengan "
@@ -1383,17 +1363,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
-"Hak cipta © 1998-2000 Evan Lawrence, Alex Robert\n"
-"Hak cipta © 2000-2002 Chema Celorio, Paolo Maggi\n"
-"Hak cipta © 2003-2006 Paolo Maggi\n"
-"Hak Cipta © 2004-2010 Paolo Borelli, Jesse Van Den Kieboom\n"
-"Steve Frécinaux, Ignacio Casal Quinteiro\n"
-"Hak cipta © 2011 Perberos\n"
-"Copyright © 2012-2020 pengembang CAFE"
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Mohammad DAMT <mdamt@bisnisweb.com>\n"
@@ -1653,8 +1627,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "Nama host tidak valid. Silakan periksa lokasi yg Anda tik dan coba lagi."
 
@@ -1708,8 +1682,8 @@ msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
-"Cacah taut yang diikuti terbatas dan berkas sesungguhnya tak ditemukan dalam"
-" batas ini."
+"Cacah taut yang diikuti terbatas dan berkas sesungguhnya tak ditemukan dalam "
+"batas ini."
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1780,8 +1754,8 @@ msgstr "Berkas (%s) sudah dibuka pada jendela lapiz yang lain."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
 "lapiz membuka berkas dalam mode yang tak dapat diedit. Apakah Anda masih "
 "ingin menlapiznya?"
@@ -1802,8 +1776,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "Berkas %s telah dirubah semenjak ketika membacanya."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Jika anda menyimpannya, seluruh perubahan di luar akan hilang. Simpan saja?"
 
@@ -1820,11 +1793,11 @@ msgstr "Tidak dapat membuat berkas backup sementara ketika menyimpan %s"
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"lapiz tidak akan membuat salinan yang lama sebelum menyimpan yang baru. Anda"
-" dapat saja mengabaikan peringatan ini dan menyimpan berkasnya, tapi kalau "
+"lapiz tidak akan membuat salinan yang lama sebelum menyimpan yang baru. Anda "
+"dapat saja mengabaikan peringatan ini dan menyimpan berkasnya, tapi kalau "
 "terjadi kesalahan ketika menyimpan, Anda akan kehilangan salinan yang lama. "
 "Simpan saja?"
 
@@ -1841,8 +1814,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "lapiz tidak dapat menangani lokasi ini dalam mode menulis. Tolong periksa "
 "apakah Anda telah mengetik lokasinya dengan benar, kemudian silakan coba "
@@ -1867,8 +1840,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "Tidak cukup ruang untuk menyimpan berkas. Silakan kosongkan sebagian ruang "
 "dan coba lagi."
@@ -1888,8 +1861,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Disk tempat anda menyimpan berkas memiliki batasan untuk panjang nama "
 "berkas. Silakan gunakan nama yang lebih pendek."
@@ -1897,8 +1870,8 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 "Disk tempat Anda menyimpan berkas memiliki batasan untuk besar berkas. "
 "Silakan coba menyimpan dengan berkas yang lebih kecil atau simpan ke disk "
@@ -1963,14 +1936,12 @@ msgstr "Ceta_k penandaan sintaks"
 msgid "Print line nu_mbers"
 msgstr "Cetak no_mor baris"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Nomor setiap"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "baris"
@@ -2081,8 +2052,7 @@ msgstr "TIMPA"
 msgid "INS"
 msgstr "SISIP"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2136,38 +2106,38 @@ msgstr "Menyimpan %s ke %s"
 msgid "Saving %s"
 msgstr "Menyimpan %s"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "Gagal saat membuka berkas %s"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Gagal saat mengulang berkas %s"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "Gagal saat menyimpan berkas %s"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unikode (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Nama:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "Tipe MIME:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Encoding:"
 
@@ -2927,12 +2897,6 @@ msgstr "Panel Peramban Berkas"
 msgid "Easy file access from the side pane"
 msgstr "Akses berkas mudah dari panel samping"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr "system-berkas-manager"
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Tata Lokasi Ke Dokumen Pertama"
@@ -2971,8 +2935,8 @@ msgstr "Bentuk Saringan Penjelajah Berkas"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "Pola saringan untuk menyaring penjelajah berkas. Saringan ini bekerja di "
 "atas filter_mode."
@@ -3007,9 +2971,9 @@ msgstr "Akar Virtual Direktori Penjelajah Berkas"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Akar virtual direktori penjelajah berkas untuk dipergunakan ketika membaca "
 "plugin penjelajah berkas ketika onload/tree_view adalah BENAR. Akar virtual "
@@ -3121,8 +3085,7 @@ msgstr ""
 "Berkas yang diubah namanya kini tersaring. Anda perlu mengubah tatanan "
 "saringan Anda agar berkas nampak"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "berkas"
@@ -3135,8 +3098,7 @@ msgstr ""
 "Berkas baru sedang disaring. Anda perlu menentukan setingan saringan anda "
 "supaya berkasnya kelihatan"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "direktori"
@@ -3314,12 +3276,6 @@ msgstr "Konsol Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Konsol Interaktif Python berdiri di panel bawah"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr "text-x-python"
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "Warna G_alat:"
@@ -3352,12 +3308,6 @@ msgstr "Bukan dokumen dengan cepat"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Buka berkas dengan cepat"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr "document-open"
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3504,8 +3454,8 @@ msgstr "Ekspor berhasil diselesaikan"
 #: plugins/snippets/snippets/Manager.py:927
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
-"Apakah Anda ingin memasukkan potongan <b>sistem</b> yang dipilih pada ekspor"
-" Anda?"
+"Apakah Anda ingin memasukkan potongan <b>sistem</b> yang dipilih pada ekspor "
+"Anda?"
 
 #: plugins/snippets/snippets/Manager.py:873
 #: plugins/snippets/snippets/Manager.py:945
@@ -3602,12 +3552,6 @@ msgstr "Pengurutan"
 msgid "Sorts a document or selected text."
 msgstr "Mengurutkan isi dokumen atau teks yang terpilih."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr "view-sort-ascending"
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "_Urutkan"
@@ -3636,10 +3580,8 @@ msgstr "Operasi pengurutan tidak dapat dibatalkan"
 msgid "Autocheck Type"
 msgstr "Tipe Pemeriksaan Otomatis"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3666,8 +3608,7 @@ msgstr "Periksa Ejaan"
 msgid "Suggestions"
 msgstr "Saran"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(ejaan yang benar)"
@@ -3679,6 +3620,7 @@ msgstr "Pemeriksaan ejaan selesai"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3688,6 +3630,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3696,6 +3639,7 @@ msgstr "Tak dikenal (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3829,12 +3773,6 @@ msgstr "Pemeriksa Ejaan"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Periksa ejaan dokumen yang aktif."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr "tools-check-spelling"
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6516,12 +6454,6 @@ msgstr "Simpan Tanpa Spasi Di Ujung Baris"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Buang spasi di ujung baris sebelum menyimpan."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr "edit-cut"
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Masukkan Tanggal dan Jam"
@@ -6546,8 +6478,7 @@ msgstr "G_unakan format ini"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6564,3 +6495,45 @@ msgstr "Ketika menyisipkan tanggal/jam..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Masukkan format sendiri"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+
+#~ msgid "accessories-text-editor"
+#~ msgstr "accessories-text-penyunting"
+
+#~ msgid ""
+#~ "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
+#~ "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
+#~ "Copyright © 2003-2006 Paolo Maggi\n"
+#~ "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
+#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
+#~ "Copyright © 2011 Perberos\n"
+#~ "Copyright © 2012-2020 CAFE developers"
+#~ msgstr ""
+#~ "Hak cipta © 1998-2000 Evan Lawrence, Alex Robert\n"
+#~ "Hak cipta © 2000-2002 Chema Celorio, Paolo Maggi\n"
+#~ "Hak cipta © 2003-2006 Paolo Maggi\n"
+#~ "Hak Cipta © 2004-2010 Paolo Borelli, Jesse Van Den Kieboom\n"
+#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
+#~ "Hak cipta © 2011 Perberos\n"
+#~ "Copyright © 2012-2020 pengembang CAFE"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-berkas-manager"
+
+#~ msgid "text-x-python"
+#~ msgstr "text-x-python"
+
+#~ msgid "document-open"
+#~ msgstr "document-open"
+
+#~ msgid "view-sort-ascending"
+#~ msgstr "view-sort-ascending"
+
+#~ msgid "tools-check-spelling"
+#~ msgstr "tools-check-spelling"
+
+#~ msgid "edit-cut"
+#~ msgstr "edit-cut"

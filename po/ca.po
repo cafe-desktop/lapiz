@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Daniel <danicases@gmail.com>, 2020
 # Francesc Famadas, 2020
@@ -10,19 +10,19 @@
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2020
 # Wolfgang Ulbrich <cafe@raveit.de>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Wolfgang Ulbrich <cafe@raveit.de>, 2020\n"
 "Language-Team: Catalan (https://www.transifex.com/cafe/teams/13566/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -98,9 +98,9 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Si lapiz hauria de crear còpies de seguretat per als fitxers que desa. Podeu"
-" establir l'extensió del fitxer de còpia de seguretat a l'opció «Extensió de"
-" les còpies de seguretat»."
+"Si lapiz hauria de crear còpies de seguretat per als fitxers que desa. Podeu "
+"establir l'extensió del fitxer de còpia de seguretat a l'opció «Extensió de "
+"les còpies de seguretat»."
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -113,8 +113,8 @@ msgid ""
 "option."
 msgstr ""
 "Si Lapiz hauria de desar automàticament els fitxers modificats després d'un "
-"interval de temps. Podeu establir l'interval de temps a l'opció «Interval de"
-" desament automàtic»."
+"interval de temps. Podeu establir l'interval de temps a l'opció «Interval de "
+"desament automàtic»."
 
 #: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -146,8 +146,8 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"Llista d'esquemes VFS que Lapiz permet en mode d'escriptura. Per defecte, es"
-" permet l'escriptura de l'esquema «file»."
+"Llista d'esquemes VFS que Lapiz permet en mode d'escriptura. Per defecte, es "
+"permet l'escriptura de l'esquema «file»."
 
 #: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -158,8 +158,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"El nombre màxim d'accions que Lapiz podrà desfer o refer. Utilitzeu «-1» per"
-" a un nombre il·limitat d'accions."
+"El nombre màxim d'accions que Lapiz podrà desfer o refer. Utilitzeu «-1» per "
+"a un nombre il·limitat d'accions."
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -169,9 +169,9 @@ msgstr "Mode d'ajustament de línia"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Especifica com ajustar les línies llargues en l'àrea d'edició. Utilitzeu "
 "«CTK_WRAP_NONE» per no ajustar, «CTK_WRAP_WORD» per ajustar als límits de "
@@ -265,14 +265,13 @@ msgid ""
 "the text instead of the start/end of the line."
 msgstr ""
 "Especifica la manera com es mou el cursor quan es premen les tecles d'inici "
-"i de final. Empreu «DISABLED» (inhabilitat) per moure'l sempre al principi o"
-" al final de les línies. Empreu «AFTER» (després) per moure'l a l'inici o al"
-" final de la línia la primera vegada que es premi la tecla, i al principi o "
-"al final del text la segona vegada que es premi. Empreu «BEFORE» (abans) per"
-" moure el cursor al principi o al final del text abans de moure'l al "
-"principi o al final de la línia. Empreu «ALWAYS» (sempre) per moure el "
-"cursor sempre al principi o al final del text en lloc del principi o al "
-"final de la línia."
+"i de final. Empreu «DISABLED» (inhabilitat) per moure'l sempre al principi o "
+"al final de les línies. Empreu «AFTER» (després) per moure'l a l'inici o al "
+"final de la línia la primera vegada que es premi la tecla, i al principi o "
+"al final del text la segona vegada que es premi. Empreu «BEFORE» (abans) per "
+"moure el cursor al principi o al final del text abans de moure'l al principi "
+"o al final de la línia. Empreu «ALWAYS» (sempre) per moure el cursor sempre "
+"al principi o al final del text en lloc del principi o al final de la línia."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -320,18 +319,17 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 "L'estil dels botons de la barra d'eines. Els valors possibles són "
 "«LAPIZ_TOOLBAR_SYSTEM» per utilitzar l'estil predeterminat del sistema, "
 "«LAPIZ_TOOLBAR_ICONS» per mostrar només icones, "
 "«LAPIZ_TOOLBAR_ICONS_AND_TEXT» per mostrar icones i text i "
-"«LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ» per mostrar el text prioritari al costat de"
-" les icones. Recordeu que els valors són sensibles a majúscules i "
-"minúscules, així doncs assegureu-vos que apareixen exactament com es "
-"mencionen aquí."
+"«LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ» per mostrar el text prioritari al costat de "
+"les icones. Recordeu que els valors són sensibles a majúscules i minúscules, "
+"així doncs assegureu-vos que apareixen exactament com es mencionen aquí."
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -349,8 +347,7 @@ msgid "Side Pane is Visible"
 msgstr "El plafó del costat és visible"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr ""
 "Si hauria de ser visible el plafó lateral de l'esquerra de la finestra "
 "d'edició."
@@ -363,8 +360,8 @@ msgstr "Mostra les pestanyes amb el plafó lateral"
 msgid ""
 "If false, lapiz doesn't show tabs in the notebook with the side pane active."
 msgstr ""
-"Si és fals, lapiz no mostra les pestanyes a la llibreta amb el plafó lateral"
-" actiu."
+"Si és fals, lapiz no mostra les pestanyes a la llibreta amb el plafó lateral "
+"actiu."
 
 #: data/org.cafe.lapiz.gschema.xml.in:156
 msgid "Bottom Panel is Visible"
@@ -381,8 +378,8 @@ msgstr "Nombre màxim de fitxers recents"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
 "Especifica el nombre màxim de fitxers recentment oberts que es mostraran al "
 "submenú «Fitxers recents»."
@@ -392,8 +389,7 @@ msgid "Print Syntax Highlighting"
 msgstr "Imprimeix el ressaltat de sintaxi"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr ""
 "Si Lapiz hauria d'imprimir el ressaltat de sintaxi quan s'imprimeixen els "
 "documents."
@@ -403,8 +399,7 @@ msgid "Print Header"
 msgstr "Imprimeix la capçalera"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr ""
 "Si Lapiz hauria d'incloure una capçalera del document en imprimir documents."
 
@@ -416,9 +411,9 @@ msgstr "Mode d'ajustament de línia en la impressió"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "Especifica com ajustar les línies llargues per imprimir. Utilitzeu "
 "«CTK_WRAP_NONE» per no ajustar, «CTK_WRAP_WORD» per ajustar als límits de "
@@ -437,8 +432,8 @@ msgid ""
 "lines."
 msgstr ""
 "No s'inserirà cap número de línia si el valor és 0 quan s'imprimeixi un "
-"document. Altrament, Lapiz imprimirà els números de línia cada tants números"
-" de línia."
+"document. Altrament, Lapiz imprimirà els números de línia cada tants números "
+"de línia."
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -453,8 +448,8 @@ msgstr "Lletra del cos per a la impressió"
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Especifica la lletra a utilitzar per al cos d'un document quan s'imprimeixen"
-" els documents."
+"Especifica la lletra a utilitzar per al cos d'un document quan s'imprimeixen "
+"els documents."
 
 #: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
@@ -470,8 +465,8 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Especifica la lletra per a les capçaleres de les pàgines quan s'imprimeix un"
-" document. Només afectarà si l'opció «Imprimeix les capçaleres» està "
+"Especifica la lletra per a les capçaleres de les pàgines quan s'imprimeix un "
+"document. Només afectarà si l'opció «Imprimeix les capçaleres» està "
 "habilitada."
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
@@ -493,8 +488,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -503,8 +498,8 @@ msgstr "Codificacions detectades automàticament"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
 "Llista ordenada de les codificacions utilitzades per Lapiz per detectar "
 "automàticament la codificació d'un fitxer. «CURRENT» (actual) indica la "
@@ -587,9 +582,8 @@ msgstr "Mostra les tabulacions"
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 "Si Lapiz hauria de mostrar les tabulacions a la finestra de l'editor. «show-"
 "none» no mostrar; «show-trailing» mostrar només les tabulacions al final de "
@@ -605,8 +599,8 @@ msgid ""
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
 "all spaces."
 msgstr ""
-"Si Lapiz hauria de mostrar els espais a la finestra de l'editor. «show-none»"
-" no mostrar; «show-trailing» mostrar només els espais al final de línia; "
+"Si Lapiz hauria de mostrar els espais a la finestra de l'editor. «show-none» "
+"no mostrar; «show-trailing» mostrar només els espais al final de línia; "
 "«show-all» mostrar tots els espais."
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
@@ -621,8 +615,8 @@ msgstr "Un editor de text per a l'entorn d'escriptori CAFE"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 "Lapiz és un petit editor de text, però poderós que està dissenyat "
@@ -651,14 +645,7 @@ msgstr "Editor de text"
 msgid "Edit text files"
 msgstr "Editeu fitxers de text"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr "accessories-text-editor"
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -679,9 +666,8 @@ msgstr "Tanca _sense desar"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -717,8 +703,7 @@ msgstr "Pregunta"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -751,8 +736,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -762,10 +746,8 @@ msgstr[1] ""
 "Si no ho deseu, es perdran per sempre els canvis fets els últims %ld minuts."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
-msgstr ""
-"Si no ho deseu, es perdran per sempre els canvis fets la darrera hora."
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr "Si no ho deseu, es perdran per sempre els canvis fets la darrera hora."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
 #, c-format
@@ -817,13 +799,12 @@ msgstr[1] "Es perdran per sempre els canvis fets als %d documents."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
-"Hi ha %d document que té canvis sense desar. Voleu desar els canvis abans de"
-" tancar?"
+"Hi ha %d document que té canvis sense desar. Voleu desar els canvis abans de "
+"tancar?"
 msgstr[1] ""
 "Hi ha %d documents que tenen canvis sense desar. Voleu desar els canvis "
 "abans de tancar?"
@@ -1228,7 +1209,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Executeu «%s --help» per veure una llista completa de les opcions disponibles de la línia d'ordres.\n"
+"Executeu «%s --help» per veure una llista completa de les opcions "
+"disponibles de la línia d'ordres.\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1278,8 +1260,7 @@ msgstr "Voleu recuperar els canvis no desats al document «%s»?"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1311,8 +1292,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1322,8 +1302,7 @@ msgstr[1] ""
 "Es perdran per sempre els canvis fets al document en l'últim %ld minut."
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Es perdran per sempre els canvis fets al document en l'última hora."
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1347,8 +1326,7 @@ msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] ""
-"Es perdran per sempre els canvis fets al document en l'última hora."
+msgstr[0] "Es perdran per sempre els canvis fets al document en l'última hora."
 msgstr[1] ""
 "Es perdran per sempre els canvis fets al document en les últimes %d hores."
 
@@ -1380,8 +1358,8 @@ msgid ""
 "version."
 msgstr ""
 "Lapiz és programari lliure; podeu redistribuir-lo i/o modificar-lo sota els "
-"termes de la Llicència Pública General de GNU tal com ha estat publicada per"
-" la Free Software Foundation, ja sigui la versió 2 de la Llicència o bé (si "
+"termes de la Llicència Pública General de GNU tal com ha estat publicada per "
+"la Free Software Foundation, ja sigui la versió 2 de la Llicència o bé (si "
 "ho preferiu) qualsevol versió posterior."
 
 #: lapiz/lapiz-commands-help.c:74
@@ -1398,12 +1376,12 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"Amb Lapiz hauríeu d'haver rebut una còpia de la Llicència Pública General de"
-" GNU; si no és així, escriviu a la Free Software Foundation, Inc., 51 "
+"Amb Lapiz hauríeu d'haver rebut una còpia de la Llicència Pública General de "
+"GNU; si no és així, escriviu a la Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
@@ -1418,17 +1396,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
-"Drets d'autor © 1998-2000 Evan Lawrence, Alex Robert\n"
-"Drets d'autor © 2000-2002 Chema Celorio, Paolo Maggi\n"
-"Drets d'autor © 2003-2006 Paolo Maggi\n"
-"Drets d'autor © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
-"Steve Frécinaux, Ignacio Casal Quinteiro\n"
-"Drets d'autor © 2011 Perberos\n"
-"Drets d'autor © 2012-2020 Els desenvolupadors de CAFE"
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Joan Duran <jodufi@gmail.com>, 2007\n"
@@ -1686,8 +1658,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "El nom d'amfitrió no és vàlid. Comproveu que hàgiu escrit la ubicació "
 "correctament i torneu-ho a intentar."
@@ -1818,11 +1790,11 @@ msgstr "Aquest fitxer (%s) ja està obert en una altra finestra de Lapiz."
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
-"Lapiz ha obert aquesta instància del fitxer d'una manera que no és editable."
-" Voleu editar-lo de totes maneres?"
+"Lapiz ha obert aquesta instància del fitxer d'una manera que no és editable. "
+"Voleu editar-lo de totes maneres?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
 #: lapiz/lapiz-io-error-message-area.c:960
@@ -1840,8 +1812,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "El fitxer %s s'ha modificat des que s'ha llegit."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Si el deseu, tots els canvis externs fets es poden perdre. Voleu desar-lo "
 "igualment?"
@@ -1860,13 +1831,13 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "Lapiz no ha pogut fer una còpia de seguretat de la còpia antiga abans de "
 "desar el fitxer. Podeu oblidar aquesta advertència i desar el fitxer, però "
-"si es produeix un error en desar, podríeu perdre la còpia antiga del fitxer."
-" Voleu desar igualment?"
+"si es produeix un error en desar, podríeu perdre la còpia antiga del fitxer. "
+"Voleu desar igualment?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:1061
@@ -1880,8 +1851,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
 "Lapiz no pot gestionar aquesta ubicació en mode d'escriptura. Comproveu que "
 "hàgiu escrit correctament la ubicació i torneu-ho a intentar."
@@ -1900,13 +1871,13 @@ msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"No teniu el permís necessari per poder desar aquest fitxer. Comproveu que la"
-" ubicació estigui ben escrita i torneu-ho a intentar."
+"No teniu el permís necessari per poder desar aquest fitxer. Comproveu que la "
+"ubicació estigui ben escrita i torneu-ho a intentar."
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "No hi ha suficient espai al disc per desar el fitxer. Allibereu espai de "
 "disc i torneu-ho a intentar."
@@ -1925,8 +1896,8 @@ msgstr "Ja existeix un fitxer amb aquest cafeix nom, utilitzeu-ne un altre."
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "El disc on esteu intentant desar el fitxer té una limitació quan a la "
 "longitud dels noms dels fitxers, utilitzeu un nom més curt."
@@ -1934,8 +1905,8 @@ msgstr ""
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
 "El disc on esteu intentant desar el fitxer té una limitació en la mida dels "
 "fitxers. Intenteu desar un fitxer més petit o desar-ho en un disc que no "
@@ -2000,14 +1971,12 @@ msgstr "Imprimeix el ressaltat de la s_intaxi"
 msgid "Print line nu_mbers"
 msgstr "Imprimeix els números de _línia"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "_Número cada"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "línies"
@@ -2118,8 +2087,7 @@ msgstr "SOBR"
 msgid "INS"
 msgstr "INSER"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2175,38 +2143,38 @@ msgstr "S'està desant %s a %s"
 msgid "Saving %s"
 msgstr "S'està desant %s"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "S'ha produït un error en obrir el fitxer %s"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "S'ha produït un error en recuperar el document %s"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "S'ha produït un error en desar el fitxer %s"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "Nom:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "Tipus de MIME:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "Codificació:"
 
@@ -2801,8 +2769,7 @@ msgstr "Aquest accelerador ja s'utilitza per a %s"
 
 #: plugins/externaltools/tools/manager.py:710
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr ""
-"Teclegeu un accelerador nou, o premeu la tecla de retrocés per netejar"
+msgstr "Teclegeu un accelerador nou, o premeu la tecla de retrocés per netejar"
 
 #: plugins/externaltools/tools/manager.py:712
 msgid "Type a new accelerator"
@@ -2966,12 +2933,6 @@ msgstr "Plafó del navegador de fitxers"
 msgid "Easy file access from the side pane"
 msgstr "Accés fàcil a fitxers des del plafó lateral"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "Establiu la ubicació del primer document"
@@ -2985,8 +2946,8 @@ msgid ""
 msgstr ""
 "En cas que fos cert, el connector del navegador de fitxers veurà el "
 "directori del primer document obert que el navegador de fitxers no ha "
-"utilitzat encara. (Generalment s'aplica en obrir un document des de la línia"
-" d'ordres o en obrir-ho des de Baul, etc.)"
+"utilitzat encara. (Generalment s'aplica en obrir un document des de la línia "
+"d'ordres o en obrir-ho des de Baul, etc.)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -3001,8 +2962,8 @@ msgid ""
 msgstr ""
 "Aquest valor determina quins fitxers del navegador de fitxers es filtraran. "
 "Els valors vàlids són: none (no es filtra res), hidden (es filtren els "
-"fitxers ocults), binary (es filtren els fitxers binaris) i hidden_and_binary"
-" (es filtren els fitxers ocults i binaris)."
+"fitxers ocults), binary (es filtren els fitxers binaris) i hidden_and_binary "
+"(es filtren els fitxers ocults i binaris)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -3010,8 +2971,8 @@ msgstr "Patró del filtre del navegador de fitxers"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
 "El patró de filtre amb què es filtrarà el navegador de fitxers. Aquest "
 "filtre funciona per sobre de filter_mode."
@@ -3046,9 +3007,9 @@ msgstr "Directori arrel virtual del navegador de fitxers"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "El directori arrel virtual del navegador de fitxers que es farà servir quan "
 "es carregui el connector del navegador de fitxers i onload/tree_view és "
@@ -3143,8 +3104,7 @@ msgstr "Esteu segur que voleu suprimir permanentment «%s»?"
 
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
 msgid "Are you sure you want to permanently delete the selected files?"
-msgstr ""
-"Esteu segur que voleu suprimir permanentment els fitxers seleccionats?"
+msgstr "Esteu segur que voleu suprimir permanentment els fitxers seleccionats?"
 
 #: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
 msgid "If you delete an item, it is permanently lost."
@@ -3162,8 +3122,7 @@ msgstr ""
 "El fitxer reanomenat actualment està filtrat. Heu de canviar els ajusts del "
 "filtre per fer-lo visible"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "fitxer"
@@ -3176,8 +3135,7 @@ msgstr ""
 "El fitxer actual està filtrat. Heu de canviar els ajusts del filtre per fer-"
 "lo visible"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "directori"
@@ -3355,12 +3313,6 @@ msgstr "Consola de Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Consola interactiva de Python al tauler inferior"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr "text-x-python"
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "Color dels _errors:"
@@ -3393,12 +3345,6 @@ msgstr "Obre ràpidament els documents"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Obriu ràpidament els fitxers"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr "document-open"
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3462,8 +3408,7 @@ msgstr "Disparador de _tabuladors:"
 #: plugins/snippets/snippets/snippets.ui:446
 #: plugins/snippets/snippets/Manager.py:681
 msgid "Single word the snippet is activated with after pressing Tab"
-msgstr ""
-"Paraula que activa un fragment després de prémer la tecla de tabulació"
+msgstr "Paraula que activa un fragment després de prémer la tecla de tabulació"
 
 #: plugins/snippets/snippets/WindowHelper.py:72
 msgid "Manage _Snippets..."
@@ -3621,8 +3566,8 @@ msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr ""
-"L'execució de l'ordre de Python (%s) ha excedit el temps màxim, s'ha avortat"
-" l'execució."
+"L'execució de l'ordre de Python (%s) ha excedit el temps màxim, s'ha avortat "
+"l'execució."
 
 #: plugins/snippets/snippets/Placeholder.py:609
 #, python-format
@@ -3644,12 +3589,6 @@ msgstr "Ordenació"
 #: plugins/sort/sort.plugin.desktop.in:6
 msgid "Sorts a document or selected text."
 msgstr "Ordeneu un document o el text seleccionat."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr "view-sort-ascending"
 
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
@@ -3679,10 +3618,8 @@ msgstr "No es pot desfer una operació d'ordenació"
 msgid "Autocheck Type"
 msgstr "Tipus de comprovació automàtica"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3709,8 +3646,7 @@ msgstr "Comprova l'ortografia"
 msgid "Suggestions"
 msgstr "Suggeriments"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(ortografia correcta)"
@@ -3722,6 +3658,7 @@ msgstr "S'ha completat la comprovació d'ortografia"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3731,6 +3668,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3739,6 +3677,7 @@ msgstr "Desconegut (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3872,12 +3811,6 @@ msgstr "Comprovador d'ortografia"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "Comproveu l'ortografia del document actual."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr "tools-check-spelling"
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -5739,8 +5672,8 @@ msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
 msgstr ""
-"Proporciona un mètode senzill per inserir en un document els "
-"marcadors/cadenes més utilitzades sense haver de teclejar-les."
+"Proporciona un mètode senzill per inserir en un document els marcadors/"
+"cadenes més utilitzades sense haver de teclejar-les."
 
 #: plugins/taglist/XSLT.tags.xml.in:7
 msgid "XSLT - Elements"
@@ -6560,12 +6493,6 @@ msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 "Suprimiu els espais al final de les línies d'un fitxer abans de desar-lo."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "Insereix la data i hora"
@@ -6590,8 +6517,7 @@ msgstr "_Utilitza un format personalitzat"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%-d/%-m/%Y %-H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6608,3 +6534,42 @@ msgstr "Quan s'insereixi la data/hora..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Pregunta per un format"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+
+#~ msgid "accessories-text-editor"
+#~ msgstr "accessories-text-editor"
+
+#~ msgid ""
+#~ "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
+#~ "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
+#~ "Copyright © 2003-2006 Paolo Maggi\n"
+#~ "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
+#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
+#~ "Copyright © 2011 Perberos\n"
+#~ "Copyright © 2012-2020 CAFE developers"
+#~ msgstr ""
+#~ "Drets d'autor © 1998-2000 Evan Lawrence, Alex Robert\n"
+#~ "Drets d'autor © 2000-2002 Chema Celorio, Paolo Maggi\n"
+#~ "Drets d'autor © 2003-2006 Paolo Maggi\n"
+#~ "Drets d'autor © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
+#~ "Steve Frécinaux, Ignacio Casal Quinteiro\n"
+#~ "Drets d'autor © 2011 Perberos\n"
+#~ "Drets d'autor © 2012-2020 Els desenvolupadors de CAFE"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
+
+#~ msgid "text-x-python"
+#~ msgstr "text-x-python"
+
+#~ msgid "document-open"
+#~ msgstr "document-open"
+
+#~ msgid "view-sort-ascending"
+#~ msgstr "view-sort-ascending"
+
+#~ msgid "tools-check-spelling"
+#~ msgstr "tools-check-spelling"

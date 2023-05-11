@@ -2,7 +2,7 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Christopher M <i@cicku.me>, 2020
 # Dianjin Wang <1132321739qq@gmail.com>, 2020
@@ -21,19 +21,20 @@
 # 敏超 马 <mcjoys@163.com>, 2020
 # 玉堂白鹤 <yjwork@qq.com>, 2020
 # 邢家朋 <xingjiapeng10@163.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: 邢家朋 <xingjiapeng10@163.com>, 2020\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/cafe/teams/13566/zh_CN/)\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/cafe/teams/13566/"
+"zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -46,7 +47,9 @@ msgid ""
 "instead of a font specific to lapiz. If this option is turned off, then the "
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
-msgstr "是否要为编辑文本指定不同于系统默认字体的字体。如果关闭了此选项，“编辑器字体”选项中的字体名称将会替代系统字体。"
+msgstr ""
+"是否要为编辑文本指定不同于系统默认字体的字体。如果关闭了此选项，“编辑器字"
+"体”选项中的字体名称将会替代系统字体。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:15
 msgctxt "editor-font"
@@ -97,7 +100,9 @@ msgstr "生成备份文件"
 msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr "Lapiz 是否应为保存的文件创建备份文件。您可以在“备份文件扩展名”选项中设置备份文件的扩展名。"
+msgstr ""
+"Lapiz 是否应为保存的文件创建备份文件。您可以在“备份文件扩展名”选项中设置备份"
+"文件的扩展名。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -108,7 +113,9 @@ msgid ""
 "Whether lapiz should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
-msgstr "Lapiz 是否应每隔一段时间自动保存已修改的文件。您可以在“自动保存时间间隔”选项中设置该时间间隔。"
+msgstr ""
+"Lapiz 是否应每隔一段时间自动保存已修改的文件。您可以在“自动保存时间间隔”选项"
+"中设置该时间间隔。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -156,11 +163,13 @@ msgstr "自动换行模式"
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"指定编辑区域中如何将长行折断。使用“CTK_WRAP_NONE”代表不换行，“CTK_WRAP_WORD”代表按单词换行，而“CTK_WRAP_CHAR”代表按字符换行。请注意，这些值是区分大小写的，所以请确定必须按照这里说明的大小写出现。"
+"指定编辑区域中如何将长行折断。使用“CTK_WRAP_NONE”代表不换"
+"行，“CTK_WRAP_WORD”代表按单词换行，而“CTK_WRAP_CHAR”代表按字符换行。请注意，"
+"这些值是区分大小写的，所以请确定必须按照这里说明的大小写出现。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
@@ -242,8 +251,10 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"指定在按下 HOME 和 END "
-"键时光标如何移动。使用“DISABLED”以总是移动到行的开始/结尾，“AFTER”以在第一次按下键时移动到行的开始/结尾并在第二次按下键时忽略空白地移动到文本的开始/结尾，“BEFORE”以在移动到行的开始/结尾前先移动到文本的开始/结尾，“ALWAYS”以总是移动到文本的开始/结尾而不是行的开始/结尾。"
+"指定在按下 HOME 和 END 键时光标如何移动。使用“DISABLED”以总是移动到行的开始/"
+"结尾，“AFTER”以在第一次按下键时移动到行的开始/结尾并在第二次按下键时忽略空白"
+"地移动到文本的开始/结尾，“BEFORE”以在移动到行的开始/结尾前先移动到文本的开始/"
+"结尾，“ALWAYS”以总是移动到文本的开始/结尾而不是行的开始/结尾。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -289,11 +300,14 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
-"工具栏按钮的风格。可供选择的值包括：“LAPIZ_TOOLBAR_SYSTEM”代表使用系统默认风格，“LAPIZ_TOOLBAR_ICONS”代表只显示图标，“LAPIZ_TOOLBAR_AND_TEXT”代表同时显示图标和文字，而“LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ”代表在图标旁边显示文字。请注意，这些值是区分大小写的，所以请确定必须按照这里说明的大小写出现。"
+"工具栏按钮的风格。可供选择的值包括：“LAPIZ_TOOLBAR_SYSTEM”代表使用系统默认风"
+"格，“LAPIZ_TOOLBAR_ICONS”代表只显示图标，“LAPIZ_TOOLBAR_AND_TEXT”代表同时显示"
+"图标和文字，而“LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ”代表在图标旁边显示文字。请注"
+"意，这些值是区分大小写的，所以请确定必须按照这里说明的大小写出现。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -309,8 +323,7 @@ msgid "Side Pane is Visible"
 msgstr "侧边栏可见"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "是否显示编辑窗口左侧的侧边栏。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -337,8 +350,8 @@ msgstr "最大当前文件数"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr "设定最近打开文件数的最大值，这个将在“最近打开过的文件”子菜单中显示。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:166
@@ -346,8 +359,7 @@ msgid "Print Syntax Highlighting"
 msgstr "打印语法突出显示"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "Lapiz 是否应在打印文档时打印语法突出显示。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -355,8 +367,7 @@ msgid "Print Header"
 msgstr "打印页眉"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "Lapiz 是否应在打印文档时包含文档头。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -367,11 +378,13 @@ msgstr "打印时换行模式"
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"指定打印时如何将长行折断。使用“CTK_WRAP_NONE”代表不换行，“CTK_WRAP_WORD”代表按单词换行，而“CTK_WRAP_CHAR”代表按字符换行。请注意，这些值是区分大小写的，所以请确定必须按照这里说明的大小写出现。"
+"指定打印时如何将长行折断。使用“CTK_WRAP_NONE”代表不换行，“CTK_WRAP_WORD”代表"
+"按单词换行，而“CTK_WRAP_CHAR”代表按字符换行。请注意，这些值是区分大小写的，所"
+"以请确定必须按照这里说明的大小写出现。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:181
 msgid "Print Line Numbers"
@@ -382,7 +395,8 @@ msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, lapiz will print line numbers every such number of "
 "lines."
-msgstr "如果该值为 0，则在打印文档时不插入行号；否则，Lapiz 将每隔指定行数插入行号。"
+msgstr ""
+"如果该值为 0，则在打印文档时不插入行号；否则，Lapiz 将每隔指定行数插入行号。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:185
 msgctxt "print-font-body-pango"
@@ -430,8 +444,8 @@ msgstr "设定打印时行号所用的字体。只有当“打印行号”选项
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -440,9 +454,11 @@ msgstr "自动检测的编码"
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
-msgstr "lapiz 自动检测文件编码时所用的编码清单。“CURRENT”为当前区域编码。只能使用可识别的编码。"
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
+msgstr ""
+"lapiz 自动检测文件编码时所用的编码清单。“CURRENT”为当前区域编码。只能使用可识"
+"别的编码。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
@@ -457,7 +473,8 @@ msgstr "菜单中显示的编码"
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
-msgstr "在打开/保存文件选择器中的字符代码菜单中显示的编码列表。只使用可识别的编码。"
+msgstr ""
+"在打开/保存文件选择器中的字符代码菜单中显示的编码列表。只使用可识别的编码。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -483,7 +500,9 @@ msgstr "激活插件"
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
-msgstr "列出激活的插件。其中包含激活插件的“位置”。请参看 .lapiz-plugin 文件以便获得给定插件的“位置”。"
+msgstr ""
+"列出激活的插件。其中包含激活插件的“位置”。请参看 .lapiz-plugin 文件以便获得给"
+"定插件的“位置”。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -503,8 +522,8 @@ msgid ""
 "none' no showing; 'show-trailing' showing only trailing spaces; 'show-all' "
 "showing all spaces."
 msgstr ""
-"lapiz 是否应在编辑器窗口中显示不换行空格：'show-none'不显示； 'show-trailing'仅显示尾随空格； 'show-"
-"all'显示所有空格。"
+"lapiz 是否应在编辑器窗口中显示不换行空格：'show-none'不显示； 'show-"
+"trailing'仅显示尾随空格； 'show-all'显示所有空格。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:236
 msgid "Show tabs"
@@ -512,12 +531,11 @@ msgstr "显示制表符"
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
-"lapiz 是否应在编辑器窗口中显示制表符：'show-none'不显示； 'show-trailing'仅显示尾随空格； 'show-"
-"all'显示所有空格。"
+"lapiz 是否应在编辑器窗口中显示制表符：'show-none'不显示； 'show-trailing'仅显"
+"示尾随空格； 'show-all'显示所有空格。"
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
 msgid "Show spaces"
@@ -529,8 +547,8 @@ msgid ""
 "showing; 'show-trailing' showing only trailing spaces; 'show-all' showing "
 "all spaces."
 msgstr ""
-"lapiz 是否应在编辑器窗口中显示空格：'show-none'不显示； 'show-trailing'仅显示尾随空格； 'show-"
-"all'显示所有空格。"
+"lapiz 是否应在编辑器窗口中显示空格：'show-none'不显示； 'show-trailing'仅显示"
+"尾随空格； 'show-all'显示所有空格。"
 
 #: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
 msgid "Lapiz"
@@ -544,19 +562,22 @@ msgstr "用于 CAFE 桌面环境的文本编辑器"
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
-"Lapiz 是一个小型但功能强大的文本编辑器，专门为 CAFE 桌面设计。它具有大多数标准的文本编辑器功能，并且完全支持 Unicode "
-"中的国际文本。高级功能包括语法高亮显示和源代码自动缩进，在一个窗口中打印和编辑多个文档。"
+"Lapiz 是一个小型但功能强大的文本编辑器，专门为 CAFE 桌面设计。它具有大多数标"
+"准的文本编辑器功能，并且完全支持 Unicode 中的国际文本。高级功能包括语法高亮显"
+"示和源代码自动缩进，在一个窗口中打印和编辑多个文档。"
 
 #: data/lapiz.appdata.xml.in:17
 msgid ""
 "Lapiz is extensible through a plugin system, which currently includes "
 "support for spell checking, comparing files, viewing CVS ChangeLogs, and "
 "adjusting indentation levels."
-msgstr "Lapiz 可通过插件系统扩展，该插件系统当前包括对拼写检查、比较文件、查看CVS更改日志以及调整缩进级别的支持。"
+msgstr ""
+"Lapiz 可通过插件系统扩展，该插件系统当前包括对拼写检查、比较文件、查看CVS更改"
+"日志以及调整缩进级别的支持。"
 
 #: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
@@ -566,14 +587,7 @@ msgstr "文本编辑器"
 msgid "Edit text files"
 msgstr "编辑文本文件"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -593,9 +607,8 @@ msgstr "关闭且不保存(_W)"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -631,8 +644,7 @@ msgstr "问题"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -656,16 +668,14 @@ msgstr[0] "如果您不保存，前一分钟零 %ld 秒所做的更改将永久�
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] " 如果您不保存，前 %ld 分钟所做的更改将永久丢失。 "
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "如果您不保存，上 %d 小时所做的更改将永久丢失。"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -709,8 +719,7 @@ msgstr[0] "对 %d个文档所做的更改将永久丢失。 "
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] "还有 %d个文档已做更改但尚未保存。关闭前先保存吗？ "
@@ -1161,8 +1170,7 @@ msgstr "还原对文档“%s”未保存的更改吗？"
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1186,16 +1194,14 @@ msgstr[0] "上一分钟零 %ld 秒内对文档所做的更改将永久丢失。 
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
 msgstr[0] "前 %ld 分钟内对文档所做的更改将永久丢失。 "
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
+msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "上 %d 小时内对文档所做的更改将永久丢失。"
 
 #: lapiz/lapiz-commands-file.c:1186
@@ -1243,7 +1249,8 @@ msgid ""
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Lapiz 是自由软件；您可以按照自由软件基金会所发表的 GNU GPL 协议自由发放和/或修改它；GPL 协议应该采用第二版或以后的任何版本。"
+"Lapiz 是自由软件；您可以按照自由软件基金会所发表的 GNU GPL 协议自由发放和/或"
+"修改它；GPL 协议应该采用第二版或以后的任何版本。"
 
 #: lapiz/lapiz-commands-help.c:74
 msgid ""
@@ -1252,17 +1259,18 @@ msgid ""
 "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
 "details."
 msgstr ""
-"Lapiz 发表的目的是希望它能够对您有用，但我们没有任何保证；对于以任何用途使用它所造成的任何直接或间接后果都不承担任何责任。请参看GNU GPL "
-"协议中的细节。"
+"Lapiz 发表的目的是希望它能够对您有用，但我们没有任何保证；对于以任何用途使用"
+"它所造成的任何直接或间接后果都不承担任何责任。请参看GNU GPL 协议中的细节。"
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
-"您应该在收到 Lapiz 的同时收到了 GNU GPL 协议的副本；如果您没有收到的话，请给自由软件基金会写信，地址是 51 Franklin "
-"Street, Fifth Floor, Boston, MA 02110-1301 USA"
+"您应该在收到 Lapiz 的同时收到了 GNU GPL 协议的副本；如果您没有收到的话，请给"
+"自由软件基金会写信，地址是 51 Franklin Street, Fifth Floor, Boston, MA "
+"02110-1301 USA"
 
 #: lapiz/lapiz-commands-help.c:113
 msgid "About Lapiz"
@@ -1276,10 +1284,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "Christopher Meng <i@cicku.me>, 2012-2013\n"
@@ -1543,8 +1552,8 @@ msgstr "找不到主机 %s。请检查您的代理服务器设置是否正确，
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr "主机名无效。请检查键入的位置是否正确，然后重试。"
 
 #: lapiz/lapiz-io-error-message-area.c:301
@@ -1624,7 +1633,8 @@ msgstr "在打开文件 %s 的时候出现问题。"
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
-msgstr "您打开的文件有一些非法字符。如果您继续编辑这个文件，这个文件有可能不能使用。"
+msgstr ""
+"您打开的文件有一些非法字符。如果您继续编辑这个文件，这个文件有可能不能使用。"
 
 #: lapiz/lapiz-io-error-message-area.c:621
 msgid "You can also choose another character encoding and try again."
@@ -1663,8 +1673,8 @@ msgstr "此文件(%s)已经在另外的 lapiz 窗口中打开。"
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr "lapiz 已经在非编辑方式中打开了此文件的其它实例。您是否想要仍然编辑？"
 
 #: lapiz/lapiz-io-error-message-area.c:864
@@ -1683,8 +1693,7 @@ msgid "The file %s has been modified since reading it."
 msgstr "文件 %s 自上次读取之后发生了修改。"
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "如果您保存的话，外部的所有更改都将丢失。仍然保存吗？"
 
 #: lapiz/lapiz-io-error-message-area.c:982
@@ -1700,10 +1709,11 @@ msgstr "保存 %s 时无法创建临时备份文件"
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"lapiz 无法在保存新文件时备份文件的旧副本。您可以忽略此警告，仍然进行保存，但是如果是在保存中发生了错误，，您可能会丢失文件的旧副本。仍然保存吗？"
+"lapiz 无法在保存新文件时备份文件的旧副本。您可以忽略此警告，仍然进行保存，但"
+"是如果是在保存中发生了错误，，您可能会丢失文件的旧副本。仍然保存吗？"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:1061
@@ -1715,8 +1725,8 @@ msgstr "lapiz 无法以写入模式处理 %s 位置。请检查键入的位置�
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr "lapiz 无法以写入模式处理此位置。请检查键入的位置是否正确，然后重试。"
 
 #: lapiz/lapiz-io-error-message-area.c:1078
@@ -1734,8 +1744,8 @@ msgstr "您没有权限保存文件。请检查键入的位置是否正确，然
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr "没有足够的磁盘空间用于保存文件。请释放一些磁盘空间，然后重试。"
 
 #: lapiz/lapiz-io-error-message-area.c:1095
@@ -1750,16 +1760,17 @@ msgstr "已经存在同名文件。请使用不同的名称。"
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr "您试图用来保存文件的磁盘有文件名长度的限制。请使用较短的名称。"
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
-msgstr "磁盘有文件大小的限制，请保存较小的文件或者将文件保存到没有此限制的磁盘上。"
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
+msgstr ""
+"磁盘有文件大小的限制，请保存较小的文件或者将文件保存到没有此限制的磁盘上。"
 
 #: lapiz/lapiz-io-error-message-area.c:1129
 #, c-format
@@ -1820,14 +1831,12 @@ msgstr "打印语法突出显示(_X)"
 msgid "Print line nu_mbers"
 msgstr "打印行号(_M)"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "每几行打印一次行号(_N)"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "行"
@@ -1938,8 +1947,7 @@ msgstr "覆盖"
 msgid "INS"
 msgstr "插入"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -1993,38 +2001,38 @@ msgstr "将 %s 保存到 %s"
 msgid "Saving %s"
 msgstr "保存 %s"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "只读"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "打开文件 %s 出错"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "还原文件 %s 出错"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "保存文件 %s 出错"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "名称："
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME 类型："
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "编码："
 
@@ -2780,12 +2788,6 @@ msgstr "文件浏览器面板"
 msgid "Easy file access from the side pane"
 msgstr "从侧边栏轻松访问文件"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr "系统文件管理器"
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "将位置设定为第一个文档"
@@ -2797,7 +2799,8 @@ msgid ""
 "generally applies to opening a document from the command line or opening it "
 "with Baul, etc.)"
 msgstr ""
-"如果为 TRUE，则文件浏览器插件将查看第一个打开的文件所在目录，如果文件浏览器没有使用过的话。(这种情况通常出现在从命令行或者 Baul 打开文档)"
+"如果为 TRUE，则文件浏览器插件将查看第一个打开的文件所在目录，如果文件浏览器没"
+"有使用过的话。(这种情况通常出现在从命令行或者 Baul 打开文档)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -2810,8 +2813,9 @@ msgid ""
 "(filter binary files) and hidden_and_binary (filter both hidden and binary "
 "files)."
 msgstr ""
-"此值决定了文件浏览器过滤文件的方式。可供选择的值有：none (不进行过滤)，hidden (过滤隐藏文件)，binary (过滤二进制文件)和 "
-"hidden_and_binary (过滤隐藏文件和二进制文件)"
+"此值决定了文件浏览器过滤文件的方式。可供选择的值有：none (不进行过滤)，"
+"hidden (过滤隐藏文件)，binary (过滤二进制文件)和 hidden_and_binary (过滤隐藏"
+"文件和二进制文件)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2819,8 +2823,8 @@ msgstr "文件浏览器过滤模式"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr "文件浏览器进行过滤的模式。此过滤器取决于 filter_mode。"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
@@ -2841,7 +2845,9 @@ msgstr "文件浏览器根目录"
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
-msgstr "当 onload/tree_view 为 TRUE 时，文件浏览器插件载入将使用此值作为文件浏览器的根目录。"
+msgstr ""
+"当 onload/tree_view 为 TRUE 时，文件浏览器插件载入将使用此值作为文件浏览器的"
+"根目录。"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2849,11 +2855,12 @@ msgstr "文件浏览器虚拟根目录"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"当 onload/tree_view 为 TRUE 时，文件浏览器插件载入将使用此值作为文件浏览器的虚拟根目录。虚拟根目录必须位于实际根目录之下。"
+"当 onload/tree_view 为 TRUE 时，文件浏览器插件载入将使用此值作为文件浏览器的"
+"虚拟根目录。虚拟根目录必须位于实际根目录之下。"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
@@ -2957,8 +2964,7 @@ msgid ""
 "settings to make the file visible"
 msgstr "重命名的文件现在已被过滤掉。您需要调整您的过滤器设置才能看到文件"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "文件"
@@ -2969,8 +2975,7 @@ msgid ""
 "settings to make the file visible"
 msgstr "新文件现在已被过滤掉。您需要调整您的过滤器设置才能看到文件"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "目录"
@@ -3146,12 +3151,6 @@ msgstr "Python 控制台"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "位于底部面板中的交互式 Python 控制台"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr "text-x-python"
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "错误颜色(_E)："
@@ -3184,12 +3183,6 @@ msgstr "快速地打开文档"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "快速地打开文件"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3282,7 +3275,9 @@ msgstr "还原选中的片断"
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
-msgstr "这不是有效的跳格触发器。触发器必须是包含包含字母或者单个非字母字符，比如 { 或 [ 等等。"
+msgstr ""
+"这不是有效的跳格触发器。触发器必须是包含包含字母或者单个非字母字符，比如 "
+"{ 或 [ 等等。"
 
 #: plugins/snippets/snippets/Manager.py:771
 #, python-format
@@ -3428,12 +3423,6 @@ msgstr "排序"
 msgid "Sorts a document or selected text."
 msgstr "将文档或选中的文字排序。"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "排序(_S)"
@@ -3462,10 +3451,8 @@ msgstr "您无法撤消排序操作"
 msgid "Autocheck Type"
 msgstr "自动检查类型"
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3492,8 +3479,7 @@ msgstr "检查拼写"
 msgid "Suggestions"
 msgstr "建议"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(正确的拼写)"
@@ -3505,6 +3491,7 @@ msgstr "完成拼写检查"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3514,6 +3501,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3522,6 +3510,7 @@ msgstr "未知 (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3655,12 +3644,6 @@ msgstr "拼写检查器"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "检查当前文档的拼写。"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6340,12 +6323,6 @@ msgstr "保存时不附带尾随空白"
 msgid "Removes trailing spaces from lines before saving."
 msgstr "保存前删除文件中的尾随空格。"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "插入日期和时间"
@@ -6370,8 +6347,7 @@ msgstr "使用自定义格式(_U)"
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%Y/%m/%d %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6388,3 +6364,13 @@ msgstr "在插入日期/时间时..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "提示可使用的格式(_P)"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+
+#~ msgid "system-file-manager"
+#~ msgstr "系统文件管理器"
+
+#~ msgid "text-x-python"
+#~ msgstr "text-x-python"

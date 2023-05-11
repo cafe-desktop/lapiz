@@ -2,25 +2,25 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the lapiz package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Yogesh K S <yogesh@karnatakaeducation.org.in>, 2020
 # Martin Wimpress <code@flexion.org>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # karthik holla <karthikholla87@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lapiz 1.23.2\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2020-01-13 17:23+0100\n"
+"POT-Creation-Date: 2023-05-11 10:48+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: karthik holla <karthikholla87@gmail.com>, 2020\n"
 "Language-Team: Kannada (https://www.transifex.com/cafe/teams/13566/kn/)\n"
+"Language: kn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: kn\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/org.cafe.lapiz.gschema.xml.in:11
@@ -90,9 +90,8 @@ msgid ""
 "Whether lapiz should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"lapiz ತಾನು ಉಳಿಸುವ ಕಡತಗಳ ಬ್ಯಾಕ್ಅಪ್ ಪ್ರತಿಗಳನ್ನು ಮಾಡಬೇಕೆ. ನೀವು \"ಬ್ಯಾಕ್ಅಪ್ "
-"ಪ್ರತಿ ಎಕ್ಸ್‍ಟೆನ್ಶನ್\" ಆಯ್ಕೆಯೊಂದಿಗೆ ಬ್ಯಾಕ್ಅಪ್ ಕಡತ ವಿಸ್ತರಣೆಯನ್ನು "
-"ಹೊಂದಿಸಬಹುದಾಗಿದೆ."
+"lapiz ತಾನು ಉಳಿಸುವ ಕಡತಗಳ ಬ್ಯಾಕ್ಅಪ್ ಪ್ರತಿಗಳನ್ನು ಮಾಡಬೇಕೆ. ನೀವು \"ಬ್ಯಾಕ್ಅಪ್ ಪ್ರತಿ "
+"ಎಕ್ಸ್‍ಟೆನ್ಶನ್\" ಆಯ್ಕೆಯೊಂದಿಗೆ ಬ್ಯಾಕ್ಅಪ್ ಕಡತ ವಿಸ್ತರಣೆಯನ್ನು ಹೊಂದಿಸಬಹುದಾಗಿದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:41
 msgid "Autosave"
@@ -104,8 +103,8 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"ಮಾರ್ಪಡಿಸಲಾದ ಕಡತಗಳನ್ನು ನಿಗದಿತ ಕಾಲಾವಧಿಯ ನಂತರ lapiz ತಾನೆ ತಾನಾಗಿ ಉಳಿಸಬೇಕೆ. "
-"\"ಸ್ವಯಂ ಉಳಿಸುವ ಕಾಲಾವಧಿ\"ಯಲ್ಲಿ ಸಮಯವನ್ನು ನೀವು ಹೊಂದಿಸಬಹುದಾಗಿದೆ."
+"ಮಾರ್ಪಡಿಸಲಾದ ಕಡತಗಳನ್ನು ನಿಗದಿತ ಕಾಲಾವಧಿಯ ನಂತರ lapiz ತಾನೆ ತಾನಾಗಿ ಉಳಿಸಬೇಕೆ. \"ಸ್ವಯಂ "
+"ಉಳಿಸುವ ಕಾಲಾವಧಿ\"ಯಲ್ಲಿ ಸಮಯವನ್ನು ನೀವು ಹೊಂದಿಸಬಹುದಾಗಿದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:46
 msgid "Autosave Interval"
@@ -116,8 +115,8 @@ msgid ""
 "Number of minutes after which lapiz will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"ಮಾರ್ಪಡಿಸಲಾದ ಕಡತಗಳನ್ನು lapiz ಇಷ್ಟು ನಿಮಿಷಗಳ ನಂತರ ತಾನೆ ತಾನಾಗಿ ಉಳಿಸುತ್ತದೆ. "
-"\"ಸ್ವಯಂ ಉಳಿಸು\" ಆಯ್ಕೆಯನ್ನು ಆನ್ ಮಾಡಲಾಗಿದ್ದರೆ ಮಾತ್ರ ಇದು ಪರಿಣಾಮಕಾರಿಯಾಗುತ್ತದೆ."
+"ಮಾರ್ಪಡಿಸಲಾದ ಕಡತಗಳನ್ನು lapiz ಇಷ್ಟು ನಿಮಿಷಗಳ ನಂತರ ತಾನೆ ತಾನಾಗಿ ಉಳಿಸುತ್ತದೆ. \"ಸ್ವಯಂ "
+"ಉಳಿಸು\" ಆಯ್ಕೆಯನ್ನು ಆನ್ ಮಾಡಲಾಗಿದ್ದರೆ ಮಾತ್ರ ಇದು ಪರಿಣಾಮಕಾರಿಯಾಗುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:51
 msgid "Show save confirmation"
@@ -136,8 +135,8 @@ msgid ""
 "List of VFS schemes lapiz supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"lapiz ಬರೆಯಬಹುದಾದ ಕ್ರಮದಲ್ಲಿ ಬೆಂಬಲಿಸುವಂತಹ VFS ಸ್ಕೀಮ್‍ಗಳ ಪಟ್ಟಿ. "
-"ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ 'ಕಡತ' ಸ್ಕೀಮ್ ಬರೆಯಬಹುದಾದ ಕ್ರಮದಲ್ಲಿರುತ್ತದೆ."
+"lapiz ಬರೆಯಬಹುದಾದ ಕ್ರಮದಲ್ಲಿ ಬೆಂಬಲಿಸುವಂತಹ VFS ಸ್ಕೀಮ್‍ಗಳ ಪಟ್ಟಿ. ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ 'ಕಡತ' "
+"ಸ್ಕೀಮ್ ಬರೆಯಬಹುದಾದ ಕ್ರಮದಲ್ಲಿರುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:61
 msgid "Maximum Number of Undo Actions"
@@ -148,8 +147,8 @@ msgid ""
 "Maximum number of actions that lapiz will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"lapiz‍ಗೆ ಸಾಧ್ಯವಿರುವ ಹಿಂದಿನಂತೆ ಮಾಡು ಅಥವ ಪುನಃ ಮಾಡು ಕಾರ್ಯಗಳ ಗರಿಷ್ಟ ಸಂಖ್ಯೆ. "
-"ಅಪರಿಮಿತ ಸಂಖ್ಯೆಯ ಕಾರ್ಯಗಳಿಗಾಗಿ  \"-1\" ಅನ್ನು ಬಳಸಿ."
+"lapiz‍ಗೆ ಸಾಧ್ಯವಿರುವ ಹಿಂದಿನಂತೆ ಮಾಡು ಅಥವ ಪುನಃ ಮಾಡು ಕಾರ್ಯಗಳ ಗರಿಷ್ಟ ಸಂಖ್ಯೆ. ಅಪರಿಮಿತ "
+"ಸಂಖ್ಯೆಯ ಕಾರ್ಯಗಳಿಗಾಗಿ  \"-1\" ಅನ್ನು ಬಳಸಿ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:66
 msgid "Line Wrapping Mode"
@@ -159,15 +158,15 @@ msgstr "ಸಾಲು ಆವರಿಸುವ(ರ್ಯಾಪಿಂಗ್) ಕ್�
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"CTK_WRAP_NONE\" "
 "for no wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
-"ಉದ್ದದ ಸಾಲುಗಳನ್ನು ಸಂಪಾದಕೀಯ ಕ್ಷೇತ್ರದಲ್ಲಿ ಹೇಗೆ ಆವರಿಕೆ ಮಾಡುವುದು ಎಂದು "
-"ಸೂಚಿಸುತ್ತದೆ. ಯಾವುದೆ ಆವರಿಕೆ ಮಾಡದಿರಲು \"CTK_WRAP_NONE\" ಅನ್ನು, ಪದಗಳ ಮೇರೆಗಳಲ್ಲಿ"
-" ಆವರಿಕೆ ಮಾಡಲು \"CTK_WRAP_WORD\" ಅನ್ನು, ಹಾಗು ಪ್ರತ್ಯೇಕ ಅಕ್ಷರಗಳ ಮೇರೆಗಳಲ್ಲಿ "
-"ಆವರಿಕೆ ಮಾಡಲು \"CTK_WRAP_CHAR\" ಅನ್ನು ಬಳಸಬಹುದಾಗಿದೆ. ಈ ಮೌಲ್ಯಗಳು ಕೇಸ್ "
-"ಸಂವೇದಿಯಾಗಿದ್ದು, ಇಲ್ಲಿ ತೋರಿಸಿದಂತೆಯೆ ನಮೂದಿತಗೊಳ್ಳುವಂತೆ ಎಚ್ಚರಿಕೆವಹಿಸಿ."
+"ಉದ್ದದ ಸಾಲುಗಳನ್ನು ಸಂಪಾದಕೀಯ ಕ್ಷೇತ್ರದಲ್ಲಿ ಹೇಗೆ ಆವರಿಕೆ ಮಾಡುವುದು ಎಂದು ಸೂಚಿಸುತ್ತದೆ. "
+"ಯಾವುದೆ ಆವರಿಕೆ ಮಾಡದಿರಲು \"CTK_WRAP_NONE\" ಅನ್ನು, ಪದಗಳ ಮೇರೆಗಳಲ್ಲಿ ಆವರಿಕೆ ಮಾಡಲು "
+"\"CTK_WRAP_WORD\" ಅನ್ನು, ಹಾಗು ಪ್ರತ್ಯೇಕ ಅಕ್ಷರಗಳ ಮೇರೆಗಳಲ್ಲಿ ಆವರಿಕೆ ಮಾಡಲು "
+"\"CTK_WRAP_CHAR\" ಅನ್ನು ಬಳಸಬಹುದಾಗಿದೆ. ಈ ಮೌಲ್ಯಗಳು ಕೇಸ್ ಸಂವೇದಿಯಾಗಿದ್ದು, ಇಲ್ಲಿ "
+"ತೋರಿಸಿದಂತೆಯೆ ನಮೂದಿತಗೊಳ್ಳುವಂತೆ ಎಚ್ಚರಿಕೆವಹಿಸಿ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:71
 msgid "Tab Size"
@@ -177,8 +176,7 @@ msgstr "ಟ್ಯಾಬ್ ಗಾತ್ರ"
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
-msgstr ""
-"ಟ್ಯಾಬ್ ಅಕ್ಷರಗಳ ಬದಲು ತೋರಿಸಬೇಕಾದ ಗರಿಷ್ಟ ಸಂಖ್ಯೆಯ ಖಾಲಿಜಾಗಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ."
+msgstr "ಟ್ಯಾಬ್ ಅಕ್ಷರಗಳ ಬದಲು ತೋರಿಸಬೇಕಾದ ಗರಿಷ್ಟ ಸಂಖ್ಯೆಯ ಖಾಲಿಜಾಗಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:76
 msgid "Insert spaces"
@@ -250,13 +248,13 @@ msgid ""
 "the start/end of the line and \"ALWAYS\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"HOME ಹಾಗು END ಕೀಲಿಗಳನ್ನು ಒತ್ತಿದಾಗ ತೆರೆಸೂಚಕವು ಹೇಗೆ ಚಲಿಸಬೇಕು ಎಂದು ಸೂಚಿಸುತ್ತದೆ."
-" ಪ್ರತಿಬಾರಿಯೂ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು \"ಅಶಕ್ತಗೊಂಡ\" ಅನ್ನು, ಪ್ರಥಮ ಬಾರಿ "
-"ಕೀಲಿಗಳನ್ನು ಒತ್ತಿದಾಗ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು \"ನಂತರ\" ಅನ್ನು ಹಾಗು ಎರಡನೆ "
-"ಬಾರಿ ಒತ್ತಿದಾಗ ಖಾಲಿಜಾಗಗಳನ್ನು ಉಪೇಕ್ಷಿಸಿ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು,ಸಾಲಿನ "
-"ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತಲುಪುವ ಮೊದಲು ಪಠ್ಯದ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು \"ಮೊದಲು\" ಅನ್ನು "
-"ಹಾಗೂ ಪ್ರತಿಬಾರಿಯೂ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತಲುಪುವ ಬದಲು ಪಠ್ಯದ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ "
-"ತೆರಳಲು \"ಪ್ರತಿಬಾರಿ\" ಅನ್ನು ಬಳಸಿ."
+"HOME ಹಾಗು END ಕೀಲಿಗಳನ್ನು ಒತ್ತಿದಾಗ ತೆರೆಸೂಚಕವು ಹೇಗೆ ಚಲಿಸಬೇಕು ಎಂದು ಸೂಚಿಸುತ್ತದೆ. "
+"ಪ್ರತಿಬಾರಿಯೂ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು \"ಅಶಕ್ತಗೊಂಡ\" ಅನ್ನು, ಪ್ರಥಮ ಬಾರಿ "
+"ಕೀಲಿಗಳನ್ನು ಒತ್ತಿದಾಗ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು \"ನಂತರ\" ಅನ್ನು ಹಾಗು ಎರಡನೆ ಬಾರಿ "
+"ಒತ್ತಿದಾಗ ಖಾಲಿಜಾಗಗಳನ್ನು ಉಪೇಕ್ಷಿಸಿ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು,ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/"
+"ತುದಿಗೆ ತಲುಪುವ ಮೊದಲು ಪಠ್ಯದ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು \"ಮೊದಲು\" ಅನ್ನು ಹಾಗೂ "
+"ಪ್ರತಿಬಾರಿಯೂ ಸಾಲಿನ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತಲುಪುವ ಬದಲು ಪಠ್ಯದ ಆರಂಭಕ್ಕೆ/ತುದಿಗೆ ತೆರಳಲು "
+"\"ಪ್ರತಿಬಾರಿ\" ಅನ್ನು ಬಳಸಿ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -266,8 +264,7 @@ msgstr "ತೆರೆಸೂಚಕವನ್ನು ಹಿಂದಿನ ಸ್ಥಳ�
 msgid ""
 "Whether lapiz should restore the previous cursor position when a file is "
 "loaded."
-msgstr ""
-"ಒಂದು ಕಡತವನ್ನು ಲೋಡ್‌ ಮಾಡಿದಾಗ ತೆರೆಸೂಚಕವನ್ನು ಅದರ ಮುಂಚಿನ ಸ್ಥಳಕ್ಕೆ ಮರಳಿಸಬೇಕೆ."
+msgstr "ಒಂದು ಕಡತವನ್ನು ಲೋಡ್‌ ಮಾಡಿದಾಗ ತೆರೆಸೂಚಕವನ್ನು ಅದರ ಮುಂಚಿನ ಸ್ಥಳಕ್ಕೆ ಮರಳಿಸಬೇಕೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:121
 msgid "Enable Search Highlighting"
@@ -303,17 +300,17 @@ msgid ""
 "Style for the toolbar buttons. Possible values are \"LAPIZ_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"LAPIZ_TOOLBAR_ICONS\" to display icons "
 "only, \"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons."
-" Note that the values are case-sensitive, so make sure they appear exactly "
-"as mentioned here."
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
 msgstr ""
 "ಉಪಕರಣಪಟ್ಟಿಯ ಗುಂಡಿಗಳಿಗಾಗಿನ ಶೈಲಿ. ಸಾಧ್ಯವಿರುವ ಮೌಲ್ಯಗಳೆಂದರೆ, ಗಣಕದ ಪೂರ್ವನಿಯೋಜಿತ "
 "ಶೈಲಿಯನ್ನು ಬಳಸಲು \"LAPIZ_TOOLBAR_SYSTEM\" ಆಗಿರುತ್ತದೆ, ಕೇವಲ ಲಾಂಛನಗಳನ್ನು ಮಾತ್ರ "
 "ತೋರಿಸಲು \"LAPIZ_TOOLBAR_ICONS\"ಆಗಿರುತ್ತದೆ,ಲಾಂಛನ ಹಾಗು ಪಠ್ಯವನ್ನು ತೋರಿಸಲು "
 "\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" ಆಗಿರುತ್ತದೆ, ಹಾಗು ಲಾಂಛನಗಳ ಪಕ್ಕದಲ್ಲಿ ಆದ್ಯತೆಯ "
-"ಮೇರೆಗೆ ಪಠ್ಯವನ್ನು ಕಾಣಿಸಲು\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" ಆಗಿರುತ್ತದೆ. ಈ "
-"ಮೌಲ್ಯಗಳು ಕೇಸ್ ಸಂವೇದಿ ಎನ್ನುವುದನ್ನು ನೆನಪಿಡಿ, ಆದ್ದರಿಂದ ಇಲ್ಲಿ ತೋರಿಸಿದಂತೆಯೆ "
-"ಕಾಣಿಸಿಕೊಳ್ಳುವುದು ಅನಿವಾರ್ಯವಾಗುತ್ತದೆ."
+"ಮೇರೆಗೆ ಪಠ್ಯವನ್ನು ಕಾಣಿಸಲು\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" ಆಗಿರುತ್ತದೆ. ಈ ಮೌಲ್ಯಗಳು "
+"ಕೇಸ್ ಸಂವೇದಿ ಎನ್ನುವುದನ್ನು ನೆನಪಿಡಿ, ಆದ್ದರಿಂದ ಇಲ್ಲಿ ತೋರಿಸಿದಂತೆಯೆ ಕಾಣಿಸಿಕೊಳ್ಳುವುದು "
+"ಅನಿವಾರ್ಯವಾಗುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -329,8 +326,7 @@ msgid "Side Pane is Visible"
 msgstr "ಬಲ ಫಲಕವು ಗೋಚರಿಸುತ್ತಿದೆ"
 
 #: data/org.cafe.lapiz.gschema.xml.in:147
-msgid ""
-"Whether the side pane at the left of editing windows should be visible."
+msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "ಸಂಪಾದಿಸುವ ವಿಂಡೋಗಳ ಎಡಭಾಗದಲ್ಲಿನ ಬದಿ ಫಲಕವು ಕಾಣಿಸುತ್ತಿರಬೇಕೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:151
@@ -357,8 +353,8 @@ msgstr "ಗರಿಷ್ಟ ಇತ್ತೀಚಿನ ಕಡತಗಳು"
 
 #: data/org.cafe.lapiz.gschema.xml.in:162
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed"
-" in the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
 "ಉಪಪರಿವಿಡಿಯಲ್ಲಿನ \"ಇತ್ತೀಚಿನ ಕಡತಗಳು\"ನಲ್ಲಿ ತೋರಿಸಲಾಗುವ ಗರಿಷ್ಟ ಸಂಖ್ಯೆಯ ಇತ್ತೀಚಿನ "
 "ಕಡತಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ."
@@ -368,8 +364,7 @@ msgid "Print Syntax Highlighting"
 msgstr "ವಾಕ್ಯ ಹೈಲೈಟಿಂಗನ್ನು ಮುದ್ರಿಸು"
 
 #: data/org.cafe.lapiz.gschema.xml.in:167
-msgid ""
-"Whether lapiz should print syntax highlighting when printing documents."
+msgid "Whether lapiz should print syntax highlighting when printing documents."
 msgstr "ದಸ್ತಾವೇಜುಗಳನ್ನು ಮುದ್ರಿಸುವಾಗ ಸಿಂಟಾಕ್ಸಿನ ಹೈಲೈಟಿಂಗ್ ಮುದ್ರಿಸಬೇಕೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:171
@@ -377,8 +372,7 @@ msgid "Print Header"
 msgstr "ಮುದ್ರಣ ಶೀರ್ಷಿಕೆ (Header)"
 
 #: data/org.cafe.lapiz.gschema.xml.in:172
-msgid ""
-"Whether lapiz should include a document header when printing documents."
+msgid "Whether lapiz should include a document header when printing documents."
 msgstr "ದಸ್ತಾವೇಜುಗಳನ್ನು ಮುದ್ರಿಸುವಾಗ lapiz ದಸ್ತಾವೇಜು ಹೆಡರುಗಳನ್ನು ಹೊಂದಿರಬೇಕೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:176
@@ -389,9 +383,9 @@ msgstr "ಸಾಲು ಆವರಿಕೆ(ವ್ರಾಪಿಂಗ್) ಕ್ರ�
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"CTK_WRAP_NONE\" for no "
 "wrapping, \"CTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that"
-" the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+"\"CTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
 msgstr ""
 "ಉದ್ದದ ಸಾಲುಗಳನ್ನು ಮುದ್ರಣಕ್ಕಾಗಿ ಆವರಿಕೆ ಮಾಡುವುದು ಹೇಗೆ ಎಂದು ಸೂಚಿಸುತ್ತದೆ. ಯಾವುದೆ "
 "ಆವರಿಕೆ ಮಾಡದಿರಲು \"CTK_WRAP_NONE\" ಅನ್ನು, ಪದಗಳ ಮೇರೆಗಳಲ್ಲಿ ಆವರಿಕೆ ಮಾಡಲು "
@@ -426,8 +420,8 @@ msgstr "ಮುದ್ರಣಕ್ಕಾಗಿ ಮುಖ್ಯ ಭಾಗದ ಅಕ
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"ದಸ್ತಾವೇಜುಗಳನ್ನು ಮುದ್ರಿಸುವಾಗ ದಸ್ತಾವೇಜಿನ ಮುಖ್ಯಭಾಗದಲ್ಲಿ ಬಳಸಬೇಕಿರುವ "
-"ಅಕ್ಷರಶೈಲಿಯನ್ನು ಸೂಚಿಸುತ್ತದೆ."
+"ದಸ್ತಾವೇಜುಗಳನ್ನು ಮುದ್ರಿಸುವಾಗ ದಸ್ತಾವೇಜಿನ ಮುಖ್ಯಭಾಗದಲ್ಲಿ ಬಳಸಬೇಕಿರುವ ಅಕ್ಷರಶೈಲಿಯನ್ನು "
+"ಸೂಚಿಸುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:190
 msgctxt "print-font-header-pango"
@@ -444,8 +438,7 @@ msgid ""
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
 "ಒಂದು ದಸ್ತಾವೇಜನ್ನು ಮುದ್ರಿಸುವಾಗ ಪುಟದ ಹೆಡರಿನಲ್ಲಿ ಬಳಸಬೇಕಿರುವ ಅಕ್ಷರಶೈಲಿಯನ್ನು "
-"ಸೂಚಿಸುತ್ತದೆ. \"ಹೆಡರನ್ನು ಮುದ್ರಿಸು\" ಆಯ್ಕೆಯು ಆನ್ ಆಗಿದ್ದಲ್ಲಿ ಮಾತ್ರ ಇದು "
-"ಕೆಲಸಮಾಡುತ್ತದೆ."
+"ಸೂಚಿಸುತ್ತದೆ. \"ಹೆಡರನ್ನು ಮುದ್ರಿಸು\" ಆಯ್ಕೆಯು ಆನ್ ಆಗಿದ್ದಲ್ಲಿ ಮಾತ್ರ ಇದು ಕೆಲಸಮಾಡುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:195
 msgctxt "print-font-numbers-pango"
@@ -461,14 +454,13 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"ಮುದ್ರಿಸುವಾಗ ಸಾಲಿನ ಸಂಖ್ಯೆಗಳಲ್ಲಿ ಬಳಸಬಹುದಾದ ಅಕ್ಷರಶೈಲಿಯನ್ನು ಸೂಚಿಸುತ್ತದೆ. \"ಸಾಲಿನ"
-" ಸಂಖ್ಯೆಗಳನ್ನು ಮುದ್ರಿಸು\" ಆಯ್ಕೆಯು ಸೊನ್ನೆಯಾಗಿಲ್ಲದೆ ಇದ್ದಲ್ಲಿ ಮಾತ್ರ ಇದು ಕೆಲಸ "
-"ಮಾಡುತ್ತದೆ."
+"ಮುದ್ರಿಸುವಾಗ ಸಾಲಿನ ಸಂಖ್ಯೆಗಳಲ್ಲಿ ಬಳಸಬಹುದಾದ ಅಕ್ಷರಶೈಲಿಯನ್ನು ಸೂಚಿಸುತ್ತದೆ. \"ಸಾಲಿನ "
+"ಸಂಖ್ಯೆಗಳನ್ನು ಮುದ್ರಿಸು\" ಆಯ್ಕೆಯು ಸೊನ್ನೆಯಾಗಿಲ್ಲದೆ ಇದ್ದಲ್ಲಿ ಮಾತ್ರ ಇದು ಕೆಲಸ ಮಾಡುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:200
 msgctxt "auto-detected"
-msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
-msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgid "[ 'UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:201
 msgid "Automatically Detected Encodings"
@@ -477,12 +469,12 @@ msgstr "ಸ್ವಯಂ ಪತ್ತೆ ಹಚ್ಚಲಾದ ಎನ್ಕೋಡ
 #: data/org.cafe.lapiz.gschema.xml.in:202
 msgid ""
 "Sorted list of encodings used by lapiz for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only"
-" recognized encodings are used."
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
-"ಒಂದು ಕಡತದ ಎನ್ಕೋಡಿಂಗನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪತ್ತೆಹಚ್ಚಲು lapiz‍ನಿಂದ ಬಳಸಲಾದ "
-"ಎನ್ಕೋಡಿಂಗ್‍ಗಳ ಪಟ್ಟಿ. \"ಚಾಲ್ತಿಯ\"ಲ್ಲಿರುವುದು ಪ್ರಸ್ತುತ ಲೊಕ್ಯಾಲ್ "
-"ಎನ್ಕೋಡಿಂಗ್‍ಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ. ಕೇವಲ ಮಾನ್ಯ ಎನ್ಕೋಡಿಂಗ್‍ಗಳನ್ನು ಮಾತ್ರ ಬಳಸಲಾಗಿದೆ."
+"ಒಂದು ಕಡತದ ಎನ್ಕೋಡಿಂಗನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪತ್ತೆಹಚ್ಚಲು lapiz‍ನಿಂದ ಬಳಸಲಾದ ಎನ್ಕೋಡಿಂಗ್‍ಗಳ "
+"ಪಟ್ಟಿ. \"ಚಾಲ್ತಿಯ\"ಲ್ಲಿರುವುದು ಪ್ರಸ್ತುತ ಲೊಕ್ಯಾಲ್ ಎನ್ಕೋಡಿಂಗ್‍ಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ. ಕೇವಲ ಮಾನ್ಯ "
+"ಎನ್ಕೋಡಿಂಗ್‍ಗಳನ್ನು ಮಾತ್ರ ಬಳಸಲಾಗಿದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:205
 msgctxt "shown-in-menu"
@@ -498,8 +490,8 @@ msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
 msgstr ""
-"ತೆರೆ/ಉಳಿಸು ಆಯ್ಕೆಗಾರನಲ್ಲಿರುವ ಕ್ಯಾರೆಕ್ಟರ್  ಎನ್‌ಕೋಡಿಂಗ್ ಪರಿವಿಡಿಯಲ್ಲಿನ "
-"ಎನ್ಕೋಡಿಂಗ್‍ಗಳ ಪಟ್ಟಿ. ಕೇವಲ ಮಾನ್ಯವಾದ ಎನ್ಕೋಡಿಂಗ್‍ಗಳನ್ನು ಮಾತ್ರ ಬಳಸಲಾಗುತ್ತದೆ."
+"ತೆರೆ/ಉಳಿಸು ಆಯ್ಕೆಗಾರನಲ್ಲಿರುವ ಕ್ಯಾರೆಕ್ಟರ್  ಎನ್‌ಕೋಡಿಂಗ್ ಪರಿವಿಡಿಯಲ್ಲಿನ ಎನ್ಕೋಡಿಂಗ್‍ಗಳ ಪಟ್ಟಿ. "
+"ಕೇವಲ ಮಾನ್ಯವಾದ ಎನ್ಕೋಡಿಂಗ್‍ಗಳನ್ನು ಮಾತ್ರ ಬಳಸಲಾಗುತ್ತದೆ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:211
 msgid "History for \"search for\" entries"
@@ -526,9 +518,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .lapiz-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"ಸಕ್ರಿಯ ಪ್ಲಗ್‌ಇನ್‌ಗಳ ಪಟ್ಟಿ. ಇದು ಸಕ್ರಿಯ ಪ್ಲಗ್ಇನ್‌ಗಳು ಇರುವ \"ತಾಣ\"ವನ್ನು "
-"ಹೊಂದಿರುತ್ತದೆ. ಒದಗಿಸಲಾದ ಪ್ಲಗ್ಇನ್‌ನ \"ತಾಣ\"ವನ್ನು ತಿಳಿಯಲು .lapiz-plugin "
-"ಕಡತವನ್ನು ನೋಡಿ."
+"ಸಕ್ರಿಯ ಪ್ಲಗ್‌ಇನ್‌ಗಳ ಪಟ್ಟಿ. ಇದು ಸಕ್ರಿಯ ಪ್ಲಗ್ಇನ್‌ಗಳು ಇರುವ \"ತಾಣ\"ವನ್ನು ಹೊಂದಿರುತ್ತದೆ. "
+"ಒದಗಿಸಲಾದ ಪ್ಲಗ್ಇನ್‌ನ \"ತಾಣ\"ವನ್ನು ತಿಳಿಯಲು .lapiz-plugin ಕಡತವನ್ನು ನೋಡಿ."
 
 #: data/org.cafe.lapiz.gschema.xml.in:226
 msgid "Show newline"
@@ -555,9 +546,8 @@ msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:237
 msgid ""
-"Whether lapiz should show tabs in the editor window: 'show-none' no showing;"
-" 'show-trailing' showing only trailing spaces; 'show-all' showing all "
-"spaces."
+"Whether lapiz should show tabs in the editor window: 'show-none' no showing; "
+"'show-trailing' showing only trailing spaces; 'show-all' showing all spaces."
 msgstr ""
 
 #: data/org.cafe.lapiz.gschema.xml.in:241
@@ -583,8 +573,8 @@ msgstr "CAFE ಗಣಕತೆರೆ ವಾತಾವರಣಕ್ಕಾಗಿನ �
 msgid ""
 "Lapiz is a small, but powerful text editor designed specifically for the "
 "CAFE desktop. It has most standard text editor functions and fully supports "
-"international text in Unicode. Advanced features include syntax highlighting"
-" and automatic indentation of source code, printing and editing of multiple "
+"international text in Unicode. Advanced features include syntax highlighting "
+"and automatic indentation of source code, printing and editing of multiple "
 "documents in one window."
 msgstr ""
 
@@ -603,14 +593,7 @@ msgstr "ಪಠ್ಯ ಸಂಪಾದಕ"
 msgid "Edit text files"
 msgstr "ಪಠ್ಯ ಕಡತಗಳನ್ನು ಸಂಪಾದಿಸು"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: data/lapiz.desktop.in.in:12
-msgid "accessories-text-editor"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/lapiz.desktop.in.in:15
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
@@ -630,9 +613,8 @@ msgstr "ಉಳಿಸದೆ ಮುಚ್ಚು (_C)"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:151
 #: lapiz/dialogs/lapiz-encodings-dialog.c:306
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
-#: lapiz/dialogs/lapiz-preferences-dialog.c:975
-#: lapiz/lapiz-commands-file.c:583 lapiz/lapiz-commands-file.c:1223
-#: lapiz/lapiz-file-chooser-dialog.c:435
+#: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
+#: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
 #: lapiz/lapiz-io-error-message-area.c:168
 #: lapiz/lapiz-io-error-message-area.c:507
 #: lapiz/lapiz-io-error-message-area.c:1190
@@ -668,8 +650,7 @@ msgstr "ಸಂದೇಹ"
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently "
-"lost."
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -695,8 +676,7 @@ msgstr[1] ""
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:439
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently "
-"lost."
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -704,8 +684,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:454
-msgid ""
-"If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ ಗಂಟೆಯ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:460
@@ -752,8 +731,7 @@ msgstr[1] ""
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
 #, c-format
-msgid ""
-"There is %d document with unsaved changes. Save changes before closing?"
+msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -770,8 +748,7 @@ msgstr "ನೀವು ಉಳಿಸಲು ಬಯಸುವ ದಸ್ತಾವೇಜ
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr ""
-"ನೀವು ಬಳಸಲು ಇಚ್ಚಿಸದೆ ಹೋದರೆ, ನೀವು ಮಾಡಿದ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ "
-"ಕಾಣೆಯಾಗುತ್ತವೆ."
+"ನೀವು ಬಳಸಲು ಇಚ್ಚಿಸದೆ ಹೋದರೆ, ನೀವು ಮಾಡಿದ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: lapiz/dialogs/lapiz-encodings-dialog.c:307
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:72
@@ -1120,9 +1097,7 @@ msgstr "ಅನ್ವಯದ ಆವೃತ್ತಿಯನ್ನು ತೋರಿಸ�
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
-msgstr ""
-"ಆಜ್ಞಾಸಾಲಿನಲ್ಲಿ ಸೂಚಿಸಲಾದ ಕಡತಗಳನ್ನು ಕ್ಯಾರೆಕ್ಟರ್ ಎನ್ಕೋಡಿಂಗನ್ನು ಬಳಸುವಂತೆ "
-"ಸಂಯೋಜಿಸು"
+msgstr "ಆಜ್ಞಾಸಾಲಿನಲ್ಲಿ ಸೂಚಿಸಲಾದ ಕಡತಗಳನ್ನು ಕ್ಯಾರೆಕ್ಟರ್ ಎನ್ಕೋಡಿಂಗನ್ನು ಬಳಸುವಂತೆ ಸಂಯೋಜಿಸು"
 
 #: lapiz/lapiz.c:111
 msgid "ENCODING"
@@ -1134,8 +1109,7 @@ msgstr "ಎನ್ಕೋಡಿಂಗ್ ಆಯ್ಕೆಗಾಗಿ ಸಾಧ್�
 
 #: lapiz/lapiz.c:117
 msgid "Create a new top-level window in an existing instance of lapiz"
-msgstr ""
-"ಪ್ರಸ್ತುತ ಇರುವ lapiz ಇನ್‍ಸ್ಟೆನ್ಸ್‍ನಲ್ಲಿಯೆ ಒಂದು ಹೊಸ ಮೇಲ್ಮಟ್ಟದ ವಿಂಡೋವನ್ನು ರಚಿಸು"
+msgstr "ಪ್ರಸ್ತುತ ಇರುವ lapiz ಇನ್‍ಸ್ಟೆನ್ಸ್‍ನಲ್ಲಿಯೆ ಒಂದು ಹೊಸ ಮೇಲ್ಮಟ್ಟದ ವಿಂಡೋವನ್ನು ರಚಿಸು"
 
 #: lapiz/lapiz.c:120
 msgid "Create a new document in an existing instance of lapiz"
@@ -1161,7 +1135,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"ಲಭ್ಯವಿರುವ ಆಜ್ಞಾ ಸಾಲಿನ ಆಯ್ಕೆಗಳ ಒಂದು ಸಂಪೂರ್ಣ ಪಟ್ಟಿಯನ್ನು ನೋಡಲು '%s --help' ಅನ್ನು ಚಲಾಯಿಸಿ.\n"
+"ಲಭ್ಯವಿರುವ ಆಜ್ಞಾ ಸಾಲಿನ ಆಯ್ಕೆಗಳ ಒಂದು ಸಂಪೂರ್ಣ ಪಟ್ಟಿಯನ್ನು ನೋಡಲು '%s --help' ಅನ್ನು "
+"ಚಲಾಯಿಸಿ.\n"
 
 #: lapiz/lapiz-commands-file.c:250
 #, c-format
@@ -1211,8 +1186,7 @@ msgstr "'%s' ದಸ್ತಾವೇಜನ್ನು ಹಿಂದಿನ ಸ್ಥ�
 #: lapiz/lapiz-commands-file.c:1140
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld second will be permanently "
-"lost."
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1222,8 +1196,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1149
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
-msgstr ""
-"ಕೊನೆಯ ನಿಮಿಷದಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr "ಕೊನೆಯ ನಿಮಿಷದಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: lapiz/lapiz-commands-file.c:1155
 #, c-format
@@ -1239,8 +1212,7 @@ msgstr[1] ""
 #: lapiz/lapiz-commands-file.c:1165
 #, c-format
 msgid ""
-"Changes made to the document in the last %ld minute will be permanently "
-"lost."
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1248,10 +1220,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lapiz/lapiz-commands-file.c:1180
-msgid ""
-"Changes made to the document in the last hour will be permanently lost."
-msgstr ""
-"ಕೊನೆಯ ಗಂಟೆಯಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgid "Changes made to the document in the last hour will be permanently lost."
+msgstr "ಕೊನೆಯ ಗಂಟೆಯಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: lapiz/lapiz-commands-file.c:1186
 #, c-format
@@ -1311,8 +1281,8 @@ msgstr ""
 
 #: lapiz/lapiz-commands-help.c:78
 msgid ""
-"You should have received a copy of the GNU General Public License along with"
-" Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"You should have received a copy of the GNU General Public License along with "
+"Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
@@ -1328,10 +1298,11 @@ msgid ""
 "Copyright © 2004-2010 Paolo Borelli, Jesse van den Kieboom\n"
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
-"Copyright © 2012-2020 CAFE developers"
+"Copyright © 2012-2020 MATE developers\n"
+"Copyright © 2023 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:126
+#: lapiz/lapiz-commands-help.c:127
 msgid "translator-credits"
 msgstr ""
 "ಶಂಕರ್ ಪ್ರಸಾದ್ <svenkate@redhat.com>,ಕಾರ್ತಿಕ ಹೊಳ್ಳ <karthikholla87@gmail.com>"
@@ -1546,8 +1517,7 @@ msgstr "ಕಡತ %s ಅನ್ನು ತೆರೆಯಲಾಗಿಲ್ಲ."
 #: lapiz/lapiz-io-error-message-area.c:245
 #: lapiz/lapiz-io-error-message-area.c:252
 msgid "Please check that you typed the location correctly and try again."
-msgstr ""
-"ದಯವಿಟ್ಟು, ನೀವು ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೇ ಪರೀಕ್ಷಿಸಿ ಹಾಗು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
+msgstr "ದಯವಿಟ್ಟು, ನೀವು ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೇ ಪರೀಕ್ಷಿಸಿ ಹಾಗು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:221
@@ -1583,13 +1553,13 @@ msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr ""
-"%s ಅತಿಥೇಯವು ಕಂಡು ಬಂದಿಲ್ಲ. ನಿಮ್ಮ ಪ್ರಾಕ್ಸಿ ಸಿದ್ಧತೆಗಳು ಸರಿ ಇವೆಯೆ ಎಂದು ಪರೀಕ್ಷಿಸಿ"
-" ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
+"%s ಅತಿಥೇಯವು ಕಂಡು ಬಂದಿಲ್ಲ. ನಿಮ್ಮ ಪ್ರಾಕ್ಸಿ ಸಿದ್ಧತೆಗಳು ಸರಿ ಇವೆಯೆ ಎಂದು ಪರೀಕ್ಷಿಸಿ ನಂತರ "
+"ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:293
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and"
-" try again."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
 msgstr ""
 "ಅತಿಥೇಯದ ಹೆಸರು ಅಮಾನ್ಯವಾಗಿದೆ. ದಯವಿಟ್ಟು ನೀವು ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೇ ಎಂದು "
 "ಪರೀಕ್ಷಿಸಿ ಹಾಗು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
@@ -1614,8 +1584,7 @@ msgstr "ಅನಿರೀಕ್ಷಿತ ದೋಷ: %s"
 
 #: lapiz/lapiz-io-error-message-area.c:406
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
-msgstr ""
-"lapiz ಗೆ ಕಡತವನ್ನು ಹುಡುಕಲಾಗಲಿಲ್ಲ. ಬಹುಷಃ ಇತ್ತೀಚೆಗೆ ಅದು ಅಳಿಸಲ್ಪಟ್ಟಿರಬೇಕು."
+msgstr "lapiz ಗೆ ಕಡತವನ್ನು ಹುಡುಕಲಾಗಲಿಲ್ಲ. ಬಹುಷಃ ಇತ್ತೀಚೆಗೆ ಅದು ಅಳಿಸಲ್ಪಟ್ಟಿರಬೇಕು."
 
 #: lapiz/lapiz-io-error-message-area.c:416
 #, c-format
@@ -1645,8 +1614,7 @@ msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
-"ಅನುಸರಿಸಲಾದ ಕೊಂಡಿಗಳ ಸಂಖ್ಯೆಗೆ ಮಿತಿ ಇದೆ ಹಾಗು ನಿಜವಾದ ಕಡತವು ಈ ಮಿತಿಯಲ್ಲಿ ಕಂಡು "
-"ಬಂದಿಲ್ಲ."
+"ಅನುಸರಿಸಲಾದ ಕೊಂಡಿಗಳ ಸಂಖ್ಯೆಗೆ ಮಿತಿ ಇದೆ ಹಾಗು ನಿಜವಾದ ಕಡತವು ಈ ಮಿತಿಯಲ್ಲಿ ಕಂಡು ಬಂದಿಲ್ಲ."
 
 #: lapiz/lapiz-io-error-message-area.c:601
 msgid "You do not have the permissions necessary to open the file."
@@ -1660,8 +1628,7 @@ msgstr "lapiz‍ಗೆ ಕ್ಯಾರೆಕ್ಟರ್ ಎನ್‌ಕೋಡ�
 #: lapiz/lapiz-io-error-message-area.c:631
 msgid "Please check that you are not trying to open a binary file."
 msgstr ""
-"ದಯವಿಟ್ಟು, ನೀವು ಒಂದು ಬೈನರಿ ಕಡತವನ್ನು ತೆರೆಯಲು ಪ್ರಯತ್ನಿಸುತ್ತಿಲ್ಲ ಎಂದು ಖಚಿತ "
-"ಪಡಿಸಿಕೊಳ್ಳಿ."
+"ದಯವಿಟ್ಟು, ನೀವು ಒಂದು ಬೈನರಿ ಕಡತವನ್ನು ತೆರೆಯಲು ಪ್ರಯತ್ನಿಸುತ್ತಿಲ್ಲ ಎಂದು ಖಚಿತ ಪಡಿಸಿಕೊಳ್ಳಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:610
 msgid "Select a character encoding from the menu and try again."
@@ -1690,8 +1657,7 @@ msgstr "%s ಕಡತವನ್ನು %s ಕ್ಯಾರೆಕ್ಟರ್ ಎನ�
 #: lapiz/lapiz-io-error-message-area.c:632
 #: lapiz/lapiz-io-error-message-area.c:707
 msgid "Select a different character encoding from the menu and try again."
-msgstr ""
-"ಪರಿವಿಡಿಯಿಂದ ಬೇರೊಂದು ಕ್ಯಾರೆಕ್ಟರ್ ಕೋಡಿಂಗನ್ನು ಆರಿಸಿ ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
+msgstr "ಪರಿವಿಡಿಯಿಂದ ಬೇರೊಂದು ಕ್ಯಾರೆಕ್ಟರ್ ಕೋಡಿಂಗನ್ನು ಆರಿಸಿ ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:642
 #, c-format
@@ -1708,8 +1674,8 @@ msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr ""
-"ಸೂಚಿಸಲಾದ ಕ್ಯಾರೆಕ್ಟರ್  ಎನ್‌ಕೋಡಿಂಗನ್ನು ಬಳಸಿಕೊಂಡು ಈ ದಸ್ತಾವೇಜಿನಲ್ಲಿನ ಕೆಲವೊಂದು "
-"ಅಕ್ಷರಗಳನ್ನು ಎನ್ಕೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."
+"ಸೂಚಿಸಲಾದ ಕ್ಯಾರೆಕ್ಟರ್  ಎನ್‌ಕೋಡಿಂಗನ್ನು ಬಳಸಿಕೊಂಡು ಈ ದಸ್ತಾವೇಜಿನಲ್ಲಿನ ಕೆಲವೊಂದು ಅಕ್ಷರಗಳನ್ನು "
+"ಎನ್ಕೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."
 
 #: lapiz/lapiz-io-error-message-area.c:791
 #, c-format
@@ -1718,11 +1684,11 @@ msgstr "ಈ ಕಡತವು (%s) ಈಗಾಗಲೆ ಇನ್ನೊಂದು lap
 
 #: lapiz/lapiz-io-error-message-area.c:805
 msgid ""
-"lapiz opened this instance of the file in a non-editable way. Do you want to"
-" edit it anyway?"
+"lapiz opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
 msgstr ""
-"lapiz ಈ ಕಡತದ ಸನ್ನಿವೇಶವನ್ನು (ಇನ್ಸೆನ್ಸ್‍) ಒಂದು ಸಂಪಾದಿಸಲಾಗದ ರೀತಿಯಲ್ಲಿ "
-"ತೆರೆದಿತ್ತು. ಆದರೂ ಅದನ್ನು ಸಂಪಾದಿಸಬೇಕೆ?"
+"lapiz ಈ ಕಡತದ ಸನ್ನಿವೇಶವನ್ನು (ಇನ್ಸೆನ್ಸ್‍) ಒಂದು ಸಂಪಾದಿಸಲಾಗದ ರೀತಿಯಲ್ಲಿ ತೆರೆದಿತ್ತು. ಆದರೂ "
+"ಅದನ್ನು ಸಂಪಾದಿಸಬೇಕೆ?"
 
 #: lapiz/lapiz-io-error-message-area.c:864
 #: lapiz/lapiz-io-error-message-area.c:960
@@ -1740,10 +1706,8 @@ msgid "The file %s has been modified since reading it."
 msgstr "%s ಕಡತವು ಓದುವಾಗಿನಿಂದ ಮಾರ್ಪಡಿಸಲ್ಪಟ್ಟಿದೆ."
 
 #: lapiz/lapiz-io-error-message-area.c:901
-msgid ""
-"If you save it, all the external changes could be lost. Save it anyway?"
-msgstr ""
-"ನೀವು ಅದನ್ನು ಉಳಿಸಿದರೆ, ಎಲ್ಲಾ ಬಾಹ್ಯ ಬದಲಾವಣೆಗಳು ಕಾಣೆಯಾಗುತ್ತವೆ. ಆದರೂ ಉಳಿಸಬೇಕೆ?"
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr "ನೀವು ಅದನ್ನು ಉಳಿಸಿದರೆ, ಎಲ್ಲಾ ಬಾಹ್ಯ ಬದಲಾವಣೆಗಳು ಕಾಣೆಯಾಗುತ್ತವೆ. ಆದರೂ ಉಳಿಸಬೇಕೆ?"
 
 #: lapiz/lapiz-io-error-message-area.c:982
 #, c-format
@@ -1758,13 +1722,12 @@ msgstr "%s ಅನ್ನು ಉಳಿಸುವಾಗ ಒಂದು ತಾತ್ಕ
 #: lapiz/lapiz-io-error-message-area.c:1001
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs"
-" while saving, you could lose the old copy of the file. Save anyway?"
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"ಕಡತದ ಹೊಸ ಪ್ರತಿಯನ್ನು ಉಳಿಸುವಾಗ ಹಳೆಯದನ್ನು lapiz‍ಗೆ ಬ್ಯಾಕ್ಅಪ್ ಮಾಡಲು "
-"ಸಾಧ್ಯವಾಗಿಲ್ಲ. ನೀವು ಈ ಎಚ್ಚರಿಕೆಯನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ ಕಡತವನ್ನು ಉಳಿಸಬಹುದು, ಆದರೆ "
-"ಎಲ್ಲಿಯಾದರೂ ಉಳಿಸುವಾಗ ದೋಷವು ಕಂಡುಬಂದಲ್ಲಿ, ನೀವು ಕಡತದ ಹಳೆಯ ಪ್ರತಿಯನ್ನು ಕಾಣೆಯಾಗ "
-"ಬಹುದು. ಆದರೂ ಉಳಿಸಬೇಕೆ?"
+"ಕಡತದ ಹೊಸ ಪ್ರತಿಯನ್ನು ಉಳಿಸುವಾಗ ಹಳೆಯದನ್ನು lapiz‍ಗೆ ಬ್ಯಾಕ್ಅಪ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ. ನೀವು ಈ "
+"ಎಚ್ಚರಿಕೆಯನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ ಕಡತವನ್ನು ಉಳಿಸಬಹುದು, ಆದರೆ ಎಲ್ಲಿಯಾದರೂ ಉಳಿಸುವಾಗ ದೋಷವು "
+"ಕಂಡುಬಂದಲ್ಲಿ, ನೀವು ಕಡತದ ಹಳೆಯ ಪ್ರತಿಯನ್ನು ಕಾಣೆಯಾಗ ಬಹುದು. ಆದರೂ ಉಳಿಸಬೇಕೆ?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: lapiz/lapiz-io-error-message-area.c:1061
@@ -1773,16 +1736,16 @@ msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"lapiz %s ಸ್ಥಳಗಳನ್ನು ಬರೆಯುವ ಕ್ರಮದಲ್ಲಿ ನಿಭಾಯಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ನೀವು "
-"ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೆ ಎಂದು ಪರಿಶೀಲಿಸಿ ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
+"lapiz %s ಸ್ಥಳಗಳನ್ನು ಬರೆಯುವ ಕ್ರಮದಲ್ಲಿ ನಿಭಾಯಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ನೀವು ನಮೂದಿಸಿದ "
+"ಸ್ಥಳವು ಸರಿಯಿದೆಯೆ ಎಂದು ಪರಿಶೀಲಿಸಿ ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:1069
 msgid ""
-"lapiz cannot handle this location in write mode. Please check that you typed"
-" the location correctly and try again."
+"lapiz cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
 msgstr ""
-"lapiz ಈ ಸ್ಥಳವನ್ನು ಬರೆಯುವ ಕ್ರಮದಲ್ಲಿ ನಿಭಾಯಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ನೀವು "
-"ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೆ ಎಂದು ಪರಿಶೀಲಿಸಿ ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
+"lapiz ಈ ಸ್ಥಳವನ್ನು ಬರೆಯುವ ಕ್ರಮದಲ್ಲಿ ನಿಭಾಯಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ನೀವು ನಮೂದಿಸಿದ "
+"ಸ್ಥಳವು ಸರಿಯಿದೆಯೆ ಎಂದು ಪರಿಶೀಲಿಸಿ ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:1078
 #, c-format
@@ -1790,8 +1753,8 @@ msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"%s ವು ಒಂದು ಮಾನ್ಯ ಸ್ಥಳವಲ್ಲ. ದಯವಿಟ್ಟು, ನೀವು ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೇ "
-"ಪರೀಕ್ಷಿಸಿ ಹಾಗು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
+"%s ವು ಒಂದು ಮಾನ್ಯ ಸ್ಥಳವಲ್ಲ. ದಯವಿಟ್ಟು, ನೀವು ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೇ ಪರೀಕ್ಷಿಸಿ ಹಾಗು "
+"ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:1084
 msgid ""
@@ -1803,8 +1766,8 @@ msgstr ""
 
 #: lapiz/lapiz-io-error-message-area.c:1090
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space"
-" and try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
 "ಕಡತವನ್ನು ಉಳಿಸಲು ಸಾಕಷ್ಟು ಸ್ಥಳಾವಕಾಶವಿಲ್ಲ. ದಯವಿಟ್ಟು, ಒಂದಿಷ್ಟು ಡಿಸ್ಕ್ ಜಾಗವನ್ನು "
 "ತೆರವುಗೊಳಿಸಿ ಹಾಗು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
@@ -1814,31 +1777,30 @@ msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"ನೀವು ಕಡತವನ್ನು ಕೇವಲ ಓದಲು ಮಾತ್ರವಾದ ಡಿಸ್ಕಿಗೆ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ. "
-"ದಯವಿಟ್ಟು ನೀವು ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೇ ಪರೀಕ್ಷಿಸಿ ಹಾಗು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
+"ನೀವು ಕಡತವನ್ನು ಕೇವಲ ಓದಲು ಮಾತ್ರವಾದ ಡಿಸ್ಕಿಗೆ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ. ದಯವಿಟ್ಟು ನೀವು "
+"ನಮೂದಿಸಿದ ಸ್ಥಳವು ಸರಿಯಿದೆಯೇ ಪರೀಕ್ಷಿಸಿ ಹಾಗು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:1101
 msgid "A file with the same name already exists. Please use a different name."
-msgstr ""
-"ಈ ಹೆಸರಿನ ಒಂದು ಕಡತವು ಈಗಾಗಲೆ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಬೇರೊಂದು ಹೆಸರನ್ನು ಬಳಸಿ."
+msgstr "ಈ ಹೆಸರಿನ ಒಂದು ಕಡತವು ಈಗಾಗಲೆ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಬೇರೊಂದು ಹೆಸರನ್ನು ಬಳಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:1106
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of"
-" the file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
-"ನೀವು ಕಡತವನ್ನು ಯಾವ ಡಿಸ್ಕ್‍ನಲ್ಲಿ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದಿರೊ ಅದರಲ್ಲಿ ಕಡತದ "
-"ಹೆಸರುಗಳ ಗಾತ್ರದ ಮಿತಿ ಇದೆ. ದಯವಿಟ್ಟು ಒಂದು ಚಿಕ್ಕದಾದ ಕಡತದ ಹೆಸರನ್ನು ಬಳಸಿ."
+"ನೀವು ಕಡತವನ್ನು ಯಾವ ಡಿಸ್ಕ್‍ನಲ್ಲಿ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದಿರೊ ಅದರಲ್ಲಿ ಕಡತದ ಹೆಸರುಗಳ ಗಾತ್ರದ "
+"ಮಿತಿ ಇದೆ. ದಯವಿಟ್ಟು ಒಂದು ಚಿಕ್ಕದಾದ ಕಡತದ ಹೆಸರನ್ನು ಬಳಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:1113
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
-"sizes. Please try saving a smaller file or saving it to a disk that does not"
-" have this limitation."
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
-"ನೀವು ಕಡತವನ್ನು ಯಾವ ಡಿಸ್ಕ್‍ನಲ್ಲಿ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದಿರೊ ಅದರಲ್ಲಿ ಕಡತ "
-"ಗಾತ್ರಗಳಿಗೆ ಮಿತಿ ಇದೆ. ದಯವಿಟ್ಟು ಚಿಕ್ಕ ಗಾತ್ರದ ಕಡತವನ್ನು ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ ಅಥವ "
-"ಗಾತ್ರ ಮಿತಿ ಇಲ್ಲದ ಇನ್ನೊಂದು ಡಿಸ್ಕ್‍ನಲ್ಲಿ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ."
+"ನೀವು ಕಡತವನ್ನು ಯಾವ ಡಿಸ್ಕ್‍ನಲ್ಲಿ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದಿರೊ ಅದರಲ್ಲಿ ಕಡತ ಗಾತ್ರಗಳಿಗೆ ಮಿತಿ "
+"ಇದೆ. ದಯವಿಟ್ಟು ಚಿಕ್ಕ ಗಾತ್ರದ ಕಡತವನ್ನು ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ ಅಥವ ಗಾತ್ರ ಮಿತಿ ಇಲ್ಲದ ಇನ್ನೊಂದು "
+"ಡಿಸ್ಕ್‍ನಲ್ಲಿ ಉಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ."
 
 #: lapiz/lapiz-io-error-message-area.c:1129
 #, c-format
@@ -1852,8 +1814,7 @@ msgstr "%s ಕಡತವು ಡಿಸ್ಕ್‍ನಲ್ಲಿ ಬದಲಾಯ�
 
 #: lapiz/lapiz-io-error-message-area.c:1178
 msgid "Do you want to drop your changes and reload the file?"
-msgstr ""
-"ನೀವು ಮಾಡಿದ ಬದಲಾವಣೆಗಳನ್ನು ಬಿಟ್ಟು ಹಾಗು ಕಡತವನ್ನು ಪುನಃ ಲೋಡ್ ಮಾಡಲು ಬಯಸುತ್ತೀರಾ?"
+msgstr "ನೀವು ಮಾಡಿದ ಬದಲಾವಣೆಗಳನ್ನು ಬಿಟ್ಟು ಹಾಗು ಕಡತವನ್ನು ಪುನಃ ಲೋಡ್ ಮಾಡಲು ಬಯಸುತ್ತೀರಾ?"
 
 #: lapiz/lapiz-io-error-message-area.c:1180
 msgid "Do you want to reload the file?"
@@ -1900,14 +1861,12 @@ msgstr "ವಾಕ್ಯರಚನೆ ಹೈಲೈಟಿಂಗನ್ನು ಮು�
 msgid "Print line nu_mbers"
 msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಗಳನ್ನು ಮುದ್ರಿಸು (_n)"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
-#. print preferences.
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:128
 msgid "_Number every"
 msgstr "ಪ್ರತಿ ಸಂಖ್ಯೆ(_N)"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
-#. preferences.
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: lapiz/lapiz-print-preferences.ui:155
 msgid "lines"
 msgstr "ಗೆರೆಗಳು"
@@ -2018,8 +1977,7 @@ msgstr "OVR"
 msgid "INS"
 msgstr "INS"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for
-#. "Column". Please,
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: lapiz/lapiz-statusbar.c:245
 #, c-format
@@ -2074,38 +2032,38 @@ msgstr "%s ಅನ್ನು %s ಗೆ ಉಳಿಸಲಾಗುತ್ತಿದೆ"
 msgid "Saving %s"
 msgstr "%s ಅನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"
 
-#: lapiz/lapiz-tab.c:1665
+#: lapiz/lapiz-tab.c:1666
 msgid "RO"
 msgstr "RO"
 
-#: lapiz/lapiz-tab.c:1712
+#: lapiz/lapiz-tab.c:1713
 #, c-format
 msgid "Error opening file %s"
 msgstr "ಕಡತ %sವನ್ನು ತೆಗೆಯುವಾಗ ದೋಷ"
 
-#: lapiz/lapiz-tab.c:1717
+#: lapiz/lapiz-tab.c:1718
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s ಕಡತವನ್ನು ಹಿಂದಿನ ಸ್ಥಿತಿಗೆ ಮರಳಿಸುವಲ್ಲಿ ದೋಷ"
 
-#: lapiz/lapiz-tab.c:1722
+#: lapiz/lapiz-tab.c:1723
 #, c-format
 msgid "Error saving file %s"
 msgstr "ಕಡತ %sವನ್ನು ಉಳಿಸುವಾಗ ದೋಷ"
 
-#: lapiz/lapiz-tab.c:1743
+#: lapiz/lapiz-tab.c:1744
 msgid "Unicode (UTF-8)"
 msgstr "ಯೂನಿಕೋಡ್ (UTF-8)"
 
-#: lapiz/lapiz-tab.c:1750
+#: lapiz/lapiz-tab.c:1751
 msgid "Name:"
 msgstr "ಹೆಸರು:"
 
-#: lapiz/lapiz-tab.c:1751
+#: lapiz/lapiz-tab.c:1752
 msgid "MIME Type:"
 msgstr "MIME ಬಗೆ:"
 
-#: lapiz/lapiz-tab.c:1752
+#: lapiz/lapiz-tab.c:1753
 msgid "Encoding:"
 msgstr "ಎನ್ಕೋಡಿಂಗ್:"
 
@@ -2580,8 +2538,8 @@ msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
 msgstr ""
-"ಪ್ರಸಕ್ತ ದಸ್ತಾವೇಜನ್ನು ಪರೀಕ್ಷಿಸಿ ಅದರಲ್ಲಿರುವ ಪದಗಳ ಸಂಖ್ಯೆ, ಸಾಲುಗಳು, ಅಕ್ಷರಗಳು "
-"ಹಾಗು ಖಾಲಿಜಾಗವಲ್ಲದ ಅಕ್ಷರಗಳನ್ನು ವರದಿಮಾಡು."
+"ಪ್ರಸಕ್ತ ದಸ್ತಾವೇಜನ್ನು ಪರೀಕ್ಷಿಸಿ ಅದರಲ್ಲಿರುವ ಪದಗಳ ಸಂಖ್ಯೆ, ಸಾಲುಗಳು, ಅಕ್ಷರಗಳು ಹಾಗು "
+"ಖಾಲಿಜಾಗವಲ್ಲದ ಅಕ್ಷರಗಳನ್ನು ವರದಿಮಾಡು."
 
 #: plugins/docinfo/docinfo.ui:51
 msgid "_Update"
@@ -2698,8 +2656,7 @@ msgstr "ಈ ವೇಗೋತ್ಕರ್ಷವು (accelerator) ಈಗಾಗಲ�
 
 #: plugins/externaltools/tools/manager.py:710
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr ""
-"ಒಂದು ಹೊಸ ವೇಗೋತ್ಕರ್ಷವನ್ನು ನಮೂದಿಸಿ, ಅಥವ ತೆರವುಗೊಳಿಸಲು ಬ್ಯಾಕ್‍ಸ್ಪೇಸನ್ನು ಒತ್ತಿ"
+msgstr "ಒಂದು ಹೊಸ ವೇಗೋತ್ಕರ್ಷವನ್ನು ನಮೂದಿಸಿ, ಅಥವ ತೆರವುಗೊಳಿಸಲು ಬ್ಯಾಕ್‍ಸ್ಪೇಸನ್ನು ಒತ್ತಿ"
 
 #: plugins/externaltools/tools/manager.py:712
 msgid "Type a new accelerator"
@@ -2845,8 +2802,7 @@ msgstr "ಆಜ್ಞೆಯನ್ನು ಚಲಾಯಿಸು"
 #: plugins/externaltools/data/run-command.desktop.in:4
 msgid "Execute a custom command and put its output in a new document"
 msgstr ""
-"ಒಂದು ಆಜ್ಞೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಿ ನಂತರ ಅದರ ಪ್ರದಾನವನ್ನು ಒಂದು ಹೊಸ ದಸ್ತಾವೇಜಿನಲ್ಲಿ "
-"ಇರಿಸು"
+"ಒಂದು ಆಜ್ಞೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಿ ನಂತರ ಅದರ ಪ್ರದಾನವನ್ನು ಒಂದು ಹೊಸ ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಇರಿಸು"
 
 #: plugins/externaltools/data/search-recursive.desktop.in:3
 msgid "Search"
@@ -2864,12 +2820,6 @@ msgstr "ಕಡತ ವೀಕ್ಷಕ ಫಲಕ"
 msgid "Easy file access from the side pane"
 msgstr "ಬಲ ಬದಿಯ ಫಲಕದಿಂದ ಕಡತ ಸುಲಭ ನಿಲುಕಣೆ"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:9
-msgid "system-file-manager"
-msgstr ""
-
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:6
 msgid "Set Location to First Document"
 msgstr "ಪ್ರಥಮ ದಸ್ತಾವೇಜಿಗೆ ಸ್ಥಳವನ್ನು ಸೂಚಿಸು"
@@ -2881,10 +2831,10 @@ msgid ""
 "generally applies to opening a document from the command line or opening it "
 "with Baul, etc.)"
 msgstr ""
-"ಇದು TRUE ಆಗಿದಲ್ಲಿ, ಕಡತ ವೀಕ್ಷಕವು ಈ ಮೊದಲು ಬಳಸಲ್ಪಡದೆ ಇದ್ದ ಪಕ್ಷದಲ್ಲಿ ಕಡತ ವೀಕ್ಷಕ "
-"ಪ್ಲಗ್ಇನ್ ಮೊದಲು ತೆರೆಯಲ್ಪಟ್ಟ ದಸ್ತಾವೇಜನ್ನು ವೀಕ್ಷಿಸುತ್ತದೆ. (ಇದರರ್ಥ, ಇದು ಒಂದು "
-"ದಸ್ತಾವೇಜನ್ನು ಆಜ್ಞಾಸಾಲಿನಿಂದ ಅಥವ Baul ಇತ್ಯಾದಿಗಳಿಂದ ತೆರೆಯುವಾಗ ಸಾಮಾನ್ಯವಾಗಿ "
-"ಅನ್ವಯಿಸುತ್ತದೆ ಎಂದಾಗುತ್ತದೆ)"
+"ಇದು TRUE ಆಗಿದಲ್ಲಿ, ಕಡತ ವೀಕ್ಷಕವು ಈ ಮೊದಲು ಬಳಸಲ್ಪಡದೆ ಇದ್ದ ಪಕ್ಷದಲ್ಲಿ ಕಡತ ವೀಕ್ಷಕ ಪ್ಲಗ್ಇನ್ "
+"ಮೊದಲು ತೆರೆಯಲ್ಪಟ್ಟ ದಸ್ತಾವೇಜನ್ನು ವೀಕ್ಷಿಸುತ್ತದೆ. (ಇದರರ್ಥ, ಇದು ಒಂದು ದಸ್ತಾವೇಜನ್ನು "
+"ಆಜ್ಞಾಸಾಲಿನಿಂದ ಅಥವ Baul ಇತ್ಯಾದಿಗಳಿಂದ ತೆರೆಯುವಾಗ ಸಾಮಾನ್ಯವಾಗಿ ಅನ್ವಯಿಸುತ್ತದೆ "
+"ಎಂದಾಗುತ್ತದೆ)"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:11
 msgid "File Browser Filter Mode"
@@ -2897,10 +2847,10 @@ msgid ""
 "(filter binary files) and hidden_and_binary (filter both hidden and binary "
 "files)."
 msgstr ""
-"ಯಾವ ಕಡತವು ಶೋಧಿಸಲ್ಪಡುತ್ತದೆ ಎಂದು ಈ ಮೌಲ್ಯದಿಂದ ನಿರ್ಧರಿಸಲಾಗುವುದು. ಮಾನ್ಯ "
-"ಮೌಲ್ಯಗಳೆಂದರೆ: none (ಏನನ್ನೂ ಶೋಧಿಸಬೇಡ), hidden (ಅಡಗಿಸಿಡಲಾದ ಕಡತಗಳನ್ನು "
-"ಶೋಧಿಸುತ್ತದೆ), binary (ಬೈನರಿ ಕಡತಗಳನ್ನು ಶೋಧಿಸುತ್ತದೆ) ಹಾಗು hidden_and_binary "
-"(ಅಡಗಿಸಿಡಲಾದ ಹಾಗೂ ಬೈನರಿ ಎರಡೂ ಬಗೆಯ ಕಡತಗಳನ್ನೂ ಶೋಧಿಸುತ್ತದೆ)."
+"ಯಾವ ಕಡತವು ಶೋಧಿಸಲ್ಪಡುತ್ತದೆ ಎಂದು ಈ ಮೌಲ್ಯದಿಂದ ನಿರ್ಧರಿಸಲಾಗುವುದು. ಮಾನ್ಯ ಮೌಲ್ಯಗಳೆಂದರೆ: "
+"none (ಏನನ್ನೂ ಶೋಧಿಸಬೇಡ), hidden (ಅಡಗಿಸಿಡಲಾದ ಕಡತಗಳನ್ನು ಶೋಧಿಸುತ್ತದೆ), binary "
+"(ಬೈನರಿ ಕಡತಗಳನ್ನು ಶೋಧಿಸುತ್ತದೆ) ಹಾಗು hidden_and_binary (ಅಡಗಿಸಿಡಲಾದ ಹಾಗೂ ಬೈನರಿ "
+"ಎರಡೂ ಬಗೆಯ ಕಡತಗಳನ್ನೂ ಶೋಧಿಸುತ್ತದೆ)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -2908,11 +2858,11 @@ msgstr "ಕಡತ ವೀಕ್ಷಕದ ಫಿಲ್ಟರ್ ವಿನ್ಯಾ
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:17
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top"
-" of the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
-"ಕಡತ ವೀಕ್ಷಕದೊಂದಿಗೆ ಶೋಧಿಸಲು ಶೋಧನಾ ವಿನ್ಯಾಸ. ಈ ಶೋಧಕವು filter_mode ನ ಮೇಲ್ಭಾಗದಲ್ಲಿ"
-" ಕೆಲಸ ಮಾಡುತ್ತದೆ."
+"ಕಡತ ವೀಕ್ಷಕದೊಂದಿಗೆ ಶೋಧಿಸಲು ಶೋಧನಾ ವಿನ್ಯಾಸ. ಈ ಶೋಧಕವು filter_mode ನ ಮೇಲ್ಭಾಗದಲ್ಲಿ "
+"ಕೆಲಸ ಮಾಡುತ್ತದೆ."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:24
 msgid "Open With Tree View"
@@ -2923,8 +2873,7 @@ msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
-"ಕಡತ ವೀಕ್ಷಕ ಪ್ಲಗ್‍ಇನ್ ಲೋಡ್ ಆದಾಗ ಬುಕ್‍ಮಾರ್ಕುಗಳ ರೀತಿಯಲ್ಲಿ ಕಾಣಿಸುವ ಬದಲು ವೃಕ್ಷ "
-"ನೋಟದಲ್ಲಿ ತೆರೆ"
+"ಕಡತ ವೀಕ್ಷಕ ಪ್ಲಗ್‍ಇನ್ ಲೋಡ್ ಆದಾಗ ಬುಕ್‍ಮಾರ್ಕುಗಳ ರೀತಿಯಲ್ಲಿ ಕಾಣಿಸುವ ಬದಲು ವೃಕ್ಷ ನೋಟದಲ್ಲಿ ತೆರೆ"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:29
 msgid "File Browser Root Directory"
@@ -2935,8 +2884,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
-"ಕಡತ ವೀಕ್ಷಕ ಪ್ಲಗ್ಇನ್ ಅನ್ನು ಲೋಡ್ ಮಾಡುವಾಗ ಹಾಗು onload/tree_view ಯು TRUE "
-"ಆಗಿದ್ದಲ್ಲಿ ಕಡತ ವೀಕ್ಷಕದ ಮೂಲ ಕೋಶವು ಬಳಸಲ್ಪಡುತ್ತದೆ."
+"ಕಡತ ವೀಕ್ಷಕ ಪ್ಲಗ್ಇನ್ ಅನ್ನು ಲೋಡ್ ಮಾಡುವಾಗ ಹಾಗು onload/tree_view ಯು TRUE ಆಗಿದ್ದಲ್ಲಿ ಕಡತ "
+"ವೀಕ್ಷಕದ ಮೂಲ ಕೋಶವು ಬಳಸಲ್ಪಡುತ್ತದೆ."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:34
 msgid "File Browser Virtual Root Directory"
@@ -2944,13 +2893,13 @@ msgstr "ಕಡತ ವೀಕ್ಷಕ ವಾಸ್ತವ ಮೂಲ ಕೋಶ"
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:35
 msgid ""
-"The file browser virtual root directory to use when loading the file browser"
-" plugin when onload/tree_view is TRUE. The virtual root must always be below"
-" the actual root."
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"ಕಡತ ವೀಕ್ಷಕ ಪ್ಲಗ್ಇನ್ ಅನ್ನು ಲೋಡ್ ಮಾಡುವಾಗ ಹಾಗು onload/tree_view ಯು TRUE "
-"ಆಗಿದ್ದಲ್ಲಿ ಕಡತ ವೀಕ್ಷಕದ ವಾಸ್ತವಿಕ ಮೂಲ ಕೋಶವು ಬಳಸಲ್ಪಡುತ್ತದೆ. ವಾಸ್ತವಿಕ ಮೂಲ ಕೋಶವು "
-"ಯಾವಾಗಲೂ ನೈಜ ಮೂಲಕ್ಕಿಂತ ಕೆಳಗೆ ಇರಬೇಕು."
+"ಕಡತ ವೀಕ್ಷಕ ಪ್ಲಗ್ಇನ್ ಅನ್ನು ಲೋಡ್ ಮಾಡುವಾಗ ಹಾಗು onload/tree_view ಯು TRUE ಆಗಿದ್ದಲ್ಲಿ ಕಡತ "
+"ವೀಕ್ಷಕದ ವಾಸ್ತವಿಕ ಮೂಲ ಕೋಶವು ಬಳಸಲ್ಪಡುತ್ತದೆ. ವಾಸ್ತವಿಕ ಮೂಲ ಕೋಶವು ಯಾವಾಗಲೂ ನೈಜ ಮೂಲಕ್ಕಿಂತ "
+"ಕೆಳಗೆ ಇರಬೇಕು."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:39
 msgid "Enable Restore of Remote Locations"
@@ -3055,11 +3004,10 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"ಹೆಸರನ್ನು ಬದಲಾಯಿಸಲಾದ ಕಡತವು ಪ್ರಸ್ತುತ ಫಿಲ್ಟರ್ ಮಾಡಲ್ಪಟ್ಟಿದೆ. ಅದು ಕಾಣಿಸಿಕೊಳ್ಳಲು "
-"ನಿಮ್ಮ ಫಿಲ್ಟರ್ ಸಿದ್ಧತೆಗಳನ್ನು ಸರಿಹೊಂದಿಸಬೇಕಿದೆ"
+"ಹೆಸರನ್ನು ಬದಲಾಯಿಸಲಾದ ಕಡತವು ಪ್ರಸ್ತುತ ಫಿಲ್ಟರ್ ಮಾಡಲ್ಪಟ್ಟಿದೆ. ಅದು ಕಾಣಿಸಿಕೊಳ್ಳಲು ನಿಮ್ಮ "
+"ಫಿಲ್ಟರ್ ಸಿದ್ಧತೆಗಳನ್ನು ಸರಿಹೊಂದಿಸಬೇಕಿದೆ"
 
-#. Translators: This is the default name of new files created by the file
-#. browser pane.
+#. Translators: This is the default name of new files created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3475
 msgid "file"
 msgstr "ಕಡತ"
@@ -3069,11 +3017,10 @@ msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"ಹೊಸ ಕಡತವು ಪ್ರಸ್ತುತ ಶೋಧಿತಗೊಂಡಿದೆ. ಅದು ಕಾಣಿಸಿಕೊಳ್ಳಲು ನಿಮ್ಮ ಶೋಧನಾ ಸಿದ್ಧತೆಗಳನ್ನು"
-" ಸರಿಹೊಂದಿಸಬೇಕಿದೆ"
+"ಹೊಸ ಕಡತವು ಪ್ರಸ್ತುತ ಶೋಧಿತಗೊಂಡಿದೆ. ಅದು ಕಾಣಿಸಿಕೊಳ್ಳಲು ನಿಮ್ಮ ಶೋಧನಾ ಸಿದ್ಧತೆಗಳನ್ನು "
+"ಸರಿಹೊಂದಿಸಬೇಕಿದೆ"
 
-#. Translators: This is the default name of new directories created by the
-#. file browser pane.
+#. Translators: This is the default name of new directories created by the file browser pane.
 #: plugins/filebrowser/lapiz-file-browser-store.c:3528
 msgid "directory"
 msgstr "ಕಡತಕೋಶ"
@@ -3083,8 +3030,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"ಹೊಸ ಕೋಶವು ಪ್ರಸ್ತುತ ಫಿಲ್ಟರ್ ಮಾಡಲ್ಪಟ್ಟಿದೆ. ಆ ಕೋಶವು ಕಾಣಿಸಿಕೊಳ್ಳಲು ನಿಮ್ಮ ಫಿಲ್ಟರ್"
-" ಸಿದ್ಧತೆಗಳನ್ನು ಸರಿಹೊಂದಿಸಬೇಕಿದೆ"
+"ಹೊಸ ಕೋಶವು ಪ್ರಸ್ತುತ ಫಿಲ್ಟರ್ ಮಾಡಲ್ಪಟ್ಟಿದೆ. ಆ ಕೋಶವು ಕಾಣಿಸಿಕೊಳ್ಳಲು ನಿಮ್ಮ ಫಿಲ್ಟರ್ "
+"ಸಿದ್ಧತೆಗಳನ್ನು ಸರಿಹೊಂದಿಸಬೇಕಿದೆ"
 
 #: plugins/filebrowser/lapiz-file-browser-widget.c:712
 msgid "Bookmarks"
@@ -3251,12 +3198,6 @@ msgstr "ಪೈಥಾನ್ ಕನ್ಸೋಲ್"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "ಕೆಳಗಿನ ಫಲಕದಲ್ಲಿರುವ ಸಂವಾದಾತ್ಮಕ ಪೈಥಾನ್ ಕನ್ಸೋಲ್"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:9
-msgid "text-x-python"
-msgstr ""
-
 #: plugins/pythonconsole/pythonconsole/config.ui:20
 msgid "_Error color:"
 msgstr "ದೋಷದ ಬಣ್ಣ(_E):"
@@ -3289,12 +3230,6 @@ msgstr "ಕ್ಷಿಪ್ರವಾಗಿ ದಸ್ತಾವೇಜುಗಳನ�
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "ಕ್ಷಿಪ್ರವಾಗಿ ಕಡತಗಳನ್ನು ತೆರೆ"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/quickopen/quickopen.plugin.desktop.in:9
-msgid "document-open"
-msgstr ""
 
 #: plugins/snippets/snippets.plugin.desktop.in:6
 #: plugins/snippets/snippets/Document.py:51
@@ -3438,9 +3373,7 @@ msgstr "ರಫ್ತು ಯಶಸ್ವಿಯಾಗಿ ಪೂರ್ಣಗೊಂ�
 #: plugins/snippets/snippets/Manager.py:858
 #: plugins/snippets/snippets/Manager.py:927
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
-msgstr ""
-"ಆಯ್ಕೆ ಮಾಡಲಾದ <b>ವ್ಯವಸ್ಥಾ</b> ಸ್ನಿಪ್ಪೆಟ್‍ಗಳನ್ನು ನಿಮ್ಮ ರಫ್ತಿನಲ್ಲಿ ಇರಿಸಲು "
-"ಬಯಸುತ್ತೀರೆ?"
+msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ <b>ವ್ಯವಸ್ಥಾ</b> ಸ್ನಿಪ್ಪೆಟ್‍ಗಳನ್ನು ನಿಮ್ಮ ರಫ್ತಿನಲ್ಲಿ ಇರಿಸಲು ಬಯಸುತ್ತೀರೆ?"
 
 #: plugins/snippets/snippets/Manager.py:873
 #: plugins/snippets/snippets/Manager.py:945
@@ -3537,12 +3470,6 @@ msgstr "ವಿಂಗಡಿಸು"
 msgid "Sorts a document or selected text."
 msgstr "ದಸ್ತಾವೇಜು ಅಥವ ಆಯ್ಕೆಯಾದ ಪಠ್ಯವನ್ನು ವಿಂಗಡಿಸು"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/sort/sort.plugin.desktop.in:8
-msgid "view-sort-ascending"
-msgstr ""
-
 #: plugins/sort/sort.ui:61
 msgid "_Sort"
 msgstr "ವಿಂಗಡಿಸು(_S)"
@@ -3571,10 +3498,8 @@ msgstr "ಒಂದು ವಿಂಗಡಣಾ ಕಾರ್ಯವನ್ನು ರದ
 msgid "Autocheck Type"
 msgstr ""
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no
-#. suggestions
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: plugins/spell/lapiz-automatic-spell-checker.c:420
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
@@ -3601,8 +3526,7 @@ msgstr "ಕಾಗುಣಿತ ಪರೀಕ್ಷಿಸು"
 msgid "Suggestions"
 msgstr "ಸಲಹೆಗಳು"
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word
-#. isn't misspelled
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
 #: plugins/spell/lapiz-spell-checker-dialog.c:565
 msgid "(correct spelling)"
 msgstr "(ಸರಿಯಾದ ಕಾಗುಣಿತ)"
@@ -3614,6 +3538,7 @@ msgstr "ಕಾಗುಣಿತ ಪರೀಕ್ಷೆ ಮುಗಿಯಿತು"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:285
 #: plugins/spell/lapiz-spell-checker-language.c:291
 #, c-format
@@ -3623,6 +3548,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:300
 #, c-format
 msgctxt "language"
@@ -3631,6 +3557,7 @@ msgstr "ಅಜ್ಞಾತ (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: plugins/spell/lapiz-spell-checker-language.c:406
 msgctxt "language"
 msgid "Default"
@@ -3764,12 +3691,6 @@ msgstr "ಕಾಗುಣಿತ ಪರೀಕ್ಷಕ"
 #: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "ಪ್ರಸಕ್ತ ದಸ್ತಾವೇಜಿನ ಕಾಗುಣಿತವನ್ನು ಪರೀಕ್ಷೆಮಾಡುತ್ತದೆ."
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/spell/spell.plugin.desktop.in:8
-msgid "tools-check-spelling"
-msgstr ""
 
 #: plugins/taglist/lapiz-taglist-plugin.c:124
 #: plugins/taglist/lapiz-taglist-plugin-panel.c:707
@@ -6449,12 +6370,6 @@ msgstr ""
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: plugins/trailsave/trailsave.plugin.desktop.in:8
-msgid "edit-cut"
-msgstr ""
-
 #: plugins/time/lapiz-time-dialog.ui:19
 msgid "Insert Date and Time"
 msgstr "ಸಮಯ ಮತ್ತು ದಿನಾಂಕವನ್ನು ಸೇರಿಸು"
@@ -6479,8 +6394,7 @@ msgstr "ರೂಢಿಯ ವಿನ್ಯಾಸವನ್ನು ಉಪಯೋಗಿ�
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
-#. Translators: This example should follow the date format defined in the
-#. entry above
+#. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/lapiz-time-dialog.ui:264
 #: plugins/time/lapiz-time-setup-dialog.ui:285
 msgid "01/11/2009 17:52:00"
@@ -6497,3 +6411,7 @@ msgstr "ದಿನಾಂಕ/ಸಮಯವನ್ನು ಸೇರಿಸುವಾಗ.
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "ಒಂದು ವಿನ್ಯಾಸಕ್ಕಾಗಿ ಕೇಳು(_P)"
+
+#~ msgctxt "auto-detected"
+#~ msgid "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
+#~ msgstr "[ 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16' ]"
