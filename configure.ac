@@ -286,32 +286,3 @@ Configuration:
 	GObject Introspection:	${have_introspection}
 	Tests enabled:		$enable_tests
 "
-
-if expr ${LAPIZ_MINOR_VERSION} % 2 > /dev/null; then
-	stable_version=`expr ${LAPIZ_MINOR_VERSION} - 1`
-
-cat << EOF
- *** IMPORTANT ***
-
-This is an unstable version of lapiz.
-It is for test purposes only.
-
-Please, DO NOT use it in a production environment.
-It will probably crash and you will lose your data.
-
-If you are looking for a stable release of lapiz, either download
-it from:
-
-  http://pub.cafe-desktop.org/release/1.${stable_version}/
-
-Or checkout the 1.${stable_version} branch of the lapiz module from:
-
-  git://github.com/cafe-desktop/lapiz.git
-
-Thanks,
-The lapiz team
-
- *** END OF WARNING ***
-EOF
-
-fi
