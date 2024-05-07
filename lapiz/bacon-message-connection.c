@@ -224,7 +224,7 @@ find_file_with_pattern (const char *dir, const char *pattern)
 static char *
 socket_filename (const char *prefix)
 {
-	char *pattern, *newfile, *path, *filename;
+	char *pattern, *path, *filename;
 	const char *tmpdir;
 
 	pattern = g_strdup_printf ("%s.%s.*", prefix, g_get_user_name ());
@@ -232,6 +232,8 @@ socket_filename (const char *prefix)
 	filename = find_file_with_pattern (tmpdir, pattern);
 	if (filename == NULL)
 	{
+		char *newfile;
+
 		newfile = g_strdup_printf ("%s.%s.%u", prefix,
 				g_get_user_name (), g_random_int ());
 		path = g_build_filename (tmpdir, newfile, NULL);

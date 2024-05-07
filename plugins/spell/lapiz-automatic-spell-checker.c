@@ -404,7 +404,6 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 	CtkWidget *mi;
 	GSList *suggestions;
 	GSList *list;
-	gchar *label_text;
 
 	topmenu = menu = ctk_menu_new();
 
@@ -432,6 +431,7 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 		/* build a set of menus with suggestions. */
 		while (suggestions != NULL)
 		{
+			gchar *label_text;
 			CtkWidget *label;
 
 			if (count == 10)

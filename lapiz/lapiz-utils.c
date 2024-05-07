@@ -646,7 +646,7 @@ lapiz_utils_make_valid_utf8 (const char *name)
 {
 	GString *string;
 	const char *remainder, *invalid;
-	int remaining_bytes, valid_bytes;
+	int remaining_bytes;
 
 	g_return_val_if_fail (name != NULL, NULL);
 
@@ -655,6 +655,8 @@ lapiz_utils_make_valid_utf8 (const char *name)
 	remaining_bytes = strlen (name);
 
 	while (remaining_bytes != 0) {
+		int valid_bytes;
+
 		if (g_utf8_validate (remainder, remaining_bytes, &invalid)) {
 			break;
 		}
@@ -1439,9 +1441,7 @@ lapiz_utils_decode_uri (const gchar  *uri,
 	 * functionality should be in glib/gio, but for now we implement it
 	 * ourselves (see bug #546182) */
 
-	const char *p, *in, *hier_part_start, *hier_part_end;
-	char *out;
-	char c;
+	const char *p, *hier_part_start, *hier_part_end;
 
 	/* From RFC 3986 Decodes:
 	 * URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
@@ -1464,6 +1464,8 @@ lapiz_utils_decode_uri (const gchar  *uri,
 
 	while (1)
 	{
+		char c;
+
 		c = *p++;
 
 		if (c == ':')
@@ -1478,6 +1480,9 @@ lapiz_utils_decode_uri (const gchar  *uri,
 
 	if (scheme)
 	{
+		const char *in;
+		char *out;
+
 		*scheme = g_malloc (p - uri);
 		out = *scheme;
 
@@ -1493,7 +1498,7 @@ lapiz_utils_decode_uri (const gchar  *uri,
 	if (hier_part_start[0] == '/' && hier_part_start[1] == '/')
 	{
 		const char *authority_start, *authority_end;
-		const char *userinfo_start, *userinfo_end;
+		const char *userinfo_end;
 		const char *host_start, *host_end;
 		const char *port_start;
 
@@ -1512,6 +1517,8 @@ lapiz_utils_decode_uri (const gchar  *uri,
 
 		if (userinfo_end)
 		{
+			const char *userinfo_start;
+
 			userinfo_start = authority_start;
 
 			if (user)

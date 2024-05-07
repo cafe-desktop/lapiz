@@ -134,7 +134,6 @@ client_save_state_cb (EggSMClient *client,
 		      gpointer     user_data)
 {
         const GList *windows;
-	gchar *group_name;
 	int n;
 
 	windows = lapiz_app_get_windows (lapiz_app_get_default ());
@@ -142,7 +141,9 @@ client_save_state_cb (EggSMClient *client,
 
 	while (windows != NULL)
 	{
-	        group_name = g_strdup_printf ("lapiz window %d", n);
+		gchar *group_name;
+
+		group_name = g_strdup_printf ("lapiz window %d", n);
 		save_window_session (state_file,
 				     group_name,
 				     LAPIZ_WINDOW (windows->data));

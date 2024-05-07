@@ -220,7 +220,6 @@ message_set_emblem_cb (LapizMessageBus *bus,
 	gchar *id = NULL;
 	gchar *emblem = NULL;
 	CtkTreePath *path;
-	LapizFileBrowserStore *store;
 
 	lapiz_message_get (message, "id", &id, "emblem", &emblem, NULL);
 
@@ -247,6 +246,8 @@ message_set_emblem_cb (LapizMessageBus *bus,
 
 		if (pixbuf)
 		{
+			LapizFileBrowserStore *store;
+
 			GValue value = { 0, };
 			CtkTreeIter iter;
 

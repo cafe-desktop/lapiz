@@ -2115,11 +2115,11 @@ lapiz_view_drag_data_received (CtkWidget        *widget,
 			       guint             info,
 			       guint             timestamp)
 {
-	gchar **uri_list;
-
 	/* If this is an URL emit DROP_URIS, otherwise chain up the signal */
 	if (info == TARGET_URI_LIST)
 	{
+		gchar **uri_list;
+
 		uri_list = lapiz_utils_drop_get_uris (selection_data);
 
 		if (uri_list != NULL)

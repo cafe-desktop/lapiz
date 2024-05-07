@@ -146,13 +146,14 @@ window_active_tab_changed (LapizWindow         *window,
 	if (!_lapiz_window_is_removing_tabs (window))
 	{
 		CtkTreeIter iter;
-		CtkTreeSelection *selection;
 
 		get_iter_from_tab (panel, tab, &iter);
 
 		if (ctk_list_store_iter_is_valid (CTK_LIST_STORE (panel->priv->model),
 						  &iter))
 		{
+			CtkTreeSelection *selection;
+
 			selection = ctk_tree_view_get_selection (
 					CTK_TREE_VIEW (panel->priv->treeview));
 

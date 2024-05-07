@@ -113,9 +113,7 @@ set_message_area_text_and_icon (CtkWidget   *message_area,
 	CtkWidget *image;
 	CtkWidget *vbox;
 	gchar *primary_markup;
-	gchar *secondary_markup;
 	CtkWidget *primary_label;
-	CtkWidget *secondary_label;
 
 	hbox_content = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 8);
 
@@ -139,6 +137,9 @@ set_message_area_text_and_icon (CtkWidget   *message_area,
 
 	if (secondary_text != NULL)
 	{
+		gchar *secondary_markup;
+		CtkWidget *secondary_label;
+
 		secondary_markup = g_strdup_printf ("<small>%s</small>",
 						    secondary_text);
 		secondary_label = ctk_label_new (secondary_markup);
@@ -209,12 +210,13 @@ parse_gio_error (gint          code,
 	case G_IO_ERROR_NOT_SUPPORTED:
 		{
 			gchar *scheme_string;
-			gchar *scheme_markup;
 
 			scheme_string = g_uri_parse_scheme (uri);
 
 			if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
 			{
+				gchar *scheme_markup;
+
 				scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 				/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
@@ -475,9 +477,7 @@ create_conversion_error_message_area (const gchar *primary_text,
 	CtkWidget *image;
 	CtkWidget *vbox;
 	gchar *primary_markup;
-	gchar *secondary_markup;
 	CtkWidget *primary_label;
-	CtkWidget *secondary_label;
 
 	message_area = ctk_info_bar_new ();
 
@@ -534,6 +534,9 @@ create_conversion_error_message_area (const gchar *primary_text,
 
 	if (secondary_text != NULL)
 	{
+		gchar *secondary_markup;
+		CtkWidget *secondary_label;
+
 		secondary_markup = g_strdup_printf ("<small>%s</small>",
 						    secondary_text);
 		secondary_label = ctk_label_new (secondary_markup);
@@ -1025,8 +1028,6 @@ lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
 	gchar *full_formatted_uri;
-	gchar *scheme_string;
-	gchar *scheme_markup;
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
 	CtkWidget *message_area;
@@ -1051,10 +1052,14 @@ lapiz_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_SUPPORTED))
 	{
+		gchar *scheme_string;
+
 		scheme_string = g_uri_parse_scheme (uri);
 
 		if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
 		{
+			gchar *scheme_markup;
+
 			scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 			/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */

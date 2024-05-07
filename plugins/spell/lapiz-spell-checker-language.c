@@ -253,7 +253,7 @@ create_name_for_language (const char *code)
 {
 	char **str;
 	char *name = NULL;
-	const char *langname, *localename;
+	const char *langname;
 	int len;
 
 	g_return_val_if_fail (iso_639_table != NULL, NULL);
@@ -271,6 +271,8 @@ create_name_for_language (const char *code)
 	}
 	else if (len == 2 && langname != NULL)
 	{
+		const char *localename;
+
 		gchar *locale_code = g_ascii_strdown (str[1], -1);
 
 		localename = (const char *) g_hash_table_lookup (iso_3166_table, locale_code);

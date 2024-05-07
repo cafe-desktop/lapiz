@@ -594,8 +594,6 @@ static TagList* parse_taglist_dir(const gchar* dir)
 
 TagList* create_taglist(const gchar* data_dir)
 {
-	gchar* pdir;
-
 	lapiz_debug_message(DEBUG_PLUGINS, "ref_count: %d", taglist_ref_count);
 
 	if (taglist_ref_count > 0)
@@ -612,6 +610,8 @@ TagList* create_taglist(const gchar* data_dir)
 	home = g_get_home_dir ();
 	if (home != NULL)
 	{
+		gchar* pdir;
+
 		pdir = g_build_filename(home, ".config", USER_LAPIZ_TAGLIST_PLUGIN_LOCATION, NULL);
 		parse_taglist_dir(pdir);
 		g_free (pdir);
