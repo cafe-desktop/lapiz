@@ -3470,21 +3470,28 @@ show_notebook_popup_menu (CtkNotebook    *notebook,
 	ctk_action_activate (action);
 #endif
 
-	CtkWidget *tab;
-	CtkWidget *tab_label;
+	if (event != NULL)
+	{
+		ctk_menu_popup_at_pointer (CTK_MENU (menu), NULL);
+	}
+	else
+	{
+		CtkWidget *tab;
+		CtkWidget *tab_label;
 
-	tab = CTK_WIDGET (lapiz_window_get_active_tab (window));
-	g_return_val_if_fail (tab != NULL, FALSE);
+		tab = CTK_WIDGET (lapiz_window_get_active_tab (window));
+		g_return_val_if_fail (tab != NULL, FALSE);
 
-	tab_label = ctk_notebook_get_tab_label (notebook, tab);
+		tab_label = ctk_notebook_get_tab_label (notebook, tab);
 
-	ctk_menu_popup_at_widget (CTK_MENU (menu),
-	                          tab_label,
-	                          CDK_GRAVITY_SOUTH_WEST,
-	                          CDK_GRAVITY_NORTH_WEST,
-	                          (const CdkEvent*) event);
+		ctk_menu_popup_at_widget (CTK_MENU (menu),
+		                          tab_label,
+		                          CDK_GRAVITY_SOUTH_WEST,
+		                          CDK_GRAVITY_NORTH_WEST,
+		                          (const CdkEvent*) event);
 
-	ctk_menu_shell_select_first (CTK_MENU_SHELL (menu), FALSE);
+		ctk_menu_shell_select_first (CTK_MENU_SHELL (menu), FALSE);
+	}
 
 	return TRUE;
 }
