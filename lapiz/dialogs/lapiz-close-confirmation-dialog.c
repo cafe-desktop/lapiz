@@ -784,7 +784,7 @@ build_multiple_docs_dialog (LapizCloseConfirmationDialog *dlg)
 
 	cdk_monitor_get_geometry (cdk_display_get_primary_monitor (display), &mon_geo);
 
-	max_height = mon_geo.height * 40 / 100;
+	max_height = mon_geo.height * 70 / 100;
 
 	if (new_height > max_height)
 	{
