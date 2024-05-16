@@ -85,9 +85,9 @@ enum {
 };
 
 static void
-count_selected_items_func (CtkTreeModel *model,
-			   CtkTreePath  *path,
-			   CtkTreeIter  *iter,
+count_selected_items_func (CtkTreeModel *model G_GNUC_UNUSED,
+			   CtkTreePath  *path G_GNUC_UNUSED,
+			   CtkTreeIter  *iter G_GNUC_UNUSED,
 			   gpointer      data)
 {
 	int *count = data;
@@ -125,7 +125,7 @@ displayed_selection_changed_callback (CtkTreeSelection     *selection,
 
 static void
 get_selected_encodings_func (CtkTreeModel *model,
-			     CtkTreePath  *path,
+			     CtkTreePath  *path G_GNUC_UNUSED,
 			     CtkTreeIter  *iter,
 			     gpointer      data)
 {
@@ -168,8 +168,7 @@ update_shown_in_menu_tree_model (CtkListStore *store,
 }
 
 static void
-add_button_clicked_callback (CtkWidget            *button,
-			     LapizEncodingsDialog *dialog)
+add_button_clicked_callback (LapizEncodingsDialog *dialog)
 {
 	CtkTreeSelection *selection;
 	GSList *encodings;
@@ -199,8 +198,7 @@ add_button_clicked_callback (CtkWidget            *button,
 }
 
 static void
-remove_button_clicked_callback (CtkWidget            *button,
-				LapizEncodingsDialog *dialog)
+remove_button_clicked_callback (LapizEncodingsDialog *dialog)
 {
 	CtkTreeSelection *selection;
 	GSList *encodings;
