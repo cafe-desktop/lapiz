@@ -143,7 +143,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (LapizPreferencesDialog, lapiz_preferences_dialog, CT
 
 
 static void
-lapiz_preferences_dialog_class_init (LapizPreferencesDialogClass *klass)
+lapiz_preferences_dialog_class_init (LapizPreferencesDialogClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -501,8 +501,7 @@ bracket_matching_checkbutton_toggled (CtkToggleButton        *button,
 static gboolean split_button_state = TRUE;
 
 static void
-wrap_mode_checkbutton_toggled (CtkToggleButton        *button,
-			       LapizPreferencesDialog *dlg)
+wrap_mode_checkbutton_toggled (LapizPreferencesDialog *dlg)
 {
 	if (!ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton)))
 	{
@@ -790,8 +789,7 @@ set_buttons_sensisitivity_according_to_scheme (LapizPreferencesDialog *dlg,
 }
 
 static void
-style_scheme_changed (CtkWidget              *treeview,
-		      LapizPreferencesDialog *dlg)
+style_scheme_changed (LapizPreferencesDialog *dlg)
 {
 	CtkTreePath *path;
 	CtkTreeIter iter;
@@ -1002,8 +1000,7 @@ scheme_file_chooser_dialog_new (const gchar          *title,
 }
 
 static void
-install_scheme_clicked (CtkButton              *button,
-			LapizPreferencesDialog *dlg)
+install_scheme_clicked (LapizPreferencesDialog *dlg)
 {
 	CtkWidget      *chooser;
 	CtkFileFilter  *filter;
@@ -1056,8 +1053,7 @@ install_scheme_clicked (CtkButton              *button,
 }
 
 static void
-uninstall_scheme_clicked (CtkButton              *button,
-			  LapizPreferencesDialog *dlg)
+uninstall_scheme_clicked (LapizPreferencesDialog *dlg)
 {
 	CtkTreeSelection *selection;
 	CtkTreeModel *model;
@@ -1142,11 +1138,11 @@ uninstall_scheme_clicked (CtkButton              *button,
 }
 
 static void
-scheme_description_cell_data_func (CtkTreeViewColumn *column,
+scheme_description_cell_data_func (CtkTreeViewColumn *column G_GNUC_UNUSED,
 				   CtkCellRenderer   *renderer,
 				   CtkTreeModel      *model,
 				   CtkTreeIter       *iter,
-				   gpointer           data)
+				   gpointer           data G_GNUC_UNUSED)
 {
 	gchar *name;
 	gchar *desc;
