@@ -93,8 +93,7 @@ static GList 	*get_selected_docs 		(CtkTreeModel                 *store);
  */
 static void
 response_cb (LapizCloseConfirmationDialog *dlg,
-             gint                          response_id,
-             gpointer                      data)
+             gint                          response_id)
 {
 	LapizCloseConfirmationDialogPrivate *priv;
 
@@ -598,7 +597,7 @@ populate_model (CtkTreeModel *store, GList *docs)
 }
 
 static void
-save_toggled (CtkCellRendererToggle *renderer, gchar *path_str, CtkTreeModel *store)
+save_toggled (gchar *path_str, CtkTreeModel *store)
 {
 	CtkTreePath *path = ctk_tree_path_new_from_string (path_str);
 	CtkTreeIter iter;
