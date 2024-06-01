@@ -242,7 +242,7 @@ display_open_if_needed (const gchar *name)
 /* serverside */
 static void
 on_message_received (const char *message,
-		     gpointer    data)
+		     gpointer    data G_GNUC_UNUSED)
 {
 	const LapizEncoding *encoding = NULL;
 	gchar **commands;
