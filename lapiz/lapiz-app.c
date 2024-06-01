@@ -335,8 +335,8 @@ lapiz_app_init (LapizApp *app)
 }
 
 static void
-app_weak_notify (gpointer data,
-		 GObject *where_the_app_was)
+app_weak_notify (gpointer data G_GNUC_UNUSED,
+		 GObject *where_the_app_was G_GNUC_UNUSED)
 {
 	ctk_main_quit ();
 }
@@ -377,7 +377,7 @@ set_active_window (LapizApp    *app,
 
 static gboolean
 window_focus_in_event (LapizWindow   *window,
-		       CdkEventFocus *event,
+		       CdkEventFocus *event G_GNUC_UNUSED,
 		       LapizApp      *app)
 {
 	/* updates active_view and active_child when a new toplevel receives focus */
@@ -390,8 +390,8 @@ window_focus_in_event (LapizWindow   *window,
 
 static gboolean
 window_delete_event (LapizWindow *window,
-                     CdkEvent    *event,
-                     LapizApp    *app)
+                     CdkEvent    *event G_GNUC_UNUSED,
+                     LapizApp    *app G_GNUC_UNUSED)
 {
 	LapizWindowState ws;
 
