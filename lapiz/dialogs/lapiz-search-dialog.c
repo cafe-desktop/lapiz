@@ -183,7 +183,7 @@ insert_text_handler (CtkEditable *editable,
 		     const gchar *text,
 		     gint         length,
 		     gint        *position,
-		     gpointer     data)
+		     gpointer     data G_GNUC_UNUSED)
 {
 	static gboolean insert_text = FALSE;
 	gchar *escaped_text;
@@ -244,7 +244,7 @@ search_text_entry_changed (CtkEditable       *editable,
 static void
 response_handler (LapizSearchDialog *dialog,
 		  gint               response_id,
-		  gpointer           data)
+		  gpointer           data G_GNUC_UNUSED)
 {
 	const gchar *str;
 
