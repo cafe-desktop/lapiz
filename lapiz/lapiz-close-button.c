@@ -25,7 +25,7 @@
 G_DEFINE_TYPE (LapizCloseButton, lapiz_close_button, CTK_TYPE_BUTTON)
 
 static void
-lapiz_close_button_class_init (LapizCloseButtonClass *klass)
+lapiz_close_button_class_init (LapizCloseButtonClass *klass G_GNUC_UNUSED)
 {
 }
 
