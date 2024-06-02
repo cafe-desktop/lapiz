@@ -318,10 +318,10 @@ parse_gio_error (gint          code,
 
 static gboolean
 parse_lapiz_error (gint          code,
-	           gchar       **error_message,
+	           gchar       **error_message G_GNUC_UNUSED,
 	           gchar       **message_details,
-	           const gchar  *uri,
-	           const gchar  *uri_for_display)
+	           const gchar  *uri G_GNUC_UNUSED,
+	           const gchar  *uri_for_display G_GNUC_UNUSED)
 {
 	gboolean ret = TRUE;
 
