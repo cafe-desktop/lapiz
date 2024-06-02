@@ -65,7 +65,7 @@ struct _LapizFileChooserDialogPrivate
 G_DEFINE_TYPE_WITH_PRIVATE (LapizFileChooserDialog, lapiz_file_chooser_dialog, CTK_TYPE_FILE_CHOOSER_DIALOG)
 
 static void
-lapiz_file_chooser_dialog_class_init (LapizFileChooserDialogClass *klass)
+lapiz_file_chooser_dialog_class_init (LapizFileChooserDialogClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -212,8 +212,8 @@ create_extra_widget (LapizFileChooserDialog *dialog)
 
 static void
 action_changed (LapizFileChooserDialog *dialog,
-		GParamSpec	       *pspec,
-		gpointer		data)
+		GParamSpec	       *pspec G_GNUC_UNUSED,
+		gpointer		data G_GNUC_UNUSED)
 {
 	CtkFileChooserAction action;
 
@@ -242,8 +242,8 @@ action_changed (LapizFileChooserDialog *dialog,
 
 static void
 filter_changed (LapizFileChooserDialog *dialog,
-		GParamSpec	       *pspec,
-		gpointer		data)
+		GParamSpec	       *pspec G_GNUC_UNUSED,
+		gpointer		data G_GNUC_UNUSED)
 {
 	CtkFileFilter *filter;
 
@@ -271,7 +271,7 @@ filter_changed (LapizFileChooserDialog *dialog,
 /* FIXME: use globs too - Paolo (Aug. 27, 2007) */
 static gboolean
 all_text_files_filter (const CtkFileFilterInfo *filter_info,
-		       gpointer                 data)
+		       gpointer                 data G_GNUC_UNUSED)
 {
 	static GSList *known_mime_types = NULL;
 	GSList *mime_types;
