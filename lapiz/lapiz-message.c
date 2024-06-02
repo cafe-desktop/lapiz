@@ -541,7 +541,7 @@ typedef struct
 
 static void
 validate_key (const gchar  *key,
-	      GType         type,
+	      GType         type G_GNUC_UNUSED,
 	      gboolean	    required,
 	      ValidateInfo *info)
 {
