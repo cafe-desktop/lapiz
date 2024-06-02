@@ -43,7 +43,7 @@
 #include "dialogs/lapiz-preferences-dialog.h"
 
 void
-_lapiz_cmd_edit_undo (CtkAction   *action,
+_lapiz_cmd_edit_undo (CtkAction   *action G_GNUC_UNUSED,
 		     LapizWindow *window)
 {
 	LapizView *active_view;
@@ -64,7 +64,7 @@ _lapiz_cmd_edit_undo (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_edit_redo (CtkAction   *action,
+_lapiz_cmd_edit_redo (CtkAction   *action G_GNUC_UNUSED,
 		     LapizWindow *window)
 {
 	LapizView *active_view;
@@ -85,7 +85,7 @@ _lapiz_cmd_edit_redo (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_edit_cut (CtkAction   *action,
+_lapiz_cmd_edit_cut (CtkAction   *action G_GNUC_UNUSED,
 		    LapizWindow *window)
 {
 	LapizView *active_view;
@@ -101,7 +101,7 @@ _lapiz_cmd_edit_cut (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_edit_copy (CtkAction   *action,
+_lapiz_cmd_edit_copy (CtkAction   *action G_GNUC_UNUSED,
 		     LapizWindow *window)
 {
 	LapizView *active_view;
@@ -117,7 +117,7 @@ _lapiz_cmd_edit_copy (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_edit_paste (CtkAction   *action,
+_lapiz_cmd_edit_paste (CtkAction   *action G_GNUC_UNUSED,
 		      LapizWindow *window)
 {
 	LapizView *active_view;
@@ -133,7 +133,7 @@ _lapiz_cmd_edit_paste (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_edit_delete (CtkAction   *action,
+_lapiz_cmd_edit_delete (CtkAction   *action G_GNUC_UNUSED,
 		       LapizWindow *window)
 {
 	LapizView *active_view;
@@ -149,7 +149,7 @@ _lapiz_cmd_edit_delete (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_edit_select_all (CtkAction   *action,
+_lapiz_cmd_edit_select_all (CtkAction   *action G_GNUC_UNUSED,
 			   LapizWindow *window)
 {
 	LapizView *active_view;
@@ -165,7 +165,7 @@ _lapiz_cmd_edit_select_all (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_edit_preferences (CtkAction   *action,
+_lapiz_cmd_edit_preferences (CtkAction   *action G_GNUC_UNUSED,
 			    LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
