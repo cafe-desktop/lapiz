@@ -524,9 +524,9 @@ search_dialog_response_cb (LapizSearchDialog *dialog,
 }
 
 static gboolean
-search_dialog_delete_event_cb (CtkWidget   *widget,
-			       CdkEventAny *event,
-			       gpointer     user_data)
+search_dialog_delete_event_cb (CtkWidget   *widget G_GNUC_UNUSED,
+			       CdkEventAny *event G_GNUC_UNUSED,
+			       gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -576,7 +576,7 @@ create_dialog (LapizWindow *window, gboolean show_replace)
 }
 
 void
-_lapiz_cmd_search_find (CtkAction   *action,
+_lapiz_cmd_search_find (CtkAction   *action G_GNUC_UNUSED,
 			LapizWindow *window)
 {
 	gpointer data;
@@ -650,7 +650,7 @@ _lapiz_cmd_search_find (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_replace (CtkAction   *action,
+_lapiz_cmd_search_replace (CtkAction   *action G_GNUC_UNUSED,
 			   LapizWindow *window)
 {
 	gpointer data;
@@ -745,7 +745,7 @@ do_find_again (LapizWindow *window,
 }
 
 void
-_lapiz_cmd_search_find_next (CtkAction   *action,
+_lapiz_cmd_search_find_next (CtkAction   *action G_GNUC_UNUSED,
 			     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -754,7 +754,7 @@ _lapiz_cmd_search_find_next (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_find_prev (CtkAction   *action,
+_lapiz_cmd_search_find_prev (CtkAction   *action G_GNUC_UNUSED,
 			     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -763,7 +763,7 @@ _lapiz_cmd_search_find_prev (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_clear_highlight (CtkAction   *action,
+_lapiz_cmd_search_clear_highlight (CtkAction   *action G_GNUC_UNUSED,
 				   LapizWindow *window)
 {
 	LapizDocument *doc;
@@ -777,7 +777,7 @@ _lapiz_cmd_search_clear_highlight (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_goto_line (CtkAction   *action,
+_lapiz_cmd_search_goto_line (CtkAction   *action G_GNUC_UNUSED,
 			     LapizWindow *window)
 {
 	LapizView *active_view;
@@ -802,7 +802,7 @@ _lapiz_cmd_search_goto_line (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_search_incremental_search (CtkAction   *action,
+_lapiz_cmd_search_incremental_search (CtkAction   *action G_GNUC_UNUSED,
 				      LapizWindow *window)
 {
 	LapizView *active_view;
