@@ -459,8 +459,8 @@ lapiz_document_input_stream_read (GInputStream  *stream,
 
 static gboolean
 lapiz_document_input_stream_close (GInputStream  *stream,
-				   GCancellable  *cancellable,
-				   GError       **error)
+				   GCancellable  *cancellable G_GNUC_UNUSED,
+				   GError       **error G_GNUC_UNUSED)
 {
 	LapizDocumentInputStream *dstream = LAPIZ_DOCUMENT_INPUT_STREAM (stream);
 
