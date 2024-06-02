@@ -226,7 +226,9 @@ add_or_remove (LapizEncodingsComboBox *menu,
 }
 
 static gboolean
-separator_func (CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
+separator_func (CtkTreeModel *model,
+		CtkTreeIter  *iter,
+		gpointer      data G_GNUC_UNUSED)
 {
 	gchar *str;
 	gboolean ret;
