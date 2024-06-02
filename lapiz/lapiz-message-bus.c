@@ -350,8 +350,8 @@ remove_listener (LapizMessageBus *bus,
 }
 
 static void
-block_listener (LapizMessageBus *bus,
-		Message		*message,
+block_listener (LapizMessageBus *bus G_GNUC_UNUSED,
+		Message		*message G_GNUC_UNUSED,
 		GList		*listener)
 {
 	Listener *lst;
@@ -361,8 +361,8 @@ block_listener (LapizMessageBus *bus,
 }
 
 static void
-unblock_listener (LapizMessageBus *bus,
-		  Message	  *message,
+unblock_listener (LapizMessageBus *bus G_GNUC_UNUSED,
+		  Message	  *message G_GNUC_UNUSED,
 		  GList		  *listener)
 {
 	Listener *lst;
@@ -695,7 +695,7 @@ typedef struct
 } UnregisterInfo;
 
 static gboolean
-unregister_each (const gchar      *identifier,
+unregister_each (const gchar      *identifier G_GNUC_UNUSED,
 		 LapizMessageType *message_type,
 		 UnregisterInfo   *info)
 {
@@ -774,7 +774,7 @@ typedef struct
 } ForeachInfo;
 
 static void
-foreach_type (const gchar      *key,
+foreach_type (const gchar      *key G_GNUC_UNUSED,
 	      LapizMessageType *message_type,
 	      ForeachInfo      *info)
 {
