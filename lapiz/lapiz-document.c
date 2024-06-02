@@ -793,8 +793,8 @@ get_default_style_scheme (void)
 
 static void
 on_uri_changed (LapizDocument *doc,
-		GParamSpec    *pspec,
-		gpointer       useless)
+		GParamSpec    *pspec G_GNUC_UNUSED,
+		gpointer       useless G_GNUC_UNUSED)
 {
 #ifdef ENABLE_GVFS_METADATA
 	GFile *location;
@@ -892,8 +892,8 @@ guess_language (LapizDocument *doc,
 
 static void
 on_content_type_changed (LapizDocument *doc,
-			 GParamSpec    *pspec,
-			 gpointer       useless)
+			 GParamSpec    *pspec G_GNUC_UNUSED,
+			 gpointer       useless G_GNUC_UNUSED)
 {
 	if (!doc->priv->language_set_by_user)
 	{
@@ -1685,8 +1685,8 @@ lapiz_document_save_as (LapizDocument          *doc,
 gboolean
 lapiz_document_insert_file (LapizDocument       *doc,
 			    CtkTextIter         *iter,
-			    const gchar         *uri,
-			    const LapizEncoding *encoding)
+			    const gchar         *uri G_GNUC_UNUSED,
+			    const LapizEncoding *encoding G_GNUC_UNUSED)
 {
 	g_return_val_if_fail (LAPIZ_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (iter != NULL, FALSE);
@@ -2390,8 +2390,8 @@ get_search_match_colors (LapizDocument *doc,
 
 static void
 sync_found_tag (LapizDocument *doc,
-		GParamSpec    *pspec,
-		gpointer       data)
+		GParamSpec    *pspec G_GNUC_UNUSED,
+		gpointer       data G_GNUC_UNUSED)
 {
 	CdkRGBA fg;
 	CdkRGBA bg;
@@ -2851,7 +2851,7 @@ lapiz_document_get_metadata (LapizDocument *doc,
 static void
 set_attributes_cb (GObject      *source,
 		   GAsyncResult *res,
-		   gpointer      useless)
+		   gpointer      useless G_GNUC_UNUSED)
 {
 	g_file_set_attributes_finish (G_FILE (source),
 				      res,
