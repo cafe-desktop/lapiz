@@ -391,7 +391,7 @@ lapiz_document_output_stream_flush (GOutputStream *stream,
 
 static gboolean
 lapiz_document_output_stream_close (GOutputStream     *stream,
-				    GCancellable      *cancellable,
+				    GCancellable      *cancellable G_GNUC_UNUSED,
 				    GError           **error)
 {
 	LapizDocumentOutputStream *ostream = LAPIZ_DOCUMENT_OUTPUT_STREAM (stream);
