@@ -323,7 +323,7 @@ sync_title (LapizPanel     *panel,
 
 static void
 notebook_page_changed (CtkNotebook     *notebook,
-                       CtkWidget       *page,
+                       CtkWidget       *page G_GNUC_UNUSED,
                        guint            page_num,
                        LapizPanel      *panel)
 {
@@ -342,7 +342,7 @@ notebook_page_changed (CtkNotebook     *notebook,
 
 static void
 panel_show (LapizPanel *panel,
-	    gpointer    user_data)
+	    gpointer    user_data G_GNUC_UNUSED)
 {
 	gint page;
 	CtkNotebook *nb;
@@ -364,7 +364,7 @@ lapiz_panel_init (LapizPanel *panel)
 }
 
 static void
-close_button_clicked_cb (CtkWidget *widget,
+close_button_clicked_cb (CtkWidget *widget G_GNUC_UNUSED,
 			 CtkWidget *panel)
 {
 	ctk_widget_hide (panel);
