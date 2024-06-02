@@ -230,7 +230,7 @@ refresh_list (LapizDocumentsPanel *panel)
 
 static void
 sync_name_and_icon (LapizTab            *tab,
-		    GParamSpec          *pspec,
+		    GParamSpec          *pspec G_GNUC_UNUSED,
 		    LapizDocumentsPanel *panel)
 {
 	GdkPixbuf *pixbuf;
@@ -270,7 +270,7 @@ window_tab_removed (LapizWindow         *window,
 }
 
 static void
-window_tab_added (LapizWindow         *window,
+window_tab_added (LapizWindow         *window G_GNUC_UNUSED,
 		  LapizTab            *tab,
 		  LapizDocumentsPanel *panel)
 {
@@ -338,7 +338,7 @@ window_tab_added (LapizWindow         *window,
 }
 
 static void
-window_tabs_reordered (LapizWindow         *window,
+window_tabs_reordered (LapizWindow         *window G_GNUC_UNUSED,
 		       LapizDocumentsPanel *panel)
 {
 	if (panel->priv->is_reodering)
@@ -375,7 +375,7 @@ set_window (LapizDocumentsPanel *panel,
 }
 
 static void
-treeview_cursor_changed (CtkTreeView         *view,
+treeview_cursor_changed (CtkTreeView         *view G_GNUC_UNUSED,
 			 LapizDocumentsPanel *panel)
 {
 	CtkTreeIter iter;
@@ -565,7 +565,7 @@ treeview_query_tooltip (CtkWidget  *widget,
 			gint        y,
 			gboolean    keyboard_tip,
 			CtkTooltip *tooltip,
-			gpointer    data)
+			gpointer    data G_GNUC_UNUSED)
 {
 	CtkTreeIter iter;
 	CtkTreeView *tree_view = CTK_TREE_VIEW (widget);
@@ -617,9 +617,9 @@ treeview_query_tooltip (CtkWidget  *widget,
 }
 
 static void
-treeview_row_inserted (CtkTreeModel        *tree_model,
+treeview_row_inserted (CtkTreeModel        *tree_model G_GNUC_UNUSED,
 		       CtkTreePath         *path,
-		       CtkTreeIter         *iter,
+		       CtkTreeIter         *iter G_GNUC_UNUSED,
 		       LapizDocumentsPanel *panel)
 {
 	LapizTab *tab;
