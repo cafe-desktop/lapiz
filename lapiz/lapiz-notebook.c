@@ -184,7 +184,8 @@ lapiz_notebook_class_init (LapizNotebookClass *klass)
 }
 
 static LapizNotebook *
-find_notebook_at_pointer (gint abs_x, gint abs_y)
+find_notebook_at_pointer (gint abs_x G_GNUC_UNUSED,
+			  gint abs_y G_GNUC_UNUSED)
 {
 	CdkWindow *win_at_pointer;
 	CdkWindow *toplevel_win;
@@ -474,7 +475,7 @@ move_current_tab (LapizNotebook *notebook,
 static gboolean
 motion_notify_cb (LapizNotebook  *notebook,
 		  CdkEventMotion *event,
-		  gpointer        data)
+		  gpointer        data G_GNUC_UNUSED)
 {
 	LapizNotebook *dest;
 	gint page_num;
@@ -578,7 +579,7 @@ move_current_tab_to_another_notebook (LapizNotebook  *src,
 static gboolean
 button_release_cb (LapizNotebook  *notebook,
 		   CdkEventButton *event,
-		   gpointer        data)
+		   gpointer        data G_GNUC_UNUSED)
 {
 	CdkSeat    *seat;
 	CdkDevice  *device;
@@ -628,7 +629,7 @@ button_release_cb (LapizNotebook  *notebook,
 static gboolean
 button_press_cb (LapizNotebook  *notebook,
 		 CdkEventButton *event,
-		 gpointer        data)
+		 gpointer        data G_GNUC_UNUSED)
 {
 	static gboolean newfile = FALSE;
 	static gint tab1click = -1;
@@ -707,27 +708,27 @@ button_press_cb (LapizNotebook  *notebook,
 }
 
 static gboolean
-grab_focus_cb (LapizNotebook  *notebook,
-	       CdkEventButton *event,
-	       gpointer        data)
+grab_focus_cb (LapizNotebook  *notebook G_GNUC_UNUSED,
+	       CdkEventButton *event G_GNUC_UNUSED,
+	       gpointer        data G_GNUC_UNUSED)
 {
 	drag_ready = TRUE;
 	return FALSE;
 }
 
 static gboolean
-focus_in_cb (LapizNotebook  *notebook,
-	     CdkEventButton *event,
-	     gpointer        data)
+focus_in_cb (LapizNotebook  *notebook G_GNUC_UNUSED,
+	     CdkEventButton *event G_GNUC_UNUSED,
+	     gpointer        data G_GNUC_UNUSED)
 {
 	newfile_ready = FALSE;
 	return FALSE;
 }
 
 static gboolean
-focus_out_cb (LapizNotebook  *notebook,
-	      CdkEventButton *event,
-	      gpointer        data)
+focus_out_cb (LapizNotebook  *notebook G_GNUC_UNUSED,
+	      CdkEventButton *event G_GNUC_UNUSED,
+	      gpointer        data G_GNUC_UNUSED)
 {
 	newfile_ready = TRUE;
 	return FALSE;
@@ -748,9 +749,9 @@ lapiz_notebook_new (void)
 
 static void
 lapiz_notebook_switch_page_cb (CtkNotebook     *notebook,
-                               CtkWidget       *page,
+                               CtkWidget       *page G_GNUC_UNUSED,
                                guint            page_num,
-                               gpointer         data)
+                               gpointer         data G_GNUC_UNUSED)
 {
 	LapizNotebook *nb = LAPIZ_NOTEBOOK (notebook);
 	CtkWidget *child;
