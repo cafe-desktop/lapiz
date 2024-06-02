@@ -496,7 +496,7 @@ finish_query_info (AsyncData *async)
 }
 
 static void
-query_info_cb (GFile        *source,
+query_info_cb (GFile        *source G_GNUC_UNUSED,
 	       GAsyncResult *res,
 	       AsyncData    *async)
 {
@@ -585,7 +585,7 @@ recover_not_mounted (AsyncData *async)
 }
 
 static void
-async_read_ready_callback (GObject      *source,
+async_read_ready_callback (GObject      *source G_GNUC_UNUSED,
 			   GAsyncResult *res,
 		           AsyncData    *async)
 {
