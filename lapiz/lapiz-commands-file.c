@@ -64,7 +64,7 @@ static void tab_state_changed_while_saving (LapizTab    *tab,
 					    LapizWindow *window);
 
 void
-_lapiz_cmd_file_new (CtkAction   *action,
+_lapiz_cmd_file_new (CtkAction   *action G_GNUC_UNUSED,
 		     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -392,7 +392,7 @@ _lapiz_cmd_load_files_from_prompt (LapizWindow         *window,
 
 static void
 open_dialog_destroyed (LapizWindow            *window,
-		       LapizFileChooserDialog *dialog)
+		       LapizFileChooserDialog *dialog G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_COMMANDS);
 
@@ -438,7 +438,7 @@ open_dialog_response_cb (LapizFileChooserDialog *dialog,
 }
 
 void
-_lapiz_cmd_file_open (CtkAction   *action,
+_lapiz_cmd_file_open (CtkAction   *action G_GNUC_UNUSED,
 		      LapizWindow *window)
 {
 	CtkWidget *open_dialog;
@@ -707,7 +707,7 @@ save_next_tab:
 
 static CtkFileChooserConfirmation
 confirm_overwrite_callback (CtkFileChooser *dialog,
-			    gpointer        data)
+			    gpointer        data G_GNUC_UNUSED)
 {
 	gchar *uri;
 	GFile *file;
@@ -878,7 +878,7 @@ file_save (LapizTab    *tab,
 }
 
 void
-_lapiz_cmd_file_save (CtkAction   *action,
+_lapiz_cmd_file_save (CtkAction   *action G_GNUC_UNUSED,
 		     LapizWindow *window)
 {
 	LapizTab *tab;
@@ -893,7 +893,7 @@ _lapiz_cmd_file_save (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_file_save_as (CtkAction   *action,
+_lapiz_cmd_file_save_as (CtkAction   *action G_GNUC_UNUSED,
 			LapizWindow *window)
 {
 	LapizTab *tab;
@@ -1047,7 +1047,7 @@ lapiz_commands_save_all_documents (LapizWindow *window)
 }
 
 void
-_lapiz_cmd_file_save_all (CtkAction   *action,
+_lapiz_cmd_file_save_all (CtkAction   *action G_GNUC_UNUSED,
 			 LapizWindow *window)
 {
 	lapiz_commands_save_all_documents (window);
@@ -1236,7 +1236,7 @@ revert_dialog (LapizWindow   *window,
 }
 
 void
-_lapiz_cmd_file_revert (CtkAction   *action,
+_lapiz_cmd_file_revert (CtkAction   *action G_GNUC_UNUSED,
 		       LapizWindow *window)
 {
 	LapizTab       *tab;
@@ -1313,7 +1313,7 @@ really_close_tab (LapizTab *tab)
 
 static void
 tab_state_changed_while_saving (LapizTab    *tab,
-				GParamSpec  *pspec,
+				GParamSpec  *pspec G_GNUC_UNUSED,
 				LapizWindow *window)
 {
 	LapizTabState ts;
@@ -1730,7 +1730,7 @@ _lapiz_cmd_file_close_tab (LapizTab    *tab,
 }
 
 void
-_lapiz_cmd_file_close (CtkAction   *action,
+_lapiz_cmd_file_close (CtkAction   *action G_GNUC_UNUSED,
 		      LapizWindow *window)
 {
 	LapizTab *active_tab;
@@ -1819,7 +1819,7 @@ file_close_all (LapizWindow *window,
 }
 
 void
-_lapiz_cmd_file_close_all (CtkAction   *action,
+_lapiz_cmd_file_close_all (CtkAction   *action G_GNUC_UNUSED,
 			  LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -1833,7 +1833,7 @@ _lapiz_cmd_file_close_all (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_file_quit (CtkAction   *action,
+_lapiz_cmd_file_quit (CtkAction   *action G_GNUC_UNUSED,
 		     LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
