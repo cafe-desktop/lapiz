@@ -66,7 +66,7 @@ static void
 lapiz_history_entry_set_property (GObject      *object,
 				  guint         prop_id,
 				  const GValue *value,
-				  GParamSpec   *spec)
+				  GParamSpec   *spec G_GNUC_UNUSED)
 {
 	LapizHistoryEntry *entry;
 
@@ -546,7 +546,7 @@ lapiz_history_entry_get_entry (LapizHistoryEntry *entry)
 }
 
 static void
-escape_cell_data_func (CtkTreeViewColumn           *col,
+escape_cell_data_func (CtkTreeViewColumn           *col G_GNUC_UNUSED,
 		       CtkCellRenderer             *renderer,
 		       CtkTreeModel                *model,
 		       CtkTreeIter                 *iter,
