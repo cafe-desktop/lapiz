@@ -123,7 +123,7 @@ _lapiz_cmd_view_show_bottom_pane (CtkAction   *action,
 }
 
 void
-_lapiz_cmd_view_toggle_fullscreen_mode (CtkAction *action,
+_lapiz_cmd_view_toggle_fullscreen_mode (CtkAction   *action G_GNUC_UNUSED,
 					LapizWindow *window)
 {
 	lapiz_debug (DEBUG_COMMANDS);
@@ -135,7 +135,7 @@ _lapiz_cmd_view_toggle_fullscreen_mode (CtkAction *action,
 }
 
 void
-_lapiz_cmd_view_leave_fullscreen_mode (CtkAction *action,
+_lapiz_cmd_view_leave_fullscreen_mode (CtkAction   *action G_GNUC_UNUSED,
 				       LapizWindow *window)
 {
 	CtkAction *view_action;
