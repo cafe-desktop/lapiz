@@ -235,7 +235,7 @@ line_numbers_checkbutton_toggled (CtkToggleButton *button,
 }
 
 static void
-wrap_mode_checkbutton_toggled (CtkToggleButton *button,
+wrap_mode_checkbutton_toggled (CtkToggleButton *button G_GNUC_UNUSED,
 			       LapizPrintJob   *job)
 {
 	if (!ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
@@ -257,7 +257,7 @@ wrap_mode_checkbutton_toggled (CtkToggleButton *button,
 }
 
 static void
-restore_button_clicked (CtkButton     *button,
+restore_button_clicked (CtkButton     *button G_GNUC_UNUSED,
 			LapizPrintJob *job)
 
 {
@@ -299,7 +299,7 @@ restore_button_clicked (CtkButton     *button,
 }
 
 static GObject *
-create_custom_widget_cb (CtkPrintOperation *operation,
+create_custom_widget_cb (CtkPrintOperation *operation G_GNUC_UNUSED,
 			 LapizPrintJob     *job)
 {
 	gboolean ret;
@@ -456,8 +456,8 @@ create_custom_widget_cb (CtkPrintOperation *operation,
 }
 
 static void
-custom_widget_apply_cb (CtkPrintOperation *operation,
-			CtkWidget         *widget,
+custom_widget_apply_cb (CtkPrintOperation *operation G_GNUC_UNUSED,
+			CtkWidget         *widget G_GNUC_UNUSED,
 			LapizPrintJob     *job)
 {
 	lapiz_prefs_manager_set_print_syntax_hl (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton)));
@@ -553,8 +553,8 @@ create_compositor (LapizPrintJob *job)
 }
 
 static void
-begin_print_cb (CtkPrintOperation *operation,
-	        CtkPrintContext   *context,
+begin_print_cb (CtkPrintOperation *operation G_GNUC_UNUSED,
+	        CtkPrintContext   *context G_GNUC_UNUSED,
 	        LapizPrintJob     *job)
 {
 	create_compositor (job);
@@ -567,8 +567,8 @@ begin_print_cb (CtkPrintOperation *operation,
 }
 
 static void
-preview_ready (CtkPrintOperationPreview *ctk_preview,
-	       CtkPrintContext          *context,
+preview_ready (CtkPrintOperationPreview *ctk_preview G_GNUC_UNUSED,
+	       CtkPrintContext          *context G_GNUC_UNUSED,
 	       LapizPrintJob            *job)
 {
 	job->priv->is_preview = TRUE;
@@ -577,7 +577,7 @@ preview_ready (CtkPrintOperationPreview *ctk_preview,
 }
 
 static void
-preview_destroyed (CtkWidget                *preview,
+preview_destroyed (CtkWidget                *preview G_GNUC_UNUSED,
 		   CtkPrintOperationPreview *ctk_preview)
 {
 	ctk_print_operation_preview_end_preview (ctk_preview);
@@ -587,7 +587,7 @@ static gboolean
 preview_cb (CtkPrintOperation        *op,
 	    CtkPrintOperationPreview *ctk_preview,
 	    CtkPrintContext          *context,
-	    CtkWindow                *parent,
+	    CtkWindow                *parent G_GNUC_UNUSED,
 	    LapizPrintJob            *job)
 {
 	job->priv->preview = lapiz_print_preview_new (op, ctk_preview, context);
@@ -607,7 +607,7 @@ preview_cb (CtkPrintOperation        *op,
 }
 
 static gboolean
-paginate_cb (CtkPrintOperation *operation,
+paginate_cb (CtkPrintOperation *operation G_GNUC_UNUSED,
 	     CtkPrintContext   *context,
 	     LapizPrintJob     *job)
 {
@@ -638,7 +638,7 @@ paginate_cb (CtkPrintOperation *operation,
 }
 
 static void
-draw_page_cb (CtkPrintOperation *operation,
+draw_page_cb (CtkPrintOperation *operation G_GNUC_UNUSED,
 	      CtkPrintContext   *context,
 	      gint               page_nr,
 	      LapizPrintJob     *job)
@@ -668,8 +668,8 @@ draw_page_cb (CtkPrintOperation *operation,
 }
 
 static void
-end_print_cb (CtkPrintOperation *operation,
-	      CtkPrintContext   *context,
+end_print_cb (CtkPrintOperation *operation G_GNUC_UNUSED,
+	      CtkPrintContext   *context G_GNUC_UNUSED,
 	      LapizPrintJob     *job)
 {
 	g_object_unref (job->priv->compositor);
