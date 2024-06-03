@@ -770,7 +770,7 @@ lapiz_prefs_manager_app_shutdown (void)
 static void
 lapiz_prefs_manager_editor_font_changed (GSettings *settings,
 					 gchar       *key,
-					 gpointer     user_data)
+					 gpointer     user_data G_GNUC_UNUSED)
 {
 	GList *views;
 	GList *l;
@@ -821,7 +821,7 @@ lapiz_prefs_manager_editor_font_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_system_font_changed (GSettings *settings,
 					 gchar       *key,
-					 gpointer     user_data)
+					 gpointer     user_data G_GNUC_UNUSED)
 {
 	GList *views;
 	GList *l;
@@ -859,7 +859,7 @@ lapiz_prefs_manager_system_font_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_tabs_size_changed (GSettings *settings,
 				       gchar       *key,
-				       gpointer     user_data)
+				       gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -933,7 +933,7 @@ get_wrap_mode_from_string (const gchar* str)
 static void
 lapiz_prefs_manager_wrap_mode_changed (GSettings *settings,
 	                               gchar         *key,
-	                               gpointer       user_data)
+	                               gpointer       user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -963,7 +963,7 @@ lapiz_prefs_manager_wrap_mode_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_line_numbers_changed (GSettings *settings,
 					  gchar       *key,
-					  gpointer     user_data)
+					  gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -993,7 +993,7 @@ lapiz_prefs_manager_line_numbers_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_hl_current_line_changed (GSettings *settings,
 					     gchar       *key,
-					     gpointer     user_data)
+					     gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1023,7 +1023,7 @@ lapiz_prefs_manager_hl_current_line_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_bracket_matching_changed (GSettings *settings,
 					      gchar       *key,
-					      gpointer     user_data)
+					      gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1053,7 +1053,7 @@ lapiz_prefs_manager_bracket_matching_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_auto_indent_changed (GSettings *settings,
 					 gchar       *key,
-					 gpointer     user_data)
+					 gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1083,7 +1083,7 @@ lapiz_prefs_manager_auto_indent_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_undo_changed (GSettings *settings,
 				  gchar       *key,
-				  gpointer     user_data)
+				  gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1115,7 +1115,7 @@ lapiz_prefs_manager_undo_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_right_margin_changed (GSettings *settings,
 					  gchar *key,
-					  gpointer user_data)
+					  gpointer user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1187,7 +1187,7 @@ get_smart_home_end_from_string (const gchar *str)
 static void
 lapiz_prefs_manager_smart_home_end_changed (GSettings *settings,
 					    gchar       *key,
-					    gpointer     user_data)
+					    gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1217,7 +1217,7 @@ lapiz_prefs_manager_smart_home_end_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 					      gchar       *key,
-					      gpointer     user_data)
+					      gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1267,7 +1267,7 @@ lapiz_prefs_manager_syntax_hl_enable_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_search_hl_enable_changed (GSettings *settings,
 					      gchar       *key,
-					      gpointer     user_data)
+					      gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1299,7 +1299,7 @@ lapiz_prefs_manager_search_hl_enable_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 						 gchar       *key,
-						 gpointer     user_data)
+						 gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1354,7 +1354,7 @@ lapiz_prefs_manager_source_style_scheme_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_max_recents_changed (GSettings *settings,
 					 gchar       *key,
-					 gpointer     user_data)
+					 gpointer     user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1388,7 +1388,7 @@ lapiz_prefs_manager_max_recents_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_auto_save_changed (GSettings *settings,
 				       gchar       *key,
-				       gpointer     user_data)
+				       gpointer     user_data G_GNUC_UNUSED)
 {
 	GList *docs;
 	GList *l;
@@ -1445,7 +1445,7 @@ lapiz_prefs_manager_auto_save_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_lockdown_changed (GSettings *settings,
 				      gchar       *key,
-				      gpointer     user_data)
+				      gpointer     user_data G_GNUC_UNUSED)
 {
 	LapizApp *app;
 	gboolean locked;
@@ -1479,7 +1479,7 @@ lapiz_prefs_manager_lockdown_changed (GSettings *settings,
 
 #ifdef CTK_SOURCE_VERSION_3_24
 static void
-lapiz_prefs_manager_space_drawer_generic (GSettings              *settings,
+lapiz_prefs_manager_space_drawer_generic (GSettings              *settings G_GNUC_UNUSED,
                                           gint                    level,
                                           CtkSourceSpaceTypeFlags type)
 {
@@ -1537,7 +1537,7 @@ lapiz_prefs_manager_draw_generic (GSettings               *settings,
 static void
 lapiz_prefs_manager_draw_spaces_changed (GSettings *settings,
                                          gchar     *key,
-                                         gpointer   user_data)
+                                         gpointer   user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1558,7 +1558,7 @@ lapiz_prefs_manager_draw_spaces_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_draw_tabs_changed (GSettings *settings,
                                        gchar     *key,
-                                       gpointer   user_data)
+                                       gpointer   user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1579,7 +1579,7 @@ lapiz_prefs_manager_draw_tabs_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_draw_newlines_changed (GSettings *settings,
                                            gchar     *key,
-                                           gpointer   user_data)
+                                           gpointer   user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
@@ -1600,7 +1600,7 @@ lapiz_prefs_manager_draw_newlines_changed (GSettings *settings,
 static void
 lapiz_prefs_manager_draw_nbsp_changed (GSettings *settings,
                                        gchar     *key,
-                                       gpointer   user_data)
+                                       gpointer   user_data G_GNUC_UNUSED)
 {
 	lapiz_debug (DEBUG_PREFS);
 
