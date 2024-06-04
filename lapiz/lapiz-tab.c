@@ -412,8 +412,8 @@ lapiz_tab_set_state (LapizTab      *tab,
 }
 
 static void
-document_uri_notify_handler (LapizDocument *document,
-			     GParamSpec    *pspec,
+document_uri_notify_handler (LapizDocument *document G_GNUC_UNUSED,
+			     GParamSpec    *pspec G_GNUC_UNUSED,
 			     LapizTab      *tab)
 {
 	lapiz_debug (DEBUG_TAB);
@@ -423,8 +423,8 @@ document_uri_notify_handler (LapizDocument *document,
 }
 
 static void
-document_shortname_notify_handler (LapizDocument *document,
-				   GParamSpec    *pspec,
+document_shortname_notify_handler (LapizDocument *document G_GNUC_UNUSED,
+				   GParamSpec    *pspec G_GNUC_UNUSED,
 				   LapizTab      *tab)
 {
 	lapiz_debug (DEBUG_TAB);
@@ -434,7 +434,7 @@ document_shortname_notify_handler (LapizDocument *document,
 }
 
 static void
-document_modified_changed (CtkTextBuffer *document,
+document_modified_changed (CtkTextBuffer *document G_GNUC_UNUSED,
 			   LapizTab      *tab)
 {
 	g_object_notify (G_OBJECT (tab), "name");
@@ -558,9 +558,9 @@ file_already_open_warning_message_area_response (CtkWidget   *message_area,
 }
 
 static void
-load_cancelled (CtkWidget        *area,
-                gint              response_id,
-                LapizTab         *tab)
+load_cancelled (CtkWidget *area G_GNUC_UNUSED,
+                gint       response_id G_GNUC_UNUSED,
+                LapizTab  *tab)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
 
@@ -578,9 +578,9 @@ scroll_to_cursor (LapizTab *tab)
 }
 
 static void
-unrecoverable_reverting_error_message_area_response (CtkWidget        *message_area,
-						     gint              response_id,
-						     LapizTab         *tab)
+unrecoverable_reverting_error_message_area_response (CtkWidget *message_area G_GNUC_UNUSED,
+						     gint       response_id G_GNUC_UNUSED,
+						     LapizTab  *tab)
 {
 	LapizView *view;
 
@@ -838,7 +838,7 @@ message_area_set_progress (LapizTab *tab,
 }
 
 static void
-document_loading (LapizDocument *document,
+document_loading (LapizDocument *document G_GNUC_UNUSED,
 		  goffset        size,
 		  goffset        total_size,
 		  LapizTab      *tab)
@@ -1071,10 +1071,10 @@ document_loaded (LapizDocument *document,
 }
 
 static void
-document_saving (LapizDocument    *document,
-		 goffset  size,
-		 goffset  total_size,
-		 LapizTab         *tab)
+document_saving (LapizDocument *document G_GNUC_UNUSED,
+		 goffset        size,
+		 goffset        total_size,
+		 LapizTab      *tab)
 {
 	gdouble et;
 	gdouble total_time;
@@ -1117,9 +1117,9 @@ end_saving (LapizTab *tab)
 }
 
 static void
-unrecoverable_saving_error_message_area_response (CtkWidget        *message_area,
-						  gint              response_id,
-						  LapizTab         *tab)
+unrecoverable_saving_error_message_area_response (CtkWidget *message_area G_GNUC_UNUSED,
+						  gint       response_id G_GNUC_UNUSED,
+						  LapizTab  *tab)
 {
 	LapizView *view;
 
@@ -1372,9 +1372,9 @@ document_saved (LapizDocument *document,
 }
 
 static void
-externally_modified_notification_message_area_response (CtkWidget        *message_area,
-							gint              response_id,
-							LapizTab         *tab)
+externally_modified_notification_message_area_response (CtkWidget *message_area G_GNUC_UNUSED,
+							gint       response_id,
+							LapizTab  *tab)
 {
 	LapizView *view;
 
@@ -1427,8 +1427,8 @@ display_externally_modified_notification (LapizTab *tab)
 }
 
 static gboolean
-view_focused_in (CtkWidget     *widget,
-                 CdkEventFocus *event,
+view_focused_in (CtkWidget     *widget G_GNUC_UNUSED,
+                 CdkEventFocus *event G_GNUC_UNUSED,
                  LapizTab      *tab)
 {
 	LapizDocument *doc;
@@ -1468,8 +1468,8 @@ view_focused_in (CtkWidget     *widget,
 }
 
 static GMountOperation *
-tab_mount_operation_factory (LapizDocument *doc,
-			     gpointer userdata)
+tab_mount_operation_factory (LapizDocument *doc G_GNUC_UNUSED,
+			     gpointer       userdata)
 {
 	LapizTab *tab = LAPIZ_TAB (userdata);
 	CtkWidget *window;
@@ -2255,7 +2255,7 @@ get_print_settings (LapizTab *tab)
 /* FIXME: show the message area only if the operation will be "long" */
 static void
 printing_cb (LapizPrintJob       *job,
-	     LapizPrintJobStatus  status,
+	     LapizPrintJobStatus  status G_GNUC_UNUSED,
 	     LapizTab            *tab)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
@@ -2312,7 +2312,7 @@ store_print_settings (LapizTab      *tab,
 static void
 done_printing_cb (LapizPrintJob       *job,
 		  LapizPrintJobResult  result,
-		  const GError        *error,
+		  const GError        *error G_GNUC_UNUSED,
 		  LapizTab            *tab)
 {
 	LapizView *view;
@@ -2388,7 +2388,7 @@ print_preview_destroyed (CtkWidget *preview,
 #endif
 
 static void
-show_preview_cb (LapizPrintJob       *job,
+show_preview_cb (LapizPrintJob       *job G_GNUC_UNUSED,
 		 LapizPrintPreview   *preview,
 		 LapizTab            *tab)
 {
@@ -2469,8 +2469,8 @@ preview_finished_cb (CtkSourcePrintJob *pjob, LapizTab *tab)
 #endif
 
 static void
-print_cancelled (CtkWidget        *area,
-                 gint              response_id,
+print_cancelled (CtkWidget        *area G_GNUC_UNUSED,
+                 gint              response_id G_GNUC_UNUSED,
                  LapizTab         *tab)
 {
 	g_return_if_fail (LAPIZ_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
