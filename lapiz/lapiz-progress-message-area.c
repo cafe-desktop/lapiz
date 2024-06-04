@@ -92,7 +92,7 @@ lapiz_progress_message_area_set_property (GObject      *object,
 static void
 lapiz_progress_message_area_get_property (GObject      *object,
 					  guint         prop_id,
-					  GValue       *value,
+					  GValue       *value G_GNUC_UNUSED,
 					  GParamSpec   *pspec)
 {
 	switch (prop_id)
