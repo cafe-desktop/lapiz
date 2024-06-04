@@ -106,7 +106,7 @@ lapiz_tab_label_get_property (GObject    *object,
 }
 
 static void
-close_button_clicked_cb (CtkWidget     *widget,
+close_button_clicked_cb (CtkWidget     *widget G_GNUC_UNUSED,
 			 LapizTabLabel *tab_label)
 {
 	g_signal_emit (tab_label, signals[CLOSE_CLICKED], 0, NULL);
@@ -125,7 +125,9 @@ sync_tip (LapizTab *tab, LapizTabLabel *tab_label)
 }
 
 static void
-sync_name (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
+sync_name (LapizTab      *tab,
+	   GParamSpec    *pspec G_GNUC_UNUSED,
+	   LapizTabLabel *tab_label)
 {
 	gchar *str;
 
@@ -141,7 +143,9 @@ sync_name (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
 }
 
 static void
-sync_state (LapizTab *tab, GParamSpec *pspec, LapizTabLabel *tab_label)
+sync_state (LapizTab      *tab,
+	    GParamSpec    *pspec G_GNUC_UNUSED,
+	    LapizTabLabel *tab_label)
 {
 	LapizTabState  state;
 
