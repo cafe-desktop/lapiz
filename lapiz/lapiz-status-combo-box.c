@@ -172,7 +172,7 @@ lapiz_status_combo_box_class_init (LapizStatusComboBoxClass *klass)
 }
 
 static void
-menu_deactivate (CtkMenu             *menu,
+menu_deactivate (CtkMenu             *menu G_GNUC_UNUSED,
 		 LapizStatusComboBox *combo)
 {
 	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (combo->priv->button), FALSE);
