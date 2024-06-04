@@ -129,9 +129,9 @@ save_window_session (GKeyFile    *state_file,
 }
 
 static void
-client_save_state_cb (EggSMClient *client,
+client_save_state_cb (EggSMClient *client G_GNUC_UNUSED,
 		      GKeyFile    *state_file,
-		      gpointer     user_data)
+		      gpointer     user_data G_GNUC_UNUSED)
 {
         const GList *windows;
 	int n;
@@ -168,7 +168,7 @@ window_handled (LapizWindow *window)
 
 static void
 window_state_change (LapizWindow *window,
-		     GParamSpec  *pspec,
+		     GParamSpec  *pspec G_GNUC_UNUSED,
 		     gpointer     data)
 {
 	LapizWindowState state;
@@ -330,7 +330,8 @@ ask_next_confirmation (void)
 
 /* quit_requested handler for the master client */
 static void
-client_quit_requested_cb (EggSMClient *client, gpointer data)
+client_quit_requested_cb (EggSMClient *client,
+			  gpointer     data G_GNUC_UNUSED)
 {
 	LapizApp *app;
 	const GList *l;
@@ -368,7 +369,8 @@ client_quit_requested_cb (EggSMClient *client, gpointer data)
 
 /* quit handler for the master client */
 static void
-client_quit_cb (EggSMClient *client, gpointer data)
+client_quit_cb (EggSMClient *client G_GNUC_UNUSED,
+		gpointer     data G_GNUC_UNUSED)
 {
 #if 0
 	lapiz_debug (DEBUG_SESSION);
