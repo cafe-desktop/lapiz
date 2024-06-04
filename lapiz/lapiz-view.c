@@ -173,7 +173,7 @@ typedef enum
 
 static void
 document_read_only_notify_handler (LapizDocument *document,
-			           GParamSpec    *pspec,
+			           GParamSpec    *pspec G_GNUC_UNUSED,
 				   LapizView     *view)
 {
 	lapiz_debug (DEBUG_VIEW);
@@ -183,7 +183,7 @@ document_read_only_notify_handler (LapizDocument *document,
 }
 
 static gboolean
-lapiz_view_scroll_event (CtkWidget      *widget,
+lapiz_view_scroll_event (CtkWidget      *widget G_GNUC_UNUSED,
                          CdkEventScroll *event)
 {
 	if (event->direction == CDK_SCROLL_UP)
@@ -343,8 +343,8 @@ current_buffer_removed (LapizView *view)
 
 static void
 on_notify_buffer_cb (LapizView  *view,
-		     GParamSpec *arg1,
-		     gpointer    userdata)
+		     GParamSpec *arg1 G_GNUC_UNUSED,
+		     gpointer    userdata G_GNUC_UNUSED)
 {
 	CtkTextBuffer *buffer;
 
@@ -776,9 +776,9 @@ static PangoFontDescription* get_system_font (void)
 }
 
 static void
-system_font_changed_cb (GSettings *settings,
-			gchar     *key,
-			gpointer   user_data)
+system_font_changed_cb (GSettings *settings G_GNUC_UNUSED,
+			gchar     *key G_GNUC_UNUSED,
+			gpointer   user_data G_GNUC_UNUSED)
 {
 	PangoFontDescription *sys_font_desc = NULL;
 	sys_font_desc = get_system_font ();
@@ -1188,8 +1188,8 @@ update_search_window_position (LapizView *view)
 }
 
 static gboolean
-search_window_delete_event (CtkWidget   *widget,
-			    CdkEventAny *event,
+search_window_delete_event (CtkWidget   *widget G_GNUC_UNUSED,
+			    CdkEventAny *event G_GNUC_UNUSED,
 			    LapizView   *view)
 {
 	hide_search_window (view, FALSE);
@@ -1198,7 +1198,7 @@ search_window_delete_event (CtkWidget   *widget,
 }
 
 static gboolean
-search_window_button_press_event (CtkWidget      *widget,
+search_window_button_press_event (CtkWidget      *widget G_GNUC_UNUSED,
 				  CdkEventButton *event,
 				  LapizView      *view)
 {
@@ -1240,7 +1240,7 @@ search_again (LapizView *view,
 }
 
 static gboolean
-search_window_scroll_event (CtkWidget      *widget,
+search_window_scroll_event (CtkWidget      *widget G_GNUC_UNUSED,
 			    CdkEventScroll *event,
 			    LapizView      *view)
 {
@@ -1265,7 +1265,7 @@ search_window_scroll_event (CtkWidget      *widget,
 }
 
 static gboolean
-search_window_key_press_event (CtkWidget   *widget,
+search_window_key_press_event (CtkWidget   *widget G_GNUC_UNUSED,
 			       CdkEventKey *event,
 			       LapizView   *view)
 {
@@ -1337,7 +1337,7 @@ search_window_key_press_event (CtkWidget   *widget,
 }
 
 static void
-search_entry_activate (CtkEntry  *entry,
+search_entry_activate (CtkEntry  *entry G_GNUC_UNUSED,
 		       LapizView *view)
 {
 	hide_search_window (view, FALSE);
@@ -1385,7 +1385,7 @@ real_search_enable_popdown (gpointer data)
 }
 
 static void
-search_enable_popdown (CtkWidget *widget,
+search_enable_popdown (CtkWidget *widget G_GNUC_UNUSED,
 		       LapizView *view)
 {
 	g_timeout_add (200, real_search_enable_popdown, view);
@@ -1401,7 +1401,7 @@ search_enable_popdown (CtkWidget *widget,
 }
 
 static void
-search_entry_populate_popup (CtkEntry  *entry,
+search_entry_populate_popup (CtkEntry  *entry G_GNUC_UNUSED,
 			     CtkMenu   *menu,
 			     LapizView *view)
 {
@@ -2165,7 +2165,7 @@ lapiz_view_drag_drop (CtkWidget      *widget,
 
 static void
 show_line_numbers_toggled (CtkMenu   *menu,
-			   LapizView *view)
+			   LapizView *view G_GNUC_UNUSED)
 {
 	gboolean show;
 
@@ -2196,7 +2196,7 @@ create_line_numbers_menu (CtkWidget *view)
 
 static void
 show_line_numbers_menu (CtkWidget      *view,
-			CdkEventButton *event)
+			CdkEventButton *event G_GNUC_UNUSED)
 {
 	CtkWidget *menu;
 
@@ -2258,13 +2258,14 @@ lapiz_view_button_release_event (CtkWidget *widget, CdkEventButton *event)
 }
 
 static void
-lapiz_view_populate_popup (CtkTextView *text_view, CtkWidget *widget)
+lapiz_view_populate_popup (CtkTextView *text_view G_GNUC_UNUSED,
+			   CtkWidget   *widget G_GNUC_UNUSED)
 {
 	middle_or_right_down = FALSE;
 }
 
 static void
-search_highlight_updated_cb (LapizDocument *doc,
+search_highlight_updated_cb (LapizDocument *doc G_GNUC_UNUSED,
 			     CtkTextIter   *start,
 			     CtkTextIter   *end,
 			     LapizView     *view)
