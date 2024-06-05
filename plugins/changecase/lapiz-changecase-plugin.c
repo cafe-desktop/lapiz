@@ -211,28 +211,28 @@ change_case (LapizWindow      *window,
 }
 
 static void
-upper_case_cb (CtkAction   *action,
+upper_case_cb (CtkAction   *action G_GNUC_UNUSED,
                LapizWindow *window)
 {
 	change_case (window, TO_UPPER_CASE);
 }
 
 static void
-lower_case_cb (CtkAction   *action,
+lower_case_cb (CtkAction   *action G_GNUC_UNUSED,
                LapizWindow *window)
 {
 	change_case (window, TO_LOWER_CASE);
 }
 
 static void
-invert_case_cb (CtkAction   *action,
+invert_case_cb (CtkAction   *action G_GNUC_UNUSED,
                 LapizWindow *window)
 {
 	change_case (window, INVERT_CASE);
 }
 
 static void
-title_case_cb (CtkAction   *action,
+title_case_cb (CtkAction   *action G_GNUC_UNUSED,
                LapizWindow *window)
 {
 	change_case (window, TO_TITLE_CASE);
@@ -446,7 +446,7 @@ lapiz_changecase_plugin_class_init (LapizChangecasePluginClass *klass)
 }
 
 static void
-lapiz_changecase_plugin_class_finalize (LapizChangecasePluginClass *klass)
+lapiz_changecase_plugin_class_finalize (LapizChangecasePluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
