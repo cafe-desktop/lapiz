@@ -908,15 +908,17 @@ lapiz_file_browser_view_class_init (LapizFileBrowserViewClass * klass)
 }
 
 static void
-lapiz_file_browser_view_class_finalize (LapizFileBrowserViewClass *klass)
+lapiz_file_browser_view_class_finalize (LapizFileBrowserViewClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
 
 static void
-cell_data_cb (CtkTreeViewColumn * tree_column, CtkCellRenderer * cell,
-	      CtkTreeModel * tree_model, CtkTreeIter * iter,
-	      LapizFileBrowserView * obj)
+cell_data_cb (CtkTreeViewColumn    *tree_column G_GNUC_UNUSED,
+	      CtkCellRenderer      *cell,
+	      CtkTreeModel         *tree_model,
+	      CtkTreeIter          *iter,
+	      LapizFileBrowserView *obj)
 {
 	CtkTreePath *path;
 	PangoUnderline underline = PANGO_UNDERLINE_NONE;
@@ -989,8 +991,9 @@ lapiz_file_browser_view_init (LapizFileBrowserView * obj)
 }
 
 static gboolean
-bookmarks_separator_func (CtkTreeModel * model, CtkTreeIter * iter,
-			  gpointer user_data)
+bookmarks_separator_func (CtkTreeModel *model,
+			  CtkTreeIter  *iter,
+			  gpointer      user_data G_GNUC_UNUSED)
 {
 	guint flags;
 
@@ -1135,8 +1138,10 @@ lapiz_file_browser_view_set_restore_expand_state (LapizFileBrowserView * tree_vi
 
 /* Signal handlers */
 static void
-on_cell_edited (CtkCellRendererText * cell, gchar * path, gchar * new_text,
-		LapizFileBrowserView * tree_view)
+on_cell_edited (CtkCellRendererText  *cell G_GNUC_UNUSED,
+		gchar                *path,
+		gchar                *new_text,
+		LapizFileBrowserView *tree_view)
 {
 	CtkTreePath * treepath;
 	CtkTreeIter iter;
@@ -1173,8 +1178,8 @@ on_cell_edited (CtkCellRendererText * cell, gchar * path, gchar * new_text,
 }
 
 static void
-on_begin_refresh (LapizFileBrowserStore * model,
-		  LapizFileBrowserView * view)
+on_begin_refresh (LapizFileBrowserStore *model G_GNUC_UNUSED,
+		  LapizFileBrowserView  *view)
 {
 	/* Store the refresh state, so we can handle unloading of nodes while
 	   refreshing properly */
@@ -1182,8 +1187,8 @@ on_begin_refresh (LapizFileBrowserStore * model,
 }
 
 static void
-on_end_refresh (LapizFileBrowserStore * model,
-		LapizFileBrowserView * view)
+on_end_refresh (LapizFileBrowserStore *model G_GNUC_UNUSED,
+		LapizFileBrowserView  *view)
 {
 	/* Store the refresh state, so we can handle unloading of nodes while
 	   refreshing properly */
@@ -1191,9 +1196,9 @@ on_end_refresh (LapizFileBrowserStore * model,
 }
 
 static void
-on_unload (LapizFileBrowserStore * model,
-	   gchar const * uri,
-	   LapizFileBrowserView * view)
+on_unload (LapizFileBrowserStore *model G_GNUC_UNUSED,
+	   gchar const           *uri,
+	   LapizFileBrowserView  *view)
 {
 	/* Don't remove the expand state if we are refreshing */
 	if (!view->priv->restore_expand_state || view->priv->is_refresh)
