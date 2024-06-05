@@ -86,7 +86,7 @@ static void docinfo_dialog_response_cb (CtkDialog   *widget,
 					LapizDocInfoPluginPrivate *data);
 
 static void
-docinfo_dialog_destroy_cb (GObject  *obj,
+docinfo_dialog_destroy_cb (GObject                   *obj G_GNUC_UNUSED,
 			   LapizDocInfoPluginPrivate *data)
 {
 	lapiz_debug (DEBUG_PLUGINS);
@@ -355,7 +355,7 @@ selectioninfo_real (LapizDocument *doc,
 }
 
 static void
-docinfo_cb (CtkAction	*action,
+docinfo_cb (CtkAction          *action G_GNUC_UNUSED,
 	    LapizDocInfoPlugin *plugin)
 {
 	LapizDocInfoPluginPrivate *data;
@@ -393,8 +393,8 @@ docinfo_cb (CtkAction	*action,
 }
 
 static void
-docinfo_dialog_response_cb (CtkDialog	*widget,
-			    gint	res_id,
+docinfo_dialog_response_cb (CtkDialog                 *widget G_GNUC_UNUSED,
+			    gint                       res_id,
 			    LapizDocInfoPluginPrivate *data)
 {
 	LapizWindow *window;
@@ -618,7 +618,7 @@ lapiz_docinfo_plugin_class_init (LapizDocInfoPluginClass *klass)
 }
 
 static void
-lapiz_docinfo_plugin_class_finalize (LapizDocInfoPluginClass *klass)
+lapiz_docinfo_plugin_class_finalize (LapizDocInfoPluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
