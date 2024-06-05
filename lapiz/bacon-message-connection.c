@@ -127,7 +127,9 @@ accept_new_connection (BaconMessageConnection *server_conn)
 }
 
 static gboolean
-server_cb (GIOChannel *source, GIOCondition condition, gpointer data)
+server_cb (GIOChannel  *source,
+	   GIOCondition condition G_GNUC_UNUSED,
+	   gpointer     data)
 {
 	BaconMessageConnection *conn = (BaconMessageConnection *)data;
 	char *message, *subs, buf;
