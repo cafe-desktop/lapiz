@@ -390,8 +390,8 @@ lapiz_window_key_press_event (CtkWidget   *widget,
 }
 
 static void
-lapiz_window_tab_removed (LapizWindow *window,
-			  LapizTab    *tab)
+lapiz_window_tab_removed (LapizWindow *window G_GNUC_UNUSED,
+			  LapizTab    *tab G_GNUC_UNUSED)
 {
 	bean_engine_garbage_collect (BEAN_ENGINE (lapiz_plugins_engine_get_default ()));
 }
@@ -492,18 +492,18 @@ menu_item_select_cb (CtkMenuItem *proxy,
 }
 
 static void
-menu_item_deselect_cb (CtkMenuItem *proxy,
-                       LapizWindow *window)
+menu_item_deselect_cb (CtkMenuItem *proxy G_GNUC_UNUSED,
+		       LapizWindow *window)
 {
 	ctk_statusbar_pop (CTK_STATUSBAR (window->priv->statusbar),
 			   window->priv->tip_message_cid);
 }
 
 static void
-connect_proxy_cb (CtkUIManager *manager,
-                  CtkAction *action,
-                  CtkWidget *proxy,
-                  LapizWindow *window)
+connect_proxy_cb (CtkUIManager *manager G_GNUC_UNUSED,
+		  CtkAction *action G_GNUC_UNUSED,
+		  CtkWidget *proxy,
+		  LapizWindow *window)
 {
 	if (CTK_IS_MENU_ITEM (proxy))
 	{
@@ -515,8 +515,8 @@ connect_proxy_cb (CtkUIManager *manager,
 }
 
 static void
-disconnect_proxy_cb (CtkUIManager *manager,
-                     CtkAction *action,
+disconnect_proxy_cb (CtkUIManager *manager G_GNUC_UNUSED,
+                     CtkAction *action G_GNUC_UNUSED,
                      CtkWidget *proxy,
                      LapizWindow *window)
 {
@@ -655,7 +655,7 @@ update_next_prev_doc_sensitivity_per_window (LapizWindow *window)
 }
 
 static void
-received_clipboard_contents (CtkClipboard     *clipboard,
+received_clipboard_contents (CtkClipboard     *clipboard G_GNUC_UNUSED,
 			     CtkSelectionData *selection_data,
 			     LapizWindow      *window)
 {
@@ -1154,7 +1154,7 @@ update_languages_menu (LapizWindow *window)
 }
 
 void
-_lapiz_recent_add (LapizWindow *window,
+_lapiz_recent_add (LapizWindow *window G_GNUC_UNUSED,
 		   const gchar *uri,
 		   const gchar *mime)
 {
@@ -1184,7 +1184,7 @@ _lapiz_recent_add (LapizWindow *window,
 }
 
 void
-_lapiz_recent_remove (LapizWindow *window,
+_lapiz_recent_remove (LapizWindow *window G_GNUC_UNUSED,
 		      const gchar *uri)
 {
 	CtkRecentManager *recent_manager;
@@ -1247,7 +1247,7 @@ sort_recents_mru (CtkRecentInfo *a, CtkRecentInfo *b)
 static void	update_recent_files_menu (LapizWindow *window);
 
 static void
-recent_manager_changed (CtkRecentManager *manager,
+recent_manager_changed (CtkRecentManager *manager G_GNUC_UNUSED,
 			LapizWindow      *window)
 {
 	/* regenerate the menu when the model changes */
@@ -1391,7 +1391,8 @@ update_recent_files_menu (LapizWindow *window)
 }
 
 static void
-set_non_homogeneus (CtkWidget *widget, gpointer data)
+set_non_homogeneus (CtkWidget *widget,
+		    gpointer   data G_GNUC_UNUSED)
 {
 	ctk_tool_item_set_homogeneous (CTK_TOOL_ITEM (widget), FALSE);
 }
@@ -1835,7 +1836,7 @@ statusbar_visibility_changed (CtkWidget   *statusbar,
 }
 
 static void
-tab_width_combo_changed (LapizStatusComboBox *combo,
+tab_width_combo_changed (LapizStatusComboBox *combo G_GNUC_UNUSED,
 			 CtkMenuItem         *item,
 			 LapizWindow         *window)
 {
@@ -1873,7 +1874,7 @@ use_spaces_toggled (CtkCheckMenuItem *item,
 }
 
 static void
-language_combo_changed (LapizStatusComboBox *combo,
+language_combo_changed (LapizStatusComboBox *combo G_GNUC_UNUSED,
 			CtkMenuItem         *item,
 			LapizWindow         *window)
 {
@@ -2302,7 +2303,7 @@ set_tab_width_item_blocked (LapizWindow *window,
 
 static void
 spaces_instead_of_tabs_changed (GObject     *object,
-		   		GParamSpec  *pspec,
+		   		GParamSpec  *pspec G_GNUC_UNUSED,
 		 		LapizWindow *window)
 {
 	LapizView *view = LAPIZ_VIEW (object);
@@ -2321,7 +2322,7 @@ spaces_instead_of_tabs_changed (GObject     *object,
 
 static void
 tab_width_changed (GObject     *object,
-		   GParamSpec  *pspec,
+		   GParamSpec  *pspec G_GNUC_UNUSED,
 		   LapizWindow *window)
 {
 	GList *items;
@@ -2376,7 +2377,7 @@ tab_width_changed (GObject     *object,
 
 static void
 language_changed (GObject     *object,
-		  GParamSpec  *pspec,
+		  GParamSpec  *pspec G_GNUC_UNUSED,
 		  LapizWindow *window)
 {
 	GList *items;
@@ -2419,10 +2420,10 @@ language_changed (GObject     *object,
 }
 
 static void
-notebook_switch_page (CtkNotebook     *book,
-		      CtkWidget       *pg,
-		      gint             page_num,
-		      LapizWindow     *window)
+notebook_switch_page (CtkNotebook *book,
+		      CtkWidget   *pg G_GNUC_UNUSED,
+		      gint         page_num,
+		      LapizWindow *window)
 {
 	LapizView *view;
 	LapizTab *tab;
@@ -2707,7 +2708,7 @@ update_window_state (LapizWindow *window)
 
 static void
 sync_state (LapizTab    *tab,
-	    GParamSpec  *pspec,
+	    GParamSpec  *pspec G_GNUC_UNUSED,
 	    LapizWindow *window)
 {
 	lapiz_debug (DEBUG_WINDOW);
@@ -2724,7 +2725,7 @@ sync_state (LapizTab    *tab,
 
 static void
 sync_name (LapizTab    *tab,
-	   GParamSpec  *pspec,
+	   GParamSpec  *pspec G_GNUC_UNUSED,
 	   LapizWindow *window)
 {
 	CtkAction *action;
@@ -2810,13 +2811,13 @@ load_uris_from_drop (LapizWindow  *window,
 /* Handle drops on the LapizWindow */
 static void
 drag_data_received_cb (CtkWidget        *widget,
-		       CdkDragContext   *context,
-		       gint              x,
-		       gint              y,
+		       CdkDragContext   *context G_GNUC_UNUSED,
+		       gint              x G_GNUC_UNUSED,
+		       gint              y G_GNUC_UNUSED,
 		       CtkSelectionData *selection_data,
 		       guint             info,
-		       guint             timestamp,
-		       gpointer          data)
+		       guint             timestamp G_GNUC_UNUSED,
+		       gpointer          data G_GNUC_UNUSED)
 {
 	LapizWindow *window;
 	gchar **uri_list;
@@ -2979,8 +2980,8 @@ show_hide_fullscreen_toolbar (LapizWindow *window,
 }
 
 static gboolean
-on_fullscreen_controls_enter_notify_event (CtkWidget        *widget,
-					   CdkEventCrossing *event,
+on_fullscreen_controls_enter_notify_event (CtkWidget        *widget G_GNUC_UNUSED,
+					   CdkEventCrossing *event G_GNUC_UNUSED,
 					   LapizWindow      *window)
 {
 	show_hide_fullscreen_toolbar (window, TRUE, 0);
@@ -2989,7 +2990,7 @@ on_fullscreen_controls_enter_notify_event (CtkWidget        *widget,
 }
 
 static gboolean
-on_fullscreen_controls_leave_notify_event (CtkWidget        *widget,
+on_fullscreen_controls_leave_notify_event (CtkWidget        *widget G_GNUC_UNUSED,
 					   CdkEventCrossing *event,
 					   LapizWindow      *window)
 {
@@ -3057,7 +3058,7 @@ fullscreen_controls_build (LapizWindow *window)
 
 static void
 can_search_again (LapizDocument *doc,
-		  GParamSpec    *pspec,
+		  GParamSpec    *pspec G_GNUC_UNUSED,
 		  LapizWindow   *window)
 {
 	gboolean sensitive;
@@ -3083,7 +3084,7 @@ can_search_again (LapizDocument *doc,
 
 static void
 can_undo (LapizDocument *doc,
-	  GParamSpec    *pspec,
+	  GParamSpec    *pspec G_GNUC_UNUSED,
 	  LapizWindow   *window)
 {
 	CtkAction *action;
@@ -3101,7 +3102,7 @@ can_undo (LapizDocument *doc,
 
 static void
 can_redo (LapizDocument *doc,
-	  GParamSpec    *pspec,
+	  GParamSpec    *pspec G_GNUC_UNUSED,
 	  LapizWindow   *window)
 {
 	CtkAction *action;
@@ -3119,7 +3120,7 @@ can_redo (LapizDocument *doc,
 
 static void
 selection_changed (LapizDocument *doc,
-		   GParamSpec    *pspec,
+		   GParamSpec    *pspec G_GNUC_UNUSED,
 		   LapizWindow   *window)
 {
 	LapizTab *tab;
@@ -3166,8 +3167,8 @@ selection_changed (LapizDocument *doc,
 }
 
 static void
-sync_languages_menu (LapizDocument *doc,
-		     GParamSpec    *pspec,
+sync_languages_menu (LapizDocument *doc G_GNUC_UNUSED,
+		     GParamSpec    *pspec G_GNUC_UNUSED,
 		     LapizWindow   *window)
 {
 	update_languages_menu (window);
@@ -3175,8 +3176,8 @@ sync_languages_menu (LapizDocument *doc,
 }
 
 static void
-readonly_changed (LapizDocument *doc,
-		  GParamSpec    *pspec,
+readonly_changed (LapizDocument *doc G_GNUC_UNUSED,
+		  GParamSpec    *pspec G_GNUC_UNUSED,
 		  LapizWindow   *window)
 {
 	set_sensitivity_according_to_tab (window, window->priv->active_tab);
@@ -3187,8 +3188,8 @@ readonly_changed (LapizDocument *doc,
 }
 
 static void
-editable_changed (LapizView  *view,
-                  GParamSpec  *arg1,
+editable_changed (LapizView   *view G_GNUC_UNUSED,
+                  GParamSpec  *arg1 G_GNUC_UNUSED,
                   LapizWindow *window)
 {
 	bean_extension_set_call (window->priv->extensions, "update_state", window);
@@ -3213,7 +3214,7 @@ update_sensitivity_according_to_open_tabs (LapizWindow *window)
 }
 
 static void
-notebook_tab_added (LapizNotebook *notebook,
+notebook_tab_added (LapizNotebook *notebook G_GNUC_UNUSED,
 		    LapizTab      *tab,
 		    LapizWindow   *window)
 {
@@ -3293,7 +3294,7 @@ notebook_tab_added (LapizNotebook *notebook,
 }
 
 static void
-notebook_tab_removed (LapizNotebook *notebook,
+notebook_tab_removed (LapizNotebook *notebook G_GNUC_UNUSED,
 		      LapizTab      *tab,
 		      LapizWindow   *window)
 {
@@ -3412,7 +3413,7 @@ notebook_tab_removed (LapizNotebook *notebook,
 }
 
 static void
-notebook_tabs_reordered (LapizNotebook *notebook,
+notebook_tabs_reordered (LapizNotebook *notebook G_GNUC_UNUSED,
 			 LapizWindow   *window)
 {
 	update_documents_list_menu (window);
@@ -3441,7 +3442,7 @@ notebook_tab_detached (LapizNotebook *notebook,
 }
 
 static void
-notebook_tab_close_request (LapizNotebook *notebook,
+notebook_tab_close_request (LapizNotebook *notebook G_GNUC_UNUSED,
 			    LapizTab      *tab,
 			    CtkWindow     *window)
 {
@@ -3524,7 +3525,7 @@ notebook_button_press_event (CtkNotebook    *notebook,
 static gboolean
 notebook_scroll_event (CtkNotebook    *notebook,
                        CdkEventScroll *event,
-                       LapizWindow    *window)
+                       LapizWindow    *window G_GNUC_UNUSED)
 {
 	if (event->direction == CDK_SCROLL_UP || event->direction == CDK_SCROLL_LEFT)
 	{
@@ -3552,7 +3553,7 @@ notebook_popup_menu (CtkNotebook *notebook,
 }
 
 static void
-side_panel_size_allocate (CtkWidget     *widget,
+side_panel_size_allocate (CtkWidget     *widget G_GNUC_UNUSED,
 			  CtkAllocation *allocation,
 			  LapizWindow   *window)
 {
@@ -3560,7 +3561,7 @@ side_panel_size_allocate (CtkWidget     *widget,
 }
 
 static void
-bottom_panel_size_allocate (CtkWidget     *widget,
+bottom_panel_size_allocate (CtkWidget     *widget G_GNUC_UNUSED,
 			    CtkAllocation *allocation,
 			    LapizWindow   *window)
 {
@@ -3711,7 +3712,7 @@ bottom_panel_visibility_changed (LapizPanel  *bottom_panel,
 
 static void
 bottom_panel_item_removed (LapizPanel  *panel,
-			   CtkWidget   *item,
+			   CtkWidget   *item G_GNUC_UNUSED,
 			   LapizWindow *window)
 {
 	if (lapiz_panel_get_n_items (panel) == 0)
@@ -3728,7 +3729,7 @@ bottom_panel_item_removed (LapizPanel  *panel,
 
 static void
 bottom_panel_item_added (LapizPanel  *panel,
-			 CtkWidget   *item,
+			 CtkWidget   *item G_GNUC_UNUSED,
 			 LapizWindow *window)
 {
 	/* if it's the first item added, set the menu item
@@ -3822,7 +3823,7 @@ init_panels_visibility (LapizWindow *window)
 
 static void
 clipboard_owner_change (CtkClipboard        *clipboard,
-			CdkEventOwnerChange *event,
+			CdkEventOwnerChange *event G_GNUC_UNUSED,
 			LapizWindow         *window)
 {
 	set_paste_sensitivity_according_to_clipboard (window,
@@ -3831,7 +3832,7 @@ clipboard_owner_change (CtkClipboard        *clipboard,
 
 static void
 window_realized (CtkWidget *window,
-		 gpointer  *data)
+		 gpointer  *data G_GNUC_UNUSED)
 {
 	CtkClipboard *clipboard;
 
@@ -3846,7 +3847,7 @@ window_realized (CtkWidget *window,
 
 static void
 window_unrealized (CtkWidget *window,
-		   gpointer  *data)
+		   gpointer  *data G_GNUC_UNUSED)
 {
 	CtkClipboard *clipboard;
 
@@ -3860,8 +3861,8 @@ window_unrealized (CtkWidget *window,
 
 static void
 check_window_is_active (LapizWindow *window,
-			GParamSpec *property,
-			gpointer useless)
+			GParamSpec *property G_GNUC_UNUSED,
+			gpointer useless G_GNUC_UNUSED)
 {
 	if (window->priv->window_state & CDK_WINDOW_STATE_FULLSCREEN)
 	{
@@ -3934,8 +3935,8 @@ add_notebook (LapizWindow *window,
 }
 
 static void
-on_extension_added (BeanExtensionSet *extensions,
-		    BeanPluginInfo   *info,
+on_extension_added (BeanExtensionSet *extensions G_GNUC_UNUSED,
+		    BeanPluginInfo   *info G_GNUC_UNUSED,
 		    BeanExtension    *exten,
 		    LapizWindow      *window)
 {
@@ -3943,8 +3944,8 @@ on_extension_added (BeanExtensionSet *extensions,
 }
 
 static void
-on_extension_removed (BeanExtensionSet *extensions,
-		      BeanPluginInfo   *info,
+on_extension_removed (BeanExtensionSet *extensions G_GNUC_UNUSED,
+		      BeanPluginInfo   *info G_GNUC_UNUSED,
 		      BeanExtension    *exten,
 		      LapizWindow      *window)
 {
@@ -4653,8 +4654,8 @@ _lapiz_window_set_saving_session_state (LapizWindow *window,
 
 static void
 hide_notebook_tabs_on_fullscreen (CtkNotebook	*notebook,
-				  GParamSpec	*pspec,
-				  LapizWindow	*window)
+				  GParamSpec	*pspec G_GNUC_UNUSED,
+				  LapizWindow	*window G_GNUC_UNUSED)
 {
 	ctk_notebook_set_show_tabs (notebook, FALSE);
 }
