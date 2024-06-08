@@ -420,7 +420,7 @@ lapiz_file_browser_store_class_init (LapizFileBrowserStoreClass * klass)
 }
 
 static void
-lapiz_file_browser_store_class_finalize (LapizFileBrowserStoreClass *klass)
+lapiz_file_browser_store_class_finalize (LapizFileBrowserStoreClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -903,9 +903,9 @@ lapiz_file_browser_store_iter_parent (CtkTreeModel * tree_model,
 }
 
 static void
-lapiz_file_browser_store_row_inserted (CtkTreeModel * tree_model,
-				       CtkTreePath * path,
-				       CtkTreeIter * iter)
+lapiz_file_browser_store_row_inserted (CtkTreeModel *tree_model G_GNUC_UNUSED,
+				       CtkTreePath  *path G_GNUC_UNUSED,
+				       CtkTreeIter  *iter)
 {
 	FileBrowserNode * node = (FileBrowserNode *)(iter->user_data);
 
@@ -933,8 +933,8 @@ lapiz_file_browser_store_row_draggable (CtkTreeDragSource * drag_source,
 }
 
 static gboolean
-lapiz_file_browser_store_drag_data_delete (CtkTreeDragSource * drag_source,
-					   CtkTreePath       * path)
+lapiz_file_browser_store_drag_data_delete (CtkTreeDragSource *drag_source G_GNUC_UNUSED,
+					   CtkTreePath       *path G_GNUC_UNUSED)
 {
 	return FALSE;
 }
@@ -1653,8 +1653,8 @@ model_recomposite_icon (LapizFileBrowserStore * tree_model,
 }
 
 static FileBrowserNode *
-model_create_dummy_node (LapizFileBrowserStore * model,
-			 FileBrowserNode * parent)
+model_create_dummy_node (LapizFileBrowserStore *model G_GNUC_UNUSED,
+			 FileBrowserNode       *parent)
 {
 	FileBrowserNode *dummy;
 
@@ -2111,11 +2111,11 @@ model_add_node_from_dir (LapizFileBrowserStore * model,
 }
 
 static void
-on_directory_monitor_event (GFileMonitor * monitor,
-			    GFile * file,
-			    GFile * other_file,
+on_directory_monitor_event (GFileMonitor     *monitor G_GNUC_UNUSED,
+			    GFile            *file,
+			    GFile            *other_file G_GNUC_UNUSED,
 			    GFileMonitorEvent event_type,
-			    FileBrowserNode * parent)
+			    FileBrowserNode  *parent)
 {
 	FileBrowserNode *node;
 	FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR (parent);
