@@ -95,7 +95,7 @@ lapiz_file_bookmarks_store_class_init (LapizFileBookmarksStoreClass *klass)
 }
 
 static void
-lapiz_file_bookmarks_store_class_finalize (LapizFileBookmarksStoreClass *klass)
+lapiz_file_bookmarks_store_class_finalize (LapizFileBookmarksStoreClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -704,8 +704,10 @@ bookmarks_compare_flags (CtkTreeModel * model, CtkTreeIter * a,
 }
 
 static gint
-bookmarks_compare_func (CtkTreeModel * model, CtkTreeIter * a,
-			CtkTreeIter * b, gpointer user_data)
+bookmarks_compare_func (CtkTreeModel *model,
+			CtkTreeIter  *a,
+			CtkTreeIter  *b,
+			gpointer      user_data G_GNUC_UNUSED)
 {
 	gint result;
 
@@ -874,8 +876,8 @@ lapiz_file_bookmarks_store_refresh (LapizFileBookmarksStore * model)
 }
 
 static void
-on_fs_changed (GVolumeMonitor 	      *monitor,
-	       GObject 		      *object,
+on_fs_changed (GVolumeMonitor          *monitor G_GNUC_UNUSED,
+	       GObject                 *object G_GNUC_UNUSED,
 	       LapizFileBookmarksStore *model)
 {
 	CtkTreeModel *tree_model = CTK_TREE_MODEL (model);
@@ -892,11 +894,11 @@ on_fs_changed (GVolumeMonitor 	      *monitor,
 }
 
 static void
-on_bookmarks_file_changed (GFileMonitor * monitor,
-			   GFile * file,
-			   GFile * other_file,
-			   GFileMonitorEvent event_type,
-			   LapizFileBookmarksStore * model)
+on_bookmarks_file_changed (GFileMonitor            *monitor,
+			   GFile                   *file G_GNUC_UNUSED,
+			   GFile                   *other_file G_GNUC_UNUSED,
+			   GFileMonitorEvent        event_type,
+			   LapizFileBookmarksStore *model)
 {
 	switch (event_type) {
 	case G_FILE_MONITOR_EVENT_CHANGED:
