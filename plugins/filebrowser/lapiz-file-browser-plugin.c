@@ -185,9 +185,9 @@ lapiz_file_browser_plugin_get_property (GObject    *object,
 }
 
 static void
-on_end_loading_cb (LapizFileBrowserStore      * store,
-                   CtkTreeIter                * iter,
-                   LapizFileBrowserPluginPrivate * data)
+on_end_loading_cb (LapizFileBrowserStore         *store,
+		   CtkTreeIter                   *iter G_GNUC_UNUSED,
+		   LapizFileBrowserPluginPrivate *data)
 {
 	/* Disconnect the signal */
 	g_signal_handler_disconnect (store, data->end_loading_handle);
@@ -444,8 +444,8 @@ set_root_from_doc (LapizFileBrowserPluginPrivate * data,
 }
 
 static void
-on_action_set_active_root (CtkAction * action,
-                           LapizFileBrowserPluginPrivate * data)
+on_action_set_active_root (CtkAction                     *action G_GNUC_UNUSED,
+                           LapizFileBrowserPluginPrivate *data)
 {
 	set_root_from_doc (data,
 	                   lapiz_window_get_active_document (LAPIZ_WINDOW (data->window)));
@@ -472,8 +472,8 @@ get_terminal (LapizFileBrowserPluginPrivate * data)
 }
 
 static void
-on_action_open_terminal (CtkAction * action,
-                         LapizFileBrowserPluginPrivate * data)
+on_action_open_terminal (CtkAction                     *action G_GNUC_UNUSED,
+                         LapizFileBrowserPluginPrivate *data)
 {
 	gchar * terminal;
 	gchar * wd = NULL;
@@ -522,7 +522,7 @@ on_action_open_terminal (CtkAction * action,
 }
 
 static void
-on_selection_changed_cb (CtkTreeSelection *selection,
+on_selection_changed_cb (CtkTreeSelection              *selection G_GNUC_UNUSED,
 			 LapizFileBrowserPluginPrivate *data)
 {
 	CtkTreeView * tree_view;
@@ -817,7 +817,7 @@ lapiz_file_browser_plugin_class_init (LapizFileBrowserPluginClass * klass)
 }
 
 static void
-lapiz_file_browser_plugin_class_finalize (LapizFileBrowserPluginClass *klass)
+lapiz_file_browser_plugin_class_finalize (LapizFileBrowserPluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -842,15 +842,18 @@ bean_register_types (BeanObjectModule *module)
 
 /* Callbacks */
 static void
-on_uri_activated_cb (LapizFileBrowserWidget * tree_widget,
-		     gchar const *uri, LapizWindow * window)
+on_uri_activated_cb (LapizFileBrowserWidget *tree_widget G_GNUC_UNUSED,
+		     gchar const            *uri,
+		     LapizWindow            *window)
 {
 	lapiz_commands_load_uri (window, uri, NULL, 0);
 }
 
 static void
-on_error_cb (LapizFileBrowserWidget * tree_widget,
-	     guint code, gchar const *message, LapizFileBrowserPluginPrivate * data)
+on_error_cb (LapizFileBrowserWidget        *tree_widget G_GNUC_UNUSED,
+	     guint                          code,
+	     gchar const                   *message,
+	     LapizFileBrowserPluginPrivate *data)
 {
 	gchar * title;
 	CtkWidget * dlg;
@@ -913,9 +916,9 @@ on_error_cb (LapizFileBrowserWidget * tree_widget,
 }
 
 static void
-on_model_set_cb (LapizFileBrowserView * widget,
-                 GParamSpec *arg1,
-                 LapizFileBrowserPluginPrivate * data)
+on_model_set_cb (LapizFileBrowserView          *widget G_GNUC_UNUSED,
+		 GParamSpec                    *arg1 G_GNUC_UNUSED,
+		 LapizFileBrowserPluginPrivate *data)
 {
 	CtkTreeModel * model;
 
@@ -930,9 +933,9 @@ on_model_set_cb (LapizFileBrowserView * widget,
 }
 
 static void
-on_filter_mode_changed_cb (LapizFileBrowserStore * model,
-                           GParamSpec * param,
-                           LapizFileBrowserPluginPrivate * data)
+on_filter_mode_changed_cb (LapizFileBrowserStore         *model,
+                           GParamSpec                    *param G_GNUC_UNUSED,
+                           LapizFileBrowserPluginPrivate *data)
 {
 	LapizFileBrowserStoreFilterMode mode;
 
@@ -951,10 +954,10 @@ on_filter_mode_changed_cb (LapizFileBrowserStore * model,
 }
 
 static void
-on_rename_cb (LapizFileBrowserStore * store,
-	      const gchar * olduri,
-	      const gchar * newuri,
-	      LapizWindow * window)
+on_rename_cb (LapizFileBrowserStore *store G_GNUC_UNUSED,
+	      const gchar           *olduri,
+	      const gchar           *newuri,
+	      LapizWindow           *window G_GNUC_UNUSED)
 {
 	LapizApp * app;
 	GList * documents;
@@ -1015,9 +1018,9 @@ on_rename_cb (LapizFileBrowserStore * store,
 }
 
 static void
-on_filter_pattern_changed_cb (LapizFileBrowserWidget * widget,
-                              GParamSpec * param,
-                              LapizFileBrowserPluginPrivate * data)
+on_filter_pattern_changed_cb (LapizFileBrowserWidget        *widget,
+			      GParamSpec                    *param G_GNUC_UNUSED,
+			      LapizFileBrowserPluginPrivate *data)
 {
 	gchar * pattern;
 
@@ -1032,9 +1035,9 @@ on_filter_pattern_changed_cb (LapizFileBrowserWidget * widget,
 }
 
 static void
-on_virtual_root_changed_cb (LapizFileBrowserStore * store,
-                            GParamSpec * param,
-                            LapizFileBrowserPluginPrivate * data)
+on_virtual_root_changed_cb (LapizFileBrowserStore         *store,
+			    GParamSpec                    *param G_GNUC_UNUSED,
+			    LapizFileBrowserPluginPrivate *data)
 {
 	gchar * root;
 	gchar * virtual_root;
@@ -1114,9 +1117,9 @@ get_filename_from_path (CtkTreeModel *model, CtkTreePath *path)
 }
 
 static gboolean
-on_confirm_no_trash_cb (LapizFileBrowserWidget * widget,
-                        GList * files,
-                        LapizWindow * window)
+on_confirm_no_trash_cb (LapizFileBrowserWidget *widget G_GNUC_UNUSED,
+			GList                  *files,
+			LapizWindow            *window)
 {
 	gchar *normal;
 	gchar *message;
@@ -1143,10 +1146,10 @@ on_confirm_no_trash_cb (LapizFileBrowserWidget * widget,
 }
 
 static gboolean
-on_confirm_delete_cb (LapizFileBrowserWidget *widget,
-                      LapizFileBrowserStore *store,
-                      GList *paths,
-                      LapizFileBrowserPluginPrivate *data)
+on_confirm_delete_cb (LapizFileBrowserWidget        *widget G_GNUC_UNUSED,
+		      LapizFileBrowserStore         *store,
+		      GList                         *paths,
+		      LapizFileBrowserPluginPrivate *data)
 {
 	gchar *normal;
 	gchar *message;
