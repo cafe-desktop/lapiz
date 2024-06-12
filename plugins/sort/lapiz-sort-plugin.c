@@ -97,8 +97,8 @@ static const CtkActionEntry action_entries[] =
 };
 
 static void
-sort_dialog_destroy (GObject *obj,
-		     gpointer  dialog_pointer)
+sort_dialog_destroy (GObject *obj G_GNUC_UNUSED,
+		     gpointer dialog_pointer)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -217,7 +217,7 @@ get_sort_dialog (LapizSortPlugin *plugin)
 }
 
 static void
-sort_cb (CtkAction  *action,
+sort_cb (CtkAction       *action G_GNUC_UNUSED,
 	 LapizSortPlugin *plugin)
 {
 	LapizWindow *window;
@@ -619,7 +619,7 @@ lapiz_sort_plugin_class_init (LapizSortPluginClass *klass)
 }
 
 static void
-lapiz_sort_plugin_class_finalize (LapizSortPluginClass *klass)
+lapiz_sort_plugin_class_finalize (LapizSortPluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
