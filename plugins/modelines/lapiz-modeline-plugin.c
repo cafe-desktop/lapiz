@@ -158,8 +158,8 @@ lapiz_modeline_plugin_get_property (GObject    *object,
 }
 
 static void
-on_document_loaded_or_saved (LapizDocument *document,
-			     const GError  *error,
+on_document_loaded_or_saved (LapizDocument *document G_GNUC_UNUSED,
+			     const GError  *error G_GNUC_UNUSED,
 			     CtkSourceView *view)
 {
 	modeline_parser_apply_modeline (view);
@@ -212,17 +212,17 @@ disconnect_handlers (LapizView *view)
 }
 
 static void
-on_window_tab_added (LapizWindow *window,
+on_window_tab_added (LapizWindow *window G_GNUC_UNUSED,
 		     LapizTab *tab,
-		     gpointer user_data)
+		     gpointer user_data G_GNUC_UNUSED)
 {
 	connect_handlers (lapiz_tab_get_view (tab));
 }
 
 static void
-on_window_tab_removed (LapizWindow *window,
+on_window_tab_removed (LapizWindow *window G_GNUC_UNUSED,
 		       LapizTab *tab,
-		       gpointer user_data)
+		       gpointer user_data G_GNUC_UNUSED)
 {
 	disconnect_handlers (lapiz_tab_get_view (tab));
 }
@@ -300,7 +300,7 @@ lapiz_modeline_plugin_class_init (LapizModelinePluginClass *klass)
 }
 
 static void
-lapiz_modeline_plugin_class_finalize (LapizModelinePluginClass *klass)
+lapiz_modeline_plugin_class_finalize (LapizModelinePluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
