@@ -173,7 +173,7 @@ message_cache_data_new (LapizWindow            *window,
 }
 
 static void
-message_get_root_cb (LapizMessageBus *bus,
+message_get_root_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 		     LapizMessage    *message,
 		     WindowData      *data)
 {
@@ -188,7 +188,7 @@ message_get_root_cb (LapizMessageBus *bus,
 }
 
 static void
-message_set_root_cb (LapizMessageBus *bus,
+message_set_root_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 		     LapizMessage    *message,
 		     WindowData      *data)
 {
@@ -213,7 +213,7 @@ message_set_root_cb (LapizMessageBus *bus,
 }
 
 static void
-message_set_emblem_cb (LapizMessageBus *bus,
+message_set_emblem_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 		       LapizMessage    *message,
 		       WindowData      *data)
 {
@@ -348,7 +348,7 @@ set_item_message (WindowData   *data,
 }
 
 static gboolean
-custom_message_filter_func (LapizFileBrowserWidget *widget,
+custom_message_filter_func (LapizFileBrowserWidget *widget G_GNUC_UNUSED,
 			    LapizFileBrowserStore  *store,
 			    CtkTreeIter            *iter,
 			    FilterData             *data)
@@ -446,9 +446,9 @@ message_add_filter_cb (LapizMessageBus *bus,
 }
 
 static void
-message_remove_filter_cb (LapizMessageBus *bus,
-		          LapizMessage    *message,
-		          WindowData      *data)
+message_remove_filter_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+			  LapizMessage    *message,
+			  WindowData      *data)
 {
 	gulong id = 0;
 
@@ -461,8 +461,8 @@ message_remove_filter_cb (LapizMessageBus *bus,
 }
 
 static void
-message_up_cb (LapizMessageBus *bus,
-	       LapizMessage    *message,
+message_up_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+	       LapizMessage    *message G_GNUC_UNUSED,
 	       WindowData      *data)
 {
 	LapizFileBrowserStore *store = lapiz_file_browser_widget_get_browser_store (data->widget);
@@ -471,33 +471,33 @@ message_up_cb (LapizMessageBus *bus,
 }
 
 static void
-message_history_back_cb (LapizMessageBus *bus,
-		         LapizMessage    *message,
-		         WindowData      *data)
+message_history_back_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+			 LapizMessage    *message G_GNUC_UNUSED,
+			 WindowData      *data)
 {
 	lapiz_file_browser_widget_history_back (data->widget);
 }
 
 static void
-message_history_forward_cb (LapizMessageBus *bus,
-		            LapizMessage    *message,
-		            WindowData      *data)
+message_history_forward_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+			    LapizMessage    *message G_GNUC_UNUSED,
+			    WindowData      *data)
 {
 	lapiz_file_browser_widget_history_forward (data->widget);
 }
 
 static void
-message_refresh_cb (LapizMessageBus *bus,
-		    LapizMessage    *message,
+message_refresh_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+		    LapizMessage    *message G_GNUC_UNUSED,
 		    WindowData      *data)
 {
 	lapiz_file_browser_widget_refresh (data->widget);
 }
 
 static void
-message_set_show_hidden_cb (LapizMessageBus *bus,
-		            LapizMessage    *message,
-		            WindowData      *data)
+message_set_show_hidden_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+			    LapizMessage    *message,
+			    WindowData      *data)
 {
 	gboolean active = FALSE;
 	LapizFileBrowserStore *store;
@@ -517,7 +517,7 @@ message_set_show_hidden_cb (LapizMessageBus *bus,
 }
 
 static void
-message_set_show_binary_cb (LapizMessageBus *bus,
+message_set_show_binary_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 		            LapizMessage    *message,
 		            WindowData      *data)
 {
@@ -539,23 +539,23 @@ message_set_show_binary_cb (LapizMessageBus *bus,
 }
 
 static void
-message_show_bookmarks_cb (LapizMessageBus *bus,
-		           LapizMessage    *message,
-		           WindowData      *data)
+message_show_bookmarks_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+			   LapizMessage    *message G_GNUC_UNUSED,
+			   WindowData      *data)
 {
 	lapiz_file_browser_widget_show_bookmarks (data->widget);
 }
 
 static void
-message_show_files_cb (LapizMessageBus *bus,
-		       LapizMessage    *message,
+message_show_files_cb (LapizMessageBus *bus G_GNUC_UNUSED,
+		       LapizMessage    *message G_GNUC_UNUSED,
 		       WindowData      *data)
 {
 	lapiz_file_browser_widget_show_files (data->widget);
 }
 
 static void
-message_add_context_item_cb (LapizMessageBus *bus,
+message_add_context_item_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 			     LapizMessage    *message,
 			     WindowData      *data)
 {
@@ -608,7 +608,7 @@ message_add_context_item_cb (LapizMessageBus *bus,
 }
 
 static void
-message_remove_context_item_cb (LapizMessageBus *bus,
+message_remove_context_item_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 				LapizMessage    *message,
 				WindowData      *data)
 {
@@ -627,7 +627,7 @@ message_remove_context_item_cb (LapizMessageBus *bus,
 }
 
 static void
-message_get_view_cb (LapizMessageBus *bus,
+message_get_view_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 		     LapizMessage    *message,
 		     WindowData      *data)
 {
@@ -639,7 +639,7 @@ message_get_view_cb (LapizMessageBus *bus,
 
 static void
 register_methods (LapizWindow            *window,
-		  LapizFileBrowserWidget *widget)
+		  LapizFileBrowserWidget *widget G_GNUC_UNUSED)
 {
 	LapizMessageBus *bus = lapiz_window_get_message_bus (window);
 	WindowData *data = get_window_data (window);
@@ -799,7 +799,7 @@ store_row_deleted (LapizFileBrowserStore *store,
 
 static void
 store_virtual_root_changed (LapizFileBrowserStore *store,
-			    GParamSpec            *spec,
+			    GParamSpec            *spec G_GNUC_UNUSED,
 			    MessageCacheData      *data)
 {
 	WindowData *wdata = get_window_data (data->window);
@@ -973,7 +973,7 @@ register_signals (LapizWindow            *window,
 }
 
 static void
-message_unregistered (LapizMessageBus  *bus,
+message_unregistered (LapizMessageBus  *bus G_GNUC_UNUSED,
 		      LapizMessageType *message_type,
 		      LapizWindow      *window)
 {
