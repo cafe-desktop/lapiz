@@ -158,7 +158,7 @@ lapiz_taglist_plugin_panel_class_init (LapizTaglistPluginPanelClass *klass)
 }
 
 static void
-lapiz_taglist_plugin_panel_class_finalize (LapizTaglistPluginPanelClass *klass)
+lapiz_taglist_plugin_panel_class_finalize (LapizTaglistPluginPanelClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
@@ -245,7 +245,7 @@ insert_tag (LapizTaglistPluginPanel *panel,
 static void
 tag_list_row_activated_cb (CtkTreeView             *tag_list,
 			   CtkTreePath             *path,
-			   CtkTreeViewColumn       *column,
+			   CtkTreeViewColumn       *column G_GNUC_UNUSED,
 			   LapizTaglistPluginPanel *panel)
 {
 	CtkTreeIter iter;
@@ -580,9 +580,9 @@ tags_list_query_tooltip_cb (CtkWidget               *widget,
 }
 
 static gboolean
-draw_event_cb (CtkWidget      *panel,
-               cairo_t        *cr,
-               gpointer        user_data)
+draw_event_cb (CtkWidget *panel,
+               cairo_t   *cr G_GNUC_UNUSED,
+               gpointer   user_data G_GNUC_UNUSED)
 {
 	LapizTaglistPluginPanel *ppanel = LAPIZ_TAGLIST_PLUGIN_PANEL (panel);
 
@@ -603,7 +603,7 @@ draw_event_cb (CtkWidget      *panel,
 
 static void
 set_combo_tooltip (CtkWidget *widget,
-		   gpointer   data)
+		   gpointer   data G_GNUC_UNUSED)
 {
 	if (CTK_IS_BUTTON (widget))
 	{
@@ -614,7 +614,7 @@ set_combo_tooltip (CtkWidget *widget,
 
 static void
 realize_tag_groups_combo (CtkWidget *combo,
-			  gpointer   data)
+			  gpointer   data G_GNUC_UNUSED)
 {
 	ctk_container_forall (CTK_CONTAINER (combo),
 			      set_combo_tooltip,
