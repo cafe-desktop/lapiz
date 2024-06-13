@@ -309,9 +309,9 @@ create_name_for_language (const char *code)
 
 static void
 enumerate_dicts (const char * const lang_tag,
-		 const char * const provider_name,
-		 const char * const provider_desc,
-		 const char * const provider_file,
+		 const char * const provider_name G_GNUC_UNUSED,
+		 const char * const provider_desc G_GNUC_UNUSED,
+		 const char * const provider_file G_GNUC_UNUSED,
 		 void * user_data)
 {
 	gchar *lang_name;
@@ -327,7 +327,9 @@ enumerate_dicts (const char * const lang_tag,
 }
 
 static gint
-key_cmp (gconstpointer a, gconstpointer b, gpointer user_data)
+key_cmp (gconstpointer a,
+	 gconstpointer b,
+	 gpointer user_data G_GNUC_UNUSED)
 {
 	return strcmp (a, b);
 }
@@ -342,7 +344,7 @@ lang_cmp (const LapizSpellCheckerLanguage *a,
 static gboolean
 build_langs_list (const gchar *key,
 		  const gchar *value,
-		  gpointer     data)
+		  gpointer     data G_GNUC_UNUSED)
 {
 	LapizSpellCheckerLanguage *lang = g_new (LapizSpellCheckerLanguage, 1);
 
