@@ -453,8 +453,8 @@ get_time (const gchar* format)
 }
 
 static void
-configure_dialog_destroyed (CtkWidget *widget,
-                            gpointer   data)
+configure_dialog_destroyed (CtkWidget *widget G_GNUC_UNUSED,
+			    gpointer   data)
 {
 	TimeConfigureDialog *dialog = (TimeConfigureDialog *) data;
 
@@ -465,8 +465,8 @@ configure_dialog_destroyed (CtkWidget *widget,
 }
 
 static void
-choose_format_dialog_destroyed (CtkWidget *widget,
-                                gpointer   data)
+choose_format_dialog_destroyed (CtkWidget *widget G_GNUC_UNUSED,
+				gpointer   data)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -476,7 +476,7 @@ choose_format_dialog_destroyed (CtkWidget *widget,
 static CtkTreeModel *
 create_model (CtkWidget       *listview,
 	      const gchar     *sel_format,
-	      LapizTimePlugin *plugin)
+	      LapizTimePlugin *plugin G_GNUC_UNUSED)
 {
 	gint i = 0;
 	CtkListStore *store;
@@ -621,7 +621,7 @@ updated_custom_format_example (CtkEntry *format_entry,
 }
 
 static void
-choose_format_dialog_button_toggled (CtkToggleButton *button,
+choose_format_dialog_button_toggled (CtkToggleButton    *button G_GNUC_UNUSED,
 				     ChooseFormatDialog *dialog)
 {
 	lapiz_debug (DEBUG_PLUGINS);
@@ -646,7 +646,8 @@ choose_format_dialog_button_toggled (CtkToggleButton *button,
 }
 
 static void
-configure_dialog_button_toggled (CtkToggleButton *button, TimeConfigureDialog *dialog)
+configure_dialog_button_toggled (CtkToggleButton     *button G_GNUC_UNUSED,
+				 TimeConfigureDialog *dialog)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -711,7 +712,7 @@ get_format_from_list (CtkWidget *listview)
 }
 
 static void
-configure_dialog_selection_changed (CtkTreeSelection *selection,
+configure_dialog_selection_changed (CtkTreeSelection    *selection G_GNUC_UNUSED,
                                     TimeConfigureDialog *dialog)
 {
 	gint sel_format;
@@ -853,9 +854,9 @@ real_insert_time (CtkTextBuffer *buffer,
 }
 
 static void
-choose_format_dialog_row_activated (CtkTreeView        *list,
-				    CtkTreePath        *path,
-				    CtkTreeViewColumn  *column,
+choose_format_dialog_row_activated (CtkTreeView        *list G_GNUC_UNUSED,
+				    CtkTreePath        *path G_GNUC_UNUSED,
+				    CtkTreeViewColumn  *column G_GNUC_UNUSED,
 				    ChooseFormatDialog *dialog)
 {
 	gint sel_format;
@@ -1065,7 +1066,7 @@ choose_format_dialog_response_cb (CtkWidget          *widget,
 }
 
 static void
-time_cb (CtkAction  *action,
+time_cb (CtkAction       *action G_GNUC_UNUSED,
 	 LapizTimePlugin *plugin)
 {
 	LapizWindow *window;
@@ -1187,7 +1188,7 @@ lapiz_time_plugin_class_init (LapizTimePluginClass *klass)
 }
 
 static void
-lapiz_time_plugin_class_finalize (LapizTimePluginClass *klass)
+lapiz_time_plugin_class_finalize (LapizTimePluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
