@@ -127,10 +127,10 @@ strip_trailing_spaces (CtkTextBuffer *text_buffer)
 
 static void
 on_save (LapizDocument         *document,
-	 const gchar           *uri,
-	 LapizEncoding         *encoding,
-	 LapizDocumentSaveFlags save_flags,
-	 LapizTrailSavePlugin  *plugin)
+	 const gchar           *uri G_GNUC_UNUSED,
+	 LapizEncoding         *encoding G_GNUC_UNUSED,
+	 LapizDocumentSaveFlags save_flags G_GNUC_UNUSED,
+	 LapizTrailSavePlugin  *plugin G_GNUC_UNUSED)
 {
 	CtkTextBuffer *text_buffer = CTK_TEXT_BUFFER (document);
 
@@ -138,8 +138,8 @@ on_save (LapizDocument         *document,
 }
 
 static void
-on_tab_added (LapizWindow *window,
-	      LapizTab    *tab,
+on_tab_added (LapizWindow          *window G_GNUC_UNUSED,
+	      LapizTab             *tab,
 	      LapizTrailSavePlugin *plugin)
 {
 	LapizDocument *document;
@@ -149,8 +149,8 @@ on_tab_added (LapizWindow *window,
 }
 
 static void
-on_tab_removed (LapizWindow *window,
-		LapizTab    *tab,
+on_tab_removed (LapizWindow          *window G_GNUC_UNUSED,
+		LapizTab             *tab,
 		LapizTrailSavePlugin *plugin)
 {
 	LapizDocument *document;
@@ -295,7 +295,7 @@ lapiz_trail_save_plugin_class_init (LapizTrailSavePluginClass *klass)
 }
 
 static void
-lapiz_trail_save_plugin_class_finalize (LapizTrailSavePluginClass *klass)
+lapiz_trail_save_plugin_class_finalize (LapizTrailSavePluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
