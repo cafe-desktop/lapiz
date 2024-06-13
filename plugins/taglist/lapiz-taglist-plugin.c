@@ -214,7 +214,7 @@ lapiz_taglist_plugin_class_init (LapizTaglistPluginClass *klass)
 }
 
 static void
-lapiz_taglist_plugin_class_finalize (LapizTaglistPluginClass *klass)
+lapiz_taglist_plugin_class_finalize (LapizTaglistPluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
