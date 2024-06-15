@@ -231,15 +231,21 @@ check_deferred_range (LapizAutomaticSpellChecker *spell,
  * this may be overkill for the common case (inserting one character). */
 
 static void
-insert_text_before (CtkTextBuffer *buffer, CtkTextIter *iter,
-		gchar *text, gint len, LapizAutomaticSpellChecker *spell)
+insert_text_before (CtkTextBuffer              *buffer,
+		    CtkTextIter                *iter,
+		    gchar                      *text G_GNUC_UNUSED,
+		    gint                        len G_GNUC_UNUSED,
+		    LapizAutomaticSpellChecker *spell)
 {
 	ctk_text_buffer_move_mark (buffer, spell->mark_insert_start, iter);
 }
 
 static void
-insert_text_after (CtkTextBuffer *buffer, CtkTextIter *iter,
-                  gchar *text, gint len, LapizAutomaticSpellChecker *spell)
+insert_text_after (CtkTextBuffer              *buffer,
+		   CtkTextIter                *iter,
+		   gchar                      *text G_GNUC_UNUSED,
+		   gint                        len G_GNUC_UNUSED,
+		   LapizAutomaticSpellChecker *spell)
 {
 	CtkTextIter start;
 
@@ -259,15 +265,17 @@ insert_text_after (CtkTextBuffer *buffer, CtkTextIter *iter,
  */
 
 static void
-delete_range_after (CtkTextBuffer *buffer, CtkTextIter *start, CtkTextIter *end,
-		LapizAutomaticSpellChecker *spell)
+delete_range_after (CtkTextBuffer              *buffer G_GNUC_UNUSED,
+		    CtkTextIter                *start,
+		    CtkTextIter                *end,
+		    LapizAutomaticSpellChecker *spell)
 {
 	check_range (spell, *start, *end, FALSE);
 }
 
 static void
 mark_set (CtkTextBuffer              *buffer,
-	  CtkTextIter                *iter,
+	  CtkTextIter                *iter G_GNUC_UNUSED,
 	  CtkTextMark                *mark,
 	  LapizAutomaticSpellChecker *spell)
 {
@@ -331,7 +339,8 @@ remove_tag_to_word (LapizAutomaticSpellChecker *spell, const gchar *word)
 }
 
 static void
-add_to_dictionary (CtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
+add_to_dictionary (CtkWidget                  *menuitem G_GNUC_UNUSED,
+		   LapizAutomaticSpellChecker *spell)
 {
 	gchar *word;
 
@@ -350,7 +359,8 @@ add_to_dictionary (CtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
 }
 
 static void
-ignore_all (CtkWidget *menuitem, LapizAutomaticSpellChecker *spell)
+ignore_all (CtkWidget                  *menuitem G_GNUC_UNUSED,
+	    LapizAutomaticSpellChecker *spell)
 {
 	gchar *word;
 
@@ -529,7 +539,9 @@ build_suggestion_menu (LapizAutomaticSpellChecker *spell, const gchar *word)
 }
 
 static void
-populate_popup (CtkTextView *textview, CtkMenu *menu, LapizAutomaticSpellChecker *spell)
+populate_popup (CtkTextView                *textview G_GNUC_UNUSED,
+		CtkMenu                    *menu,
+		LapizAutomaticSpellChecker *spell)
 {
 	CtkWidget *img, *mi;
 	CtkTextIter start, end;
@@ -575,7 +587,7 @@ lapiz_automatic_spell_checker_recheck_all (LapizAutomaticSpellChecker *spell)
 }
 
 static void
-add_word_signal_cb (LapizSpellChecker          *checker,
+add_word_signal_cb (LapizSpellChecker          *checker G_GNUC_UNUSED,
 		    const gchar                *word,
 		    gint                        len,
 		    LapizAutomaticSpellChecker *spell)
@@ -593,15 +605,15 @@ add_word_signal_cb (LapizSpellChecker          *checker,
 }
 
 static void
-set_language_cb (LapizSpellChecker               *checker,
-		 const LapizSpellCheckerLanguage *lang,
+set_language_cb (LapizSpellChecker               *checker G_GNUC_UNUSED,
+		 const LapizSpellCheckerLanguage *lang G_GNUC_UNUSED,
 		 LapizAutomaticSpellChecker      *spell)
 {
 	lapiz_automatic_spell_checker_recheck_all (spell);
 }
 
 static void
-clear_session_cb (LapizSpellChecker          *checker,
+clear_session_cb (LapizSpellChecker          *checker G_GNUC_UNUSED,
 		  LapizAutomaticSpellChecker *spell)
 {
 	lapiz_automatic_spell_checker_recheck_all (spell);
@@ -675,7 +687,7 @@ tag_table_changed (CtkTextTagTable            *table,
 
 static void
 tag_added_or_removed (CtkTextTagTable            *table,
-		      CtkTextTag                 *tag,
+		      CtkTextTag                 *tag G_GNUC_UNUSED,
 		      LapizAutomaticSpellChecker *spell)
 {
 	tag_table_changed (table, spell);
@@ -683,25 +695,25 @@ tag_added_or_removed (CtkTextTagTable            *table,
 
 static void
 tag_changed (CtkTextTagTable            *table,
-	     CtkTextTag                 *tag,
-	     gboolean                    size_changed,
+	     CtkTextTag                 *tag G_GNUC_UNUSED,
+	     gboolean                    size_changed G_GNUC_UNUSED,
 	     LapizAutomaticSpellChecker *spell)
 {
 	tag_table_changed (table, spell);
 }
 
 static void
-highlight_updated (CtkSourceBuffer            *buffer,
-                   CtkTextIter                *start,
-                   CtkTextIter                *end,
-                   LapizAutomaticSpellChecker *spell)
+highlight_updated (CtkSourceBuffer            *buffer G_GNUC_UNUSED,
+		   CtkTextIter                *start,
+		   CtkTextIter                *end,
+		   LapizAutomaticSpellChecker *spell)
 {
 	check_range (spell, *start, *end, FALSE);
 }
 
 static void
 spell_tag_destroyed (LapizAutomaticSpellChecker *spell,
-                     GObject                    *where_the_object_was)
+		     GObject                    *where_the_object_was G_GNUC_UNUSED)
 {
 	spell->tag_highlight = NULL;
 }
