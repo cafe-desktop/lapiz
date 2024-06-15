@@ -59,7 +59,7 @@ G_DEFINE_TYPE(LapizSpellLanguageDialog, lapiz_spell_language_dialog, CTK_TYPE_DI
 
 
 static void
-lapiz_spell_language_dialog_class_init (LapizSpellLanguageDialogClass *klass)
+lapiz_spell_language_dialog_class_init (LapizSpellLanguageDialogClass *klass G_GNUC_UNUSED)
 {
 	/* GObjectClass *object_class = G_OBJECT_CLASS (klass); */
 }
@@ -106,9 +106,9 @@ scroll_to_selected (CtkTreeView *tree_view)
 }
 
 static void
-language_row_activated (CtkTreeView *tree_view,
-			CtkTreePath *path,
-			CtkTreeViewColumn *column,
+language_row_activated (CtkTreeView              *tree_view G_GNUC_UNUSED,
+			CtkTreePath              *path G_GNUC_UNUSED,
+			CtkTreeViewColumn        *column G_GNUC_UNUSED,
 			LapizSpellLanguageDialog *dialog)
 {
 	ctk_dialog_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
@@ -206,7 +206,7 @@ create_dialog (LapizSpellLanguageDialog *dlg,
 }
 
 static void
-lapiz_spell_language_dialog_init (LapizSpellLanguageDialog *dlg)
+lapiz_spell_language_dialog_init (LapizSpellLanguageDialog *dlg G_GNUC_UNUSED)
 {
 
 }
