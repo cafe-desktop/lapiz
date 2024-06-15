@@ -72,10 +72,10 @@ static guint signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE(LapizSpellChecker, lapiz_spell_checker, G_TYPE_OBJECT)
 
 static void
-lapiz_spell_checker_set_property (GObject *object,
-			   guint prop_id,
-			   const GValue *value,
-			   GParamSpec *pspec)
+lapiz_spell_checker_set_property (GObject      *object,
+				  guint         prop_id,
+				  const GValue *value G_GNUC_UNUSED,
+				  GParamSpec   *pspec)
 {
 	/*
 	LapizSpellChecker *spell = LAPIZ_SPELL_CHECKER (object);
@@ -92,10 +92,10 @@ lapiz_spell_checker_set_property (GObject *object,
 }
 
 static void
-lapiz_spell_checker_get_property (GObject *object,
-			   guint prop_id,
-			   GValue *value,
-			   GParamSpec *pspec)
+lapiz_spell_checker_get_property (GObject    *object,
+				  guint       prop_id,
+				  GValue     *value G_GNUC_UNUSED,
+				  GParamSpec *pspec)
 {
 	/*
 	LapizSpellChecker *spell = LAPIZ_SPELL_CHECKER (object);
