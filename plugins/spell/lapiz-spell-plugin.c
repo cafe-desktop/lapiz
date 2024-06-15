@@ -192,9 +192,9 @@ lapiz_spell_plugin_dispose (GObject *object)
 }
 
 static void
-set_spell_language_cb (LapizSpellChecker   *spell,
+set_spell_language_cb (LapizSpellChecker               *spell G_GNUC_UNUSED,
 		       const LapizSpellCheckerLanguage *lang,
-		       LapizDocument 	   *doc)
+		       LapizDocument                   *doc)
 {
 	const gchar *key;
 
@@ -807,8 +807,8 @@ get_configure_dialog (LapizSpellPlugin *plugin)
 }
 
 static void
-configure_dialog_button_toggled (CtkToggleButton      *button,
-                                 SpellConfigureDialog *dialog)
+configure_dialog_button_toggled (CtkToggleButton      *button G_GNUC_UNUSED,
+				 SpellConfigureDialog *dialog)
 {
 	lapiz_debug (DEBUG_PLUGINS);
 
@@ -827,8 +827,8 @@ configure_dialog_button_toggled (CtkToggleButton      *button,
 }
 
 static void
-configure_dialog_destroyed (CtkWidget *widget,
-                            gpointer   data)
+configure_dialog_destroyed (CtkWidget *widget G_GNUC_UNUSED,
+			    gpointer   data)
 {
 	SpellConfigureDialog *dialog = (SpellConfigureDialog *) data;
 
@@ -839,7 +839,7 @@ configure_dialog_destroyed (CtkWidget *widget,
 }
 
 static void
-set_language_cb (CtkAction   *action,
+set_language_cb (CtkAction        *action G_GNUC_UNUSED,
 		 LapizSpellPlugin *plugin)
 {
 	LapizWindow *window;
@@ -882,7 +882,7 @@ set_language_cb (CtkAction   *action,
 }
 
 static void
-spell_cb (CtkAction   *action,
+spell_cb (CtkAction        *action G_GNUC_UNUSED,
 	  LapizSpellPlugin *plugin)
 {
 	LapizSpellPluginPrivate *data;
@@ -1218,8 +1218,8 @@ on_document_saved (LapizDocument *doc,
 }
 
 static void
-tab_added_cb (LapizWindow *window,
-	      LapizTab    *tab,
+tab_added_cb (LapizWindow      *window G_GNUC_UNUSED,
+	      LapizTab         *tab,
 	      LapizSpellPlugin *plugin)
 {
 	LapizDocument *doc;
@@ -1246,8 +1246,8 @@ tab_added_cb (LapizWindow *window,
 }
 
 static void
-tab_removed_cb (LapizWindow *window,
-		LapizTab    *tab,
+tab_removed_cb (LapizWindow      *window G_GNUC_UNUSED,
+		LapizTab         *tab,
 		LapizSpellPlugin *plugin)
 {
 	LapizDocument *doc;
@@ -1462,7 +1462,7 @@ lapiz_spell_plugin_class_init (LapizSpellPluginClass *klass)
 }
 
 static void
-lapiz_spell_plugin_class_finalize (LapizSpellPluginClass *klass)
+lapiz_spell_plugin_class_finalize (LapizSpellPluginClass *klass G_GNUC_UNUSED)
 {
 	/* dummy function - used by G_DEFINE_DYNAMIC_TYPE_EXTENDED */
 }
