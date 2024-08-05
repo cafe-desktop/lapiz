@@ -828,10 +828,8 @@ lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
 				    CtkTreeIter * iter)
 {
 	GObject * obj;
-	GFile * file = NULL;
 	guint flags;
 	gchar * ret = NULL;
-	gboolean isfs;
 
 	g_return_val_if_fail (LAPIZ_IS_FILE_BOOKMARKS_STORE (model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
@@ -843,26 +841,25 @@ lapiz_file_bookmarks_store_get_uri (LapizFileBookmarksStore * model,
 			    &obj,
 			    -1);
 
-	if (obj == NULL)
-		return NULL;
-
-	isfs = (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_FS);
-
-	if (isfs && (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_MOUNT))
+	if (obj != NULL)
 	{
-		file = g_mount_get_root (G_MOUNT (obj));
-	}
-	else if (!isfs)
-	{
-		file = g_object_ref (obj);
-	}
+		if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_FS)
+		{
+			if (flags & LAPIZ_FILE_BOOKMARKS_STORE_IS_MOUNT)
+			{
+				GFile * file;
 
-	g_object_unref (obj);
+				file = g_mount_get_root (G_MOUNT (obj));
+				ret = g_file_get_uri (file);
+				g_object_unref (file);
+			}
+		}
+		else
+		{
+			ret = g_file_get_uri (G_FILE (obj));
+		}
 
-	if (file)
-	{
-		ret = g_file_get_uri (file);
-		g_object_unref (file);
+		g_object_unref (obj);
 	}
 
 	return ret;
