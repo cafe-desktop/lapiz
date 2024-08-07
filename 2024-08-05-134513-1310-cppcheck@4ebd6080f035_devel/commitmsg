@@ -1,0 +1,10 @@
+filebrowser: fix warning -Wincompatible-pointer-types
+
+based in pluma commit:
+https://github.com/mate-desktop/pluma/tree/master/plugins/filebrowser
+
+Fixes the warning:
+lapiz-file-bookmarks-store.c: In function 'lapiz_file_bookmarks_store_get_uri':
+lapiz-file-bookmarks-store.c:857:22: warning: assignment to 'GFile *' {aka 'struct _GFile *'} from incompatible pointer type 'GObject *' {aka 'struct _GObject *'} [-Wincompatible-pointer-types]
+  857 |                 file = g_object_ref (obj);
+      |                      ^

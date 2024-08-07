@@ -1,0 +1,1 @@
+ci: only install ctk from git in stable
