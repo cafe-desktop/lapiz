@@ -55,7 +55,11 @@ requires:
 
 before_scripts:
   - ./html-cppcheck
-  - ./install-from-git https://github.com/cafe-desktop/ctk master
+  - if [ ${DISTRO_VERSION} == "stable" ];then
+  -     ./install-from-git https://github.com/cafe-desktop/ctk master
+  - else
+  -     ./debrepo-install 'libctk-3-dev gir1.2-ctk-3.0 libctk-3-common libctk-3-0 libctk-3-doc'
+  - fi
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
   - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master #required for make check
   - ./install-from-git https://github.com/cafe-desktop/ctksourceview master meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu'
