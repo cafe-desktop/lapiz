@@ -1,4 +1,4 @@
-name: reusing workflow
+name: docker
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
+
   debian_stable:
     uses: cafe-desktop/cafe-common/.github/workflows/main.yml@master
     with:
@@ -19,6 +20,7 @@ jobs:
       DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       DOCKER_HUB_DISTRO: debian:stable
       GH_PAGES_DEPLOY: 'false'
+
   debian_testing:
     uses: cafe-desktop/cafe-common/.github/workflows/main.yml@master
     with:
@@ -27,6 +29,7 @@ jobs:
     secrets:
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
   debian_sid:
     uses: cafe-desktop/cafe-common/.github/workflows/main.yml@master
     with:
