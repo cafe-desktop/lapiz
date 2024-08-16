@@ -70,7 +70,7 @@ last_search_data_restore_position (LapizSearchDialog *dlg)
 
 	data = g_object_get_data (G_OBJECT (dlg), LAPIZ_LAST_SEARCH_DATA_KEY);
 
-	if (data != NULL)
+	if ((data != NULL) && (ctk_widget_get_visible (CTK_WIDGET (dlg)) == FALSE))
 	{
 		ctk_window_move (CTK_WINDOW (dlg),
 				 data->x,
