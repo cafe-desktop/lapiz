@@ -1863,13 +1863,24 @@ use_spaces_toggled (CtkCheckMenuItem *item,
 		    LapizWindow      *window)
 {
 	LapizView *view;
+	static use_spaces_toggled_init = TRUE;
 
 	view = lapiz_window_get_active_view (window);
 
 	g_signal_handler_block (view, window->priv->spaces_instead_of_tabs_id);
-	ctk_source_view_set_insert_spaces_instead_of_tabs (
-			CTK_SOURCE_VIEW (view),
-			ctk_check_menu_item_get_active (item));
+
+	if (use_spaces_toggled_init) {
+		ctk_source_view_set_insert_spaces_instead_of_tabs (CTK_SOURCE_VIEW (view),
+								   lapiz_prefs_manager_get_insert_spaces ());
+		ctk_check_menu_item_set_active (item, lapiz_prefs_manager_get_insert_spaces ());
+		use_spaces_toggled_init = FALSE;
+	}
+	else
+	{
+		ctk_source_view_set_insert_spaces_instead_of_tabs (CTK_SOURCE_VIEW (view),
+								   ctk_check_menu_item_get_active (item));
+	}
+
 	g_signal_handler_unblock (view, window->priv->spaces_instead_of_tabs_id);
 }
 
