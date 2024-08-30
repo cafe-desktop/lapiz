@@ -25,5 +25,5 @@ jobs:
     secrets:
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      DOCKER_HUB_DISTRO: debian:sid
+      DOCKER_HUB_DISTRO: riscv64/debian:testing
       GH_PAGES_DEPLOY: 'false'
