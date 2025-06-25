@@ -68,7 +68,7 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 
 	/* This should be moved to libbean */
 	if (!g_irepository_require (g_irepository_get_default (),
-	                            "Bean", "1.0", 0, &error))
+	                            "Bean", "2.0", 0, &error))
 	{
 		g_warning ("Could not load Bean repository: %s", error->message);
 		g_error_free (error);
@@ -76,7 +76,7 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 	}
 
 	if (!g_irepository_require (g_irepository_get_default (),
-	                            "BeanCtk", "1.0", 0, &error))
+	                            "BeanCtk", "2.0", 0, &error))
 	{
 		g_warning ("Could not load BeanCtk repository: %s", error->message);
 		g_error_free (error);
