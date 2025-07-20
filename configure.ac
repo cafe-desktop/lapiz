@@ -2,8 +2,8 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.63.2)
 
-m4_define(lapiz_major_version, 1)
-m4_define(lapiz_minor_version, 25)
+m4_define(lapiz_major_version, 2)
+m4_define(lapiz_minor_version, 0)
 m4_define(lapiz_micro_version, 0)
 m4_define(lapiz_version, lapiz_major_version.lapiz_minor_version.lapiz_micro_version)
 

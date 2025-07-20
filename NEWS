@@ -1,3 +1,15 @@
+### lapiz 2.0.0
+
+  * reduce the scope of some variables
+  * lapiz-window: use 'ctk_menu_popup_at_pointer' for context menu with mouse in tabs
+  * lapiz-close-confirmation-dialog: make the close confirmation bigger
+  * add G_GNUC_UNUSED in unused parameters
+  * ci: add debian sid build
+  * filebrowser: fix warning -Wincompatible-pointer-types
+  * lapiz-commands-search: don't move search dialog if it is visible
+  * Require libbean 2.0
+  * update translations
+
 ### lapiz 1.25.0
 
   * initial release: pluma 1.24.1 fork
