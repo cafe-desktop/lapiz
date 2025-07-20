@@ -15,9 +15,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 1.25.0\n"
+"Project-Id-Version: lapiz 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2023-05-11 10:48+0200\n"
+"POT-Creation-Date: 2025-07-20 18:14+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Moo, 2020\n"
 "Language-Team: Lithuanian (https://www.transifex.com/cafe/teams/13566/lt/)\n"
@@ -569,7 +569,7 @@ msgid ""
 "all spaces."
 msgstr ""
 
-#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
+#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:2
 msgid "Lapiz"
 msgstr "Lapiz"
 
@@ -593,16 +593,16 @@ msgid ""
 "adjusting indentation levels."
 msgstr ""
 
-#: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
+#: data/lapiz.desktop.in.in:3 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
 msgstr "Tekstų redaktorius"
 
-#: data/lapiz.desktop.in.in:5
+#: data/lapiz.desktop.in.in:4
 msgid "Edit text files"
 msgstr "Redaguoti tekstinius failus"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/lapiz.desktop.in.in:15
+#: data/lapiz.desktop.in.in:14
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
@@ -623,9 +623,9 @@ msgstr "Užverti _neįrašant"
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
 #: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
 #: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
-#: lapiz/lapiz-io-error-message-area.c:168
+#: lapiz/lapiz-io-error-message-area.c:169
 #: lapiz/lapiz-io-error-message-area.c:507
-#: lapiz/lapiz-io-error-message-area.c:1190
+#: lapiz/lapiz-io-error-message-area.c:1195
 #: lapiz/lapiz-progress-message-area.c:63
 #: plugins/filebrowser/lapiz-file-browser-utils.c:171
 #: plugins/quickopen/quickopen/popup.py:36
@@ -739,11 +739,11 @@ msgid "Save changes to document \"%s\" before closing?"
 msgstr "Ar įrašyti pakeitimus dokumente \"%s\" prieš užveriant?"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:540
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:765
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
 msgid "Saving has been disabled by the system administrator."
 msgstr "Įrašymo galimybė išjungta sistemos administratoriaus."
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:716
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:718
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -752,7 +752,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:724
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -762,15 +762,15 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:740
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_entai su neįrašytais pakeitimais:"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:744
 msgid "S_elect the documents you want to save:"
 msgstr "Pasi_rinkite norimus įrašyti dokumentus:"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:769
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Jeigu neįrašysite, visi Jūsų pakeitimai bus prarasti."
 
@@ -779,7 +779,7 @@ msgstr "Jeigu neįrašysite, visi Jūsų pakeitimai bus prarasti."
 #: plugins/spell/lapiz-spell-language-dialog.c:133
 #: plugins/spell/languages-dialog.ui:72
 #: plugins/spell/lapiz-spell-setup-dialog.ui:71
-#: plugins/time/lapiz-time-plugin.c:920
+#: plugins/time/lapiz-time-plugin.c:921
 #: plugins/time/lapiz-time-setup-dialog.ui:71
 msgid "_OK"
 msgstr "_Gerai"
@@ -819,7 +819,7 @@ msgid "A_vailable encodings:"
 msgstr "Prieina_mos koduotės:"
 
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:150
-#: plugins/spell/lapiz-automatic-spell-checker.c:514
+#: plugins/spell/lapiz-automatic-spell-checker.c:524
 msgid "_Add"
 msgstr "Į_dėti"
 
@@ -1056,11 +1056,11 @@ msgstr "Įskiepiai"
 
 #: lapiz/dialogs/lapiz-search-dialog.c:295
 #: lapiz/dialogs/lapiz-search-dialog.ui:44
-#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1529
+#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1530
 msgid "Replace"
 msgstr "Pakeisti"
 
-#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1527
+#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1528
 msgid "Find"
 msgstr "Rasti"
 
@@ -1285,25 +1285,25 @@ msgstr[3] ""
 msgid "_Revert"
 msgstr "Atsta_tyti"
 
-#: lapiz/lapiz-commands-help.c:60
+#: lapiz/lapiz-commands-help.c:62
 msgid "CAFE Documentation Team"
 msgstr "CAFE dokumentacijos komanda"
 
-#: lapiz/lapiz-commands-help.c:61
+#: lapiz/lapiz-commands-help.c:63
 msgid "GNOME Documentation Team"
 msgstr "GNOME dokumentacijos komanda"
 
-#: lapiz/lapiz-commands-help.c:62
+#: lapiz/lapiz-commands-help.c:64
 msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
-#: lapiz/lapiz-commands-help.c:67
+#: lapiz/lapiz-commands-help.c:69
 msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr ""
 "Lapiz yra mažas ir supaprastintas tekstų redaktorius, skirtas CAFE "
 "darbalaukiui"
 
-#: lapiz/lapiz-commands-help.c:70
+#: lapiz/lapiz-commands-help.c:72
 msgid ""
 "Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
@@ -1315,7 +1315,7 @@ msgstr ""
 "programinės įrangos fondo; 2-osios arba (Jūsų pasirinkimu) bet kurios "
 "vėlesnės licencijos versijos sąlygomis."
 
-#: lapiz/lapiz-commands-help.c:74
+#: lapiz/lapiz-commands-help.c:76
 msgid ""
 "Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -1327,7 +1327,7 @@ msgstr ""
 "garantijų. Daugiau informacijos galite rasti GNU bendrojoje viešojoje "
 "licencijoje."
 
-#: lapiz/lapiz-commands-help.c:78
+#: lapiz/lapiz-commands-help.c:80
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
@@ -1337,11 +1337,11 @@ msgstr ""
 "jeigu negavote, rašykite Free Software Foundation, Inc., 51 Franklin Street, "
 "Fifth Floor, Boston, MA 02110-1301 USA"
 
-#: lapiz/lapiz-commands-help.c:113
+#: lapiz/lapiz-commands-help.c:115
 msgid "About Lapiz"
 msgstr "Apie Lapiz"
 
-#: lapiz/lapiz-commands-help.c:116
+#: lapiz/lapiz-commands-help.c:118
 msgid ""
 "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
 "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
@@ -1350,10 +1350,10 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023 Pablo Barciela"
+"Copyright © 2023-2024 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:127
+#: lapiz/lapiz-commands-help.c:129
 msgid "translator-credits"
 msgstr ""
 "Vertėjai:\n"
@@ -1393,11 +1393,11 @@ msgid "Unsaved Document %d"
 msgstr "Neįrašytas dokumentas %d"
 
 #: lapiz/lapiz-documents-panel.c:93 lapiz/lapiz-documents-panel.c:107
-#: lapiz/lapiz-window.c:2256 lapiz/lapiz-window.c:2261
+#: lapiz/lapiz-window.c:2257 lapiz/lapiz-window.c:2262
 msgid "Read-Only"
 msgstr "Tik skaitymui"
 
-#: lapiz/lapiz-documents-panel.c:703 lapiz/lapiz-window.c:3677
+#: lapiz/lapiz-documents-panel.c:704 lapiz/lapiz-window.c:3685
 msgid "Documents"
 msgstr "Dokumentai"
 
@@ -1517,16 +1517,16 @@ msgstr "Tajų"
 msgid "Unknown"
 msgstr "Nežinoma"
 
-#: lapiz/lapiz-encodings-combo-box.c:266
+#: lapiz/lapiz-encodings-combo-box.c:268
 msgid "Automatically Detected"
 msgstr "Automatiškai nustatyta"
 
-#: lapiz/lapiz-encodings-combo-box.c:282 lapiz/lapiz-encodings-combo-box.c:297
+#: lapiz/lapiz-encodings-combo-box.c:284 lapiz/lapiz-encodings-combo-box.c:299
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Esama lokalė (%s)"
 
-#: lapiz/lapiz-encodings-combo-box.c:347
+#: lapiz/lapiz-encodings-combo-box.c:349
 msgid "Add or Remove..."
 msgstr "Pridėti arba pašalinti..."
 
@@ -1555,7 +1555,7 @@ msgid "Windows"
 msgstr "Langai"
 
 #: lapiz/lapiz-file-chooser-dialog.c:437
-#: plugins/filebrowser/lapiz-file-browser-widget.c:808
+#: plugins/filebrowser/lapiz-file-browser-widget.c:810
 #: plugins/quickopen/quickopen/popup.py:37
 #: plugins/snippets/snippets/Manager.py:796
 msgid "_Open"
@@ -1565,53 +1565,53 @@ msgstr "_Atverti"
 msgid "There was an error displaying the help."
 msgstr "Įvyko klaida rodant žinyną."
 
-#: lapiz/lapiz-io-error-message-area.c:183
+#: lapiz/lapiz-io-error-message-area.c:184
 #: lapiz/lapiz-io-error-message-area.c:485
 msgid "_Retry"
 msgstr "_Bandyti dar kartą"
 
-#: lapiz/lapiz-io-error-message-area.c:204
+#: lapiz/lapiz-io-error-message-area.c:205
 #, c-format
 msgid "Could not find the file %s."
 msgstr "Nepavyko rasti failo „%s“."
 
-#: lapiz/lapiz-io-error-message-area.c:206
-#: lapiz/lapiz-io-error-message-area.c:245
-#: lapiz/lapiz-io-error-message-area.c:252
+#: lapiz/lapiz-io-error-message-area.c:207
+#: lapiz/lapiz-io-error-message-area.c:247
+#: lapiz/lapiz-io-error-message-area.c:254
 msgid "Please check that you typed the location correctly and try again."
 msgstr ""
 "Patikrinkite ar teisingai parašėte norimos vietos pavadinimą ir bandykite "
 "dar kartą."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:221
+#: lapiz/lapiz-io-error-message-area.c:223
 #, c-format
 msgid "lapiz cannot handle %s locations."
 msgstr "lapiz negali priimti %s vietos."
 
-#: lapiz/lapiz-io-error-message-area.c:227
+#: lapiz/lapiz-io-error-message-area.c:229
 msgid "lapiz cannot handle this location."
 msgstr "lapiz negali priimti šios vietos."
 
-#: lapiz/lapiz-io-error-message-area.c:235
+#: lapiz/lapiz-io-error-message-area.c:237
 msgid "The location of the file cannot be mounted."
 msgstr "Failo vieta negali būti prijungta."
 
-#: lapiz/lapiz-io-error-message-area.c:239
+#: lapiz/lapiz-io-error-message-area.c:241
 msgid "The location of the file cannot be accessed because it is not mounted."
 msgstr "Failo vieta negali būti pasiekta, nes ji neprijungta."
 
-#: lapiz/lapiz-io-error-message-area.c:243
+#: lapiz/lapiz-io-error-message-area.c:245
 #, c-format
 msgid "%s is a directory."
 msgstr "%s yra katalogas."
 
-#: lapiz/lapiz-io-error-message-area.c:250
+#: lapiz/lapiz-io-error-message-area.c:252
 #, c-format
 msgid "%s is not a valid location."
 msgstr "„%s“ nėra tinkama vieta."
 
-#: lapiz/lapiz-io-error-message-area.c:280
+#: lapiz/lapiz-io-error-message-area.c:282
 #, c-format
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
@@ -1620,7 +1620,7 @@ msgstr ""
 "Kompiuteris %s nerastas. Patikrinkite ar jūsų įgaliotojo serverio nustatymai "
 "yra teisingi ir bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:293
+#: lapiz/lapiz-io-error-message-area.c:295
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
@@ -1628,81 +1628,81 @@ msgstr ""
 "Netinkamas kompiuterio vardas. Patikrinkite ar teisingai įrašėte vietą ir "
 "bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:301
+#: lapiz/lapiz-io-error-message-area.c:303
 #, c-format
 msgid "%s is not a regular file."
 msgstr "%s nėra paprastas failas."
 
-#: lapiz/lapiz-io-error-message-area.c:306
+#: lapiz/lapiz-io-error-message-area.c:308
 msgid "Connection timed out. Please try again."
 msgstr "Ryšys nutrūko. Bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:329
+#: lapiz/lapiz-io-error-message-area.c:331
 msgid "The file is too big."
 msgstr "Failas per didelis."
 
-#: lapiz/lapiz-io-error-message-area.c:370
+#: lapiz/lapiz-io-error-message-area.c:372
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Netikėta klaida: %s"
 
-#: lapiz/lapiz-io-error-message-area.c:406
+#: lapiz/lapiz-io-error-message-area.c:408
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr "lapiz neranda failo. Galbūt jis buvo neseniai ištrintas."
 
-#: lapiz/lapiz-io-error-message-area.c:416
+#: lapiz/lapiz-io-error-message-area.c:418
 #, c-format
 msgid "Could not revert the file %s."
 msgstr "Nepavyko atkurti failo „%s“."
 
-#: lapiz/lapiz-io-error-message-area.c:442
+#: lapiz/lapiz-io-error-message-area.c:444
 msgid "Ch_aracter Encoding:"
 msgstr "Simb_olių koduotė:"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:494
-#: lapiz/lapiz-io-error-message-area.c:771
+#: lapiz/lapiz-io-error-message-area.c:774
 msgid "Edit Any_way"
 msgstr "_Vis tiek redaguoti"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:499
-#: lapiz/lapiz-io-error-message-area.c:776
+#: lapiz/lapiz-io-error-message-area.c:779
 msgid "D_on't Edit"
 msgstr "_Neredaguoti"
 
-#: lapiz/lapiz-io-error-message-area.c:597
+#: lapiz/lapiz-io-error-message-area.c:600
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
 "Sekamų nuorodų skaičius ribotas, pats failas sekant nuorodomis nebuvo rastas."
 
-#: lapiz/lapiz-io-error-message-area.c:601
+#: lapiz/lapiz-io-error-message-area.c:604
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Neturite teisių, reikiamų atverti šiam failui."
 
-#: lapiz/lapiz-io-error-message-area.c:607
+#: lapiz/lapiz-io-error-message-area.c:610
 msgid "lapiz has not been able to detect the character encoding."
 msgstr "lapiz nepavyko aptikti simbolių koduotės."
 
-#: lapiz/lapiz-io-error-message-area.c:609
-#: lapiz/lapiz-io-error-message-area.c:631
+#: lapiz/lapiz-io-error-message-area.c:612
+#: lapiz/lapiz-io-error-message-area.c:634
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Patikrinkite, ar nebandote atverti dvejetainio failo."
 
-#: lapiz/lapiz-io-error-message-area.c:610
+#: lapiz/lapiz-io-error-message-area.c:613
 msgid "Select a character encoding from the menu and try again."
 msgstr "Pasirinkite simbolių koduotę iš meniu ir bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:616
+#: lapiz/lapiz-io-error-message-area.c:619
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "Klaida atveriant failą %s."
 
-#: lapiz/lapiz-io-error-message-area.c:618
+#: lapiz/lapiz-io-error-message-area.c:621
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
@@ -1710,32 +1710,32 @@ msgstr ""
 "Atvertas failas turi netinkamų simbolių. Jei tęsite šio failo redagavimą, "
 "galite paversti dokumentą beverčiu."
 
-#: lapiz/lapiz-io-error-message-area.c:621
+#: lapiz/lapiz-io-error-message-area.c:624
 msgid "You can also choose another character encoding and try again."
 msgstr "Taip pat galite pasirinkti kitą simbolių koduotę ir bandyti dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:628
+#: lapiz/lapiz-io-error-message-area.c:631
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr "Nepavyko atverti failo %s naudojant %s simbolių koduotę."
 
-#: lapiz/lapiz-io-error-message-area.c:632
-#: lapiz/lapiz-io-error-message-area.c:707
+#: lapiz/lapiz-io-error-message-area.c:635
+#: lapiz/lapiz-io-error-message-area.c:710
 msgid "Select a different character encoding from the menu and try again."
 msgstr ""
 "Pasirinkite meniu kitą simbolių koduotę iš meniu ir bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:642
+#: lapiz/lapiz-io-error-message-area.c:645
 #, c-format
 msgid "Could not open the file %s."
 msgstr "Nepavyko atverti failo „%s“."
 
-#: lapiz/lapiz-io-error-message-area.c:702
+#: lapiz/lapiz-io-error-message-area.c:705
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "Nepavyko įrašyti failo %s naudojant %s simbolių koduotę."
 
-#: lapiz/lapiz-io-error-message-area.c:705
+#: lapiz/lapiz-io-error-message-area.c:708
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1743,49 +1743,49 @@ msgstr ""
 "Dokumente yra vienas ar daugiau simbolių, kurie negali būti perkoduoti "
 "naudojant nurodytą simbolių koduotę."
 
-#: lapiz/lapiz-io-error-message-area.c:791
+#: lapiz/lapiz-io-error-message-area.c:794
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
 msgstr "Šis failas (%s) jau atvertas kitame lapiz lange."
 
-#: lapiz/lapiz-io-error-message-area.c:805
+#: lapiz/lapiz-io-error-message-area.c:808
 msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
 msgstr ""
 "lapiz atvėrė šį failą neredaguojamu būdu. Ar vis tiek norite jį keisti?"
 
-#: lapiz/lapiz-io-error-message-area.c:864
-#: lapiz/lapiz-io-error-message-area.c:960
+#: lapiz/lapiz-io-error-message-area.c:867
+#: lapiz/lapiz-io-error-message-area.c:963
 msgid "S_ave Anyway"
 msgstr "_Vis tiek įrašyti"
 
-#: lapiz/lapiz-io-error-message-area.c:868
-#: lapiz/lapiz-io-error-message-area.c:964
+#: lapiz/lapiz-io-error-message-area.c:871
+#: lapiz/lapiz-io-error-message-area.c:967
 msgid "D_on't Save"
 msgstr "_Neįrašyti"
 
-#: lapiz/lapiz-io-error-message-area.c:886
+#: lapiz/lapiz-io-error-message-area.c:889
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Failas %s nuo jo perskaitymo buvo pakeistas."
 
-#: lapiz/lapiz-io-error-message-area.c:901
+#: lapiz/lapiz-io-error-message-area.c:904
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Jeigu jį įrašysite, visi išoriniai pakeitimai bus prarasti. Vis tiek įrašyti?"
 
-#: lapiz/lapiz-io-error-message-area.c:982
+#: lapiz/lapiz-io-error-message-area.c:985
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "Įrašant %s nepavyko sukurti atsarginės šio failo kopijos"
 
-#: lapiz/lapiz-io-error-message-area.c:985
+#: lapiz/lapiz-io-error-message-area.c:988
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "Įrašant %s nepavyko sukurti laikinojo failo"
 
-#: lapiz/lapiz-io-error-message-area.c:1001
+#: lapiz/lapiz-io-error-message-area.c:1004
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1796,7 +1796,7 @@ msgstr ""
 "įvyks klaida, galite prarasti senojo failo kopiją. Vis tiek įrašyti?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:1061
+#: lapiz/lapiz-io-error-message-area.c:1066
 #, c-format
 msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
@@ -1805,7 +1805,7 @@ msgstr ""
 "lapiz negali apdoroti %s vietų rašymo veiksena. Patikrinkite, ar teisingai "
 "nurodėte vietą ir bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:1069
+#: lapiz/lapiz-io-error-message-area.c:1074
 msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1813,7 +1813,7 @@ msgstr ""
 "Lapiz negali rašyti į šią vietą. Patikrinkite, ar teisingai nurodėte vietą, "
 "ir bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:1078
+#: lapiz/lapiz-io-error-message-area.c:1083
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1822,7 +1822,7 @@ msgstr ""
 "%s nėra tinkama vieta. Patikrinkite ar teisingai įrašėte vietą ir bandykite "
 "dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:1084
+#: lapiz/lapiz-io-error-message-area.c:1089
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1830,7 +1830,7 @@ msgstr ""
 "Neturite reikiamų teisių įrašyti šį failą. Patikrinkite, ar teisingai "
 "nurodėte vietą, ir bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:1090
+#: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1838,7 +1838,7 @@ msgstr ""
 "Įrašyti failui nepakanka laisvos vietos diske. Atlaisvinkite šiek tiek "
 "vietos diske ir bandykite iš naujo."
 
-#: lapiz/lapiz-io-error-message-area.c:1095
+#: lapiz/lapiz-io-error-message-area.c:1100
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1846,11 +1846,11 @@ msgstr ""
 "Bandote įrašyti failą tik skaitymui skirtame diske. Patikrinkite, ar "
 "teisingai nurodėte vietą, ir bandykite dar kartą."
 
-#: lapiz/lapiz-io-error-message-area.c:1101
+#: lapiz/lapiz-io-error-message-area.c:1106
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Failas tokiu vardu jau yra. Pasirinkite kitą vardą."
 
-#: lapiz/lapiz-io-error-message-area.c:1106
+#: lapiz/lapiz-io-error-message-area.c:1111
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1858,7 +1858,7 @@ msgstr ""
 "Diske, į kurį norite įrašyti failą, taikomi apribojimai failo pavadinimo "
 "ilgiui. Naudokite trumpesnį pavadinimą."
 
-#: lapiz/lapiz-io-error-message-area.c:1113
+#: lapiz/lapiz-io-error-message-area.c:1118
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1868,25 +1868,25 @@ msgstr ""
 "Pabandykite įrašyti mažesnį failą, arba įrašykite į diską, kuriame tokių "
 "apribojimų nėra."
 
-#: lapiz/lapiz-io-error-message-area.c:1129
+#: lapiz/lapiz-io-error-message-area.c:1134
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Nepavyko įrašyti failo %s."
 
-#: lapiz/lapiz-io-error-message-area.c:1173
+#: lapiz/lapiz-io-error-message-area.c:1178
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "Failas %s pakeistas diske."
 
-#: lapiz/lapiz-io-error-message-area.c:1178
+#: lapiz/lapiz-io-error-message-area.c:1183
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Ar norite atsisakyti padarytų pakeitimų ir atverti failą iš naujo?"
 
-#: lapiz/lapiz-io-error-message-area.c:1180
+#: lapiz/lapiz-io-error-message-area.c:1185
 msgid "Do you want to reload the file?"
 msgstr "Ar norite atverti failą iš naujo?"
 
-#: lapiz/lapiz-io-error-message-area.c:1185
+#: lapiz/lapiz-io-error-message-area.c:1190
 msgid "_Reload"
 msgstr "Į_kelti iš naujo"
 
@@ -1965,69 +1965,69 @@ msgstr "_Eilučių numeriai:"
 msgid "_Restore Default Fonts"
 msgstr "_Atstatyti numatytuosius šriftus "
 
-#: lapiz/lapiz-print-preview.c:569
+#: lapiz/lapiz-print-preview.c:573
 msgid "Show the previous page"
 msgstr "Rodyti ankstesnį puslapį"
 
-#: lapiz/lapiz-print-preview.c:582
+#: lapiz/lapiz-print-preview.c:586
 msgid "Show the next page"
 msgstr "Rodyti kitą puslapį"
 
-#: lapiz/lapiz-print-preview.c:598
+#: lapiz/lapiz-print-preview.c:602
 msgid "Current page (Alt+P)"
 msgstr "Esamas puslapis (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: lapiz/lapiz-print-preview.c:621
+#: lapiz/lapiz-print-preview.c:625
 msgid "of"
 msgstr "iš"
 
-#: lapiz/lapiz-print-preview.c:629
+#: lapiz/lapiz-print-preview.c:633
 msgid "Page total"
 msgstr "Viso puslapių"
 
-#: lapiz/lapiz-print-preview.c:630
+#: lapiz/lapiz-print-preview.c:634
 msgid "The total number of pages in the document"
 msgstr "Viso puslapių šiame dokumente"
 
-#: lapiz/lapiz-print-preview.c:648
+#: lapiz/lapiz-print-preview.c:652
 msgid "Show multiple pages"
 msgstr "Rodyti keletą puslapių"
 
-#: lapiz/lapiz-print-preview.c:662
+#: lapiz/lapiz-print-preview.c:666
 msgid "Zoom 1:1"
 msgstr "Mastelis 1:1"
 
-#: lapiz/lapiz-print-preview.c:672
+#: lapiz/lapiz-print-preview.c:676
 msgid "Zoom to fit the whole page"
 msgstr "Keisti mastelį, kad tilptų visas puslapis"
 
-#: lapiz/lapiz-print-preview.c:682
+#: lapiz/lapiz-print-preview.c:686
 msgid "Zoom the page in"
 msgstr "Didinti"
 
-#: lapiz/lapiz-print-preview.c:692
+#: lapiz/lapiz-print-preview.c:696
 msgid "Zoom the page out"
 msgstr "Mažinti"
 
-#: lapiz/lapiz-print-preview.c:704
+#: lapiz/lapiz-print-preview.c:708
 msgid "_Close Preview"
 msgstr "_Užverti spaudinio peržiūrą"
 
-#: lapiz/lapiz-print-preview.c:707
+#: lapiz/lapiz-print-preview.c:711
 msgid "Close print preview"
 msgstr "Užverti spaudinio peržiūrą"
 
-#: lapiz/lapiz-print-preview.c:782
+#: lapiz/lapiz-print-preview.c:786
 #, c-format
 msgid "Page %d of %d"
 msgstr "%d iš %d"
 
-#: lapiz/lapiz-print-preview.c:963
+#: lapiz/lapiz-print-preview.c:967
 msgid "Page Preview"
 msgstr "Puslapio peržiūra"
 
-#: lapiz/lapiz-print-preview.c:964
+#: lapiz/lapiz-print-preview.c:968
 msgid "The preview of a page in the document to be printed"
 msgstr "Spausdintino dokumento puslapio peržiūra"
 
@@ -2136,7 +2136,7 @@ msgstr "MIME tipas:"
 msgid "Encoding:"
 msgstr "Koduotė:"
 
-#: lapiz/lapiz-tab-label.c:274
+#: lapiz/lapiz-tab-label.c:278
 msgid "Close document"
 msgstr "Užverti dokumentą"
 
@@ -2176,7 +2176,7 @@ msgstr "Sukurti naują dokumentą"
 msgid "_Open..."
 msgstr "_Atverti..."
 
-#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1453
+#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1454
 msgid "Open a file"
 msgstr "Atverti failą"
 
@@ -2285,7 +2285,7 @@ msgid "Paste the clipboard"
 msgstr "Įdėti iš iškarpinės"
 
 #: lapiz/lapiz-ui.h:102 plugins/filebrowser/lapiz-file-browser-utils.c:182
-#: plugins/filebrowser/lapiz-file-browser-widget.c:801
+#: plugins/filebrowser/lapiz-file-browser-widget.c:803
 msgid "_Delete"
 msgstr "_Pašalinti"
 
@@ -2453,22 +2453,22 @@ msgstr "_Apatinis polangis"
 msgid "Show or hide the bottom pane in the current window"
 msgstr "Rodyti arba slėpti apatinį polangį esamame lange"
 
-#: lapiz/lapiz-utils.c:1074
+#: lapiz/lapiz-utils.c:1076
 msgid "Please check your installation."
 msgstr "Patikrinkite Jūsų įdiegimą."
 
-#: lapiz/lapiz-utils.c:1147
+#: lapiz/lapiz-utils.c:1149
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nepavyko rasti naudotojo sąsajos failo %s. Klaida: %s"
 
-#: lapiz/lapiz-utils.c:1167
+#: lapiz/lapiz-utils.c:1169
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Nepavyko rasti objekto „%s“ faile %s."
 
 #. Translators: '/ on <remote-share>'
-#: lapiz/lapiz-utils.c:1327
+#: lapiz/lapiz-utils.c:1329
 #, c-format
 msgid "/ on %s"
 msgstr "%s: /"
@@ -2508,7 +2508,7 @@ msgstr "Naudoti %s paryškinimo režimą"
 
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1957
+#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1958
 #: plugins/externaltools/tools/manager.py:108
 #: plugins/externaltools/tools/manager.py:308
 #: plugins/externaltools/tools/manager.py:424
@@ -2526,41 +2526,41 @@ msgstr "Išjungti sintaksės paryškinimą"
 msgid "Open '%s'"
 msgstr "Atverti „%s“"
 
-#: lapiz/lapiz-window.c:1459
+#: lapiz/lapiz-window.c:1460
 msgid "Open a recently used file"
 msgstr "Atverti paskiausiai naudotą failą"
 
-#: lapiz/lapiz-window.c:1465
+#: lapiz/lapiz-window.c:1466
 msgid "Open"
 msgstr "Atverti"
 
-#: lapiz/lapiz-window.c:1523
+#: lapiz/lapiz-window.c:1524
 msgid "Save"
 msgstr "Įrašyti"
 
-#: lapiz/lapiz-window.c:1525
+#: lapiz/lapiz-window.c:1526
 msgid "Print"
 msgstr "Spausdinti"
 
 #. Translators: %s is a URI
-#: lapiz/lapiz-window.c:1682
+#: lapiz/lapiz-window.c:1683
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktyvuoti %s"
 
-#: lapiz/lapiz-window.c:1935
+#: lapiz/lapiz-window.c:1936
 msgid "Use Spaces"
 msgstr "Naudoti tarpus"
 
-#: lapiz/lapiz-window.c:2006
+#: lapiz/lapiz-window.c:2007
 msgid "Tab Width"
 msgstr "Tabuliacijos plotis"
 
-#: plugins/changecase/changecase.plugin.desktop.in:5
+#: plugins/changecase/changecase.plugin.desktop.in:4
 msgid "Change Case"
 msgstr "Pakeisti raidžių dydį"
 
-#: plugins/changecase/changecase.plugin.desktop.in:6
+#: plugins/changecase/changecase.plugin.desktop.in:5
 msgid "Changes the case of selected text."
 msgstr "Sukeičia pažymėto teksto raidžių dydį."
 
@@ -2600,11 +2600,11 @@ msgstr "An_traštės raidžių dydis"
 msgid "Capitalize the first letter of each selected word"
 msgstr "Rašyti kiekvieną pažymėtą žodį didžiąja raide"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:5 plugins/docinfo/docinfo.ui:19
+#: plugins/docinfo/docinfo.plugin.desktop.in:4 plugins/docinfo/docinfo.ui:19
 msgid "Document Statistics"
 msgstr "Dokumento statistika"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:6
+#: plugins/docinfo/docinfo.plugin.desktop.in:5
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
@@ -2656,11 +2656,11 @@ msgstr "_Dokumento statistika"
 msgid "Get statistical information on the current document"
 msgstr "Gauti statistinę informaciją apie esamąjį dokumentą"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:6
+#: plugins/externaltools/externaltools.plugin.desktop.in:5
 msgid "External Tools"
 msgstr "Išoriniai įrankiai"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:7
+#: plugins/externaltools/externaltools.plugin.desktop.in:6
 msgid "Execute external commands and shell scripts."
 msgstr "Vykdyti išorines komandas ir apvalkalo scenarijus."
 
@@ -2844,51 +2844,51 @@ msgstr "Spartusis _klavišas:"
 msgid "_Edit:"
 msgstr "_Taisyti:"
 
-#: plugins/externaltools/data/build.desktop.in:3
+#: plugins/externaltools/data/build.desktop.in:2
 msgid "Build"
 msgstr "Sukurti"
 
-#: plugins/externaltools/data/build.desktop.in:4
+#: plugins/externaltools/data/build.desktop.in:3
 msgid "Run \"make\" in the document directory"
 msgstr "Vykdyti „make“ dokumento kataloge"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:3
+#: plugins/externaltools/data/open-terminal-here.desktop.in:2
 msgid "Open terminal here"
 msgstr "Čia _atverti terminalą"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:4
+#: plugins/externaltools/data/open-terminal-here.desktop.in:3
 msgid "Open a terminal in the document location"
 msgstr "Atverti terminalą dokumento aplanke"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:2
 msgid "Remove trailing spaces"
 msgstr "P_ašalinti tarpus eilučių pabaigoje"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:4
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
 msgid "Remove useless trailing spaces in your file"
 msgstr "P_ašalinti iš failo nereikalingus tarpus eilučių pabaigoje"
 
-#: plugins/externaltools/data/run-command.desktop.in:3
+#: plugins/externaltools/data/run-command.desktop.in:2
 msgid "Run command"
 msgstr "Vykdyti komandą"
 
-#: plugins/externaltools/data/run-command.desktop.in:4
+#: plugins/externaltools/data/run-command.desktop.in:3
 msgid "Execute a custom command and put its output in a new document"
 msgstr "Įvykdyti komandą ir jos išvestį perkelti į naują dokumentą"
 
-#: plugins/externaltools/data/search-recursive.desktop.in:3
+#: plugins/externaltools/data/search-recursive.desktop.in:2
 msgid "Search"
 msgstr "Ieškoti"
 
-#: plugins/externaltools/data/switch-c.desktop.in:3
+#: plugins/externaltools/data/switch-c.desktop.in:2
 msgid "Switch onto a file .c and .h"
 msgstr "Perjungti į failą .c ir .h"
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:5
 msgid "File Browser Pane"
 msgstr "Failų naršyklės polangis"
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:7
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
 msgid "Easy file access from the side pane"
 msgstr "Lengvas failų pasiekimas iš šoninio polangio"
 
@@ -3006,39 +3006,39 @@ msgstr "Atverti terminalą šiuo metu atvertame kataloge"
 msgid "File Browser"
 msgstr "Failų tvarkytuvė"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:870
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
 msgid "An error occurred while creating a new directory"
 msgstr "Kuriant naują katalogą iškilo klaida"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:876
 msgid "An error occurred while creating a new file"
 msgstr "Klaida kuriant naują failą"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:878
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:881
 msgid "An error occurred while renaming a file or directory"
 msgstr "Klaida pervadinant failą ar katalogą"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:883
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:886
 msgid "An error occurred while deleting a file or directory"
 msgstr "Klaida trinant failą ar katalogą"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:888
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:891
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Klaida, atveriant katalogą failų tvarkytuvėje"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:892
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:895
 msgid "An error occurred while setting a root directory"
 msgstr "Klaida nustatant šakninį katalogą"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:896
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
 msgid "An error occurred while loading a directory"
 msgstr "Klaida įkeliant katalogą"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:902
 msgid "An error occurred"
 msgstr "Iškilo klaida"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1126
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1129
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3046,25 +3046,25 @@ msgstr ""
 "Nepavyko perkelti failo į šiukšlinę,\n"
 "ar norite negrįžtamai ištrinti?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1130
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Failo „%s“ nepavyko perkelti į šiukšlinę."
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1136
 msgid "The selected files cannot be moved to the trash."
 msgstr "Pažymėtų failų nepavyko perkelti į šiukšlinę."
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1161
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Ar tikrai norite ištrinti „%s“ visam laikui?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Ar tikrai norite negrįžtamai ištrinti pasirinktus failus?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1170
 msgid "If you delete an item, it is permanently lost."
 msgstr "Ištrynus elementą, jis prarandamas negrįžtamai."
 
@@ -3106,168 +3106,168 @@ msgstr ""
 "Naujas katalogas šiuo metu yra atfiltruojamas. Reikės pakoreguoti filtravimo "
 "nustatymus, kad katalogas taptų matomas"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:712
+#: plugins/filebrowser/lapiz-file-browser-widget.c:714
 msgid "Bookmarks"
 msgstr "Žymės"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:793
+#: plugins/filebrowser/lapiz-file-browser-widget.c:795
 msgid "_Filter"
 msgstr "_Filtruoti"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:798
+#: plugins/filebrowser/lapiz-file-browser-widget.c:800
 msgid "_Move to Trash"
 msgstr "_Perkelti į šiukšlinę"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:799
+#: plugins/filebrowser/lapiz-file-browser-widget.c:801
 msgid "Move selected file or folder to trash"
 msgstr "Perkelti pasirinktą failą ar aplanką į šiukšlinę"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:802
+#: plugins/filebrowser/lapiz-file-browser-widget.c:804
 msgid "Delete selected file or folder"
 msgstr "Ištrinti pasirinktą failą ar aplanką"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:809
+#: plugins/filebrowser/lapiz-file-browser-widget.c:811
 msgid "Open selected file"
 msgstr "Atverti pasirinktą failą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:815
+#: plugins/filebrowser/lapiz-file-browser-widget.c:817
 msgid "Up"
 msgstr "Viršun"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:816
+#: plugins/filebrowser/lapiz-file-browser-widget.c:818
 msgid "Open the parent folder"
 msgstr "Atverti pirminį aplanką"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:821
+#: plugins/filebrowser/lapiz-file-browser-widget.c:823
 msgid "_New Folder"
 msgstr "_Naujas aplankas"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:822
+#: plugins/filebrowser/lapiz-file-browser-widget.c:824
 msgid "Add new empty folder"
 msgstr "Pridėti naują tuščią failą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:824
+#: plugins/filebrowser/lapiz-file-browser-widget.c:826
 msgid "New F_ile"
 msgstr "Naujas f_ailas"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:825
+#: plugins/filebrowser/lapiz-file-browser-widget.c:827
 msgid "Add new empty file"
 msgstr "Pridėti naują tuščią failą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:830
+#: plugins/filebrowser/lapiz-file-browser-widget.c:832
 msgid "_Rename"
 msgstr "Pe_rvardinti"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:831
+#: plugins/filebrowser/lapiz-file-browser-widget.c:833
 msgid "Rename selected file or folder"
 msgstr "Pervadinti pasirinktą failą ar aplanką"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:837
+#: plugins/filebrowser/lapiz-file-browser-widget.c:839
 msgid "_Previous Location"
 msgstr "_Ankstesnė vieta"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:839
+#: plugins/filebrowser/lapiz-file-browser-widget.c:841
 msgid "Go to the previous visited location"
 msgstr "Eiti į anksčiau aplankytą vietą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:841
+#: plugins/filebrowser/lapiz-file-browser-widget.c:843
 msgid "_Next Location"
 msgstr "_Kita vieta"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:842
+#: plugins/filebrowser/lapiz-file-browser-widget.c:844
 msgid "Go to the next visited location"
 msgstr "Eiti į kitą aplankytą vietą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:843
+#: plugins/filebrowser/lapiz-file-browser-widget.c:845
 msgid "Re_fresh View"
 msgstr "Atnaujinti _vaizdą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:844
+#: plugins/filebrowser/lapiz-file-browser-widget.c:846
 msgid "Refresh the view"
 msgstr "Atnaujinti vaizdą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:845
-#: plugins/filebrowser/lapiz-file-browser-widget.c:863
+#: plugins/filebrowser/lapiz-file-browser-widget.c:847
+#: plugins/filebrowser/lapiz-file-browser-widget.c:865
 msgid "_View Folder"
 msgstr "_Rodyti aplanką"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:846
-#: plugins/filebrowser/lapiz-file-browser-widget.c:864
+#: plugins/filebrowser/lapiz-file-browser-widget.c:848
+#: plugins/filebrowser/lapiz-file-browser-widget.c:866
 msgid "View folder in file manager"
 msgstr "Rodyti aplanką failų tvarkytuvėje"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:853
+#: plugins/filebrowser/lapiz-file-browser-widget.c:855
 msgid "Show _Hidden"
 msgstr "Rodyti _paslėptus"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:854
+#: plugins/filebrowser/lapiz-file-browser-widget.c:856
 msgid "Show hidden files and folders"
 msgstr "Rodyti paslėptus failus ir aplankus"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:856
+#: plugins/filebrowser/lapiz-file-browser-widget.c:858
 msgid "Show _Binary"
 msgstr "Rodyti _dvejetainius"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:857
+#: plugins/filebrowser/lapiz-file-browser-widget.c:859
 msgid "Show binary files"
 msgstr "Rodyti dvejetainius failus"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:990
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1003
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1029
+#: plugins/filebrowser/lapiz-file-browser-widget.c:992
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1005
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1031
 msgid "Previous location"
 msgstr "Ankstesnė vieta"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:996
+#: plugins/filebrowser/lapiz-file-browser-widget.c:998
 msgid "Go to previous location"
 msgstr "Eiti į ankstesnę vietą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:998
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1000
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1026
 msgid "Go to a previously opened location"
 msgstr "Eiti į anksčiau atvertą vietą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1016
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1018
 msgid "Next location"
 msgstr "Kita vieta"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1022
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
 msgid "Go to next location"
 msgstr "Eiti į kitą vietą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1234
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1236
 msgid "_Match Filename"
 msgstr "_Atitikti failo pavadinimą"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2135
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Nėra prijungimo objekto prijungtam tomui: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2215
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nepavyko atverti laikmenos: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2262
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nepavyko prijungti tomo: %s"
 
-#: plugins/modelines/modelines.plugin.desktop.in:5
+#: plugins/modelines/modelines.plugin.desktop.in:4
 msgid "Modelines"
 msgstr "Veiksenų eilutės"
 
-#: plugins/modelines/modelines.plugin.desktop.in:6
+#: plugins/modelines/modelines.plugin.desktop.in:5
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
 msgstr "Emacs, Kate ir Vim stiliaus veiksenų eilučių palaikymas."
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:5
 #: plugins/pythonconsole/pythonconsole/__init__.py:55
 msgid "Python Console"
 msgstr "Python pultas"
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:7
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktyvus python pultas, esantis apatiniame skydelyje"
 
@@ -3288,7 +3288,7 @@ msgid "Font:"
 msgstr "Šriftas:"
 
 #: plugins/quickopen/quickopen/popup.py:32
-#: plugins/quickopen/quickopen.plugin.desktop.in:6
+#: plugins/quickopen/quickopen.plugin.desktop.in:5
 msgid "Quick Open"
 msgstr "Greitas atvėrimas"
 
@@ -3300,18 +3300,18 @@ msgstr "Greitai atverti"
 msgid "Quickly open documents"
 msgstr "Greitai atverti dokumentus"
 
-#: plugins/quickopen/quickopen.plugin.desktop.in:7
+#: plugins/quickopen/quickopen.plugin.desktop.in:6
 msgid "Quickly open files"
 msgstr "Greitai atverti failus"
 
-#: plugins/snippets/snippets.plugin.desktop.in:6
+#: plugins/snippets/snippets.plugin.desktop.in:5
 #: plugins/snippets/snippets/Document.py:51
 #: plugins/snippets/snippets/Document.py:189
 #: plugins/snippets/snippets/Document.py:618
 msgid "Snippets"
 msgstr "Iškarpos"
 
-#: plugins/snippets/snippets.plugin.desktop.in:7
+#: plugins/snippets/snippets.plugin.desktop.in:6
 msgid "Insert often-used pieces of text in a fast way"
 msgstr "Greitai įterpti dažnai naudojamus teksto fragmentus"
 
@@ -3537,11 +3537,11 @@ msgstr "Rikiu_oti..."
 msgid "Sort the current document or selection"
 msgstr "Rikiuoti esamą dokumentą arba pasirinkimą"
 
-#: plugins/sort/sort.plugin.desktop.in:5 plugins/sort/sort.ui:29
+#: plugins/sort/sort.plugin.desktop.in:4 plugins/sort/sort.ui:29
 msgid "Sort"
 msgstr "Rikiuoti"
 
-#: plugins/sort/sort.plugin.desktop.in:6
+#: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sorts a document or selected text."
 msgstr "Rikiuoja dokumentą arba pažymėtą tekstą"
 
@@ -3576,20 +3576,20 @@ msgstr "Automatinio tikrinimo tipas"
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
-#: plugins/spell/lapiz-automatic-spell-checker.c:420
+#: plugins/spell/lapiz-automatic-spell-checker.c:429
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
 msgid "(no suggested words)"
 msgstr "(pasiūlymų nėra)"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:444
+#: plugins/spell/lapiz-automatic-spell-checker.c:454
 msgid "_More..."
 msgstr "_Daugiau..."
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:499
+#: plugins/spell/lapiz-automatic-spell-checker.c:509
 msgid "_Ignore All"
 msgstr "_Ignoruoti visus"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:553
+#: plugins/spell/lapiz-automatic-spell-checker.c:565
 msgid "_Spelling Suggestions..."
 msgstr "_Rašybos pasiūlymai..."
 
@@ -3602,11 +3602,11 @@ msgid "Suggestions"
 msgstr "Pasiūlymai"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: plugins/spell/lapiz-spell-checker-dialog.c:565
+#: plugins/spell/lapiz-spell-checker-dialog.c:568
 msgid "(correct spelling)"
 msgstr "(teisinga rašyba)"
 
-#: plugins/spell/lapiz-spell-checker-dialog.c:712
+#: plugins/spell/lapiz-spell-checker-dialog.c:720
 msgid "Completed spell checking"
 msgstr "Baigtas rašybos tikrinimas"
 
@@ -3614,8 +3614,8 @@ msgstr "Baigtas rašybos tikrinimas"
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:285
-#: plugins/spell/lapiz-spell-checker-language.c:291
+#: plugins/spell/lapiz-spell-checker-language.c:287
+#: plugins/spell/lapiz-spell-checker-language.c:293
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3624,7 +3624,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:300
+#: plugins/spell/lapiz-spell-checker-language.c:302
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3633,7 +3633,7 @@ msgstr "Nežinomas (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:406
+#: plugins/spell/lapiz-spell-checker-language.c:410
 msgctxt "language"
 msgid "Default"
 msgstr "Numatytasis"
@@ -3759,11 +3759,11 @@ msgstr "P_risiminti automatinį tikrinimą pagal dokumentą"
 msgid "_Always autocheck"
 msgstr "Vis_ada automatiškai tikrinti"
 
-#: plugins/spell/spell.plugin.desktop.in:5
+#: plugins/spell/spell.plugin.desktop.in:4
 msgid "Spell Checker"
 msgstr "Rašybos tikrinimas"
 
-#: plugins/spell/spell.plugin.desktop.in:6
+#: plugins/spell/spell.plugin.desktop.in:5
 msgid "Checks the spelling of the current document."
 msgstr "Patikrina esamo dokumento rašybą"
 
@@ -4931,11 +4931,11 @@ msgid "Soft hyphen­"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2275
-msgid "&quot;"
+msgid "\""
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2279
-msgid "&amp;"
+msgid "&"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2283
@@ -4963,11 +4963,11 @@ msgid "¸"
 msgstr "¸"
 
 #: plugins/taglist/HTML.tags.xml.in:2307
-msgid "&lt;"
+msgid "<"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2311
-msgid "&gt;"
+msgid ">"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2315
@@ -5359,7 +5359,7 @@ msgid "Brackets {}"
 msgstr "Skliausteliai {}"
 
 #: plugins/taglist/Latex.tags.xml.in:39
-msgid "Brackets &lt;&gt;"
+msgid "Brackets <>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:44
@@ -5515,19 +5515,19 @@ msgid "Reference ref"
 msgstr "Reference ref"
 
 #: plugins/taglist/Latex.tags.xml.in:225
-msgid "Symbol &lt;&lt;"
+msgid "Symbol <<"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:229
-msgid "Symbol &lt;="
+msgid "Symbol <="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:233
-msgid "Symbol &gt;="
+msgid "Symbol >="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:237
-msgid "Symbol &gt;&gt;"
+msgid "Symbol >>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:241
@@ -5618,11 +5618,11 @@ msgstr "Nelaužomas tekstas"
 msgid "Footnote"
 msgstr "Poraštė"
 
-#: plugins/taglist/taglist.plugin.desktop.in:5
+#: plugins/taglist/taglist.plugin.desktop.in:4
 msgid "Tag list"
 msgstr "Žymų sąrašas"
 
-#: plugins/taglist/taglist.plugin.desktop.in:6
+#: plugins/taglist/taglist.plugin.desktop.in:5
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
@@ -6431,19 +6431,19 @@ msgstr "Žymeklio vietoje įterpti esamą datą ir laiką "
 msgid "Available formats"
 msgstr "Galimi formatai"
 
-#: plugins/time/time.plugin.desktop.in:5
+#: plugins/time/time.plugin.desktop.in:4
 msgid "Insert Date/Time"
 msgstr "Įterpti datą/laiką"
 
-#: plugins/time/time.plugin.desktop.in:6
+#: plugins/time/time.plugin.desktop.in:5
 msgid "Inserts current date and time at the cursor position."
 msgstr "Žymeklio vietoje įterpia esamą datą ir laiką"
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:5
+#: plugins/trailsave/trailsave.plugin.desktop.in:4
 msgid "Save Without Trailing Spaces"
 msgstr "Įrašyti be tarpų eilučių pabaigoje"
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:6
+#: plugins/trailsave/trailsave.plugin.desktop.in:5
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Prieš įrašant, pašalina eilučių pabaigoje esančius tarpus."
 

@@ -8,9 +8,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 1.25.0\n"
+"Project-Id-Version: lapiz 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2023-05-11 10:48+0200\n"
+"POT-Creation-Date: 2025-07-20 18:14+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Assamese (https://www.transifex.com/cafe/teams/13566/as/)\n"
@@ -551,7 +551,7 @@ msgid ""
 "all spaces."
 msgstr ""
 
-#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
+#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:2
 msgid "Lapiz"
 msgstr ""
 
@@ -575,16 +575,16 @@ msgid ""
 "adjusting indentation levels."
 msgstr ""
 
-#: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
+#: data/lapiz.desktop.in.in:3 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
 msgstr "টেক্সট এডিটার"
 
-#: data/lapiz.desktop.in.in:5
+#: data/lapiz.desktop.in.in:4
 msgid "Edit text files"
 msgstr "টেক্সট নথিপত্ৰ সম্পাদনা"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/lapiz.desktop.in.in:15
+#: data/lapiz.desktop.in.in:14
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
@@ -605,9 +605,9 @@ msgstr "সংৰক্ষণ নকৰি বন্ধ কৰক (_w)"
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
 #: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
 #: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
-#: lapiz/lapiz-io-error-message-area.c:168
+#: lapiz/lapiz-io-error-message-area.c:169
 #: lapiz/lapiz-io-error-message-area.c:507
-#: lapiz/lapiz-io-error-message-area.c:1190
+#: lapiz/lapiz-io-error-message-area.c:1195
 #: lapiz/lapiz-progress-message-area.c:63
 #: plugins/filebrowser/lapiz-file-browser-utils.c:171
 #: plugins/quickopen/quickopen/popup.py:36
@@ -708,18 +708,18 @@ msgid "Save changes to document \"%s\" before closing?"
 msgstr "বন্ধ কৰাৰ আগতে \"%s\" আলেখ্যনত কৰা পৰিবৰ্তনসমূহ সংৰক্ষণ কৰা হ'ব নেকি ?"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:540
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:765
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
 msgid "Saving has been disabled by the system administrator."
 msgstr "ব্যৱস্থাপ্ৰণালী প্ৰশাসক দ্বাৰা সংৰক্ষণৰ বৈশিষ্ট্য নিষ্ক্ৰিয় কৰা হৈছে  ।"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:716
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:718
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:724
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -727,15 +727,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:740
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
 msgid "Docum_ents with unsaved changes:"
 msgstr "অসংৰক্ষিত পৰিবৰ্তনসহ আলেখ্যন:(_e)"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:744
 msgid "S_elect the documents you want to save:"
 msgstr "যি আলেখ্যনসমূহ সংৰক্ষণ কৰা হ'ব সেইসমূহ নিৰ্ব্বাচন কৰক: (_e)"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:769
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "সংৰক্ষণ নকৰিলে সমস্ত পৰিবৰ্তন স্থায়ীৰূপে আঁতৰুৱা যাব  ।"
 
@@ -744,7 +744,7 @@ msgstr "সংৰক্ষণ নকৰিলে সমস্ত পৰিবৰ
 #: plugins/spell/lapiz-spell-language-dialog.c:133
 #: plugins/spell/languages-dialog.ui:72
 #: plugins/spell/lapiz-spell-setup-dialog.ui:71
-#: plugins/time/lapiz-time-plugin.c:920
+#: plugins/time/lapiz-time-plugin.c:921
 #: plugins/time/lapiz-time-setup-dialog.ui:71
 msgid "_OK"
 msgstr ""
@@ -784,7 +784,7 @@ msgid "A_vailable encodings:"
 msgstr "উপস্থিত এনকোডিং: (_v)"
 
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:150
-#: plugins/spell/lapiz-automatic-spell-checker.c:514
+#: plugins/spell/lapiz-automatic-spell-checker.c:524
 msgid "_Add"
 msgstr "যোগ (_য)"
 
@@ -1021,11 +1021,11 @@ msgstr "প্লাগ-ইন"
 
 #: lapiz/dialogs/lapiz-search-dialog.c:295
 #: lapiz/dialogs/lapiz-search-dialog.ui:44
-#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1529
+#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1530
 msgid "Replace"
 msgstr "প্ৰতিস্থাপন"
 
-#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1527
+#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1528
 msgid "Find"
 msgstr "অনুসন্ধান"
 
@@ -1238,23 +1238,23 @@ msgstr[1] ""
 msgid "_Revert"
 msgstr "পৰিবৰ্তন বাতিল কৰক (_R)"
 
-#: lapiz/lapiz-commands-help.c:60
+#: lapiz/lapiz-commands-help.c:62
 msgid "CAFE Documentation Team"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:61
+#: lapiz/lapiz-commands-help.c:63
 msgid "GNOME Documentation Team"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:62
+#: lapiz/lapiz-commands-help.c:64
 msgid "Sun Microsystems"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:67
+#: lapiz/lapiz-commands-help.c:69
 msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:70
+#: lapiz/lapiz-commands-help.c:72
 msgid ""
 "Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
@@ -1262,7 +1262,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:74
+#: lapiz/lapiz-commands-help.c:76
 msgid ""
 "Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -1270,18 +1270,18 @@ msgid ""
 "details."
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:78
+#: lapiz/lapiz-commands-help.c:80
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:113
+#: lapiz/lapiz-commands-help.c:115
 msgid "About Lapiz"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:116
+#: lapiz/lapiz-commands-help.c:118
 msgid ""
 "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
 "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
@@ -1290,10 +1290,10 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023 Pablo Barciela"
+"Copyright © 2023-2024 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:127
+#: lapiz/lapiz-commands-help.c:129
 msgid "translator-credits"
 msgstr "অমিতাক্ষ ফুকন (aphukan@fedoraproject.org)"
 
@@ -1321,11 +1321,11 @@ msgid "Unsaved Document %d"
 msgstr "অসংৰক্ষিত আলেখ্যন %d"
 
 #: lapiz/lapiz-documents-panel.c:93 lapiz/lapiz-documents-panel.c:107
-#: lapiz/lapiz-window.c:2256 lapiz/lapiz-window.c:2261
+#: lapiz/lapiz-window.c:2257 lapiz/lapiz-window.c:2262
 msgid "Read-Only"
 msgstr ""
 
-#: lapiz/lapiz-documents-panel.c:703 lapiz/lapiz-window.c:3677
+#: lapiz/lapiz-documents-panel.c:704 lapiz/lapiz-window.c:3685
 msgid "Documents"
 msgstr "ডকুমেন্ট"
 
@@ -1445,16 +1445,16 @@ msgstr "থাই"
 msgid "Unknown"
 msgstr "অজ্ঞাত"
 
-#: lapiz/lapiz-encodings-combo-box.c:266
+#: lapiz/lapiz-encodings-combo-box.c:268
 msgid "Automatically Detected"
 msgstr ""
 
-#: lapiz/lapiz-encodings-combo-box.c:282 lapiz/lapiz-encodings-combo-box.c:297
+#: lapiz/lapiz-encodings-combo-box.c:284 lapiz/lapiz-encodings-combo-box.c:299
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "বৰ্ত্তমান লোকেইল (%s)"
 
-#: lapiz/lapiz-encodings-combo-box.c:347
+#: lapiz/lapiz-encodings-combo-box.c:349
 msgid "Add or Remove..."
 msgstr ""
 
@@ -1483,7 +1483,7 @@ msgid "Windows"
 msgstr "সংযোগক্ষেত্ৰ"
 
 #: lapiz/lapiz-file-chooser-dialog.c:437
-#: plugins/filebrowser/lapiz-file-browser-widget.c:808
+#: plugins/filebrowser/lapiz-file-browser-widget.c:810
 #: plugins/quickopen/quickopen/popup.py:37
 #: plugins/snippets/snippets/Manager.py:796
 msgid "_Open"
@@ -1493,51 +1493,51 @@ msgstr "খোলো (_O)"
 msgid "There was an error displaying the help."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:183
+#: lapiz/lapiz-io-error-message-area.c:184
 #: lapiz/lapiz-io-error-message-area.c:485
 msgid "_Retry"
 msgstr "পুনঃচেষ্টা(_R)"
 
-#: lapiz/lapiz-io-error-message-area.c:204
+#: lapiz/lapiz-io-error-message-area.c:205
 #, c-format
 msgid "Could not find the file %s."
 msgstr "'%s' নথিপত্ৰ পোৱা নাযায়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:206
-#: lapiz/lapiz-io-error-message-area.c:245
-#: lapiz/lapiz-io-error-message-area.c:252
+#: lapiz/lapiz-io-error-message-area.c:207
+#: lapiz/lapiz-io-error-message-area.c:247
+#: lapiz/lapiz-io-error-message-area.c:254
 msgid "Please check that you typed the location correctly and try again."
 msgstr "সঠিক অৱস্থান লিখা হৈছে নে নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক  ।"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:221
+#: lapiz/lapiz-io-error-message-area.c:223
 #, c-format
 msgid "lapiz cannot handle %s locations."
 msgstr "lapiz-ৰ দ্বাৰা %s অৱস্থানতৰ ব্যৱস্থাপনা কৰা সম্ভৱ নহয়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:227
+#: lapiz/lapiz-io-error-message-area.c:229
 msgid "lapiz cannot handle this location."
 msgstr "lapiz-ৰ দ্বাৰা এই অৱস্থানতৰ ব্যৱস্থাপনা কৰা সম্ভৱ নহয়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:235
+#: lapiz/lapiz-io-error-message-area.c:237
 msgid "The location of the file cannot be mounted."
 msgstr "নথিপত্ৰৰ স্থান তুলিব পৰা ন'গ'ল  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:239
+#: lapiz/lapiz-io-error-message-area.c:241
 msgid "The location of the file cannot be accessed because it is not mounted."
 msgstr "নথিপত্ৰৰ স্থান অভিগম কৰিব পৰা ন'গ'ল কাৰণ তাক তুলি লোৱা হোৱা নাই  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:243
+#: lapiz/lapiz-io-error-message-area.c:245
 #, c-format
 msgid "%s is a directory."
 msgstr "'%s' এটা পঞ্জিকা"
 
-#: lapiz/lapiz-io-error-message-area.c:250
+#: lapiz/lapiz-io-error-message-area.c:252
 #, c-format
 msgid "%s is not a valid location."
 msgstr "'%s' অৱস্থান বৈধ নহয়"
 
-#: lapiz/lapiz-io-error-message-area.c:280
+#: lapiz/lapiz-io-error-message-area.c:282
 #, c-format
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
@@ -1546,128 +1546,128 @@ msgstr ""
 "%s গৃহস্থ পোৱা নাযায়  । অনুগ্ৰহ কৰি ব্যৱহৃত নিযুক্তকৰ বৈশিষ্ট্য পৰীক্ষা কৰি পুনঃ চেষ্টা "
 "কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:293
+#: lapiz/lapiz-io-error-message-area.c:295
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:301
+#: lapiz/lapiz-io-error-message-area.c:303
 #, c-format
 msgid "%s is not a regular file."
 msgstr "%s সাধাৰণ নথিপত্ৰ নহয়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:306
+#: lapiz/lapiz-io-error-message-area.c:308
 msgid "Connection timed out. Please try again."
 msgstr "সংযোগৰ সময়সীমা উত্তীৰ্ণ হৈছে  । অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:329
+#: lapiz/lapiz-io-error-message-area.c:331
 msgid "The file is too big."
 msgstr "নথিপত্ৰ অতিৰিক্ত ডাঙৰ  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:370
+#: lapiz/lapiz-io-error-message-area.c:372
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "অপ্ৰত্যাশিত সমস্যা: %s"
 
-#: lapiz/lapiz-io-error-message-area.c:406
+#: lapiz/lapiz-io-error-message-area.c:408
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr "lapiz এ নথিপত্ৰ নাপালে  । হয়তো ইয়াক অলপতে আঁতৰুৱা হৈছে  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:416
+#: lapiz/lapiz-io-error-message-area.c:418
 #, c-format
 msgid "Could not revert the file %s."
 msgstr "%s নথিপত্ৰত কৰা পৰিবৰ্তন বাতিল কৰা নাযায়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:442
+#: lapiz/lapiz-io-error-message-area.c:444
 msgid "Ch_aracter Encoding:"
 msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:494
-#: lapiz/lapiz-io-error-message-area.c:771
+#: lapiz/lapiz-io-error-message-area.c:774
 msgid "Edit Any_way"
 msgstr "তথাপি সম্পাদনা কৰা হ'ব (_w)"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:499
-#: lapiz/lapiz-io-error-message-area.c:776
+#: lapiz/lapiz-io-error-message-area.c:779
 msgid "D_on't Edit"
 msgstr "সম্পাদনা কৰা ন'হ'ব (_o)"
 
-#: lapiz/lapiz-io-error-message-area.c:597
+#: lapiz/lapiz-io-error-message-area.c:600
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr "মানি চলা সংযোগৰ সংখ্যা সীমিত আৰু সেই সীমাত নথিপত্ৰ পোৱা ন'গ'ল  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:601
+#: lapiz/lapiz-io-error-message-area.c:604
 msgid "You do not have the permissions necessary to open the file."
 msgstr "নথিপত্ৰ খোলাৰ বাবে প্ৰয়োজনীয় অনুমতি আপোনাৰ নাই  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:607
+#: lapiz/lapiz-io-error-message-area.c:610
 msgid "lapiz has not been able to detect the character encoding."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:609
-#: lapiz/lapiz-io-error-message-area.c:631
+#: lapiz/lapiz-io-error-message-area.c:612
+#: lapiz/lapiz-io-error-message-area.c:634
 msgid "Please check that you are not trying to open a binary file."
 msgstr ""
 "অনুগ্ৰহ কৰি পৰীক্ষা কৰক আপুনি কোনো বাইনাৰি নথিপত্ৰ খোলাৰ চেষ্টা কৰিছে নে নাই  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:610
+#: lapiz/lapiz-io-error-message-area.c:613
 msgid "Select a character encoding from the menu and try again."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:616
+#: lapiz/lapiz-io-error-message-area.c:619
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:618
+#: lapiz/lapiz-io-error-message-area.c:621
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:621
+#: lapiz/lapiz-io-error-message-area.c:624
 msgid "You can also choose another character encoding and try again."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:628
+#: lapiz/lapiz-io-error-message-area.c:631
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:632
-#: lapiz/lapiz-io-error-message-area.c:707
+#: lapiz/lapiz-io-error-message-area.c:635
+#: lapiz/lapiz-io-error-message-area.c:710
 msgid "Select a different character encoding from the menu and try again."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:642
+#: lapiz/lapiz-io-error-message-area.c:645
 #, c-format
 msgid "Could not open the file %s."
 msgstr "'%s' নথিপত্ৰ খোলা নাযায়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:702
+#: lapiz/lapiz-io-error-message-area.c:705
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:705
+#: lapiz/lapiz-io-error-message-area.c:708
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:791
+#: lapiz/lapiz-io-error-message-area.c:794
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
 msgstr "নথিপত্ৰ (%s) বৰ্ত্তমানে এটা পৃথক lapiz সংযোগক্ষেত্ৰত খোলা   ।"
 
-#: lapiz/lapiz-io-error-message-area.c:805
+#: lapiz/lapiz-io-error-message-area.c:808
 msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1675,38 +1675,38 @@ msgstr ""
 "অসম্পাদনযোগ্য ৰূপে lapiz দ্বাৰা এই নথিপত্ৰ চানেকি খোলা হৈছে  । তথাপি সম্পাদন কৰিব "
 "বিচাৰে নেকি?"
 
-#: lapiz/lapiz-io-error-message-area.c:864
-#: lapiz/lapiz-io-error-message-area.c:960
+#: lapiz/lapiz-io-error-message-area.c:867
+#: lapiz/lapiz-io-error-message-area.c:963
 msgid "S_ave Anyway"
 msgstr "তথাপিও সংৰক্ষণ কৰক(_a)"
 
-#: lapiz/lapiz-io-error-message-area.c:868
-#: lapiz/lapiz-io-error-message-area.c:964
+#: lapiz/lapiz-io-error-message-area.c:871
+#: lapiz/lapiz-io-error-message-area.c:967
 msgid "D_on't Save"
 msgstr "ৰক্ষা নকৰিব (_o)"
 
-#: lapiz/lapiz-io-error-message-area.c:886
+#: lapiz/lapiz-io-error-message-area.c:889
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "সৰ্বশেষ পঢ়াৰ পিছত %s নথিপত্ৰ পৰিবৰ্তিত হৈছে  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:901
+#: lapiz/lapiz-io-error-message-area.c:904
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "সংৰক্ষণ কৰিলে, সমস্ত বাহিৰৰ পৰিবৰ্তন আঁতৰুৱা হ'ব পাৰে  । তথাপিও সংৰক্ষণ কৰা হ'ব "
 "নেকি ?"
 
-#: lapiz/lapiz-io-error-message-area.c:982
+#: lapiz/lapiz-io-error-message-area.c:985
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "%s সংৰক্ষণৰ সময়ত বেক-আপ নথিপত্ৰ নিৰ্মাণ কৰা নাযায়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:985
+#: lapiz/lapiz-io-error-message-area.c:988
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "%s সংৰক্ষণৰ সময়ত অস্থায়ী বেক-আপ নথিপত্ৰ নিৰ্মাণ কৰা নাযায়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1001
+#: lapiz/lapiz-io-error-message-area.c:1004
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1714,7 +1714,7 @@ msgid ""
 msgstr ""
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:1061
+#: lapiz/lapiz-io-error-message-area.c:1066
 #, c-format
 msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
@@ -1723,7 +1723,7 @@ msgstr ""
 "lapiz দ্বাৰা লিখা চলাৰ সময়ত %s প্ৰকৃতিৰ অৱস্থাৰ ব্যৱস্থাপনা কৰা সম্ভৱ নহয়  । সঠিক "
 "অৱস্থান লিখা হৈছে নে নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1069
+#: lapiz/lapiz-io-error-message-area.c:1074
 msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1731,7 +1731,7 @@ msgstr ""
 "lapiz দ্বাৰা লিখা চলাৰ সময়ত এই প্ৰকৃতিৰ অৱস্থাৰ ব্যৱস্থাপনা কৰা সম্ভৱ নহয়  । সঠিক "
 "অৱস্থান লিখা হৈছে নে নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1078
+#: lapiz/lapiz-io-error-message-area.c:1083
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1740,7 +1740,7 @@ msgstr ""
 "%s অৱস্থান বৈধ নহয়  । সঠিক অৱস্থান লিখা হৈছে নে নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ "
 "চেষ্টা কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1084
+#: lapiz/lapiz-io-error-message-area.c:1089
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1748,7 +1748,7 @@ msgstr ""
 "নথিপত্ৰ সংৰক্ষণৰ বাবে পৰ্যাপ্ত অনুমতি আপোনাৰ নাই  । সঠিক অৱস্থান লিখা হৈছে নে নাই "
 "পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1090
+#: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1756,7 +1756,7 @@ msgstr ""
 "নথিপত্ৰ সংৰক্ষণৰ বাবে ডিস্কেত পৰ্যাপ্ত স্থান অবশিষ্ট নাই  । অনুগ্ৰহ কৰি ডিস্কেৰ মধ্যে "
 "কিছু স্থান ফাঁকা কৰি পুনঃ চেষ্টা কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1095
+#: lapiz/lapiz-io-error-message-area.c:1100
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1764,11 +1764,11 @@ msgstr ""
 "অকল পাঠযোগ্য ডিস্কেত নথিপত্ৰ সংৰক্ষণ কৰাৰ প্ৰচেষ্ঠা কৰিছে  । সঠিক অৱস্থান লিখা হৈছে "
 "নে নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1101
+#: lapiz/lapiz-io-error-message-area.c:1106
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "এক নামেৰ নথিপত্ৰ বৰ্ত্তমানে উপস্থিত   । অনুগ্ৰহ কৰি এটা পৃথক নাম উল্লেখ কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1106
+#: lapiz/lapiz-io-error-message-area.c:1111
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1776,32 +1776,32 @@ msgstr ""
 "যে ডিস্কেত নথিপত্ৰ সংৰক্ষণৰ চেষ্টা কৰা হৈছে সেত নথিপত্ৰৰ নামেৰ দৈঘ্যেৰ সীমা আৰোপ "
 "কৰা হৈছে  ।  অনগ্ৰহ কৰি নথিপত্ৰৰ নামেৰ মাপ ছোট কৰক  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1113
+#: lapiz/lapiz-io-error-message-area.c:1118
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
 
-#: lapiz/lapiz-io-error-message-area.c:1129
+#: lapiz/lapiz-io-error-message-area.c:1134
 #, c-format
 msgid "Could not save the file %s."
 msgstr "%s নথিপত্ৰ সংৰক্ষণ কৰা নাযায়  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1173
+#: lapiz/lapiz-io-error-message-area.c:1178
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "%s নথিপত্ৰ ডিস্কে পৰিবৰ্তিত হৈছে  ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1178
+#: lapiz/lapiz-io-error-message-area.c:1183
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "পৰিবৰ্তনসমূহ বৰ্জন কৰি নথিপত্ৰ পুনঃ লোড কৰা হ'ব নেকি ?"
 
-#: lapiz/lapiz-io-error-message-area.c:1180
+#: lapiz/lapiz-io-error-message-area.c:1185
 msgid "Do you want to reload the file?"
 msgstr "নথিপত্ৰ পুনঃ লোড কৰা হ'ব নেকি ?"
 
-#: lapiz/lapiz-io-error-message-area.c:1185
+#: lapiz/lapiz-io-error-message-area.c:1190
 msgid "_Reload"
 msgstr "পুনৰায় লোড (_R)"
 
@@ -1880,69 +1880,69 @@ msgstr "শাৰী সংখ্যা: (_L)"
 msgid "_Restore Default Fonts"
 msgstr "অবিকল্পিত আখৰ পুনঃ স্থাপন কৰা হ'ব (_R)"
 
-#: lapiz/lapiz-print-preview.c:569
+#: lapiz/lapiz-print-preview.c:573
 msgid "Show the previous page"
 msgstr "পূৰ্ববৰ্তী পৃষ্ঠা প্ৰদৰ্শন কৰা হ'ব"
 
-#: lapiz/lapiz-print-preview.c:582
+#: lapiz/lapiz-print-preview.c:586
 msgid "Show the next page"
 msgstr "পৰবৰ্তী পৃষ্ঠা প্ৰদৰ্শন কৰা হ'ব"
 
-#: lapiz/lapiz-print-preview.c:598
+#: lapiz/lapiz-print-preview.c:602
 msgid "Current page (Alt+P)"
 msgstr "বৰ্ত্তমান পৃষ্ঠা (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: lapiz/lapiz-print-preview.c:621
+#: lapiz/lapiz-print-preview.c:625
 msgid "of"
 msgstr "সৰ্বমোট"
 
-#: lapiz/lapiz-print-preview.c:629
+#: lapiz/lapiz-print-preview.c:633
 msgid "Page total"
 msgstr "সৰ্বমোট পৃষ্ঠা"
 
-#: lapiz/lapiz-print-preview.c:630
+#: lapiz/lapiz-print-preview.c:634
 msgid "The total number of pages in the document"
 msgstr "আলেখ্যনৰ সৰ্বমোট পৃষ্ঠা সংখ্যা"
 
-#: lapiz/lapiz-print-preview.c:648
+#: lapiz/lapiz-print-preview.c:652
 msgid "Show multiple pages"
 msgstr "একাধিক পৃষ্ঠা প্ৰদৰ্শন কৰা হ'ব"
 
-#: lapiz/lapiz-print-preview.c:662
+#: lapiz/lapiz-print-preview.c:666
 msgid "Zoom 1:1"
 msgstr "প্ৰদৰ্শনৰ মাত্ৰা ১:১"
 
-#: lapiz/lapiz-print-preview.c:672
+#: lapiz/lapiz-print-preview.c:676
 msgid "Zoom to fit the whole page"
 msgstr "সম্পূৰ্ণ পৃষ্ঠাৰ মাপ অনুযায়ী প্ৰদৰ্শন"
 
-#: lapiz/lapiz-print-preview.c:682
+#: lapiz/lapiz-print-preview.c:686
 msgid "Zoom the page in"
 msgstr "পৃষ্ঠা ডাঙৰ কৰি প্ৰদৰ্শন"
 
-#: lapiz/lapiz-print-preview.c:692
+#: lapiz/lapiz-print-preview.c:696
 msgid "Zoom the page out"
 msgstr "পৃষ্ঠা প্ৰদৰ্শনৰ মাত্ৰা হ্ৰাস কৰা হ'ব"
 
-#: lapiz/lapiz-print-preview.c:704
+#: lapiz/lapiz-print-preview.c:708
 msgid "_Close Preview"
 msgstr "মূদ্ৰণৰ পূৰ্বৰূপ বন্ধ কৰক (_C)"
 
-#: lapiz/lapiz-print-preview.c:707
+#: lapiz/lapiz-print-preview.c:711
 msgid "Close print preview"
 msgstr "মূদ্ৰণৰ পূৰ্বৰূপ বন্ধ কৰক"
 
-#: lapiz/lapiz-print-preview.c:782
+#: lapiz/lapiz-print-preview.c:786
 #, c-format
 msgid "Page %d of %d"
 msgstr "পৃষ্ঠা %d, %d -ৰ"
 
-#: lapiz/lapiz-print-preview.c:963
+#: lapiz/lapiz-print-preview.c:967
 msgid "Page Preview"
 msgstr "পৃষ্ঠাৰ পূৰ্বৰূপ"
 
-#: lapiz/lapiz-print-preview.c:964
+#: lapiz/lapiz-print-preview.c:968
 msgid "The preview of a page in the document to be printed"
 msgstr "মূদ্ৰণ কৰাৰ বাবে চিহ্নিত পৃষ্ঠাৰ পূৰ্বৰূপ"
 
@@ -2048,7 +2048,7 @@ msgstr "MIME-ৰ প্ৰকৃতি:"
 msgid "Encoding:"
 msgstr "এনকোডিং:"
 
-#: lapiz/lapiz-tab-label.c:274
+#: lapiz/lapiz-tab-label.c:278
 msgid "Close document"
 msgstr "আলেখ্যন বন্ধ কৰক"
 
@@ -2088,7 +2088,7 @@ msgstr "নতুন আলেখ্যন নিৰ্মাণ কৰক"
 msgid "_Open..."
 msgstr "খোলক(_O)..."
 
-#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1453
+#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1454
 msgid "Open a file"
 msgstr "নথিপত্ৰ খোলো"
 
@@ -2197,7 +2197,7 @@ msgid "Paste the clipboard"
 msgstr "ক্লিপ-বোৰ্ডৰ পৰা পেস্ট কৰক"
 
 #: lapiz/lapiz-ui.h:102 plugins/filebrowser/lapiz-file-browser-utils.c:182
-#: plugins/filebrowser/lapiz-file-browser-widget.c:801
+#: plugins/filebrowser/lapiz-file-browser-widget.c:803
 msgid "_Delete"
 msgstr "মুছে ফেলুন (_D)"
 
@@ -2365,22 +2365,22 @@ msgstr "নিম্নবৰ্তী পেইন (_B)"
 msgid "Show or hide the bottom pane in the current window"
 msgstr "বৰ্ত্তমান সংযোগক্ষেত্ৰত নিম্নবৰ্তী পেইন প্ৰদৰ্শন বা আড়াল কৰা হ'ব"
 
-#: lapiz/lapiz-utils.c:1074
+#: lapiz/lapiz-utils.c:1076
 msgid "Please check your installation."
 msgstr "অনুগ্ৰহ কৰি ইনস্টলেশন পৰীক্ষা কৰক  ।"
 
-#: lapiz/lapiz-utils.c:1147
+#: lapiz/lapiz-utils.c:1149
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr ""
 
-#: lapiz/lapiz-utils.c:1167
+#: lapiz/lapiz-utils.c:1169
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "'%s' বস্তুক %s নথিপত্ৰৰ ভিতৰত পোৱা নাযায়  ।"
 
 #. Translators: '/ on <remote-share>'
-#: lapiz/lapiz-utils.c:1327
+#: lapiz/lapiz-utils.c:1329
 #, c-format
 msgid "/ on %s"
 msgstr "/ %s ৰ ওপৰত"
@@ -2418,7 +2418,7 @@ msgstr "%s উজ্জ্বলতাৰ ধৰণ ব্যৱহাৰ কৰ
 
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1957
+#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1958
 #: plugins/externaltools/tools/manager.py:108
 #: plugins/externaltools/tools/manager.py:308
 #: plugins/externaltools/tools/manager.py:424
@@ -2436,41 +2436,41 @@ msgstr "শব্দবিন্যাসৰ বিভিন্ন অংশ প
 msgid "Open '%s'"
 msgstr "'%s' খোলক"
 
-#: lapiz/lapiz-window.c:1459
+#: lapiz/lapiz-window.c:1460
 msgid "Open a recently used file"
 msgstr "সম্প্ৰতি ব্যৱহৃত কোনো নথিপত্ৰ খোলক"
 
-#: lapiz/lapiz-window.c:1465
+#: lapiz/lapiz-window.c:1466
 msgid "Open"
 msgstr "খোলক"
 
-#: lapiz/lapiz-window.c:1523
+#: lapiz/lapiz-window.c:1524
 msgid "Save"
 msgstr "সংৰক্ষণ"
 
-#: lapiz/lapiz-window.c:1525
+#: lapiz/lapiz-window.c:1526
 msgid "Print"
 msgstr "প্ৰিন্ট কৰক"
 
 #. Translators: %s is a URI
-#: lapiz/lapiz-window.c:1682
+#: lapiz/lapiz-window.c:1683
 #, c-format
 msgid "Activate '%s'"
 msgstr "'%s' সক্ৰিয় কৰক"
 
-#: lapiz/lapiz-window.c:1935
+#: lapiz/lapiz-window.c:1936
 msgid "Use Spaces"
 msgstr "শূণ্যস্থান ব্যৱহাৰ কৰক"
 
-#: lapiz/lapiz-window.c:2006
+#: lapiz/lapiz-window.c:2007
 msgid "Tab Width"
 msgstr "টেবৰ প্ৰস্থ"
 
-#: plugins/changecase/changecase.plugin.desktop.in:5
+#: plugins/changecase/changecase.plugin.desktop.in:4
 msgid "Change Case"
 msgstr "হৰফেৰ কেছ পৰিবৰ্তন কৰক"
 
-#: plugins/changecase/changecase.plugin.desktop.in:6
+#: plugins/changecase/changecase.plugin.desktop.in:5
 msgid "Changes the case of selected text."
 msgstr "নিৰ্বাচিত টেক্সটৰ হৰফেৰ কেছ পৰিবৰ্তন কৰোঁতে ব্যৱহৃত হয়  ।"
 
@@ -2510,11 +2510,11 @@ msgstr "শিৰোনামেৰ হৰফেৰ কেছ (_T)"
 msgid "Capitalize the first letter of each selected word"
 msgstr "প্ৰতি নিৰ্বাচিত শব্দেৰ অধ্যাক্ষৰ ডাঙৰ কেছে পৰিবৰ্তন কৰক"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:5 plugins/docinfo/docinfo.ui:19
+#: plugins/docinfo/docinfo.plugin.desktop.in:4 plugins/docinfo/docinfo.ui:19
 msgid "Document Statistics"
 msgstr "আলেখ্যন সংক্ৰান্ত পৰিসংখ্যান"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:6
+#: plugins/docinfo/docinfo.plugin.desktop.in:5
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
@@ -2566,11 +2566,11 @@ msgstr "আলেখ্যন সংক্ৰান্ত পৰিসংখ্�
 msgid "Get statistical information on the current document"
 msgstr ""
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:6
+#: plugins/externaltools/externaltools.plugin.desktop.in:5
 msgid "External Tools"
 msgstr "বাহিৰৰ সৰঞ্জাম"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:7
+#: plugins/externaltools/externaltools.plugin.desktop.in:6
 msgid "Execute external commands and shell scripts."
 msgstr "বাহিৰৰ আদেশ আৰু শেল স্ক্ৰিপ্ট সঞ্চালন কৰা হ'ব  ।"
 
@@ -2752,51 +2752,51 @@ msgstr "শৰ্টকাট-কি:(_S)"
 msgid "_Edit:"
 msgstr "সম্পাদন:"
 
-#: plugins/externaltools/data/build.desktop.in:3
+#: plugins/externaltools/data/build.desktop.in:2
 msgid "Build"
 msgstr "বিল্ড"
 
-#: plugins/externaltools/data/build.desktop.in:4
+#: plugins/externaltools/data/build.desktop.in:3
 msgid "Run \"make\" in the document directory"
 msgstr "আলেখ্যন ধাৰণকাৰী পঞ্জিকাত \"make\" আদেশ সঞ্চালন কৰক"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:3
+#: plugins/externaltools/data/open-terminal-here.desktop.in:2
 msgid "Open terminal here"
 msgstr "এই স্থানত টাৰ্মিনাল খোলা হ'ব"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:4
+#: plugins/externaltools/data/open-terminal-here.desktop.in:3
 msgid "Open a terminal in the document location"
 msgstr "বৰ্ত্তমানে খোলা পঞ্জিকাতে টাৰ্মিনাল খোলা হ'ব"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:2
 msgid "Remove trailing spaces"
 msgstr "অন্তে উপস্থিত শূণ্যস্থান আঁতৰুৱা ফেলা হ'ব"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:4
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
 msgid "Remove useless trailing spaces in your file"
 msgstr "নথিপত্ৰত উপস্থিত অপ্ৰয়োজনীয় অন্তে শূণ্যস্থান আঁতৰুৱা ফেলুন"
 
-#: plugins/externaltools/data/run-command.desktop.in:3
+#: plugins/externaltools/data/run-command.desktop.in:2
 msgid "Run command"
 msgstr "আদেশ সঞ্চালন"
 
-#: plugins/externaltools/data/run-command.desktop.in:4
+#: plugins/externaltools/data/run-command.desktop.in:3
 msgid "Execute a custom command and put its output in a new document"
 msgstr "স্বনিৰ্ধাৰিত আদেশ প্ৰয়োগ কৰি উৎপন্ন ফলাফল এটা নতুন আলেখ্যনত যোগ কৰক"
 
-#: plugins/externaltools/data/search-recursive.desktop.in:3
+#: plugins/externaltools/data/search-recursive.desktop.in:2
 msgid "Search"
 msgstr "বিচাৰক"
 
-#: plugins/externaltools/data/switch-c.desktop.in:3
+#: plugins/externaltools/data/switch-c.desktop.in:2
 msgid "Switch onto a file .c and .h"
 msgstr ""
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:5
 msgid "File Browser Pane"
 msgstr "নথিপত্ৰ ব্ৰাউজাৰৰ পেইন"
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:7
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
 msgid "Easy file access from the side pane"
 msgstr "কাষৰ পেইনৰ পৰা নথিপত্ৰ ব্যৱহাৰৰে সুবিধাজনক প্ৰণালী"
 
@@ -2911,39 +2911,39 @@ msgstr "বৰ্ত্তমানে খোলা পঞ্জিকাতে 
 msgid "File Browser"
 msgstr "নথিপত্ৰ ব্ৰাউজাৰ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:870
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
 msgid "An error occurred while creating a new directory"
 msgstr "নতুন পঞ্জিকা নিৰ্মাণৰ সময় ত্ৰু উৎ‌পন্ন হৈছে  ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:876
 msgid "An error occurred while creating a new file"
 msgstr "নতুন নথিপত্ৰ নিৰ্ব্বাচনৰ সময় ত্ৰু উৎ‌পন্ন হৈছে  ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:878
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:881
 msgid "An error occurred while renaming a file or directory"
 msgstr "নিৰ্বাচিত আদেশ চালানোৰ সময় ত্ৰু উৎ‌পন্ন হৈছে  ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:883
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:886
 msgid "An error occurred while deleting a file or directory"
 msgstr "নথিপত্ৰ বা পঞ্জিকা আঁতৰুৱা ফেলাৰ সময় ত্ৰু উৎ‌পন্ন হৈছে  ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:888
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:891
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "নথিপত্ৰ পৰিচালনব্যৱস্থাত এটা পঞ্জিকা খোলাৰ সময় সমস্যা উৎপন্ন হৈছে"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:892
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:895
 msgid "An error occurred while setting a root directory"
 msgstr "প্ৰধান পঞ্জিকা (root) সময় ত্ৰু উৎ‌পন্ন হৈছে  ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:896
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
 msgid "An error occurred while loading a directory"
 msgstr "পঞ্জিকা লোড কৰাৰ সময় সমস্যা উৎপন্ন হৈছে"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:902
 msgid "An error occurred"
 msgstr "সমস্যা উৎপন্ন হৈছে"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1126
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1129
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2951,25 +2951,25 @@ msgstr ""
 "আবৰ্জনাৰ বাক্সে নথিপত্ৰ সৰিয়ে নেওয়া নাযায়,\n"
 "এই মুহূৰ্তে আঁতৰুৱা ফেলতে ইচ্ছুক কি?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1130
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "\"%s\" নথিপত্ৰ আবৰ্জনাৰ বাক্সে সৰিয়ে নেওয়া সম্ভৱ নহয়  ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1136
 msgid "The selected files cannot be moved to the trash."
 msgstr "নিৰ্বাচিত নথিপত্ৰসমূহ আবৰ্জনাৰ বাক্সে সৰিয়ে নেওয়া সম্ভৱ নহয়  ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1161
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "আপকি \"%s\" আঁতৰাবলৈ নিশ্চিত নে ?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "নিৰ্বাচিত নথিপত্ৰ স্থায়ীভাবো আঁতৰাবলৈ আপুনি নিশ্চিত নে ?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1170
 msgid "If you delete an item, it is permanently lost."
 msgstr "If you delete an item, it is permanently lost."
 
@@ -3011,168 +3011,168 @@ msgstr ""
 "নতুন পঞ্জিকা বৰ্ত্তমানে ফিল্টাৰ কৰা হৈছে  । পঞ্জিকা প্ৰদৰ্শন কৰাৰ বাবে আপোনাৰ "
 "ফিল্টাৰৰ বৈশিষ্ট্য পৰিবৰ্তন কৰক"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:712
+#: plugins/filebrowser/lapiz-file-browser-widget.c:714
 msgid "Bookmarks"
 msgstr "পত্ৰচিহ্নসমূহ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:793
+#: plugins/filebrowser/lapiz-file-browser-widget.c:795
 msgid "_Filter"
 msgstr "ফিল্টাৰ (_F)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:798
+#: plugins/filebrowser/lapiz-file-browser-widget.c:800
 msgid "_Move to Trash"
 msgstr ""
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:799
+#: plugins/filebrowser/lapiz-file-browser-widget.c:801
 msgid "Move selected file or folder to trash"
 msgstr "নিৰ্বাচিত নথিপত্ৰ বা ফোল্ডাৰ আবৰ্জনাৰ বাক্সে স্থানান্তৰ কৰা হ'ব"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:802
+#: plugins/filebrowser/lapiz-file-browser-widget.c:804
 msgid "Delete selected file or folder"
 msgstr "নিৰ্বাচিত নথিপত্ৰ বা ফোল্ডাৰ আঁতৰুৱা ফেলুন"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:809
+#: plugins/filebrowser/lapiz-file-browser-widget.c:811
 msgid "Open selected file"
 msgstr ""
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:815
+#: plugins/filebrowser/lapiz-file-browser-widget.c:817
 msgid "Up"
 msgstr "ওপৰত"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:816
+#: plugins/filebrowser/lapiz-file-browser-widget.c:818
 msgid "Open the parent folder"
 msgstr "ঊৰ্ধ্বস্থ ফোল্ডাৰ খোলক"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:821
+#: plugins/filebrowser/lapiz-file-browser-widget.c:823
 msgid "_New Folder"
 msgstr "নতুন ফোল্ডাৰ (_N)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:822
+#: plugins/filebrowser/lapiz-file-browser-widget.c:824
 msgid "Add new empty folder"
 msgstr "এটা নতুন ফাঁকা ফোল্ডাৰ যোগ কৰক"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:824
+#: plugins/filebrowser/lapiz-file-browser-widget.c:826
 msgid "New F_ile"
 msgstr "নতুন নথিপত্ৰ (_i)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:825
+#: plugins/filebrowser/lapiz-file-browser-widget.c:827
 msgid "Add new empty file"
 msgstr "এটা নতুন ফাঁকা নথিপত্ৰ যোগ কৰক"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:830
+#: plugins/filebrowser/lapiz-file-browser-widget.c:832
 msgid "_Rename"
 msgstr "নাম পৰিবৰ্তন (_R)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:831
+#: plugins/filebrowser/lapiz-file-browser-widget.c:833
 msgid "Rename selected file or folder"
 msgstr "নিৰ্বাচিত নথিপত্ৰ বা ফোল্ডাৰৰ নাম পৰিবৰ্তন কৰক"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:837
+#: plugins/filebrowser/lapiz-file-browser-widget.c:839
 msgid "_Previous Location"
 msgstr "পূৰ্ববৰ্তী অৱস্থান (_P)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:839
+#: plugins/filebrowser/lapiz-file-browser-widget.c:841
 msgid "Go to the previous visited location"
 msgstr "পূৰ্বে প্ৰদৰ্শিত অবস্থানে চলুন"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:841
+#: plugins/filebrowser/lapiz-file-browser-widget.c:843
 msgid "_Next Location"
 msgstr "পৰবৰ্তী অৱস্থান (_N)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:842
+#: plugins/filebrowser/lapiz-file-browser-widget.c:844
 msgid "Go to the next visited location"
 msgstr "পৰবৰ্তী প্ৰদৰ্শিত অবস্থানে চলুন"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:843
+#: plugins/filebrowser/lapiz-file-browser-widget.c:845
 msgid "Re_fresh View"
 msgstr "নতুন কৰি প্ৰদৰ্শন (_f)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:844
+#: plugins/filebrowser/lapiz-file-browser-widget.c:846
 msgid "Refresh the view"
 msgstr "নতুন কৰি প্ৰদৰ্শন"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:845
-#: plugins/filebrowser/lapiz-file-browser-widget.c:863
+#: plugins/filebrowser/lapiz-file-browser-widget.c:847
+#: plugins/filebrowser/lapiz-file-browser-widget.c:865
 msgid "_View Folder"
 msgstr "ফোল্ডাৰ প্ৰদৰ্শন (_V)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:846
-#: plugins/filebrowser/lapiz-file-browser-widget.c:864
+#: plugins/filebrowser/lapiz-file-browser-widget.c:848
+#: plugins/filebrowser/lapiz-file-browser-widget.c:866
 msgid "View folder in file manager"
 msgstr "নথিপত্ৰ পৰিচালন ব্যৱস্থায় ফোল্ডাৰ প্ৰদৰ্শন কৰা হ'ব"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:853
+#: plugins/filebrowser/lapiz-file-browser-widget.c:855
 msgid "Show _Hidden"
 msgstr "আড়াল কৰা নথিপত্ৰ আৰু পঞ্জিকা প্ৰদৰ্শন (_H)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:854
+#: plugins/filebrowser/lapiz-file-browser-widget.c:856
 msgid "Show hidden files and folders"
 msgstr "আড়াল কৰা নথিপত্ৰ আৰু ফোল্ডাৰ প্ৰদৰ্শন কৰা হ'ব"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:856
+#: plugins/filebrowser/lapiz-file-browser-widget.c:858
 msgid "Show _Binary"
 msgstr "বাইনাৰি নথিপত্ৰ আৰু পঞ্জিকা প্ৰদৰ্শন (_B)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:857
+#: plugins/filebrowser/lapiz-file-browser-widget.c:859
 msgid "Show binary files"
 msgstr "বাইনাৰি নথিপত্ৰ আৰু পঞ্জিকা প্ৰদৰ্শন কৰা হ'ব"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:990
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1003
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1029
+#: plugins/filebrowser/lapiz-file-browser-widget.c:992
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1005
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1031
 msgid "Previous location"
 msgstr "পূৰ্ববৰ্তী অৱস্থান"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:996
+#: plugins/filebrowser/lapiz-file-browser-widget.c:998
 msgid "Go to previous location"
 msgstr "পূৰ্ববৰ্তী অৱস্থানত চলুন"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:998
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1000
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1026
 msgid "Go to a previously opened location"
 msgstr "পূৰ্বে পৰিদৰ্শিত অৱস্থানত চলুন"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1016
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1018
 msgid "Next location"
 msgstr "পৰবৰ্তী অৱস্থান"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1022
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
 msgid "Go to next location"
 msgstr "পৰবৰ্তী অৱস্থানত চলুন"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1234
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1236
 msgid "_Match Filename"
 msgstr "নথিপত্ৰৰ নাম মিলোৱা হ'ব (_M)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2135
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "তুলি লোৱা আয়তনৰ কাৰণো কোনো তুলি লোৱা বস্তু নাই: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2215
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
 #, c-format
 msgid "Could not open media: %s"
 msgstr "মিডিয়া খুলিব নোৱাৰি: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2262
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "আয়তন তুলি ল'ব নোৱাৰি: %s"
 
-#: plugins/modelines/modelines.plugin.desktop.in:5
+#: plugins/modelines/modelines.plugin.desktop.in:4
 msgid "Modelines"
 msgstr "ধৰণ-লাইন"
 
-#: plugins/modelines/modelines.plugin.desktop.in:6
+#: plugins/modelines/modelines.plugin.desktop.in:5
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
 msgstr "lapiz'এ ব্যৱহাযোগ্য Emacs, Kate আৰু Vim-ৰ বিন্যাসৰ ধৰণ-লাইন  ।"
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:5
 #: plugins/pythonconsole/pythonconsole/__init__.py:55
 msgid "Python Console"
 msgstr "Python কনসোল"
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:7
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 msgid "Interactive Python console standing in the bottom panel"
 msgstr ""
 
@@ -3193,7 +3193,7 @@ msgid "Font:"
 msgstr ""
 
 #: plugins/quickopen/quickopen/popup.py:32
-#: plugins/quickopen/quickopen.plugin.desktop.in:6
+#: plugins/quickopen/quickopen.plugin.desktop.in:5
 msgid "Quick Open"
 msgstr "সঘনে প্ৰদৰ্শন"
 
@@ -3205,18 +3205,18 @@ msgstr "সঘনে প্ৰদৰ্শন"
 msgid "Quickly open documents"
 msgstr "দ্ৰুত নতিপত্ৰ খোলক"
 
-#: plugins/quickopen/quickopen.plugin.desktop.in:7
+#: plugins/quickopen/quickopen.plugin.desktop.in:6
 msgid "Quickly open files"
 msgstr "দ্ৰুত নথিপত্ৰ খোলক"
 
-#: plugins/snippets/snippets.plugin.desktop.in:6
+#: plugins/snippets/snippets.plugin.desktop.in:5
 #: plugins/snippets/snippets/Document.py:51
 #: plugins/snippets/snippets/Document.py:189
 #: plugins/snippets/snippets/Document.py:618
 msgid "Snippets"
 msgstr "Snippets"
 
-#: plugins/snippets/snippets.plugin.desktop.in:7
+#: plugins/snippets/snippets.plugin.desktop.in:6
 msgid "Insert often-used pieces of text in a fast way"
 msgstr ""
 
@@ -3440,11 +3440,11 @@ msgstr "ক্ৰমবিন্যাস (_o)..."
 msgid "Sort the current document or selection"
 msgstr "বৰ্ত্তমান আলেখ্যন বা নিৰ্বাচিত অংশ ক্ৰমানুযায়ী বিন্যাস কৰক  ।"
 
-#: plugins/sort/sort.plugin.desktop.in:5 plugins/sort/sort.ui:29
+#: plugins/sort/sort.plugin.desktop.in:4 plugins/sort/sort.ui:29
 msgid "Sort"
 msgstr "ক্ৰমানুযায়ী বিন্যাস"
 
-#: plugins/sort/sort.plugin.desktop.in:6
+#: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sorts a document or selected text."
 msgstr "আলেখ্যন বা নিৰ্বাচিত অংশতৰ তথ্য ক্ৰমানুযায়ী বিন্যাস কৰি  ।"
 
@@ -3479,20 +3479,20 @@ msgstr ""
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
-#: plugins/spell/lapiz-automatic-spell-checker.c:420
+#: plugins/spell/lapiz-automatic-spell-checker.c:429
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
 msgid "(no suggested words)"
 msgstr "(প্ৰস্তাব কৰাৰ যোগ্য শব্দ উপস্থিত নাই)"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:444
+#: plugins/spell/lapiz-automatic-spell-checker.c:454
 msgid "_More..."
 msgstr "অতিৰিক্ত (_M)..."
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:499
+#: plugins/spell/lapiz-automatic-spell-checker.c:509
 msgid "_Ignore All"
 msgstr "সমগ্ৰ অগ্ৰাহ্য কৰা হ'ব (_I)"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:553
+#: plugins/spell/lapiz-automatic-spell-checker.c:565
 msgid "_Spelling Suggestions..."
 msgstr "বানান সংক্ৰান্ত প্ৰস্তাবনা (_S)..."
 
@@ -3505,11 +3505,11 @@ msgid "Suggestions"
 msgstr "প্ৰস্তাবনা"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: plugins/spell/lapiz-spell-checker-dialog.c:565
+#: plugins/spell/lapiz-spell-checker-dialog.c:568
 msgid "(correct spelling)"
 msgstr "(সঠিক বানান)"
 
-#: plugins/spell/lapiz-spell-checker-dialog.c:712
+#: plugins/spell/lapiz-spell-checker-dialog.c:720
 msgid "Completed spell checking"
 msgstr "বানান পৰীক্ষণ সমাপ্ত"
 
@@ -3517,8 +3517,8 @@ msgstr "বানান পৰীক্ষণ সমাপ্ত"
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:285
-#: plugins/spell/lapiz-spell-checker-language.c:291
+#: plugins/spell/lapiz-spell-checker-language.c:287
+#: plugins/spell/lapiz-spell-checker-language.c:293
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3527,7 +3527,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:300
+#: plugins/spell/lapiz-spell-checker-language.c:302
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3536,7 +3536,7 @@ msgstr "অজ্ঞাত (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:406
+#: plugins/spell/lapiz-spell-checker-language.c:410
 msgctxt "language"
 msgid "Default"
 msgstr "অবিকল্পিত"
@@ -3662,11 +3662,11 @@ msgstr ""
 msgid "_Always autocheck"
 msgstr ""
 
-#: plugins/spell/spell.plugin.desktop.in:5
+#: plugins/spell/spell.plugin.desktop.in:4
 msgid "Spell Checker"
 msgstr "বানান সংশোধন"
 
-#: plugins/spell/spell.plugin.desktop.in:6
+#: plugins/spell/spell.plugin.desktop.in:5
 msgid "Checks the spelling of the current document."
 msgstr "বৰ্ত্তমান আলেখ্যনত বানান পৰীক্ষা কৰক  ।"
 
@@ -4834,11 +4834,11 @@ msgid "Soft hyphen­"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2275
-msgid "&quot;"
+msgid "\""
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2279
-msgid "&amp;"
+msgid "&"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2283
@@ -4866,11 +4866,11 @@ msgid "¸"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2307
-msgid "&lt;"
+msgid "<"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2311
-msgid "&gt;"
+msgid ">"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2315
@@ -5262,7 +5262,7 @@ msgid "Brackets {}"
 msgstr "Brackets {}"
 
 #: plugins/taglist/Latex.tags.xml.in:39
-msgid "Brackets &lt;&gt;"
+msgid "Brackets <>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:44
@@ -5418,19 +5418,19 @@ msgid "Reference ref"
 msgstr "Reference ref"
 
 #: plugins/taglist/Latex.tags.xml.in:225
-msgid "Symbol &lt;&lt;"
+msgid "Symbol <<"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:229
-msgid "Symbol &lt;="
+msgid "Symbol <="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:233
-msgid "Symbol &gt;="
+msgid "Symbol >="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:237
-msgid "Symbol &gt;&gt;"
+msgid "Symbol >>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:241
@@ -5521,11 +5521,11 @@ msgstr "Unbreakable text"
 msgid "Footnote"
 msgstr "Footnote"
 
-#: plugins/taglist/taglist.plugin.desktop.in:5
+#: plugins/taglist/taglist.plugin.desktop.in:4
 msgid "Tag list"
 msgstr "ট্যাগ তালিকা"
 
-#: plugins/taglist/taglist.plugin.desktop.in:6
+#: plugins/taglist/taglist.plugin.desktop.in:5
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
@@ -6332,19 +6332,19 @@ msgstr "কাৰ্ছাৰৰ অৱস্থানত বৰ্ত্তম�
 msgid "Available formats"
 msgstr "উপলব্ধ বিন্যাস"
 
-#: plugins/time/time.plugin.desktop.in:5
+#: plugins/time/time.plugin.desktop.in:4
 msgid "Insert Date/Time"
 msgstr "তাৰিখ/সময় সন্নিবেশ কৰক"
 
-#: plugins/time/time.plugin.desktop.in:6
+#: plugins/time/time.plugin.desktop.in:5
 msgid "Inserts current date and time at the cursor position."
 msgstr "কাৰ্ছাৰৰ অৱস্থানত বৰ্ত্তমান তাৰিখ আৰু সময় সন্নিবেশ কৰি  ।"
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:5
+#: plugins/trailsave/trailsave.plugin.desktop.in:4
 msgid "Save Without Trailing Spaces"
 msgstr ""
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:6
+#: plugins/trailsave/trailsave.plugin.desktop.in:5
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 

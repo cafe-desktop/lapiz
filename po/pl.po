@@ -32,9 +32,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 1.25.0\n"
+"Project-Id-Version: lapiz 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2023-05-11 10:48+0200\n"
+"POT-Creation-Date: 2025-07-20 18:14+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Dominik Adrian Grzywak, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/cafe/teams/13566/pl/)\n"
@@ -621,7 +621,7 @@ msgid ""
 "all spaces."
 msgstr ""
 
-#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
+#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:2
 msgid "Lapiz"
 msgstr "Lapiz"
 
@@ -645,16 +645,16 @@ msgid ""
 "adjusting indentation levels."
 msgstr ""
 
-#: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
+#: data/lapiz.desktop.in.in:3 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
 msgstr "Edytor tekstu"
 
-#: data/lapiz.desktop.in.in:5
+#: data/lapiz.desktop.in.in:4
 msgid "Edit text files"
 msgstr "Edytor plików tekstowych"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/lapiz.desktop.in.in:15
+#: data/lapiz.desktop.in.in:14
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
@@ -675,9 +675,9 @@ msgstr "Zamknij _bez zapisywania"
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
 #: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
 #: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
-#: lapiz/lapiz-io-error-message-area.c:168
+#: lapiz/lapiz-io-error-message-area.c:169
 #: lapiz/lapiz-io-error-message-area.c:507
-#: lapiz/lapiz-io-error-message-area.c:1190
+#: lapiz/lapiz-io-error-message-area.c:1195
 #: lapiz/lapiz-progress-message-area.c:63
 #: plugins/filebrowser/lapiz-file-browser-utils.c:171
 #: plugins/quickopen/quickopen/popup.py:36
@@ -792,11 +792,11 @@ msgid "Save changes to document \"%s\" before closing?"
 msgstr "Zapisać zmiany przed zamknięciem dokumentu \"%s\"?"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:540
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:765
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
 msgid "Saving has been disabled by the system administrator."
 msgstr "Możliwość zapisu została wyłączona przez administratora systemu."
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:716
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:718
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -805,7 +805,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:724
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -815,15 +815,15 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:740
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enty z niezapisanymi zmianami:"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:744
 msgid "S_elect the documents you want to save:"
 msgstr "Dokum_enty do zapisu:"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:769
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr ""
 "Jeżeli dokument nie zostanie zapisany, wszystkie zmiany zostaną bezpowrotnie "
@@ -834,7 +834,7 @@ msgstr ""
 #: plugins/spell/lapiz-spell-language-dialog.c:133
 #: plugins/spell/languages-dialog.ui:72
 #: plugins/spell/lapiz-spell-setup-dialog.ui:71
-#: plugins/time/lapiz-time-plugin.c:920
+#: plugins/time/lapiz-time-plugin.c:921
 #: plugins/time/lapiz-time-setup-dialog.ui:71
 msgid "_OK"
 msgstr "_OK"
@@ -874,7 +874,7 @@ msgid "A_vailable encodings:"
 msgstr "Do_stępne kodowania:"
 
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:150
-#: plugins/spell/lapiz-automatic-spell-checker.c:514
+#: plugins/spell/lapiz-automatic-spell-checker.c:524
 msgid "_Add"
 msgstr "_Dodaj"
 
@@ -1111,11 +1111,11 @@ msgstr "Wtyczki"
 
 #: lapiz/dialogs/lapiz-search-dialog.c:295
 #: lapiz/dialogs/lapiz-search-dialog.ui:44
-#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1529
+#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1530
 msgid "Replace"
 msgstr "Zmień"
 
-#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1527
+#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1528
 msgid "Find"
 msgstr "Znajdź"
 
@@ -1342,23 +1342,23 @@ msgstr[3] ""
 msgid "_Revert"
 msgstr "_Przywróć"
 
-#: lapiz/lapiz-commands-help.c:60
+#: lapiz/lapiz-commands-help.c:62
 msgid "CAFE Documentation Team"
 msgstr "Zespół dokumentacji CAFE"
 
-#: lapiz/lapiz-commands-help.c:61
+#: lapiz/lapiz-commands-help.c:63
 msgid "GNOME Documentation Team"
 msgstr "Zespół dokumentacji GNOME"
 
-#: lapiz/lapiz-commands-help.c:62
+#: lapiz/lapiz-commands-help.c:64
 msgid "Sun Microsystems"
 msgstr "Sun Microsystems"
 
-#: lapiz/lapiz-commands-help.c:67
+#: lapiz/lapiz-commands-help.c:69
 msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr "Lapiz to niewielki i lekki edytor tekstu dla środowiska CAFE"
 
-#: lapiz/lapiz-commands-help.c:70
+#: lapiz/lapiz-commands-help.c:72
 msgid ""
 "Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
@@ -1370,7 +1370,7 @@ msgstr ""
 "Fundację Wolnego Oprogramowania - według wersji 2 tej Licencji lub (wg "
 "twojej opinii) którejkolwiek z późniejszych wersji. "
 
-#: lapiz/lapiz-commands-help.c:74
+#: lapiz/lapiz-commands-help.c:76
 msgid ""
 "Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -1382,7 +1382,7 @@ msgstr ""
 "albo PRZYDATNOŚCI DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych "
 "informacji należy zapoznać się z Powszechną Licencją Publiczną GNU. "
 
-#: lapiz/lapiz-commands-help.c:78
+#: lapiz/lapiz-commands-help.c:80
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
@@ -1393,11 +1393,11 @@ msgstr ""
 "napisać do Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, "
 "Boston, MA 02110-1301 USA"
 
-#: lapiz/lapiz-commands-help.c:113
+#: lapiz/lapiz-commands-help.c:115
 msgid "About Lapiz"
 msgstr "O Lapiz"
 
-#: lapiz/lapiz-commands-help.c:116
+#: lapiz/lapiz-commands-help.c:118
 msgid ""
 "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
 "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
@@ -1406,10 +1406,10 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023 Pablo Barciela"
+"Copyright © 2023-2024 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:127
+#: lapiz/lapiz-commands-help.c:129
 msgid "translator-credits"
 msgstr ""
 "Tłumacze środowiska CAFE, 2014-2020\n"
@@ -1449,11 +1449,11 @@ msgid "Unsaved Document %d"
 msgstr "Niezapisany dokument %d"
 
 #: lapiz/lapiz-documents-panel.c:93 lapiz/lapiz-documents-panel.c:107
-#: lapiz/lapiz-window.c:2256 lapiz/lapiz-window.c:2261
+#: lapiz/lapiz-window.c:2257 lapiz/lapiz-window.c:2262
 msgid "Read-Only"
 msgstr "Tylko do odczytu"
 
-#: lapiz/lapiz-documents-panel.c:703 lapiz/lapiz-window.c:3677
+#: lapiz/lapiz-documents-panel.c:704 lapiz/lapiz-window.c:3685
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1573,16 +1573,16 @@ msgstr "Tajski"
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: lapiz/lapiz-encodings-combo-box.c:266
+#: lapiz/lapiz-encodings-combo-box.c:268
 msgid "Automatically Detected"
 msgstr "Automatycznie wykryte"
 
-#: lapiz/lapiz-encodings-combo-box.c:282 lapiz/lapiz-encodings-combo-box.c:297
+#: lapiz/lapiz-encodings-combo-box.c:284 lapiz/lapiz-encodings-combo-box.c:299
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Bieżące ustawienia regionalne (%s)"
 
-#: lapiz/lapiz-encodings-combo-box.c:347
+#: lapiz/lapiz-encodings-combo-box.c:349
 msgid "Add or Remove..."
 msgstr "Dodaj lub usuń..."
 
@@ -1611,7 +1611,7 @@ msgid "Windows"
 msgstr "Okna"
 
 #: lapiz/lapiz-file-chooser-dialog.c:437
-#: plugins/filebrowser/lapiz-file-browser-widget.c:808
+#: plugins/filebrowser/lapiz-file-browser-widget.c:810
 #: plugins/quickopen/quickopen/popup.py:37
 #: plugins/snippets/snippets/Manager.py:796
 msgid "_Open"
@@ -1621,53 +1621,53 @@ msgstr "_Otwórz"
 msgid "There was an error displaying the help."
 msgstr "Wystąpił błąd podczas wyświetlania pomocy."
 
-#: lapiz/lapiz-io-error-message-area.c:183
+#: lapiz/lapiz-io-error-message-area.c:184
 #: lapiz/lapiz-io-error-message-area.c:485
 msgid "_Retry"
 msgstr "_Ponów"
 
-#: lapiz/lapiz-io-error-message-area.c:204
+#: lapiz/lapiz-io-error-message-area.c:205
 #, c-format
 msgid "Could not find the file %s."
 msgstr "Nie można odnaleźć pliku %s."
 
-#: lapiz/lapiz-io-error-message-area.c:206
-#: lapiz/lapiz-io-error-message-area.c:245
-#: lapiz/lapiz-io-error-message-area.c:252
+#: lapiz/lapiz-io-error-message-area.c:207
+#: lapiz/lapiz-io-error-message-area.c:247
+#: lapiz/lapiz-io-error-message-area.c:254
 msgid "Please check that you typed the location correctly and try again."
 msgstr ""
 "Proszę sprawdzić, czy wprowadzone zostało poprawne położenie i spróbować "
 "ponownie."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:221
+#: lapiz/lapiz-io-error-message-area.c:223
 #, c-format
 msgid "lapiz cannot handle %s locations."
 msgstr "Program lapiz nie obsługuje protokołu %s."
 
-#: lapiz/lapiz-io-error-message-area.c:227
+#: lapiz/lapiz-io-error-message-area.c:229
 msgid "lapiz cannot handle this location."
 msgstr "Program lapiz nie obsługuje tego położenia."
 
-#: lapiz/lapiz-io-error-message-area.c:235
+#: lapiz/lapiz-io-error-message-area.c:237
 msgid "The location of the file cannot be mounted."
 msgstr "Położenie pliku nie może zostać zamontowane."
 
-#: lapiz/lapiz-io-error-message-area.c:239
+#: lapiz/lapiz-io-error-message-area.c:241
 msgid "The location of the file cannot be accessed because it is not mounted."
 msgstr "Brak dostępu do pliku, jego położenie nie zostało zamontowane."
 
-#: lapiz/lapiz-io-error-message-area.c:243
+#: lapiz/lapiz-io-error-message-area.c:245
 #, c-format
 msgid "%s is a directory."
 msgstr "%s jest katalogiem."
 
-#: lapiz/lapiz-io-error-message-area.c:250
+#: lapiz/lapiz-io-error-message-area.c:252
 #, c-format
 msgid "%s is not a valid location."
 msgstr "%s nie jest prawidłowym położeniem."
 
-#: lapiz/lapiz-io-error-message-area.c:280
+#: lapiz/lapiz-io-error-message-area.c:282
 #, c-format
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
@@ -1676,7 +1676,7 @@ msgstr ""
 "Nie można odnaleźć komputera %s. Proszę sprawdzić poprawność ustawień "
 "serwera pośredniczącego i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:293
+#: lapiz/lapiz-io-error-message-area.c:295
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
@@ -1684,54 +1684,54 @@ msgstr ""
 "Nazwa komputera nie jest prawidłowa. Proszę sprawdzić, czy wprowadzone "
 "położenie jest poprawne i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:301
+#: lapiz/lapiz-io-error-message-area.c:303
 #, c-format
 msgid "%s is not a regular file."
 msgstr "%s nie jest zwykłym plikiem."
 
-#: lapiz/lapiz-io-error-message-area.c:306
+#: lapiz/lapiz-io-error-message-area.c:308
 msgid "Connection timed out. Please try again."
 msgstr "Przekroczony czas połączenia. Proszę spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:329
+#: lapiz/lapiz-io-error-message-area.c:331
 msgid "The file is too big."
 msgstr "Plik jest za duży."
 
-#: lapiz/lapiz-io-error-message-area.c:370
+#: lapiz/lapiz-io-error-message-area.c:372
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Wystąpił nieoczekiwany błąd: %s"
 
-#: lapiz/lapiz-io-error-message-area.c:406
+#: lapiz/lapiz-io-error-message-area.c:408
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr ""
 "Program lapiz nie może odnaleźć pliku. Być może plik został ostatnio "
 "usunięty."
 
-#: lapiz/lapiz-io-error-message-area.c:416
+#: lapiz/lapiz-io-error-message-area.c:418
 #, c-format
 msgid "Could not revert the file %s."
 msgstr "Nie można przywrócić pliku %s."
 
-#: lapiz/lapiz-io-error-message-area.c:442
+#: lapiz/lapiz-io-error-message-area.c:444
 msgid "Ch_aracter Encoding:"
 msgstr "_Kodowanie znaków:"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:494
-#: lapiz/lapiz-io-error-message-area.c:771
+#: lapiz/lapiz-io-error-message-area.c:774
 msgid "Edit Any_way"
 msgstr "_Zmodyfikuj mimo to"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:499
-#: lapiz/lapiz-io-error-message-area.c:776
+#: lapiz/lapiz-io-error-message-area.c:779
 msgid "D_on't Edit"
 msgstr "_Nie modyfikuj"
 
-#: lapiz/lapiz-io-error-message-area.c:597
+#: lapiz/lapiz-io-error-message-area.c:600
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1739,29 +1739,29 @@ msgstr ""
 "Liczba odnośników do podążenia jest ograniczona, plik nie został odnaleziony "
 "w zakresie tego limitu."
 
-#: lapiz/lapiz-io-error-message-area.c:601
+#: lapiz/lapiz-io-error-message-area.c:604
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Brak odpowiednich uprawnień do otwarcia tego pliku."
 
-#: lapiz/lapiz-io-error-message-area.c:607
+#: lapiz/lapiz-io-error-message-area.c:610
 msgid "lapiz has not been able to detect the character encoding."
 msgstr "Program lapiz nie był w stanie rozpoznać kodowania znaków."
 
-#: lapiz/lapiz-io-error-message-area.c:609
-#: lapiz/lapiz-io-error-message-area.c:631
+#: lapiz/lapiz-io-error-message-area.c:612
+#: lapiz/lapiz-io-error-message-area.c:634
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Prawdopodobnie próbowano otworzyć plik binarny."
 
-#: lapiz/lapiz-io-error-message-area.c:610
+#: lapiz/lapiz-io-error-message-area.c:613
 msgid "Select a character encoding from the menu and try again."
 msgstr "Proszę wybrać kodowanie znaków w menu i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:616
+#: lapiz/lapiz-io-error-message-area.c:619
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "Wystąpił problem podczas otwierania pliku %s."
 
-#: lapiz/lapiz-io-error-message-area.c:618
+#: lapiz/lapiz-io-error-message-area.c:621
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
@@ -1769,31 +1769,31 @@ msgstr ""
 "Otwarty plik zawiera kilka nieprawidłowych znaków. Jeśli modyfikowanie tego "
 "pliku zostanie kontynuowane, może on stać się bezużyteczny."
 
-#: lapiz/lapiz-io-error-message-area.c:621
+#: lapiz/lapiz-io-error-message-area.c:624
 msgid "You can also choose another character encoding and try again."
 msgstr "Można także wybrać inne kodowanie znaków i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:628
+#: lapiz/lapiz-io-error-message-area.c:631
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr "Nie można otworzyć pliku %s używając kodowania znaków %s."
 
-#: lapiz/lapiz-io-error-message-area.c:632
-#: lapiz/lapiz-io-error-message-area.c:707
+#: lapiz/lapiz-io-error-message-area.c:635
+#: lapiz/lapiz-io-error-message-area.c:710
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Proszę wybrać inne kodowanie znaków w menu i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:642
+#: lapiz/lapiz-io-error-message-area.c:645
 #, c-format
 msgid "Could not open the file %s."
 msgstr "Nie można otworzyć pliku %s."
 
-#: lapiz/lapiz-io-error-message-area.c:702
+#: lapiz/lapiz-io-error-message-area.c:705
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "Nie można zapisać pliku %s używając kodowania znaków %s."
 
-#: lapiz/lapiz-io-error-message-area.c:705
+#: lapiz/lapiz-io-error-message-area.c:708
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1801,12 +1801,12 @@ msgstr ""
 "Dokument zawiera jeden lub więcej znaków, które nie mogą zostać zapisane w "
 "wybranym kodowaniu."
 
-#: lapiz/lapiz-io-error-message-area.c:791
+#: lapiz/lapiz-io-error-message-area.c:794
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
 msgstr "Ten plik (%s) jest już otwarty w innym oknie programu lapiz."
 
-#: lapiz/lapiz-io-error-message-area.c:805
+#: lapiz/lapiz-io-error-message-area.c:808
 msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1814,41 +1814,41 @@ msgstr ""
 "Program lapiz otworzył ten plik w trybie tylko do odczytu. Zmodyfikować go "
 "mimo to?"
 
-#: lapiz/lapiz-io-error-message-area.c:864
-#: lapiz/lapiz-io-error-message-area.c:960
+#: lapiz/lapiz-io-error-message-area.c:867
+#: lapiz/lapiz-io-error-message-area.c:963
 msgid "S_ave Anyway"
 msgstr "_Zapisz mimo to"
 
-#: lapiz/lapiz-io-error-message-area.c:868
-#: lapiz/lapiz-io-error-message-area.c:964
+#: lapiz/lapiz-io-error-message-area.c:871
+#: lapiz/lapiz-io-error-message-area.c:967
 msgid "D_on't Save"
 msgstr "_Nie zapisuj"
 
-#: lapiz/lapiz-io-error-message-area.c:886
+#: lapiz/lapiz-io-error-message-area.c:889
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Plik %s został zmieniony od momentu wczytania go."
 
-#: lapiz/lapiz-io-error-message-area.c:901
+#: lapiz/lapiz-io-error-message-area.c:904
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Jeśli plik zostanie zapisany, wszystkie zmiany dokonane zewnętrznie mogą "
 "zostać utracone. Zapisać mimo to?"
 
-#: lapiz/lapiz-io-error-message-area.c:982
+#: lapiz/lapiz-io-error-message-area.c:985
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr ""
 "Podczas zapisywania pliku %s nie było możliwe utworzenie kopii zapasowej"
 
-#: lapiz/lapiz-io-error-message-area.c:985
+#: lapiz/lapiz-io-error-message-area.c:988
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr ""
 "Podczas zapisywania pliku %s nie było możliwe utworzenie tymczasowej kopii "
 "zapasowej"
 
-#: lapiz/lapiz-io-error-message-area.c:1001
+#: lapiz/lapiz-io-error-message-area.c:1004
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1860,7 +1860,7 @@ msgstr ""
 "że poprzednia wersja pliku zostanie utracona. Zapisać mimo to?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:1061
+#: lapiz/lapiz-io-error-message-area.c:1066
 #, c-format
 msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
@@ -1869,7 +1869,7 @@ msgstr ""
 "Program lapiz nie obsługuje położeń %s w trybie edycji. Proszę sprawdzić, "
 "czy wprowadzone położenie jest poprawne i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:1069
+#: lapiz/lapiz-io-error-message-area.c:1074
 msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1877,7 +1877,7 @@ msgstr ""
 "Program lapiz nie może obsłużyć tego położenia w trybie edycji. Proszę "
 "sprawdzić, czy wprowadzone położenie jest poprawne i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:1078
+#: lapiz/lapiz-io-error-message-area.c:1083
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1886,7 +1886,7 @@ msgstr ""
 "%s nie jest prawidłowym położeniem. Proszę sprawdzić, czy wprowadzone "
 "położenie jest poprawne i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:1084
+#: lapiz/lapiz-io-error-message-area.c:1089
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1894,7 +1894,7 @@ msgstr ""
 "Brak uprawnień do zapisania pliku. Proszę sprawdzić, czy wprowadzone "
 "położenie jest poprawne i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:1090
+#: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1902,7 +1902,7 @@ msgstr ""
 "Brak miejsca na dysku, aby zapisać plik. Proszę zwolnić trochę miejsca i "
 "spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:1095
+#: lapiz/lapiz-io-error-message-area.c:1100
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1910,11 +1910,11 @@ msgstr ""
 "Docelowy dysk przeznaczony jest tylko do odczytu. Proszę sprawdzić, czy "
 "wprowadzone położenie jest poprawne i spróbować ponownie."
 
-#: lapiz/lapiz-io-error-message-area.c:1101
+#: lapiz/lapiz-io-error-message-area.c:1106
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Plik o podanej nazwie już istnieje. Proszę wybrać inną nazwę."
 
-#: lapiz/lapiz-io-error-message-area.c:1106
+#: lapiz/lapiz-io-error-message-area.c:1111
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1922,7 +1922,7 @@ msgstr ""
 "Dysk, na którym zapisywane są dane, posiada ograniczenia na długość nazw "
 "plików. Proszę użyć krótszej nazwy pliku."
 
-#: lapiz/lapiz-io-error-message-area.c:1113
+#: lapiz/lapiz-io-error-message-area.c:1118
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1932,25 +1932,25 @@ msgstr ""
 "Spróbuj zapisywać mniejsze pliki lub zapisywać je na dysku nie posiadającym "
 "tego typu ograniczeń."
 
-#: lapiz/lapiz-io-error-message-area.c:1129
+#: lapiz/lapiz-io-error-message-area.c:1134
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Nie można zapisać pliku %s."
 
-#: lapiz/lapiz-io-error-message-area.c:1173
+#: lapiz/lapiz-io-error-message-area.c:1178
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "Plik %s został zmieniony przez inny program."
 
-#: lapiz/lapiz-io-error-message-area.c:1178
+#: lapiz/lapiz-io-error-message-area.c:1183
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Porzucić zmiany i wczytać plik ponownie?"
 
-#: lapiz/lapiz-io-error-message-area.c:1180
+#: lapiz/lapiz-io-error-message-area.c:1185
 msgid "Do you want to reload the file?"
 msgstr "Wczytać plik ponownie?"
 
-#: lapiz/lapiz-io-error-message-area.c:1185
+#: lapiz/lapiz-io-error-message-area.c:1190
 msgid "_Reload"
 msgstr "Wczy_taj ponownie"
 
@@ -2029,69 +2029,69 @@ msgstr "Numery _wierszy:"
 msgid "_Restore Default Fonts"
 msgstr "_Przywróć domyślne"
 
-#: lapiz/lapiz-print-preview.c:569
+#: lapiz/lapiz-print-preview.c:573
 msgid "Show the previous page"
 msgstr "Wyświetla poprzednią stronę"
 
-#: lapiz/lapiz-print-preview.c:582
+#: lapiz/lapiz-print-preview.c:586
 msgid "Show the next page"
 msgstr "Wyświetla następną stronę"
 
-#: lapiz/lapiz-print-preview.c:598
+#: lapiz/lapiz-print-preview.c:602
 msgid "Current page (Alt+P)"
 msgstr "Bieżąca strona (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: lapiz/lapiz-print-preview.c:621
+#: lapiz/lapiz-print-preview.c:625
 msgid "of"
 msgstr "z"
 
-#: lapiz/lapiz-print-preview.c:629
+#: lapiz/lapiz-print-preview.c:633
 msgid "Page total"
 msgstr "Stron razem"
 
-#: lapiz/lapiz-print-preview.c:630
+#: lapiz/lapiz-print-preview.c:634
 msgid "The total number of pages in the document"
 msgstr "Całkowita liczba stron w dokumencie"
 
-#: lapiz/lapiz-print-preview.c:648
+#: lapiz/lapiz-print-preview.c:652
 msgid "Show multiple pages"
 msgstr "Wyświetla wiele stron"
 
-#: lapiz/lapiz-print-preview.c:662
+#: lapiz/lapiz-print-preview.c:666
 msgid "Zoom 1:1"
 msgstr "Przywraca rozmiar rzeczywisty 1:1"
 
-#: lapiz/lapiz-print-preview.c:672
+#: lapiz/lapiz-print-preview.c:676
 msgid "Zoom to fit the whole page"
 msgstr "Dostosowuje powiększenie strony do rozmiaru okna"
 
-#: lapiz/lapiz-print-preview.c:682
+#: lapiz/lapiz-print-preview.c:686
 msgid "Zoom the page in"
 msgstr "Powiększa stronę"
 
-#: lapiz/lapiz-print-preview.c:692
+#: lapiz/lapiz-print-preview.c:696
 msgid "Zoom the page out"
 msgstr "Pomniejsza stronę"
 
-#: lapiz/lapiz-print-preview.c:704
+#: lapiz/lapiz-print-preview.c:708
 msgid "_Close Preview"
 msgstr "_Zamknij podgląd"
 
-#: lapiz/lapiz-print-preview.c:707
+#: lapiz/lapiz-print-preview.c:711
 msgid "Close print preview"
 msgstr "Zamyka podgląd wydruku"
 
-#: lapiz/lapiz-print-preview.c:782
+#: lapiz/lapiz-print-preview.c:786
 #, c-format
 msgid "Page %d of %d"
 msgstr "Strona %d z %d"
 
-#: lapiz/lapiz-print-preview.c:963
+#: lapiz/lapiz-print-preview.c:967
 msgid "Page Preview"
 msgstr "Podgląd wydruku"
 
-#: lapiz/lapiz-print-preview.c:964
+#: lapiz/lapiz-print-preview.c:968
 msgid "The preview of a page in the document to be printed"
 msgstr "Podgląd strony dokumentu do wydrukowania"
 
@@ -2201,7 +2201,7 @@ msgstr "Typ MIME:"
 msgid "Encoding:"
 msgstr "Kodowanie:"
 
-#: lapiz/lapiz-tab-label.c:274
+#: lapiz/lapiz-tab-label.c:278
 msgid "Close document"
 msgstr "Zapisuje dokument"
 
@@ -2241,7 +2241,7 @@ msgstr "Tworzy nowy dokument"
 msgid "_Open..."
 msgstr "_Otwórz..."
 
-#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1453
+#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1454
 msgid "Open a file"
 msgstr "Otwarcie pliku"
 
@@ -2350,7 +2350,7 @@ msgid "Paste the clipboard"
 msgstr "Wkleja zawartość schowka"
 
 #: lapiz/lapiz-ui.h:102 plugins/filebrowser/lapiz-file-browser-utils.c:182
-#: plugins/filebrowser/lapiz-file-browser-widget.c:801
+#: plugins/filebrowser/lapiz-file-browser-widget.c:803
 msgid "_Delete"
 msgstr "_Usuń"
 
@@ -2518,22 +2518,22 @@ msgstr "Panel _dolny"
 msgid "Show or hide the bottom pane in the current window"
 msgstr "Przełącza wyświetlanie panelu dolnego w bieżącym oknie"
 
-#: lapiz/lapiz-utils.c:1074
+#: lapiz/lapiz-utils.c:1076
 msgid "Please check your installation."
 msgstr "Proszę sprawdzić poprawność instalacji."
 
-#: lapiz/lapiz-utils.c:1147
+#: lapiz/lapiz-utils.c:1149
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nie można otworzyć pliku interfejsu użytkownika %s. Błąd: %s"
 
-#: lapiz/lapiz-utils.c:1167
+#: lapiz/lapiz-utils.c:1169
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Nie można odnaleźć obiektu \"%s\" w pliku %s."
 
 #. Translators: '/ on <remote-share>'
-#: lapiz/lapiz-utils.c:1327
+#: lapiz/lapiz-utils.c:1329
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
@@ -2573,7 +2573,7 @@ msgstr "Używa trybu wyróżniania elementów składni %s"
 
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1957
+#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1958
 #: plugins/externaltools/tools/manager.py:108
 #: plugins/externaltools/tools/manager.py:308
 #: plugins/externaltools/tools/manager.py:424
@@ -2591,41 +2591,41 @@ msgstr "Wyłącza wyróżnianie elementów składni"
 msgid "Open '%s'"
 msgstr "Otwórz \"%s\""
 
-#: lapiz/lapiz-window.c:1459
+#: lapiz/lapiz-window.c:1460
 msgid "Open a recently used file"
 msgstr "Otwiera ostatnio używany plik"
 
-#: lapiz/lapiz-window.c:1465
+#: lapiz/lapiz-window.c:1466
 msgid "Open"
 msgstr "Otwórz"
 
-#: lapiz/lapiz-window.c:1523
+#: lapiz/lapiz-window.c:1524
 msgid "Save"
 msgstr "Zapisz"
 
-#: lapiz/lapiz-window.c:1525
+#: lapiz/lapiz-window.c:1526
 msgid "Print"
 msgstr "Wydrukuj"
 
 #. Translators: %s is a URI
-#: lapiz/lapiz-window.c:1682
+#: lapiz/lapiz-window.c:1683
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktywuje \"%s\""
 
-#: lapiz/lapiz-window.c:1935
+#: lapiz/lapiz-window.c:1936
 msgid "Use Spaces"
 msgstr "Spacje zamiast Tab"
 
-#: lapiz/lapiz-window.c:2006
+#: lapiz/lapiz-window.c:2007
 msgid "Tab Width"
 msgstr "Szerokość tabulacji"
 
-#: plugins/changecase/changecase.plugin.desktop.in:5
+#: plugins/changecase/changecase.plugin.desktop.in:4
 msgid "Change Case"
 msgstr "Zmiana wielkości liter"
 
-#: plugins/changecase/changecase.plugin.desktop.in:6
+#: plugins/changecase/changecase.plugin.desktop.in:5
 msgid "Changes the case of selected text."
 msgstr "Zmienia wielkość liter zaznaczonego tekstu."
 
@@ -2665,11 +2665,11 @@ msgstr "Styl _tytułowy"
 msgid "Capitalize the first letter of each selected word"
 msgstr "Zamienia pierwszą literę każdego zaznaczonego słowa na wielką"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:5 plugins/docinfo/docinfo.ui:19
+#: plugins/docinfo/docinfo.plugin.desktop.in:4 plugins/docinfo/docinfo.ui:19
 msgid "Document Statistics"
 msgstr "Statystyka dokumentu"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:6
+#: plugins/docinfo/docinfo.plugin.desktop.in:5
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
@@ -2721,11 +2721,11 @@ msgstr "Statystyka _dokumentu"
 msgid "Get statistical information on the current document"
 msgstr "Pobiera informacje statystyczne na temat bieżącego dokumentu"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:6
+#: plugins/externaltools/externaltools.plugin.desktop.in:5
 msgid "External Tools"
 msgstr "Narzędzia zewnętrzne"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:7
+#: plugins/externaltools/externaltools.plugin.desktop.in:6
 msgid "Execute external commands and shell scripts."
 msgstr "Wykonuje zewnętrzne polecenia i skrypty powłoki."
 
@@ -2909,51 +2909,51 @@ msgstr "_Klawisz skrótu:"
 msgid "_Edit:"
 msgstr "_Edycja:"
 
-#: plugins/externaltools/data/build.desktop.in:3
+#: plugins/externaltools/data/build.desktop.in:2
 msgid "Build"
 msgstr "Zbudowanie"
 
-#: plugins/externaltools/data/build.desktop.in:4
+#: plugins/externaltools/data/build.desktop.in:3
 msgid "Run \"make\" in the document directory"
 msgstr "Wykonuje \"make\" w katalogu dokumentu"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:3
+#: plugins/externaltools/data/open-terminal-here.desktop.in:2
 msgid "Open terminal here"
 msgstr "Otwarcie terminalu w tym miejscu"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:4
+#: plugins/externaltools/data/open-terminal-here.desktop.in:3
 msgid "Open a terminal in the document location"
 msgstr "Otwiera terminal w katalogu dokumentu"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:2
 msgid "Remove trailing spaces"
 msgstr "Usunięcie końcowych spacji"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:4
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
 msgid "Remove useless trailing spaces in your file"
 msgstr "Usuwa z pliku niepotrzebne końcowe spacje"
 
-#: plugins/externaltools/data/run-command.desktop.in:3
+#: plugins/externaltools/data/run-command.desktop.in:2
 msgid "Run command"
 msgstr "Wykonanie polecenia"
 
-#: plugins/externaltools/data/run-command.desktop.in:4
+#: plugins/externaltools/data/run-command.desktop.in:3
 msgid "Execute a custom command and put its output in a new document"
 msgstr "Wykonuje polecenie i wstawia jego wyniki w nowym dokumencie"
 
-#: plugins/externaltools/data/search-recursive.desktop.in:3
+#: plugins/externaltools/data/search-recursive.desktop.in:2
 msgid "Search"
 msgstr "Szukaj"
 
-#: plugins/externaltools/data/switch-c.desktop.in:3
+#: plugins/externaltools/data/switch-c.desktop.in:2
 msgid "Switch onto a file .c and .h"
 msgstr "Przełącz na plik .c i .h"
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:5
 msgid "File Browser Pane"
 msgstr "Panel przeglądarki plików"
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:7
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
 msgid "Easy file access from the side pane"
 msgstr "Łatwy dostęp do plików z panelu bocznego"
 
@@ -2985,10 +2985,9 @@ msgid ""
 "files)."
 msgstr ""
 "Wartość ta określa, które pliki nie będą widoczne w przeglądarce plików. "
-"Prawidłowe wartości to: \"none\" (wszystkie pliki widoczne), "
-"\"hidden\" (wyklucza pliki ukryte), \"binary\" (wyklucza pliki wykonywalne) "
-"oraz \"hidden_and_binary\" (wyklucza zarówno pliki ukryte, jak i "
-"wykonywalne)."
+"Prawidłowe wartości to: \"none\" (wszystkie pliki widoczne), \"hidden\" "
+"(wyklucza pliki ukryte), \"binary\" (wyklucza pliki wykonywalne) oraz "
+"\"hidden_and_binary\" (wyklucza zarówno pliki ukryte, jak i wykonywalne)."
 
 #: plugins/filebrowser/org.cafe.lapiz.plugins.filebrowser.gschema.xml.in:16
 msgid "File Browser Filter Pattern"
@@ -3072,39 +3071,39 @@ msgstr "Otwiera terminal w obecnie otwartym katalogu"
 msgid "File Browser"
 msgstr "Przeglądarka plików"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:870
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
 msgid "An error occurred while creating a new directory"
 msgstr "Wystąpił błąd podczas tworzenia nowego katalogu"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:876
 msgid "An error occurred while creating a new file"
 msgstr "Wystąpił błąd podczas tworzenia nowego pliku"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:878
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:881
 msgid "An error occurred while renaming a file or directory"
 msgstr "Wystąpił błąd podczas zmieniania nazwy pliku lub katalogu"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:883
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:886
 msgid "An error occurred while deleting a file or directory"
 msgstr "Wystąpił błąd podczas usuwania pliku lub katalogu"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:888
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:891
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Wystąpił błąd podczas otwierania katalogu w menedżerze plików"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:892
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:895
 msgid "An error occurred while setting a root directory"
 msgstr "Wystąpił błąd podczas ustawiania katalogu głównego"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:896
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
 msgid "An error occurred while loading a directory"
 msgstr "Wystąpił błąd podczas wczytywania katalogu"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:902
 msgid "An error occurred"
 msgstr "Wystąpił błąd"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1126
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1129
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3112,25 +3111,25 @@ msgstr ""
 "Nie można przenieść pliku do kosza.\n"
 "Usunąć go trwale?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1130
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Plik \"%s\" nie może zostać przeniesiony do kosza."
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1136
 msgid "The selected files cannot be moved to the trash."
 msgstr "Zaznaczone pliki nie mogą być przeniesione do kosza."
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1161
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Czy na pewno chcesz trwale usunąć \"%s\"?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Trwale usunąć zaznaczone pliki?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1170
 msgid "If you delete an item, it is permanently lost."
 msgstr "W wypadku usunięcia elementu zostanie on nieodwracalnie utracony."
 
@@ -3172,168 +3171,168 @@ msgstr ""
 "Katalog pod nową nazwą został wykluczony przez działający filtr. Aby katalog "
 "był widoczny, należy zmienić ustawienia filtra"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:712
+#: plugins/filebrowser/lapiz-file-browser-widget.c:714
 msgid "Bookmarks"
 msgstr "Zakładki"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:793
+#: plugins/filebrowser/lapiz-file-browser-widget.c:795
 msgid "_Filter"
 msgstr "_Filtr"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:798
+#: plugins/filebrowser/lapiz-file-browser-widget.c:800
 msgid "_Move to Trash"
 msgstr "Prze_nieś do kosza"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:799
+#: plugins/filebrowser/lapiz-file-browser-widget.c:801
 msgid "Move selected file or folder to trash"
 msgstr "Przenosi zaznaczony plik lub katalog do kosza"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:802
+#: plugins/filebrowser/lapiz-file-browser-widget.c:804
 msgid "Delete selected file or folder"
 msgstr "Usuwa zaznaczony plik lub katalog"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:809
+#: plugins/filebrowser/lapiz-file-browser-widget.c:811
 msgid "Open selected file"
 msgstr "Otwiera zaznaczony plik"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:815
+#: plugins/filebrowser/lapiz-file-browser-widget.c:817
 msgid "Up"
 msgstr "Do góry"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:816
+#: plugins/filebrowser/lapiz-file-browser-widget.c:818
 msgid "Open the parent folder"
 msgstr "Otwórz katalog nadrzędny"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:821
+#: plugins/filebrowser/lapiz-file-browser-widget.c:823
 msgid "_New Folder"
 msgstr "_Nowy katalog"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:822
+#: plugins/filebrowser/lapiz-file-browser-widget.c:824
 msgid "Add new empty folder"
 msgstr "Dodaje nowy pusty katalog"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:824
+#: plugins/filebrowser/lapiz-file-browser-widget.c:826
 msgid "New F_ile"
 msgstr "Nowy pl_ik"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:825
+#: plugins/filebrowser/lapiz-file-browser-widget.c:827
 msgid "Add new empty file"
 msgstr "Dodaje nowy pusty plik"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:830
+#: plugins/filebrowser/lapiz-file-browser-widget.c:832
 msgid "_Rename"
 msgstr "Zmień n_azwę"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:831
+#: plugins/filebrowser/lapiz-file-browser-widget.c:833
 msgid "Rename selected file or folder"
 msgstr "Zmienia nazwę zaznaczonego pliku lub katalogu"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:837
+#: plugins/filebrowser/lapiz-file-browser-widget.c:839
 msgid "_Previous Location"
 msgstr "_Poprzednie położenie"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:839
+#: plugins/filebrowser/lapiz-file-browser-widget.c:841
 msgid "Go to the previous visited location"
 msgstr "Przechodzi do poprzednio odwiedzonego położenia"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:841
+#: plugins/filebrowser/lapiz-file-browser-widget.c:843
 msgid "_Next Location"
 msgstr "_Następne położenie"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:842
+#: plugins/filebrowser/lapiz-file-browser-widget.c:844
 msgid "Go to the next visited location"
 msgstr "Przechodzi do następnego odwiedzonego położenia"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:843
+#: plugins/filebrowser/lapiz-file-browser-widget.c:845
 msgid "Re_fresh View"
 msgstr "Odśwież wido_k"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:844
+#: plugins/filebrowser/lapiz-file-browser-widget.c:846
 msgid "Refresh the view"
 msgstr "Odświeża widok"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:845
-#: plugins/filebrowser/lapiz-file-browser-widget.c:863
+#: plugins/filebrowser/lapiz-file-browser-widget.c:847
+#: plugins/filebrowser/lapiz-file-browser-widget.c:865
 msgid "_View Folder"
 msgstr "_Podgląd katalogu"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:846
-#: plugins/filebrowser/lapiz-file-browser-widget.c:864
+#: plugins/filebrowser/lapiz-file-browser-widget.c:848
+#: plugins/filebrowser/lapiz-file-browser-widget.c:866
 msgid "View folder in file manager"
 msgstr "Przegląda katalog w menedżerze plików"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:853
+#: plugins/filebrowser/lapiz-file-browser-widget.c:855
 msgid "Show _Hidden"
 msgstr "Wyświetl ukr_yte pliki"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:854
+#: plugins/filebrowser/lapiz-file-browser-widget.c:856
 msgid "Show hidden files and folders"
 msgstr "Wyświetla ukryte pliki i katalogi"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:856
+#: plugins/filebrowser/lapiz-file-browser-widget.c:858
 msgid "Show _Binary"
 msgstr "Wyświetl pliki _wykonywalne"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:857
+#: plugins/filebrowser/lapiz-file-browser-widget.c:859
 msgid "Show binary files"
 msgstr "Wyświetla pliki wykonywalne"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:990
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1003
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1029
+#: plugins/filebrowser/lapiz-file-browser-widget.c:992
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1005
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1031
 msgid "Previous location"
 msgstr "Poprzednie położenie"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:996
+#: plugins/filebrowser/lapiz-file-browser-widget.c:998
 msgid "Go to previous location"
 msgstr "Przechodzi do poprzedniego położenia"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:998
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1000
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1026
 msgid "Go to a previously opened location"
 msgstr "Przechodzi do ostatnio otwartego położenia"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1016
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1018
 msgid "Next location"
 msgstr "Następne położenie"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1022
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
 msgid "Go to next location"
 msgstr "Przechodzi do następnego położenia"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1234
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1236
 msgid "_Match Filename"
 msgstr "_Dopasuj nazwę pliku"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2135
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Brak obiektu montowania dla zamontowanego woluminu: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2215
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nie można otworzyć nośnika: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2262
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nie można zamontować woluminu: %s"
 
-#: plugins/modelines/modelines.plugin.desktop.in:5
+#: plugins/modelines/modelines.plugin.desktop.in:4
 msgid "Modelines"
 msgstr "Wiersze trybu"
 
-#: plugins/modelines/modelines.plugin.desktop.in:6
+#: plugins/modelines/modelines.plugin.desktop.in:5
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
 msgstr "Obsługa wierszy trybu z programów Emacs, Kate i Vim w programie lapiz."
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:5
 #: plugins/pythonconsole/pythonconsole/__init__.py:55
 msgid "Python Console"
 msgstr "Konsola języka Python"
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:7
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktywna konsola języka Python dostępna w panelu dolnym"
 
@@ -3354,7 +3353,7 @@ msgid "Font:"
 msgstr "Czcionka:"
 
 #: plugins/quickopen/quickopen/popup.py:32
-#: plugins/quickopen/quickopen.plugin.desktop.in:6
+#: plugins/quickopen/quickopen.plugin.desktop.in:5
 msgid "Quick Open"
 msgstr "Szybkie otwarcie"
 
@@ -3366,18 +3365,18 @@ msgstr "Szybkie otwarcie"
 msgid "Quickly open documents"
 msgstr "Szybko otwiera dokumenty"
 
-#: plugins/quickopen/quickopen.plugin.desktop.in:7
+#: plugins/quickopen/quickopen.plugin.desktop.in:6
 msgid "Quickly open files"
 msgstr "Szybko otwiera pliki"
 
-#: plugins/snippets/snippets.plugin.desktop.in:6
+#: plugins/snippets/snippets.plugin.desktop.in:5
 #: plugins/snippets/snippets/Document.py:51
 #: plugins/snippets/snippets/Document.py:189
 #: plugins/snippets/snippets/Document.py:618
 msgid "Snippets"
 msgstr "Wstawki"
 
-#: plugins/snippets/snippets.plugin.desktop.in:7
+#: plugins/snippets/snippets.plugin.desktop.in:6
 msgid "Insert often-used pieces of text in a fast way"
 msgstr ""
 "Umożliwia szybkie i wygodne wstawianie często używanych fragmentów tekstu"
@@ -3604,11 +3603,11 @@ msgstr "Po_sortuj..."
 msgid "Sort the current document or selection"
 msgstr "Sortuje bieżący dokument lub zaznaczony tekst"
 
-#: plugins/sort/sort.plugin.desktop.in:5 plugins/sort/sort.ui:29
+#: plugins/sort/sort.plugin.desktop.in:4 plugins/sort/sort.ui:29
 msgid "Sort"
 msgstr "Sortowanie"
 
-#: plugins/sort/sort.plugin.desktop.in:6
+#: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sorts a document or selected text."
 msgstr "Sortuje dokument lub zaznaczony tekst."
 
@@ -3643,20 +3642,20 @@ msgstr "Rodzaj automatycznego sprawdzania"
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
-#: plugins/spell/lapiz-automatic-spell-checker.c:420
+#: plugins/spell/lapiz-automatic-spell-checker.c:429
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
 msgid "(no suggested words)"
 msgstr "(brak podpowiedzi)"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:444
+#: plugins/spell/lapiz-automatic-spell-checker.c:454
 msgid "_More..."
 msgstr "_Więcej..."
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:499
+#: plugins/spell/lapiz-automatic-spell-checker.c:509
 msgid "_Ignore All"
 msgstr "Zig_noruj wszystkie"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:553
+#: plugins/spell/lapiz-automatic-spell-checker.c:565
 msgid "_Spelling Suggestions..."
 msgstr "_Podpowiadanie pisowni..."
 
@@ -3669,11 +3668,11 @@ msgid "Suggestions"
 msgstr "Podpowiedzi"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: plugins/spell/lapiz-spell-checker-dialog.c:565
+#: plugins/spell/lapiz-spell-checker-dialog.c:568
 msgid "(correct spelling)"
 msgstr "(poprawna pisownia)"
 
-#: plugins/spell/lapiz-spell-checker-dialog.c:712
+#: plugins/spell/lapiz-spell-checker-dialog.c:720
 msgid "Completed spell checking"
 msgstr "Sprawdzanie ukończone"
 
@@ -3681,8 +3680,8 @@ msgstr "Sprawdzanie ukończone"
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:285
-#: plugins/spell/lapiz-spell-checker-language.c:291
+#: plugins/spell/lapiz-spell-checker-language.c:287
+#: plugins/spell/lapiz-spell-checker-language.c:293
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3691,7 +3690,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:300
+#: plugins/spell/lapiz-spell-checker-language.c:302
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3700,7 +3699,7 @@ msgstr "Nieznany (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:406
+#: plugins/spell/lapiz-spell-checker-language.c:410
 msgctxt "language"
 msgid "Default"
 msgstr "Domyślny"
@@ -3826,11 +3825,11 @@ msgstr "_Zapamiętanie automatycznego sprawdzania dla dokumentu"
 msgid "_Always autocheck"
 msgstr "_Zawsze sprawdzaj automatycznie"
 
-#: plugins/spell/spell.plugin.desktop.in:5
+#: plugins/spell/spell.plugin.desktop.in:4
 msgid "Spell Checker"
 msgstr "Sprawdzanie pisowni"
 
-#: plugins/spell/spell.plugin.desktop.in:6
+#: plugins/spell/spell.plugin.desktop.in:5
 msgid "Checks the spelling of the current document."
 msgstr "Sprawdza pisownię bieżącego dokumentu."
 
@@ -4998,12 +4997,12 @@ msgid "Soft hyphen­"
 msgstr "Soft hyphen­"
 
 #: plugins/taglist/HTML.tags.xml.in:2275
-msgid "&quot;"
-msgstr "&quot;"
+msgid "\""
+msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2279
-msgid "&amp;"
-msgstr "&amp;"
+msgid "&"
+msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2283
 msgid "¡"
@@ -5030,12 +5029,12 @@ msgid "¸"
 msgstr "¸"
 
 #: plugins/taglist/HTML.tags.xml.in:2307
-msgid "&lt;"
-msgstr "&lt;"
+msgid "<"
+msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2311
-msgid "&gt;"
-msgstr "&gt;"
+msgid ">"
+msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2315
 msgid "±"
@@ -5426,8 +5425,8 @@ msgid "Brackets {}"
 msgstr "Nawiasy {}"
 
 #: plugins/taglist/Latex.tags.xml.in:39
-msgid "Brackets &lt;&gt;"
-msgstr "Nawiasy &lt;&gt;"
+msgid "Brackets <>"
+msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:44
 msgid "File input"
@@ -5582,20 +5581,20 @@ msgid "Reference ref"
 msgstr "Odniesienie ref"
 
 #: plugins/taglist/Latex.tags.xml.in:225
-msgid "Symbol &lt;&lt;"
-msgstr "Symbol &lt;&lt;"
+msgid "Symbol <<"
+msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:229
-msgid "Symbol &lt;="
-msgstr "Symbol &lt;="
+msgid "Symbol <="
+msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:233
-msgid "Symbol &gt;="
-msgstr "Symbol &gt;="
+msgid "Symbol >="
+msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:237
-msgid "Symbol &gt;&gt;"
-msgstr "Symbol &gt;&gt;"
+msgid "Symbol >>"
+msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:241
 msgid "Symbol and"
@@ -5685,11 +5684,11 @@ msgstr "Tekst niełamliwy"
 msgid "Footnote"
 msgstr "Przypis"
 
-#: plugins/taglist/taglist.plugin.desktop.in:5
+#: plugins/taglist/taglist.plugin.desktop.in:4
 msgid "Tag list"
 msgstr "Lista znaczników"
 
-#: plugins/taglist/taglist.plugin.desktop.in:6
+#: plugins/taglist/taglist.plugin.desktop.in:5
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
@@ -6498,19 +6497,19 @@ msgstr "Wstawia na pozycji kursora bieżącą datę i czas"
 msgid "Available formats"
 msgstr "Dostępne formaty"
 
-#: plugins/time/time.plugin.desktop.in:5
+#: plugins/time/time.plugin.desktop.in:4
 msgid "Insert Date/Time"
 msgstr "Wstawienie daty/czasu"
 
-#: plugins/time/time.plugin.desktop.in:6
+#: plugins/time/time.plugin.desktop.in:5
 msgid "Inserts current date and time at the cursor position."
 msgstr "Wstawia na pozycji kursora bieżącą datę i czas."
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:5
+#: plugins/trailsave/trailsave.plugin.desktop.in:4
 msgid "Save Without Trailing Spaces"
 msgstr "Zapisz bez końcowych spacji"
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:6
+#: plugins/trailsave/trailsave.plugin.desktop.in:5
 msgid "Removes trailing spaces from lines before saving."
 msgstr "Usuwa końcowe spacje z linii przed zapisaniem"
 
@@ -6555,3 +6554,30 @@ msgstr "Kiedy wstawiać datę/czas..."
 #: plugins/time/lapiz-time-setup-dialog.ui:143
 msgid "_Prompt for a format"
 msgstr "_Pytanie o format"
+
+#~ msgid "&quot;"
+#~ msgstr "&quot;"
+
+#~ msgid "&amp;"
+#~ msgstr "&amp;"
+
+#~ msgid "&lt;"
+#~ msgstr "&lt;"
+
+#~ msgid "&gt;"
+#~ msgstr "&gt;"
+
+#~ msgid "Brackets &lt;&gt;"
+#~ msgstr "Nawiasy &lt;&gt;"
+
+#~ msgid "Symbol &lt;&lt;"
+#~ msgstr "Symbol &lt;&lt;"
+
+#~ msgid "Symbol &lt;="
+#~ msgstr "Symbol &lt;="
+
+#~ msgid "Symbol &gt;="
+#~ msgstr "Symbol &gt;="
+
+#~ msgid "Symbol &gt;&gt;"
+#~ msgstr "Symbol &gt;&gt;"

@@ -12,9 +12,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 1.25.0\n"
+"Project-Id-Version: lapiz 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2023-05-11 10:48+0200\n"
+"POT-Creation-Date: 2025-07-20 18:14+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Tamil (https://www.transifex.com/cafe/teams/13566/ta/)\n"
@@ -250,13 +250,13 @@ msgid ""
 "the text instead of the start/end of the line."
 msgstr ""
 "HOME மற்றும் END விசைகளை அழுத்திய பின் எப்படி நிலைக்காட்டி நகர்கிறது என்பதை "
-"குறிப்பிடுகிறது. வரியின் துவக்கம்/ முடிவுக்கு எப்போதும் நகர "
-"\"DISABLED\" (செயல்நீக்கப்பட்டது) ஐ பயன்படுத்துக.  முதல் முறை அழுத்திய பின்  வரியின் "
-"துவக்கம்/ முடிவுக்கு நகரவும் இரண்டாம் முறை அழுத்திய பின் காலி இடத்தை உதாசீனம் செய்து "
-"உரையின் துவக்கம்/ முடிவுக்கு நகர \"AFTER\" ஐ பயன்படுத்துக. முதல் முறை அழுத்திய பின் "
-"காலி இடத்தை உதாசீனம் செய்து உரையின் துவக்கம்/ முடிவுக்கு நகரவும், இரண்டாம் முறை அழுத்திய "
-"பின்  வரியின் துவக்கம்/ முடிவுக்கு நகரவும் \"BEFORE\" ஐ பயன்படுத்துக. மேலும் எப்போதும் "
-"வரியை விலக்கி உரையின் துவக்கம்/ முடிவுக்கு நகர \"ALWAYS\" ஐ பயன்படுத்துக."
+"குறிப்பிடுகிறது. வரியின் துவக்கம்/ முடிவுக்கு எப்போதும் நகர \"DISABLED\" "
+"(செயல்நீக்கப்பட்டது) ஐ பயன்படுத்துக.  முதல் முறை அழுத்திய பின்  வரியின் துவக்கம்/ "
+"முடிவுக்கு நகரவும் இரண்டாம் முறை அழுத்திய பின் காலி இடத்தை உதாசீனம் செய்து உரையின் "
+"துவக்கம்/ முடிவுக்கு நகர \"AFTER\" ஐ பயன்படுத்துக. முதல் முறை அழுத்திய பின் காலி "
+"இடத்தை உதாசீனம் செய்து உரையின் துவக்கம்/ முடிவுக்கு நகரவும், இரண்டாம் முறை அழுத்திய பின்  "
+"வரியின் துவக்கம்/ முடிவுக்கு நகரவும் \"BEFORE\" ஐ பயன்படுத்துக. மேலும் எப்போதும் வரியை "
+"விலக்கி உரையின் துவக்கம்/ முடிவுக்கு நகர \"ALWAYS\" ஐ பயன்படுத்துக."
 
 #: data/org.cafe.lapiz.gschema.xml.in:116
 msgid "Restore Previous Cursor Position"
@@ -309,9 +309,9 @@ msgstr ""
 "கருவிப்பட்டி பட்டனுக்கான பாணி. மதிப்புகள் \"LAPIZ_TOOLBAR_SYSTEM\" இயல்பான "
 "கருவிப்பட்டி பாணி, \"LAPIZ_TOOLBAR_ICONS\" சின்னங்களை மட்டும் காட்டும் "
 "\"LAPIZ_TOOLBAR_ICONS_AND_TEXT\" சின்னங்களோடு உரையையும் காட்டும்."
-"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" உரையை முன்னேயும் சின்னத்தை பின்னேயும் காட்டும்."
-"மதிப்புகள் மேல் நிலை கீழ் நிலை எழுத்துக்களை மாற்றி உணரக்கூடியவை, நீங்கள் குறிப்பிட்டது போல் "
-"இருக்கிறதா என்பதை கவனித்துக்கொள்ளவும்"
+"\"LAPIZ_TOOLBAR_ICONS_BOTH_HORIZ\" உரையை முன்னேயும் சின்னத்தை பின்னேயும் "
+"காட்டும்.மதிப்புகள் மேல் நிலை கீழ் நிலை எழுத்துக்களை மாற்றி உணரக்கூடியவை, நீங்கள் "
+"குறிப்பிட்டது போல் இருக்கிறதா என்பதை கவனித்துக்கொள்ளவும்"
 
 #: data/org.cafe.lapiz.gschema.xml.in:141
 msgid "Status Bar is Visible"
@@ -558,7 +558,7 @@ msgid ""
 "all spaces."
 msgstr ""
 
-#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
+#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:2
 msgid "Lapiz"
 msgstr ""
 
@@ -582,16 +582,16 @@ msgid ""
 "adjusting indentation levels."
 msgstr ""
 
-#: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
+#: data/lapiz.desktop.in.in:3 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
 msgstr "உரை தொகுப்பி"
 
-#: data/lapiz.desktop.in.in:5
+#: data/lapiz.desktop.in.in:4
 msgid "Edit text files"
 msgstr "உரை கோப்புகளை திருத்தவும் "
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/lapiz.desktop.in.in:15
+#: data/lapiz.desktop.in.in:14
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
@@ -612,9 +612,9 @@ msgstr "சேமிக்காமல் மூடு (_w)"
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
 #: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
 #: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
-#: lapiz/lapiz-io-error-message-area.c:168
+#: lapiz/lapiz-io-error-message-area.c:169
 #: lapiz/lapiz-io-error-message-area.c:507
-#: lapiz/lapiz-io-error-message-area.c:1190
+#: lapiz/lapiz-io-error-message-area.c:1195
 #: lapiz/lapiz-progress-message-area.c:63
 #: plugins/filebrowser/lapiz-file-browser-utils.c:171
 #: plugins/quickopen/quickopen/popup.py:36
@@ -717,18 +717,18 @@ msgid "Save changes to document \"%s\" before closing?"
 msgstr "\"%s\" ஐ மூடுவதற்கு முன் ஆவணத்தின் மாற்றங்களைச் சேமிக்கவா?"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:540
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:765
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
 msgid "Saving has been disabled by the system administrator."
 msgstr "கணினி நிர்வாகியால் சேமித்தல் செயல்நீக்கப்பட்டுள்ளது"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:716
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:718
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:724
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -736,15 +736,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:740
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
 msgid "Docum_ents with unsaved changes:"
 msgstr "மாற்றங்கள் சேமிக்கப்படாத _e ஆவணங்கள்:"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:744
 msgid "S_elect the documents you want to save:"
 msgstr "_e சேமிக்க விரும்பும் ஆவணங்களை தேர்வு செய்க:"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:769
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "நீங்கள் சேமிக்கவில்லையென்றால், நீங்கள் செய்த மாற்றங்களை நிரந்தரமாக இழக்க நேரும். "
 
@@ -753,7 +753,7 @@ msgstr "நீங்கள் சேமிக்கவில்லையென�
 #: plugins/spell/lapiz-spell-language-dialog.c:133
 #: plugins/spell/languages-dialog.ui:72
 #: plugins/spell/lapiz-spell-setup-dialog.ui:71
-#: plugins/time/lapiz-time-plugin.c:920
+#: plugins/time/lapiz-time-plugin.c:921
 #: plugins/time/lapiz-time-setup-dialog.ui:71
 msgid "_OK"
 msgstr ""
@@ -793,7 +793,7 @@ msgid "A_vailable encodings:"
 msgstr "(_v)கிடைக்கும் குறியாக்கம்:"
 
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:150
-#: plugins/spell/lapiz-automatic-spell-checker.c:514
+#: plugins/spell/lapiz-automatic-spell-checker.c:524
 msgid "_Add"
 msgstr "சேர்த்தல் (_A)"
 
@@ -1030,11 +1030,11 @@ msgstr "சொருகுப்பொருள்கள்"
 
 #: lapiz/dialogs/lapiz-search-dialog.c:295
 #: lapiz/dialogs/lapiz-search-dialog.ui:44
-#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1529
+#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1530
 msgid "Replace"
 msgstr "இடமாற்று"
 
-#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1527
+#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1528
 msgid "Find"
 msgstr "கண்டுபிடி"
 
@@ -1244,23 +1244,23 @@ msgstr[1] ""
 msgid "_Revert"
 msgstr "நிலைமீட்டு"
 
-#: lapiz/lapiz-commands-help.c:60
+#: lapiz/lapiz-commands-help.c:62
 msgid "CAFE Documentation Team"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:61
+#: lapiz/lapiz-commands-help.c:63
 msgid "GNOME Documentation Team"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:62
+#: lapiz/lapiz-commands-help.c:64
 msgid "Sun Microsystems"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:67
+#: lapiz/lapiz-commands-help.c:69
 msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:70
+#: lapiz/lapiz-commands-help.c:72
 msgid ""
 "Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
@@ -1268,7 +1268,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:74
+#: lapiz/lapiz-commands-help.c:76
 msgid ""
 "Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -1276,18 +1276,18 @@ msgid ""
 "details."
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:78
+#: lapiz/lapiz-commands-help.c:80
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:113
+#: lapiz/lapiz-commands-help.c:115
 msgid "About Lapiz"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:116
+#: lapiz/lapiz-commands-help.c:118
 msgid ""
 "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
 "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
@@ -1296,10 +1296,10 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023 Pablo Barciela"
+"Copyright © 2023-2024 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:127
+#: lapiz/lapiz-commands-help.c:129
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1330,11 +1330,11 @@ msgid "Unsaved Document %d"
 msgstr "சேமிக்கப்படாத ஆவணம் %d"
 
 #: lapiz/lapiz-documents-panel.c:93 lapiz/lapiz-documents-panel.c:107
-#: lapiz/lapiz-window.c:2256 lapiz/lapiz-window.c:2261
+#: lapiz/lapiz-window.c:2257 lapiz/lapiz-window.c:2262
 msgid "Read-Only"
 msgstr "வாசிக்க மட்டும்"
 
-#: lapiz/lapiz-documents-panel.c:703 lapiz/lapiz-window.c:3677
+#: lapiz/lapiz-documents-panel.c:704 lapiz/lapiz-window.c:3685
 msgid "Documents"
 msgstr "ஆவணங்கள்"
 
@@ -1454,16 +1454,16 @@ msgstr "தாய்"
 msgid "Unknown"
 msgstr "தெரியாத"
 
-#: lapiz/lapiz-encodings-combo-box.c:266
+#: lapiz/lapiz-encodings-combo-box.c:268
 msgid "Automatically Detected"
 msgstr "தானாக கண்டுபிடிக்கப்பட்டது"
 
-#: lapiz/lapiz-encodings-combo-box.c:282 lapiz/lapiz-encodings-combo-box.c:297
+#: lapiz/lapiz-encodings-combo-box.c:284 lapiz/lapiz-encodings-combo-box.c:299
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "தற்போதைய உள்ளாக்கம் (%s)"
 
-#: lapiz/lapiz-encodings-combo-box.c:347
+#: lapiz/lapiz-encodings-combo-box.c:349
 msgid "Add or Remove..."
 msgstr "சேர்க்கவும் அல்லது நீக்கவும்..."
 
@@ -1492,7 +1492,7 @@ msgid "Windows"
 msgstr "சாளரங்கள்"
 
 #: lapiz/lapiz-file-chooser-dialog.c:437
-#: plugins/filebrowser/lapiz-file-browser-widget.c:808
+#: plugins/filebrowser/lapiz-file-browser-widget.c:810
 #: plugins/quickopen/quickopen/popup.py:37
 #: plugins/snippets/snippets/Manager.py:796
 msgid "_Open"
@@ -1502,51 +1502,51 @@ msgstr "(_O)திற"
 msgid "There was an error displaying the help."
 msgstr "உதவியை காட்டுவதில் பிழை."
 
-#: lapiz/lapiz-io-error-message-area.c:183
+#: lapiz/lapiz-io-error-message-area.c:184
 #: lapiz/lapiz-io-error-message-area.c:485
 msgid "_Retry"
 msgstr "_ மறுமுயல்க"
 
-#: lapiz/lapiz-io-error-message-area.c:204
+#: lapiz/lapiz-io-error-message-area.c:205
 #, c-format
 msgid "Could not find the file %s."
 msgstr "%s கோப்பினை தேட முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:206
-#: lapiz/lapiz-io-error-message-area.c:245
-#: lapiz/lapiz-io-error-message-area.c:252
+#: lapiz/lapiz-io-error-message-area.c:207
+#: lapiz/lapiz-io-error-message-area.c:247
+#: lapiz/lapiz-io-error-message-area.c:254
 msgid "Please check that you typed the location correctly and try again."
 msgstr "உள்ளிட்ட இடத்தை சரிபார்த்து, மறுபடியும் முயற்சி செய்யவும்."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:221
+#: lapiz/lapiz-io-error-message-area.c:223
 #, c-format
 msgid "lapiz cannot handle %s locations."
 msgstr "கெடிட் %s இடங்களை கையாள முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:227
+#: lapiz/lapiz-io-error-message-area.c:229
 msgid "lapiz cannot handle this location."
 msgstr "கெடிட் இந்த இடத்தை கையாள முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:235
+#: lapiz/lapiz-io-error-message-area.c:237
 msgid "The location of the file cannot be mounted."
 msgstr "கோப்பின் இடத்தை ஏற்ற முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:239
+#: lapiz/lapiz-io-error-message-area.c:241
 msgid "The location of the file cannot be accessed because it is not mounted."
 msgstr "கோப்பின் இடத்தை அணுக முடியவில்லை ஏனெனில் அது ஏற்றப்படவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:243
+#: lapiz/lapiz-io-error-message-area.c:245
 #, c-format
 msgid "%s is a directory."
 msgstr "%s ஒரு அடைவாகும்."
 
-#: lapiz/lapiz-io-error-message-area.c:250
+#: lapiz/lapiz-io-error-message-area.c:252
 #, c-format
 msgid "%s is not a valid location."
 msgstr "%s செல்லுபடியாகும் இடம் இல்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:280
+#: lapiz/lapiz-io-error-message-area.c:282
 #, c-format
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
@@ -1555,7 +1555,7 @@ msgstr ""
 "\"%s\"  கோப்பைத் காணவில்லை தயவு செய்து உங்கள் போலி அமைப்பை சரிபா ர்த்து பின் மீண்டும் "
 "முயற்சிச் செய்க."
 
-#: lapiz/lapiz-io-error-message-area.c:293
+#: lapiz/lapiz-io-error-message-area.c:295
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
@@ -1563,53 +1563,53 @@ msgstr ""
 "புரவலன் பெயர் செல்லுபடியாகாதது நீங்கள் உள்ளிட்ட இடம் சரியா என சரிபார்த்து மறுபடியும் "
 "முயற்சிக்கவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:301
+#: lapiz/lapiz-io-error-message-area.c:303
 #, c-format
 msgid "%s is not a regular file."
 msgstr "%s ஒரு வழக்கமான கோப்பில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:306
+#: lapiz/lapiz-io-error-message-area.c:308
 msgid "Connection timed out. Please try again."
 msgstr "இணைப்பு காலாவதி ஆகி விட்டது. மீண்டும் முயற்சி செய்க."
 
-#: lapiz/lapiz-io-error-message-area.c:329
+#: lapiz/lapiz-io-error-message-area.c:331
 msgid "The file is too big."
 msgstr "கோப்பு மிகப் பெரியது"
 
-#: lapiz/lapiz-io-error-message-area.c:370
+#: lapiz/lapiz-io-error-message-area.c:372
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "எதிர்பாராத பிழை: %s"
 
-#: lapiz/lapiz-io-error-message-area.c:406
+#: lapiz/lapiz-io-error-message-area.c:408
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr ""
 "lapiz ஆல் கோப்பினை கண்டுபிடிக்க முடியவில்லை. அது சமீபத்தில் அழிக்கப்பட்டு இருக்கலாம்."
 
-#: lapiz/lapiz-io-error-message-area.c:416
+#: lapiz/lapiz-io-error-message-area.c:418
 #, c-format
 msgid "Could not revert the file %s."
 msgstr "%s கோப்பினை பழைய நிலைக்கு கொண்டுவர முடியவில்லை ."
 
-#: lapiz/lapiz-io-error-message-area.c:442
+#: lapiz/lapiz-io-error-message-area.c:444
 msgid "Ch_aracter Encoding:"
 msgstr "_a எழுத்து குறியிடுதல்: "
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:494
-#: lapiz/lapiz-io-error-message-area.c:771
+#: lapiz/lapiz-io-error-message-area.c:774
 msgid "Edit Any_way"
 msgstr "எவ்வாறாயினும் திருத்தவும் (_w)"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:499
-#: lapiz/lapiz-io-error-message-area.c:776
+#: lapiz/lapiz-io-error-message-area.c:779
 msgid "D_on't Edit"
 msgstr "திருத்த வேண்டாம் (_o)"
 
-#: lapiz/lapiz-io-error-message-area.c:597
+#: lapiz/lapiz-io-error-message-area.c:600
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1617,29 +1617,29 @@ msgstr ""
 "பின்பற்றப்பட்ட இணைப்புகள் வரையறுக்கப்பட்டது மற்றும் உண்மையான கோப்பு இந்த வரம்புக்குள் காண "
 "முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:601
+#: lapiz/lapiz-io-error-message-area.c:604
 msgid "You do not have the permissions necessary to open the file."
 msgstr "கோப்பினை திறக்க உங்களுக்குத் தேவையான அனுமதிகள் இல்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:607
+#: lapiz/lapiz-io-error-message-area.c:610
 msgid "lapiz has not been able to detect the character encoding."
 msgstr "கெடிட் ஆல் எழுத்துக் குறியீட்டை கண்டுபிடிக்க முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:609
-#: lapiz/lapiz-io-error-message-area.c:631
+#: lapiz/lapiz-io-error-message-area.c:612
+#: lapiz/lapiz-io-error-message-area.c:634
 msgid "Please check that you are not trying to open a binary file."
 msgstr "இரும (பைனரி) கோப்பை திறக்க முயற்சி செய்கிறீர்களா என சரி பார்க்கவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:610
+#: lapiz/lapiz-io-error-message-area.c:613
 msgid "Select a character encoding from the menu and try again."
 msgstr "பட்டியிலிருந்து எழுத்து குறியிடலை தேர்ந்தெடுத்து மீண்டும் முயற்சி செய்யவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:616
+#: lapiz/lapiz-io-error-message-area.c:619
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "%s கோப்பினை திறக்கும் போது பிரச்சினை"
 
-#: lapiz/lapiz-io-error-message-area.c:618
+#: lapiz/lapiz-io-error-message-area.c:621
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
@@ -1647,79 +1647,79 @@ msgstr ""
 "நீங்கள் திறந்த கோப்பில் செல்லுபடியாகாத எழுத்துருக்கள் உள்ளன. தொடர்ந்து திருத்தினால் இந்த "
 "ஆவணம் பயனற்று போகும்."
 
-#: lapiz/lapiz-io-error-message-area.c:621
+#: lapiz/lapiz-io-error-message-area.c:624
 msgid "You can also choose another character encoding and try again."
 msgstr "வேறு எழுத்து குறியிடலை தேர்ந்தெடுத்து மீண்டும் முயற்சிக்க இயலும்."
 
-#: lapiz/lapiz-io-error-message-area.c:628
+#: lapiz/lapiz-io-error-message-area.c:631
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr "கோப்பு %sஐ %s எழுத்து குறியிடலை பயன்படுத்தி திறக்க முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:632
-#: lapiz/lapiz-io-error-message-area.c:707
+#: lapiz/lapiz-io-error-message-area.c:635
+#: lapiz/lapiz-io-error-message-area.c:710
 msgid "Select a different character encoding from the menu and try again."
 msgstr "பட்டியிலிருந்து வேறு எழுத்து குறியிடலை தேர்ந்தெடுத்து மீண்டும் முயற்சி செய்யவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:642
+#: lapiz/lapiz-io-error-message-area.c:645
 #, c-format
 msgid "Could not open the file %s."
 msgstr "%s கோப்பினை திறக்க முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:702
+#: lapiz/lapiz-io-error-message-area.c:705
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "%s கோப்பை %s எழுத்து குறியாக்கம் கொண்டு சேமிக்க முடியவில்லை"
 
-#: lapiz/lapiz-io-error-message-area.c:705
+#: lapiz/lapiz-io-error-message-area.c:708
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr "இந்த ஆவணத்தில் ஒன்றோ மேற்பட்டோ எழுத்துப்பாணி கொடுத்த குறியீட்டில் இல்லை"
 
-#: lapiz/lapiz-io-error-message-area.c:791
+#: lapiz/lapiz-io-error-message-area.c:794
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
 msgstr "இந்த கோப்பு (%s) ஏற்கனவே வேறொரு கெடிட் சாளரத்தில் திறக்கப்பட்டுள்ளது."
 
-#: lapiz/lapiz-io-error-message-area.c:805
+#: lapiz/lapiz-io-error-message-area.c:808
 msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
 msgstr ""
 "கெடிட் இந்த கோப்பை திருத்த இயலாத வகையில் திறந்தது. அதை எப்படியும் திருத்த வேண்டுமா?"
 
-#: lapiz/lapiz-io-error-message-area.c:864
-#: lapiz/lapiz-io-error-message-area.c:960
+#: lapiz/lapiz-io-error-message-area.c:867
+#: lapiz/lapiz-io-error-message-area.c:963
 msgid "S_ave Anyway"
 msgstr "_a எப்படியாவது சேமி "
 
-#: lapiz/lapiz-io-error-message-area.c:868
-#: lapiz/lapiz-io-error-message-area.c:964
+#: lapiz/lapiz-io-error-message-area.c:871
+#: lapiz/lapiz-io-error-message-area.c:967
 msgid "D_on't Save"
 msgstr "_o சேமிக்க வேண்டாம்"
 
-#: lapiz/lapiz-io-error-message-area.c:886
+#: lapiz/lapiz-io-error-message-area.c:889
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "கோப்பு %s அதனை படித்த பின் மாற்றப்பட்டுள்ளது."
 
-#: lapiz/lapiz-io-error-message-area.c:901
+#: lapiz/lapiz-io-error-message-area.c:904
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "நீங்கள் சேமித்தால், அனைத்து வெளியார்ந்த மாற்றங்களும் இழக்கப்படும். இருந்தாலும் சேமிக்கவா?"
 
-#: lapiz/lapiz-io-error-message-area.c:982
+#: lapiz/lapiz-io-error-message-area.c:985
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "%s ஐ சேமிக்கும் போது ஒரு காப்புக் கோப்பினை உருவாக்க முடியவில்லை"
 
-#: lapiz/lapiz-io-error-message-area.c:985
+#: lapiz/lapiz-io-error-message-area.c:988
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "%s ஐ சேமிக்கும் போது ஒரு தற்காலிக காப்புக் கோப்பினை உருவாக்க முடியவில்லை"
 
-#: lapiz/lapiz-io-error-message-area.c:1001
+#: lapiz/lapiz-io-error-message-area.c:1004
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1730,7 +1730,7 @@ msgstr ""
 "நேரிடலாம். இருந்தாலும் சேமிக்க வேண்டுமா?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:1061
+#: lapiz/lapiz-io-error-message-area.c:1066
 #, c-format
 msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
@@ -1739,7 +1739,7 @@ msgstr ""
 "கெடிட் %s இடத்தை எழுதும் பாங்கில் திறக்க இயலவில்லை. நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து "
 "மறுபடியும் முயற்சிக்கவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:1069
+#: lapiz/lapiz-io-error-message-area.c:1074
 msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1747,7 +1747,7 @@ msgstr ""
 "கெடிட் இந்த இடத்தை எழுதும் பாங்கில் திறக்க இயலவில்லை. நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து "
 "மறுபடியும் முயற்சிக்கவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:1078
+#: lapiz/lapiz-io-error-message-area.c:1083
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1755,7 +1755,7 @@ msgid ""
 msgstr ""
 "\"%s\" செல்லுபடியாகாத இடம்.  நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து மறுபடியும் முயற்சிக்கவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:1084
+#: lapiz/lapiz-io-error-message-area.c:1089
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1763,7 +1763,7 @@ msgstr ""
 "கோப்பை சேமிக்க தேவையான அனுமதி உங்களுக்கு இல்லை. நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து "
 "மறுபடியும் முயற்சிக்கவும். "
 
-#: lapiz/lapiz-io-error-message-area.c:1090
+#: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1771,7 +1771,7 @@ msgstr ""
 "கோப்பை சேமிப்பதற்கு வட்டில் இடம் கிடையாது. தயவுசெய்து, வட்டில் இடம் உருவாக்கி மறுபடியும் "
 "முயற்சிசெய்க."
 
-#: lapiz/lapiz-io-error-message-area.c:1095
+#: lapiz/lapiz-io-error-message-area.c:1100
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1779,11 +1779,11 @@ msgstr ""
 "நீங்கள் படிக்க மட்டுமான வட்டில் கோப்பை சேமிக்க முயற்சிக்கிறீர்கள்.  நீங்கள் உள்ளிட்ட இடத்தை "
 "சரிபார்த்து மறுபடியும் முயற்சிக்கவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:1101
+#: lapiz/lapiz-io-error-message-area.c:1106
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "கோப்பு இதே பெயரில் ஏற்கனவே உள்ளது. எனவே வேறு பெயரை பயன்படுத்தவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:1106
+#: lapiz/lapiz-io-error-message-area.c:1111
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1791,7 +1791,7 @@ msgstr ""
 "நீங்கள் சேமிக்க விரும்பும் அடைவு உள்ள வட்டில் கோப்புகளின் பெயருக்கு சில வரம்புகள் உள்ளன. "
 "சிறிய கோப்புப் பெயரை பயன்படுத்தவும்."
 
-#: lapiz/lapiz-io-error-message-area.c:1113
+#: lapiz/lapiz-io-error-message-area.c:1118
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1800,25 +1800,25 @@ msgstr ""
 "நீங்கள் சேமிக்க விரும்பும் அடைவு உள்ள வட்டில் கோப்பு அளவுக்கு வரம்பு உள்ளது. சிறிய "
 "கோப்புகளை சேமிக்க முயற்சி செய்யவும் அல்லது வரம்பு இல்லாத வட்டில் சேமிக்கவும்"
 
-#: lapiz/lapiz-io-error-message-area.c:1129
+#: lapiz/lapiz-io-error-message-area.c:1134
 #, c-format
 msgid "Could not save the file %s."
 msgstr "%s கோப்பினை சேமிக்க முடியவில்லை."
 
-#: lapiz/lapiz-io-error-message-area.c:1173
+#: lapiz/lapiz-io-error-message-area.c:1178
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "கோப்பு %s வட்டில் மாறி விட்டது."
 
-#: lapiz/lapiz-io-error-message-area.c:1178
+#: lapiz/lapiz-io-error-message-area.c:1183
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "மாற்றங்களை கைவிட்டு கோப்பை மீளேற்ற வேண்டுமா?"
 
-#: lapiz/lapiz-io-error-message-area.c:1180
+#: lapiz/lapiz-io-error-message-area.c:1185
 msgid "Do you want to reload the file?"
 msgstr "கோப்பை மீளேற்ற வேண்டுமா?"
 
-#: lapiz/lapiz-io-error-message-area.c:1185
+#: lapiz/lapiz-io-error-message-area.c:1190
 msgid "_Reload"
 msgstr "மீண்டும் ஏற்று (_R)"
 
@@ -1897,69 +1897,69 @@ msgstr "_L வரிசை எண்கள்:"
 msgid "_Restore Default Fonts"
 msgstr "_R இயல்பான எழுத்துருவை மீட்டு அமைக்கவும்"
 
-#: lapiz/lapiz-print-preview.c:569
+#: lapiz/lapiz-print-preview.c:573
 msgid "Show the previous page"
 msgstr "முந்தைய பக்கத்தை காட்டுக"
 
-#: lapiz/lapiz-print-preview.c:582
+#: lapiz/lapiz-print-preview.c:586
 msgid "Show the next page"
 msgstr "அடுத்த பக்கத்தை காட்டுக"
 
-#: lapiz/lapiz-print-preview.c:598
+#: lapiz/lapiz-print-preview.c:602
 msgid "Current page (Alt+P)"
 msgstr "நடப்பு பக்கம் (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: lapiz/lapiz-print-preview.c:621
+#: lapiz/lapiz-print-preview.c:625
 msgid "of"
 msgstr "இதில்"
 
-#: lapiz/lapiz-print-preview.c:629
+#: lapiz/lapiz-print-preview.c:633
 msgid "Page total"
 msgstr "மொத்தப் பக்கம்"
 
-#: lapiz/lapiz-print-preview.c:630
+#: lapiz/lapiz-print-preview.c:634
 msgid "The total number of pages in the document"
 msgstr "ஆவணத்திலுள்ள பக்கங்களின் எண்ணிக்கை"
 
-#: lapiz/lapiz-print-preview.c:648
+#: lapiz/lapiz-print-preview.c:652
 msgid "Show multiple pages"
 msgstr "பல பக்கங்களை காட்டு"
 
-#: lapiz/lapiz-print-preview.c:662
+#: lapiz/lapiz-print-preview.c:666
 msgid "Zoom 1:1"
 msgstr "அளவு 1:1"
 
-#: lapiz/lapiz-print-preview.c:672
+#: lapiz/lapiz-print-preview.c:676
 msgid "Zoom to fit the whole page"
 msgstr "முழுப்பக்கத்தை பொருத்த அணுகு"
 
-#: lapiz/lapiz-print-preview.c:682
+#: lapiz/lapiz-print-preview.c:686
 msgid "Zoom the page in"
 msgstr "பக்கத்தை அணுகிப் பார்க்கவும்"
 
-#: lapiz/lapiz-print-preview.c:692
+#: lapiz/lapiz-print-preview.c:696
 msgid "Zoom the page out"
 msgstr "பக்கத்தை விலகிப் பார்க்கவும்"
 
-#: lapiz/lapiz-print-preview.c:704
+#: lapiz/lapiz-print-preview.c:708
 msgid "_Close Preview"
 msgstr "_C அச்சு முன்பார்வையை மூடுக"
 
-#: lapiz/lapiz-print-preview.c:707
+#: lapiz/lapiz-print-preview.c:711
 msgid "Close print preview"
 msgstr "அச்சு முன்னோட்டத்தை மூடுக"
 
-#: lapiz/lapiz-print-preview.c:782
+#: lapiz/lapiz-print-preview.c:786
 #, c-format
 msgid "Page %d of %d"
 msgstr "பக்கம் %d இல் %d"
 
-#: lapiz/lapiz-print-preview.c:963
+#: lapiz/lapiz-print-preview.c:967
 msgid "Page Preview"
 msgstr "பக்க முன்பார்வை"
 
-#: lapiz/lapiz-print-preview.c:964
+#: lapiz/lapiz-print-preview.c:968
 msgid "The preview of a page in the document to be printed"
 msgstr "ஆவணத்திலுள்ள அச்சிடப்பட வேண்டிய பக்கத்தின் முன்பார்வை "
 
@@ -2066,7 +2066,7 @@ msgstr "மைம் வகை:"
 msgid "Encoding:"
 msgstr "குறிமுறையாக்கம்:"
 
-#: lapiz/lapiz-tab-label.c:274
+#: lapiz/lapiz-tab-label.c:278
 msgid "Close document"
 msgstr "ஆவணத்தை மூடுக"
 
@@ -2106,7 +2106,7 @@ msgstr "புதிய ஆவணத்தை உருவாக்கு"
 msgid "_Open..."
 msgstr "திற...(_O)"
 
-#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1453
+#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1454
 msgid "Open a file"
 msgstr "ஓர் கோப்பைத் திறக்கவும்"
 
@@ -2215,7 +2215,7 @@ msgid "Paste the clipboard"
 msgstr "கிளிப்போர்டில் இருந்து ஒட்டுதல்"
 
 #: lapiz/lapiz-ui.h:102 plugins/filebrowser/lapiz-file-browser-utils.c:182
-#: plugins/filebrowser/lapiz-file-browser-widget.c:801
+#: plugins/filebrowser/lapiz-file-browser-widget.c:803
 msgid "_Delete"
 msgstr "(_D)நீக்கவும்"
 
@@ -2383,22 +2383,22 @@ msgstr "_B கீழ் பலகம் "
 msgid "Show or hide the bottom pane in the current window"
 msgstr "நடப்பு சாளரத்தின் கீழே உள்ள பலகத்தினை காட்டவும் அல்லது மறைக்கவும்"
 
-#: lapiz/lapiz-utils.c:1074
+#: lapiz/lapiz-utils.c:1076
 msgid "Please check your installation."
 msgstr "உங்கள் நிறுவலை சரிபார்க்கவும்."
 
-#: lapiz/lapiz-utils.c:1147
+#: lapiz/lapiz-utils.c:1149
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "ui கோப்பு %sஐ திறக்க முடியவில்லை. பிழை: %s"
 
-#: lapiz/lapiz-utils.c:1167
+#: lapiz/lapiz-utils.c:1169
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "பொருள் '%s'ஐ கோப்பு %s உள்ளே காண முடியவில்லை."
 
 #. Translators: '/ on <remote-share>'
-#: lapiz/lapiz-utils.c:1327
+#: lapiz/lapiz-utils.c:1329
 #, c-format
 msgid "/ on %s"
 msgstr "/ on %s"
@@ -2436,7 +2436,7 @@ msgstr "%s சிறப்புச் சுட்டு வகையைப் 
 
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1957
+#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1958
 #: plugins/externaltools/tools/manager.py:108
 #: plugins/externaltools/tools/manager.py:308
 #: plugins/externaltools/tools/manager.py:424
@@ -2454,41 +2454,41 @@ msgstr "இலக்கண சிறப்புச் சுட்டுதல�
 msgid "Open '%s'"
 msgstr "'%s' ஐ திற"
 
-#: lapiz/lapiz-window.c:1459
+#: lapiz/lapiz-window.c:1460
 msgid "Open a recently used file"
 msgstr "சமீபத்தில் பயன்படுத்திய கோப்பைத் திறக்கவும்"
 
-#: lapiz/lapiz-window.c:1465
+#: lapiz/lapiz-window.c:1466
 msgid "Open"
 msgstr "திறத்தல்"
 
-#: lapiz/lapiz-window.c:1523
+#: lapiz/lapiz-window.c:1524
 msgid "Save"
 msgstr "சேமி"
 
-#: lapiz/lapiz-window.c:1525
+#: lapiz/lapiz-window.c:1526
 msgid "Print"
 msgstr "அச்சிடு"
 
 #. Translators: %s is a URI
-#: lapiz/lapiz-window.c:1682
+#: lapiz/lapiz-window.c:1683
 #, c-format
 msgid "Activate '%s'"
 msgstr "%s ஐ தூண்டு செய்க"
 
-#: lapiz/lapiz-window.c:1935
+#: lapiz/lapiz-window.c:1936
 msgid "Use Spaces"
 msgstr "இடைவெளிகளை பயன்படுத்து"
 
-#: lapiz/lapiz-window.c:2006
+#: lapiz/lapiz-window.c:2007
 msgid "Tab Width"
 msgstr "தத்தல் அகலம்"
 
-#: plugins/changecase/changecase.plugin.desktop.in:5
+#: plugins/changecase/changecase.plugin.desktop.in:4
 msgid "Change Case"
 msgstr "நிலையை மாற்றுக"
 
-#: plugins/changecase/changecase.plugin.desktop.in:6
+#: plugins/changecase/changecase.plugin.desktop.in:5
 msgid "Changes the case of selected text."
 msgstr "தேர்ந்தெடுத்த உரையில் நிலையை மாற்றுகிறது"
 
@@ -2528,11 +2528,11 @@ msgstr "_T முதலெழுத்து பெரிய எழுத்த�
 msgid "Capitalize the first letter of each selected word"
 msgstr "ஒவ்வொரு தேர்ந்தெடுத்த வார்த்தையின் முதல் எழுத்தையும் மேல் நிலை எழுத்தாக்குக"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:5 plugins/docinfo/docinfo.ui:19
+#: plugins/docinfo/docinfo.plugin.desktop.in:4 plugins/docinfo/docinfo.ui:19
 msgid "Document Statistics"
 msgstr "ஆவணம் புள்ளி விவரம்"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:6
+#: plugins/docinfo/docinfo.plugin.desktop.in:5
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
@@ -2584,11 +2584,11 @@ msgstr "_D ஆவண புள்ளி விவரம்"
 msgid "Get statistical information on the current document"
 msgstr "தற்போதைய ஆவணத்தின் புள்ளி விவரங்களை பெறவும்"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:6
+#: plugins/externaltools/externaltools.plugin.desktop.in:5
 msgid "External Tools"
 msgstr "வெளியார்ந்த கருவிகள்"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:7
+#: plugins/externaltools/externaltools.plugin.desktop.in:6
 msgid "Execute external commands and shell scripts."
 msgstr "வெளியார்ந்த கட்டளைகள் மற்றும் ஷெல் குறிப்புகளை செயல்படுத்துக."
 
@@ -2770,51 +2770,51 @@ msgstr "_S குறுக்கு விசை:"
 msgid "_Edit:"
 msgstr "_E திருத்து:"
 
-#: plugins/externaltools/data/build.desktop.in:3
+#: plugins/externaltools/data/build.desktop.in:2
 msgid "Build"
 msgstr "உருவாக்கு"
 
-#: plugins/externaltools/data/build.desktop.in:4
+#: plugins/externaltools/data/build.desktop.in:3
 msgid "Run \"make\" in the document directory"
 msgstr "ஆவண அடைவில் “make”ஐ இயக்கு"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:3
+#: plugins/externaltools/data/open-terminal-here.desktop.in:2
 msgid "Open terminal here"
 msgstr "இங்கு முனையத்தை திறக்கவும்"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:4
+#: plugins/externaltools/data/open-terminal-here.desktop.in:3
 msgid "Open a terminal in the document location"
 msgstr "தற்போது திறக்கப்பட்ட அடைவில் ஒரு முனையத்தை திறக்கவும்"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:2
 msgid "Remove trailing spaces"
 msgstr "தொடரும் வெற்றிடங்களை நீக்குக"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:4
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
 msgid "Remove useless trailing spaces in your file"
 msgstr "உங்கள் கோப்பில் உள்ள பயனிலாத தொடரும் வெற்றிடங்களை நீக்குக"
 
-#: plugins/externaltools/data/run-command.desktop.in:3
+#: plugins/externaltools/data/run-command.desktop.in:2
 msgid "Run command"
 msgstr "இயக்குக கட்டளை"
 
-#: plugins/externaltools/data/run-command.desktop.in:4
+#: plugins/externaltools/data/run-command.desktop.in:3
 msgid "Execute a custom command and put its output in a new document"
 msgstr "தனிப்பயன் கட்டளையை செயல்படுத்தி வெளியீட்டை புதிய ஆவணமாக ஆக்குக"
 
-#: plugins/externaltools/data/search-recursive.desktop.in:3
+#: plugins/externaltools/data/search-recursive.desktop.in:2
 msgid "Search"
 msgstr "தேடுக"
 
-#: plugins/externaltools/data/switch-c.desktop.in:3
+#: plugins/externaltools/data/switch-c.desktop.in:2
 msgid "Switch onto a file .c and .h"
 msgstr ""
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:5
 msgid "File Browser Pane"
 msgstr "கோப்பு உலாவி பலகம்"
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:7
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
 msgid "Easy file access from the side pane"
 msgstr "பக்க பலகத்திலிருந்து கோப்பினை எளிதாக அணுகலாம்"
 
@@ -2930,39 +2930,39 @@ msgstr "தற்போது திறக்கப்பட்ட அடைவ�
 msgid "File Browser"
 msgstr "கோப்பு உலாவி"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:870
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
 msgid "An error occurred while creating a new directory"
 msgstr "ஒரு புதிய அடைவினை உருவாக்கும் போது பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:876
 msgid "An error occurred while creating a new file"
 msgstr "ஒரு புதிய கோப்பினை உருவாக்கும் போது பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:878
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:881
 msgid "An error occurred while renaming a file or directory"
 msgstr "ஒரு கோப்பு அல்லது அடைவினை மறுபெயரிடும் போது பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:883
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:886
 msgid "An error occurred while deleting a file or directory"
 msgstr "ஒரு கோப்பு அல்லது அடைவினை நீக்கும் போது பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:888
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:891
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "கோப்பு மேலாளரில் ஒரு அடைவினை திறக்கும் போது ஒரு பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:892
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:895
 msgid "An error occurred while setting a root directory"
 msgstr "ஒரு ரூட் அடைவினை அமைக்கும் போது பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:896
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
 msgid "An error occurred while loading a directory"
 msgstr "ஒரு அடைவினை ஏற்றும் போது பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:902
 msgid "An error occurred"
 msgstr "ஒரு பிழை ஏற்பட்டுள்ளது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1126
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1129
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2970,25 +2970,25 @@ msgstr ""
 "குப்பை தொட்டிக்கு கோப்பினை நகர்த்த முடியாது, \n"
 "முழுமையாக அழிக்க வேண்டுமா?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1130
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "கோப்பு \"%s\" ஐ குப்பை தொட்டிக்கு நகர்த்த முடியாது"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1136
 msgid "The selected files cannot be moved to the trash."
 msgstr "தேர்ந்தெடுத்த கோப்புக்களை குப்பை தொட்டிக்கு நகர்த்த முடியாது."
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1161
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "\"%s\" ஐ அவசியம் நிரந்தரமாக நீக்க வேண்டுமா?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "நீங்கள் தேர்ந்தெடுத்த கோப்புக்களை நிரந்தரமாக அழிக்க வேண்டுமா?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1170
 msgid "If you delete an item, it is permanently lost."
 msgstr "உருப்படியை நீக்கினால் அதை  நிரந்தரமாக இழக்க நேரும்"
 
@@ -3029,168 +3029,168 @@ msgstr ""
 "புதிய அடைவு தற்போது வடிகட்டப்பட்டது. அடைவைப் பார்க்க நீங்கள் வடிகட்டி அமைப்பை மாற்ற "
 "வேண்டும்."
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:712
+#: plugins/filebrowser/lapiz-file-browser-widget.c:714
 msgid "Bookmarks"
 msgstr "புத்தககுறிகள்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:793
+#: plugins/filebrowser/lapiz-file-browser-widget.c:795
 msgid "_Filter"
 msgstr "_வடிப்பி"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:798
+#: plugins/filebrowser/lapiz-file-browser-widget.c:800
 msgid "_Move to Trash"
 msgstr "_M குப்பை தொட்டிக்கு நகர்த்தவும் "
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:799
+#: plugins/filebrowser/lapiz-file-browser-widget.c:801
 msgid "Move selected file or folder to trash"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவினை குப்பை தொட்டிக்கு நகர்த்தவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:802
+#: plugins/filebrowser/lapiz-file-browser-widget.c:804
 msgid "Delete selected file or folder"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவினை அழிக்கவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:809
+#: plugins/filebrowser/lapiz-file-browser-widget.c:811
 msgid "Open selected file"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பினை திறக்கவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:815
+#: plugins/filebrowser/lapiz-file-browser-widget.c:817
 msgid "Up"
 msgstr "மேல்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:816
+#: plugins/filebrowser/lapiz-file-browser-widget.c:818
 msgid "Open the parent folder"
 msgstr "மூல அடைவினை திறக்கவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:821
+#: plugins/filebrowser/lapiz-file-browser-widget.c:823
 msgid "_New Folder"
 msgstr "_N புதிய அடைவு"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:822
+#: plugins/filebrowser/lapiz-file-browser-widget.c:824
 msgid "Add new empty folder"
 msgstr "புதிய வெற்று கோப்பினை சேர்க்கவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:824
+#: plugins/filebrowser/lapiz-file-browser-widget.c:826
 msgid "New F_ile"
 msgstr "_i புதிய கோப்பு "
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:825
+#: plugins/filebrowser/lapiz-file-browser-widget.c:827
 msgid "Add new empty file"
 msgstr "புதிய வெற்று கோப்பினை சேர்க்கவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:830
+#: plugins/filebrowser/lapiz-file-browser-widget.c:832
 msgid "_Rename"
 msgstr "மறுபெயர் (_R)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:831
+#: plugins/filebrowser/lapiz-file-browser-widget.c:833
 msgid "Rename selected file or folder"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவின் பெயரை மாற்றவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:837
+#: plugins/filebrowser/lapiz-file-browser-widget.c:839
 msgid "_Previous Location"
 msgstr "_P முந்தைய இடம் "
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:839
+#: plugins/filebrowser/lapiz-file-browser-widget.c:841
 msgid "Go to the previous visited location"
 msgstr "முந்தைய இடத்திற்குப் போகவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:841
+#: plugins/filebrowser/lapiz-file-browser-widget.c:843
 msgid "_Next Location"
 msgstr "_N அடுத்த இடம் "
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:842
+#: plugins/filebrowser/lapiz-file-browser-widget.c:844
 msgid "Go to the next visited location"
 msgstr "அடுத்து போன இடத்துக்குப் போகவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:843
+#: plugins/filebrowser/lapiz-file-browser-widget.c:845
 msgid "Re_fresh View"
 msgstr "_f பார்வையை புதுப்பிக்கவும் "
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:844
+#: plugins/filebrowser/lapiz-file-browser-widget.c:846
 msgid "Refresh the view"
 msgstr "பார்வையை புதுப்பிக்கவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:845
-#: plugins/filebrowser/lapiz-file-browser-widget.c:863
+#: plugins/filebrowser/lapiz-file-browser-widget.c:847
+#: plugins/filebrowser/lapiz-file-browser-widget.c:865
 msgid "_View Folder"
 msgstr "_V அடைவை காட்டுக"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:846
-#: plugins/filebrowser/lapiz-file-browser-widget.c:864
+#: plugins/filebrowser/lapiz-file-browser-widget.c:848
+#: plugins/filebrowser/lapiz-file-browser-widget.c:866
 msgid "View folder in file manager"
 msgstr "கோப்பு மேலாளரில் அடைவினை பார்க்கவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:853
+#: plugins/filebrowser/lapiz-file-browser-widget.c:855
 msgid "Show _Hidden"
 msgstr "_H மறைவானதை காட்டவும் "
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:854
+#: plugins/filebrowser/lapiz-file-browser-widget.c:856
 msgid "Show hidden files and folders"
 msgstr "மறைவான கோப்புகள் மற்றும் அடைவுகளை காட்டவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:856
+#: plugins/filebrowser/lapiz-file-browser-widget.c:858
 msgid "Show _Binary"
 msgstr "_B இருமத்தை காட்டவும் "
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:857
+#: plugins/filebrowser/lapiz-file-browser-widget.c:859
 msgid "Show binary files"
 msgstr "இரும கோப்புகளை காட்டவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:990
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1003
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1029
+#: plugins/filebrowser/lapiz-file-browser-widget.c:992
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1005
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1031
 msgid "Previous location"
 msgstr "முந்தைய இடம்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:996
+#: plugins/filebrowser/lapiz-file-browser-widget.c:998
 msgid "Go to previous location"
 msgstr "முந்தைய இடத்திற்கு செல்லவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:998
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1000
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1026
 msgid "Go to a previously opened location"
 msgstr "முந்தைய திறந்த ஒரு இடத்திற்கு செல்லவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1016
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1018
 msgid "Next location"
 msgstr "அடுத்த இடம்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1022
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
 msgid "Go to next location"
 msgstr "அடுத்த இடத்திற்கு செல்லவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1234
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1236
 msgid "_Match Filename"
 msgstr "_M கோப்பு பெயரை பொருத்தவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2135
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "ஏற்றப்பட்ட தொகுதியில் ஏற்றும் பொருள் இல்லை: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2215
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
 #, c-format
 msgid "Could not open media: %s"
 msgstr "ஊடகத்தை திறக்க முடியவில்லை: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2262
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "தொகுதியை ஏற்ற முடியவில்லை: %s"
 
-#: plugins/modelines/modelines.plugin.desktop.in:5
+#: plugins/modelines/modelines.plugin.desktop.in:4
 msgid "Modelines"
 msgstr "மோட்லைன்ஸ்"
 
-#: plugins/modelines/modelines.plugin.desktop.in:6
+#: plugins/modelines/modelines.plugin.desktop.in:5
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
 msgstr "கெடிட் க்கு ஈமாக்ஸ்,கேட் மற்றும் விம்முறை மோட்லைன்ஸ் ஆதரவு."
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:5
 #: plugins/pythonconsole/pythonconsole/__init__.py:55
 msgid "Python Console"
 msgstr "பைத்தான் முனையம்"
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:7
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "கீழ் பலகத்தின் உள்ளே ஊடாடும் பைதான் முனையம்"
 
@@ -3211,7 +3211,7 @@ msgid "Font:"
 msgstr ""
 
 #: plugins/quickopen/quickopen/popup.py:32
-#: plugins/quickopen/quickopen.plugin.desktop.in:6
+#: plugins/quickopen/quickopen.plugin.desktop.in:5
 msgid "Quick Open"
 msgstr "விரைவாக திறக்கவும்"
 
@@ -3223,18 +3223,18 @@ msgstr "விரைவாக திறக்கவும்"
 msgid "Quickly open documents"
 msgstr "ஆவணங்களை விரைவாக திறக்கவும்"
 
-#: plugins/quickopen/quickopen.plugin.desktop.in:7
+#: plugins/quickopen/quickopen.plugin.desktop.in:6
 msgid "Quickly open files"
 msgstr "கோப்பை விரைவாக திறக்கவும்"
 
-#: plugins/snippets/snippets.plugin.desktop.in:6
+#: plugins/snippets/snippets.plugin.desktop.in:5
 #: plugins/snippets/snippets/Document.py:51
 #: plugins/snippets/snippets/Document.py:189
 #: plugins/snippets/snippets/Document.py:618
 msgid "Snippets"
 msgstr "கத்தரிப்புகள்"
 
-#: plugins/snippets/snippets.plugin.desktop.in:7
+#: plugins/snippets/snippets.plugin.desktop.in:6
 msgid "Insert often-used pieces of text in a fast way"
 msgstr "அடிக்கடி பயன் படுத்தும் உரைத் துணுக்குகளை வேகமாக உள்ளிட."
 
@@ -3461,11 +3461,11 @@ msgstr "_அடுக்கவும்..."
 msgid "Sort the current document or selection"
 msgstr "நடப்பு ஆவணம் அல்லது தேர்ந்தெடுத்ததை வரிசைப்படுத்துக"
 
-#: plugins/sort/sort.plugin.desktop.in:5 plugins/sort/sort.ui:29
+#: plugins/sort/sort.plugin.desktop.in:4 plugins/sort/sort.ui:29
 msgid "Sort"
 msgstr "அடுக்கு"
 
-#: plugins/sort/sort.plugin.desktop.in:6
+#: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sorts a document or selected text."
 msgstr "ஆவணத்தை அல்லது தேர்வுசெய்த உரையை அடுக்கவும்."
 
@@ -3500,20 +3500,20 @@ msgstr ""
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
-#: plugins/spell/lapiz-automatic-spell-checker.c:420
+#: plugins/spell/lapiz-automatic-spell-checker.c:429
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
 msgid "(no suggested words)"
 msgstr "(பரிந்துரைக்க வார்த்தைகள் இல்லை)"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:444
+#: plugins/spell/lapiz-automatic-spell-checker.c:454
 msgid "_More..."
 msgstr "_M மேலும்..."
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:499
+#: plugins/spell/lapiz-automatic-spell-checker.c:509
 msgid "_Ignore All"
 msgstr "_I அனைத்தையும் உதாசீனம் செய்க"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:553
+#: plugins/spell/lapiz-automatic-spell-checker.c:565
 msgid "_Spelling Suggestions..."
 msgstr "_S எழுத்துக் கூட்டல் பரிந்துரைகள்"
 
@@ -3526,11 +3526,11 @@ msgid "Suggestions"
 msgstr "யோசனைகள்"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: plugins/spell/lapiz-spell-checker-dialog.c:565
+#: plugins/spell/lapiz-spell-checker-dialog.c:568
 msgid "(correct spelling)"
 msgstr "(சரியான எழுத்துக் கோவை)"
 
-#: plugins/spell/lapiz-spell-checker-dialog.c:712
+#: plugins/spell/lapiz-spell-checker-dialog.c:720
 msgid "Completed spell checking"
 msgstr "எழுத்துக் கோவை சரிபார்ப்பு முடிந்தது"
 
@@ -3538,8 +3538,8 @@ msgstr "எழுத்துக் கோவை சரிபார்ப்ப�
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:285
-#: plugins/spell/lapiz-spell-checker-language.c:291
+#: plugins/spell/lapiz-spell-checker-language.c:287
+#: plugins/spell/lapiz-spell-checker-language.c:293
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3548,7 +3548,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:300
+#: plugins/spell/lapiz-spell-checker-language.c:302
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3557,7 +3557,7 @@ msgstr "தெரியாத (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:406
+#: plugins/spell/lapiz-spell-checker-language.c:410
 msgctxt "language"
 msgid "Default"
 msgstr "முன்னிருப்பு"
@@ -3683,11 +3683,11 @@ msgstr ""
 msgid "_Always autocheck"
 msgstr ""
 
-#: plugins/spell/spell.plugin.desktop.in:5
+#: plugins/spell/spell.plugin.desktop.in:4
 msgid "Spell Checker"
 msgstr "சொல் திருத்தி "
 
-#: plugins/spell/spell.plugin.desktop.in:6
+#: plugins/spell/spell.plugin.desktop.in:5
 msgid "Checks the spelling of the current document."
 msgstr "இந்த ஆவண சொற்களின் எழுத்துக் கோவையை சரிபார்க்கவும்"
 
@@ -4855,11 +4855,11 @@ msgid "Soft hyphen­"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2275
-msgid "&quot;"
+msgid "\""
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2279
-msgid "&amp;"
+msgid "&"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2283
@@ -4887,11 +4887,11 @@ msgid "¸"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2307
-msgid "&lt;"
+msgid "<"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2311
-msgid "&gt;"
+msgid ">"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2315
@@ -5283,7 +5283,7 @@ msgid "Brackets {}"
 msgstr "அடைப்புக்குறிகள் {}"
 
 #: plugins/taglist/Latex.tags.xml.in:39
-msgid "Brackets &lt;&gt;"
+msgid "Brackets <>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:44
@@ -5439,19 +5439,19 @@ msgid "Reference ref"
 msgstr "குறிப்பு ref"
 
 #: plugins/taglist/Latex.tags.xml.in:225
-msgid "Symbol &lt;&lt;"
+msgid "Symbol <<"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:229
-msgid "Symbol &lt;="
+msgid "Symbol <="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:233
-msgid "Symbol &gt;="
+msgid "Symbol >="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:237
-msgid "Symbol &gt;&gt;"
+msgid "Symbol >>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:241
@@ -5542,11 +5542,11 @@ msgstr "பிரியாத உரை"
 msgid "Footnote"
 msgstr "அடிக்குறிப்பு"
 
-#: plugins/taglist/taglist.plugin.desktop.in:5
+#: plugins/taglist/taglist.plugin.desktop.in:4
 msgid "Tag list"
 msgstr "ஒட்டு பட்டியல்"
 
-#: plugins/taglist/taglist.plugin.desktop.in:6
+#: plugins/taglist/taglist.plugin.desktop.in:5
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
@@ -6355,19 +6355,19 @@ msgstr "தற்போதைய தேதியையும் நேரத்�
 msgid "Available formats"
 msgstr "புழங்கக்கூடிய வடிவங்கள்"
 
-#: plugins/time/time.plugin.desktop.in:5
+#: plugins/time/time.plugin.desktop.in:4
 msgid "Insert Date/Time"
 msgstr "தேதி/நேரம் சொருகவும்"
 
-#: plugins/time/time.plugin.desktop.in:6
+#: plugins/time/time.plugin.desktop.in:5
 msgid "Inserts current date and time at the cursor position."
 msgstr "தற்போதைய தேதியையும் நேரத்தையும் நிலை காட்டி இருக்குமிடத்தில் சொருகும்"
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:5
+#: plugins/trailsave/trailsave.plugin.desktop.in:4
 msgid "Save Without Trailing Spaces"
 msgstr ""
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:6
+#: plugins/trailsave/trailsave.plugin.desktop.in:5
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 

@@ -9,9 +9,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 1.25.0\n"
+"Project-Id-Version: lapiz 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2023-05-11 10:48+0200\n"
+"POT-Creation-Date: 2025-07-20 18:14+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Panjabi (Punjabi) (https://www.transifex.com/cafe/teams/13566/"
@@ -548,7 +548,7 @@ msgid ""
 "all spaces."
 msgstr ""
 
-#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:3
+#: data/lapiz.appdata.xml.in:7 data/lapiz.desktop.in.in:2
 msgid "Lapiz"
 msgstr ""
 
@@ -572,16 +572,16 @@ msgid ""
 "adjusting indentation levels."
 msgstr ""
 
-#: data/lapiz.desktop.in.in:4 lapiz/lapiz-print-job.c:754
+#: data/lapiz.desktop.in.in:3 lapiz/lapiz-print-job.c:754
 msgid "Text Editor"
 msgstr "ਟੈਕਸਟ ਐਡੀਟਰ"
 
-#: data/lapiz.desktop.in.in:5
+#: data/lapiz.desktop.in.in:4
 msgid "Edit text files"
 msgstr "ਟੈਕਸਟ ਫਾਇਲਾਂ ਸੋਧੋ"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/lapiz.desktop.in.in:15
+#: data/lapiz.desktop.in.in:14
 msgid "text;editor;CAFE;tabs;highlighting;code;multiple;files;pluggable;"
 msgstr ""
 
@@ -602,9 +602,9 @@ msgstr "ਬਿਨਾਂ ਸੰਭਾਲੇ ਬੰਦ ਕਰੋ(_w)"
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:56
 #: lapiz/dialogs/lapiz-preferences-dialog.c:975 lapiz/lapiz-commands-file.c:583
 #: lapiz/lapiz-commands-file.c:1223 lapiz/lapiz-file-chooser-dialog.c:435
-#: lapiz/lapiz-io-error-message-area.c:168
+#: lapiz/lapiz-io-error-message-area.c:169
 #: lapiz/lapiz-io-error-message-area.c:507
-#: lapiz/lapiz-io-error-message-area.c:1190
+#: lapiz/lapiz-io-error-message-area.c:1195
 #: lapiz/lapiz-progress-message-area.c:63
 #: plugins/filebrowser/lapiz-file-browser-utils.c:171
 #: plugins/quickopen/quickopen/popup.py:36
@@ -705,18 +705,18 @@ msgid "Save changes to document \"%s\" before closing?"
 msgstr "ਕੀ ਡੌਕੂਮੈਂਟ਼ \"%s\" ਦੇ ਬਦਲਾਅ ਬੰਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਣੇ ਹਨ?"
 
 #: lapiz/dialogs/lapiz-close-confirmation-dialog.c:540
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:765
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
 msgid "Saving has been disabled by the system administrator."
 msgstr "ਸੰਭਾਲਣ ਉੱਤੇ ਸਿਸਟਮ ਪਰਸ਼ਾਸ਼ਕ ਨੇ ਰੋਕ ਲਾ ਰੱਖੀ ਹੈ।"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:716
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:718
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:722
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:724
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -724,15 +724,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:740
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
 msgid "Docum_ents with unsaved changes:"
 msgstr "ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਸਮੇਤ ਡੌਕੂਮੈਂਟ਼(_e):"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:742
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:744
 msgid "S_elect the documents you want to save:"
 msgstr "ਉਹ ਡੌਕੂਮੈਂਟ ਚੁਣੋ, ਜੋ ਸੰਭਾਲਣੇ ਹਨ(_E):"
 
-#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:767
+#: lapiz/dialogs/lapiz-close-confirmation-dialog.c:769
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਸਾਰੀਆਂ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
@@ -741,7 +741,7 @@ msgstr "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਸਾ�
 #: plugins/spell/lapiz-spell-language-dialog.c:133
 #: plugins/spell/languages-dialog.ui:72
 #: plugins/spell/lapiz-spell-setup-dialog.ui:71
-#: plugins/time/lapiz-time-plugin.c:920
+#: plugins/time/lapiz-time-plugin.c:921
 #: plugins/time/lapiz-time-setup-dialog.ui:71
 msgid "_OK"
 msgstr ""
@@ -781,7 +781,7 @@ msgid "A_vailable encodings:"
 msgstr "ਉਪਲੱਬਧ ਇੰਕੋਡਿੰਗ(_V):"
 
 #: lapiz/dialogs/lapiz-encodings-dialog.ui:150
-#: plugins/spell/lapiz-automatic-spell-checker.c:514
+#: plugins/spell/lapiz-automatic-spell-checker.c:524
 msgid "_Add"
 msgstr "ਸ਼ਾਮਲ(_A)"
 
@@ -1018,11 +1018,11 @@ msgstr "ਪਲੱਗਇਨ"
 
 #: lapiz/dialogs/lapiz-search-dialog.c:295
 #: lapiz/dialogs/lapiz-search-dialog.ui:44
-#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1529
+#: lapiz/dialogs/lapiz-search-dialog.ui:91 lapiz/lapiz-window.c:1530
 msgid "Replace"
 msgstr "ਬਦਲੋ"
 
-#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1527
+#: lapiz/dialogs/lapiz-search-dialog.c:304 lapiz/lapiz-window.c:1528
 msgid "Find"
 msgstr "ਖੋਜ"
 
@@ -1232,23 +1232,23 @@ msgstr[1] ""
 msgid "_Revert"
 msgstr "ਮੁੜ-ਖੋਲ੍ਹੋ(_R)"
 
-#: lapiz/lapiz-commands-help.c:60
+#: lapiz/lapiz-commands-help.c:62
 msgid "CAFE Documentation Team"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:61
+#: lapiz/lapiz-commands-help.c:63
 msgid "GNOME Documentation Team"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:62
+#: lapiz/lapiz-commands-help.c:64
 msgid "Sun Microsystems"
 msgstr "ਸਨ ਮਾਈਕਰੋਸਿਸਟਮ"
 
-#: lapiz/lapiz-commands-help.c:67
+#: lapiz/lapiz-commands-help.c:69
 msgid "Lapiz is a small and lightweight text editor for the CAFE Desktop"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:70
+#: lapiz/lapiz-commands-help.c:72
 msgid ""
 "Lapiz is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
@@ -1256,7 +1256,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:74
+#: lapiz/lapiz-commands-help.c:76
 msgid ""
 "Lapiz is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -1264,18 +1264,18 @@ msgid ""
 "details."
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:78
+#: lapiz/lapiz-commands-help.c:80
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "Lapiz; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301 USA"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:113
+#: lapiz/lapiz-commands-help.c:115
 msgid "About Lapiz"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:116
+#: lapiz/lapiz-commands-help.c:118
 msgid ""
 "Copyright © 1998-2000 Evan Lawrence, Alex Robert\n"
 "Copyright © 2000-2002 Chema Celorio, Paolo Maggi\n"
@@ -1284,10 +1284,10 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023 Pablo Barciela"
+"Copyright © 2023-2024 Pablo Barciela"
 msgstr ""
 
-#: lapiz/lapiz-commands-help.c:127
+#: lapiz/lapiz-commands-help.c:129
 msgid "translator-credits"
 msgstr ""
 "ਜਸਵਿੰਦਰ ਸਿੰਘ ਫੂਲੇਵਾਲਾ ੨੦੦੪\n"
@@ -1319,11 +1319,11 @@ msgid "Unsaved Document %d"
 msgstr "ਨਾ ਸਾਂਭਿਆ ਡੌਕੂਮੈਂਟ %d"
 
 #: lapiz/lapiz-documents-panel.c:93 lapiz/lapiz-documents-panel.c:107
-#: lapiz/lapiz-window.c:2256 lapiz/lapiz-window.c:2261
+#: lapiz/lapiz-window.c:2257 lapiz/lapiz-window.c:2262
 msgid "Read-Only"
 msgstr "ਪੜ੍ਹਨ ਲਈ"
 
-#: lapiz/lapiz-documents-panel.c:703 lapiz/lapiz-window.c:3677
+#: lapiz/lapiz-documents-panel.c:704 lapiz/lapiz-window.c:3685
 msgid "Documents"
 msgstr "ਡੌਕੂਮੈਂਟ"
 
@@ -1443,16 +1443,16 @@ msgstr "ਥਾਈ"
 msgid "Unknown"
 msgstr "ਅਣਜਾਣ"
 
-#: lapiz/lapiz-encodings-combo-box.c:266
+#: lapiz/lapiz-encodings-combo-box.c:268
 msgid "Automatically Detected"
 msgstr "ਆਟੋਮੈਟਿਕ ਖੋਜੀ"
 
-#: lapiz/lapiz-encodings-combo-box.c:282 lapiz/lapiz-encodings-combo-box.c:297
+#: lapiz/lapiz-encodings-combo-box.c:284 lapiz/lapiz-encodings-combo-box.c:299
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "ਮੌਜੂਦਾ ਲੋਕੇਲ (%s)"
 
-#: lapiz/lapiz-encodings-combo-box.c:347
+#: lapiz/lapiz-encodings-combo-box.c:349
 msgid "Add or Remove..."
 msgstr "ਸ਼ਾਮਲ ਜਾਂ ਹਟਾਓ..."
 
@@ -1481,7 +1481,7 @@ msgid "Windows"
 msgstr "ਝਰੋਖੇ"
 
 #: lapiz/lapiz-file-chooser-dialog.c:437
-#: plugins/filebrowser/lapiz-file-browser-widget.c:808
+#: plugins/filebrowser/lapiz-file-browser-widget.c:810
 #: plugins/quickopen/quickopen/popup.py:37
 #: plugins/snippets/snippets/Manager.py:796
 msgid "_Open"
@@ -1491,137 +1491,137 @@ msgstr "ਖੋਲ੍ਹੋ(_O)"
 msgid "There was an error displaying the help."
 msgstr "ਮੱਦਦ ਵੇਖਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:183
+#: lapiz/lapiz-io-error-message-area.c:184
 #: lapiz/lapiz-io-error-message-area.c:485
 msgid "_Retry"
 msgstr "ਮੁੜ-ਕੋਸ਼ਿਸ਼(_R)"
 
-#: lapiz/lapiz-io-error-message-area.c:204
+#: lapiz/lapiz-io-error-message-area.c:205
 #, c-format
 msgid "Could not find the file %s."
 msgstr "ਫਾਇਲ %s ਲੱਭੀ ਨਹੀਂ ਜਾ ਸਕੀ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:206
-#: lapiz/lapiz-io-error-message-area.c:245
-#: lapiz/lapiz-io-error-message-area.c:252
+#: lapiz/lapiz-io-error-message-area.c:207
+#: lapiz/lapiz-io-error-message-area.c:247
+#: lapiz/lapiz-io-error-message-area.c:254
 msgid "Please check that you typed the location correctly and try again."
 msgstr "ਜੋ ਟਿਕਾਣਾ ਤੁਸੀਂ ਦਿੱਤਾ ਹੈ, ਉਸ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:221
+#: lapiz/lapiz-io-error-message-area.c:223
 #, c-format
 msgid "lapiz cannot handle %s locations."
 msgstr "ਜੀ-ਸੰਪਾਦਕ %s ਟਿਕਾਣੇ ਨੂੰ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:227
+#: lapiz/lapiz-io-error-message-area.c:229
 msgid "lapiz cannot handle this location."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਟਿਕਾਣੇ ਨੂੰ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:235
+#: lapiz/lapiz-io-error-message-area.c:237
 msgid "The location of the file cannot be mounted."
 msgstr "ਫਾਇਲ ਦਾ ਟਿਕਾਣਾ ਮਾਊਂਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:239
+#: lapiz/lapiz-io-error-message-area.c:241
 msgid "The location of the file cannot be accessed because it is not mounted."
 msgstr "ਫਾਇਲ ਦਾ ਟਿਕਾਣਾ ਵਰਤਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ, ਕਿਉਂਕਿ ਮਾਊਂਟ ਨਹੀਂ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:243
+#: lapiz/lapiz-io-error-message-area.c:245
 #, c-format
 msgid "%s is a directory."
 msgstr "%s ਇੱਕ ਡਾਇਰੈਕਟਰੀ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:250
+#: lapiz/lapiz-io-error-message-area.c:252
 #, c-format
 msgid "%s is not a valid location."
 msgstr "%s ਠੀਕ ਟਿਕਾਣਾ ਨਹੀਂ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:280
+#: lapiz/lapiz-io-error-message-area.c:282
 #, c-format
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr "ਹੋਸਟ %s ਨਹੀਂ ਖੋਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਆਪਣੇ ਪਰਾਕਸੀ ਸੈਟਿੰਗ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:293
+#: lapiz/lapiz-io-error-message-area.c:295
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
 msgstr "ਹੋਸਟ ਨਾਂ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:301
+#: lapiz/lapiz-io-error-message-area.c:303
 #, c-format
 msgid "%s is not a regular file."
 msgstr "%s ਇੱਕ ਰੈਗੂਲਰ ਫਾਇਲ ਨਹੀਂ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:306
+#: lapiz/lapiz-io-error-message-area.c:308
 msgid "Connection timed out. Please try again."
 msgstr "ਕੁਨੈਕਸ਼ਨ ਸਮਾਂ ਸਮਾਪਤ ਹੋਇਆ। ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:329
+#: lapiz/lapiz-io-error-message-area.c:331
 msgid "The file is too big."
 msgstr "ਫਾਇਲ ਬਹੁਤ ਵੱਡੀ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:370
+#: lapiz/lapiz-io-error-message-area.c:372
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "ਅਣਜਾਣੀ ਗਲਤੀ: %s"
 
-#: lapiz/lapiz-io-error-message-area.c:406
+#: lapiz/lapiz-io-error-message-area.c:408
 msgid "lapiz cannot find the file. Perhaps it has recently been deleted."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਫਾਇਲ ਲੱਭ ਨਹੀਂ ਸਕਿਆ ਹੈ। ਸ਼ਾਇਦ, ਹੁਣੇ ਹੀ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:416
+#: lapiz/lapiz-io-error-message-area.c:418
 #, c-format
 msgid "Could not revert the file %s."
 msgstr "ਫਾਇਲ %s ਪਰਤਾਈ ਨਹੀਂ ਜਾ ਸਕੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:442
+#: lapiz/lapiz-io-error-message-area.c:444
 msgid "Ch_aracter Encoding:"
 msgstr "ਕਰੈਕਟਰ ਇੰਕੋਡਿੰਗ(_a):"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:494
-#: lapiz/lapiz-io-error-message-area.c:771
+#: lapiz/lapiz-io-error-message-area.c:774
 msgid "Edit Any_way"
 msgstr "ਕਿਵੇਂ ਵੀ ਸੋਧ(_w)"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: lapiz/lapiz-io-error-message-area.c:499
-#: lapiz/lapiz-io-error-message-area.c:776
+#: lapiz/lapiz-io-error-message-area.c:779
 msgid "D_on't Edit"
 msgstr "ਨਾ ਸੋਧੋ(_o)"
 
-#: lapiz/lapiz-io-error-message-area.c:597
+#: lapiz/lapiz-io-error-message-area.c:600
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr "ਵੇਖਣ ਲਈ ਲਿੰਕ ਸੀਮਿਤ ਹਨ ਅਤੇ ਅਸਲੀ ਫਾਇਲ ਨੂੰ ਇਸ ਲਿਮਟ 'ਚੋਂ ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
-#: lapiz/lapiz-io-error-message-area.c:601
+#: lapiz/lapiz-io-error-message-area.c:604
 msgid "You do not have the permissions necessary to open the file."
 msgstr "ਤੁਸੀਂ ਫਾਇਲ ਖੋਲ੍ਹਣ ਲਈ ਲੋੜੀਦੇ ਅਧਿਕਾਰ ਨਹੀਂ ਹਨ।"
 
-#: lapiz/lapiz-io-error-message-area.c:607
+#: lapiz/lapiz-io-error-message-area.c:610
 msgid "lapiz has not been able to detect the character encoding."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਲੱਭ ਨਹੀਂ ਸਕਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:609
-#: lapiz/lapiz-io-error-message-area.c:631
+#: lapiz/lapiz-io-error-message-area.c:612
+#: lapiz/lapiz-io-error-message-area.c:634
 msgid "Please check that you are not trying to open a binary file."
 msgstr "ਚੈੱਕ ਕਰੋ ਕਿ ਕਿਤੇ ਤੁਸੀਂ ਇੱਕ ਬਾਈਨਰੀ ਫਾਇਲ ਤਾਂ ਖੋਲ੍ਹਣ ਦੀ ਕੋਸ਼ਸ਼ ਨਹੀਂ ਕਰ ਰਹੇ ਹੋ।"
 
-#: lapiz/lapiz-io-error-message-area.c:610
+#: lapiz/lapiz-io-error-message-area.c:613
 msgid "Select a character encoding from the menu and try again."
 msgstr "ਮੇਨੂ ਤੋਂ ਵੱਖਰੀ ਇੰਕੋਡਿੰਗ ਦੀ ਚੋਣ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਸ਼ ਕਰੋ।"
 
-#: lapiz/lapiz-io-error-message-area.c:616
+#: lapiz/lapiz-io-error-message-area.c:619
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "ਫਾਇਲ %s ਖੋਲ੍ਹਣ ਦੌਰਾਨ ਸਮੱਸਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:618
+#: lapiz/lapiz-io-error-message-area.c:621
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
@@ -1629,43 +1629,43 @@ msgstr ""
 "ਫਾਇਲ, ਜੋ ਤੁਸੀਂ ਖੋਲ੍ਹੀ ਹੈ, ਵਿੱਚ ਅਢੁੱਕਵੇਂ ਅੱਖਰ ਹਨ। ਜੇ ਤੁਸੀਂ ਇਸ ਫਾਇਲ ਨੂੰ ਸੋਧਣਾ ਜਾਰੀ ਰੱਖਿਆ ਤਾਂ ਇਹ "
 "ਡੌਕੂਮੈਂਟ ਬੇਕਾਰ ਹੋ ਜਾਵੇਗਾ।"
 
-#: lapiz/lapiz-io-error-message-area.c:621
+#: lapiz/lapiz-io-error-message-area.c:624
 msgid "You can also choose another character encoding and try again."
 msgstr "ਤੁਸੀਂ ਮੇਨੂ ਤੋਂ ਵੱਖਰੀ ਇੰਕੋਡਿੰਗ ਦੀ ਚੋਣ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਸ਼ ਕਰ ਸਕਦੇ ਹੋ।"
 
-#: lapiz/lapiz-io-error-message-area.c:628
+#: lapiz/lapiz-io-error-message-area.c:631
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr "ਫਾਇਲ %s ਨੂੰ %s ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਖੋਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:632
-#: lapiz/lapiz-io-error-message-area.c:707
+#: lapiz/lapiz-io-error-message-area.c:635
+#: lapiz/lapiz-io-error-message-area.c:710
 msgid "Select a different character encoding from the menu and try again."
 msgstr "ਮੇਨੂ ਤੋਂ ਵੱਖਰੀ ਇੰਕੋਡਿੰਗ ਦੀ ਚੋਣ ਕਰੋ ਅਤੇ ਮੁੜ-ਕੋਸ਼ਸ਼ ਕਰੋ।"
 
-#: lapiz/lapiz-io-error-message-area.c:642
+#: lapiz/lapiz-io-error-message-area.c:645
 #, c-format
 msgid "Could not open the file %s."
 msgstr "ਫਾਇਲ %s ਨੂੰ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:702
+#: lapiz/lapiz-io-error-message-area.c:705
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "ਫਾਇਲ %s ਨੂੰ ਅੱਖਰ ਇੰਕੋਡਿੰਗ %s ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:705
+#: lapiz/lapiz-io-error-message-area.c:708
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr ""
 "ਡੌਕੂਮੈਂਟ਼ ਵਿੱਚ ਇੱਕ ਜਾਂ ਵੱਧ ਅੱਖਰ ਅਜਿਹੇ ਹਨ, ਜਿੰਨ੍ਹਾਂ ਨੂੰ ਦਿੱਤੀ ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਨਾਲ ਸੋਧਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:791
+#: lapiz/lapiz-io-error-message-area.c:794
 #, c-format
 msgid "This file (%s) is already open in another lapiz window."
 msgstr "ਇਹ ਫਾਇਲ (%s) ਹੋਰ ਜੀ-ਸੰਪਾਦਕ ਵਿੰਡੋ ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ ਖੁੱਲ੍ਹੀ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:805
+#: lapiz/lapiz-io-error-message-area.c:808
 msgid ""
 "lapiz opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1673,37 +1673,37 @@ msgstr ""
 "ਜੀ-ਸੰਪਾਦਕ ਨੇ ਫਾਇਲ ਦੇ ਇਸ ਮੌਕੇ ਦੇ ਵਰਜਨ ਨੂੰ ਨਾ-ਸੋਧਣਯੋਗ ਢੰਗ ਨਾਲ ਖੋਲ੍ਹਿਆ ਹੈ। ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਕਿਸੇ ਵੀ "
 "ਢੰਗ ਨਾਲ ਸੋਧਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: lapiz/lapiz-io-error-message-area.c:864
-#: lapiz/lapiz-io-error-message-area.c:960
+#: lapiz/lapiz-io-error-message-area.c:867
+#: lapiz/lapiz-io-error-message-area.c:963
 msgid "S_ave Anyway"
 msgstr "ਕਿਵੇਂ ਵੀ ਸੰਭਾਲੋ(_a)"
 
-#: lapiz/lapiz-io-error-message-area.c:868
-#: lapiz/lapiz-io-error-message-area.c:964
+#: lapiz/lapiz-io-error-message-area.c:871
+#: lapiz/lapiz-io-error-message-area.c:967
 msgid "D_on't Save"
 msgstr "ਨਾ ਸੰਭਾਲੋ(_o)"
 
-#: lapiz/lapiz-io-error-message-area.c:886
+#: lapiz/lapiz-io-error-message-area.c:889
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "ਫਾਇਲ %s ਨੂੰ ਪੜ੍ਹਨ ਦੌਰਾਨ ਸੋਧਿਆ ਗਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:901
+#: lapiz/lapiz-io-error-message-area.c:904
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਨੂੰ ਸੰਭਾਲਿਆ ਤਾਂ, ਬਾਹਰੀ ਤਬਦੀਲੀਆਂ ਗੁੰਮ ਹੋ ਜਾਣਗੀਆਂ। ਕੀ ਕਿਸੇ ਵੀ ਤਰ੍ਹਾਂ ਸੰਭਾਲਣਾ ਹੈ?"
 
-#: lapiz/lapiz-io-error-message-area.c:982
+#: lapiz/lapiz-io-error-message-area.c:985
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "%s ਨੂੰ ਸੰਭਾਲਣ ਦੌਰਾਨ ਬੈਕਅੱਪ ਫਾਇਲ ਨਹੀਂ ਬਣਾਈ ਜਾ ਸਕੀ ਹੈ"
 
-#: lapiz/lapiz-io-error-message-area.c:985
+#: lapiz/lapiz-io-error-message-area.c:988
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "%s ਨੂੰ ਸੰਭਾਲਣ ਦੌਰਾਨ ਇੱਕ ਆਰਜ਼ੀ ਬੈਕਅੱਪ ਫਾਇਲ ਨਹੀਂ ਬਣਾਈ ਜਾ ਸਕੀ ਹੈ"
 
-#: lapiz/lapiz-io-error-message-area.c:1001
+#: lapiz/lapiz-io-error-message-area.c:1004
 msgid ""
 "lapiz could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1715,7 +1715,7 @@ msgstr ""
 "ਸੰਭਾਲਣਾ ਹੈ?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: lapiz/lapiz-io-error-message-area.c:1061
+#: lapiz/lapiz-io-error-message-area.c:1066
 #, c-format
 msgid ""
 "lapiz cannot handle %s locations in write mode. Please check that you typed "
@@ -1724,7 +1724,7 @@ msgstr ""
 "ਜੀ-ਸੰਪਾਦਕ %s ਟਿਕਾਣੇ ਨੂੰ ਲਿਖਣ ਢੰਗ ਵਿੱਚ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ "
 "ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1069
+#: lapiz/lapiz-io-error-message-area.c:1074
 msgid ""
 "lapiz cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1732,14 +1732,14 @@ msgstr ""
 "ਜੀ-ਸੰਪਾਦਕ ਇਹ ਟਿਕਾਣੇ ਨੂੰ ਲਿਖਣ ਢੰਗ ਵਿੱਚ ਵਰਤ ਨਹੀਂ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ "
 "ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1078
+#: lapiz/lapiz-io-error-message-area.c:1083
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr "%s ਟਿਕਾਣਾ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1084
+#: lapiz/lapiz-io-error-message-area.c:1089
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1747,14 +1747,14 @@ msgstr ""
 "ਤੁਹਾਨੂੰ ਫਾਇਲ ਸੰਭਾਲਣ ਲਈ ਲੋੜੀਦੇ ਅਧਿਕਾਰ ਨਹੀਂ ਹਨ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ "
 "ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1090
+#: lapiz/lapiz-io-error-message-area.c:1095
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
 msgstr ""
 "ਫਾਇਲ ਸੰਭਾਲਣ ਲਈ ਲੋੜੀਦੀ ਡਿਸਕ ਥਾਂ ਮੌਜੂਦ ਨਹੀਂ ਹੈ। ਕੁਝ ਡਿਸਕ ਥਾਂ ਖਾਲੀ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1095
+#: lapiz/lapiz-io-error-message-area.c:1100
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1762,11 +1762,11 @@ msgstr ""
 "ਤੁਸੀਂ ਫਾਇਲ ਨੂੰ ਸਿਰਫ਼ ਪੜ੍ਹਨ-ਯੋਗ ਡਿਸਕ ਉੱਤੇ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਸ਼ ਕਰ ਰਹੇ ਹੋ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ "
 "ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1101
+#: lapiz/lapiz-io-error-message-area.c:1106
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "ਇਸ ਨਾਂ ਨਾਲ ਇੱਕ ਫਾਇਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਇੱਕ ਵੱਖਰਾ ਨਾਂ ਵਰਤੋਂ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1106
+#: lapiz/lapiz-io-error-message-area.c:1111
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1774,7 +1774,7 @@ msgstr ""
 "ਜਿਸ ਡਿਸਕ ਉੱਤੇ ਤੁਸੀਂ ਫਾਇਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰ ਰਿਹੇ ਹੋ, ਉਸ ਉੱਪਰ ਫਾਇਲ ਨਾਂ ਲਈ ਸੀਮਿਤ ਸੀਮਾ ਹੈ। "
 "ਛੋਟਾ ਨਾਂ ਵਰਤੋਂ ਜੀ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1113
+#: lapiz/lapiz-io-error-message-area.c:1118
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1783,25 +1783,25 @@ msgstr ""
 "ਜਿਸ ਡਿਸਕ ਤੇ ਤੁਸੀਂ ਫਾਇਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰ ਰਿਹੇ ਹੋ, ਉਸ ਉੱਤੇ ਫਾਇਲ ਅਕਾਰ ਦੀ ਹੱਦਬੰਦੀ ਹੈ। ਇਕ "
 "ਛੋਟੀ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰੋ ਜਾਂ ਹੋਰ ਡਿਸਕ ਵਰਤੋ, ਜਿਸ ਤੇ ਇਹ ਪਾਬੰਦੀ ਨਾ ਹੋਵੇ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1129
+#: lapiz/lapiz-io-error-message-area.c:1134
 #, c-format
 msgid "Could not save the file %s."
 msgstr "ਫਾਇਲ %s ਨੂੰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1173
+#: lapiz/lapiz-io-error-message-area.c:1178
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "ਫਾਇਲ %s ਡਿਸਕ ਉੱਤੇ ਬਦਲੀ ਗਈ ਹੈ।"
 
-#: lapiz/lapiz-io-error-message-area.c:1178
+#: lapiz/lapiz-io-error-message-area.c:1183
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "ਕੀ ਤੁਸੀਂ ਆਪਣੀ ਤਬਦੀਲੀਆਂ ਨੂੰ ਛੱਡ ਕੇ ਫਾਇਲ ਮੁੜ-ਲੋਡ ਕਰਨੀ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: lapiz/lapiz-io-error-message-area.c:1180
+#: lapiz/lapiz-io-error-message-area.c:1185
 msgid "Do you want to reload the file?"
 msgstr "ਕੀ ਤੁਸੀਂ ਫਾਇਲ ਨੂੰ ਮੁੜ-ਲੋਡ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: lapiz/lapiz-io-error-message-area.c:1185
+#: lapiz/lapiz-io-error-message-area.c:1190
 msgid "_Reload"
 msgstr "ਮੁੜ-ਲੋਡ(_R)"
 
@@ -1880,69 +1880,69 @@ msgstr "ਲਾਈਨ ਨੰਬਰ(_L):"
 msgid "_Restore Default Fonts"
 msgstr "ਡਿਫਾਲਟ ਫੋਂਟ ਮੁੜ-ਸਟੋਰ(_R)"
 
-#: lapiz/lapiz-print-preview.c:569
+#: lapiz/lapiz-print-preview.c:573
 msgid "Show the previous page"
 msgstr "ਪਿਛਲਾ ਸਫ਼ਾ ਵੇਖੋ"
 
-#: lapiz/lapiz-print-preview.c:582
+#: lapiz/lapiz-print-preview.c:586
 msgid "Show the next page"
 msgstr "ਅਗਲਾ ਸਫ਼ਾ ਵੇਖੋ"
 
-#: lapiz/lapiz-print-preview.c:598
+#: lapiz/lapiz-print-preview.c:602
 msgid "Current page (Alt+P)"
 msgstr "ਮੌਜਦਾ ਸਫ਼ਾ (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: lapiz/lapiz-print-preview.c:621
+#: lapiz/lapiz-print-preview.c:625
 msgid "of"
 msgstr "ਵਿੱਚੋਂ"
 
-#: lapiz/lapiz-print-preview.c:629
+#: lapiz/lapiz-print-preview.c:633
 msgid "Page total"
 msgstr "ਸਫ਼ੇ ਕੁੱਲ"
 
-#: lapiz/lapiz-print-preview.c:630
+#: lapiz/lapiz-print-preview.c:634
 msgid "The total number of pages in the document"
 msgstr "ਡੌਕੂਮੈਂਟ਼ ਵਿੱਚ ਸਫ਼ਿਆਂ ਦੀ ਕੁੱਲ ਗਿਣਤੀ"
 
-#: lapiz/lapiz-print-preview.c:648
+#: lapiz/lapiz-print-preview.c:652
 msgid "Show multiple pages"
 msgstr "ਬਹੁ-ਸਫ਼ੇ ਵੇਖੋ"
 
-#: lapiz/lapiz-print-preview.c:662
+#: lapiz/lapiz-print-preview.c:666
 msgid "Zoom 1:1"
 msgstr "ਜ਼ੂਮ ੧:੧"
 
-#: lapiz/lapiz-print-preview.c:672
+#: lapiz/lapiz-print-preview.c:676
 msgid "Zoom to fit the whole page"
 msgstr "ਪੂਰਾ ਸਫ਼ਾ ਫਿੱਟ ਕਰੋ"
 
-#: lapiz/lapiz-print-preview.c:682
+#: lapiz/lapiz-print-preview.c:686
 msgid "Zoom the page in"
 msgstr "ਸਫ਼ਾ ਜ਼ੂਮ ਅੰਦਰ"
 
-#: lapiz/lapiz-print-preview.c:692
+#: lapiz/lapiz-print-preview.c:696
 msgid "Zoom the page out"
 msgstr "ਸਫ਼ਾ ਜ਼ੂਮ ਬਾਹਰ"
 
-#: lapiz/lapiz-print-preview.c:704
+#: lapiz/lapiz-print-preview.c:708
 msgid "_Close Preview"
 msgstr "ਝਲਕ ਬੰਦ ਕਰੋ(_C)"
 
-#: lapiz/lapiz-print-preview.c:707
+#: lapiz/lapiz-print-preview.c:711
 msgid "Close print preview"
 msgstr "ਪਰਿੰਟ ਝਲਕ ਬੰਦ ਕਰੋ"
 
-#: lapiz/lapiz-print-preview.c:782
+#: lapiz/lapiz-print-preview.c:786
 #, c-format
 msgid "Page %d of %d"
 msgstr "%2$d ਵਿੱਚੋਂ %1$d ਸਫ਼ਾ"
 
-#: lapiz/lapiz-print-preview.c:963
+#: lapiz/lapiz-print-preview.c:967
 msgid "Page Preview"
 msgstr "ਸਫ਼ਾ ਝਲਕ"
 
-#: lapiz/lapiz-print-preview.c:964
+#: lapiz/lapiz-print-preview.c:968
 msgid "The preview of a page in the document to be printed"
 msgstr "ਡੌਕੂਮੈਂਟ਼ ਵਿੱਚ ਇੱਕ ਸਫ਼ੇ ਦੀ ਝਲਕ ਪਰਿੰਟ ਕੀਤੀ ਜਾਂਦੀ ਹੈ"
 
@@ -2048,7 +2048,7 @@ msgstr "MIME ਕਿਸਮ:"
 msgid "Encoding:"
 msgstr "ਇੰਕੋਡਿੰਗ:"
 
-#: lapiz/lapiz-tab-label.c:274
+#: lapiz/lapiz-tab-label.c:278
 msgid "Close document"
 msgstr "ਡੌਕੂਮੈਂਟ ਬੰਦ ਕਰੋ"
 
@@ -2088,7 +2088,7 @@ msgstr "ਨਵਾਂ ਡੌਕੂਮੈਂਟ ਬਣਾਓ"
 msgid "_Open..."
 msgstr "ਖੋਲ੍ਹੋ(_O)..."
 
-#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1453
+#: lapiz/lapiz-ui.h:59 lapiz/lapiz-window.c:1454
 msgid "Open a file"
 msgstr "ਇੱਕ ਫਾਇਲ ਖੋਲ੍ਹੋ"
 
@@ -2197,7 +2197,7 @@ msgid "Paste the clipboard"
 msgstr "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚੋਂ ਚੇਪੋ"
 
 #: lapiz/lapiz-ui.h:102 plugins/filebrowser/lapiz-file-browser-utils.c:182
-#: plugins/filebrowser/lapiz-file-browser-widget.c:801
+#: plugins/filebrowser/lapiz-file-browser-widget.c:803
 msgid "_Delete"
 msgstr "ਹਟਾਓ(_D)"
 
@@ -2365,22 +2365,22 @@ msgstr "ਹੇਠਲੀ ਪੱਟੀ(_B)"
 msgid "Show or hide the bottom pane in the current window"
 msgstr "ਮੌਜੂਦਾ ਵਿੰਡੋ ਵਿੱਚ ਹੇਠਲੀ ਪੱਟੀ ਵੇਖੋ ਜਾਂ ਓਹਲੇ"
 
-#: lapiz/lapiz-utils.c:1074
+#: lapiz/lapiz-utils.c:1076
 msgid "Please check your installation."
 msgstr "ਆਪਣੀ ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ ਜੀ।"
 
-#: lapiz/lapiz-utils.c:1147
+#: lapiz/lapiz-utils.c:1149
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "%s UI ਫਾਇਲ ਖੋਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ: ਗਲਤੀ: %s"
 
-#: lapiz/lapiz-utils.c:1167
+#: lapiz/lapiz-utils.c:1169
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "ਫਾਇਲ %2$s ਵਿੱਚ  '%1$s' ਆਬਜੈਕਟ ਲੱਭਣ ਲਈ ਅਸਮਰੱਥ ਹੈ।"
 
 #. Translators: '/ on <remote-share>'
-#: lapiz/lapiz-utils.c:1327
+#: lapiz/lapiz-utils.c:1329
 #, c-format
 msgid "/ on %s"
 msgstr "%s ਉੱਤੇ /"
@@ -2418,7 +2418,7 @@ msgstr "ਹਾਈਲਾਈਟ ਢੰਗ %s ਵਰਤੋਂ"
 
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1957
+#: lapiz/lapiz-window.c:1069 lapiz/lapiz-window.c:1958
 #: plugins/externaltools/tools/manager.py:108
 #: plugins/externaltools/tools/manager.py:308
 #: plugins/externaltools/tools/manager.py:424
@@ -2436,41 +2436,41 @@ msgstr "ਸੰਟੈਕਸ ਹਾਈਲਾਈਟ ਬੰਦ"
 msgid "Open '%s'"
 msgstr "'%s' ਖੋਲ੍ਹੋ"
 
-#: lapiz/lapiz-window.c:1459
+#: lapiz/lapiz-window.c:1460
 msgid "Open a recently used file"
 msgstr "ਇੱਕ ਹੁਣੇ ਵਰਤੀ ਫਾਇਲ ਖੋਲ੍ਹੋ"
 
-#: lapiz/lapiz-window.c:1465
+#: lapiz/lapiz-window.c:1466
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: lapiz/lapiz-window.c:1523
+#: lapiz/lapiz-window.c:1524
 msgid "Save"
 msgstr "ਸੰਭਾਲੋ"
 
-#: lapiz/lapiz-window.c:1525
+#: lapiz/lapiz-window.c:1526
 msgid "Print"
 msgstr "ਪਰਿੰਟ ਕਰੋ"
 
 #. Translators: %s is a URI
-#: lapiz/lapiz-window.c:1682
+#: lapiz/lapiz-window.c:1683
 #, c-format
 msgid "Activate '%s'"
 msgstr "'%s' ਸਰਗਰਮ"
 
-#: lapiz/lapiz-window.c:1935
+#: lapiz/lapiz-window.c:1936
 msgid "Use Spaces"
 msgstr "ਸਪੇਸ ਵਰਤੋਂ"
 
-#: lapiz/lapiz-window.c:2006
+#: lapiz/lapiz-window.c:2007
 msgid "Tab Width"
 msgstr "ਟੈਬ ਚੌੜਾਈ"
 
-#: plugins/changecase/changecase.plugin.desktop.in:5
+#: plugins/changecase/changecase.plugin.desktop.in:4
 msgid "Change Case"
 msgstr "ਅਕਾਰ ਬਦਲੋ"
 
-#: plugins/changecase/changecase.plugin.desktop.in:6
+#: plugins/changecase/changecase.plugin.desktop.in:5
 msgid "Changes the case of selected text."
 msgstr "ਚੁਣੇ ਟੈਕਸਟ ਦੇ ਅੱਖਰਾਂ ਦਾ ਅਕਾਰ ਬਦਲੋ।"
 
@@ -2510,11 +2510,11 @@ msgstr "ਟਾਇਟਲ ਅਕਾਰ(_T)"
 msgid "Capitalize the first letter of each selected word"
 msgstr "ਹਰ ਚੁਣੇ ਸ਼ਬਦ ਦਾ ਪਹਿਲਾਂ ਅੱਖਰ ਦਾ ਅਕਾਰ ਵੱਡਾ ਕਰੋ"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:5 plugins/docinfo/docinfo.ui:19
+#: plugins/docinfo/docinfo.plugin.desktop.in:4 plugins/docinfo/docinfo.ui:19
 msgid "Document Statistics"
 msgstr "ਡੌਕੂਮੈਂਟੀ ਅੰਕੜੇ"
 
-#: plugins/docinfo/docinfo.plugin.desktop.in:6
+#: plugins/docinfo/docinfo.plugin.desktop.in:5
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
@@ -2566,11 +2566,11 @@ msgstr "ਡੌਕੂਮੈਂਟੀ ਅੰਕੜੇ(_D)"
 msgid "Get statistical information on the current document"
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ ਦੇ ਡੌਕੂਮੈਂਟੀ ਅੰਕੜਿਆਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਲਵੋ"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:6
+#: plugins/externaltools/externaltools.plugin.desktop.in:5
 msgid "External Tools"
 msgstr "ਬਾਹਰੀ ਟੂਲ"
 
-#: plugins/externaltools/externaltools.plugin.desktop.in:7
+#: plugins/externaltools/externaltools.plugin.desktop.in:6
 msgid "Execute external commands and shell scripts."
 msgstr "ਬਾਹਰੀ ਕਮਾਂਡਾਂ ਅਤੇ ਸ਼ੈੱਲ ਸਕਰਿਪਟਾਂ ਚਲਾਓ।"
 
@@ -2752,51 +2752,51 @@ msgstr "ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ(_S):"
 msgid "_Edit:"
 msgstr "ਸੋਧ(_E):"
 
-#: plugins/externaltools/data/build.desktop.in:3
+#: plugins/externaltools/data/build.desktop.in:2
 msgid "Build"
 msgstr "Build"
 
-#: plugins/externaltools/data/build.desktop.in:4
+#: plugins/externaltools/data/build.desktop.in:3
 msgid "Run \"make\" in the document directory"
 msgstr "ਡੌਕੂਮੈਂਟ਼ ਡਾਇਰੈਕਟਰੀ 'ਚ \"make\" ਚਲਾਓ"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:3
+#: plugins/externaltools/data/open-terminal-here.desktop.in:2
 msgid "Open terminal here"
 msgstr "ਇੱਥੇ ਟਰਮੀਨਲ ਖੋਲ੍ਹੋ"
 
-#: plugins/externaltools/data/open-terminal-here.desktop.in:4
+#: plugins/externaltools/data/open-terminal-here.desktop.in:3
 msgid "Open a terminal in the document location"
 msgstr "ਡੌਕੂਮੈਂਟ ਟਿਕਾਣੇ 'ਚ ਇੱਕ ਟਰਮੀਨਲ ਖੋਲ੍ਹੋ"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:2
 msgid "Remove trailing spaces"
 msgstr "ਆਖਰੀ ਖਾਲੀ ਥਾਵਾਂ ਹਟਾਓ"
 
-#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:4
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
 msgid "Remove useless trailing spaces in your file"
 msgstr "ਆਪਣੀ ਫਾਇਲ ਵਿੱਚ ਬੇਲੋੜੀਆਂ ਆਖਰੀ ਖਾਲੀ ਥਾਵਾਂ ਹਟਾਓ"
 
-#: plugins/externaltools/data/run-command.desktop.in:3
+#: plugins/externaltools/data/run-command.desktop.in:2
 msgid "Run command"
 msgstr "ਕਮਾਂਡ ਚਲਾਓ"
 
-#: plugins/externaltools/data/run-command.desktop.in:4
+#: plugins/externaltools/data/run-command.desktop.in:3
 msgid "Execute a custom command and put its output in a new document"
 msgstr "ਇੱਕ ਪਸੰਦੀਦਾ ਕਮਾਂਡ ਚਲਾਓ ਅਤੇ ਇਸ ਦੀ ਆਉਟਪੁੱਟ ਨਵੇਂ ਡੌਕੂਮੈਂਟ 'ਚ ਰੱਖੋ"
 
-#: plugins/externaltools/data/search-recursive.desktop.in:3
+#: plugins/externaltools/data/search-recursive.desktop.in:2
 msgid "Search"
 msgstr "ਖੋਜ"
 
-#: plugins/externaltools/data/switch-c.desktop.in:3
+#: plugins/externaltools/data/switch-c.desktop.in:2
 msgid "Switch onto a file .c and .h"
 msgstr ""
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:5
 msgid "File Browser Pane"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਬਾਹੀ"
 
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:7
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
 msgid "Easy file access from the side pane"
 msgstr "ਬਾਹੀ ਤੋਂ ਫਾਇਲ ਦੀ ਸੌਖੀ ਵਰਤੋਂ"
 
@@ -2909,39 +2909,39 @@ msgstr "ਮੌਜੂਦਾ ਖੁੱਲ੍ਹੀ ਡਾਇਰੈਕਟਰੀ ਉ
 msgid "File Browser"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:870
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
 msgid "An error occurred while creating a new directory"
 msgstr "ਇੱਕ ਨਵੀਂ ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:873
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:876
 msgid "An error occurred while creating a new file"
 msgstr "ਇੱਕ ਨਵੀਂ ਫਾਇਲ ਬਣਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:878
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:881
 msgid "An error occurred while renaming a file or directory"
 msgstr "ਇੱਕ ਫਾਇਲ ਜਾਂ ਡਾਇਰੈਕਟਰੀ ਦਾ ਨਾਂ-ਬਦਲਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:883
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:886
 msgid "An error occurred while deleting a file or directory"
 msgstr "ਇੱਕ ਫਾਇਲ ਜਾਂ ਡਾਇਰੈਕਟਰੀ ਹਟਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:888
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:891
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "ਫਾਇਲ ਮੈਨੇਜਰ ਵਿੱਚ ਇੱਕ ਡਾਇਰੈਕਟਰੀ ਖੋਲ੍ਹਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:892
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:895
 msgid "An error occurred while setting a root directory"
 msgstr "ਇੱਕ ਮੁੱਢਲੀ ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:896
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
 msgid "An error occurred while loading a directory"
 msgstr "ਇੱਕ ਡਾਇਰੈਕਟਰੀ ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:899
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:902
 msgid "An error occurred"
 msgstr "ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1126
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1129
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2949,25 +2949,25 @@ msgstr ""
 "ਫਾਇਲ ਨੂੰ ਰੱਦੀ 'ਚ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ, ਕੀ\n"
 "ਤੁਸੀਂ ਹਮੇਸ਼ਾਂ ਲਈ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1130
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "ਫਾਇਲ \"%s\" ਨੂੰ ਰੱਦੀ ਵਿੱਚ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1133
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1136
 msgid "The selected files cannot be moved to the trash."
 msgstr "ਚੁਣੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਰੱਦੀ 'ਚ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1161
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "ਕੀ ਤੁਸੀਂ \"%s\" ਨੂੰ ਪੱਕੇ ਤੌਰ ਉੱਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1164
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "ਕੀ ਤੁਸੀਂ ਚੁਣੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਪੱਕੇ ਤੌਰ ਉੱਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: plugins/filebrowser/lapiz-file-browser-plugin.c:1167
+#: plugins/filebrowser/lapiz-file-browser-plugin.c:1170
 msgid "If you delete an item, it is permanently lost."
 msgstr "ਜੇ ਤੁਸੀਂ ਇੱਕ ਆਈਟਮ ਹਟਾਈ ਤਾਂ ਇਹ ਪੱਕੇ ਤੌਰ ਉੱਤੇ ਖਤਮ ਹੋ ਜਾਵੇਗੀ।"
 
@@ -3007,168 +3007,168 @@ msgstr ""
 "ਨਵੀਂ ਡਾਇਰੈਕਟਰੀ ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਕੀਤੀ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਡਾਇਰੈਕਟਰੀ ਵੇਖਣ ਲਈ ਫਿਲਟਰ ਸੈਟਿੰਗ ਠੀਕ ਕਰਨ "
 "ਦੀ ਲੋੜ ਹੈ।"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:712
+#: plugins/filebrowser/lapiz-file-browser-widget.c:714
 msgid "Bookmarks"
 msgstr "ਬੁੱਕਮਾਰਕ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:793
+#: plugins/filebrowser/lapiz-file-browser-widget.c:795
 msgid "_Filter"
 msgstr "ਫਿਲਟਰ(_F)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:798
+#: plugins/filebrowser/lapiz-file-browser-widget.c:800
 msgid "_Move to Trash"
 msgstr "ਰੱਦੀ ਵਿੱਚ ਭੇਜੋ(_M)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:799
+#: plugins/filebrowser/lapiz-file-browser-widget.c:801
 msgid "Move selected file or folder to trash"
 msgstr "ਚੁਣੀ ਫਾਇਲ ਜਾਂ ਫੋਲਡਰ ਰੱਦੀ 'ਚ ਭੇਜੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:802
+#: plugins/filebrowser/lapiz-file-browser-widget.c:804
 msgid "Delete selected file or folder"
 msgstr "ਚੁਣੀ ਫਾਇਲ ਜਾਂ ਫੋਲਡਰ ਹਟਾਓ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:809
+#: plugins/filebrowser/lapiz-file-browser-widget.c:811
 msgid "Open selected file"
 msgstr "ਚੁਣੀ ਫਾਇਲ ਖੋਲ੍ਹੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:815
+#: plugins/filebrowser/lapiz-file-browser-widget.c:817
 msgid "Up"
 msgstr "ਉੱਤੇ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:816
+#: plugins/filebrowser/lapiz-file-browser-widget.c:818
 msgid "Open the parent folder"
 msgstr "ਮੁੱਢਲਾ ਫੋਲਡਰ ਖੋਲ੍ਹੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:821
+#: plugins/filebrowser/lapiz-file-browser-widget.c:823
 msgid "_New Folder"
 msgstr "ਨਵਾਂ ਫੋਲਡਰ(_N)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:822
+#: plugins/filebrowser/lapiz-file-browser-widget.c:824
 msgid "Add new empty folder"
 msgstr "ਇੱਕ ਖਾਲੀ ਫੋਲਡਰ ਸ਼ਾਮਿਲ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:824
+#: plugins/filebrowser/lapiz-file-browser-widget.c:826
 msgid "New F_ile"
 msgstr "ਨਵੀਂ ਫਾਇਲ(_i)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:825
+#: plugins/filebrowser/lapiz-file-browser-widget.c:827
 msgid "Add new empty file"
 msgstr "ਨਵੀਂ ਖਾਲੀ ਫਾਇਲ ਸ਼ਾਮਿਲ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:830
+#: plugins/filebrowser/lapiz-file-browser-widget.c:832
 msgid "_Rename"
 msgstr "ਨਾਂ-ਬਦਲੋ(_R)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:831
+#: plugins/filebrowser/lapiz-file-browser-widget.c:833
 msgid "Rename selected file or folder"
 msgstr "ਚੁਣੀ ਫਾਇਲ ਜਾਂ ਫੋਲਡਰ ਦਾ ਨਾਂ ਬਦਲੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:837
+#: plugins/filebrowser/lapiz-file-browser-widget.c:839
 msgid "_Previous Location"
 msgstr "ਪਿਛਲਾ ਟਿਕਾਣਾ(_P)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:839
+#: plugins/filebrowser/lapiz-file-browser-widget.c:841
 msgid "Go to the previous visited location"
 msgstr "ਪਹਿਲਾਂ ਜਾ ਚੁੱਕੇ ਟਿਕਾਓ ਉੱਤੇ ਜਾਓ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:841
+#: plugins/filebrowser/lapiz-file-browser-widget.c:843
 msgid "_Next Location"
 msgstr "ਅਗਲਾ ਟਿਕਾਣਾ(_N)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:842
+#: plugins/filebrowser/lapiz-file-browser-widget.c:844
 msgid "Go to the next visited location"
 msgstr "ਅੱਗੇ ਜਾ ਚੁੱਕੇ ਟਿਕਾਣੇ ਉੱਤੇ ਜਾਓ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:843
+#: plugins/filebrowser/lapiz-file-browser-widget.c:845
 msgid "Re_fresh View"
 msgstr "ਝਲਕ ਤਾਜ਼ਾ ਕਰੋ(_f)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:844
+#: plugins/filebrowser/lapiz-file-browser-widget.c:846
 msgid "Refresh the view"
 msgstr "ਝਲਕ ਤਾਜ਼ਾ ਕਰੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:845
-#: plugins/filebrowser/lapiz-file-browser-widget.c:863
+#: plugins/filebrowser/lapiz-file-browser-widget.c:847
+#: plugins/filebrowser/lapiz-file-browser-widget.c:865
 msgid "_View Folder"
 msgstr "ਫੋਲਡਰ ਵੇਖੋ(_V)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:846
-#: plugins/filebrowser/lapiz-file-browser-widget.c:864
+#: plugins/filebrowser/lapiz-file-browser-widget.c:848
+#: plugins/filebrowser/lapiz-file-browser-widget.c:866
 msgid "View folder in file manager"
 msgstr "ਫਾਇਲ ਮੈਨੇਜਰ 'ਚ ਫੋਲਡਰ ਵੇਖੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:853
+#: plugins/filebrowser/lapiz-file-browser-widget.c:855
 msgid "Show _Hidden"
 msgstr "ਲੁਕਵੀਆਂ ਵੇਖੋ(_H)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:854
+#: plugins/filebrowser/lapiz-file-browser-widget.c:856
 msgid "Show hidden files and folders"
 msgstr "ਲੁਕਵੀਆਂ ਫਾਇਲਾਂ ਅਤੇ ਫੋਲਡਰ ਵੇਖੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:856
+#: plugins/filebrowser/lapiz-file-browser-widget.c:858
 msgid "Show _Binary"
 msgstr "ਬਾਈਨਰੀ ਵੇਖੋ(_B)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:857
+#: plugins/filebrowser/lapiz-file-browser-widget.c:859
 msgid "Show binary files"
 msgstr "ਬਾਈਨਰੀ ਫਾਇਲਾਂ ਵੇਖੋ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:990
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1003
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1029
+#: plugins/filebrowser/lapiz-file-browser-widget.c:992
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1005
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1031
 msgid "Previous location"
 msgstr "ਪਿਛਲਾ ਟਿਕਾਣਾ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:996
+#: plugins/filebrowser/lapiz-file-browser-widget.c:998
 msgid "Go to previous location"
 msgstr "ਪਿਛਲੇ ਟਿਕਾਣੇ ਉੱਤੇ ਜਾਓ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:998
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1000
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1026
 msgid "Go to a previously opened location"
 msgstr "ਪਿਛਲੇ ਖੋਲ੍ਹੇ ਟਿਕਾਣੇ ਉੱਤੇ ਜਾਓ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1016
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1018
 msgid "Next location"
 msgstr "ਅਗਲਾ ਟਿਕਾਣਾ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1022
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1024
 msgid "Go to next location"
 msgstr "ਅਗਲੇ ਟਿਕਾਣੇ ਉੱਤੇ ਜਾਓ"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:1234
+#: plugins/filebrowser/lapiz-file-browser-widget.c:1236
 msgid "_Match Filename"
 msgstr "ਫਾਇਲ ਨਾਂ ਮੇਲ(_M)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2135
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "ਮਾਊਂਟ ਕੀਤੇ ਵਾਲੀਅਮ ਲਈ ਕੋਈ ਮਾਊਂਟ ਆਬਜੈਕਟ ਨਹੀਂ: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2215
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
 #, c-format
 msgid "Could not open media: %s"
 msgstr "ਮੀਡਿਆ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2262
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "ਵਾਲੀਅਮ ਮਾਊਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ: %s"
 
-#: plugins/modelines/modelines.plugin.desktop.in:5
+#: plugins/modelines/modelines.plugin.desktop.in:4
 msgid "Modelines"
 msgstr "ਢੰਗ-ਲਾਈਨਾਂ"
 
-#: plugins/modelines/modelines.plugin.desktop.in:6
+#: plugins/modelines/modelines.plugin.desktop.in:5
 msgid "Emacs, Kate and Vim-style modelines support for lapiz."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਲਈ Emacs, ਕੇਟ ਅਤੇ Vim-style ਢੰਗ-ਸਟਾਇਲ ਸਹਿਯੋਗੀ ਹਨ।"
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:5
 #: plugins/pythonconsole/pythonconsole/__init__.py:55
 msgid "Python Console"
 msgstr "ਪਾਈਥਨ ਕਨਸੋਂਲ"
 
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:7
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "ਤਲ ਪੈਨਲ ਵਿੱਚ ਪਾਈਥਨ ਕੰਨਸੋਲ ਤਿਆਰ ਹੈ"
 
@@ -3189,7 +3189,7 @@ msgid "Font:"
 msgstr ""
 
 #: plugins/quickopen/quickopen/popup.py:32
-#: plugins/quickopen/quickopen.plugin.desktop.in:6
+#: plugins/quickopen/quickopen.plugin.desktop.in:5
 msgid "Quick Open"
 msgstr "ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
 
@@ -3201,18 +3201,18 @@ msgstr "ਤਰੁੰਤ ਖੋਲ੍ਹੋ"
 msgid "Quickly open documents"
 msgstr "ਡੌਕੂਮੈਂਟ ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
 
-#: plugins/quickopen/quickopen.plugin.desktop.in:7
+#: plugins/quickopen/quickopen.plugin.desktop.in:6
 msgid "Quickly open files"
 msgstr "ਫਾਇਲਾਂ ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
 
-#: plugins/snippets/snippets.plugin.desktop.in:6
+#: plugins/snippets/snippets.plugin.desktop.in:5
 #: plugins/snippets/snippets/Document.py:51
 #: plugins/snippets/snippets/Document.py:189
 #: plugins/snippets/snippets/Document.py:618
 msgid "Snippets"
 msgstr "ਸਨਿੱਪਟ"
 
-#: plugins/snippets/snippets.plugin.desktop.in:7
+#: plugins/snippets/snippets.plugin.desktop.in:6
 msgid "Insert often-used pieces of text in a fast way"
 msgstr "ਅਕਸਰ ਵਰਤੇ ਜਾਂਦੇ ਸ਼ਬਦਾਂ ਦਾ ਭਾਗ ਨੂੰ ਤੁਰੰਤ ਸ਼ਾਮਲ ਕਰੋ"
 
@@ -3436,11 +3436,11 @@ msgstr "ਲੜੀਬੱਧ(_O)..."
 msgid "Sort the current document or selection"
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ਼ ਜਾਂ ਚੋਣ ਨੂੰ ਲੜੀਬੱਧ ਕਰੋ"
 
-#: plugins/sort/sort.plugin.desktop.in:5 plugins/sort/sort.ui:29
+#: plugins/sort/sort.plugin.desktop.in:4 plugins/sort/sort.ui:29
 msgid "Sort"
 msgstr "ਲੜੀਬੱਧ"
 
-#: plugins/sort/sort.plugin.desktop.in:6
+#: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sorts a document or selected text."
 msgstr "ਡੌਕੂਮੈਂਟ ਜਾਂ ਚੁਣੇ ਟੈਕਸਟ ਨੂੰ ਕ੍ਰਮਬੱਧ ਕਰੋ।"
 
@@ -3475,20 +3475,20 @@ msgstr ""
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
-#: plugins/spell/lapiz-automatic-spell-checker.c:420
+#: plugins/spell/lapiz-automatic-spell-checker.c:429
 #: plugins/spell/lapiz-spell-checker-dialog.c:458
 msgid "(no suggested words)"
 msgstr "(ਸ਼ਬਦਾਂ ਬਾਰੇ ਕੋਈ ਸੁਝਾਅ ਨਹੀਂ)"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:444
+#: plugins/spell/lapiz-automatic-spell-checker.c:454
 msgid "_More..."
 msgstr "ਹੋਰ(_M)...."
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:499
+#: plugins/spell/lapiz-automatic-spell-checker.c:509
 msgid "_Ignore All"
 msgstr "ਸਭ ਅਣਡਿੱਠਾ(_I)"
 
-#: plugins/spell/lapiz-automatic-spell-checker.c:553
+#: plugins/spell/lapiz-automatic-spell-checker.c:565
 msgid "_Spelling Suggestions..."
 msgstr "ਸ਼ਬਦ ਜੋੜ ਬਾਰੇ ਸੁਝਾਅ(_S)......"
 
@@ -3501,11 +3501,11 @@ msgid "Suggestions"
 msgstr "ਸੁਝਾਅ"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: plugins/spell/lapiz-spell-checker-dialog.c:565
+#: plugins/spell/lapiz-spell-checker-dialog.c:568
 msgid "(correct spelling)"
 msgstr "(ਸਹੀ ਸ਼ਬਦ ਜੋੜ)"
 
-#: plugins/spell/lapiz-spell-checker-dialog.c:712
+#: plugins/spell/lapiz-spell-checker-dialog.c:720
 msgid "Completed spell checking"
 msgstr "ਪੂਰੀ ਤਰਾਂ ਸ਼ਬਦਜੋੜ ਦੀ ਜਾਂਚ ਹੋ ਗਈ ਹੈ"
 
@@ -3513,8 +3513,8 @@ msgstr "ਪੂਰੀ ਤਰਾਂ ਸ਼ਬਦਜੋੜ ਦੀ ਜਾਂਚ ਹ�
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:285
-#: plugins/spell/lapiz-spell-checker-language.c:291
+#: plugins/spell/lapiz-spell-checker-language.c:287
+#: plugins/spell/lapiz-spell-checker-language.c:293
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3523,7 +3523,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:300
+#: plugins/spell/lapiz-spell-checker-language.c:302
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3532,7 +3532,7 @@ msgstr "ਅਣਜਾਣ (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: plugins/spell/lapiz-spell-checker-language.c:406
+#: plugins/spell/lapiz-spell-checker-language.c:410
 msgctxt "language"
 msgid "Default"
 msgstr "ਮੂਲ"
@@ -3658,11 +3658,11 @@ msgstr ""
 msgid "_Always autocheck"
 msgstr ""
 
-#: plugins/spell/spell.plugin.desktop.in:5
+#: plugins/spell/spell.plugin.desktop.in:4
 msgid "Spell Checker"
 msgstr "ਸ਼ਬਦ-ਜੋੜ ਜਾਂਚਕਾਰ"
 
-#: plugins/spell/spell.plugin.desktop.in:6
+#: plugins/spell/spell.plugin.desktop.in:5
 msgid "Checks the spelling of the current document."
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ਼ ਲਈ ਸ਼ਬਦਾਂ ਜੋੜ ਦੀ ਜਾਂਚ ਕਰੋ।"
 
@@ -4830,11 +4830,11 @@ msgid "Soft hyphen­"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2275
-msgid "&quot;"
+msgid "\""
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2279
-msgid "&amp;"
+msgid "&"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2283
@@ -4862,11 +4862,11 @@ msgid "¸"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2307
-msgid "&lt;"
+msgid "<"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2311
-msgid "&gt;"
+msgid ">"
 msgstr ""
 
 #: plugins/taglist/HTML.tags.xml.in:2315
@@ -5258,7 +5258,7 @@ msgid "Brackets {}"
 msgstr "ਬਰੈਕਟ {}"
 
 #: plugins/taglist/Latex.tags.xml.in:39
-msgid "Brackets &lt;&gt;"
+msgid "Brackets <>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:44
@@ -5414,19 +5414,19 @@ msgid "Reference ref"
 msgstr "ਹਵਾਲਾ ref"
 
 #: plugins/taglist/Latex.tags.xml.in:225
-msgid "Symbol &lt;&lt;"
+msgid "Symbol <<"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:229
-msgid "Symbol &lt;="
+msgid "Symbol <="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:233
-msgid "Symbol &gt;="
+msgid "Symbol >="
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:237
-msgid "Symbol &gt;&gt;"
+msgid "Symbol >>"
 msgstr ""
 
 #: plugins/taglist/Latex.tags.xml.in:241
@@ -5517,11 +5517,11 @@ msgstr "ਨਾ-ਟੁੱਟਣਯੋਗ ਟੈਕਸਟ"
 msgid "Footnote"
 msgstr "ਫੁੱਟਨੋਟ"
 
-#: plugins/taglist/taglist.plugin.desktop.in:5
+#: plugins/taglist/taglist.plugin.desktop.in:4
 msgid "Tag list"
 msgstr "ਟੈਗ ਲਿਸਟ"
 
-#: plugins/taglist/taglist.plugin.desktop.in:6
+#: plugins/taglist/taglist.plugin.desktop.in:5
 msgid ""
 "Provides a method to easily insert commonly used tags/strings into a "
 "document without having to type them."
@@ -6330,19 +6330,19 @@ msgstr "ਕਰਸਰ ਦੀ ਸਥਿਤੀ ਉੱਤੇ ਮੌਜੂਦਾ ਤ�
 msgid "Available formats"
 msgstr "ਉਪਲੱਬਧ ਫਾਰਮੈਟ"
 
-#: plugins/time/time.plugin.desktop.in:5
+#: plugins/time/time.plugin.desktop.in:4
 msgid "Insert Date/Time"
 msgstr "ਤਾਰੀਖ/ਸਮਾਂ ਸ਼ਾਮਲ"
 
-#: plugins/time/time.plugin.desktop.in:6
+#: plugins/time/time.plugin.desktop.in:5
 msgid "Inserts current date and time at the cursor position."
 msgstr "ਕਰਸਰ ਦੀ ਸਥਿਤੀ ਤੇ ਮੌਜੂਦਾ ਤਰੀਕ ਅਤੇ ਸਮਾਂ ਸ਼ਾਮਿਲ ਕਰੋ।"
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:5
+#: plugins/trailsave/trailsave.plugin.desktop.in:4
 msgid "Save Without Trailing Spaces"
 msgstr ""
 
-#: plugins/trailsave/trailsave.plugin.desktop.in:6
+#: plugins/trailsave/trailsave.plugin.desktop.in:5
 msgid "Removes trailing spaces from lines before saving."
 msgstr ""
 
