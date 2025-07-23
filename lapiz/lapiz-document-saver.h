@@ -85,7 +85,7 @@ struct _LapizDocumentSaverClass
 
 	/* VTable */
 	void			(* save)		(LapizDocumentSaver *saver,
-							 GTimeVal           *old_mtime);
+							 gint64             *old_mtime);
 	goffset			(* get_file_size)	(LapizDocumentSaver *saver);
 	goffset			(* get_bytes_written)	(LapizDocumentSaver *saver);
 };
@@ -106,7 +106,7 @@ void			 lapiz_document_saver_saving		(LapizDocumentSaver *saver,
 								 gboolean            completed,
 								 GError             *error);
 void			 lapiz_document_saver_save		(LapizDocumentSaver  *saver,
-								 GTimeVal            *old_mtime);
+								 gint64              *old_mtime);
 
 #if 0
 void			 lapiz_document_saver_cancel		(LapizDocumentSaver  *saver);

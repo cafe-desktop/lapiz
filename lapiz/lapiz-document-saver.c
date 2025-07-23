@@ -293,7 +293,7 @@ lapiz_document_saver_saving (LapizDocumentSaver *saver,
 
 void
 lapiz_document_saver_save (LapizDocumentSaver     *saver,
-			   GTimeVal               *old_mtime)
+                           gint64                 *old_mtime)
 {
 	lapiz_debug (DEBUG_SAVER);
 
