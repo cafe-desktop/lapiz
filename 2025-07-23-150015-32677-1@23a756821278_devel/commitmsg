@@ -1,0 +1,4 @@
+avoid deprecated GTimeVal
+
+based in pluma commit:
+https://github.com/mate-desktop/pluma/commit/7ce1a66e8b52e4f6f03a57f08973c750f6bc5ead
