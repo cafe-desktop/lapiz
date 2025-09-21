@@ -408,11 +408,11 @@ sort_real (SortDialog *dialog)
 
 	lapiz_debug_message (DEBUG_PLUGINS, "Sort list...");
 
-	g_qsort_with_data (lines,
-			   num_lines,
-			   sizeof (gpointer),
-			   compare_algorithm,
-			   sort_info);
+	g_sort_array (lines,
+		      num_lines,
+		      sizeof (gpointer),
+		      compare_algorithm,
+		      sort_info);
 
 	lapiz_debug_message (DEBUG_PLUGINS, "Rebuilding document...");
 
