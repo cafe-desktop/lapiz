@@ -10,15 +10,15 @@ on:
 
 jobs:
 
-  debian_stable:
-    uses: cafe-desktop/cafe-common/.github/workflows/main.yml@master
+  debian_experimental:
+    uses: cafe-desktop/cafe-common/.github/workflows/main.yml@experimental
     with:
       image_name: lapiz
       tag: $GITHUB_RUN_NUMBER
     secrets:
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      DOCKER_HUB_DISTRO: debian:stable
+      DOCKER_HUB_DISTRO: debian:experimental
       GH_PAGES_DEPLOY: 'false'
 
   debian_testing:
