@@ -43,7 +43,6 @@ requires:
     - libfribidi-dev
     - libxml2-utils
     - libgdk-pixbuf2.0-doc
-    - libgladeui-dev
     - libpango1.0-doc
     - xauth
     - xvfb
