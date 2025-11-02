@@ -205,7 +205,7 @@ find_file_with_pattern (const char *dir, const char *pattern)
 
 	while ((filename = g_dir_read_name (filedir)))
 	{
-		if (g_pattern_match_string (pat, filename))
+		if (g_pattern_spec_match_string (pat, filename))
 		{
 			char *tmp = g_build_filename (dir, filename, NULL);
 			if (is_owned_by_user_and_socket (tmp))
