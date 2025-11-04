@@ -15,11 +15,9 @@ requires:
     - gcc
     - git
     - gla11y
-    - gobject-introspection
     - gtk-doc-tools
     - iso-codes
     - libenchant-2-dev
-    - libgirepository1.0-dev
     - libglib2.0-dev
     - libsm-dev
     - libx11-dev
@@ -48,7 +46,6 @@ requires:
     - xvfb
 
     # required for libbean
-    - libgirepository1.0-doc
     - python-gi-dev
     - python3-gi
 
