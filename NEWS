@@ -1,3 +1,13 @@
+### lapiz 2.1.0
+
+  * lapiz-commands-help: update copyright to 2025
+  * avoid deprecated GTimeVal
+  * ci: some improvements
+  * lapiz-sort-plugin: avoid deprecated 'g_qsort_with_data'
+  * avoid deprecated 'g_pattern_match_string'
+  * update translations
+
+
 ### lapiz 2.0.0
 
   * reduce the scope of some variables
@@ -9,6 +19,7 @@
   * lapiz-commands-search: don't move search dialog if it is visible
   * Require libbean 2.0
   * update translations
+
 
 ### lapiz 1.25.0
 
