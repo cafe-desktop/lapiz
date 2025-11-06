@@ -12,9 +12,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 2.0.0\n"
+"Project-Id-Version: lapiz 2.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2025-07-20 18:14+0200\n"
+"POT-Creation-Date: 2025-11-06 09:48+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Tamil (https://www.transifex.com/cafe/teams/13566/ta/)\n"
@@ -1296,7 +1296,7 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023-2024 Pablo Barciela"
+"Copyright © 2023-2025 Pablo Barciela"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:129
@@ -1324,7 +1324,7 @@ msgstr "தேடி மாற்றியவை ஒரு முறை நட�
 msgid "\"%s\" not found"
 msgstr "\"%s\" கண்டு பிடிக்கப் படவில்லை"
 
-#: lapiz/lapiz-document.c:1139 lapiz/lapiz-document.c:1159
+#: lapiz/lapiz-document.c:1138 lapiz/lapiz-document.c:1158
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "சேமிக்கப்படாத ஆவணம் %d"
@@ -3162,17 +3162,17 @@ msgstr "அடுத்த இடத்திற்கு செல்லவு�
 msgid "_Match Filename"
 msgstr "_M கோப்பு பெயரை பொருத்தவும்"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2137
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "ஏற்றப்பட்ட தொகுதியில் ஏற்றும் பொருள் இல்லை: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2217
 #, c-format
 msgid "Could not open media: %s"
 msgstr "ஊடகத்தை திறக்க முடியவில்லை: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2264
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "தொகுதியை ஏற்ற முடியவில்லை: %s"

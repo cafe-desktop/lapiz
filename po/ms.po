@@ -10,9 +10,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 2.0.0\n"
+"Project-Id-Version: lapiz 2.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2025-07-20 18:14+0200\n"
+"POT-Creation-Date: 2025-11-06 09:48+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>, 2020\n"
 "Language-Team: Malay (https://www.transifex.com/cafe/teams/13566/ms/)\n"
@@ -1346,7 +1346,7 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023-2024 Pablo Barciela"
+"Copyright © 2023-2025 Pablo Barciela"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:129
@@ -1370,7 +1370,7 @@ msgstr "Temui dan gantikan satu kemunculan"
 msgid "\"%s\" not found"
 msgstr "\"%s\" tidak ditemui"
 
-#: lapiz/lapiz-document.c:1139 lapiz/lapiz-document.c:1159
+#: lapiz/lapiz-document.c:1138 lapiz/lapiz-document.c:1158
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Dokumen Tidak Disimpan %d"
@@ -3213,17 +3213,17 @@ msgstr "Pergi ke lokasi berikutnya"
 msgid "_Match Filename"
 msgstr "Pa_dan Nama Fail"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2137
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Tiada objek lekap untuk volum terlekap: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2217
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Tidak dapat buka media: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2264
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Tidak dapat lekap volum: %s"

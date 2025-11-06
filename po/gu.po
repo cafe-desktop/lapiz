@@ -9,9 +9,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 2.0.0\n"
+"Project-Id-Version: lapiz 2.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2025-07-20 18:14+0200\n"
+"POT-Creation-Date: 2025-11-06 09:48+0100\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Gujarati (https://www.transifex.com/cafe/teams/13566/gu/)\n"
@@ -1278,7 +1278,7 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023-2024 Pablo Barciela"
+"Copyright © 2023-2025 Pablo Barciela"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:129
@@ -1303,7 +1303,7 @@ msgstr "એક વખત શબ્દ મળ્યો અને બદલાય�
 msgid "\"%s\" not found"
 msgstr "\"%s\" શોધાયુ નથી"
 
-#: lapiz/lapiz-document.c:1139 lapiz/lapiz-document.c:1159
+#: lapiz/lapiz-document.c:1138 lapiz/lapiz-document.c:1158
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "અસંગ્રહિત દસ્તાવેજ %d"
@@ -3126,17 +3126,17 @@ msgstr "આગળના સ્થાને જાવ"
 msgid "_Match Filename"
 msgstr "ફાઈલનામ સરખાવો (_M)"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2139
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2137
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "માઉન્ટ થયેલ વોલ્યુમ માટે માઉન્ટ ઘટક નથી: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2219
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2217
 #, c-format
 msgid "Could not open media: %s"
 msgstr "મીડિયા ખોલી શક્યા નહિં: %s"
 
-#: plugins/filebrowser/lapiz-file-browser-widget.c:2266
+#: plugins/filebrowser/lapiz-file-browser-widget.c:2264
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "વોલ્યુમને માઉન્ટ કરી શક્યા નહિં: %s"
