@@ -48,6 +48,7 @@ requires:
     - xvfb
 
     # required for libbean
+    - gir1.2-girepository-3.0-dev
     - python-gi-dev
     - python3-gi
 
