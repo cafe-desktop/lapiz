@@ -43,7 +43,7 @@
 #include <cdk/cdkx.h>
 
 #ifdef HAVE_INTROSPECTION
-#include <girepository.h>
+#include <girepository/girepository.h>
 #endif
 
 #include "lapiz-app.h"
@@ -527,7 +527,7 @@ main (int argc, char *argv[])
 	g_option_context_add_group (context, egg_sm_client_get_option_group ());
 
 #ifdef HAVE_INTROSPECTION
-	g_option_context_add_group (context, g_irepository_get_option_group ());
+	g_option_context_add_group (context, gi_repository_get_option_group ());
 #endif
 
 	if (!g_option_context_parse (context, &argc, &argv, &error))
