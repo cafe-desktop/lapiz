@@ -35,7 +35,7 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
-#include <girepository.h>
+#include <girepository/girepository.h>
 
 #include "lapiz-plugins-engine.h"
 #include "lapiz-debug.h"
@@ -67,7 +67,7 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 	engine->priv->plugin_settings = g_settings_new (LAPIZ_SCHEMA);
 
 	/* This should be moved to libbean */
-	if (!g_irepository_require (g_irepository_get_default (),
+	if (!gi_repository_require (gi_repository_dup_default (),
 	                            "Bean", "2.0", 0, &error))
 	{
 		g_warning ("Could not load Bean repository: %s", error->message);
@@ -75,7 +75,7 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 		error = NULL;
 	}
 
-	if (!g_irepository_require (g_irepository_get_default (),
+	if (!gi_repository_require (gi_repository_dup_default (),
 	                            "BeanCtk", "2.0", 0, &error))
 	{
 		g_warning ("Could not load BeanCtk repository: %s", error->message);
@@ -85,7 +85,7 @@ lapiz_plugins_engine_init (LapizPluginsEngine *engine)
 
 	private_path = g_build_filename (LIBDIR, "girepository-1.0", NULL);
 
-	if (!g_irepository_require_private (g_irepository_get_default (),
+	if (!gi_repository_require_private (gi_repository_dup_default (),
 	                                    private_path, "Lapiz", "1.0", 0, &error))
 	{
 		g_warning ("Could not load Lapiz repository: %s", error->message);
