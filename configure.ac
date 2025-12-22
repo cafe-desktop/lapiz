@@ -161,7 +161,7 @@ CTKSOURCEVIEW_REQUIRED=3.0.0
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 PKG_CHECK_MODULES(LAPIZ, [
 	libxml-2.0 >= 2.5.0
-	glib-2.0 >= 2.50.0
+	glib-2.0 >= 2.85.0
 	$GMODULE_ADD
 	gthread-2.0 >= 2.13.0
 	gio-2.0 >= 2.50.0
