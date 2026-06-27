@@ -255,7 +255,7 @@ message_set_emblem_cb (LapizMessageBus *bus G_GNUC_UNUSED,
 
 			if (ctk_tree_model_get_iter (CTK_TREE_MODEL (store), &iter, path))
 			{
-				g_value_init (&value, GDK_TYPE_PIXBUF);
+				g_value_init (&value, CDK_TYPE_PIXBUF);
 				g_value_set_object (&value, pixbuf);
 
 				lapiz_file_browser_store_set_value (store,

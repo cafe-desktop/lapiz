@@ -685,7 +685,7 @@ lapiz_documents_panel_init (LapizDocumentsPanel *panel)
 
 	/* Create the empty model */
 	panel->priv->model = CTK_TREE_MODEL (ctk_list_store_new (N_COLUMNS,
-								 GDK_TYPE_PIXBUF,
+								 CDK_TYPE_PIXBUF,
 								 G_TYPE_STRING,
 								 G_TYPE_POINTER));
 
