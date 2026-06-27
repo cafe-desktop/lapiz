@@ -1770,8 +1770,8 @@ resize_icon (GdkPixbuf *pixbuf,
 {
 	gint width, height;
 
-	width = gdk_pixbuf_get_width (pixbuf);
-	height = gdk_pixbuf_get_height (pixbuf);
+	width = cdk_pixbuf_get_width (pixbuf);
+	height = cdk_pixbuf_get_height (pixbuf);
 
 	/* if the icon is larger than the nominal size, scale down */
 	if (MAX (width, height) > size)
@@ -1789,7 +1789,7 @@ resize_icon (GdkPixbuf *pixbuf,
 			height = size;
 		}
 
-		scaled_pixbuf = gdk_pixbuf_scale_simple	(pixbuf,
+		scaled_pixbuf = cdk_pixbuf_scale_simple	(pixbuf,
 							 width,
 							 height,
 							 GDK_INTERP_BILINEAR);
