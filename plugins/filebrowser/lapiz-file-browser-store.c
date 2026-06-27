@@ -463,9 +463,9 @@ lapiz_file_browser_store_init (LapizFileBrowserStore * obj)
 	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_FLAGS] =
 	    G_TYPE_UINT;
 	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_ICON] =
-	    GDK_TYPE_PIXBUF;
+	    CDK_TYPE_PIXBUF;
 	obj->priv->column_types[LAPIZ_FILE_BROWSER_STORE_COLUMN_EMBLEM] =
-	    GDK_TYPE_PIXBUF;
+	    CDK_TYPE_PIXBUF;
 
 	// Default filter mode is hiding the hidden files
 	obj->priv->filter_mode = lapiz_file_browser_store_filter_mode_get_default ();
@@ -1633,7 +1633,7 @@ model_recomposite_icon_real (LapizFileBrowserStore * tree_model,
 		cdk_pixbuf_composite (node->emblem, node->icon,
 				      icon_size - 10, icon_size - 10, 10,
 				      10, icon_size - 10, icon_size - 10,
-				      1, 1, GDK_INTERP_NEAREST, 255);
+				      1, 1, CDK_INTERP_NEAREST, 255);
 	} else {
 		node->icon = icon;
 	}
@@ -2742,7 +2742,7 @@ lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 	data = g_value_get_object (value);
 
 	if (data)
-		g_return_if_fail (GDK_IS_PIXBUF (data));
+		g_return_if_fail (CDK_IS_PIXBUF (data));
 
 	node = (FileBrowserNode *) (iter->user_data);
 
@@ -2750,7 +2750,7 @@ lapiz_file_browser_store_set_value (LapizFileBrowserStore * tree_model,
 		g_object_unref (node->emblem);
 
 	if (data)
-		node->emblem = g_object_ref (GDK_PIXBUF (data));
+		node->emblem = g_object_ref (CDK_PIXBUF (data));
 	else
 		node->emblem = NULL;
 
