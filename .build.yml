@@ -42,7 +42,6 @@ requires:
     - libatk1.0-dev
     - libfribidi-dev
     - libxml2-utils
-    - libgdk-pixbuf2.0-doc
     - libpango1.0-doc
     - xauth
     - xvfb
