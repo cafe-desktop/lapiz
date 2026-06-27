@@ -22,9 +22,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lapiz 2.1.0\n"
+"Project-Id-Version: lapiz 2.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/cafe-desktop/lapiz/issues\n"
-"POT-Creation-Date: 2025-11-06 09:48+0100\n"
+"POT-Creation-Date: 2026-06-28 01:00+0200\n"
 "PO-Revision-Date: 2020-02-16 17:47+0000\n"
 "Last-Translator: semicolon <mail@semicln.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/cafe/teams/13566/ja/)\n"
@@ -1308,7 +1308,7 @@ msgid ""
 "Steve Frécinaux, Ignacio Casal Quinteiro\n"
 "Copyright © 2011 Perberos\n"
 "Copyright © 2012-2020 MATE developers\n"
-"Copyright © 2023-2025 Pablo Barciela"
+"Copyright © 2023-2026 Pablo Barciela"
 msgstr ""
 
 #: lapiz/lapiz-commands-help.c:129
