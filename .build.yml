@@ -3,69 +3,12 @@
 ##########################################################
 requires:
   debian:
-    # Useful URL: https://github.com/cafe-desktop/debian-packages
-    # cafe B-D: libctk-3-dev libctksourceview-4-dev libbean-dev cafe-common
-    - aptitude
-    - autoconf-archive
-    - autopoint
-    - clang
-    - clang-tools
-    - cppcheck
-    - expect #requiered for unbuffer
-    - gcc
-    - git
-    - gla11y
-    - gobject-introspection
-    - gtk-doc-tools
-    - iso-codes
-    - libenchant-2-dev
-    - libgirepository-2.0-dev
-    - libglib2.0-dev
-    - libsm-dev
-    - libx11-dev
-    - libxml2-dev
-    - make
-    - python3-dev
-    - python3-lxml
-    - yelp-tools
-
-    # required for cafe-desktop
-    - intltool
-    - libdconf-dev
-    - libglib2.0-doc
-    - libstartup-notification0-dev
-    - libtool
-    - meson
-    - wget
-
-    # required for ctksourceview
-    - libatk1.0-dev
-    - libfribidi-dev
-    - libxml2-utils
-    - libpango1.0-doc
-    - xauth
-    - xvfb
-
-    # required for libbean
-    - gir1.2-girepository-3.0-dev
-    - python-gi-dev
-    - python3-gi
 
 before_scripts:
-  - ./html-cppcheck
-  - ./debrepo-install 'libctk-3-dev gir1.2-ctk-3.0 libctk-3-common libctk-3-0 libctk-3-doc'
-  - if [ ${DISTRO_VERSION} == "stable" ];then
-  -     ./install-from-git https://gitlab.gnome.org/GNOME/glib 2.85.4 meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu -Dtests=false'
-  - fi
-  - ./install-from-git https://github.com/cafe-desktop/cafe-common master
-  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master #required for make check
-  - ./install-from-git https://github.com/cafe-desktop/ctksourceview master meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu'
-  - ./install-from-git https://github.com/cafe-desktop/libbean master meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu'
+  - ./debrepo-install
 
 build_scripts:
-  - ./before-build
-  - ./make-scanbuild '--enable-compile-warnings=maximum --disable-tests'
-  - ./after-build
+  - ./build-debs https://github.com/cafe-desktop/debian-packages devel lapiz
 
 after_scripts:
   - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/cafe-icon-theme/raw/master/cafe/16x16/apps/accessories-text-editor.png; fi
