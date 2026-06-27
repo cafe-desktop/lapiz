@@ -190,7 +190,7 @@ refresh_list (LapizDocumentsPanel *panel)
 
 	while (l != NULL)
 	{
-		GdkPixbuf *pixbuf;
+		CdkPixbuf *pixbuf;
 		gchar *name;
 		CtkTreeIter iter;
 
@@ -233,7 +233,7 @@ sync_name_and_icon (LapizTab            *tab,
 		    GParamSpec          *pspec G_GNUC_UNUSED,
 		    LapizDocumentsPanel *panel)
 {
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	gchar *name;
 	CtkTreeIter iter;
 
@@ -276,7 +276,7 @@ window_tab_added (LapizWindow         *window G_GNUC_UNUSED,
 {
 	CtkTreeIter iter;
 	CtkTreeIter sibling;
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	gchar *name;
 
 	g_signal_connect (tab,

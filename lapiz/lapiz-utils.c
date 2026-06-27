@@ -1673,7 +1673,7 @@ free_resources:
 }
 
 CtkWidget *
-lapiz_image_menu_item_new_from_pixbuf (GdkPixbuf   *icon_pixbuf,
+lapiz_image_menu_item_new_from_pixbuf (CdkPixbuf   *icon_pixbuf,
 				       const gchar *label_name)
 {
 	gchar *concat;

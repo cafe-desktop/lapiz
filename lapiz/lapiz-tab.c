@@ -1764,8 +1764,8 @@ _lapiz_tab_get_tooltips	(LapizTab *tab)
 	return tip;
 }
 
-static GdkPixbuf *
-resize_icon (GdkPixbuf *pixbuf,
+static CdkPixbuf *
+resize_icon (CdkPixbuf *pixbuf,
 	     gint       size)
 {
 	gint width, height;
@@ -1776,7 +1776,7 @@ resize_icon (GdkPixbuf *pixbuf,
 	/* if the icon is larger than the nominal size, scale down */
 	if (MAX (width, height) > size)
 	{
-		GdkPixbuf *scaled_pixbuf;
+		CdkPixbuf *scaled_pixbuf;
 
 		if (width > height)
 		{
@@ -1800,12 +1800,12 @@ resize_icon (GdkPixbuf *pixbuf,
 	return pixbuf;
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_stock_icon (CtkIconTheme *theme,
 		const gchar  *icon_name,
 		gint          size)
 {
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 
 	pixbuf = ctk_icon_theme_load_icon (theme, icon_name, size, 0, NULL);
 	if (pixbuf == NULL)
@@ -1814,12 +1814,12 @@ get_stock_icon (CtkIconTheme *theme,
 	return resize_icon (pixbuf, size);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_icon (CtkIconTheme *theme,
 	  GFile        *location,
 	  gint          size)
 {
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	CtkIconInfo *icon_info;
 	GFileInfo *info;
 	GIcon *gicon;
@@ -1861,10 +1861,10 @@ get_icon (CtkIconTheme *theme,
 
 /* FIXME: add support for theme changed. I think it should be as easy as
    call g_object_notify (tab, "name") when the icon theme changes */
-GdkPixbuf *
+CdkPixbuf *
 _lapiz_tab_get_icon (LapizTab *tab)
 {
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	CtkIconTheme *theme;
 	CdkScreen *screen;
 	gint icon_size;
